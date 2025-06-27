@@ -35,7 +35,121 @@ class AgentsChecklist
         } else {
             $agent_count = count($item_assignments);
         }
+?>
+<style>
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
 
+/* Modern checkbox styling */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.checkbox-item:hover {
+    background-color: #f5f7ff;
+}
+
+.checkbox-item.selected {
+    background-color: #e0e7ff;
+    border-left: 3px solid #4f46e5;
+}
+
+.checkbox-input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+
+.checkbox-custom {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 4px;
+    margin-right: 1rem;
+    transition: all 0.2s ease;
+}
+
+.checkbox-input:checked ~ .checkbox-custom {
+    background-color: #4f46e5;
+    border-color: #4f46e5;
+}
+
+.checkbox-input:focus ~ .checkbox-custom {
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+
+.checkbox-custom::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-input:checked ~ .checkbox-custom::after {
+    display: block;
+}
+
+.checkbox-label {
+    font-weight: 500;
+    flex-grow: 1;
+    padding-right: 1rem;
+}
+
+/* Edit mode styling */
+.checkbox-item.edit-mode {
+    background-color: #f5f7ff;
+    padding: 0.5rem 0.75rem;
+}
+
+.edit-input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+    margin-right: 1rem;
+}
+
+.edit-input:focus {
+    outline: none;
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Action buttons */
+.item-actions {
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.checkbox-item:hover .item-actions,
+.checkbox-item.selected .item-actions,
+.checkbox-item.edit-mode .item-actions {
+    opacity: 1;
+}
+</style>
+<?php
         echo "<div>";
         echo "<ul class='pp-list_horiz'><li>";
         if ($show_subset_caption) {
@@ -146,7 +260,13 @@ class AgentsChecklist
                 echo '&bull; ';
             else
                 echo "<input type='checkbox' name='" . esc_attr($name_attrib) . "[]'" . esc_attr($disabled) . esc_attr($checked) . " value='" . esc_attr($id) . "' id='r" . esc_attr("{$exec_count}_{$id}") . "' />";
-
+            ?>
+            <label class="checkbox-item selected">
+                <input type="checkbox" class="checkbox-input" value="123 edit">
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">123 edit</span>
+            </label>
+            <?php
             echo "<label for='" . esc_attr("r{$exec_count}_{$id}"). "'>";
             echo ' ' . esc_html($captions[$id]);
             echo '</label>';
