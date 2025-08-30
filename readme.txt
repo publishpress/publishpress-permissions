@@ -5,7 +5,7 @@ Tags: permissions, access, restrict, privacy, capabilities
 Requires at least: 5.5
 Tested up to: 6.8
 Requires PHP: 7.2.5
-Stable tag: 4.4.3
+Stable tag: 4.5.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -239,6 +239,11 @@ Yes, we use the phrase "publishpress-ppcore-install" to share install links. You
 9. Create your own Privacy Statuses: Create visibility options for your content. One example is a "Premium" status that makes content visible only for paying members. 
 
 == Changelog ==
+
+= 4.5.0 – 1 September 2025 =
+* Fixed: Conflict with the PublishPress Statuses plugin that caused an "out of memory" error during login. #1873
+* Fixed: Issue where editing defaults were incorrectly applied to existing posts. #1870
+* Updated: Improved the "Features" tab design and layout for promotional content. #1869
 
 = 4.4.3 – 18 August 2025 =
 * Added: Description text in the Media Library settings for better clarity. #1866
