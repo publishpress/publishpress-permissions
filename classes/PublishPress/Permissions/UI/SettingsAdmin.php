@@ -60,10 +60,10 @@ class SettingsAdmin
         return __('If disabled, manually "blocked" posts can be unblocked by specific Category / Term Permissions.', 'press-permit-core-hints');
 
         case 'define_media_post_caps' :
-        return __("If enabled, corresponding Media edit and delete capabilities must be added to existing roles.", 'press-permit-core-hints');
+        return __('If enabled, corresponding Media edit and delete capabilities must be added to existing roles.', 'press-permit-core-hints');
 
         case 'define_media_post_caps_collab_prompt' :
-        return  __("For specialized Media Library permissions, enable the Editing Permissions feature.", 'press-permit-core-hints');
+        return __('For specialized Media Library permissions, enable the Editing Permissions feature.', 'press-permit-core-hints');
 
         case 'bbp_compat_prompt' :
         return __('To customize bbPress forum permissions, activate the Compatibility Pack feature.', 'press-permit-core-hints');
@@ -75,7 +75,7 @@ class SettingsAdmin
         return __('Remove the "Private:" and "Protected" prefix from Post, Page titles.', 'press-permit-core-hints');
 
         case 'regulate_category_archive_page' :
-        return __("If the user is blocked from reading posts in a category, also block access to category archive page.", 'press-permit-core-hints');
+        return __('If the user is blocked from reading posts in a category, also block access to category archive page.', 'press-permit-core-hints');
 
         case 'force_nav_menu_filter' :
         return __('Remove unreadable Menu Items. If menu rendering problems occur with a third party plugin, disable this setting.', 'press-permit-core-hints');
@@ -107,7 +107,7 @@ class SettingsAdmin
         return __('Display descriptive captions on Permissions screens.', 'press-permit-core-hints');
 
         case 'display_extension_hints' :
-        return  __('Display descriptive captions for features available in missing or deactivated modules.', 'press-permit-core-hints');
+        return __('Display descriptive captions for features available in missing or deactivated modules.', 'press-permit-core-hints');
 
         case 'pattern_roles_include_generic_rolecaps':
         return __('Extra Roles cause "_posts" capabilities in the Pattern Role (Author, Editor, etc.) to be assigned for the selected post type. Enable this setting to also include all other capabilities in the Pattern Role.', 'press-permit-core-hints');
@@ -116,7 +116,7 @@ class SettingsAdmin
         return __('Detect user roles which are appended dynamically but not stored to the WP database. May be useful for sites that sync with Active Directory or other external user registration systems.', 'press-permit-core-hints');
 
         case 'pp_capabilities' :
-        return  __('You can adjust some Permissions behavior by %1$s adding capabilities to a WordPress role%2$s.', 'press-permit-core-hints');
+        return __('You can adjust some Permissions behavior by %1$s adding capabilities to a WordPress role%2$s.', 'press-permit-core-hints');
 
         case 'pp_capabilities_install_prompt' :
         return __('You can add Permissions capabilities to a role using the %1$s plugin.', 'press-permit-core-hints');
@@ -150,22 +150,22 @@ class SettingsAdmin
         return __('The following settings are currently overridden by the constant PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you maintain). Media Library access will not be altered by Permissions.', 'press-permit-core-hints');
 
         case 'admin_others_attached_to_readable' :
-        return __("Checking this box will show files uploaded by other users if they are attached a post the user is allowed to view.", 'press-permit-core-hints');
+        return __('Show files uploaded by others users if they are attached to a post the user is allowed to view.', 'press-permit-core-hints');
 
         case 'admin_others_attached_files' :
-        return 'Checking this box will show files uploaded by other users if they are attached a post the user is allowed to edit.';
+        return __('Show files uploaded by other users if they are attached to a post the user is allowed to edit.', 'press-permit-core-hints');
 
         case 'edit_others_attached_files' :
-        return __("Checking this box will allow users to edit files uploaded by other users if they are attached a post the user is allowed to edit.", 'press-permit-core-hints');
+        return __('Allow users to edit files uploaded by other users if they are attached to a post the user is allowed to edit.', 'press-permit-core-hints');
 
         case 'admin_others_unattached_files' :
-        return 'Checking this box will show users all the files in the Media Library. Unchecking this box will hide media files that are uploaded by other users.';
+        return __('Show users all the files in the Media Library. Unchecking this box will hide media files that are uploaded by other users.', 'press-permit-core-hints');
 
         case 'attachment_edit_requires_parent_access':
-        return 'Checking this box will allow stop users from to edit files uploaded by other users unless they are attached a post the user is allowed to edit.';
+        return __('Stop users from editing files uploaded by other users unless they are attached to a post the user is allowed to edit.', 'press-permit-core-hints');
 
         case 'own_attachments_always_editable' :
-        return __("Checking this box will allow users to edit files they have uploaded, regardless of other restrictions.", 'press-permit-core-hints');
+        return __('Allow users to edit files they have uploaded, regardless of other restrictions.', 'press-permit-core-hints');
 
         case 'admin_nav_menu_partial_editing' :
         return __('Allow non-Administrators to rename menu items they cannot fully edit. Menu items will be locked into current positions.', 'press-permit-core-hints');
