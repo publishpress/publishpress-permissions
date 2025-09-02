@@ -196,7 +196,7 @@ class CoreAdmin
                 <div class="pp-integration-card pp-disabled">
                     <span class="pp-integration-icon dashicons <?php echo esc_attr($icon_class); ?>"></span>
                     <div class="pp-integration-content">
-                        <h3 class="pp-integration-title">
+                        <h3 class="pp-integration-title" title="<?php echo esc_attr($title); ?>">
                             <?php echo esc_html($title); ?>
                             <span class="pp-badge pp-pro-badge">Pro</span>
                         </h3>
@@ -212,12 +212,14 @@ class CoreAdmin
                             <?php endif; ?>
                         </p>
 
-                        <div class="pp-integration-features">
-                            <?php if (isset($ext_info->descript[$slug])) {
-                                echo esc_html($ext_info->descript[$slug]);
-                            } ?>
-                        </div>
+                        <?php if (isset($ext_info->descript[$slug])) : ?>
+                            <div class="pp-integration-features" title="<?php echo esc_attr($ext_info->descript[$slug]); ?>">
+                                <?php echo esc_html($ext_info->descript[$slug]); ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
+                    <div class="pp-settings-wrapper">
                         <div class="pp-settings-toggle">
                             <?php $id = "module_pro_{$slug}"; ?>
                             <label class="pp-toggle-switch" for="<?php echo esc_attr($id); ?>">

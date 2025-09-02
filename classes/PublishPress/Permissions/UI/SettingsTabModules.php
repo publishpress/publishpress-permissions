@@ -125,7 +125,7 @@ class SettingsTabModules
                                         <div class="<?php echo esc_attr($card_classes); ?>">
                                             <span class="pp-integration-icon dashicons dashicons-edit"></span>
                                             <div class="pp-integration-content">
-                                                <h3 class="pp-integration-title">
+                                                <h3 class="pp-integration-title" title="<?php echo esc_attr($title); ?>">
                                                     <?php echo esc_html($title); ?>
                                                     <?php if ($is_active): ?>
                                                         <span class="pp-badge"
@@ -147,12 +147,14 @@ class SettingsTabModules
                                                     <?php endif; ?>
                                                 </p>
 
-                                                <div class="pp-integration-features">
-                                                    <?php if (isset($ext_info->descript[$slug])) {
-                                                        echo esc_html($ext_info->descript[$slug]);
-                                                    } ?>
-                                                </div>
+                                                <?php if (isset($ext_info->descript[$slug])) :?>
+                                                    <div class="pp-integration-features" title="<?php echo esc_attr($ext_info->descript[$slug]); ?>">
+                                                        <?php echo esc_html($ext_info->descript[$slug]); ?>
+                                                    </div>
+                                                <?php endif; ?>
 
+                                            </div>
+                                            <div class="pp-settings-wrapper">
                                                 <div class="pp-settings-toggle">
                                                     <?php $id = "module_{$slug}"; ?>
                                                     <label class="pp-toggle-switch" for="<?php echo esc_attr($id); ?>">

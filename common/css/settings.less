@@ -1411,6 +1411,10 @@ body.permissions_page_presspermit-settings {
 }
 .pp-integration-content {
 	flex: 1;
+	height: 100%;
+	box-sizing: border-box;
+	padding-bottom: 1.1rem;
+	min-height: 185px;
 }
 .pp-integration-title {
 	font-size: 1.1rem;
@@ -1496,6 +1500,12 @@ body.permissions_page_presspermit-settings {
 	font-size: 0.85rem;
 	color: @color_19;
 	margin-top: 0.5rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -1518,10 +1528,23 @@ body.permissions_page_presspermit-settings {
 		margin-bottom: 28px;
 	}
 }
+.pp-settings-wrapper {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fbfbfb;
+	margin: 0 -1.1rem;
+	line-height: 60px;
+	border-top: 1px solid #dcdcdc;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 20px;
+	padding: 1rem;
+}
 .pp-settings-toggle {
 	display: flex;
 	align-items: center;
-	margin-top: 1rem;
 }
 input {
 	&:checked {
