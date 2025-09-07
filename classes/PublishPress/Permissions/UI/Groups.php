@@ -272,14 +272,14 @@ class Groups
 
                             if (!PWP::empty_REQUEST('pp_has_perms')) {
                                 $class = !empty($pp_has_perms) ? 'current' : '';
-                                echo "<li><a href='" . esc_url("admin.php?page=presspermit-groups&group_variant=&pp_has_perms=1&pp_has_exceptions=0&pp_has_roles=0") . "' class='" . esc_attr($class) . "'>" . esc_html__('Has Permissions', 'presspermit-core') . "</a>&nbsp;|&nbsp;</li>";
+                                echo "<li><a href='" . esc_url("admin.php?page=presspermit-groups&group_variant=&pp_has_perms=1&pp_has_exceptions=0&pp_has_roles=0") . "' class='" . esc_attr($class) . "'>" . esc_html__('Has Permissions', 'press-permit-core') . "</a>&nbsp;|&nbsp;</li>";
                             }
 
                             $class = !empty($pp_has_exceptions) ? 'current' : '';
-                            echo "<li><a href='" . esc_url("admin.php?page=presspermit-groups&group_variant=&pp_has_exceptions=1&pp_has_perms=0&pp_has_roles=0") . "' class='" . esc_attr($class) . "'>" . esc_html__('Has Specific Permissions', 'presspermit-core') . "</a>&nbsp;|&nbsp;</li>";
+                            echo "<li><a href='" . esc_url("admin.php?page=presspermit-groups&group_variant=&pp_has_exceptions=1&pp_has_perms=0&pp_has_roles=0") . "' class='" . esc_attr($class) . "'>" . esc_html__('Has Specific Permissions', 'press-permit-core') . "</a>&nbsp;|&nbsp;</li>";
 
                             $class = !empty($pp_has_roles) ? 'current' : '';
-                            echo "<li><a href='" . esc_url("admin.php?page=presspermit-groups&group_variant=&pp_has_roles=1&pp_has_exceptions=0&pp_has_perms=0") . "' class='" . esc_attr($class) . "'>" . esc_html__('Has Extra Roles', 'presspermit-core') . "</a></li>";
+                            echo "<li><a href='" . esc_url("admin.php?page=presspermit-groups&group_variant=&pp_has_roles=1&pp_has_exceptions=0&pp_has_perms=0") . "' class='" . esc_attr($class) . "'>" . esc_html__('Has Extra Roles', 'press-permit-core') . "</a></li>";
 
                             echo '</ul>';
 
