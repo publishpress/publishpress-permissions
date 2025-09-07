@@ -34,7 +34,7 @@ class GroupsListTableBase extends \WP_List_Table
                         }
 
                         if ($can_manage_group) {
-                            echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit group permissions', 'presspermit-core') . "'>";
+                            echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit group permissions', 'press-permit-core') . "'>";
                         }
 
                         echo '<span class="pp-group-site-roles">';
@@ -80,7 +80,7 @@ class GroupsListTableBase extends \WP_List_Table
                         }
 
                         if ($can_manage_group) {
-                            echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit group permissions', 'presspermit-core') . "'>";
+                            echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit group permissions', 'press-permit-core') . "'>";
                         }
 
                         echo '<span class="pp-group-site-roles">';
