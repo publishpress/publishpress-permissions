@@ -182,8 +182,8 @@ class SettingsTabEditing
                     $ui->optionCheckbox('page_parent_editable_only', $tab, $section);
                     $ui->optionCheckbox('page_parent_order', $tab, $section);
 
-                    $hint = esc_html__("When saving a post, if the default term is not selectable, substitute first available.", 'presspermit-pro')
-                        . ' ' . esc_html__('Some term-limited editing configurations require this.', 'presspermit=pro');
+                    $hint = esc_html__("When saving a post, if the default term is not selectable, substitute first available.", 'press-permit-core')
+                        . ' ' . esc_html__('Some term-limited editing configurations require this.', 'press-permit-core');
 
                     $ui->optionCheckbox('auto_assign_available_term', $tab, $section, $hint, '', ['hint_class' => 'pp-subtext-show']);
                     ?>

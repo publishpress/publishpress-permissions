@@ -296,7 +296,7 @@ class Profile
 
                     if ($show_link && current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
                         $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
-                        echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'presspermit-core') . "'>" . esc_html($titles_list) . "</a><br />";
+                        echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . esc_html($titles_list) . "</a><br />";
                     } else {
                         echo esc_html($titles_list);
                     }
@@ -307,7 +307,7 @@ class Profile
 
                     if ($show_link && current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
                         $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
-                        $exc_str .= "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'presspermit-core') . "'>" . esc_html($titles_list) . "</a><br />";
+                        $exc_str .= "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . esc_html($titles_list) . "</a><br />";
                     } else {
                         $exc_str .= esc_html($titles_list);
                     }
