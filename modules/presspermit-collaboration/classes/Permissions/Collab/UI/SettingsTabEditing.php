@@ -308,7 +308,7 @@ class SettingsTabEditing
         if (!empty($ui->form_options[$tab][$section])) :
         ?>
             <tr>
-                <th scope="row"><?php echo esc_html("List Files"); ?></th>
+                <th scope="row"><?php echo esc_html__('List Files', 'press-permit-core'); ?></th>
                 <td>
                     <?php
 
@@ -332,7 +332,7 @@ class SettingsTabEditing
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php echo esc_html("Edit Files"); ?></th>
+                <th scope="row"><?php echo esc_html__('Edit Files', 'press-permit-core'); ?></th>
                 <td>
                     <?php
                     $ret = $ui->optionCheckbox('edit_others_attached_files', $tab, $section, true, '');
