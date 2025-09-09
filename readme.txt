@@ -246,10 +246,17 @@ Please report security bugs found in the source code of the PublishPress Permiss
 
 == Changelog ==
 
-= 4.5.0 – 1 September 2025 =
+= 4.5.0 – 10 September 2025 =
+* New: Added filter hook to allow custom sanitization of settings. #1902
+* New: License key input box widened to support longer keys. #1901
 * Fixed: Conflict with the PublishPress Statuses plugin that caused an "out of memory" error during login. #1873
-* Fixed: Issue where editing defaults were incorrectly applied to existing posts. #1870
+* Fixed: Editing defaults now correctly applies only to new posts, not existing posts. #1870
+* Fixed: Corrected text domain issues for proper localization. #1898
+* Fixed: Corrected string translation issues in `SettingsTabEditing.php`. #1897
+* Updated: Improved Features tab with capability cards for better design and clarity. #1886
+* Updated: Improved checkbox hints on **Settings > Media Library** for clearer guidance. #1885
 * Updated: Improved the "Features" tab design and layout for promotional content. #1869
+* Updated: `.pot` translation file refreshed. #1903
 
 = 4.4.3 – 18 August 2025 =
 * Added: Description text in the Media Library settings for better clarity. #1866
