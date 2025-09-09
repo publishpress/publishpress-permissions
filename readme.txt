@@ -226,6 +226,12 @@ PublishPress Permissions creates and uses the following tables: pp_groups, pp_gr
 
 Yes, we use the phrase "publishpress-ppcore-install" to share install links. You will see that text included in the links from other PublishPress plugins.
 
+
+= Where do I report security bugs found in this plugin? =
+
+Please report security bugs found in the source code of the PublishPress Permissions plugin through the [Patchstack Vulnerability Disclosure  Program](https://patchstack.com/database/vdp/a6e3eb6f-ddf2-47d2-aee1-43acf358e5c2). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
+
 == Screenshots ==
 
 1. Custom viewing permissions: Every post, page, and taxonomy term has a box where you can choose who can read this content.
