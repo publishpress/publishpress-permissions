@@ -170,14 +170,25 @@ class CoreAdmin
             
             // Dynamic icon mapping for different modules
             $module_icons = [
-                'circles' => 'dashicons-groups',
-                'collaboration' => 'dashicons-edit',
-                'compatibility' => 'dashicons-admin-plugins',
-                'teaser' => 'dashicons-visibility',
+                'circles'        => 'dashicons-groups',
+                'collaboration'  => 'dashicons-edit',
+                'compatibility'  => 'dashicons-admin-plugins',
+                'teaser'         => 'dashicons-visibility',
                 'status-control' => 'dashicons-admin-settings',
-                'file-access' => 'dashicons-media-document',
-                'membership' => 'dashicons-calendar-alt',
-                'sync' => 'dashicons-admin-users'
+                'file-access'    => 'dashicons-media-document',
+                'membership'     => 'dashicons-calendar-alt',
+                'sync'           => 'dashicons-admin-users'
+            ];
+
+            $module_invitations = [
+                'circles'        => 'Upgrade to Pro to access time-limited group membership.',
+                'collaboration'  => 'Upgrade to Pro to gain advanced content editing permissions.',
+                'compatibility'  => 'Upgrade to Pro to enjoy enhanced statuses and permissions.',
+                'teaser'         => 'Upgrade to Pro to get started with teasers.',
+                'status-control' => 'Upgrade to Pro to utilize advanced statuses and permissions.',
+                'file-access'    => 'Upgrade to Pro to restrict direct file access.',
+                'membership'     => 'Upgrade to Pro to limit access based on group membership.',
+                'sync'           => 'Upgrade to Pro to create pages on sites each user automatically.'
             ];
             
             foreach ($pro_modules as $plugin_slug) :
@@ -195,7 +206,7 @@ class CoreAdmin
                 ?>
                 <div class="pp-integration-card pp-disabled">
                     <span class="pp-integration-icon dashicons <?php echo esc_attr($icon_class); ?>"></span>
-                    <div class="pp-integration-content">
+                    <div class="pp-integration-content features-only">
                         <h3 class="pp-integration-title" title="<?php echo esc_attr($title); ?>">
                             <?php echo esc_html($title); ?>
                             <span class="pp-badge pp-pro-badge">Pro</span>
@@ -211,12 +222,6 @@ class CoreAdmin
                                 </span>
                             <?php endif; ?>
                         </p>
-
-                        <?php if (isset($ext_info->descript[$slug])) : ?>
-                            <div class="pp-integration-features" title="<?php echo esc_attr($ext_info->descript[$slug]); ?>">
-                                <?php echo esc_html($ext_info->descript[$slug]); ?>
-                            </div>
-                        <?php endif; ?>
                     </div>
 
                     <div class="pp-settings-wrapper">
@@ -234,7 +239,13 @@ class CoreAdmin
                     <div class="pp-upgrade-overlay">
                         <h4><?php esc_html_e('Pro Feature', 'press-permit-core'); ?></h4>
                         <p>
-                            <?php echo esc_html__('Upgrade to Pro for unlock seamless integration.', 'press-permit-core'); ?>
+                            <?php
+                            if (isset($module_invitations[$slug])) {
+                                echo esc_html__($module_invitations[$slug], 'press-permit-core');
+                            } else {
+                                echo esc_html__('Upgrade to Pro to unlock seamless integration.', 'press-permit-core');
+                            }
+                            ?>
                         </p>
                         <div class="pp-upgrade-buttons" style="flex-direction: row;">
                             <a href="<?php echo esc_url($learn_more_urls[$slug]); ?>" target="_blank" class="pp-upgrade-btn-secondary">

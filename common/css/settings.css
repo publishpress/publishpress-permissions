@@ -295,7 +295,7 @@ table.pp-options-table .pp-optionhint {
   border-color: #e6db55;
 }
 #pp-install #edd_key {
-  width: 520px;
+  width: 300px;
 }
 #pp-install #edd_key::-webkit-input-placeholder {
   color: #aaa;
@@ -436,6 +436,11 @@ table.pp-options-table .pp-optionhint {
 }
 #pp-modules span.pp-ext-info {
   color: #777;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 #pp_config_upload_caption {
   text-indent: -10px;
@@ -1136,6 +1141,9 @@ body.permissions_page_presspermit-settings .nav-tab span.pp-integrations-active 
   padding-bottom: 1.1rem;
   min-height: 185px;
 }
+.pp-integration-content.features-only {
+  min-height: 125px;
+}
 .pp-integration-title {
   font-size: 1.1rem;
   font-weight: 600;
@@ -1264,13 +1272,13 @@ body.permissions_page_presspermit-settings .nav-tab span.pp-integrations-active 
   align-items: center;
 }
 input:checked + .pp-slider {
-  background-color: #68589b;
+  background-color: #00D084;
 }
 input:checked + .pp-slider:before {
   transform: translateX(26px);
 }
 input:disabled + .pp-slider {
-  background-color: #e0e0e0;
+  background-color: #cccccc;
   cursor: not-allowed;
 }
 .pp-toggle-label {
