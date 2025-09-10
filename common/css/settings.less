@@ -59,6 +59,8 @@
 @background_color_24: #e8f5e9;
 @background_color_25: #ffebee;
 @background_color_26: #fff3e0;
+@background_color_27: #00D084;
+@background_color_28: #cccccc;
 @border_color_1: #e6db55;
 @border_color_2: #eee;
 @border_color_3: var(--cta-color);
@@ -425,7 +427,7 @@ table.pp-options-table {
 		border-color: @border_color_1;
 	}
 	#edd_key {
-		width: 300px;
+		width: 520px;
 		&::-webkit-input-placeholder {
 			color: @color_12;
 		}
@@ -579,6 +581,11 @@ table.pp-options-table {
 	}
 	span.pp-ext-info {
 		color: @color_10;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 #pp_config_upload_caption {
@@ -1411,6 +1418,14 @@ body.permissions_page_presspermit-settings {
 }
 .pp-integration-content {
 	flex: 1;
+	height: 100%;
+	box-sizing: border-box;
+	padding-bottom: 1.1rem;
+	min-height: 185px;
+
+	&.features-only {
+		min-height: 125px;
+	}
 }
 .pp-integration-title {
 	font-size: 1.1rem;
@@ -1496,6 +1511,12 @@ body.permissions_page_presspermit-settings {
 	font-size: 0.85rem;
 	color: @color_19;
 	margin-top: 0.5rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -1518,15 +1539,28 @@ body.permissions_page_presspermit-settings {
 		margin-bottom: 28px;
 	}
 }
+.pp-settings-wrapper {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fbfbfb;
+	margin: 0 -1.1rem;
+	line-height: 60px;
+	border-top: 1px solid #dcdcdc;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 20px;
+	padding: 1rem;
+}
 .pp-settings-toggle {
 	display: flex;
 	align-items: center;
-	margin-top: 1rem;
 }
 input {
 	&:checked {
 		&+.pp-slider {
-			background-color: @background_color_12;
+			background-color: @background_color_27;
 			&:before {
 				transform: translateX(26px);
 			}
@@ -1534,7 +1568,7 @@ input {
 	}
 	&:disabled {
 		&+.pp-slider {
-			background-color: @background_color_23;
+			background-color: @background_color_28;
 			cursor: not-allowed;
 		}
 	}
