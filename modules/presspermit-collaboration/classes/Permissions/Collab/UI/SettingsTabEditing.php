@@ -182,8 +182,8 @@ class SettingsTabEditing
                     $ui->optionCheckbox('page_parent_editable_only', $tab, $section);
                     $ui->optionCheckbox('page_parent_order', $tab, $section);
 
-                    $hint = esc_html__("When saving a post, if the default term is not selectable, substitute first available.", 'presspermit-pro')
-                        . ' ' . esc_html__('Some term-limited editing configurations require this.', 'presspermit=pro');
+                    $hint = esc_html__("When saving a post, if the default term is not selectable, substitute first available.", 'press-permit-core')
+                        . ' ' . esc_html__('Some term-limited editing configurations require this.', 'press-permit-core');
 
                     $ui->optionCheckbox('auto_assign_available_term', $tab, $section, $hint, '', ['hint_class' => 'pp-subtext-show']);
                     ?>
@@ -308,7 +308,7 @@ class SettingsTabEditing
         if (!empty($ui->form_options[$tab][$section])) :
         ?>
             <tr>
-                <th scope="row"><?php echo esc_html("List Files"); ?></th>
+                <th scope="row"><?php echo esc_html__('List Files', 'press-permit-core'); ?></th>
                 <td>
                     <?php
 
@@ -332,7 +332,7 @@ class SettingsTabEditing
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php echo esc_html("Edit Files"); ?></th>
+                <th scope="row"><?php echo esc_html__('Edit Files', 'press-permit-core'); ?></th>
                 <td>
                     <?php
                     $ret = $ui->optionCheckbox('edit_others_attached_files', $tab, $section, true, '');

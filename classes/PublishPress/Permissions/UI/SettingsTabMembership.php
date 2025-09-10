@@ -157,12 +157,12 @@ class SettingsTabMembership
     private function renderProPromo()
     {
         ?>
-        <div class="pp-file-access-promo">
+        <div class="pp-feature-promo">
             <!-- Feature Cards Grid -->
-            <div class="pp-integrations-grid">
+            <div class="pp-feature-grid">
                 
                 <!-- Circles Card -->
-                <div class="pp-integration-card pp-disabled" data-categories="all">
+                <div class="pp-feature-card pp-feature-card-hover" style="display: flex;">
                     <div class="pp-integration-icon circles">👥</div>
                     <div class="pp-integration-content">
                         <h3 class="pp-integration-title">
@@ -198,7 +198,7 @@ class SettingsTabMembership
                 </div>
 
                 <!-- Membership Card -->
-                <div class="pp-integration-card pp-disabled" data-categories="all">
+                <div class="pp-feature-card pp-feature-card-hover" style="display: flex;">
                     <div class="pp-integration-icon membership">&#9200;</div>
                     <div class="pp-integration-content">
                         <h3 class="pp-integration-title">

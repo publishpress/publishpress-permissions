@@ -255,7 +255,11 @@ class Permissions
         $inherited_from_clause = ($inherited_from !== '') ? $wpdb->prepare("AND i.inherited_from = %d", $inherited_from) : '';
         $status_clause = (false !== $for_item_status) ? $wpdb->prepare("AND e.for_item_status = %s", $for_item_status) : '';
 
-        if (!$status_clause) {
+        static $busy;
+
+        if (!$status_clause && !defined('PRESSPERMIT_NO_STATUS_EXCEPTIONS') && empty($busy)) {
+            $busy = true;
+            
             $stati = ['', 'post_status:private', 'post_status:draft'];
             if ($pp->moduleActive('collaboration')) {
                 $stati[] = 'post_status:{unpublished}';
@@ -269,6 +273,8 @@ class Permissions
 
             // exceptions for other statuses will not be applied correctly without status control module
             $status_clause = "AND e.for_item_status IN ('" . implode("','", $stati) . "')";
+
+            $busy = false;
         }
 
         if ('eitem_ids' == $cols) {

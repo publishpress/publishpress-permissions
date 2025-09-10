@@ -20,11 +20,14 @@ class PostEdit
 
         add_filter('presspermit_get_pages_clauses', [$this, 'fltGetPages_clauses'], 10, 3);
 
+        global $pagenow;
         $post_type = PWP::findPostType();
         if ($post_type && presspermit()->getTypeOption('default_privacy', $post_type)) {
             if (PWP::isBlockEditorActive($post_type)) {
                 // separate JS for Gutenberg
-                add_action('admin_print_scripts', [$this, 'default_privacy_gutenberg']);
+                if (in_array($pagenow, ['post-new.php'])) {
+                    add_action('admin_print_scripts', [$this, 'default_privacy_gutenberg']);
+                }
             } else {
                 add_action('admin_footer', [$this, 'default_privacy_js']);
             }

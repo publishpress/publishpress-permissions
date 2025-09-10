@@ -63,126 +63,116 @@ class SettingsTabModules
         $tab = 'modules';
 
         $section = 'modules'; // --- EXTENSIONS SECTION ---
-        if (!empty($ui->form_options[$tab][$section])) : ?>
+        if (!empty($ui->form_options[$tab][$section])): ?>
             <tr>
                 <td>
-
-                    <?php
-                    $inactive = [];
-
-                    $ext_info = $pp->admin()->getModuleInfo();
-
-                    $pp_modules = presspermit()->getActiveModules();
-                    $active_module_plugin_slugs = [];
-
-                    if ($pp_modules) : ?>
+                    <div class="pp-modules-settings">
                         <?php
+                        $ext_info = $pp->admin()->getModuleInfo();
+                        $pp_modules = presspermit()->getActiveModules();
+                        $inactive = $pp->getDeactivatedModules();
+                        $active_module_plugin_slugs = [];
 
-                        $change_log_caption = esc_html__('<strong>Change Log</strong> (since your current version)', 'press-permit-core');
+                        // Combine active and inactive modules into single array
+                        $all_modules = [];
 
-                        ?>
-                        <h4 style="margin:0 0 5px 0"><?php esc_html_e('Active Modules:', 'press-permit-core'); ?></h4>
-                        <table class="pp-extensions pp-enabled">
-                            <?php foreach ($pp_modules as $slug => $plugin_info) :
-                            ?>
-                                <tr>
-                                    <th>
-                                        <?php $id = "module_active_{$slug}"; ?>
-
-                                        <label for="<?php echo esc_attr($id); ?>">
-                                            <input type="checkbox" id="<?php echo esc_attr($id); ?>"
-                                                name="presspermit_active_modules[<?php echo esc_attr($plugin_info->plugin_slug); ?>]"
-                                                value="1" checked="checked" />
-
-                                            <?php
-                                            $title = (!empty($ext_info->title[$slug])) ? $ext_info->title[$slug] : $plugin_info->label;
-                                            echo esc_html($title);
-                                            ?>
-                                        </label>
-
-                                        <?php
-                                        echo ' <span class="pp-gray">' . '</span>';
-                                        ?>
-                                    </th>
-
-                                    <?php if (!empty($ext_info)) : ?>
-                                        <td>
-                                            <?php if (isset($ext_info->blurb[$slug])) : ?>
-                                                <span class="pp-ext-info"
-                                                    title="<?php if (isset($ext_info->descript[$slug])) {
-                                                                echo esc_attr($ext_info->descript[$slug]);
-                                                            }
-                                                            ?>">
-                                                    <?php echo esc_html($ext_info->blurb[$slug]); ?>
-                                                </span>
-                                            <?php endif; ?>
-                                        </td>
-                                    <?php endif; ?>
-                                </tr>
-                            <?php
+                        // Add active modules
+                        if ($pp_modules) {
+                            foreach ($pp_modules as $slug => $plugin_info) {
                                 $active_module_plugin_slugs[] = $plugin_info->plugin_slug;
-                            endforeach; ?>
-                        </table>
-                    <?php
-                    endif;
+                                $all_modules[] = [
+                                    'slug' => $slug,
+                                    'plugin_slug' => $plugin_info->plugin_slug,
+                                    'plugin_info' => $plugin_info,
+                                    'is_active' => true
+                                ];
+                            }
+                        }
 
-                    $modules_csv = implode(',', $active_module_plugin_slugs);
+                        // Add inactive modules
+                        if ($inactive) {
+                            foreach ($inactive as $plugin_slug => $module_info) {
+                                $slug = str_replace('presspermit-', '', $plugin_slug);
+                                $all_modules[] = [
+                                    'slug' => $slug,
+                                    'plugin_slug' => $plugin_slug,
+                                    'module_info' => $module_info,
+                                    'is_active' => false
+                                ];
+                            }
+                        }
 
-                    echo "<input type='hidden' name='presspermit_reviewed_modules' value='" . esc_attr($modules_csv) . "' />";
+                        if (!empty($all_modules)): ?>
+                            <div class="pp-integrations-container">
+                                <div class="pp-integrations-grid">
+                                    <?php foreach ($all_modules as $module):
+                                        $slug = $module['slug'];
+                                        $is_active = $module['is_active'];
+                                        $plugin_slug = $module['plugin_slug'];
 
-                    $inactive = $pp->getDeactivatedModules();
+                                        // Get title and info
+                                        if ($is_active) {
+                                            $title = (!empty($ext_info->title[$slug])) ? $ext_info->title[$slug] : $module['plugin_info']->label;
+                                        } else {
+                                            $title = (!empty($ext_info->title[$slug])) ? $ext_info->title[$slug] : $this->prettySlug($slug);
+                                        }
 
-                    ksort($inactive);
-                    if ($inactive) : ?>
+                                        $card_classes = 'pp-integration-card pp-disabled';
+                                        if ($is_active) {
+                                            $card_classes .= ' pp-available';
+                                        }
+                                        ?>
+                                        <div class="<?php echo esc_attr($card_classes); ?>">
+                                            <span class="pp-integration-icon dashicons dashicons-edit"></span>
+                                            <div class="pp-integration-content features-only">
+                                                <h3 class="pp-integration-title" title="<?php echo esc_attr($title); ?>">
+                                                    <?php echo esc_html($title); ?>
+                                                    <?php if ($is_active): ?>
+                                                        <span class="pp-badge"
+                                                            style="background: #5e92c4"><?php echo esc_html__('Active', 'press-permit-core'); ?></span>
+                                                    <?php else: ?>
+                                                        <span class="pp-badge"
+                                                            style="background: #b0b0b0"><?php echo esc_html__('Inactive', 'press-permit-core'); ?></span>
+                                                    <?php endif; ?>
+                                                </h3>
 
-                        <h4 style="margin:20px 0 5px 0">
-                            <?php
-                            esc_html_e('Inactive Modules:', 'press-permit-core')
-                            ?>
-                        </h4>
-
-                        <table class="pp-extensions pp-disabled">
-                            <?php foreach ($inactive as $plugin_slug => $module_info) :
-                                $slug = str_replace('presspermit-', '', $plugin_slug); ?>
-                                <tr>
-                                    <th>
-                                        <?php $id = "module_deactivated_{$slug}"; ?>
-
-                                        <label for="<?php echo esc_attr($id); ?>">
-                                            <input type="checkbox" id="<?php echo esc_attr($id); ?>"
-                                                name="presspermit_deactivated_modules[<?php echo esc_attr($plugin_slug); ?>]"
-                                                value="1" />
-
-                                            <?php
-                                            if (!empty($ext_info->title[$slug])) echo esc_html($ext_info->title[$slug]);
-                                            else echo esc_html($this->prettySlug($slug)); ?>
-                                    </th>
-                                    </label>
-
-                                    <?php if (!empty($ext_info)) : ?>
-                                        <td>
-                                            <?php if (isset($ext_info->blurb[$slug])) : ?>
-                                                <span class="pp-ext-info"
-                                                    title="<?php if (isset($ext_info->descript[$slug])) {
-                                                                echo esc_attr($ext_info->descript[$slug]);
-                                                            }
-                                                            ?>">
-                                                    <?php echo esc_html($ext_info->blurb[$slug]); ?>
-                                                </span>
-                                            <?php endif; ?>
-                                        </td>
-                                    <?php endif; ?>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    <?php
-                    endif;
-
-                    do_action('presspermit_modules_ui', $active_module_plugin_slugs, $inactive);
-                    ?>
+                                                <p class="pp-integration-description">
+                                                    <?php if (!empty($ext_info) && isset($ext_info->blurb[$slug])): ?>
+                                                        <span class="pp-ext-info" title="<?php if (isset($ext_info->descript[$slug])) {
+                                                            echo esc_attr($ext_info->descript[$slug]);
+                                                        }
+                                                        ?>">
+                                                            <?php echo esc_html($ext_info->blurb[$slug]); ?>
+                                                        </span>
+                                                    <?php endif; ?>
+                                                </p>
+                                            </div>
+                                            <div class="pp-settings-wrapper">
+                                                <div class="pp-settings-toggle">
+                                                    <?php $id = "module_{$slug}"; ?>
+                                                    <label class="pp-toggle-switch" for="<?php echo esc_attr($id); ?>">
+                                                        <input type="checkbox" id="<?php echo esc_attr($id); ?>"
+                                                            name="<?php echo $is_active ? 'presspermit_active_modules' : 'presspermit_deactivated_modules'; ?>[<?php echo esc_attr($plugin_slug); ?>]"
+                                                            value="1" <?php echo $is_active ? 'checked="checked"' : ''; ?> />
+                                                        <span class="pp-slider"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <?php do_action('presspermit_modules_ui', $active_module_plugin_slugs, $inactive); ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <?php
+                        $modules_csv = implode(',', $active_module_plugin_slugs);
+                        echo "<input type='hidden' name='presspermit_reviewed_modules' value='" . esc_attr($modules_csv) . "' />";
+                        ?>
+                    </div>
+                    </div>
                 </td>
             </tr>
-<?php
+            <?php
         endif; // any options accessable in this section
     }
 

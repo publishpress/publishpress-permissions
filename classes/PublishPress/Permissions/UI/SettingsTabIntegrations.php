@@ -174,7 +174,7 @@ class SettingsTabIntegrations
                     });
 
                     // Disabled checkbox upgrade message
-                    $('.pp-integration-card.pp-disabled input[type="checkbox"]').on(
+                    $('#pp-integrations .pp-integration-card.pp-disabled input[type="checkbox"]').on(
                         "click",
                         function (e) {
                             e.preventDefault();

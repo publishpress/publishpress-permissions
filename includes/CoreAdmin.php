@@ -156,68 +156,109 @@ class CoreAdmin
 
         sort($pro_modules);
         if ($pro_modules) :
-            $is_pro = presspermit()->isPro();
-            $learn_more_url = 'https://publishpress.com/links/permissions-integrations/';
             $ext_info = presspermit()->admin()->getModuleInfo();
-            ?>
-            <h4 style="margin:20px 0 5px 0"><?php esc_html_e('Pro Modules:', 'press-permit-core'); ?></h4>
-            <div class="pp-features-card">
-                <table class="pp-extensions">
-                    <?php foreach ($pro_modules as $plugin_slug) :
-                        $slug = str_replace('presspermit-', '', $plugin_slug);
-                    ?>
-                        <tr>
-                            <th>
+            $learn_more_urls = [
+                'circles' => 'https://publishpress.com/knowledge-base/circles-visibility/',
+                'collaboration' => 'https://publishpress.com/knowledge-base/content-editing-permissions/',
+                'compatibility' => 'https://publishpress.com/knowledge-base/statuses-and-permissions-pro/',
+                'teaser' => 'https://publishpress.com/knowledge-base/getting-started-with-teasers/',
+                'status-control' => 'https://publishpress.com/knowledge-base/statuses-and-permissions-pro/',
+                'file-access' => 'https://publishpress.com/knowledge-base/file-filtering-nginx/',
+                'membership' => 'https://publishpress.com/knowledge-base/groups-date-limits/',
+                'sync' => 'https://publishpress.com/knowledge-base/how-to-create-a-personal-page-for-each-wordpress-user/'
+            ];
+            
+            // Dynamic icon mapping for different modules
+            $module_icons = [
+                'circles'        => 'dashicons-groups',
+                'collaboration'  => 'dashicons-edit',
+                'compatibility'  => 'dashicons-admin-plugins',
+                'teaser'         => 'dashicons-visibility',
+                'status-control' => 'dashicons-admin-settings',
+                'file-access'    => 'dashicons-media-document',
+                'membership'     => 'dashicons-calendar-alt',
+                'sync'           => 'dashicons-admin-users'
+            ];
 
-                                <?php $id = "module_deactivated_{$slug}"; ?>
+            $module_invitations = [
+                'circles'        => 'Upgrade to Pro to access time-limited group membership.',
+                'collaboration'  => 'Upgrade to Pro to gain advanced content editing permissions.',
+                'compatibility'  => 'Upgrade to Pro to enjoy enhanced statuses and permissions.',
+                'teaser'         => 'Upgrade to Pro to get started with teasers.',
+                'status-control' => 'Upgrade to Pro to utilize advanced statuses and permissions.',
+                'file-access'    => 'Upgrade to Pro to restrict direct file access.',
+                'membership'     => 'Upgrade to Pro to limit access based on group membership.',
+                'sync'           => 'Upgrade to Pro to create pages on sites each user automatically.'
+            ];
+            
+            foreach ($pro_modules as $plugin_slug) :
+                $slug = str_replace('presspermit-', '', $plugin_slug);
+                
+                // Get title
+                if (!empty($ext_info->title[$slug])) {
+                    $title = $ext_info->title[$slug];
+                } else {
+                    $title = $this->prettySlug($slug);
+                }
+                
+                // Get dynamic icon or fallback to default
+                $icon_class = isset($module_icons[$slug]) ? $module_icons[$slug] : 'dashicons-admin-generic';
+                ?>
+                <div class="pp-integration-card pp-disabled">
+                    <span class="pp-integration-icon dashicons <?php echo esc_attr($icon_class); ?>"></span>
+                    <div class="pp-integration-content features-only">
+                        <h3 class="pp-integration-title" title="<?php echo esc_attr($title); ?>">
+                            <?php echo esc_html($title); ?>
+                            <span class="pp-badge pp-pro-badge">Pro</span>
+                        </h3>
 
-                                <label for="<?php echo esc_attr($id); ?>">
-                                    <input type="checkbox" id="<?php echo esc_attr($id); ?>" disabled
-                                        name="presspermit_deactivated_modules[<?php echo esc_attr($plugin_slug); ?>]"
-                                        value="1" />
-
-                                    <?php
-                                    if (!empty($ext_info->title[$slug])) echo esc_html($ext_info->title[$slug]);
-                                    else echo esc_html($this->prettySlug($slug));
-                                    ?>
-                                </label>
-                            </th>
-
-                            <?php if (!empty($ext_info)) : ?>
-                                <td>
-                                    <?php if (isset($ext_info->blurb[$slug])) : ?>
-                                        <span class="pp-ext-info"
-                                            title="<?php if (isset($ext_info->descript[$slug])) {
-                                                        echo esc_attr($ext_info->descript[$slug]);
-                                                    }
-                                                    ?>">
-                                            <?php echo esc_html($ext_info->blurb[$slug]); ?>
-                                        </span>
-                                    <?php endif; ?>
-                                </td>
+                        <p class="pp-integration-description">
+                            <?php if (!empty($ext_info) && isset($ext_info->blurb[$slug])): ?>
+                                <span class="pp-ext-info" title="<?php if (isset($ext_info->descript[$slug])) {
+                                    echo esc_attr($ext_info->descript[$slug]);
+                                }
+                                ?>">
+                                    <?php echo esc_html($ext_info->blurb[$slug]); ?>
+                                </span>
                             <?php endif; ?>
-                        </tr>
-                    <?php endforeach; ?>
-                </table>
-                <?php if (!$is_pro): ?>
-                <div class="pp-upgrade-overlay">
-                    <h4><?php esc_html_e('Pro Feature', 'press-permit-core'); ?></h4>
-                    <p><?php echo esc_html(sprintf(__('Unlock %s integration to enhance your permissions system.', 'press-permit-core'), "All Pro Modules")); ?>
-                    </p>
-                    <div class="pp-upgrade-buttons">
-                        <?php if (!empty($learn_more_url)): ?>
-                            <a href="<?php echo esc_url($learn_more_url); ?>" target="_blank" class="pp-upgrade-btn-secondary">
+                        </p>
+                    </div>
+
+                    <div class="pp-settings-wrapper">
+                        <div class="pp-settings-toggle">
+                            <?php $id = "module_pro_{$slug}"; ?>
+                            <label class="pp-toggle-switch" for="<?php echo esc_attr($id); ?>">
+                                <input type="checkbox" id="<?php echo esc_attr($id); ?>" disabled
+                                    name="presspermit_deactivated_modules[<?php echo esc_attr($plugin_slug); ?>]"
+                                    value="1" />
+                                <span class="pp-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="pp-upgrade-overlay">
+                        <h4><?php esc_html_e('Pro Feature', 'press-permit-core'); ?></h4>
+                        <p>
+                            <?php
+                            if (isset($module_invitations[$slug])) {
+                                echo esc_html__($module_invitations[$slug], 'press-permit-core');
+                            } else {
+                                echo esc_html__('Upgrade to Pro to unlock seamless integration.', 'press-permit-core');
+                            }
+                            ?>
+                        </p>
+                        <div class="pp-upgrade-buttons" style="flex-direction: row;">
+                            <a href="<?php echo esc_url($learn_more_urls[$slug]); ?>" target="_blank" class="pp-upgrade-btn-secondary">
                                 <?php esc_html_e('Learn More', 'press-permit-core'); ?>
                             </a>
-                        <?php endif; ?>
-                        <a href="<?php echo esc_url(\PublishPress\Permissions\UI\SettingsTabIntegrations::UPGRADE_PRO_URL); ?>" target="_blank" class="pp-upgrade-btn-primary">
-                            <?php esc_html_e('Upgrade to Pro', 'press-permit-core'); ?>
-                        </a>
+                            <a href="<?php echo esc_url(\PublishPress\Permissions\UI\SettingsTabIntegrations::UPGRADE_PRO_URL); ?>" target="_blank" class="pp-upgrade-btn-primary">
+                                <?php esc_html_e('Upgrade to Pro', 'press-permit-core'); ?>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <?php endif; ?>
-            </div>
-<?php
+                <?php
+            endforeach; 
         endif;
     }
 

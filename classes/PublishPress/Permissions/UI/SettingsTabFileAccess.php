@@ -157,7 +157,7 @@ class SettingsTabFileAccess
     private function renderProPromo()
     {
         ?>
-        <div class="pp-file-access-promo">
+        <div class="pp-feature-promo">
             <!-- Feature Cards Grid -->
             <div class="pp-feature-grid">
                 

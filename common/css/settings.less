@@ -59,6 +59,8 @@
 @background_color_24: #e8f5e9;
 @background_color_25: #ffebee;
 @background_color_26: #fff3e0;
+@background_color_27: #00D084;
+@background_color_28: #cccccc;
 @border_color_1: #e6db55;
 @border_color_2: #eee;
 @border_color_3: var(--cta-color);
@@ -425,7 +427,7 @@ table.pp-options-table {
 		border-color: @border_color_1;
 	}
 	#edd_key {
-		width: 300px;
+		width: 520px;
 		&::-webkit-input-placeholder {
 			color: @color_12;
 		}
@@ -579,6 +581,11 @@ table.pp-options-table {
 	}
 	span.pp-ext-info {
 		color: @color_10;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 }
 #pp_config_upload_caption {
@@ -1411,6 +1418,14 @@ body.permissions_page_presspermit-settings {
 }
 .pp-integration-content {
 	flex: 1;
+	height: 100%;
+	box-sizing: border-box;
+	padding-bottom: 1.1rem;
+	min-height: 185px;
+
+	&.features-only {
+		min-height: 125px;
+	}
 }
 .pp-integration-title {
 	font-size: 1.1rem;
@@ -1496,6 +1511,12 @@ body.permissions_page_presspermit-settings {
 	font-size: 0.85rem;
 	color: @color_19;
 	margin-top: 0.5rem;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
 	ul {
 		list-style: none;
 		padding: 0;
@@ -1518,17 +1539,28 @@ body.permissions_page_presspermit-settings {
 		margin-bottom: 28px;
 	}
 }
+.pp-settings-wrapper {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fbfbfb;
+	margin: 0 -1.1rem;
+	line-height: 60px;
+	border-top: 1px solid #dcdcdc;
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	grid-column-gap: 20px;
+	padding: 1rem;
+}
 .pp-settings-toggle {
 	display: flex;
 	align-items: center;
-	margin-top: 1rem;
-	position: absolute;
-	top: calc(100% - 50px);
 }
 input {
 	&:checked {
 		&+.pp-slider {
-			background-color: @background_color_12;
+			background-color: @background_color_27;
 			&:before {
 				transform: translateX(26px);
 			}
@@ -1536,7 +1568,7 @@ input {
 	}
 	&:disabled {
 		&+.pp-slider {
-			background-color: @background_color_23;
+			background-color: @background_color_28;
 			cursor: not-allowed;
 		}
 	}
@@ -1619,8 +1651,7 @@ input {
 .pp-upgrade-btn-primary {
 	background: var(--cta-color);
 	color: #414141 !important;
-	padding: 10px 16px;
-	margin-top: 4px;
+	padding: 8px 16px;
 	border-radius: 4px;
 	text-decoration: none;
 	font-weight: normal;
@@ -1629,7 +1660,7 @@ input {
 	display: inline-block;
 	&:hover {
 		background: #fcca46;
-		transform: translateY(-1px);
+		transform: translateY(-2px);
 		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 		text-decoration: none;
 	}
@@ -1706,7 +1737,7 @@ input {
 		}
 	}
 }
-.pp-file-access-promo {
+.pp-feature-promo {
 	.pp-feature-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1951,7 +1982,7 @@ input {
 		}
 	}
 }
-.pp-file-access-settings {
+.pp-file-access-settings, .pp-modules-settings {
 	.pp-settings-header {
 		background: linear-gradient(135deg, #f8fafc, #f1f5f9);
 		border: 2px solid var(--border-color);
@@ -2072,36 +2103,42 @@ input {
 			line-height: 1.5;
 		}
 	}
-	.pp-toggle-switch {
-		input[type="checkbox"] {
-			appearance: none;
-			width: 44px;
-			height: 24px;
-			background: #e5e7eb;
-			border-radius: 12px;
-			position: relative;
-			cursor: pointer;
-			transition: all 0.3s ease;
-			&:checked {
-				background: var(--primary-color);
-				&:before {
-					transform: translateX(20px);
-				}
-			}
-			&:before {
-				content: "";
-				position: absolute;
-				width: 20px;
-				height: 20px;
-				border-radius: 50%;
-				background: white;
-				top: 2px;
-				left: 2px;
-				transition: all 0.3s ease;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-			}
-		}
-	}
+    .pp-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 24px;
+
+        &:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+    }
+    .pp-toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+        margin-right: 0.75rem;
+
+        input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+    }
 	.pp-key-management-card {
 		background: white;
 		border: 2px solid var(--border-color);
