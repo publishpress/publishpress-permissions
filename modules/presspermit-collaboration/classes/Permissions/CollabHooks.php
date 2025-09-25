@@ -58,6 +58,10 @@ class CollabHooks
         add_action('pre_get_posts', [$this, 'actPreventTrashSuffixing']);
 
 		add_action('wp_loaded', [$this, 'supplementUserAllcaps'], 18);
+		
+		// Prevent status changes when force_default_privacy is enabled
+		add_filter('wp_insert_post_data', [$this, 'fltPreventStatusChange'], 10, 2);
+		add_action('save_post', [$this, 'actEnforceDefaultStatus'], 5, 2);
         add_filter('presspermit_meta_caps', [$this, 'fltMetaCaps']);
         add_filter('presspermit_exclude_arbitrary_caps', [$this, 'fltExcludeArbitraryCaps']);
 
@@ -668,5 +672,66 @@ class CollabHooks
         }
 
         return $terms;
+    }
+
+    /**
+     * Prevent post status changes when force_default_privacy is enabled
+     */
+    function fltPreventStatusChange($data, $postarr)
+    {
+        // Skip if this is an autosave or revision
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return $data;
+        }
+        
+        if (wp_is_post_revision($postarr['ID']) || wp_is_post_autosave($postarr['ID'])) {
+            return $data;
+        }
+
+        // Check if force_default_privacy is enabled for this post type
+        if (!empty($data['post_type'])) {
+            $force_enabled = presspermit()->getTypeOption('force_default_privacy', $data['post_type']);
+            $default_privacy = presspermit()->getTypeOption('default_privacy', $data['post_type']);
+            
+            if ($force_enabled && $default_privacy) {
+                // Force the status to the default privacy setting
+                $data['post_status'] = $default_privacy;
+            }
+        }
+
+        return $data;
+    }
+
+    /**
+     * Enforce default status on save_post if force_default_privacy is enabled
+     */
+    function actEnforceDefaultStatus($post_id, $post)
+    {
+        // Skip if this is an autosave, revision, or preview
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return;
+        }
+        
+        if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+            return;
+        }
+
+        // Check if force_default_privacy is enabled for this post type
+        $force_enabled = presspermit()->getTypeOption('force_default_privacy', $post->post_type);
+        $default_privacy = presspermit()->getTypeOption('default_privacy', $post->post_type);
+        
+        if ($force_enabled && $default_privacy && $post->post_status !== $default_privacy) {
+            // Remove this hook temporarily to avoid infinite recursion
+            remove_action('save_post', [$this, 'actEnforceDefaultStatus'], 5);
+            
+            // Update the post with the correct status
+            wp_update_post([
+                'ID' => $post_id,
+                'post_status' => $default_privacy
+            ]);
+            
+            // Re-add the hook
+            add_action('save_post', [$this, 'actEnforceDefaultStatus'], 5, 2);
+        }
     }
 }

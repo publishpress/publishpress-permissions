@@ -38,9 +38,10 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // Set post visibility in Gutenberg based on default_privacy
+    // Set post visibility in Gutenberg based on default_privacy and force_default_privacy
     if (typeof window.ppEditorConfig !== 'undefined' && window.ppEditorConfig.defaultPrivacy) {
         var defaultPrivacy = window.ppEditorConfig.defaultPrivacy;
+        var forceDefaultPrivacy = window.ppEditorConfig.forceDefaultPrivacy;
         var visibility;
         switch (defaultPrivacy) {
             case 'private':
@@ -52,10 +53,11 @@ jQuery(document).ready(function ($) {
             // Add more cases if needed
         }
 
-        if (visibility) {
+        // For Block Editor - set initial status
+        if (visibility && typeof wp !== 'undefined') {
             // Wait for Gutenberg editor to be fully ready
             var applyDefaultPrivacy = function() {
-                if (typeof wp === 'undefined' || !wp.data || !wp.data.select || !wp.data.dispatch) {
+                if (!wp.data || !wp.data.select || !wp.data.dispatch) {
                     setTimeout(applyDefaultPrivacy, 200);
                     return;
                 }
@@ -72,8 +74,147 @@ jQuery(document).ready(function ($) {
                     if (wp.data.dispatch('core/editor').savePost) {
                         wp.data.dispatch('core/editor').savePost();
                     }
+                    if (forceDefaultPrivacy) {
+                        // Subscribe to post changes and revert any status changes
+                        var previousStatus = visibility;
+                        wp.data.subscribe(function() {
+                            var currentPost = wp.data.select('core/editor').getCurrentPost();
+                            if (currentPost && currentPost.status && currentPost.status !== previousStatus) {
+                                // Revert the status change
+                                wp.data.dispatch('core/editor').editPost({ status: previousStatus });
+                            }
+                        });
+                        
+                        // Lock visibility controls while keeping them visible in Gutenberg
+                        var lockPostPanel = function() {
+                            // Disable visibility controls and add informative styling
+                            var style = document.createElement('style');
+                            style.textContent = `
+                                /* Disable visibility controls but keep them visible */
+                                .editor-post-status .components-panel__row:has([aria-label*="Visibility"]) *,
+                                .editor-post-status .components-panel__row:has([aria-label*="visibility"]) *,
+                                .editor-post-visibility *,
+                                .components-button[aria-label*="Change post visibility"],
+                                .components-button[aria-label*="visibility"],
+                                .editor-post-visibility__toggle,
+                                .editor-post-visibility button,
+                                .edit-post-post-status button,
+                                .edit-post-post-status .components-button,
+                                .editor-post-status button,
+                                .editor-post-status .components-button,
+                                .components-panel__row button[aria-expanded],
+                                .edit-post-post-status .components-panel__row:nth-child(2) *,
+                                .edit-post-post-status .components-panel__row:nth-child(2) button,
+                                .edit-post-post-status .components-panel__row:nth-child(2) .components-button {
+                                    pointer-events: none !important;
+                                    opacity: 0.5 !important;
+                                    cursor: not-allowed !important;
+                                }
+                                
+                                /* Style the locked panel */
+                                .editor-post-status .components-panel__row:has([aria-label*="Visibility"]),
+                                .editor-post-status .components-panel__row:has([aria-label*="visibility"]),
+                                .edit-post-post-status .components-panel__row:nth-child(2) {
+                                    background-color: #fff3cd !important;
+                                    border: 1px solid #ffeaa7 !important;
+                                    border-radius: 4px !important;
+                                    position: relative !important;
+                                }
+                                
+                                /* Add lock notice */
+                                .pp-visibility-lock-notice {
+                                    background: #fff3cd;
+                                    border: 1px solid #ffeaa7;
+                                    border-radius: 4px;
+                                    padding: 8px 12px;
+                                    margin: 8px 0;
+                                    font-size: 12px;
+                                    color: #856404;
+                                    position: relative;
+                                }
+                                
+                                .pp-visibility-lock-notice:before {
+                                    content: "🔒 ";
+                                    margin-right: 4px;
+                                }
+                            `;
+                            document.head.appendChild(style);
+                            
+                            // Add informative notice to the post status panel
+                            var addLockNotice = function() {
+                                if ($('.pp-visibility-lock-notice').length === 0) {
+                                    // Get translated strings from window object or use defaults
+                                    var translations = window.ppEditorConfig && window.ppEditorConfig.translations || {};
+                                    var visibilityLockedText = translations.visibilityLocked || 'Visibility Locked:';
+                                    var visibilitySetToText = translations.visibilitySetTo || 'Post visibility is set to';
+                                    var cannotChangeText = translations.cannotChange || 'and cannot be changed due to admin settings.';
+                                    var contactAdminText = translations.contactAdmin || 'Contact your administrator to modify this setting.';
+                                    
+                                    var notice = '<div class="pp-visibility-lock-notice">' +
+                                        '<strong>' + visibilityLockedText + '</strong> ' + visibilitySetToText + ' "' + defaultPrivacy + '" ' +
+                                        cannotChangeText + ' ' +
+                                        '<br><small>' + contactAdminText + '</small>' +
+                                        '</div>';
+                                    
+                                    // Try to add the notice to different possible locations
+                                    if ($('.edit-post-post-status').length) {
+                                        $('.edit-post-post-status').prepend(notice);
+                                    } else if ($('.editor-post-status').length) {
+                                        $('.editor-post-status').prepend(notice);
+                                    } else if ($('.components-panel').length) {
+                                        $('.components-panel').first().prepend(notice);
+                                    }
+                                }
+                            };
+                            
+                            // Add notice with intervals to catch dynamic content
+                            setTimeout(addLockNotice, 500);
+                            setTimeout(addLockNotice, 1500);
+                            setTimeout(addLockNotice, 3000);
+                            
+                            // Also add notice when panels are opened
+                            $(document).on('click', '.components-panel__body-toggle', function() {
+                                setTimeout(addLockNotice, 100);
+                            });
+                            
+                            // Prevent clicks on visibility buttons as extra protection
+                            var preventVisibilityClicks = function() {
+                                // Target all possible visibility-related buttons and prevent their clicks
+                                var visibilitySelectors = [
+                                    '.editor-post-visibility button',
+                                    '.editor-post-visibility .components-button',
+                                    '.editor-post-visibility__toggle',
+                                    '.components-button[aria-label*="visibility"]',
+                                    '.components-button[aria-label*="Visibility"]',
+                                    '.components-button[aria-label*="Change post visibility"]',
+                                    '.edit-post-post-status button',
+                                    '.edit-post-post-status .components-button',
+                                    '.editor-post-status button',
+                                    '.editor-post-status .components-button',
+                                    '.components-panel__row button[aria-expanded]'
+                                ];
+                                
+                                visibilitySelectors.forEach(function(selector) {
+                                    $(document).off('click', selector).on('click', selector, function(e) {
+                                        e.preventDefault();
+                                        e.stopPropagation();
+                                        e.stopImmediatePropagation();
+                                        return false;
+                                    });
+                                });
+                            };
+                            
+                            // Apply click prevention immediately and on intervals
+                            preventVisibilityClicks();
+                            setTimeout(preventVisibilityClicks, 1000);
+                            setTimeout(preventVisibilityClicks, 3000);
+                        };
+                        
+                        // Apply panel locking after a short delay to ensure UI is ready
+                        setTimeout(lockPostPanel, 1000);
+                    }
                 } catch (e) {
-                    console.log('Error applying default privacy:', e);
+                    console.error('Error applying default privacy:', e);
                     // Retry after a delay if there's still an error
                     setTimeout(applyDefaultPrivacy, 500);
                 }
