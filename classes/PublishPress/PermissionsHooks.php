@@ -79,6 +79,48 @@ class PermissionsHooks
             999, 2
         );
 
+        add_filter('presspermit_map_status_caps', [$this, 'fltMapStatusCaps'], 10, 4);
+    }
+
+    public function fltMapStatusCaps($caps, $meta_cap, $user_id, $post_id) {
+        global $current_user;
+        
+        if (!empty(presspermit()->flags['cap_filter_in_process'])) {
+            return $caps;
+        }
+
+        $post_type = get_post_field('post_type', $post_id);
+
+        if ($type_obj = get_post_type_object($post_type)) {
+            foreach ($caps as $i => $_cap_name) {
+                if (!empty($current_user->allcaps[$_cap_name])) {
+                    continue;
+                }
+
+                // For post listings, support "list" capabilities as an alternative to custom post status edit capabilities
+                if (0 === strpos($_cap_name, 'edit_') 
+                && (empty($type_obj->cap->edit_posts) || ($type_obj->cap->edit_posts != $_cap_name))
+                && (empty($type_obj->cap->edit_others_posts) || ($type_obj->cap->edit_others_posts != $_cap_name))
+                && (empty($type_obj->cap->edit_published_posts) || ($type_obj->cap->edit_published_posts != $_cap_name))
+                && (empty($type_obj->cap->edit_private_posts) || ($type_obj->cap->edit_private_posts != $_cap_name))
+                ) {
+                    if ($user_id == $current_user->ID) {
+                        $_cap_name = str_replace('edit_', 'list_', $type_obj->cap->edit_posts);
+                    } else {
+                        $_cap_name = str_replace('edit_', 'list_', $type_obj->cap->edit_others_posts);
+                    }
+
+                    $caps[$i] = $_cap_name;
+                    $any_modified = true;
+                }
+            }
+
+            if (!empty($any_modified)) {
+                $caps = array_unique($caps);
+            }
+        }
+
+        return $caps;
     }
 
 	public function loadUpdater() {
