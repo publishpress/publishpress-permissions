@@ -247,9 +247,9 @@ Please report security bugs found in the source code of the PublishPress Permiss
 == Changelog ==
 
 = 4.5.1 – 29 September 2025 =
-* Added: Added a **User Page Promo tab** to highlight key features. #1926  
-* Added: Added support for **Lock/Unlock on default visibility** settings. #1925  
-* Fixed: Corrected an issue where **PublishPress Statuses list capabilities** were ineffective if a post required status-specific editing capabilities. #1924  
+* Added: Added a **User Page Promo tab** to highlight key features. #1926
+* Added: Added support for **Lock/Unlock on default visibility** settings. #1925
+* Fixed: Corrected an issue where **PublishPress Statuses list capabilities** were ineffective if a post required status-specific editing capabilities. #1924
 
 = 4.5.0 – 10 September 2025 =
 * Added: Added filter hook to allow custom sanitization of settings. #1902
