@@ -26,7 +26,7 @@ class CoreAdmin
         add_filter(\PPVersionNotices\Module\TopNotice\Module::SETTINGS_FILTER, function ($settings) {
             $settings['press-permit-core'] = [
                 'message' => esc_html__("You're using PublishPress Permissions Free. The Pro version has more features and support. %sUpgrade to Pro%s", 'press-permit-core'),
-                'link'    => 'https://publishpress.com/links/permissions-banner',
+                'link' => 'https://publishpress.com/links/permissions-banner',
                 'screens' => [
                     ['base' => 'toplevel_page_presspermit-groups'],
                     ['base' => 'permissions_page_presspermit-group-new'],
@@ -107,7 +107,26 @@ class CoreAdmin
     {
         if (in_array($pp_page, ['presspermit-statuses', 'presspermit-visibility-statuses', 'presspermit-sync', 'presspermit-posts-teaser'], true)) {
             $slug = str_replace('presspermit-', '', $pp_page);
-            require_once(PRESSPERMIT_ABSPATH . "/includes/promo/{$slug}-promo.php");
+
+            // Only redirect for 'sync'
+            if ($slug === 'sync') {
+                // Use JavaScript redirect to avoid header issues
+                ?>
+                <script type="text/javascript">
+                    window.location.href = <?php echo wp_json_encode(admin_url('admin.php?page=presspermit-settings&pp_tab=user_pages')); ?>;
+                </script>
+                <?php
+                exit;
+            }
+
+            // For other slugs, include the promo file if it exists
+            $promo_file = PRESSPERMIT_ABSPATH . "/includes/promo/{$slug}-promo.php";
+            if (file_exists($promo_file)) {
+                require_once($promo_file);
+            } else {
+                // Optionally, handle missing promo file
+                wp_die(esc_html__('Promo file not found.', 'press-permit-core'));
+            }
         }
     }
 
@@ -138,7 +157,7 @@ class CoreAdmin
 
         <script type="text/javascript">
             /* <![CDATA[ */
-            jQuery(document).ready(function($) {
+            jQuery(document).ready(function ($) {
                 $('#toplevel_page_presspermit-groups ul li:last a').attr('href', '<?php echo esc_url($url); ?>').attr('target', '_blank').css('font-weight', 'bold').css('color', '#FEB123');
             });
             /* ]]> */
@@ -258,7 +277,7 @@ class CoreAdmin
                     </div>
                 </div>
                 <?php
-            endforeach; 
+            endforeach;
         endif;
     }
 
