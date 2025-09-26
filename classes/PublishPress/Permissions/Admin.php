@@ -169,7 +169,7 @@ class Admin
             'status-control'                => esc_html__('Status Control', 'press-permit-core'),
             'file-access'                   => esc_html__('File Access', 'press-permit-core'),
             'membership'                    => esc_html__('Membership', 'press-permit-core'),
-            'sync'                          => esc_html__('User Pages', 'press-permit-core'),
+            'sync'                          => esc_html__('User Posts', 'press-permit-core'),
         ];
 
         $blurb = [
