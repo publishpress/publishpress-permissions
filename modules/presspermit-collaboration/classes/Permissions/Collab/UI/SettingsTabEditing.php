@@ -111,7 +111,6 @@ class SettingsTabEditing
                         $opt_values = array_intersect_key($opt_values, array_fill_keys($pp->getEnabledPostTypes(), 0));  // skip stored types that are not enabled
                         $opt_values = array_diff_key($opt_values, array_fill_keys(apply_filters('presspermit_disabled_default_privacy_types', ['forum', 'topic', 'reply']), true));
 
-                        define('PRESSPERMIT_STATUSES_VERSION', PRESSPERMIT_VERSION);
                         // todo: force default status in Gutenberg
                         if (defined('PRESSPERMIT_STATUSES_VERSION')) {
                             $do_force_option = true;
