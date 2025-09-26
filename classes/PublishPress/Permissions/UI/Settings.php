@@ -28,8 +28,8 @@ class Settings
             require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsTabFileAccess.php');
             new SettingsTabFileAccess();
 
-            require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsTabUserPages.php');
-            new SettingsTabUserPages();
+            require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsTabUserPosts.php');
+            new SettingsTabUserPosts();
         }
 
         require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsTabAdvanced.php');

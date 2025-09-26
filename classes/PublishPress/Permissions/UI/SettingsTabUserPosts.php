@@ -3,21 +3,21 @@
 namespace PublishPress\Permissions\UI;
 
 /**
- * SettingsTabUserPages - Promotional User Pages Tab
+ * SettingsTabUserPosts - Promotional User Posts Tab
  *
  * This tab showcases user-post synchronization features with simplified promotional content.
- * Based on SettingsTabFileAccess.php structure but focused on user page management capabilities.
+ * Based on SettingsTabFileAccess.php structure but focused on user post management capabilities.
  *
  * Features promoted:
- * - User page synchronization
- * - Author permission management  
- * - Bulk user page creation
+ * - User post synchronization
+ * - Author permission management
+ * - Bulk user post creation
  * - User-post field matching
  * - Role-based synchronization
  *
  * @package PublishPress\Permissions\UI
  */
-class SettingsTabUserPages
+class SettingsTabUserPosts
 {
 
     public function __construct()
@@ -28,29 +28,29 @@ class SettingsTabUserPages
         add_filter('presspermit_option_captions', [$this, 'optionCaptions']);
         add_filter('presspermit_option_sections', [$this, 'optionSections']);
 
-        add_action('presspermit_user_pages_options_ui', [$this, 'optionsUI']);
+        add_action('presspermit_sync_posts_options_ui', [$this, 'optionsUI']);
     }
 
     public function optionTabs($tabs)
     {
-        $tabs['user_pages'] = esc_html__('User Pages', 'press-permit-core');
+        $tabs['sync_posts'] = esc_html__('User Posts', 'press-permit-core');
         return $tabs;
     }
 
     public function optionTabBadges($badges)
     {
-        $badges['user_pages'] = SettingsTabFileAccess::createTabBadge('pro');
+        $badges['sync_posts'] = SettingsTabFileAccess::createTabBadge('pro');
         return $badges;
     }
 
     public function sectionCaptions($sections)
     {
         $new = [
-            'user_sync' => esc_html__('User Page Synchronization', 'press-permit-core'),
+            'user_sync' => esc_html__('User Posts Synchronization', 'press-permit-core'),
             'upgrade_notice' => '',
         ];
 
-        $key = 'user_pages';
+        $key = 'sync_posts';
         $sections[$key] = (isset($sections[$key])) ? array_merge($sections[$key], $new) : $new;
         return $sections;
     }
@@ -58,8 +58,8 @@ class SettingsTabUserPages
     public function optionCaptions($captions)
     {
         $opt = [
-            'sync_user_pages' => esc_html__('Synchronize User Pages', 'press-permit-core'),
-            'bulk_create_pages' => esc_html__('Bulk Create Author Pages', 'press-permit-core'),
+            'sync_user_posts' => esc_html__('Synchronize User Posts', 'press-permit-core'),
+            'bulk_create_posts' => esc_html__('Bulk Create Author Posts', 'press-permit-core'),
             'match_user_fields' => esc_html__('Smart User Matching', 'press-permit-core'),
             'role_based_sync' => esc_html__('Role-Based Synchronization', 'press-permit-core'),
         ];
@@ -74,7 +74,7 @@ class SettingsTabUserPages
             'upgrade_notice' => ['no_option'],
         ];
 
-        $key = 'user_pages';
+        $key = 'sync_posts';
         $sections[$key] = (isset($sections[$key])) ? array_merge($sections[$key], $new) : $new;
         return $sections;
     }
@@ -83,9 +83,10 @@ class SettingsTabUserPages
     {
         $pp = presspermit();
         $ui = SettingsAdmin::instance();
-        $tab = 'user_pages';
+        $tab = 'sync_posts';
 
         $section = 'user_sync';
+        error_log(print_r($ui->form_options, true));
         if (!empty($ui->form_options[$tab][$section])): ?>
             <tr>
                 <td>

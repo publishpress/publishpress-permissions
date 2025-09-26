@@ -86,8 +86,8 @@ class CoreAdmin
 
         add_submenu_page(
             $pp_options_menu,
-            esc_html__('User Pages', 'press-permit-core'),
-            esc_html__('User Pages', 'press-permit-core'),
+            esc_html__('User Posts', 'press-permit-core'),
+            esc_html__('User Posts', 'press-permit-core'),
             'read',
             'presspermit-sync',
             $handler
@@ -113,7 +113,7 @@ class CoreAdmin
                 // Use JavaScript redirect to avoid header issues
                 ?>
                 <script type="text/javascript">
-                    window.location.href = <?php echo wp_json_encode(admin_url('admin.php?page=presspermit-settings&pp_tab=user_pages')); ?>;
+                    window.location.href = <?php echo wp_json_encode(admin_url('admin.php?page=presspermit-settings&pp_tab=sync_posts')); ?>;
                 </script>
                 <?php
                 exit;
