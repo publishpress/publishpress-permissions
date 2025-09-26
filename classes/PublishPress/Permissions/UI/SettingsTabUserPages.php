@@ -108,20 +108,20 @@ class SettingsTabUserPages
                 <div class="pp-feature-card pp-feature-card-hover">
                     <div class="pp-feature-header">
                         <div class="pp-feature-icon core-protection">&#9881;&#65039;</div>
-                        <h4><?php esc_html_e('Smart User Page Sync', 'press-permit-core'); ?></h4>
+                        <h4><?php esc_html_e('Create Posts for Your Users', 'press-permit-core'); ?></h4>
                     </div>
                     <ul class="pp-feature-list">
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Auto-create user pages', 'press-permit-core'); ?>
+                            <?php esc_html_e('Automatically generate posts for users', 'press-permit-core'); ?>
                         </li>
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Sync user data changes', 'press-permit-core'); ?>
+                            <?php esc_html_e('Set up posts for existing users', 'press-permit-core'); ?>
                         </li>
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Separate New User & Existing User', 'press-permit-core'); ?>
+                            <?php esc_html_e('Produce posts for users when they register', 'press-permit-core'); ?>
                         </li>
                     </ul>
 
@@ -129,7 +129,7 @@ class SettingsTabUserPages
                     <div class="pp-upgrade-overlay">
                         <h4 class="core-protection">&#128274; <?php esc_html_e('Pro Feature', 'press-permit-core'); ?></h4>
                         <p>
-                            <?php esc_html_e('Upgrade to Pro to unlock advanced user pages', 'press-permit-core'); ?>
+                            <?php esc_html_e('Upgrade to Pro to automatically generate posts for users', 'press-permit-core'); ?>
                         </p>
                         <div class="pp-upgrade-buttons">
                             <a href="https://publishpress.com/links/permissions-user-pages" target="_blank"
@@ -153,15 +153,15 @@ class SettingsTabUserPages
                     <ul class="pp-feature-list">
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Select multiple roles', 'press-permit-core'); ?>
+                            <?php esc_html_e('Generate posts for user roles that you select', 'press-permit-core'); ?>
                         </li>
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Custom batch quantity', 'press-permit-core'); ?>
+                            <?php esc_html_e('Choose how many posts to create per user', 'press-permit-core'); ?>
                         </li>
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Custom post status', 'press-permit-core'); ?>
+                            <?php esc_html_e('Decide which status to use for new posts', 'press-permit-core'); ?>
                         </li>
                     </ul>
 
@@ -193,15 +193,15 @@ class SettingsTabUserPages
                     <ul class="pp-feature-list">
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('User display name matching', 'press-permit-core'); ?>
+                            <?php esc_html_e('Automatically detect and avoid duplicate posts', 'press-permit-core'); ?>
                         </li>
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Parent page hierarchies', 'press-permit-core'); ?>
+                            <?php esc_html_e('Add new pages to a parent page', 'press-permit-core'); ?>
                         </li>
                         <li>
                             <span class="check-icon">&check;</span>
-                            <?php esc_html_e('Custom field mapping', 'press-permit-core'); ?>
+                            <?php esc_html_e('Allow users to edit their new posts', 'press-permit-core'); ?>
                         </li>
                     </ul>
 
@@ -228,10 +228,10 @@ class SettingsTabUserPages
             <!-- CTA Section -->
             <div class="pp-cta-section">
                 <h4>
-                    <?php esc_html_e('Ready to advance smart user pages?', 'press-permit-core'); ?>
+                    <?php esc_html_e('Ready to automatically generate posts for your users?', 'press-permit-core'); ?>
                 </h4>
                 <p>
-                    <?php esc_html_e('Upgrade to Pro and get advanced user pages with all these features and more.', 'press-permit-core'); ?>
+                    <?php esc_html_e('Upgrade to Pro and get advanced user post generation with all these features and more.', 'press-permit-core'); ?>
                 </p>
                 <div class="pp-cta-buttons">
                     <a href="https://publishpress.com/links/permissions-user-pages" class="button-primary button-large"
