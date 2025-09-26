@@ -10,6 +10,8 @@ class Settings
 
         @load_plugin_textdomain('press-permit-core-hints', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
 
+        add_action('admin_footer', [$this, 'markActiveSubmenu'], 20);
+
         require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsAdmin.php');
 
         require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsTabModules.php');
@@ -241,5 +243,19 @@ class Settings
     public static function pluginInfoURL($plugin_slug)
     {
         return self_admin_url("plugin-install.php?tab=plugin-information&plugin=$plugin_slug&TB_iframe=true&width=640&height=678");
+    }
+
+    function markActiveSubmenu() {
+        if (('presspermit-settings' == presspermitPluginPage()) && PWP::is_REQUEST('pp_tab', 'sync_posts')) :
+        ?>
+            <script type="text/javascript">
+                /* <![CDATA[ */
+                jQuery(document).ready(function ($) {
+                    $('#adminmenu li.toplevel_page_presspermit-groups ul.wp-submenu li').removeClass('current');
+                    $('#adminmenu li.toplevel_page_presspermit-groups ul.wp-submenu li a[href="admin.php?page=presspermit-sync"]').parent().addClass('current');
+                });
+                /* ]]> */
+            </script>
+        <?php endif;
     }
 }
