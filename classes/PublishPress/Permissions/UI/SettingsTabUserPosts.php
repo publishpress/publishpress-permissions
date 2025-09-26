@@ -86,7 +86,6 @@ class SettingsTabUserPosts
         $tab = 'sync_posts';
 
         $section = 'user_sync';
-        error_log(print_r($ui->form_options, true));
         if (!empty($ui->form_options[$tab][$section])): ?>
             <tr>
                 <td>

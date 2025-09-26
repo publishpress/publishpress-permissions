@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-09-26T16:59:07+00:00\n"
+"POT-Creation-Date: 2025-09-26T22:32:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
@@ -380,10 +380,11 @@ msgid "Membership"
 msgstr ""
 
 #: classes/PublishPress/Permissions/Admin.php:172
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:36
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:36
 #: includes/CoreAdmin.php:89
 #: includes/CoreAdmin.php:90
-msgid "User Pages"
+#: includes/promo/sync-promo.php:4
+msgid "User Posts"
 msgstr ""
 
 #: classes/PublishPress/Permissions/Admin.php:176
@@ -2040,10 +2041,10 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:191
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:227
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:249
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:137
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:177
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:217
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:239
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:137
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
 #: includes/CoreAdmin.php:139
 #: includes/CoreAdmin.php:140
 #: includes/CoreAdmin.php:274
@@ -2299,12 +2300,12 @@ msgid "Administrators"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:358
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:186
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:185
 msgid "When saving a post, if the default term is not selectable, substitute first available."
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:359
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:187
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:186
 msgid "Some term-limited editing configurations require this."
 msgstr ""
 
@@ -2464,9 +2465,9 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:295
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:185
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:221
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:130
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:170
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:210
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
 #: includes/CoreAdmin.php:259
 msgid "Pro Feature"
 msgstr ""
@@ -2485,10 +2486,10 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:194
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:230
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:254
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:141
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:181
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:221
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:243
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:141
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:271
 msgid "Learn More"
 msgstr ""
@@ -2722,91 +2723,91 @@ msgstr ""
 msgid "Inactive"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:49
-msgid "User Page Synchronization"
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:49
+msgid "User Posts Synchronization"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:61
-msgid "Synchronize User Pages"
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:61
+msgid "Synchronize User Posts"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:62
-msgid "Bulk Create Author Pages"
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:62
+msgid "Bulk Create Author Posts"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:63
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:63
 msgid "Smart User Matching"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:64
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:64
 msgid "Role-Based Synchronization"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:111
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:111
 msgid "Create Posts for Your Users"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:116
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:116
 msgid "Automatically generate posts for users"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:120
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:120
 msgid "Set up posts for existing users"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:124
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:124
 msgid "Produce posts for users when they register"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:132
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:132
 msgid "Upgrade to Pro to automatically generate posts for users"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:151
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:151
 msgid "Bulk Page Creation"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:156
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:156
 msgid "Generate posts for user roles that you select"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:160
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:160
 msgid "Choose how many posts to create per user"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:164
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:164
 msgid "Decide which status to use for new posts"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:172
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:172
 msgid "Upgrade to Pro to unlock bulk page creation features"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:191
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:191
 msgid "Advanced Configuration"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:196
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:196
 msgid "Automatically detect and avoid duplicate posts"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:200
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:200
 msgid "Add new pages to a parent page"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:204
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:204
 msgid "Allow users to edit their new posts"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:212
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:212
 msgid "Unlock advanced user synchronization features"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:231
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:231
 msgid "Ready to automatically generate posts for your users?"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabUserPages.php:234
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:234
 msgid "Upgrade to Pro and get advanced user post generation with all these features and more."
 msgstr ""
 
@@ -2896,10 +2897,6 @@ msgstr ""
 
 #: includes/promo/statuses-promo.php:19
 msgid "Control access to custom post statuses. This workflow feature is available in PublishPress Permissions Pro."
-msgstr ""
-
-#: includes/promo/sync-promo.php:4
-msgid "User Posts"
 msgstr ""
 
 #: includes/promo/sync-promo.php:18
@@ -3386,57 +3383,57 @@ msgstr ""
 msgid "Default visibility for new posts                               : "
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:158
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:157
 msgid "lock"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:227
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:226
 msgid "Edit Form HTML IDs:"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:237
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:236
 #, php-format
 msgid "%1$s sample IDs:%2$s %3$s"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:268
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:267
 msgid "Specified element IDs also require the following site-wide Role:"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:270
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:277
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:269
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:276
 msgid "Content Administrator"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:273
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:272
 msgid "no requirement"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:274
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:273
 msgid "Contributor / Author / Editor"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:275
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:274
 msgid "Author / Editor"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:278
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:277
 msgid "User Administrator"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:279
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:278
 msgid "Option Administrator"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:312
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:311
 msgid "List Files"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:323
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:322
 msgid "The following settings apply to users who are able to access the Media Library. Normally this requires the upload_files or edit_files capability."
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:336
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:335
 msgid "Edit Files"
 msgstr ""
 
