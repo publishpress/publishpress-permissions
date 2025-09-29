@@ -132,11 +132,6 @@ jQuery(document).ready(function ($) {
                                     color: #856404;
                                     position: relative;
                                 }
-                                
-                                .pp-visibility-lock-notice:before {
-                                    content: "🔒 ";
-                                    margin-right: 4px;
-                                }
                             `;
                             document.head.appendChild(style);
                             
@@ -149,8 +144,8 @@ jQuery(document).ready(function ($) {
                                     var visibilitySetToText = translations.visibilitySetTo || 'Post visibility is set to';
                                     var cannotChangeText = translations.cannotChange || 'and cannot be changed due to admin settings.';
                                     var contactAdminText = translations.contactAdmin || 'Contact your administrator to modify this setting.';
-                                    
-                                    var notice = '<div class="pp-visibility-lock-notice">' +
+
+                                    var notice = '<div class="pp-visibility-lock-notice"><span class="dashicons dashicons-lock"></span>' +
                                         '<strong>' + visibilityLockedText + '</strong> ' + visibilitySetToText + ' "' + defaultPrivacy + '" ' +
                                         cannotChangeText + ' ' +
                                         '<br><small>' + contactAdminText + '</small>' +
