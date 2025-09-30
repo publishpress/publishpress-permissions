@@ -58,25 +58,19 @@ jQuery(document).ready(function ($) {
             // Wait for Gutenberg editor to be fully ready
             var applyDefaultPrivacy = function() {
                 if (!wp.data || !wp.data.select || !wp.data.dispatch) {
-                    setTimeout(applyDefaultPrivacy, 100);
+                    setTimeout(applyDefaultPrivacy, 200);
                     return;
                 }
                 
                 // Check if editor is fully loaded by verifying we have a post type
                 var currentPost = wp.data.select('core/editor').getCurrentPost();
                 if (!currentPost || !currentPost.type) {
-                    setTimeout(applyDefaultPrivacy, 100);
+                    setTimeout(applyDefaultPrivacy, 200);
                     return;
                 }
                 
                 try {
-                    // Set the status to the configured default privacy
                     wp.data.dispatch('core/editor').editPost({ status: visibility });
-                    
-                    var currentTitle = wp.data.select('core/editor').getEditedPostAttribute('title');
-                    if (currentTitle === 'Auto Draft') {
-                        wp.data.dispatch('core/editor').editPost({ title: '' });
-                    }
                     if (wp.data.dispatch('core/editor').savePost) {
                         wp.data.dispatch('core/editor').savePost();
                     }
@@ -212,7 +206,7 @@ jQuery(document).ready(function ($) {
                         };
                         
                         // Apply panel locking after a short delay to ensure UI is ready
-                        setTimeout(lockPostPanel, 300);
+                        setTimeout(lockPostPanel, 1000);
                     }
                 } catch (e) {
                     console.error('Error applying default privacy:', e);
