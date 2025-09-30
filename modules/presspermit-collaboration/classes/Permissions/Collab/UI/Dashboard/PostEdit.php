@@ -34,21 +34,6 @@ class PostEdit
         }
     }
 
-    private function getTranslations()
-    {
-        return [
-            'visibilityLocked' => esc_html__('Visibility Locked:', 'press-permit-core'),
-            'visibilitySetTo' => esc_html__('Post visibility is set to', 'press-permit-core'),
-            'cannotChange' => esc_html__('and cannot be changed due to admin settings.', 'press-permit-core'),
-            'contactAdmin' => esc_html__('Contact your administrator to modify this setting.', 'press-permit-core'),
-            'postVisibilityLocked' => esc_html__('Post Visibility Locked', 'press-permit-core'),
-            'visibilityLockedTo' => esc_html__('This post\'s visibility is locked to:', 'press-permit-core'),
-            'adminConfigured' => esc_html__('The administrator has configured this post type to enforce a specific visibility setting.', 'press-permit-core'),
-            'lockedByAdmin' => esc_html__('LOCKED BY ADMIN', 'press-permit-core'),
-            'tooltipLocked' => esc_html__('This setting is locked by administrator configuration and cannot be changed.', 'press-permit-core'),
-        ];
-    }
-
     function fltGetPages_clauses($clauses, $post_type, $args)
     {
         global $wpdb, $post;
@@ -72,13 +57,11 @@ class PostEdit
 
             $required_operation = (presspermit()->getOption('page_parent_editable_only')) ? 'edit' : 'associate';
 
-            if (
-                $restriction_where = \PublishPress\Permissions\PageFilters::getRestrictionClause(
-                    $required_operation,
-                    $post_type,
-                    compact('col_id')
-                )
-            ) {
+            if ($restriction_where = \PublishPress\Permissions\PageFilters::getRestrictionClause(
+                $required_operation,
+                $post_type,
+                compact('col_id')
+            )) {
                 $clauses['where'] .= $restriction_where;
             }
 
@@ -145,10 +128,10 @@ class PostEdit
         wp_enqueue_script('presspermit-listbox', PRESSPERMIT_URLPATH . "/common/js/listbox{$suffix}.js", ['jquery', 'jquery-form'], PRESSPERMIT_VERSION, true);
         $wp_scripts->in_footer[] = 'presspermit-listbox';
         wp_localize_script(
-            'presspermit-listbox',
-            'ppListbox',
+            'presspermit-listbox', 
+            'ppListbox', 
             [
-                'omit_admins' => !defined('PP_ADMINS_IN_PERMISSION_GROUPS') || !PP_ADMINS_IN_PERMISSION_GROUPS ? '1' : 0,
+                'omit_admins' => !defined('PP_ADMINS_IN_PERMISSION_GROUPS') || !PP_ADMINS_IN_PERMISSION_GROUPS ? '1' : 0, 
                 'metagroups' => 1
             ]
         );
@@ -161,18 +144,11 @@ class PostEdit
         wp_enqueue_script('presspermit-collab-post-edit', PRESSPERMIT_COLLAB_URLPATH . "/common/js/post-edit{$suffix}.js", [], PRESSPERMIT_COLLAB_VERSION);
     }
 
-    function default_privacy_gutenberg()
-    {
+    function default_privacy_gutenberg() {
         // Pass default_privacy setting to JavaScript for Gutenberg
         $post_type = PWP::findPostType();
         $default_privacy = presspermit()->getTypeOption('default_privacy', $post_type);
-        $force_default_privacy = presspermit()->getTypeOption('force_default_privacy', $post_type) == '1' ? true : false;
-
-        wp_localize_script('presspermit-collab-post-edit', 'ppEditorConfig', [
-            'defaultPrivacy' => $default_privacy,
-            'forceDefaultPrivacy' => $force_default_privacy,
-            'translations' => $this->getTranslations()
-        ]);
+        wp_localize_script('presspermit-collab-post-edit', 'ppEditorConfig', ['defaultPrivacy' => $default_privacy]);
     }
 
     function default_privacy_js()
@@ -194,30 +170,17 @@ class PostEdit
         if (is_numeric($set_visibility) || !get_post_status_object($set_visibility)) {
             $set_visibility = 'private';
         }
-
-        $translations = $this->getTranslations();
-        ?>
+?>
         <script type="text/javascript">
             /* <![CDATA[ */
-            // Make translations globally available
-            window.ppClassicEditorConfig = {
-                translations: <?php echo wp_json_encode($translations); ?>,
-                forceDefaultPrivacy: <?php echo (presspermit()->getTypeOption('force_default_privacy', $typenow) == '1') ? 'true' : 'false'; ?>,
-                setVisibility: '<?php echo esc_js($set_visibility); ?>'
-            };
-
-            jQuery(document).ready(function ($) {
+            jQuery(document).ready(function($) {
                 // Check the radio (use 'checked' for radio inputs) and update hidden value
                 var $radio = $('#visibility-radio-<?php echo esc_attr($set_visibility); ?>');
-                var config = window.ppClassicEditorConfig || {};
-                var forceDefaultPrivacy = config.forceDefaultPrivacy || false;
-                var setVisibility = config.setVisibility || '<?php echo esc_js($set_visibility); ?>';
-
                 $radio.prop('checked', true).trigger('change');
-                $('#hidden-post-visibility').val(setVisibility);
+                $('#hidden-post-visibility').val('<?php echo esc_attr($set_visibility); ?>');
 
                 // Update the visible label. Prefer localized strings if available.
-                if (typeof (postL10n) != 'undefined') {
+                if (typeof(postL10n) != 'undefined') {
                     var vis = $('#post-visibility-select input:radio:checked').val();
                     var str = '';
 
@@ -231,185 +194,14 @@ class PostEdit
 
                     if (str) {
                         $('#post-visibility-display').html(str);
-                        setTimeout(function () {
+                        setTimeout(function() {
                             $('.save-post-visibility').trigger('click');
                         }, 0);
                     }
-                }
-
-                // For Classic Editor - lock visibility controls (matching Gutenberg behavior)
-                if (forceDefaultPrivacy) {
-                    // We're definitely in Classic Editor if this function runs
-                    // CSS styling for locked visibility elements only
-                    var lockControlsStyle = function () {
-                        var style = document.createElement('style');
-                        style.textContent = `
-                                    /* Lock only visibility-related controls */
-                                    #post-visibility-select,
-                                    .edit-visibility,
-                                    .misc-pub-visibility a,
-                                    .misc-pub-visibility button,
-                                    #visibility-radio-public,
-                                    #visibility-radio-password,
-                                    #visibility-radio-private,
-                                    input[name="visibility"],
-                                    input[name="post_password"],
-                                    .save-post-visibility,
-                                    .cancel-post-visibility {
-                                        opacity: 0.5 !important;
-                                        pointer-events: none !important;
-                                        cursor: not-allowed !important;
-                                        background-color: #f6f7f7 !important;
-                                    }
-                                    
-                                    /* Style only the visibility section with yellow background */
-                                    .misc-pub-visibility {
-                                        background-color: #fff3cd !important;
-                                        border: 1px solid #ffeaa7 !important;
-                                        border-radius: 4px !important;
-                                        padding: 8px !important;
-                                        margin: 4px 0 !important;
-                                        position: relative !important;
-                                    }
-                                    
-                                    /* Lock notice styling */
-                                    .pp-forced-visibility-notice {
-                                        background: #fff3cd;
-                                        border: 1px solid #ffeaa7;
-                                        border-radius: 4px;
-                                        padding: 12px;
-                                        margin: 10px 0;
-                                        font-size: 13px;
-                                        line-height: 1.4;
-                                    }
-                                    
-                                    .pp-forced-visibility-notice:before {
-                                        content: "🔒 ";
-                                        margin-right: 4px;
-                                    }
-                                    
-                                    /* Locked overlay only for visibility section */
-                                    .pp-locked-overlay {
-                                        position: absolute;
-                                        top: 0;
-                                        left: 0;
-                                        right: 0;
-                                        bottom: 0;
-                                        background: rgba(255, 227, 173, 0.8);
-                                        display: flex;
-                                        align-items: center;
-                                        justify-content: center;
-                                        font-size: 11px;
-                                        color: #856404;
-                                        font-weight: bold;
-                                        z-index: 1000;
-                                    }
-                                `;
-                        document.head.appendChild(style);
-                    };
-
-                    // Apply the styling
-                    lockControlsStyle();
-
-                    // Disable only visibility-related form controls
-                    $('input[name="visibility"], input[name="post_password"]').prop('disabled', true);
-
-                    // Get translation strings
-                    var translations = config.translations || {};
-                    var postVisibilityLockedText = translations.postVisibilityLocked || 'Post Visibility Locked';
-                    var visibilityLockedToText = translations.visibilityLockedTo || 'This post\'s visibility is locked to:';
-                    var adminConfiguredText = translations.adminConfigured || 'The administrator has configured this post type to enforce a specific visibility setting.';
-                    var contactAdminText = translations.contactAdmin || 'Contact your administrator if you need to change this setting.';
-                    var lockedByAdminText = translations.lockedByAdmin || 'LOCKED BY ADMIN';
-
-                    // Add comprehensive notice about locked visibility
-                    $('#misc-publishing-actions').prepend(
-                        '<div class="pp-forced-visibility-notice">' +
-                        '<strong>' + postVisibilityLockedText + '</strong><br>' +
-                        visibilityLockedToText + ' <strong>' + setVisibility + '</strong><br>' +
-                        '<small style="color: #856404;">' + adminConfiguredText + ' ' +
-                        contactAdminText + '</small>' +
-                        '</div>'
-                    );
-
-                    // Add locked overlay only to visibility section
-                    $('.misc-pub-visibility').css('position', 'relative').each(function () {
-                        if (!$(this).find('.pp-locked-overlay').length) {
-                            $(this).append('<div class="pp-locked-overlay">' + lockedByAdminText + '</div>');
-                        }
-                    });
-
-                    // Click prevention for visibility-related elements only
-                    var preventVisibilityClicks = function () {
-                        var classicVisibilitySelectors = [
-                            '.edit-visibility',
-                            '.misc-pub-visibility a',
-                            '.misc-pub-visibility button',
-                            '#post-visibility-select',
-                            'input[name="visibility"]',
-                            'input[name="post_password"]',
-                            '#visibility-radio-public',
-                            '#visibility-radio-password',
-                            '#visibility-radio-private',
-                            '.save-post-visibility',
-                            '.cancel-post-visibility'
-                        ];
-
-                        classicVisibilitySelectors.forEach(function (selector) {
-                            $(document).off('click change', selector).on('click change', selector, function (e) {
-                                e.preventDefault();
-                                e.stopPropagation();
-                                e.stopImmediatePropagation();
-                                return false;
-                            });
-                        });
-                    };
-
-                    // Apply click prevention immediately and with delays
-                    preventVisibilityClicks();
-                    setTimeout(preventVisibilityClicks, 500);
-                    setTimeout(preventVisibilityClicks, 1500);
-
-                    // Prevent form submission with different visibility
-                    $('#post').on('submit', function (e) {
-                        $('input[name="visibility"]').val(setVisibility);
-                        $('#hidden-post-visibility').val(setVisibility);
-                    });
-
-                    // Add tooltips to locked visibility elements
-                    var tooltipText = translations.tooltipLocked || 'This setting is locked by administrator configuration and cannot be changed.';
-                    $('.edit-visibility, input[name="visibility"], input[name="post_password"], #visibility-radio-public, #visibility-radio-password, #visibility-radio-private').attr('title', tooltipText);
-
-                    // Monitor for dynamic content and re-apply locks
-                    var observer = new MutationObserver(function (mutations) {
-                        mutations.forEach(function (mutation) {
-                            if (mutation.addedNodes.length) {
-                                setTimeout(function () {
-                                    preventVisibilityClicks();
-                                    $('.misc-pub-visibility').each(function () {
-                                        if (!$(this).find('.pp-locked-overlay').length) {
-                                            $(this).css('position', 'relative').append('<div class="pp-locked-overlay">' + lockedByAdminText + '</div>');
-                                        }
-                                    });
-                                }, 100);
-                            }
-                        });
-                    });
-
-                    // Observe changes to the publishing box
-                    if ($('#misc-publishing-actions').length) {
-                        observer.observe($('#misc-publishing-actions')[0], {
-                            childList: true,
-                            subtree: true
-                        });
-                    }
                 } else {
-                    // If force_default_privacy is disabled, just update the display
-                    if (typeof (postL10n) == 'undefined') {
-                        $('#post-visibility-display').html(
-                            $('#visibility-radio-<?php echo esc_attr($set_visibility); ?>').next('label').html()
-                        );
-                    }
+                    $('#post-visibility-display').html(
+                        $('#visibility-radio-<?php echo esc_attr($set_visibility); ?>').next('label').html()
+                    );
                 }
             });
             /* ]]> */
@@ -421,33 +213,33 @@ class PostEdit
     {
         $user = presspermit()->getUser();
 
-        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])): ?>
+        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])) : ?>
             <script type="text/javascript">
                 /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $(document).on('focus', 'div.supports-drag-drop', function () {
+                jQuery(document).ready(function($) {
+                    $(document).on('focus', 'div.supports-drag-drop', function() {
                         $('div.media-router a:first').hide();
                         $('div.media-router a:nth-child(2)').click();
                     });
-                    $(document).on('mouseover', 'div.supports-drag-drop', function () {
+                    $(document).on('mouseover', 'div.supports-drag-drop', function() {
                         $('div.media-menu a:nth-child(2)').hide();
                         $('div.media-menu a:nth-child(5)').hide();
                     });
                 });
                 //]]>
             </script>
-            <?php
+        <?php
         endif;
 
-        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])): ?>
+        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])) : ?>
             <script type="text/javascript">
                 /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $(document).on('focus', 'div.supports-drag-drop', function () {
+                jQuery(document).ready(function($) {
+                    $(document).on('focus', 'div.supports-drag-drop', function() {
                         $('div.media-router a:first').hide();
                         $('div.media-router a:nth-child(2)').click();
                     });
-                    $(document).on('mouseover', 'div.supports-drag-drop', function () {
+                    $(document).on('mouseover', 'div.supports-drag-drop', function() {
                         $('div.media-menu a:nth-child(2)').hide();
                         $('div.media-menu a:nth-child(5)').hide();
                     });
@@ -481,12 +273,10 @@ class PostEdit
                 || $user->getExceptionTerms('edit', 'include', $post_type, $taxonomy, ['merge_universals' => true])
             ) {
                 $disallow_add_term = true;
-            } elseif (
-                $tt_ids = array_merge(
-                    $user->getExceptionTerms('assign', 'exclude', $post_type, $taxonomy, ['merge_universals' => true]),
-                    $user->getExceptionTerms('edit', 'exclude', $post_type, $taxonomy, ['merge_universals' => true])
-                )
-            ) {
+            } elseif ($tt_ids = array_merge(
+                $user->getExceptionTerms('assign', 'exclude', $post_type, $taxonomy, ['merge_universals' => true]),
+                $user->getExceptionTerms('edit', 'exclude', $post_type, $taxonomy, ['merge_universals' => true])
+            )) {
                 $tt_ids = array_diff($tt_ids, $additional_tt_ids);
                 if (count($tt_ids)) {
                     $disallow_add_term = true;
@@ -499,14 +289,14 @@ class PostEdit
                 }
             }
 
-            if ($disallow_add_term):
-                ?>
+            if ($disallow_add_term) :
+            ?>
                 <style type="text/css">
                     #<?php echo esc_attr($taxonomy); ?>-adder {
                         display: none;
                     }
                 </style>
-                <?php
+            <?php
             endif;
         }
     }
@@ -514,8 +304,7 @@ class PostEdit
     function ui_add_author_link()
     {
         static $done;
-        if (!empty($done))
-            return;
+        if (!empty($done)) return;
         $done = true;
 
         global $post;
@@ -525,7 +314,7 @@ class PostEdit
 
         $type_obj = get_post_type_object($post->post_type);
 
-        if (current_user_can($type_obj->cap->edit_others_posts)):
+        if (current_user_can($type_obj->cap->edit_others_posts)) :
             $title = esc_html__('Author Search / Select', 'press-permit-core');
 
             $args = [
@@ -542,13 +331,12 @@ class PostEdit
             ?>
 
             <div id="pp_author_search_ui_base" style="display:none">
-                <div class="pp-agent-select pp-agents-selection"><?php $agents->agentsUI('user', [], 'select-author', [], $args); ?>
-                </div>
+                <div class="pp-agent-select pp-agents-selection"><?php $agents->agentsUI('user', [], 'select-author', [], $args); ?></div>
             </div>
 
             <script type="text/javascript">
                 /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
+                jQuery(document).ready(function($) {
                     var author_el = $('#pp_author_search_ui_base').html();
                     $('#pp_author_search_ui_base').remove();
                     $("#post_author_override").after(
@@ -561,7 +349,7 @@ class PostEdit
                 });
                 /* ]]> */
             </script>
-            <?php
+<?php
         endif;
     }
 }

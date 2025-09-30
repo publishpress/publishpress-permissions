@@ -2,7 +2,6 @@
 
 namespace PublishPress\Permissions\Collab\UI;
 
-use \PublishPress\PWP as PWP;
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
 class SettingsTabEditing
@@ -148,13 +147,14 @@ class SettingsTabEditing
                                             $id = 'force_default_privacy-' . $object_type;
                                             $name = "force_default_privacy[$object_type]";
                                             $style = ($setting) ? '' : 'display:none';
-                                            $checked = !empty($force_values[$object_type]) ? ' checked ' : '';
+                                            $checked = (!empty($force_values[$object_type]) || PWP::isBlockEditorActive($object_type)) ? ' checked ' : '';
+                                            $disabled = (PWP::isBlockEditorActive($object_type)) ? " disabled " : '';
                                         ?>
                                             <input name='<?php echo esc_attr($name); ?>' type='hidden' value='0' />
                                             &nbsp;<label style='<?php echo esc_attr($style); ?>' for="<?php echo esc_attr($id); ?>"><input
-                                                    type="checkbox" <?php echo esc_attr($checked); ?> id="<?php echo esc_attr($id); ?>"
+                                                    type="checkbox" <?php echo esc_attr($checked); ?><?php echo esc_attr($disabled); ?>id="<?php echo esc_attr($id); ?>"
                                                     name="<?php echo esc_attr($name); ?>"
-                                                    value="1" />&nbsp;<?php esc_html_e('lock', 'press-permit-core'); ?>
+                                                    value="1" /><?php if ($do_force_option) : ?>&nbsp;<?php esc_html_e('lock', 'press-permit-core'); ?><?php endif; ?>
                                             </label>
                                         <?php endif; ?>
 
