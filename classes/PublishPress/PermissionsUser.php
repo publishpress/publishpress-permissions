@@ -273,9 +273,12 @@ class PermissionsUser extends \WP_User
             return $return;
         }
 
-        $exceptions = (isset($this->except["{$operation}_post"]['post'][''][$mod_type][$post_type]))
-            ? $this->except["{$operation}_post"]['post'][''][$mod_type][$post_type]
-            : [];
+        $exceptions = [];
+        if (isset($this->except["{$operation}_post"]['post'][''][$mod_type]) 
+            && is_array($this->except["{$operation}_post"]['post'][''][$mod_type])
+            && isset($this->except["{$operation}_post"]['post'][''][$mod_type][$post_type])) {
+            $exceptions = $this->except["{$operation}_post"]['post'][''][$mod_type][$post_type];
+        }
 
         $exceptions = apply_filters('presspermit_get_exception_items', $exceptions, $operation, $mod_type, $post_type, $args);
 
