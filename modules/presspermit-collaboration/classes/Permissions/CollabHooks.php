@@ -675,7 +675,7 @@ class CollabHooks
     }
 
     /**
-     * Prevent post status changes when force_default_privacy is enabled
+     * Set default privacy for new posts, but allow users to change it afterward
      */
     function fltPreventStatusChange($data, $postarr)
     {
@@ -683,7 +683,7 @@ class CollabHooks
         if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return $data;
         }
-        
+
         if (wp_is_post_revision($postarr['ID']) || wp_is_post_autosave($postarr['ID'])) {
             return $data;
         }
@@ -693,9 +693,16 @@ class CollabHooks
             $force_enabled = presspermit()->getTypeOption('force_default_privacy', $data['post_type']);
             $default_privacy = presspermit()->getTypeOption('default_privacy', $data['post_type']);
             
-            if ($force_enabled && $default_privacy) {
-                // Force the status to the default privacy setting
+            // Only apply default privacy to NEW posts (auto-draft status)
+            // This allows users to change the status afterward
+            if ($force_enabled && $default_privacy && $data['post_status'] === 'auto-draft') {
+                // Set the default privacy setting only for new posts
                 $data['post_status'] = $default_privacy;
+                
+                // Clear "Auto Draft" title when changing from auto-draft to allow user to set their own title
+                if (!empty($data['post_title']) && $data['post_title'] === 'Auto Draft') {
+                    $data['post_title'] = '';
+                }
             }
         }
 
