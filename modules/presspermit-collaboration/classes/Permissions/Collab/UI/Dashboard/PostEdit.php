@@ -46,6 +46,8 @@ class PostEdit
             'adminConfigured' => esc_html__('The administrator has configured this post type to enforce a specific visibility setting.', 'press-permit-core'),
             'lockedByAdmin' => esc_html__('LOCKED BY ADMIN', 'press-permit-core'),
             'tooltipLocked' => esc_html__('This setting is locked by administrator configuration and cannot be changed.', 'press-permit-core'),
+            'public' => esc_html__('public', 'press-permit-core'),
+            'private' => esc_html__('private', 'press-permit-core'),
         ];
     }
 
