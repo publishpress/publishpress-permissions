@@ -122,7 +122,7 @@ jQuery(document).ready(function ($) {
                                     var contactAdminText = translations.contactAdmin || 'Contact your administrator to modify this setting.';
 
                                     var notice = '<div class="pp-visibility-lock-notice"><span class="dashicons dashicons-lock"></span>' +
-                                        '<strong>' + visibilityLockedText + '</strong> ' + visibilitySetToText + ' "' + defaultPrivacy + '" ' +
+                                        '<strong>' + visibilityLockedText + '</strong> ' + visibilitySetToText + ' "' + translations[defaultPrivacy] + '" ' +
                                         cannotChangeText + ' ' +
                                         '<br><small>' + contactAdminText + '</small>' +
                                         '</div>';
