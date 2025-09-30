@@ -246,7 +246,7 @@ Please report security bugs found in the source code of the PublishPress Permiss
 
 == Changelog ==
 
-= 4.5.1 – 29 September 2025 =
+= 4.5.1 – 1 October 2025 =
 * Added: Added a **User Page Promo tab** to highlight key features. #1926
 * Fixed: Corrected an issue where **PublishPress Statuses list capabilities** were ineffective if a post required status-specific editing capabilities. #1924
 
