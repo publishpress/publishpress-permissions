@@ -5,7 +5,7 @@ Tags: permissions, access, restrict, privacy, capabilities
 Requires at least: 5.5
 Tested up to: 6.8
 Requires PHP: 7.2.5
-Stable tag: 4.5.0
+Stable tag: 4.5.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -246,9 +246,14 @@ Please report security bugs found in the source code of the PublishPress Permiss
 
 == Changelog ==
 
+= 4.5.1 – 1 October 2025 =
+* Added: Added a **User Page Promo tab** to highlight key features. #1926
+* Compat: PublishPress Statuses - list, list_other capabilities were not effective where post editing requires status-specific capabilities
+* Fixed: Corrected an issue where **PublishPress Statuses list capabilities** were ineffective if a post required status-specific editing capabilities. #1924
+
 = 4.5.0 – 10 September 2025 =
-* New: Added filter hook to allow custom sanitization of settings. #1902
-* New: License key input box widened to support longer keys. #1901
+* Added: Added filter hook to allow custom sanitization of settings. #1902
+* Added: License key input box widened to support longer keys. #1901
 * Fixed: Conflict with the PublishPress Statuses plugin that caused an "out of memory" error during login. #1873
 * Fixed: Editing defaults now correctly applies only to new posts, not existing posts. #1870
 * Fixed: Corrected text domain issues for proper localization. #1898

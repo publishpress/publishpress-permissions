@@ -273,6 +273,10 @@ class PermissionsUser extends \WP_User
             return $return;
         }
 
+        if (is_array($post_type)) {
+            $post_type = reset($post_type);
+        }
+
         $exceptions = (isset($this->except["{$operation}_post"]['post'][''][$mod_type][$post_type]))
             ? $this->except["{$operation}_post"]['post'][''][$mod_type][$post_type]
             : [];
