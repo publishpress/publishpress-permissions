@@ -140,9 +140,13 @@ class AgentPermissions
                 if($is_debug_mode){
                     if (defined('PUBLISHPRESS_CAPS_VERSION')) {
                         printf(
-                            esc_html__('%sEdit WordPress Role%s', 'press-permit-core'),
-                            '<a href="' . esc_url(admin_url("admin.php?page=capsman&action=edit&role={$agent->metagroup_id}")) . '" class="page-title-action" title="' . esc_attr(esc_html__('Edit role capabilities directly', 'press-permit-core')) . '">',
-                            '</a>'
+                            esc_html(
+                                sprintf(
+                                    __('%sEdit WordPress Role%s', 'press-permit-core'),
+                                    '<a href="' . esc_url(admin_url("admin.php?page=capsman&action=edit&role={$agent->metagroup_id}")) . '" class="page-title-action" title="' . esc_attr__('Edit role capabilities directly', 'press-permit-core') . '">',
+                                    '</a>'
+                                )
+                            )
                         );
                     }
                     $gvar = ($group_variant) ? $group_variant : 'pp_group';
