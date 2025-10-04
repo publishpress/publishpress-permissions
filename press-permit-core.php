@@ -188,6 +188,14 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
 
         $presspermit_loaded_by_pro = strpos(str_replace('\\', '/', __FILE__), 'vendor/publishpress/');
 
+        global $pagenow;
+
+        if (is_admin() && isset($pagenow) && ('customize.php' == $pagenow)
+        || (is_admin() && isset($pagenow) && ('edit.php' == $pagenow) && !empty($_REQUEST['post_type']) && ('give_forms' == $_REQUEST['post_type']))
+        ) {
+            return;
+        }
+
         if (!function_exists('presspermit')) {
             require_once(__DIR__ . '/functions.php');
         }
@@ -198,12 +206,6 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
             || (defined('SCOPER_VERSION') && function_exists('rs_get_user') && presspermit_err('rs_active') && ! is_admin())
             || (constant('PRESSPERMIT_DEBUG') && is_admin() && presspermit_editing_plugin()) // avoid lockout in case of erroneous plugin edit via wp-admin
         ) {
-            return;
-        }
-
-        global $pagenow;
-
-        if (is_admin() && isset($pagenow) && ('customize.php' == $pagenow)) {
             return;
         }
 
