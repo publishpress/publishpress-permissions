@@ -284,6 +284,10 @@ class TermEdit
         ) {
             return;
         }
+        
+        // Create compatibility wrapper for third-party metaboxes
+        $this->wrapIncompatibleMetaboxes($post_type, $tag);
+        
         ?>
         <div id="poststuff" class="metabox-holder">
             <div id="post-body">
@@ -311,6 +315,9 @@ class TermEdit
         if ($typenow && !in_array($typenow, presspermit()->getEnabledPostTypes(), true)) {
             return;
         }
+
+        // Create compatibility wrapper for third-party metaboxes
+        $this->wrapIncompatibleMetaboxes($typenow, $tag);
 
         ?>
         <br/><br/>
@@ -404,6 +411,201 @@ class TermEdit
         </style>
         <?php 
         endif;
+    }
+
+    /**
+     * Wrap incompatible metaboxes that expect WP_Post objects to work with WP_Term objects
+     * This method automatically detects incompatible metaboxes using reflection and type checking
+     * 
+     * @param string $post_type The post type being used for metabox registration
+     * @param WP_Term $term The term object that will be passed to metaboxes
+     */
+    private function wrapIncompatibleMetaboxes($post_type, $term) {
+        global $wp_meta_boxes;
+        
+        $screen_id = $post_type ?: 'post';
+        
+        if (!isset($wp_meta_boxes[$screen_id])) {
+            return;
+        }
+        
+        $wrapped_metaboxes = [];
+        
+        foreach (['normal', 'side', 'advanced'] as $context) {
+            if (!isset($wp_meta_boxes[$screen_id][$context])) {
+                continue;
+            }
+            
+            foreach (['high', 'core', 'default', 'low'] as $priority) {
+                if (!isset($wp_meta_boxes[$screen_id][$context][$priority])) {
+                    continue;
+                }
+                
+                foreach ($wp_meta_boxes[$screen_id][$context][$priority] as $metabox_id => $metabox) {
+                    // Skip our own metaboxes to avoid wrapping them
+                    if (strpos($metabox_id, 'pp_') === 0) {
+                        continue;
+                    }
+                    
+                    // Allow developers to force exclude certain metaboxes from wrapping
+                    $excluded_metaboxes = apply_filters('presspermit_exclude_metabox_wrapping', [], $metabox_id, $metabox);
+                    if (in_array($metabox_id, $excluded_metaboxes, true)) {
+                        continue;
+                    }
+                    
+                    // Allow developers to force include certain metaboxes for wrapping
+                    $forced_wrap_metaboxes = apply_filters('presspermit_force_metabox_wrapping', [], $metabox_id, $metabox);
+                    $should_wrap = in_array($metabox_id, $forced_wrap_metaboxes, true);
+                    
+                    // If not forced, use automatic detection
+                    if (!$should_wrap) {
+                        $should_wrap = $this->shouldWrapMetabox($metabox, $term);
+                    }
+                    
+                    if ($should_wrap) {
+                        // Store original callback
+                        $original_callback = $metabox['callback'];
+                        
+                        // Create a wrapper callback that creates a mock post from the term
+                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['callback'] = 
+                            [$this, 'wrapMetaboxCallback'];
+                        
+                        // Store original callback and term in metabox args for the wrapper
+                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['args']['_original_callback'] = $original_callback;
+                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['args']['_term_object'] = $term;
+                        
+                        $wrapped_metaboxes[] = $metabox_id . ' (' . 
+                            (is_array($original_callback) ? 
+                                (is_object($original_callback[0]) ? get_class($original_callback[0]) : $original_callback[0]) . '::' . $original_callback[1] :
+                                $original_callback) . ')';
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Automatically determine if a metabox should be wrapped using reflection and type checking
+     * 
+     * @param array $metabox The metabox configuration
+     * @param WP_Term $term The term object
+     * @return bool Whether the metabox should be wrapped
+     */
+    private function shouldWrapMetabox($metabox, $term) {
+        if (!isset($metabox['callback']) || !is_callable($metabox['callback'])) {
+            return false;
+        }
+        
+        try {
+            // Use reflection to check the callback's parameter types
+            if (is_array($metabox['callback'])) {
+                $reflection = new \ReflectionMethod($metabox['callback'][0], $metabox['callback'][1]);
+            } else {
+                $reflection = new \ReflectionFunction($metabox['callback']);
+            }
+            
+            $parameters = $reflection->getParameters();
+            
+            // Check the first parameter (the object parameter)
+            if (!empty($parameters)) {
+                $first_param = $parameters[0];
+                
+                // Check if the parameter has a type declaration
+                if ($first_param->hasType()) {
+                    $type = $first_param->getType();
+                    
+                    // Handle different PHP versions and type objects
+                    $type_name = '';
+                    if (method_exists($type, 'getName')) {
+                        $type_name = $type->getName();
+                    } elseif (method_exists($type, '__toString')) {
+                        $type_name = (string) $type;
+                    }
+                    
+                    // Handle union types (PHP 8+)
+                    if (method_exists($type, 'getTypes')) {
+                        $types = $type->getTypes();
+                        foreach ($types as $single_type) {
+                            $single_type_name = method_exists($single_type, 'getName') 
+                                ? $single_type->getName() 
+                                : (string) $single_type;
+                            if ($single_type_name === 'WP_Post') {
+                                return true;
+                            }
+                        }
+                    } elseif ($type_name === 'WP_Post') {
+                        return true;
+                    }
+                }
+                
+                // Check parameter name patterns that suggest it expects a post
+                $param_name = $first_param->getName();
+                if (in_array($param_name, ['post', 'the_post', 'post_obj', 'wp_post'], true)) {
+                    return true;
+                }
+            }
+            
+        } catch (\Exception $e) {
+            // If reflection fails, err on the side of caution and wrap it
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Wrapper callback for incompatible metaboxes that creates a mock post from term data
+     * 
+     * @param mixed $object The object passed to the metabox (will be a term)
+     * @param array $box The metabox configuration
+     */
+    public function wrapMetaboxCallback($object, $box) {
+        if (!isset($box['args']['_original_callback']) || !isset($box['args']['_term_object'])) {
+            return;
+        }
+        
+        $original_callback = $box['args']['_original_callback'];
+        $term = $box['args']['_term_object'];
+        
+        // Create a mock post object from the term inline
+        $post_data = [
+            'ID' => $term->term_id,
+            'post_author' => get_current_user_id(),
+            'post_date' => current_time('mysql'),
+            'post_date_gmt' => current_time('mysql', 1),
+            'post_content' => $term->description ?: '',
+            'post_title' => $term->name,
+            'post_excerpt' => '',
+            'post_status' => 'publish',
+            'comment_status' => 'closed',
+            'ping_status' => 'closed',
+            'post_password' => '',
+            'post_name' => $term->slug,
+            'to_ping' => '',
+            'pinged' => '',
+            'post_modified' => current_time('mysql'),
+            'post_modified_gmt' => current_time('mysql', 1),
+            'post_content_filtered' => '',
+            'post_parent' => $term->parent ?: 0,
+            'guid' => get_term_link($term),
+            'menu_order' => 0,
+            'post_type' => 'product', // Assume product for WooCommerce compatibility
+            'post_mime_type' => '',
+            'comment_count' => 0,
+            'filter' => 'raw',
+        ];
+        
+        $mock_post = new \WP_Post((object) $post_data);
+        
+        // Call the original callback with the mock post
+        try {
+            if (is_callable($original_callback)) {
+                call_user_func($original_callback, $mock_post, $box);
+            }
+        } catch (\Exception $e) {
+            // Log the error but don't break the page
+            echo '<div class="notice notice-warning"><p>Metabox compatibility issue: ' . esc_html($e->getMessage()) . '</p></div>';
+        }
     }
 
     public function actScriptsWP()
