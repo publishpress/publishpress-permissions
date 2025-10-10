@@ -504,10 +504,14 @@ class AgentsDynamicUI
 
     private function registerAjaxScripts($agent_type, $id_sfx, $context = '', $agent_id = 0, $args = [])
     {
-        global $wp_scripts;
+        global $pagenow, $wp_scripts;
 
         // Only load Select2 assets on the presspermit admin page or not registered
-        if (!wp_script_is('select2', 'registered') || false !== strpos(presspermitPluginPage(), 'presspermit')) {
+        // Always load Select2 assets on term.php page, or if not registered, or on presspermit admin pages
+        if (!wp_script_is('select2', 'registered') 
+            || false !== strpos(presspermitPluginPage(), 'presspermit')
+            || in_array($pagenow, ['term.php', 'edit-tags.php'], true)
+        ) {
             wp_enqueue_style('presspermit-select2-css', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/css/select2.min.css", array(), PRESSPERMIT_VERSION, 'screen');
             wp_enqueue_script('presspermit-select2-js', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/js/select2.full.min.js", ['jquery'], PRESSPERMIT_VERSION);
         }
