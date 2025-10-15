@@ -12,7 +12,7 @@ class SettingsTabAdvanced
         // if disabled, will show only available option will be "enable"
         $this->enabled = presspermit()->getOption('advanced_options');
 
-        add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 6);
+        add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 95);
         add_filter('presspermit_section_captions', [$this, 'sectionCaptions']);
         add_filter('presspermit_option_captions', [$this, 'optionCaptions']);
         add_filter('presspermit_option_sections', [$this, 'optionSections']);
@@ -220,6 +220,12 @@ class SettingsTabAdvanced
             <tr>
                 <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
                 <td>
+                    <div>
+                        <?php
+                        $hint = esc_html__('note: Plugin settings and configuration data will be deleted, but only after the last copy of Permissions / Permissions Pro is deleted.', 'press-permit-core');
+                        $ui->optionCheckbox('delete_settings_on_uninstall', $tab, $section, $hint);
+                        ?>
+                    </div>
                     <?php
                     $hint = '';
                     $ui->optionCheckbox('advanced_options', $tab, $section, $hint);
@@ -295,13 +301,6 @@ class SettingsTabAdvanced
                         </script>
 
                     <?php endif;?>
-
-                    <div>
-                        <?php
-                        $hint = esc_html__('note: Plugin settings and configuration data will be deleted, but only after the last copy of Permissions / Permissions Pro is deleted.', 'press-permit-core');
-                        $ui->optionCheckbox('delete_settings_on_uninstall', $tab, $section, $hint);
-                        ?>
-                    </div>
 
                     <?php
                     do_action('presspermit_options_ui_insertion', $tab, $section, $ui);
