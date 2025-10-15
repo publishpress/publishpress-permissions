@@ -9,6 +9,10 @@ jQuery(document).ready(function ($) {
         $('.pp-options-wrapper > div').hide();
         var panel = $(this).find('a').first().attr('href');
         $(panel).show();
+        
+        // Update the hidden tab field to maintain current tab after form submission
+        var tabName = panel.replace('#pp-', '');
+        $('input[name="pp_tab"]').val(tabName);
     });
 
     // todo: pass img url variable, title
