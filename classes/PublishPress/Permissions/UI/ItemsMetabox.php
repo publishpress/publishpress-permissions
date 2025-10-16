@@ -275,9 +275,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
             ]);
             ?>
 
-            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all<?php
-            if ('all' == $current_tab) echo ' tabs-panel-active'; else echo ' tabs-panel-inactive';
-            ?>">
+            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all <?php if ('all' == $current_tab) echo ' tabs-panel-active'; else echo ' tabs-panel-inactive'; ?>">
 
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
@@ -465,9 +463,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     </a></li>
             </ul>
 
-            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all<?php
-            echo('all' == $current_tab ? ' tabs-panel-active' : ' tabs-panel-inactive');
-            ?>">
+            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all <?php echo('all' == $current_tab ? ' tabs-panel-active' : ' tabs-panel-inactive'); ?>">
 
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
@@ -619,8 +615,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         $walker = new ItemsMetabox($db_fields);
 
-        if (!in_array($current_tab, ['all', 'most-used', 'search'])) {
-            $current_tab = 'most-used';
+        if (!in_array($current_tab, ['all', 'search'])) {
+            $current_tab = 'all';
         }
 
         if (!PWP::empty_REQUEST('quick-search-taxonomy-' . $taxonomy_name)) {
@@ -643,14 +639,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
         ?>">
 
             <ul id="taxonomy-<?php echo esc_attr($taxonomy_name); ?>-tabs" class="taxonomy-tabs add-menu-item-tabs">
-                <li <?php if ('most-used' == $current_tab) echo ' class="tabs"'; ?>>
-                    <a class="nav-tab-link" href="<?php
-                    if ($nav_menu_selected_id) {
-                        echo esc_url(add_query_arg($taxonomy_name . '-tab', 'most-used', remove_query_arg($removed_args)));
-                    }
-                    ?>#tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-pop"><?php esc_html_e('Most Used'); ?>
-                    </a></li>
-
                 <li <?php if ('all' == $current_tab) echo ' class="tabs"'; ?>>
                     <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
                         echo esc_url(add_query_arg($taxonomy_name . '-tab', 'all', remove_query_arg($removed_args)));
@@ -666,23 +654,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     </a></li>
             </ul>
 
-            <div id="tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-pop" class="tabs-panel <?php
-            if ('most-used' == $current_tab) echo 'tabs-panel-active'; else echo 'tabs-panel-inactive';
-            ?>">
-
-                <ul id="<?php echo esc_attr($taxonomy_name); ?>checklist-pop" class="categorychecklist form-no-clear">
-                    <?php
-                    $popular_terms = get_terms($taxonomy_name, ['orderby' => 'count', 'order' => 'DESC', 'number' => 10, 'hierarchical' => false]);
-                    $args['walker'] = $walker;
-                    echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], $popular_terms), 0, (object)$args);
-                    ?>
-                </ul>
-
-            </div><!-- /.tabs-panel -->
-
-            <div id="tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-all" class="tabs-panel tabs-panel-view-all<?php
-            if ('all' == $current_tab) echo 'tabs-panel-active'; else echo ' tabs-panel-inactive';
-            ?>">
+            <div id="tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-all" class="tabs-panel tabs-panel-view-all <?php if ('all' == $current_tab) echo 'tabs-panel-active'; else echo ' tabs-panel-inactive'; ?>">
 
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
