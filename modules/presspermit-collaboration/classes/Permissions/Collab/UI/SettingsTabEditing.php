@@ -29,7 +29,6 @@ class SettingsTabEditing
         $new_editing = [
             'post_editor'              => esc_html__('Editor Options', 'press-permit-core'),
             'content_management'       => esc_html__('Posts / Pages Listing', 'press-permit-core'),
-            'limited_editing_elements' => esc_html__('Limited Editing Elements', 'press-permit-core'),
         ];
 
         $new_media_library = [
@@ -45,8 +44,6 @@ class SettingsTabEditing
     function optionCaptions($captions)
     {
         $opt = [
-            'editor_hide_html_ids'                   => esc_html__('Limited Editing Elements', 'press-permit-core'),
-            'editor_ids_sitewide_requirement'        => esc_html__('Specified element IDs also require the following site-wide Role: ', 'press-permit-core'),
             'admin_others_attached_files'            => esc_html__("List other users' files if attached to a editable post", 'press-permit-core'),
             'admin_others_attached_to_readable'      => esc_html__("List other users' files if attached to a viewable post", 'press-permit-core'),
             'admin_others_unattached_files'          => esc_html__("List other users' unattached files by default", 'press-permit-core'),
@@ -68,11 +65,8 @@ class SettingsTabEditing
             'content_management'  => ['list_others_uneditable_posts'],
         ];
 
-        if (!PWP::isBlockEditorActive()) {
-            if (presspermit()->getOption('advanced_options')) {
-                $new_editing['limited_editing_elements'] = ['editor_hide_html_ids', 'editor_ids_sitewide_requirement'];
-            }
-        }
+        // Note: Limited Editing Elements feature has been moved to PublishPress Capabilities > Editor Features
+        // The feature is no longer available in this settings interface
 
         // Media Library tab
         $new_media_library = [
@@ -206,95 +200,70 @@ class SettingsTabEditing
             </tr>
         <?php endif; // any options accessable in this section
 
-        if (!PWP::isBlockEditorActive()) {
-            $section = 'limited_editing_elements';                            // --- LIMITED EDITING ELEMENTS SECTION ---
-            if (!empty($ui->form_options[$tab][$section])) : ?>
-                <tr>
-                    <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
-                    <td>
-                        <?php if (in_array('editor_hide_html_ids', $ui->form_options[$tab][$section], true)) : ?>
-                            <?php
-                            $option_name = 'editor_hide_html_ids';
-                            $ui->all_options[] = $option_name;
-
-                            $opt_val = $ui->getOption($option_name);
-
-                            // note: 'post:post' otype option is used for all non-page types
-
-                            echo '<div class="agp-vspaced_input">';
-                            echo '<span class="pp-vtight">';
-                            esc_html_e('Edit Form HTML IDs:', 'press-permit-core');
-                            ?>
-                            <label for="<?php echo esc_attr($option_name); ?>">
-                                <input name="<?php echo esc_attr($option_name); ?>" type="text" size="45" style="width: 95%"
-                                    id="<?php echo esc_attr($option_name); ?>" value="<?php echo esc_attr($opt_val); ?>" />
-                            </label>
-                            </span>
-                            <br />
-                            <?php
-                            printf(
-                                esc_html__('%1$s sample IDs:%2$s %3$s', 'press-permit-core'),
-                                "<a href='javascript:void(0)' onclick='jQuery(document).ready(function($){ $('#pp_sample_ids').show(); });'>",
-                                '</a>',
-
-                                '<span id="pp_sample_ids" class="pp-gray" style="display:none">'
-                                    . 'password-span, slugdiv, edit-slug-box, authordiv, commentstatusdiv, trackbacksdiv, postcustom, revisionsdiv, pageparentdiv'
-                                    . '</span>'
-                            );
-                            ?>
-                            </div>
-
-                            <?php
-                            if ($ui->display_hints) {
-                                echo '<div class="pp-subtext">';
-                                SettingsAdmin::echoStr('limited_editing_elements');
-                                echo '</div>';
+        // Add notice about Limited Editing Elements feature relocation
+        if (presspermit()->getOption('advanced_options') && !PWP::isBlockEditorActive()) :
+            $has_existing_settings = presspermit()->getOption('editor_hide_html_ids') || presspermit()->getOption('editor_ids_sitewide_requirement');
+            if ($has_existing_settings) :
+        ?>
+            <tr>
+                <th scope="row"><?php esc_html_e('Limited Editing Elements', 'press-permit-core'); ?></th>
+                <td>
+                    <style>
+                        .pp-notice {
+                            background: #fff;
+                            border: 1px solid #c3c4c7;
+                            border-left-width: 4px;
+                            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+                            margin: 5px 15px 2px;
+                            padding: 1px 12px;
+                            position: relative;
+                        }
+                        .pp-notice.pp-notice-info {
+                            border-left-color: #72aee6;
+                        }
+                        .pp-notice p {
+                            margin: 0.5em 0;
+                            padding: 2px;
+                        }
+                        .pp-notice code {
+                            background: #f0f0f1;
+                            color: #50575e;
+                            font-family: Consolas, Monaco, monospace;
+                            font-size: 13px;
+                            padding: 2px 4px;
+                        }
+                    </style>
+                    <div class="pp-notice pp-notice-info">
+                        <p><strong><?php esc_html_e('Feature Moved', 'press-permit-core'); ?></strong></p>
+                        <p>
+                            <?php 
+                            if (defined('PUBLISHPRESS_CAPS_VERSION')) {
+                                $capabilities_url = admin_url('admin.php?page=pp-capabilities-editor-features');
+                                printf(
+                                    esc_html__('The Limited Editing Elements feature has been moved to %1$sCapabilities > Editor Features > Element IDs%2$s for better organization and enhanced functionality.', 'press-permit-core'),
+                                    '<a href="' . esc_url($capabilities_url) . '">',
+                                    '</a>'
+                                );
+                            } else {
+                                printf(
+                                    esc_html__('The Limited Editing Elements feature has been moved to the PublishPress Capabilities plugin. Please install %1$sPublishPress Capabilities%2$s to access this functionality.', 'press-permit-core'),
+                                    '<a href="' . esc_url(admin_url('plugin-install.php?tab=plugin-information&plugin=capability-manager-enhanced')) . '" target="_blank">',
+                                    '</a>'
+                                );
                             }
                             ?>
-                            <br />
+                        </p>
+                        <?php if (presspermit()->getOption('editor_hide_html_ids')) : ?>
+                            <p>
+                                <strong><?php esc_html_e('Current Settings:', 'press-permit-core'); ?></strong><br>
+                                <?php esc_html_e('HTML Element IDs: ', 'press-permit-core'); ?>
+                                <code><?php echo esc_html(presspermit()->getOption('editor_hide_html_ids')); ?></code>
+                            </p>
                         <?php endif; ?>
-
-                        <?php if (in_array('editor_ids_sitewide_requirement', $ui->form_options[$tab][$section], true)) :
-                            $id = 'editor_ids_sitewide_requirement';
-                            $ui->all_options[] = $id;
-
-                            // force setting and corresponding keys to string, to avoid quirks with integer keys
-                            if (!$current_setting = strval($ui->getOption($id)))
-                                $current_setting = '0';
-                        ?>
-                            <div>
-                                <?php
-                                esc_html_e('Specified element IDs also require the following site-wide Role:', 'press-permit-core');
-
-                                $admin_caption = (!empty($custom_content_admin_cap)) ? esc_html__('Content Administrator', 'press-permit-core') : PWP::__wp('Administrator');
-
-                                $captions = [
-                                    '0' => esc_html__('no requirement', 'press-permit-core'),
-                                    '1' => esc_html__('Contributor / Author / Editor', 'press-permit-core'),
-                                    'author' => esc_html__('Author / Editor', 'press-permit-core'),
-                                    'editor' => PWP::__wp('Editor'),
-                                    'admin_content' => esc_html__('Content Administrator', 'press-permit-core'),
-                                    'admin_user' => esc_html__('User Administrator', 'press-permit-core'),
-                                    'admin_option' => esc_html__('Option Administrator', 'press-permit-core')
-                                ];
-
-                                foreach ($captions as $key => $value) {
-                                    $key = strval($key);
-                                    echo "<div style='margin: 0 0 0.5em 2em;'><label for='" . esc_attr("{$id}_{$key}") . "'>";
-                                    $checked = ($current_setting === $key) ? ' checked ' : '';
-
-                                    echo "<input name='" . esc_attr($id) . "' type='radio' id='" . esc_attr("{$id}_{$key}") . "' value='" . esc_attr($key) . "' " . esc_attr($checked) . " /> ";
-                                    echo esc_html($value);
-                                    echo '</label></div>';
-                                }
-                                ?>
-                            </div>
-                        <?php endif; ?>
-
-                    </td>
-                </tr>
-            <?php endif; // any options accessable in this section
-        }
+                    </div>
+                </td>
+            </tr>
+        <?php endif; endif;
     }
 
     // i need move code media_library from optionsUI to optionsUIMediaLibrary

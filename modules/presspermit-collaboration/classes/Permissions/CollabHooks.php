@@ -169,8 +169,11 @@ class CollabHooks
             'limit_user_edit_by_level' => 1,
             'add_author_pages' => 0,
             'publish_author_pages' => 0,
+            
+            // Deprecated: Limited Editing Elements feature moved to PublishPress Capabilities > Editor Features
             'editor_hide_html_ids' => '',
             'editor_ids_sitewide_requirement' => 0,
+            
             'force_taxonomy_cols' => 0,
             'default_privacy' => [],
             'force_default_privacy' => [],

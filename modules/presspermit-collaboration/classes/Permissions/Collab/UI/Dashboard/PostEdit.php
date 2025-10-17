@@ -114,9 +114,29 @@ class PostEdit
         }
 
         // For this data source, is there any html content to hide from non-administrators?
+        // Note: Limited Editing Elements feature has been moved to PublishPress Capabilities > Editor Features
         if ($hide_ids = presspermit()->getOption('editor_hide_html_ids')) {
-            require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/Dashboard/PostEditCustomize.php');
-            PostEditCustomize::hide_admin_divs($hide_ids, $object_type);
+            // Feature deprecated - redirect users to PublishPress Capabilities
+            add_action('admin_notices', function() {
+                if (defined('PUBLISHPRESS_CAPS_VERSION')) {
+                    $capabilities_url = admin_url('admin.php?page=pp-capabilities-editor-features');
+                    $message = sprintf(
+                        __('Limited Editing Elements feature has moved to <a href="%s">Capabilities > Editor Features</a>.', 'press-permit-core'),
+                        esc_url($capabilities_url)
+                    );
+                } else {
+                    $install_url = admin_url('plugin-install.php?tab=plugin-information&plugin=capability-manager-enhanced');
+                    $message = sprintf(
+                        __('Limited Editing Elements feature requires <a href="%s" target="_blank">PublishPress Capabilities</a> plugin.', 'press-permit-core'),
+                        esc_url($install_url)
+                    );
+                }
+                echo '<div class="notice notice-warning"><p>' . wp_kses_post($message) . '</p></div>';
+            });
+            
+            // Legacy feature is deprecated, do not execute
+            // require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/Dashboard/PostEditCustomize.php');
+            // PostEditCustomize::hide_admin_divs($hide_ids, $object_type);
         }
     }
 
