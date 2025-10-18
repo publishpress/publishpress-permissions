@@ -29,6 +29,7 @@ class SettingsTabEditing
         $new_editing = [
             'post_editor'              => esc_html__('Editor Options', 'press-permit-core'),
             'content_management'       => esc_html__('Posts / Pages Listing', 'press-permit-core'),
+            'statuses'                 => esc_html__('Statuses', 'press-permit-core'),
         ];
 
         $new_media_library = [
@@ -52,6 +53,7 @@ class SettingsTabEditing
             'own_attachments_always_editable'        => esc_html__('Users can always edit their own files', 'press-permit-core'),
             'default_privacy'                        => esc_html__('Default visibility for new posts                               : ', 'press-permit-core'),
             'list_others_uneditable_posts'           => esc_html__('List other user\'s uneditable posts', 'press-permit-core'),
+            'enable_status_control_module'           => esc_html__('Enable Status Control Module', 'press-permit-core'),
         ];
 
         return array_merge($captions, $opt);
@@ -63,6 +65,7 @@ class SettingsTabEditing
         $new_editing = [
             'post_editor'         => ['default_privacy', 'force_default_privacy'],
             'content_management'  => ['list_others_uneditable_posts'],
+            'statuses'            => ['enable_status_control_module'],
         ];
 
         // Note: Limited Editing Elements feature has been moved to PublishPress Capabilities > Editor Features
@@ -264,6 +267,91 @@ class SettingsTabEditing
                 </td>
             </tr>
         <?php endif; endif;
+
+        $section = 'statuses';                          // --- STATUSES SECTION ---
+        if (!empty($ui->form_options[$tab][$section])) :
+        ?>
+            <tr>
+                <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
+                <td>
+                    <?php
+                    // Check if status-control module is currently active
+                    $status_control_active = presspermit()->moduleActive('status-control');
+                    
+                    // Get deactivated modules list
+                    $deactivated_modules = (array) presspermit()->getOption('deactivated_modules');
+                    $is_deactivated = !empty($deactivated_modules['presspermit-status-control']);
+                    
+                    // The checkbox should be checked if the module is active (not deactivated)
+                    $checked = $status_control_active && !$is_deactivated ? 'checked="checked"' : '';
+                    
+                    // If the module is currently active, we use deactivated_modules to turn it OFF
+                    // If the module is currently inactive, we use active_modules to turn it ON
+                    $input_name = ($status_control_active && !$is_deactivated) 
+                        ? 'presspermit_deactivated_modules[presspermit-status-control]' 
+                        : 'presspermit_active_modules[presspermit-status-control]';
+                    ?>
+                    
+                    <label for="enable_status_control_module">
+                        <input type="checkbox" 
+                               id="enable_status_control_module" 
+                               name="<?php echo esc_attr($input_name); ?>" 
+                               value="1" 
+                               <?php echo $checked; ?> />
+                        <?php echo esc_html($ui->option_captions['enable_status_control_module']); ?>
+                    </label>
+                    
+                    <p class="description">
+                        <?php esc_html_e('Enable or disable the Status Control module. This module provides advanced post status functionality and workflow management.', 'press-permit-core'); ?>
+                    </p>
+
+                    <?php if ($status_control_active): ?>
+                        <p class="pp-subtext" style="color: #46b450; font-weight: 500;">
+                            ✓ <?php esc_html_e('Status Control module is currently active', 'press-permit-core'); ?>
+                        </p>
+                    <?php else: ?>
+                        <p class="pp-subtext" style="color: #dc3232; font-weight: 500;">
+                            ✗ <?php esc_html_e('Status Control module is currently inactive', 'press-permit-core'); ?>
+                        </p>
+                    <?php endif; ?>
+
+                    <script type="text/javascript">
+                    /* <![CDATA[ */
+                    jQuery(document).ready(function($) {
+                        $('#enable_status_control_module').on('change', function() {
+                            var $checkbox = $(this);
+                            var $row = $checkbox.closest('tr');
+                            var $statusText = $row.find('.pp-subtext');
+                            var currentlyActive = <?php echo $status_control_active ? 'true' : 'false'; ?>;
+                            
+                            if ($checkbox.is(':checked')) {
+                                if (!currentlyActive) {
+                                    // Module is inactive and will be activated
+                                    $checkbox.attr('name', 'presspermit_active_modules[presspermit-status-control]');
+                                    $statusText.html('✓ <?php esc_html_e('Status Control module will be activated', 'press-permit-core'); ?>').css('color', '#46b450');
+                                } else {
+                                    // Module is active and will remain active (remove from deactivated)
+                                    $checkbox.removeAttr('name');
+                                    $statusText.html('✓ <?php esc_html_e('Status Control module is currently active', 'press-permit-core'); ?>').css('color', '#46b450');
+                                }
+                            } else {
+                                if (currentlyActive) {
+                                    // Module is active and will be deactivated
+                                    $checkbox.attr('name', 'presspermit_deactivated_modules[presspermit-status-control]');
+                                    $statusText.html('✗ <?php esc_html_e('Status Control module will be deactivated', 'press-permit-core'); ?>').css('color', '#dc3232');
+                                } else {
+                                    // Module is inactive and will remain inactive
+                                    $checkbox.removeAttr('name');
+                                    $statusText.html('✗ <?php esc_html_e('Status Control module is currently inactive', 'press-permit-core'); ?>').css('color', '#dc3232');
+                                }
+                            }
+                        });
+                    });
+                    /* ]]> */
+                    </script>
+                </td>
+            </tr>
+        <?php endif; // any options accessable in this section
     }
 
     // i need move code media_library from optionsUI to optionsUIMediaLibrary
@@ -312,6 +400,6 @@ class SettingsTabEditing
                     ?>
                 </td>
             </tr>
-        <?php endif; // any options accessable in this section// --- MEDIA LIBRARY SECTION ---
+        <?php endif; // any options accessable in this section
     }
 }
