@@ -140,7 +140,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         $walker = new ItemsMetabox($db_fields);
 
-        if (!in_array($current_tab, ['most-recent', 'search'])) {
+        if (!in_array($current_tab, ['search'])) {
             $current_tab = 'all';
         }
 
@@ -170,13 +170,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     }
                     ?>#<?php echo esc_attr($post_type_name); ?>-all"><?php esc_html_e('View All'); ?>
                     </a></li>
-                
-                <li <?php if ('most-recent' == $current_tab) echo ' class="tabs"'; ?>>
-                    <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
-                        echo esc_url(add_query_arg($post_type_name . '-tab', 'most-recent', remove_query_arg($removed_args)));
-                    }
-                    ?>#tabs-panel-posttype-<?php echo esc_attr($post_type_name); ?>-most-recent"><?php esc_html_e('Most Recent'); ?>
-                    </a></li>
 
                 <li <?php if ('search' == $current_tab) echo ' class="tabs"'; ?>>
                     <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
@@ -186,24 +179,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     </a></li>
 
             </ul>
-
-            <div id="tabs-panel-posttype-<?php echo esc_attr($post_type_name); ?>-most-recent" class="tabs-panel <?php
-            if ('most-recent' == $current_tab) echo 'tabs-panel-active'; else echo 'tabs-panel-inactive';
-            ?>">
-                <ul id="<?php echo esc_attr($post_type_name); ?>checklist-most-recent" class="categorychecklist form-no-clear">
-
-                    <?php
-                    $recent_args = array_merge(
-                        $args, 
-                        ['orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => 15]  // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
-                    );
-
-                    $most_recent = $get_posts->query($recent_args);
-                    $args['walker'] = $walker;
-                    echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], $most_recent), 0, (object)$args);
-                    ?>
-                </ul>
-            </div><!-- /.tabs-panel -->
 
             <div class="tabs-panel <?php
             if ('search' == $current_tab) echo 'tabs-panel-active'; else echo 'tabs-panel-inactive';
@@ -415,7 +390,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
         $db_fields = ['parent' => 'post_parent', 'id' => 'ID'];
         $walker = new ItemsMetabox($db_fields);
 
-        if (!in_array($current_tab, ['most-recent', 'search'])) {
+        if (!in_array($current_tab, ['search'])) {
             $current_tab = 'all';
         }
 
@@ -453,13 +428,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
                         echo esc_url(add_query_arg($post_type_name . '-tab', 'all', remove_query_arg($removed_args)));
                     }
                     ?>#<?php echo esc_attr($post_type_name); ?>-all"><?php esc_html_e('View All'); ?>
-                    </a></li>
-
-                <li <?php if ('most-recent' == $current_tab) echo ' class="tabs"';?>>
-                    <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
-                        echo esc_url(add_query_arg($post_type_name . '-tab', 'most-recent', remove_query_arg($removed_args)));
-                    }
-                    ?>#tabs-panel-posttype-<?php echo esc_attr($post_type_name); ?>-most-recent"><?php esc_html_e('Most Recent'); ?>
                     </a></li>
             </ul>
 
