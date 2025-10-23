@@ -35,7 +35,80 @@ class AgentsChecklist
         } else {
             $agent_count = count($item_assignments);
         }
-
+?>
+<style>
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+.checkbox-item:hover {
+  background-color: #f5f7ff;
+}
+.checkbox-item.selected {
+  background-color: #e0e7ff;
+  border-left: 3px solid #4f46e5;
+}
+.checkbox-input {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+.checkbox-custom {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border: 2px solid #e2e8f0;
+  border-radius: 4px;
+  margin-right: 1rem;
+  transition: all 0.2s ease;
+}
+.checkbox-input:checked ~ .checkbox-custom {
+  background-color: #4f46e5;
+  border-color: #4f46e5;
+}
+.checkbox-input:focus ~ .checkbox-custom {
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+}
+.checkbox-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.checkbox-input:checked ~ .checkbox-custom::after {
+  display: block;
+}
+.checkbox-label {
+  font-weight: 500;
+  flex-grow: 1;
+  padding-right: 1rem;
+}
+@media (max-width: 768px) {
+  .item-actions {
+    opacity: 1;
+  }
+}
+</style>
+<?php
         echo "<div>";
         echo "<ul class='pp-list_horiz'><li>";
         if ($show_subset_caption) {
@@ -130,33 +203,33 @@ class AgentsChecklist
 
             if (!empty($agent->metagroup_id)) {
                 $display_name = (isset($agent->display_name)) ? $agent->display_name : '';
-
                 $li_title =  \PublishPress\Permissions\DB\Groups::getMetagroupDescript($agent->metagroup_type, $agent->metagroup_id, $display_name);
-            } elseif (isset($full_captions[$id]))
+            } elseif (isset($full_captions[$id])) {
                 $li_title = $full_captions[$id];
-            else
+            } else {
                 $li_title = $captions[$id];
+            }
 
-            $checked = (isset($item_assignments[$id])) ? ' checked ' : '';
-            $disabled = ($locked_ids && in_array($id, $locked_ids)) ? " disabled " : '';
+            $checked = (isset($item_assignments[$id])) ? 'checked' : '';
+            $disabled = ($locked_ids && in_array($id, $locked_ids)) ? 'disabled' : '';
+            $selected = $checked ? 'selected' : '';
 
             echo "<li title='" . esc_attr($li_title) . "'>";
-
-            if ($hide_checkboxes)
-                echo '&bull; ';
-            else
-                echo "<input type='checkbox' name='" . esc_attr($name_attrib) . "[]'" . esc_attr($disabled) . esc_attr($checked) . " value='" . esc_attr($id) . "' id='r" . esc_attr("{$exec_count}_{$id}") . "' />";
-
-            echo "<label for='" . esc_attr("r{$exec_count}_{$id}"). "'>";
-            echo ' ' . esc_html($captions[$id]);
-            echo '</label>';
-
-            if ($edit_link_base && presspermit()->groups()->userCan('pp_edit_groups', $id, $agent_type))
-                echo ' <a href="' . esc_url($edit_link_base . $id) . '" target="_blank" title="' . esc_attr($edit_title_text) . '">'
-                    . esc_html($edit_caption) . '</a>';
-
+            if ($hide_checkboxes) {
+                echo '&bull; ' . esc_html($captions[$id]);
+            } else {
+                // Modern checkbox markup
+                echo '<label class="checkbox-item ' . esc_attr($selected) . '">';
+                echo '<input type="checkbox" class="checkbox-input" name="' . esc_attr($name_attrib) . '[]" value="' . esc_attr($id) . '" id="r' . esc_attr("{$exec_count}_{$id}") . '" ' . $checked . ' ' . $disabled . ' />';
+                echo '<span class="checkbox-custom"></span>';
+                echo '<span class="checkbox-label">' . esc_html($captions[$id]) . '</span>';
+                echo '</label>';
+                if ($edit_link_base && presspermit()->groups()->userCan('pp_edit_groups', $id, $agent_type)) {
+                    echo ' <a href="' . esc_url($edit_link_base . $id) . '" target="_blank" title="' . esc_attr($edit_title_text) . '">' . esc_html($edit_caption) . '</a>';
+                }
+            }
             echo '</li>';
-        } //foreach agent
+        }
 
         echo "<li></li></ul>"; // prevent invalid markup if no other li's
 
