@@ -154,27 +154,25 @@ class SettingsTabAdvanced
     {
         $new = [
             'enable' => ['advanced_options', 'delete_settings_on_uninstall'],
-            'post_editor'       => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap'],
-            'permissions'       => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
-            'user_management'   => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages'],
-            'front_end'         => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
-            'role_integration'  =>  ['pattern_roles_include_generic_rolecaps', 'dynamic_wp_roles'],
-            'nav_menu_management' => ['admin_nav_menu_partial_editing', 'admin_nav_menu_lock_custom'],
-            'misc'              => ['force_taxonomy_cols'],
-            'constants'         => [],
         ];
 
 
         // Advanced tab (populated here because they do not apply if Editing Permissions module is disabled)
         if ($this->enabled) {
             $additional = [
-                'user_management'   =>  ['limit_user_edit_by_level', 'user_permissions'],
-                'misc'              =>  ['users_bulk_groups', 'user_search_by_role', 'display_hints', 'display_extension_hints'],
-                'constants'         =>  ['list_all_constants'],
+                'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap'],
+                'permissions'         => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
+                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_by_level', 'user_permissions'],
+                'front_end'           => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
+                'role_integration'    => ['pattern_roles_include_generic_rolecaps', 'dynamic_wp_roles'],
+                'nav_menu_management' => ['admin_nav_menu_partial_editing', 'admin_nav_menu_lock_custom'],
+                'misc'                => ['force_taxonomy_cols', 'users_bulk_groups', 'user_search_by_role', 'display_hints', 'display_extension_hints'],
+                'constants'           => ['list_all_constants'],
             ];
 
             foreach ($additional as $section => $options) {
-                $new[$section] = array_merge($new[$section], $additional[$section]);
+                $old_options = $new[$section] ?? [];
+                $new[$section] = array_merge($old_options, $additional[$section]);
             }
         }
 
@@ -534,7 +532,7 @@ class SettingsTabAdvanced
         <?php endif; // any options accessable in this section
 
         $section = 'role_integration'; // --- ROLE INTEGRATION SECTION ---
-        ?>
+        if (!empty($ui->form_options[$tab][$section])) : ?>
             <tr>
                 <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
                 <td>
@@ -562,7 +560,7 @@ class SettingsTabAdvanced
                     </div>
                 </td>
             </tr>
-        <?php
+        <?php endif; // any options accessable in this section
 
         $section = 'misc'; // --- MISC SECTION ---
         if (!empty($ui->form_options[$tab][$section])) : ?>
@@ -583,7 +581,7 @@ class SettingsTabAdvanced
         <?php endif; // any options accessable in this section
 
         $section = 'capabilities'; // --- PP CAPABILITIES SECTION ---
-        ?>
+        if (!empty($ui->form_options[$tab][$section])) : ?>
         <tr>
             <td scope="row" colspan="2"><span
                     style="font-weight:bold"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></span>
@@ -610,6 +608,7 @@ class SettingsTabAdvanced
             </td>
         </tr>
         <?php
+        endif; // any options accessable in this section
 
         $section = 'constants'; // --- CONSTANTS SECTION ---
 
@@ -631,7 +630,7 @@ class SettingsTabAdvanced
             }
         }
 
-        if ($this->enabled || $defined_constant_types) :?>
+        if ($this->enabled && $defined_constant_types) :?>
             <tr>
                 <td scope="row" colspan="2">
                     <span style="font-weight:bold"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></span>
@@ -836,7 +835,7 @@ class SettingsTabAdvanced
         <?php
         }
 
-        ?>
+        if ($this->enabled) : ?>
         <tr>
             <th></th>
             <td>
@@ -851,6 +850,6 @@ class SettingsTabAdvanced
 
             </td>
         </tr>
-<?php
+        <?php endif;
     }
 }
