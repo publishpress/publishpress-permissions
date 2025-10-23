@@ -191,7 +191,7 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
         global $pagenow;
 
         if (is_admin() && isset($pagenow) && ('customize.php' == $pagenow)
-        || (is_admin() && isset($pagenow) && ('edit.php' == $pagenow) && !empty($_REQUEST['post_type']) && ('give_forms' == $_REQUEST['post_type']))
+        || (is_admin() && isset($pagenow) && ('edit.php' == $pagenow) && !empty($_REQUEST['post_type']) && ('give_forms' == sanitize_key($_REQUEST['post_type']))) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         ) {
             return;
         }

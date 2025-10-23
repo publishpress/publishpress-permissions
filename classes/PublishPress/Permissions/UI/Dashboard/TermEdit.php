@@ -467,12 +467,11 @@ class TermEdit
                         $original_callback = $metabox['callback'];
                         
                         // Create a wrapper callback that creates a mock post from the term
-                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['callback'] = 
-                            [$this, 'wrapMetaboxCallback'];
+                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['callback'] = [$this, 'wrapMetaboxCallback']; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
                         
                         // Store original callback and term in metabox args for the wrapper
-                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['args']['_original_callback'] = $original_callback;
-                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['args']['_term_object'] = $term;
+                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['args']['_original_callback'] = $original_callback; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+                        $wp_meta_boxes[$screen_id][$context][$priority][$metabox_id]['args']['_term_object'] = $term; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
                         
                         $wrapped_metaboxes[] = $metabox_id . ' (' . 
                             (is_array($original_callback) ? 

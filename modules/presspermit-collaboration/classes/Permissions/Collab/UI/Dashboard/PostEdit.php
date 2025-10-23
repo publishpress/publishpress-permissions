@@ -133,10 +133,6 @@ class PostEdit
                 }
                 echo '<div class="notice notice-warning"><p>' . wp_kses_post($message) . '</p></div>';
             });
-            
-            // Legacy feature is deprecated, do not execute
-            // require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/Dashboard/PostEditCustomize.php');
-            // PostEditCustomize::hide_admin_divs($hide_ids, $object_type);
         }
     }
 

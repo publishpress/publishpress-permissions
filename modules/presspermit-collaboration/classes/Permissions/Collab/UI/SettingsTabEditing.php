@@ -297,7 +297,7 @@ class SettingsTabEditing
                                id="enable_status_control_module" 
                                name="<?php echo esc_attr($input_name); ?>" 
                                value="1" 
-                               <?php echo $checked; ?> />
+                               <?php echo esc_attr($checked); ?> />
                         <?php echo esc_html($ui->option_captions['enable_status_control_module']); ?>
                     </label>
                     
