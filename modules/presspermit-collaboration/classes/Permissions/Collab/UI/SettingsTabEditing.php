@@ -65,8 +65,11 @@ class SettingsTabEditing
         $new_editing = [
             'post_editor'         => ['default_privacy', 'force_default_privacy'],
             'content_management'  => ['list_others_uneditable_posts'],
-            'statuses'            => ['enable_status_control_module'],
         ];
+
+        if (presspermit()->isPro()) {
+            $new_editing['statuses'][] = 'enable_status_control_module';
+        }
 
         // Note: Limited Editing Elements feature has been moved to PublishPress Capabilities > Editor Features
         // The feature is no longer available in this settings interface
@@ -297,6 +300,7 @@ class SettingsTabEditing
                                id="enable_status_control_module" 
                                name="<?php echo esc_attr($input_name); ?>" 
                                value="1" 
+                               disabled
                                <?php echo esc_attr($checked); ?> />
                         <?php echo esc_html($ui->option_captions['enable_status_control_module']); ?>
                     </label>
