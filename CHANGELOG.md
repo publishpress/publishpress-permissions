@@ -1,6 +1,20 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+= 4.5.2 – 24 October 2025 =
+* Added: Checkbox options for statuses in the Editing tab to provide more granular control. #1985
+* Added: Skip Module mechanism to selectively disable modules for better performance and flexibility. #1980
+* Added: Limited Editing Elements feature for refined access and editing restrictions. #1984
+* Updated: Removed the “Most Used” tab from the Permissions screen to simplify the interface. #1983
+* Updated: Settings tab now stays active after saving changes, improving workflow. #1982
+* Updated: Moved “Advanced” tab for a more intuitive settings layout. #1979
+* Updated: Renamed “Add Selected” button to “Add Selected Permissions” for clarity. #1975
+* Updated: Spanish, Italian, Brazilian Portuguese, and French translations. #1973, #1974
+* Fixed: Untranslated “None” caption in term selection box on Edit Permissions screen. #1981
+* Fixed: Function errors in `AgentPermissions.php` that affected permission handling. #1962
+* Fixed: Broken metaboxes compatibility issue with WooCommerce Google Product Feed plugin. #1969
+* Fixed: Access failure issue with GiveWP integration. #1964
+
 = 4.5.1 – 1 October 2025 =
 * Added: Added a **User Page Promo tab** to highlight key features. #1926
 * Compat: PublishPress Statuses - list, list_other capabilities were not effective where post editing requires status-specific capabilities
