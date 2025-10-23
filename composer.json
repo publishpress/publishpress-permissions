@@ -47,10 +47,10 @@
     "phpstan/extension-installer": "^1.2"
   },
   "scripts": {
-    "build": "ppbuild build",
-    "build:dir": "ppbuild build-dir",
-    "build:clean": "ppbuild clean",
-    "get:version": "ppbuild version",
+    "build": "pbuild build",
+    "build:dir": "pbuild build-dir",
+    "build:clean": "pbuild clean",
+    "get:version": "pbuild version",
     "gen:mo": "wp i18n make-mo ./languages ./languages --allow-root",
     "gen:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,vendor, --allow-root",
     "check:longpath": "longpath .",
