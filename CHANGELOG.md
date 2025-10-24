@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Updated: Moved “Advanced” tab for a more intuitive settings layout. #1979
 * Updated: Renamed “Add Selected” button to “Add Selected Permissions” for clarity. #1975
 * Updated: Spanish, Italian, Brazilian Portuguese, and French translations. #1973, #1974
+* Updated: Remove User Posts menu #2000
 * Fixed: Untranslated “None” caption in term selection box on Edit Permissions screen. #1981
 * Fixed: Function errors in `AgentPermissions.php` that affected permission handling. #1962
 * Fixed: Broken metaboxes compatibility issue with WooCommerce Google Product Feed plugin. #1969
