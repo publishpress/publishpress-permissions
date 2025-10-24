@@ -103,10 +103,6 @@ class AgentPermissionsUI
             echo "<option value='" . esc_attr($type_obj->name) . "'>" . esc_html($type_obj->labels->singular_name) . '</option>';
         }
 
-        if ($option_any) {
-            echo "<option value='(all)'>" . esc_html__('All Post Types', 'press-permit-core') . '</option>';
-        }
-
         if ($option_na) {
             if (presspermit()->role_defs->direct_roles) {
                 echo "<option value='-1'>" . esc_html__('n/a', 'press-permit-core') . '</option>';
@@ -147,6 +143,12 @@ class AgentPermissionsUI
 
                             if ($is_anon)
                                 unset($type_objects['attachment']);
+
+                            // Remove Term option for anonymous/all metagroups if it was added
+                            if (isset($args['agent']) && !empty($args['agent']->metagroup_id) 
+                                && in_array($args['agent']->metagroup_id, ['wp_anon', 'wp_all'], true)) {
+                                unset($type_objects['_term_']);
+                            }
 
                             self::drawTypeOptions($type_objects, ['option_any' => true]);
                             do_action('presspermit_exception_types_dropdown', $args);

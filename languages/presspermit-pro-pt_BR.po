@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Permissions Pro\n"
-"POT-Creation-Date: 2025-05-05 03:26-0300\n"
-"PO-Revision-Date: 2025-05-05 03:29-0300\n"
+"POT-Creation-Date: 2025-10-01 20:26-0300\n"
+"PO-Revision-Date: 2025-10-01 20:42-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pt_BR\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: presspermit-pro.php\n"
@@ -106,11 +106,7 @@ msgstr "Versão do WordPress: %s"
 msgid "PHP Version: %s"
 msgstr "Versão do PHP: %s"
 
-#: includes-pro/admin-load.php:39
-msgid "Display PublishPress Branding in Admin"
-msgstr "Exibir a marca do PublishPress no painel administrativo"
-
-#: includes-pro/admin-load.php:87
+#: includes-pro/admin-load.php:82
 #, php-format
 msgid ""
 "Should pages with privacy status \"premium\" require set_pages_premium and "
@@ -122,7 +118,7 @@ msgstr ""
 "%1$satribuir uma função de editor de página específica de status%2$s ou "
 "%3$sadicionar as permissões diretamente a uma função%4$s."
 
-#: includes-pro/admin-load.php:115
+#: includes-pro/admin-load.php:110
 #, php-format
 msgid ""
 "Note: Workflow sequence and branching for pre-publication is configured %son "
@@ -131,39 +127,12 @@ msgstr ""
 "Observação: A sequência e a ramificação do fluxo de trabalho para pré-"
 "publicação são configuradas %sem uma tela separada%s"
 
-#: includes-pro/admin-load.php:121
-#, php-format
-msgid ""
-"Note: This generates a post (of selected type) for each current or future "
-"%suser%s in the selected role."
-msgstr ""
-"Observação: Isso gera um post (do tipo selecionado) para cada %susuário%s "
-"atual ou futuro na função selecionada."
-
-#: includes-pro/admin-load.php:126
-#, php-format
-msgid ""
-"Permissions filtering is turned on for the post type: %1$sPermissions > Core "
-"> Filtered Post Types%2$s"
-msgstr ""
-"A filtragem de permissões está ativada para o tipo de post: %1$sPermissões > "
-"Arquvos básicos > Tipos de post filtrados%2$s"
-
-#: includes-pro/admin-load.php:135
-#, php-format
-msgid ""
-"The synchronized role is supplemented with Author capabilities for the post "
-"type: %1$sPermissions > Groups%2$s > [Role Name]"
-msgstr ""
-"A função sincronizada foi complementada com as permissões de autor para o "
-"tipo de post: %1$sPermissões > Grupos%2$s > [Nome da função]"
-
-#: includes-pro/admin-load.php:154
+#: includes-pro/admin-load.php:125
 #, php-format
 msgid "Additional settings provided by the %s module."
 msgstr "Configurações adicionais fornecidas pelo módulo %s."
 
-#: includes-pro/admin-load.php:158
+#: includes-pro/admin-load.php:129
 msgid ""
 "Note: If you deactive, re-entry of the license key will be required for re-"
 "activation."
@@ -171,7 +140,7 @@ msgstr ""
 "Observação: Se você desativar a licença, será necessário reinserir a chave "
 "de licença para a reativação."
 
-#: includes-pro/admin-load.php:163
+#: includes-pro/admin-load.php:134
 msgid ""
 "If enabled, custom group membership is applied network-wide (though role "
 "assignments are still site-specific)."
@@ -179,55 +148,51 @@ msgstr ""
 "Se ativada, a associação a grupos personalizados é aplicada em toda a rede "
 "(embora as atribuições de função ainda sejam específicas do site)."
 
-#: includes-pro/admin-load.php:166
+#: includes-pro/admin-load.php:137
 msgid "Can create network-wide permission groups"
 msgstr "Pode criar grupos de permissões em toda a rede"
 
-#: includes-pro/admin-load.php:169
+#: includes-pro/admin-load.php:140
 msgid "If group editing is allowed, can also modify network group membership"
 msgstr ""
 "Se a edição de grupos for permitida, também será possível modificar a "
 "associação ao grupo de rede"
 
-#: includes-pro/admin-load.php:174
+#: includes-pro/admin-load.php:145
 msgid ""
-"Block direct URL access to images and other uploaded files in the WordPress "
-"uploads folder which are attached to posts that the user cannot read.  For "
-"each protected file, a separate RewriteRule will be added to the .htaccess "
-"file in this site's uploads folder.  Non-protected files are returned with "
-"no script execution whatsoever."
+"This feature will control direct URL access to files in /uploads/ folder. By "
+"default, files are blocked if they are attached to a post which the user "
+"can't view."
 msgstr ""
-"Bloqueie o acesso direto ao URL de imagens e outros arquivos enviados na "
-"pasta “uploads” do WordPress que estão anexados a posts que o usuário não "
-"pode ler.  Para cada arquivo protegido, uma “RewriteRule” separada, será "
-"adicionada ao arquivo “.htaccess” na pasta de uploads deste site.  Os "
-"arquivos não protegidos são retornados sem nenhuma execução de script."
+"Este recurso irá controlar o acesso direto ao URL dos arquivos na pasta /"
+"uploads/. Por padrão, os arquivos são bloqueados se estiverem anexados a um "
+"post que o usuário não pode visualizar."
 
-#: includes-pro/admin-load.php:177
+#: includes-pro/admin-load.php:148
 #, php-format
 msgid ""
-"File Filtering on multisite installations will require the following rules "
-"to be inserted above the stock ms-files.php rules in the %1$smain .htaccess "
+"File Access on multisite installations will require the following rules to "
+"be inserted above the stock ms-files.php rules in the %1$smain .htaccess "
 "file%2$s:"
 msgstr ""
-"A filtragem de arquivos em instalações multisite exige que as regras a "
-"seguir sejam inseridas acima das regras padrão do “ms-files.php” no arquivo "
-"%1$sprincipal do .htaccess%2$s:"
+"O acesso a arquivos em instalações multisite exige que as regras a seguir "
+"sejam inseridas acima das regras padrão do “ms-files.php” no arquivo "
+"“ %1$smain .htaccess%2$s”:"
 
-#: includes-pro/admin-load.php:180
+#: includes-pro/admin-load.php:151
 msgid "But your .htaccess is missing or not writeable!"
 msgstr "Mas seu arquivo “.htaccess” está ausente ou não é gravável!"
 
-#: includes-pro/admin-load.php:183
+#: includes-pro/admin-load.php:154
 msgid ".htaccess needs to be updated to include these rules."
 msgstr ""
 "O arquivo “.htaccess” precisa ser atualizado para incluir estas regras."
 
-#: includes-pro/admin-load.php:186
+#: includes-pro/admin-load.php:157
 msgid ".htaccess file has all required rules."
 msgstr "O arquivo “htaccess” tem todas as regras necessárias."
 
-#: includes-pro/admin-load.php:189
+#: includes-pro/admin-load.php:160
 msgid ""
 "These rules will not be inserted automatically.  You are responsible for "
 "editing .htaccess and later removing the rules if the functionality is no "
@@ -237,7 +202,7 @@ msgstr ""
 "editar o arquivo “.htaccess” e, mais tarde, remover as regras se a "
 "funcionalidade não for mais necessária."
 
-#: includes-pro/admin-load.php:192
+#: includes-pro/admin-load.php:163
 #, php-format
 msgid ""
 "Note that an additional rule will need to be added with each new site. "
@@ -247,7 +212,7 @@ msgstr ""
 "Observe que uma regra adicional precisará ser adicionada a cada novo site. "
 "%1$sPara eliminar este requisito, pesquise “WordPress remove ms-files”.%2$s"
 
-#: includes-pro/admin-load.php:195
+#: includes-pro/admin-load.php:166
 msgid ""
 "You will need to manually restore the .htacces file to default contents if "
 "anything goes wrong. Proceed?"
@@ -255,23 +220,23 @@ msgstr ""
 "Você terá que restaurar manualmente o arquivo “.htacces” para o conteúdo "
 "padrão, se algo der errado. Como proceder?"
 
-#: includes-pro/admin-load.php:198
+#: includes-pro/admin-load.php:169
 msgid "Update .htaccess now"
 msgstr "Atualizar agora o arquivo \".htaccess\""
 
-#: includes-pro/admin-load.php:201
+#: includes-pro/admin-load.php:172
 msgid "only for sites with protected files"
 msgstr "apenas para sites com arquivos protegidos"
 
-#: includes-pro/admin-load.php:204
+#: includes-pro/admin-load.php:175
 msgid "for all sites"
 msgstr "para todos os sites"
 
-#: includes-pro/admin-load.php:207
+#: includes-pro/admin-load.php:178
 msgid "NONE: remove Permissions rules"
 msgstr "NENHUM: remover regras de permissões"
 
-#: includes-pro/admin-load.php:210
+#: includes-pro/admin-load.php:181
 msgid ""
 "Since the plugin is not network-activated, you will need to modify "
 "the .htaccess file manually, inserting a RewriteRule as shown above for each "
@@ -281,15 +246,17 @@ msgstr ""
 "“htaccess” manualmente, inserindo uma “RewriteRule”, conforme mostrado "
 "acima, para cada site que precisar de filtragem de arquivos."
 
-#: includes-pro/admin-load.php:213
+#: includes-pro/admin-load.php:184
 msgid ""
-"Make unattached files unreadable to users who do not have the "
-"edit_private_files or pp_list_all_files capability."
+"This extends the File Access feature to files that are not attached to any "
+"post. This will not apply to user who have the edit_private_files or "
+"pp_list_all_files capability."
 msgstr ""
-"Torne os arquivos não anexados ilegíveis para os usuários que não tenham a "
-"permissão “edit_private_files” ou “pp_list_all_files”."
+"Isso estende o recurso de “Acesso a arquivos” a arquivos que não estão "
+"anexados a nenhum post. Isso não se aplica a usuários que tenham a permissão "
+"“edit_private_files” ou “pp_list_all_files”."
 
-#: includes-pro/admin-load.php:216
+#: includes-pro/admin-load.php:187
 msgid ""
 "Make attached files unreadable to users who do not have the "
 "edit_private_files or pp_list_all_files capability."
@@ -297,7 +264,7 @@ msgstr ""
 "Torne os arquivos anexados ilegíveis para os usuários que não tenham a "
 "permissão “edit_private_files” ou “pp_list_all_files”."
 
-#: includes-pro/admin-load.php:219
+#: includes-pro/admin-load.php:190
 msgid ""
 "Improve Media Library performance by disabling file filtering for thumbnails "
 "(size specified in Settings > Media)."
@@ -305,7 +272,7 @@ msgstr ""
 "Melhore o desempenho da biblioteca de mídia, desativando a filtragem de "
 "arquivos para miniaturas (tamanho especificado em Configurações > Mídia)."
 
-#: includes-pro/admin-load.php:222
+#: includes-pro/admin-load.php:193
 msgid ""
 "On some sites, an additional redirect is required to correctly deliver "
 "protected files. Leave this disabled for better performance if possible."
@@ -314,25 +281,32 @@ msgstr ""
 "corretamente os arquivos protegidos. Deixe essa opção desativada para "
 "melhorar o desempenho, se possível."
 
-#: includes-pro/admin-load.php:225
+#: includes-pro/admin-load.php:196
 #, php-format
 msgid ""
-"To trigger regeneration of %1$suploads/.htaccess%2$s with new file URL keys "
-"(at next site access), execute the following URL:"
+"The File Access feature uses an %1$s.htaccess%2$s file located at "
+"%3$suploads/.htaccess%4$s. Normally no action is needed, but clicking the "
+"button below will update the URL keys (at next site access) that protect the "
+"files."
 msgstr ""
-"Para acionar a regeneração do %1$suploads/.htaccess%2$s com novas chaves de "
-"URL de arquivo (no próximo acesso ao site), execute o seguinte URL:"
+"O recurso de acesso a arquivos usa um arquivo %1$s.htaccess%2$s localizado "
+"em %3$suploads/.htaccess%4$s. Normalmente, nenhuma ação é necessária, mas "
+"clicar no botão abaixo irá atualizar as chaves do URL que protegem os "
+"arquivos."
 
-#: includes-pro/admin-load.php:228
+#: includes-pro/admin-load.php:199
 #, php-format
 msgid ""
-"To trigger regeneration of %1$suploads/.htaccess%2$s with new file URL keys, "
-"execute the following URL:"
+"The File Access feature uses an %1$s.htaccess%2$s file located at "
+"%3$suploads/.htaccess%4$s. Normally no action is needed, but clicking the "
+"button below will update the URL keys that protect the files."
 msgstr ""
-"Para acionar a regeneração do %1$suploads/.htaccess%2$s com novas chaves de "
-"URL de arquivo, execute o seguinte URL:"
+"O recurso de acesso a arquivos usa um arquivo %1$s.htaccess%2$s localizado "
+"em %3$suploads/.htaccess%4$s. Normalmente, nenhuma ação é necessária, mas "
+"clicar no botão abaixo irá atualizar as chaves do URL que protegem os "
+"arquivos."
 
-#: includes-pro/admin-load.php:231
+#: includes-pro/admin-load.php:202
 msgid ""
 "Best practice is to access the above url periodically (using your own cron "
 "service) to prevent long-term bookmarking of protected files."
@@ -340,58 +314,52 @@ msgstr ""
 "A melhor prática é acessar o URL acima periodicamente (usando seu próprio "
 "serviço cron) para evitar a marcação de longo prazo de arquivos protegidos."
 
-#: includes-pro/admin-load.php:234
+#: includes-pro/admin-load.php:205
 msgid ""
 "Supply a custom key which will enable a support url to regenerate file "
 "access keys.  Then execute the url regularly (using your own cron service) "
 "to prevent long-term bookmarking of protected files."
 msgstr ""
 "Forneça uma chave personalizada que ative um URL de suporte para gerar "
-"novamente as chaves de acesso a arquivos.  Em seguida, execute o URL "
+"novamente as chaves de acesso a arquivos. Em seguida, execute o URL "
 "regularmente (usando seu próprio serviço cron) para evitar a marcação de "
 "longo prazo de arquivos protegidos."
 
-#: includes-pro/admin-load.php:237
-#, php-format
+#: includes-pro/admin-load.php:208
 msgid ""
-"%1$sNote:%2$s FTP-uploaded files will not be filtered correctly until you "
-"run the %3$sAttachments Utility%4$s."
+"File Access can also protect files uploaded by FTP or other manual file "
+"copy, but does not detect them automatically. Click the button below to scan "
+"your uploads folder for files to protect."
 msgstr ""
-"%1$sObservação:%2$s Os arquivos enviados por FTP não serão filtrados "
-"corretamente até que você execute o %3$sUtilitário de anexos%4$s."
+"O acesso a arquivos também pode proteger arquivos enviados por FTP ou por "
+"outra cópia manual de arquivos, mas não os detecta automaticamente. Clique "
+"no botão abaixo para examinar sua pasta de envios em busca de arquivos a "
+"serem protegidos."
 
-#: includes-pro/admin-load.php:241
+#: includes-pro/admin-load.php:212
 msgid "Invalid file filtering key argument."
 msgstr "Argumento de chave de filtragem de arquivos inválido."
 
-#: includes-pro/admin-load.php:244
+#: includes-pro/admin-load.php:215
 #: modules/presspermit-file-access/classes/Permissions/FileAccess/RuleFlush.php:18
-msgid "Please configure File Filtering options!"
-msgstr "Configure as opções de filtragem de arquivos!"
+msgid "Please configure File Access options!"
+msgstr "Configure as opções de acesso ao arquivo!"
 
-#: includes-pro/admin-load.php:247
-msgid ""
-"Note that access control of direct file URLs also requires the following "
-"site configuration:"
-msgstr ""
-"Observe que o controle de acesso aos URLs de arquivos diretos, também requer "
-"a seguinte configuração do site:"
-
-#: includes-pro/admin-load.php:250
+#: includes-pro/admin-load.php:218
 msgid ""
 "The wp-content folder cannot be relocated outside the main WordPress folder."
 msgstr ""
 "A pasta “wp-content” não pode ser realocada para fora da pasta principal do "
 "WordPress."
 
-#: includes-pro/admin-load.php:253
+#: includes-pro/admin-load.php:221
 msgid ""
 "Note that to be detected as attachments, your file links must include www."
 msgstr ""
 "Observe que, para serem detectados como anexos, os links dos arquivos "
 "precisam incluir www."
 
-#: includes-pro/admin-load.php:256
+#: includes-pro/admin-load.php:224
 msgid ""
 "Note that to be detected as attachments, your file links must NOT include "
 "www."
@@ -399,7 +367,7 @@ msgstr ""
 "Observe que, para serem detectados como anexos, os links dos arquivos NÃO "
 "podem incluir www."
 
-#: includes-pro/admin-load.php:259
+#: includes-pro/admin-load.php:227
 #, php-format
 msgid ""
 "Files linked in post content must be in %1$s (or a subfolder of it). If you "
@@ -410,20 +378,17 @@ msgstr ""
 "subpasta dela). Se você mover arquivos, considere o uso de um plugin de "
 "pesquisa e substituição %2$s%3$s para atualizar esses URLs."
 
-#: includes-pro/admin-load.php:262
+#: includes-pro/admin-load.php:230
 msgid ""
-"For post restrictions to be extended to files and images, those attachments "
-"must be stored as post metadata (not just linked in the post content). The "
-"WordPress editor normally handles that, but this utility scans post content "
-"to apply any missing attachments."
+"File Access can also protect files uploaded by FTP or other manual "
+"processes, but does not detect them automatically. This utility can find and "
+"protect any uploaded files."
 msgstr ""
-"Para que as restrições de posts sejam estendidas a arquivos e imagens, estes "
-"anexos precisam ser armazenados como metadados do post (não apenas "
-"vinculados ao conteúdo do post). Normalmente, o editor do WordPress cuida "
-"disso, mas este utilitário examina o conteúdo do post, para aplicar os "
-"anexos ausentes."
+"O acesso a arquivos também pode proteger arquivos enviados por FTP ou outros "
+"processos manuais, mas não os detecta automaticamente. Este utilitário pode "
+"localizar e proteger qualquer arquivo enviado."
 
-#: includes-pro/admin-load.php:265
+#: includes-pro/admin-load.php:233
 msgid ""
 "To run this utility by cron task or other direct request, use the following "
 "URL:"
@@ -431,16 +396,15 @@ msgstr ""
 "Para executar este utilitário por tarefa cron ou outra solicitação direta, "
 "use o seguinte URL:"
 
-#: includes-pro/admin-load.php:268
-#, php-format
+#: includes-pro/admin-load.php:236
 msgid ""
 "To run this utility by direct URL, set a file filtering regen key on "
-"%1$sPermissions Settings%2$s"
+"Permissions Settings"
 msgstr ""
 "Para executar este utilitário por URL direto, defina uma chave de "
-"regeneração de filtragem de arquivos nas configurações do %1$sPermissions%2$s"
+"regeneração de filtragem de arquivos nas configurações do Permissions"
 
-#: includes-pro/admin-load.php:271
+#: includes-pro/admin-load.php:239
 msgid ""
 "Note: Direct access to uploaded file attachments cannot be filtered because "
 "your WP_CONTENT_DIR is not in the WordPress branch."
@@ -448,48 +412,45 @@ msgstr ""
 "Observação: O acesso direto aos anexos de arquivos enviados não pode ser "
 "filtrado porque o “WP_CONTENT_DIR” não está na ramificação do WordPress."
 
-#: includes-pro/admin-load.php:274
+#: includes-pro/admin-load.php:242
 msgid "The operation was terminated due to an invalid configuration."
 msgstr "A operação foi encerrada devido a uma configuração inválida."
 
-#: includes-pro/admin-load.php:277
+#: includes-pro/admin-load.php:245
 #, php-format
-msgid "checking %s posts / pages..."
-msgstr "verificando %s posts/páginas..."
+msgid "Checking %s posts / pages..."
+msgstr "Verificando %s posts/páginas..."
 
-#: includes-pro/admin-load.php:280
+#: includes-pro/admin-load.php:248
 #, php-format
 msgid "%1$s skipping unfilterable file in %2$s \"%3$s\":%4$s %5$s"
 msgstr "%1$s ignorando o arquivo não filtrável em %2$s \"%3$s\":%4$s %5$s"
 
-#: includes-pro/admin-load.php:283
+#: includes-pro/admin-load.php:251
 #, php-format
 msgid "%1$s skipping missing file in %2$s \"%3$s\":%4$s %5$s"
 msgstr "%1$s ignorando o arquivo ausente em %2$s \"%3$s\":%4$s %5$s"
 
-#: includes-pro/admin-load.php:286 includes-pro/admin-load.php:289
+#: includes-pro/admin-load.php:254 includes-pro/admin-load.php:257
 #, php-format
-msgid "%1$snew attachment in %2$s \"%3$s\":%4$s %5$s"
-msgstr "%1$s novo anexo em %2$s \"%3$s\":%4$s %5$s"
+msgid "%1$sNew attachment in %2$s \"%3$s\":%4$s %5$s"
+msgstr "%1$sNovo anexo em %2$s \"%3$s\":%4$s %5$s"
 
-#: includes-pro/admin-load.php:292
+#: includes-pro/admin-load.php:260
 #, php-format
-msgid ""
-"Operation complete: %s linked uploads were found in your post / page content."
-msgstr ""
-"Operação concluída: Foram encontrados %s envios vinculados ao seu conteúdo "
-"de posts/páginas."
+msgid "%s linked uploads were found in your post / page content."
+msgstr "Foram encontrados %s envios vinculados ao seu conteúdo do post/página."
 
-#: includes-pro/admin-load.php:295
+#: includes-pro/admin-load.php:263
 #, php-format
 msgid "%s attachment records were added to the database."
 msgstr "Foram adicionados %s registros de anexos ao banco de dados."
 
-#: includes-pro/admin-load.php:298
+#: includes-pro/admin-load.php:266
 msgid "All linked uploads are already registered as attachments."
 msgstr "Todos os envios vinculados já estão cadastrados como anexos."
 
-#: includes-pro/admin-load.php:303
+#: includes-pro/admin-load.php:271
 msgid ""
 "Statuses enabled here are available as Visibility options for post "
 "publishing. Affected posts become inaccessable without a corresponding "
@@ -499,7 +460,7 @@ msgstr ""
 "publicação de posts. Os posts afetados tornam-se inacessíveis sem uma "
 "atribuição de função específica de status correspondente."
 
-#: includes-pro/admin-load.php:306
+#: includes-pro/admin-load.php:274
 msgid ""
 "Statuses enabled here are available in the editor as additional steps "
 "between Draft and Published."
@@ -507,7 +468,7 @@ msgstr ""
 "Os status ativados aqui, estão disponíveis no editor, como etapas adicionais "
 "entre \"Rascunho\" e \"Publicado\"."
 
-#: includes-pro/admin-load.php:309
+#: includes-pro/admin-load.php:277
 msgid ""
 "Statuses alter your content's accessibility by imposing additional "
 "capability requirements."
@@ -515,7 +476,7 @@ msgstr ""
 "Os status alteram a acessibilidade do seu conteúdo, exigindo requisitos "
 "adicionais de permissões."
 
-#: includes-pro/admin-load.php:312
+#: includes-pro/admin-load.php:280
 #, php-format
 msgid ""
 "Enable Custom Capabilities by toggling the link below status name. If "
@@ -526,7 +487,7 @@ msgstr ""
 "status. Se ativado, os não editores precisarão de uma função "
 "%scomplementar%s correspondente para editar posts com esse status."
 
-#: includes-pro/admin-load.php:315
+#: includes-pro/admin-load.php:283
 #, php-format
 msgid ""
 "For post edit by a user who cannot publish, %sworkflow is configured%s to "
@@ -537,7 +498,7 @@ msgstr ""
 "%sfluxo de trabalho%s para fazer com que o botão “Publicar” incremente o "
 "post para o próximo status do fluxo de trabalho permitido."
 
-#: includes-pro/admin-load.php:318
+#: includes-pro/admin-load.php:286
 #, php-format
 msgid ""
 "For post edit by a user who cannot publish, %sworkflow is configured%s to "
@@ -548,7 +509,7 @@ msgstr ""
 "%sfluxo de trabalho%s para fazer com que o botão “Publicar” encaminhe o post "
 "para o status do fluxo de trabalho de ordem superior permitido."
 
-#: includes-pro/admin-load.php:321
+#: includes-pro/admin-load.php:289
 msgid ""
 "For post edit by a user who cannot publish, the Publish button will escalate "
 "the post to the highest-order status permitted to the user."
@@ -557,12 +518,12 @@ msgstr ""
 "“Publicar” irá encaminhar o post para um status de ordem superior permitido "
 "ao usuário."
 
-#: includes-pro/admin-load.php:324
+#: includes-pro/admin-load.php:292
 #, php-format
 msgid "Please enable the PublishPress %sStatuses feature%s."
 msgstr "Ative o recurso %sStatus%s do PublishPress."
 
-#: includes-pro/admin-load.php:327
+#: includes-pro/admin-load.php:295
 #, php-format
 msgid ""
 "Note that the Post Type itself will also need to have %sPermissions%s "
@@ -571,7 +532,7 @@ msgstr ""
 "Observe que o próprio tipo de post também precisará ter o %sPermissions%s "
 "ativado."
 
-#: includes-pro/admin-load.php:330
+#: includes-pro/admin-load.php:298
 #, php-format
 msgid ""
 "To define moderation statuses, %1$sactivate the Editing Permissions "
@@ -580,7 +541,7 @@ msgstr ""
 "Para definir os status de moderação, ative o módulo %1$s Permissões de "
 "edição%2$s."
 
-#: includes-pro/admin-load.php:335
+#: includes-pro/admin-load.php:303
 msgid ""
 "To disable custom visibility statuses, first re-assign posts to a different "
 "status."
@@ -588,7 +549,7 @@ msgstr ""
 "Para desativar os status de visibilidade personalizados, primeiro reatribua "
 "os posts a um status diferente."
 
-#: includes-pro/admin-load.php:338
+#: includes-pro/admin-load.php:306
 msgid ""
 "Note, this only applies if the role definition includes the pp_moderate_any "
 "capability"
@@ -596,65 +557,58 @@ msgstr ""
 "Observe que isso só se aplica se a definição da função incluir o recurso "
 "\"pp_moderate_any\""
 
-#: includes-pro/admin-load.php:341
-msgid "Create or edit custom Privacy or Workflow statuses"
+#: includes-pro/admin-load.php:309
+msgid "Create or edit custom Privacy or Workflow statuses."
 msgstr ""
-"Crie ou edite status personalizados de privacidade ou fluxo de trabalho"
+"Crie ou edite status personalizados de privacidade ou fluxo de trabalho."
 
-#: includes-pro/admin-load.php:344
-msgid "Create or edit Publication Workflow statuses"
-msgstr "Crie ou edite os status do fluxo de trabalho de publicações"
+#: includes-pro/admin-load.php:312
+msgid "Create or edit custom Privacy statuses."
+msgstr "Crie ou edite status de privacidade personalizados."
 
-#: includes-pro/admin-load.php:347
-msgid "Create or edit custom Privacy statuses"
-msgstr "Crie ou edite status de privacidade personalizados"
-
-#: includes-pro/admin-load.php:350
+#: includes-pro/admin-load.php:315
 msgid ""
-"Pertains to assignment of a custom privacy or moderation status. This "
-"capability in a WP role enables PP to assign a type-specific supplemental "
-"role with custom capabilities such as \"set_pages_approved\""
+"Extra Roles created as a type-specific copy of this role will enable "
+"assignment of specified custom statuses."
 msgstr ""
-"Refere-se à atribuição de um status personalizado de privacidade ou "
-"moderação. Esta permissão em uma função do WP permite que o PP atribua uma "
-"função complementar específica do tipo com permissão personalizada, como "
-"“set_pages_approved”"
+"As funções adicionais criadas como uma cópia específica de tipo desta "
+"função, permitem a atribuição de status personalizados especificados."
 
-#: includes-pro/admin-load.php:353
+#: includes-pro/admin-load.php:318
 msgid ""
-"Editors can edit posts having a moderation status (i.e. Approved) without a "
-"supplemental status-specific role"
+"Editors do not need status-specific editing capabilities for workflow posts "
+"(Assigned, In Progress, Approved)."
 msgstr ""
-"Os editores podem editar posts com status de moderação (ou seja, aprovados) "
-"sem uma função específica de status complementar"
+"Os editores não precisam de permissões de edição específicas de status para "
+"posts de fluxo de trabalho (Atribuído, Em andamento, Aprovado)."
 
-#: includes-pro/admin-load.php:359
+#: includes-pro/admin-load.php:323
 msgid "Post property or meta field to match with user field"
 msgstr ""
 "Propriedade do post ou metacampo a ser correspondido com o campo do usuário"
 
-#: includes-pro/admin-load.php:362
+#: includes-pro/admin-load.php:326
 msgid "User property or meta field to match with post field"
 msgstr ""
 "Propriedade do usuário ou metacampo a ser correspondido com o campo do post"
 
-#: includes-pro/admin-load.php:365
+#: includes-pro/admin-load.php:329
 msgid "User meta field to match with post field"
 msgstr "Metacampo do usuário a ser correspondido com o campo do post"
 
-#: includes-pro/admin-load.php:368
+#: includes-pro/admin-load.php:332
 msgid "User role to include in synchronization"
 msgstr "Função do usuário a ser incluída na sincronização"
 
-#: includes-pro/admin-load.php:371
+#: includes-pro/admin-load.php:335
 msgid "Parent id for created posts"
 msgstr "ID principal para posts criados"
 
-#: includes-pro/admin-load.php:374
+#: includes-pro/admin-load.php:338
 msgid "Choose post field from suggested meta key names"
 msgstr "Escolha o campo do post entre os nomes de metachave sugeridos"
 
-#: includes-pro/admin-load.php:377
+#: includes-pro/admin-load.php:341
 msgid ""
 "When a new user of specified role is added, create or designate a post for "
 "them."
@@ -662,19 +616,20 @@ msgstr ""
 "Quando um novo usuário com a função especificada for adicionado, crie ou "
 "atribua um post para ele."
 
-#: includes-pro/admin-load.php:380
+#: includes-pro/admin-load.php:344
 msgid "Create or designate a post for existing users."
 msgstr "Crie ou atribua um post para usuários existentes."
 
-#: includes-pro/admin-load.php:383
+#: includes-pro/admin-load.php:347
 msgid "This post type is not hierarchical"
 msgstr "Este tipo de post não é hierárquico"
 
-#: includes-pro/admin-load.php:386
-msgid "Establish a dedicated post for each qualified user."
-msgstr "Estabeleça um post dedicado para cada usuário qualificado."
+#: includes-pro/admin-load.php:350
+msgid "Automatically create a post for each user in selected roles."
+msgstr ""
+"Crie automaticamente um post para cada usuário nas funções selecionadas."
 
-#: includes-pro/admin-load.php:389
+#: includes-pro/admin-load.php:353
 #, php-format
 msgid ""
 "Hint: If %s have custom fields (like email address), create one to assist "
@@ -683,69 +638,11 @@ msgstr ""
 "Dica: Se %s tiver campos personalizados (como endereço de e-mail), crie um "
 "para ajudar na detecção do nome do campo."
 
-#: includes-pro/admin-load.php:392
-msgid "Enable users to edit their own synchronized post."
-msgstr "Permita que os usuários editem seus próprios posts sincronizados."
+#: includes-pro/admin-load.php:356
+msgid "Enable each user to edit their own User Posts."
+msgstr "Permita que cada usuário edite seus próprios posts de usuário."
 
-#: includes-pro/admin-load.php:395
-msgid ""
-"It is designed to bring setup convenience and delegated editing permissions "
-"to Team / Staff plugins, but has broad usage potential."
-msgstr ""
-"Ele foi desenvolvido para oferecer praticidade na configuração e permissões "
-"de edição delegadas aos plugins de equipe/pessoal, mas tem amplo potencial "
-"de uso."
-
-#: includes-pro/admin-load.php:398
-msgid ""
-"Post / User match fields allow existing Users to be designated as the Author "
-"(owner) of an exiting post."
-msgstr ""
-"Os campos de correspondência de post/usuário permitem que os usuários "
-"existentes sejam atribuídos como o autor (proprietário) de um post existente."
-
-#: includes-pro/admin-load.php:401
-msgid ""
-"If a user cannot be matched to an existing post, a new post is created for "
-"them."
-msgstr ""
-"Se não for possível corresponder um usuário a um post existente, um novo "
-"post será criado para ele."
-
-#: includes-pro/admin-load.php:404
-msgid ""
-"These users will be enabled to edit their synchronized post if \"Grant "
-"Author Permissions\" is enabled.  This works by automating the following "
-"configuration:"
-msgstr ""
-"Estes usuários poderão editar seus posts sincronizados, se a opção “Conceder "
-"permissões ao autor” estiver ativada.  Isso funciona automatizando a "
-"seguinte configuração:"
-
-#: includes-pro/admin-load.php:407
-msgid ""
-"Developer note: User matches and Post data may be customized using filters "
-"and actions."
-msgstr ""
-"Observação para o desenvolvedor: as correspondências de usuário e os dados "
-"de posts, podem ser personalizados usando filtros e ações."
-
-#: includes-pro/admin-load.php:410
-msgid ""
-"This feature works with most Team / Staff plugins. However, the following "
-"are NOT fully compatible. With these plugins, PublishPress Permissions can "
-"sync and set editing permissions for teams, but not individual team members:"
-msgstr ""
-"Este recurso funciona com a maioria dos plugins de equipe/pessoal. Porém, os "
-"seguintes NÃO são totalmente compatíveis. Com estes plugins, o PublishPress "
-"Permissions pode sincronizar e definir permissões de edição para equipes, "
-"mas não para membros individuais da equipe:"
-
-#: includes-pro/admin-load.php:413
-msgid "This plugin is NOT fully compatible."
-msgstr "Este plugin NÃO é totalmente compatível."
-
-#: includes-pro/admin-load.php:418
+#: includes-pro/admin-load.php:360
 #, php-format
 msgid ""
 "Settings for replacing unreadable content with teaser text, provided by the "
@@ -754,14 +651,14 @@ msgstr ""
 "Configurações para substituir o conteúdo ilegível por texto de pré-"
 "visualização, fornecido pelo módulo %s."
 
-#: includes-pro/admin-load.php:418
+#: includes-pro/admin-load.php:360
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:76
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:77
 msgid "Teaser"
 msgstr "Pré-visualização"
 
-#: includes-pro/admin-load.php:421
+#: includes-pro/admin-load.php:363
 msgid ""
 "Settings on this tab do not apply because teaser filtering is disabled for "
 "all post types."
@@ -769,7 +666,7 @@ msgstr ""
 "As configurações desta aba, não se aplicam, porque a filtragem da pré-"
 "visualização está desativada para todos os tipos de posts."
 
-#: includes-pro/admin-load.php:424
+#: includes-pro/admin-load.php:366
 msgid ""
 "Since some browsers will cache feeds without regard to user login, block RSS "
 "content even for qualified users."
@@ -777,7 +674,7 @@ msgstr ""
 "Como alguns navegadores armazenam feeds em cache, sem levar em conta o "
 "acesso do usuário, bloqueie o conteúdo RSS, mesmo para usuários autorizados."
 
-#: includes-pro/admin-load.php:427
+#: includes-pro/admin-load.php:369
 msgid ""
 "By default, WordPress hides posts visitors don't have access to. This "
 "feature allows those posts to be displayed, with post content replaced by "
@@ -787,7 +684,7 @@ msgstr ""
 "acesso. Este recurso permite que esses posts sejam exibidos, com o conteúdo "
 "do post substituído por um texto de pré-visualização."
 
-#: includes-pro/admin-load.php:430
+#: includes-pro/admin-load.php:372
 msgid ""
 "These settings adjust which views, link types and visibility statuses the "
 "teaser is applied to."
@@ -795,7 +692,7 @@ msgstr ""
 "Estas configurações ajustam a quais visualizações, tipos de links e status "
 "de visibilidade a pré-visualização se aplica."
 
-#: includes-pro/admin-load.php:439
+#: includes-pro/admin-load.php:381
 msgid ""
 "You can override Teaser settings within the Nav Menu by hiding links to "
 "unreadable posts that are associated with the terms you select below."
@@ -804,7 +701,7 @@ msgstr ""
 "navegação, ocultando links para posts ilegíveis associados aos termos que "
 "você selecionar abaixo."
 
-#: includes-pro/admin-load.php:442
+#: includes-pro/admin-load.php:384
 msgid ""
 "Keep unreadable content hidden in the blogroll and link lists, but show the "
 "teaser on direct access attempts."
@@ -812,7 +709,7 @@ msgstr ""
 "Mantenha o conteúdo ilegível oculto na lista de blogs e nas listas de links, "
 "mas mostre a pré-visualização nas tentativas de acesso direto."
 
-#: includes-pro/admin-load.php:445
+#: includes-pro/admin-load.php:387
 msgid ""
 "Hide unreadable private posts, but show a teaser for posts which are "
 "unreadable due to regular Privacy or Role Restrictions."
@@ -821,7 +718,7 @@ msgstr ""
 "posts que não podem ser lidos devido a restrições regulares de privacidade "
 "ou de função."
 
-#: includes-pro/admin-load.php:448
+#: includes-pro/admin-load.php:390
 msgid ""
 "If anyone tries to view a post they don't have access to, redirect to "
 "another page instead of displaying a teaser."
@@ -829,7 +726,7 @@ msgstr ""
 "Se alguém tentar visualizar um post ao qual não tem acesso, redirecione para "
 "outra página em vez de exibir uma pré-visualização."
 
-#: includes-pro/admin-load.php:451
+#: includes-pro/admin-load.php:393
 msgid ""
 "Replace post content or excerpt with custom text, possibly including an "
 "inline login form. You can also add text before or after the post title and "
@@ -839,7 +736,7 @@ msgstr ""
 "possivelmente incluindo um formulário de acesso embutido. Você também pode "
 "adicionar texto antes ou após o título e o resumo do post."
 
-#: includes-pro/admin-load.php:454
+#: includes-pro/admin-load.php:396
 msgid ""
 "Unreadable items of these comma-separated types will have nav menu item "
 "hidden."
@@ -847,16 +744,16 @@ msgstr ""
 "Itens ilegíveis destes tipos, separados por vírgulas, terão o item do menu "
 "de navegação oculto."
 
-#: includes-pro/admin-load.php:458
-msgid "Visibility Circle membership does not limit viewing access"
+#: includes-pro/admin-load.php:400
+msgid "Visibility Circle membership does not limit viewing access."
 msgstr ""
-"A associação ao círculo de visibilidade, não limita o acesso à visualização"
+"A associação ao círculo de visibilidade não limita o acesso à visualização."
 
-#: includes-pro/admin-load.php:461
-msgid "Editorial Circle membership does not limit editing access"
-msgstr "A associação ao círculo editorial, não limita o acesso à edição"
+#: includes-pro/admin-load.php:403
+msgid "Editorial Circle membership does not limit editing access."
+msgstr "A associação ao círculo editorial não limita o acesso à edição."
 
-#: includes-pro/admin-load.php:473
+#: includes-pro/admin-load.php:415
 msgid ""
 "When searching for users via Permissions ajax, return return only users "
 "registered to current site"
@@ -864,7 +761,7 @@ msgstr ""
 "Ao pesquisar usuários através do Ajax do Permissions, retornar apenas os "
 "usuários cadastrados no site atual"
 
-#: includes-pro/admin-load.php:476
+#: includes-pro/admin-load.php:418
 msgid ""
 "If user is a super admin or has 'pp_manage_network_members' capability, user "
 "searches via Permissions ajax return users from all sites"
@@ -873,7 +770,7 @@ msgstr ""
 "“pp_manage_network_members”, as pesquisas de usuários através do ajax do "
 "Permissions irão retornar usuários de todos os sites"
 
-#: includes-pro/admin-load.php:484
+#: includes-pro/admin-load.php:426
 msgid ""
 "Count users as a member of a BuddyPress Permissions Group only if they are a "
 "moderator of the BP group"
@@ -881,7 +778,7 @@ msgstr ""
 "Conte os usuários como membros de um grupo de permissões do BuddyPress "
 "apenas se eles forem moderadores do grupo do BP"
 
-#: includes-pro/admin-load.php:487
+#: includes-pro/admin-load.php:429
 msgid ""
 "Count users as a member of a BuddyPress Permissions Group only if they are "
 "an administrator of the BP group"
@@ -889,7 +786,7 @@ msgstr ""
 "Conte os usuários como membros de um grupo de permissões do BuddyPress "
 "apenas se eles forem administradores do grupo do BP"
 
-#: includes-pro/admin-load.php:495
+#: includes-pro/admin-load.php:437
 msgid ""
 "CMS Page Tree View plugin: hide 'add' links (for all hierarchical post "
 "types) based on user's association permissions"
@@ -898,7 +795,7 @@ msgstr ""
 "“adicionar” (para todos os tipos de posts hierárquicos) com base nas "
 "permissões de associação do usuário"
 
-#: includes-pro/admin-load.php:498
+#: includes-pro/admin-load.php:440
 msgid ""
 "CMS Page Tree View plugin: hide 'add' links (for pages) based on user's page "
 "association permissions"
@@ -907,7 +804,7 @@ msgstr ""
 "“adicionar” (para páginas) com base nas permissões de associação de páginas "
 "do usuário"
 
-#: includes-pro/admin-load.php:501
+#: includes-pro/admin-load.php:443
 msgid ""
 "CMS Page Tree View plugin: hide 'add' links (for specified hierarchical post "
 "type) based on user's association permissions"
@@ -916,27 +813,27 @@ msgstr ""
 "“adicionar” (para o tipo de post hierárquico especificado) com base nas "
 "permissões de associação do usuário"
 
-#: includes-pro/admin-load.php:508
+#: includes-pro/admin-load.php:450
 msgid "Prevent Permission from filtering the Nested Pages listing at all"
 msgstr "Evite que o Permission filtre a listagem de páginas aninhadas"
 
-#: includes-pro/admin-load.php:511
+#: includes-pro/admin-load.php:453
 msgid "Force Permissions to filter the Nested Pages listing"
 msgstr "Forçar permissões para filtrar a listagem de páginas aninhadas"
 
-#: includes-pro/admin-load.php:514
+#: includes-pro/admin-load.php:456
 msgid ""
 "Comma-separated list of roles that are allowed to Quick Edit nested pages"
 msgstr ""
 "Lista separada por vírgulas de funções que têm permissão de edição rápida de "
 "páginas aninhadas"
 
-#: includes-pro/admin-load.php:517
+#: includes-pro/admin-load.php:459
 msgid "Comma-separated list of roles that are allowed to use the Context Menu"
 msgstr ""
 "Lista separada por vírgulas de funções que podem usar o menu de contexto"
 
-#: includes-pro/admin-load.php:520
+#: includes-pro/admin-load.php:462
 msgid ""
 "Never allow unfiltered users to use the Context Menu, even if they have "
 "pp_force_quick_edit capability"
@@ -944,7 +841,7 @@ msgstr ""
 "Nunca permita que usuários não filtrados usem o menu de contexto, mesmo que "
 "tenham a permissão “pp_force_quick_edit”"
 
-#: includes-pro/admin-load.php:523
+#: includes-pro/admin-load.php:465
 msgid ""
 "Disable Add Child link unless user is unfiltered (Administrator or has "
 "pp_nested_pages_unfiltered capability)"
@@ -953,37 +850,37 @@ msgstr ""
 "esteja filtrado (administrador ou tenha a permissão "
 "“pp_nested_pages_unfiltered”)"
 
-#: includes-pro/admin-load.php:526
+#: includes-pro/admin-load.php:468
 msgid "Disable Add Child Page link unless user is unfiltered"
 msgstr ""
 "Desativar o link de adicionar página secundária, a menos que o usuário não "
 "esteja filtrado"
 
-#: includes-pro/admin-load.php:529
+#: includes-pro/admin-load.php:471
 msgid "Disable Insert Page Before link unless user is unfiltered"
 msgstr ""
 "Desativar a inserção de página antes do link, a menos que o usuário não "
 "esteja filtrado"
 
-#: includes-pro/admin-load.php:532
+#: includes-pro/admin-load.php:474
 msgid "Disable Insert Page After link unless user is unfiltered"
 msgstr ""
 "Desativar a inserção de página após o link, a menos que o usuário não esteja "
 "filtrado"
 
-#: includes-pro/admin-load.php:535
+#: includes-pro/admin-load.php:477
 msgid "Disable Push to Top link unless user is unfiltered"
 msgstr ""
 "Desativar o link de envio para a parte superior, a menos que o usuário não "
 "esteja filtrado"
 
-#: includes-pro/admin-load.php:538
+#: includes-pro/admin-load.php:480
 msgid "Disable Push to Bottom link unless user is unfiltered"
 msgstr ""
 "Desativar o link de envio para a parte inferior, a menos que o usuário não "
 "esteja filtrado"
 
-#: includes-pro/admin-load.php:541
+#: includes-pro/admin-load.php:483
 msgid "Disable Clone link unless user is unfiltered"
 msgstr ""
 "Desativar o link de clonagem, a menos que o usuário não esteja filtrado"
@@ -1022,150 +919,170 @@ msgstr ""
 "status."
 
 #: lib/status-capabilities/StatusAdmin.php:140
-#: lib/status-capabilities/StatusAdmin.php:147
-#: lib/status-capabilities/StatusAdmin.php:154
-msgid "Set"
-msgstr "Definir"
-
-#: lib/status-capabilities/StatusAdmin.php:140
-#: lib/status-capabilities/StatusAdmin.php:147
-#: lib/status-capabilities/StatusAdmin.php:154
-msgid "Select"
-msgstr "Selecionar"
-
-#: lib/status-capabilities/StatusAdmin.php:141
 #: lib/status-capabilities/StatusAdmin.php:148
+#: lib/status-capabilities/StatusAdmin.php:167
+#: lib/status-capabilities/StatusAdmin.php:176
 msgid "Read"
 msgstr "Ler"
 
-#: lib/status-capabilities/StatusAdmin.php:141
+#: lib/status-capabilities/StatusAdmin.php:140
 #: lib/status-capabilities/StatusAdmin.php:148
+#: lib/status-capabilities/StatusAdmin.php:167
+#: lib/status-capabilities/StatusAdmin.php:176
 msgid "View"
 msgstr "Ver"
 
+#: lib/status-capabilities/StatusAdmin.php:141
+#: lib/status-capabilities/StatusAdmin.php:149
+#: lib/status-capabilities/StatusAdmin.php:168
+#: lib/status-capabilities/StatusCapabilities.php:750
+msgid "List"
+msgstr "Lista"
+
 #: lib/status-capabilities/StatusAdmin.php:142
-#: lib/status-capabilities/StatusAdmin.php:156
+#: lib/status-capabilities/StatusAdmin.php:169
+#: lib/status-capabilities/StatusAdmin.php:192
 msgid "Edit Others"
 msgstr "Editar outros"
 
 #: lib/status-capabilities/StatusAdmin.php:143
-#: lib/status-capabilities/StatusAdmin.php:158
+#: lib/status-capabilities/StatusAdmin.php:170
+#: lib/status-capabilities/StatusAdmin.php:194
 msgid "Delete Others"
 msgstr "Excluir outros"
 
-#: lib/status-capabilities/StatusAdmin.php:155
-#: lib/status-capabilities/StatusAdmin.php:743
+#: lib/status-capabilities/StatusAdmin.php:144
+#: lib/status-capabilities/StatusAdmin.php:171
+#: lib/status-capabilities/StatusCapabilities.php:754
+msgid "Revise"
+msgstr "Revisar"
+
+#: lib/status-capabilities/StatusAdmin.php:166
+#: lib/status-capabilities/StatusAdmin.php:175
+#: lib/status-capabilities/StatusAdmin.php:190
+msgid "Set"
+msgstr "Definir"
+
+#: lib/status-capabilities/StatusAdmin.php:166
+#: lib/status-capabilities/StatusAdmin.php:175
+#: lib/status-capabilities/StatusAdmin.php:190
+msgid "Select"
+msgstr "Selecionar"
+
+#: lib/status-capabilities/StatusAdmin.php:191
 msgid "Edit"
 msgstr "Editar"
 
-#: lib/status-capabilities/StatusAdmin.php:157
+#: lib/status-capabilities/StatusAdmin.php:193
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:200
 msgid "Delete"
 msgstr "Excluir"
 
 #. translators: %s is a post status name
-#: lib/status-capabilities/StatusAdmin.php:164
+#: lib/status-capabilities/StatusAdmin.php:200
 #, php-format
 msgid "Role can set posts to the \"%s\" status"
 msgstr "A função pode definir posts com o status \"%s\""
 
 #. translators: %s is a post status name
-#: lib/status-capabilities/StatusAdmin.php:167
+#: lib/status-capabilities/StatusAdmin.php:203
 #, php-format
 msgid "Role can read \"%s\" posts"
 msgstr "A função pode ler posts \"%s\""
 
 #. translators: %s is a post status name
-#: lib/status-capabilities/StatusAdmin.php:170
+#: lib/status-capabilities/StatusAdmin.php:206
+#, php-format
+msgid "Role sees uneditable \"%s\" posts in admin listing"
+msgstr "A função vê posts “%s” não editáveis na listagem do administrador"
+
+#. translators: %s is a post status name
+#: lib/status-capabilities/StatusAdmin.php:209
+#, php-format
+msgid "Role can create revisions of \"%s\" posts"
+msgstr "A função pode criar revisões de posts “%s”"
+
+#. translators: %s is a post status name
+#: lib/status-capabilities/StatusAdmin.php:212
 #, php-format
 msgid "Role can edit \"%s\" posts"
 msgstr "A função pode editar posts \"%s\""
 
 #. translators: %s is a post status name
-#: lib/status-capabilities/StatusAdmin.php:173
+#: lib/status-capabilities/StatusAdmin.php:215
 #, php-format
 msgid "Role can edit other's \"%s\" posts"
 msgstr "A função pode editar posts \"%s\" de outras pessoas"
 
 #. translators: %s is a post status name
-#: lib/status-capabilities/StatusAdmin.php:176
+#: lib/status-capabilities/StatusAdmin.php:218
 #, php-format
 msgid "Role can delete \"%s\" posts"
 msgstr "A função pode excluir posts \"%s\""
 
 #. translators: %s is a post status name
-#: lib/status-capabilities/StatusAdmin.php:179
+#: lib/status-capabilities/StatusAdmin.php:221
 #, php-format
 msgid "Role can delete other's \"%s\" posts"
 msgstr "A função pode excluir posts \"%s\" de outras pessoas"
 
-#: lib/status-capabilities/StatusAdmin.php:202
+#: lib/status-capabilities/StatusAdmin.php:244
 #, php-format
 msgid "Role Capabilities for \"%s\" status:"
 msgstr "Permissões da função para o status \"%s\":"
 
-#: lib/status-capabilities/StatusAdmin.php:206
+#: lib/status-capabilities/StatusAdmin.php:248
 msgid "Update Status"
 msgstr "Atualizar status"
 
-#: lib/status-capabilities/StatusAdmin.php:348
+#: lib/status-capabilities/StatusAdmin.php:411
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:426
 msgid "Role"
 msgstr "Função"
 
-#: lib/status-capabilities/StatusAdmin.php:385
+#: lib/status-capabilities/StatusAdmin.php:448
 msgid "Edit basic role capabilities"
 msgstr "Editar permissões básicas da função"
 
-#: lib/status-capabilities/StatusAdmin.php:396
+#: lib/status-capabilities/StatusAdmin.php:459
 msgid "Toggle all capabilities for this role"
 msgstr "Alternar todas as permissões para esta função"
 
-#: lib/status-capabilities/StatusAdmin.php:430
-#: lib/status-capabilities/StatusAdmin.php:446
-#: lib/status-capabilities/StatusAdmin.php:541
-#: lib/status-capabilities/StatusAdmin.php:557
+#: lib/status-capabilities/StatusAdmin.php:493
+#: lib/status-capabilities/StatusAdmin.php:509
+#: lib/status-capabilities/StatusAdmin.php:627
+#: lib/status-capabilities/StatusAdmin.php:643
 #, php-format
 msgid "%s: assigned by Permission Group"
 msgstr "%s: atribuído pelo grupo de permissões"
 
-#: lib/status-capabilities/StatusAdmin.php:432
-#: lib/status-capabilities/StatusAdmin.php:543
+#: lib/status-capabilities/StatusAdmin.php:495
+#: lib/status-capabilities/StatusAdmin.php:629
 #, php-format
 msgid "This capability is %s"
 msgstr "Esta permissão é %s"
 
-#: lib/status-capabilities/StatusAdmin.php:435
+#: lib/status-capabilities/StatusAdmin.php:498
 msgid "It is required in addition to the type-specific capability."
 msgstr "Ele é necessário além da permissão específica do tipo."
 
-#: lib/status-capabilities/StatusAdmin.php:703
+#: lib/status-capabilities/StatusAdmin.php:789
+#: lib/status-capabilities/StatusAdmin.php:805
+#: lib/status-capabilities/StatusAdmin.php:820
 #: lib/status-capabilities/StatusSave.php:90
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Admin.php:159
 msgid "Standard"
 msgstr "Padrão"
 
-#. translators: %s is the name of the status that has the same capabilities
-#: lib/status-capabilities/StatusAdmin.php:725
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:318
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Admin.php:182
-#, php-format
-msgid "(same as %s)"
-msgstr "(o mesmo que %s)"
+#: lib/status-capabilities/StatusAdmin.php:792
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:310
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Admin.php:155
+msgid "Disabled"
+msgstr "Desativado"
 
-#: lib/status-capabilities/StatusCapabilities.php:42
-#: lib/status-control-legacy/classes/Permissions/StatusesHooks.php:604
-msgid "Post Status"
-msgstr "Status do post"
-
-#: lib/status-capabilities/StatusCapabilities.php:669
-#: lib/status-capabilities/StatusCapabilities.php:688
-msgid "Post Access"
-msgstr "Acesso do post"
-
-#: lib/status-capabilities/StatusSave.php:58
-msgid "Sorry, you do not have permission to edit custom statuses."
-msgstr "Você não tem permissão para editar status personalizados."
-
+#: lib/status-capabilities/StatusAdmin.php:799
+#: lib/status-capabilities/StatusAdmin.php:813
+#: lib/status-capabilities/StatusAdmin.php:816
 #: lib/status-capabilities/StatusSave.php:83
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:320
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:323
@@ -1173,6 +1090,47 @@ msgstr "Você não tem permissão para editar status personalizados."
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Admin.php:187
 msgid "Custom"
 msgstr "Personalizado"
+
+#: lib/status-capabilities/StatusAdmin.php:801
+msgid "Custom Read"
+msgstr "Leitura personalizada"
+
+#. translators: %s is the name of the status that has the same capabilities
+#: lib/status-capabilities/StatusAdmin.php:811
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:318
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Admin.php:182
+#, php-format
+msgid "(same as %s)"
+msgstr "(o mesmo que %s)"
+
+#: lib/status-capabilities/StatusAdmin.php:826
+msgid "Toggle setting"
+msgstr "Alternar configuração"
+
+#: lib/status-capabilities/StatusCapabilities.php:42
+#: lib/status-control-legacy/classes/Permissions/StatusesHooks.php:604
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:62
+msgid "Post Status"
+msgstr "Status do post"
+
+#: lib/status-capabilities/StatusCapabilities.php:673
+#: lib/status-capabilities/StatusCapabilities.php:692
+msgid "Post Access"
+msgstr "Acesso do post"
+
+#: lib/status-capabilities/StatusCapabilities.php:764
+msgid "Edit Posts listing includes posts in this status (even if not editable)"
+msgstr ""
+"A listagem de posts editáveis inclui posts com este status (mesmo que não "
+"sejam editáveis)"
+
+#: lib/status-capabilities/StatusCapabilities.php:768
+msgid "Can create revisions of posts in this status"
+msgstr "Pode criar revisões de posts neste status"
+
+#: lib/status-capabilities/StatusSave.php:58
+msgid "Sorry, you do not have permission to edit custom statuses."
+msgstr "Você não tem permissão para editar status personalizados."
 
 #: lib/status-capabilities/StatusSave.php:87
 #, php-format
@@ -1189,10 +1147,10 @@ msgstr ""
 "edição%2$s."
 
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/Admin.php:114
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:68
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:66
 #: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupsListing.php:47
 #: modules/presspermit-compatibility/classes/Permissions/Compat/BuddyPress/PermissionGroups/GroupsListTable.php:240
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:31
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:29
 msgid "Visibility"
 msgstr "Visibilidade"
 
@@ -1228,6 +1186,7 @@ msgstr "Visibilidade: "
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Attributes.php:114
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Dashboard/Ajax.php:54
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Gutenberg/PostEditPrivacy.php:156
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:575
 msgid "Draft"
 msgstr "Rascunho"
 
@@ -1254,6 +1213,7 @@ msgstr "Data"
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/Dashboard/Ajax.php:34
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:82
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Dashboard/Ajax.php:34
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:434
 msgid "Status"
 msgstr "Status"
 
@@ -1269,6 +1229,7 @@ msgstr "(sem título)"
 #: lib/status-control-legacy/common/js/object-edit.dev.js:258
 #: lib/status-control-legacy/common/js/object-edit.js:23
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Dashboard/Ajax.php:45
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:574
 msgid "Published"
 msgstr "Publicado"
 
@@ -1282,6 +1243,7 @@ msgstr "Agendado"
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/Dashboard/Ajax.php:51
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/Dashboard/PostsListing.php:156
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Dashboard/Ajax.php:51
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:576
 msgid "Pending Review"
 msgstr "Avaliação pendente"
 
@@ -1525,6 +1487,7 @@ msgstr ""
 #: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Gutenberg/PostEditPrivacySub.php:78
 #: modules/presspermit-status-control/common/js/object-edit.dev.js:77
 #: modules/presspermit-status-control/common/js/object-edit.js:4
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:577
 msgid "Private"
 msgstr "Privado"
 
@@ -1664,46 +1627,46 @@ msgid "Please %senable the Status dropdown%s for Gutenberg compatibility."
 msgstr ""
 "%sAtive os menus suspensos de status%s para compatibilidade com o Gutenberg."
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:58
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:24
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:56
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:22
 msgid "Statuses"
 msgstr "Status"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:65
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:78
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:63
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:76
 msgid "Legacy Status Control"
 msgstr "Controle de status legado"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:71
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:69
 msgid "Workflow"
 msgstr "Fluxo de trabalho"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:87
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:85
 msgid ""
 "Use legacy status control if PublishPress Statuses plugin is not activated"
 msgstr ""
 "Use o controle de status legado, se o plugin PublishPress Statuses não "
 "estiver ativado"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:91
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:42
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:89
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:40
 msgid "Custom Visibility Statuses"
 msgstr "Status de visibilidade personalizados"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:92
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:43
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:90
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:41
 msgid "Custom Visibility Statuses require status-specific editing capabilities"
 msgstr ""
 "Os status de visibilidade personalizados requerem permissões de edição "
 "específicos para cada status"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:93
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:91
 msgid "Drafts visible on front end if specific Read Permissions assigned"
 msgstr ""
 "Rascunhos visíveis na interface, se forem atribuídas permissões específicas "
 "de leitura"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:96
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:94
 msgid ""
 "Supplemental Editor Role for \"standard statuses\" also grants capabilities "
 "for Workflow Statuses"
@@ -1711,7 +1674,7 @@ msgstr ""
 "A função de editor complementar para “status padrão” também concede "
 "permissões para status do fluxo de trabalho"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:97
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:95
 msgid ""
 "Publish button defaults to next workflow status (instead of highest "
 "permitted)"
@@ -1719,37 +1682,37 @@ msgstr ""
 "O botão “Publicar” tem como padrão o próximo status do fluxo de trabalho (em "
 "vez do maior permitido)"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:156
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:216
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:154
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:214
 msgid "Additional Configuration:"
 msgstr "Configuração adicional:"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:161
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:184
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:159
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:182
 msgid "Post Workflow Statuses"
 msgstr "Status do fluxo de trabalho do post"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:166
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:164
 msgid "Enable PublishPress Status Dropdown"
 msgstr "Ativar o menu suspenso de status do PublishPress"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:170
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:168
 msgid "Turn on PublishPress Statuses"
 msgstr "Ativar o PublishPress Statuses"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:174
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:172
 msgid "Activate PublishPress"
 msgstr "Ativar o PublishPress"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:182
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:180
 msgid "Workflow Order, Branching, Permissions"
 msgstr "Ordem de fluxo de trabalho, ramificação, permissões"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:219
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:217
 msgid "Define Privacy Statuses"
 msgstr "Definir os status de privacidade"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:271
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:260
 #, php-format
 msgid ""
 "%1$sNote: Requires PublishPress Planner 3.x. %2$s Legacy mode is to maintain "
@@ -1759,7 +1722,7 @@ msgstr ""
 "para manter a funcionalidade existente, antes da instalação do PublishPress "
 "Statuses."
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:286
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:275
 #, php-format
 msgid ""
 "You should probably leave this disabled and just %1$sre-activate the "
@@ -1768,7 +1731,7 @@ msgstr ""
 "É melhor deixar esta opção desativada e %1$sreativar o plugin PublishPress "
 "Statuses%2$s."
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:298
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:287
 #, php-format
 msgid ""
 "For better control of the publication workflow, add the %1$sPublishPress "
@@ -1777,7 +1740,7 @@ msgstr ""
 "Para um melhor controle do fluxo de trabalho de publicação, adicione o "
 "plugin %1$sPublishPress Statuses%2$s. %3$sSaiba mais...%4$s"
 
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:307
+#: lib/status-control-legacy/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:296
 msgid "Your current Permissions Pro version is already compatible."
 msgstr "Sua versão atual do Permissions Pro já é compatível."
 
@@ -1878,7 +1841,7 @@ msgstr ""
 
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusAdmin.php:174
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:90
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:55
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:56
 msgid "Post Types"
 msgstr "Tipos de posts"
 
@@ -1973,11 +1936,6 @@ msgstr "%s, mais..."
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:284
 msgid "All"
 msgstr "Tudo"
-
-#: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:310
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/Admin.php:155
-msgid "Disabled"
-msgstr "Desativado"
 
 #: lib/status-control-legacy/classes/Permissions/Statuses/UI/StatusListTable.php:314
 msgid "(Standard)"
@@ -2170,49 +2128,49 @@ msgstr "Remetente"
 msgid "Force Visibility"
 msgstr "Forçar visibilidade"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:148
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:161
 msgctxt "post"
 msgid "Draft"
 msgstr "Rascunho"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:151
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:164
 #, php-format
 msgid "Draft <span class=\"count\">(%s)</span>"
 msgid_plural "Drafts <span class=\"count\">(%s)</span>"
 msgstr[0] "Rascunho <span class=\"count\">(%s)</span>"
 msgstr[1] "Rascunhos <span class=\"count\">(%s)</span>"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:160
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:173
 msgctxt "post"
 msgid "Pending"
 msgstr "Pendente"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:163
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:176
 #, php-format
 msgid "Pending <span class=\"count\">(%s)</span>"
 msgid_plural "Pending <span class=\"count\">(%s)</span>"
 msgstr[0] "Pendente <span class=\"count\">(%s)</span>"
 msgstr[1] "Pendentes <span class=\"count\">(%s)</span>"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:205
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:218
 msgid "Add New Status"
 msgstr "Adicionar novo status"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:206
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:219
 msgid "Edit Status"
 msgstr "Editar status"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:246
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:247
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:259
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:260
 msgid "Workflow Statuses"
 msgstr "Status do fluxo de trabalho"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:259
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:260
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:272
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:273
 msgid "Visibility Statuses"
 msgstr "Status de visibilidade"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:345
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:358
 #, php-format
 msgid ""
 "%1$sStatus Control%2$s is running in Legacy Mode. For more control and a "
@@ -2223,7 +2181,7 @@ msgstr ""
 "mais controle e uma interface de fluxo de trabalho de edição melhor, instale "
 "o plugin %3$sPublishPress Statuses%4$s. %5$sDetalhes/instalar%6$s"
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:362
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:375
 #, php-format
 msgid ""
 "%1$sStatus Control%2$s is running in Legacy Mode. For more control and a "
@@ -2234,7 +2192,7 @@ msgstr ""
 "mais controle e uma melhor interface de fluxo de trabalho de edição, "
 "%3$sinstale o plugin %3$sPublishPress Statuses%4$s."
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:382
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:395
 #, php-format
 msgid ""
 "To restore all Workflow Statuses in %1$sLegacy Mode%2$s, revert PublishPress "
@@ -2243,7 +2201,7 @@ msgstr ""
 "Para restaurar todos os status do fluxo de trabalho no %1$sModo legado%2$s, "
 "reverta o PublishPress Planner Pro para a versão 3.x."
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:417
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:430
 #, php-format
 msgid ""
 "%1$sStatus Control%2$s is currently disabled because the PublishPress "
@@ -2252,7 +2210,7 @@ msgstr ""
 "%1$sControle de status%2$s está desativado no momento porque o plugin "
 "PublishPress Statuses está %3$sinativo%4$s."
 
-#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:418
+#: lib/status-control-legacy/classes/Permissions/StatusesHooksAdmin.php:431
 #, php-format
 msgid ""
 "%1$sStatus Control%2$s is currently disabled because the %3$sPublishPress "
@@ -2320,24 +2278,44 @@ msgid "%s is limited to circle authors only, for these post types:"
 msgstr ""
 "%s é limitado apenas aos autores do círculo, para estes tipos de posts:"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:26
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:47
 msgid "Circle Activation"
 msgstr "Ativação do círculo"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:38
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:57
 msgid "Visibility Circle"
 msgstr "Círculo de visibilidade"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:38
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:57
 msgid "Editorial Circle"
 msgstr "Círculo editorial"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:60
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:75
+msgid ""
+"Users in this group will only be able to view posts that were authored by "
+"other users in this group."
+msgstr ""
+"Os usuários deste grupo poderão apenas visualizar os posts que foram criados "
+"por outros usuários deste grupo."
+
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:76
+msgid ""
+"Users in this group will only be able to edit posts that were authored by "
+"other users in this group."
+msgstr ""
+"Os usuários deste grupo poderão apenas editar posts que foram criados por "
+"outros usuários deste grupo."
+
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:78
+msgid "Normal capability requirements will also be enforced."
+msgstr "Os requisitos normais de permissões também serão aplicados."
+
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:82
 #, php-format
 msgid "This group is a %s"
 msgstr "Este grupo é um %s"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:83
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:95
 #, php-format
 msgid ""
 "%s%s restrictions%s do not apply to this role, since it has the %s "
@@ -2346,50 +2324,22 @@ msgstr ""
 "As restrições %s%s%s não se aplicam a esta função, pois ela tem a permissão "
 "%s."
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:102
-msgid "apply limitation for post types:"
-msgstr "aplicar limitação para tipos de post:"
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:123
+msgid "Apply limitation for post types:"
+msgstr "Aplicar limitação para tipos de post:"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:112
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:152
-msgid "User"
-msgstr "Usuário"
-
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:121
-msgid "more..."
-msgstr "mais..."
-
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:138
-msgid "edit"
-msgstr "editar"
-
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:143
-msgid "hide"
-msgstr "ocultar"
-
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:160
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:136
 msgid "(toggle all)"
 msgstr "(alternar tudo)"
 
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:176
+#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:201
+#, php-format
 msgid ""
-"Prevent viewing or editing of posts not authored by a fellow Circle Group "
-"member. Users may be a member of multiple circles. Note that an appropriate "
-"role assignment (either WP role or supplemental) is still required."
+"Users may be excused from Circle restrictions by adding the %1$s or %2$s "
+"capability to their role."
 msgstr ""
-"Impedir a visualização ou a edição de posts que não sejam de autoria de um "
-"colega membro do grupo de círculos. Os usuários podem ser membros de vários "
-"círculos. Observe que ainda é preciso ter uma atribuição de função "
-"apropriada (função do WP ou complementar)."
-
-#: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupEdit.php:180
-msgid ""
-"Users may be exempted by adding the pp_exempt_read_circle or "
-"pp_exempt_edit_circle capability to their primary WP role."
-msgstr ""
-"Os usuários podem ser isentos ao adicionar a permissão "
-"“pp_exempt_read_circle” ou “pp_exempt_edit_circle” à sua função principal do "
-"WP."
+"Os usuários podem ser isentos das restrições do círculo ao adicionar a "
+"permissão %1$s ou %2$s à sua função."
 
 #: modules/presspermit-circles/classes/Permissions/Circles/UI/GroupsListing.php:14
 msgid "Circle Type"
@@ -2400,7 +2350,7 @@ msgstr "Tipo de círculo"
 msgid "Editorial"
 msgstr "Editorial"
 
-#: modules/presspermit-circles/classes/Permissions/CirclesHooksAdmin.php:51
+#: modules/presspermit-circles/classes/Permissions/CirclesHooksAdmin.php:54
 msgid "Access Circle restrictions apply to revisions"
 msgstr "As restrições do círculo de acesso se aplicam às revisões"
 
@@ -2558,87 +2508,87 @@ msgstr "Este link expirou!"
 msgid "No Public Preview available!"
 msgstr "Nenhuma pré-visualização pública disponível!"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:47
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:46
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:275
 msgid "Configured Teaser Text"
 msgstr "Texto de pré-visualização configurado"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:55
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:54
 msgid "Network"
 msgstr "Rede"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:65
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:64
 msgid "Groups"
 msgstr "Grupos"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:74
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:73
 msgid "Forum Teaser"
 msgstr "Pré-visualização do fórum"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:89
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:88
 msgid "Network-wide groups"
 msgstr "Grupos em toda a rede"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:93
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:92
 msgid "Teaser Topics"
 msgstr "Pré-visualização de tópicos"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:94
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:93
 msgid "Hide Topic / Reply Author Link"
 msgstr "Ocultar link do autor do tópico/resposta"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:127
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:126
 msgid "Compatibility Pack"
 msgstr "Pacote de compatibilidade"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:185
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:184
 #, php-format
 msgid "Topic Teaser Text (%s):"
 msgstr "Texto da pré-visualização do tópico (%s):"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:186
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:185
 #, php-format
 msgid "Reply Teaser Text (%s):"
 msgstr "Texto da pré-visualização da resposta (%s):"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:190
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:189
 msgid "First Reply"
 msgstr "Primeira resposta"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:191
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:190
 msgid "Other Replies"
 msgstr "Outras respostas"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:208
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:207
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:325
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:896
 msgid "Not Logged In"
 msgstr "Não conectado"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:208
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:207
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:896
 msgid "Logged In Users"
 msgstr "Usuários conectados"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:241
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:240
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:957
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Insira um formulário de acesso usando o shortcode %s[login_form]%s."
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:295
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:284
 msgid "Hide Topics and Replies"
 msgstr "Ocultar tópicos e respostas"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:296
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:285
 msgid "Tease Topics and Replies"
 msgstr "Pré-visualizar tópicos e respostas"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:297
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:286
 msgid "Show Topics, Tease Replies"
 msgstr "Mostrar tópicos, pré-visualizar respostas"
 
-#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:331
+#: modules/presspermit-compatibility/classes/Permissions/Compat/UI/Settings.php:320
 msgid ""
 "The single forum teaser may be customized by STYLESHEETPATH/press-permit/"
 "teaser-content-forum.php"
@@ -2658,26 +2608,26 @@ msgstr "Espelhar permissões de posts para traduções"
 msgid "Mirror Term Permissions to translations"
 msgstr "Espelhar permissões de termos para traduções"
 
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:212
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:216
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:237
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:241
 msgid "[This topic requires additional permissions or membership.]"
 msgstr "[Este tópico requer permissões adicionais ou associação]"
 
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:213
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:217
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:238
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:242
 msgid "[...]"
 msgstr "[...]"
 
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:214
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:239
 msgid "[This topic requires site login.]"
 msgstr "[Este tópico requer acesso ao site]"
 
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:215
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:219
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:240
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:244
 msgid "[login required]"
 msgstr "[requer acesso]"
 
-#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:218
+#: modules/presspermit-compatibility/classes/Permissions/CompatHooks.php:243
 msgid "[This reply requires site login.]"
 msgstr "[Esta resposta requer acesso ao site]"
 
@@ -2709,17 +2659,14 @@ msgstr ""
 "outros sites, serão geradas novamente no próximo acesso."
 
 #: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:31
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:38
 msgid "File Access"
 msgstr "Acesso a arquivos"
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:38
-msgid "File Filtering"
-msgstr "Filtragem de arquivos"
-
 #: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:50
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:291
-msgid "File Filtering Reset Key:"
-msgstr "Chave de redefinição de filtragem de arquivos:"
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:286
+msgid "File Access Reset Key:"
+msgstr "Chave de redefinição de acesso a arquivos:"
 
 #: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:51
 msgid "Small Thumbnails Unfiltered"
@@ -2761,93 +2708,156 @@ msgstr ""
 "ser filtrado, porque os links permanentes do WordPress estão definidos como "
 "padrão."
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:112
-msgid "Filter Uploaded File Attachments"
-msgstr "Filtrar anexos de arquivos enviados"
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:141
+msgid "Multisite File Access Configuration:"
+msgstr "Configuração de acesso a arquivos de multisite:"
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:146
-msgid "Multisite File Filtering Configuration:"
-msgstr "Configuração de filtragem de arquivos de multisite:"
-
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:165
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:160
 msgid "show required rules"
 msgstr "mostrar regras obrigatórias"
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:346
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1015
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1083
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1127
+msgid "Copy"
+msgstr "Copiar"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:303
+msgid "Copied!"
+msgstr "Copiado!"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:353
+msgid "Regenerate Access File"
+msgstr "Gerar novamente o arquivo de acesso"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:365
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:80
+msgid "Attachments Utility"
+msgstr "Utilitário de anexos"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsTabFileAccess.php:375
 #, php-format
 msgid "For Nginx integration, see %spublishpress.com documentation%s."
 msgstr ""
 "Para a integração com o Nginx, consulte a documentação do "
 "%spublishpress.com%s."
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:37
-msgid "Attachments Utility"
-msgstr "Utilitário de anexos"
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:83
+msgid "Back to Permissions Settings"
+msgstr "Voltar às configurações de permissões"
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:44
-#, php-format
-msgid "Back to %1$sPermissions Settings%2$s"
-msgstr "Voltar para %1$sConfigurações de permissões%2$s"
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:88
+msgid "File Access for Files Uploaded via FTP"
+msgstr "Acesso a arquivos enviados por FTP"
 
-#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:150
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:95
+msgid "Find Files Uploaded via FTP"
+msgstr "Localizar arquivos enviados através de FTP"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:106
+msgid "Site Configuration Requirements"
+msgstr "Requisitos de configuração do site"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:108
+msgid ""
+"For proper access control of direct file URLs, your site must meet these "
+"requirements:"
+msgstr ""
+"Para um controle de acesso adequado de URLs de arquivos diretos, seu site "
+"precisa atender a esses requisitos:"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:140
+msgid "Automated Processing"
+msgstr "Processamento automatizado"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:156
+msgid "Utility Endpoint URL:"
+msgstr "URL do ponto de extremidade do utilitário:"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:158
+msgid "Copy URL"
+msgstr "Copiar URL"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:163
+msgid "Go to Settings"
+msgstr "Acessar as configurações"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:203
 #, php-format
 msgid "%ssite %d :%s"
 msgstr "%ssite %d :%s"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:260
+msgid "RUNNING"
+msgstr "EXECUTANDO"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:435
+msgid "Operation complete"
+msgstr "Operação concluída"
+
+#: modules/presspermit-file-access/classes/Permissions/FileAccess/UI/SettingsUtility.php:461
+msgid "Scan Again"
+msgstr "Examinar novamente"
 
 #: modules/presspermit-file-access/classes/Permissions/FileAccessHooksAdmin.php:22
 #: modules/presspermit-file-access/classes/Permissions/FileAccessHooksAdmin.php:23
 msgid "Attachment Utility"
 msgstr "Utilitário de anexo"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:81
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:80
 #: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:92
 msgid "From:"
 msgstr "De:"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:82
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:87
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:93
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:96
-msgid "date or #days"
-msgstr "data ou nº de dias"
-
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:81
 #: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:86
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:95
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:93
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:98
+msgid "Select Date"
+msgstr "Selecionar data"
+
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:85
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:97
 msgid "To:"
 msgstr "Até:"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:115
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:110
 #, php-format
-msgid "Current Selections: %1$s refresh %2$s"
-msgstr "Seleções atuais: %1$s atualizar %2$s"
+msgid "Current Selections: %1$s"
+msgstr "Seleções atuais: %1$s"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:116
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:111
 msgid "refresh member status"
 msgstr "atualizar o status do membro"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:183
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:189
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:111
+msgid "Refresh"
+msgstr "Atualizar"
+
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:178
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:184
 #, php-format
 msgid "%1$s (%2$s - %3$s)"
 msgstr "%1$s (%2$s - %3$s)"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:193
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:188
 #, php-format
 msgid "SCHEDULED: %s"
 msgstr "AGENDADO: %s"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:196
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:191
 #, php-format
 msgid "EXPIRED: %s"
 msgstr "EXPIRADO: %s"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:198
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:193
 #, php-format
 msgid "ACTIVE with future expiration: %s"
 msgstr "ATIVO com expiração futura: %s"
 
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:200
-#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:204
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:195
+#: modules/presspermit-membership/classes/Permissions/Membership/UI/GroupEdit.php:199
 #, php-format
 msgid "ACTIVE: %s"
 msgstr "ATIVO: %s"
@@ -2869,11 +2879,11 @@ msgstr "Revisão: "
 msgid "Subpages"
 msgstr "Subpáginas"
 
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:107
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:105
 msgid "Locked by constant definition"
 msgstr "Bloqueado por definição de constante"
 
-#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:126
+#: modules/presspermit-status-control/classes/Permissions/Statuses/UI/SettingsTabStatuses.php:124
 #, php-format
 msgid "To manage Statuses, go to %sStatuses > Statuses%s"
 msgstr "Para gerenciar os status, acesse %sStatus > Status%s"
@@ -2895,7 +2905,7 @@ msgstr "Premium"
 msgid "Staff"
 msgstr "Equipe"
 
-#: modules/presspermit-status-control/classes/Permissions/StatusesHooksAdmin.php:223
+#: modules/presspermit-status-control/classes/Permissions/StatusesHooksAdmin.php:253
 msgid ""
 "Type-specific Supplemental Roles grant all custom status capabilities in "
 "Pattern Role"
@@ -2903,7 +2913,7 @@ msgstr ""
 "As funções complementares específicas do tipo, concedem todas as permissões "
 "de status personalizadas na função padrão"
 
-#: modules/presspermit-status-control/classes/Permissions/StatusesHooksAdmin.php:248
+#: modules/presspermit-status-control/classes/Permissions/StatusesHooksAdmin.php:278
 msgid ""
 "For example, if the Author role has the edit_pitch_posts capability, a "
 "Supplemental Role of Page Author will include edit_pitch_pages"
@@ -2911,11 +2921,17 @@ msgstr ""
 "Por exemplo, se a função de autor tiver a permissão “edit_pitch_posts”, uma "
 "função complementar de autor de página irá incluir “edit_pitch_pages”"
 
+#: modules/presspermit-sync/classes/Permissions/SyncHooksAdmin.php:144
+#, php-format
+msgid "Role selection is required for %s. Please select at least one role."
+msgstr ""
+"A seleção da função é obrigatória para %s. Selecione pelo menos uma função."
+
 #: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/Dashboard.php:40
 #: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/Dashboard.php:41
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:32
-msgid "Sync Posts"
-msgstr "Sincronização de posts"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:33
+msgid "User Posts"
+msgstr "Posts do usuário"
 
 #: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/Helper.php:61
 #, php-format
@@ -2932,175 +2948,250 @@ msgstr ""
 msgid "Dismiss this notice."
 msgstr "Dispensar esta notificação."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:40
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:41
 msgid "Synchronize Posts"
 msgstr "Sincronizar posts"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:53
-msgid "Synchronize Posts to Users"
-msgstr "Sincronizar posts com usuários"
-
 #: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:54
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:112
+msgid "Create Posts for Users"
+msgstr "Criar posts para usuários"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:55
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:130
 msgid "Grant Author Permissions"
 msgstr "Conceder permissões ao autor"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:56
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:57
 msgid "Match Post Field"
 msgstr "Campo do post correspondente"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:57
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:58
 msgid "Match User Field"
 msgstr "Campo do usuário correspondente"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:58
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:59
 msgid "User Role"
 msgstr "Função do usuário"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:59
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:60
 msgid "Parent Post"
 msgstr "Post principal"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:296
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:61
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:430
+msgid "Quantity"
+msgstr "Quantidade"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:368
 msgid "Post Title"
 msgstr "Título do post"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:297
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:369
 msgid "Post slug"
 msgstr "Slug do post"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:301
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:373
 msgid "User Display Name"
 msgstr "Nome de exibição do usuário"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:302
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:374
 msgid "User email"
 msgstr "E-mail do usuário"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:303
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:375
 msgid "User login"
 msgstr "Acesso do usuário"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:304
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:376
 msgid "User nicename"
 msgstr "Nome amigável do usuário"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:325
-msgid "Sync to New Users"
-msgstr "Sincronizar com novos usuários"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:401
+msgid "User Posts Created:"
+msgstr "Posts de usuários criados:"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:326
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:414
+msgid "Post Type"
+msgstr "Tipo de post"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:415
+msgid "Select where posts will be created for users."
+msgstr "Selecione onde os posts serão criados para os usuários."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:418
+msgid "New Users"
+msgstr "Novos usuários"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:419
+msgid "Create posts for new users."
+msgstr "Crie posts para novos usuários."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:422
 msgid "Current Users"
 msgstr "Usuários atuais"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:327
-msgid "Role to Sync"
-msgstr "Função a ser sincronizada"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:423
+msgid "Create posts for existing users."
+msgstr "Crie posts para usuários existentes."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:328
-msgid "Post Match Field"
-msgstr "Campo de correspondência do post"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:427
+msgid "Create posts for users in these roles."
+msgstr "Crie posts para usuários nessas funções."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:330
-msgid "User Match Field"
-msgstr "Campo de correspondência do usuário"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:431
+msgid "Set the number of posts to create for each user."
+msgstr "Defina o número de posts a serem criados para cada usuário."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:333
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:435
+msgid "Set the status for created posts."
+msgstr "Defina o status dos posts criados."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:439
 msgid "Parent"
 msgstr "Principal"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:380
-msgid "please select..."
-msgstr "selecione..."
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:440
+msgid "Specify the Post ID of a parent post."
+msgstr "Especifique o ID do post de um post principal (ascendente)."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:381
-msgid "(all roles)"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:449
+msgid "No post types are enabled for user pages."
+msgstr "Nenhum tipo de post está ativado para as páginas de usuário."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:451
+msgid "Go to Permissions Settings"
+msgstr "Acessar as configurações de permissões"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:493
+msgid "Click to expand/collapse advanced settings"
+msgstr "Clique para expandir/recolher as configurações avançadas"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:538
+msgid "(All Roles)"
 msgstr "(todas as funções)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:435
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:478
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:593
+msgid "Not applicable for non-hierarchical post types"
+msgstr "Não aplicável a tipos de posts não hierárquicos"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:613
+msgid "Avoid Creating Duplicates"
+msgstr "Evite criar duplicações"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:614
+msgid ""
+"This setting can prevent the creation of duplicate posts for a user. If the "
+"selected fields are a match, a new post will not be created."
+msgstr ""
+"Esta configuração pode impedir a criação de posts duplicados de um usuário. "
+"Se os campos selecionados corresponderem, não será criado um novo post."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:619
+msgid "Post Match Field"
+msgstr "Campo de correspondência do post"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:620
+msgid "Choose which post field to match with users."
+msgstr "Escolha qual campo do post deve corresponder aos usuários."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:660
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:707
 msgid "(other)"
 msgstr "(outro)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:447
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:490
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:672
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:716
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:585
 msgid "select..."
 msgstr "selecionar..."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:448
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:491
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:673
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:717
 msgid "cancel"
 msgstr "cancelar"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:519
-msgid "Sync to Selected Role"
-msgstr "Sincronizar com a função selecionada"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:681
+msgid "User Match Field"
+msgstr "Campo de correspondência do usuário"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:542
-msgid "Synchronization Results:"
-msgstr "Resultados da sincronização:"
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:682
+msgid "Select which user field to match with posts."
+msgstr "Selecione qual campo de usuário deve corresponder aos posts."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:561
-msgid "Read more..."
-msgstr "Leia mais..."
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:728
+msgid "Create Posts for Current Users"
+msgstr "Criar posts para os usuários atuais"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:60
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:862
+msgid "Validation Errors in User Posts Settings:"
+msgstr "Erros de validação nas configurações de posts do usuário:"
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UI/SettingsTabSyncPosts.php:870
+msgid "Please fix these errors and try again."
+msgstr "Corrija esses erros e tente novamente."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:67
 #, php-format
-msgid "%s: Skipping because no role is selected"
+msgid "%s: Skipping because no roles are selected"
 msgstr "%s: Ignorando porque nenhuma função foi selecionada"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:78
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:101
 #, php-format
 msgid "%s: Enabled PressPermit filtering (Core > Filtered Post Types)"
 msgstr ""
 "%s: Filtragem do PressPermit ativada (Arquivos básicos > Tipos de posts "
 "filtrados)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:93
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:119
 #, php-format
-msgid "%1$s: Assigned supplemental %2$s Author role to [WP %3$s] group"
-msgstr "%1$s: Função de autor complementar %2$s atribuída ao grupo [WP %3$s]"
+msgid "%1$s: Assigned extra %2$s Author role to %3$s role"
+msgstr "%1$s: Função de autor adicional %2$s atribuída à função %3$s"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:218
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:258
 #, php-format
 msgid "Ambiguous %1$s match (%2$s)"
 msgstr "Correspondência ambígua de %1$s (%2$s)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:248
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:288
 #, php-format
 msgid "Ambiguous user match for %1$s (%2$s, post id %3$s"
 msgstr "Correspondência de usuário ambígua para %1$s (%2$s, ID do post %3$s)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:273
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:313
 #, php-format
 msgid "Ambiguous user match for %1$s (%2$s, $post id %3$s)"
 msgstr "Correspondência de usuário ambígua para %1$s (%2$s, $id do post %3$s)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:392
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:416
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:443
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:467
 #, php-format
 msgid "Ambiguous user match for %1$s (%2$s)"
 msgstr "Correspondência de usuário ambígua para %1$s (%2$s)"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:447
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:503
 #, php-format
-msgid "%1$s: %2$s posts created"
-msgstr "%1$s: %2$s posts criados"
+msgid "%1$s: %2$s posts created."
+msgstr "%1$s: %2$s posts criados."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:453
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:509
 #, php-format
-msgid "%1$s: %2$s posts updated"
-msgstr "%1$s: %2$s posts atualizados"
+msgid "%1$s: %2$s posts updated."
+msgstr "%1$s: %2$s posts atualizados."
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:464
-#, php-format
-msgid "%1$s: Synchronization done for %2$s role."
-msgstr "%1$s: Sincronização concluída para a função %2$s."
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:525
+msgid "All Roles"
+msgstr "Todas as funções"
 
-#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:466
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:529
 #, php-format
-msgid "%s: Synchronization done."
-msgstr "%s: Sincronização concluída."
+msgid "%1$s: Done for %2$s."
+msgstr "%1$s: Concluído para %2$s."
+
+#: modules/presspermit-sync/classes/Permissions/SyncPosts/UserSync.php:531
+#, php-format
+msgid "%s: Done."
+msgstr "%s: Concluído."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:440
 #, php-format
@@ -3378,12 +3469,6 @@ msgstr "Expandir código"
 msgid "Collapse code"
 msgstr "Recolher código"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1015
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1083
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1127
-msgid "Copy"
-msgstr "Copiar"
-
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1019
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1087
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:1131
@@ -3526,6 +3611,229 @@ msgstr "PublishPress"
 #. Author URI of the plugin/theme
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
+
+#~ msgid "(all roles)"
+#~ msgstr "(todas as funções)"
+
+#~ msgid "Create Posts"
+#~ msgstr "Criar posts"
+
+#, php-format
+#~ msgid ""
+#~ "Note: This generates a post (of selected type) for each current or future "
+#~ "%suser%s in the selected role."
+#~ msgstr ""
+#~ "Observação: Isso gera um post (do tipo selecionado) para cada %susuário%s "
+#~ "atual ou futuro na função selecionada."
+
+#, php-format
+#~ msgid ""
+#~ "Permissions filtering is turned on for the post type: %1$sPermissions > "
+#~ "Core > Filtered Post Types%2$s"
+#~ msgstr ""
+#~ "A filtragem de permissões está ativada para o tipo de post: "
+#~ "%1$sPermissões > Arquvos básicos > Tipos de post filtrados%2$s"
+
+#, php-format
+#~ msgid ""
+#~ "The synchronized role is supplemented with Author capabilities for the "
+#~ "post type: %1$sPermissions > Groups%2$s > [Role Name]"
+#~ msgstr ""
+#~ "A função sincronizada foi complementada com as permissões de autor para o "
+#~ "tipo de post: %1$sPermissões > Grupos%2$s > [Nome da função]"
+
+#~ msgid "Establish a dedicated post for each qualified user."
+#~ msgstr "Estabeleça um post dedicado para cada usuário qualificado."
+
+#~ msgid ""
+#~ "It is designed to bring setup convenience and delegated editing "
+#~ "permissions to Team / Staff plugins, but has broad usage potential."
+#~ msgstr ""
+#~ "Ele foi desenvolvido para oferecer praticidade na configuração e "
+#~ "permissões de edição delegadas aos plugins de equipe/pessoal, mas tem "
+#~ "amplo potencial de uso."
+
+#~ msgid ""
+#~ "Post / User match fields allow existing Users to be designated as the "
+#~ "Author (owner) of an exiting post."
+#~ msgstr ""
+#~ "Os campos de correspondência de post/usuário permitem que os usuários "
+#~ "existentes sejam atribuídos como o autor (proprietário) de um post "
+#~ "existente."
+
+#~ msgid ""
+#~ "If a user cannot be matched to an existing post, a new post is created "
+#~ "for them."
+#~ msgstr ""
+#~ "Se não for possível corresponder um usuário a um post existente, um novo "
+#~ "post será criado para ele."
+
+#~ msgid ""
+#~ "These users will be enabled to edit their synchronized post if \"Grant "
+#~ "Author Permissions\" is enabled.  This works by automating the following "
+#~ "configuration:"
+#~ msgstr ""
+#~ "Estes usuários poderão editar seus posts sincronizados, se a opção "
+#~ "“Conceder permissões ao autor” estiver ativada.  Isso funciona "
+#~ "automatizando a seguinte configuração:"
+
+#~ msgid ""
+#~ "Developer note: User matches and Post data may be customized using "
+#~ "filters and actions."
+#~ msgstr ""
+#~ "Observação para o desenvolvedor: as correspondências de usuário e os "
+#~ "dados de posts, podem ser personalizados usando filtros e ações."
+
+#~ msgid ""
+#~ "This feature works with most Team / Staff plugins. However, the following "
+#~ "are NOT fully compatible. With these plugins, PublishPress Permissions "
+#~ "can sync and set editing permissions for teams, but not individual team "
+#~ "members:"
+#~ msgstr ""
+#~ "Este recurso funciona com a maioria dos plugins de equipe/pessoal. Porém, "
+#~ "os seguintes NÃO são totalmente compatíveis. Com estes plugins, o "
+#~ "PublishPress Permissions pode sincronizar e definir permissões de edição "
+#~ "para equipes, mas não para membros individuais da equipe:"
+
+#~ msgid "This plugin is NOT fully compatible."
+#~ msgstr "Este plugin NÃO é totalmente compatível."
+
+#~ msgid "Sync to New Users"
+#~ msgstr "Sincronizar com novos usuários"
+
+#~ msgid "Role to Sync"
+#~ msgstr "Função a ser sincronizada"
+
+#~ msgid "please select..."
+#~ msgstr "selecione..."
+
+#~ msgid "Sync to Selected Role"
+#~ msgstr "Sincronizar com a função selecionada"
+
+#~ msgid "Synchronization Results:"
+#~ msgstr "Resultados da sincronização:"
+
+#~ msgid "Read more..."
+#~ msgstr "Leia mais..."
+
+#, php-format
+#~ msgid "%s: Synchronization done."
+#~ msgstr "%s: Sincronização concluída."
+
+#~ msgid "User"
+#~ msgstr "Usuário"
+
+#~ msgid "edit"
+#~ msgstr "editar"
+
+#~ msgid "Display PublishPress Branding in Admin"
+#~ msgstr "Exibir a marca do PublishPress no painel administrativo"
+
+#~ msgid ""
+#~ "Block direct URL access to images and other uploaded files in the "
+#~ "WordPress uploads folder which are attached to posts that the user cannot "
+#~ "read.  For each protected file, a separate RewriteRule will be added to "
+#~ "the .htaccess file in this site's uploads folder.  Non-protected files "
+#~ "are returned with no script execution whatsoever."
+#~ msgstr ""
+#~ "Bloqueie o acesso direto ao URL de imagens e outros arquivos enviados na "
+#~ "pasta “uploads” do WordPress que estão anexados a posts que o usuário não "
+#~ "pode ler.  Para cada arquivo protegido, uma “RewriteRule” separada, será "
+#~ "adicionada ao arquivo “.htaccess” na pasta de uploads deste site.  Os "
+#~ "arquivos não protegidos são retornados sem nenhuma execução de script."
+
+#, php-format
+#~ msgid ""
+#~ "To trigger regeneration of %1$suploads/.htaccess%2$s with new file URL "
+#~ "keys (at next site access), execute the following URL:"
+#~ msgstr ""
+#~ "Para acionar a regeneração do %1$suploads/.htaccess%2$s com novas chaves "
+#~ "de URL de arquivo (no próximo acesso ao site), execute o seguinte URL:"
+
+#, php-format
+#~ msgid ""
+#~ "To trigger regeneration of %1$suploads/.htaccess%2$s with new file URL "
+#~ "keys, execute the following URL:"
+#~ msgstr ""
+#~ "Para acionar a regeneração do %1$suploads/.htaccess%2$s com novas chaves "
+#~ "de URL de arquivo, execute o seguinte URL:"
+
+#, php-format
+#~ msgid ""
+#~ "%1$sNote:%2$s FTP-uploaded files will not be filtered correctly until you "
+#~ "run the %3$sAttachments Utility%4$s."
+#~ msgstr ""
+#~ "%1$sObservação:%2$s Os arquivos enviados por FTP não serão filtrados "
+#~ "corretamente até que você execute o %3$sUtilitário de anexos%4$s."
+
+#~ msgid ""
+#~ "For post restrictions to be extended to files and images, those "
+#~ "attachments must be stored as post metadata (not just linked in the post "
+#~ "content). The WordPress editor normally handles that, but this utility "
+#~ "scans post content to apply any missing attachments."
+#~ msgstr ""
+#~ "Para que as restrições de posts sejam estendidas a arquivos e imagens, "
+#~ "estes anexos precisam ser armazenados como metadados do post (não apenas "
+#~ "vinculados ao conteúdo do post). Normalmente, o editor do WordPress cuida "
+#~ "disso, mas este utilitário examina o conteúdo do post, para aplicar os "
+#~ "anexos ausentes."
+
+#~ msgid "more..."
+#~ msgstr "mais..."
+
+#~ msgid "hide"
+#~ msgstr "ocultar"
+
+#~ msgid ""
+#~ "Prevent viewing or editing of posts not authored by a fellow Circle Group "
+#~ "member. Users may be a member of multiple circles. Note that an "
+#~ "appropriate role assignment (either WP role or supplemental) is still "
+#~ "required."
+#~ msgstr ""
+#~ "Impedir a visualização ou a edição de posts que não sejam de autoria de "
+#~ "um colega membro do grupo de círculos. Os usuários podem ser membros de "
+#~ "vários círculos. Observe que ainda é preciso ter uma atribuição de função "
+#~ "apropriada (função do WP ou complementar)."
+
+#~ msgid ""
+#~ "Users may be exempted by adding the pp_exempt_read_circle or "
+#~ "pp_exempt_edit_circle capability to their primary WP role."
+#~ msgstr ""
+#~ "Os usuários podem ser isentos ao adicionar a permissão "
+#~ "“pp_exempt_read_circle” ou “pp_exempt_edit_circle” à sua função principal "
+#~ "do WP."
+
+#~ msgid "File Filtering"
+#~ msgstr "Filtragem de arquivos"
+
+#~ msgid "Filter Uploaded File Attachments"
+#~ msgstr "Filtrar anexos de arquivos enviados"
+
+#~ msgid "date or #days"
+#~ msgstr "data ou nº de dias"
+
+#~ msgid "Create or edit Publication Workflow statuses"
+#~ msgstr "Crie ou edite os status do fluxo de trabalho de publicações"
+
+#~ msgid ""
+#~ "Pertains to assignment of a custom privacy or moderation status. This "
+#~ "capability in a WP role enables PP to assign a type-specific supplemental "
+#~ "role with custom capabilities such as \"set_pages_approved\""
+#~ msgstr ""
+#~ "Refere-se à atribuição de um status personalizado de privacidade ou "
+#~ "moderação. Esta permissão em uma função do WP permite que o PP atribua "
+#~ "uma função complementar específica do tipo com permissão personalizada, "
+#~ "como “set_pages_approved”"
+
+#~ msgid ""
+#~ "Editors can edit posts having a moderation status (i.e. Approved) without "
+#~ "a supplemental status-specific role"
+#~ msgstr ""
+#~ "Os editores podem editar posts com status de moderação (ou seja, "
+#~ "aprovados) sem uma função específica de status complementar"
+
+#~ msgid "Sync Posts"
+#~ msgstr "Sincronização de posts"
 
 #~ msgid "Anonymous Visitors"
 #~ msgstr "Visitantes anônimos"

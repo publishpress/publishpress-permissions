@@ -401,6 +401,15 @@ class Permissions
         return (!empty($args['force_all'])) ? $modules : array_diff($modules, apply_filters('presspermit_unavailable_modules', []));
     }
 
+    public function getSkippedModules()
+    {
+        $modules = [
+            'presspermit-status-control',
+        ];
+
+        return $modules;
+    }
+
     public function moduleExists($slug)
     {
         return in_array($slug, $this->getAvailableModules());

@@ -156,6 +156,15 @@ class AdminFilters
 
     function fltAppendExceptionTypes($types)
     {
+        // Add Term option first (before Permission Group)
+        $types['_term_'] = (object)[
+            'name' => '_term_',
+            'labels' => (object)[
+                'singular_name' => esc_html__('Term', 'press-permit-core'),
+                'name' => esc_html__('Terms', 'press-permit-core')
+            ]
+        ];
+
         $types['pp_group'] = (object)[
             'name' => 'pp_group',
             'labels' => (object)[
@@ -169,11 +178,15 @@ class AdminFilters
 
     function actDropdownTaxonomyTypes($args = [])
     {
-        if (
-            empty($args['agent']) || empty($args['agent']->metagroup_id)
-            || !in_array($args['agent']->metagroup_id, ['wp_anon', 'wp_all'], true)
-        ) {
-            echo "<option value='_term_'>" . esc_html__('term (manage)', 'press-permit-core') . '</option>';
+        // This function is now only used for the role types dropdown
+        // For role types, we still need to add the Term option via direct output
+        if (current_action() === 'presspermit_role_types_dropdown') {
+            if (
+                empty($args['agent']) || empty($args['agent']->metagroup_id)
+                || !in_array($args['agent']->metagroup_id, ['wp_anon', 'wp_all'], true)
+            ) {
+                echo "<option value='_term_'>" . esc_html__('Term', 'press-permit-core') . '</option>';
+            }
         }
     }
 

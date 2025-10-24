@@ -144,7 +144,7 @@ class SettingsAdmin
         return __('Other users will be unable to publish new top-level pages (Parent = "Main Page"), or move a published page from "Main Page" to a different Parent.', 'press-permit-core-hints');
 
         case 'limited_editing_elements' :
-        return __('Remove Edit Form elements with these (comma-separated) html IDs from users who do not have full editing capabilities for the post/page.', 'press-permit-core-hints');
+        return __('This feature has been moved to PublishPress Capabilities > Editor Features > Element IDs. Please use the Capabilities plugin for better organization and enhanced functionality.', 'press-permit-core-hints');
 
         case 'media_lib_unfiltered' :
         return __('The following settings are currently overridden by the constant PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you maintain). Media Library access will not be altered by Permissions.', 'press-permit-core-hints');

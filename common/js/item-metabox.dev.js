@@ -96,7 +96,7 @@ var wpNavMenu;
                     // upon changing tabs, we want to uncheck all checkboxes
                     $('input', wrapper).prop('checked', false);
 
-                    $('.tabs-panel-active', wrapper).removeClass('tabs-panel-active').addClass('tabs-panel-inactive');
+                    $('.tabs-panel-active', wrapper).not('#tabs-panel-search-taxonomy-category').removeClass('tabs-panel-active').addClass('tabs-panel-inactive');
                     $('#' + panelId, wrapper).removeClass('tabs-panel-inactive').addClass('tabs-panel-active');
 
                     $('.tabs', wrapper).removeClass('tabs');

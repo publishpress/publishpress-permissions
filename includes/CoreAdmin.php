@@ -86,15 +86,6 @@ class CoreAdmin
 
         add_submenu_page(
             $pp_options_menu,
-            esc_html__('User Posts', 'press-permit-core'),
-            esc_html__('User Posts', 'press-permit-core'),
-            'read',
-            'presspermit-sync',
-            $handler
-        );
-
-        add_submenu_page(
-            $pp_options_menu,
             esc_html__('Teaser', 'press-permit-core'),
             esc_html__('Teaser', 'press-permit-core'),
             'read',

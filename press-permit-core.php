@@ -4,7 +4,7 @@
  * Plugin Name: PublishPress Permissions
  * Plugin URI:  https://publishpress.com/presspermit
  * Description: Advanced yet accessible content permissions. Give users or groups type-specific roles. Enable or block access for specific posts or terms.
- * Version: 4.5.1
+ * Version: 4.5.2
  * Author: PublishPress
  * Author URI:  https://publishpress.com/
  * Text Domain: press-permit-core
@@ -188,6 +188,14 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
 
         $presspermit_loaded_by_pro = strpos(str_replace('\\', '/', __FILE__), 'vendor/publishpress/');
 
+        global $pagenow;
+
+        if (is_admin() && isset($pagenow) && ('customize.php' == $pagenow)
+        || (is_admin() && isset($pagenow) && ('edit.php' == $pagenow) && !empty($_REQUEST['post_type']) && ('give_forms' == sanitize_key($_REQUEST['post_type']))) // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        ) {
+            return;
+        }
+
         if (!function_exists('presspermit')) {
             require_once(__DIR__ . '/functions.php');
         }
@@ -201,13 +209,7 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
             return;
         }
 
-        global $pagenow;
-
-        if (is_admin() && isset($pagenow) && ('customize.php' == $pagenow)) {
-            return;
-        }
-
-        define('PRESSPERMIT_VERSION', '4.5.1');
+        define('PRESSPERMIT_VERSION', '4.5.2');
 
         if (!defined('PRESSPERMIT_READ_PUBLIC_CAP')) {
             define('PRESSPERMIT_READ_PUBLIC_CAP', 'read');

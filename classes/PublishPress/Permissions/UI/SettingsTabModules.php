@@ -69,16 +69,27 @@ class SettingsTabModules
                     <div class="pp-modules-settings">
                         <?php
                         $ext_info = $pp->admin()->getModuleInfo();
-                        $pp_modules = presspermit()->getActiveModules();
+                        $pp_modules = $pp->getActiveModules();
                         $inactive = $pp->getDeactivatedModules();
+                        $skipped_modules = $pp->getSkippedModules();
                         $active_module_plugin_slugs = [];
-
                         // Combine active and inactive modules into single array
                         $all_modules = [];
+                        
+                        // Get list of skipped module slugs for filtering
+                        $skipped_slugs = [];
+                        if (!empty($skipped_modules)) {
+                            foreach ($skipped_modules as $plugin_slug => $module_info) {
+                                $skipped_slugs[] = str_replace('presspermit-', '', $module_info);
+                            }
+                        }
 
                         // Add active modules
-                        if ($pp_modules) {
+                        if (!empty($pp_modules)) {
                             foreach ($pp_modules as $slug => $plugin_info) {
+                                // Skip modules that are in the skipped list
+                                if (in_array($slug, $skipped_slugs)) continue;
+
                                 $active_module_plugin_slugs[] = $plugin_info->plugin_slug;
                                 $all_modules[] = [
                                     'slug' => $slug,
@@ -90,9 +101,13 @@ class SettingsTabModules
                         }
 
                         // Add inactive modules
-                        if ($inactive) {
+                        if (!empty($inactive)) {
                             foreach ($inactive as $plugin_slug => $module_info) {
                                 $slug = str_replace('presspermit-', '', $plugin_slug);
+                                
+                                // Skip modules that are in the skipped list
+                                if (in_array($slug, $skipped_slugs)) continue;
+
                                 $all_modules[] = [
                                     'slug' => $slug,
                                     'plugin_slug' => $plugin_slug,

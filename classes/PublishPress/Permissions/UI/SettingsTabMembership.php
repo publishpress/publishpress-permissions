@@ -66,7 +66,7 @@ class SettingsTabMembership
 {
     public function __construct()
     {
-        add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 100);
+        add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 105);
         add_filter('presspermit_option_tab_badges', [$this, 'optionTabBadges'], 5);
         add_filter('presspermit_section_captions', [$this, 'sectionCaptions']);
         add_filter('presspermit_option_captions', [$this, 'optionCaptions']);
