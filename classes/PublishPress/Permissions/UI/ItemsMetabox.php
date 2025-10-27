@@ -140,7 +140,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         $walker = new ItemsMetabox($db_fields);
 
-        if (!in_array($current_tab, ['most-recent', 'search'])) {
+        if (!in_array($current_tab, ['search'])) {
             $current_tab = 'all';
         }
 
@@ -170,13 +170,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     }
                     ?>#<?php echo esc_attr($post_type_name); ?>-all"><?php esc_html_e('View All'); ?>
                     </a></li>
-                
-                <li <?php if ('most-recent' == $current_tab) echo ' class="tabs"'; ?>>
-                    <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
-                        echo esc_url(add_query_arg($post_type_name . '-tab', 'most-recent', remove_query_arg($removed_args)));
-                    }
-                    ?>#tabs-panel-posttype-<?php echo esc_attr($post_type_name); ?>-most-recent"><?php esc_html_e('Most Recent'); ?>
-                    </a></li>
 
                 <li <?php if ('search' == $current_tab) echo ' class="tabs"'; ?>>
                     <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
@@ -186,24 +179,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     </a></li>
 
             </ul>
-
-            <div id="tabs-panel-posttype-<?php echo esc_attr($post_type_name); ?>-most-recent" class="tabs-panel <?php
-            if ('most-recent' == $current_tab) echo 'tabs-panel-active'; else echo 'tabs-panel-inactive';
-            ?>">
-                <ul id="<?php echo esc_attr($post_type_name); ?>checklist-most-recent" class="categorychecklist form-no-clear">
-
-                    <?php
-                    $recent_args = array_merge(
-                        $args, 
-                        ['orderby' => 'post_date', 'order' => 'DESC', 'posts_per_page' => 15]  // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
-                    );
-
-                    $most_recent = $get_posts->query($recent_args);
-                    $args['walker'] = $walker;
-                    echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], $most_recent), 0, (object)$args);
-                    ?>
-                </ul>
-            </div><!-- /.tabs-panel -->
 
             <div class="tabs-panel <?php
             if ('search' == $current_tab) echo 'tabs-panel-active'; else echo 'tabs-panel-inactive';
@@ -275,9 +250,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
             ]);
             ?>
 
-            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all<?php
-            if ('all' == $current_tab) echo ' tabs-panel-active'; else echo ' tabs-panel-inactive';
-            ?>">
+            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all <?php if ('all' == $current_tab) echo ' tabs-panel-active'; else echo ' tabs-panel-inactive'; ?>">
 
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
@@ -293,9 +266,10 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
                     <?php
                     $args['walker'] = $walker;
+                    $post_type_name_formatted = ucwords(str_replace('-', ' ', trim($post_type_name)));
 
                     // kevinB: add "(none)" item for include exceptions
-                    $override_none = sprintf(esc_html__('None. All %ss will be hidden by default.', 'press-permit-core'), ucwords($post_type_name));
+                    $override_none = sprintf(esc_html__('None. All %ss will be hidden by default.', 'press-permit-core'), $post_type_name_formatted);
                     $front_page_obj = (object)['ID' => 0, 'post_parent' => 0, 'post_content' => '', 'post_excerpt' => '', 'post_title' => esc_html__('(none)', 'press-permit-core'), 'object_id' => 0, 'title' => $override_none, 'menu_item_parent' => 0, 'db_id' => 0];
                     $front_page_obj->_add_to_top = true;
                     $front_page_obj->label = esc_html__('(none)', 'press-permit-core');
@@ -358,7 +332,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception"
                         value="<?php
-                        esc_attr_e('Add Selected', 'press-permit-core'); ?>" name="add-post-type-menu-item"
+                        esc_attr_e('Add Selected Permissions', 'press-permit-core'); ?>" name="add-post-type-menu-item"
                         id="submit-posttype-<?php echo esc_attr($post_type_name); ?>"/>
 
                 </span>
@@ -416,7 +390,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
         $db_fields = ['parent' => 'post_parent', 'id' => 'ID'];
         $walker = new ItemsMetabox($db_fields);
 
-        if (!in_array($current_tab, ['most-recent', 'search'])) {
+        if (!in_array($current_tab, ['search'])) {
             $current_tab = 'all';
         }
 
@@ -455,18 +429,9 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     }
                     ?>#<?php echo esc_attr($post_type_name); ?>-all"><?php esc_html_e('View All'); ?>
                     </a></li>
-
-                <li <?php if ('most-recent' == $current_tab) echo ' class="tabs"';?>>
-                    <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
-                        echo esc_url(add_query_arg($post_type_name . '-tab', 'most-recent', remove_query_arg($removed_args)));
-                    }
-                    ?>#tabs-panel-posttype-<?php echo esc_attr($post_type_name); ?>-most-recent"><?php esc_html_e('Most Recent'); ?>
-                    </a></li>
             </ul>
 
-            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all<?php
-            echo('all' == $current_tab ? ' tabs-panel-active' : ' tabs-panel-inactive');
-            ?>">
+            <div id="<?php echo esc_attr($post_type_name); ?>-all" class="tabs-panel tabs-panel-view-all <?php echo('all' == $current_tab ? ' tabs-panel-active' : ' tabs-panel-inactive'); ?>">
 
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
@@ -527,7 +492,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception submit-add-<?php
                     echo esc_attr($post_type_name);
-                    ?>-exception" value="<?php esc_attr_e('Add Selected', 'press-permit-core'); ?>" name="add-post-type-menu-item"
+                    ?>-exception" value="<?php esc_attr_e('Add Selected Permissions', 'press-permit-core'); ?>" name="add-post-type-menu-item"
                         id="submit-posttype-<?php echo esc_attr($post_type_name); ?>"/>
 
                 </span>
@@ -618,8 +583,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         $walker = new ItemsMetabox($db_fields);
 
-        if (!in_array($current_tab, ['all', 'most-used', 'search'])) {
-            $current_tab = 'most-used';
+        if (!in_array($current_tab, ['all', 'search'])) {
+            $current_tab = 'all';
         }
 
         if (!PWP::empty_REQUEST('quick-search-taxonomy-' . $taxonomy_name)) {
@@ -642,14 +607,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
         ?>">
 
             <ul id="taxonomy-<?php echo esc_attr($taxonomy_name); ?>-tabs" class="taxonomy-tabs add-menu-item-tabs">
-                <li <?php if ('most-used' == $current_tab) echo ' class="tabs"'; ?>>
-                    <a class="nav-tab-link" href="<?php
-                    if ($nav_menu_selected_id) {
-                        echo esc_url(add_query_arg($taxonomy_name . '-tab', 'most-used', remove_query_arg($removed_args)));
-                    }
-                    ?>#tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-pop"><?php esc_html_e('Most Used'); ?>
-                    </a></li>
-
                 <li <?php if ('all' == $current_tab) echo ' class="tabs"'; ?>>
                     <a class="nav-tab-link" href="<?php if ($nav_menu_selected_id) {
                         echo esc_url(add_query_arg($taxonomy_name . '-tab', 'all', remove_query_arg($removed_args)));
@@ -665,23 +622,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     </a></li>
             </ul>
 
-            <div id="tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-pop" class="tabs-panel <?php
-            if ('most-used' == $current_tab) echo 'tabs-panel-active'; else echo 'tabs-panel-inactive';
-            ?>">
-
-                <ul id="<?php echo esc_attr($taxonomy_name); ?>checklist-pop" class="categorychecklist form-no-clear">
-                    <?php
-                    $popular_terms = get_terms($taxonomy_name, ['orderby' => 'count', 'order' => 'DESC', 'number' => 10, 'hierarchical' => false]);
-                    $args['walker'] = $walker;
-                    echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], $popular_terms), 0, (object)$args);
-                    ?>
-                </ul>
-
-            </div><!-- /.tabs-panel -->
-
-            <div id="tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-all" class="tabs-panel tabs-panel-view-all<?php
-            if ('all' == $current_tab) echo 'tabs-panel-active'; else echo ' tabs-panel-inactive';
-            ?>">
+            <div id="tabs-panel-<?php echo esc_attr($taxonomy_name); ?>-all" class="tabs-panel tabs-panel-view-all <?php if ('all' == $current_tab) echo 'tabs-panel-active'; else echo ' tabs-panel-inactive'; ?>">
 
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
@@ -804,7 +745,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                         src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception"
-                        value="<?php esc_attr_e('Add Selected', 'press-permit-core'); ?>" name="add-taxonomy-menu-item"
+                        value="<?php esc_attr_e('Add Selected Permissions', 'press-permit-core'); ?>" name="add-taxonomy-menu-item"
                         id="submit-taxonomy-<?php echo esc_attr($taxonomy_name); ?>"/>
                 </span>
             </p>
