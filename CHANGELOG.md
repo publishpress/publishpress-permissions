@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-= 4.5.2 – 24 October 2025 =
+= 4.5.2 – 27 October 2025 =
 * Added: Checkbox options for statuses in the Editing tab to provide more granular control. #1985
 * Added: Skip Module mechanism to selectively disable modules for better performance and flexibility. #1980
 * Added: Limited Editing Elements feature for refined access and editing restrictions. #1984
