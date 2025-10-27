@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-24T00:48:45+00:00\n"
+"POT-Creation-Date: 2025-10-27T16:54:54+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
@@ -357,8 +357,8 @@ msgid "Compatibility Pack"
 msgstr ""
 
 #: classes/PublishPress/Permissions/Admin.php:168
-#: includes/CoreAdmin.php:98
-#: includes/CoreAdmin.php:99
+#: includes/CoreAdmin.php:89
+#: includes/CoreAdmin.php:90
 msgid "Teaser"
 msgstr ""
 
@@ -381,8 +381,6 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/Admin.php:172
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:36
-#: includes/CoreAdmin.php:89
-#: includes/CoreAdmin.php:90
 #: includes/promo/sync-promo.php:4
 msgid "User Posts"
 msgstr ""
@@ -990,7 +988,6 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:129
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:32
 msgid "Statuses"
 msgstr ""
 
@@ -2042,9 +2039,9 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
-#: includes/CoreAdmin.php:139
-#: includes/CoreAdmin.php:140
-#: includes/CoreAdmin.php:274
+#: includes/CoreAdmin.php:130
+#: includes/CoreAdmin.php:131
+#: includes/CoreAdmin.php:265
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -2170,7 +2167,7 @@ msgid "Auto-assign available term if default term is unavailable"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:69
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:55
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:54
 msgid "List other user's uneditable posts"
 msgstr ""
 
@@ -2297,12 +2294,12 @@ msgid "Administrators"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:355
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:185
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:179
 msgid "When saving a post, if the default term is not selectable, substitute first available."
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:356
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:186
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:180
 msgid "Some term-limited editing configurations require this."
 msgstr ""
 
@@ -2465,7 +2462,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:259
+#: includes/CoreAdmin.php:250
 msgid "Pro Feature"
 msgstr ""
 
@@ -2487,7 +2484,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:271
+#: includes/CoreAdmin.php:262
 msgid "Learn More"
 msgstr ""
 
@@ -2872,11 +2869,11 @@ msgstr ""
 msgid "You're using PublishPress Permissions Free. The Pro version has more features and support. %sUpgrade to Pro%s"
 msgstr ""
 
-#: includes/CoreAdmin.php:128
+#: includes/CoreAdmin.php:119
 msgid "Promo file not found."
 msgstr ""
 
-#: includes/CoreAdmin.php:265
+#: includes/CoreAdmin.php:256
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr ""
 
@@ -3305,7 +3302,7 @@ msgid "No matching roles were found."
 msgstr ""
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:23
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:36
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:35
 msgid "Media Library"
 msgstr ""
 
@@ -3313,99 +3310,73 @@ msgstr ""
 msgid "Posts / Pages Listing"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:48
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:47
 msgid "List other users' files if attached to a editable post"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:49
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:48
 msgid "List other users' files if attached to a viewable post"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:50
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:49
 msgid "List other users' unattached files by default"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:51
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:50
 msgid "Edit other users' files if attached to an editable post"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:52
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:51
 msgid "Prevent editing files if attached to a non-editable post"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:53
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:52
 msgid "Users can always edit their own files"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:54
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:53
 msgid "Default visibility for new posts                               : "
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:56
-msgid "Enable Status Control Module"
-msgstr ""
-
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:157
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:151
 msgid "lock"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:215
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:208
 msgid "Limited Editing Elements"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:243
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:236
 msgid "Feature Moved"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:249
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:242
 #, php-format
 msgid "The Limited Editing Elements feature has been moved to %1$sCapabilities > Editor Features > Element IDs%2$s for better organization and enhanced functionality."
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:255
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:248
 #, php-format
 msgid "The Limited Editing Elements feature has been moved to the PublishPress Capabilities plugin. Please install %1$sPublishPress Capabilities%2$s to access this functionality."
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:264
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:257
 msgid "Current Settings:"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:265
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:258
 msgid "HTML Element IDs: "
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:309
-msgid "Enable or disable the Status Control module. This module provides advanced post status functionality and workflow management."
-msgstr ""
-
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:314
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:339
-msgid "Status Control module is currently active"
-msgstr ""
-
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:318
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:349
-msgid "Status Control module is currently inactive"
-msgstr ""
-
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:335
-msgid "Status Control module will be activated"
-msgstr ""
-
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:345
-msgid "Status Control module will be deactivated"
-msgstr ""
-
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:372
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:280
 msgid "List Files"
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:383
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:291
 msgid "The following settings apply to users who are able to access the Media Library. Normally this requires the upload_files or edit_files capability."
 msgstr ""
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:396
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:304
 msgid "Edit Files"
 msgstr ""
 
