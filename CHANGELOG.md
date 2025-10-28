@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-= 4.5.2 – 27 October 2025 =
+= 4.5.2 - 27 October 2025 =
 * Added: Checkbox options for statuses in the Editing tab to provide more granular control. #1985
 * Added: Skip Module mechanism to selectively disable modules for better performance and flexibility. #1980
 * Added: Limited Editing Elements feature for refined access and editing restrictions. #1984
@@ -16,12 +16,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Fixed: Broken metaboxes compatibility issue with WooCommerce Google Product Feed plugin. #1969
 * Fixed: Access failure issue with GiveWP integration. #1964
 
-= 4.5.1 – 1 October 2025 =
+= 4.5.1 - 1 October 2025 =
 * Added: Added a **User Page Promo tab** to highlight key features. #1926
 * Compat: PublishPress Statuses - list, list_other capabilities were not effective where post editing requires status-specific capabilities
 * Fixed: Corrected an issue where **PublishPress Statuses list capabilities** were ineffective if a post required status-specific editing capabilities. #1924
 
-= 4.5.0 – 10 September 2025 =
+= 4.5.0 - 10 September 2025 =
 * Added: Added filter hook to allow custom sanitization of settings. #1902
 * Added: License key input box widened to support longer keys. #1901
 * Fixed: Conflict with the PublishPress Statuses plugin that caused an "out of memory" error during login. #1873
@@ -33,7 +33,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Updated: Improved the "Features" tab design and layout for promotional content. #1869
 * Updated: `.pot` translation file refreshed. #1903
 
-= 4.4.3 – 18 August 2025 =
+= 4.4.3 - 18 August 2025 =
 * Added: Description text in the Media Library settings for better clarity. #1866
 * Fixed: Bug with default visibility and content lock feature not working correctly. #1859
 * Fixed: Permissions now correctly applied to post revisions. #1837
@@ -44,18 +44,18 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Updated: Improved captions for the Media Library tab in the settings screen. #1857
 * Updated: Pro Settings tabs are now displayed at the end for a more organized layout.
 
-= 4.4.2 – 5 August 2025 =
+= 4.4.2 - 5 August 2025 =
 * Fixed: Prevented warning or error when handling fake post IDs. #1814
 * Fixed: Conflict resolved between Select2 library and other plugins. #1812
 * Fixed: PHP warning caused by invalid `map_meta_cap` parameters. #1810
 * Fixed: `series_grouping` value in `getEnabledPostType()` could return null and cause a REST API error. #1813
 * Updated: Tab color improvements for Pro features. #1815
 
-= 4.4.1 – 30 July 2025 =
+= 4.4.1 - 30 July 2025 =
 * Added: New UI Promotions Compatibility Pack in the free version to be integration tab. #1789
 * Updated: Changed terminology from "Groups" to "Permissions" in various UI elements for better clarity. #1790
 
-= 4.4.0 – 9 July 2025 =
+= 4.4.0 - 9 July 2025 =
 * Fixed: Resolved a mismatch count exception when saving groups. #1747
 * Fixed: Prevented roles from appearing for disabled post types on the Edit Permissions screen.
 * Fixed: Resolved database query error on the WooCommerce Products screen. #1755
@@ -76,10 +76,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Updated: Remove filter links from custom columns on WordPress Users screen #1721
 * Updated: Larger default sort icons for Permissions columns #1715
 
-= 4.3.1 – 3 June 2025 =
+= 4.3.1 - 3 June 2025 =
 * Updated: Adjust icon size for proper UI
 
-= 4.3.0 – 3 June 2025 =
+= 4.3.0 - 3 June 2025 =
 * Added: Tables in the Edit Permissions screen are now sortable for improved usability. #1580
 * Added: New "Users" tab in the Permissions screen for filtering and managing user-based permissions. #1367
 * Added: "Back to Normal View" button on Permissions screen to ease return from filtered views. #1640
