@@ -17,7 +17,7 @@ class SettingsTabCore
 
     public function optionTabs($tabs)
     {
-        $tabs['core'] = esc_html__('Core', 'press-permit-core');
+        $tabs['core'] = esc_html__('General', 'press-permit-core');
         return $tabs;
     }
 
@@ -214,45 +214,6 @@ class SettingsTabCore
                                             "<a href='" . esc_url(admin_url('?page=presspermit-groups')) . "'>",
                                             '</a>'
                                         );
-
-                                        if (defined('PUBLISHPRESS_CAPS_VERSION') && $define_create_posts_cap) {
-                                            echo ' ';
-
-                                            $url = admin_url('admin.php?page=pp-capabilities');
-
-                                            printf(
-                                                esc_html__(
-                                                    'Post creation capabilities will also be enforced for all Filtered Post Types. To adjust this, see %3$sRole Capabilities%4$s.',
-                                                    'press-permit-core'
-                                                ),
-                                                '<span class="pp-important">',
-                                                '</span>',
-                                                '<a href="' . esc_url($url) . '">',
-                                                '</a>'
-                                            );
-                                        } elseif (!(defined('PUBLISHPRESS_CAPS_VERSION'))) {
-                                            echo ' ';
-
-                                            $url = Settings::pluginInfoURL('capability-manager-enhanced');
-
-                                            $caption = ($define_create_posts_cap)
-                                                ? __(
-                                                    'Post creation capabilities will also be enforced for all Filtered Post Types. To adjust this, install %3$sPublishPress Capabilities%4$s.',
-                                                    'press-permit-core'
-                                                )
-                                                : __(
-                                                    'To enforce capability requirements for post creation, install %3$sPublishPress Capabilities%4$s.',
-                                                    'press-permit-core'
-                                                );
-                                            
-                                            printf(
-                                                esc_html($caption),
-                                                '<span class="pp-important">',
-                                                '</span>',
-                                                '<span class="plugins update-message"><a href="' . esc_url($url) . '" class="thickbox" title="' . esc_attr('PublishPress Capabilities') . '">',
-                                                '</a></span>'
-                                            );
-                                        }
                                         ?>
                                     </div>
 
