@@ -126,25 +126,33 @@ class Settings
             foreach (array_map('\PressShack\LibWP::sanitizeEntry', $all_otype_options) as $option_basename) {
                 // Check for custom sanitization first
                 if (!apply_filters('presspermit_custom_sanitize_setting', false, $option_basename, $default_prefix, $args)) {
-                    // support stored default values (to apply to any post type which does not have an explicit setting)
-                    if (isset($_POST[$option_basename][0])) {
-                        $_POST[$option_basename][''] = PWP::sanitizeEntry(sanitize_text_field($_POST[$option_basename][0]));
-                        unset($_POST[$option_basename][0]);
+                    // Check if this is a simple checkbox option (pp_enable_metabox_* or pp_include_permission_screen_*)
+                    if (strpos($option_basename, 'pp_enable_metabox_') === 0 || strpos($option_basename, 'pp_include_permission_screen_') === 0) {
+                        // Handle as simple checkbox value
+                        $val = (isset($_POST[$option_basename])) ? '1' : '0';
+                        $pp->updateOption($default_prefix . $option_basename, $val, $args);
+                    } else {
+                        // Handle as array option (original behavior for enabled_post_types, enabled_taxonomies, etc.)
+                        // support stored default values (to apply to any post type which does not have an explicit setting)
+                        if (isset($_POST[$option_basename]) && is_array($_POST[$option_basename]) && isset($_POST[$option_basename][0])) {
+                            $_POST[$option_basename][''] = PWP::sanitizeEntry(sanitize_text_field($_POST[$option_basename][0]));
+                            unset($_POST[$option_basename][0]);
+                        }
+
+                        $value = (isset($pp->default_options[$option_basename])) ? $pp->default_options[$option_basename] : [];
+
+                        // retain setting for any types which were previously enabled for filtering but are currently not registered
+                        if ($current = $pp->getOption($option_basename)) {
+                            $value = array_merge($value, $current);
+                        }
+
+                        if (isset($_POST[$option_basename]) && is_array($_POST[$option_basename])) {
+                            $posted_val = array_map('sanitize_text_field', $_POST[$option_basename]);
+                            $value = array_merge($value, array_map('\PressShack\LibWP::sanitizeEntry', $posted_val));
+                        }
+
+                        $pp->updateOption($default_prefix . $option_basename, $value, $args);
                     }
-
-                    $value = (isset($pp->default_options[$option_basename])) ? $pp->default_options[$option_basename] : [];
-
-                    // retain setting for any types which were previously enabled for filtering but are currently not registered
-                    if ($current = $pp->getOption($option_basename)) {
-                        $value = array_merge($value, $current);
-                    }
-
-                    if (isset($_POST[$option_basename])) {
-                        $posted_val = array_map('sanitize_text_field', $_POST[$option_basename]);
-                        $value = array_merge($value, array_map('\PressShack\LibWP::sanitizeEntry', $posted_val));
-                    }
-
-                    $pp->updateOption($default_prefix . $option_basename, $value, $args);
                 }
             }
         }
