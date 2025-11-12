@@ -56,12 +56,15 @@ class PostFilters
 
             if ($missing_caps = array_diff($reqd_caps, array_keys(array_filter($user->allcaps)))) {
                 $type_obj = get_post_type_object($post_type);
-                $list_cap = str_replace('edit_', 'list_all_', $type_obj->cap->edit_posts);
+                
+                if ($type_obj && !empty($type_obj->cap) && !empty($type_obj->cap->edit_posts)) {
+                    $list_cap = str_replace('edit_', 'list_all_', $type_obj->cap->edit_posts);
 
-                if (!empty($user->allcaps[$list_cap])) {
-                    foreach ($missing_caps as $key => $cap_name) {
-                        if (0 === strpos($cap_name, 'edit_'))
-                            unset($missing_caps[$key]);
+                    if (!empty($user->allcaps[$list_cap])) {
+                        foreach ($missing_caps as $key => $cap_name) {
+                            if (0 === strpos($cap_name, 'edit_'))
+                                unset($missing_caps[$key]);
+                        }
                     }
                 }
             }
