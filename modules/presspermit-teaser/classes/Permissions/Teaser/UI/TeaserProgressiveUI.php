@@ -86,7 +86,8 @@ class TeaserProgressiveUI {
     }
 
     private function renderPostTypeSelector() {
-        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : 'post';
+        $default_post_type = $this->isFeatureAvailable('post_type_' . array_key_first($this->use_teaser)) ? array_key_first($this->use_teaser) : 'post';
+        $current_post_type = !empty($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $default_post_type;
         ?>
         <div class="pp-teaser-card pp-post-type-selector">
             <h3><?php esc_html_e('Select Post Type to Configure', 'presspermit-pro'); ?></h3>
