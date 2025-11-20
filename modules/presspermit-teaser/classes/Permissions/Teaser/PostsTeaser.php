@@ -363,7 +363,7 @@ class PostsTeaser
             // Apply styled notice wrapper for content replacement on frontend (not in admin or feeds)
             if ('replace' == $teaser_operation && 'content' == $variable && !is_admin() && !is_feed()) {
                 // Only wrap if not already wrapped and doesn't contain HTML tags
-                if (strpos($msg, '<div class="pp-teaser-notice"') === false && strip_tags($msg) === $msg) {
+                if (strpos($msg, '<div class="pp-teaser-notice"') === false && wp_strip_all_tags($msg) === $msg) {
                     $msg = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $msg . '</div>';
                 }
             }
@@ -476,8 +476,7 @@ class PostsTeaser
 
             // since no custom excerpt or more tag is stored, use first X characters as teaser - but only if the total length is more than that
 
-        // phpcs:ignore WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter
-        } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content) && (strlen(strip_tags($post->post_content)) > $num_chars)) {
+        } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content) && (strlen(wp_strip_all_tags($post->post_content)) > $num_chars)) {
             if (defined('PP_TRANSLATE_TEASER')) {
                 // otherwise, this is only loaded for admin
                 @load_plugin_textdomain('presspermit-pro', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
@@ -487,8 +486,7 @@ class PostsTeaser
             $post->post_content = preg_replace("/\[caption.*\]/", '', $post->post_content);
             $post->post_content = str_replace("[/caption]", '', $post->post_content);
 
-            // phpcs:ignore WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter
-            $post->post_content = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), substr(strip_tags($post->post_content), 0, $num_chars));
+            $post->post_content = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), substr(wp_strip_all_tags($post->post_content), 0, $num_chars));
             $post->post_excerpt = $post->post_content;
 
             if (is_single() || is_page())

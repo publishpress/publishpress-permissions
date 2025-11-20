@@ -169,7 +169,7 @@ trait TeaserUIBaseTrait {
         <div class="pp-pro-feature-notice" style="padding: 15px; background: #f8f9fa; border-left: 4px solid #0073aa; margin-top: 20px;">
             <h4>
                 <?php echo esc_html($feature_name); ?>
-                <?php echo $this->renderProBadge(sprintf(esc_attr__('%s is available in PRO', 'presspermit'), $feature_name)); ?>
+                <?php echo wp_kses_post($this->renderProBadge(sprintf(esc_attr__('%s is available in PRO', 'presspermit'), $feature_name))); ?>
             </h4>
             <?php if ($description) : ?>
                 <p><?php echo esc_html($description); ?></p>

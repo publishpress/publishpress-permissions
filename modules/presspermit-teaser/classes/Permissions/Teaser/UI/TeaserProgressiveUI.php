@@ -48,6 +48,7 @@ class TeaserProgressiveUI {
 
     private function renderPostTypeSelector() {
         $default_post_type = $this->isFeatureAvailable('post_type_' . array_key_first($this->use_teaser)) ? array_key_first($this->use_teaser) : 'post';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- This is for rendering UI state, not processing form submission
         $current_post_type = !empty($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $default_post_type;
         ?>
         <div class="pp-teaser-card pp-post-type-selector">
@@ -66,7 +67,7 @@ class TeaserProgressiveUI {
                         $disabled = $is_available ? '' : ' disabled';
                         $pro_indicator = !$is_available ? $this->renderProBadge(sprintf(__('%s support is available in PRO', 'presspermit'), $item_label)) : '';
                     ?>
-                        <option value="<?php echo esc_attr($object_type); ?>"<?php selected($object_type, $current_post_type); ?><?php echo $disabled; ?>>
+                        <option value="<?php echo esc_attr($object_type); ?>"<?php selected($object_type, $current_post_type); ?><?php echo esc_attr($disabled); ?>>
                             <?php echo esc_html($item_label); ?><?php if (!$is_available) echo ' [PRO]'; ?>
                         </option>
                     <?php endforeach; ?>
@@ -96,6 +97,7 @@ class TeaserProgressiveUI {
         ?>
         <?php
         // Get current post type from POST or use first one as default
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- This is for rendering UI state, not processing form submission
         $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : array_key_first($this->use_teaser);
         $is_current = ($object_type === $current_post_type);
         $display_style = $is_current ? '' : 'display:none;';
@@ -262,12 +264,12 @@ class TeaserProgressiveUI {
                         <label style="margin-right: 20px;">
                             <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="anon"<?php checked($logged_val, 'anon'); ?><?php if ($anon_disabled) echo ' disabled'; ?>>
                             <?php esc_html_e('Not Logged In Users', 'presspermit-pro'); ?>
-                            <?php if ($anon_disabled) echo $this->renderProBadge(__('Separate settings for anonymous users is a PRO feature', 'presspermit')); ?>
+                            <?php if ($anon_disabled) echo wp_kses_post($this->renderProBadge(__('Separate settings for anonymous users is a PRO feature', 'presspermit'))); ?>
                         </label>
                         <label>
                             <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="1"<?php checked($logged_val, '1'); ?><?php if ($logged_disabled) echo ' disabled'; ?>>
                             <?php esc_html_e('Logged In Users', 'presspermit-pro'); ?>
-                            <?php if ($logged_disabled) echo $this->renderProBadge(__('Separate settings for logged-in users is a PRO feature', 'presspermit')); ?>
+                            <?php if ($logged_disabled) echo wp_kses_post($this->renderProBadge(__('Separate settings for logged-in users is a PRO feature', 'presspermit'))); ?>
                         </label>
                         <?php if (!$this->isProVersion()) : ?>
                         <p class="description" style="margin-top: 8px;">
@@ -509,7 +511,7 @@ class TeaserProgressiveUI {
                 </button>
                 <button type="button" class="pp-teaser-text-tab" data-tab="logged"<?php if (!$this->isProVersion()) echo ' disabled style="cursor: not-allowed; opacity: 0.6;"'; ?>>
                     <?php esc_html_e('Logged In Users', 'presspermit-pro'); ?>
-                    <?php if (!$this->isProVersion()) echo $this->renderProBadge(__('Separate settings for logged-in users is a PRO feature', 'presspermit')); ?>
+                    <?php if (!$this->isProVersion()) echo wp_kses_post($this->renderProBadge(__('Separate settings for logged-in users is a PRO feature', 'presspermit'))); ?>
                 </button>
             </div>
 
@@ -522,7 +524,7 @@ class TeaserProgressiveUI {
                 <?php if (!$this->isProVersion()) : ?>
                     <div class="pp-pro-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(248, 249, 250, 0.95); z-index: 10; display: flex; align-items: center; justify-content: center; padding: 20px;">
                         <div style="text-align: center; max-width: 500px;">
-                            <h4><?php esc_html_e('Logged In Users Settings', 'presspermit-pro'); ?> <?php echo $this->renderProBadge(); ?></h4>
+                            <h4><?php esc_html_e('Logged In Users Settings', 'presspermit-pro'); ?> <?php echo wp_kses_post($this->renderProBadge()); ?></h4>
                             <p><?php esc_html_e('Configure separate teaser text for logged-in users with different content replacement options.', 'presspermit-pro'); ?></p>
                             <p>
                                 <a href="<?php echo esc_url($this->getUpgradeUrl()); ?>" class="button button-primary" target="_blank">
@@ -647,7 +649,7 @@ class TeaserProgressiveUI {
         if (!$this->isProVersion()) {
             ?>
             <div class="teaser-redirect-section pp-pro-feature-notice" style="margin-top: 20px; padding: 15px; background: #f8f9fa; border-left: 4px solid #0073aa;">
-                <h4><?php _e('Redirect Settings', 'presspermit-pro');?> <?php echo $this->renderProBadge(__('Redirect functionality is available in PRO', 'presspermit')); ?></h4>
+                <h4><?php _e('Redirect Settings', 'presspermit-pro');?> <?php echo wp_kses_post($this->renderProBadge(__('Redirect functionality is available in PRO', 'presspermit'))); ?></h4>
                 <p><?php _e('Automatically redirect users to a login page or custom page when they try to access restricted content.', 'presspermit-pro'); ?></p>
                 <p>
                     <a href="https://publishpress.com/links/permissions-banner" class="button button-primary" target="_blank">
