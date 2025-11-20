@@ -32,6 +32,11 @@ along with this plugin.  If not, see <http://www.gnu.org/licenses/>.
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
+// Skip FREE version if PRO version is already loaded
+if (defined('PRESSPERMIT_TEASER_PRO_FILE')) {
+    return;
+}
+
 if (!defined('PRESSPERMIT_TEASER_FILE')) {
     define('PRESSPERMIT_TEASER_FILE', __FILE__);
     define('PRESSPERMIT_TEASER_ABSPATH', __DIR__);

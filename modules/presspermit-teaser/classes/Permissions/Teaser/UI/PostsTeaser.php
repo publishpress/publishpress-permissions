@@ -406,6 +406,7 @@ class PostsTeaser
             $any_teased_types = array_filter($use_teaser);
 
             // Render new Progressive Disclosure UI
+            require_once(__DIR__ . '/TeaserUIBaseTrait.php');
             require_once(__DIR__ . '/TeaserProgressiveUI.php');
             
             $options_data = [

@@ -6,6 +6,7 @@ namespace PublishPress\Permissions\Teaser\UI;
  * Implements modern card-based interface with step-by-step configuration
  */
 class TeaserProgressiveUI {
+    use TeaserUIBaseTrait;
     
     private $pp;
     private $ui;
@@ -27,46 +28,6 @@ class TeaserProgressiveUI {
         $this->hide_links = $options_data['hide_links'];
         $this->arr_num_chars = $options_data['arr_num_chars'];
         $this->blockEditorActive = $blockEditorActive;
-    }
-
-    /**
-     * Check if current version is PRO
-     */
-    private function isProVersion() {
-        return defined('PRESSPERMIT_PRO_VERSION');
-    }
-
-    /**
-     * Check if a feature is available in current version
-     */
-    private function isFeatureAvailable($feature_key) {
-        // Free version features
-        $free_features = [
-            'post_type_post' => true,
-            'teaser_type_none' => true,
-            'teaser_type_configured' => true,
-            'user_application_both' => true,
-        ];
-        
-        if ($this->isProVersion()) {
-            return true;
-        }
-        
-        return isset($free_features[$feature_key]) && $free_features[$feature_key];
-    }
-
-    /**
-     * Render PRO badge for locked features
-     */
-    private function renderProBadge($tooltip = '') {
-        if ($this->isProVersion()) {
-            return '';
-        }
-        
-        return sprintf(
-            ' <span class="pp-pro-badge" title="%s">🔒 PRO</span>',
-            esc_attr($tooltip ?: __('This is a PRO feature', 'presspermit'))
-        );
     }
 
     public function render() {
