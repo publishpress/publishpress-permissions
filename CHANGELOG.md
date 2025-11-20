@@ -1,6 +1,15 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+= 4.6.0 - 20 October 2025 =
+* Added: Implement new UI for Teaser. #2029
+* Added: Configuration options to show/hide metaboxes per post type and in the Permissions screen. #2008
+* Updated: Translations for Spanish, French, and Italian languages. #2007
+* Fixes: Admin column export handling to prevent PHP errors. #2028
+* Fixed: PHP errors when exporting admin columns. #2028
+* Fixed: Various warnings, notices, and deprecated messages. #2012
+* Fixed: Incorrect text domain in ErrorNotice.php. #2009
+
 = 4.5.2 - 27 October 2025 =
 * Added: Checkbox options for statuses in the Editing tab to provide more granular control. #1985
 * Added: Skip Module mechanism to selectively disable modules for better performance and flexibility. #1980
