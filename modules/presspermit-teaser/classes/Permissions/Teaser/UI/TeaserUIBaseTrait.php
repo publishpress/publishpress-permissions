@@ -48,6 +48,44 @@ trait TeaserUIBaseTrait {
     }
     
     /**
+     * Get available teaser text user suffixes
+     * 
+     * FREE: Only '_anon' (anonymous users)
+     * PRO: Override to add '' (logged-in users)
+     * 
+     * @return array Available suffixes for teaser text fields
+     */
+    protected function getAvailableTeaserTextSuffixes() {
+        return ['_anon']; // FREE: Anonymous users only
+    }
+    
+    /**
+     * Get available teaser text actions
+     * 
+     * FREE: Only 'replace' for 'content'
+     * PRO: Override to add 'prepend', 'append' for both 'content' and 'name'
+     * 
+     * @return array Available actions keyed by item type
+     */
+    protected function getAvailableTeaserTextActions() {
+        return [
+            'content' => ['replace'], // FREE: Replace content only
+        ];
+    }
+    
+    /**
+     * Check if teaser text tabs should be shown
+     * 
+     * FREE: No tabs (single anonymous user option)
+     * PRO: Override to return true (show tabs for anon/logged)
+     * 
+     * @return bool True if tabs should be displayed
+     */
+    protected function shouldShowTeaserTextTabs() {
+        return false; // FREE: No tabs
+    }
+    
+    /**
      * Check if a specific feature is available
      * 
      * @param string $feature Feature identifier (e.g., 'post_type_page', 'teaser_type_read_more')
@@ -60,6 +98,7 @@ trait TeaserUIBaseTrait {
             'teaser_type_none' => true,
             'teaser_type_configured' => true,
             'user_application_both' => true,
+            'teaser_text_replace_content_anon' => true, // FREE: Replace content for anonymous users
         ];
 
         if ($this->isProVersion()) {

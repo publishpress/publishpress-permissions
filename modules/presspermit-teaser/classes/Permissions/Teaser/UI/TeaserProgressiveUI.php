@@ -507,8 +507,9 @@ class TeaserProgressiveUI {
                 <button type="button" class="pp-teaser-text-tab active" data-tab="anon">
                     <?php esc_html_e('Not Logged In Users', 'presspermit-pro'); ?>
                 </button>
-                <button type="button" class="pp-teaser-text-tab" data-tab="logged">
+                <button type="button" class="pp-teaser-text-tab" data-tab="logged"<?php if (!$this->isProVersion()) echo ' disabled style="cursor: not-allowed; opacity: 0.6;"'; ?>>
                     <?php esc_html_e('Logged In Users', 'presspermit-pro'); ?>
+                    <?php if (!$this->isProVersion()) echo $this->renderProBadge(__('Separate settings for logged-in users is a PRO feature', 'presspermit')); ?>
                 </button>
             </div>
 
@@ -517,8 +518,26 @@ class TeaserProgressiveUI {
                 <?php $this->renderTeaserTextFields($object_type, '_anon'); ?>
             </div>
 
-            <div class="pp-teaser-text-content" data-tab-content="logged" style="display:none;">
-                <?php $this->renderTeaserTextFields($object_type, ''); ?>
+            <div class="pp-teaser-text-content" data-tab-content="logged" style="display:none;<?php if (!$this->isProVersion()) echo ' position: relative;'; ?>">
+                <?php if (!$this->isProVersion()) : ?>
+                    <div class="pp-pro-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(248, 249, 250, 0.95); z-index: 10; display: flex; align-items: center; justify-content: center; padding: 20px;">
+                        <div style="text-align: center; max-width: 500px;">
+                            <h4><?php esc_html_e('Logged In Users Settings', 'presspermit-pro'); ?> <?php echo $this->renderProBadge(); ?></h4>
+                            <p><?php esc_html_e('Configure separate teaser text for logged-in users with different content replacement options.', 'presspermit-pro'); ?></p>
+                            <p>
+                                <a href="<?php echo esc_url($this->getUpgradeUrl()); ?>" class="button button-primary" target="_blank">
+                                    <?php esc_html_e('Upgrade to PRO', 'presspermit'); ?>
+                                </a>
+                                <a href="<?php echo esc_url($this->getComparisonUrl()); ?>" class="button button-secondary" target="_blank">
+                                    <?php esc_html_e('Learn More', 'presspermit'); ?>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <div style="<?php if (!$this->isProVersion()) echo 'pointer-events: none; opacity: 0.4;'; ?>">
+                    <?php $this->renderTeaserTextFields($object_type, ''); ?>
+                </div>
             </div>
         </div>
         <?php
