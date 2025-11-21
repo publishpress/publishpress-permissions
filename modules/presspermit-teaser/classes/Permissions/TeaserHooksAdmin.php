@@ -30,8 +30,8 @@ class TeaserHooksAdmin
                         'url' => admin_url( 'admin-ajax.php' ),
                         'nonce' => wp_create_nonce( 'pp_search_content' ),
                         'strings' => [
-                            'select_a_page' => __( 'Select a page', 'presspermit-pro' ),
-                            'select_terms' => __( 'Select terms', 'presspermit-pro' )
+                            'select_a_page' => __( 'Select a page', 'press-permit-core' ),
+                            'select_terms' => __( 'Select terms', 'press-permit-core' )
                         ]
                     ]
                 );
@@ -73,8 +73,8 @@ class TeaserHooksAdmin
         // but the Editing Permissions module is not active, hide this menu item.
         add_submenu_page(
             $options_menu,
-            __('Teaser', 'presspermit-pro'),
-            __('Teaser', 'presspermit-pro'),
+            __('Teaser', 'press-permit-core'),
+            __('Teaser', 'press-permit-core'),
             'read',
             'presspermit-posts-teaser',
             $handler

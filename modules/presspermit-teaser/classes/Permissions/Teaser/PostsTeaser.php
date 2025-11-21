@@ -351,7 +351,7 @@ class PostsTeaser
         if ($msg = presspermit()->getOption("tease_{$teaser_operation}_{$variable}{$anon}", true)) {
             if (defined('PP_TRANSLATE_TEASER')) {
                 // otherwise, this is only loaded for admin
-                $msg = translate($msg, 'presspermit-pro');
+                $msg = translate($msg, 'press-permit-core');
 
                 if (!empty($msg) && !is_null($msg) && is_string($msg))
                     $msg = htmlspecialchars_decode($msg);
@@ -479,7 +479,7 @@ class PostsTeaser
         } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content) && (strlen(wp_strip_all_tags($post->post_content)) > $num_chars)) {
             if (defined('PP_TRANSLATE_TEASER')) {
                 // otherwise, this is only loaded for admin
-                @load_plugin_textdomain('presspermit-pro', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
+                @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
             }
 
             // since we are stripping out img tag, also strip out image caption applied by WP

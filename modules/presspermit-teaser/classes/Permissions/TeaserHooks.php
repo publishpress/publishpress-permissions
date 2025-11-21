@@ -55,7 +55,7 @@ class TeaserHooks
             'teaser_redirect_anon_page' => '',
             'teaser_redirect_custom_login_page' => '',
             'teaser_redirect_custom_login_page_anon' => '',
-            'read_more_login_notice' => esc_html__('To read the full content, please log in to this site.', 'presspermit-pro'),
+            'read_more_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
 
             // object type options (support separate array element for each object type, and possible a nullstring element as default)
             'tease_post_types' => [],
@@ -63,8 +63,8 @@ class TeaserHooks
             'tease_logged_only' => [],
             'tease_public_posts_only' => [],
             'tease_direct_access_only' => [],
-            'tease_replace_content' => esc_html__("Sorry, this content requires additional permissions.  Please contact an administrator for help.", 'presspermit-pro'),
-            'tease_replace_content_anon' => esc_html__("Sorry, you don't have access to this content.  Please log in or contact a site administrator for help.", 'presspermit-pro'),
+            'tease_replace_content' => esc_html__("Sorry, this content requires additional permissions.  Please contact an administrator for help.", 'press-permit-core'),
+            'tease_replace_content_anon' => esc_html__("Sorry, you don't have access to this content.  Please log in or contact a site administrator for help.", 'press-permit-core'),
             'tease_prepend_name' => '',
             'tease_prepend_name_anon' => '',
             'tease_append_name' => '',
@@ -73,7 +73,7 @@ class TeaserHooks
             'tease_replace_excerpt_anon' => '',
             'tease_prepend_excerpt' => '',
             'tease_prepend_excerpt_anon' => '',
-            'tease_append_excerpt' => "<br /><small>" . esc_html__("Note: This content requires a higher login level.", 'presspermit-pro') . "</small>",
+            'tease_append_excerpt' => "<br /><small>" . esc_html__("Note: This content requires a higher login level.", 'press-permit-core') . "</small>",
             'tease_append_excerpt_anon' => '',
         ];
 
