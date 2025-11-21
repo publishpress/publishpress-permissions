@@ -100,7 +100,7 @@ class ReadMoreHandler
     public static function generateReadMoreLink($post, $options = [])
     {
         $defaults = [
-            'link_text' => esc_html__('Read More', 'presspermit-pro'),
+            'link_text' => esc_html__('Read More', 'press-permit-core'),
             'redirect_to_login' => true,
             'css_class' => 'pp-read-more-link',
         ];
@@ -170,7 +170,7 @@ class ReadMoreHandler
         if (!is_user_logged_in() && (is_single() || is_page())) {
             $notice_text = presspermit()->getOption('read_more_login_notice');
             if (empty($notice_text)) {
-                $notice_text = esc_html__('To read the full content, please log in to this site.', 'presspermit-pro');
+                $notice_text = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
             }
             
             $info_message = sprintf(
@@ -198,7 +198,7 @@ class ReadMoreHandler
     public static function getReadMoreLinkText($post_type = '')
     {
         // Always use default text - users can customize via the more tag in their posts
-        $link_text = esc_html__('Read More', 'presspermit-pro');
+        $link_text = esc_html__('Read More', 'press-permit-core');
 
         return apply_filters('presspermit_read_more_link_text', $link_text, $post_type);
     }

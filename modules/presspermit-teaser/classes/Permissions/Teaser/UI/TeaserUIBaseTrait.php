@@ -129,10 +129,12 @@ trait TeaserUIBaseTrait {
         }
         
         $default_tooltip = esc_attr__('This is a PRO feature', 'presspermit');
+        $tooltip_text = $tooltip ?: $default_tooltip;
         
         return sprintf(
-            ' <span class="pp-pro-badge" title="%s">🔒 PRO</span>',
-            esc_attr($tooltip ?: $default_tooltip)
+            ' <span class="pp-pro-badge-feature" data-toggle="tooltip" data-placement="top" title="%s">PRO<span class="tooltip-text"><span>%s</span><i></i></span></span>',
+            esc_attr($tooltip_text),
+            esc_html($tooltip_text)
         );
     }
     
