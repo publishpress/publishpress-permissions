@@ -305,7 +305,9 @@ class TeaserProgressiveUI {
                         <select name="tease_public_posts_only[<?php echo esc_attr($object_type); ?>]" class="regular-text">
                             <option value="0"<?php selected($hide_private_val, '0'); ?>><?php esc_html_e("Apply Teaser to Private Posts", 'press-permit-core'); ?></option>
                             <option value="1"<?php selected($hide_private_val, '1'); ?>><?php esc_html_e("Hide Private Posts if user doesn't have access", 'press-permit-core'); ?></option>
+                            <?php if ((defined('PUBLISHPRESS_STATUSES_VERSION') || class_exists('PublishPress\Statuses\Factory'))) : ?>
                             <option value="custom"<?php selected($hide_private_val, 'custom'); ?>><?php esc_html_e("Hide for Custom Visibility", 'press-permit-core'); ?></option>
+                            <?php endif; ?>
                         </select>
                     </td>
                 </tr>
@@ -489,7 +491,9 @@ class TeaserProgressiveUI {
                         <select name="<?php echo esc_attr($name); ?>" class="regular-text">
                             <option value="0"<?php selected($value, '0'); ?>><?php esc_html_e("Apply Teaser to Private Posts", 'press-permit-core'); ?></option>
                             <option value="1"<?php selected($value, '1'); ?>><?php esc_html_e("Hide Private Posts", 'press-permit-core'); ?></option>
+                            <?php if ((defined('PUBLISHPRESS_STATUSES_VERSION') || class_exists('PublishPress\Statuses\Factory'))) : ?>)
                             <option value="custom"<?php selected($value, 'custom'); ?>><?php esc_html_e("Hide for Custom Visibility", 'press-permit-core'); ?></option>
+                            <?php endif; ?>
                         </select>
                     </td>
                 </tr>

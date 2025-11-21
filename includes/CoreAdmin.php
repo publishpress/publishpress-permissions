@@ -32,6 +32,7 @@ class CoreAdmin
                     ['base' => 'permissions_page_presspermit-group-new'],
                     ['base' => 'permissions_page_presspermit-users'],
                     ['base' => 'permissions_page_presspermit-settings'],
+                    ['base' => 'permissions_page_presspermit-posts-teaser'],
                 ]
             ];
 
