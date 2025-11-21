@@ -64,6 +64,13 @@ class PostEdit
 
         $pp = presspermit();
 
+        // Check if metabox is enabled for this post type
+        $metabox_enabled = $pp->getOption("pp_enable_metabox_{$post_type}");
+        if ($metabox_enabled === '0') {
+            return; // Metabox is explicitly disabled
+        }
+        // If not set or set to '1', continue (default is enabled)
+
         $type_obj = get_post_type_object($post_type);
 
         if (!in_array($post_type, $pp->getEnabledPostTypes(['layer' => 'exceptions']), true)) {

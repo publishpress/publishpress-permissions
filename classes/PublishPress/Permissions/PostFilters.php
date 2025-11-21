@@ -1060,7 +1060,7 @@ class PostFilters
     public static function postTypeFromCaps($caps)
     {
         foreach (presspermit()->getEnabledPostTypes([], 'object') as $post_type => $type_obj) {
-            if (array_intersect((array)$type_obj->cap, $caps))
+            if ($type_obj && isset($type_obj->cap) && array_intersect((array)$type_obj->cap, $caps))
                 return $post_type;
         }
     

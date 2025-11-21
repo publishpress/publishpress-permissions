@@ -1,4 +1,20 @@
-path: ./dist/publishpress-statuses
+path:
+  - .
+  - classes
+  - common
+  - includes
+  - library
+  - modules
 jobs: 10
 extensions:
   - php
+exclude:
+  - vendor
+  - lib/vendor
+  - legacy-tests
+  - .github
+  - assets_wp
+  - dist
+  - tests
+  - dev-workspace
+  - .wordpress-org

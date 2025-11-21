@@ -172,7 +172,7 @@ class UsersListing
                         $agent_type,
                         [
                             'cols' => 'id', 
-                            'query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : array_keys($table_obj->items)
+                            'query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : (is_array($table_obj->items) ? array_keys($table_obj->items) : [])
                         ]
                     );
 
@@ -234,7 +234,7 @@ class UsersListing
                 $role_str = '';
 
                 if (!isset($role_info)) {
-                    $_args = ['query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : array_keys($table_obj->items)];
+                    $_args = ['query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : (is_array($table_obj->items) ? array_keys($table_obj->items) : [])];
 
                     if (isset($args['join_groups'])) {
                         $_args['join_groups'] = $args['join_groups'];
@@ -288,7 +288,7 @@ class UsersListing
 
             case 'pp_exceptions':
                 $_args = [
-                    'query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : array_keys($table_obj->items)
+                    'query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : (is_array($table_obj->items) ? array_keys($table_obj->items) : [])
                 ];
 
                 if (isset($args['join_groups'])) {

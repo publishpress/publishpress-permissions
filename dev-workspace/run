@@ -1,49 +1,12 @@
 #!/usr/bin/env bash
 
-# Get the base directory of the script
-BASE_DIR=$(dirname "$(realpath "$0")")
-
-# Create empty cache files if not exists.
-[[ -d $BASE_DIR/cache/.npm/_cacache ]] || mkdir -p $BASE_DIR/cache/.npm/_cacache
-[[ -d $BASE_DIR/cache/.npm/_logs ]] || mkdir -p $BASE_DIR/cache/.npm/_logs
-[[ -d $BASE_DIR/cache/.composer/cache ]] || mkdir -p $BASE_DIR/cache/.composer/cache
-[[ -d $BASE_DIR/cache/.oh-my-zsh/log ]] || mkdir -p $BASE_DIR/cache/.oh-my-zsh/log
-[[ -f $BASE_DIR/cache/.zsh_history ]] || touch $BASE_DIR/cache/.zsh_history
-[[ -f $BASE_DIR/cache/.bash_history ]] || touch $BASE_DIR/cache/.bash_history
-[[ -f $BASE_DIR/cache/.composer/auth.json ]] || echo '{}' > $BASE_DIR/cache/.composer/auth.json
-
-export DOCKER_HOST_IP=$(php $BASE_DIR/scripts/getip)
-
-is_online() {
-    echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
-
-    if [ $? -eq 0 ]; then
-        echo 1
-    else
-        echo 0
-    fi
-}
-
-pull_image() {
-    docker compose -f $BASE_DIR/docker/compose.yaml pull
-}
-
-run_terminal_service() {
-    docker compose -f $BASE_DIR/docker/compose.yaml run --rm terminal "$@"
-}
-
-if [ "$(is_online)" -eq 1 ]; then
-    # Check and update the image if needed, but do not display anything if there is any argument passed.
-    if [[ $# -eq 0 ]]; then
-        echo "Checking if the image is up to date..."
-        pull_image
-    else
-        pull_image > /dev/null 2>&1
-    fi
-else
-    if [[ $# -eq 0 ]]; then
-        echo "Offline mode detected, ignoring image update."
-    fi
+# If not in the `dev-workspace` directory, change to it
+if [[ ! $(pwd) =~ .*dev-workspace$ ]]; then
+  cd dev-workspace
 fi
 
-run_terminal_service "$@"
+set -a
+source ../.env
+set +a
+
+bash ./scripts/terminal-service-run.sh "$@"
