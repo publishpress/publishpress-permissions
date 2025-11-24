@@ -56,6 +56,8 @@ class TeaserHooks
             'teaser_redirect_custom_login_page' => '',
             'teaser_redirect_custom_login_page_anon' => '',
             'read_more_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
+            'excerpt_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
+            'x_chars_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
 
             // object type options (support separate array element for each object type, and possible a nullstring element as default)
             'tease_post_types' => [],

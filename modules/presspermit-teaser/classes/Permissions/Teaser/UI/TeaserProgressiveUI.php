@@ -117,6 +117,16 @@ class TeaserProgressiveUI {
             <?php $this->renderReadMoreNoticeCard($object_type); ?>
             </div>
 
+            <!-- Excerpt Notice (shown only when excerpt is selected) -->
+            <div class="pp-conditional-settings pp-excerpt-notice-card">
+            <?php $this->renderExcerptNoticeCard($object_type); ?>
+            </div>
+
+            <!-- X Chars Notice (shown only when x_chars is selected) -->
+            <div class="pp-conditional-settings pp-x-chars-notice-card">
+            <?php $this->renderXCharsNoticeCard($object_type); ?>
+            </div>
+
             <!-- Redirect Settings (shown only when redirect is selected) -->
             <div class="pp-conditional-settings pp-teaser-redirect-settings">
             <?php $this->renderRedirectSection($object_type); ?>
@@ -176,6 +186,10 @@ class TeaserProgressiveUI {
         
         ?>
         <table class="widefat fixed striped teaser-table">
+            <colgroup>
+                <col style="width: 70px;">
+                <col style="width: 200px">
+            </colgroup>
             <thead>
                 <tr>
                     <th colspan="2">
@@ -229,7 +243,7 @@ class TeaserProgressiveUI {
                             <input type="number" id="<?php echo esc_attr($id_num); ?>" name="<?php echo esc_attr($name_num); ?>" value="<?php echo esc_attr($_num_setting); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
                             <span><?php esc_html_e('characters', 'press-permit-core'); ?></span>
                         </span>
-                        
+
                         <span class="pp-excerpt-chars-setting" style="<?php echo esc_attr($excerpt_num_style); ?>; margin-left: 10px;">
                             <span><?php esc_html_e('Max', 'press-permit-core'); ?></span>
                             <input type="number" id="<?php echo esc_attr($id_num); ?>-excerpt" name="<?php echo esc_attr($name_num); ?>" value="<?php echo esc_attr($_num_setting); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
@@ -870,6 +884,88 @@ class TeaserProgressiveUI {
                                placeholder="<?php echo esc_attr($default_message); ?>">
                         <p class="description">
                             <?php esc_html_e('This message will be displayed in a styled notice box above the teaser content for users who are not logged in.', 'press-permit-core'); ?>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <?php
+    }
+
+    private function renderExcerptNoticeCard($object_type) {
+        ?>
+        <div class="pp-teaser-card pp-excerpt-notice-settings">
+            <h3><?php esc_html_e('Excerpt Notice', 'press-permit-core'); ?></h3>
+            <p class="description"><?php esc_html_e('Customize the login notice message shown to non-logged-in users when using the "Excerpt" teaser type.', 'press-permit-core'); ?></p>
+            
+            <table class="form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <label for="excerpt_login_notice">
+                            <?php esc_html_e('Login Notice Message', 'press-permit-core'); ?>
+                        </label>
+                    </th>
+                    <td>
+                        <?php
+                        $id = 'excerpt_login_notice';
+                        $this->ui->all_options[] = $id;
+                        $default_message = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                        $_setting = $this->pp->getOption($id);
+                        if (empty($_setting)) {
+                            $_setting = $default_message;
+                        }
+                        ?>
+                        <input type="text" 
+                               name="<?php echo esc_attr($id); ?>" 
+                               id="<?php echo esc_attr($id); ?>" 
+                               value="<?php echo esc_attr($_setting); ?>" 
+                               class="large-text" 
+                               placeholder="<?php echo esc_attr($default_message); ?>">
+                        <p class="description">
+                            <?php esc_html_e('This message will be displayed in a styled notice box below the excerpt teaser content for users who are not logged in.', 'press-permit-core'); ?>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <?php
+    }
+
+    private function renderXCharsNoticeCard($object_type) {
+        ?>
+        <div class="pp-teaser-card pp-x-chars-notice-settings">
+            <h3><?php esc_html_e('First X Characters Notice', 'press-permit-core'); ?></h3>
+            <p class="description"><?php esc_html_e('Customize the login notice message shown to non-logged-in users when using the "First X Characters" teaser type.', 'press-permit-core'); ?></p>
+            
+            <table class="form-table">
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <label for="x_chars_login_notice">
+                            <?php esc_html_e('Login Notice Message', 'press-permit-core'); ?>
+                        </label>
+                    </th>
+                    <td>
+                        <?php
+                        $id = 'x_chars_login_notice';
+                        $this->ui->all_options[] = $id;
+                        $default_message = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                        $_setting = $this->pp->getOption($id);
+                        if (empty($_setting)) {
+                            $_setting = $default_message;
+                        }
+                        ?>
+                        <input type="text" 
+                               name="<?php echo esc_attr($id); ?>" 
+                               id="<?php echo esc_attr($id); ?>" 
+                               value="<?php echo esc_attr($_setting); ?>" 
+                               class="large-text" 
+                               placeholder="<?php echo esc_attr($default_message); ?>">
+                        <p class="description">
+                            <?php esc_html_e('This message will be displayed in a styled notice box below the truncated content teaser for users who are not logged in.', 'press-permit-core'); ?>
                         </p>
                     </td>
                 </tr>
