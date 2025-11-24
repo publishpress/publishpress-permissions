@@ -302,8 +302,6 @@ class PostsTeaser
             } elseif ('read_more' == $teaser_type) {
                 $read_more_teaser[$type] = true;
             } elseif ('x_chars' == $teaser_type) {
-                $excerpt_teaser[$type] = true;
-                $more_teaser[$type] = true;
                 $x_chars_teaser[$type] = true;
             }
         }
@@ -428,7 +426,26 @@ class PostsTeaser
 
         // optionally, use post excerpt as the hidden content teaser instead of a fixed replacement
         if (!empty($excerpt_teaser[$post_type]) && !empty($post->post_excerpt)) {
-            $post->post_content = $post->post_excerpt;
+            // Get login notice message
+            $login_notice = presspermit()->getOption('read_more_login_notice');
+            if (empty($login_notice)) {
+                $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+            }
+            
+            // Build notice HTML for non-logged-in users
+            $notice_html = '';
+            global $current_user;
+            if ($current_user->ID == 0) {
+                $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+            }
+            
+            // Wrap excerpt in paragraph block markup to prevent theme layout issues
+            // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
+            if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                $post->post_content = $notice_html . '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->';
+            } else {
+                $post->post_content = $notice_html . $post->post_excerpt;
+            }
 
         // Read More Link as Teaser - show content before more tag with a "Read More" link
         } elseif (!empty($read_more_teaser[$post_type])) {
@@ -454,7 +471,25 @@ class PostsTeaser
                 } else {
                     // Fallback: no more tag found, use configured teaser text or excerpt
                     if (!empty($post->post_excerpt)) {
-                        $post->post_content = $post->post_excerpt;
+                        // Get login notice message
+                        $login_notice = presspermit()->getOption('read_more_login_notice');
+                        if (empty($login_notice)) {
+                            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                        }
+                        
+                        // Build notice HTML for non-logged-in users
+                        $notice_html = '';
+                        global $current_user;
+                        if ($current_user->ID == 0) {
+                            $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                        }
+                        
+                        // Wrap excerpt in paragraph block markup to prevent theme layout issues
+                        if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                            $post->post_content = $notice_html . '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->';
+                        } else {
+                            $post->post_content = $notice_html . $post->post_excerpt;
+                        }
                     } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                         $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
                     }
@@ -462,7 +497,25 @@ class PostsTeaser
             } else {
                 // Fallback: no more tag found, use excerpt or configured teaser text
                 if (!empty($post->post_excerpt)) {
-                    $post->post_content = $post->post_excerpt;
+                    // Get login notice message
+                    $login_notice = presspermit()->getOption('read_more_login_notice');
+                    if (empty($login_notice)) {
+                        $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                    }
+                    
+                    // Build notice HTML for non-logged-in users
+                    $notice_html = '';
+                    global $current_user;
+                    if ($current_user->ID == 0) {
+                        $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                    }
+                    
+                    // Wrap excerpt in paragraph block markup to prevent theme layout issues
+                    if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                        $post->post_content = $notice_html . '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->';
+                    } else {
+                        $post->post_content = $notice_html . $post->post_excerpt;
+                    }
                 } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                     $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
                 }
@@ -476,21 +529,40 @@ class PostsTeaser
 
             // since no custom excerpt or more tag is stored, use first X characters as teaser - but only if the total length is more than that
 
-        } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content) && (strlen(wp_strip_all_tags($post->post_content)) > $num_chars)) {
-            if (defined('PP_TRANSLATE_TEASER')) {
-                // otherwise, this is only loaded for admin
-                @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
+        } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content)) {
+            // Strip all HTML, blocks, and shortcodes to get plain text
+            $plain_content = $post->post_content;
+            
+            // Remove caption shortcodes
+            $plain_content = preg_replace("/\[caption.*?\].*?\[\/caption\]/s", '', $plain_content);
+            
+            // Strip all tags including block markup
+            $plain_content = wp_strip_all_tags($plain_content);
+            
+            // Only apply X chars teaser if content is longer than the limit
+            if (strlen($plain_content) > $num_chars) {
+                if (defined('PP_TRANSLATE_TEASER')) {
+                    // otherwise, this is only loaded for admin
+                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
+                }
+
+                // Get first X characters of plain text
+                $teaser_text = substr($plain_content, 0, $num_chars);
+                $teaser_text = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), $teaser_text);
+                
+                // Wrap in proper markup to prevent layout issues
+                if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                    $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->';
+                } else {
+                    $post->post_content = '<p>' . esc_html($teaser_text) . '</p>';
+                }
+                
+                $post->post_excerpt = $teaser_text;
+
+                if ((is_single() || is_page()) && !empty($teaser_replace[$post_type]['post_content'])) {
+                    $post->post_content .= '<p class="pp_x_chars_teaser">' . $teaser_replace[$post_type]['post_content'] . '</p>';
+                }
             }
-
-            // since we are stripping out img tag, also strip out image caption applied by WP
-            $post->post_content = preg_replace("/\[caption.*\]/", '', $post->post_content);
-            $post->post_content = str_replace("[/caption]", '', $post->post_content);
-
-            $post->post_content = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), substr(wp_strip_all_tags($post->post_content), 0, $num_chars));
-            $post->post_excerpt = $post->post_content;
-
-            if (is_single() || is_page())
-                $post->post_content .= '<p class="pp_x_chars_teaser">' . $teaser_replace[$post_type]['post_content'] . '</p>';
 
         } else {
             if (isset($teaser_replace[$post_type]['post_content'])) {
