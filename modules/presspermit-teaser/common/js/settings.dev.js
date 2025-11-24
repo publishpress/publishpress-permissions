@@ -243,8 +243,13 @@ jQuery(document).ready(function ($) {
         // Show/hide number of characters input for x_chars type
         if (selectedType == 'x_chars') {
             $container.find('.pp-num-chars-setting').fadeIn(300);
+            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+        } else if (selectedType == 'excerpt') {
+            $container.find('.pp-excerpt-chars-setting').fadeIn(300);
+            $container.find('.pp-num-chars-setting').fadeOut(300);
         } else {
             $container.find('.pp-num-chars-setting').fadeOut(300);
+            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
         }
 
         // Show/hide sections based on teaser type
@@ -253,6 +258,8 @@ jQuery(document).ready(function ($) {
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-read-more-notice-card').slideUp(300);
+            $container.find('.pp-excerpt-notice-card').slideUp(300);
+            $container.find('.pp-x-chars-notice-card').slideUp(300);
             $container.find('.pp-teaser-application-fields').slideUp(300);
         } else if (selectedType == 'redirect') {
             // console.log(selectedType, $container.find('.pp-teaser-redirect-settings'));
@@ -261,23 +268,47 @@ jQuery(document).ready(function ($) {
             $container.find('.pp-teaser-application-fields').slideDown(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-read-more-notice-card').slideUp(300);
+            $container.find('.pp-excerpt-notice-card').slideUp(300);
+            $container.find('.pp-x-chars-notice-card').slideUp(300);
         } else if (selectedType == '1') {
             // Teaser Text: show teaser text card and application fields, hide redirect
             $container.find('.pp-teaser-text-card').slideDown(300);
             $container.find('.pp-teaser-application-fields').slideDown(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $container.find('.pp-read-more-notice-card').slideUp(300);
+            $container.find('.pp-excerpt-notice-card').slideUp(300);
+            $container.find('.pp-x-chars-notice-card').slideUp(300);
         } else if (selectedType == 'read_more') {
             // Read More: show read more notice and application fields
             $container.find('.pp-read-more-notice-card').slideDown(300);
             $container.find('.pp-teaser-application-fields').slideDown(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            $container.find('.pp-excerpt-notice-card').slideUp(300);
+            $container.find('.pp-x-chars-notice-card').slideUp(300);
+        } else if (selectedType == 'excerpt') {
+            // Excerpt: show excerpt notice and application fields
+            $container.find('.pp-excerpt-notice-card').slideDown(300);
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            $container.find('.pp-read-more-notice-card').slideUp(300);
+            $container.find('.pp-x-chars-notice-card').slideUp(300);
+        } else if (selectedType == 'x_chars' || selectedType == 'more') {
+            // X Chars or More: show x chars notice and application fields
+            $container.find('.pp-x-chars-notice-card').slideDown(300);
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            $container.find('.pp-read-more-notice-card').slideUp(300);
+            $container.find('.pp-excerpt-notice-card').slideUp(300);
         } else {
             // Other teaser types: show application fields only
             $container.find('.pp-teaser-application-fields').slideDown(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-read-more-notice-card').slideUp(300);
+            $container.find('.pp-excerpt-notice-card').slideUp(300);
+            $container.find('.pp-x-chars-notice-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
         }
     });
@@ -331,6 +362,8 @@ jQuery(document).ready(function ($) {
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
                 $targetContainer.find('.pp-teaser-application-fields').hide();
             } else if (teaserType == 'redirect') {
                 // Redirect: show only redirect settings and application fields
@@ -338,29 +371,57 @@ jQuery(document).ready(function ($) {
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
             } else if (teaserType == '1') {
                 // Teaser Text: show teaser text card and application fields, hide redirect
                 $targetContainer.find('.pp-teaser-text-card').show();
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
             } else if (teaserType == 'read_more') {
                 // Read More: show read more notice and application fields
                 $targetContainer.find('.pp-read-more-notice-card').show();
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
+            } else if (teaserType == 'excerpt') {
+                // Excerpt: show excerpt notice and application fields
+                $targetContainer.find('.pp-excerpt-notice-card').show();
+                $targetContainer.find('.pp-teaser-application-fields').show();
+                $targetContainer.find('.pp-teaser-text-card').hide();
+                $targetContainer.find('.pp-teaser-redirect-settings').hide();
+                $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
+            } else if (teaserType == 'x_chars' || teaserType == 'more') {
+                // X Chars or More: show x chars notice and application fields
+                $targetContainer.find('.pp-x-chars-notice-card').show();
+                $targetContainer.find('.pp-teaser-application-fields').show();
+                $targetContainer.find('.pp-teaser-text-card').hide();
+                $targetContainer.find('.pp-teaser-redirect-settings').hide();
+                $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
             } else {
                 // Other teaser types: show application fields only
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
             }
             
             // Show/hide number input based on type
             if (teaserType == 'x_chars') {
                 $targetContainer.find('.pp-num-chars-setting').show();
+                $targetContainer.find('.pp-excerpt-chars-setting').hide();
+            } else if (teaserType == 'excerpt') {
+                $targetContainer.find('.pp-excerpt-chars-setting').show();
+                $targetContainer.find('.pp-num-chars-setting').hide();
             }
         }
     }

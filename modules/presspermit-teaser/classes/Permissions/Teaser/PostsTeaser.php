@@ -426,8 +426,27 @@ class PostsTeaser
 
         // optionally, use post excerpt as the hidden content teaser instead of a fixed replacement
         if (!empty($excerpt_teaser[$post_type]) && !empty($post->post_excerpt)) {
-            // Get login notice message
-            $login_notice = presspermit()->getOption('read_more_login_notice');
+            $excerpt_text = $post->post_excerpt;
+            
+            // Apply num_chars truncation if configured and excerpt is longer than limit
+            if (!empty($num_chars)) {
+                // Strip all HTML tags to get plain text
+                $plain_excerpt = wp_strip_all_tags($excerpt_text);
+                
+                // Only truncate if excerpt is longer than the limit
+                if (strlen($plain_excerpt) > $num_chars) {
+                    if (defined('PP_TRANSLATE_TEASER')) {
+                        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                    }
+                    
+                    // Get first X characters of plain text
+                    $plain_excerpt = substr($plain_excerpt, 0, $num_chars);
+                    $excerpt_text = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), $plain_excerpt);
+                }
+            }
+            
+            // Get login notice message for excerpt teaser
+            $login_notice = presspermit()->getOption('excerpt_login_notice');
             if (empty($login_notice)) {
                 $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
             }
@@ -550,11 +569,24 @@ class PostsTeaser
                 $teaser_text = substr($plain_content, 0, $num_chars);
                 $teaser_text = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), $teaser_text);
                 
+                // Get login notice message for x_chars teaser
+                $login_notice = presspermit()->getOption('x_chars_login_notice');
+                if (empty($login_notice)) {
+                    $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                }
+                
+                // Build notice HTML for non-logged-in users
+                $notice_html = '';
+                global $current_user;
+                if ($current_user->ID == 0) {
+                    $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                }
+                
                 // Wrap in proper markup to prevent layout issues
                 if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                    $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->';
+                    $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
                 } else {
-                    $post->post_content = '<p>' . esc_html($teaser_text) . '</p>';
+                    $post->post_content = '<p>' . esc_html($teaser_text) . '</p>' . $notice_html;
                 }
                 
                 $post->post_excerpt = $teaser_text;
