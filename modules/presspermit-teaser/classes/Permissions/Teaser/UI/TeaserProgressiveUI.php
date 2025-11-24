@@ -191,6 +191,7 @@ class TeaserProgressiveUI {
                 $default_num_chars = (defined('PP_TEASER_NUM_CHARS')) ? PP_TEASER_NUM_CHARS : 50;
                 $_num_setting = (!empty($this->arr_num_chars[$object_type])) ? $this->arr_num_chars[$object_type] : $default_num_chars;
                 $num_style = ('x_chars' !== $teaser_setting) ? 'display:none;' : '';
+                $excerpt_num_style = ('excerpt' !== $teaser_setting) ? 'display:none;' : '';
                 ?>
                 <tr>
                     <th style="width: 30%;"><?php esc_html_e('Teaser Type:', 'press-permit-core'); ?></th>
@@ -227,6 +228,12 @@ class TeaserProgressiveUI {
                             <span><?php esc_html_e('Show only the first', 'press-permit-core'); ?></span>
                             <input type="number" id="<?php echo esc_attr($id_num); ?>" name="<?php echo esc_attr($name_num); ?>" value="<?php echo esc_attr($_num_setting); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
                             <span><?php esc_html_e('characters', 'press-permit-core'); ?></span>
+                        </span>
+                        
+                        <span class="pp-excerpt-chars-setting" style="<?php echo esc_attr($excerpt_num_style); ?>; margin-left: 10px;">
+                            <span><?php esc_html_e('Max', 'press-permit-core'); ?></span>
+                            <input type="number" id="<?php echo esc_attr($id_num); ?>-excerpt" name="<?php echo esc_attr($name_num); ?>" value="<?php echo esc_attr($_num_setting); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
+                            <span><?php esc_html_e('characters (leave empty for full excerpt)', 'press-permit-core'); ?></span>
                         </span>
                     </td>
                 </tr>

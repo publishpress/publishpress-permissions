@@ -690,16 +690,19 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     }
 }
 
-/* Number input for X characters */
-.pp-num-chars-setting {
+/* Number input for X characters and excerpt */
+.pp-num-chars-setting,
+.pp-excerpt-chars-setting {
     margin-top: 12px;
 }
 
-.pp-num-chars-setting label {
+.pp-num-chars-setting label,
+.pp-excerpt-chars-setting label {
     font-size: 13px;
 }
 
-.pp-num-chars-setting input[type="number"] {
+.pp-num-chars-setting input[type="number"],
+.pp-excerpt-chars-setting input[type="number"] {
     width: 80px;
 }
 

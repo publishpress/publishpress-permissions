@@ -240,11 +240,16 @@ jQuery(document).ready(function ($) {
         var selectedType = $(this).val();
         var postType = $container.data('post-type');
 
-        // Show/hide number of characters input for x_chars type
+        // Show/hide number of characters input for x_chars and excerpt types
         if (selectedType == 'x_chars') {
             $container.find('.pp-num-chars-setting').fadeIn(300);
+            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+        } else if (selectedType == 'excerpt') {
+            $container.find('.pp-excerpt-chars-setting').fadeIn(300);
+            $container.find('.pp-num-chars-setting').fadeOut(300);
         } else {
             $container.find('.pp-num-chars-setting').fadeOut(300);
+            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
         }
 
         // Show/hide sections based on teaser type
@@ -361,6 +366,10 @@ jQuery(document).ready(function ($) {
             // Show/hide number input based on type
             if (teaserType == 'x_chars') {
                 $targetContainer.find('.pp-num-chars-setting').show();
+                $targetContainer.find('.pp-excerpt-chars-setting').hide();
+            } else if (teaserType == 'excerpt') {
+                $targetContainer.find('.pp-excerpt-chars-setting').show();
+                $targetContainer.find('.pp-num-chars-setting').hide();
             }
         }
     }

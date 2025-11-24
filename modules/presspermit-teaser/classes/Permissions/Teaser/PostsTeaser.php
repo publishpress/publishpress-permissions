@@ -409,7 +409,7 @@ class PostsTeaser
             $excerpt_teaser[$post_type] = $more_teaser[$post_type] = $read_more_teaser[$post_type] = $x_chars_teaser[$post_type] = false;
         }
 
-        if (!empty($x_chars_teaser[$post_type])) {
+        if (!empty($x_chars_teaser[$post_type]) || !empty($excerpt_teaser[$post_type])) {
             $num_chars = (defined('PP_TEASER_NUM_CHARS')) ? PP_TEASER_NUM_CHARS : 50;
 
             if ($custom_chars = presspermit()->getTypeOption('teaser_num_chars', $post_type)) {
@@ -426,6 +426,25 @@ class PostsTeaser
 
         // optionally, use post excerpt as the hidden content teaser instead of a fixed replacement
         if (!empty($excerpt_teaser[$post_type]) && !empty($post->post_excerpt)) {
+            $excerpt_text = $post->post_excerpt;
+            
+            // Apply num_chars truncation if configured and excerpt is longer than limit
+            if (!empty($num_chars)) {
+                // Strip all HTML tags to get plain text
+                $plain_excerpt = wp_strip_all_tags($excerpt_text);
+                
+                // Only truncate if excerpt is longer than the limit
+                if (strlen($plain_excerpt) > $num_chars) {
+                    if (defined('PP_TRANSLATE_TEASER')) {
+                        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                    }
+                    
+                    // Get first X characters of plain text
+                    $plain_excerpt = substr($plain_excerpt, 0, $num_chars);
+                    $excerpt_text = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), $plain_excerpt);
+                }
+            }
+            
             // Get login notice message
             $login_notice = presspermit()->getOption('read_more_login_notice');
             if (empty($login_notice)) {
@@ -442,9 +461,9 @@ class PostsTeaser
             // Wrap excerpt in paragraph block markup to prevent theme layout issues
             // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
             if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                $post->post_content = $notice_html . '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->';
+                $post->post_content = $notice_html . '<!-- wp:paragraph --><p>' . esc_html($excerpt_text) . '</p><!-- /wp:paragraph -->';
             } else {
-                $post->post_content = $notice_html . $post->post_excerpt;
+                $post->post_content = $notice_html . '<p>' . esc_html($excerpt_text) . '</p>';
             }
 
         // Read More Link as Teaser - show content before more tag with a "Read More" link
