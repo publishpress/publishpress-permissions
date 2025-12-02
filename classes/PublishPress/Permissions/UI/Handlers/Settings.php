@@ -143,6 +143,10 @@ class Settings
 
                         // retain setting for any types which were previously enabled for filtering but are currently not registered
                         if ($current = $pp->getOption($option_basename)) {
+                            // Ensure $current is an array (handle legacy scalar values)
+                            if (!is_array($current)) {
+                                $current = [];
+                            }
                             $value = array_merge($value, $current);
                         }
 
