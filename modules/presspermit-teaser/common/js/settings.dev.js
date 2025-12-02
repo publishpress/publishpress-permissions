@@ -195,52 +195,7 @@ jQuery(document).ready(function ($) {
     // Progressive Disclosure UI - Teaser Settings
     // ========================================================================
 
-    // Post type selector - switch between different post type settings
-    $('#pp_current_post_type').on('change', function() {
-        var selectedType = $(this).val();
-        
-        // Save selected post type to hidden field for persistence
-        $('#selected_post_type').val(selectedType);
-        
-        // Hide all containers
-        $('.pp-teaser-settings-container').removeClass('active').hide();
-        
-        // Show selected container with animation
-        var $selectedContainer = $('.pp-teaser-settings-container[data-post-type="' + selectedType + '"]');
-        $selectedContainer.addClass('active pp-fade-in').show();
-
-        // Check the teaser type of the selected post type and show/hide sections
-        var teaserType = $selectedContainer.find('.pp-teaser-type-select').val();
-        if (teaserType == '0') {
-            // No Teaser: hide everything
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideUp(300);
-            $selectedContainer.find('.pp-teaser-application-fields').slideUp(300);
-            $selectedContainer.find('.pp-teaser-text-card').slideUp(300);
-        } else if (teaserType == 'redirect') {
-            // Redirect: show only redirect settings and application fields
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideDown(300);
-            $selectedContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $selectedContainer.find('.pp-teaser-text-card').slideUp(300);
-        } else if (teaserType == '1') {
-            // Teaser Text: show teaser text card and application fields, hide redirect
-            $selectedContainer.find('.pp-teaser-text-card').slideDown(300);
-            $selectedContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideUp(300);
-        } else {
-            // Other teaser types: show application fields only
-            $selectedContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $selectedContainer.find('.pp-teaser-text-card').slideUp(300);
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideUp(300);
-        }
-    });
-
-    // Teaser type select dropdown - show/hide conditional settings
-    $(document).on('change', '.pp-teaser-type-select', function() {
-        var $container = $(this).closest('.pp-teaser-settings-container');
-        var selectedType = $(this).val();
-        var postType = $container.data('post-type');
-
-        // Show/hide number of characters input for x_chars type
+    function updateTeaserSettings(selectedType, $container) {
         if (selectedType == 'x_chars') {
             $container.find('.pp-num-chars-setting').fadeIn(300);
             $container.find('.pp-excerpt-chars-setting').fadeOut(300);
@@ -311,20 +266,49 @@ jQuery(document).ready(function ($) {
             $container.find('.pp-x-chars-notice-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
         }
+    }
+
+    // Post type selector - switch between different post type settings
+    $('#pp_current_post_type').on('change', function() {
+        var selectedType = $(this).val();
+        
+        // Save selected post type to hidden field for persistence
+        $('#selected_post_type').val(selectedType);
+        
+        // Hide all containers
+        $('.pp-teaser-settings-container').removeClass('active').hide();
+        
+        // Show selected container with animation
+        var $selectedContainer = $('.pp-teaser-settings-container[data-post-type="' + selectedType + '"]');
+        $selectedContainer.addClass('active pp-fade-in').show();
+
+        // Check the teaser type of the selected post type and show/hide sections
+        var teaserType = $selectedContainer.find('.pp-teaser-type-select').val();
+
+        updateTeaserSettings(teaserType, $selectedContainer);
+    });
+
+    // Teaser type select dropdown - show/hide conditional settings
+    $(document).on('change', '.pp-teaser-type-select', function() {
+        var $container = $(this).closest('.pp-teaser-settings-container');
+        var selectedType = $(this).val();
+        var postType = $container.data('post-type');
+
+        updateTeaserSettings(selectedType, $container);
     });
 
     // Teaser text tabs - switch between logged in and not logged in
     $(document).on('click', '.pp-teaser-text-tab', function() {
         var tab = $(this).data('tab');
-        var $card = $(this).closest('.pp-teaser-card');
+        var $container = $(this).closest('.pp-teaser-text-card');
         
         // Update tab active state
-        $card.find('.pp-teaser-text-tab').removeClass('active');
+        $container.find('.pp-teaser-text-tab').removeClass('active');
         $(this).addClass('active');
         
         // Show corresponding content
-        $card.find('.pp-teaser-text-content').removeClass('active').hide();
-        $card.find('.pp-teaser-text-content[data-tab-content="' + tab + '"]')
+        $container.find('.pp-teaser-text-content').removeClass('active').hide();
+        $container.find('.pp-teaser-text-content[data-tab-content="' + tab + '"]')
             .addClass('active')
             .fadeIn(200);
     });

@@ -46,7 +46,7 @@ class TeaserHooks
             'rss_private_feed_mode' => 'title_only',
             'rss_nonprivate_feed_mode' => 'full_content',
             'feed_teaser' => __("View the content of this <a href='%permalink%'>article</a>"),  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-            'teaser_hide_thumbnail' => true,
+            'teaser_hide_thumbnail' => [],
             'teaser_hide_custom_private_only' => false,
             'teaser_hide_links_taxonomy' => '',
             'teaser_hide_links_term' => '',
