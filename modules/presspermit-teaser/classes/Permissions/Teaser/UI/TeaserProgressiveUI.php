@@ -16,6 +16,7 @@ class TeaserProgressiveUI {
     private $direct_only;
     private $hide_links;
     private $arr_num_chars;
+    private $hide_thumbnail;
     private $blockEditorActive;
 
     public function __construct($pp, $ui, $use_teaser, $options_data, $blockEditorActive = true) {
@@ -27,6 +28,7 @@ class TeaserProgressiveUI {
         $this->direct_only = $options_data['direct_only'];
         $this->hide_links = $options_data['hide_links'];
         $this->arr_num_chars = $options_data['arr_num_chars'];
+        $this->hide_thumbnail = $options_data['hide_thumbnail'];
         $this->blockEditorActive = $blockEditorActive;
     }
 
@@ -51,17 +53,27 @@ class TeaserProgressiveUI {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- This is for rendering UI state, not processing form submission
         $current_post_type = !empty($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $default_post_type;
         ?>
-        <div class="pp-teaser-card pp-post-type-selector">
-            <h3><?php esc_html_e('Select Post Type to Configure', 'press-permit-core'); ?></h3>
-            <p class="description"><?php esc_html_e('Choose which post type you want to configure teaser settings for.', 'press-permit-core'); ?></p>
-            
+        <div class="pp-post-type-selector">
+            <table class="widefat fixed striped teaser-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('Select Post Type to Configure', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <p class="description"><?php esc_html_e('Choose which post type you want to configure teaser settings for.', 'press-permit-core'); ?></p>
+
             <div class="pp-field-group">
                 <label for="pp_current_post_type"><strong><?php esc_html_e('Post Type:', 'press-permit-core'); ?></strong></label>
                 <select id="pp_current_post_type" class="regular-text">
                     <?php foreach ($this->use_teaser as $object_type => $teaser_setting) : 
                         $type_obj = get_post_type_object($object_type);
-                        $item_label = $type_obj ? $type_obj->labels->singular_name : $object_type;
-                        
+                        $item_label = $type_obj ? $type_obj->labels->name : $object_type;
+
                         // Check if this post type is available in current version
                         $is_available = $this->isFeatureAvailable('post_type_' . $object_type);
                         $disabled = $is_available ? '' : ' disabled';
@@ -84,13 +96,17 @@ class TeaserProgressiveUI {
                 </p>
                 <?php endif; ?>
             </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         <?php
     }
 
     private function renderPostTypeSettings($object_type, $teaser_setting) {
         $type_obj = get_post_type_object($object_type);
-        $item_label = $type_obj ? $type_obj->labels->singular_name : $object_type;
+        $item_label = $type_obj ? $type_obj->labels->name : $object_type;
         if (is_bool($teaser_setting) || is_numeric($teaser_setting)) {
             $teaser_setting = intval($teaser_setting);
         }
@@ -138,18 +154,20 @@ class TeaserProgressiveUI {
 
     private function renderCombinedSettingsTable($object_type, $item_label, $teaser_setting) {
         $name = "tease_post_types[$object_type]";
+
+        $base_captions = [
+            0 => esc_html__('No Teaser. Show "Page not found" message', 'press-permit-core'),
+            1 => esc_html__("Teaser text", 'press-permit-core'),
+            'read_more' => esc_html__("Use content before Read More link as teaser text", 'press-permit-core'),
+            'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
+            'more' => esc_html__("Use Excerpt or pre-More as teaser text", 'press-permit-core'),
+            'x_chars' => esc_html__("Use Excerpt, pre-More or First X Characters as teaser text", 'press-permit-core'),
+            'redirect' => esc_html__("Redirect to another page", 'press-permit-core')
+        ];
         
         $captions = apply_filters(
             'presspermit_teaser_enable_options',
-            [
-                0 => esc_html__('No Teaser. Show "Page not found" message', 'press-permit-core'),
-                1 => esc_html__("Teaser text", 'press-permit-core'),
-                'read_more' => esc_html__("Use content before Read More link as teaser text", 'press-permit-core'),
-                'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
-                'more' => esc_html__("Use Excerpt or pre-More as teaser text", 'press-permit-core'),
-                'x_chars' => esc_html__("Use Excerpt, pre-More or First X Characters as teaser text", 'press-permit-core'),
-                'redirect' => esc_html__("Redirect to another page", 'press-permit-core')
-            ],
+            $base_captions,
             $object_type,
             $teaser_setting
         );
@@ -183,7 +201,7 @@ class TeaserProgressiveUI {
         $direct_only_val = isset($this->direct_only[$object_type]) ? $this->direct_only[$object_type] : 0;
         $hide_links_val = !empty($this->hide_links[$object_type]) ? $this->hide_links[$object_type] : 0;
         $hide_private_val = isset($this->hide_private[$object_type]) ? $this->hide_private[$object_type] : '0';
-        
+
         ?>
         <table class="widefat fixed striped teaser-table">
             <colgroup>
@@ -213,7 +231,7 @@ class TeaserProgressiveUI {
                         <select name="<?php echo esc_attr($name); ?>" class="regular-text pp-teaser-type-select">
                             <?php foreach ($captions as $teaser_option_val => $teaser_caption) : 
                                 $selected = ($teaser_setting === $teaser_option_val) ? ' selected' : '';
-                                
+
                                 // Check if this teaser type is available
                                 $teaser_type_key = is_numeric($teaser_option_val) 
                                     ? ($teaser_option_val == 0 ? 'teaser_type_none' : 'teaser_type_configured')
@@ -282,7 +300,7 @@ class TeaserProgressiveUI {
                         $anon_disabled = !$this->isFeatureAvailable('user_application_anon');
                         $logged_disabled = !$this->isFeatureAvailable('user_application_logged');
                         ?>
-                        <label>
+                        <label style="margin-right: 20px;">
                             <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="anon"<?php checked($logged_val, 'anon'); ?><?php if ($anon_disabled) echo ' disabled'; ?>>
                             <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
                         </label>
@@ -330,6 +348,19 @@ class TeaserProgressiveUI {
                             <option value="custom"<?php selected($hide_private_val, 'custom'); ?>><?php esc_html_e("Hide for Custom Visibility", 'press-permit-core'); ?></option>
                             <?php endif; ?>
                         </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th><?php esc_html_e('Hide Featured Image:', 'press-permit-core'); ?></th>
+                    <td>
+                        <?php
+                        $hide_thumbnail_val = !empty($this->hide_thumbnail[$object_type]) ? $this->hide_thumbnail[$object_type] : 0;
+                        ?>
+                        <input type="hidden" name="teaser_hide_thumbnail[<?php echo esc_attr($object_type); ?>]" value="0">
+                        <label>
+                            <input type="checkbox" name="teaser_hide_thumbnail[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($hide_thumbnail_val, 1); ?>>
+                            <?php esc_html_e('Hide featured image when teaser is applied', 'press-permit-core'); ?>
+                        </label>
                     </td>
                 </tr>
                 </tbody>
@@ -525,16 +556,25 @@ class TeaserProgressiveUI {
 
     private function renderTeaserTextCard($object_type) {
         ?>
-        <div class="pp-teaser-card pp-teaser-text-card">
-            <h3><?php esc_html_e('Teaser Text Configuration', 'press-permit-core'); ?></h3>
-            <p class="description"><?php esc_html_e('Configure custom teaser text for this post type.', 'press-permit-core'); ?></p>
-            
+        <div class="">
+            <table class="widefat">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('Teaser Text Configuration', 'press-permit-core'); ?></strong>
+                            <?php $this->generateTooltip(esc_html__('Configure custom teaser text for this post type.', 'press-permit-core')) ?>
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+
+        <div class="pp-teaser-text-container">
             <!-- Tabs for Logged In Users / Not Logged In Users -->
             <div class="pp-teaser-text-tabs">
                 <button type="button" class="pp-teaser-text-tab active" data-tab="anon">
                     <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
                 </button>
-                <button type="button" class="pp-teaser-text-tab" data-tab="logged"<?php if (!$this->isProVersion()) echo ' disabled style="cursor: not-allowed; opacity: 0.6;"'; ?>>
+                <button type="button" class="pp-teaser-text-tab" data-tab="logged">
                     <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
                 </button>
                 <span style="margin: 8px 8px 8px -12px;">
@@ -703,6 +743,17 @@ class TeaserProgressiveUI {
             <table class="widefat fixed striped teaser-table pp-teaser-redirect">
                 <thead>
                     <tr>
+                        <th colspan="3">
+                            <strong><?php _e('Redirect Settings', 'press-permit-core');?></strong>
+                            <?php if ($this->ui->display_hints) : 
+                                $tooltip_text = \PublishPress\Permissions\UI\SettingsAdmin::getStr('teaser_redirect_page');
+                                if ($tooltip_text) {
+                                    $this->generateTooltip($tooltip_text);
+                                }
+                            endif; ?>
+                        </th>
+                    </tr>
+                    <tr>
                         <th></th>
                         <th><?php _e('Redirection', 'press-permit-core') ?></th>
                         <th><?php _e('Page Selection', 'press-permit-core') ?></th>
@@ -854,16 +905,21 @@ class TeaserProgressiveUI {
 
     private function renderReadMoreNoticeCard($object_type) {
         ?>
-        <div class="pp-teaser-card pp-read-more-notice-settings">
-            <h3><?php esc_html_e('Read More Notice', 'press-permit-core'); ?></h3>
-            <p class="description"><?php esc_html_e('Customize the login notice message shown to non-logged-in users when using the "Read More" teaser type.', 'press-permit-core'); ?></p>
-            
-            <table class="form-table">
+        <div class="pp-read-more-notice-settings">
+            <table class="widefat fixed striped teaser-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('Read More Notice', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">
+                    <th scope="row" style="width: 30%;">
                         <label for="read_more_login_notice">
                             <?php esc_html_e('Login Notice Message', 'press-permit-core'); ?>
+                            <?php $this->generateTooltip(esc_html__('Customize the login notice message shown to non-logged-in users when using the "Read More" teaser type.', 'press-permit-core')) ?>
                         </label>
                     </th>
                     <td>
@@ -895,16 +951,21 @@ class TeaserProgressiveUI {
 
     private function renderExcerptNoticeCard($object_type) {
         ?>
-        <div class="pp-teaser-card pp-excerpt-notice-settings">
-            <h3><?php esc_html_e('Excerpt Notice', 'press-permit-core'); ?></h3>
-            <p class="description"><?php esc_html_e('Customize the login notice message shown to non-logged-in users when using the "Excerpt" teaser type.', 'press-permit-core'); ?></p>
-            
-            <table class="form-table">
+        <div class="pp-excerpt-notice-settings">
+            <table class="widefat fixed striped teaser-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('Excerpt Notice', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">
+                    <th scope="row" style="width: 30%;">
                         <label for="excerpt_login_notice">
                             <?php esc_html_e('Login Notice Message', 'press-permit-core'); ?>
+                            <?php $this->generateTooltip(esc_html__('Customize the login notice message shown to non-logged-in users when using the "Excerpt" teaser type.', 'press-permit-core')) ?>
                         </label>
                     </th>
                     <td>
@@ -936,16 +997,21 @@ class TeaserProgressiveUI {
 
     private function renderXCharsNoticeCard($object_type) {
         ?>
-        <div class="pp-teaser-card pp-x-chars-notice-settings">
-            <h3><?php esc_html_e('First X Characters Notice', 'press-permit-core'); ?></h3>
-            <p class="description"><?php esc_html_e('Customize the login notice message shown to non-logged-in users when using the "First X Characters" teaser type.', 'press-permit-core'); ?></p>
-            
-            <table class="form-table">
+        <div class="pp-x-chars-notice-settings">
+            <table class="widefat fixed striped teaser-table">
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('First X Characters Notice', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
                 <tbody>
                 <tr>
-                    <th scope="row">
+                    <th scope="row" style="width: 30%;">
                         <label for="x_chars_login_notice">
                             <?php esc_html_e('Login Notice Message', 'press-permit-core'); ?>
+                            <?php $this->generateTooltip(esc_html__('Customize the login notice message shown to non-logged-in users when using the "First X Characters" teaser type.', 'press-permit-core')) ?>
                         </label>
                     </th>
                     <td>
@@ -972,6 +1038,24 @@ class TeaserProgressiveUI {
                 </tbody>
             </table>
         </div>
+        <?php
+    }
+
+    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true)
+    {
+        if (!$tooltip) return;
+        ?>
+        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>">
+        <?php esc_html_e($text);?>
+        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?></span><i></i></span>
+        <?php 
+        if ($useIcon) : ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50" style="margin-left: 4px; vertical-align: text-bottom;">
+                <path d="M 25 2 C 12.264481 2 2 12.264481 2 25 C 2 37.735519 12.264481 48 25 48 C 37.735519 48 48 37.735519 48 25 C 48 12.264481 37.735519 2 25 2 z M 25 4 C 36.664481 4 46 13.335519 46 25 C 46 36.664481 36.664481 46 25 46 C 13.335519 46 4 36.664481 4 25 C 4 13.335519 13.335519 4 25 4 z M 25 11 A 3 3 0 0 0 25 17 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 23 23 L 23 36 L 21 36 L 21 38 L 29 38 L 29 36 L 27 36 L 27 21 L 21 21 z"></path>
+            </svg>
+        <?php
+        endif; ?>
+        </span>
         <?php
     }
 }

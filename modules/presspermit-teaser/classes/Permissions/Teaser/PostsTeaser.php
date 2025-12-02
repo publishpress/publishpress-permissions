@@ -498,7 +498,7 @@ class PostsTeaser
                         
                         // Build notice HTML for non-logged-in users
                         $notice_html = '';
-                        global $current_user;
+                        global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
                         if ($current_user->ID == 0) {
                             $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
                         }
@@ -524,7 +524,7 @@ class PostsTeaser
                     
                     // Build notice HTML for non-logged-in users
                     $notice_html = '';
-                    global $current_user;
+                    global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
                     if ($current_user->ID == 0) {
                         $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
                     }
@@ -577,7 +577,7 @@ class PostsTeaser
                 
                 // Build notice HTML for non-logged-in users
                 $notice_html = '';
-                global $current_user;
+                global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
                 if ($current_user->ID == 0) {
                     $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
                 }

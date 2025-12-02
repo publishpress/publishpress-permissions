@@ -378,8 +378,7 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 }
 
 /* Separate sections styling */
-.teaser-nav-menu-section,
-.teaser-redirect-section {
+.teaser-nav-menu-section {
   margin-top: 40px;
   padding: 20px;
   background-color: #f9f9f9;
@@ -387,8 +386,7 @@ tr.pp-main-row:hover td:not(.pp-expand) {
   border-radius: 4px;
 }
 
-.teaser-nav-menu-section h4,
-.teaser-redirect-section h4 {
+.teaser-nav-menu-section h4 {
   margin-top: 0;
   margin-bottom: 15px;
   font-size: 16px;
@@ -469,13 +467,12 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     font-size: 12px;
 }
 
-/* Post Type Selector */
-.pp-post-type-selector {
+.pp-teaser-text-container {
     margin-bottom: 15px;
-    padding: 12px 15px;
-    background: #f6f7f7;
-    border-radius: 4px;
+    padding: 10px;
+    background: #fff;
     border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
 }
 
 /* Teaser type options (radio buttons) */
@@ -626,7 +623,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 
 .pp-teaser-text-tab {
     padding: 8px 16px;
-    line-height: 1.75;
     background: transparent;
     border: none;
     border-bottom: 2px solid transparent;
@@ -692,16 +688,19 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     }
 }
 
-/* Number input for X characters */
-.pp-num-chars-setting {
+/* Number input for X characters and excerpt */
+.pp-num-chars-setting,
+.pp-excerpt-chars-setting {
     margin-top: 12px;
 }
 
-.pp-num-chars-setting label {
+.pp-num-chars-setting label,
+.pp-excerpt-chars-setting label {
     font-size: 13px;
 }
 
-.pp-num-chars-setting input[type="number"] {
+.pp-num-chars-setting input[type="number"],
+.pp-excerpt-chars-setting input[type="number"] {
     width: 80px;
 }
 

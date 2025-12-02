@@ -66,7 +66,7 @@ class PostsTeaser
     {
         $new = [
             'teaser_type' => ['use_teaser', 'tease_logged_only'],
-            'coverage' => ['teaser_hide_custom_private_only', 'tease_public_posts_only', 'tease_direct_access_only'],
+            'coverage' => ['teaser_hide_custom_private_only', 'tease_public_posts_only', 'tease_direct_access_only', 'teaser_hide_thumbnail'],
             'menu' => [''],
             'redirect' => ['teaser_redirect_anon', 'teaser_redirect_anon_page', 'teaser_redirect', 'teaser_redirect_page', 'teaser_redirect_custom_login_page_anon', 'teaser_redirect_custom_login_page'],
             'teaser_text' => ['tease_replace_content', 'tease_replace_content_anon', 'tease_prepend_content', 'tease_prepend_content_anon',
@@ -75,7 +75,7 @@ class PostsTeaser
                               'tease_prepend_excerpt', 'tease_prepend_excerpt_anon', 'tease_append_excerpt', 'tease_append_excerpt_anon'],
             'read_more_notice' => ['read_more_login_notice'],
             'hidden_content_teaser' => ['teaser_hide_custom_private_only'],
-            'options' => ['teaser_hide_thumbnail', 'rss_private_feed_mode', 'rss_nonprivate_feed_mode', 'feed_teaser'],
+            'options' => ['rss_private_feed_mode', 'rss_nonprivate_feed_mode', 'feed_teaser'],
         ];
 
         $key = 'teaser';
@@ -307,14 +307,17 @@ class PostsTeaser
 
             // Prepare data for new UI
             $default_options = apply_filters('presspermit_teaser_default_options', []);
-            $opt_available = array_fill_keys($pp->getEnabledPostTypes(), 0);
+            
+            // Use trait method to get available post types (FREE: only 'post', PRO: all enabled)
+            $available_post_types = $pp->getEnabledPostTypes();
+            $opt_available = array_fill_keys($available_post_types, 0);
             $no_tease_types = \PublishPress\Permissions\Teaser::noTeaseTypes();
 
             $option_use_teaser = 'tease_post_types';
             $ui->all_otype_options[] = $option_use_teaser;
             $opt_vals = $ui->getOptionArray($option_use_teaser);
             $use_teaser = array_diff_key(array_merge($opt_available, $default_options[$option_use_teaser], $opt_vals), $no_tease_types);
-            $use_teaser = array_intersect_key($use_teaser, array_fill_keys($pp->getEnabledPostTypes(), true));
+            $use_teaser = array_intersect_key($use_teaser, array_fill_keys($available_post_types, true));
             $use_teaser = $pp->admin()->orderTypes($use_teaser, ['item_type' => 'post']);
 
             $option_num_chars = 'teaser_num_chars';
@@ -330,7 +333,7 @@ class PostsTeaser
             $ui->all_otype_options[] = $option_hide_private;
             $opt_vals = $ui->getOptionArray($option_hide_private);
             $hide_private = array_diff_key(array_merge($opt_available, $default_options[$option_hide_private] ?? [], $opt_vals), $no_tease_types);
-            $hide_private = array_intersect_key($hide_private, array_fill_keys($pp->getEnabledPostTypes(), true));
+            $hide_private = array_intersect_key($hide_private, array_fill_keys($available_post_types, true));
 
             $option_direct_only = 'tease_direct_access_only';
             $ui->all_otype_options[] = $option_direct_only;
@@ -342,13 +345,20 @@ class PostsTeaser
             $opt_vals = $ui->getOptionArray($option_hide_links);
             $defaults = (isset($default_options[$option_hide_links])) ? (array) $default_options[$option_hide_links] : [];
             $hide_links = array_diff_key(array_merge($opt_available, $defaults, $opt_vals), $no_tease_types);
-            $hide_links = array_intersect_key($hide_links, array_fill_keys($pp->getEnabledPostTypes(), true));
+            $hide_links = array_intersect_key($hide_links, array_fill_keys($available_post_types, true));
+
+            $option_hide_thumbnail = 'teaser_hide_thumbnail';
+            $ui->all_otype_options[] = $option_hide_thumbnail;
+            $opt_vals = $ui->getOptionArray($option_hide_thumbnail);
+            $hide_thumbnail = array_diff_key(array_merge($opt_available, $default_options[$option_hide_thumbnail] ?? [], $opt_vals), $no_tease_types);
 
             $section = 'teaser_type';
 
         $default_options = apply_filters('presspermit_teaser_default_options', []);
 
-        $opt_available = array_fill_keys($pp->getEnabledPostTypes(), 0);
+        // Use trait method to get available post types (FREE: only 'post', PRO: all enabled)
+        $available_post_types = $pp->getEnabledPostTypes();
+        $opt_available = array_fill_keys($available_post_types, 0);
         $no_tease_types = \PublishPress\Permissions\Teaser::noTeaseTypes();
 
         $option_use_teaser = 'tease_post_types';
@@ -365,7 +375,7 @@ class PostsTeaser
         $ui->all_otype_options[] = $option_hide_private;
         $opt_vals = $ui->getOptionArray($option_hide_private);
         $hide_private = array_diff_key(array_merge($opt_available, $default_options[$option_hide_private] ?? [], $opt_vals), $no_tease_types);
-        $hide_private = array_intersect_key($hide_private, array_fill_keys($pp->getEnabledPostTypes(), true));
+        $hide_private = array_intersect_key($hide_private, array_fill_keys($available_post_types, true));
 
         $option_direct_only = 'tease_direct_access_only';
         $ui->all_otype_options[] = $option_direct_only;
@@ -378,7 +388,7 @@ class PostsTeaser
 
         $defaults = (isset($default_options[$option_hide_links])) ? (array) $default_options[$option_hide_links] : [];
         $hide_links = array_diff_key(array_merge($opt_available, $defaults, $opt_vals), $no_tease_types);
-        $hide_links = array_intersect_key($hide_links, array_fill_keys($pp->getEnabledPostTypes(), true));
+        $hide_links = array_intersect_key($hide_links, array_fill_keys($available_post_types, true));
 
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
@@ -400,21 +410,29 @@ class PostsTeaser
             $opt_vals = $ui->getOptionArray($option_logged_only);
             $logged_only = array_diff_key(array_merge($opt_available, $default_options[$option_logged_only] ?? [], $opt_vals), $no_tease_types);
 
-            $use_teaser = array_intersect_key($use_teaser, array_fill_keys($pp->getEnabledPostTypes(), true));
+            $use_teaser = array_intersect_key($use_teaser, array_fill_keys($available_post_types, true));
             $use_teaser = $pp->admin()->orderTypes($use_teaser, ['item_type' => 'post']);
+            
+            // Sort array to ensure 'post' appears first
+            if (isset($use_teaser['post'])) {
+                $post_value = $use_teaser['post'];
+                unset($use_teaser['post']);
+                $use_teaser = array_merge(['post' => $post_value], $use_teaser);
+            }
 
             $any_teased_types = array_filter($use_teaser);
 
             // Render new Progressive Disclosure UI
             require_once(__DIR__ . '/TeaserUIBaseTrait.php');
             require_once(__DIR__ . '/TeaserProgressiveUI.php');
-            
+
             $options_data = [
                 'logged_only' => $logged_only,
                 'hide_private' => $hide_private,
                 'direct_only' => $direct_only,
                 'hide_links' => $hide_links,
-                'arr_num_chars' => $arr_num_chars
+                'arr_num_chars' => $arr_num_chars,
+                'hide_thumbnail' => $hide_thumbnail
             ];
             
             $progressive_ui = new TeaserProgressiveUI($pp, $ui, $use_teaser, $options_data, $this->blockEditorActive);
@@ -444,39 +462,7 @@ class PostsTeaser
             ?>
 
             <div class="pp-teaser-options" style="<?php echo esc_attr($style);?>">
-            
-			<?php
-			if ( in_array(
-					'teaser_hide_thumbnail',
-					$ui->form_options[$tab][$section],
-					true
-				)
-			) :
-			?>
-				<h2 class="title">
-					<?php esc_html_e( 'Custom Fields', 'press-permit-core' ); ?>
-				</h2>
-				<table class="form-table">
-					<tr>
-						<th>
-							<?php esc_html_e( 'Hide Featured Image when Teaser is applied:', 'press-permit-core' ) ?>
-						</th>
-						<td>
-							<?php
-							if ( in_array(
-									'teaser_hide_thumbnail',
-									$ui->form_options[$tab][$section],
-									true
-								)
-							) {
-								$ui->optionCheckbox( 'teaser_hide_thumbnail', $tab, $section, '', '', ['display_label' => false] );
-							}
-							?>
-						</td>
-					</tr>
-				</table>
-			<?php endif; ?>
-			<h2 class="title">
+            <h2 class="title">
 				<?php esc_html_e( 'RSS', 'press-permit-core' ); ?>
 			</h2>
 			<p>
