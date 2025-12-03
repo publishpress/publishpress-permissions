@@ -774,7 +774,7 @@ class AgentPermissionsUI
                             <div class="permission-type">
                             <div class="subsection-header permission-type-header">
                             <h3 class="section-title permission-type-title">
-                                <?php esc_html_e(sprintf(__('%s Roles', 'press-permit-core'), $type_caption)); ?>
+                                <?php echo esc_html(sprintf(__('%s Roles', 'press-permit-core'), $type_caption)); ?>
                                 <span class="badge badge-count" style=""><span class="count-num">0</span> <?php esc_html_e('item(s)', 'press-permit-core');?></span>
                             </h3>
                             <div class="section-controls">

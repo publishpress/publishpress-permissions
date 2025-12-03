@@ -302,8 +302,6 @@ class PostsTeaser
             } elseif ('read_more' == $teaser_type) {
                 $read_more_teaser[$type] = true;
             } elseif ('x_chars' == $teaser_type) {
-                $excerpt_teaser[$type] = true;
-                $more_teaser[$type] = true;
                 $x_chars_teaser[$type] = true;
             }
         }
@@ -347,23 +345,103 @@ class PostsTeaser
         }
 
         $anon = ($user->ID == 0) ? '_anon' : '';
+        
+        // Get per-post-type teaser text
+        $option_basename = "tease_{$teaser_operation}_{$variable}{$anon}";
+        $msg = presspermit()->getTypeOption($option_basename, $object_type);
 
-        if ($msg = presspermit()->getOption("tease_{$teaser_operation}_{$variable}{$anon}", true)) {
+        // Remove slashes that WordPress adds automatically to option values
+        if ($msg) {
+            $msg = wp_unslash($msg);
+        }
+
+        if ($msg) {
             if (defined('PP_TRANSLATE_TEASER')) {
                 // otherwise, this is only loaded for admin
-                $msg = translate($msg, 'presspermit-pro');
+                $msg = translate($msg, 'press-permit-core');
 
                 if (!empty($msg) && !is_null($msg) && is_string($msg))
                     $msg = htmlspecialchars_decode($msg);
             }
 
-            if ('content' == $variable)
-                $msg = str_replace('[login_form]', is_singular() ? wp_login_form(['echo' => false,]) : '', $msg);
+            if ('content' == $variable) {
+                // Generate styled login form if shortcode is present
+                if (strpos($msg, '[login_form]') !== false && is_singular()) {
+                    $login_form = wp_login_form(['echo' => false]);
+                    
+                    // Wrap login form with styled container
+                    $styled_login_form = '
+                    <div class="pp-login-form-wrapper" style="max-width: 360px; margin: 20px auto; padding: 30px; background: #ffffff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <style>
+                            .pp-login-form-wrapper .login-username,
+                            .pp-login-form-wrapper .login-password,
+                            .pp-login-form-wrapper .login-remember,
+                            .pp-login-form-wrapper .login-submit {
+                                margin-bottom: 15px;
+                            }
+                            .pp-login-form-wrapper label {
+                                display: block;
+                                margin-bottom: 5px;
+                                font-weight: 600;
+                                color: #333;
+                                font-size: 14px;
+                            }
+                            .pp-login-form-wrapper input[type="text"],
+                            .pp-login-form-wrapper input[type="password"] {
+                                width: 100%;
+                                padding: 10px 12px;
+                                border: 1px solid #ddd;
+                                border-radius: 4px;
+                                font-size: 14px;
+                                box-sizing: border-box;
+                                transition: border-color 0.2s;
+                            }
+                            .pp-login-form-wrapper input[type="text"]:focus,
+                            .pp-login-form-wrapper input[type="password"]:focus {
+                                outline: none;
+                                border-color: #0073aa;
+                                box-shadow: 0 0 0 1px #0073aa;
+                            }
+                            .pp-login-form-wrapper .login-remember label {
+                                display: inline;
+                                font-weight: normal;
+                                margin-left: 5px;
+                            }
+                            .pp-login-form-wrapper input[type="checkbox"] {
+                                margin: 0;
+                            }
+                            .pp-login-form-wrapper input[type="submit"] {
+                                width: 100%;
+                                padding: 12px;
+                                background: #0073aa;
+                                color: #ffffff;
+                                border: none;
+                                border-radius: 4px;
+                                font-size: 14px;
+                                font-weight: 600;
+                                cursor: pointer;
+                                transition: background 0.2s;
+                            }
+                            .pp-login-form-wrapper input[type="submit"]:hover {
+                                background: #005177;
+                            }
+                            .pp-login-form-wrapper .login-submit {
+                                margin-bottom: 0;
+                            }
+                        </style>
+                        ' . $login_form . '
+                    </div>';
+                    
+                    $msg = str_replace('[login_form]', $styled_login_form, $msg);
+                } else {
+                    $msg = str_replace('[login_form]', '', $msg);
+                }
+            }
 
             // Apply styled notice wrapper for content replacement on frontend (not in admin or feeds)
             if ('replace' == $teaser_operation && 'content' == $variable && !is_admin() && !is_feed()) {
                 // Only wrap if not already wrapped and doesn't contain HTML tags
-                if (strpos($msg, '<div class="pp-teaser-notice"') === false && strip_tags($msg) === $msg) {
+                if (strpos($msg, '<div class="pp-teaser-notice"') === false && wp_strip_all_tags($msg) === $msg) {
                     $msg = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $msg . '</div>';
                 }
             }
@@ -411,7 +489,7 @@ class PostsTeaser
             $excerpt_teaser[$post_type] = $more_teaser[$post_type] = $read_more_teaser[$post_type] = $x_chars_teaser[$post_type] = false;
         }
 
-        if (!empty($x_chars_teaser[$post_type])) {
+        if (!empty($x_chars_teaser[$post_type]) || !empty($excerpt_teaser[$post_type])) {
             $num_chars = (defined('PP_TEASER_NUM_CHARS')) ? PP_TEASER_NUM_CHARS : 50;
 
             if ($custom_chars = presspermit()->getTypeOption('teaser_num_chars', $post_type)) {
@@ -428,7 +506,45 @@ class PostsTeaser
 
         // optionally, use post excerpt as the hidden content teaser instead of a fixed replacement
         if (!empty($excerpt_teaser[$post_type]) && !empty($post->post_excerpt)) {
-            $post->post_content = $post->post_excerpt;
+            $excerpt_text = $post->post_excerpt;
+            
+            // Apply num_chars truncation if configured and excerpt is longer than limit
+            if (!empty($num_chars)) {
+                // Strip all HTML tags to get plain text
+                $plain_excerpt = wp_strip_all_tags($excerpt_text);
+                
+                // Only truncate if excerpt is longer than the limit
+                if (strlen($plain_excerpt) > $num_chars) {
+                    if (defined('PP_TRANSLATE_TEASER')) {
+                        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                    }
+                    
+                    // Get first X characters of plain text
+                    $plain_excerpt = substr($plain_excerpt, 0, $num_chars);
+                    $excerpt_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $plain_excerpt);
+                }
+            }
+            
+            // Get login notice message for excerpt teaser
+            $login_notice = presspermit()->getOption('excerpt_login_notice');
+            if (empty($login_notice)) {
+                $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+            }
+            
+            // Build notice HTML for non-logged-in users
+            $notice_html = '';
+            global $current_user;
+            if ($current_user->ID == 0) {
+                $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+            }
+            
+            // Wrap excerpt in paragraph block markup to prevent theme layout issues
+            // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
+            if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($excerpt_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
+            } else {
+                $post->post_content = '<p>' . esc_html($excerpt_text) . '</p>' . $notice_html;
+            }
 
         // Read More Link as Teaser - show content before more tag with a "Read More" link
         } elseif (!empty($read_more_teaser[$post_type])) {
@@ -454,7 +570,25 @@ class PostsTeaser
                 } else {
                     // Fallback: no more tag found, use configured teaser text or excerpt
                     if (!empty($post->post_excerpt)) {
-                        $post->post_content = $post->post_excerpt;
+                        // Get login notice message
+                        $login_notice = presspermit()->getOption('read_more_login_notice');
+                        if (empty($login_notice)) {
+                            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                        }
+                        
+                        // Build notice HTML for non-logged-in users
+                        $notice_html = '';
+                        global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
+                        if ($current_user->ID == 0) {
+                            $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                        }
+                        
+                        // Wrap excerpt in paragraph block markup to prevent theme layout issues
+                        if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                            $post->post_content = '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->' . $notice_html;
+                        } else {
+                            $post->post_content = $post->post_excerpt . $notice_html;
+                        }
                     } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                         $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
                     }
@@ -462,7 +596,25 @@ class PostsTeaser
             } else {
                 // Fallback: no more tag found, use excerpt or configured teaser text
                 if (!empty($post->post_excerpt)) {
-                    $post->post_content = $post->post_excerpt;
+                    // Get login notice message
+                    $login_notice = presspermit()->getOption('read_more_login_notice');
+                    if (empty($login_notice)) {
+                        $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                    }
+                    
+                    // Build notice HTML for non-logged-in users
+                    $notice_html = '';
+                    global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
+                    if ($current_user->ID == 0) {
+                        $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                    }
+                    
+                    // Wrap excerpt in paragraph block markup to prevent theme layout issues
+                    if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                        $post->post_content = '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->' . $notice_html;
+                    } else {
+                        $post->post_content = $post->post_excerpt . $notice_html;
+                    }
                 } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                     $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
                 }
@@ -476,23 +628,53 @@ class PostsTeaser
 
             // since no custom excerpt or more tag is stored, use first X characters as teaser - but only if the total length is more than that
 
-        // phpcs:ignore WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter
-        } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content) && (strlen(strip_tags($post->post_content)) > $num_chars)) {
-            if (defined('PP_TRANSLATE_TEASER')) {
-                // otherwise, this is only loaded for admin
-                @load_plugin_textdomain('presspermit-pro', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
+        } elseif (!empty($x_chars_teaser[$post_type]) && !empty($post->post_content)) {
+            // Strip all HTML, blocks, and shortcodes to get plain text
+            $plain_content = $post->post_content;
+            
+            // Remove caption shortcodes
+            $plain_content = preg_replace("/\[caption.*?\].*?\[\/caption\]/s", '', $plain_content);
+            
+            // Strip all tags including block markup
+            $plain_content = wp_strip_all_tags($plain_content);
+
+            // Only apply X chars teaser if content is longer than the limit
+            if (strlen($plain_content) > $num_chars) {
+                if (defined('PP_TRANSLATE_TEASER')) {
+                    // otherwise, this is only loaded for admin
+                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                }
+
+                // Get first X characters of plain text
+                $teaser_text = substr($plain_content, 0, $num_chars);
+                $teaser_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $teaser_text);
+                
+                // Get login notice message for x_chars teaser
+                $login_notice = presspermit()->getOption('x_chars_login_notice');
+                if (empty($login_notice)) {
+                    $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                }
+                
+                // Build notice HTML for non-logged-in users
+                $notice_html = '';
+                global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
+                if ($current_user->ID == 0) {
+                    $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                }
+                
+                // Wrap in proper markup to prevent layout issues
+                if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                    $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
+                } else {
+                    $post->post_content = '<p>' . esc_html($teaser_text) . '</p>' . $notice_html;
+                }
+                
+                $post->post_excerpt = $teaser_text;
+
+                if ((is_single() || is_page()) && !empty($teaser_replace[$post_type]['post_content'])) {
+                    $post->post_content .= '<p class="pp_x_chars_teaser">' . $teaser_replace[$post_type]['post_content'] . '</p>';
+                }
             }
-
-            // since we are stripping out img tag, also strip out image caption applied by WP
-            $post->post_content = preg_replace("/\[caption.*\]/", '', $post->post_content);
-            $post->post_content = str_replace("[/caption]", '', $post->post_content);
-
-            // phpcs:ignore WordPressVIPMinimum.Functions.StripTags.StripTagsOneParameter
-            $post->post_content = sprintf(_x('%s...', 'teaser suffix', 'presspermit'), substr(strip_tags($post->post_content), 0, $num_chars));
-            $post->post_excerpt = $post->post_content;
-
-            if (is_single() || is_page())
-                $post->post_content .= '<p class="pp_x_chars_teaser">' . $teaser_replace[$post_type]['post_content'] . '</p>';
 
         } else {
             if (isset($teaser_replace[$post_type]['post_content'])) {
@@ -529,17 +711,33 @@ class PostsTeaser
             $teaser_append[$post_type]['post_content'] = $teaser_append[$post_type]['post_excerpt'];
         }
 
-        foreach (!empty($teaser_prepend[$post_type]) ? $teaser_prepend[$post_type] : [] as $col => $entry)
-            if (isset($post->$col))
+        foreach (!empty($teaser_prepend[$post_type]) ? $teaser_prepend[$post_type] : [] as $col => $entry) {
+            if (isset($post->$col)) {
+                // Wrap prepend content in block markup if post uses blocks
+                if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
+                    $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                }
                 $post->$col = $entry . $post->$col;
+            }
+        }
 
-        foreach (!empty($teaser_append[$post_type]) ? $teaser_append[$post_type] : [] as $col => $entry)
+        foreach (!empty($teaser_append[$post_type]) ? $teaser_append[$post_type] : [] as $col => $entry) {
             if (isset($post->$col)) {
                 if (($col == 'post_content') && !empty($more_pos)) {  // WP will strip off anything after the more comment
+                    // Wrap append content in block markup if post uses blocks
+                    if ($entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
+                        $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                    }
                     $post->$col = str_replace('<!--more-->', "$entry<!--more-->", $post->$col);
-                } else
+                } else {
+                    // Wrap append content in block markup if post uses blocks
+                    if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
+                        $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                    }
                     $post->$col .= $entry;
+                }
             }
+        }
 
         // no need to display password form if we're blocking content anyway
         if (!empty($post->post_password)) {

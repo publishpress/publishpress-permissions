@@ -146,9 +146,12 @@ class PostFiltersFront
 
     function fltGetAttachmentUrl($data, $post_id)
     {
-        if ($post_id && Teaser::instance()->isTeaser($post_id) && presspermit()->getOption('teaser_hide_thumbnail')) {
+        if ($post_id && Teaser::instance()->isTeaser($post_id)) {
             $post = get_post($post_id);
-            $data = ($post && (false !== strpos($post->post_mime_type, 'application/'))) ? '#' : '';  // avoid both "missing attachment" caption and blank image div
+            $post_type = $post ? $post->post_type : '';
+            if ($post_type && presspermit()->getTypeOption('teaser_hide_thumbnail', $post_type)) {
+                $data = ($post && (false !== strpos($post->post_mime_type, 'application/'))) ? '#' : '';  // avoid both "missing attachment" caption and blank image div
+            }
         }
 
         return $data;

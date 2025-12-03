@@ -195,6 +195,73 @@ jQuery(document).ready(function ($) {
     // Progressive Disclosure UI - Teaser Settings
     // ========================================================================
 
+    function updateTeaserSettings(selectedType, $container) {
+        if (selectedType == 'x_chars') {
+            $container.find('.pp-num-chars-setting').fadeIn(300);
+            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+        } else if (selectedType == 'excerpt') {
+            $container.find('.pp-excerpt-chars-setting').fadeIn(300);
+            $container.find('.pp-num-chars-setting').fadeOut(300);
+        } else {
+            $container.find('.pp-num-chars-setting').fadeOut(300);
+            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+        }
+
+        // Hide all notice cards first for smooth transition
+        var $noticeCards = $container.find('.pp-read-more-notice-card, .pp-excerpt-notice-card, .pp-x-chars-notice-card');
+        
+        // Show/hide sections based on teaser type
+        if (selectedType == '0') {
+            // No Teaser: hide everything
+            $container.find('.pp-teaser-application-fields').slideUp(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            $noticeCards.stop(true, false).fadeOut(250);
+        } else if (selectedType == 'redirect') {
+            // Redirect: show only redirect settings and application fields
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideDown(300);
+            $noticeCards.stop(true, false).fadeOut(250);
+        } else if (selectedType == '1') {
+            // Teaser Text: show teaser text card and application fields, hide redirect
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideDown(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            $noticeCards.stop(true, false).fadeOut(250);
+        } else if (selectedType == 'read_more') {
+            // Read More: show read more notice and application fields
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            // Hide other notice cards first, then show read more notice
+            $noticeCards.not('.pp-read-more-notice-card').stop(true, false).fadeOut(250);
+            $container.find('.pp-read-more-notice-card').stop(true, false).delay(250).fadeIn(300);
+        } else if (selectedType == 'excerpt') {
+            // Excerpt: show excerpt notice and application fields
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            // Hide other notice cards first, then show excerpt notice
+            $noticeCards.not('.pp-excerpt-notice-card').stop(true, false).fadeOut(250);
+            $container.find('.pp-excerpt-notice-card').stop(true, false).delay(250).fadeIn(300);
+        } else if (selectedType == 'x_chars' || selectedType == 'more') {
+            // X Chars or More: show x chars notice and application fields
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            // Hide other notice cards first, then show x chars notice
+            $noticeCards.not('.pp-x-chars-notice-card').stop(true, false).fadeOut(250);
+            $container.find('.pp-x-chars-notice-card').stop(true, false).delay(250).fadeIn(300);
+        } else {
+            // Other teaser types: show application fields only
+            $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
+            $container.find('.pp-teaser-redirect-settings').slideUp(300);
+            $noticeCards.stop(true, false).fadeOut(250);
+        }
+    }
+
     // Post type selector - switch between different post type settings
     $('#pp_current_post_type').on('change', function() {
         var selectedType = $(this).val();
@@ -211,27 +278,8 @@ jQuery(document).ready(function ($) {
 
         // Check the teaser type of the selected post type and show/hide sections
         var teaserType = $selectedContainer.find('.pp-teaser-type-select').val();
-        if (teaserType == '0') {
-            // No Teaser: hide everything
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideUp(300);
-            $selectedContainer.find('.pp-teaser-application-fields').slideUp(300);
-            $selectedContainer.find('.pp-teaser-text-card').slideUp(300);
-        } else if (teaserType == 'redirect') {
-            // Redirect: show only redirect settings and application fields
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideDown(300);
-            $selectedContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $selectedContainer.find('.pp-teaser-text-card').slideUp(300);
-        } else if (teaserType == '1') {
-            // Teaser Text: show teaser text card and application fields, hide redirect
-            $selectedContainer.find('.pp-teaser-text-card').slideDown(300);
-            $selectedContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideUp(300);
-        } else {
-            // Other teaser types: show application fields only
-            $selectedContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $selectedContainer.find('.pp-teaser-text-card').slideUp(300);
-            $selectedContainer.find('.pp-teaser-redirect-settings').slideUp(300);
-        }
+
+        updateTeaserSettings(teaserType, $selectedContainer);
     });
 
     // Teaser type select dropdown - show/hide conditional settings
@@ -240,60 +288,21 @@ jQuery(document).ready(function ($) {
         var selectedType = $(this).val();
         var postType = $container.data('post-type');
 
-        // Show/hide number of characters input for x_chars type
-        if (selectedType == 'x_chars') {
-            $container.find('.pp-num-chars-setting').fadeIn(300);
-        } else {
-            $container.find('.pp-num-chars-setting').fadeOut(300);
-        }
-
-        // Show/hide sections based on teaser type
-        if (selectedType == '0') {
-            // No Teaser: hide everything
-            $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
-            $container.find('.pp-read-more-notice-card').slideUp(300);
-            $container.find('.pp-teaser-application-fields').slideUp(300);
-        } else if (selectedType == 'redirect') {
-            // console.log(selectedType, $container.find('.pp-teaser-redirect-settings'));
-            // Redirect: show only redirect settings and application fields
-            $container.find('.pp-teaser-redirect-settings').slideDown(300);
-            $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
-            $container.find('.pp-read-more-notice-card').slideUp(300);
-        } else if (selectedType == '1') {
-            // Teaser Text: show teaser text card and application fields, hide redirect
-            $container.find('.pp-teaser-text-card').slideDown(300);
-            $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            $container.find('.pp-read-more-notice-card').slideUp(300);
-        } else if (selectedType == 'read_more') {
-            // Read More: show read more notice and application fields
-            $container.find('.pp-read-more-notice-card').slideDown(300);
-            $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
-            $container.find('.pp-teaser-redirect-settings').slideUp(300);
-        } else {
-            // Other teaser types: show application fields only
-            $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
-            $container.find('.pp-read-more-notice-card').slideUp(300);
-            $container.find('.pp-teaser-redirect-settings').slideUp(300);
-        }
+        updateTeaserSettings(selectedType, $container);
     });
 
     // Teaser text tabs - switch between logged in and not logged in
     $(document).on('click', '.pp-teaser-text-tab', function() {
         var tab = $(this).data('tab');
-        var $card = $(this).closest('.pp-teaser-card');
+        var $container = $(this).closest('.pp-teaser-text-card');
         
         // Update tab active state
-        $card.find('.pp-teaser-text-tab').removeClass('active');
+        $container.find('.pp-teaser-text-tab').removeClass('active');
         $(this).addClass('active');
         
         // Show corresponding content
-        $card.find('.pp-teaser-text-content').removeClass('active').hide();
-        $card.find('.pp-teaser-text-content[data-tab-content="' + tab + '"]')
+        $container.find('.pp-teaser-text-content').removeClass('active').hide();
+        $container.find('.pp-teaser-text-content[data-tab-content="' + tab + '"]')
             .addClass('active')
             .fadeIn(200);
     });
@@ -331,6 +340,8 @@ jQuery(document).ready(function ($) {
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
                 $targetContainer.find('.pp-teaser-application-fields').hide();
             } else if (teaserType == 'redirect') {
                 // Redirect: show only redirect settings and application fields
@@ -338,29 +349,57 @@ jQuery(document).ready(function ($) {
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
             } else if (teaserType == '1') {
                 // Teaser Text: show teaser text card and application fields, hide redirect
                 $targetContainer.find('.pp-teaser-text-card').show();
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
             } else if (teaserType == 'read_more') {
                 // Read More: show read more notice and application fields
                 $targetContainer.find('.pp-read-more-notice-card').show();
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
+            } else if (teaserType == 'excerpt') {
+                // Excerpt: show excerpt notice and application fields
+                $targetContainer.find('.pp-excerpt-notice-card').show();
+                $targetContainer.find('.pp-teaser-application-fields').show();
+                $targetContainer.find('.pp-teaser-text-card').hide();
+                $targetContainer.find('.pp-teaser-redirect-settings').hide();
+                $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
+            } else if (teaserType == 'x_chars' || teaserType == 'more') {
+                // X Chars or More: show x chars notice and application fields
+                $targetContainer.find('.pp-x-chars-notice-card').show();
+                $targetContainer.find('.pp-teaser-application-fields').show();
+                $targetContainer.find('.pp-teaser-text-card').hide();
+                $targetContainer.find('.pp-teaser-redirect-settings').hide();
+                $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
             } else {
                 // Other teaser types: show application fields only
                 $targetContainer.find('.pp-teaser-application-fields').show();
                 $targetContainer.find('.pp-teaser-text-card').hide();
                 $targetContainer.find('.pp-read-more-notice-card').hide();
+                $targetContainer.find('.pp-excerpt-notice-card').hide();
+                $targetContainer.find('.pp-x-chars-notice-card').hide();
                 $targetContainer.find('.pp-teaser-redirect-settings').hide();
             }
             
             // Show/hide number input based on type
             if (teaserType == 'x_chars') {
                 $targetContainer.find('.pp-num-chars-setting').show();
+                $targetContainer.find('.pp-excerpt-chars-setting').hide();
+            } else if (teaserType == 'excerpt') {
+                $targetContainer.find('.pp-excerpt-chars-setting').show();
+                $targetContainer.find('.pp-num-chars-setting').hide();
             }
         }
     }

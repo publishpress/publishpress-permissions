@@ -95,7 +95,7 @@ class WooCommerceIntegration
      */
     function hideProductGallery($html, $attachment_id)
     {
-        if ($this->isProductTeased() && presspermit()->getOption('teaser_hide_thumbnail')) {
+        if ($this->isProductTeased() && presspermit()->getTypeOption('teaser_hide_thumbnail', 'product')) {
             return '';
         }
         
@@ -109,7 +109,7 @@ class WooCommerceIntegration
     {
         $product_id = is_numeric($product) ? $product : (is_object($product) ? $product->get_id() : 0);
         
-        if ($this->isProductTeased($product_id) && presspermit()->getOption('teaser_hide_thumbnail')) {
+        if ($this->isProductTeased($product_id) && presspermit()->getTypeOption('teaser_hide_thumbnail', 'product')) {
             return '';
         }
         
@@ -123,7 +123,7 @@ class WooCommerceIntegration
     {
         $product_id = is_numeric($product) ? $product : (is_object($product) ? $product->get_id() : 0);
         
-        if ($this->isProductTeased($product_id) && presspermit()->getOption('teaser_hide_thumbnail')) {
+        if ($this->isProductTeased($product_id) && presspermit()->getTypeOption('teaser_hide_thumbnail', 'product')) {
             return [];
         }
         
@@ -139,7 +139,7 @@ class WooCommerceIntegration
             $post_id = get_the_ID();
         }
         
-        if ($this->isProductTeased($post_id) && presspermit()->getOption('teaser_hide_thumbnail')) {
+        if ($this->isProductTeased($post_id) && presspermit()->getTypeOption('teaser_hide_thumbnail', 'product')) {
             return '';
         }
         
@@ -151,7 +151,7 @@ class WooCommerceIntegration
      */
     function hidePlaceholderImage($src)
     {
-        if ($this->isProductTeased() && presspermit()->getOption('teaser_hide_thumbnail')) {
+        if ($this->isProductTeased() && presspermit()->getTypeOption('teaser_hide_thumbnail', 'product')) {
             // Return transparent 1x1 pixel
             return 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
         }
