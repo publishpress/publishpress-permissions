@@ -578,7 +578,6 @@ class PostsTeaser
 
             <p>
                 <input type="submit" name="presspermit_submit" class="button button-primary" value="<?php _e('Save Changes', 'press-permit-core') ?>">
-                <input type="submit" name="presspermit_defaults" class="button button-secondary" value="<?php _e('Revert to Defaults', 'press-permit-core') ?>" style="float:right;">
             </p>
         </div>
         <?php
