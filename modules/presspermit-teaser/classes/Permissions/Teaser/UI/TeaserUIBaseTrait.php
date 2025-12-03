@@ -30,8 +30,8 @@ trait TeaserUIBaseTrait {
      */
     protected function getAvailableTeaserTypes() {
         return [
-            0 => esc_html__('No Teaser', 'presspermit'),
-            1 => esc_html__('Configured Teaser Text', 'presspermit'),
+            0 => esc_html__('No Teaser', 'press-permit-core'),
+            1 => esc_html__('Configured Teaser Text', 'press-permit-core'),
         ];
     }
     
@@ -128,7 +128,7 @@ trait TeaserUIBaseTrait {
             return '';
         }
         
-        $default_tooltip = esc_attr__('This is a PRO feature', 'presspermit');
+        $default_tooltip = esc_attr__('This is a PRO feature', 'press-permit-core');
         $tooltip_text = $tooltip ?: $default_tooltip;
         
         return sprintf(
@@ -171,17 +171,17 @@ trait TeaserUIBaseTrait {
         <div class="pp-pro-feature-notice" style="padding: 15px; background: #f8f9fa; border-left: 4px solid #0073aa; margin-top: 20px;">
             <h4>
                 <?php echo esc_html($feature_name); ?>
-                <?php echo wp_kses_post($this->renderProBadge(sprintf(esc_attr__('%s is available in PRO', 'presspermit'), $feature_name))); ?>
+                <?php echo wp_kses_post($this->renderProBadge(sprintf(esc_attr__('%s is available in PRO', 'press-permit-core'), $feature_name))); ?>
             </h4>
             <?php if ($description) : ?>
                 <p><?php echo esc_html($description); ?></p>
             <?php endif; ?>
             <p>
                 <a href="<?php echo esc_url($this->getUpgradeUrl()); ?>" class="button button-primary" target="_blank">
-                    <?php esc_html_e('Upgrade to PRO', 'presspermit'); ?>
+                    <?php esc_html_e('Upgrade to PRO', 'press-permit-core'); ?>
                 </a>
                 <a href="<?php echo esc_url($this->getComparisonUrl()); ?>" class="button button-secondary" target="_blank">
-                    <?php esc_html_e('Learn More', 'presspermit'); ?>
+                    <?php esc_html_e('Learn More', 'press-permit-core'); ?>
                 </a>
             </p>
         </div>
