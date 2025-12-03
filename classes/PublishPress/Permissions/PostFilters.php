@@ -1020,7 +1020,7 @@ class PostFilters
             $status = 'draft';
 
         $_post = (object)[
-            'ID' => -1,
+            'ID' => PHP_INT_MAX,
             'post_type' => $post_type,
             'post_status' => $status,
             'filter' => 'raw',
@@ -1028,7 +1028,7 @@ class PostFilters
             'query_contexts' => $query_contexts
         ];
 
-        wp_cache_set(-1, $_post, 'posts');  // prevent querying for fake post
+        wp_cache_set(PHP_INT_MAX, $_post, 'posts');  // prevent querying for fake post
         presspermit()->meta_cap_post = $_post;
         
         // Avoid conflict with the combination of PublishPress Authors and WP_Privacy_Policy_Content check
@@ -1037,7 +1037,7 @@ class PostFilters
         }
 
         $return = array_diff(map_meta_cap($cap_name, $user_id, $_post->ID), [null]);  // post types which leave some basic cap properties undefined result in nulls
-        wp_cache_delete(-1, 'posts');
+        wp_cache_delete(PHP_INT_MAX, 'posts');
         presspermit()->meta_cap_post = false;
 
 		foreach($return as $k => $val) {
