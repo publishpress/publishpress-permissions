@@ -116,23 +116,24 @@ class ReadMoreHandler
 
         // Check teaser redirect settings
         $is_anonymous = !is_user_logged_in();
+        $post_type = $post->post_type;
         
         if ($redirect_to_login) {
             if ($is_anonymous) {
-                // Check for anonymous user redirect settings
-                $redirect_mode = $pp->getOption('teaser_redirect_anon');
+                // Check for anonymous user redirect settings (per-post-type)
+                $redirect_mode = $pp->getTypeOption('teaser_redirect_anon', $post_type);
                 
                 if ($redirect_mode === '[login]') {
                     // Redirect to WordPress login with return URL
                     $permalink = wp_login_url($permalink);
                 } elseif ($redirect_mode === '(select)') {
                     // Redirect to custom page
-                    $redirect_page_id = $pp->getOption('teaser_redirect_anon_page');
+                    $redirect_page_id = $pp->getTypeOption('teaser_redirect_anon_page', $post_type);
                     if ($redirect_page_id && is_numeric($redirect_page_id)) {
                         $redirect_url = get_permalink($redirect_page_id);
                         
                         // If it's a custom login page, add return URL
-                        if ($pp->getOption('teaser_redirect_custom_login_page_anon')) {
+                        if ($pp->getTypeOption('teaser_redirect_custom_login_page_anon', $post_type)) {
                             $permalink = add_query_arg('redirect_to', urlencode($permalink), $redirect_url);
                         } else {
                             $permalink = $redirect_url;
@@ -140,17 +141,17 @@ class ReadMoreHandler
                     }
                 }
             } else {
-                // Check for logged-in user redirect settings
-                $redirect_mode = $pp->getOption('teaser_redirect');
+                // Check for logged-in user redirect settings (per-post-type)
+                $redirect_mode = $pp->getTypeOption('teaser_redirect', $post_type);
                 
                 if ($redirect_mode === '[login]') {
                     $permalink = wp_login_url($permalink);
                 } elseif ($redirect_mode === '(select)') {
-                    $redirect_page_id = $pp->getOption('teaser_redirect_page');
+                    $redirect_page_id = $pp->getTypeOption('teaser_redirect_page', $post_type);
                     if ($redirect_page_id && is_numeric($redirect_page_id)) {
                         $redirect_url = get_permalink($redirect_page_id);
                         
-                        if ($pp->getOption('teaser_redirect_custom_login_page')) {
+                        if ($pp->getTypeOption('teaser_redirect_custom_login_page', $post_type)) {
                             $permalink = add_query_arg('redirect_to', urlencode(get_permalink($post->ID)), $redirect_url);
                         } else {
                             $permalink = $redirect_url;
