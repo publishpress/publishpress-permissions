@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-= 4.6.0 - 20 November 2025 =
+= 4.6.0 - 4 December 2025 =
 * Added: Implement new UI for Teaser. #2029
 * Added: Configuration options to show/hide metaboxes per post type and in the Permissions screen. #2008
 * Updated: Translations for Spanish, French, and Italian languages. #2007
