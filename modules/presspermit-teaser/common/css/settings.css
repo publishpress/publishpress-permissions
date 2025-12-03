@@ -1,0 +1,921 @@
+/*
+#pp-teaser .form-table {
+padding-top: 0;
+}
+*/
+
+section[id*="ppp-tab-"] {
+  margin-top: 20px;
+}
+
+span.teaser-num-chars input {
+width: 40px;
+vertical-align: middle;
+}
+
+.pp-textentries {
+    margin-top: 0.15em;
+    padding-left: 1.2em;
+}
+
+.ppp-code-sample {
+  margin-bottom: 30px;
+  margin-top: 10px;
+  position: relative;
+}
+
+.ppp-code-sample > span {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+#pp-teaser .ppp-code-sample > span > button.button-small {
+  margin-left: 5px;
+  line-height: 24px;
+  padding: 0 8px;
+  min-height: 26px;
+}
+
+#pp-teaser .ppp-code-sample > span > button .dashicons {
+  font-size: 1.4em;
+  line-height: 1.5em;
+}
+
+.pp-add-login-form {
+  margin-top: 5px !important;
+}
+
+.ppp-code-sample textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 3px;
+  height: 200px;
+  background: #fff;
+}
+
+.teaser-table {
+  margin-top: 20px;
+}
+
+#pp-teaser input[type="submit"] {
+  margin-top: 20px;
+}
+
+#pp-teaser section table.teaser-table tr th {
+font-weight: bold;
+}
+
+#pp-teaser .form-table tr.col-headers th {
+  text-align: center;
+}
+
+#pp-teaser h4 {
+margin-top: 0;
+margin-bottom: 8px;
+}
+
+#ppp-tab-teaser-type .form-table td {
+padding-top: 0;
+}
+
+table.pp-teaser-redirect .pp-select-dynamic-wrapper > span.select2 {
+  width: 250px !important;
+}
+
+td.pp-hide-terms .pp-select-dynamic-wrapper > span.select2 {
+  width: 450px !important;
+}
+
+.pp-select-dynamic-wrapper .select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+  margin: 6px 6px 0 0;
+}
+
+.teaser-coverage-nav-menu-terms {
+margin-top: 40px;
+}
+
+.teaser-coverage-nav-menu-terms h4 {
+font-size: 14px;
+font-weight: bold;
+}
+
+table.pp-teaser-redirect-table td {
+padding-left: 0;
+}
+
+.form-table .teaser_vspace td {
+padding-top: 2px;
+padding-bottom: 10px;
+}
+
+.form-table .teaser-post-type td {
+padding-top: 10px;
+padding-bottom: 2px;
+}
+
+#pp-teaser tr.teaser-post-type td {
+padding-top: 16px;
+vertical-align: top;
+}
+
+#pp-teaser div.teaser_vspace {
+padding-top: 5px;
+padding-bottom: 4px;
+}
+
+.pp-options-indent {
+    margin-left: 25px;
+}
+
+.pp-teaser-redirect-table tr, .pp-teaser-redirect-table tr td {
+    border-bottom: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pp-teaser-redirect-table input {
+    width: 175px;
+}
+
+#ppp-tab-teaser-text table.form-table input.short-text {
+  width: 300px;
+}
+
+#ppp-tab-teaser-text table.form-table input.regular-text {
+  width: 500px;
+}
+
+.pp_teaser_filter_notes textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* @TODO This should be in pressshack-admin.css from vendor/  */
+.pressshack-admin-wrapper .nav-tab-wrapper .nav-tab {
+  margin-bottom: -1px;
+}
+
+.pressshack-admin-wrapper .nav-tab-wrapper .nav-tab a:focus {
+  outline: none;
+}
+
+/* @TODO This overrides settings.css from vendor/  */
+.pp-form-table tr th,
+.pp-form-table tr td {
+  border-bottom: none;
+  background: transparent;
+}
+
+.pp-options-table tr {
+  border-bottom: none;
+}
+
+/* @TODO This overrides presspermit.css from vendor/  */
+.pp-subtext {
+  font-style: normal;
+}
+
+@media (min-width: 1200px) {
+
+  .teaser-table tr th:first-of-type {
+    width: 210px;
+    box-sizing: border-box;
+  }
+
+  #pp-teaser div.teaser_vspace {
+    display: inline-block;
+    padding: 0 0 0 12px;
+  }
+
+  #ppp-tab-teaser-type .teaser-table thead tr th:nth-child(2) {
+    width: 340px;
+  }
+
+  #ppp-tab-coverage .teaser-table thead tr th:nth-child(3) {
+    width: 300px;
+  }
+
+  #ppp-tab-coverage .teaser-table thead tr th:nth-child(2),
+  #ppp-tab-redirect .teaser-table thead tr th:nth-child(2) {
+    width: 240px;
+  }
+}
+
+@media (max-width: 1199px) {
+
+  .teaser-table thead tr {
+    display: none !important;
+  }
+
+  .teaser-table tr th,
+  .teaser-table tr td {
+    display: block;
+  }
+
+  .teaser-table tr th:first-of-type {
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+
+  .teaser-table tbody tr td > label {
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  #pp-teaser section table.teaser-table tr td label {
+    font-weight: bold;
+  }
+}
+
+/* Expandable Row Styles (from Sync module pattern) */
+
+/* Expand/collapse icon styling */
+.pp-expand-icon {
+  color: #0073aa;
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform: rotate(0deg);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.1));
+}
+
+.pp-expand-icon:hover {
+  color: #005a87;
+  transform: scale(1.1);
+  filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.2));
+}
+
+.pp-expand-icon, .pp-expand-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.pp-expand-icon.pp-expanded {
+  transform: rotate(45deg);
+  color: #0073aa;
+}
+
+/* Main row styling */
+tr.pp-main-row {
+  transition: background-color 0.2s ease;
+}
+
+tr.pp-main-row:hover {
+  background-color: #f8f9fa;
+}
+
+tr.pp-main-row.pp-expanded {
+  background-color: #f0f6fc;
+}
+
+/* Detail row styling */
+tr.pp-detail-row {
+  background-color: #fafbfc;
+  transition: all 0.3s ease;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+tr.pp-detail-row.expanded {
+  max-height: 300px;
+  opacity: 1;
+}
+
+tr.pp-detail-row td {
+  padding: 0 !important;
+}
+
+/* Detail content container */
+.pp-detail-content {
+  padding: 20px;
+  background-color: #f4f4f4;
+  border: 1px solid #e1e5e9;
+  box-shadow: 0 2px 8px rgba(0, 115, 170, 0.08);
+  border-left: 4px solid #0073aa;
+}
+
+.pp-detail-content h4 {
+  color: #0073aa;
+  font-weight: 600;
+  border-bottom: 2px solid #e1e5e9;
+  padding-bottom: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Field layout in detail section */
+.pp-detail-fields {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.pp-field-group {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+.pp-field-label {
+  display: block;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.pp-field-container {
+  position: relative;
+}
+
+.pp-field-container select,
+.pp-field-container input[type="text"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  border-radius: 4px;
+  border: 2px solid #e1e5e9;
+  padding: 8px 12px;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pp-field-container select:focus,
+.pp-field-container input[type="text"]:focus {
+  border-color: #0073aa;
+  box-shadow: 0 0 0 3px rgba(0, 115, 170, 0.1);
+  outline: none;
+}
+
+/* Animation for smooth transitions */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+tr.pp-detail-row[style*="block"] .pp-detail-content {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Enhanced hover effects */
+tr.pp-main-row td {
+  transition: background-color 0.2s ease;
+}
+
+tr.pp-main-row:hover td:not(.pp-expand) {
+  background-color: inherit;
+}
+
+/* Separate sections styling */
+.teaser-nav-menu-section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+}
+
+.teaser-nav-menu-section h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0073aa;
+  border-bottom: 2px solid #e1e5e9;
+  padding-bottom: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1199px) {
+  .pp-field-group {
+    max-width: 100%;
+  }
+}
+
+/* Teaser Text Section */
+.teaser-text-section {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #e1e5e9;
+  border-radius: 4px;
+}
+
+.teaser-text-section h4 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0073aa;
+  border-bottom: 2px solid #e1e5e9;
+  padding-bottom: 10px;
+}
+
+/* Responsive accordion */
+@media (max-width: 782px) {
+  .pp-accordion-header {
+    padding: 12px 15px;
+  }
+  
+  .pp-accordion-header h3 {
+    font-size: 14px;
+  }
+  
+  .pp-accordion-content.active {
+    padding: 15px;
+  }
+}
+
+/* Card Styles */
+.pp-teaser-card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+/* Ensure radio buttons are visible in tables */
+.teaser-table input[type="radio"] {
+    display: inline-block !important;
+    width: auto !important;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.pp-teaser-card h3 {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.pp-teaser-card .description {
+    margin-bottom: 8px;
+    color: #646970;
+    font-size: 12px;
+}
+
+.pp-teaser-text-container {
+    margin-bottom: 15px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+/* Teaser type options (radio buttons) */
+.pp-teaser-type-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pp-teaser-type-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border: 2px solid #dcdcde;
+    border-radius: 4px;
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.pp-teaser-type-option:hover {
+    border-color: #2271b1;
+    background: #f0f6fc;
+}
+
+.pp-teaser-type-option input[type="radio"] {
+    margin: 2px 10px 0 0;
+    flex-shrink: 0;
+}
+
+.pp-teaser-type-option input[type="radio"]:checked + .pp-option-label {
+    font-weight: 600;
+}
+
+.pp-teaser-type-option:has(input[type="radio"]:checked) {
+    border-color: #2271b1;
+    background: #f0f6fc;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.pp-option-label {
+    flex: 1;
+}
+
+.pp-option-label strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #1d2327;
+    font-size: 13px;
+}
+
+.pp-option-label .description {
+    font-size: 12px;
+    color: #646970;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.pp-field-row {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.pp-field-row > div:first-child {
+    flex-shrink: 0;
+    flex-basis: 10%;
+}
+
+.pp-field-row > div:nth-child(2) {
+    flex: 1;
+}
+
+/* Field groups */
+.pp-field-group {
+    margin-bottom: 15px;
+}
+
+.pp-field-group:last-child {
+    margin-bottom: 0;
+}
+
+.pp-field-group label strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #1d2327;
+    font-size: 13px;
+}
+
+.pp-field-group .description {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #646970;
+    line-height: 1.4;
+}
+
+/* Radio groups for user application */
+.pp-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pp-radio-group label {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.pp-radio-group label:hover {
+    border-color: #2271b1;
+    background: #f9f9f9;
+}
+
+.pp-radio-group input[type="radio"] {
+    margin: 2px 8px 0 0;
+    flex-shrink: 0;
+}
+
+.pp-radio-group label strong {
+    display: block;
+    margin-bottom: 2px;
+    font-size: 13px;
+}
+
+.pp-radio-group label .description {
+    display: block;
+    font-size: 12px;
+    color: #646970;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+/* Tab Styles */
+.pp-teaser-text-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #dcdcde;
+}
+
+.pp-teaser-text-tab {
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #646970;
+    transition: all 0.2s ease;
+    margin-bottom: -2px;
+}
+
+.pp-teaser-text-tab:hover {
+    color: #1d2327;
+}
+
+.pp-teaser-text-tab.active {
+    color: #2271b1;
+    border-bottom-color: #2271b1;
+    font-weight: 600;
+}
+
+.pp-teaser-text-content {
+    display: none;
+}
+
+.pp-teaser-text-content.active {
+    display: block;
+}
+
+/* Settings containers (one per post type) */
+.pp-teaser-settings-container.active {
+    display: block;
+}
+
+/* Hide conditional elements by default to prevent flash */
+.pp-teaser-redirect-settings,
+.pp-teaser-text-card,
+.pp-read-more-notice-card,
+.pp-excerpt-notice-card,
+.pp-x-chars-notice-card,
+.pp-teaser-application-fields {
+    display: none;
+}
+
+/* Conditional settings */
+.pp-conditional-settings {
+    margin-top: 15px;
+}
+
+/* Animations */
+.pp-fade-in {
+    animation: ppFadeIn 0.3s ease-in-out;
+}
+
+@keyframes ppFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Number input for X characters and excerpt */
+.pp-num-chars-setting,
+.pp-excerpt-chars-setting {
+    margin-top: 12px;
+}
+
+.pp-num-chars-setting label,
+.pp-excerpt-chars-setting label {
+    font-size: 13px;
+}
+
+.pp-num-chars-setting input[type="number"],
+.pp-excerpt-chars-setting input[type="number"] {
+    width: 80px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 782px) {
+    .pp-teaser-card {
+        padding: 12px;
+    }
+    
+    .pp-teaser-type-option {
+        padding: 10px;
+    }
+    
+    .pp-radio-group label {
+        padding: 8px;
+    }
+}
+
+/* PRO Feature Styling */
+.pp-pro-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 10px;
+    cursor: pointer;
+    vertical-align: middle;
+    margin-left: 6px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.pp-pro-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* PRO feature notice box */
+.pp-pro-feature-notice {
+    border-radius: 4px;
+    position: relative;
+}
+
+.pp-pro-feature-notice h4 {
+    margin-top: 0;
+    color: #0073aa;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pp-pro-feature-notice p {
+    margin: 10px 0;
+    color: #555;
+}
+
+.pp-pro-feature-notice .button {
+    margin-right: 10px;
+}
+
+/* Disabled options styling */
+select option:disabled {
+    color: #999 !important;
+    font-style: italic;
+}
+
+input[type="radio"]:disabled + label,
+label:has(input[type="radio"]:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+}
+
+/* Upgrade Modal */
+.pp-upgrade-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pp-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+}
+
+.pp-modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 8px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: ppModalSlideIn 0.3s ease-out;
+}
+
+@keyframes ppModalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.pp-modal-header {
+    padding: 24px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+.pp-modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #23282d;
+}
+
+.pp-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    transition: color 0.2s ease;
+}
+
+.pp-modal-close:hover {
+    color: #333;
+}
+
+.pp-modal-body {
+    padding: 24px;
+}
+
+.pp-modal-body p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #555;
+    margin: 0 0 20px 0;
+}
+
+.pp-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.pp-benefits-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+    color: #333;
+}
+
+.pp-benefits-list li:last-child {
+    border-bottom: none;
+}
+
+.pp-modal-footer {
+    padding: 20px 24px;
+    background: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+    display: flex;
+    gap: 10px;
+    border-radius: 0 0 8px 8px;
+}
+
+.pp-modal-footer .button-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    font-weight: 600;
+    padding: 10px 24px;
+    height: auto;
+}
+
+.pp-modal-footer .button-primary:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #65408b 100%);
+}
+
+.pp-modal-footer .button-secondary {
+    padding: 10px 24px;
+    height: auto;
+}
+.pp-pro-badge-feature {
+    display: inline-block;
+    background-color: #FDB324;
+    color: black;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 3px;
+    margin-left: 5px;
+    vertical-align: middle;
+}

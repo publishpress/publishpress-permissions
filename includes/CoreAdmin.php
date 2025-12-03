@@ -16,7 +16,7 @@ class CoreAdmin
                 wp_enqueue_style('presspermit-settings-free', plugins_url('', PRESSPERMIT_FILE) . '/includes/css/settings.css', [], PRESSPERMIT_VERSION);
             }
 
-            if (in_array(presspermitPluginPage(), ['presspermit-statuses', 'presspermit-visibility-statuses', 'presspermit-sync', 'presspermit-posts-teaser'])) {
+            if (in_array(presspermitPluginPage(), ['presspermit-statuses', 'presspermit-visibility-statuses', 'presspermit-sync'], true)) {
                 wp_enqueue_style('presspermit-admin-promo', plugins_url('', PRESSPERMIT_FILE) . '/includes/promo/admin-core.css', [], PRESSPERMIT_VERSION, 'all');
             }
         });
@@ -32,6 +32,7 @@ class CoreAdmin
                     ['base' => 'permissions_page_presspermit-group-new'],
                     ['base' => 'permissions_page_presspermit-users'],
                     ['base' => 'permissions_page_presspermit-settings'],
+                    ['base' => 'permissions_page_presspermit-posts-teaser'],
                 ]
             ];
 
@@ -43,18 +44,17 @@ class CoreAdmin
         add_filter(
             "presspermit_unavailable_modules",
             function ($modules) {
-                return array_merge(
-                    $modules,
-                    [
-                        'presspermit-circles',
-                        'presspermit-compatibility',
-                        'presspermit-file-access',
-                        'presspermit-membership',
-                        'presspermit-sync',
-                        'presspermit-status-control',
-                        'presspermit-teaser'
-                    ]
-                );
+                // Allow Teaser module in Free. Keep other Pro modules unavailable.
+                $pro_only = [
+                    'presspermit-circles',
+                    'presspermit-compatibility',
+                    'presspermit-file-access',
+                    'presspermit-membership',
+                    'presspermit-sync',
+                    'presspermit-status-control',
+                ];
+
+                return array_merge($modules, $pro_only);
             }
         );
     }
@@ -84,19 +84,24 @@ class CoreAdmin
         );
         */
 
-        add_submenu_page(
-            $pp_options_menu,
-            esc_html__('Teaser', 'press-permit-core'),
-            esc_html__('Teaser', 'press-permit-core'),
-            'read',
-            'presspermit-posts-teaser',
-            $handler
-        );
+        // Only show Teaser promo menu if the Teaser module is not active/available.
+        if (!presspermit()->moduleActive('teaser')) {
+            add_submenu_page(
+                $pp_options_menu,
+                esc_html__('Teaser', 'press-permit-core'),
+                esc_html__('Teaser', 'press-permit-core'),
+                'read',
+                'presspermit-posts-teaser',
+                $handler
+            );
+        }
     }
 
     function menuHandler($pp_page)
     {
-        if (in_array($pp_page, ['presspermit-statuses', 'presspermit-visibility-statuses', 'presspermit-sync', 'presspermit-posts-teaser'], true)) {
+        if (in_array($pp_page, ['presspermit-statuses', 'presspermit-visibility-statuses', 'presspermit-sync'], true)
+            || ('presspermit-posts-teaser' === $pp_page && !presspermit()->moduleActive('teaser'))
+        ) {
             $slug = str_replace('presspermit-', '', $pp_page);
 
             // Only redirect for 'sync'

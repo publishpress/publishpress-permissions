@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the PublishPress Permissions plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.5.2\n"
+"Project-Id-Version: PublishPress Permissions 4.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-10-27T16:54:54+00:00\n"
+"POT-Creation-Date: 2025-12-03T16:02:31+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
@@ -357,8 +357,11 @@ msgid "Compatibility Pack"
 msgstr ""
 
 #: classes/PublishPress/Permissions/Admin.php:168
-#: includes/CoreAdmin.php:89
-#: includes/CoreAdmin.php:90
+#: includes/CoreAdmin.php:91
+#: includes/CoreAdmin.php:92
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:76
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:77
 msgid "Teaser"
 msgstr ""
 
@@ -533,9 +536,9 @@ msgid "All users with the WordPress role of %s"
 msgstr ""
 
 #: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1063
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1067
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1070
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1073
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
 #, php-format
@@ -565,6 +568,10 @@ msgstr ""
 #: classes/PublishPress/Permissions/ErrorNotice.php:133
 #, php-format
 msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
+msgstr ""
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:183
+msgid "Dismiss"
 msgstr ""
 
 #: classes/PublishPress/Permissions/Groups.php:54
@@ -664,7 +671,7 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:138
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1000
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:174
 msgid "Block"
 msgstr ""
@@ -700,7 +707,7 @@ msgid "Nav Menus (Legacy)"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:996
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1006
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:168
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:230
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
@@ -730,7 +737,7 @@ msgid "All Statuses"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:311
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1905
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1915
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -889,13 +896,13 @@ msgid "Reload form for further changes to this role"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:40
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
 msgid "Add Specific Permissions"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:41
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:423
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1415
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr ""
@@ -933,12 +940,12 @@ msgid "No items selected!"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:63
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1277
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1287
 msgid "(no parent)"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:910
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:273
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:275
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:545
@@ -956,7 +963,7 @@ msgid "select..."
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:988
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:998
 msgid "Nav Menu (Block)"
 msgstr ""
 
@@ -1014,7 +1021,7 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:257
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:390
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:794
 msgid "Role"
 msgstr ""
 
@@ -1058,8 +1065,8 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:391
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:422
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:785
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:795
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
 msgid "Status"
 msgstr ""
 
@@ -1071,100 +1078,100 @@ msgstr ""
 msgid "Save Permissions"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:455
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:465
 msgid "Add Extra Roles"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:465
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:475
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:654
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:664
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:655
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:665
 msgid "Extra Roles"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:689
 msgid "Show Groups"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:708
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:768
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1014
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:718
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:778
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1024
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1112
 msgid "item(s)"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:730
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
 msgid "Term Management"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:734
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:744
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:750
 msgid "objects"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:735
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:745
 msgid "Direct-Assigned"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:741
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:751
 msgid "Disabled Type"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:777
 #, php-format
 msgid "%s Roles"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:833
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1524
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:843
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1534
 msgid "Apply"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1004
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
 msgid "Nav Menu (Legacy)"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1014
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1024
 #, php-format
 msgid "%s Permissions"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1032
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
 msgid "(all post types)"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1063
 #, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1064
 #, php-format
 msgid "%1$s %2$s %3$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1087
 msgid "item"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1087
 msgid "items"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1163
 msgid "unpublished"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1170
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:282
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
@@ -1172,209 +1179,209 @@ msgstr ""
 msgid "%1$s (%2$s)"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1207
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1217
 #, php-format
 msgid "this %1$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1212
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1222
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1218
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1237
 #, php-format
 msgid "%1$s access for %2$s is ENABLED within %3$s, regardless of role capabilities."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1235
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1245
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another Permission."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1243
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1253
 #, php-format
 msgid "Any role-based %1$s access for %2$s is LIMITED. It applies only within %3$s, along with other specified %4$s."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1263
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1260
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1270
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1267
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1277
 #, php-format
 msgid "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, along with other specified %4$s."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1348
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1358
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1356
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1366
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1380
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1397
 #, php-format
 msgid "Edit %s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1419
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1413
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 #, php-format
 msgid "Assign for selected %s only"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1417
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1427
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1432
 msgid "Assign for selected and sub-terms"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1436
 msgid "Assign for selected term only"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1430
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1440
 msgid "Assign for sub-terms only"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1441
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1451
 msgid "Convert to \"Enabled\""
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1442
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1452
 msgid "Convert to \"Blocked\""
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1443
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1453
 msgid "Convert to \"Limit to\""
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1510
 #, php-format
 msgid "Mirror to %s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1514
 #, php-format
 msgid "Mirror to %s %s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1563
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1573
 msgid "= Enabled"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1570
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1580
 msgid "= Blocked"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1577
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
 msgid "= Limitation"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1601
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1597
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1607
 #, php-format
 msgid "= sub-%s only"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1625
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1649
 msgid "Note:"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1617
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1627
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1651
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1621
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1645
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1631
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1655
 msgid "Show All"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1630
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1653
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1640
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1666
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1676
 msgid "Other plugins (or deactivation of PublishPress Permissions) can prevent sub-page permissions from being properly applied when a new sub-page is created."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1670
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1680
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1714
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1724
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1741
 msgid "Permissions to enable access are not available because of a constant definition"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1791
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1801
 msgid "Group Members"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1850
 msgid "Copy Roles and Permissions from:"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1863
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1873
 msgid "Copy Roles and Permissions"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1890
 msgid "Limit to:"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1883
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1893
 msgid "Blocked:"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1887
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1897
 msgid "Enabled:"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1908
 msgid "Direct-assigned"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1911
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1921
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -1575,28 +1582,28 @@ msgstr ""
 msgid "Please upgrade PublishPress Authors to version 3.8.0 or later for Permissions integration."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:77
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:84
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:333
 #: classes/PublishPress/Permissions/UI/Settings.php:102
 msgid "Permissions Settings"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:100
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:107
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:108
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:115
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:116
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:123
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:165
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:172
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:357
 #, php-format
 msgid "enable custom permissions for %s"
@@ -2039,9 +2046,9 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
-#: includes/CoreAdmin.php:130
-#: includes/CoreAdmin.php:131
-#: includes/CoreAdmin.php:265
+#: includes/CoreAdmin.php:135
+#: includes/CoreAdmin.php:136
+#: includes/CoreAdmin.php:270
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -2070,6 +2077,7 @@ msgid "All settings were reset to defaults."
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:580
 msgid "Save Changes"
 msgstr ""
 
@@ -2364,11 +2372,12 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:581
 msgid "Revert to Defaults"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:20
-msgid "Core"
+msgid "General"
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:27
@@ -2401,28 +2410,41 @@ msgstr ""
 msgid "Nav Menus (Block)"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:185
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:202
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:396
+msgid "Metabox enabled"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:204
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:398
+msgid "Metabox disabled"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:208
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:402
+msgid "In permission screens"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:210
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:404
+msgid "Not in permission screens"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:228
 msgid "This feature allows you to restrict access to Media Library files when they are accessed via WordPress. To restrict viewing of files when they are visited directly via the URL, use the \"File Access\" feature."
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:211
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:253
+msgid "Enable metabox on edit screen"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:263
+msgid "Include on permission screen"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:287
 #, php-format
 msgid "%1$sNote%2$s: This causes type-specific capabilities to be required for editing (\"edit_things\" instead of \"edit_posts\")."
-msgstr ""
-
-#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:224
-#, php-format
-msgid "Post creation capabilities will also be enforced for all Filtered Post Types. To adjust this, see %3$sRole Capabilities%4$s."
-msgstr ""
-
-#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:239
-#, php-format
-msgid "Post creation capabilities will also be enforced for all Filtered Post Types. To adjust this, install %3$sPublishPress Capabilities%4$s."
-msgstr ""
-
-#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:243
-#, php-format
-msgid "To enforce capability requirements for post creation, install %3$sPublishPress Capabilities%4$s."
 msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:120
@@ -2462,7 +2484,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:250
+#: includes/CoreAdmin.php:255
 msgid "Pro Feature"
 msgstr ""
 
@@ -2484,7 +2506,10 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:262
+#: includes/CoreAdmin.php:267
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:413
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:539
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:184
 msgid "Learn More"
 msgstr ""
 
@@ -2869,15 +2894,16 @@ msgstr ""
 msgid "You're using PublishPress Permissions Free. The Pro version has more features and support. %sUpgrade to Pro%s"
 msgstr ""
 
-#: includes/CoreAdmin.php:119
+#: includes/CoreAdmin.php:124
 msgid "Promo file not found."
 msgstr ""
 
-#: includes/CoreAdmin.php:256
+#: includes/CoreAdmin.php:261
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr ""
 
 #: includes/promo/posts-teaser-promo.php:4
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
 msgid "Posts Teaser"
 msgstr ""
 
@@ -3399,6 +3425,501 @@ msgstr ""
 
 #: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:146
 msgid "Revisor"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:524
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
+#, php-format
+msgctxt "teaser suffix"
+msgid "%s..."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:531
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:576
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:602
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:655
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:722
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:752
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:785
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:60
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:61
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:62
+msgid "To read the full content, please log in to this site."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+msgid "Read More"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
+msgid "Teaser Type"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+msgid "Coverage"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
+msgid "Teaser Text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+msgid "Read More Notice"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+msgid "Redirect"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
+msgid "Options"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+msgid "Hidden Content Teaser"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+msgid "Display mode for readable private posts"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+msgid "Display mode for readable non-private posts"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+msgid "Feed Replacement Text (use %permalink% for post URL)"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+msgid "Login Notice Message"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Hide Featured Image when Teaser is applied"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "\"Hide Private\" settings only apply to custom privacy (Member, Premium, Staff, etc.)"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:139
+#, php-format
+msgid "%s is a PRO feature"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:189
+#, php-format
+msgid "🔓 Unlock %s"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
+msgid "This feature is available in PublishPress Permissions PRO"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:205
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:181
+msgid "Upgrade to PRO"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:208
+msgid "Compare Features"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:247
+msgid "All post teaser settings were updated."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:255
+msgid "All post teaser settings were reset to defaults."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:265
+msgid "Teaser Settings"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:463
+msgid "RSS"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:482
+msgid "Display for readable private posts:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:488
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:513
+msgid "Full Content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:488
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:513
+msgid "Excerpt Only"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:488
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:513
+msgid "Title Only"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:507
+msgid "Display for readable non-private posts:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
+msgid "Feed Replacement Text:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:559
+#, php-format
+msgid "Use %s for post URL"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:66
+msgid "Select Post Type to Configure"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:67
+msgid "Choose which post type you want to configure teaser settings for."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:93
+#, php-format
+msgid "Pages and custom post types are available in %sPRO%s"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:146
+msgid "No Teaser. Show \"Page not found\" message"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:147
+msgid "Teaser text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:148
+msgid "Use content before Read More link as teaser text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:149
+msgid "Use Excerpt as teaser text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:150
+msgid "Use Excerpt or pre-More as teaser text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:151
+msgid "Use Excerpt, pre-More or First X Characters as teaser text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:152
+msgid "Redirect to another page"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:163
+msgid "No teaser will be applied"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:164
+msgid "Use configured teaser text to replace or supplement content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:165
+msgid "Show a \"Read More\" link that requires login"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:166
+msgid "Use the post excerpt as teaser content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:167
+msgid "Use excerpt or content before More tag"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:168
+msgid "Show the first X characters of the post content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:169
+msgid "Redirect users to another page when they try to access restricted content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:175
+msgid "Use first X characters of content as teaser text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:176
+msgid "Use excerpt or first X characters of content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:201
+#, php-format
+msgid "Teaser Settings for %s"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:216
+msgid "Teaser Type:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:238
+#, php-format
+msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+msgid "Show only the first"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:254
+msgid "Chars"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
+msgid "characters"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
+msgid "Max"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:255
+msgid "characters (leave empty for full excerpt)"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:265
+msgid "Teaser Application:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+msgid "List and Single view"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
+msgid "Single view only"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
+msgid "User Application:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:284
+msgid "Both"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:387
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:428
+msgid "Not Logged In Users"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:294
+msgid "Separate settings for anonymous users is a PRO feature"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:297
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:428
+msgid "Logged In Users"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:299
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:393
+msgid "Separate settings for logged-in users is a PRO feature"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:304
+#, php-format
+msgid "User-specific targeting is available in %sPRO%s"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:316
+msgid "Navigation Menus:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:320
+msgid "Display links if user doesn't have access"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:324
+msgid "Hide links if user doesn't have access"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:329
+msgid "Private Posts:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:332
+msgid "Apply Teaser to Private Posts"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:333
+msgid "Hide Private Posts if user doesn't have access"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+msgid "Hide for Custom Visibility"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:341
+msgid "Hide Featured Image:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
+msgid "Hide featured image when teaser is applied"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:376
+msgid "Teaser Text Configuration"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:377
+msgid "Configure custom teaser text for this post type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:406
+msgid "Logged In Users Settings"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
+msgid "Configure separate teaser text for logged-in users with different content replacement options."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:438
+msgid "post title"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+msgid "post content"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:446
+#, php-format
+msgid "Replace %s with:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:447
+#, php-format
+msgid "Before %s:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
+#, php-format
+msgid "After %s:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:494
+#, php-format
+msgid "Insert a login form by using %s[login_form]%s shortcode."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:532
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:560
+msgid "Redirect Settings"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:532
+msgid "Redirect functionality is available in PRO"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:533
+msgid "Automatically redirect users to a login page or custom page when they try to access restricted content."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:571
+msgid "Redirection"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
+msgid "Page Selection"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:598
+msgid "Not Logged In:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:606
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+msgid "No Redirect"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:607
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:676
+msgid "Redirect to WordPress Login"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:608
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:677
+msgid "Redirect to a Custom Page"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:640
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:709
+msgid "This is a custom login page"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+msgid "Logged in Users:"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:731
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:761
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:794
+msgid "Message for Blocked Users"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:732
+msgid "Customize the message shown to users who are blocked from viewing the full content when using the \"Read More\" teaser type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
+msgid "This message will be displayed in a styled notice box above the teaser content for users who are not logged in."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:762
+msgid "Customize the login notice message shown to non-logged-in users when using the \"Excerpt\" teaser type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:776
+msgid "This message will be displayed in a styled notice box below the excerpt teaser content for users who are not logged in."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:795
+msgid "Customize the login notice message shown to non-logged-in users when using the \"First X Characters\" teaser type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
+msgid "This message will be displayed in a styled notice box below the truncated content teaser for users who are not logged in."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
+msgid "No Teaser"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
+msgid "Configured Teaser Text"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:131
+msgid "This is a PRO feature"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:174
+#, php-format
+msgid "%s is available in PRO"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:33
+msgid "Select a page"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:34
+msgid "Select terms"
 msgstr ""
 
 #: press-permit-core.php:117

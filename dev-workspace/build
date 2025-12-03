@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-DOCKER_HOST_IP=$(./docker/scripts/hostip)
-
-DOCKER_HOST_IP=$DOCKER_HOST_IP docker compose -f docker/compose.yaml build

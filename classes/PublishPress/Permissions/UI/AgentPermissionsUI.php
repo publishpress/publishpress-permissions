@@ -444,6 +444,16 @@ class AgentPermissionsUI
                 $post_types = $pp->admin()->orderTypes($pp->getEnabledPostTypes([], 'object'));
                 $taxonomies = $pp->admin()->orderTypes($pp->getEnabledTaxonomies(['object_type' => false], 'object'));
 
+                // Filter post types based on pp_include_permission_screen setting
+                foreach ($post_types as $post_type => $post_type_obj) {
+                    $include_in_permission = $pp->getOption("pp_include_permission_screen_{$post_type}");
+                    // If explicitly set to '0', exclude this post type from permission screens
+                    if ($include_in_permission === '0') {
+                        unset($post_types[$post_type]);
+                    }
+                    // If not set or set to '1', keep it (default is enabled)
+                }
+
                 $perms = [];
 
                 if (('pp_group' == $agent_type) && ($group = $pp->groups()->getGroup($agent_id)))
@@ -764,7 +774,7 @@ class AgentPermissionsUI
                             <div class="permission-type">
                             <div class="subsection-header permission-type-header">
                             <h3 class="section-title permission-type-title">
-                                <?php esc_html_e(sprintf(__('%s Roles', 'press-permit-core'), $type_caption)); ?>
+                                <?php echo esc_html(sprintf(__('%s Roles', 'press-permit-core'), $type_caption)); ?>
                                 <span class="badge badge-count" style=""><span class="count-num">0</span> <?php esc_html_e('item(s)', 'press-permit-core');?></span>
                             </h3>
                             <div class="section-controls">
