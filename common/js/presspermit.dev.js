@@ -9,14 +9,16 @@ jQuery(document).ready(function ($) {
                     postbox.toggleClass('closed');
                 }
             });
-        
-            $(this).on('click', '[data-toggle="tooltip"].click', function (event) {
-                if ($(event.target).is('[data-toggle="tooltip"].click') || $(event.target).closest('[data-toggle="tooltip"].click').length) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    $(this).toggleClass('is-active');
-                }
-            });
+        }
+    });
+
+    // Event delegation to handle dynamically added tooltips
+    $(document).on('click', '[data-toggle="tooltip"].click', function (event) {
+        if ($(event.target).is('[data-toggle="tooltip"].click') || $(event.target).closest('[data-toggle="tooltip"].click').length) {
+            if ($(event.target).is('a')) return;
+            event.preventDefault();
+            event.stopPropagation();
+            $(this).toggleClass('is-active');
         }
     });
 
