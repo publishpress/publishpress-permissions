@@ -150,7 +150,10 @@ class UsersListing
         // Determine if this is a plain export (e.g., Admin Columns Pro export)
         $is_plain_export = (
             PWP::REQUEST_key_match('acp_export_action', 'export', ['match_type' => 'contains']) && 
-            PWP::REQUEST_key_match('acp_export_columns', 'pp_roles', ['match_type' => 'contains'])
+            (
+                PWP::REQUEST_key_match('acp_export_columns', 'pp_roles', ['match_type' => 'contains']) ||
+                PWP::REQUEST_key_match('acp_export_columns', 'pp_groups', ['match_type' => 'contains'])
+            )
         );
 
         switch ($column_name) {
@@ -224,8 +227,8 @@ class UsersListing
                                         $content .= "<a href='" . esc_url($url) . "'>" . esc_html($name) . "</a>";
                                     }
                                 } else {
-                                    if ( $is_plain_export ) {
-                                        $content .= esc_html( $name );
+                                    if ($is_plain_export) {
+                                        $content .= esc_html($name);
                                     } else {
                                         $content .= "<a href='"
                                             . esc_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_type=$agent_type&amp;agent_id=$_id")
@@ -288,8 +291,8 @@ class UsersListing
                 }
 
                 if ($do_edit_link = current_user_can('pp_assign_roles') && 
-                    (is_multisite() || current_user_can('edit_user', $id))
-                    && !$is_plain_export) {
+                    (is_multisite() || current_user_can('edit_user', $id)) && 
+                    !$is_plain_export) {
                     $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
                     $content .= "<a href='" . esc_url($edit_link) . "' ' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>";
                 }
