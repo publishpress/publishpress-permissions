@@ -8,7 +8,7 @@ class Settings
     {
         // called by Dashboard\DashboardFilters::actMenuHandler
 
-        @load_plugin_textdomain('press-permit-core-hints', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
 
         add_action('admin_footer', [$this, 'markActiveSubmenu'], 20);
 
