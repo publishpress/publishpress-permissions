@@ -91,7 +91,9 @@ class UsersListTable extends \WP_List_Table
 
     public function get_bulk_actions()
     {
-        return [];
+        return [
+            'delete' => esc_html__('Delete', 'press-permit-core'),
+        ];
     }
 
     public function prepare_items()

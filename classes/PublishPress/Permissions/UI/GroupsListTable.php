@@ -150,12 +150,7 @@ class GroupsListTable extends GroupsListTableBase
 
     public function get_columns()
     {
-        $bulk_check_all = !PWP::is_REQUEST('group_variant', ['wp_role', 'login_state']) || $this->deleted_roles_listed()
-            ? '<input type="checkbox" />'
-            : '';
-
         $c = [
-            'cb' => $bulk_check_all,
             'group_name' => esc_html__('Name', 'press-permit-core'),
             'group_type' => esc_html__('Type', 'press-permit-core'),
             'num_users' => _x('Users', 'count', 'press-permit-core'),
