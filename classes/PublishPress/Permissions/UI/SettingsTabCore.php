@@ -250,7 +250,7 @@ class SettingsTabCore
                                             echo '<input type="checkbox" name="' . esc_attr($metabox_option) . '" id="' . esc_attr($metabox_option) . '" value="1" ';
                                             checked('1', $enable_metabox);
                                             echo ' /> ';
-                                            esc_html_e('Enable metabox on edit screen', 'press-permit-core');
+                                            esc_html_e('Enable metabox on Post editing screen', 'press-permit-core');
                                             echo '</label>';
                                             echo '</div>';
                                             
@@ -260,7 +260,7 @@ class SettingsTabCore
                                             echo '<input type="checkbox" name="' . esc_attr($permission_screen_option) . '" id="' . esc_attr($permission_screen_option) . '" value="1" ';
                                             checked('1', $include_permission);
                                             echo ' /> ';
-                                            esc_html_e('Include on permission screen', 'press-permit-core');
+                                            esc_html_e('Include on Permissions screen', 'press-permit-core');
                                             echo '</label>';
                                             echo '</div>';
                                             
