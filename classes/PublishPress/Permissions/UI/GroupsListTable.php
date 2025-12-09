@@ -145,16 +145,7 @@ class GroupsListTable extends GroupsListTableBase
 
     public function get_bulk_actions()
     {
-        $actions = [];
-
-        if (
-            current_user_can('pp_delete_groups')
-            && !in_array(PWP::GET_key('group_variant'), ['wp_role', 'login_state'], true) // don't allow deletion of WP roles
-        ) {
-            $actions['delete'] = esc_html__('Delete', 'press-permit-core');
-        }
-
-        return $actions;
+        return [];
     }
 
     public function get_columns()
