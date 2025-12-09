@@ -172,62 +172,96 @@ class AgentPermissions
                     <?php
                     $disabled = (!$pp_groups->groupTypeEditable($agent_type) || $agent->metagroup_id) ? ' disabled ' : '';
 
-                    // todo: better html / css for update button pos
+                    // Get user data for enhanced profile display
+                    if (('user' == $agent_type) && $agent_id) {
+                        $user = new \WP_User($agent_id);
+                        $user_posts_count = count_user_posts($agent_id);
+                    }
                     ?>
                     <table class="pp-agent-profile">
                         <tr>
-                            <td>
-                                <table class="form-table">
-                                    <?php if (('user' == $agent_type) && $agent_id && ($agent->name != $agent->user_login)) : ?>
-                                        <tr>
-                                            <th><label for="user_login"><?php echo esc_html__('User Login:', 'press-permit-core'); ?></label></th>
-                                            <td><?php echo esc_html($agent->user_login); ?>
-                                            </td>
-                                        </tr>
-                                    <?php endif; ?>
+                            <?php if (('user' == $agent_type) && $agent_id) : ?>
+                            <!-- User Avatar Column -->
+                            <td class="pp-user-avatar-cell">
+                                <?php echo get_avatar($agent_id, 80); ?>
+                            </td>
+                            <?php endif; ?>
 
-                                    <?php if ($agent_id) : ?>
+                            <!-- User Info Column -->
+                            <td class="pp-user-info-cell">
+                                <table class="form-table">
+                                    <?php if (('user' == $agent_type) && $agent_id) : ?>
+                                        <!-- Name Row -->
                                         <tr>
-                                            <th><label>
-                                                    <!-- <label for="group_name"> --><?php echo esc_html__('Name:', 'press-permit-core'); ?></label>
-                                            </th>
+                                            <th><label><?php echo esc_html__('Name:', 'press-permit-core'); ?></label></th>
                                             <td>
-                                                <?php if (('user' == $agent_type)) :
-                                                    echo "<a href='" . esc_url('user-edit.php?user_id=' . (int) $agent_id) . "'>" . esc_html($agent->name) . "</a>";
-                                                else : ?>
-                                                    <input type="text" name="group_name" id="group_name"
-                                                        value="<?php echo esc_attr($agent->name); ?>"
-                                                        class="regular-text" <?php echo esc_attr($disabled); ?> />
+                                                <strong><?php echo esc_html($agent->name); ?></strong>
+                                                <?php if ($agent->name != $agent->user_login) : ?>
+                                                    <span class="pp-user-login">@<?php echo esc_html($agent->user_login); ?></span>
                                                 <?php endif; ?>
                                             </td>
                                         </tr>
-                                    <?php endif; ?>
 
-                                    <?php
-                                    if (('user' == $agent_type) && $agent_id) :
+                                        <!-- Email Row -->
+                                        <tr>
+                                            <th><label><?php echo esc_html__('Email:', 'press-permit-core'); ?></label></th>
+                                            <td>
+                                                <a href="mailto:<?php echo esc_attr($user->user_email); ?>"><?php echo esc_html($user->user_email); ?></a>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Primary Role Row -->
+                                        <?php
                                         global $wp_roles;
-                                        $user = new \WP_User($agent_id);
                                         $primary_role = reset($user->roles);
                                         if (isset($wp_roles->role_names[$primary_role])) :
-                                    ?>
-                                            <tr>
-                                                <th><label>
-                                                        <!-- <label for="user_login"> --><?php echo esc_html__('Primary Role:', 'press-permit-core'); ?></label>
-                                                </th>
-                                                <td><?php
+                                        ?>
+                                        <tr>
+                                            <th><label><?php echo esc_html__('Primary Role:', 'press-permit-core'); ?></label></th>
+                                            <td>
+                                                <span class="pp-role-badge">
+                                                    <span class="dashicons dashicons-admin-users" style="font-size: 16px; width: 16px; height: 16px;"></span>
+                                                    <?php
                                                     if ($role_group_id = $pp_groups->getMetagroup('wp_role', $primary_role, ['cols' => 'id'])) {
-                                                        echo "<a href='" . esc_url('admin.php?page=presspermit-edit-permissions&action=edit&agent_type=pp_group&agent_id="' . (int) $role_group_id) . "'>"
+                                                        echo "<a href='" . esc_url('admin.php?page=presspermit-edit-permissions&action=edit&agent_type=pp_group&agent_id=' . (int) $role_group_id) . "'>"
                                                             . esc_html($wp_roles->role_names[$primary_role]) . '</a>';
                                                     } else {
                                                         echo esc_html($wp_roles->role_names[$primary_role]);
                                                     }
                                                     ?>
-                                                </td>
-                                            </tr>
-                                        <?php
-                                        endif;
-                                        ?>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                        <?php endif; ?>
+
+                                        <!-- User ID Row -->
+                                        <tr>
+                                            <th><label><?php echo esc_html__('User ID:', 'press-permit-core'); ?></label></th>
+                                            <td>
+                                                <code>#<?php echo esc_html($agent_id); ?></code>
+                                            </td>
+                                        </tr>
+
+                                        <!-- Member Since Row -->
+                                        <tr>
+                                            <th><label><?php echo esc_html__('Member since:', 'press-permit-core'); ?></label></th>
+                                            <td>
+                                                <?php echo esc_html(date_i18n(get_option('date_format'), strtotime($user->user_registered))); ?>
+                                            </td>
+                                        </tr>
+
                                     <?php elseif ($agent_id) : ?>
+                                        <!-- Group Name Row -->
+                                        <tr>
+                                            <th><label><?php echo esc_html__('Name:', 'press-permit-core'); ?></label></th>
+                                            <td>
+                                                <input type="text" name="group_name" id="group_name"
+                                                    value="<?php echo esc_attr($agent->name); ?>"
+                                                    class="regular-text" <?php echo esc_attr($disabled); ?> />
+                                            </td>
+                                        </tr>
+
+                                        <!-- Group Description Row -->
                                         <tr>
                                             <th>
                                                 <label for="description"><?php echo esc_html__('Description:', 'press-permit-core'); ?></label>
@@ -240,7 +274,8 @@ class AgentPermissions
                                 </table>
                             </td>
 
-                            <td style="text-align:right">
+                            <!-- Actions Column -->
+                            <td class="pp-user-actions-cell">
                                 <?php
                                 if (
                                     $pp_groups->groupTypeEditable($agent_type) && (empty($agent->metagroup_type) || !in_array($agent->metagroup_type, ['wp_role', 'meta_role'], true)
@@ -250,7 +285,21 @@ class AgentPermissions
                                     <input type="submit" name="submit" id="submit" class="button button-primary pp-primary-button" value="<?php esc_attr_e('Update Permissions', 'press-permit-core') ?>">
                                 <?php
                                 }
+
+                                // Quick Links for Users
+                                if (('user' == $agent_type) && $agent_id) :
                                 ?>
+                                <div class="pp-user-quick-links">
+                                    <a href="<?php echo esc_url('user-edit.php?user_id=' . (int) $agent_id); ?>">
+                                        <?php esc_html_e('View Full Profile', 'press-permit-core'); ?>
+                                    </a>
+                                    <?php if ($user_posts_count > 0) : ?>
+                                    <a href="<?php echo esc_url(admin_url('edit.php?author=' . (int) $agent_id)); ?>">
+                                        <?php printf(esc_html__('View Posts (%d)', 'press-permit-core'), $user_posts_count); ?>
+                                    </a>
+                                    <?php endif; ?>
+                                </div>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     </table>
