@@ -175,7 +175,6 @@ class AgentPermissions
                     // Get user data for enhanced profile display
                     if (('user' == $agent_type) && $agent_id) {
                         $user = new \WP_User($agent_id);
-                        $user_posts_count = count_user_posts($agent_id);
                     }
                     ?>
                     <table class="pp-agent-profile">
@@ -293,11 +292,6 @@ class AgentPermissions
                                     <a href="<?php echo esc_url('user-edit.php?user_id=' . (int) $agent_id); ?>">
                                         <?php esc_html_e('View Full Profile', 'press-permit-core'); ?>
                                     </a>
-                                    <?php if ($user_posts_count > 0) : ?>
-                                    <a href="<?php echo esc_url(admin_url('edit.php?author=' . (int) $agent_id)); ?>">
-                                        <?php printf(esc_html__('View Posts (%d)', 'press-permit-core'), $user_posts_count); ?>
-                                    </a>
-                                    <?php endif; ?>
                                 </div>
                                 <?php endif; ?>
                             </td>
