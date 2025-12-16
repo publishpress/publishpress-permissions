@@ -360,29 +360,5 @@ class Profile
         else :?>
         </div>
         <?php endif;
-
-        if (!$any_exceptions_listed) {
-            if (('user' == $agent_type) && ($join_groups != 'groups_only') && $new_permissions_link) : ?>
-                <div style="clear:both;"></div>
-                <div id='pp_current_user_exceptions_ui' class='pp-group-box <?php echo esc_attr($class); ?>'>
-                    <h3>
-                        <?php
-                        esc_html_e('Custom User Permissions', 'press-permit-core');
-                        ?>
-                    </h3>
-                    <p>
-                        <?php
-                        printf(
-                            esc_html__('Permissions assigned to a user\'s role or custom group are usually the cleanest way to customize access. You can also %1$scustomize this user directly%2$s.', 'press-permit-core'),
-                            "<a href='" . esc_url($edit_url) . "'>",
-                            '</a>'
-                        );
-
-                        ?>
-                    </p>
-                </div>
-            <?php
-            endif;
-        }
     }
 }
