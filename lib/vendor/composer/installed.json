@@ -2,23 +2,26 @@
     "packages": [
         {
             "name": "publishpress/instance-protection",
-            "version": "2.0.1",
-            "version_normalized": "2.0.1.0",
+            "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-instance-protection.git",
-                "reference": "4193f84a8a680bf4c0d40cc64976ddcadd92158a"
+                "reference": "24289afd5ac8f1f4098a22a45cab3939c02db15f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-instance-protection/zipball/4193f84a8a680bf4c0d40cc64976ddcadd92158a",
-                "reference": "4193f84a8a680bf4c0d40cc64976ddcadd92158a",
+                "url": "https://api.github.com/repos/publishpress/library-instance-protection/zipball/24289afd5ac8f1f4098a22a45cab3939c02db15f",
+                "reference": "24289afd5ac8f1f4098a22a45cab3939c02db15f",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5"
             },
-            "time": "2023-04-18T17:50:38+00:00",
+            "require-dev": {
+                "publishpress/translations": "dev-development"
+            },
+            "time": "2025-12-09T00:25:13+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -38,7 +41,7 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-instance-protection/issues",
-                "source": "https://github.com/publishpress/library-instance-protection/tree/2.0.1"
+                "source": "https://github.com/publishpress/library-instance-protection/tree/2.1.0"
             },
             "install-path": "../publishpress/instance-protection"
         },
@@ -145,17 +148,17 @@
         },
         {
             "name": "publishpress/psr-container",
-            "version": "2.0.1.10",
-            "version_normalized": "2.0.1.10",
+            "version": "2.0.2.1",
+            "version_normalized": "2.0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/publishpress/library-psr-container.git",
-                "reference": "4ccd2cb058e7b93e96186791ca25870a02e35c5d"
+                "reference": "773a2510aa39a7f0ad5d5dfc78878abb939f5704"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-psr-container/zipball/4ccd2cb058e7b93e96186791ca25870a02e35c5d",
-                "reference": "4ccd2cb058e7b93e96186791ca25870a02e35c5d",
+                "url": "https://api.github.com/repos/publishpress/library-psr-container/zipball/773a2510aa39a7f0ad5d5dfc78878abb939f5704",
+                "reference": "773a2510aa39a7f0ad5d5dfc78878abb939f5704",
                 "shasum": ""
             },
             "require": {
@@ -171,42 +174,42 @@
                 "codeception/module-webdriver": "^1.0",
                 "codeception/util-universalframework": "^1.0",
                 "lucatume/wp-browser": "^3.1",
-                "psr/container": "2.0.1",
+                "psr/container": "2.0.2",
                 "publishpress/codeception-extension-extended-copier": "^1.0",
                 "publishpress/version-loader-generator": "^1.0"
             },
-            "time": "2023-05-30T18:17:45+00:00",
+            "time": "2025-12-09T15:18:16+00:00",
             "type": "library",
             "extra": {
-                "generator": {
-                    "lib-class-test": "interface_exists('PublishPress\\Psr\\Container\\ContainerInterface')",
-                    "action-initialize-priority": "-190",
-                    "action-register-priority": "-200"
-                },
                 "strauss": {
-                    "target_directory": "lib",
-                    "namespace_prefix": "PublishPress\\",
-                    "classmap_prefix": "PublishPress_",
-                    "constant_prefix": "PUBLISHPRESS_",
-                    "include_author": "true",
-                    "classmap_output": "true",
                     "packages": [
                         "psr/container"
                     ],
-                    "override_autoload": [],
+                    "include_author": "true",
+                    "classmap_output": "true",
+                    "classmap_prefix": "PublishPress_",
+                    "constant_prefix": "PUBLISHPRESS_",
+                    "namespace_prefix": "PublishPress\\",
+                    "target_directory": "lib",
                     "exclude_from_copy": {
                         "packages": [],
                         "namespaces": [],
                         "file_patterns": []
                     },
+                    "override_autoload": [],
+                    "delete_vendor_files": true,
                     "exclude_from_prefix": {
                         "packages": [],
                         "namespaces": [],
                         "file_patterns": []
                     },
-                    "namespace_replacement_patterns": [],
                     "delete_vendor_packages": true,
-                    "delete_vendor_files": true
+                    "namespace_replacement_patterns": []
+                },
+                "generator": {
+                    "lib-class-test": "interface_exists('PublishPress\\Psr\\Container\\ContainerInterface')",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-190"
                 }
             },
             "installation-source": "dist",
@@ -241,7 +244,7 @@
             ],
             "support": {
                 "issues": "https://github.com/publishpress/library-psr-container/issues",
-                "source": "https://github.com/publishpress/library-psr-container/tree/2.0.1.10"
+                "source": "https://github.com/publishpress/library-psr-container/tree/2.0.2.1"
             },
             "install-path": "../publishpress/psr-container"
         },
