@@ -108,7 +108,7 @@ class SettingsTabCore
                     } else {
                         $option_name = 'enabled_post_types';
                         esc_html_e('Modify permissions for these Post Types:', 'press-permit-core');
-                        $this->generateTooltip(esc_html__('This causes type-specific capabilities to be required for editing ("edit_things" instead of "edit_posts").', 'press-permit-core'), '', 'top', true, ['class' => 'click', 'html' => '<a href="https://publishpress.com/knowledge-base/capabilities-in-publishpress-permissions/" class="btn btn-link" target="_blank" rel="noopener noreferrer">docs</a>']);
+                        $this->generateTooltip(esc_html__('This causes type-specific capabilities to be required for editing ("edit_things" instead of "edit_posts"). ', 'press-permit-core'), '', 'top', true, ['class' => 'click', 'html' => '<a href="https://publishpress.com/knowledge-base/capabilities-in-publishpress-permissions/" class="btn btn-link" target="_blank" rel="noopener noreferrer">docs</a>']);
                         $types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
                         // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
                         $supported_private_types = apply_filters('presspermit_supported_private_types', []);    // ['series_grouping']);
@@ -406,7 +406,7 @@ class SettingsTabCore
         ?>
         <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php esc_attr_e($args['class']);?>">
         <?php esc_html_e($text);?>
-        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php isset($args['html']) ? print $args['html'] : ''; ?></span><i></i></span>
+        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php isset($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
         <?php 
         if ($useIcon) : ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50" style="margin-left: 4px; vertical-align: text-bottom;">
