@@ -1,6 +1,18 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+= 4.6.2 – 17 December 2025 =
+* Added: New custom field support for the Pro version to extend permission configuration options. #2078
+* Added: Additional field in the Edit Permissions screen to provide more granular control. #2075
+* Fixed: Plain-text export issues affecting admin columns. #2069
+* Fixed: Capability handling that incorrectly required type-specific capabilities for editing in some cases. #2074
+* Updated: Improved the visual design of informational messages inside the user profile for better readability. #2077
+* Updated: Small wording adjustment in the General tab to improve clarity. #2070
+* Updated: French, Spanish, and Italian translations for the Free version. #2073
+* Updated: Consolidated and cleaned up extra translation files related to hints. #2072
+* Updated: Removed Bulk Actions dropdown from the Permissions tab to simplify the interface. #2071
+* Updated: Removed Post Permissions column to reduce unnecessary clutter. #2076
+
 = 4.6.1 - 3 December 2025 =
 * Fixed: WordPress 6.9 - Non-Administrators could not list or edit other user's posts #2057
 
