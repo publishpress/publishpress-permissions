@@ -91,7 +91,7 @@ class TeaserProgressiveUI {
                     <?php 
                     printf(
                         esc_html__('Pages and custom post types are available in %sPRO%s', 'press-permit-core'),
-                        '<a href="https://publishpress.com/links/permissions-banner" target="_blank">',
+                        '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
                         '</a>'
                     ); 
                     ?>
@@ -236,7 +236,7 @@ class TeaserProgressiveUI {
                             <?php 
                             printf(
                                 esc_html__('Read More links, excerpts, and redirects are available in %sPRO%s', 'press-permit-core'),
-                                '<a href="https://publishpress.com/links/permissions-banner" target="_blank">',
+                                '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
                                 '</a>'
                             ); 
                             ?>
@@ -302,7 +302,7 @@ class TeaserProgressiveUI {
                             <?php 
                             printf(
                                 esc_html__('User-specific targeting is available in %sPRO%s', 'press-permit-core'),
-                                '<a href="https://publishpress.com/links/permissions-banner" target="_blank">',
+                                '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
                                 '</a>'
                             ); 
                             ?>
@@ -348,6 +348,33 @@ class TeaserProgressiveUI {
                             <input type="checkbox" name="teaser_hide_thumbnail[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($hide_thumbnail_val, 1); ?>>
                             <?php esc_html_e('Hide featured image when teaser is applied', 'press-permit-core'); ?>
                         </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><?php esc_html_e('Teaser Notice Style:', 'press-permit-core'); ?></th>
+                    <td>
+                        <?php
+                        $teaser_notice_mode = $this->pp->getTypeOption('teaser_notice_style_mode', $object_type) ?: 'default';
+                        $this->ui->all_options[] = 'teaser_notice_style_mode';
+                        ?>
+                        <select name="teaser_notice_style_mode[<?php echo esc_attr($object_type); ?>]" class="regular-text pp-teaser-notice-style-select" disabled>
+                            <option value="default" <?php selected($teaser_notice_mode, 'default'); ?>>
+                                <?php esc_html_e('Use Default Teaser Notice Style', 'press-permit-core'); ?>
+                            </option>
+                            <option value="custom" <?php selected($teaser_notice_mode, 'custom'); ?>>
+                                <?php esc_html_e('Use Custom Teaser Notice Style', 'press-permit-core'); ?>
+                            </option>
+                        </select>
+                        <?php if (!$this->isProVersion()) : echo wp_kses_post($this->renderProBadge(__('Separate settings for custom teaser notice style is a PRO feature', 'press-permit-core'))); ?>
+                        <p class="description">
+                            <?php
+                            printf(
+                                esc_html__('Custom Teaser Notice styling is available in %sPRO%s', 'press-permit-core'),
+                                '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
+                                '</a>'
+                            ); ?>
+                        </p>
+                        <?php endif; ?>
                     </td>
                 </tr>
 
