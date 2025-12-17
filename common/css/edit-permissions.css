@@ -903,34 +903,48 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   width: 10%;
   text-align: right;
 }
-#pp_current_roles {
+#pp_current_roles,
+.pp_current_exceptions_profile,
+.pp_user_profile {
   margin-top: 24px;
   margin-bottom: 16px;
 }
-#pp_current_roles .container {
+#pp_current_roles .container,
+.pp_current_exceptions_profile .container,
+.pp_user_profile .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 24px;
 }
-#pp_current_roles .table {
+#pp_current_roles .table,
+.pp_current_exceptions_profile .table,
+.pp_user_profile .table {
   margin-bottom: 0;
 }
-#pp_current_roles .header {
+#pp_current_roles .header,
+.pp_current_exceptions_profile .header,
+.pp_user_profile .header {
   margin-bottom: 32px;
 }
-#pp_current_roles .header h1 {
+#pp_current_roles .header h1,
+.pp_current_exceptions_profile .header h1,
+.pp_user_profile .header h1 {
   font-size: 24px;
   font-weight: 600;
   margin: 0;
   color: #111827;
 }
-#pp_current_roles .permission-section {
+#pp_current_roles .permission-section,
+.pp_current_exceptions_profile .permission-section,
+.pp_user_profile .permission-section {
   background: white;
   border-radius: 8px;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 36px;
 }
-#pp_current_roles .section-header {
+#pp_current_roles .section-header,
+.pp_current_exceptions_profile .section-header,
+.pp_user_profile .section-header {
   padding: 16px 24px;
   background-color: #dedfe0;
   display: flex;
@@ -939,73 +953,103 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   cursor: pointer;
   user-select: none;
 }
-#pp_current_roles .section-header:hover {
+#pp_current_roles .section-header:hover,
+.pp_current_exceptions_profile .section-header:hover,
+.pp_user_profile .section-header:hover {
   background-color: #e3e4e5;
 }
-#pp_current_roles .subsection-header {
+#pp_current_roles .subsection-header,
+.pp_current_exceptions_profile .subsection-header,
+.pp_user_profile .subsection-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   user-select: none;
 }
-#pp_current_roles .section-title {
+#pp_current_roles .section-title,
+.pp_current_exceptions_profile .section-title,
+.pp_user_profile .section-title {
   font-weight: 600;
   font-size: 16px;
   margin: 0;
   color: #374151;
 }
-#pp_current_roles .section-controls {
+#pp_current_roles .section-controls,
+.pp_current_exceptions_profile .section-controls,
+.pp_user_profile .section-controls {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-#pp_current_roles .search-box {
+#pp_current_roles .search-box,
+.pp_current_exceptions_profile .search-box,
+.pp_user_profile .search-box {
   padding: 6px 12px;
   border-radius: 4px;
   border: 1px solid #e5e7eb;
   font-size: 14px;
   width: 200px;
 }
-#pp_current_roles .icon-guidance {
+#pp_current_roles .icon-guidance,
+.pp_current_exceptions_profile .icon-guidance,
+.pp_user_profile .icon-guidance {
   padding: 12px 24px;
 }
-#pp_current_roles .checkbox-column {
+#pp_current_roles .checkbox-column,
+.pp_current_exceptions_profile .checkbox-column,
+.pp_user_profile .checkbox-column {
   width: 1%;
   text-align: center;
 }
-#pp_current_roles .permission-type {
+#pp_current_roles .permission-type,
+.pp_current_exceptions_profile .permission-type,
+.pp_user_profile .permission-type {
   padding: 12px 24px 12px 24px;
   margin-bottom: 6px;
 }
-#pp_current_roles .permission-type:last-child {
+#pp_current_roles .permission-type:last-child,
+.pp_current_exceptions_profile .permission-type:last-child,
+.pp_user_profile .permission-type:last-child {
   border-bottom: none;
 }
-#pp_current_roles .permission-type thead tr th {
+#pp_current_roles .permission-type thead tr th,
+.pp_current_exceptions_profile .permission-type thead tr th,
+.pp_user_profile .permission-type thead tr th {
   border-top: none;
 }
-#pp_current_roles .permission-type-header {
+#pp_current_roles .permission-type-header,
+.pp_current_exceptions_profile .permission-type-header,
+.pp_user_profile .permission-type-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 6px;
 }
-#pp_current_roles .permission-type-title {
+#pp_current_roles .permission-type-title,
+.pp_current_exceptions_profile .permission-type-title,
+.pp_user_profile .permission-type-title {
   margin-top: 6px;
   margin-bottom: 0;
   font-weight: 600;
   display: flex;
   align-items: center;
 }
-#pp_current_roles .permission-type-title .badge {
+#pp_current_roles .permission-type-title .badge,
+.pp_current_exceptions_profile .permission-type-title .badge,
+.pp_user_profile .permission-type-title .badge {
   margin-left: 8px;
 }
-#pp_current_roles .permission-list {
+#pp_current_roles .permission-list,
+.pp_current_exceptions_profile .permission-list,
+.pp_user_profile .permission-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 12px;
 }
-#pp_current_roles .permission-item {
+#pp_current_roles .permission-item,
+.pp_current_exceptions_profile .permission-item,
+.pp_user_profile .permission-item {
   display: flex;
   align-items: center;
   padding: 8px 12px;
@@ -1013,38 +1057,54 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   border-radius: 6px;
   border: 1px solid #e5e7eb;
 }
-#pp_current_roles .permission-status {
+#pp_current_roles .permission-status,
+.pp_current_exceptions_profile .permission-status,
+.pp_user_profile .permission-status {
   width: 12px;
   height: 12px;
   border-radius: 50%;
   margin-right: 12px;
   flex-shrink: 0;
 }
-#pp_current_roles .status-enabled {
+#pp_current_roles .status-enabled,
+.pp_current_exceptions_profile .status-enabled,
+.pp_user_profile .status-enabled {
   background-color: #10b981;
 }
-#pp_current_roles .status-blocked {
+#pp_current_roles .status-blocked,
+.pp_current_exceptions_profile .status-blocked,
+.pp_user_profile .status-blocked {
   background-color: #ef4444;
 }
-#pp_current_roles .status-limited {
+#pp_current_roles .status-limited,
+.pp_current_exceptions_profile .status-limited,
+.pp_user_profile .status-limited {
   background-color: #f59e0b;
 }
-#pp_current_roles .permission-name {
+#pp_current_roles .permission-name,
+.pp_current_exceptions_profile .permission-name,
+.pp_user_profile .permission-name {
   flex-grow: 1;
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-#pp_current_roles .permission-actions {
+#pp_current_roles .permission-actions,
+.pp_current_exceptions_profile .permission-actions,
+.pp_user_profile .permission-actions {
   opacity: 0;
   transition: opacity 0.2s;
   flex-shrink: 0;
 }
-#pp_current_roles .permission-item:hover .permission-actions {
+#pp_current_roles .permission-item:hover .permission-actions,
+.pp_current_exceptions_profile .permission-item:hover .permission-actions,
+.pp_user_profile .permission-item:hover .permission-actions {
   opacity: 1;
 }
-#pp_current_roles .btn {
+#pp_current_roles .btn,
+.pp_current_exceptions_profile .btn,
+.pp_user_profile .btn {
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 12px;
@@ -1052,34 +1112,50 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   border: none;
   background: none;
 }
-#pp_current_roles .btn-edit {
+#pp_current_roles .btn-edit,
+.pp_current_exceptions_profile .btn-edit,
+.pp_user_profile .btn-edit {
   color: #4f46e5;
 }
-#pp_current_roles .btn-edit:hover {
+#pp_current_roles .btn-edit:hover,
+.pp_current_exceptions_profile .btn-edit:hover,
+.pp_user_profile .btn-edit:hover {
   background-color: rgba(79, 70, 229, 0.1);
 }
-#pp_current_roles .badge {
+#pp_current_roles .badge,
+.pp_current_exceptions_profile .badge,
+.pp_user_profile .badge {
   display: inline-block;
   padding: 2px 8px;
   border-radius: 9999px;
   font-size: 12px;
   font-weight: 500;
 }
-#pp_current_roles .for-type .badge {
+#pp_current_roles .for-type .badge,
+.pp_current_exceptions_profile .for-type .badge,
+.pp_user_profile .for-type .badge {
   padding: 2px 8px 1px 8px;
 }
-#pp_current_roles .badge-info {
+#pp_current_roles .badge-info,
+.pp_current_exceptions_profile .badge-info,
+.pp_user_profile .badge-info {
   background-color: rgba(79, 70, 229, 0.1);
   color: #4f46e5;
 }
-#pp_current_roles .badge-count {
+#pp_current_roles .badge-count,
+.pp_current_exceptions_profile .badge-count,
+.pp_user_profile .badge-count {
   background-color: rgba(255, 255, 255, 0.7);
   color: #6b7280;
 }
-#pp_current_roles .mod-type-key {
+#pp_current_roles .mod-type-key,
+.pp_current_exceptions_profile .mod-type-key,
+.pp_user_profile .mod-type-key {
   padding-right: 50px !important;
 }
-#pp_current_roles .notes {
+#pp_current_roles .notes,
+.pp_current_exceptions_profile .notes,
+.pp_user_profile .notes {
   padding: 16px 24px;
   font-size: 13px;
   color: #6b7280;
@@ -1087,125 +1163,187 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   background-color: #f9fafb;
   text-align: center;
 }
-#pp_current_roles .notes span {
+#pp_current_roles .notes span,
+.pp_current_exceptions_profile .notes span,
+.pp_user_profile .notes span {
   padding-right: 20px;
   white-space: nowrap;
 }
-#pp_current_roles .notes strong {
+#pp_current_roles .notes strong,
+.pp_current_exceptions_profile .notes strong,
+.pp_user_profile .notes strong {
   color: #374151;
 }
-#pp_current_roles .notes-main {
+#pp_current_roles .notes-main,
+.pp_current_exceptions_profile .notes-main,
+.pp_user_profile .notes-main {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-#pp_current_roles .footer-actions {
+#pp_current_roles .footer-actions,
+.pp_current_exceptions_profile .footer-actions,
+.pp_user_profile .footer-actions {
   display: flex;
   justify-content: space-between;
   margin-top: 24px;
 }
-#pp_current_roles .btn-primary {
+#pp_current_roles .btn-primary,
+.pp_current_exceptions_profile .btn-primary,
+.pp_user_profile .btn-primary {
   background-color: #4f46e5;
   color: white;
   padding: 8px 16px;
   border-radius: 6px;
   font-weight: 500;
 }
-#pp_current_roles .btn-link {
+#pp_current_roles .btn-link,
+.pp_current_exceptions_profile .btn-link,
+.pp_user_profile .btn-link {
   color: #4f46e5;
   background: none;
   font-weight: 500;
 }
-#pp_current_roles .pagination {
+#pp_current_roles .pagination,
+.pp_current_exceptions_profile .pagination,
+.pp_user_profile .pagination {
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 16px;
 }
-#pp_current_roles .page-btn {
+#pp_current_roles .page-btn,
+.pp_current_exceptions_profile .page-btn,
+.pp_user_profile .page-btn {
   padding: 4px 8px;
   border: 1px solid #e5e7eb;
   background: white;
   border-radius: 4px;
   cursor: pointer;
 }
-#pp_current_roles .page-btn.active {
+#pp_current_roles .page-btn.active,
+.pp_current_exceptions_profile .page-btn.active,
+.pp_user_profile .page-btn.active {
   background-color: #4f46e5;
   color: white;
   border-color: #4f46e5;
 }
-#pp_current_roles .expand-icon {
+#pp_current_roles .expand-icon,
+.pp_current_exceptions_profile .expand-icon,
+.pp_user_profile .expand-icon {
   transition: transform 0.2s;
 }
-#pp_current_roles .collapsed .expand-icon {
+#pp_current_roles .collapsed .expand-icon,
+.pp_current_exceptions_profile .collapsed .expand-icon,
+.pp_user_profile .collapsed .expand-icon {
   transform: rotate(-90deg);
 }
-#pp_current_roles .hidden {
+#pp_current_roles .hidden,
+.pp_current_exceptions_profile .hidden,
+.pp_user_profile .hidden {
   display: none;
 }
-#pp_current_roles .no-results {
+#pp_current_roles .no-results,
+.pp_current_exceptions_profile .no-results,
+.pp_user_profile .no-results {
   grid-column: 1 / -1;
   text-align: center;
   padding: 16px;
   color: #6b7280;
   font-style: italic;
 }
-#pp_current_roles table tr td {
+#pp_current_roles table tr td,
+.pp_current_exceptions_profile table tr td,
+.pp_user_profile table tr td {
   vertical-align: middle;
 }
 #pp_current_roles .checkbox-column,
-#pp_current_roles .icon-column {
+.pp_current_exceptions_profile .checkbox-column,
+.pp_user_profile .checkbox-column,
+#pp_current_roles .icon-column,
+.pp_current_exceptions_profile .icon-column,
+.pp_user_profile .icon-column {
   width: 20px;
 }
-#pp_current_roles .status-column {
+#pp_current_roles .status-column,
+.pp_current_exceptions_profile .status-column,
+.pp_user_profile .status-column {
   width: 20%;
 }
-#pp_current_roles .assign-for-column {
+#pp_current_roles .assign-for-column,
+.pp_current_exceptions_profile .assign-for-column,
+.pp_user_profile .assign-for-column {
   width: 25px;
 }
-#pp_current_roles td.assign-for-column {
+#pp_current_roles td.assign-for-column,
+.pp_current_exceptions_profile td.assign-for-column,
+.pp_user_profile td.assign-for-column {
   text-align: right;
   padding-right: 0;
 }
-#pp_current_roles i.assign-child {
+#pp_current_roles i.assign-child,
+.pp_current_exceptions_profile i.assign-child,
+.pp_user_profile i.assign-child {
   color: #999;
   border: 1px dashed #999;
   padding: 0 1px;
 }
-#pp_current_roles i.assign-both {
+#pp_current_roles i.assign-both,
+.pp_current_exceptions_profile i.assign-both,
+.pp_user_profile i.assign-both {
   color: #120faf;
   font-style: bold;
   padding: 0 1px;
 }
-#pp_current_roles .icon-column {
+#pp_current_roles .icon-column,
+.pp_current_exceptions_profile .icon-column,
+.pp_user_profile .icon-column {
   vertical-align: bottom;
 }
-#pp_current_roles .edit-column {
+#pp_current_roles .edit-column,
+.pp_current_exceptions_profile .edit-column,
+.pp_user_profile .edit-column {
   width: 10%;
   text-align: right;
 }
-#pp_current_roles a:hover {
+#pp_current_roles a:hover,
+.pp_current_exceptions_profile a:hover,
+.pp_user_profile a:hover {
   text-decoration: underline;
 }
-#pp_current_roles .checkbox-column {
+#pp_current_roles .checkbox-column,
+.pp_current_exceptions_profile .checkbox-column,
+.pp_user_profile .checkbox-column {
   width: 1%;
   text-align: center;
 }
-#pp_current_roles .pp_nolink {
+#pp_current_roles .pp_nolink,
+.pp_current_exceptions_profile .pp_nolink,
+.pp_user_profile .pp_nolink {
   font-weight: bold;
   color: #000;
 }
-#pp_current_roles .role-column {
+#pp_current_roles .role-column,
+.pp_current_exceptions_profile .role-column,
+.pp_user_profile .role-column {
   width: 40%;
 }
-#pp_current_roles .edit-column {
+#pp_current_roles .edit-column,
+.pp_current_exceptions_profile .edit-column,
+.pp_user_profile .edit-column {
   width: 10%;
   text-align: right;
 }
-#pp_current_roles table tr th {
+#pp_current_roles table tr th,
+.pp_current_exceptions_profile table tr th,
+.pp_user_profile table tr th {
   text-align: left;
 }
 #pp_current_roles td label,
-#pp_current_roles td input {
+.pp_current_exceptions_profile td label,
+.pp_user_profile td label,
+#pp_current_roles td input,
+.pp_current_exceptions_profile td input,
+.pp_user_profile td input {
   vertical-align: text-top;
 }
 .pp-agent-profile .pp-user-avatar-cell {

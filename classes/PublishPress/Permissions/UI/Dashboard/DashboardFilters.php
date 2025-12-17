@@ -361,12 +361,12 @@ class DashboardFilters
             require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
         }
 
-        if ($is_administrator || $pp->getOption('display_user_profile_roles')) {
-            Profile::displayUserAssignedRoles($pp_profile_user);
-        }
-
         if ($is_administrator || $pp->getOption('display_user_profile_groups')) {
             Profile::displayUserGroups($pp_profile_user->ID);
+        }
+
+        if ($is_administrator || $pp->getOption('display_user_profile_roles')) {
+            Profile::displayUserAssignedRoles($pp_profile_user);
         }
 
         if ($is_administrator || $pp->getOption('display_user_profile_roles')) {
