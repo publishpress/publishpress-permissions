@@ -188,12 +188,12 @@ class SettingsTabCore
                                         $permission_screen_option = "pp_include_permission_screen_{$key}";
                                         
                                         $enable_metabox = $ui->getOption($metabox_option);
-                                        if ($enable_metabox === false || $enable_metabox === '' || is_array($enable_metabox)) {
+                                        if (is_null($enable_metabox) || $enable_metabox === false || $enable_metabox === '' || is_array($enable_metabox)) {
                                             $enable_metabox = '1';
                                         }
                                         
                                         $include_permission = $ui->getOption($permission_screen_option);
-                                        if ($include_permission === false || $include_permission === '' || is_array($include_permission)) {
+                                        if (is_null($include_permission) || $include_permission === false || $include_permission === '' || is_array($include_permission)) {
                                             $include_permission = '1';
                                         }
                                         
@@ -206,9 +206,9 @@ class SettingsTabCore
                                         }
                                         
                                         if ($include_permission === '1') {
-                                            $summary_parts[] = esc_html__('In permission screens', 'press-permit-core');
+                                            $summary_parts[] = esc_html__('Permissions screen enabled', 'press-permit-core');
                                         } else {
-                                            $summary_parts[] = esc_html__('Not in permission screens', 'press-permit-core');
+                                            $summary_parts[] = esc_html__('Permissions screen disabled', 'press-permit-core');
                                         }
                                         
                                         $summary_text = implode(', ', $summary_parts);
@@ -251,7 +251,7 @@ class SettingsTabCore
                                             echo '<input type="checkbox" name="' . esc_attr($metabox_option) . '" id="' . esc_attr($metabox_option) . '" value="1" ';
                                             checked('1', $enable_metabox);
                                             echo ' /> ';
-                                            esc_html_e('Enable metabox on Post editing screen', 'press-permit-core');
+                                            echo esc_html(sprintf(__('Enable metabox on %s editing screen', 'press-permit-core'), $obj->labels->singular_name));
                                             echo '</label>';
                                             echo '</div>';
                                             
@@ -261,7 +261,7 @@ class SettingsTabCore
                                             echo '<input type="checkbox" name="' . esc_attr($permission_screen_option) . '" id="' . esc_attr($permission_screen_option) . '" value="1" ';
                                             checked('1', $include_permission);
                                             echo ' /> ';
-                                            esc_html_e('Include on Permissions screen', 'press-permit-core');
+                                            esc_html_e('Enable on Permissions screen', 'press-permit-core');
                                             echo '</label>';
                                             echo '</div>';
                                             
@@ -387,9 +387,9 @@ class SettingsTabCore
                     }
                     
                     if ($permissionCheckbox.is(':checked')) {
-                        summaryParts.push('<?php echo esc_js(__('In permission screens', 'press-permit-core')); ?>');
+                        summaryParts.push('<?php echo esc_js(__('Permissions screen enabled', 'press-permit-core')); ?>');
                     } else {
-                        summaryParts.push('<?php echo esc_js(__('Not in permission screens', 'press-permit-core')); ?>');
+                        summaryParts.push('<?php echo esc_js(__('Permissions screen disabled', 'press-permit-core')); ?>');
                     }
                     
                     // Update summary text
