@@ -404,9 +404,9 @@ class SettingsTabCore
     function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array('class' => '', 'html' => ''))
     {
         ?>
-        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php echo esc_attr($args['class'] ?? ''); ?>">
+        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php !empty($args['class']) ? esc_attr_e($args['class']) : ''; ?>">
         <?php esc_html_e($text);?>
-        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php isset($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
+        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php !empty($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
         <?php 
         if ($useIcon) : ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50" style="margin-left: 4px; vertical-align: text-bottom;">
