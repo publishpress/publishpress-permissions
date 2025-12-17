@@ -250,11 +250,13 @@ class Profile
 
             echo '</div>';
             echo '</div>';
-            echo "<input type='hidden' name='pp_editing_user_groups' value='1' />";
-            wp_nonce_field('pp-user-profile-groups', '_pp_permissions_nonce');
             echo '</div>';
             echo '</div>';
         }  // end foreach agent_type
+
+        echo "<input type='hidden' name='pp_editing_user_groups' value='1' />";
+
+        wp_nonce_field('pp-user-profile-groups', '_pp_permissions_nonce');
     }
     
     public static function listAgentExceptions($agent_type, $id, $args = [])
