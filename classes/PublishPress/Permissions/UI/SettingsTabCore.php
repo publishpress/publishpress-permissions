@@ -401,10 +401,10 @@ class SettingsTabCore
         <?php
     }
 
-    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array())
+    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array('class' => '', 'html' => ''))
     {
         ?>
-        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php esc_attr_e($args['class']);?>">
+        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php echo esc_attr($args['class'] ?? ''); ?>">
         <?php esc_html_e($text);?>
         <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php isset($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
         <?php 
