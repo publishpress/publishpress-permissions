@@ -145,26 +145,12 @@ class GroupsListTable extends GroupsListTableBase
 
     public function get_bulk_actions()
     {
-        $actions = [];
-
-        if (
-            current_user_can('pp_delete_groups')
-            && !in_array(PWP::GET_key('group_variant'), ['wp_role', 'login_state'], true) // don't allow deletion of WP roles
-        ) {
-            $actions['delete'] = esc_html__('Delete', 'press-permit-core');
-        }
-
-        return $actions;
+        return [];
     }
 
     public function get_columns()
     {
-        $bulk_check_all = !PWP::is_REQUEST('group_variant', ['wp_role', 'login_state']) || $this->deleted_roles_listed()
-            ? '<input type="checkbox" />'
-            : '';
-
         $c = [
-            'cb' => $bulk_check_all,
             'group_name' => esc_html__('Name', 'press-permit-core'),
             'group_type' => esc_html__('Type', 'press-permit-core'),
             'num_users' => _x('Users', 'count', 'press-permit-core'),

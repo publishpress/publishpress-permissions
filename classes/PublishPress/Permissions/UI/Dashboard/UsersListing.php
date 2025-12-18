@@ -147,6 +147,15 @@ class UsersListing
             $table_obj = $args['table_obj'];
         }
 
+        // Determine if this is a plain export (e.g., Admin Columns Pro export)
+        $is_plain_export = (
+            PWP::REQUEST_key_match('acp_export_action', 'export', ['match_type' => 'contains']) && 
+            (
+                PWP::REQUEST_key_match('acp_export_columns', 'pp_roles', ['match_type' => 'contains']) ||
+                PWP::REQUEST_key_match('acp_export_columns', 'pp_groups', ['match_type' => 'contains'])
+            )
+        );
+
         switch ($column_name) {
             case 'pp_groups':
                 static $all_groups;
@@ -212,12 +221,20 @@ class UsersListing
                                 
                                 if (defined('PP_USERS_UI_GROUP_FILTER_LINK') && !empty($_SERVER['REQUEST_URI'])) {
                                     $url = add_query_arg('pp_group', $_id, esc_url_raw($_SERVER['REQUEST_URI']));
-                                    $content .= "<a href='" . esc_url($url) . "'>" . esc_html($name) . "</a>";
+                                    if ($is_plain_export) {
+                                        $content .= esc_html($name);
+                                    } else {
+                                        $content .= "<a href='" . esc_url($url) . "'>" . esc_html($name) . "</a>";
+                                    }
                                 } else {
-                                    $content .= "<a href='"
-                                        . esc_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_type=$agent_type&amp;agent_id=$_id")
-                                        . "' title='" . esc_attr__('edit group', 'press-permit-core') . "'>"
-                                        . esc_html($name) . "</a>";
+                                    if ($is_plain_export) {
+                                        $content .= esc_html($name);
+                                    } else {
+                                        $content .= "<a href='"
+                                            . esc_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_type=$agent_type&amp;agent_id=$_id")
+                                            . "' title='" . esc_attr__('edit group', 'press-permit-core') . "'>"
+                                            . esc_html($name) . "</a>";
+                                    }
                                 }
 
                                 $any_done = true;
@@ -273,17 +290,23 @@ class UsersListing
                     $role_titles[] = str_replace(' ', '&nbsp;', sprintf(__('%s more', 'press-permit-core'), (int) $excess));
                 }
 
-                if ($do_edit_link = current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
+                if ($do_edit_link = current_user_can('pp_assign_roles') && 
+                    (is_multisite() || current_user_can('edit_user', $id)) && 
+                    !$is_plain_export) {
                     $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
                     $content .= "<a href='" . esc_url($edit_link) . "' ' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>";
                 }
 
-                $content .= '<span class="pp-group-site-roles">' . implode(', ', $role_titles) . '</span>';
+                if ($is_plain_export) {
+                    $content .= implode(', ', $role_titles);
+                } else {
+                    $content .= '<span class="pp-group-site-roles">' . implode(', ', $role_titles) . '</span>';
+                }
 
-                if ($do_edit_link) {
+                if ($do_edit_link && !$is_plain_export) {
                     $content .= '</a>';	
                 }
-				
+
                 break;
 
             case 'pp_exceptions':

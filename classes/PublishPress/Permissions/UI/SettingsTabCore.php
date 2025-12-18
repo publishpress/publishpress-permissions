@@ -108,6 +108,7 @@ class SettingsTabCore
                     } else {
                         $option_name = 'enabled_post_types';
                         esc_html_e('Modify permissions for these Post Types:', 'press-permit-core');
+                        $this->generateTooltip(esc_html__('This causes type-specific capabilities to be required for editing ("edit_things" instead of "edit_posts"). ', 'press-permit-core'), '', 'top', true, ['class' => 'click', 'html' => '<a href="https://publishpress.com/knowledge-base/capabilities-in-publishpress-permissions/" class="btn btn-link" target="_blank" rel="noopener noreferrer">docs</a>']);
                         $types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
                         // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
                         $supported_private_types = apply_filters('presspermit_supported_private_types', []);    // ['series_grouping']);
@@ -187,12 +188,12 @@ class SettingsTabCore
                                         $permission_screen_option = "pp_include_permission_screen_{$key}";
                                         
                                         $enable_metabox = $ui->getOption($metabox_option);
-                                        if ($enable_metabox === false || $enable_metabox === '' || is_array($enable_metabox)) {
+                                        if (is_null($enable_metabox) || $enable_metabox === false || $enable_metabox === '' || is_array($enable_metabox)) {
                                             $enable_metabox = '1';
                                         }
                                         
                                         $include_permission = $ui->getOption($permission_screen_option);
-                                        if ($include_permission === false || $include_permission === '' || is_array($include_permission)) {
+                                        if (is_null($include_permission) || $include_permission === false || $include_permission === '' || is_array($include_permission)) {
                                             $include_permission = '1';
                                         }
                                         
@@ -205,9 +206,9 @@ class SettingsTabCore
                                         }
                                         
                                         if ($include_permission === '1') {
-                                            $summary_parts[] = esc_html__('In permission screens', 'press-permit-core');
+                                            $summary_parts[] = esc_html__('Permissions screen enabled', 'press-permit-core');
                                         } else {
-                                            $summary_parts[] = esc_html__('Not in permission screens', 'press-permit-core');
+                                            $summary_parts[] = esc_html__('Permissions screen disabled', 'press-permit-core');
                                         }
                                         
                                         $summary_text = implode(', ', $summary_parts);
@@ -250,7 +251,7 @@ class SettingsTabCore
                                             echo '<input type="checkbox" name="' . esc_attr($metabox_option) . '" id="' . esc_attr($metabox_option) . '" value="1" ';
                                             checked('1', $enable_metabox);
                                             echo ' /> ';
-                                            esc_html_e('Enable metabox on edit screen', 'press-permit-core');
+                                            echo esc_html(sprintf(__('Enable metabox on %s editing screen', 'press-permit-core'), $obj->labels->singular_name));
                                             echo '</label>';
                                             echo '</div>';
                                             
@@ -260,7 +261,7 @@ class SettingsTabCore
                                             echo '<input type="checkbox" name="' . esc_attr($permission_screen_option) . '" id="' . esc_attr($permission_screen_option) . '" value="1" ';
                                             checked('1', $include_permission);
                                             echo ' /> ';
-                                            esc_html_e('Include on permission screen', 'press-permit-core');
+                                            esc_html_e('Enable on Permissions screen', 'press-permit-core');
                                             echo '</label>';
                                             echo '</div>';
                                             
@@ -280,20 +281,7 @@ class SettingsTabCore
                                 if ($pp->getOption('display_hints')) {
                                     $define_create_posts_cap = get_option('presspermit_define_create_posts_cap');
 
-                                    ?>
-                                    <div class="pp-subtext pp-no-hide" style="margin-top: 15px">
-                                        <?php
-                                        printf(
-                                            esc_html__('%1$sNote%2$s: This causes type-specific capabilities to be required for editing ("edit_things" instead of "edit_posts").', 'press-permit-core'),
-                                            '<span class="pp-important">',
-                                            '</span>',
-                                            "<a href='" . esc_url(admin_url('?page=presspermit-groups')) . "'>",
-                                            '</a>'
-                                        );
-                                        ?>
-                                    </div>
-
-                                    <?php if (
+                                    if (
                                         in_array('forum', $types, true) && !$pp->moduleActive('compatibility')
                                         && $pp->getOption('display_extension_hints')
                                     ) : ?>
@@ -399,9 +387,9 @@ class SettingsTabCore
                     }
                     
                     if ($permissionCheckbox.is(':checked')) {
-                        summaryParts.push('<?php echo esc_js(__('In permission screens', 'press-permit-core')); ?>');
+                        summaryParts.push('<?php echo esc_js(__('Permissions screen enabled', 'press-permit-core')); ?>');
                     } else {
-                        summaryParts.push('<?php echo esc_js(__('Not in permission screens', 'press-permit-core')); ?>');
+                        summaryParts.push('<?php echo esc_js(__('Permissions screen disabled', 'press-permit-core')); ?>');
                     }
                     
                     // Update summary text
@@ -413,12 +401,12 @@ class SettingsTabCore
         <?php
     }
 
-    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true)
+    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array('class' => '', 'html' => ''))
     {
         ?>
-        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>">
+        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php !empty($args['class']) ? esc_attr_e($args['class']) : ''; ?>">
         <?php esc_html_e($text);?>
-        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?></span><i></i></span>
+        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php !empty($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
         <?php 
         if ($useIcon) : ?>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50" style="margin-left: 4px; vertical-align: text-bottom;">
