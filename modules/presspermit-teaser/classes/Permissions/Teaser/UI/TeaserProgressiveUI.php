@@ -351,7 +351,7 @@ class TeaserProgressiveUI {
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Teaser Notice Style:', 'press-permit-core'); ?></th>
+                    <th><?php esc_html_e('Teaser Message Style:', 'press-permit-core'); ?></th>
                     <td>
                         <?php
                         $teaser_notice_mode = $this->pp->getTypeOption('teaser_notice_style_mode', $object_type) ?: 'default';
@@ -359,17 +359,17 @@ class TeaserProgressiveUI {
                         ?>
                         <select name="teaser_notice_style_mode[<?php echo esc_attr($object_type); ?>]" class="regular-text pp-teaser-notice-style-select" disabled>
                             <option value="default" <?php selected($teaser_notice_mode, 'default'); ?>>
-                                <?php esc_html_e('Use Default Teaser Notice Style', 'press-permit-core'); ?>
+                                <?php esc_html_e('Use Default Teaser Message Style', 'press-permit-core'); ?>
                             </option>
                             <option value="custom" <?php selected($teaser_notice_mode, 'custom'); ?>>
-                                <?php esc_html_e('Use Custom Teaser Notice Style', 'press-permit-core'); ?>
+                                <?php esc_html_e('Use Custom Teaser Message Style', 'press-permit-core'); ?>
                             </option>
                         </select>
-                        <?php if (!$this->isProVersion()) : echo wp_kses_post($this->renderProBadge(__('Separate settings for custom teaser notice style is a PRO feature', 'press-permit-core'))); ?>
+                        <?php if (!$this->isProVersion()) : echo wp_kses_post($this->renderProBadge(__('Separate settings for custom teaser message style is a PRO feature', 'press-permit-core'))); ?>
                         <p class="description">
                             <?php
                             printf(
-                                esc_html__('Custom Teaser Notice styling is available in %sPRO%s', 'press-permit-core'),
+                                esc_html__('Custom Teaser Message styling is available in %sPRO%s', 'press-permit-core'),
                                 '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
                                 '</a>'
                             ); ?>
