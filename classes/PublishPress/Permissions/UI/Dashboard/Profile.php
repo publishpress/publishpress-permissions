@@ -30,7 +30,6 @@ class Profile
                 'read_only' => true,
                 'context' => 'user-edit',
                 'caption' => sprintf(esc_html__('Extra Roles %1$s(for this user)%2$s', 'press-permit-core'), '', ''),
-                'class' => 'pp-user-roles',
                 'link' => $edit_url
             ]
         );
@@ -77,6 +76,7 @@ class Profile
             $roles,
             [
                 'read_only' => true,
+                'context' => 'user-edit',
                 'link' => '',
                 'caption' => sprintf(esc_html__('Extra Roles %1$s(from primary role or group membership)%2$s', 'press-permit-core'), '', '')
             ]
@@ -87,7 +87,6 @@ class Profile
             $user->ID,
             [
                 'edit_url' => '',
-                'class' => 'pp-group-roles',
                 'caption' => esc_html__('Specific Permissions (from primary role or group membership)', 'press-permit-core'),
                 'join_groups' => 'groups_only',
                 'display_limit' => 12
@@ -175,23 +174,29 @@ class Profile
 
             $style = ($initial_hide) ? "display:none" : '';
 
-            echo "<div id='userprofile_groupsdiv_pp' class='pp-group-box pp-group_members' style='" . esc_attr($style) . "'>";
-            echo "<h3>";
-
-            if ('pp_group' == $agent_type) {
-                if (defined('GROUPS_CAPTION_RS')) {
-                    echo esc_html(GROUPS_CAPTION_RS);
-                } elseif (defined('PP_GROUPS_CAPTION')) {
-                    echo esc_html(PP_GROUPS_CAPTION);
-                } else {
-                    esc_html_e('Permission Groups', 'press-permit-core');
-                }
-            } else {
-                $group_type_obj = $pp_groups->getGroupTypeObject($agent_type);
-                echo esc_html($group_type_obj->labels->name);
-            }
-
-            echo "</h3>";
+            echo "<div id='userprofile_groupsdiv_pp' class='pp_user_profile' style='" . esc_attr($style) . "'>";
+            ?>
+            <div class="permission-section">
+                <div class="section-header">
+                    <h2 class="section-title">
+                    <?php
+                    if ('pp_group' == $agent_type) {
+                        if (defined('GROUPS_CAPTION_RS')) {
+                            echo esc_html(GROUPS_CAPTION_RS);
+                        } elseif (defined('PP_GROUPS_CAPTION')) {
+                            echo esc_html(PP_GROUPS_CAPTION);
+                        } else {
+                            esc_html_e('Permission Groups', 'press-permit-core');
+                        }
+                    } else {
+                        $group_type_obj = $pp_groups->getGroupTypeObject($agent_type);
+                        echo esc_html($group_type_obj->labels->name);
+                    } ?>
+                    </h2>
+                </div>
+            <div class="section-content">
+                <div class="permission-type">
+            <?php
 
             // This ajax request is just to return UI
             $single_select = ('user-new.php' == $pagenow) || ('new_user_groups_ui' == PWP::REQUEST_key('pp_ajax_user'))
@@ -243,6 +248,9 @@ class Profile
             <?php
             endif;
 
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
             echo '</div>';
         }  // end foreach agent_type
 
@@ -326,7 +334,7 @@ class Profile
             'caption' => '',
             'edit_url' => '',
             'join_groups' => false,
-            'class' => 'pp-user-roles',
+            'class' => '',
             'new_permissions_link' => false,
             'maybe_display_note' => true
         ];
@@ -347,18 +355,28 @@ class Profile
 
         ob_start();
         ?>
-        <div style="clear:both;"></div>
-        <div id='ppcurrentExceptionsUI' class='pp-group-box <?php echo esc_attr($class); ?>'>
-            <h3>
-                <?php
-                if ($edit_url) echo "<a href='" . esc_url($edit_url) . "'>" . esc_html($caption) . "</a>"; else echo esc_html($caption);
-                ?>
-            </h3>
-        <?php 
-        if (!$any_exceptions_listed = self::listAgentExceptions($agent_type, $agent_id, $args)) :
-            ob_clean();
-        else :?>
+        <div class='pp_current_exceptions_profile <?php echo esc_attr($class); ?>'>
+            <div class="permission-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <?php
+                    if ($edit_url) echo "<a href='" . esc_url($edit_url) . "'>" . esc_html($caption) . "</a>"; else echo esc_html($caption);
+                    ?>
+                </h2>
+            </div>
+            <div id="pp_current_post_post_site_roles" class="section-content">
+                <div class="for-type for-type-post">
+                <div class="permission-type">
+                    <div class="subsection-header permission-type-header">
+                    <h3 class="section-title permission-type-title">
+                        <?php self::listAgentExceptions($agent_type, $agent_id, $args); ?>
+                    </h3>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
         </div>
-        <?php endif;
+        <?php
     }
 }
