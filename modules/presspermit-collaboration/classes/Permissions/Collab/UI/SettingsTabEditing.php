@@ -27,7 +27,6 @@ class SettingsTabEditing
     function sectionCaptions($sections)
     {
         $new_editing = [
-            'post_editor'              => esc_html__('Editor Options', 'press-permit-core'),
             'content_management'       => esc_html__('Posts / Pages Listing', 'press-permit-core'),
         ];
 
@@ -50,7 +49,6 @@ class SettingsTabEditing
             'edit_others_attached_files'             => esc_html__("Edit other users' files if attached to an editable post", 'press-permit-core'),
             'attachment_edit_requires_parent_access' => esc_html__('Prevent editing files if attached to a non-editable post', 'press-permit-core'),
             'own_attachments_always_editable'        => esc_html__('Users can always edit their own files', 'press-permit-core'),
-            'default_privacy'                        => esc_html__('Default visibility for new posts                               : ', 'press-permit-core'),
             'list_others_uneditable_posts'           => esc_html__('List other user\'s uneditable posts', 'press-permit-core'),
         ];
 
@@ -61,7 +59,6 @@ class SettingsTabEditing
     {
         // Editing tab
         $new_editing = [
-            'post_editor'         => ['default_privacy', 'force_default_privacy'],
             'content_management'  => ['list_others_uneditable_posts'],
         ];
 
@@ -85,105 +82,6 @@ class SettingsTabEditing
 
         $ui = \PublishPress\Permissions\UI\SettingsAdmin::instance();
         $tab = 'editing';
-        $section = 'post_editor';                        // --- EDITOR OPTIONS SECTION ---
-        if (!empty($ui->form_options[$tab][$section])) :
-        ?>
-            <tr>
-                <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
-                <td>
-
-                    <span><?php echo esc_html($ui->option_captions['default_privacy']); ?></span>
-                    <br />
-
-                    <div class="agp-vspaced_input default_privacy" style="margin-left: 2em;">
-                        <?php
-                        $option_name = 'default_privacy';
-                        $ui->all_otype_options[] = $option_name;
-
-                        $opt_values = array_merge(array_fill_keys($pp->getEnabledPostTypes(), 0), $ui->getOptionArray($option_name));  // add enabled types whose settings have never been stored
-                        $opt_values = array_intersect_key($opt_values, array_fill_keys($pp->getEnabledPostTypes(), 0));  // skip stored types that are not enabled
-                        $opt_values = array_diff_key($opt_values, array_fill_keys(apply_filters('presspermit_disabled_default_privacy_types', ['forum', 'topic', 'reply']), true));
-
-                        // todo: force default status in Gutenberg
-                        if (defined('PRESSPERMIT_STATUSES_VERSION')) {
-                            $do_force_option = true;
-                            $ui->all_otype_options[] = 'force_default_privacy';
-                            $force_values = array_merge(array_fill_keys($pp->getEnabledPostTypes(), 0), $ui->getOptionArray('force_default_privacy'));  // add enabled types whose settings have never been stored
-                        } else
-                            $do_force_option = false;
-                        ?>
-                        <table class='agp-vtight_input agp-rlabel'>
-                            <?php
-
-                            foreach ($opt_values as $object_type => $setting) :
-                                if ('attachment' == $object_type) continue;
-
-                                $id = $option_name . '-' . $object_type;
-                                $name = "{$option_name}[$object_type]";
-                            ?>
-                                <tr>
-                                    <td class="rlabel">
-                                        <input name='<?php echo esc_attr($name); ?>' type='hidden' value='' />
-                                        <label for='<?php echo esc_attr($id); ?>'><?php if ($type_obj = get_post_type_object($object_type)) echo esc_html($type_obj->labels->name);
-                                                                                    else echo esc_html($object_type); ?></label>
-                                    </td>
-
-                                    <td><select name='<?php echo esc_attr($name); ?>' id='<?php echo esc_attr($id); ?>' autocomplete='off'>
-                                            <option value=''><?php esc_html_e('Public'); ?></option>
-                                            <?php foreach (get_post_stati(['private' => true], 'object') as $status_obj) :
-                                                $selected = ($setting === $status_obj->name) ? ' selected ' : '';
-                                            ?>
-                                                <option value='<?php echo esc_attr($status_obj->name); ?>' <?php echo esc_attr($selected); ?>><?php echo esc_html($status_obj->label); ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                        <?php
-                                        if ($do_force_option) :
-                                            $id = 'force_default_privacy-' . $object_type;
-                                            $name = "force_default_privacy[$object_type]";
-                                            $style = ($setting) ? '' : 'display:none';
-                                            $checked = (!empty($force_values[$object_type]) || PWP::isBlockEditorActive($object_type)) ? ' checked ' : '';
-                                            $disabled = (PWP::isBlockEditorActive($object_type)) ? " disabled " : '';
-                                        ?>
-                                            <input name='<?php echo esc_attr($name); ?>' type='hidden' value='0' />
-                                            &nbsp;<label style='<?php echo esc_attr($style); ?>' for="<?php echo esc_attr($id); ?>"><input
-                                                    type="checkbox" <?php echo esc_attr($checked); ?><?php echo esc_attr($disabled); ?>id="<?php echo esc_attr($id); ?>"
-                                                    name="<?php echo esc_attr($name); ?>"
-                                                    value="1" /><?php if ($do_force_option) : ?>&nbsp;<?php esc_html_e('lock', 'press-permit-core'); ?><?php endif; ?>
-                                            </label>
-                                        <?php endif; ?>
-
-                                    </td>
-                                </tr>
-                            <?php endforeach;
-                            ?>
-                        </table>
-                    </div>
-
-                    <script type="text/javascript">
-                        /* <![CDATA[ */
-                        jQuery(document).ready(function($) {
-                            $('div.default_privacy select').on('click', function() {
-                                $(this).parent().find('label').toggle($(this).val() != '');
-                            });
-
-                            $('#add_author_pages').on('click', function() {
-                                $('div.publish_author_pages').toggle($(this).is(':checked'));
-                            });
-                        });
-                        /* ]]> */
-                    </script>
-                    <?php
-                    $ui->optionCheckbox('page_parent_editable_only', $tab, $section);
-                    $ui->optionCheckbox('page_parent_order', $tab, $section);
-
-                    $hint = esc_html__("When saving a post, if the default term is not selectable, substitute first available.", 'press-permit-core')
-                        . ' ' . esc_html__('Some term-limited editing configurations require this.', 'press-permit-core');
-
-                    $ui->optionCheckbox('auto_assign_available_term', $tab, $section, $hint, '', ['hint_class' => 'pp-subtext-show']);
-                    ?>
-                </td>
-            </tr>
-        <?php endif; // any options accessable in this section
 
         $section = 'content_management';                        // --- POSTS / PAGES LISTING SECTION ---
         if (!empty($ui->form_options[$tab][$section])) :

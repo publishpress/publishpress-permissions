@@ -3,30 +3,6 @@ namespace PublishPress\Permissions\Collab;
 
 class PostEdit
 {
-    public static function defaultPrivacyWorkaround()
-    {
-        if (PWP::empty_POST('publish') && PWP::is_POST('visibility') && PWP::is_POST('post_type') 
-        && presspermit()->getTypeOption('default_privacy', PWP::POST_key('post_type'))
-        ) {
-            $stati = get_post_stati(['moderation' => true], 'names');
-            if (!PWP::empty_POST('post_status') && in_array(PWP::POST_key('post_status'), $stati, true)) {
-                return;
-            }
-
-            $stati = get_post_stati(['public' => true, 'private' => true], 'names', 'or');
-
-            if (!in_array(PWP::POST_key('visibility'), ['public', 'password'], true) 
-            && (!PWP::is_POST('hidden_post_status') || !in_array(PWP::POST_key('hidden_post_status'), $stati, true))
-            ) {
-                $_POST['post_status'] = PWP::POST_key('hidden_post_status');
-                $_REQUEST['post_status'] = PWP::POST_key('hidden_post_status');
-
-                $_POST['visibility'] = 'public';
-                $_REQUEST['visibility'] = 'public';
-            }
-        }
-    }
-
     public static function fltPostStatus($status)
     {
         if (!$post_id = presspermit()->getCurrentSanitizePostID()) {
