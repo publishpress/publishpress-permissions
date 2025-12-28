@@ -175,8 +175,6 @@ class CollabHooks
             'editor_ids_sitewide_requirement' => 0,
             
             'force_taxonomy_cols' => 0,
-            'default_privacy' => [],
-            'force_default_privacy' => [],
             'page_parent_order' => '',
             'page_parent_editable_only' => 0,
 
@@ -414,13 +412,16 @@ class CollabHooks
         return $read_own;
     }
 
+    // Filters item_condition retrieval for hierarchical propagation of visibility in a page tree
     function fltForceDefaultVisibility($item_condition, $source_name, $attribute, $args = [])
     {
         // allow any existing page-specific settings to override default forcing
         if (('post' == $source_name) && ('force_visibility' == $attribute) && !$item_condition && isset($args['post_type'])) {
             if (empty($args['assign_for']) || ('item' == $args['assign_for'])) {
-                if ($default_privacy = presspermit()->getTypeOption('default_privacy', $args['post_type'])) {
-                    if ($force = presspermit()->getTypeOption('force_default_privacy', $args['post_type']) || PWP::isBlockEditorActive($args['post_type'])) {
+
+                if ($default_privacy = apply_filters('publishpress_statuses_default_visibility', '', $args['post_type'])) {
+                    if (apply_filters('publishpress_statuses_force_default_visibility', false, $args['post_type']) || PWP::isBlockEditorActive($args['post_type'])) {
+
                         // only apply if status is currently registered and PP-enabled for the post type
                         if (PWP::getPostStatuses(['name' => $default_privacy, 'post_type' => $args['post_type']])) {
                             if (!empty($args['return_meta']))
@@ -486,14 +487,6 @@ class CollabHooks
                 );
             } else {
                 $options['presspermit_enabled_taxonomies'] = [];
-            }
-        }
-    	
-        if (!empty($options['presspermit_default_privacy'])) {
-            $disabled_types = (class_exists('bbPress', false)) ? ['forum', 'topic', 'reply'] : [];
-            if ($disabled_types = apply_filters('presspermit_disabled_default_privacy_types', $disabled_types)) {
-                if ($_default_privacy = maybe_unserialize($options['presspermit_default_privacy']))
-                    $options['presspermit_default_privacy'] = array_diff_key($_default_privacy, array_fill_keys($disabled_types, true));
             }
         }
 
