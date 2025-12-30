@@ -149,7 +149,7 @@ class TeaserProgressiveUI {
             'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
             'more' => esc_html__("Use Excerpt or pre-More as teaser text", 'press-permit-core'),
             'x_chars' => esc_html__("Use Excerpt, pre-More or First X Characters as teaser text", 'press-permit-core'),
-            'redirect' => esc_html__("Redirect to another page", 'press-permit-core')
+            'redirect' => esc_html__("Redirect to another post", 'press-permit-core')
         ];
         
         $captions = apply_filters(
@@ -456,8 +456,8 @@ class TeaserProgressiveUI {
 
         // Prepare teaser text options
         $item_actions = [
-            'name' => ['prepend', 'append'],
             'content' => ['replace', 'prepend', 'append'],
+            'name' => ['prepend', 'append'],
         ];
 
         // Register all options
@@ -491,11 +491,16 @@ class TeaserProgressiveUI {
                     
                     $id = $object_type . '_' . $option_basename;
                     $name = "{$option_basename}[{$object_type}]";
-                ?>
-                    <div class="pp-field-row">
+                    if ('post' == $object_type &&
+                        'content' == $item && 
+                        'replace' == $action &&
+                        '_anon' == $suffix) $is_required = true;
+                    else $is_required = false; 
+                    ?>
+                    <div class="pp-field-row <?php echo $is_required ? 'pp-required-field' : ''; ?>" data-field-action="<?php echo esc_attr($action); ?>" data-field-item="<?php echo esc_attr($item); ?>" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
                         <div>
                             <label for="<?php echo esc_attr($id); ?>">
-                                <strong><?php echo esc_html($actions_display[$action]); ?></strong>
+                                <strong><?php echo esc_html($actions_display[$action]); ?><?php echo (('content' == $item) && ('replace' == $action)) ? ' <span class="pp-required-indicator" style="color: red;">*</span>' : ''; ?></strong>
                             </label>
                         </div>
                         <div>
@@ -630,9 +635,9 @@ class TeaserProgressiveUI {
                         <?php
                         echo "<select name='" . esc_attr($id) . "' id='" . esc_attr($id) . "' class='teaser-redirect-mode' autocomplete='off'>";
                         $captions = [
-                            0 => esc_html__("No Redirect", 'press-permit-core'),
-                            '[login]' => esc_html__("Redirect to WordPress Login", 'press-permit-core'),
-                            '(select)' => esc_html__("Redirect to a Custom Page", 'press-permit-core'),
+                            0 => esc_html__("No redirect", 'press-permit-core'),
+                            '[login]' => esc_html__("Redirect to WordPress login", 'press-permit-core'),
+                            '(select)' => esc_html__("Redirect to a custom post", 'press-permit-core'),
                         ];
 
                         foreach ($captions as $teaser_option_val => $teaser_caption) {
@@ -699,9 +704,9 @@ class TeaserProgressiveUI {
                         <?php
                         echo "<select name='" . esc_attr($id) . "' id='" . esc_attr($id) . "' class='teaser-redirect-mode' autocomplete='off'>";
                         $captions = [
-                            0 => esc_html__("No Redirect", 'press-permit-core'),
-                            '[login]' => esc_html__("Redirect to WordPress Login", 'press-permit-core'),
-                            '(select)' => esc_html__("Redirect to a Custom Page", 'press-permit-core'),
+                            0 => esc_html__("No redirect", 'press-permit-core'),
+                            '[login]' => esc_html__("Redirect to WordPress login", 'press-permit-core'),
+                            '(select)' => esc_html__("Redirect to a custom post", 'press-permit-core'),
                         ];
 
                         foreach ($captions as $teaser_option_val => $teaser_caption) {

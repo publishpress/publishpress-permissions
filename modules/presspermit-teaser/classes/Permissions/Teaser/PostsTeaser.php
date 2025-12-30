@@ -746,7 +746,7 @@ class PostsTeaser
 
         \PublishPress\Permissions\TeaserHooks::instance()->teased_excerpts[$post->ID] = $post->post_excerpt;
 
-        if (presspermit()->getOption('teaser_hide_thumbnail'))
+        if (presspermit()->getTypeOption('teaser_hide_thumbnail', $post->post_type))
             add_filter('get_post_metadata', [__CLASS__, 'fltHidePostThumbnail'], 10, 3);
     }
 
