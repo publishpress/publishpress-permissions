@@ -172,7 +172,7 @@ class UsersListing
             // For exports where items is NULL, query ALL user IDs once and cache them
             elseif ($is_plain_export) {
                 global $wpdb;
-                $cached_query_agent_ids = $wpdb->get_col("SELECT ID FROM {$wpdb->users} ORDER BY ID");
+                $cached_query_agent_ids = $wpdb->get_col("SELECT ID FROM {$wpdb->users} ORDER BY ID"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users
                 $cached_query_agent_ids = array_map('intval', $cached_query_agent_ids);
             } 
             else {
