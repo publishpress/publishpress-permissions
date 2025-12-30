@@ -49,6 +49,6 @@ To release the Free plugin please make sure to check all the checkboxes below.
 
 ### Post-release
 
-- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-future/actions)
-- [ ] Verify [WordPress.org plugin page](https://wordpress.org/plugins/post-expirator/)
+- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-permissions/actions)
+- [ ] Verify [WordPress.org plugin page](https://wordpress.org/plugins/press-permit-core/)
 - [ ] Test update on staging site
