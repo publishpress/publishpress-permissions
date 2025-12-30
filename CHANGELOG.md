@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-= 4.6.3 - 29 December 2025 =
+= 4.6.3 - 30 December 2025 =
 * Updated: French, Spanish, and Italian translations to improve wording accuracy and completeness. #2101
 
 = 4.6.2 - 18 December 2025 =
