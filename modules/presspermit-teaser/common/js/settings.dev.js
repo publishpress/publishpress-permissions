@@ -456,6 +456,207 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
+    // Function to bind all TinyMCE editor events (preview updates and error removal)
+    function bindTinyMCEEditor(editor) {
+        // Handle error removal for required fields
+        var $editorArea = $('#' + editor.id);
+        var $requiredField = $editorArea.closest('.pp-required-field');
+        
+        if ($requiredField.length) {
+            editor.on('keyup change input', function() {
+                var content = editor.getContent();
+                
+                // Check if content is not empty (after stripping HTML tags)
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = content;
+                var textContent = (tempDiv.textContent || tempDiv.innerText || '').trim();
+                
+                if (textContent) {
+                    $('#wp-' + editor.id + '-wrap').removeClass('pp-editor-error');
+                    $requiredField.find('.error-msg').remove();
+                }
+            });
+        }
+    }
+
+    // Bind to existing TinyMCE editors on page load
+    if (typeof tinymce !== 'undefined') {
+        // Bind to already-initialized editors
+        tinymce.editors.forEach(function(editor) {
+            bindTinyMCEEditor(editor);
+        });
+        
+        // Bind to new editors as they're added
+        tinymce.on('AddEditor', function(e) {
+            bindTinyMCEEditor(e.editor);
+        });
+    }
+    
+    // Function to validate a required field
+    function validateRequiredField($requiredField, postType) {
+        var $editorArea = $requiredField.find('.wp-editor-area');
+        
+        if ($editorArea.length) {
+            var editorId = $editorArea.attr('id');
+            var content = '';
+            
+            // Get content from TinyMCE if active
+            if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+                content = tinymce.get(editorId).getContent();
+            } else {
+                content = $editorArea.val();
+            }
+            
+            // Check if content is empty (after stripping HTML tags)
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = content;
+            var textContent = (tempDiv.textContent || tempDiv.innerText || '').trim();
+
+            if (!textContent) {
+                // Highlight
+                $('#wp-' + editorId + '-wrap').addClass('pp-editor-error');
+
+                // Add error message if not already present
+                if (!$requiredField.find('.error-msg').length) {
+                    var errorMsg = $requiredField.data('error-message') || 'This field is required';
+                    $requiredField.find('.wp-editor-wrap').after('<div class="error-msg" style="color: #dc3232; margin-top: 5px;">' + errorMsg + '</div>');
+                }
+
+                return {
+                    hasError: true,
+                    editorId: editorId,
+                    tabContent: $requiredField.closest('.pp-teaser-text-content').data('tab-content'),
+                    postType: postType
+                };
+            } else {
+                $('#wp-' + editorId + '-wrap').removeClass('pp-editor-error');
+                $requiredField.find('.error-msg').remove();
+                return {
+                    hasError: false
+                };
+            }
+        }
+        
+        return {
+            hasError: false
+        };
+    }
+    
+    // Form validation before submission
+    $('#pp_settings_form').on('submit', function(e) {
+        // Only run validation if we're on the teaser settings tab
+        var $teaserSettingsSection = $('#ppp-tab-teaser-settings');
+        if (!$teaserSettingsSection.is(':visible')) {
+            return; // Not on teaser settings tab, allow form submission
+        }
+
+        var errors = [];
+
+        // Check each teaser settings container (not just visible ones)
+        $('.pp-teaser-settings-container').each(function() {
+            var $container = $(this);
+            var postType = $container.data('post-type');
+            var teaserType = $container.find('.pp-teaser-type-select').val();
+
+            // Only validate if teaser type is 1 (Teaser text)
+            if (teaserType == '1') {
+                // Check all tabs (anon and logged) for required fields
+                $container.find('.pp-teaser-text-content').each(function() {
+                    var $tabContent = $(this);
+                    var $requiredFields = $tabContent.find('.pp-required-field[data-field-action="replace"][data-field-item="content"]');
+                    
+                    $requiredFields.each(function() {
+                        var validationResult = validateRequiredField($(this), postType);
+                        if (validationResult.hasError) {
+                            errors.push(validationResult);
+                        }
+                    });
+                });
+            }
+        });
+        
+        // Display errors and prevent submission
+        if (errors.length > 0) {
+            e.preventDefault();
+
+            // Get first error
+            var firstError = errors[0];
+            if (firstError) {
+                // Switch to the post type with error if needed
+                var $targetContainer = $('.pp-teaser-settings-container[data-post-type="' + firstError.postType + '"]');
+                
+                if (!$targetContainer.hasClass('active')) {
+                    // Update post type selector
+                    $('#pp_current_post_type').val(firstError.postType);
+                    
+                    // Hide all containers
+                    $('.pp-teaser-settings-container').removeClass('active').hide();
+                    
+                    // Show target container
+                    $targetContainer.addClass('active pp-fade-in').show();
+                }
+                
+                // Switch to the tab with error if needed
+                var $teaserTextCard = $targetContainer.find('.pp-teaser-text-card');
+                var $targetTab = $teaserTextCard.find('.pp-teaser-text-tab[data-tab="' + firstError.tabContent + '"]');
+                
+                if ($targetTab.length && !$targetTab.hasClass('active')) {
+                    // Update tab active state
+                    $teaserTextCard.find('.pp-teaser-text-tab').removeClass('active');
+                    $targetTab.addClass('active');
+                    
+                    // Show corresponding content
+                    $teaserTextCard.find('.pp-teaser-text-content').removeClass('active').hide();
+                    $teaserTextCard.find('.pp-teaser-text-content[data-tab-content="' + firstError.tabContent + '"]')
+                        .addClass('active')
+                        .fadeIn(200);
+                }
+                
+                // Scroll to first error with animation
+                setTimeout(function() {
+                    var $errorElement = $('#wp-' + firstError.editorId + '-wrap');
+                    if ($errorElement.length) {
+                        $('html, body').animate({
+                            scrollTop: $errorElement.offset().top - 100
+                        }, 500);
+                        
+                        // Add a subtle pulse effect to draw attention
+                        $errorElement.addClass('pp-pulse-error');
+                        setTimeout(function() {
+                            $errorElement.removeClass('pp-pulse-error');
+                        }, 2000);
+                    }
+                }, 300);
+            }
+            
+            return false;
+        }
+    });
+    
+    // Handle error removal for textarea input (when in Text/HTML mode)
+    $(document).on('input keyup', '.pp-required-field textarea.wp-editor-area', function() {
+        var $requiredField = $(this).closest('.pp-required-field');
+        var editorId = $(this).attr('id');
+        var content = '';
+        
+        // Get content from TinyMCE if active
+        if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+            content = tinymce.get(editorId).getContent();
+        } else {
+            content = $(this).val();
+        }
+        
+        // Check if content is not empty (after stripping HTML tags)
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = content;
+        var textContent = (tempDiv.textContent || tempDiv.innerText || '').trim();
+        
+        if (textContent) {
+            $('#wp-' + editorId + '-wrap').removeClass('pp-editor-error');
+            $requiredField.find('.error-msg').remove();
+        }
+    });
+
     // PRO Feature Handling
     // Prevent selecting disabled PRO options
     $(document).on('change', 'select.pp-teaser-type-select', function() {

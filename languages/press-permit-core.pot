@@ -2,14 +2,14 @@
 # This file is distributed under the same license as the PublishPress Permissions plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.6.2\n"
+"Project-Id-Version: PublishPress Permissions 4.6.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-18T15:43:26+00:00\n"
+"POT-Creation-Date: 2025-12-30T15:47:12+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
@@ -1976,7 +1976,7 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:307
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:297
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr ""
 
@@ -2067,11 +2067,11 @@ msgstr ""
 msgid "Specific Permissions"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:235
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:262
 msgid "edit group"
 msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:290
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:321
 #, php-format
 msgid "%s more"
 msgstr ""
@@ -3182,7 +3182,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:267
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:440
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:566
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:571
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:184
 msgid "Learn More"
 msgstr ""
@@ -4117,9 +4117,9 @@ msgstr ""
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:602
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:655
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:779
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:812
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:784
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:60
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:61
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:62
@@ -4200,7 +4200,7 @@ msgstr ""
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:205
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:437
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:563
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:568
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:181
 msgid "Upgrade to PRO"
 msgstr ""
@@ -4295,7 +4295,7 @@ msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr ""
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:152
-msgid "Redirect to another page"
+msgid "Redirect to another post"
 msgstr ""
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:163
@@ -4511,88 +4511,92 @@ msgstr ""
 msgid "After %s:"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:521
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
+msgid "This field is required."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:526
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:559
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:575
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:587
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:564
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
 msgid "Redirect Settings"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:559
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:564
 msgid "Redirect functionality is available in PRO"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:560
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:565
 msgid "Automatically redirect users to a login page or custom page when they try to access restricted content."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:598
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:603
 msgid "Redirection"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:599
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:604
 msgid "Page Selection"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:625
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:630
 msgid "Not Logged In:"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:633
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:702
-msgid "No Redirect"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:707
+msgid "No redirect"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:634
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:703
-msgid "Redirect to WordPress Login"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:708
+msgid "Redirect to WordPress login"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:704
-msgid "Redirect to a Custom Page"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:640
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:709
+msgid "Redirect to a custom post"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:736
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:672
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:741
 msgid "This is a custom login page"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:694
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:699
 msgid "Logged in Users:"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:758
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:788
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:793
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:826
 msgid "Message for Blocked Users"
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:759
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Customize the message shown to users who are blocked from viewing the full content when using the \"Read More\" teaser type."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:770
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:775
 msgid "This message will be displayed in a styled notice box above the teaser content for users who are not logged in."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:794
 msgid "Customize the login notice message shown to non-logged-in users when using the \"Excerpt\" teaser type."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:803
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
 msgid "This message will be displayed in a styled notice box below the excerpt teaser content for users who are not logged in."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:822
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:827
 msgid "Customize the login notice message shown to non-logged-in users when using the \"First X Characters\" teaser type."
 msgstr ""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:833
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
 msgid "This message will be displayed in a styled notice box below the truncated content teaser for users who are not logged in."
 msgstr ""
 

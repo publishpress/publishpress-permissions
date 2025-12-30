@@ -152,9 +152,33 @@ class UsersListing
             PWP::REQUEST_key_match('acp_export_action', 'export', ['match_type' => 'contains']) && 
             (
                 PWP::REQUEST_key_match('acp_export_columns', 'pp_roles', ['match_type' => 'contains']) ||
-                PWP::REQUEST_key_match('acp_export_columns', 'pp_groups', ['match_type' => 'contains'])
+                PWP::REQUEST_key_match('acp_export_columns', 'pp_groups', ['match_type' => 'contains']) ||
+                PWP::REQUEST_key_match('acp_export_columns', 'pp_exceptions', ['match_type' => 'contains'])
             )
         );
+
+        // Cache query_agent_ids to avoid redundant computations across multiple column renders
+        static $cached_query_agent_ids = null;
+        
+        if ($cached_query_agent_ids === null) {
+            // Use table_obj->user_ids if available (custom table object)
+            if (!empty($args['table_obj']) && isset($table_obj->user_ids)) {
+                $cached_query_agent_ids = $table_obj->user_ids;
+            } 
+            // For normal page loads, use the items array
+            elseif (is_object($table_obj) && is_array($table_obj->items) && !empty($table_obj->items)) {
+                $cached_query_agent_ids = array_keys($table_obj->items);
+            } 
+            // For exports where items is NULL, query ALL user IDs once and cache them
+            elseif ($is_plain_export) {
+                global $wpdb;
+                $cached_query_agent_ids = $wpdb->get_col("SELECT ID FROM {$wpdb->users} ORDER BY ID"); // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users
+                $cached_query_agent_ids = array_map('intval', $cached_query_agent_ids);
+            } 
+            else {
+                $cached_query_agent_ids = [];
+            }
+        }
 
         switch ($column_name) {
             case 'pp_groups':
@@ -176,13 +200,16 @@ class UsersListing
                         continue;
 
                     // Passing WP_User objects as query_user_ids causes each of those user's wp_role metagroups to be synchronized with their WP roles
+                    $group_args = ['cols' => 'id'];
+                    
+                    if (!empty($cached_query_agent_ids)) {
+                        $group_args['query_agent_ids'] = $cached_query_agent_ids;
+                    }
+                    
                     $group_ids = $pp_groups->getGroupsForUser(
                         new \WP_User($id),
                         $agent_type,
-                        [
-                            'cols' => 'id', 
-                            'query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : (is_array($table_obj->items) ? array_keys($table_obj->items) : [])
-                        ]
+                        $group_args
                     );
 
                     if (('pp_group' == $agent_type) && in_array('pp_net_group', $all_group_types, true)
@@ -251,7 +278,11 @@ class UsersListing
                 $role_str = '';
 
                 if (!isset($role_info)) {
-                    $_args = ['query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : (is_array($table_obj->items) ? array_keys($table_obj->items) : [])];
+                    $_args = [];
+                    
+                    if (!empty($cached_query_agent_ids)) {
+                        $_args['query_agent_ids'] = $cached_query_agent_ids;
+                    }
 
                     if (isset($args['join_groups'])) {
                         $_args['join_groups'] = $args['join_groups'];
@@ -310,15 +341,22 @@ class UsersListing
                 break;
 
             case 'pp_exceptions':
-                $_args = [
-                    'query_agent_ids' => !empty($args['table_obj']) ? $table_obj->user_ids : (is_array($table_obj->items) ? array_keys($table_obj->items) : [])
-                ];
+                $_args = [];
+                
+                if (!empty($cached_query_agent_ids)) {
+                    $_args['query_agent_ids'] = $cached_query_agent_ids;
+                }
 
                 if (isset($args['join_groups'])) {
                     $_args['join_groups'] = $args['join_groups'];
                 }
-                
-                $content .= DashboardFilters::listAgentExceptions('user', $id, $_args);
+
+                if ($is_plain_export) {
+                    $content .= wp_strip_all_tags(DashboardFilters::listAgentExceptions('user', $id, $_args));
+                } else {
+                    $content .= DashboardFilters::listAgentExceptions('user', $id, $_args);
+                }
+
                 break;
         }
 
