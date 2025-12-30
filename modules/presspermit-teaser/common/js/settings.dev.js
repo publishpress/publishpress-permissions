@@ -518,7 +518,8 @@ jQuery(document).ready(function ($) {
 
                 // Add error message if not already present
                 if (!$requiredField.find('.error-msg').length) {
-                    $requiredField.find('.wp-editor-wrap').after('<div class="error-msg" style="color: #dc3232; margin-top: 5px;">This field is required</div>');
+                    var errorMsg = $requiredField.data('error-message') || 'This field is required';
+                    $requiredField.find('.wp-editor-wrap').after('<div class="error-msg" style="color: #dc3232; margin-top: 5px;">' + errorMsg + '</div>');
                 }
 
                 return {

@@ -497,7 +497,7 @@ class TeaserProgressiveUI {
                         '_anon' == $suffix) $is_required = true;
                     else $is_required = false; 
                     ?>
-                    <div class="pp-field-row <?php echo $is_required ? 'pp-required-field' : ''; ?>" data-field-action="<?php echo esc_attr($action); ?>" data-field-item="<?php echo esc_attr($item); ?>">
+                    <div class="pp-field-row <?php echo $is_required ? 'pp-required-field' : ''; ?>" data-field-action="<?php echo esc_attr($action); ?>" data-field-item="<?php echo esc_attr($item); ?>" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
                         <div>
                             <label for="<?php echo esc_attr($id); ?>">
                                 <strong><?php echo esc_html($actions_display[$action]); ?><?php echo (('content' == $item) && ('replace' == $action)) ? ' <span class="pp-required-indicator" style="color: red;">*</span>' : ''; ?></strong>
