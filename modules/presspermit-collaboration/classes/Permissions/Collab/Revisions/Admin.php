@@ -115,6 +115,24 @@ class Admin
             return $exception_items;
         }
 
+        // No need to do this if listing is being enabled by plugin setting
+        if (presspermit()->getOption('list_others_uneditable_posts')) {
+            return $exception_items;
+        }
+
+        $user = presspermit()->getUser();
+
+        // No need to do this if listing is being enabled by capability assignment
+        if ($type_obj = get_post_type_object($for_item_type)) {
+            if (!empty($type_obj->cap->edit_others_posts)) {
+                $cap_name = str_replace('edit_', 'list_', $type_obj->cap->edit_others_posts);
+
+                if (!empty($user) && !empty($user->allcaps[$cap_name])) {
+                    return $exception_items;
+                }
+            }
+        }
+
         $defaults = ['via_item_source' => 'post', 'via_item_type' => '', 'status' => ''];
         $args = array_merge($defaults, $args);
         foreach (array_keys($defaults) as $var) {
@@ -125,8 +143,6 @@ class Admin
             // Don't implement term exceptions by merging with edit_post exceptions, due to complication of applying revision exceptions for published posts only
             return $exception_items;
         }
-
-        $user = presspermit()->getUser();
 
         if (!isset($user->except['revise_post'])) {
             $user->retrieveExceptions('revise', 'post');

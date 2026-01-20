@@ -48,6 +48,6 @@ To release the Pro plugin please make sure to check all the checkboxes below.
 
 ### Post-release
 
-- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-future-pro/actions)
+- [ ] Monitor [GitHub Actions](https://github.com/publishpress/publishpress-permissions-pro/actions)
 - [ ] Monitor the Slack channel #package-server
 - [ ] Test update on staging site
