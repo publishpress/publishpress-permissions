@@ -7,7 +7,6 @@ class CollabHooksAdmin
     function __construct()
     {
         // Late init following status registration, including moderation property for PublishPress statuses
-        add_action('init', [$this, 'actDefaultPrivacyWorkaround'], 72);
         add_action('init', [$this, 'actAddAuthorPages'], 99);
 
         add_action('init', [$this, 'actImplicitNavMenuCaps']);
@@ -219,16 +218,6 @@ class CollabHooksAdmin
     {
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/RoleAdmin.php');
         return Collab\RoleAdmin::canSetExceptions($can, $operation, $for_item_type, $args);
-    }
-
-    // prevent default_privacy option from forcing a draft/pending post into private publishing
-    function actDefaultPrivacyWorkaround()
-    {
-        global $pagenow;
-        if (!PWP::empty_POST() && in_array($pagenow, ['post.php', 'post-new.php'])) {
-            require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/PostEdit.php');
-            Collab\PostEdit::defaultPrivacyWorkaround();
-        }
     }
 
     function actPreGetPosts($query_obj)
