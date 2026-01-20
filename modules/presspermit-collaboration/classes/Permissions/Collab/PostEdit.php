@@ -5,6 +5,10 @@ class PostEdit
 {
     public static function fltPostStatus($status)
     {
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+            return $status;
+        }
+
         if (!$post_id = presspermit()->getCurrentSanitizePostID()) {
             $post_id = PWP::getPostID();
         }
