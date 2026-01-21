@@ -401,7 +401,7 @@ class Permissions
             'term' => []
         ];
 
-        $additional_ids = $user->getExceptionPosts($required_operation, 'additional', $exc_post_type, ['status' => true]);
+        $additional_ids = $user->getExceptionPosts($required_operation, 'additional', $exc_post_type, array_merge($args, ['status' => true]));
 
         foreach ($additional_ids as $_status => $_ids) {
             if ($_status) {  // db storage is with "post_status:" prefix to allow for implementation of other attributes
