@@ -1,16 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.6.4] - 27 January, 2026
-
-- Added: Translations for Spanish, French, and Italian languages. #2139
-- Changed: Tooltip wording update for Filtered Post Types. #2150
-- Changed: Wording update for Permissions Settings. #2151
-- Fixed: "Create Revision" permission could allow Revisors to edit posts in certain configurations. #2131
-- Fixed: Status lock mechanism now handles autosave correctly to avoid corrupting post drafts. #2130
-- Removed: Default Visibility feature (functionality replaced by Statuses plugin). #2129
-- Removed: Status Control module completely (functionality replaced by Statuses plugin). #2146
-
 [4.6.3] - 30 December, 2025
 
 - Updated: French, Spanish, and Italian translations to improve wording accuracy and completeness. #2101
