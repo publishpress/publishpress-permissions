@@ -292,16 +292,6 @@ class AgentPermissionsUI
         </table>
 
         <div class='pp-ext-promo'>
-            <?php
-                if (!$pp->moduleActive('status-control') && $pp->getOption('display_extension_hints')) : ?>
-                <div>
-                    <?php
-                    if (presspermit()->isPro()) {
-                        esc_html_e('To assign roles for custom post statuses, activate the Status Control feature.', 'press-permit-core');
-                    }
-                    ?>
-                </div>
-
                 <div>
                     <?php
                     if (function_exists('bbp_get_version') && !$pp->moduleActive('compatibility') && $pp->getOption('display_extension_hints')) {
@@ -317,9 +307,8 @@ class AgentPermissionsUI
                     }
                     ?>
                 </div>
-            <?php endif;
 
-                if ((defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) && !$pp->moduleActive('collaboration') && $pp->getOption('display_extension_hints')) : ?>
+                <?php if ((defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) && !$pp->moduleActive('collaboration') && $pp->getOption('display_extension_hints')) : ?>
                 <div>
                     <?php esc_html_e('To assign page-specific PublishPress Revision permissions, enable the Editing Permissions feature.', 'press-permit-core'); ?>
                 </div>

@@ -40,7 +40,7 @@ class CapabilityFilters
         add_filter('user_has_cap', function($caps) {
             presspermit()->doing_cap_check = true;
             return $caps;
-        }, 10, 1);
+        }, 1, 1);
 
         add_filter('user_has_cap', function($caps) {
             presspermit()->doing_cap_check = false;

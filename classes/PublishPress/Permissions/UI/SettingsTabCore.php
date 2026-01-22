@@ -108,7 +108,7 @@ class SettingsTabCore
                     } else {
                         $option_name = 'enabled_post_types';
                         esc_html_e('Modify permissions for these Post Types:', 'press-permit-core');
-                        $this->generateTooltip(esc_html__('This causes type-specific capabilities to be required for editing ("edit_things" instead of "edit_posts"). ', 'press-permit-core'), '', 'top', true, ['class' => 'click', 'html' => '<a href="https://publishpress.com/knowledge-base/type-specific-capabilities/" class="btn btn-link" target="_blank" rel="noopener noreferrer">Find out more</a>']);
+                        $this->generateTooltip(esc_html__('This causes type-specific capabilities to be required for editing ("edit_things" instead of "edit_posts"). ', 'press-permit-core'), '', 'top', true, ['class' => 'click', 'html' => '<a href="https://publishpress.com/knowledge-base/capabilities-in-publishpress-permissions/" class="btn btn-link" target="_blank" rel="noopener noreferrer">docs</a>']);
                         $types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
                         // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
                         $supported_private_types = apply_filters('presspermit_supported_private_types', []);    // ['series_grouping']);

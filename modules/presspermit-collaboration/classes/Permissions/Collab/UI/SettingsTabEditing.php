@@ -27,6 +27,7 @@ class SettingsTabEditing
     function sectionCaptions($sections)
     {
         $new_editing = [
+            'post_editor'              => esc_html__('Editor Options', 'press-permit-core'),
             'content_management'       => esc_html__('Posts / Pages Listing', 'press-permit-core'),
         ];
 
@@ -82,6 +83,33 @@ class SettingsTabEditing
 
         $ui = \PublishPress\Permissions\UI\SettingsAdmin::instance();
         $tab = 'editing';
+        $section = 'post_editor';                        // --- EDITOR OPTIONS SECTION ---
+        if (!empty($ui->form_options[$tab][$section])) :
+        ?>
+            <tr>
+                <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
+                <td>
+                    <script type="text/javascript">
+                        /* <![CDATA[ */
+                        jQuery(document).ready(function($) {
+                            $('#add_author_pages').on('click', function() {
+                                $('div.publish_author_pages').toggle($(this).is(':checked'));
+                            });
+                        });
+                        /* ]]> */
+                    </script>
+                    <?php
+                    $ui->optionCheckbox('page_parent_editable_only', $tab, $section);
+                    $ui->optionCheckbox('page_parent_order', $tab, $section);
+
+                    $hint = esc_html__("When saving a post, if the default term is not selectable, substitute first available.", 'press-permit-core')
+                        . ' ' . esc_html__('Some term-limited editing configurations require this.', 'press-permit-core');
+
+                    $ui->optionCheckbox('auto_assign_available_term', $tab, $section, $hint, '', ['hint_class' => 'pp-subtext-show']);
+                    ?>
+                </td>
+            </tr>
+        <?php endif; // any options accessable in this section
 
         $section = 'content_management';                        // --- POSTS / PAGES LISTING SECTION ---
         if (!empty($ui->form_options[$tab][$section])) :

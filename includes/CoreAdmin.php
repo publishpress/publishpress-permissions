@@ -51,7 +51,6 @@ class CoreAdmin
                     'presspermit-file-access',
                     'presspermit-membership',
                     'presspermit-sync',
-                    'presspermit-status-control',
                 ];
 
                 return array_merge($modules, $pro_only);
@@ -61,29 +60,6 @@ class CoreAdmin
 
     function actAdminMenuPromos($pp_options_menu, $handler)
     {
-        // Disable custom status promos until PublishPress Statuses and compatible version of Permissions Pro are released
-
-        // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-        /*
-        add_submenu_page(
-            $pp_options_menu, 
-            esc_html__('Workflow Statuses', 'press-permit-core'), 
-            esc_html__('Workflow Statuses', 'press-permit-core'), 
-            'read', 
-            'presspermit-statuses', 
-            $handler
-        );
-
-        add_submenu_page(
-            $pp_options_menu, 
-            esc_html__('Visibility Statuses', 'press-permit-core'), 
-            esc_html__('Visibility Statuses', 'press-permit-core'), 
-            'read', 
-            'presspermit-visibility-statuses', 
-            $handler
-        );
-        */
-
         // Only show Teaser promo menu if the Teaser module is not active/available.
         if (!presspermit()->moduleActive('teaser')) {
             add_submenu_page(
@@ -177,7 +153,6 @@ class CoreAdmin
                 'collaboration' => 'https://publishpress.com/knowledge-base/content-editing-permissions/',
                 'compatibility' => 'https://publishpress.com/knowledge-base/statuses-and-permissions-pro/',
                 'teaser' => 'https://publishpress.com/knowledge-base/getting-started-with-teasers/',
-                'status-control' => 'https://publishpress.com/knowledge-base/statuses-and-permissions-pro/',
                 'file-access' => 'https://publishpress.com/knowledge-base/file-filtering-nginx/',
                 'membership' => 'https://publishpress.com/knowledge-base/groups-date-limits/',
                 'sync' => 'https://publishpress.com/knowledge-base/how-to-create-a-personal-page-for-each-wordpress-user/'
@@ -189,7 +164,6 @@ class CoreAdmin
                 'collaboration'  => 'dashicons-edit',
                 'compatibility'  => 'dashicons-admin-plugins',
                 'teaser'         => 'dashicons-visibility',
-                'status-control' => 'dashicons-admin-settings',
                 'file-access'    => 'dashicons-media-document',
                 'membership'     => 'dashicons-calendar-alt',
                 'sync'           => 'dashicons-admin-users'
@@ -200,7 +174,6 @@ class CoreAdmin
                 'collaboration'  => 'Upgrade to Pro to gain advanced content editing permissions.',
                 'compatibility'  => 'Upgrade to Pro to enjoy enhanced statuses and permissions.',
                 'teaser'         => 'Upgrade to Pro to get started with teasers.',
-                'status-control' => 'Upgrade to Pro to utilize advanced statuses and permissions.',
                 'file-access'    => 'Upgrade to Pro to restrict direct file access.',
                 'membership'     => 'Upgrade to Pro to limit access based on group membership.',
                 'sync'           => 'Upgrade to Pro to create pages on sites each user automatically.'

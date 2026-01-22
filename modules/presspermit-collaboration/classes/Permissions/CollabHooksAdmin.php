@@ -6,7 +6,6 @@ class CollabHooksAdmin
 {
     function __construct()
     {
-        // Late init following status registration, including moderation property for PublishPress statuses
         add_action('init', [$this, 'actAddAuthorPages'], 99);
 
         add_action('init', [$this, 'actImplicitNavMenuCaps']);

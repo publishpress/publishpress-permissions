@@ -313,14 +313,14 @@ class SettingsAdmin
 	        $pp_caps['pp_force_quick_edit'] =   esc_html__('Allow non-Administrators to Quick Edit or Bulk Edit (possibly allowing them to bypass restrictions).', 'press-permit-core');
 		}
 
-        if (!defined('PRESSPERMIT_PRO_VERSION') && !presspermit()->moduleActive('status-control') && !presspermit()->keyActive()) {
+        if (!defined('PRESSPERMIT_PRO_VERSION') && !class_exists('PublishPress\Statuses\StatusControl') && !presspermit()->keyActive()) {
             $pp_caps = array_merge(
                 $pp_caps,
                 [
-                    'pp_define_post_status' => esc_html__('(Permissions Pro capability)', 'press-permit-core'),
-                    'pp_define_privacy' => esc_html__('(Permissions Pro capability)', 'press-permit-core'),
-                    'set_posts_status' => esc_html__('(Permissions Pro capability)', 'press-permit-core'),
-                    'pp_moderate_any' => esc_html__('(Permissions Pro capability)', 'press-permit-core'),
+                    'pp_define_post_status' => esc_html__('(Statuses Pro capability)', 'press-permit-core'),
+                    'pp_define_privacy' => esc_html__('(Statuses Pro capability)', 'press-permit-core'),
+                    'set_posts_status' => esc_html__('(Statuses Pro capability)', 'press-permit-core'),
+                    'pp_moderate_any' => esc_html__('(Statuses Pro capability)', 'press-permit-core'),
                 ]
             );
         }
