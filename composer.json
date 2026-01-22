@@ -47,9 +47,9 @@
     "phpstan/extension-installer": "^1.2"
   },
   "scripts": {
-    "build": "pbuild build",
-    "build:dir": "pbuild build-dir",
-    "build:clean": "pbuild clean",
+    "build": "build zip",
+    "build:dir": "build dir",
+    "build:clean": "build clean",
     "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
     "gen:mo": "wp i18n make-mo ./languages ./languages --allow-root",
     "gen:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,vendor, --allow-root",
