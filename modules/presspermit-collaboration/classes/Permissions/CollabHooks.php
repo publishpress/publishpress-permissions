@@ -48,8 +48,6 @@ class CollabHooks
         add_action('presspermit_cap_filters', [$this, 'actLoadCapFilters']);
         add_action('presspermit_page_filters', [$this, 'actLoadWorkaroundFilters']);
 
-        // if PPS is active, hook into its visibility forcing mechanism and UI (applied by PPS for specific pages)
-        add_filter('presspermit_getItemCondition', [$this, 'fltForceDefaultVisibility'], 10, 4);
         add_filter('presspermit_read_own_attachments', [$this, 'fltReadOwnAttachments'], 10, 2);
         add_filter('presspermit_ajax_edit_actions', [$this, 'fltAjaxEditActions']);
 
@@ -128,6 +126,20 @@ class CollabHooks
                 }
             }
         }
+
+        add_action(
+            'publishpress_statuses_supplement_moderate_any_cap', 
+            function() {
+                if (!presspermit()->isContentAdministrator() && function_exists('publishpress_status_control')) {
+                    $user = publishpress_status_control()->getUser();
+
+                    if (!empty($user->site_roles)) {
+                        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Permissions.php');
+                        Collab\Permissions::supplementModerateAnyCap();
+                    }
+                }
+            }
+        );
 
         if (defined('WPB_VC_VERSION')) {
             require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Compat/BakeryPageBuilder.php');
@@ -410,31 +422,6 @@ class CollabHooks
         }
 
         return $read_own;
-    }
-
-    // Filters item_condition retrieval for hierarchical propagation of visibility in a page tree
-    function fltForceDefaultVisibility($item_condition, $source_name, $attribute, $args = [])
-    {
-        // allow any existing page-specific settings to override default forcing
-        if (('post' == $source_name) && ('force_visibility' == $attribute) && !$item_condition && isset($args['post_type'])) {
-            if (empty($args['assign_for']) || ('item' == $args['assign_for'])) {
-
-                if ($default_privacy = apply_filters('publishpress_statuses_default_visibility', '', $args['post_type'])) {
-                    if (apply_filters('publishpress_statuses_force_default_visibility', false, $args['post_type']) || PWP::isBlockEditorActive($args['post_type'])) {
-
-                        // only apply if status is currently registered and PP-enabled for the post type
-                        if (PWP::getPostStatuses(['name' => $default_privacy, 'post_type' => $args['post_type']])) {
-                            if (!empty($args['return_meta']))
-                                return (object)['force_status' => $default_privacy, 'force_basis' => 'default'];
-                            else
-                                return $default_privacy;
-                        }
-                    }
-                }
-            }
-        }
-
-        return $item_condition;
     }
 
     function actOnInit()
