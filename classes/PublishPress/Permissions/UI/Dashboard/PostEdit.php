@@ -39,7 +39,7 @@ class PostEdit
 
         if (
             current_user_can('pp_manage_settings')
-            && (!$pp->moduleActive('collaboration') || !$pp->moduleActive('status-control'))
+            && (!$pp->moduleActive('collaboration') || !class_exists('PublishPress\Statuses\StatusControl'))
             && $pp->getOption('display_extension_hints')
         ) {
             require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsPostEdit.php');
