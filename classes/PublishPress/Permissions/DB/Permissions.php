@@ -60,8 +60,8 @@ class Permissions
                 )
             );
 
-            $no_ext = !$pp->moduleActive('collaboration') && !$pp->moduleActive('status-control');
-            $no_custom_stati = !$pp->moduleActive('status-control');
+            $no_ext = !$pp->moduleActive('collaboration') && !class_exists('PublishPress\Statuses\StatusControl');
+            $no_custom_stati = !class_exists('PublishPress\Statuses\StatusControl');
 
             foreach ($results as $row) {
                 // roles for these post statuses will not be applied if corresponding modules are inactive, so do not indicate in users/groups listing or profile
