@@ -117,6 +117,16 @@ class Permissions
         if (in_array($pagenow, ['term.php'])) {
             add_filter('gettext', [$this, 'flt_edit_tag'], 99, 3);
         }
+
+        add_filter('user_has_cap', function($caps) {
+            $this->doing_cap_check = true;
+            return $caps;
+        }, 1, 1);
+
+        add_filter('user_has_cap', function($caps) {
+            $this->doing_cap_check = false;
+            return $caps;
+        }, PHP_INT_MAX, 1);
     }
 
     public function isInsertedPost($post_id)
