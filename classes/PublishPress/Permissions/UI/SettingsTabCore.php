@@ -24,8 +24,8 @@ class SettingsTabCore
     public function sectionCaptions($sections)
     {
         $new = [
-            'taxonomies' => esc_html__('Filtered Taxonomies', 'press-permit-core'),
-            'post_types' => esc_html__('Filtered Post Types', 'press-permit-core'),
+            'taxonomies' => esc_html__('Taxonomies', 'press-permit-core'),
+            'post_types' => esc_html__('Post Types', 'press-permit-core'),
             'db_maint' => esc_html__('Database Maintenance', 'press-permit-core'),
         ];
 
@@ -38,8 +38,8 @@ class SettingsTabCore
     public function optionCaptions($captions)
     {
         $opt = [
-            'enabled_taxonomies' => esc_html__('Filtered Taxonomies', 'press-permit-core'),
-            'enabled_post_types' => esc_html__('Filtered Post Types', 'press-permit-core'),
+            'enabled_taxonomies' => esc_html__('Taxonomies', 'press-permit-core'),
+            'enabled_post_types' => esc_html__('Post Types', 'press-permit-core'),
             'define_media_post_caps' => esc_html__('Enforce distinct edit, delete capability requirements for Media', 'press-permit-core'),
         ];
 
@@ -67,7 +67,7 @@ class SettingsTabCore
         $ui = SettingsAdmin::instance();
         $tab = 'core';
 
-        // --- FILTERED TAXONOMIES / POST TYPES SECTION ---
+        // --- TAXONOMIES / POST TYPES SECTION ---
         foreach (['object' => 'post_types', 'term' => 'taxonomies'] as $scope => $section) {
             if (empty($ui->form_options[$tab][$section])) {
                 continue;
