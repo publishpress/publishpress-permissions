@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 * Removed: Default Visibility feature (functionality replaced by Statuses plugin). #2129
 * Removed: Status Control module completely (functionality replaced by Statuses plugin). #2146
 * Changed: Translations for Spanish, French, and Italian languages. #2139
+* Changed: Tooltip wording update for Filtered Post Types. #2150
+* Changed: Wording update for Permissions Settings. #2151
 
 = 4.6.3 - 30 December 2025 =
 * Updated: French, Spanish, and Italian translations to improve wording accuracy and completeness. #2101
