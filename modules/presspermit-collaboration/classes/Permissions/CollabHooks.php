@@ -48,8 +48,6 @@ class CollabHooks
         add_action('presspermit_cap_filters', [$this, 'actLoadCapFilters']);
         add_action('presspermit_page_filters', [$this, 'actLoadWorkaroundFilters']);
 
-        // if PPS is active, hook into its visibility forcing mechanism and UI (applied by PPS for specific pages)
-        add_filter('presspermit_getItemCondition', [$this, 'fltForceDefaultVisibility'], 10, 4);
         add_filter('presspermit_read_own_attachments', [$this, 'fltReadOwnAttachments'], 10, 2);
         add_filter('presspermit_ajax_edit_actions', [$this, 'fltAjaxEditActions']);
 
@@ -129,6 +127,20 @@ class CollabHooks
             }
         }
 
+        add_action(
+            'publishpress_statuses_supplement_moderate_any_cap', 
+            function() {
+                if (!presspermit()->isContentAdministrator() && function_exists('publishpress_status_control')) {
+                    $user = publishpress_status_control()->getUser();
+
+                    if (!empty($user->site_roles)) {
+                        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Permissions.php');
+                        Collab\Permissions::supplementModerateAnyCap();
+                    }
+                }
+            }
+        );
+
         if (defined('WPB_VC_VERSION')) {
             require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Compat/BakeryPageBuilder.php');
             new Collab\Compat\BakeryPageBuilder();
@@ -175,8 +187,6 @@ class CollabHooks
             'editor_ids_sitewide_requirement' => 0,
             
             'force_taxonomy_cols' => 0,
-            'default_privacy' => [],
-            'force_default_privacy' => [],
             'page_parent_order' => '',
             'page_parent_editable_only' => 0,
 
@@ -414,28 +424,6 @@ class CollabHooks
         return $read_own;
     }
 
-    function fltForceDefaultVisibility($item_condition, $source_name, $attribute, $args = [])
-    {
-        // allow any existing page-specific settings to override default forcing
-        if (('post' == $source_name) && ('force_visibility' == $attribute) && !$item_condition && isset($args['post_type'])) {
-            if (empty($args['assign_for']) || ('item' == $args['assign_for'])) {
-                if ($default_privacy = presspermit()->getTypeOption('default_privacy', $args['post_type'])) {
-                    if ($force = presspermit()->getTypeOption('force_default_privacy', $args['post_type']) || PWP::isBlockEditorActive($args['post_type'])) {
-                        // only apply if status is currently registered and PP-enabled for the post type
-                        if (PWP::getPostStatuses(['name' => $default_privacy, 'post_type' => $args['post_type']])) {
-                            if (!empty($args['return_meta']))
-                                return (object)['force_status' => $default_privacy, 'force_basis' => 'default'];
-                            else
-                                return $default_privacy;
-                        }
-                    }
-                }
-            }
-        }
-
-        return $item_condition;
-    }
-
     function actOnInit()
     {
         Collab\Capabilities::instance();
@@ -486,14 +474,6 @@ class CollabHooks
                 );
             } else {
                 $options['presspermit_enabled_taxonomies'] = [];
-            }
-        }
-    	
-        if (!empty($options['presspermit_default_privacy'])) {
-            $disabled_types = (class_exists('bbPress', false)) ? ['forum', 'topic', 'reply'] : [];
-            if ($disabled_types = apply_filters('presspermit_disabled_default_privacy_types', $disabled_types)) {
-                if ($_default_privacy = maybe_unserialize($options['presspermit_default_privacy']))
-                    $options['presspermit_default_privacy'] = array_diff_key($_default_privacy, array_fill_keys($disabled_types, true));
             }
         }
 

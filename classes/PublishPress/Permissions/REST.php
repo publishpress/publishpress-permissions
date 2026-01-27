@@ -182,24 +182,6 @@ class REST
                         $this->post_id = (!empty($this->params['id'])) ? $this->params['id'] : 0;
                     }
 
-                    if (('revision' != $this->post_type) && presspermit()->getTypeOption('default_privacy', $this->post_type)) {
-                        if (false === get_post_meta($this->post_id, '_pp_original_status')) {
-                            global $wpdb;
-
-                            // phpcs Note: When imposing a default privacy, ensure retrieval of stored original status, not newly updated value
-
-                            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-                            if ( $post_status = $wpdb->get_var( 
-                                $wpdb->prepare(
-                                    "SELECT post_status FROM $wpdb->posts WHERE ID = %s", 
-                                    $this->post_id
-                                )
-                            )) {
-                                update_post_meta($this->post_id, '_pp_original_status', $this->post_status);
-                            }
-                        }
-                    }
-
                     // workaround for superfluous post retrieval by Gutenberg on Parent Page query
                     if ($this->is_view_method && !$this->post_id) {
                         $params = $request->get_params();

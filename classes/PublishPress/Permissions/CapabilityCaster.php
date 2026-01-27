@@ -187,7 +187,7 @@ class CapabilityCaster
             return [];
         }
 
-        if (!$pp->moduleActive('status-control') && strpos($role_name, 'post_status:private')
+        if (!class_exists('PublishPress\Statuses\StatusControl') && strpos($role_name, 'post_status:private')
         && (isset($pattern_role_caps[$base_role_name]['read']) || isset($pattern_role_caps[$base_role_name][PRESSPERMIT_READ_PUBLIC_CAP]))
         ) {
             $pattern_role_caps[$base_role_name]['read_private_posts'] = true;

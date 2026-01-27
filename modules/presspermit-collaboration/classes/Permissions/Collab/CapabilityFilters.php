@@ -12,6 +12,8 @@ class CapabilityFilters
 
         add_filter('presspermit_user_has_cap_params', [$this, 'fltUserHasCapParams'], 10, 3);
 
+        add_filter('publishpress_statuses_can_publish', [$this, 'fltCanPublish'], 10, 2);
+
         if (!defined('PRESSPERMIT_DISABLE_TERM_PREASSIGN')) {
             add_action('presspermit_has_post_cap_pre', [$this, 'actSavePostPreAssignTerms'], 10, 4);
         }
@@ -190,6 +192,28 @@ class CapabilityFilters
         return ($return) ? array_merge((array)$force_vars, $return) : $force_vars;
 
         // note: CapabilityFilters::fltUserHasCap() filters return array to allowed variables before extracting
+    }
+
+    function fltCanPublish($can_publish, $args) {
+        $args = (array) $args;
+        $defaults = ['post_id' => 0, 'is_published' => false, 'post_type' => ''];
+
+        if ($can_publish) {
+            return $can_publish;
+        }
+
+        foreach ($defaults as $var => $default_val) {
+            $$var = (isset($args[$var])) ? $args[$var] : $default_val;
+        }
+
+        $user = presspermit()->getUser();
+
+        $operation = (!$is_published && presspermit()->getOption('publish_exceptions')) ? 'publish' : 'edit';
+        $additional_ids = $user->getExceptionPosts($operation, 'additional', $post_type);
+
+        $can_publish = in_array($post_id, $additional_ids);
+
+        return $can_publish;
     }
 
     function actSavePostPreAssignTerms($pp_reqd_caps, $source_name, $object_type, $post_id)

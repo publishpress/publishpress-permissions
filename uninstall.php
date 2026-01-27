@@ -47,7 +47,7 @@ if (get_option('presspermit_delete_settings_on_uninstall')) {
             if (!empty($wpdb->postmeta)) {
                 @$wpdb->query(
                     "DELETE FROM $wpdb->postmeta WHERE meta_key IN ("
-                    . "'_pp_wpml_mirrored_exceptions', '_rs_file_key', '_last_attachment_ids', '_last_category_ids', '_last_post_tag_ids', '_pp_last_parent', '_scheduled_status', '_pp_original_status', '_pp_sync_author_id', '_pp_is_autodraft', '_pp_is_auto_inserted'"
+                    . "'_pp_wpml_mirrored_exceptions', '_rs_file_key', '_last_attachment_ids', '_last_category_ids', '_last_post_tag_ids', '_pp_last_parent', '_pp_sync_author_id', '_pp_is_autodraft', '_pp_is_auto_inserted'"
                     . ")"
                 );
             }
@@ -76,10 +76,6 @@ if (get_option('presspermit_delete_settings_on_uninstall')) {
 
             if (!empty($wpdb->pp_circles)) {
                 @$wpdb->query("DROP TABLE IF EXISTS $wpdb->pp_circles");
-            }
-
-            if (!empty($wpdb->pp_conditions)) {
-                @$wpdb->query("DROP TABLE IF EXISTS $wpdb->pp_conditions");
             }
 
             if (!empty($wpdb->ppi_runs)) {

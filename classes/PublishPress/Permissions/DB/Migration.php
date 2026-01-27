@@ -21,12 +21,6 @@ class Migration
             . " AND option_name NOT LIKE '%_version' AND option_name NOT IN ('presspermit_custom_conditions_post_status')"
         );
 
-        if (is_multisite()) {
-            if (!get_site_option('presspermit_updated_2_7_ms')) {
-                self::migrateNetworkOptions();
-            }
-        }
-
         // migrate PP Extension activation status to deactived_modules option
         if ((false === get_option('presspermit_deactivated_modules')) && get_option("pp_c_version")) {
             $ext_map = [
@@ -34,8 +28,7 @@ class Migration
                 'presspermit-collaboration' => 'pp-collaborative-editing',
                 'presspermit-compatibility' => 'pp-compatibility',
                 'presspermit-file-access'   => 'pp-file-url-filter',
-                'presspermit-membership'    => 'pp-membership',
-                'presspermit-status-control'=> 'pp-custom-post-statuses',      
+                'presspermit-membership'    => 'pp-membership', 
                 'presspermit-teaser'        => 'pp-content-teaser',
             ];
 
@@ -78,25 +71,6 @@ class Migration
 
             update_option('presspermit_deactivated_modules', $deactivate_modules);
         }
-    }
-
-    private static function migrateNetworkOptions()
-    {
-        global $wpdb;
-
-        // Direct query of plugin table on plugin version update operation
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-        $options = $wpdb->get_results("SELECT meta_key, meta_value FROM $wpdb->sitemeta WHERE meta_key LIKE 'pp\_%'");
-        foreach ($options as $row) {
-            update_site_option('presspermit_' . substr($row->meta_key, 3), maybe_unserialize($row->meta_value));
-        }
-
-        $val = get_option('ppperm_legacy_exception_handling');
-        if (false !== $val) {
-            update_option('presspermit_legacy_exception_handling', $val);
-        }
-
-        update_site_option('presspermit_updated_2_7_ms', true);
     }
 
     // ===== begin 2.1.35 cleanup =====
