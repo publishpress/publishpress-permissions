@@ -40,7 +40,7 @@ class Roles
 
     public function actPluginsLoaded()
     {
-        if (!presspermit()->moduleActive('status-control') 
+        if (!class_exists('PublishPress\Statuses\StatusControl') 
         || !presspermit()->moduleActive('collaboration')) {
             add_filter('presspermit_unfiltered_post_types', [$this, 'fltPostTypesNoBBpress'], 1);  // requires additional code, avoid appearance of support
         } else {

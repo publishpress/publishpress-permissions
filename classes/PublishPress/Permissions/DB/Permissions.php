@@ -60,8 +60,8 @@ class Permissions
                 )
             );
 
-            $no_ext = !$pp->moduleActive('collaboration') && !$pp->moduleActive('status-control');
-            $no_custom_stati = !$pp->moduleActive('status-control');
+            $no_ext = !$pp->moduleActive('collaboration') && !class_exists('PublishPress\Statuses\StatusControl');
+            $no_custom_stati = !class_exists('PublishPress\Statuses\StatusControl');
 
             foreach ($results as $row) {
                 // roles for these post statuses will not be applied if corresponding modules are inactive, so do not indicate in users/groups listing or profile
@@ -401,7 +401,7 @@ class Permissions
             'term' => []
         ];
 
-        $additional_ids = $user->getExceptionPosts($required_operation, 'additional', $exc_post_type, ['status' => true]);
+        $additional_ids = $user->getExceptionPosts($required_operation, 'additional', $exc_post_type, array_merge($args, ['status' => true]));
 
         foreach ($additional_ids as $_status => $_ids) {
             if ($_status) {  // db storage is with "post_status:" prefix to allow for implementation of other attributes
