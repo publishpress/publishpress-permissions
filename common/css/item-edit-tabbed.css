@@ -400,6 +400,103 @@
     font-size: 16px;
 }
 
+/* Search Box with Select2 (Users Tab) */
+.pp-search-box-select2 {
+    position: relative;
+}
+
+.pp-search-box-select2 .dashicons-search {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--pp-gray-5);
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.pp-search-box-select2 .pp-search-input {
+    width: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+
+.pp-search-box-select2 .select2-container .select2-selection--multiple {
+    max-height: 30px;
+    border: 1px solid #8c8f94;
+    padding-left: 36px;
+}
+
+.pp-search-box-select2 .select2-container .select2-selection__rendered {
+    padding-left: 0;
+}
+
+.pp-search-box-select2 .select2-container .select2-selection--multiple:focus-within,
+.pp-search-box-select2 .select2-container.select2-container--focus .select2-selection--multiple {
+    border-color: var(--pp-primary);
+    background: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    outline: none;
+}
+
+.pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field {
+    margin: 0;
+    width: 100% !important;
+    min-width: 250px;
+}
+
+.pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field::placeholder {
+    color: var(--pp-gray-5);
+    opacity: 1;
+}
+
+.pp-search-box-select2 .select2-container .select2-selection__choice {
+    background: var(--pp-primary);
+    border: none;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin: 2px 4px 2px 0;
+    font-size: 12px;
+}
+
+.pp-search-box-select2 .select2-container .select2-selection__choice__remove {
+    color: white;
+    margin-right: 6px;
+    font-weight: bold;
+}
+
+.pp-search-box-select2 .select2-container .select2-selection__choice__remove:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* User Added Notice */
+.pp-user-added-notice {
+    padding: 12px 18px;
+    background: #d1fae5;
+    border-left: 4px solid #10b981;
+    color: #065f46;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pp-user-added-notice .dashicons {
+    color: #10b981;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.pp-user-added-notice strong {
+    color: #064e3b;
+}
+
 /* Bulk Actions Toolbar */
 .pp-bulk-actions-toolbar {
     display: flex;
@@ -525,6 +622,56 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    position: relative;
+}
+
+/* Delete Item Button (Users Only) */
+.pp-delete-item {
+    background: transparent;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--pp-transition);
+    color: var(--pp-gray-5);
+    opacity: 0;
+    visibility: hidden;
+    margin-left: auto;
+}
+
+/* Show delete button on mobile (always visible) */
+@media (max-width: 768px) {
+    .pp-delete-item {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Show delete button on desktop hover */
+@media (min-width: 769px) {
+    .pp-permission-list-item:hover .pp-delete-item {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.pp-delete-item:hover {
+    background: #fee2e2;
+    color: #dc2626;
+    transform: scale(1.1);
+}
+
+.pp-delete-item:active {
+    transform: scale(0.95);
+}
+
+.pp-delete-item .dashicons {
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
 }
 
 /* Permission Select Wrapper */
@@ -954,4 +1101,44 @@
     background: linear-gradient(135deg,var(--pp-primary-dark),var(--pp-primary));
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(56, 88, 233, 0.3);
+}
+
+/* ============================
+   Newly Added Item Animation
+   ============================ */
+
+.pp-permission-list-item.pp-new-item {
+    background: linear-gradient(90deg, rgba(152, 102, 255, 0.1) 0%, transparent 100%);
+    border-left: 3px solid var(--pp-primary);
+    animation: slideInHighlight 0.5s ease-out;
+}
+
+@keyframes slideInHighlight {
+    0% {
+        background: rgba(152, 102, 255, 0.25);
+        transform: translateX(-10px);
+        opacity: 0;
+    }
+    50% {
+        background: rgba(152, 102, 255, 0.2);
+    }
+    100% {
+        background: rgba(152, 102, 255, 0.1);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* ============================
+   Removed Item State
+   ============================ */
+
+/* Keep removed items in DOM but hidden (for form submission) */
+.pp-permission-list-item.pp-item-removed {
+    display: none !important;
+    visibility: hidden;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
 }

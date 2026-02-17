@@ -537,13 +537,18 @@ class ItemExceptionsUI
 
         <!-- Users Content -->
         <div id="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-agent-type-content">
-            <!-- Search Box -->
-            <div class="pp-search-box">
+            <!-- Search Box with Select2 -->
+            <div class="pp-search-box pp-search-box-select2">
                 <span class="dashicons dashicons-search"></span>
-                <input type="text" class="pp-search-input" placeholder="<?php esc_attr_e('Search users...', 'press-permit-core'); ?>" />
-                <button type="button" class="pp-search-clear" style="display: none;">
-                    <span class="dashicons dashicons-no-alt"></span>
-                </button>
+                <select 
+                    id="pp-user-search-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" 
+                    class="pp-search-input pp-user-search-select2" 
+                    multiple="multiple"
+                    data-op="<?php echo esc_attr($op); ?>"
+                    data-for-item-type="<?php echo esc_attr($for_item_type); ?>"
+                    data-agent-type="user"
+                    data-placeholder="<?php esc_attr_e('Search and add users to exceptions...', 'press-permit-core'); ?>">
+                </select>
             </div>
             <?php $this->renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
         </div>
@@ -678,24 +683,8 @@ class ItemExceptionsUI
     private function renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
     {
         ?>
-        <div class="pp-permission-card pp-permission-card-full">
-            <div class="pp-permission-card-body">
-                <!-- User selection dropdown -->
-                <div class="pp-agent-selector">
-                    <?php
-                    $selector_args = array_merge($args, [
-                        'suppress_extra_prefix' => true,
-                        'ajax_selection' => true,
-                        'display_stored_selections' => false,
-                        'create_dropdowns' => true,
-                        'op' => $op,
-                        'via_item_type' => $via_item_type,
-                    ]);
-
-                    $pp_admin->agents()->agentsUI('user', [], "{$op}:{$for_item_type}:user", [], $selector_args);
-                    ?>
-                </div>
-
+        <div class="pp-permission-cards">
+            <div class="pp-permission-card">
                 <!-- Bulk Actions Toolbar -->
                 <div class="pp-bulk-actions-toolbar">
                     <div class="pp-bulk-select">
@@ -711,6 +700,7 @@ class ItemExceptionsUI
                             <?php if (!empty($this->data->inclusions_active)) : ?>
                             <option value="unblock"><?php esc_html_e('Set to Unblocked', 'press-permit-core'); ?></option>
                             <?php endif; ?>
+                            <option value="remove"><?php esc_html_e('Remove Selected', 'press-permit-core'); ?></option>
                         </select>
                         <button type="button" class="button pp-bulk-apply"><?php esc_html_e('Apply', 'press-permit-core'); ?></button>
                     </div>
@@ -801,8 +791,13 @@ class ItemExceptionsUI
             if (!empty($agent_info->metagroup_id)) {
                 $_name = \PublishPress\Permissions\DB\Groups::getMetagroupName('wp_role', $agent_info->metagroup_id, $_name);
             } 
-        } elseif (('user' == $agent_type) && !empty($agent_info->display_name) && ($agent_info->display_name != $agent_info->name)) {
-            $title = $agent_info->display_name;
+        } elseif ('user' == $agent_type) {
+            // Format: Display Name (username) or just username if no display name
+            if (!empty($agent_info->formatted_name)) {
+                $_name = $agent_info->formatted_name;
+            } else if (!empty($agent_info->display_name) && ($agent_info->display_name != $agent_info->name)) {
+                $_name = $agent_info->display_name . ' (' . $agent_info->name . ')';
+            }
         }
 
         // Determine current permission value
@@ -927,6 +922,9 @@ class ItemExceptionsUI
                                     class="<?php echo esc_attr($select_class); ?>" 
                                     <?php echo $disabled ? 'disabled="disabled"' : ''; ?>
                                     autocomplete="off">
+                                <?php if ('user' == $agent_type && !$disabled) : ?>
+                                <!-- Delete button for users only (hover-visible on desktop, always visible on mobile) -->
+                                <?php endif; ?>
                                 <?php 
                                 foreach ($this->render->options[$option_set] as $val => $lbl) :
                                     // Filter options for metagroups
@@ -955,6 +953,11 @@ class ItemExceptionsUI
                                     value="<?php echo esc_attr($current_val); ?>" />
                             <?php endif; ?>
                         </div>
+                        <?php if ('user' == $agent_type && !$disabled) : ?>
+                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove user from exceptions', 'press-permit-core'); ?>">
+                            <span class="dashicons dashicons-trash"></span>
+                        </button>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <?php
