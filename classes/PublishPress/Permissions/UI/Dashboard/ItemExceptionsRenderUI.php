@@ -4,9 +4,9 @@ namespace PublishPress\Permissions\UI\Dashboard;
 
 class ItemExceptionsRenderUI
 {
-    private $opt_labels = [];
-    private $opt_class = [];
-    private $options = [];
+    public $opt_labels = [];
+    public $opt_class = [];
+    public $options = [];
     private $base_url = '';
 
     public function __construct()
