@@ -16,7 +16,7 @@ class PostEdit
         if (presspermit()->getOption('use_tabbed_metabox')) {
             wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', [], PRESSPERMIT_VERSION);
             
-            $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '' : '.min';
+            $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
             wp_enqueue_script('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . "/common/js/item-edit-tabbed{$suffix}.js", ['jquery'], PRESSPERMIT_VERSION, true);
         }
 

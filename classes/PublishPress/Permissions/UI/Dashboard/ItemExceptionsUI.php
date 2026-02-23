@@ -346,6 +346,11 @@ class ItemExceptionsUI
             $drew_itemroles_marker = true;
         }
 
+        // Calculate exception counts for each operation
+        $current_exceptions = (isset($this->data->current_exceptions[$for_item_type]))
+            ? $this->data->current_exceptions[$for_item_type]
+            : [];
+
         ?>
         <div class="pp-tabbed-metabox">
             <!-- Left Sidebar with Operation Tabs -->
@@ -360,12 +365,36 @@ class ItemExceptionsUI
                         
                         // Get icon based on operation
                         $icon = $this->getOperationIcon($op);
+                        
+                        // Calculate counts for this operation
+                        $counts = $this->getExceptionCounts($op, $for_item_type, $current_exceptions);
+                        $total_count = $counts['total'];
+                        $has_exceptions = $total_count > 0;
+
+                        // Build tooltip text
+                        $tooltip_parts = [];
+                        if ($counts['roles'] > 0) {
+                            $tooltip_parts[] = sprintf(_n('%d role', '%d roles', $counts['roles'], 'press-permit-core'), $counts['roles']);
+                        }
+                        if ($counts['groups'] > 0) {
+                            $tooltip_parts[] = sprintf(_n('%d group', '%d groups', $counts['groups'], 'press-permit-core'), $counts['groups']);
+                        }
+                        if ($counts['users'] > 0) {
+                            $tooltip_parts[] = sprintf(_n('%d user', '%d users', $counts['users'], 'press-permit-core'), $counts['users']);
+                        }
+                        $tooltip_text = !empty($tooltip_parts) ? implode(', ', $tooltip_parts) : esc_html__('No exceptions configured', 'press-permit-core');
                     ?>
                         <button type="button" 
                                 class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
-                                data-target="<?php echo esc_attr($tab_id); ?>">
+                                data-target="<?php echo esc_attr($tab_id); ?>"
+                                data-exception-count="<?php echo esc_attr($total_count); ?>">
                             <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
-                            <?php echo esc_html($op_data['caption']); ?>
+                            <span class="pp-tab-label"><?php echo esc_html($op_data['caption']); ?></span>
+                            <?php if ($has_exceptions) : ?>
+                                <span class="pp-tab-badge" title="<?php echo esc_attr($tooltip_text); ?>">
+                                    <?php echo esc_html($total_count); ?>
+                                </span>
+                            <?php endif; ?>
                         </button>
                     <?php 
                         $first = false;
@@ -759,6 +788,47 @@ class ItemExceptionsUI
         ];
 
         return isset($icons[$op]) ? $icons[$op] : 'dashicons-admin-generic';
+    }
+
+    /**
+     * Get exception counts for an operation
+     * 
+     * @param string $op Operation name
+     * @param string $for_item_type Item type
+     * @param array $current_exceptions Current exceptions data
+     * @return array Array with keys: roles, groups, users, total
+     */
+    private function getExceptionCounts($op, $for_item_type, $current_exceptions)
+    {
+        $counts = [
+            'roles' => 0,
+            'groups' => 0,
+            'users' => 0,
+            'total' => 0,
+        ];
+
+        if (empty($current_exceptions) || empty($current_exceptions[$op])) {
+            return $counts;
+        }
+
+        // Count roles (wp_role)
+        if (!empty($current_exceptions[$op]['wp_role'])) {
+            $counts['roles'] = count($current_exceptions[$op]['wp_role']);
+        }
+
+        // Count groups (pp_group)
+        if (!empty($current_exceptions[$op]['pp_group'])) {
+            $counts['groups'] = count($current_exceptions[$op]['pp_group']);
+        }
+
+        // Count users
+        if (!empty($current_exceptions[$op]['user'])) {
+            $counts['users'] = count($current_exceptions[$op]['user']);
+        }
+
+        $counts['total'] = $counts['roles'] + $counts['groups'] + $counts['users'];
+
+        return $counts;
     }
 
     /**
