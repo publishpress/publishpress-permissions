@@ -275,6 +275,7 @@ class Permissions
             'users_bulk_groups' => 1,
             'limit_front_end_term_filtering' => 0,
             'list_all_constants' => 0,
+            'use_tabbed_metabox' => 1,
         ];
         $this->default_advanced_options = apply_filters('presspermit_default_advanced_options', $this->default_advanced_options);
 

@@ -58,6 +58,7 @@ class SettingsTabAdvanced
         // Settings that are always displayed
         $opt = [
             'advanced_options'                       => esc_html__('Display all advanced settings', 'press-permit-core'),
+            'use_tabbed_metabox'                     => esc_html__('Use modern tabbed metabox interface', 'press-permit-core'),
             'delete_settings_on_uninstall'           => esc_html__('Delete settings on plugin deletion', 'press-permit-core'),
             'post_blockage_priority'                 => esc_html__('Post-specific Permissions take priority', 'press-permit-core'),
             'media_search_results'                   => esc_html__('Search Results include Media', 'press-permit-core'),
@@ -160,7 +161,7 @@ class SettingsTabAdvanced
         // Advanced tab (populated here because they do not apply if Editing Permissions module is disabled)
         if ($this->enabled) {
             $additional = [
-                'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap'],
+                'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap', 'use_tabbed_metabox'],
                 'permissions'         => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
                 'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_by_level', 'user_permissions'],
                 'front_end'           => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
@@ -368,6 +369,10 @@ class SettingsTabAdvanced
                         }
                         $ui->optionCheckbox('create_tag_require_edit_cap', $tab, $section, $hint);
                     }
+
+                    $hint = esc_html__('Display all permission operations in a single metabox with tabs (modern UI). When disabled, each operation has a separate metabox (legacy UI).', 'press-permit-core');
+                    $ui->optionCheckbox('use_tabbed_metabox', $tab, $section, $hint);
+
 
                     do_action('presspermit_options_ui_insertion', $tab, $section, $ui);
                     ?>
