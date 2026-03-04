@@ -73,7 +73,7 @@ jQuery(document).ready(function ($) {
                         wp.data.dispatch('core/editor').savePost();
                     }
                 } catch (e) {
-                    console.log('Error applying default privacy:', e);
+                    console.error('Error applying default privacy:', e);
                     // Retry after a delay if there's still an error
                     setTimeout(applyDefaultPrivacy, 500);
                 }

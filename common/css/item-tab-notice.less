@@ -1,0 +1,104 @@
+/* ============================
+    UI Switch Notice
+    ============================ */
+// Color variables
+@primary-blue: #2271b1;
+@primary-blue-dark: #135e96;
+@light-blue-bg: #f0f6fc;
+@text-dark: #1d2327;
+@text-light: #787c82;
+@text-error: #d63638;
+
+.pp-ui-switch-notice {
+  position: relative;
+  border-left: 4px solid @primary-blue;
+  background: @light-blue-bg;
+  border-radius: 0;
+
+  // Padding variations for different contexts
+  &:not(.pp-tabbed-main .pp-ui-switch-notice) {
+     padding: 12px 15px !important;
+  }
+
+  .pp-tabbed-main & {
+     padding: 8px 15px !important;
+  }
+
+  // Paragraph styling
+  p {
+     margin: 0 !important;
+     font-size: 13px;
+     line-height: 1.6;
+  }
+
+  // Icon styling
+  .dashicons {
+     font-size: 18px;
+     width: 18px;
+     height: 18px;
+     flex-shrink: 0;
+     margin-top: 1px;
+  }
+
+  // Link styling
+  a {
+     color: @primary-blue;
+     text-decoration: none;
+     font-weight: 500;
+
+     &:hover {
+        color: @primary-blue-dark;
+        text-decoration: underline;
+     }
+  }
+
+  // Strong text styling
+  strong {
+     color: @text-dark;
+     font-weight: 600;
+  }
+
+  // Dismiss button styling
+  .notice-dismiss {
+     position: absolute;
+     top: 0;
+     right: 1px;
+     border: none;
+     margin: 0;
+     padding: 9px;
+     background: none;
+     color: @text-light;
+     cursor: pointer;
+     transition: color 0.1s ease-in-out;
+
+     &:hover {
+        color: @text-error;
+     }
+
+     &:focus {
+        color: @primary-blue-dark;
+        outline: 2px solid @primary-blue;
+        outline-offset: -2px;
+     }
+
+     &:before {
+        content: '\f153';
+        font-family: dashicons;
+        display: block;
+        font-size: 16px;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        background: none;
+     }
+
+     .screen-reader-text {
+        position: absolute;
+        left: -9999px;
+     }
+  }
+
+  &.is-dismissible {
+     position: relative;
+  }
+}
