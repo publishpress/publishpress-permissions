@@ -118,6 +118,35 @@ class ItemExceptionsUI
 
         //need effective line break here if not IE
         echo "<div style='clear:both;' class='" . esc_attr($class) . "'>";
+        
+        // Show info notice about switching to modern UI (dismissible) - only once
+        static $showed_legacy_notice;
+        if (empty($showed_legacy_notice)) {
+            $user_id = get_current_user_id();
+            $dismissed_legacy = get_user_meta($user_id, 'pp_dismissed_legacy_ui_notice', true);
+            
+            if (!$dismissed_legacy) :
+            ?>
+            <div class="pp-ui-switch-notice is-dismissible" data-notice-type="legacy">
+                <p>
+                    <span class="dashicons dashicons-info" style="color: #2271b1;"></span>
+                    <strong><?php esc_html_e('Try the new interface!', 'press-permit-core'); ?></strong>
+                    <?php esc_html_e('A modern tabbed interface is available with improved usability.', 'press-permit-core'); ?>
+                    <?php 
+                    $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=advanced#use_tabbed_metabox');
+                    printf(
+                        esc_html__('%sEnable it in settings%s.', 'press-permit-core'),
+                        '<a href="' . esc_url($settings_url) . '">',
+                        '</a>'
+                    );
+                    ?>
+                </p>
+                <button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
+            </div>
+            <?php
+            endif;
+            $showed_legacy_notice = true;
+        }
 
         foreach (array_keys($agent_types) as $agent_type) {
             $hide_class = ($toggle_agents && ($agent_type != $default_agent_type)) ? 'hide-if-js' : '';
@@ -317,6 +346,9 @@ class ItemExceptionsUI
             require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
             \PublishPress\Permissions\UI\HintsItemExceptions::itemHints($for_item_type);
         }
+        
+        // Output dismiss handler script (shared with modern UI)
+        $this->outputNoticeDismissScript();
     }
 
     /**
@@ -405,6 +437,30 @@ class ItemExceptionsUI
 
             <!-- Main Content Area with Tab Panes -->
             <div class="pp-tabbed-main">
+            <?php
+            // Show info notice about switching to legacy UI (dismissible)
+            $user_id = get_current_user_id();
+            $dismissed_modern = get_user_meta($user_id, 'pp_dismissed_modern_ui_notice', true);
+            
+            if (!$dismissed_modern) :
+            ?>
+            <div class="pp-ui-switch-notice is-dismissible" data-notice-type="modern">
+                <p>
+                    <span class="dashicons dashicons-info" style="color: #2271b1;"></span>
+                    <strong><?php esc_html_e('New Interface:', 'press-permit-core'); ?></strong>
+                    <?php esc_html_e('You\'re using the modern tabbed interface.', 'press-permit-core'); ?>
+                    <?php 
+                    $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=advanced#use_tabbed_metabox');
+                    printf(
+                        esc_html__('Prefer the classic view? %sSwitch to legacy metaboxes%s in settings.', 'press-permit-core'),
+                        '<a href="' . esc_url($settings_url) . '">',
+                        '</a>'
+                    );
+                    ?>
+                </p>
+                <button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
+            </div>
+            <?php endif; ?>
                 <div class="pp-tabbed-content">
                     <?php 
                     $first = true;
@@ -433,6 +489,47 @@ class ItemExceptionsUI
                 </div>
             </div>
         </div>
+        <?php
+        // Output dismiss handler script (shared with legacy UI)
+        $this->outputNoticeDismissScript();
+    }
+
+    /**
+     * Output the notice dismiss handler script (used by both legacy and modern UIs)
+     * Uses a static variable to ensure the script is only output once per page load
+     */
+    private function outputNoticeDismissScript()
+    {
+        static $script_output;
+        
+        if (!empty($script_output)) {
+            return;
+        }
+        
+        $script_output = true;
+        ?>
+        <script>
+        // Handle UI switch notice dismissal
+        jQuery(document).ready(function($) {
+            $(document).on('click', '.pp-ui-switch-notice .notice-dismiss', function(e) {
+                e.preventDefault();
+                var $notice = $(this).closest('.pp-ui-switch-notice');
+                var noticeType = $notice.data('notice-type');
+                
+                // Hide the notice with animation
+                $notice.fadeOut(300, function() {
+                    $(this).remove();
+                });
+                
+                // Save dismissal to database
+                $.post(ajaxurl, {
+                    action: 'pp_dismiss_ui_notice',
+                    notice_type: noticeType,
+                    nonce: '<?php echo wp_create_nonce('pp_dismiss_ui_notice'); ?>'
+                });
+            });
+        });
+        </script>
         <?php
     }
 
