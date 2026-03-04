@@ -548,9 +548,11 @@
         var $agentContent = $select.closest('.pp-agent-type-content');
         var $list = $agentContent.find('.pp-permission-list');
         var itemIdAttr = agentType + '-' + userId;
-        var selectName = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][item][' + userId + ']';
         var defaultValue = '2'; // Enable by default
         var cssClass = 'pp-yes2'; // CSS class for enabled state
+        
+        // Check if hierarchical permissions are needed (look for existing items with children selects)
+        var hasHierarchical = $list.find('.pp-permission-list-item .pp-children-select').length > 0;
 
         // Check if this user already exists in the list (possibly marked as removed)
         var $existingItem = $list.find('.pp-permission-list-item[data-agent-type="' + agentType + '"][data-agent-id="' + userId + '"]');
@@ -612,30 +614,57 @@
                     .text(userName)
             );
 
-        // Permission select
-        var $permissionControl = $('<div>')
-            .addClass('pp-permission-control')
+        // Permission control container
+        var $permissionControl = $('<div>').addClass('pp-permission-control');
+        
+        // Create "This Category" / "item" select
+        var selectNameItem = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][item][' + userId + ']';
+        var $itemSelect = $('<div>')
+            .addClass('pp-permission-select pp-item-select')
             .append(
-                $('<div>')
-                    .addClass('pp-permission-select')
-                    .append(
-                        $('<select>')
-                            .attr('name', selectName)
-                            .addClass(cssClass)
-                            .attr('autocomplete', 'off')
-                            .append($('<option>').val('').text('Default'))
-                            .append($('<option>').val('0').text('Blocked'))
-                            .append($('<option>').val('1').text('Allowed'))
-                            .append($('<option>').val('2').attr('selected', 'selected').text('Enabled'))
-                    )
+                hasHierarchical ? $('<label>').addClass('pp-select-label').text('This Category') : null
             )
             .append(
-                $('<button>')
-                    .attr('type', 'button')
-                    .addClass('pp-delete-item')
-                    .attr('title', 'Remove user from exceptions')
-                    .append($('<span>').addClass('dashicons dashicons-trash'))
+                $('<select>')
+                    .attr('name', selectNameItem)
+                    .addClass(cssClass)
+                    .attr('autocomplete', 'off')
+                    .append($('<option>').val('').addClass('pp-def').text('No setting'))
+                    .append($('<option>').val('0').addClass('pp-no2').text('Blocked'))
+                    .append($('<option>').val('2').addClass('pp-yes2').attr('selected', 'selected').text('Enabled'))
             );
+        
+        $permissionControl.append($itemSelect);
+        
+        // If hierarchical, create "Sub-Categories" / "children" select
+        if (hasHierarchical) {
+            var selectNameChildren = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][children][' + userId + ']';
+            var $childrenSelect = $('<div>')
+                .addClass('pp-permission-select pp-children-select')
+                .append(
+                    $('<label>').addClass('pp-select-label').text('Sub-Categories')
+                )
+                .append(
+                    $('<select>')
+                        .attr('name', selectNameChildren)
+                        .addClass('pp-def') // Default to "No setting" for children
+                        .attr('autocomplete', 'off')
+                        .append($('<option>').val('').addClass('pp-def').attr('selected', 'selected').text('No setting'))
+                        .append($('<option>').val('0').addClass('pp-no2').text('Blocked'))
+                        .append($('<option>').val('2').addClass('pp-yes2').text('Enabled'))
+                );
+            
+            $permissionControl.append($childrenSelect);
+        }
+        
+        // Add delete button
+        $permissionControl.append(
+            $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-delete-item')
+                .attr('title', 'Remove user from exceptions')
+                .append($('<span>').addClass('dashicons dashicons-trash'))
+        );
 
         // Assemble the item
         $newItem.append($checkbox).append($itemName).append($permissionControl);
@@ -646,10 +675,7 @@
         // Add to list with animation
         $list.append($newItem);
         $newItem.slideDown(300, function() {
-            // Remove animation class after animation
-            $(this).removeClass('pp-new-item');
-            
-            // Scroll to the new item
+            // Scroll to the new item after slide animation completes
             var listScrollTop = $list.scrollTop();
             var itemOffset = $newItem.position().top;
             var listHeight = $list.height();
@@ -660,6 +686,11 @@
                 }, 300);
             }
         });
+        
+        // Remove animation class after CSS animation completes (500ms)
+        setTimeout(function() {
+            $newItem.removeClass('pp-new-item');
+        }, 600);
 
         // Update operation tab badge
         setTimeout(() => {
@@ -794,11 +825,36 @@
             }
         }
 
-        // For classic editor
+        // For classic editor - warn about unsaved changes
         window.onbeforeunload = function() {
             return 'You have unsaved changes.';
         };
     }
+
+    /**
+     * Clear the unsaved changes warning when form is submitted
+     */
+    function clearUnsavedWarning() {
+        window.onbeforeunload = null;
+    }
+
+    // Clear warning on form submission (both term edit and post edit)
+    $(document).ready(function() {
+        // Term edit form (edittag form)
+        $('form#edittag').on('submit', function() {
+            clearUnsavedWarning();
+        });
+        
+        // Post edit form (post form)
+        $('form#post').on('submit', function() {
+            clearUnsavedWarning();
+        });
+        
+        // Also clear on Update/Publish button clicks
+        $('#submit, #publish, #save-post').on('click', function() {
+            clearUnsavedWarning();
+        });
+    });
 
     // Initialize on page load
     $(document).ready(function() {

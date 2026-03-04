@@ -648,7 +648,6 @@
     padding: 12px 18px;
     gap: 12px;
     border-bottom: 1px solid var(--pp-gray-1);
-    transition: var(--pp-transition);
 
     /* Checkbox */
     .item-checkbox {
@@ -702,6 +701,44 @@
     align-items: center;
     gap: 10px;
     position: relative;
+    flex: 1;
+}
+
+/* Permission Select Containers */
+.pp-permission-select {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pp-item-select {
+    flex: 1;
+}
+
+.pp-children-select {
+    flex: 1;
+}
+
+/* When both item and children are present, arrange horizontally */
+.pp-permission-control:has(.pp-children-select) {
+    gap: 15px;
+}
+
+/* Select Labels (for hierarchical items with sub-categories) */
+.pp-select-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--pp-gray-6);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+/* Select Dropdowns */
+.pp-permission-select select {
+    width: 100%;
+    min-width: 140px;
 }
 
 /* Delete Item Button (Users Only) */
@@ -733,6 +770,21 @@
     .pp-tab-badge::before {
         display: none;
     }
+    
+    /* Stack permission selects vertically on mobile when there are sub-categories */
+    .pp-permission-control:has(.pp-children-select) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .pp-permission-select {
+        width: 100%;
+    }
+    
+    .pp-permission-select select {
+        width: 100%;
+    }
 }
 
 /* Show delete button on desktop hover */
@@ -759,12 +811,7 @@
     font-size: 18px;
 }
 
-/* Permission Select Wrapper */
-.pp-permission-select {
-    position: relative;
-    display: inline-block;
-    min-width: 115px;
-}
+/* Permission Select Wrapper - removed duplicate, using the one defined earlier in the file */
 
 /* Permission Select Dropdown */
 .pp-permission-select select {
@@ -804,6 +851,11 @@
     font-weight: bold;
     pointer-events: none;
     z-index: 1;
+}
+
+/* Adjust chevron position when label is present */
+.pp-permission-select:has(.pp-select-label):after {
+    top: calc(50% + 10px); /* Offset by half of label height + gap */
 }
 
 /* Status-specific styles for select elements */
@@ -1195,7 +1247,6 @@
 
 .pp-permission-list-item.pp-new-item {
     background: linear-gradient(90deg, rgba(152, 102, 255, 0.1) 0%, transparent 100%);
-    border-left: 3px solid var(--pp-primary);
     animation: slideInHighlight 0.5s ease-out;
 }
 

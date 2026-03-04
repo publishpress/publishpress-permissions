@@ -14,10 +14,25 @@ class PostEdit
 
         // Enqueue tabbed metabox styles and scripts if enabled
         if (presspermit()->getOption('use_tabbed_metabox')) {
-            wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', [], PRESSPERMIT_VERSION);
+            // Use local Select2 library (consistent with rest of plugin)
+            if (!wp_script_is('presspermit-select2-js', 'registered')) {
+                wp_enqueue_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', [], PRESSPERMIT_VERSION);
+                wp_enqueue_script('presspermit-select2-js', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/js/select2.full.min.js', ['jquery'], PRESSPERMIT_VERSION);
+            } else {
+                wp_enqueue_style('presspermit-select2-css');
+                wp_enqueue_script('presspermit-select2-js');
+            }
+            
+            wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', ['presspermit-select2-css'], PRESSPERMIT_VERSION);
             
             $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
-            wp_enqueue_script('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . "/common/js/item-edit-tabbed{$suffix}.js", ['jquery'], PRESSPERMIT_VERSION, true);
+            wp_enqueue_script('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . "/common/js/item-edit-tabbed{$suffix}.js", ['jquery', 'presspermit-select2-js'], PRESSPERMIT_VERSION, true);
+            
+            // Localize script with AJAX URL and nonce for user search
+            wp_localize_script('presspermit-item-edit-tabbed', 'PPAgentSelect', [
+                'ajaxurl' => wp_nonce_url(admin_url(''), 'pp-ajax'),
+                'ajaxhandler' => 'got_ajax_listbox'
+            ]);
         }
 
         add_action('admin_head', [$this, 'actAdminHead']);

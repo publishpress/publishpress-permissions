@@ -973,7 +973,10 @@ class ItemExceptionsUI
                 $disabled = true;
             }
 
-            // Only render item assignment for now (not children)
+            // Store current values for both item and children outside the loop condition
+            $current_assign_for_item = $assign_for;
+            
+            // Render list item - only once per agent, but with both 'item' and 'children' controls
             if ($assign_for === 'item') {
                 $for_type = ($for_item_type) ? $for_item_type : '(all)';
                 $css_class = strtolower(str_replace([' ', '_'], '-', $_name));
@@ -987,42 +990,80 @@ class ItemExceptionsUI
                         <label for="pp-item-<?php echo $item_id_attr; ?>"><?php echo esc_html($_name); ?></label>
                     </div>
                     <div class="pp-permission-control">
-                        <div class="pp-permission-select">
-                            <select name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($assign_for); ?>][<?php echo esc_attr($agent_id); ?>]" 
-                                    class="<?php echo esc_attr($select_class); ?>" 
-                                    <?php echo $disabled ? 'disabled="disabled"' : ''; ?>
-                                    autocomplete="off">
-                                <?php if ('user' == $agent_type && !$disabled) : ?>
-                                <!-- Delete button for users only (hover-visible on desktop, always visible on mobile) -->
+                        <?php 
+                        // Render controls for both 'item' and 'children' assignment modes
+                        foreach ($assignment_modes as $mode) :
+                            // Determine current value for this mode
+                            if (!empty($agent_exceptions[$mode]['additional'])) {
+                                $mode_current_val = 2;
+                            } elseif (isset($agent_exceptions[$mode]['include'])) {
+                                $mode_current_val = 1;
+                            } elseif (isset($agent_exceptions[$mode]['exclude'])) {
+                                $mode_current_val = 0;
+                            } else {
+                                $mode_current_val = '';
+                            }
+                            
+                            // Get CSS class for current value
+                            $mode_select_class = isset($this->render->opt_class[$mode_current_val]) 
+                                ? $this->render->opt_class[$mode_current_val] 
+                                : 'pp-def';
+                            
+                            // Determine if this mode is disabled
+                            $mode_disabled = false;
+                            if (!empty($is_unfiltered) && ($mode_current_val === '')) {
+                                $mode_disabled = true;
+                            } elseif (('children' == $mode)
+                                && apply_filters('presspermit_assign_for_children_locked', false, $for_item_type, ['operation' => $op])
+                            ) {
+                                $mode_disabled = true;
+                            }
+                            
+                            // Skip children column if not hierarchical
+                            if ('children' == $mode && !$hierarchical) {
+                                continue;
+                            }
+                            
+                            $mode_label = ('children' == $mode) ? __('Sub-Categories', 'press-permit-core') : __('This Category', 'press-permit-core');
+                            ?>
+                            <div class="pp-permission-select <?php echo ('children' == $mode) ? 'pp-children-select' : 'pp-item-select'; ?>">
+                                <?php if ($hierarchical && count($assignment_modes) > 1) : ?>
+                                    <label class="pp-select-label"><?php echo esc_html($mode_label); ?></label>
                                 <?php endif; ?>
-                                <?php 
-                                foreach ($this->render->options[$option_set] as $val => $lbl) :
-                                    // Filter options for metagroups
-                                    if (('wp_role' == $agent_type)
-                                        && !empty($agent_info->metagroup_id)
-                                        && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_all'], true)
-                                        && (!$pp->moduleActive('file-access') || 'attachment' != $for_type)
-                                        && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')
-                                        && (2 == $val)
-                                    ) {
-                                        continue;
-                                    }
-                                    
-                                    $option_class = isset($this->render->opt_class[$val]) ? $this->render->opt_class[$val] : '';
-                                ?>
-                                    <option value="<?php echo esc_attr($val); ?>" 
-                                            class="<?php echo esc_attr($option_class); ?>" 
-                                            <?php selected($val, $current_val); ?>>
-                                        <?php echo esc_html($lbl); ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <?php if ($disabled) : ?>
-                                <input type="hidden"
-                                    name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($assign_for); ?>][<?php echo esc_attr($agent_id); ?>]"
-                                    value="<?php echo esc_attr($current_val); ?>" />
-                            <?php endif; ?>
-                        </div>
+                                <select name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($mode); ?>][<?php echo esc_attr($agent_id); ?>]" 
+                                        class="<?php echo esc_attr($mode_select_class); ?>" 
+                                        <?php echo $mode_disabled ? 'disabled="disabled"' : ''; ?>
+                                        autocomplete="off">
+                                    <?php 
+                                    foreach ($this->render->options[$option_set] as $val => $lbl) :
+                                        // Filter options for metagroups
+                                        if (('wp_role' == $agent_type)
+                                            && !empty($agent_info->metagroup_id)
+                                            && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_all'], true)
+                                            && (!$pp->moduleActive('file-access') || 'attachment' != $for_type)
+                                            && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')
+                                            && (2 == $val)
+                                        ) {
+                                            continue;
+                                        }
+                                        
+                                        $option_class = isset($this->render->opt_class[$val]) ? $this->render->opt_class[$val] : '';
+                                    ?>
+                                        <option value="<?php echo esc_attr($val); ?>" 
+                                                class="<?php echo esc_attr($option_class); ?>" 
+                                                <?php selected($val, $mode_current_val); ?>>
+                                            <?php echo esc_html($lbl); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?php if ($mode_disabled) : ?>
+                                    <input type="hidden"
+                                        name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($mode); ?>][<?php echo esc_attr($agent_id); ?>]"
+                                        value="<?php echo esc_attr($mode_current_val); ?>" />
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                        
                         <?php if ('user' == $agent_type && !$disabled) : ?>
                         <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove user from exceptions', 'press-permit-core'); ?>">
                             <span class="dashicons dashicons-trash"></span>
