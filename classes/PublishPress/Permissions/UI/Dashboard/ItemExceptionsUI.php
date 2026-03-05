@@ -715,30 +715,32 @@ class ItemExceptionsUI
             // Buffer original reqd_caps value
             $_reqd_caps = (is_array($reqd_caps)) ? array_values($reqd_caps) : $reqd_caps;
 
-            foreach ($current_exceptions[$op]['wp_role'] as $agent_id => $agent_exceptions) {
-                if ($agent_id && isset($this->data->agent_info['wp_role'][$agent_id])) {
-                    $role = $this->data->agent_info['wp_role'][$agent_id];
-                    
-                    if ((false === strpos($role->name, '[WP ')) || defined('PRESSPERMIT_DELETED_ROLE_EXCEPTIONS_UI')) {
-                        // If Everyone / Logged In metagroup is blocked, indicate effect on other roles
-                        if ((!empty($metagroup_exclude['wp_all']) || !empty($metagroup_exclude['wp_auth'])) && empty($is_auth_metagroup[$agent_id])) {
-                            if (is_array($_reqd_caps)) {
-                                $reqd_caps = array_merge($_reqd_caps, ['pp_administer_content']);
-                            } else {
-                                $reqd_caps = ['pp_administer_content'];
-                            }
-                        } else {
-                            $reqd_caps = $_reqd_caps;
-                        }
+            // Iterate through agent_info to maintain consistent order (configured and unconfigured roles in same order)
+            foreach ($this->data->agent_info['wp_role'] as $agent_id => $role) {
+                // Skip if this role is not in current_exceptions (filtered out by earlier logic)
+                if (!isset($current_exceptions[$op]['wp_role'][$agent_id])) {
+                    continue;
+                }
 
-                        $this->renderPermissionListItem(
-                            'wp_role',
-                            $agent_id,
-                            $current_exceptions[$op]['wp_role'][$agent_id],
-                            $role,
-                            compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
-                        );
+                if ($agent_id && ((false === strpos($role->name, '[WP ')) || defined('PRESSPERMIT_DELETED_ROLE_EXCEPTIONS_UI'))) {
+                    // If Everyone / Logged In metagroup is blocked, indicate effect on other roles
+                    if ((!empty($metagroup_exclude['wp_all']) || !empty($metagroup_exclude['wp_auth'])) && empty($is_auth_metagroup[$agent_id])) {
+                        if (is_array($_reqd_caps)) {
+                            $reqd_caps = array_merge($_reqd_caps, ['pp_administer_content']);
+                        } else {
+                            $reqd_caps = ['pp_administer_content'];
+                        }
+                    } else {
+                        $reqd_caps = $_reqd_caps;
                     }
+
+                    $this->renderPermissionListItem(
+                        'wp_role',
+                        $agent_id,
+                        $current_exceptions[$op]['wp_role'][$agent_id],
+                        $role,
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                    );
                 }
             }
         } else {
@@ -772,18 +774,24 @@ class ItemExceptionsUI
         if (!empty($current_exceptions[$op]['pp_group'])) {
             $any_groups_blocked = false;
             
-            foreach ($current_exceptions[$op]['pp_group'] as $agent_id => $agent_exceptions) {
-                if ($agent_id && isset($this->data->agent_info['pp_group'][$agent_id])) {
+            // Iterate through agent_info to maintain consistent order (configured and unconfigured groups in same order)
+            foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
+                // Skip if this group is not in current_exceptions (filtered out by earlier logic)
+                if (!isset($current_exceptions[$op]['pp_group'][$agent_id])) {
+                    continue;
+                }
+
+                if ($agent_id) {
                     // Check if blocked
-                    if (!empty($agent_exceptions['item']['exclude'])) {
+                    if (!empty($current_exceptions[$op]['pp_group'][$agent_id]['item']['exclude'])) {
                         $any_groups_blocked = true;
                     }
 
                     $this->renderPermissionListItem(
                         'pp_group',
                         $agent_id,
-                        $agent_exceptions,
-                        $this->data->agent_info['pp_group'][$agent_id],
+                        $current_exceptions[$op]['pp_group'][$agent_id],
+                        $group,
                         compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
                     );
                 }
