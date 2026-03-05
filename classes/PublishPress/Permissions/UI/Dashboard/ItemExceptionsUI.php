@@ -625,6 +625,8 @@ class ItemExceptionsUI
                     <span class="dashicons dashicons-no-alt"></span>
                 </button>
             </div>
+            <!-- Dynamic Filter Pills (populated by JavaScript) -->
+            <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
             <div class="pp-permission-cards">
                 <div class="pp-permission-card">
                     <!-- Bulk Actions Toolbar -->
@@ -634,7 +636,7 @@ class ItemExceptionsUI
                             <label for="pp-select-all-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"><?php esc_html_e('Select All', 'press-permit-core'); ?></label>
                         </div>
                         <div class="pp-bulk-actions">
-                            <select class="pp-bulk-action-select">
+                            <select class="pp-bulk-action-select" aria-label="<?php esc_attr_e('Bulk Actions', 'press-permit-core'); ?>">
                                 <option value=""><?php esc_html_e('Bulk Actions', 'press-permit-core'); ?></option>
                                 <option value="enable"><?php esc_html_e('Set to Enabled', 'press-permit-core'); ?></option>
                                 <option value="block"><?php esc_html_e('Set to Blocked', 'press-permit-core'); ?></option>
@@ -676,6 +678,8 @@ class ItemExceptionsUI
                     data-placeholder="<?php esc_attr_e('Search and add users to exceptions...', 'press-permit-core'); ?>">
                 </select>
             </div>
+            <!-- Dynamic Filter Pills (populated by JavaScript) -->
+            <div class="pp-permission-filters" data-filter-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
             <?php $this->renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
         </div>
         <?php
@@ -818,7 +822,7 @@ class ItemExceptionsUI
                         <label for="pp-select-all-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"><?php esc_html_e('Select All', 'press-permit-core'); ?></label>
                     </div>
                     <div class="pp-bulk-actions">
-                        <select class="pp-bulk-action-select">
+                        <select class="pp-bulk-action-select" aria-label="<?php esc_attr_e('Bulk Actions', 'press-permit-core'); ?>">
                             <option value=""><?php esc_html_e('Bulk Actions', 'press-permit-core'); ?></option>
                             <option value="enable"><?php esc_html_e('Set to Enabled', 'press-permit-core'); ?></option>
                             <option value="block"><?php esc_html_e('Set to Blocked', 'press-permit-core'); ?></option>
@@ -836,7 +840,8 @@ class ItemExceptionsUI
                 </div>
 
                 <!-- Users list -->
-                <div class="pp-permission-list"><?php
+                <div class="pp-permission-list">
+                    <?php
                     if (!empty($current_exceptions[$op]['user'])) {
                         foreach (array_keys($this->data->agent_info['user']) as $agent_id) {
                             if ($agent_id && isset($current_exceptions[$op]['user'][$agent_id])) {

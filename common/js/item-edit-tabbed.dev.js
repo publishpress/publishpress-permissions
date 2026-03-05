@@ -241,6 +241,14 @@
             
             // Update counter
             updateBulkCounter($card);
+            
+            // Regenerate dynamic filters after bulk action
+            var $agentContent = $card.closest('.pp-agent-type-content');
+            if ($agentContent.length) {
+                setTimeout(function() {
+                    generateDynamicFilters($agentContent);
+                }, 100);
+            }
         });
 
         /**
@@ -325,6 +333,11 @@
                     setTimeout(() => {
                         updateTabBadge($agentContent);
                     }, 50);
+                    
+                    // Regenerate dynamic filters
+                    setTimeout(function() {
+                        generateDynamicFilters($agentContent);
+                    }, 100);
                 }
             });
             
@@ -345,9 +358,13 @@
     $('.pp-search-input:not(.pp-user-search-select2)').on('input', function() {
         var $searchBox = $(this).closest('.pp-search-box');
         var $clearBtn = $searchBox.find('.pp-search-clear');
+        var $contentArea = $(this).closest('.pp-agent-type-content');
         var $card = $(this).closest('.pp-permission-card, .pp-agent-type-content');
         var $list = $card.find('.pp-permission-list');
         var searchQuery = $(this).val().toLowerCase().trim();
+        
+        // Get active filter if any
+        var activeFilter = $contentArea.data('active-filter') || 'all';
 
         // Show/hide clear button
         if (searchQuery.length > 0) {
@@ -356,13 +373,27 @@
             $clearBtn.hide();
         }
 
-        // Filter list items
+        // Filter list items (respecting both search and filter)
         var visibleCount = 0;
         $list.find('.pp-permission-list-item').each(function() {
             var $item = $(this);
+            
+            // Skip removed items
+            if ($item.hasClass('pp-item-removed')) {
+                return;
+            }
+            
             var itemName = $item.find('.item-name label').text().toLowerCase();
+            var matchesSearch = (searchQuery.length === 0 || itemName.indexOf(searchQuery) !== -1);
+            
+            // Check if item matches active filter
+            var matchesFilter = true;
+            if (activeFilter !== 'all' && !$item.hasClass('pp-filtered-by-pill')) {
+                // Item was already filtered out by pill filter
+                matchesFilter = false;
+            }
 
-            if (itemName.indexOf(searchQuery) !== -1) {
+            if (matchesSearch && matchesFilter) {
                 $item.show();
                 visibleCount++;
             } else {
@@ -400,15 +431,33 @@
     $('.pp-search-clear').on('click', function() {
         var $searchBox = $(this).closest('.pp-search-box');
         var $input = $searchBox.find('.pp-search-input');
+        var $contentArea = $(this).closest('.pp-agent-type-content');
         var $card = $(this).closest('.pp-permission-card, .pp-agent-type-content');
         var $list = $card.find('.pp-permission-list');
+        
+        // Get active filter if any
+        var activeFilter = $contentArea.data('active-filter') || 'all';
 
         // Clear input and hide clear button
         $input.val('').focus();
         $(this).hide();
 
-        // Show all items
-        $list.find('.pp-permission-list-item').show();
+        // Show items based on active filter (not all items if filter is active)
+        $list.find('.pp-permission-list-item').each(function() {
+            var $item = $(this);
+            
+            // Skip removed items
+            if ($item.hasClass('pp-item-removed')) {
+                return;
+            }
+            
+            if (activeFilter === 'all' || !$item.hasClass('pp-filtered-by-pill')) {
+                $item.show();
+            }
+        });
+        
+        // Hide search "no results" message
+        $list.find('.pp-no-search-results').hide();
 
         // Update select all checkbox state
         updateSelectAllState($card);
@@ -697,6 +746,11 @@
             updateTabBadge($agentContent);
         }, 50);
         
+        // Regenerate dynamic filters
+        setTimeout(function() {
+            generateDynamicFilters($agentContent);
+        }, 100);
+        
         // Show success notice
         showUserAddedNotice(userName, $select);
     }
@@ -865,6 +919,247 @@
     $(document).on('click', '.pp-agent-type-tab[data-agent-target*="pp-users-"]', function() {
         setTimeout(function() {
             initUserSearchSelect2();
+        }, 100);
+    });
+
+    /**
+     * Generate dynamic filter pills based on existing permission values
+     * Scans all permission selects in the content area and creates filter buttons
+     * only for values that actually exist in the current view
+     */
+    function generateDynamicFilters($contentArea) {
+        var $filterContainer = $contentArea.find('.pp-permission-filters');
+        
+        if (!$filterContainer.length) {
+            return;
+        }
+
+        // Map CSS classes to filter definitions
+        var filterDefs = {
+            'pp-def': { label: 'Default', icon: '' },
+            'pp-no': { label: 'Blocked', icon: '' },
+            'pp-no2': { label: 'Blocked', icon: '' },
+            'pp-yes': { label: 'Enabled', icon: '' },
+            'pp-yes2': { label: 'Enabled', icon: '' }
+        };
+
+        // Count occurrences of each permission type
+        var counts = {
+            'all': 0,
+            'pp-def': 0,
+            'pp-no': 0,
+            'pp-no2': 0,
+            'pp-yes': 0,
+            'pp-yes2': 0
+        };
+
+        // Scan all permission selects (not just visible ones, so counts remain accurate during search)
+        $contentArea.find('.pp-permission-list-item').each(function() {
+            var $item = $(this);
+            
+            // Skip removed items
+            if ($item.hasClass('pp-item-removed')) {
+                return;
+            }
+
+            counts.all++;
+
+            // Count each ITEM once per permission type (not each select separately)
+            // This prevents double-counting when an item has multiple selects with the same class
+            $.each(['pp-def', 'pp-no', 'pp-no2', 'pp-yes', 'pp-yes2'], function(i, className) {
+                if ($item.find('.pp-permission-select select.' + className).length > 0) {
+                    counts[className]++;
+                }
+            });
+        });
+
+        // Merge duplicate filter counts (e.g., pp-no and pp-no2 both count as "Blocked")
+        var mergedCounts = {
+            'all': counts.all,
+            'pp-def': counts['pp-def'],
+            'blocked': counts['pp-no'] + counts['pp-no2'],
+            'allowed': counts['pp-yes'] + counts['pp-yes2']
+        };
+
+        // Clear existing filters
+        $filterContainer.empty();
+
+        // Always add "All" filter first
+        if (mergedCounts.all > 0) {
+            var $allBtn = $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-filter-btn active')
+                .attr('data-filter', 'all')
+                .html('All <span class="pp-filter-count">' + mergedCounts.all + '</span>');
+            
+            $filterContainer.append($allBtn);
+        }
+
+        // Add filter buttons only for types that exist
+        if (mergedCounts.blocked > 0) {
+            var $btn = $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-filter-btn')
+                .attr('data-filter', 'blocked')
+                .html('Blocked <span class="pp-filter-count">' + mergedCounts.blocked + '</span>');
+            
+            $filterContainer.append($btn);
+        }
+
+        if (mergedCounts.allowed > 0) {
+            var $btn = $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-filter-btn')
+                .attr('data-filter', 'allowed')
+                .html('Enabled <span class="pp-filter-count">' + mergedCounts.allowed + '</span>');
+            
+            $filterContainer.append($btn);
+        }
+
+        // Only show Default filter if it's not the same as All (i.e., there are other permission types)
+        if (mergedCounts['pp-def'] > 0 && mergedCounts['pp-def'] !== mergedCounts.all) {
+            var $btn = $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-filter-btn')
+                .attr('data-filter', 'pp-def')
+                .html('Default <span class="pp-filter-count">' + mergedCounts['pp-def'] + '</span>');
+            
+            $filterContainer.append($btn);
+        }
+    }
+
+    /**
+     * Handle filter button clicks
+     */
+    $(document).on('click', '.pp-filter-btn', function() {
+        var $btn = $(this);
+        var filter = $btn.attr('data-filter');
+        var $filterContainer = $btn.closest('.pp-permission-filters');
+        var $contentArea = $filterContainer.closest('.pp-agent-type-content');
+        
+        // Update active state
+        $filterContainer.find('.pp-filter-btn').removeClass('active');
+        $btn.addClass('active');
+        
+        // Store active filter in data attribute
+        $contentArea.data('active-filter', filter);
+        
+        // Apply filter to items
+        $contentArea.find('.pp-permission-list-item').each(function() {
+            var $item = $(this);
+            var show = false;
+            
+            // Skip removed items
+            if ($item.hasClass('pp-item-removed')) {
+                return;
+            }
+            
+            if (filter === 'all') {
+                show = true;
+            } else {
+                // Check if item has any select with matching class
+                $item.find('.pp-permission-select select').each(function() {
+                    var $select = $(this);
+                    
+                    if (filter === 'blocked') {
+                        if ($select.hasClass('pp-no') || $select.hasClass('pp-no2')) {
+                            show = true;
+                        }
+                    } else if (filter === 'allowed') {
+                        if ($select.hasClass('pp-yes') || $select.hasClass('pp-yes2')) {
+                            show = true;
+                        }
+                    } else if ($select.hasClass(filter)) {
+                        show = true;
+                    }
+                });
+            }
+            
+            // Apply filter visibility (but respect search filter if active)
+            if (show) {
+                $item.removeClass('pp-filtered-by-pill');
+                
+                // Check if item should still be hidden by search
+                var $searchInput = $contentArea.find('.pp-search-input:not(.pp-user-search-select2)');
+                if ($searchInput.length && $searchInput.val().trim() !== '') {
+                    // Let search handler control visibility
+                    var searchTerm = $searchInput.val().toLowerCase();
+                    var itemText = $item.find('.item-name label').text().toLowerCase();
+                    $item.toggle(itemText.indexOf(searchTerm) > -1);
+                } else {
+                    $item.show();
+                }
+            } else {
+                $item.addClass('pp-filtered-by-pill').hide();
+            }
+        });
+        
+        // Update "no results" message if all items are hidden
+        var visibleCount = $contentArea.find('.pp-permission-list-item:visible').not('.pp-item-removed').length;
+        var $noResults = $contentArea.find('.pp-no-filter-results');
+        
+        if (visibleCount === 0 && filter !== 'all') {
+            if ($noResults.length === 0) {
+                var filterLabel = $btn.text().replace(/\d+/, '').trim();
+                $noResults = $('<div class=\"pp-no-filter-results\" style=\"grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: #64748b;\">' +
+                    '<span class=\"dashicons dashicons-filter\" style=\"font-size: 48px; width: 48px; height: 48px; color: #cbd5e1; margin-bottom: 12px;\"></span>' +
+                    '<p style=\"margin: 0; font-size: 14px; font-weight: 500;\">No ' + filterLabel.toLowerCase() + ' items found</p>' +
+                    '</div>');
+                
+                $contentArea.find('.pp-permission-list, .pp-permission-card-body').append($noResults);
+            } else {
+                $noResults.show();
+            }
+        } else {
+            $noResults.remove();
+        }
+    });
+
+    /**
+     * Initialize filters when agent content becomes visible
+     */
+    $(document).on('click', '.pp-agent-type-tab', function() {
+        var targetId = $(this).data('agent-target');
+        var $contentArea = $('#' + targetId);
+        
+        setTimeout(function() {
+            generateDynamicFilters($contentArea);
+        }, 100);
+    });
+
+    /**
+     * Regenerate filters when permissions change
+     */
+    $(document).on('change', '.pp-permission-select select', function() {
+        var $select = $(this);
+        var $contentArea = $select.closest('.pp-agent-type-content');
+        
+        // Small delay to allow CSS class update to complete
+        setTimeout(function() {
+            generateDynamicFilters($contentArea);
+        }, 50);
+    });
+
+    /**
+     * Initialize filters on page load for active tabs
+     */
+    $(document).ready(function() {
+        $('.pp-agent-type-content.active').each(function() {
+            generateDynamicFilters($(this));
+        });
+    });
+
+    /**
+     * Regenerate filters when switching operation tabs
+     */
+    $(document).on('click', '.pp-operation-tab', function() {
+        var targetPane = $(this).data('target');
+        var $tabPane = $('#' + targetPane);
+        
+        setTimeout(function() {
+            $tabPane.find('.pp-agent-type-content.active').each(function() {
+                generateDynamicFilters($(this));
+            });
         }, 100);
     });
 
