@@ -602,12 +602,17 @@ class ItemExceptionsUI
             $reqd_caps = false;
         }
 
+        // Check if custom groups exist to determine tab label
+        $has_custom_groups = !empty($this->data->agent_info['pp_group']);
+        $roles_groups_label = $has_custom_groups ? __('Roles & Groups', 'press-permit-core') : __('Roles', 'press-permit-core');
+        $search_placeholder = $has_custom_groups ? __('Search roles and groups...', 'press-permit-core') : __('Search roles...', 'press-permit-core');
+
         ?>
         <!-- Sub-tabs for agent types -->
         <div class="pp-agent-type-tabs">
             <button type="button" class="pp-agent-type-tab active" data-agent-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
                 <span class="dashicons dashicons-groups"></span>
-                <?php esc_html_e('Groups', 'press-permit-core'); ?>
+                <?php echo esc_html($roles_groups_label); ?>
             </button>
             <button type="button" class="pp-agent-type-tab" data-agent-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
                 <span class="dashicons dashicons-admin-users"></span>
@@ -620,7 +625,7 @@ class ItemExceptionsUI
             <!-- Search Box -->
             <div class="pp-search-box">
                 <span class="dashicons dashicons-search"></span>
-                <input type="text" class="pp-search-input" placeholder="<?php esc_attr_e('Search roles and groups...', 'press-permit-core'); ?>" />
+                <input type="text" class="pp-search-input" placeholder="<?php echo esc_attr($search_placeholder); ?>" />
                 <button type="button" class="pp-search-clear" style="display: none;">
                     <span class="dashicons dashicons-no-alt"></span>
                 </button>
@@ -805,13 +810,6 @@ class ItemExceptionsUI
                 </div>
                 <?php
             }
-        } else {
-            ?>
-            <div class="pp-empty-state">
-                <span class="dashicons dashicons-info"></span>
-                <p><?php esc_html_e('No group exceptions set', 'press-permit-core'); ?></p>
-            </div>
-            <?php
         }
     }
 
