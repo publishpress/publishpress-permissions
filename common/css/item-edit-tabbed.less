@@ -410,8 +410,8 @@
 /* Permission List */
 .pp-permission-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 0.5rem;
   overflow-y: auto;
   padding: 8px 0;
 }
@@ -1081,8 +1081,6 @@
 
   /* When both item and children are present, arrange horizontally */
   &:has(.pp-children-select) {
-    gap: 15px;
-
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: stretch;

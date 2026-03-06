@@ -356,8 +356,8 @@
 /* Permission List */
 .pp-permission-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 0.5rem;
   overflow-y: auto;
   padding: 8px 0;
 }
@@ -894,9 +894,6 @@
   position: relative;
   flex: 1;
   /* When both item and children are present, arrange horizontally */
-}
-.pp-permission-control:has(.pp-children-select) {
-  gap: 15px;
 }
 @media (max-width: 768px) {
   .pp-permission-control:has(.pp-children-select) {
