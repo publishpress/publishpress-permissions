@@ -950,7 +950,9 @@
             'pp-no': 0,
             'pp-no2': 0,
             'pp-yes': 0,
-            'pp-yes2': 0
+            'pp-yes2': 0,
+            'role': 0,    // Count roles
+            'group': 0    // Count groups
         };
 
         // Scan all permission selects (not just visible ones, so counts remain accurate during search)
@@ -963,6 +965,14 @@
             }
 
             counts.all++;
+
+            // Count by agent type
+            var agentType = $item.attr('data-agent-type');
+            if (agentType === 'wp_role') {
+                counts.role++;
+            } else if (agentType === 'pp_group') {
+                counts.group++;
+            }
 
             // Count each ITEM once per permission type (not each select separately)
             // This prevents double-counting when an item has multiple selects with the same class
@@ -978,7 +988,9 @@
             'all': counts.all,
             'pp-def': counts['pp-def'],
             'blocked': counts['pp-no'] + counts['pp-no2'],
-            'allowed': counts['pp-yes'] + counts['pp-yes2']
+            'allowed': counts['pp-yes'] + counts['pp-yes2'],
+            'role': counts.role,
+            'group': counts.group
         };
 
         // Clear existing filters
@@ -1026,6 +1038,29 @@
             
             $filterContainer.append($btn);
         }
+
+        // Add type filters (Role/Group) if both types exist
+        if (mergedCounts.role > 0 && mergedCounts.group > 0) {
+            // Add Role filter
+            var $roleBtn = $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-filter-btn pp-filter-type')
+                .attr('data-filter', 'role')
+                .attr('data-filter-type', 'agent-type')
+                .html('Role <span class="pp-filter-count">' + mergedCounts.role + '</span>');
+            
+            $filterContainer.append($roleBtn);
+
+            // Add Group filter
+            var $groupBtn = $('<button>')
+                .attr('type', 'button')
+                .addClass('pp-filter-btn pp-filter-type')
+                .attr('data-filter', 'group')
+                .attr('data-filter-type', 'agent-type')
+                .html('Group <span class="pp-filter-count">' + mergedCounts.group + '</span>');
+            
+            $filterContainer.append($groupBtn);
+        }
     }
 
     /**
@@ -1034,6 +1069,7 @@
     $(document).on('click', '.pp-filter-btn', function() {
         var $btn = $(this);
         var filter = $btn.attr('data-filter');
+        var filterType = $btn.attr('data-filter-type'); // 'agent-type' or undefined
         var $filterContainer = $btn.closest('.pp-permission-filters');
         var $contentArea = $filterContainer.closest('.pp-agent-type-content');
         
@@ -1043,6 +1079,7 @@
         
         // Store active filter in data attribute
         $contentArea.data('active-filter', filter);
+        $contentArea.data('active-filter-type', filterType || 'permission');
         
         // Apply filter to items
         $contentArea.find('.pp-permission-list-item').each(function() {
@@ -1056,7 +1093,17 @@
             
             if (filter === 'all') {
                 show = true;
+            } else if (filterType === 'agent-type') {
+                // Filter by agent type (role or group)
+                var agentType = $item.attr('data-agent-type');
+                
+                if (filter === 'role' && agentType === 'wp_role') {
+                    show = true;
+                } else if (filter === 'group' && agentType === 'pp_group') {
+                    show = true;
+                }
             } else {
+                // Filter by permission status (blocked, allowed, default)
                 // Check if item has any select with matching class
                 $item.find('.pp-permission-select select').each(function() {
                     var $select = $(this);

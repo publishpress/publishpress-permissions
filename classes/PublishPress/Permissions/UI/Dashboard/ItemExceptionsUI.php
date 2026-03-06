@@ -1097,6 +1097,22 @@ class ItemExceptionsUI
                         <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo $item_id_attr; ?>" data-select-item <?php echo $disabled ? 'disabled="disabled"' : ''; ?> />
                     </div>
                     <div class="item-name">
+                        <?php
+                        // Add type badge to distinguish roles from groups
+                        $type_label = '';
+                        $type_class = '';
+                        if ('wp_role' == $agent_type) {
+                            $type_label = __('Role', 'press-permit-core');
+                            $type_class = 'pp-type-role';
+                        } elseif ('pp_group' == $agent_type) {
+                            $type_label = __('Group', 'press-permit-core');
+                            $type_class = 'pp-type-group';
+                        }
+                        
+                        if ($type_label) :
+                        ?>
+                            <span class="pp-type-badge <?php echo esc_attr($type_class); ?>"><?php echo esc_html($type_label); ?></span>
+                        <?php endif; ?>
                         <label for="pp-item-<?php echo $item_id_attr; ?>"><?php echo esc_html($_name); ?></label>
                     </div>
                     <div class="pp-permission-control">
