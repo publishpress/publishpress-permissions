@@ -646,9 +646,6 @@ class ItemExceptionsUI
                                 <option value="enable"><?php esc_html_e('Set to Enabled', 'press-permit-core'); ?></option>
                                 <option value="block"><?php esc_html_e('Set to Blocked', 'press-permit-core'); ?></option>
                                 <option value="default"><?php esc_html_e('Set to Default', 'press-permit-core'); ?></option>
-                                <?php if (!empty($this->data->inclusions_active)) : ?>
-                                <option value="unblock"><?php esc_html_e('Set to Unblocked', 'press-permit-core'); ?></option>
-                                <?php endif; ?>
                             </select>
                             <button type="button" class="button pp-bulk-apply"><?php esc_html_e('Apply', 'press-permit-core'); ?></button>
                         </div>
@@ -833,9 +830,6 @@ class ItemExceptionsUI
                             <option value="enable"><?php esc_html_e('Set to Enabled', 'press-permit-core'); ?></option>
                             <option value="block"><?php esc_html_e('Set to Blocked', 'press-permit-core'); ?></option>
                             <option value="default"><?php esc_html_e('Set to Default', 'press-permit-core'); ?></option>
-                            <?php if (!empty($this->data->inclusions_active)) : ?>
-                            <option value="unblock"><?php esc_html_e('Set to Unblocked', 'press-permit-core'); ?></option>
-                            <?php endif; ?>
                             <option value="remove"><?php esc_html_e('Remove Selected', 'press-permit-core'); ?></option>
                         </select>
                         <button type="button" class="button pp-bulk-apply"><?php esc_html_e('Apply', 'press-permit-core'); ?></button>
