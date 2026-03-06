@@ -202,12 +202,6 @@ class GroupQuery
         }
 
         // sorting
-        if ('ID' == $qv['orderby'] || 'id' == $qv['orderby']) {
-            $orderby = 'ID';
-        } else {
-            $orderby = 'group_name';
-        }
-
         $qv['order'] = strtoupper($qv['order']);
         if ('ASC' == $qv['order']) {
             $order = 'ASC';
@@ -215,10 +209,44 @@ class GroupQuery
             $order = 'DESC';
         }
 
-        if ( in_array(strtolower($qv['orderby']), ['id', 'group_name'])) {
-        	$this->query_orderby = "ORDER BY $orderby $order";                      // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-        } else {
-            $this->query_orderby = "ORDER BY metagroup_type ASC, $orderby $order";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        // Handle different orderby columns
+        switch (strtolower($qv['orderby'])) {
+            case 'id':
+                $orderby = 'ID';
+                $this->query_orderby = "ORDER BY $orderby $order";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
+
+            case 'group_name':
+                $orderby = 'group_name';
+                $this->query_orderby = "ORDER BY $orderby $order";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
+
+            case 'group_type':
+                $this->query_orderby = "ORDER BY metagroup_type $order, group_name ASC";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
+
+            case 'num_users':
+                // Add LEFT JOIN to count group members
+                $this->query_join .= " LEFT JOIN ( SELECT group_id, COUNT(*) as member_count FROM $wpdb->pp_group_members GROUP BY group_id ) AS gm ON $groups_table.ID = gm.group_id";
+                $this->query_orderby = "ORDER BY COALESCE(gm.member_count, 0) $order, group_name ASC";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
+
+            case 'exceptions':
+                // Add LEFT JOIN to count exceptions
+                $this->query_join .= " LEFT JOIN ( SELECT e.agent_id, COUNT(DISTINCT i.item_id) as exception_count FROM $wpdb->ppc_exceptions AS e INNER JOIN $wpdb->ppc_exception_items AS i ON e.exception_id = i.exception_id WHERE e.agent_type = '$this->agent_type' GROUP BY e.agent_id ) AS exc ON $groups_table.ID = exc.agent_id";
+                $this->query_orderby = "ORDER BY COALESCE(exc.exception_count, 0) $order, group_name ASC";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
+
+            case 'roles':
+                // Add LEFT JOIN to count roles
+                $this->query_join .= " LEFT JOIN ( SELECT agent_id, COUNT(*) as role_count FROM $wpdb->ppc_roles WHERE agent_type = '$this->agent_type' GROUP BY agent_id ) AS r ON $groups_table.ID = r.agent_id";
+                $this->query_orderby = "ORDER BY COALESCE(r.role_count, 0) $order, group_name ASC";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
+
+            default:
+                $orderby = 'group_name';
+                $this->query_orderby = "ORDER BY metagroup_type ASC, $orderby $order";  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                break;
         }
 
         // limit

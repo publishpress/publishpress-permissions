@@ -168,6 +168,10 @@ class GroupsListTable extends GroupsListTableBase
     {
         $c = [
             'group_name' => 'group_name',
+            'group_type' => 'group_type',
+            'num_users' => 'num_users',
+            'exceptions' => 'exceptions',
+            'roles' => 'roles',
         ];
 
         return $c;
