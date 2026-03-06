@@ -1080,6 +1080,8 @@ class ItemExceptionsUI
             ) {
                 $disabled = true;
             }
+            
+            if ($disabled) continue;
 
             // Store current values for both item and children outside the loop condition
             $current_assign_for_item = $assign_for;
