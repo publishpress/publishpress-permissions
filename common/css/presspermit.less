@@ -49,7 +49,9 @@
     background-color: @background_color_1;
     border: 1px solid #d5d5d5;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 56px rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 2px 5px rgba(0, 0, 0, 0.1),
+      0 0 56px rgba(0, 0, 0, 0.08);
     z-index: 99999999;
     box-sizing: border-box;
     transform: translate(-50%, -100%);
@@ -817,219 +819,174 @@ body.admin_page_presspermit-edit-permissions {
     }
   }
 }
-.wp-core-ui {
-  .pp-default-button {
-    border-color: @border_color_1;
-    color: @color_12;
-    border-width: 1px;
-    &:focus {
-      color: @color_16;
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #483f6b;
-      -moz-box-shadow: 0 0 0 1px #483f6b;
-      -webkit-box-shadow: 0 0 0 1px #483f6b;
-    }
-    &:hover {
-      color: @color_16;
-      border-color: @border_color_2;
-    }
-    &:active {
-      color: @color_16;
-      border-color: @border_color_2;
-    }
+.pp-default-button {
+  border-color: @border_color_1;
+  color: @color_12;
+  border-width: 1px;
+  &:focus {
+    color: @color_16;
+    border-color: @border_color_2;
+    box-shadow: 0 0 0 1px #483f6b;
+    -moz-box-shadow: 0 0 0 1px #483f6b;
+    -webkit-box-shadow: 0 0 0 1px #483f6b;
   }
-  .pp-primary-button {
-    background: #655997;
+  &:hover {
+    color: @color_16;
+    border-color: @border_color_2;
+  }
+  &:active {
+    color: @color_16;
+    border-color: @border_color_2;
+  }
+}
+.pp-primary-button {
+  background: #655997;
+  color: @color_1;
+  border-color: @border_color_1;
+  border-width: 1px;
+  &:focus {
+    background: #483f6b;
     color: @color_1;
-    border-color: @border_color_1;
-    border-width: 1px;
-    &:focus {
-      background: #483f6b;
-      color: @color_1;
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #fff, 0 0 0 3px #483f6b;
-    }
-    &:hover {
-      background: #483f6b;
-      color: @color_1;
-      border-color: @border_color_2;
-    }
-    &:active {
-      background: #483f6b;
-      color: @color_1;
-      border-color: @border_color_2;
-    }
+    border-color: @border_color_2;
+    box-shadow:
+      0 0 0 1px #fff,
+      0 0 0 3px #483f6b;
   }
-  .pp-pro-button {
-    background: #feb123;
+  &:hover {
+    background: #483f6b;
+    color: @color_1;
+    border-color: @border_color_2;
+  }
+  &:active {
+    background: #483f6b;
+    color: @color_1;
+    border-color: @border_color_2;
+  }
+}
+.pp-pro-button {
+  background: #feb123;
+  color: @color_17;
+  border-color: @border_color_3;
+  border-width: 1px;
+  &:focus {
+    background: #febe47;
     color: @color_17;
-    border-color: @border_color_3;
-    border-width: 1px;
-    &:focus {
-      background: #febe47;
-      color: @color_17;
-      border-color: @border_color_4;
-      box-shadow: 0 0 0 1px #fff, 0 0 0 3px #febe47;
-      -moz-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #febe47;
-      -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #febe47;
-    }
+    border-color: @border_color_4;
+    box-shadow:
+      0 0 0 1px #fff,
+      0 0 0 3px #febe47;
+    -moz-box-shadow:
+      0 0 0 1px #fff,
+      0 0 0 3px #febe47;
+    -webkit-box-shadow:
+      0 0 0 1px #fff,
+      0 0 0 3px #febe47;
+  }
+  &:hover {
+    background: #febe47;
+    color: @color_17;
+    border-color: @border_color_4;
+  }
+  &:active {
+    background: #febe47;
+    color: @color_17;
+    border-color: @border_color_4;
+  }
+}
+ul.pp-list_horiz {
+  width: 100%;
+  clear: both;
+  float: left;
+  margin: 0 0 -1px 0;
+  padding: 0;
+  li {
+    list-style: none;
+    float: left;
+    margin: 0;
     &:hover {
-      background: #febe47;
-      color: @color_17;
-      border-color: @border_color_4;
+      outline: none;
+    }
+    &:focus {
+      outline: none;
     }
     &:active {
-      background: #febe47;
-      color: @color_17;
-      border-color: @border_color_4;
+      outline: none;
     }
   }
-  input[type="radio"] {
-    &:checked {
-      &::before {
-        background-color: @background_color_5;
-      }
-    }
-    &:focus {
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #483f6b;
-      -moz-box-shadow: 0 0 0 1px #483f6b;
-      -webkit-box-shadow: 0 0 0 1px #483f6b;
-    }
-  }
-  input[type="checkbox"] {
-    &:checked {
-      &::before {
-        content: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%23655997%27%2F%3E%3C%2Fsvg%3E);
-      }
-    }
-    &:focus {
-      outline: 2px solid transparent;
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #483f6b;
-      -moz-box-shadow: 0 0 0 1px #483f6b;
-      -webkit-box-shadow: 0 0 0 1px #483f6b;
-    }
-  }
-  input[type="text"] {
-    &:focus {
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #483f6b;
-      -moz-box-shadow: 0 0 0 1px #483f6b;
-      -webkit-box-shadow: 0 0 0 1px #483f6b;
-    }
-  }
-  select {
-    &:focus {
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #483f6b;
-      -moz-box-shadow: 0 0 0 1px #483f6b;
-      -webkit-box-shadow: 0 0 0 1px #483f6b;
-    }
-  }
-  textarea {
-    &:focus {
-      border-color: @border_color_2;
-      box-shadow: 0 0 0 1px #483f6b;
-      -moz-box-shadow: 0 0 0 1px #483f6b;
-      -webkit-box-shadow: 0 0 0 1px #483f6b;
-    }
-  }
-  ul.pp-list_horiz {
-    width: 100%;
-    clear: both;
-    float: left;
-    margin: 0 0 -1px 0;
-    padding: 0;
-    li {
-      list-style: none;
-      float: left;
-      margin: 0;
+  li.agp-agent {
+    margin: 0 -1px 0 0;
+    a {
+      text-decoration: none;
+      color: @color_18;
+      padding: 10px 14px 10px;
+      display: block;
       &:hover {
-        outline: none;
+        text-decoration: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        color: @color_17;
       }
       &:focus {
-        outline: none;
+        text-decoration: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        color: @color_17;
       }
       &:active {
-        outline: none;
-      }
-    }
-    li.agp-agent {
-      margin: 0 -1px 0 0;
-      a {
         text-decoration: none;
-        color: @color_18;
-        padding: 10px 14px 10px;
-        display: block;
-        &:hover {
-          text-decoration: none;
-          -webkit-box-shadow: none;
-          -moz-box-shadow: none;
-          box-shadow: none;
-          color: @color_17;
-        }
-        &:focus {
-          text-decoration: none;
-          -webkit-box-shadow: none;
-          -moz-box-shadow: none;
-          box-shadow: none;
-          color: @color_17;
-        }
-        &:active {
-          text-decoration: none;
-          -webkit-box-shadow: none;
-          -moz-box-shadow: none;
-          box-shadow: none;
-          color: @color_17;
-        }
-      }
-    }
-    li.agp-selected_agent {
-      border: 1px solid #ccc;
-      background-color: @background_color_3;
-      border-bottom: 1px solid #fff;
-      a {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
         color: @color_17;
       }
     }
-    li.agp-unselected_agent {
-      border: 1px solid #ccc;
-      background: #f1f1f1;
-      a {
-        color: @color_18;
-      }
+  }
+  li.agp-selected_agent {
+    border: 1px solid #ccc;
+    background-color: @background_color_3;
+    border-bottom: 1px solid #fff;
+    a {
+      color: @color_17;
     }
   }
-  .pp-agents {
-    background-color: @background_color_3;
-    padding: 0 0 0.2em 0.3em;
+  li.agp-unselected_agent {
     border: 1px solid #ccc;
-    margin: 0;
-    padding: 20px;
+    background: #f1f1f1;
     a {
-      color: @color_12;
-      text-decoration: none;
-      &:hover {
-        .wp-core-ui {
-          .pp-agents {
-            a {
-              &:focus {
-                color: @color_16;
-                text-decoration: none;
-              }
+      color: @color_18;
+    }
+  }
+}
+.pp-agents {
+  background-color: @background_color_3;
+  padding: 0 0 0.2em 0.3em;
+  border: 1px solid #ccc;
+  margin: 0;
+  padding: 20px;
+  a {
+    color: @color_12;
+    text-decoration: none;
+    &:hover {
+      .wp-core-ui {
+        .pp-agents {
+          a {
+            &:focus {
+              color: @color_16;
+              text-decoration: none;
             }
           }
         }
       }
-      &:focus {
-        color: @color_16;
-        text-decoration: none;
-      }
     }
-    input {
-      vertical-align: text-bottom;
+    &:focus {
+      color: @color_16;
+      text-decoration: none;
     }
+  }
+  input {
+    vertical-align: text-bottom;
   }
 }
 div#profile-page.wrap {
