@@ -308,12 +308,13 @@
                 if ($visibleItems.length === 0) {
                     // Remove any existing empty state first
                     $list.find('.pp-empty-state').remove();
+                    var emptyMessage = $list.data('empty-message');
                     
                     // Show empty state message
                     $list.prepend(
                         '<div class="pp-empty-state">' +
                         '<span class="dashicons dashicons-info"></span>' +
-                        '<p>No user exceptions set. Use the dropdown above to add users.</p>' +
+                        '<p>' + emptyMessage + '</p>' +
                         '</div>'
                     );
                 }

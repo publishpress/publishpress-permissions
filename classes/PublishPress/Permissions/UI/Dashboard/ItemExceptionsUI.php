@@ -677,7 +677,7 @@ class ItemExceptionsUI
                     data-op="<?php echo esc_attr($op); ?>"
                     data-for-item-type="<?php echo esc_attr($for_item_type); ?>"
                     data-agent-type="user"
-                    data-placeholder="<?php esc_attr_e('Search and add users to exceptions...', 'press-permit-core'); ?>">
+                    data-placeholder="<?php esc_attr_e('Search and add users...', 'press-permit-core'); ?>">
                 </select>
             </div>
             <!-- Dynamic Filter Pills (populated by JavaScript) -->
@@ -815,6 +815,7 @@ class ItemExceptionsUI
      */
     private function renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
     {
+        $empty_message = esc_html__('No specific user permissions. Use the dropdown above to add users.', 'press-permit-core');
         ?>
         <div class="pp-permission-cards">
             <div class="pp-permission-card">
@@ -840,7 +841,7 @@ class ItemExceptionsUI
                 </div>
 
                 <!-- Users list -->
-                <div class="pp-permission-list">
+                <div class="pp-permission-list" data-empty-message="<?php echo esc_attr($empty_message); ?>">
                     <?php
                     if (!empty($current_exceptions[$op]['user'])) {
                         foreach (array_keys($this->data->agent_info['user']) as $agent_id) {
@@ -858,7 +859,7 @@ class ItemExceptionsUI
                         ?>
                         <div class="pp-empty-state">
                             <span class="dashicons dashicons-info"></span>
-                            <p><?php esc_html_e('No user exceptions set. Use the dropdown above to add users.', 'press-permit-core'); ?></p>
+                            <p><?php echo esc_html($empty_message); ?></p>
                         </div>
                         <?php
                     }
