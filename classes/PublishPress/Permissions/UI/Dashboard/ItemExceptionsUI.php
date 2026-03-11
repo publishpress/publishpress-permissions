@@ -448,11 +448,11 @@ class ItemExceptionsUI
                 <p>
                     <span class="dashicons dashicons-info" style="color: #2271b1;"></span>
                     <strong><?php esc_html_e('New Interface:', 'press-permit-core'); ?></strong>
-                    <?php esc_html_e('You\'re using the modern tabbed interface.', 'press-permit-core'); ?>
+                    <?php esc_html_e('You\'re using the new interface.', 'press-permit-core'); ?>
                     <?php 
                     $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=advanced#use_tabbed_metabox');
                     printf(
-                        esc_html__('Prefer the classic view? %sSwitch to legacy metaboxes%s in settings.', 'press-permit-core'),
+                        esc_html__('Prefer the old view? %sSwitch to the legacy metaboxes%s in the Advanced settings area.', 'press-permit-core'),
                         '<a href="' . esc_url($settings_url) . '">',
                         '</a>'
                     );
