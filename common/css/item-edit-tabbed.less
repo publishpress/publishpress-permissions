@@ -725,9 +725,9 @@
   &[data-filter="pp-no"],
   &[data-filter="pp-no2"] {
     &:not(.active) {
-      background: #fef2f2;
-      color: #b91c1c;
-      border: 1px solid #fecaca;
+      background: white;
+      color: #7f2424;
+      border: 1px solid #fca5a5;
 
       .pp-filter-count {
         background: #fecaca;
@@ -735,7 +735,7 @@
       }
 
       &:hover {
-        background: #fee2e2;
+        background: #fef2f2;
         border-color: #fca5a5;
         box-shadow:
           0 4px 12px rgba(220, 38, 38, 0.15),
@@ -744,13 +744,22 @@
     }
 
     &.active {
-      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      color: #7f2424;
+      border: 1px solid #fca5a5;
       box-shadow:
-        0 4px 16px rgba(239, 68, 68, 0.4),
-        0 2px 8px rgba(239, 68, 68, 0.2);
+        0 4px 16px rgba(239, 68, 68, 0.15),
+        0 2px 8px rgba(239, 68, 68, 0.1);
+
+      .pp-filter-count {
+        background: rgba(127, 29, 29, 0.15);
+        color: #7f1d1d;
+      }
 
       &:hover {
-        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        box-shadow:
+          0 6px 20px rgba(239, 68, 68, 0.2),
+          0 3px 10px rgba(239, 68, 68, 0.12);
       }
     }
   }
@@ -760,9 +769,9 @@
   &[data-filter="pp-yes"],
   &[data-filter="pp-yes2"] {
     &:not(.active) {
-      background: #f0fdf4;
-      color: #15803d;
-      border: 1px solid #bbf7d0;
+      background: white;
+      color: #11552b;
+      border: 1px solid #86efac;
 
       .pp-filter-count {
         background: #bbf7d0;
@@ -770,7 +779,7 @@
       }
 
       &:hover {
-        background: #dcfce7;
+        background: #f0fdf4;
         border-color: #86efac;
         box-shadow:
           0 4px 12px rgba(22, 163, 74, 0.15),
@@ -779,32 +788,64 @@
     }
 
     &.active {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #11552b;
+      border: 1px solid #86efac;
       box-shadow:
-        0 4px 16px rgba(16, 185, 129, 0.4),
-        0 2px 8px rgba(16, 185, 129, 0.2);
+        0 4px 16px rgba(16, 185, 129, 0.15),
+        0 2px 8px rgba(16, 185, 129, 0.1);
+
+      .pp-filter-count {
+        background: rgba(20, 83, 45, 0.15);
+        color: #14532d;
+      }
 
       &:hover {
-        background: linear-gradient(135deg, #059669 0%, #047857 100%);
+        box-shadow:
+          0 6px 20px rgba(16, 185, 129, 0.2),
+          0 3px 10px rgba(16, 185, 129, 0.12);
       }
     }
   }
 
-  // "Default" filter - neutral theme
+  // "Default" filter - light blue theme
   &[data-filter="pp-def"] {
     &:not(.active) {
       background: white;
-      color: #4b5563;
-      border: 1px solid #e5e7eb;
+      color: #0c4a6e;
+      border: 1px solid #7dd3fc;
 
       .pp-filter-count {
-        background: #e5e7eb;
-        color: #374151;
+        background: #e0f2fe;
+        color: #0c4a6e;
       }
 
       &:hover {
-        background: #f9fafb;
-        border-color: #d1d5db;
+        background: #f0f9ff;
+        border-color: #7dd3fc;
+        box-shadow:
+          0 4px 12px rgba(56, 189, 248, 0.15),
+          0 2px 4px rgba(56, 189, 248, 0.08);
+      }
+    }
+
+    &.active {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+      color: #0c4a6e;
+      border: 1px solid #7dd3fc;
+      box-shadow:
+        0 4px 16px rgba(56, 189, 248, 0.15),
+        0 2px 8px rgba(56, 189, 248, 0.1);
+
+      .pp-filter-count {
+        background: rgba(12, 74, 110, 0.15);
+        color: #0c4a6e;
+      }
+
+      &:hover {
+        box-shadow:
+          0 6px 20px rgba(56, 189, 248, 0.2),
+          0 3px 10px rgba(56, 189, 248, 0.12);
       }
     }
   }
@@ -812,8 +853,8 @@
   // "Role" filter - blue theme (matches pp-type-role badge)
   &[data-filter="role"] {
     &:not(.active) {
-      background: #eff6ff;
-      color: #1c3ca6;
+      background: white;
+      color: #1e3a8a;
       border: 1px solid #93c5fd;
 
       .pp-filter-count {
@@ -822,7 +863,7 @@
       }
 
       &:hover {
-        background: #dbeafe;
+        background: #eff6ff;
         border-color: #60a5fa;
         box-shadow:
           0 4px 12px rgba(59, 130, 246, 0.15),
@@ -831,13 +872,22 @@
     }
 
     &.active {
-      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1e3a8a;
+      border: 1px solid #93c5fd;
       box-shadow:
-        0 4px 16px rgba(59, 130, 246, 0.4),
-        0 2px 8px rgba(59, 130, 246, 0.2);
+        0 4px 16px rgba(59, 130, 246, 0.15),
+        0 2px 8px rgba(59, 130, 246, 0.1);
+
+      .pp-filter-count {
+        background: rgba(30, 58, 138, 0.15);
+        color: #1e3a8a;
+      }
 
       &:hover {
-        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        box-shadow:
+          0 6px 20px rgba(59, 130, 246, 0.2),
+          0 3px 10px rgba(59, 130, 246, 0.12);
       }
     }
   }
@@ -845,7 +895,7 @@
   // "Group" filter - orange/amber theme (matches pp-type-group badge)
   &[data-filter="group"] {
     &:not(.active) {
-      background: #fffbeb;
+      background: white;
       color: #92400e;
       border: 1px solid #fcd34d;
 
@@ -855,7 +905,7 @@
       }
 
       &:hover {
-        background: #fef3c7;
+        background: #fffbeb;
         border-color: #fbbf24;
         box-shadow:
           0 4px 12px rgba(245, 158, 11, 0.15),
@@ -864,13 +914,22 @@
     }
 
     &.active {
-      background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+      background: linear-gradient(135deg, #fffbeb, #fef3c7);
+      color: #92400e;
+      border: 1px solid #fcd34d;
       box-shadow:
-        0 4px 16px rgba(245, 158, 11, 0.4),
-        0 2px 8px rgba(245, 158, 11, 0.2);
+        0 4px 16px rgba(245, 158, 11, 0.15),
+        0 2px 8px rgba(245, 158, 11, 0.1);
+
+      .pp-filter-count {
+        background: rgba(120, 53, 15, 0.15);
+        color: #78350f;
+      }
 
       &:hover {
-        background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+        box-shadow:
+          0 6px 20px rgba(245, 158, 11, 0.2),
+          0 3px 10px rgba(245, 158, 11, 0.12);
       }
     }
   }
@@ -1038,7 +1097,7 @@
       
       &.pp-type-role {
         background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-        color: #1c3ca6;
+        color: #1e3a8a;
         border: 1px solid #93c5fd;
       }
       
