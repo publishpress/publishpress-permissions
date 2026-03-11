@@ -22,6 +22,13 @@ class TeaserHooksAdmin
                 $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
                 wp_enqueue_script('presspermit-teaser-settings', $urlpath . "/common/js/settings{$suffix}.js", ['jquery','presspermit-select2'], PRESSPERMIT_TEASER_VERSION, false);
 
+                // Enqueue WordPress color picker
+                wp_enqueue_style('wp-color-picker');
+                wp_enqueue_script('wp-color-picker');
+
+                // Enqueue teaser preview script for live updates
+                wp_enqueue_script('presspermit-teaser-preview', $urlpath . "/common/js/settings-teaser-preview{$suffix}.js", ['jquery', 'wp-color-picker'], PRESSPERMIT_TEASER_VERSION, true);
+
                 // Nonce for ajax requests
                 wp_localize_script(
                     'presspermit-teaser-settings',
@@ -89,6 +96,13 @@ class TeaserHooksAdmin
 	    }
 
         $search = (isset($_GET['search'])) ? sanitize_text_field($_GET['search']) : '';
+        $post_type = (isset($_GET['post_type'])) ? sanitize_key($_GET['post_type']) : 'page';
+        
+        // Validate post_type is public
+        $public_post_types = get_post_types(['public' => true], 'names');
+        if (!in_array($post_type, $public_post_types)) {
+            $post_type = 'page';
+        }
 
         global $wpdb;
 
@@ -98,10 +112,11 @@ class TeaserHooksAdmin
         $results = $wpdb->get_results(
             $wpdb->prepare(
                 'SELECT ID, post_title FROM ' . $wpdb->prefix . 'posts
-                WHERE post_type = "page" AND post_status = "publish"
+                WHERE post_type = %s AND post_status = "publish"
                 AND post_title LIKE %s
                 ORDER BY post_title LIMIT 10',
 
+                $post_type,
                 '%' . $wpdb->esc_like(sanitize_text_field($search)) . '%'
             )
         );
