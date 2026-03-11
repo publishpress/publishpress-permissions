@@ -58,10 +58,12 @@ jQuery(document).ready(function ($) {
             method: 'get',
             delay: 250,
             data: function (params) {
-
+                var postType = $(this).attr('data-post-type') || 'page';
+                
                 return {
                     search: params.term,
                     action: 'pp_search_posts',
+                    post_type: postType,
                     nonce: presspermitTeaser.nonce
                 }
             },
@@ -80,6 +82,51 @@ jQuery(document).ready(function ($) {
             },
         }
     } );
+    
+    // Handle post type selector change
+    $(document).on('change', '.teaser-redirect-post-type', function() {
+        var newPostType = $(this).val();
+        var targetSelectId = $(this).attr('data-target-select');
+        var $targetSelect = $('#' + targetSelectId);
+        
+        // Update the data-post-type attribute
+        $targetSelect.attr('data-post-type', newPostType);
+        
+        // Clear the current selection
+        $targetSelect.val(null).trigger('change');
+        
+        // Reinitialize select2 to use the new post type
+        $targetSelect.select2('destroy');
+        $targetSelect.select2({
+            placeholder: presspermitTeaser.strings.select_a_page,
+            allowClear: true,
+            ajax: {
+                url: presspermitTeaser.url,
+                dataType: 'json',
+                method: 'get',
+                delay: 250,
+                data: function (params) {
+                    return {
+                        search: params.term,
+                        action: 'pp_search_posts',
+                        post_type: newPostType,
+                        nonce: presspermitTeaser.nonce
+                    }
+                },
+                processResults: function( data ) {
+                    var options = [];
+                    if ( data ) {
+                        $.each( data, function( index, item ) {
+                            options.push( { id: item.ID, text: item.post_title  } );
+                        });
+                        return {
+                            results: options
+                        };
+                    }
+                },
+            }
+        });
+    });
 
     // Search terms
     $('.permissions_select_terms').select2( {
@@ -195,7 +242,44 @@ jQuery(document).ready(function ($) {
     // Progressive Disclosure UI - Teaser Settings
     // ========================================================================
 
+    // Function to update preview text based on teaser type and active tab
+    function updateTeaserPreviewText($container) {
+        var teaserType = $container.find('.pp-teaser-type-select').val();
+        var $preview = $container.find('.pp-teaser-notice-preview');
+        
+        if (!$preview.length) {
+            return; // No preview element found
+        }
+        
+        var messageText = '';
+        
+        if (teaserType == '1') {
+            // Teaser Text mode - check which tab is active
+            var activeTab = $container.find('.pp-teaser-text-tabs .active').data('tab');
+            if (activeTab == 'anon-content') {
+                messageText = $preview.data('teaser-text-anon') || '';
+            } else {
+                messageText = $preview.data('teaser-text-logged') || '';
+            }
+        } else if (teaserType == 'read_more') {
+            messageText = $preview.data('read-more-msg');
+        } else if (teaserType == 'excerpt') {
+            messageText = $preview.data('excerpt-msg');
+        } else if (teaserType == 'x_chars' || teaserType == 'more') {
+            messageText = $preview.data('x-chars-msg');
+        }
+        
+        // Fallback to default if empty
+        if (!messageText) {
+            messageText = 'To read the full content, please log in to this site.';
+        }
+        
+        $preview.text(messageText);
+    }
+
+    // Function to update teaser settings visibility based on selected type
     function updateTeaserSettings(selectedType, $container) {
+        // Show/hide number input based on type
         if (selectedType == 'x_chars') {
             $container.find('.pp-num-chars-setting').fadeIn(300);
             $container.find('.pp-excerpt-chars-setting').fadeOut(300);
@@ -205,6 +289,23 @@ jQuery(document).ready(function ($) {
         } else {
             $container.find('.pp-num-chars-setting').fadeOut(300);
             $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+        }
+
+        // Show/hide Teaser Notice Style field based on teaser type
+        // Hide for redirect and no teaser, show for all other types
+        var $teaserNoticeStyleRow = $container.find('select[name^="teaser_notice_style_mode"]').closest('tr');
+        var $teaserNoticeStyleCard = $container.find('.pp-teaser-notice-style-settings')
+        if (selectedType == '0' || selectedType == 'redirect') {
+            $teaserNoticeStyleCard.hide();
+            $teaserNoticeStyleRow.hide();
+        } else {
+            $teaserNoticeStyleRow.show();
+            var $teaserNoticeStyleValue = $teaserNoticeStyleRow.find('select[name^="teaser_notice_style_mode"]').val();
+            if ($teaserNoticeStyleValue === 'custom') {
+                $teaserNoticeStyleCard.show();
+            } else {
+                $teaserNoticeStyleCard.hide();
+            }
         }
 
         // Hide all notice cards first for smooth transition
@@ -260,6 +361,9 @@ jQuery(document).ready(function ($) {
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
         }
+        
+        // Update preview text based on new teaser type
+        updateTeaserPreviewText($container);
     }
 
     // Post type selector - switch between different post type settings
@@ -294,7 +398,7 @@ jQuery(document).ready(function ($) {
     // Teaser text tabs - switch between logged in and not logged in
     $(document).on('click', '.pp-teaser-text-tab', function() {
         var tab = $(this).data('tab');
-        var $container = $(this).closest('.pp-teaser-text-card');
+        var $container = $(this).closest('.pp-teaser-text-card, .pp-teaser-notice-style-settings');
         
         // Update tab active state
         $container.find('.pp-teaser-text-tab').removeClass('active');
@@ -311,96 +415,114 @@ jQuery(document).ready(function ($) {
     function initializeProgressiveUIVisibility() {
         // Check if there's a previously selected post type
         var savedPostType = $('#selected_post_type').val();
-        var $targetContainer;
+        var $container;
         
         if (savedPostType && $('.pp-teaser-settings-container[data-post-type="' + savedPostType + '"]').length) {
             // Restore previously selected post type
-            $targetContainer = $('.pp-teaser-settings-container[data-post-type="' + savedPostType + '"]');
+            $container = $('.pp-teaser-settings-container[data-post-type="' + savedPostType + '"]');
             $('#pp_current_post_type').val(savedPostType);
         } else {
             // Show first post type by default
-            $targetContainer = $('.pp-teaser-settings-container').first();
-            if ($targetContainer.length) {
+            $container = $('.pp-teaser-settings-container').first();
+            if ($container.length) {
                 // Try to find the first enabled option in the post type selector
                 var $firstEnabledOption = $('#pp_current_post_type option:not(:disabled)').first();
-                var firstPostType = $firstEnabledOption.length ? $firstEnabledOption.val() : $targetContainer.data('post-type');
+                var firstPostType = $firstEnabledOption.length ? $firstEnabledOption.val() : $container.data('post-type');
                 $('#pp_current_post_type').val(firstPostType);
                 $('#selected_post_type').val(firstPostType);
             }
         }
 
-        if ($targetContainer && $targetContainer.length) {
-            $targetContainer.addClass('active').show();
+        if ($container && $container.length) {
+            $container.addClass('active').show();
 
             // Check the post type's teaser setting and show/hide elements accordingly
-            var teaserType = $targetContainer.find('.pp-teaser-type-select').val();
-            
-            if (teaserType == '0') {
-                // No Teaser: hide everything
-                $targetContainer.find('.pp-teaser-redirect-settings').hide();
-                $targetContainer.find('.pp-teaser-text-card').hide();
-                $targetContainer.find('.pp-read-more-notice-card').hide();
-                $targetContainer.find('.pp-excerpt-notice-card').hide();
-                $targetContainer.find('.pp-x-chars-notice-card').hide();
-                $targetContainer.find('.pp-teaser-application-fields').hide();
-            } else if (teaserType == 'redirect') {
-                // Redirect: show only redirect settings and application fields
-                $targetContainer.find('.pp-teaser-redirect-settings').show();
-                $targetContainer.find('.pp-teaser-application-fields').show();
-                $targetContainer.find('.pp-teaser-text-card').hide();
-                $targetContainer.find('.pp-read-more-notice-card').hide();
-                $targetContainer.find('.pp-excerpt-notice-card').hide();
-                $targetContainer.find('.pp-x-chars-notice-card').hide();
-            } else if (teaserType == '1') {
-                // Teaser Text: show teaser text card and application fields, hide redirect
-                $targetContainer.find('.pp-teaser-text-card').show();
-                $targetContainer.find('.pp-teaser-application-fields').show();
-                $targetContainer.find('.pp-teaser-redirect-settings').hide();
-                $targetContainer.find('.pp-read-more-notice-card').hide();
-                $targetContainer.find('.pp-excerpt-notice-card').hide();
-                $targetContainer.find('.pp-x-chars-notice-card').hide();
-            } else if (teaserType == 'read_more') {
-                // Read More: show read more notice and application fields
-                $targetContainer.find('.pp-read-more-notice-card').show();
-                $targetContainer.find('.pp-teaser-application-fields').show();
-                $targetContainer.find('.pp-teaser-text-card').hide();
-                $targetContainer.find('.pp-teaser-redirect-settings').hide();
-                $targetContainer.find('.pp-excerpt-notice-card').hide();
-                $targetContainer.find('.pp-x-chars-notice-card').hide();
-            } else if (teaserType == 'excerpt') {
-                // Excerpt: show excerpt notice and application fields
-                $targetContainer.find('.pp-excerpt-notice-card').show();
-                $targetContainer.find('.pp-teaser-application-fields').show();
-                $targetContainer.find('.pp-teaser-text-card').hide();
-                $targetContainer.find('.pp-teaser-redirect-settings').hide();
-                $targetContainer.find('.pp-read-more-notice-card').hide();
-                $targetContainer.find('.pp-x-chars-notice-card').hide();
-            } else if (teaserType == 'x_chars' || teaserType == 'more') {
-                // X Chars or More: show x chars notice and application fields
-                $targetContainer.find('.pp-x-chars-notice-card').show();
-                $targetContainer.find('.pp-teaser-application-fields').show();
-                $targetContainer.find('.pp-teaser-text-card').hide();
-                $targetContainer.find('.pp-teaser-redirect-settings').hide();
-                $targetContainer.find('.pp-read-more-notice-card').hide();
-                $targetContainer.find('.pp-excerpt-notice-card').hide();
-            } else {
-                // Other teaser types: show application fields only
-                $targetContainer.find('.pp-teaser-application-fields').show();
-                $targetContainer.find('.pp-teaser-text-card').hide();
-                $targetContainer.find('.pp-read-more-notice-card').hide();
-                $targetContainer.find('.pp-excerpt-notice-card').hide();
-                $targetContainer.find('.pp-x-chars-notice-card').hide();
-                $targetContainer.find('.pp-teaser-redirect-settings').hide();
-            }
+            var selectedType = $container.find('.pp-teaser-type-select').val();
             
             // Show/hide number input based on type
-            if (teaserType == 'x_chars') {
-                $targetContainer.find('.pp-num-chars-setting').show();
-                $targetContainer.find('.pp-excerpt-chars-setting').hide();
-            } else if (teaserType == 'excerpt') {
-                $targetContainer.find('.pp-excerpt-chars-setting').show();
-                $targetContainer.find('.pp-num-chars-setting').hide();
+            if (selectedType == 'x_chars') {
+                $container.find('.pp-num-chars-setting').show();
+                $container.find('.pp-excerpt-chars-setting').hide();
+            } else if (selectedType == 'excerpt') {
+                $container.find('.pp-excerpt-chars-setting').show();
+                $container.find('.pp-num-chars-setting').hide();
+            } else {
+                $container.find('.pp-num-chars-setting').hide();
+                $container.find('.pp-excerpt-chars-setting').hide();
             }
+
+            // Show/hide Teaser Notice Style field based on teaser type
+            // Hide for redirect and no teaser, show for all other types
+            var $teaserNoticeStyleRow = $container.find('select[name^="teaser_notice_style_mode"]').closest('tr');
+            var $teaserNoticeStyleCard = $container.find('.pp-teaser-notice-style-settings')
+            if (selectedType == '0' || selectedType == 'redirect') {
+                $teaserNoticeStyleCard.hide();
+                $teaserNoticeStyleRow.hide();
+            } else {
+                $teaserNoticeStyleRow.show();
+                var $teaserNoticeStyleValue = $teaserNoticeStyleRow.find('select[name^="teaser_notice_style_mode"]').val();
+                if ($teaserNoticeStyleValue === 'custom') {
+                    $teaserNoticeStyleCard.show();
+                } else {
+                    $teaserNoticeStyleCard.hide();
+                }
+            }
+
+            // Hide all notice cards first for smooth transition
+            var $noticeCards = $container.find('.pp-read-more-notice-card, .pp-excerpt-notice-card, .pp-x-chars-notice-card');
+            
+            if (selectedType == '0') {
+                // No Teaser: hide everything
+                $container.find('.pp-teaser-application-fields').hide();
+                $container.find('.pp-teaser-text-card').hide();
+                $container.find('.pp-teaser-redirect-settings').hide();
+                $noticeCards.hide();
+            } else if (selectedType == 'redirect') {
+                // Redirect: show only redirect settings and application fields
+                $container.find('.pp-teaser-application-fields').show();
+                $container.find('.pp-teaser-text-card').hide();
+                $container.find('.pp-teaser-redirect-settings').show();
+                $noticeCards.hide();
+            } else if (selectedType == '1') {
+                // Teaser Text: show teaser text card and application fields, hide redirect
+                $container.find('.pp-teaser-application-fields').show();
+                $container.find('.pp-teaser-text-card').show();
+                $container.find('.pp-teaser-redirect-settings').hide();
+                $noticeCards.hide();
+            } else if (selectedType == 'read_more') {
+                // Read More: show read more notice and application fields
+                $container.find('.pp-teaser-application-fields').show();
+                $container.find('.pp-teaser-text-card').hide();
+                $container.find('.pp-teaser-redirect-settings').hide();
+                // Hide other notice cards first, then show read more notice
+                $noticeCards.not('.pp-read-more-notice-card').hide();
+                $container.find('.pp-read-more-notice-card').show();
+            } else if (selectedType == 'excerpt') {
+                // Excerpt: show excerpt notice and application fields
+                $container.find('.pp-teaser-application-fields').show();
+                $container.find('.pp-teaser-text-card').hide();
+                $container.find('.pp-teaser-redirect-settings').hide();
+                // Hide other notice cards first, then show excerpt notice
+                $noticeCards.not('.pp-excerpt-notice-card').hide();
+                $container.find('.pp-excerpt-notice-card').show();
+            } else if (selectedType == 'x_chars' || selectedType == 'more') {
+                // X Chars or More: show x chars notice and application fields
+                $container.find('.pp-teaser-application-fields').show();
+                $container.find('.pp-teaser-text-card').hide();
+                $container.find('.pp-teaser-redirect-settings').hide();
+                // Hide other notice cards first, then show x chars notice
+                $noticeCards.not('.pp-x-chars-notice-card').hide();
+                $container.find('.pp-x-chars-notice-card').show();
+            } else {
+                // Other teaser types: show application fields only
+                $container.find('.pp-teaser-application-fields').show();
+                $container.find('.pp-teaser-text-card').hide();
+                $container.find('.pp-teaser-redirect-settings').hide();
+                $noticeCards.hide();
+            }
+            
+            // Update preview text based on current teaser type
+            updateTeaserPreviewText($container);
         }
     }
 
@@ -456,8 +578,137 @@ jQuery(document).ready(function ($) {
         return false;
     });
 
+    // Teaser Notice Style Mode Toggle
+    function toggleTeaserNoticeStyleSettings() {
+        // Check if any visible teaser notice style select has 'custom' selected
+        var hasCustomMode = false;
+        $('.pp-teaser-notice-style-select:visible').each(function() {
+            if ($(this).val() === 'custom') {
+                hasCustomMode = true;
+                return false; // break the loop
+            }
+        });
+        
+        if (hasCustomMode) {
+            $('.pp-teaser-notice-style-settings').slideDown(300, function() {
+                // Scroll to the customization section after it's fully visible
+                $('html, body').animate({
+                    scrollTop: $('.pp-teaser-notice-style-settings').offset().top - 100
+                }, 500);
+            });
+        } else {
+            $('.pp-teaser-notice-style-settings').slideUp(300);
+        }
+    }
+
+    // Handle change event for any teaser notice style select
+    $(document).on('change', '.pp-teaser-notice-style-select', function() {
+        toggleTeaserNoticeStyleSettings();
+    });
+
+    // Monitor TinyMCE editor changes for teaser text
+    $(document).on('input keyup', 'textarea[id*="tease_replace_content"]', function() {
+        var editorId = $(this).attr('id');
+        var $container = $(this).closest('.pp-teaser-settings-container');
+        var $preview = $container.find('.pp-teaser-notice-preview');
+        var value = '';
+        
+        // Try to get content from TinyMCE if active
+        if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+            value = tinymce.get(editorId).getContent({format: 'text'});
+        } else {
+            value = $(this).val();
+        }
+        
+        // Strip HTML tags for preview
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = value;
+        value = tempDiv.textContent || tempDiv.innerText || '';
+
+        if (editorId.indexOf('tease_replace_content_anon') > -1) {
+            $preview.data('teaser-text-anon', value);
+        } else if (editorId.indexOf('tease_replace_content') > -1 && editorId.indexOf('_anon') === -1) {
+            $preview.data('teaser-text-logged', value);
+        }
+        
+        updateTeaserPreviewText($container);
+    });
+
+    // Monitor textarea changes for notice message editors
+    $(document).on('input keyup', 'textarea[id*="read_more_login_notice"], textarea[id*="excerpt_login_notice"], textarea[id*="x_chars_login_notice"]', function() {
+        var editorId = $(this).attr('id');
+        var $container = $(this).closest('.pp-teaser-settings-container');
+        var $preview = $container.find('.pp-teaser-notice-preview');
+        var value = '';
+        
+        // Try to get content from TinyMCE if active
+        if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+            value = tinymce.get(editorId).getContent({format: 'text'});
+        } else {
+            value = $(this).val();
+        }
+        
+        // Strip HTML tags for preview
+        var tempDiv = document.createElement('div');
+        tempDiv.innerHTML = value;
+        value = tempDiv.textContent || tempDiv.innerText || '';
+
+        if (editorId.indexOf('read_more_login_notice') > -1) {
+            $preview.data('read-more-msg', value);
+        } else if (editorId.indexOf('excerpt_login_notice') > -1) {
+            $preview.data('excerpt-msg', value);
+        } else if (editorId.indexOf('x_chars_login_notice') > -1) {
+            $preview.data('x-chars-msg', value);
+        }
+        
+        updateTeaserPreviewText($container);
+    });
+
     // Function to bind all TinyMCE editor events (preview updates and error removal)
     function bindTinyMCEEditor(editor) {
+        // Handle preview text updates for teaser content editors
+        if (editor.id.indexOf('tease_replace_content') > -1) {
+            editor.on('keyup change', function() {
+                var value = editor.getContent({format: 'text'});
+                var $container = $('#' + editor.id).closest('.pp-teaser-settings-container');
+                var $preview = $container.find('.pp-teaser-notice-preview');
+                
+                if (editor.id.indexOf('tease_replace_content_anon') > -1) {
+                    $preview.data('teaser-text-anon', value);
+                } else if (editor.id.indexOf('tease_replace_content') > -1 && editor.id.indexOf('_anon') === -1) {
+                    $preview.data('teaser-text-logged', value);
+                }
+                
+                updateTeaserPreviewText($container);
+            });
+        }
+        
+        // Handle preview text updates for message editors
+        if (editor.id.indexOf('read_more_login_notice') > -1 || 
+            editor.id.indexOf('excerpt_login_notice') > -1 || 
+            editor.id.indexOf('x_chars_login_notice') > -1) {
+            editor.on('keyup change', function() {
+                var value = editor.getContent({format: 'text'});
+                var $container = $('#' + editor.id).closest('.pp-teaser-settings-container');
+                var $preview = $container.find('.pp-teaser-notice-preview');
+                
+                // Strip HTML tags for preview
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = value;
+                value = tempDiv.textContent || tempDiv.innerText || '';
+                
+                if (editor.id.indexOf('read_more_login_notice') > -1) {
+                    $preview.data('read-more-msg', value);
+                } else if (editor.id.indexOf('excerpt_login_notice') > -1) {
+                    $preview.data('excerpt-msg', value);
+                } else if (editor.id.indexOf('x_chars_login_notice') > -1) {
+                    $preview.data('x-chars-msg', value);
+                }
+                
+                updateTeaserPreviewText($container);
+            });
+        }
+        
         // Handle error removal for required fields
         var $editorArea = $('#' + editor.id);
         var $requiredField = $editorArea.closest('.pp-required-field');
@@ -491,11 +742,21 @@ jQuery(document).ready(function ($) {
             bindTinyMCEEditor(e.editor);
         });
     }
+
+    // Monitor tab switches in teaser text section
+    $(document).on('click', '.pp-teaser-text-tabs .pp-teaser-text-tab', function() {
+        var $container = $(this).closest('.pp-teaser-settings-container');
+
+        // Small delay to allow tab content to switch
+        setTimeout(function() {
+            updateTeaserPreviewText($container);
+        }, 50);
+    });
     
     // Function to validate a required field
     function validateRequiredField($requiredField, postType) {
         var $editorArea = $requiredField.find('.wp-editor-area');
-        
+
         if ($editorArea.length) {
             var editorId = $editorArea.attr('id');
             var content = '';
@@ -597,7 +858,7 @@ jQuery(document).ready(function ($) {
                 }
                 
                 // Switch to the tab with error if needed
-                var $teaserTextCard = $targetContainer.find('.pp-teaser-text-card');
+                var $teaserTextCard = $targetContainer.find('.pp-teaser-text-card .teaser-message-section');
                 var $targetTab = $teaserTextCard.find('.pp-teaser-text-tab[data-tab="' + firstError.tabContent + '"]');
                 
                 if ($targetTab.length && !$targetTab.hasClass('active')) {

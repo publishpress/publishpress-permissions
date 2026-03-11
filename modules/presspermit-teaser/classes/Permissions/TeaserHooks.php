@@ -55,15 +55,19 @@ class TeaserHooks
             'teaser_redirect_anon' => [],
             'teaser_redirect_page' => [],
             'teaser_redirect_anon_page' => [],
+            'teaser_redirect_post_type' => [],
+            'teaser_redirect_anon_post_type' => [],
             'teaser_redirect_custom_login_page' => [],
             'teaser_redirect_custom_login_page_anon' => [],
-            'read_more_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
-            'excerpt_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
-            'x_chars_login_notice' => esc_html__('To read the full content, please log in to this site.', 'press-permit-core'),
+            'read_more_login_notice' => [],
+            'excerpt_login_notice' => [],
+            'x_chars_login_notice' => [],
 
             // object type options (support separate array element for each object type, and possible a nullstring element as default)
             'tease_post_types' => [],
-            'teaser_num_chars' => [],
+            'teaser_num_chars' => [], // Legacy field - kept for backward compatibility
+            'x_chars_num_chars' => [], // Separate field for x_chars teaser type
+            'excerpt_num_chars' => [], // Separate field for excerpt teaser type
             'tease_logged_only' => [],
             'tease_public_posts_only' => [],
             'tease_direct_access_only' => [],
@@ -158,8 +162,19 @@ class TeaserHooks
     }
 
     function fltEnforceTeaserLoginRedirect($redirect_to, $requested_redirect_to, $user) {
-        if (!PWP::empty_REQUEST('pp_redirect')) {
-            $redirect_to = $requested_redirect_to;
+        // Parse the redirect URL to check for pp_permissions parameter
+        $parsed_url = wp_parse_url($requested_redirect_to);
+        $query_string = isset($parsed_url['query']) ? $parsed_url['query'] : '';
+        
+        // Parse query string into an array
+        parse_str($query_string, $query_params);
+        
+        // If pp_permissions is present, extract the actual redirect_to URL
+        if (!empty($query_params['pp_permissions'])) {
+            // Check if there's a redirect_to parameter with the original URL
+            if (!empty($query_params['redirect_to'])) {
+                $redirect_to = urldecode($query_params['redirect_to']);
+            }
         }
 
         return $redirect_to;
@@ -179,6 +194,30 @@ class TeaserHooks
         if (version_compare($prev_version, '4.1.2-beta2', '<')) {
             if (get_option('presspermit_feed_teaser')) {
                 update_option('presspermit_feed_teaser', __("View the content of this <a href='%permalink%'>article</a>"));  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+            }
+        }
+        
+        // Migration for post type redirect feature - set default to 'page' for existing redirects
+        if (version_compare($prev_version, '4.2', '<')) {
+            // Migrate existing redirect_page settings to have default post_type of 'page'
+            if ($redirect_anon_pages = get_option('presspermit_teaser_redirect_anon_page')) {
+                if (is_array($redirect_anon_pages) && !empty($redirect_anon_pages)) {
+                    $redirect_post_types = [];
+                    foreach (array_keys($redirect_anon_pages) as $post_type) {
+                        $redirect_post_types[$post_type] = 'page';
+                    }
+                    update_option('presspermit_teaser_redirect_anon_post_type', $redirect_post_types);
+                }
+            }
+            
+            if ($redirect_pages = get_option('presspermit_teaser_redirect_page')) {
+                if (is_array($redirect_pages) && !empty($redirect_pages)) {
+                    $redirect_post_types = [];
+                    foreach (array_keys($redirect_pages) as $post_type) {
+                        $redirect_post_types[$post_type] = 'page';
+                    }
+                    update_option('presspermit_teaser_redirect_post_type', $redirect_post_types);
+                }
             }
         }
         
@@ -203,7 +242,7 @@ class TeaserHooks
             }
 
             if ($option_val = get_option('presspermit_teaser_redirect_anon_slug')) {
-                if ('[login]' != $option_val) {
+                if ('(login)' != $option_val) {
                     if ($redirect_post = get_page_by_path($option_val)) {  // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.get_page_by_path_get_page_by_path
                         $option_val = $redirect_post->ID;
                     }
@@ -213,7 +252,7 @@ class TeaserHooks
             }
 
             if ($option_val = get_option('presspermit_teaser_redirect_slug')) {
-                if ('[login]' != $option_val) {
+                if ('(login)' != $option_val) {
                     if ($redirect_post = get_page_by_path($option_val)) {  // phpcs:ignore WordPressVIPMinimum.Functions.RestrictedFunctions.get_page_by_path_get_page_by_path
                         $option_val = $redirect_post->ID;
                     }
@@ -272,9 +311,10 @@ class TeaserHooks
             return;
         }
 
-        $opt = (is_user_logged_in()) ? 'teaser_redirect_page' : 'teaser_redirect_anon_page';
+        $opt_redirect = (is_user_logged_in()) ? 'teaser_redirect' : 'teaser_redirect_anon';
+        $opt_page = (is_user_logged_in()) ? 'teaser_redirect_page' : 'teaser_redirect_anon_page';
 
-        if (!$option_val = $pp->getOption($opt))
+        if (!$option_val = $pp->getTypeOption($opt_redirect, $wp_query->post->post_type))
             return;
 
         if ($pp->isContentAdministrator())
@@ -294,7 +334,7 @@ class TeaserHooks
             // Check if the post type's teaser type is set to 'redirect'
             if (!empty($queried_object->post_type)) {
                 $teaser_type = $pp->getTypeOption('tease_post_types', $queried_object->post_type);
-                
+
                 // Only redirect if the teaser type is explicitly set to 'redirect'
                 if ('redirect' !== $teaser_type) {
                     return;
@@ -302,17 +342,30 @@ class TeaserHooks
             }
             $url = '';
 
-            if ('[login]' === $option_val) {
+            if ('(login)' === $option_val) {
                 $url = wp_login_url();
+            } elseif ('(select)' === $option_val) {
+                $option_page = $pp->getTypeOption($opt_page, $wp_query->post->post_type);
 
-            } elseif (is_numeric($option_val)) {
-                $url = get_permalink($option_val);
+                if (is_numeric($option_page)) {
+                    // Verify the redirect target still exists and is published
+                    $redirect_post_type_opt = (is_user_logged_in()) ? 'teaser_redirect_post_type' : 'teaser_redirect_anon_post_type';
+                    $redirect_post_type = $pp->getTypeOption($redirect_post_type_opt, $wp_query->post->post_type) ?: 'page';
+                    
+                    $redirect_post = get_post($option_page);
+                    if ($redirect_post && 'publish' === $redirect_post->post_status && $redirect_post->post_type === $redirect_post_type) {
+                        $url = get_permalink($option_page);
+                    } else {
+                        // Fallback to login if redirect target is invalid
+                        $url = wp_login_url();
+                    }
+                }
             }
 
             if ($url) {
                 $custom_login_page_option_name = is_user_logged_in() ? "teaser_redirect_custom_login_page" : "teaser_redirect_custom_login_page_anon";
 
-                if (('[login]' === $option_val) || defined('PRESSPERMIT_TEASER_REDIRECT_ARG') || $pp->getOption($custom_login_page_option_name)) {
+                if (('(login)' === $option_val) || defined('PRESSPERMIT_TEASER_REDIRECT_ARG') || $pp->getTypeOption($custom_login_page_option_name, $queried_object->post_type)) {
                     if (!empty($wp_query) && !empty($wp_query->query) && !empty($wp_query->query['attachment']) && !empty($wp_query->query['pagename']) && false !== strpos($wp_query->query['pagename'], $wp_query->query['attachment'])) {
                         $redirect_arg = trailingslashit(site_url()) . $wp_query->query['pagename'];
                     } elseif (!empty($wp_query->queried_object)) {
@@ -349,25 +402,11 @@ class TeaserHooks
     }
 
     function flt_custom_sanitize_setting($is_custom_sanitized, $option_basename, $default_prefix, $args) {
-
-        if (in_array($option_basename, ['teaser_redirect_page', 'teaser_redirect_anon_page'])) {
-            $compare_option = ('teaser_redirect_anon_page' == $option_basename) ? 'teaser_redirect_anon' : 'teaser_redirect';
-            
-            // phpcs Note: this is triggered by our filter application, so additional nonce verification is unnecessary
-
-            // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-            if (isset($_POST[$compare_option]) && ('[login]' == $_POST[$compare_option])) {
-                presspermit()->updateOption($default_prefix . $option_basename, '[login]', $args);
-
-                return true;  // If not set to this special case value, allow standard sanitization and option storage
-            }
-        }
-        
         if (in_array(
             $option_basename, 
-            ['feed_teaser', 'tease_replace_content_anon', 'tease_append_name_anon', 'tease_replace_content_anon', 'tease_prepend_content_anon', 'tease_append_content_anon', 
-            'tease_replace_excerpt_anon', 'tease_prepend_excerpt_anon', 'tease_append_excerpt_anon', 'tease_replace_content', 'tease_append_name', 'tease_replace_content', 
-            'tease_prepend_content', 'tease_append_content', 'tease_replace_excerpt', 'tease_prepend_excerpt', 'tease_append_excerpt']
+            ['feed_teaser', 'tease_replace_content_anon', 'tease_prepend_name_anon', 'tease_append_name_anon', 'tease_replace_content_anon', 'tease_prepend_content_anon', 'tease_append_content_anon', 
+            'tease_replace_excerpt_anon', 'tease_prepend_excerpt_anon', 'tease_append_excerpt_anon', 'tease_replace_content', 'tease_prepend_name', 'tease_append_name', 'tease_replace_content', 
+            'tease_prepend_content', 'tease_append_content', 'tease_replace_excerpt', 'tease_prepend_excerpt', 'tease_append_excerpt', 'read_more_login_notice', 'excerpt_login_notice', 'x_chars_login_notice']
         )) {
             // phpcs Note: this is triggered by our filter application, so additional nonce verification is unnecessary
 

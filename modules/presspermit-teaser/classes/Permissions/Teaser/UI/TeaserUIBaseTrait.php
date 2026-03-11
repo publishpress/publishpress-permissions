@@ -94,11 +94,13 @@ trait TeaserUIBaseTrait {
     protected function isFeatureAvailable($feature) {
         // FREE features that are always available
         $free_features = [
-            'post_type_post' => true,
-            'teaser_type_none' => true,
-            'teaser_type_configured' => true,
-            'user_application_both' => true,
-            'teaser_text_replace_content_anon' => true, // FREE: Replace content for anonymous users
+            'post_type_post'           => true, // Posts only
+            'teaser_type_none'         => true, // No teaser option
+            'teaser_type_configured'   => true, // Configured teaser text
+            'user_application'         => true, // Both users option
+            'teaser_text_replace_anon' => true, // Replace content for anonymous
+            'coverage_basic'           => true, // Basic coverage
+            'hide_thumbnail'           => true, // Hide featured image
         ];
 
         if ($this->isProVersion()) {

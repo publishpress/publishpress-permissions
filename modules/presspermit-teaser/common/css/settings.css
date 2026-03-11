@@ -203,11 +203,6 @@ padding-bottom: 4px;
 }
 
 @media (max-width: 1199px) {
-
-  .teaser-table thead tr {
-    display: none !important;
-  }
-
   .teaser-table tr th,
   .teaser-table tr td {
     display: block;
@@ -220,11 +215,37 @@ padding-bottom: 4px;
 
   .teaser-table tbody tr td > label {
     margin-bottom: 5px;
-    display: block;
   }
 
   #pp-teaser section table.teaser-table tr td label {
     font-weight: bold;
+  }
+
+  /* Teaser Progressive UI: drop fixed column widths on narrow screens to avoid horizontal scroll */
+  .pp-teaser-progressive-ui .teaser-table {
+    table-layout: auto;
+  }
+
+  .pp-teaser-progressive-ui .teaser-table colgroup,
+  .pp-teaser-progressive-ui .teaser-table colgroup col {
+    display: none;
+  }
+
+  .pp-teaser-progressive-ui .teaser-table tr th,
+  .pp-teaser-progressive-ui .teaser-table tr td,
+  .pp-teaser-progressive-ui .teaser-table tr th[style],
+  .pp-teaser-progressive-ui .teaser-table tr td[style] {
+    width: 100% !important;
+  }
+
+  .pp-teaser-progressive-ui .pp-field-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pp-teaser-progressive-ui .pp-field-row > div:first-child {
+    flex-basis: auto;
+    width: 100%;
   }
 }
 
@@ -449,7 +470,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 /* Ensure radio buttons are visible in tables */
 .teaser-table input[type="radio"] {
     display: inline-block !important;
-    width: auto !important;
     margin-right: 5px;
     vertical-align: middle;
 }
@@ -663,7 +683,8 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-read-more-notice-card,
 .pp-excerpt-notice-card,
 .pp-x-chars-notice-card,
-.pp-teaser-application-fields {
+.pp-teaser-application-fields,
+.pp-teaser-notice-style-settings {
     display: none;
 }
 

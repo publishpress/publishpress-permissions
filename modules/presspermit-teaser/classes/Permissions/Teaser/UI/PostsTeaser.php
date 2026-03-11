@@ -105,13 +105,13 @@ class PostsTeaser
     private function isFeatureAvailable($feature_key) {
         // Free version features
         $free_features = [
-            'post_type_post' => true,              // Posts only
-            'teaser_type_none' => true,            // No teaser option
-            'teaser_type_configured' => true,      // Configured teaser text
-            'user_application_both' => true,       // Both users option
-            'teaser_text_replace_anon' => true,    // Replace content for anonymous
-            'coverage_basic' => true,              // Basic coverage
-            'hide_thumbnail' => true,              // Hide featured image
+            'post_type_post'           => true, // Posts only
+            'teaser_type_none'         => true, // No teaser option
+            'teaser_type_configured'   => true, // Configured teaser text
+            'user_application'         => true, // Both users option
+            'teaser_text_replace_anon' => true, // Replace content for anonymous
+            'coverage_basic'           => true, // Basic coverage
+            'hide_thumbnail'           => true, // Hide featured image
         ];
         
         // In PRO version, all features are available
@@ -402,11 +402,6 @@ class PostsTeaser
 			</p>
 
 			<?php
-            $option_logged_only = 'tease_logged_only';
-            $ui->all_otype_options[] = $option_logged_only;
-            $opt_vals = $ui->getOptionArray($option_logged_only);
-            $logged_only = array_diff_key(array_merge($opt_available, $default_options[$option_logged_only] ?? [], $opt_vals), $no_tease_types);
-
             $use_teaser = array_intersect_key($use_teaser, array_fill_keys($available_post_types, true));
             $use_teaser = $pp->admin()->orderTypes($use_teaser, ['item_type' => 'post']);
             
