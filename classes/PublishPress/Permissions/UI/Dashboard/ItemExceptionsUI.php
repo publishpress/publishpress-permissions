@@ -525,7 +525,7 @@ class ItemExceptionsUI
                 $.post(ajaxurl, {
                     action: 'pp_dismiss_ui_notice',
                     notice_type: noticeType,
-                    nonce: '<?php echo wp_create_nonce('pp_dismiss_ui_notice'); ?>'
+                    nonce: '<?php echo esc_attr(wp_create_nonce('pp_dismiss_ui_notice')); ?>'
                 });
             });
         });
@@ -1062,7 +1062,7 @@ class ItemExceptionsUI
         ?>
                 <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>">
                     <div class="item-checkbox">
-                        <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo $item_id_attr; ?>" />
+                        <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo esc_attr($item_id_attr); ?>" />
                     </div>
                     <div class="item-name">
                         <?php
@@ -1081,7 +1081,7 @@ class ItemExceptionsUI
                         ?>
                             <span class="pp-type-badge <?php echo esc_attr($type_class); ?>"><?php echo esc_html($type_label); ?></span>
                         <?php endif; ?>
-                        <label for="pp-item-<?php echo $item_id_attr; ?>"><?php echo esc_html($_name); ?></label>
+                        <label for="pp-item-<?php echo esc_attr($item_id_attr); ?>"><?php echo esc_html($_name); ?></label>
                     </div>
                     <div class="pp-permission-control">
                         <?php
