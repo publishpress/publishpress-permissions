@@ -432,7 +432,7 @@ class TermEdit
                             
                             echo '<div id="' . esc_attr($metabox['id']) . '" class="postbox">';
                             echo '<div class="postbox-header">';
-                            echo '<h2 class="hndle">' . $metabox['title'] . '</h2>';
+                            echo '<h2 class="hndle">' . wp_kses_post($metabox['title']) . '</h2>';
                             echo '</div>';
                             echo '<div class="inside">';
                             

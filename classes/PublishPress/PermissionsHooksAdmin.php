@@ -413,7 +413,8 @@ class PermissionsHooksAdmin
     public function dismissUINotice()
     {
         // Verify nonce
-        if (empty($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'pp_dismiss_ui_notice')) {
+        $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
+        if (empty($nonce) || !wp_verify_nonce($nonce, 'pp_dismiss_ui_notice')) {
             wp_send_json_error('Invalid nonce');
             return;
         }
