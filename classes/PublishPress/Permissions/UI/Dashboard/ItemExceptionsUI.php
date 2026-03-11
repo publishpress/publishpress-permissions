@@ -135,7 +135,7 @@ class ItemExceptionsUI
                     <?php 
                     $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=advanced#use_tabbed_metabox');
                     printf(
-                        esc_html__('%sEnable it in settings%s.', 'press-permit-core'),
+                        esc_html__('%sEnable it in the Advanced settings area%s.', 'press-permit-core'),
                         '<a href="' . esc_url($settings_url) . '">',
                         '</a>'
                     );
@@ -946,10 +946,12 @@ class ItemExceptionsUI
 
         // Initialize option arrays using the render helper (same as legacy drawRow)
         $this->render->setOptions($agent_type);
+        
+        // Initialize opt_class for default option (same as drawRow does)
+        $this->render->opt_class[''] = '';
 
         // Determine agent display name
         $_name = $agent_info->name;
-        $title = '';
         
         if ('wp_role' == $agent_type) {
             if (!empty($agent_info->metagroup_id)) {
@@ -1023,64 +1025,44 @@ class ItemExceptionsUI
             // Update default option label based on capabilities
             if ($reqd_caps) {
                 if (!array_diff($reqd_caps, array_keys($role_caps)) || $is_unfiltered) {
-                    $this->render->opt_class[''] = "pp-yes";
-                    $this->render->options['standard'][''] = str_replace(['(', ')'], '', esc_html__('(Default: Yes)', 'press-permit-core'));
+                    $this->render->opt_class[''] = 'pp-yes';
+                    $this->render->options['standard'][''] = $this->render->opt_labels['default_yes'];
                 } else {
-                    $this->render->opt_class[''] = "pp-no";
-                    $this->render->options['standard'][''] = str_replace(['(', ')'], '', esc_html__('(Default: No)', 'press-permit-core'));
+                    $this->render->opt_class[''] = 'pp-no';
+                    $this->render->options['standard'][''] = $this->render->opt_labels['default_no'];
                 }
             }
         }
 
-        foreach ($assignment_modes as $assign_for) {
-            // Determine current value
-            if (!empty($agent_exceptions[$assign_for]['additional'])) {
-                $current_val = 2;
-            } elseif (isset($agent_exceptions[$assign_for]['include'])) {
-                $current_val = 1;
-            } elseif (isset($agent_exceptions[$assign_for]['exclude'])) {
-                $current_val = 0;
-            } else {
-                $current_val = '';
+        // Determine which option set to use (once, not in loop)
+        if ($_inclusions_active) {
+            $option_set = 'includes';
+            $this->render->opt_class[''] = 'pp-no';
+        } else {
+            $option_set = 'standard';
+            if (!$this->render->opt_class['']) {
+                $this->render->opt_class[''] = 'pp-def';
             }
+        }
 
-            // Determine which option set to use
-            if ($_inclusions_active) {
-                $option_set = 'includes';
-            } else {
-                $option_set = 'standard';
-            }
+        // Check if we should skip rendering this item entirely
+        // (if 'item' mode is disabled for unfiltered users with no exceptions stored)
+        $item_has_exception = !empty($agent_exceptions['item']['additional']) 
+            || isset($agent_exceptions['item']['include']) 
+            || isset($agent_exceptions['item']['exclude']);
 
-            // Get CSS class for current value from render helper
-            $select_class = isset($this->render->opt_class[$current_val]) 
-                ? $this->render->opt_class[$current_val] 
-                : 'pp-def';
+        if (!empty($is_unfiltered) && !$item_has_exception) {
+            return; // Skip rendering entirely for unfiltered users with no exceptions
+        }
 
-            // Determine if disabled
-            $disabled = false;
-            if (!empty($is_unfiltered) && ($current_val === '')) {
-                // Disable UI for unfiltered users unless an exception is already stored
-                $disabled = true;
-            } elseif (('children' == $assign_for)
-                && apply_filters('presspermit_assign_for_children_locked', false, $for_item_type, ['operation' => $op])
-            ) {
-                $disabled = true;
-            }
-            
-            if ($disabled) continue;
-
-            // Store current values for both item and children outside the loop condition
-            $current_assign_for_item = $assign_for;
-            
-            // Render list item - only once per agent, but with both 'item' and 'children' controls
-            if ($assign_for === 'item') {
-                $for_type = ($for_item_type) ? $for_item_type : '(all)';
-                $css_class = strtolower(str_replace([' ', '_'], '-', $_name));
-                $item_id_attr = esc_attr("{$agent_type}-{$agent_id}");
-                ?>
+        // Render list item once with controls for both 'item' and 'children' modes
+        $for_type = ($for_item_type) ? $for_item_type : '(all)';
+        $css_class = strtolower(str_replace([' ', '_'], '-', $_name));
+        $item_id_attr = esc_attr("{$agent_type}-{$agent_id}");
+        ?>
                 <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>">
                     <div class="item-checkbox">
-                        <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo $item_id_attr; ?>" data-select-item <?php echo $disabled ? 'disabled="disabled"' : ''; ?> />
+                        <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo $item_id_attr; ?>" />
                     </div>
                     <div class="item-name">
                         <?php
@@ -1102,7 +1084,7 @@ class ItemExceptionsUI
                         <label for="pp-item-<?php echo $item_id_attr; ?>"><?php echo esc_html($_name); ?></label>
                     </div>
                     <div class="pp-permission-control">
-                        <?php 
+                        <?php
                         // Render controls for both 'item' and 'children' assignment modes
                         foreach ($assignment_modes as $mode) :
                             // Determine current value for this mode
@@ -1176,7 +1158,7 @@ class ItemExceptionsUI
                             </div>
                         <?php endforeach; ?>
                         
-                        <?php if ('user' == $agent_type && !$disabled) : ?>
+                        <?php if ('user' == $agent_type) : ?>
                         <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove user from exceptions', 'press-permit-core'); ?>">
                             <span class="dashicons dashicons-trash"></span>
                         </button>
@@ -1184,7 +1166,5 @@ class ItemExceptionsUI
                     </div>
                 </div>
                 <?php
-            }
-        }
     }
 }
