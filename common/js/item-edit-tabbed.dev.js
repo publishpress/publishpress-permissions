@@ -652,7 +652,6 @@
                     .attr('type', 'checkbox')
                     .addClass('pp-item-checkbox')
                     .attr('id', 'pp-item-' + itemIdAttr)
-                    .attr('data-select-item', '')
             );
 
         // Item name
