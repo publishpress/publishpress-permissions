@@ -798,15 +798,6 @@ class ItemExceptionsUI
                     );
                 }
             }
-
-            if ($any_groups_blocked && !defined('PP_NO_GROUP_RESTRICTIONS')) {
-                ?>
-                <div class="pp-group-restrictions-warning">
-                    <span class="dashicons dashicons-warning"></span>
-                    <?php esc_html_e("Group restrictions are not recommended.", 'press-permit-core'); ?>
-                </div>
-                <?php
-            }
         }
     }
 
