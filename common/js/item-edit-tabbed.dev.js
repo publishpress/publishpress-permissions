@@ -308,15 +308,14 @@
                 if ($visibleItems.length === 0) {
                     // Remove any existing empty state first
                     $list.find('.pp-empty-state').remove();
-                    var emptyMessage = $list.data('empty-message');
+                    var emptyMessage = $list.data('empty-message') || '';
                     
                     // Show empty state message
-                    $list.prepend(
-                        '<div class="pp-empty-state">' +
-                        '<span class="dashicons dashicons-info"></span>' +
-                        '<p>' + emptyMessage + '</p>' +
-                        '</div>'
-                    );
+                    var $emptyState = $('<div>').addClass('pp-empty-state')
+                        .append($('<span>').addClass('dashicons dashicons-info'))
+                        .append($('<p>').text(emptyMessage));
+
+                    $list.prepend($emptyState);
                 }
                 
                 // Update bulk counter and select-all state
@@ -850,9 +849,13 @@
         var $existingNotice = $select.closest('.pp-agent-type-content').find('.pp-user-added-notice');
         $existingNotice.remove();
 
-        var $notice = $('<div class="pp-user-added-notice">')
-            .html('<span class="dashicons dashicons-yes"></span> <strong>' + userName + '</strong> added to list. Configure permissions and click "Update" to save.')
-            .hide();
+        var $notice = $('<div>').addClass('pp-user-added-notice').hide();
+
+        $notice
+            .append($('<span>').addClass('dashicons dashicons-yes'))
+            .append(' ')
+            .append($('<strong>').text(userName))
+            .append(document.createTextNode(' added to list. Configure permissions and click "Update" to save.'));
 
         $select.closest('.pp-search-box-select2').after($notice);
         $notice.fadeIn();
@@ -951,8 +954,9 @@
             'pp-no2': 0,
             'pp-yes': 0,
             'pp-yes2': 0,
-            'role': 0,    // Count roles
-            'group': 0    // Count groups
+            'role': 0,         // Count roles
+            'group': 0,        // Count groups
+            'login-state': 0   // Count login state badges
         };
 
         // Scan all permission selects (not just visible ones, so counts remain accurate during search)
@@ -973,6 +977,11 @@
             } else if (agentType === 'pp_group') {
                 counts.group++;
             }
+            
+            // Count by badge type
+            if ($item.find('.pp-type-login-state').length) {
+                counts['login-state']++;
+            }
 
             // Count each ITEM once per permission type (not each select separately)
             // This prevents double-counting when an item has multiple selects with the same class
@@ -990,7 +999,8 @@
             'blocked': counts['pp-no'] + counts['pp-no2'],
             'allowed': counts['pp-yes'] + counts['pp-yes2'],
             'role': counts.role,
-            'group': counts.group
+            'group': counts.group,
+            'login-state': counts['login-state']
         };
 
         // Clear existing filters
@@ -1002,7 +1012,8 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn active')
                 .attr('data-filter', 'all')
-                .html('All <span class="pp-filter-count">' + mergedCounts.all + '</span>');
+                .append(document.createTextNode('All '))
+                .append($('<span>').addClass('pp-filter-count').text(mergedCounts.all));
             
             $filterContainer.append($allBtn);
         }
@@ -1013,7 +1024,8 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'blocked')
-                .html('Blocked <span class="pp-filter-count">' + mergedCounts.blocked + '</span>');
+                .append(document.createTextNode('Blocked '))
+                .append($('<span>').addClass('pp-filter-count').text(mergedCounts.blocked));
             
             $filterContainer.append($btn);
         }
@@ -1023,7 +1035,8 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'allowed')
-                .html('Enabled <span class="pp-filter-count">' + mergedCounts.allowed + '</span>');
+                .append(document.createTextNode('Enabled '))
+                .append($('<span>').addClass('pp-filter-count').text(mergedCounts.allowed));
             
             $filterContainer.append($btn);
         }
@@ -1034,32 +1047,55 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'pp-def')
-                .html('Default <span class="pp-filter-count">' + mergedCounts['pp-def'] + '</span>');
+                .append(document.createTextNode('Default '))
+                .append($('<span>').addClass('pp-filter-count').text(mergedCounts['pp-def']));
             
             $filterContainer.append($btn);
         }
 
-        // Add type filters (Role/Group) if both types exist
-        if (mergedCounts.role > 0 && mergedCounts.group > 0) {
-            // Add Role filter
-            var $roleBtn = $('<button>')
-                .attr('type', 'button')
-                .addClass('pp-filter-btn pp-filter-type')
-                .attr('data-filter', 'role')
-                .attr('data-filter-type', 'agent-type')
-                .html('Role <span class="pp-filter-count">' + mergedCounts.role + '</span>');
-            
-            $filterContainer.append($roleBtn);
+        // Add type filters (Role/Group/Login State)
+        // Show individual type filters if there are multiple types
+        var hasMultipleTypes = (mergedCounts.role > 0 ? 1 : 0) + (mergedCounts.group > 0 ? 1 : 0) + (mergedCounts['login-state'] > 0 ? 1 : 0) > 1;
+        
+        if (hasMultipleTypes) {
+            // Add Role filter if roles exist
+            if (mergedCounts.role > 0) {
+                var $roleBtn = $('<button>')
+                    .attr('type', 'button')
+                    .addClass('pp-filter-btn pp-filter-type')
+                    .attr('data-filter', 'role')
+                    .attr('data-filter-type', 'agent-type')
+                    .append(document.createTextNode('Role '))
+                    .append($('<span>').addClass('pp-filter-count').text(mergedCounts.role));
+                
+                $filterContainer.append($roleBtn);
+            }
 
-            // Add Group filter
-            var $groupBtn = $('<button>')
-                .attr('type', 'button')
-                .addClass('pp-filter-btn pp-filter-type')
-                .attr('data-filter', 'group')
-                .attr('data-filter-type', 'agent-type')
-                .html('Group <span class="pp-filter-count">' + mergedCounts.group + '</span>');
+            // Add Group filter if groups exist
+            if (mergedCounts.group > 0) {
+                var $groupBtn = $('<button>')
+                    .attr('type', 'button')
+                    .addClass('pp-filter-btn pp-filter-type')
+                    .attr('data-filter', 'group')
+                    .attr('data-filter-type', 'agent-type')
+                    .append(document.createTextNode('Group '))
+                    .append($('<span>').addClass('pp-filter-count').text(mergedCounts.group));
+                
+                $filterContainer.append($groupBtn);
+            }
             
-            $filterContainer.append($groupBtn);
+            // Add Login State filter if login state items exist
+            if (mergedCounts['login-state'] > 0) {
+                var $loginStateBtn = $('<button>')
+                    .attr('type', 'button')
+                    .addClass('pp-filter-btn pp-filter-type')
+                    .attr('data-filter', 'login-state')
+                    .attr('data-filter-type', 'badge-type')
+                    .append(document.createTextNode('Login State '))
+                    .append($('<span>').addClass('pp-filter-count').text(mergedCounts['login-state']));
+                
+                $filterContainer.append($loginStateBtn);
+            }
         }
     }
 
@@ -1100,6 +1136,11 @@
                 if (filter === 'role' && agentType === 'wp_role') {
                     show = true;
                 } else if (filter === 'group' && agentType === 'pp_group') {
+                    show = true;
+                }
+            } else if (filterType === 'badge-type') {
+                // Filter by badge type (login-state)
+                if (filter === 'login-state' && $item.find('.pp-type-login-state').length) {
                     show = true;
                 }
             } else {
@@ -1148,10 +1189,34 @@
         if (visibleCount === 0 && filter !== 'all') {
             if ($noResults.length === 0) {
                 var filterLabel = $btn.text().replace(/\d+/, '').trim();
-                $noResults = $('<div class=\"pp-no-filter-results\" style=\"grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: #64748b;\">' +
-                    '<span class=\"dashicons dashicons-filter\" style=\"font-size: 48px; width: 48px; height: 48px; color: #cbd5e1; margin-bottom: 12px;\"></span>' +
-                    '<p style=\"margin: 0; font-size: 14px; font-weight: 500;\">No ' + filterLabel.toLowerCase() + ' items found</p>' +
-                    '</div>');
+                $noResults = $('<div>')
+                    .addClass('pp-no-filter-results')
+                    .css({
+                        gridColumn: '1 / -1',
+                        textAlign: 'center',
+                        padding: '40px 20px',
+                        color: '#64748b'
+                    })
+                    .append(
+                        $('<span>')
+                            .addClass('dashicons dashicons-filter')
+                            .css({
+                                fontSize: '48px',
+                                width: '48px',
+                                height: '48px',
+                                color: '#cbd5e1',
+                                marginBottom: '12px'
+                            })
+                    )
+                    .append(
+                        $('<p>')
+                            .css({
+                                margin: 0,
+                                fontSize: '14px',
+                                fontWeight: 500
+                            })
+                            .text('No ' + filterLabel.toLowerCase() + ' items found')
+                    );
                 
                 $contentArea.find('.pp-permission-list, .pp-permission-card-body').append($noResults);
             } else {

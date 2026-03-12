@@ -1070,8 +1070,13 @@ class ItemExceptionsUI
                         $type_label = '';
                         $type_class = '';
                         if ('wp_role' == $agent_type) {
-                            $type_label = __('Role', 'press-permit-core');
-                            $type_class = 'pp-type-role';
+                            if (!empty($agent_info->metagroup_id) && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_auth', 'wp_all'])) {
+                                $type_label = __('Login State', 'press-permit-core');
+                                $type_class = 'pp-type-login-state';
+                            } else {
+                                $type_label = __('Role', 'press-permit-core');
+                                $type_class = 'pp-type-role';
+                            }
                         } elseif ('pp_group' == $agent_type) {
                             $type_label = __('Group', 'press-permit-core');
                             $type_class = 'pp-type-group';

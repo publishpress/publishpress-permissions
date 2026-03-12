@@ -306,17 +306,9 @@
   display: block;
   animation: ppFadeIn 0.2s ease-in;
 }
-/* Permission Cards Grid */
-.pp-permission-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-@media (max-width: 1024px) {
-  .pp-permission-cards-grid {
-    grid-template-columns: 1fr;
-  }
+/* Permission Cards */
+.pp-permission-cards {
+  min-height: 500px;
 }
 /* Permission Card */
 .pp-permission-card {
@@ -711,30 +703,30 @@
 }
 .pp-filter-btn[data-filter="role"]:not(.active) {
   background: white;
-  color: #1e3a8a;
-  border: 1px solid #93c5fd;
+  color: #6b21a8;
+  border: 1px solid #c084fc;
 }
 .pp-filter-btn[data-filter="role"]:not(.active) .pp-filter-count {
-  background: #bfdbfe;
-  color: #1e3a8a;
+  background: #e9d5ff;
+  color: #6b21a8;
 }
 .pp-filter-btn[data-filter="role"]:not(.active):hover {
-  background: #eff6ff;
-  border-color: #60a5fa;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15), 0 2px 4px rgba(59, 130, 246, 0.08);
+  background: #f3e8ff;
+  border-color: #a855f7;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.15), 0 2px 4px rgba(168, 85, 247, 0.08);
 }
 .pp-filter-btn[data-filter="role"].active {
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  color: #1e3a8a;
-  border: 1px solid #93c5fd;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.15), 0 2px 8px rgba(59, 130, 246, 0.1);
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+  color: #6b21a8;
+  border: 1px solid #c084fc;
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.15), 0 2px 8px rgba(168, 85, 247, 0.1);
 }
 .pp-filter-btn[data-filter="role"].active .pp-filter-count {
-  background: rgba(30, 58, 138, 0.15);
-  color: #1e3a8a;
+  background: rgba(107, 33, 168, 0.15);
+  color: #6b21a8;
 }
 .pp-filter-btn[data-filter="role"].active:hover {
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2), 0 3px 10px rgba(59, 130, 246, 0.12);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.2), 0 3px 10px rgba(168, 85, 247, 0.12);
 }
 .pp-filter-btn[data-filter="group"]:not(.active) {
   background: white;
@@ -762,6 +754,33 @@
 }
 .pp-filter-btn[data-filter="group"].active:hover {
   box-shadow: 0 6px 20px rgba(245, 158, 11, 0.2), 0 3px 10px rgba(245, 158, 11, 0.12);
+}
+.pp-filter-btn[data-filter="login-state"]:not(.active) {
+  background: white;
+  color: #115e59;
+  border: 1px solid #5eead4;
+}
+.pp-filter-btn[data-filter="login-state"]:not(.active) .pp-filter-count {
+  background: #99f6e4;
+  color: #115e59;
+}
+.pp-filter-btn[data-filter="login-state"]:not(.active):hover {
+  background: #ccfbf1;
+  border-color: #2dd4bf;
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15), 0 2px 4px rgba(20, 184, 166, 0.08);
+}
+.pp-filter-btn[data-filter="login-state"].active {
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  color: #115e59;
+  border: 1px solid #5eead4;
+  box-shadow: 0 4px 16px rgba(20, 184, 166, 0.15), 0 2px 8px rgba(20, 184, 166, 0.1);
+}
+.pp-filter-btn[data-filter="login-state"].active .pp-filter-count {
+  background: rgba(17, 94, 89, 0.15);
+  color: #115e59;
+}
+.pp-filter-btn[data-filter="login-state"].active:hover {
+  box-shadow: 0 6px 20px rgba(20, 184, 166, 0.2), 0 3px 10px rgba(20, 184, 166, 0.12);
 }
 .pp-filter-count {
   font-size: 10px;
@@ -907,14 +926,19 @@
   transition: all 0.2s ease;
 }
 .pp-permission-list-item .item-name .pp-type-badge.pp-type-role {
-  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-  color: #1e3a8a;
-  border: 1px solid #93c5fd;
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+  color: #6b21a8;
+  border: 1px solid #c084fc;
 }
 .pp-permission-list-item .item-name .pp-type-badge.pp-type-group {
   background: linear-gradient(135deg, #fffbeb, #fef3c7);
   color: #92400e;
   border: 1px solid #fcd34d;
+}
+.pp-permission-list-item .item-name .pp-type-badge.pp-type-login-state {
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+  color: #115e59;
+  border: 1px solid #5eead4;
 }
 .pp-permission-list-item.pp-new-item {
   background: linear-gradient(90deg, rgba(152, 102, 255, 0.1) 0%, transparent 100%);
