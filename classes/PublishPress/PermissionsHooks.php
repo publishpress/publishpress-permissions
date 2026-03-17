@@ -265,6 +265,10 @@ class PermissionsHooks
             new Permissions\Compat\EyesOnly();
         }
 
+        // Load theme compatibility handlers
+        require_once(PRESSPERMIT_CLASSPATH . '/Compat/ThemeCompat.php');
+        new Permissions\Compat\ThemeCompat();
+
         if (did_action('set_current_user')) { // sometimes third party code causes user to be loaded prematurely
             $this->actSetCurrentUser();
         }
