@@ -973,7 +973,10 @@
             // Count by agent type
             var agentType = $item.attr('data-agent-type');
             if (agentType === 'wp_role') {
-                counts.role++;
+                // Exclude login state items (they have their own count)
+                if (!$item.find('.pp-type-login-state').length) {
+                    counts.role++;
+                }
             } else if (agentType === 'pp_group') {
                 counts.group++;
             }
@@ -1134,7 +1137,10 @@
                 var agentType = $item.attr('data-agent-type');
                 
                 if (filter === 'role' && agentType === 'wp_role') {
-                    show = true;
+                    // Exclude login state items (they have their own filter)
+                    if (!$item.find('.pp-type-login-state').length) {
+                        show = true;
+                    }
                 } else if (filter === 'group' && agentType === 'pp_group') {
                     show = true;
                 }
