@@ -54,9 +54,6 @@ class ThemeCompat
         if ($this->is_avada) {
             add_filter('presspermit_unfiltered', [$this, 'fltAvadaUnfiltered'], 5, 2);
         }
-
-        // Add more theme compatibilities here as needed
-        // Example: if ($this->isTheme('Divi')) { ... }
     }
 
     /**
