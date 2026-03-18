@@ -709,7 +709,7 @@ class ItemExceptionsUI
      */
     private function renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
     {
-        $empty_message = esc_html__('No specific user permissions. Use the dropdown above to add users.', 'press-permit-core');
+        $empty_message = esc_html__('No specific user permissions. Use the search box to add users.', 'press-permit-core');
         ?>
         <div class="pp-permission-cards">
             <div class="pp-permission-card">
