@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.7.0] - 11 March, 2026
+[4.7.0] - 18 March, 2026
 
 - Added: "Logged-in User" visibility option is now available in the Free version. #2209
 - Added: New Permissions metabox interface for improved usability and clearer controls. #2160
@@ -20,6 +20,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed: Issue where switching to legacy metaboxes from settings did not work. #2205
 - Fixed: CSS conflicts with WordPress 7.0 affecting the Permissions interface. #2190
 - Fixed: Support for the `PRESSPERMIT_NO_REVISIONS_EXCEPTION_BYPASS` constant. #2183
+- Fixed: Filter logic for “Everyone / Logged In / Not Logged In” to ensure correct results. #2230
+- Fixed: Dropdown fields could appear empty in some cases. #2232
+- Fixed: Handling of anonymous (not logged in) users to ensure consistent behavior. #2227
+- Fixed: Width overflow issue in teaser type select field. #2214
+- Fixed: Compatibility issue with Avada Builder affecting Permissions functionality. #2226
+- Fixed: Incorrect text domain in SettingsAdmin.php affecting translations. #2223
 - Improved: Disabled roles and groups are now hidden to reduce clutter in the interface. #2188
 - Improved: Permissions plugin can now be hidden from Editors for cleaner admin menus. #2184
 - Improved: Matching filters with metabox behavior for more consistent filtering results. #2204
