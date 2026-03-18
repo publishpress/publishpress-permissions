@@ -317,9 +317,6 @@ class ItemExceptionsUI
             require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
             \PublishPress\Permissions\UI\HintsItemExceptions::itemHints($for_item_type);
         }
-        
-        // Output dismiss handler script (shared with modern UI)
-        $this->outputNoticeDismissScript();
     }
 
     /**
@@ -1029,7 +1026,7 @@ class ItemExceptionsUI
                                 continue;
                             }
                             
-                            $mode_label = ('children' == $mode) ? __('Sub-Categories', 'press-permit-core') : __('This Category', 'press-permit-core');
+                            $mode_label = ('children' == $mode) ? __('Sub-Sections', 'press-permit-core') : __('This Section', 'press-permit-core');
                             ?>
                             <div class="pp-permission-select <?php echo ('children' == $mode) ? 'pp-children-select' : 'pp-item-select'; ?>">
                                 <?php if ($hierarchical && count($assignment_modes) > 1) : ?>
