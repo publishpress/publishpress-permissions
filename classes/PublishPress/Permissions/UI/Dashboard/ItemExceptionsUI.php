@@ -702,7 +702,7 @@ class ItemExceptionsUI
         foreach ($this->data->agent_info['wp_role'] as $agent_id => $role) {
             if (in_array($role->metagroup_id, ['wp_anon', 'wp_all'], true)
                 && (!$pp->moduleActive('file-access') || 'attachment' != $for_item_type)
-                && defined('PP_ALL_ANON_FULL_EXCEPTIONS')
+                && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')
                 && (('read' != $op) || $pp->getOption('anonymous_unfiltered'))
             ) {
                 continue;
@@ -1140,7 +1140,7 @@ class ItemExceptionsUI
                                             && !empty($agent_info->metagroup_id)
                                             && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_all'], true)
                                             && (!$pp->moduleActive('file-access') || 'attachment' != $for_type)
-                                            && defined('PP_ALL_ANON_FULL_EXCEPTIONS')
+                                            && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')
                                             && (2 == $val)
                                         ) {
                                             continue;
