@@ -644,7 +644,7 @@ class ItemExceptionsUI
                         $agent_id,
                         $current_exceptions[$op]['wp_role'][$agent_id],
                         $role,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
                     );
                 }
             }
@@ -697,7 +697,7 @@ class ItemExceptionsUI
                         $agent_id,
                         $current_exceptions[$op]['pp_group'][$agent_id],
                         $group,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
                     );
                 }
             }
@@ -745,7 +745,7 @@ class ItemExceptionsUI
                                     $agent_id,
                                     $current_exceptions[$op]['user'][$agent_id],
                                     $this->data->agent_info['user'][$agent_id],
-                                    compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                                    compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
                                 );
                             }
                         }
@@ -841,7 +841,7 @@ class ItemExceptionsUI
     {
         global $wp_roles;
         
-        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0];
+        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null];
         $args = array_merge($defaults, $args);
         extract($args);
 
@@ -1026,7 +1026,17 @@ class ItemExceptionsUI
                                 continue;
                             }
                             
-                            $mode_label = ('children' == $mode) ? __('Sub-Sections', 'press-permit-core') : __('This Section', 'press-permit-core');
+                            // Build dynamic labels based on post type
+                            if ($type_obj && isset($type_obj->labels->singular_name) && isset($type_obj->labels->name)) {
+                                $singular = $type_obj->labels->singular_name;
+                                $plural = $type_obj->labels->name;
+                                $mode_label = ('children' == $mode) 
+                                    ? sprintf(__('Sub-%s', 'press-permit-core'), $plural)
+                                    : sprintf(__('This %s', 'press-permit-core'), $singular);
+                            } else {
+                                // Fallback to generic labels
+                                $mode_label = ('children' == $mode) ? __('Sub-Sections', 'press-permit-core') : __('This Section', 'press-permit-core');
+                            }
                             ?>
                             <div class="pp-permission-select <?php echo ('children' == $mode) ? 'pp-children-select' : 'pp-item-select'; ?>">
                                 <?php if ($hierarchical && count($assignment_modes) > 1) : ?>
