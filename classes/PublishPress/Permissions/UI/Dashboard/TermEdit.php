@@ -39,6 +39,11 @@ class TermEdit
 	                'ajaxurl' => wp_nonce_url(admin_url(''), 'pp-ajax'),
 	                'ajaxhandler' => 'got_ajax_listbox'
 	            ]);
+	            
+	            // Localize script with translated messages
+	            wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
+	                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core')
+	            ]);
 	        }
 	
 	        add_action('admin_print_scripts', ['\PublishPress\Permissions\UI\Dashboard\ItemEdit', 'scriptItemEdit']);

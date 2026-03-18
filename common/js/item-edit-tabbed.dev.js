@@ -225,11 +225,59 @@
                 var $item = $checkbox.closest('.pp-permission-list-item');
                 var $select = $item.find('.pp-permission-select select');
                 
-                // Change the value
-                $select.val(newValue);
+                // Remove any existing bulk action warning
+                $item.find('.pp-bulk-action-warning').remove();
                 
-                // Trigger change event to update CSS classes
-                $select.trigger('change');
+                // Check if the option exists in the select
+                var optionExists = $select.find('option[value="' + newValue + '"]').length > 0;
+                
+                if (optionExists) {
+                    // Change the value
+                    $select.val(newValue);
+                    
+                    // Trigger change event to update CSS classes
+                    $select.trigger('change');
+                } else {
+                    // Option doesn't exist - show warning message
+                    // Detect item type to show appropriate message
+                    var $typeBadge = $item.find('.pp-type-badge');
+                    var isRole = $typeBadge.hasClass('pp-type-role');
+                    var isLoginState = $typeBadge.hasClass('pp-type-login-state');
+                    
+                    if ('block' === action && isRole) {
+                        var firstOptionText = $select.find('option').first().text();
+                        if (firstOptionText.toLowerCase().includes('block')) {
+                            var firstValue = $select.find('option').first().val();
+
+                            // Change the value to the first option (which is likely the closest to "Block" for roles)
+                            $select.val(firstValue);
+                            
+                            // Trigger change event to update CSS classes
+                            $select.trigger('change');
+                        }
+                    } else {
+                        // Choose appropriate message based on item type
+                        var warningMessage = (typeof ppPermissions !== 'undefined' && ppPermissions.bulkActionNotAvailableNonUsers) 
+                            ? ppPermissions.bulkActionNotAvailableNonUsers 
+                            : "Editing can't be granted to non-users.";
+                        
+                        // Create warning element
+                        var $warning = $('<div>')
+                            .addClass('pp-bulk-action-warning')
+                            .append($('<span>').addClass('dashicons dashicons-warning'))
+                            .append($('<span>').addClass('pp-warning-text').text(warningMessage));
+                        
+                        // Insert warning into permission control
+                        $item.find('.pp-permission-control').append($warning);
+                        
+                        // Auto-remove warning after 5 seconds
+                        setTimeout(function() {
+                            $warning.fadeOut(300, function() {
+                                $(this).remove();
+                            });
+                        }, 5000);
+                    }   
+                }
             });
             
             // Reset bulk action dropdown

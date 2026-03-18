@@ -959,6 +959,7 @@
   gap: 10px;
   position: relative;
   flex: 1;
+  flex-wrap: wrap;
   /* When both item and children are present, arrange horizontally */
 }
 @media (max-width: 768px) {
@@ -975,6 +976,8 @@
   flex-direction: column;
   gap: 4px;
   width: max-content;
+  min-width: 140px;
+  max-width: 180px;
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: auto;
@@ -1188,6 +1191,42 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
+}
+/* Bulk Action Warning (shown when action can't be applied) */
+.pp-bulk-action-warning {
+  flex-basis: 100%;
+  padding: 8px 12px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 4px;
+  color: #92400e;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0;
+  animation: slideInWarning 0.3s ease-out;
+}
+.pp-bulk-action-warning .dashicons {
+  color: #f59e0b;
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.pp-bulk-action-warning .pp-warning-text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+@keyframes slideInWarning {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 .pp-search-icon {
   position: absolute;

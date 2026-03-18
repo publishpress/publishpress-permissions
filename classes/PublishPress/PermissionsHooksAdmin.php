@@ -24,7 +24,6 @@ class PermissionsHooksAdmin
 
         if (!empty($_SERVER['PHP_SELF']) && in_array(basename($_SERVER['PHP_SELF']), ['admin.php', 'admin-ajax.php'])) {
             add_action('wp_ajax_pp_dismiss_msg', [$this, 'dashboardDismissMsg']);
-            add_action('wp_ajax_pp_dismiss_ui_notice', [$this, 'dismissUINotice']);
         }
         
         // @todo: Why is hidden cols option for Users screen sometimes stored with db prefix prepended to meta_key?
@@ -405,35 +404,6 @@ class PermissionsHooksAdmin
         $msg_id = (isset($_REQUEST['msg_id'])) ? sanitize_key($_REQUEST['msg_id']) : 'post_blockage_priority';
         $dismissals[$msg_id] = true;
         update_option('presspermit_dismissals', $dismissals);
-    }
-
-    /**
-     * Handle AJAX dismissal of UI switch notices
-     */
-    public function dismissUINotice()
-    {
-        // Verify nonce
-        $nonce = isset($_POST['nonce']) ? sanitize_key($_POST['nonce']) : '';
-        if (empty($nonce) || !wp_verify_nonce($nonce, 'pp_dismiss_ui_notice')) {
-            wp_send_json_error('Invalid nonce');
-            return;
-        }
-
-        $user_id = get_current_user_id();
-        if (!$user_id) {
-            wp_send_json_error('User not logged in');
-            return;
-        }
-
-        $notice_type = isset($_POST['notice_type']) ? sanitize_key($_POST['notice_type']) : '';
-        
-        if ($notice_type === 'modern') {
-            update_user_meta($user_id, 'pp_dismissed_modern_ui_notice', '1');
-        } elseif ($notice_type === 'legacy') {
-            update_user_meta($user_id, 'pp_dismissed_legacy_ui_notice', '1');
-        }
-
-        wp_send_json_success();
     }
 
     // Prevent users lacking edit_others capability from being locked out of their newly created post due to Authors' "default author for new posts" setting
