@@ -1,6 +1,35 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.7.0] - 18 March, 2026
+
+- Added: "Logged-in User" visibility option is now available in the Free version. #2209
+- Added: New Permissions metabox interface for improved usability and clearer controls. #2160
+- Added: New filter hook for the Permissions metabox to allow customization by developers. #2185
+- Added: Sorting option for User Groups to make group management easier. #2189
+- Added: Filters for Roles and Groups to help quickly locate specific entries. #2191
+- Added: Performance Mode for Admin Posts queries to improve performance on large sites. #2163
+- Changed: Improved wording and descriptions across several settings screens for better clarity. #2202 #2187 #2207
+- Changed: Roles and Groups display behavior to prevent automatic movement based on status. #2186
+- Changed: Visual styling improvements in the Permissions UI, including clearer distinction for Groups. #2203
+- Changed: Minor CSS improvements for the metabox interface. #2195
+- Changed: Updated French, Spanish, and Italian translations. #2182
+- Changed: Bulk Actions in the Permissions tab restored after previous removal. #2192
+- Changed: "Unblocked" option removed from Bulk Actions in the new metabox interface. #2194
+- Fixed: Category assignment permissions not applying correctly to all post types. #2193
+- Fixed: Issue where switching to legacy metaboxes from settings did not work. #2205
+- Fixed: CSS conflicts with WordPress 7.0 affecting the Permissions interface. #2190
+- Fixed: Support for the `PRESSPERMIT_NO_REVISIONS_EXCEPTION_BYPASS` constant. #2183
+- Fixed: Filter logic for “Everyone / Logged In / Not Logged In” to ensure correct results. #2230
+- Fixed: Dropdown fields could appear empty in some cases. #2232
+- Fixed: Handling of anonymous (not logged in) users to ensure consistent behavior. #2227
+- Fixed: Width overflow issue in teaser type select field. #2214
+- Fixed: Compatibility issue with Avada Builder affecting Permissions functionality. #2226
+- Fixed: Incorrect text domain in SettingsAdmin.php affecting translations. #2223
+- Improved: Disabled roles and groups are now hidden to reduce clutter in the interface. #2188
+- Improved: Permissions plugin can now be hidden from Editors for cleaner admin menus. #2184
+- Improved: Matching filters with metabox behavior for more consistent filtering results. #2204
+
 [4.6.4] - 27 January, 2026
 
 - Added: Translations for Spanish, French, and Italian languages. #2139

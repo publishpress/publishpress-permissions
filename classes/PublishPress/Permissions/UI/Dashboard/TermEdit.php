@@ -20,16 +20,15 @@ class TermEdit
 	
 	        // Enqueue tabbed metabox styles and scripts if enabled
 	        if (presspermit()->getOption('use_tabbed_metabox')) {
-	            // Use local Select2 library (avoids conflicts with AgentsDynamicUI which loads 4.0.13)
-	            if (!wp_script_is('presspermit-select2-js', 'registered')) {
-	                wp_enqueue_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', [], PRESSPERMIT_VERSION);
-	                wp_enqueue_script('presspermit-select2-js', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/js/select2.full.min.js', ['jquery'], PRESSPERMIT_VERSION);
-	            } else {
-	                wp_enqueue_style('presspermit-select2-css');
-	                wp_enqueue_script('presspermit-select2-js');
-	            }
-	            
-	            wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', ['presspermit-select2-css'], PRESSPERMIT_VERSION);
+                // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
+                if (!wp_style_is('presspermit-select2-css', 'registered')) {
+                    wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', array(), '4.0.13', 'screen');
+                }
+                if (!wp_script_is('presspermit-select2-js', 'registered')) {
+                    wp_register_script('presspermit-select2-js', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/js/select2.full.min.js', ['jquery'], '4.0.13', true);
+                }
+                wp_enqueue_style('presspermit-select2-css');
+                wp_enqueue_script('presspermit-select2-js');
 	            
 	            $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 	            wp_enqueue_script('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . "/common/js/item-edit-tabbed{$suffix}.js", ['jquery', 'presspermit-select2-js'], PRESSPERMIT_VERSION, true);
@@ -38,6 +37,11 @@ class TermEdit
 	            wp_localize_script('presspermit-item-edit-tabbed', 'PPAgentSelect', [
 	                'ajaxurl' => wp_nonce_url(admin_url(''), 'pp-ajax'),
 	                'ajaxhandler' => 'got_ajax_listbox'
+	            ]);
+	            
+	            // Localize script with translated messages
+	            wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
+	                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core')
 	            ]);
 	        }
 	

@@ -17,7 +17,15 @@ class TeaserHooksAdmin
 
                 wp_enqueue_style('presspermit-settings', $urlpath . '/common/css/settings.css', [], PRESSPERMIT_VERSION);
 
-                wp_enqueue_script('presspermit-select2', $urlpath . "/common/libs/select2/select2.full.min.js", ['jquery'], PRESSPERMIT_TEASER_VERSION, false);
+                // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
+                if (!wp_style_is('presspermit-select2', 'registered')) {
+                    wp_register_style('presspermit-select2', $urlpath . '/common/libs/select2/select2.min.css', array(), '4.0.13', 'screen');
+                }
+                if (!wp_script_is('presspermit-select2', 'registered')) {
+                    wp_register_script('presspermit-select2', $urlpath . '/common/libs/select2/select2.full.min.js', ['jquery'], '4.0.13', false);
+                }
+                wp_enqueue_style('presspermit-select2');
+                wp_enqueue_script('presspermit-select2');
 
                 $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
                 wp_enqueue_script('presspermit-teaser-settings', $urlpath . "/common/js/settings{$suffix}.js", ['jquery','presspermit-select2'], PRESSPERMIT_TEASER_VERSION, false);
@@ -44,7 +52,6 @@ class TeaserHooksAdmin
                 );
 
                 wp_enqueue_style('presspermit-teaser-settings', $urlpath . '/common/css/settings.css', [], PRESSPERMIT_TEASER_VERSION);
-                wp_enqueue_style('presspermit-select2', $urlpath . '/common/libs/select2/select2.min.css', [], PRESSPERMIT_TEASER_VERSION);
             });
         }
     }

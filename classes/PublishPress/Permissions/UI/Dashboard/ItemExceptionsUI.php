@@ -118,35 +118,6 @@ class ItemExceptionsUI
 
         //need effective line break here if not IE
         echo "<div style='clear:both;' class='" . esc_attr($class) . "'>";
-        
-        // Show info notice about switching to modern UI (dismissible) - only once
-        static $showed_legacy_notice;
-        if (empty($showed_legacy_notice)) {
-            $user_id = get_current_user_id();
-            $dismissed_legacy = get_user_meta($user_id, 'pp_dismissed_legacy_ui_notice', true);
-            
-            if (!$dismissed_legacy) :
-            ?>
-            <div class="pp-ui-switch-notice is-dismissible" data-notice-type="legacy">
-                <p>
-                    <span class="dashicons dashicons-info" style="color: #2271b1;"></span>
-                    <strong><?php esc_html_e('Try the new interface!', 'press-permit-core'); ?></strong>
-                    <?php esc_html_e('A modern tabbed interface is available with improved usability.', 'press-permit-core'); ?>
-                    <?php 
-                    $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=advanced#use_tabbed_metabox');
-                    printf(
-                        esc_html__('%sEnable it in the Advanced settings area%s.', 'press-permit-core'),
-                        '<a href="' . esc_url($settings_url) . '">',
-                        '</a>'
-                    );
-                    ?>
-                </p>
-                <button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
-            </div>
-            <?php
-            endif;
-            $showed_legacy_notice = true;
-        }
 
         foreach (array_keys($agent_types) as $agent_type) {
             $hide_class = ($toggle_agents && ($agent_type != $default_agent_type)) ? 'hide-if-js' : '';
@@ -346,9 +317,6 @@ class ItemExceptionsUI
             require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
             \PublishPress\Permissions\UI\HintsItemExceptions::itemHints($for_item_type);
         }
-        
-        // Output dismiss handler script (shared with modern UI)
-        $this->outputNoticeDismissScript();
     }
 
     /**
@@ -437,30 +405,6 @@ class ItemExceptionsUI
 
             <!-- Main Content Area with Tab Panes -->
             <div class="pp-tabbed-main">
-            <?php
-            // Show info notice about switching to legacy UI (dismissible)
-            $user_id = get_current_user_id();
-            $dismissed_modern = get_user_meta($user_id, 'pp_dismissed_modern_ui_notice', true);
-            
-            if (!$dismissed_modern) :
-            ?>
-            <div class="pp-ui-switch-notice is-dismissible" data-notice-type="modern">
-                <p>
-                    <span class="dashicons dashicons-info" style="color: #2271b1;"></span>
-                    <strong><?php esc_html_e('New Interface:', 'press-permit-core'); ?></strong>
-                    <?php esc_html_e('You\'re using the new interface.', 'press-permit-core'); ?>
-                    <?php 
-                    $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=advanced#use_tabbed_metabox');
-                    printf(
-                        esc_html__('Prefer the old view? %sSwitch to the legacy metaboxes%s in the Advanced settings area.', 'press-permit-core'),
-                        '<a href="' . esc_url($settings_url) . '">',
-                        '</a>'
-                    );
-                    ?>
-                </p>
-                <button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
-            </div>
-            <?php endif; ?>
                 <div class="pp-tabbed-content">
                     <?php 
                     $first = true;
@@ -489,47 +433,6 @@ class ItemExceptionsUI
                 </div>
             </div>
         </div>
-        <?php
-        // Output dismiss handler script (shared with legacy UI)
-        $this->outputNoticeDismissScript();
-    }
-
-    /**
-     * Output the notice dismiss handler script (used by both legacy and modern UIs)
-     * Uses a static variable to ensure the script is only output once per page load
-     */
-    private function outputNoticeDismissScript()
-    {
-        static $script_output;
-        
-        if (!empty($script_output)) {
-            return;
-        }
-        
-        $script_output = true;
-        ?>
-        <script>
-        // Handle UI switch notice dismissal
-        jQuery(document).ready(function($) {
-            $(document).on('click', '.pp-ui-switch-notice .notice-dismiss', function(e) {
-                e.preventDefault();
-                var $notice = $(this).closest('.pp-ui-switch-notice');
-                var noticeType = $notice.data('notice-type');
-                
-                // Hide the notice with animation
-                $notice.fadeOut(300, function() {
-                    $(this).remove();
-                });
-                
-                // Save dismissal to database
-                $.post(ajaxurl, {
-                    action: 'pp_dismiss_ui_notice',
-                    notice_type: noticeType,
-                    nonce: '<?php echo esc_attr(wp_create_nonce('pp_dismiss_ui_notice')); ?>'
-                });
-            });
-        });
-        </script>
         <?php
     }
 
@@ -741,7 +644,7 @@ class ItemExceptionsUI
                         $agent_id,
                         $current_exceptions[$op]['wp_role'][$agent_id],
                         $role,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
                     );
                 }
             }
@@ -794,7 +697,7 @@ class ItemExceptionsUI
                         $agent_id,
                         $current_exceptions[$op]['pp_group'][$agent_id],
                         $group,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
                     );
                 }
             }
@@ -806,7 +709,7 @@ class ItemExceptionsUI
      */
     private function renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
     {
-        $empty_message = esc_html__('No specific user permissions. Use the dropdown above to add users.', 'press-permit-core');
+        $empty_message = esc_html__('No specific user permissions. Use the search box to add users.', 'press-permit-core');
         ?>
         <div class="pp-permission-cards">
             <div class="pp-permission-card">
@@ -842,7 +745,7 @@ class ItemExceptionsUI
                                     $agent_id,
                                     $current_exceptions[$op]['user'][$agent_id],
                                     $this->data->agent_info['user'][$agent_id],
-                                    compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id')
+                                    compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
                                 );
                             }
                         }
@@ -938,7 +841,7 @@ class ItemExceptionsUI
     {
         global $wp_roles;
         
-        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0];
+        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null];
         $args = array_merge($defaults, $args);
         extract($args);
 
@@ -1070,8 +973,13 @@ class ItemExceptionsUI
                         $type_label = '';
                         $type_class = '';
                         if ('wp_role' == $agent_type) {
-                            $type_label = __('Role', 'press-permit-core');
-                            $type_class = 'pp-type-role';
+                            if (!empty($agent_info->metagroup_id) && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_auth', 'wp_all'])) {
+                                $type_label = __('Login State', 'press-permit-core');
+                                $type_class = 'pp-type-login-state';
+                            } else {
+                                $type_label = __('Role', 'press-permit-core');
+                                $type_class = 'pp-type-role';
+                            }
                         } elseif ('pp_group' == $agent_type) {
                             $type_label = __('Group', 'press-permit-core');
                             $type_class = 'pp-type-group';
@@ -1118,7 +1026,17 @@ class ItemExceptionsUI
                                 continue;
                             }
                             
-                            $mode_label = ('children' == $mode) ? __('Sub-Categories', 'press-permit-core') : __('This Category', 'press-permit-core');
+                            // Build dynamic labels based on post type
+                            if ($type_obj && isset($type_obj->labels->singular_name) && isset($type_obj->labels->name)) {
+                                $singular = $type_obj->labels->singular_name;
+                                $plural = $type_obj->labels->name;
+                                $mode_label = ('children' == $mode) 
+                                    ? sprintf(__('Sub-%s', 'press-permit-core'), $plural)
+                                    : sprintf(__('This %s', 'press-permit-core'), $singular);
+                            } else {
+                                // Fallback to generic labels
+                                $mode_label = ('children' == $mode) ? __('Sub-Sections', 'press-permit-core') : __('This Section', 'press-permit-core');
+                            }
                             ?>
                             <div class="pp-permission-select <?php echo ('children' == $mode) ? 'pp-children-select' : 'pp-item-select'; ?>">
                                 <?php if ($hierarchical && count($assignment_modes) > 1) : ?>

@@ -506,15 +506,15 @@ class AgentsDynamicUI
     {
         global $pagenow, $wp_scripts;
 
-        // Only load Select2 assets on the presspermit admin page or not registered
-        // Always load Select2 assets on term.php page, or if not registered, or on presspermit admin pages
-        if (!wp_script_is('select2', 'registered') 
-            || false !== strpos(presspermitPluginPage(), 'presspermit')
-            || in_array($pagenow, ['term.php', 'edit-tags.php'], true)
-        ) {
-            wp_enqueue_style('presspermit-select2-css', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/css/select2.min.css", array(), PRESSPERMIT_VERSION, 'screen');
-            wp_enqueue_script('presspermit-select2-js', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/js/select2.full.min.js", ['jquery'], PRESSPERMIT_VERSION);
+        // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
+        if (!wp_style_is('presspermit-select2-css', 'registered')) {
+            wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/css/select2.min.css", array(), '4.0.13', 'screen');
         }
+        if (!wp_script_is('presspermit-select2-js', 'registered')) {
+            wp_register_script('presspermit-select2-js', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/js/select2.full.min.js", ['jquery'], '4.0.13', true);
+        }
+        wp_enqueue_style('presspermit-select2-css');
+        wp_enqueue_script('presspermit-select2-js');
 
         // note: this is also done in AdminFiltersItemUI() constructor
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';

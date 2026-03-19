@@ -354,16 +354,9 @@
   }
 }
 
-/* Permission Cards Grid */
-.pp-permission-cards-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
+/* Permission Cards */
+.pp-permission-cards {
+  min-height: 500px;
 }
 
 /* Permission Card */
@@ -850,44 +843,44 @@
     }
   }
 
-  // "Role" filter - blue theme (matches pp-type-role badge)
+  // "Role" filter - purple theme (matches pp-type-role badge)
   &[data-filter="role"] {
     &:not(.active) {
       background: white;
-      color: #1e3a8a;
-      border: 1px solid #93c5fd;
+      color: #6b21a8;
+      border: 1px solid #c084fc;
 
       .pp-filter-count {
-        background: #bfdbfe;
-        color: #1e3a8a;
+        background: #e9d5ff;
+        color: #6b21a8;
       }
 
       &:hover {
-        background: #eff6ff;
-        border-color: #60a5fa;
+        background: #f3e8ff;
+        border-color: #a855f7;
         box-shadow:
-          0 4px 12px rgba(59, 130, 246, 0.15),
-          0 2px 4px rgba(59, 130, 246, 0.08);
+          0 4px 12px rgba(168, 85, 247, 0.15),
+          0 2px 4px rgba(168, 85, 247, 0.08);
       }
     }
 
     &.active {
-      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-      color: #1e3a8a;
-      border: 1px solid #93c5fd;
+      background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+      color: #6b21a8;
+      border: 1px solid #c084fc;
       box-shadow:
-        0 4px 16px rgba(59, 130, 246, 0.15),
-        0 2px 8px rgba(59, 130, 246, 0.1);
+        0 4px 16px rgba(168, 85, 247, 0.15),
+        0 2px 8px rgba(168, 85, 247, 0.1);
 
       .pp-filter-count {
-        background: rgba(30, 58, 138, 0.15);
-        color: #1e3a8a;
+        background: rgba(107, 33, 168, 0.15);
+        color: #6b21a8;
       }
 
       &:hover {
         box-shadow:
-          0 6px 20px rgba(59, 130, 246, 0.2),
-          0 3px 10px rgba(59, 130, 246, 0.12);
+          0 6px 20px rgba(168, 85, 247, 0.2),
+          0 3px 10px rgba(168, 85, 247, 0.12);
       }
     }
   }
@@ -930,6 +923,48 @@
         box-shadow:
           0 6px 20px rgba(245, 158, 11, 0.2),
           0 3px 10px rgba(245, 158, 11, 0.12);
+      }
+    }
+  }
+
+  // "Login State" filter - dark orange theme (matches pp-type-login-state badge)
+  &[data-filter="login-state"] {
+    &:not(.active) {
+      background: white;
+      color: #7c2d12;
+      border: 1px solid #fb923c;
+
+      .pp-filter-count {
+        background: #fed7aa;
+        color: #7c2d12;
+      }
+
+      &:hover {
+        background: #ffedd5;
+        border-color: #f97316;
+        box-shadow:
+          0 4px 12px rgba(249, 115, 22, 0.15),
+          0 2px 4px rgba(249, 115, 22, 0.08);
+      }
+    }
+
+    &.active {
+      background: linear-gradient(135deg, #ffedd5, #fed7aa);
+      color: #7c2d12;
+      border: 1px solid #fb923c;
+      box-shadow:
+        0 4px 16px rgba(249, 115, 22, 0.15),
+        0 2px 8px rgba(249, 115, 22, 0.1);
+
+      .pp-filter-count {
+        background: rgba(124, 45, 18, 0.15);
+        color: #7c2d12;
+      }
+
+      &:hover {
+        box-shadow:
+          0 6px 20px rgba(249, 115, 22, 0.2),
+          0 3px 10px rgba(249, 115, 22, 0.12);
       }
     }
   }
@@ -1096,15 +1131,21 @@
       transition: all 0.2s ease;
       
       &.pp-type-role {
-        background: linear-gradient(135deg, #dbeafe, #bfdbfe);
-        color: #1e3a8a;
-        border: 1px solid #93c5fd;
+        background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+        color: #6b21a8;
+        border: 1px solid #c084fc;
       }
       
       &.pp-type-group {
         background: linear-gradient(135deg, #fffbeb, #fef3c7);
         color: #92400e;
         border: 1px solid #fcd34d;
+      }
+      
+      &.pp-type-login-state {
+        background: linear-gradient(135deg, #ffedd5, #fed7aa);
+        color: #7c2d12;
+        border: 1px solid #fb923c;
       }
     }
   }
@@ -1137,6 +1178,7 @@
   gap: 10px;
   position: relative;
   flex: 1;
+  flex-wrap: wrap;
 
   /* When both item and children are present, arrange horizontally */
   &:has(.pp-children-select) {
@@ -1392,6 +1434,46 @@
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+  }
+}
+
+/* Bulk Action Warning (shown when action can't be applied) */
+.pp-bulk-action-warning {
+  flex-basis: 100%;
+  padding: 8px 12px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 4px;
+  color: #92400e;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 0;
+  animation: slideInWarning 0.3s ease-out;
+
+  .dashicons {
+    color: #f59e0b;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+  }
+
+  .pp-warning-text {
+    font-weight: 500;
+    line-height: 1.4;
+  }
+}
+
+@keyframes slideInWarning {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
