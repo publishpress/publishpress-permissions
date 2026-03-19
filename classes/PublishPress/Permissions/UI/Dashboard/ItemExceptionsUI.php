@@ -318,4 +318,771 @@ class ItemExceptionsUI
             \PublishPress\Permissions\UI\HintsItemExceptions::itemHints($for_item_type);
         }
     }
+
+    /**
+     * Draw tabbed exceptions UI with all operations in one metabox
+     * 
+     * @param array $operations Array of operation data with keys: op, caption, op_obj
+     * @param array $args Arguments including item_id, for_item_type, via_item_source, via_item_type
+     */
+    public function drawTabbedExceptionsUI($operations, $args)
+    {
+        if (empty($operations)) {
+            return;
+        }
+
+        $pp = presspermit();
+        $item_id = (isset($args['item_id'])) ? $args['item_id'] : 0;
+        $for_item_type = (isset($args['for_item_type'])) ? $args['for_item_type'] : '';
+        $via_item_source = (isset($args['via_item_source'])) ? $args['via_item_source'] : '';
+        $via_item_type = (isset($args['via_item_type'])) ? $args['via_item_type'] : '';
+
+        // Get type object for labels
+        $type_obj = ('post' == $via_item_source) ? get_post_type_object($via_item_type) : get_taxonomy($via_item_type);
+
+        static $drew_itemroles_marker;
+        if (empty($drew_itemroles_marker)) {
+            echo "<input type='hidden' name='pp_post_exceptions' value='true' />";
+            $drew_itemroles_marker = true;
+        }
+
+        // Calculate exception counts for each operation
+        $current_exceptions = (isset($this->data->current_exceptions[$for_item_type]))
+            ? $this->data->current_exceptions[$for_item_type]
+            : [];
+
+        ?>
+        <div class="pp-tabbed-metabox">
+            <!-- Left Sidebar with Operation Tabs -->
+            <div class="pp-tabbed-sidebar">
+                <div class="pp-operation-tabs">
+                    <?php 
+                    $first = true;
+                    foreach ($operations as $op_data) : 
+                        $op = $op_data['op'];
+                        $op_obj = $op_data['op_obj'];
+                        $tab_id = "pp-tab-{$op}-{$for_item_type}";
+                        
+                        // Get icon based on operation
+                        $icon = $this->getOperationIcon($op);
+                        
+                        // Calculate counts for this operation
+                        $counts = $this->getExceptionCounts($op, $for_item_type, $current_exceptions);
+                        $total_count = $counts['total'];
+                        $has_exceptions = $total_count > 0;
+
+                        // Build tooltip text
+                        $tooltip_parts = [];
+                        if ($counts['roles'] > 0) {
+                            $tooltip_parts[] = sprintf(_n('%d role', '%d roles', $counts['roles'], 'press-permit-core'), $counts['roles']);
+                        }
+                        if ($counts['groups'] > 0) {
+                            $tooltip_parts[] = sprintf(_n('%d group', '%d groups', $counts['groups'], 'press-permit-core'), $counts['groups']);
+                        }
+                        if ($counts['users'] > 0) {
+                            $tooltip_parts[] = sprintf(_n('%d user', '%d users', $counts['users'], 'press-permit-core'), $counts['users']);
+                        }
+                        $tooltip_text = !empty($tooltip_parts) ? implode(', ', $tooltip_parts) : esc_html__('No exceptions configured', 'press-permit-core');
+                    ?>
+                        <button type="button" 
+                                class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
+                                data-target="<?php echo esc_attr($tab_id); ?>"
+                                data-exception-count="<?php echo esc_attr($total_count); ?>">
+                            <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
+                            <span class="pp-tab-label"><?php echo esc_html($op_data['caption']); ?></span>
+                            <?php if ($has_exceptions) : ?>
+                                <span class="pp-tab-badge" title="<?php echo esc_attr($tooltip_text); ?>">
+                                    <?php echo esc_html($total_count); ?>
+                                </span>
+                            <?php endif; ?>
+                        </button>
+                    <?php 
+                        $first = false;
+                    endforeach; 
+                    ?>
+                </div>
+            </div>
+
+            <!-- Main Content Area with Tab Panes -->
+            <div class="pp-tabbed-main">
+                <div class="pp-tabbed-content">
+                    <?php 
+                    $first = true;
+                    foreach ($operations as $op_data) : 
+                        $op = $op_data['op'];
+                        $tab_id = "pp-tab-{$op}-{$for_item_type}";
+                        
+                        // Create a box array for compatibility with existing drawExceptionsUI
+                        $box = [
+                            'id' => "pp_{$op}_{$for_item_type}_exceptions_tab",
+                            'args' => ['op' => $op]
+                        ];
+                    ?>
+                        <div id="<?php echo esc_attr($tab_id); ?>" class="pp-tab-pane <?php echo $first ? 'active' : ''; ?>">
+                            <div class="pp-operation-content">
+                                <?php
+                                // Call the new tabbed operation content method
+                                $this->drawTabbedOperationContent($op, $args);
+                                ?>
+                            </div>
+                        </div>
+                    <?php 
+                        $first = false;
+                    endforeach; 
+                    ?>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Draw modern tabbed operation content with sub-tabs for agent types
+     * 
+     * @param string $op Operation name
+     * @param array $args Arguments including item_id, for_item_type, via_item_source, via_item_type
+     */
+    private function drawTabbedOperationContent($op, $args)
+    {
+        $pp = presspermit();
+        $pp_admin = $pp->admin();
+        
+        $item_id = (isset($args['item_id'])) ? $args['item_id'] : 0;
+        $for_item_type = (isset($args['for_item_type'])) ? $args['for_item_type'] : '';
+        $via_item_source = (isset($args['via_item_source'])) ? $args['via_item_source'] : '';
+        $via_item_type = (isset($args['via_item_type'])) ? $args['via_item_type'] : '';
+
+        // Get type object for hierarchical check
+        if ('post' == $via_item_source) {
+            $hierarchical = is_post_type_hierarchical($via_item_type);
+        } else {
+            $hierarchical = is_taxonomy_hierarchical($via_item_type);
+        }
+
+        $type_obj = null;
+        if ($hierarchical = apply_filters('presspermit_do_assign_for_children_ui', $hierarchical, $via_item_type, $args)) {
+            $type_obj = ('post' == $via_item_source) ? get_post_type_object($via_item_type) : get_taxonomy($via_item_type);
+        }
+
+        $current_exceptions = (isset($this->data->current_exceptions[$for_item_type]))
+            ? $this->data->current_exceptions[$for_item_type]
+            : [];
+
+        // Check for blockage of Everyone, Logged In metagroups
+        $metagroup_exclude = [];
+        $is_auth_metagroup = [];
+
+        if ($current_exceptions && !empty($current_exceptions[$op]) && !empty($current_exceptions[$op]['wp_role'])) {
+            foreach ($this->data->agent_info['wp_role'] as $agent_id => $role) {
+                if (!empty($role->metagroup_id) && in_array($role->metagroup_id, ['wp_auth', 'wp_all', 'wp_anon'])) {
+                    $is_auth_metagroup[$agent_id] = true;
+
+                    if (in_array($role->metagroup_id, ['wp_auth', 'wp_all'])
+                        && !empty($current_exceptions[$op]['wp_role'][$agent_id]) 
+                        && !empty($current_exceptions[$op]['wp_role'][$agent_id]['item'])
+                        && !empty($current_exceptions[$op]['wp_role'][$agent_id]['item']['exclude'])
+                    ) {
+                        $metagroup_exclude[$role->metagroup_id] = true;
+                    }
+                }
+            }
+        }
+
+        $is_draft_post = false;
+        if ('post' == $via_item_source && 'read' == $op) {
+            global $post;
+            $status_obj = get_post_status_object($post->post_status);
+            if (!$status_obj || (!$status_obj->public && !$status_obj->private)) {
+                $is_draft_post = true;
+            }
+        }
+
+        if (!$is_draft_post && ('post' == $via_item_source) && ('attachment' != $via_item_type)
+            && in_array($op, ['read', 'edit', 'delete'], true)
+        ) {
+            $reqd_caps = map_meta_cap("{$op}_post", 0, $item_id);
+        } else {
+            $reqd_caps = false;
+        }
+
+        // Check if custom groups exist to determine tab label
+        $has_custom_groups = !empty($this->data->agent_info['pp_group']);
+        $roles_groups_label = $has_custom_groups ? __('Roles & Groups', 'press-permit-core') : __('Roles', 'press-permit-core');
+        $search_placeholder = $has_custom_groups ? __('Search roles and groups...', 'press-permit-core') : __('Search roles...', 'press-permit-core');
+
+        ?>
+        <!-- Sub-tabs for agent types -->
+        <div class="pp-agent-type-tabs">
+            <button type="button" class="pp-agent-type-tab active" data-agent-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                <span class="dashicons dashicons-groups"></span>
+                <?php echo esc_html($roles_groups_label); ?>
+            </button>
+            <button type="button" class="pp-agent-type-tab" data-agent-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                <span class="dashicons dashicons-admin-users"></span>
+                <?php esc_html_e('Users', 'press-permit-core'); ?>
+            </button>
+        </div>
+
+        <!-- Roles & Groups Content -->
+        <div id="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-agent-type-content active">
+            <!-- Search Box -->
+            <div class="pp-search-box">
+                <span class="dashicons dashicons-search"></span>
+                <input type="text" class="pp-search-input" placeholder="<?php echo esc_attr($search_placeholder); ?>" />
+                <button type="button" class="pp-search-clear" style="display: none;">
+                    <span class="dashicons dashicons-no-alt"></span>
+                </button>
+            </div>
+            <!-- Dynamic Filter Pills (populated by JavaScript) -->
+            <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
+            <div class="pp-permission-cards">
+                <div class="pp-permission-card">
+                    <!-- Bulk Actions Toolbar -->
+                    <div class="pp-bulk-actions-toolbar">
+                        <div class="pp-bulk-select">
+                            <input type="checkbox" id="pp-select-all-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-select-all-checkbox" />
+                            <label for="pp-select-all-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"><?php esc_html_e('Select All', 'press-permit-core'); ?></label>
+                        </div>
+                        <div class="pp-bulk-actions">
+                            <select class="pp-bulk-action-select" aria-label="<?php esc_attr_e('Bulk Actions', 'press-permit-core'); ?>">
+                                <option value=""><?php esc_html_e('Bulk Actions', 'press-permit-core'); ?></option>
+                                <option value="enable"><?php esc_html_e('Set to Enabled', 'press-permit-core'); ?></option>
+                                <option value="block"><?php esc_html_e('Set to Blocked', 'press-permit-core'); ?></option>
+                                <option value="default"><?php esc_html_e('Set to Default', 'press-permit-core'); ?></option>
+                            </select>
+                            <button type="button" class="button pp-bulk-apply"><?php esc_html_e('Apply', 'press-permit-core'); ?></button>
+                        </div>
+                        <div class="pp-bulk-counter">
+                            <span class="pp-selected-count">0</span> <?php esc_html_e('selected', 'press-permit-core'); ?>
+                        </div>
+                    </div>
+                    
+                    <div class="pp-permission-list">
+                        <!-- WordPress Roles Card -->
+                        <?php $this->renderRolesCard($op, $for_item_type, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $metagroup_exclude, $is_auth_metagroup, $item_id); ?>
+                        <!-- Custom Groups Card -->
+                        <?php $this->renderGroupsCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Users Content -->
+        <div id="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-agent-type-content">
+            <!-- Search Box with Select2 -->
+            <div class="pp-search-box pp-search-box-select2">
+                <span class="dashicons dashicons-search"></span>
+                <select 
+                    id="pp-user-search-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" 
+                    class="pp-search-input pp-user-search-select2" 
+                    multiple="multiple"
+                    data-op="<?php echo esc_attr($op); ?>"
+                    data-for-item-type="<?php echo esc_attr($for_item_type); ?>"
+                    data-agent-type="user"
+                    data-placeholder="<?php esc_attr_e('Search and add users...', 'press-permit-core'); ?>">
+                </select>
+            </div>
+            <!-- Dynamic Filter Pills (populated by JavaScript) -->
+            <div class="pp-permission-filters" data-filter-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
+            <?php $this->renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
+        </div>
+        <?php
+    }
+
+    /**
+     * Render WordPress Roles card
+     */
+    private function renderRolesCard($op, $for_item_type, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $metagroup_exclude, $is_auth_metagroup, $item_id)
+    {
+        $pp = presspermit();
+        
+        if (!isset($current_exceptions[$op]['wp_role'])) {
+            $current_exceptions[$op]['wp_role'] = [];
+        }
+
+        // Populate all WP roles
+        foreach ($this->data->agent_info['wp_role'] as $agent_id => $role) {
+            if (in_array($role->metagroup_id, ['wp_anon', 'wp_all'], true)
+                && (!$pp->moduleActive('file-access') || 'attachment' != $for_item_type)
+                && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')
+                && (('read' != $op) || $pp->getOption('anonymous_unfiltered'))
+            ) {
+                continue;
+            }
+
+            if (!isset($current_exceptions[$op]['wp_role'][$agent_id])) {
+                $current_exceptions[$op]['wp_role'][$agent_id] = [];
+            }
+        }
+
+        if (!empty($current_exceptions[$op]['wp_role'])) {
+            // Buffer original reqd_caps value
+            $_reqd_caps = (is_array($reqd_caps)) ? array_values($reqd_caps) : $reqd_caps;
+
+            // Iterate through agent_info to maintain consistent order (configured and unconfigured roles in same order)
+            foreach ($this->data->agent_info['wp_role'] as $agent_id => $role) {
+                // Skip if this role is not in current_exceptions (filtered out by earlier logic)
+                if (!isset($current_exceptions[$op]['wp_role'][$agent_id])) {
+                    continue;
+                }
+
+                if ($agent_id && ((false === strpos($role->name, '[WP ')) || defined('PRESSPERMIT_DELETED_ROLE_EXCEPTIONS_UI'))) {
+                    // If Everyone / Logged In metagroup is blocked, indicate effect on other roles
+                    if ((!empty($metagroup_exclude['wp_all']) || !empty($metagroup_exclude['wp_auth'])) && empty($is_auth_metagroup[$agent_id])) {
+                        if (is_array($_reqd_caps)) {
+                            $reqd_caps = array_merge($_reqd_caps, ['pp_administer_content']);
+                        } else {
+                            $reqd_caps = ['pp_administer_content'];
+                        }
+                    } else {
+                        $reqd_caps = $_reqd_caps;
+                    }
+
+                    $this->renderPermissionListItem(
+                        'wp_role',
+                        $agent_id,
+                        $current_exceptions[$op]['wp_role'][$agent_id],
+                        $role,
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                    );
+                }
+            }
+        } else {
+            ?>
+            <div class="pp-empty-state">
+                <span class="dashicons dashicons-info"></span>
+                <p><?php esc_html_e('No role exceptions set', 'press-permit-core'); ?></p>
+            </div>
+            <?php
+        }
+    }
+
+    /**
+     * Render Custom Groups card
+     */
+    private function renderGroupsCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
+    {
+        $pp = presspermit();
+        
+        if (!isset($current_exceptions[$op]['pp_group'])) {
+            $current_exceptions[$op]['pp_group'] = [];
+        }
+
+        // Populate all groups
+        foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
+            if (!isset($current_exceptions[$op]['pp_group'][$agent_id])) {
+                $current_exceptions[$op]['pp_group'][$agent_id] = [];
+            }
+        }
+
+        if (!empty($current_exceptions[$op]['pp_group'])) {
+            $any_groups_blocked = false;
+            
+            // Iterate through agent_info to maintain consistent order (configured and unconfigured groups in same order)
+            foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
+                // Skip if this group is not in current_exceptions (filtered out by earlier logic)
+                if (!isset($current_exceptions[$op]['pp_group'][$agent_id])) {
+                    continue;
+                }
+
+                if ($agent_id) {
+                    // Check if blocked
+                    if (!empty($current_exceptions[$op]['pp_group'][$agent_id]['item']['exclude'])) {
+                        $any_groups_blocked = true;
+                    }
+
+                    $this->renderPermissionListItem(
+                        'pp_group',
+                        $agent_id,
+                        $current_exceptions[$op]['pp_group'][$agent_id],
+                        $group,
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                    );
+                }
+            }
+        }
+    }
+
+    /**
+     * Render Users card
+     */
+    private function renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
+    {
+        $empty_message = esc_html__('No specific user permissions. Use the search box to add users.', 'press-permit-core');
+        ?>
+        <div class="pp-permission-cards">
+            <div class="pp-permission-card">
+                <!-- Bulk Actions Toolbar -->
+                <div class="pp-bulk-actions-toolbar">
+                    <div class="pp-bulk-select">
+                        <input type="checkbox" id="pp-select-all-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-select-all-checkbox" />
+                        <label for="pp-select-all-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"><?php esc_html_e('Select All', 'press-permit-core'); ?></label>
+                    </div>
+                    <div class="pp-bulk-actions">
+                        <select class="pp-bulk-action-select" aria-label="<?php esc_attr_e('Bulk Actions', 'press-permit-core'); ?>">
+                            <option value=""><?php esc_html_e('Bulk Actions', 'press-permit-core'); ?></option>
+                            <option value="enable"><?php esc_html_e('Set to Enabled', 'press-permit-core'); ?></option>
+                            <option value="block"><?php esc_html_e('Set to Blocked', 'press-permit-core'); ?></option>
+                            <option value="default"><?php esc_html_e('Set to Default', 'press-permit-core'); ?></option>
+                            <option value="remove"><?php esc_html_e('Remove Selected', 'press-permit-core'); ?></option>
+                        </select>
+                        <button type="button" class="button pp-bulk-apply"><?php esc_html_e('Apply', 'press-permit-core'); ?></button>
+                    </div>
+                    <div class="pp-bulk-counter">
+                        <span class="pp-selected-count">0</span> <?php esc_html_e('selected', 'press-permit-core'); ?>
+                    </div>
+                </div>
+
+                <!-- Users list -->
+                <div class="pp-permission-list" data-empty-message="<?php echo esc_attr($empty_message); ?>">
+                    <?php
+                    if (!empty($current_exceptions[$op]['user'])) {
+                        foreach (array_keys($this->data->agent_info['user']) as $agent_id) {
+                            if ($agent_id && isset($current_exceptions[$op]['user'][$agent_id])) {
+                                $this->renderPermissionListItem(
+                                    'user',
+                                    $agent_id,
+                                    $current_exceptions[$op]['user'][$agent_id],
+                                    $this->data->agent_info['user'][$agent_id],
+                                    compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                                );
+                            }
+                        }
+                    } else {
+                        ?>
+                        <div class="pp-empty-state">
+                            <span class="dashicons dashicons-info"></span>
+                            <p><?php echo esc_html($empty_message); ?></p>
+                        </div>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+        <?php
+    }
+
+    /**
+     * Get dashicon class for an operation
+     * 
+     * @param string $op Operation name
+     * @return string Dashicon class
+     */
+    private function getOperationIcon($op)
+    {
+        $icons = [
+            'read' => 'dashicons-visibility',
+            'edit' => 'dashicons-edit',
+            'delete' => 'dashicons-trash',
+            'publish' => 'dashicons-upload',
+            'associate' => 'dashicons-networking',
+            'assign' => 'dashicons-tag',
+            'copy' => 'dashicons-admin-page',
+            'revise' => 'dashicons-backup',
+            'manage' => 'dashicons-admin-generic',
+        ];
+
+        return isset($icons[$op]) ? $icons[$op] : 'dashicons-admin-generic';
+    }
+
+    /**
+     * Get exception counts for an operation
+     * 
+     * @param string $op Operation name
+     * @param string $for_item_type Item type
+     * @param array $current_exceptions Current exceptions data
+     * @return array Array with keys: roles, groups, users, total
+     */
+    private function getExceptionCounts($op, $for_item_type, $current_exceptions)
+    {
+        $counts = [
+            'roles' => 0,
+            'groups' => 0,
+            'users' => 0,
+            'total' => 0,
+        ];
+
+        if (empty($current_exceptions) || empty($current_exceptions[$op])) {
+            return $counts;
+        }
+
+        // Count roles (wp_role)
+        if (!empty($current_exceptions[$op]['wp_role'])) {
+            $counts['roles'] = count($current_exceptions[$op]['wp_role']);
+        }
+
+        // Count groups (pp_group)
+        if (!empty($current_exceptions[$op]['pp_group'])) {
+            $counts['groups'] = count($current_exceptions[$op]['pp_group']);
+        }
+
+        // Count users
+        if (!empty($current_exceptions[$op]['user'])) {
+            $counts['users'] = count($current_exceptions[$op]['user']);
+        }
+
+        $counts['total'] = $counts['roles'] + $counts['groups'] + $counts['users'];
+
+        return $counts;
+    }
+
+    /**
+     * Render a single permission list item (modern div-based structure)
+     * 
+     * @param string $agent_type Agent type (wp_role, pp_group, user)
+     * @param string $agent_id Agent ID
+     * @param array $agent_exceptions Current exception settings
+     * @param object $agent_info Agent information object
+     * @param array $args Additional arguments
+     */
+    private function renderPermissionListItem($agent_type, $agent_id, $agent_exceptions, $agent_info, $args = [])
+    {
+        global $wp_roles;
+        
+        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null];
+        $args = array_merge($defaults, $args);
+        extract($args);
+
+        $pp = presspermit();
+
+        // Initialize option arrays using the render helper (same as legacy drawRow)
+        $this->render->setOptions($agent_type);
+        
+        // Initialize opt_class for default option (same as drawRow does)
+        $this->render->opt_class[''] = '';
+
+        // Determine agent display name
+        $_name = $agent_info->name;
+        
+        if ('wp_role' == $agent_type) {
+            if (!empty($agent_info->metagroup_id)) {
+                $_name = \PublishPress\Permissions\DB\Groups::getMetagroupName('wp_role', $agent_info->metagroup_id, $_name);
+            } 
+        } elseif ('user' == $agent_type) {
+            // Format: Display Name (username) or just username if no display name
+            if (!empty($agent_info->formatted_name)) {
+                $_name = $agent_info->formatted_name;
+            } else if (!empty($agent_info->display_name) && ($agent_info->display_name != $agent_info->name)) {
+                $_name = $agent_info->display_name . ' (' . $agent_info->name . ')';
+            }
+        }
+
+        // Determine current permission value
+        $assignment_modes = ['item'];
+        if ($hierarchical) {
+            $assignment_modes[] = 'children';
+        }
+
+        // Check if inclusions are active for this specific agent (not global check)
+        $_inclusions_active = isset($this->data->inclusions_active[$for_item_type][$op][$agent_type][$agent_id]);
+
+        // For wp_role, calculate capability-based default option display
+        $is_unfiltered = false;
+        if ('wp_role' == $agent_type && (!function_exists('rvy_in_revision_workflow') || !rvy_in_revision_workflow($item_id))) {
+            // Get role capabilities including supplemental roles
+            static $metagroup_caps;
+            if (!isset($metagroup_caps)) {
+                $metagroup_caps = [];
+                global $wpdb;
+                
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+                $results = $wpdb->get_results(
+                    "SELECT g.metagroup_id AS wp_rolename, r.role_name AS supplemental_role FROM $wpdb->ppc_roles AS r"
+                        . " INNER JOIN $wpdb->pp_groups AS g ON g.ID = r.agent_id AND r.agent_type = 'pp_group'"
+                        . " WHERE g.metagroup_type = 'wp_role'"
+                );
+
+                foreach ($results as $row) {
+                    $role_specs = explode(':', $row->supplemental_role);
+                    if (!empty($role_specs[2]) && ($for_item_type != $role_specs[2])) {
+                        continue;
+                    }
+
+                    if (!isset($metagroup_caps[$row->wp_rolename])) {
+                        $metagroup_caps[$row->wp_rolename] = [];
+                    }
+
+                    $metagroup_caps[$row->wp_rolename] = array_merge(
+                        $metagroup_caps[$row->wp_rolename],
+                        array_fill_keys($pp->getRoleCaps($row->supplemental_role), true)
+                    );
+                }
+            }
+
+            $role_obj_caps = (empty($wp_roles->role_objects[$agent_info->metagroup_id]->capabilities))
+                ? []
+                : $wp_roles->role_objects[$agent_info->metagroup_id]->capabilities;
+
+            $role_caps = isset($wp_roles->role_objects[$agent_info->metagroup_id])
+                ? array_intersect($role_obj_caps, [true, 1, '1'])
+                : [PRESSPERMIT_READ_PUBLIC_CAP => true, 'spectate' => true];
+
+            if (isset($metagroup_caps[$agent_info->metagroup_id])) {
+                $role_caps = array_merge($role_caps, $metagroup_caps[$agent_info->metagroup_id]);
+            }
+
+            $is_unfiltered = !empty($role_caps['pp_administer_content']) || !empty($role_caps['pp_unfiltered']);
+
+            // Update default option label based on capabilities
+            if ($reqd_caps) {
+                if (!array_diff($reqd_caps, array_keys($role_caps)) || $is_unfiltered) {
+                    $this->render->opt_class[''] = 'pp-yes';
+                    $this->render->options['standard'][''] = $this->render->opt_labels['default_yes'];
+                } else {
+                    $this->render->opt_class[''] = 'pp-no';
+                    $this->render->options['standard'][''] = $this->render->opt_labels['default_no'];
+                }
+            }
+        }
+
+        // Determine which option set to use (once, not in loop)
+        if ($_inclusions_active) {
+            $option_set = 'includes';
+            $this->render->opt_class[''] = 'pp-no';
+        } else {
+            $option_set = 'standard';
+            if (!$this->render->opt_class['']) {
+                $this->render->opt_class[''] = 'pp-def';
+            }
+        }
+
+        // Check if we should skip rendering this item entirely
+        // (if 'item' mode is disabled for unfiltered users with no exceptions stored)
+        $item_has_exception = !empty($agent_exceptions['item']['additional']) 
+            || isset($agent_exceptions['item']['include']) 
+            || isset($agent_exceptions['item']['exclude']);
+
+        if (!empty($is_unfiltered) && !$item_has_exception) {
+            return; // Skip rendering entirely for unfiltered users with no exceptions
+        }
+
+        // Render list item once with controls for both 'item' and 'children' modes
+        $for_type = ($for_item_type) ? $for_item_type : '(all)';
+        $css_class = strtolower(str_replace([' ', '_'], '-', $_name));
+        $item_id_attr = esc_attr("{$agent_type}-{$agent_id}");
+        ?>
+                <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>">
+                    <div class="item-checkbox">
+                        <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo esc_attr($item_id_attr); ?>" />
+                    </div>
+                    <div class="item-name">
+                        <?php
+                        // Add type badge to distinguish roles from groups
+                        $type_label = '';
+                        $type_class = '';
+                        if ('wp_role' == $agent_type) {
+                            if (!empty($agent_info->metagroup_id) && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_auth', 'wp_all'])) {
+                                $type_label = __('Login State', 'press-permit-core');
+                                $type_class = 'pp-type-login-state';
+                            } else {
+                                $type_label = __('Role', 'press-permit-core');
+                                $type_class = 'pp-type-role';
+                            }
+                        } elseif ('pp_group' == $agent_type) {
+                            $type_label = __('Group', 'press-permit-core');
+                            $type_class = 'pp-type-group';
+                        }
+                        
+                        if ($type_label) :
+                        ?>
+                            <span class="pp-type-badge <?php echo esc_attr($type_class); ?>"><?php echo esc_html($type_label); ?></span>
+                        <?php endif; ?>
+                        <label for="pp-item-<?php echo esc_attr($item_id_attr); ?>"><?php echo esc_html($_name); ?></label>
+                    </div>
+                    <div class="pp-permission-control">
+                        <?php
+                        // Render controls for both 'item' and 'children' assignment modes
+                        foreach ($assignment_modes as $mode) :
+                            // Determine current value for this mode
+                            if (!empty($agent_exceptions[$mode]['additional'])) {
+                                $mode_current_val = 2;
+                            } elseif (isset($agent_exceptions[$mode]['include'])) {
+                                $mode_current_val = 1;
+                            } elseif (isset($agent_exceptions[$mode]['exclude'])) {
+                                $mode_current_val = 0;
+                            } else {
+                                $mode_current_val = '';
+                            }
+                            
+                            // Get CSS class for current value
+                            $mode_select_class = isset($this->render->opt_class[$mode_current_val]) 
+                                ? $this->render->opt_class[$mode_current_val] 
+                                : 'pp-def';
+                            
+                            // Determine if this mode is disabled
+                            $mode_disabled = false;
+                            if (!empty($is_unfiltered) && ($mode_current_val === '')) {
+                                $mode_disabled = true;
+                            } elseif (('children' == $mode)
+                                && apply_filters('presspermit_assign_for_children_locked', false, $for_item_type, ['operation' => $op])
+                            ) {
+                                $mode_disabled = true;
+                            }
+                            
+                            // Skip children column if not hierarchical
+                            if ('children' == $mode && !$hierarchical) {
+                                continue;
+                            }
+                            
+                            // Build dynamic labels based on post type
+                            if ($type_obj && isset($type_obj->labels->singular_name) && isset($type_obj->labels->name)) {
+                                $singular = $type_obj->labels->singular_name;
+                                $plural = $type_obj->labels->name;
+                                $mode_label = ('children' == $mode) 
+                                    ? sprintf(__('Sub-%s', 'press-permit-core'), $plural)
+                                    : sprintf(__('This %s', 'press-permit-core'), $singular);
+                            } else {
+                                // Fallback to generic labels
+                                $mode_label = ('children' == $mode) ? __('Sub-Sections', 'press-permit-core') : __('This Section', 'press-permit-core');
+                            }
+                            ?>
+                            <div class="pp-permission-select <?php echo ('children' == $mode) ? 'pp-children-select' : 'pp-item-select'; ?>">
+                                <?php if ($hierarchical && count($assignment_modes) > 1) : ?>
+                                    <label class="pp-select-label"><?php echo esc_html($mode_label); ?></label>
+                                <?php endif; ?>
+                                <select name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($mode); ?>][<?php echo esc_attr($agent_id); ?>]" 
+                                        class="<?php echo esc_attr($mode_select_class); ?>" 
+                                        <?php echo $mode_disabled ? 'disabled="disabled"' : ''; ?>
+                                        autocomplete="off">
+                                    <?php 
+                                    foreach ($this->render->options[$option_set] as $val => $lbl) :
+                                        // Filter options for metagroups
+                                        if (('wp_role' == $agent_type)
+                                            && !empty($agent_info->metagroup_id)
+                                            && in_array($agent_info->metagroup_id, ['wp_anon', 'wp_all'], true)
+                                            && (!$pp->moduleActive('file-access') || 'attachment' != $for_type)
+                                            && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')
+                                            && (2 == $val)
+                                        ) {
+                                            continue;
+                                        }
+                                        
+                                        $option_class = isset($this->render->opt_class[$val]) ? $this->render->opt_class[$val] : '';
+                                    ?>
+                                        <option value="<?php echo esc_attr($val); ?>" 
+                                                class="<?php echo esc_attr($option_class); ?>" 
+                                                <?php selected($val, $mode_current_val); ?>>
+                                            <?php echo esc_html($lbl); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <?php if ($mode_disabled) : ?>
+                                    <input type="hidden"
+                                        name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($mode); ?>][<?php echo esc_attr($agent_id); ?>]"
+                                        value="<?php echo esc_attr($mode_current_val); ?>" />
+                                <?php endif; ?>
+                            </div>
+                        <?php endforeach; ?>
+                        
+                        <?php if ('user' == $agent_type) : ?>
+                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove user from exceptions', 'press-permit-core'); ?>">
+                            <span class="dashicons dashicons-trash"></span>
+                        </button>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <?php
+    }
 }

@@ -265,6 +265,10 @@ class PermissionsHooks
             new Permissions\Compat\EyesOnly();
         }
 
+        // Load theme compatibility handlers
+        require_once(PRESSPERMIT_CLASSPATH . '/Compat/ThemeCompat.php');
+        new Permissions\Compat\ThemeCompat();
+
         if (did_action('set_current_user')) { // sometimes third party code causes user to be loaded prematurely
             $this->actSetCurrentUser();
         }
@@ -549,7 +553,7 @@ class PermissionsHooks
         // content filters, loaded conditionally depending on whether the current user is a content administrator
         $this->loadContentFilters();
 
-        if (is_admin() && ('async-upload.php' != $pagenow) && !defined('XMLRPC_REQUEST') 
+        if (is_admin() && current_user_can('pp_manage_settings') && ('async-upload.php' != $pagenow) && !defined('XMLRPC_REQUEST') 
         && (!defined('DOING_AJAX') || !DOING_AJAX || PWP::is_REQUEST('action', ['menu-get-metabox', 'menu-quick-search']))
         ) {
             // filters which are only needed for the wp-admin UI

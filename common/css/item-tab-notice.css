@@ -1,0 +1,77 @@
+/* ============================
+    UI Switch Notice
+    ============================ */
+.pp-ui-switch-notice {
+  position: relative;
+  border-left: 4px solid #2271b1;
+  background: #f0f6fc;
+  border-radius: 0;
+}
+.pp-ui-switch-notice:not(.pp-tabbed-main .pp-ui-switch-notice) {
+  padding: 12px 15px !important;
+}
+.pp-tabbed-main .pp-ui-switch-notice {
+  padding: 8px 15px !important;
+}
+.pp-ui-switch-notice p {
+  margin: 0 !important;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.pp-ui-switch-notice .dashicons {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.pp-ui-switch-notice a {
+  color: #2271b1;
+  text-decoration: none;
+  font-weight: 500;
+}
+.pp-ui-switch-notice a:hover {
+  color: #135e96;
+  text-decoration: underline;
+}
+.pp-ui-switch-notice strong {
+  color: #1d2327;
+  font-weight: 600;
+}
+.pp-ui-switch-notice .notice-dismiss {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  border: none;
+  margin: 0;
+  padding: 9px;
+  background: none;
+  color: #787c82;
+  cursor: pointer;
+  transition: color 0.1s ease-in-out;
+}
+.pp-ui-switch-notice .notice-dismiss:hover {
+  color: #d63638;
+}
+.pp-ui-switch-notice .notice-dismiss:focus {
+  color: #135e96;
+  outline: 2px solid #2271b1;
+  outline-offset: -2px;
+}
+.pp-ui-switch-notice .notice-dismiss:before {
+  content: '\f153';
+  font-family: dashicons;
+  display: block;
+  font-size: 16px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background: none;
+}
+.pp-ui-switch-notice .notice-dismiss .screen-reader-text {
+  position: absolute;
+  left: -9999px;
+}
+.pp-ui-switch-notice.is-dismissible {
+  position: relative;
+}

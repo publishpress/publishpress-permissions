@@ -116,7 +116,7 @@ class Admin
         }
 
         // No need to do this if listing is being enabled by plugin setting
-        if (presspermit()->getOption('list_others_uneditable_posts')) {
+        if (presspermit()->getOption('list_others_uneditable_posts') && !defined('PRESSPERMIT_NO_REVISIONS_EXCEPTION_BYPASS')) {
             return $exception_items;
         }
 

@@ -203,11 +203,6 @@ padding-bottom: 4px;
 }
 
 @media (max-width: 1199px) {
-
-  .teaser-table thead tr {
-    display: none !important;
-  }
-
   .teaser-table tr th,
   .teaser-table tr td {
     display: block;
@@ -220,11 +215,37 @@ padding-bottom: 4px;
 
   .teaser-table tbody tr td > label {
     margin-bottom: 5px;
-    display: block;
   }
 
   #pp-teaser section table.teaser-table tr td label {
     font-weight: bold;
+  }
+
+  /* Teaser Progressive UI: drop fixed column widths on narrow screens to avoid horizontal scroll */
+  .pp-teaser-progressive-ui .teaser-table {
+    table-layout: auto;
+  }
+
+  .pp-teaser-progressive-ui .teaser-table colgroup,
+  .pp-teaser-progressive-ui .teaser-table colgroup col {
+    display: none;
+  }
+
+  .pp-teaser-progressive-ui .teaser-table tr th,
+  .pp-teaser-progressive-ui .teaser-table tr td,
+  .pp-teaser-progressive-ui .teaser-table tr th[style],
+  .pp-teaser-progressive-ui .teaser-table tr td[style] {
+    width: 100% !important;
+  }
+
+  .pp-teaser-progressive-ui .pp-field-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pp-teaser-progressive-ui .pp-field-row > div:first-child {
+    flex-basis: auto;
+    width: 100%;
   }
 }
 
@@ -449,7 +470,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 /* Ensure radio buttons are visible in tables */
 .teaser-table input[type="radio"] {
     display: inline-block !important;
-    width: auto !important;
     margin-right: 5px;
     vertical-align: middle;
 }
@@ -473,6 +493,10 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     background: #fff;
     border: 1px solid #c3c4c7;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.pp-teaser-type-select {
+  width: 26em;
 }
 
 /* Teaser type options (radio buttons) */
@@ -663,7 +687,8 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-read-more-notice-card,
 .pp-excerpt-notice-card,
 .pp-x-chars-notice-card,
-.pp-teaser-application-fields {
+.pp-teaser-application-fields,
+.pp-teaser-notice-style-settings {
     display: none;
 }
 
@@ -727,205 +752,4 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-editor-error .mce-statusbar,
 .pp-editor-error .quicktags-toolbar {
     border-color: #dc3232 !important;
-}
-
-/* PRO Feature Styling */
-.pp-pro-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: #fff;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 10px;
-    cursor: pointer;
-    vertical-align: middle;
-    margin-left: 6px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: all 0.2s ease;
-}
-
-.pp-pro-badge:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-}
-
-/* PRO feature notice box */
-.pp-pro-feature-notice {
-    border-radius: 4px;
-    position: relative;
-}
-
-.pp-pro-feature-notice h4 {
-    margin-top: 0;
-    color: #0073aa;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.pp-pro-feature-notice p {
-    margin: 10px 0;
-    color: #555;
-}
-
-.pp-pro-feature-notice .button {
-    margin-right: 10px;
-}
-
-/* Disabled options styling */
-select option:disabled {
-    color: #999 !important;
-    font-style: italic;
-}
-
-input[type="radio"]:disabled + label,
-label:has(input[type="radio"]:disabled) {
-    opacity: 0.5;
-    cursor: not-allowed !important;
-}
-
-/* Upgrade Modal */
-.pp-upgrade-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 100000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pp-modal-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(2px);
-}
-
-.pp-modal-content {
-    position: relative;
-    background: #fff;
-    border-radius: 8px;
-    max-width: 600px;
-    width: 90%;
-    max-height: 80vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: ppModalSlideIn 0.3s ease-out;
-}
-
-@keyframes ppModalSlideIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px) scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-}
-
-.pp-modal-header {
-    padding: 24px;
-    border-bottom: 1px solid #e5e5e5;
-    position: relative;
-}
-
-.pp-modal-header h2 {
-    margin: 0;
-    font-size: 24px;
-    color: #23282d;
-}
-
-.pp-modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 28px;
-    color: #999;
-    cursor: pointer;
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    line-height: 32px;
-    text-align: center;
-    transition: color 0.2s ease;
-}
-
-.pp-modal-close:hover {
-    color: #333;
-}
-
-.pp-modal-body {
-    padding: 24px;
-}
-
-.pp-modal-body p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: #555;
-    margin: 0 0 20px 0;
-}
-
-.pp-benefits-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.pp-benefits-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 14px;
-    color: #333;
-}
-
-.pp-benefits-list li:last-child {
-    border-bottom: none;
-}
-
-.pp-modal-footer {
-    padding: 20px 24px;
-    background: #f9f9f9;
-    border-top: 1px solid #e5e5e5;
-    display: flex;
-    gap: 10px;
-    border-radius: 0 0 8px 8px;
-}
-
-.pp-modal-footer .button-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    font-weight: 600;
-    padding: 10px 24px;
-    height: auto;
-}
-
-.pp-modal-footer .button-primary:hover {
-    background: linear-gradient(135deg, #5568d3 0%, #65408b 100%);
-}
-
-.pp-modal-footer .button-secondary {
-    padding: 10px 24px;
-    height: auto;
-}
-.pp-pro-badge-feature {
-    display: inline-block;
-    background-color: #FDB324;
-    color: black;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 3px;
-    margin-left: 5px;
-    vertical-align: middle;
 }

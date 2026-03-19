@@ -123,7 +123,7 @@ class ReadMoreHandler
                 // Check for anonymous user redirect settings (per-post-type)
                 $redirect_mode = $pp->getTypeOption('teaser_redirect_anon', $post_type);
                 
-                if ($redirect_mode === '[login]') {
+                if ($redirect_mode === '(login)') {
                     // Redirect to WordPress login with return URL
                     $permalink = wp_login_url($permalink);
                 } elseif ($redirect_mode === '(select)') {
@@ -144,7 +144,7 @@ class ReadMoreHandler
                 // Check for logged-in user redirect settings (per-post-type)
                 $redirect_mode = $pp->getTypeOption('teaser_redirect', $post_type);
                 
-                if ($redirect_mode === '[login]') {
+                if ($redirect_mode === '(login)') {
                     $permalink = wp_login_url($permalink);
                 } elseif ($redirect_mode === '(select)') {
                     $redirect_page_id = $pp->getTypeOption('teaser_redirect_page', $post_type);
@@ -169,7 +169,7 @@ class ReadMoreHandler
         // Add informational message for non-logged-in users (only on single post pages)
         $info_message = '';
         if (!is_user_logged_in() && (is_single() || is_page())) {
-            $notice_text = presspermit()->getOption('read_more_login_notice');
+            $notice_text = presspermit()->getTypeOption('read_more_login_notice', $post_type);
             if (empty($notice_text)) {
                 $notice_text = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
             }

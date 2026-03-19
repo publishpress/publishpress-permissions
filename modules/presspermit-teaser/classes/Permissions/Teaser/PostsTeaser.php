@@ -442,7 +442,7 @@ class PostsTeaser
             if ('replace' == $teaser_operation && 'content' == $variable && !is_admin() && !is_feed()) {
                 // Only wrap if not already wrapped and doesn't contain HTML tags
                 if (strpos($msg, '<div class="pp-teaser-notice"') === false && wp_strip_all_tags($msg) === $msg) {
-                    $msg = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $msg . '</div>';
+                    $msg = self::wrapTeaserNotice($msg, $object_type);
                 }
             }
 
@@ -492,8 +492,21 @@ class PostsTeaser
         if (!empty($x_chars_teaser[$post_type]) || !empty($excerpt_teaser[$post_type])) {
             $num_chars = (defined('PP_TEASER_NUM_CHARS')) ? PP_TEASER_NUM_CHARS : 50;
 
-            if ($custom_chars = presspermit()->getTypeOption('teaser_num_chars', $post_type)) {
-                $num_chars = $custom_chars;
+            // Get the appropriate field based on teaser type
+            if (!empty($x_chars_teaser[$post_type])) {
+                // Try new field first, fallback to legacy field for backward compatibility
+                if ($custom_chars = presspermit()->getTypeOption('x_chars_num_chars', $post_type)) {
+                    $num_chars = $custom_chars;
+                } elseif ($custom_chars = presspermit()->getTypeOption('teaser_num_chars', $post_type)) {
+                    $num_chars = $custom_chars;
+                }
+            } elseif (!empty($excerpt_teaser[$post_type])) {
+                // Try new field first, fallback to legacy field for backward compatibility
+                if ($custom_chars = presspermit()->getTypeOption('excerpt_num_chars', $post_type)) {
+                    $num_chars = $custom_chars;
+                } elseif ($custom_chars = presspermit()->getTypeOption('teaser_num_chars', $post_type)) {
+                    $num_chars = $custom_chars;
+                }
             }
         }
 
@@ -504,29 +517,37 @@ class PostsTeaser
 
         $use_excerpt_suffix = true;
 
+        // Track whether we need to wrap prepend/append-only output in a safe container
+        $wrap_prepend_append_only = false;
+
         // optionally, use post excerpt as the hidden content teaser instead of a fixed replacement
-        if (!empty($excerpt_teaser[$post_type]) && !empty($post->post_excerpt)) {
-            $excerpt_text = $post->post_excerpt;
-            
-            // Apply num_chars truncation if configured and excerpt is longer than limit
-            if (!empty($num_chars)) {
-                // Strip all HTML tags to get plain text
-                $plain_excerpt = wp_strip_all_tags($excerpt_text);
+        if (!empty($excerpt_teaser[$post_type])) {
+            // Excerpt as Teaser - show post excerpt with optional truncation
+            $excerpt_text = '';
+            if (!empty($post->post_excerpt)) {
+                // Use custom excerpt if available
+                $excerpt_text = $post->post_excerpt;
                 
-                // Only truncate if excerpt is longer than the limit
-                if (strlen($plain_excerpt) > $num_chars) {
-                    if (defined('PP_TRANSLATE_TEASER')) {
-                        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-                    }
+                // Apply num_chars truncation if configured and excerpt is longer than limit
+                if (!empty($num_chars)) {
+                    // Strip all HTML tags to get plain text
+                    $plain_excerpt = wp_strip_all_tags($excerpt_text);
                     
-                    // Get first X characters of plain text
-                    $plain_excerpt = substr($plain_excerpt, 0, $num_chars);
-                    $excerpt_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $plain_excerpt);
+                    // Only truncate if excerpt is longer than the limit
+                    if (strlen($plain_excerpt) > $num_chars) {
+                        if (defined('PP_TRANSLATE_TEASER')) {
+                            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                        }
+                        
+                        // Get first X characters of plain text
+                        $plain_excerpt = substr($plain_excerpt, 0, $num_chars);
+                        $excerpt_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $plain_excerpt);
+                    }
                 }
             }
             
             // Get login notice message for excerpt teaser
-            $login_notice = presspermit()->getOption('excerpt_login_notice');
+            $login_notice = presspermit()->getTypeOption('excerpt_login_notice', $post_type);
             if (empty($login_notice)) {
                 $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
             }
@@ -535,7 +556,7 @@ class PostsTeaser
             $notice_html = '';
             global $current_user;
             if ($current_user->ID == 0) {
-                $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
             }
             
             // Wrap excerpt in paragraph block markup to prevent theme layout issues
@@ -571,7 +592,7 @@ class PostsTeaser
                     // Fallback: no more tag found, use configured teaser text or excerpt
                     if (!empty($post->post_excerpt)) {
                         // Get login notice message
-                        $login_notice = presspermit()->getOption('read_more_login_notice');
+                        $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
                         if (empty($login_notice)) {
                             $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
                         }
@@ -580,7 +601,7 @@ class PostsTeaser
                         $notice_html = '';
                         global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
                         if ($current_user->ID == 0) {
-                            $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                            $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
                         }
                         
                         // Wrap excerpt in paragraph block markup to prevent theme layout issues
@@ -597,7 +618,7 @@ class PostsTeaser
                 // Fallback: no more tag found, use excerpt or configured teaser text
                 if (!empty($post->post_excerpt)) {
                     // Get login notice message
-                    $login_notice = presspermit()->getOption('read_more_login_notice');
+                    $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
                     if (empty($login_notice)) {
                         $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
                     }
@@ -606,7 +627,7 @@ class PostsTeaser
                     $notice_html = '';
                     global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
                     if ($current_user->ID == 0) {
-                        $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                        $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
                     }
                     
                     // Wrap excerpt in paragraph block markup to prevent theme layout issues
@@ -650,7 +671,7 @@ class PostsTeaser
                 $teaser_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $teaser_text);
                 
                 // Get login notice message for x_chars teaser
-                $login_notice = presspermit()->getOption('x_chars_login_notice');
+                $login_notice = presspermit()->getTypeOption('x_chars_login_notice', $post_type);
                 if (empty($login_notice)) {
                     $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
                 }
@@ -659,21 +680,17 @@ class PostsTeaser
                 $notice_html = '';
                 global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
                 if ($current_user->ID == 0) {
-                    $notice_html = '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0 15px 0; font-size: 14px; line-height: 1.6;">' . esc_html($login_notice) . '</div>';
+                    $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
                 }
                 
                 // Wrap in proper markup to prevent layout issues
                 if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
                     $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
                 } else {
-                    $post->post_content = '<p>' . esc_html($teaser_text) . '</p>' . $notice_html;
+                    $post->post_content = '<p class="pp_x_chars_teaser">' . esc_html($teaser_text) . '</p>' . $notice_html;
                 }
                 
                 $post->post_excerpt = $teaser_text;
-
-                if ((is_single() || is_page()) && !empty($teaser_replace[$post_type]['post_content'])) {
-                    $post->post_content .= '<p class="pp_x_chars_teaser">' . $teaser_replace[$post_type]['post_content'] . '</p>';
-                }
             }
 
         } else {
@@ -688,7 +705,19 @@ class PostsTeaser
                     $post->post_content = $teaser_content;
                 }
             } else {
-                $post->post_content = '';
+                // No explicit replacement message: show a blurred placeholder to avoid broken layout
+                $placeholder = '<div class="pp-teaser-placeholder" style="position:relative; overflow:hidden; border-radius:4px; background:#f7f7f7; padding:16px;">'
+                    . '<div style="filter:blur(4px); opacity:0.7;">'
+                    . esc_html__('Content requires additional permissions.', 'press-permit-core')
+                    . '</div>'
+                    . '<div style="position:absolute; top:0; right:0; bottom:0; left:0; pointer-events:none; background:linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.65) 40%, rgba(255,255,255,0) 80%);"></div>'
+                    . '</div>';
+
+                if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+                    $post->post_content = '<!-- wp:paragraph --><p>' . $placeholder . '</p><!-- /wp:paragraph -->';
+                } else {
+                    $post->post_content = $placeholder;
+                }
             }
 
             // Replace excerpt with a user-specified fixed teaser message, 
@@ -702,40 +731,57 @@ class PostsTeaser
 
             // If PP_FORCE_EXCERPT_SUFFIX is defined, use the "content" prefix and suffix only when fully replacing content with a fixed teaser 
             $use_excerpt_suffix = false;
-        }
 
-        // Deal with ambiguity in teaser settings.  Previously, content prefix/suffix was applied even if RS substitutes the excerpt as displayed content.  
-        // To avoid confusion with existing installations, only use excerpt prefix/suffix if a value is set or constant is defined.
-        if ($use_excerpt_suffix && defined('PP_FORCE_EXCERPT_SUFFIX')) {
-            $teaser_prepend[$post_type]['post_content'] = $teaser_prepend[$post_type]['post_excerpt'];
-            $teaser_append[$post_type]['post_content'] = $teaser_append[$post_type]['post_excerpt'];
-        }
-
-        foreach (!empty($teaser_prepend[$post_type]) ? $teaser_prepend[$post_type] : [] as $col => $entry) {
-            if (isset($post->$col)) {
-                // Wrap prepend content in block markup if post uses blocks
-                if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
-                    $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
-                }
-                $post->$col = $entry . $post->$col;
+            // If users set only prepend/append without a replacement message, keep track so we can wrap the output later
+            if (empty($teaser_replace[$post_type]['post_content'])
+                && (!empty($teaser_prepend[$post_type]['post_content']) || !empty($teaser_append[$post_type]['post_content']))) {
+                $wrap_prepend_append_only = true;
             }
-        }
 
-        foreach (!empty($teaser_append[$post_type]) ? $teaser_append[$post_type] : [] as $col => $entry) {
-            if (isset($post->$col)) {
-                if (($col == 'post_content') && !empty($more_pos)) {  // WP will strip off anything after the more comment
-                    // Wrap append content in block markup if post uses blocks
-                    if ($entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
-                        $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
-                    }
-                    $post->$col = str_replace('<!--more-->', "$entry<!--more-->", $post->$col);
-                } else {
-                    // Wrap append content in block markup if post uses blocks
+            // Deal with ambiguity in teaser settings.  Previously, content prefix/suffix was applied even if RS substitutes the excerpt as displayed content.  
+            // To avoid confusion with existing installations, only use excerpt prefix/suffix if a value is set or constant is defined.
+            if (defined('PP_FORCE_EXCERPT_SUFFIX')) {
+                $teaser_prepend[$post_type]['post_content'] = $teaser_prepend[$post_type]['post_excerpt'] ?? '';
+                $teaser_append[$post_type]['post_content'] = $teaser_append[$post_type]['post_excerpt'] ?? '';
+            }
+
+            foreach (!empty($teaser_prepend[$post_type]) ? $teaser_prepend[$post_type] : [] as $col => $entry) {
+                if (isset($post->$col)) {
+                    // Wrap prepend content in block markup if post uses blocks
                     if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
                         $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
                     }
-                    $post->$col .= $entry;
+                    $post->$col = $entry . $post->$col;
                 }
+            }
+
+            foreach (!empty($teaser_append[$post_type]) ? $teaser_append[$post_type] : [] as $col => $entry) {
+                if (isset($post->$col)) {
+                    if (($col == 'post_content') && !empty($more_pos)) {  // WP will strip off anything after the more comment
+                        // Wrap append content in block markup if post uses blocks
+                        if ($entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
+                            $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                        }
+                        $post->$col = str_replace('<!--more-->', "$entry<!--more-->", $post->$col);
+                    } else {
+                        // Wrap append content in block markup if post uses blocks
+                        if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
+                            $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                        }
+                        $post->$col .= $entry;
+                    }
+                }
+            }
+        }
+
+        // If there was no replace text and we only applied prepend/append to content, wrap it to prevent layout breakage
+        if ($wrap_prepend_append_only && !empty($post->post_content)) {
+            $has_block_markup = has_blocks($post->post_content) || (strpos($post->post_content, '<!-- wp:') !== false);
+
+            if ($has_block_markup) {
+                $post->post_content = '<!-- wp:paragraph --><p class="pp-teaser-wrapper">' . $post->post_content . '</p><!-- /wp:paragraph -->';
+            } else {
+                $post->post_content = '<p class="pp-teaser-wrapper">' . $post->post_content . '</p>';
             }
         }
 
@@ -758,5 +804,61 @@ class PostsTeaser
         }
 
         return $thumb_id;
+    }
+
+    /**
+     * Wrap teaser notice with customizable styles (per-post-type)
+     * 
+     * @param string $message The notice message to display
+     * @param string $post_type The post type for getting per-post-type style settings
+     * @return string HTML wrapped notice with custom styles
+     */
+    private static function wrapTeaserNotice($message, $post_type = '')
+    {
+        $pp = presspermit();
+        
+        // Check if custom styling mode is enabled for this post type
+        $style_mode = $pp->getTypeOption('teaser_notice_style_mode', $post_type);
+        
+        // If not set to 'custom', return simple default notice
+        if ($style_mode !== 'custom') {
+            return '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $message . '</div>';
+        }
+        
+        // Get custom style settings with defaults (per-post-type)
+        $bg_color = $pp->getTypeOption('teaser_notice_bg_color', $post_type) ?: '#f0f6fc';
+        $text_color = $pp->getTypeOption('teaser_notice_text_color', $post_type) ?: '#1d2327';
+        $border_color = $pp->getTypeOption('teaser_notice_border_color', $post_type) ?: '#0073aa';
+        $border_width = $pp->getTypeOption('teaser_notice_border_width', $post_type) ?: '4';
+        $border_position = $pp->getTypeOption('teaser_notice_border_position', $post_type) ?: 'left';
+        $padding = $pp->getTypeOption('teaser_notice_padding', $post_type) ?: '15';
+        $border_radius = $pp->getTypeOption('teaser_notice_border_radius', $post_type) ?: '0';
+        $font_size = $pp->getTypeOption('teaser_notice_font_size', $post_type) ?: '14';
+        
+        // Validate border position to prevent XSS - whitelist allowed values
+        $allowed_border_positions = ['left', 'right', 'top', 'bottom', 'all'];
+        if (!in_array($border_position, $allowed_border_positions, true)) {
+            $border_position = 'left'; // Default to safe value if invalid
+        }
+        
+        // Build border style based on position
+        if ($border_position === 'all') {
+            $border_style = "border: {$border_width}px solid {$border_color};";
+        } else {
+            $border_style = "border-{$border_position}: {$border_width}px solid {$border_color};";
+        }
+        
+        // Build complete inline style
+        $inline_style = sprintf(
+            'padding: %spx; background: %s; color: %s; %s margin: 15px 0; font-size: %spx; line-height: 1.6; border-radius: %spx;',
+            esc_attr($padding),
+            esc_attr($bg_color),
+            esc_attr($text_color),
+            esc_attr($border_style),
+            esc_attr($font_size),
+            esc_attr($border_radius)
+        );
+        
+        return '<div class="pp-teaser-notice" style="' . $inline_style . '">' . $message . '</div>';
     }
 }

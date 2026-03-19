@@ -181,7 +181,7 @@ class SettingsAdmin
 
         // Circles
         case 'access_circles_limit_revisions':
-        return __('Circle members will be blocked from accessing Revisions authored by non-members.', 'presspermit-pro-hints');
+        return __('Circle members will be blocked from accessing Revisions authored by non-members.', 'press-permit-core');
 
         default:
         }

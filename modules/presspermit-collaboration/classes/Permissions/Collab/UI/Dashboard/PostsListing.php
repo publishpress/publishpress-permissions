@@ -15,6 +15,38 @@ class PostsListing
     	}
         
         add_action('init', [$this, 'act_tax_force_show_admin_col'], 99);
+
+        if (defined('PRESSPERMIT_POSTS_ENABLE_PERF_MODE')) {
+            add_filter('posts_clauses_request', [$this, 'fltPostsClausesRequest'], 999, 2);
+        }
+    }
+
+    public function fltPostsClausesRequest($clauses, $query_obj) {
+        global $wpdb;
+
+        $clauses['fields'] = str_replace(
+            "$wpdb->posts.*",
+            "$wpdb->posts.ID, $wpdb->posts.post_title, $wpdb->posts.post_parent, $wpdb->posts.post_date,"
+                        . " $wpdb->posts.post_author, $wpdb->posts.comment_status, $wpdb->posts.ping_status,"
+                        . " $wpdb->posts.post_password, $wpdb->posts.to_ping, $wpdb->posts.pinged,"
+                        . " $wpdb->posts.post_date_gmt, $wpdb->posts.post_status, $wpdb->posts.post_name,"
+                        . " $wpdb->posts.post_modified, $wpdb->posts.post_modified_gmt, $wpdb->posts.guid,"
+                        . " $wpdb->posts.menu_order, $wpdb->posts.comment_count, $wpdb->posts.post_mime_type",
+            $clauses['fields']
+        );
+
+        $clauses['fields'] = str_replace(
+            "p.*",
+            "p.ID, p.post_title, p.post_parent, p.post_date,"
+                        . " p.post_author, p.comment_status, p.ping_status,"
+                        . " p.post_password, p.to_ping, p.pinged,"
+                        . " p.post_date_gmt, p.post_status, p.post_name,"
+                        . " p.post_modified, p.post_modified_gmt, p.guid,"
+                        . " p.menu_order, p.comment_count, p.post_mime_type",
+            $clauses['fields']
+        );
+
+        return $clauses;
     }
 
     public function act_tax_force_show_admin_col()

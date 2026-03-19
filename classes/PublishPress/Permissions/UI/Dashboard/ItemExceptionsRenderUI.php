@@ -4,17 +4,17 @@ namespace PublishPress\Permissions\UI\Dashboard;
 
 class ItemExceptionsRenderUI
 {
-    private $opt_labels = [];
-    private $opt_class = [];
-    private $options = [];
+    public $opt_labels = [];
+    public $opt_class = [];
+    public $options = [];
     private $base_url = '';
 
     public function __construct()
     {
         $this->opt_labels = [
-            'default' => esc_html__('(Default access)', 'press-permit-core'),
-            'default_yes' => esc_html__('(Default: Yes)', 'press-permit-core'),
-            'default_no' => esc_html__('(Default: No)', 'press-permit-core'),
+            'default' => esc_html__('(Default access: Enabled)', 'press-permit-core'),
+            'default_yes' => esc_html__('(Default access: Enabled)', 'press-permit-core'),
+            'default_no' => esc_html__('(Default access: Blocked)', 'press-permit-core'),
             'no_setting' => esc_html__('(No setting)', 'press-permit-core'),
             'enabled' => esc_html__('Enabled', 'press-permit-core'),
             'blocked' => esc_html__('Blocked', 'press-permit-core'),
@@ -135,10 +135,10 @@ class ItemExceptionsRenderUI
 
             if ($reqd_caps) {
                 if (!array_diff($reqd_caps, array_keys($role_caps)) || $is_unfiltered) {
-                    $this->opt_class[''] = "pp-yes";
+                    $this->opt_class[''] = 'pp-yes';
                     $this->options['standard'][''] = $this->opt_labels['default_yes'];
                 } else {
-                    $this->opt_class[''] = "pp-no";
+                    $this->opt_class[''] = 'pp-no';
                     $this->options['standard'][''] = $this->opt_labels['default_no'];
                 }
             }
@@ -194,12 +194,12 @@ class ItemExceptionsRenderUI
 
                 if ($_inclusions_active) {
                     $option_set = 'includes';
-                    $this->opt_class[''] = "pp-no";
+                    $this->opt_class[''] = 'pp-no';
                 } else {
                     $option_set = 'standard';
 
                     if (!$this->opt_class['']) {
-                        $this->opt_class[''] = "pp-def";
+                        $this->opt_class[''] = 'pp-def';
                     }
                 }
 
