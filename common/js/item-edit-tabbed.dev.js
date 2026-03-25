@@ -136,9 +136,6 @@
                 cssClass = 'pp-def';
             }
 
-            // Update badge count on tab
-            updateTabBadge($select.closest('.pp-agent-type-content'));
-            
             $select.addClass(cssClass);
         });
 
@@ -378,10 +375,6 @@
                 // Update operation tab badge
                 var $agentContent = $item.closest('.pp-agent-type-content');
                 if ($agentContent.length) {
-                    setTimeout(() => {
-                        updateTabBadge($agentContent);
-                    }, 50);
-                    
                     // Regenerate dynamic filters
                     setTimeout(function() {
                         generateDynamicFilters($agentContent);
@@ -676,11 +669,6 @@
                 markFormAsChanged();
             }
             
-            // Update operation tab badge
-            setTimeout(() => {
-                updateTabBadge($agentContent);
-            }, 50);
-            
             return; // Exit early - item restored
         }
 
@@ -787,11 +775,6 @@
         setTimeout(function() {
             $newItem.removeClass('pp-new-item');
         }, 600);
-
-        // Update operation tab badge
-        setTimeout(() => {
-            updateTabBadge($agentContent);
-        }, 50);
         
         // Regenerate dynamic filters
         setTimeout(function() {
@@ -800,94 +783,6 @@
         
         // Show success notice
         showUserAddedNotice(userName, $select);
-    }
-
-
-    /**
-     * Update operation tab badge count
-     * 
-     * Counts only items with actual exception values configured (matching PHP logic).
-     * Items with empty/default values are not counted.
-     * 
-     * @param {jQuery} $agentContent The agent content container
-     */
-    function updateTabBadge($agentContent) {
-        var $tabPane = $agentContent.closest('.pp-tab-pane');
-        var tabPaneId = $tabPane.attr('id');
-        var $tab = $('.pp-operation-tab[data-target="' + tabPaneId + '"]');
-
-        if (!$tab.length) {
-            return;
-        }
-        
-        // Count only items with actual exceptions configured (not defaults)
-        // Match PHP logic: count from $current_exceptions data, not all roles/groups
-        // Separate counts by agent type for detailed tooltip
-        var counts = {
-            roles: 0,
-            groups: 0,
-            users: 0,
-            total: 0
-        };
-        
-        $tabPane.find('.pp-permission-list-item').each(function() {
-            var $item = $(this);
-
-            // Skip if marked for removal
-            if ($item.hasClass('pp-item-removed')) {
-                return; // continue to next iteration
-            }
-            
-            // Only count if the select has a non-empty value (not default)
-            var $select = $item.find('.pp-permission-select select');
-            if ($select.length && $select.val() !== '') {
-                var agentType = $item.data('agent-type');
-                
-                if (agentType === 'wp_role') {
-                    counts.roles++;
-                } else if (agentType === 'pp_group') {
-                    counts.groups++;
-                } else if (agentType === 'user') {
-                    counts.users++;
-                }
-                
-                counts.total++;
-            }
-        });
-        
-        // Update or create badge
-        var $badge = $tab.find('.pp-tab-badge');
-
-        if (counts.total > 0) {
-            if ($badge.length === 0) {
-                // Create badge if it doesn't exist
-                $badge = $('<span class="pp-tab-badge"></span>');
-                $tab.append($badge);
-            }
-            
-            // Update badge count
-            $badge.text(counts.total);
-            $tab.attr('data-exception-count', counts.total);
-            
-            // Build tooltip text matching PHP format: "1 role, 1 group, 2 users"
-            var tooltipParts = [];
-            if (counts.roles > 0) {
-                tooltipParts.push(counts.roles + (counts.roles === 1 ? ' role' : ' roles'));
-            }
-            if (counts.groups > 0) {
-                tooltipParts.push(counts.groups + (counts.groups === 1 ? ' group' : ' groups'));
-            }
-            if (counts.users > 0) {
-                tooltipParts.push(counts.users + (counts.users === 1 ? ' user' : ' users'));
-            }
-            var tooltipText = tooltipParts.join(', ');
-            
-            $badge.attr('title', tooltipText);
-        } else {
-            // Remove badge if count is 0
-            $badge.remove();
-            $tab.attr('data-exception-count', '0');
-        }
     }
 
     /**

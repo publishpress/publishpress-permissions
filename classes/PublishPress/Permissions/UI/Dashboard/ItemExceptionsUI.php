@@ -360,41 +360,34 @@ class ItemExceptionsUI
                     $first = true;
                     foreach ($operations as $op_data) : 
                         $op = $op_data['op'];
-                        $op_obj = $op_data['op_obj'];
                         $tab_id = "pp-tab-{$op}-{$for_item_type}";
-                        
+
                         // Get icon based on operation
                         $icon = $this->getOperationIcon($op);
-                        
-                        // Calculate counts for this operation
-                        $counts = $this->getExceptionCounts($op, $for_item_type, $current_exceptions);
-                        $total_count = $counts['total'];
-                        $has_exceptions = $total_count > 0;
 
-                        // Build tooltip text
-                        $tooltip_parts = [];
-                        if ($counts['roles'] > 0) {
-                            $tooltip_parts[] = sprintf(_n('%d role', '%d roles', $counts['roles'], 'press-permit-core'), $counts['roles']);
-                        }
-                        if ($counts['groups'] > 0) {
-                            $tooltip_parts[] = sprintf(_n('%d group', '%d groups', $counts['groups'], 'press-permit-core'), $counts['groups']);
-                        }
-                        if ($counts['users'] > 0) {
-                            $tooltip_parts[] = sprintf(_n('%d user', '%d users', $counts['users'], 'press-permit-core'), $counts['users']);
-                        }
-                        $tooltip_text = !empty($tooltip_parts) ? implode(', ', $tooltip_parts) : esc_html__('No exceptions configured', 'press-permit-core');
-                    ?>
+                        $tooltips = [
+                            'assign' => sprintf(esc_html__('Control assignment of terms to selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'associate' => sprintf(esc_html__('Control parent selection for selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'edit' => sprintf(esc_html__('Control editing of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'publish' => sprintf(esc_html__('Control publishing of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'delete' => sprintf(esc_html__('Control deletion of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'manage' => sprintf(esc_html__('Control term management for selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'read' => sprintf(esc_html__('Control frontend viewing of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                        ];
+                        ?>
                         <button type="button" 
                                 class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
-                                data-target="<?php echo esc_attr($tab_id); ?>"
-                                data-exception-count="<?php echo esc_attr($total_count); ?>">
+                                data-target="<?php echo esc_attr($tab_id); ?>">
                             <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
-                            <span class="pp-tab-label"><?php echo esc_html($op_data['caption']); ?></span>
-                            <?php if ($has_exceptions) : ?>
-                                <span class="pp-tab-badge" title="<?php echo esc_attr($tooltip_text); ?>">
-                                    <?php echo esc_html($total_count); ?>
-                                </span>
-                            <?php endif; ?>
+                            <span class="pp-tab-label">
+                            <?php
+                            echo isset($tooltips[$op]) ? 
+                            sprintf(
+                                '<span data-toggle="tooltip" data-placement="right">%s<span class="tooltip-text"><span>%s</span><i></i></span></span>',
+                                esc_html($op_data['caption']),
+                                esc_html($tooltips[$op])
+                            ) : esc_html($op_data['caption']) ; ?>
+                            </span>
                         </button>
                     <?php 
                         $first = false;
@@ -1084,5 +1077,22 @@ class ItemExceptionsUI
                     </div>
                 </div>
                 <?php
+    }
+
+    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array('class' => '', 'html' => ''))
+    {
+        ?>
+        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php !empty($args['class']) ? esc_attr_e($args['class']) : ''; ?>">
+        <?php esc_html_e($text);?>
+        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php !empty($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
+        <?php 
+        if ($useIcon) : ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50" style="margin-left: 4px; vertical-align: text-bottom;">
+                <path d="M 25 2 C 12.264481 2 2 12.264481 2 25 C 2 37.735519 12.264481 48 25 48 C 37.735519 48 48 37.735519 48 25 C 48 12.264481 37.735519 2 25 2 z M 25 4 C 36.664481 4 46 13.335519 46 25 C 46 36.664481 36.664481 46 25 46 C 13.335519 46 4 36.664481 4 25 C 4 13.335519 13.335519 4 25 4 z M 25 11 A 3 3 0 0 0 25 17 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 23 23 L 23 36 L 21 36 L 21 38 L 29 38 L 29 36 L 27 36 L 27 21 L 21 21 z"></path>
+            </svg>
+        <?php
+        endif; ?>
+        </span>
+        <?php
     }
 }
