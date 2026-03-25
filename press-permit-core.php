@@ -109,6 +109,21 @@ if (false === $presspermit_loaded_by_pro) {
         }
     }
 
+    add_filter(
+        'all_plugins',
+        function ($plugins) {
+            global $pagenow;
+            if (isset($pagenow) && 'plugins.php' === $pagenow) {
+                $plugin_basename = plugin_basename(__FILE__);
+                if (isset($plugins[$plugin_basename])) {
+                    $plugins[$plugin_basename]['Name']  = 'PublishPress Permissions Free';
+                    $plugins[$plugin_basename]['Title'] = 'PublishPress Permissions Free';
+                }
+            }
+            return $plugins;
+        }
+    );
+
     if ($pro_active) {
         add_filter(
             'plugin_row_meta',
