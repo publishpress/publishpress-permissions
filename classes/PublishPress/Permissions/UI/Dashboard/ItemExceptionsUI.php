@@ -526,8 +526,21 @@ class ItemExceptionsUI
                     <span class="dashicons dashicons-no-alt"></span>
                 </button>
             </div>
-            <!-- Dynamic Filter Pills (populated by JavaScript) -->
-            <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
+            <!-- Filter Pills and Sort Controls (combined row) -->
+            <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                <div class="pp-filter-pills-container">
+                    <!-- Filter pills will be dynamically inserted here by JavaScript -->
+                </div>
+                <div class="pp-sort-controls">
+                    <label class="pp-sort-label"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
+                    <select class="pp-sort-select" data-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                        <option value="name-asc"><?php esc_html_e('Name (A-Z)', 'press-permit-core'); ?></option>
+                        <option value="name-desc"><?php esc_html_e('Name (Z-A)', 'press-permit-core'); ?></option>
+                        <option value="users-desc" class="pp-sort-by-users"><?php esc_html_e('Most Users', 'press-permit-core'); ?></option>
+                        <option value="users-asc" class="pp-sort-by-users"><?php esc_html_e('Fewest Users', 'press-permit-core'); ?></option>
+                    </select>
+                </div>
+            </div>
             <div class="pp-permission-cards">
                 <div class="pp-permission-card">
                     <!-- Bulk Actions Toolbar -->
@@ -576,8 +589,19 @@ class ItemExceptionsUI
                     data-placeholder="<?php esc_attr_e('Search and add users...', 'press-permit-core'); ?>">
                 </select>
             </div>
-            <!-- Dynamic Filter Pills (populated by JavaScript) -->
-            <div class="pp-permission-filters" data-filter-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
+            <!-- Filter Pills and Sort Controls (combined row) -->
+            <div class="pp-permission-filters" data-filter-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                <div class="pp-filter-pills-container">
+                    <!-- Filter pills will be dynamically inserted here by JavaScript -->
+                </div>
+                <div class="pp-sort-controls pp-sort-controls-users">
+                    <label class="pp-sort-label"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
+                    <select class="pp-sort-select" data-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                        <option value="name-asc"><?php esc_html_e('Name (A-Z)', 'press-permit-core'); ?></option>
+                        <option value="name-desc"><?php esc_html_e('Name (Z-A)', 'press-permit-core'); ?></option>
+                    </select>
+                </div>
+            </div>
             <?php $this->renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
         </div>
         <?php
@@ -592,6 +616,15 @@ class ItemExceptionsUI
         
         if (!isset($current_exceptions[$op]['wp_role'])) {
             $current_exceptions[$op]['wp_role'] = [];
+        }
+
+        // Get user counts for all roles
+        $user_counts = [];
+        if (function_exists('count_users')) {
+            $_user_count = count_users();
+            if (isset($_user_count['avail_roles'])) {
+                $user_counts = $_user_count['avail_roles'];
+            }
         }
 
         // Populate all WP roles
@@ -632,12 +665,18 @@ class ItemExceptionsUI
                         $reqd_caps = $_reqd_caps;
                     }
 
+                    // Get user count for this role
+                    $user_count = 0;
+                    if (!empty($role->metagroup_id) && isset($user_counts[$role->metagroup_id])) {
+                        $user_count = $user_counts[$role->metagroup_id];
+                    }
+
                     $this->renderPermissionListItem(
                         'wp_role',
                         $agent_id,
                         $current_exceptions[$op]['wp_role'][$agent_id],
                         $role,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj', 'user_count')
                     );
                 }
             }
@@ -660,6 +699,12 @@ class ItemExceptionsUI
         
         if (!isset($current_exceptions[$op]['pp_group'])) {
             $current_exceptions[$op]['pp_group'] = [];
+        }
+
+        // Get member counts for all groups
+        $member_counts = [];
+        foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
+            $member_counts[$agent_id] = $pp->groups()->getGroupMembers($agent_id, 'pp_group', 'count');
         }
 
         // Populate all groups
@@ -685,12 +730,15 @@ class ItemExceptionsUI
                         $any_groups_blocked = true;
                     }
 
+                    // Get member count for this group
+                    $user_count = isset($member_counts[$agent_id]) ? $member_counts[$agent_id] : 0;
+
                     $this->renderPermissionListItem(
                         'pp_group',
                         $agent_id,
                         $current_exceptions[$op]['pp_group'][$agent_id],
                         $group,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj', 'user_count')
                     );
                 }
             }
@@ -834,7 +882,7 @@ class ItemExceptionsUI
     {
         global $wp_roles;
         
-        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null];
+        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null, 'user_count' => 0];
         $args = array_merge($defaults, $args);
         extract($args);
 
@@ -956,7 +1004,7 @@ class ItemExceptionsUI
         $css_class = strtolower(str_replace([' ', '_'], '-', $_name));
         $item_id_attr = esc_attr("{$agent_type}-{$agent_id}");
         ?>
-                <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>">
+                <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>" data-user-count="<?php echo esc_attr($user_count); ?>" data-item-name="<?php echo esc_attr(strtolower($_name)); ?>">
                     <div class="item-checkbox">
                         <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo esc_attr($item_id_attr); ?>" />
                     </div>

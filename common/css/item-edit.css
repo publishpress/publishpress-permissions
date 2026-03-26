@@ -693,13 +693,14 @@
 /* Permission Filters (Dynamic Pills) */
 .pp-permission-filters {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
   padding: 10px 16px;
   background: linear-gradient(to bottom, #fafbfc, #f6f7f9);
   border-bottom: 1px solid #e5e7eb;
   min-height: 44px;
-  align-items: center;
   position: relative;
 }
 .pp-permission-filters:empty {
@@ -713,6 +714,13 @@
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent 0%, rgba(56, 88, 233, 0.1) 50%, transparent 100%);
+}
+.pp-filter-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
 }
 .pp-filter-btn {
   padding: 5px 12px;
@@ -984,6 +992,24 @@
   text-align: center;
   line-height: 1.2;
   transition: all 0.2s ease;
+}
+/* Sort Controls */
+.pp-sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.pp-sort-controls .pp-sort-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #64748b;
+  margin: 0;
+  white-space: nowrap;
+}
+.pp-sort-controls.pp-sort-controls-users .pp-sort-by-users {
+  display: none;
 }
 /* Bulk Actions Toolbar */
 .pp-bulk-actions-toolbar {
