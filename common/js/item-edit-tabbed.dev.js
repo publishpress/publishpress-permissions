@@ -779,6 +779,9 @@
         // Regenerate dynamic filters
         setTimeout(function() {
             generateDynamicFilters($agentContent);
+            
+            // Reapply sort to maintain order
+            reapplySortAfterAdd($agentContent);
         }, 100);
         
         // Show success notice
@@ -880,6 +883,13 @@
             return;
         }
 
+        // Target the pills container specifically (new structure)
+        var $pillsContainer = $filterContainer.find('.pp-filter-pills-container');
+        if (!$pillsContainer.length) {
+            // Fallback for old structure (if any)
+            $pillsContainer = $filterContainer;
+        }
+
         // Map CSS classes to filter definitions
         var filterDefs = {
             'pp-def': { label: 'Default', icon: '' },
@@ -950,7 +960,7 @@
         };
 
         // Clear existing filters
-        $filterContainer.empty();
+        $pillsContainer.empty();
 
         // Always add "All" filter first
         if (mergedCounts.all > 0) {
@@ -961,7 +971,7 @@
                 .append(document.createTextNode('All '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.all));
             
-            $filterContainer.append($allBtn);
+            $pillsContainer.append($allBtn);
         }
 
         // Add filter buttons only for types that exist
@@ -973,7 +983,7 @@
                 .append(document.createTextNode('Blocked '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.blocked));
             
-            $filterContainer.append($btn);
+            $pillsContainer.append($btn);
         }
 
         if (mergedCounts.allowed > 0) {
@@ -984,7 +994,7 @@
                 .append(document.createTextNode('Enabled '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.allowed));
             
-            $filterContainer.append($btn);
+            $pillsContainer.append($btn);
         }
 
         // Only show Default filter if it's not the same as All (i.e., there are other permission types)
@@ -996,7 +1006,7 @@
                 .append(document.createTextNode('Default '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts['pp-def']));
             
-            $filterContainer.append($btn);
+            $pillsContainer.append($btn);
         }
 
         // Add type filters (Role/Group/Login State)
@@ -1014,7 +1024,7 @@
                     .append(document.createTextNode('Role '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts.role));
                 
-                $filterContainer.append($roleBtn);
+                $pillsContainer.append($roleBtn);
             }
 
             // Add Group filter if groups exist
@@ -1027,7 +1037,7 @@
                     .append(document.createTextNode('Group '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts.group));
                 
-                $filterContainer.append($groupBtn);
+                $pillsContainer.append($groupBtn);
             }
             
             // Add Login State filter if login state items exist
@@ -1040,7 +1050,7 @@
                     .append(document.createTextNode('Login State '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts['login-state']));
                 
-                $filterContainer.append($loginStateBtn);
+                $pillsContainer.append($loginStateBtn);
             }
         }
     }
@@ -1223,6 +1233,148 @@
             });
         }, 100);
     });
+
+    /**
+     * Sort permission items by specified criteria
+     * 
+     * @param {jQuery} $contentArea - The agent type content area containing items
+     * @param {string} sortBy - Sort criteria: 'name-asc', 'name-desc', 'users-asc', 'users-desc'
+     */
+    function sortPermissionItems($contentArea, sortBy) {
+        var $card = $contentArea.find('.pp-permission-card');
+        var $list = $card.find('.pp-permission-list');
+        var $items = $list.find('.pp-permission-list-item').not('.pp-item-removed');
+        
+        if ($items.length === 0) {
+            return;
+        }
+        
+        // Convert to array for sorting
+        var items = $items.toArray();
+        
+        // Sort based on criteria
+        items.sort(function(a, b) {
+            var $a = $(a);
+            var $b = $(b);
+            var result = 0;
+            
+            if (sortBy.startsWith('name-')) {
+                // Sort by name
+                var nameA = ($a.attr('data-item-name') || '').toLowerCase();
+                var nameB = ($b.attr('data-item-name') || '').toLowerCase();
+                
+                result = nameA.localeCompare(nameB);
+                
+                if (sortBy === 'name-desc') {
+                    result = -result;
+                }
+            } else if (sortBy.startsWith('users-')) {
+                // Sort by user count
+                var countA = parseInt($a.attr('data-user-count') || '0', 10);
+                var countB = parseInt($b.attr('data-user-count') || '0', 10);
+                
+                result = countA - countB;
+                
+                if (sortBy === 'users-desc') {
+                    result = -result;
+                }
+                
+                // Secondary sort by name (ascending) for equal counts
+                if (result === 0) {
+                    var nameA = ($a.attr('data-item-name') || '').toLowerCase();
+                    var nameB = ($b.attr('data-item-name') || '').toLowerCase();
+                    result = nameA.localeCompare(nameB);
+                }
+            }
+            
+            return result;
+        });
+        
+        // Reorder DOM elements
+        $.each(items, function(index, item) {
+            $list.append(item);
+        });
+        
+        // Store sort preference
+        var targetId = $contentArea.attr('id');
+        if (targetId) {
+            localStorage.setItem('pp_sort_' + targetId, sortBy);
+        }
+    }
+    
+    /**
+     * Handle sort dropdown change
+     */
+    $(document).on('change', '.pp-sort-select', function() {
+        var $select = $(this);
+        var sortBy = $select.val();
+        var targetId = $select.data('target');
+        var $contentArea = $('#' + targetId);
+        
+        if ($contentArea.length) {
+            sortPermissionItems($contentArea, sortBy);
+        }
+    });
+    
+    /**
+     * Initialize sorting on page load - restore saved preferences
+     */
+    $(document).ready(function() {
+        $('.pp-agent-type-content').each(function() {
+            var $contentArea = $(this);
+            var targetId = $contentArea.attr('id');
+            
+            if (targetId) {
+                var savedSort = localStorage.getItem('pp_sort_' + targetId);
+                
+                if (savedSort) {
+                    // Set dropdown to saved value
+                    var $select = $('.pp-sort-select[data-target="' + targetId + '"]');
+                    $select.val(savedSort);
+                    
+                    // Apply sort if content area is active
+                    if ($contentArea.hasClass('active')) {
+                        setTimeout(function() {
+                            sortPermissionItems($contentArea, savedSort);
+                        }, 100);
+                    }
+                }
+            }
+        });
+    });
+    
+    /**
+     * Apply saved sort when switching to a tab
+     */
+    $(document).on('click', '.pp-agent-type-tab', function() {
+        var targetId = $(this).data('agent-target');
+        var $contentArea = $('#' + targetId);
+        
+        setTimeout(function() {
+            var savedSort = localStorage.getItem('pp_sort_' + targetId);
+            
+            if (savedSort) {
+                var $select = $('.pp-sort-select[data-target="' + targetId + '"]');
+                $select.val(savedSort);
+                sortPermissionItems($contentArea, savedSort);
+            }
+        }, 150);
+    });
+    
+    /**
+     * Reapply sort after adding new users (maintains sort order)
+     */
+    function reapplySortAfterAdd($contentArea) {
+        var targetId = $contentArea.attr('id');
+        if (targetId) {
+            var savedSort = localStorage.getItem('pp_sort_' + targetId);
+            if (savedSort) {
+                setTimeout(function() {
+                    sortPermissionItems($contentArea, savedSort);
+                }, 200);
+            }
+        }
+    }
 
 })(jQuery);
 
