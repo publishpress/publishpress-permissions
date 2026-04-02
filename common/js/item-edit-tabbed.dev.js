@@ -756,19 +756,11 @@
         // Remove "no results" and empty state messages if they exist
         $list.find('.pp-no-search-results, .pp-empty-state').remove();
 
-        // Add to list with animation
-        $list.append($newItem);
+        // Add to beginning of list with animation
+        $list.prepend($newItem);
         $newItem.slideDown(300, function() {
-            // Scroll to the new item after slide animation completes
-            var listScrollTop = $list.scrollTop();
-            var itemOffset = $newItem.position().top;
-            var listHeight = $list.height();
-            
-            if (itemOffset > listHeight - 100) {
-                $list.animate({
-                    scrollTop: listScrollTop + itemOffset - listHeight + 100
-                }, 300);
-            }
+            // Scroll to the top to reveal the new item
+            $list.animate({ scrollTop: 0 }, 300);
         });
         
         // Remove animation class after CSS animation completes (500ms)
