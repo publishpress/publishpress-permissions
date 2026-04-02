@@ -1030,7 +1030,7 @@ class ItemExceptionsUI
                         ?>
                             <span class="pp-type-badge <?php echo esc_attr($type_class); ?>"><?php echo esc_html($type_label); ?></span>
                         <?php endif; ?>
-                        <label for="pp-item-<?php echo esc_attr($item_id_attr); ?>"><?php echo esc_html($_name); ?></label>
+                        <label for="pp-item-<?php echo esc_attr($item_id_attr); ?>" title="<?php echo esc_attr($_name); ?>"><?php echo esc_html($_name); ?></label>
                     </div>
                     <div class="pp-permission-control">
                         <?php

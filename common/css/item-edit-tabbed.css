@@ -237,6 +237,29 @@
     border-bottom-color: var(--pp-primary);
   }
 }
+/* Adjust the min-width (768px to 1024px) to match medium screen for sidebar */
+@media (min-width: 783px) and (max-width: 1024px) {
+  .pp-tabbed-sidebar {
+    width: 50px !important;
+    /* Collapse the width */
+    min-width: 50px;
+    overflow: hidden;
+  }
+  .pp-tabbed-sidebar .pp-tab-label {
+    display: none;
+    /* Hide the text labels */
+  }
+  .pp-operation-tab {
+    justify-content: center;
+    /* Center the icons */
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* Ensure the main area takes up the rest of the space */
+  .pp-tabbed-main {
+    flex-grow: 1;
+  }
+}
 /* Empty state for operations with no exceptions */
 .pp-operation-empty-state {
   text-align: center;
@@ -502,10 +525,10 @@
 /* Permission Filters (Dynamic Pills) */
 .pp-permission-filters {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 12px;
+  gap: 8px 12px;
   padding: 10px 16px;
   background: linear-gradient(to bottom, #fafbfc, #f6f7f9);
   border-bottom: 1px solid #e5e7eb;
@@ -523,6 +546,11 @@
   right: 0;
   height: 2px;
   background: linear-gradient(90deg, transparent 0%, rgba(56, 88, 233, 0.1) 50%, transparent 100%);
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pp-permission-filters {
+    flex-direction: column;
+  }
 }
 .pp-filter-pills-container {
   display: flex;
@@ -810,6 +838,16 @@
   flex-shrink: 0;
   margin-left: auto;
 }
+@media (max-width: 782px) {
+  .pp-sort-controls {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+}
 .pp-sort-controls .pp-sort-label {
   font-size: 13px;
   font-weight: 500;
@@ -923,6 +961,8 @@
   gap: 4px;
   font-size: 13px;
   flex: 1;
+  position: relative;
+  min-width: 0;
   /* Type badge to distinguish roles from groups */
 }
 .pp-permission-list-item .item-name label {
@@ -932,6 +972,12 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--pp-gray-8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+  width: 100%;
 }
 .pp-permission-list-item .item-name label:has(+ input:disabled) {
   cursor: not-allowed;
