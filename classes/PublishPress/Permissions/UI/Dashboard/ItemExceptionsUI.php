@@ -969,7 +969,7 @@ class ItemExceptionsUI
             // Update default option label based on capabilities
             if ($reqd_caps) {
                 if (!array_diff($reqd_caps, array_keys($role_caps)) || $is_unfiltered) {
-                    $this->render->opt_class[''] = 'pp-yes';
+                    $this->render->opt_class[''] = 'pp-def';
                     $this->render->options['standard'][''] = $this->render->opt_labels['default_yes'];
                 } else {
                     $this->render->opt_class[''] = 'pp-no';
