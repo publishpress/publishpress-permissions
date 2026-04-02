@@ -692,6 +692,7 @@
         // Item name
         var $itemName = $('<div>')
             .addClass('item-name')
+            .attr('title', userName)
             .append(
                 $('<label>')
                     .attr('for', 'pp-item-' + itemIdAttr)
