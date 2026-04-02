@@ -175,7 +175,7 @@
             var action = $actionSelect.val();
             
             if (!action) {
-                alert('Please select a bulk action first.');
+                alert(ppPermissions.alertSelectAction);
                 return;
             }
             
@@ -183,13 +183,13 @@
             var $checkedItems = $card.find('.pp-item-checkbox:checked');
             
             if ($checkedItems.length === 0) {
-                alert('Please select at least one item.');
+                alert(ppPermissions.alertSelectItem);
                 return;
             }
             
             // Handle remove action separately
             if (action === 'remove') {
-                if (confirm('Are you sure you want to remove the selected user(s) from exceptions? This will take effect when you click "Update".')) {
+                if (confirm(ppPermissions.confirmBulkRemove)) {
                     $checkedItems.each(function() {
                         var $checkbox = $(this);
                         var $item = $checkbox.closest('.pp-permission-list-item');
@@ -319,7 +319,7 @@
             var $item = $button.closest('.pp-permission-list-item');
             var userName = $item.find('.item-name label').text();
             
-            if (confirm('Remove "' + userName + '" from exceptions? This will take effect when you click "Update".')) {
+            if (confirm(ppPermissions.confirmDeleteItem.replace('%s', userName))) {
                 removeUserItem($item);
             }
         });
@@ -746,7 +746,7 @@
             $('<button>')
                 .attr('type', 'button')
                 .addClass('pp-delete-item')
-                .attr('title', 'Remove user from exceptions')
+                .attr('title', ppPermissions.deleteItemTitle)
                 .append($('<span>').addClass('dashicons dashicons-trash'))
         );
 
