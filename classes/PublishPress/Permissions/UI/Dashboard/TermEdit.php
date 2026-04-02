@@ -50,6 +50,11 @@ class TermEdit
 	                'filterRole'                     => esc_html__('Role', 'press-permit-core'),
 	                'filterGroup'                    => esc_html__('Group', 'press-permit-core'),
 	                'filterLoginState'               => esc_html__('Login State', 'press-permit-core'),
+	                'deleteItemTitle'                => esc_html__('Remove custom permissions for user', 'press-permit-core'),
+	                'alertSelectAction'              => esc_html__('Please select a bulk action first.', 'press-permit-core'),
+	                'alertSelectItem'                => esc_html__('Please select at least one item.', 'press-permit-core'),
+	                'confirmBulkRemove'              => esc_html__('Are you sure you want to remove the selected user(s) from exceptions?', 'press-permit-core'),
+	                'confirmDeleteItem'              => esc_html__('Remove the custom permisisons for "%s"?', 'press-permit-core'),
 	            ]);
 	        }
 	

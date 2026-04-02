@@ -1118,7 +1118,7 @@ class ItemExceptionsUI
                         <?php endforeach; ?>
                         
                         <?php if ('user' == $agent_type) : ?>
-                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove user from exceptions', 'press-permit-core'); ?>">
+                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>">
                             <span class="dashicons dashicons-trash"></span>
                         </button>
                         <?php endif; ?>
