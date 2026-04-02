@@ -26,7 +26,7 @@ class ItemExceptionsRenderUI
             $this->opt_labels[$k] = str_replace(['(', ')'], '', $val);
         }
 
-        $this->opt_class = ['' => "pp-def", 0 => "pp-no2", 1 => "pp-yes", 2 => "pp-yes2"];
+        $this->opt_class = ['' => 'pp-def', 0 => 'pp-no2', 1 => 'pp-yes', 2 => 'pp-yes2'];
     }
 
     public function setOptions($agent_type)
