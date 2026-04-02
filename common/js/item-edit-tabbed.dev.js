@@ -799,9 +799,8 @@
 
         $notice
             .append($('<span>').addClass('dashicons dashicons-yes'))
-            .append(' ')
-            .append($('<strong>').text(userName))
-            .append(document.createTextNode(' added to list. Configure permissions and click "Update" to save.'));
+            .append(document.createTextNode(ppPermissions.addedToList))
+            .append($('<strong>').text(userName));
 
         $select.closest('.pp-search-box-select2').after($notice);
         $notice.fadeIn();
@@ -968,7 +967,7 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn active')
                 .attr('data-filter', 'all')
-                .append(document.createTextNode('All '))
+                .append(document.createTextNode(ppPermissions.filterAll + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.all));
             
             $pillsContainer.append($allBtn);
@@ -980,7 +979,7 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'blocked')
-                .append(document.createTextNode('Blocked '))
+                .append(document.createTextNode(ppPermissions.filterBlocked + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.blocked));
             
             $pillsContainer.append($btn);
@@ -991,7 +990,7 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'allowed')
-                .append(document.createTextNode('Enabled '))
+                .append(document.createTextNode(ppPermissions.filterEnabled + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.allowed));
             
             $pillsContainer.append($btn);
@@ -1003,7 +1002,7 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'pp-def')
-                .append(document.createTextNode('Default '))
+                .append(document.createTextNode(ppPermissions.filterDefault + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts['pp-def']));
             
             $pillsContainer.append($btn);
@@ -1021,7 +1020,7 @@
                     .addClass('pp-filter-btn pp-filter-type')
                     .attr('data-filter', 'role')
                     .attr('data-filter-type', 'agent-type')
-                    .append(document.createTextNode('Role '))
+                    .append(document.createTextNode(ppPermissions.filterRole + ' '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts.role));
                 
                 $pillsContainer.append($roleBtn);
@@ -1034,7 +1033,7 @@
                     .addClass('pp-filter-btn pp-filter-type')
                     .attr('data-filter', 'group')
                     .attr('data-filter-type', 'agent-type')
-                    .append(document.createTextNode('Group '))
+                    .append(document.createTextNode(ppPermissions.filterGroup + ' '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts.group));
                 
                 $pillsContainer.append($groupBtn);
@@ -1047,7 +1046,7 @@
                     .addClass('pp-filter-btn pp-filter-type')
                     .attr('data-filter', 'login-state')
                     .attr('data-filter-type', 'badge-type')
-                    .append(document.createTextNode('Login State '))
+                    .append(document.createTextNode(ppPermissions.filterLoginState + ' '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts['login-state']));
                 
                 $pillsContainer.append($loginStateBtn);

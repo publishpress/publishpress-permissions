@@ -37,7 +37,15 @@ class PostEdit
             
             // Localize script with translated messages
             wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
-                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core')
+                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core'),
+                'addedToList'                    => esc_html__('You can now set individual permissions for', 'press-permit-core'),
+                'filterAll'                      => esc_html__('All', 'press-permit-core'),
+                'filterBlocked'                  => esc_html__('Blocked', 'press-permit-core'),
+                'filterEnabled'                  => esc_html__('Enabled', 'press-permit-core'),
+                'filterDefault'                  => esc_html__('Default', 'press-permit-core'),
+                'filterRole'                     => esc_html__('Role', 'press-permit-core'),
+                'filterGroup'                    => esc_html__('Group', 'press-permit-core'),
+                'filterLoginState'               => esc_html__('Login State', 'press-permit-core'),
             ]);
         }
 

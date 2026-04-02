@@ -679,7 +679,7 @@
   font-size: 13px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 }
 .pp-user-added-notice .dashicons {
   color: #10b981;
@@ -1176,8 +1176,10 @@
   gap: 10px;
   position: relative;
   flex: 1;
-  flex-wrap: wrap;
   /* When both item and children are present, arrange horizontally */
+}
+.pp-permission-control:has(.pp-children-select) {
+  flex-wrap: wrap;
 }
 @media (max-width: 768px) {
   .pp-permission-control:has(.pp-children-select) {
