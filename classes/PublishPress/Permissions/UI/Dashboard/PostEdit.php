@@ -276,7 +276,6 @@ class PostEdit
         
         // Build operations data array with captions
         $operations_data = [];
-        $type_obj = get_post_type_object($post_type);
         
         foreach (array_keys($box['args']['operations']) as $op) {
             if ($op_obj = $pp->admin()->getOperationObject($op, $post_type)) {
