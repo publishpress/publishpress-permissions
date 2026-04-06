@@ -330,6 +330,7 @@ class ItemExceptionsUI
         if (empty($operations)) {
             return;
         }
+        global $typenow;
 
         $for_item_type = (isset($args['for_item_type'])) ? $args['for_item_type'] : '';
         $via_item_source = (isset($args['via_item_source'])) ? $args['via_item_source'] : '';
@@ -338,6 +339,8 @@ class ItemExceptionsUI
         // Get type object for labels
         $type_obj = ('post' == $via_item_source) ? get_post_type_object($via_item_type) : get_taxonomy($via_item_type);
         $type_name = ($type_obj) ? $type_obj->labels->singular_name : $via_item_type;
+        $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
+        $post_type_obj = get_post_type_object($post_type);
 
         static $drew_itemroles_marker;
         if (empty($drew_itemroles_marker)) {
@@ -359,17 +362,26 @@ class ItemExceptionsUI
                         // Get icon based on operation
                         $icon = $this->getOperationIcon($op);
 
+                        $type_label = esc_html(strtolower($type_name));
+                        $post_type_label = esc_html(strtolower($post_type_obj->labels->name));
                         $tooltips = [
-                            'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'manage'    => sprintf(esc_html__('Control term management for this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'read'      => sprintf(esc_html__('Control frontend viewing of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), $type_label),
+                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), $type_label),
+                            'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), $type_label),
+                            'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), $type_label),
+                            'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), $type_label),
+                            'manage'    => sprintf(esc_html__('Control term management for this %s.', 'press-permit-core'), $type_label),
+                            'read'      => sprintf(esc_html__('Control frontend viewing of this %s.', 'press-permit-core'), $type_label),
+                            'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), $type_label),
+                            'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), $type_label),
                         ];
+                        if (!empty($type_obj->name) && in_array($type_obj->name, ['post_tag', 'category'])) {
+                            $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to %s.', 'press-permit-core'), $type_label, $post_type_label);
+                            $tooltips['edit'] = sprintf(esc_html__('Control who can edit %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['read'] = sprintf(esc_html__('Control who can view %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                        }
                         ?>
                         <button type="button" 
                                 class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
