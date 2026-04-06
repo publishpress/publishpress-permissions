@@ -360,13 +360,13 @@ class ItemExceptionsUI
                         $icon = $this->getOperationIcon($op);
 
                         $tooltips = [
-                            'assign'    => sprintf(esc_html__('Control assignment of terms to selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'associate' => sprintf(esc_html__('Control parent selection for selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'edit'      => sprintf(esc_html__('Control editing of selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'publish'   => sprintf(esc_html__('Control publishing of selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'delete'    => sprintf(esc_html__('Control deletion of selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'manage'    => sprintf(esc_html__('Control term management for selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
-                            'read'      => sprintf(esc_html__('Control frontend viewing of selected %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'manage'    => sprintf(esc_html__('Control term management for this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
+                            'read'      => sprintf(esc_html__('Control frontend viewing of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
                             'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
                             'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), esc_html(strtolower($type_name))),
                         ];
