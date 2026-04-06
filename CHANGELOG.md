@@ -1,6 +1,18 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.0] - 6 April, 2026
+
+- Added: Filter and sort options in the Permissions metabox for easier navigation and management. #2253
+- Added: Tooltips for metabox tabs to provide clearer guidance for users. #2250
+- Changed: Users are now added to the top of the list instead of the bottom for better visibility. #2260
+- Changed: Improved consistency with default color styling across the interface. #2258
+- Changed: Plugin name now includes “Free” to better distinguish version type. #2251
+- Changed: French, Spanish, and Italian translations. #2249
+- Changed: Updated wording for the delete button to improve clarity. #2261
+- Fixed: Permissions metabox layout issue on mobile where content could be truncated. #2262
+- Fixed: Permissions box height issue when restrictions are applied via the main Permissions screen. #2252
+
 [4.7.0] - 18 March, 2026
 
 - Added: "Logged-in User" visibility option is now available in the Free version. #2209

@@ -330,26 +330,23 @@ class ItemExceptionsUI
         if (empty($operations)) {
             return;
         }
+        global $typenow;
 
-        $pp = presspermit();
-        $item_id = (isset($args['item_id'])) ? $args['item_id'] : 0;
         $for_item_type = (isset($args['for_item_type'])) ? $args['for_item_type'] : '';
         $via_item_source = (isset($args['via_item_source'])) ? $args['via_item_source'] : '';
         $via_item_type = (isset($args['via_item_type'])) ? $args['via_item_type'] : '';
 
         // Get type object for labels
         $type_obj = ('post' == $via_item_source) ? get_post_type_object($via_item_type) : get_taxonomy($via_item_type);
+        $type_name = ($type_obj) ? $type_obj->labels->singular_name : $via_item_type;
+        $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
+        $post_type_obj = get_post_type_object($post_type);
 
         static $drew_itemroles_marker;
         if (empty($drew_itemroles_marker)) {
             echo "<input type='hidden' name='pp_post_exceptions' value='true' />";
             $drew_itemroles_marker = true;
         }
-
-        // Calculate exception counts for each operation
-        $current_exceptions = (isset($this->data->current_exceptions[$for_item_type]))
-            ? $this->data->current_exceptions[$for_item_type]
-            : [];
 
         ?>
         <div class="pp-tabbed-metabox">
@@ -365,15 +362,35 @@ class ItemExceptionsUI
                         // Get icon based on operation
                         $icon = $this->getOperationIcon($op);
 
+                        $type_label = esc_html(strtolower($type_name));
+                        $post_type_label = (!empty($post_type_obj) && !empty($post_type_obj->labels->name)) ? esc_html(strtolower($post_type_obj->labels->name)) : esc_html(strtolower($type_obj->labels->singular_name));
                         $tooltips = [
-                            'assign' => sprintf(esc_html__('Control assignment of terms to selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
-                            'associate' => sprintf(esc_html__('Control parent selection for selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
-                            'edit' => sprintf(esc_html__('Control editing of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
-                            'publish' => sprintf(esc_html__('Control publishing of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
-                            'delete' => sprintf(esc_html__('Control deletion of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
-                            'manage' => sprintf(esc_html__('Control term management for selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
-                            'read' => sprintf(esc_html__('Control frontend viewing of selected %s.', 'press-permit-core'), esc_html($type_obj->name)),
+                            'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), $type_label),
+                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), $type_label),
+                            'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), $type_label),
+                            'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), $type_label),
+                            'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), $type_label),
+                            'manage'    => sprintf(esc_html__('Control term management for this %s.', 'press-permit-core'), $type_label),
+                            'read'      => sprintf(esc_html__('Control frontend viewing of this %s.', 'press-permit-core'), $type_label),
+                            'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), $type_label),
+                            'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), $type_label),
                         ];
+                        if (!empty($type_obj->name) && in_array($type_obj->name, ['post_tag', 'category'])) {
+                            $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to %s.', 'press-permit-core'), $type_label, $post_type_label);
+                            $tooltips['edit'] = sprintf(esc_html__('Control who can edit %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['read'] = sprintf(esc_html__('Control who can view %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+
+                            // For universal post type exceptions
+                            if ($post_type === '') {
+                                $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to all post types.', 'press-permit-core'), $post_type_label);
+                                $tooltips['edit'] = sprintf(esc_html__('Control who can edit all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['read'] = sprintf(esc_html__('Control who can view all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                            }
+                        }
                         ?>
                         <button type="button" 
                                 class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
@@ -972,7 +989,7 @@ class ItemExceptionsUI
                     $this->render->opt_class[''] = 'pp-def';
                     $this->render->options['standard'][''] = $this->render->opt_labels['default_yes'];
                 } else {
-                    $this->render->opt_class[''] = 'pp-no';
+                    $this->render->opt_class[''] = 'pp-def';
                     $this->render->options['standard'][''] = $this->render->opt_labels['default_no'];
                 }
             }
