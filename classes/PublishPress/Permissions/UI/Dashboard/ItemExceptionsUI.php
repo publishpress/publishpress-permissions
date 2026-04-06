@@ -330,26 +330,23 @@ class ItemExceptionsUI
         if (empty($operations)) {
             return;
         }
+        global $typenow;
 
-        $pp = presspermit();
-        $item_id = (isset($args['item_id'])) ? $args['item_id'] : 0;
         $for_item_type = (isset($args['for_item_type'])) ? $args['for_item_type'] : '';
         $via_item_source = (isset($args['via_item_source'])) ? $args['via_item_source'] : '';
         $via_item_type = (isset($args['via_item_type'])) ? $args['via_item_type'] : '';
 
         // Get type object for labels
         $type_obj = ('post' == $via_item_source) ? get_post_type_object($via_item_type) : get_taxonomy($via_item_type);
+        $type_name = ($type_obj) ? $type_obj->labels->singular_name : $via_item_type;
+        $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
+        $post_type_obj = get_post_type_object($post_type);
 
         static $drew_itemroles_marker;
         if (empty($drew_itemroles_marker)) {
             echo "<input type='hidden' name='pp_post_exceptions' value='true' />";
             $drew_itemroles_marker = true;
         }
-
-        // Calculate exception counts for each operation
-        $current_exceptions = (isset($this->data->current_exceptions[$for_item_type]))
-            ? $this->data->current_exceptions[$for_item_type]
-            : [];
 
         ?>
         <div class="pp-tabbed-metabox">
@@ -360,41 +357,54 @@ class ItemExceptionsUI
                     $first = true;
                     foreach ($operations as $op_data) : 
                         $op = $op_data['op'];
-                        $op_obj = $op_data['op_obj'];
                         $tab_id = "pp-tab-{$op}-{$for_item_type}";
-                        
+
                         // Get icon based on operation
                         $icon = $this->getOperationIcon($op);
-                        
-                        // Calculate counts for this operation
-                        $counts = $this->getExceptionCounts($op, $for_item_type, $current_exceptions);
-                        $total_count = $counts['total'];
-                        $has_exceptions = $total_count > 0;
 
-                        // Build tooltip text
-                        $tooltip_parts = [];
-                        if ($counts['roles'] > 0) {
-                            $tooltip_parts[] = sprintf(_n('%d role', '%d roles', $counts['roles'], 'press-permit-core'), $counts['roles']);
+                        $type_label = esc_html(strtolower($type_name));
+                        $post_type_label = (!empty($post_type_obj) && !empty($post_type_obj->labels->name)) ? esc_html(strtolower($post_type_obj->labels->name)) : esc_html(strtolower($type_obj->labels->singular_name));
+                        $tooltips = [
+                            'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), $type_label),
+                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), $type_label),
+                            'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), $type_label),
+                            'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), $type_label),
+                            'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), $type_label),
+                            'manage'    => sprintf(esc_html__('Control term management for this %s.', 'press-permit-core'), $type_label),
+                            'read'      => sprintf(esc_html__('Control frontend viewing of this %s.', 'press-permit-core'), $type_label),
+                            'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), $type_label),
+                            'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), $type_label),
+                        ];
+                        if (!empty($type_obj->name) && in_array($type_obj->name, ['post_tag', 'category'])) {
+                            $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to %s.', 'press-permit-core'), $type_label, $post_type_label);
+                            $tooltips['edit'] = sprintf(esc_html__('Control who can edit %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['read'] = sprintf(esc_html__('Control who can view %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+
+                            // For universal post type exceptions
+                            if ($post_type === '') {
+                                $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to all post types.', 'press-permit-core'), $post_type_label);
+                                $tooltips['edit'] = sprintf(esc_html__('Control who can edit all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['read'] = sprintf(esc_html__('Control who can view all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                            }
                         }
-                        if ($counts['groups'] > 0) {
-                            $tooltip_parts[] = sprintf(_n('%d group', '%d groups', $counts['groups'], 'press-permit-core'), $counts['groups']);
-                        }
-                        if ($counts['users'] > 0) {
-                            $tooltip_parts[] = sprintf(_n('%d user', '%d users', $counts['users'], 'press-permit-core'), $counts['users']);
-                        }
-                        $tooltip_text = !empty($tooltip_parts) ? implode(', ', $tooltip_parts) : esc_html__('No exceptions configured', 'press-permit-core');
-                    ?>
+                        ?>
                         <button type="button" 
                                 class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
-                                data-target="<?php echo esc_attr($tab_id); ?>"
-                                data-exception-count="<?php echo esc_attr($total_count); ?>">
+                                data-target="<?php echo esc_attr($tab_id); ?>">
                             <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
-                            <span class="pp-tab-label"><?php echo esc_html($op_data['caption']); ?></span>
-                            <?php if ($has_exceptions) : ?>
-                                <span class="pp-tab-badge" title="<?php echo esc_attr($tooltip_text); ?>">
-                                    <?php echo esc_html($total_count); ?>
-                                </span>
-                            <?php endif; ?>
+                            <span class="pp-tab-label">
+                            <?php
+                            echo isset($tooltips[$op]) ? 
+                            sprintf(
+                                '<span data-toggle="tooltip" data-placement="right">%s<span class="tooltip-text"><span>%s</span><i></i></span></span>',
+                                esc_html($op_data['caption']),
+                                esc_html($tooltips[$op])
+                            ) : esc_html($op_data['caption']) ; ?>
+                            </span>
                         </button>
                     <?php 
                         $first = false;
@@ -533,8 +543,21 @@ class ItemExceptionsUI
                     <span class="dashicons dashicons-no-alt"></span>
                 </button>
             </div>
-            <!-- Dynamic Filter Pills (populated by JavaScript) -->
-            <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
+            <!-- Filter Pills and Sort Controls (combined row) -->
+            <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                <div class="pp-filter-pills-container">
+                    <!-- Filter pills will be dynamically inserted here by JavaScript -->
+                </div>
+                <div class="pp-sort-controls">
+                    <label class="pp-sort-label"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
+                    <select class="pp-sort-select" data-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                        <option value="name-asc"><?php esc_html_e('Name (A-Z)', 'press-permit-core'); ?></option>
+                        <option value="name-desc"><?php esc_html_e('Name (Z-A)', 'press-permit-core'); ?></option>
+                        <option value="users-desc" class="pp-sort-by-users"><?php esc_html_e('Most Users', 'press-permit-core'); ?></option>
+                        <option value="users-asc" class="pp-sort-by-users"><?php esc_html_e('Fewest Users', 'press-permit-core'); ?></option>
+                    </select>
+                </div>
+            </div>
             <div class="pp-permission-cards">
                 <div class="pp-permission-card">
                     <!-- Bulk Actions Toolbar -->
@@ -583,8 +606,19 @@ class ItemExceptionsUI
                     data-placeholder="<?php esc_attr_e('Search and add users...', 'press-permit-core'); ?>">
                 </select>
             </div>
-            <!-- Dynamic Filter Pills (populated by JavaScript) -->
-            <div class="pp-permission-filters" data-filter-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>"></div>
+            <!-- Filter Pills and Sort Controls (combined row) -->
+            <div class="pp-permission-filters" data-filter-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                <div class="pp-filter-pills-container">
+                    <!-- Filter pills will be dynamically inserted here by JavaScript -->
+                </div>
+                <div class="pp-sort-controls pp-sort-controls-users">
+                    <label class="pp-sort-label"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
+                    <select class="pp-sort-select" data-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                        <option value="name-asc"><?php esc_html_e('Name (A-Z)', 'press-permit-core'); ?></option>
+                        <option value="name-desc"><?php esc_html_e('Name (Z-A)', 'press-permit-core'); ?></option>
+                    </select>
+                </div>
+            </div>
             <?php $this->renderUsersCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
         </div>
         <?php
@@ -599,6 +633,15 @@ class ItemExceptionsUI
         
         if (!isset($current_exceptions[$op]['wp_role'])) {
             $current_exceptions[$op]['wp_role'] = [];
+        }
+
+        // Get user counts for all roles
+        $user_counts = [];
+        if (function_exists('count_users')) {
+            $_user_count = count_users();
+            if (isset($_user_count['avail_roles'])) {
+                $user_counts = $_user_count['avail_roles'];
+            }
         }
 
         // Populate all WP roles
@@ -639,12 +682,18 @@ class ItemExceptionsUI
                         $reqd_caps = $_reqd_caps;
                     }
 
+                    // Get user count for this role
+                    $user_count = 0;
+                    if (!empty($role->metagroup_id) && isset($user_counts[$role->metagroup_id])) {
+                        $user_count = $user_counts[$role->metagroup_id];
+                    }
+
                     $this->renderPermissionListItem(
                         'wp_role',
                         $agent_id,
                         $current_exceptions[$op]['wp_role'][$agent_id],
                         $role,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj', 'user_count')
                     );
                 }
             }
@@ -667,6 +716,12 @@ class ItemExceptionsUI
         
         if (!isset($current_exceptions[$op]['pp_group'])) {
             $current_exceptions[$op]['pp_group'] = [];
+        }
+
+        // Get member counts for all groups
+        $member_counts = [];
+        foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
+            $member_counts[$agent_id] = $pp->groups()->getGroupMembers($agent_id, 'pp_group', 'count');
         }
 
         // Populate all groups
@@ -692,12 +747,15 @@ class ItemExceptionsUI
                         $any_groups_blocked = true;
                     }
 
+                    // Get member count for this group
+                    $user_count = isset($member_counts[$agent_id]) ? $member_counts[$agent_id] : 0;
+
                     $this->renderPermissionListItem(
                         'pp_group',
                         $agent_id,
                         $current_exceptions[$op]['pp_group'][$agent_id],
                         $group,
-                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj')
+                        compact('for_item_type', 'op', 'reqd_caps', 'hierarchical', 'item_id', 'type_obj', 'user_count')
                     );
                 }
             }
@@ -841,7 +899,7 @@ class ItemExceptionsUI
     {
         global $wp_roles;
         
-        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null];
+        $defaults = ['reqd_caps' => false, 'hierarchical' => false, 'for_item_type' => '', 'op' => '', 'item_id' => 0, 'type_obj' => null, 'user_count' => 0];
         $args = array_merge($defaults, $args);
         extract($args);
 
@@ -928,10 +986,10 @@ class ItemExceptionsUI
             // Update default option label based on capabilities
             if ($reqd_caps) {
                 if (!array_diff($reqd_caps, array_keys($role_caps)) || $is_unfiltered) {
-                    $this->render->opt_class[''] = 'pp-yes';
+                    $this->render->opt_class[''] = 'pp-def';
                     $this->render->options['standard'][''] = $this->render->opt_labels['default_yes'];
                 } else {
-                    $this->render->opt_class[''] = 'pp-no';
+                    $this->render->opt_class[''] = 'pp-def';
                     $this->render->options['standard'][''] = $this->render->opt_labels['default_no'];
                 }
             }
@@ -963,7 +1021,7 @@ class ItemExceptionsUI
         $css_class = strtolower(str_replace([' ', '_'], '-', $_name));
         $item_id_attr = esc_attr("{$agent_type}-{$agent_id}");
         ?>
-                <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>">
+                <div class="pp-permission-list-item <?php echo esc_attr($css_class); ?>" data-agent-type="<?php echo esc_attr($agent_type); ?>" data-agent-id="<?php echo esc_attr($agent_id); ?>" data-user-count="<?php echo esc_attr($user_count); ?>" data-item-name="<?php echo esc_attr(strtolower($_name)); ?>">
                     <div class="item-checkbox">
                         <input type="checkbox" class="pp-item-checkbox" id="pp-item-<?php echo esc_attr($item_id_attr); ?>" />
                     </div>
@@ -989,7 +1047,7 @@ class ItemExceptionsUI
                         ?>
                             <span class="pp-type-badge <?php echo esc_attr($type_class); ?>"><?php echo esc_html($type_label); ?></span>
                         <?php endif; ?>
-                        <label for="pp-item-<?php echo esc_attr($item_id_attr); ?>"><?php echo esc_html($_name); ?></label>
+                        <label for="pp-item-<?php echo esc_attr($item_id_attr); ?>" title="<?php echo esc_attr($_name); ?>"><?php echo esc_html($_name); ?></label>
                     </div>
                     <div class="pp-permission-control">
                         <?php
@@ -1077,12 +1135,29 @@ class ItemExceptionsUI
                         <?php endforeach; ?>
                         
                         <?php if ('user' == $agent_type) : ?>
-                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove user from exceptions', 'press-permit-core'); ?>">
+                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>">
                             <span class="dashicons dashicons-trash"></span>
                         </button>
                         <?php endif; ?>
                     </div>
                 </div>
                 <?php
+    }
+
+    function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array('class' => '', 'html' => ''))
+    {
+        ?>
+        <span data-toggle="tooltip" data-placement="<?php esc_attr_e($position); ?>" class="<?php !empty($args['class']) ? esc_attr_e($args['class']) : ''; ?>">
+        <?php esc_html_e($text);?>
+        <span class="tooltip-text"><span><?php esc_html_e($tooltip);?><?php !empty($args['html']) ? print wp_kses_post($args['html']) : ''; ?></span><i></i></span>
+        <?php 
+        if ($useIcon) : ?>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 50 50" style="margin-left: 4px; vertical-align: text-bottom;">
+                <path d="M 25 2 C 12.264481 2 2 12.264481 2 25 C 2 37.735519 12.264481 48 25 48 C 37.735519 48 48 37.735519 48 25 C 48 12.264481 37.735519 2 25 2 z M 25 4 C 36.664481 4 46 13.335519 46 25 C 46 36.664481 36.664481 46 25 46 C 13.335519 46 4 36.664481 4 25 C 4 13.335519 13.335519 4 25 4 z M 25 11 A 3 3 0 0 0 25 17 A 3 3 0 0 0 25 11 z M 21 21 L 21 23 L 23 23 L 23 36 L 21 36 L 21 38 L 29 38 L 29 36 L 27 36 L 27 21 L 21 21 z"></path>
+            </svg>
+        <?php
+        endif; ?>
+        </span>
+        <?php
     }
 }

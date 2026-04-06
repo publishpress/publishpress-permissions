@@ -37,7 +37,20 @@ class PostEdit
             
             // Localize script with translated messages
             wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
-                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core')
+                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core'),
+                'addedToList'                    => esc_html__('You can now set individual permissions for', 'press-permit-core'),
+                'filterAll'                      => esc_html__('All', 'press-permit-core'),
+                'filterBlocked'                  => esc_html__('Blocked', 'press-permit-core'),
+                'filterEnabled'                  => esc_html__('Enabled', 'press-permit-core'),
+                'filterDefault'                  => esc_html__('Default', 'press-permit-core'),
+                'filterRole'                     => esc_html__('Role', 'press-permit-core'),
+                'filterGroup'                    => esc_html__('Group', 'press-permit-core'),
+                'filterLoginState'               => esc_html__('Login State', 'press-permit-core'),
+                'deleteItemTitle'                => esc_html__('Remove custom permissions for user', 'press-permit-core'),
+                'alertSelectAction'              => esc_html__('Please select a bulk action first.', 'press-permit-core'),
+                'alertSelectItem'                => esc_html__('Please select at least one item.', 'press-permit-core'),
+                'confirmBulkRemove'              => esc_html__('Are you sure you want to remove the selected user(s) from exceptions?', 'press-permit-core'),
+                'confirmDeleteItem'              => esc_html__('Remove the custom permisisons for "%s"?', 'press-permit-core'),
             ]);
         }
 
@@ -263,7 +276,6 @@ class PostEdit
         
         // Build operations data array with captions
         $operations_data = [];
-        $type_obj = get_post_type_object($post_type);
         
         foreach (array_keys($box['args']['operations']) as $op) {
             if ($op_obj = $pp->admin()->getOperationObject($op, $post_type)) {

@@ -41,7 +41,20 @@ class TermEdit
 	            
 	            // Localize script with translated messages
 	            wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
-	                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core')
+	                'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core'),
+	                'addedToList'                    => esc_html__('You can now set individual permissions for', 'press-permit-core'),
+	                'filterAll'                      => esc_html__('All', 'press-permit-core'),
+	                'filterBlocked'                  => esc_html__('Blocked', 'press-permit-core'),
+	                'filterEnabled'                  => esc_html__('Enabled', 'press-permit-core'),
+	                'filterDefault'                  => esc_html__('Default', 'press-permit-core'),
+	                'filterRole'                     => esc_html__('Role', 'press-permit-core'),
+	                'filterGroup'                    => esc_html__('Group', 'press-permit-core'),
+	                'filterLoginState'               => esc_html__('Login State', 'press-permit-core'),
+	                'deleteItemTitle'                => esc_html__('Remove custom permissions for user', 'press-permit-core'),
+	                'alertSelectAction'              => esc_html__('Please select a bulk action first.', 'press-permit-core'),
+	                'alertSelectItem'                => esc_html__('Please select at least one item.', 'press-permit-core'),
+	                'confirmBulkRemove'              => esc_html__('Are you sure you want to remove the selected user(s) from exceptions?', 'press-permit-core'),
+	                'confirmDeleteItem'              => esc_html__('Remove the custom permisisons for "%s"?', 'press-permit-core'),
 	            ]);
 	        }
 	
@@ -146,11 +159,20 @@ class TermEdit
                             $type_obj->labels->name
                         )
                         : sprintf(
-                            esc_html__('%s (All Content)', 'press-permit-core'),
+                            esc_html__('%s (All Types)', 'press-permit-core'),
                             $op_obj->label
                         );
                 } else {
-                    $caption = esc_html($op_obj->label);
+                    $caption = ($post_type) ? sprintf(
+                        esc_html__('%1$s %2$s in this %3$s', 'press-permit-core'),
+                        esc_html($op_obj->label),
+                        $type_obj->labels->name,
+                        $tx->labels->singular_name
+                    ) : sprintf(
+                        esc_html__('%1$s this %2$s', 'press-permit-core'),
+                        esc_html($op_obj->label),
+                        $tx->labels->singular_name
+                    );
                 }
 
                 $operations_data[] = [
@@ -202,6 +224,15 @@ class TermEdit
             $tt_id = 0;
         }
 
+        if (!$referer = wp_get_original_referer()) $referer = wp_get_referer();
+        $url = esc_url_raw(
+            add_query_arg(
+                '_wp_original_http_referer',
+                urlencode($referer),
+                "term.php?taxonomy=$taxonomy&amp;tag_ID=$tag_id&amp;pp_universal=1"
+            )
+        );
+
         $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
 
         $hidden_types = apply_filters('presspermit_hidden_post_types', []);
@@ -247,10 +278,24 @@ class TermEdit
                         esc_html__('Permissions: %s', 'press-permit-core'),
                         $tx->labels->singular_name
                     );
+                    $title_with_icon = $caption;
+                    if(!empty($type_obj) && !empty($tx)) {
+                        $title_with_icon = sprintf(
+                            '<div>%s&nbsp;<div data-toggle="tooltip" class="click"><span class="dashicons dashicons-info"></span><div class="tooltip-text"><span>%s</span><i></i></div></div></div>',
+                            esc_attr($caption),
+                            sprintf(
+                                esc_html__('Displayed permissions are those assigned for the "%1$s" type. You can also %2$sdefine universal %3$s permissions which apply to all related post types%4$s.', 'press-permit-core'),
+                                esc_html($type_obj->labels->singular_name),
+                                '<a href="' . esc_url($url) . '"><strong>',
+                                esc_html($tx->labels->singular_name),
+                                '</strong></a>'
+                            )
+                        );
+                    }
 
                 add_meta_box(
                     "pp_all_{$register_type}_exceptions",
-                    $caption,
+                    $title_with_icon,
                     [$this, 'drawTabbedExceptionsUI'],
                     $register_type,
                     'advanced',
@@ -305,16 +350,7 @@ class TermEdit
                                 $tx->labels->singular_name
                             );
                     }
-    
-                    if (!$referer = wp_get_original_referer()) $referer = wp_get_referer();
-        
-                    $url = esc_url_raw(
-                        add_query_arg(
-                            '_wp_original_http_referer',
-                            urlencode($referer),
-                            "term.php?taxonomy=$taxonomy&amp;tag_ID=$tag_id&amp;pp_universal=1"
-                        )
-                    );
+
                     $title_with_icon = $title;
                     if(!empty($type_obj) && !empty($tx)) {
                         $title_with_icon = sprintf(

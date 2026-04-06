@@ -273,6 +273,30 @@
   }
 }
 
+/* Adjust the min-width (768px to 1024px) to match medium screen for sidebar */
+@media (min-width: 783px) and (max-width: 1024px) {
+  .pp-tabbed-sidebar {
+      width: 50px !important; /* Collapse the width */
+      min-width: 50px;
+      overflow: hidden;
+  }
+
+  .pp-tabbed-sidebar .pp-tab-label {
+      display: none; /* Hide the text labels */
+  }
+
+  .pp-operation-tab {
+      justify-content: center; /* Center the icons */
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+  }
+  
+  /* Ensure the main area takes up the rest of the space */
+  .pp-tabbed-main {
+      flex-grow: 1;
+  }
+}
+
 /* Empty state for operations with no exceptions */
 .pp-operation-empty-state {
   text-align: center;
@@ -565,7 +589,7 @@
   font-size: 13px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
 
   .dashicons {
     color: #10b981;
@@ -583,12 +607,13 @@
 .pp-permission-filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px 12px;
   padding: 10px 16px;
   background: linear-gradient(to bottom, #fafbfc, #f6f7f9);
   border-bottom: 1px solid #e5e7eb;
   min-height: 44px;
-  align-items: center;
   position: relative;
 
   &:empty {
@@ -610,6 +635,18 @@
       transparent 100%
     );
   }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+// Container for filter pills (left side)
+.pp-filter-pills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
 }
 
 .pp-filter-btn {
@@ -983,6 +1020,39 @@
   transition: all 0.2s ease;
 }
 
+/* Sort Controls */
+.pp-sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+
+  @media (max-width: 782px) {
+    width: 100%;
+    margin-left: 0;
+    justify-content: flex-end;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 8px;
+    margin-top: 2px;
+  }
+
+  .pp-sort-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+    margin: 0;
+    white-space: nowrap;
+  }
+
+  // Hide user count options for users tab
+  &.pp-sort-controls-users {
+    .pp-sort-by-users {
+      display: none;
+    }
+  }
+}
+
 /* Bulk Actions Toolbar */
 .pp-bulk-actions-toolbar {
   display: flex;
@@ -1100,6 +1170,8 @@
     gap: 4px;
     font-size: 13px;
     flex: 1;
+    position: relative;
+    min-width: 0;
 
     label {
       cursor: pointer;
@@ -1108,6 +1180,13 @@
       font-size: 14px;
       font-weight: 500;
       color: var(--pp-gray-8);
+      // 2-line ellipsis
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      word-break: break-word;
+      width: 100%;
 
       &:has(+ input:disabled) {
         cursor: not-allowed;
@@ -1178,10 +1257,10 @@
   gap: 10px;
   position: relative;
   flex: 1;
-  flex-wrap: wrap;
 
   /* When both item and children are present, arrange horizontally */
   &:has(.pp-children-select) {
+    flex-wrap: wrap;
     @media (max-width: 768px) {
       flex-direction: column;
       align-items: stretch;
@@ -1197,6 +1276,7 @@
   flex-direction: column;
   gap: 4px;
   width: max-content;
+  min-width: 177px;
   flex-shrink: 0;
   flex-grow: 0;
   flex-basis: auto;

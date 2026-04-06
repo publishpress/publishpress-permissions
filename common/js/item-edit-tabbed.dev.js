@@ -136,9 +136,6 @@
                 cssClass = 'pp-def';
             }
 
-            // Update badge count on tab
-            updateTabBadge($select.closest('.pp-agent-type-content'));
-            
             $select.addClass(cssClass);
         });
 
@@ -178,7 +175,7 @@
             var action = $actionSelect.val();
             
             if (!action) {
-                alert('Please select a bulk action first.');
+                alert(ppPermissions.alertSelectAction);
                 return;
             }
             
@@ -186,13 +183,13 @@
             var $checkedItems = $card.find('.pp-item-checkbox:checked');
             
             if ($checkedItems.length === 0) {
-                alert('Please select at least one item.');
+                alert(ppPermissions.alertSelectItem);
                 return;
             }
             
             // Handle remove action separately
             if (action === 'remove') {
-                if (confirm('Are you sure you want to remove the selected user(s) from exceptions? This will take effect when you click "Update".')) {
+                if (confirm(ppPermissions.confirmBulkRemove)) {
                     $checkedItems.each(function() {
                         var $checkbox = $(this);
                         var $item = $checkbox.closest('.pp-permission-list-item');
@@ -322,7 +319,7 @@
             var $item = $button.closest('.pp-permission-list-item');
             var userName = $item.find('.item-name label').text();
             
-            if (confirm('Remove "' + userName + '" from exceptions? This will take effect when you click "Update".')) {
+            if (confirm(ppPermissions.confirmDeleteItem.replace('%s', userName))) {
                 removeUserItem($item);
             }
         });
@@ -378,10 +375,6 @@
                 // Update operation tab badge
                 var $agentContent = $item.closest('.pp-agent-type-content');
                 if ($agentContent.length) {
-                    setTimeout(() => {
-                        updateTabBadge($agentContent);
-                    }, 50);
-                    
                     // Regenerate dynamic filters
                     setTimeout(function() {
                         generateDynamicFilters($agentContent);
@@ -676,11 +669,6 @@
                 markFormAsChanged();
             }
             
-            // Update operation tab badge
-            setTimeout(() => {
-                updateTabBadge($agentContent);
-            }, 50);
-            
             return; // Exit early - item restored
         }
 
@@ -704,6 +692,7 @@
         // Item name
         var $itemName = $('<div>')
             .addClass('item-name')
+            .attr('title', userName)
             .append(
                 $('<label>')
                     .attr('for', 'pp-item-' + itemIdAttr)
@@ -758,7 +747,7 @@
             $('<button>')
                 .attr('type', 'button')
                 .addClass('pp-delete-item')
-                .attr('title', 'Remove user from exceptions')
+                .attr('title', ppPermissions.deleteItemTitle)
                 .append($('<span>').addClass('dashicons dashicons-trash'))
         );
 
@@ -768,126 +757,28 @@
         // Remove "no results" and empty state messages if they exist
         $list.find('.pp-no-search-results, .pp-empty-state').remove();
 
-        // Add to list with animation
-        $list.append($newItem);
+        // Add to beginning of list with animation
+        $list.prepend($newItem);
         $newItem.slideDown(300, function() {
-            // Scroll to the new item after slide animation completes
-            var listScrollTop = $list.scrollTop();
-            var itemOffset = $newItem.position().top;
-            var listHeight = $list.height();
-            
-            if (itemOffset > listHeight - 100) {
-                $list.animate({
-                    scrollTop: listScrollTop + itemOffset - listHeight + 100
-                }, 300);
-            }
+            // Scroll to the top to reveal the new item
+            $list.animate({ scrollTop: 0 }, 300);
         });
         
         // Remove animation class after CSS animation completes (500ms)
         setTimeout(function() {
             $newItem.removeClass('pp-new-item');
         }, 600);
-
-        // Update operation tab badge
-        setTimeout(() => {
-            updateTabBadge($agentContent);
-        }, 50);
         
         // Regenerate dynamic filters
         setTimeout(function() {
             generateDynamicFilters($agentContent);
+            
+            // Reapply sort to maintain order
+            reapplySortAfterAdd($agentContent);
         }, 100);
         
         // Show success notice
         showUserAddedNotice(userName, $select);
-    }
-
-
-    /**
-     * Update operation tab badge count
-     * 
-     * Counts only items with actual exception values configured (matching PHP logic).
-     * Items with empty/default values are not counted.
-     * 
-     * @param {jQuery} $agentContent The agent content container
-     */
-    function updateTabBadge($agentContent) {
-        var $tabPane = $agentContent.closest('.pp-tab-pane');
-        var tabPaneId = $tabPane.attr('id');
-        var $tab = $('.pp-operation-tab[data-target="' + tabPaneId + '"]');
-
-        if (!$tab.length) {
-            return;
-        }
-        
-        // Count only items with actual exceptions configured (not defaults)
-        // Match PHP logic: count from $current_exceptions data, not all roles/groups
-        // Separate counts by agent type for detailed tooltip
-        var counts = {
-            roles: 0,
-            groups: 0,
-            users: 0,
-            total: 0
-        };
-        
-        $tabPane.find('.pp-permission-list-item').each(function() {
-            var $item = $(this);
-
-            // Skip if marked for removal
-            if ($item.hasClass('pp-item-removed')) {
-                return; // continue to next iteration
-            }
-            
-            // Only count if the select has a non-empty value (not default)
-            var $select = $item.find('.pp-permission-select select');
-            if ($select.length && $select.val() !== '') {
-                var agentType = $item.data('agent-type');
-                
-                if (agentType === 'wp_role') {
-                    counts.roles++;
-                } else if (agentType === 'pp_group') {
-                    counts.groups++;
-                } else if (agentType === 'user') {
-                    counts.users++;
-                }
-                
-                counts.total++;
-            }
-        });
-        
-        // Update or create badge
-        var $badge = $tab.find('.pp-tab-badge');
-
-        if (counts.total > 0) {
-            if ($badge.length === 0) {
-                // Create badge if it doesn't exist
-                $badge = $('<span class="pp-tab-badge"></span>');
-                $tab.append($badge);
-            }
-            
-            // Update badge count
-            $badge.text(counts.total);
-            $tab.attr('data-exception-count', counts.total);
-            
-            // Build tooltip text matching PHP format: "1 role, 1 group, 2 users"
-            var tooltipParts = [];
-            if (counts.roles > 0) {
-                tooltipParts.push(counts.roles + (counts.roles === 1 ? ' role' : ' roles'));
-            }
-            if (counts.groups > 0) {
-                tooltipParts.push(counts.groups + (counts.groups === 1 ? ' group' : ' groups'));
-            }
-            if (counts.users > 0) {
-                tooltipParts.push(counts.users + (counts.users === 1 ? ' user' : ' users'));
-            }
-            var tooltipText = tooltipParts.join(', ');
-            
-            $badge.attr('title', tooltipText);
-        } else {
-            // Remove badge if count is 0
-            $badge.remove();
-            $tab.attr('data-exception-count', '0');
-        }
     }
 
     /**
@@ -901,9 +792,8 @@
 
         $notice
             .append($('<span>').addClass('dashicons dashicons-yes'))
-            .append(' ')
-            .append($('<strong>').text(userName))
-            .append(document.createTextNode(' added to list. Configure permissions and click "Update" to save.'));
+            .append(document.createTextNode(ppPermissions.addedToList))
+            .append($('<strong>').text(userName));
 
         $select.closest('.pp-search-box-select2').after($notice);
         $notice.fadeIn();
@@ -985,6 +875,13 @@
             return;
         }
 
+        // Target the pills container specifically (new structure)
+        var $pillsContainer = $filterContainer.find('.pp-filter-pills-container');
+        if (!$pillsContainer.length) {
+            // Fallback for old structure (if any)
+            $pillsContainer = $filterContainer;
+        }
+
         // Map CSS classes to filter definitions
         var filterDefs = {
             'pp-def': { label: 'Default', icon: '' },
@@ -1055,7 +952,7 @@
         };
 
         // Clear existing filters
-        $filterContainer.empty();
+        $pillsContainer.empty();
 
         // Always add "All" filter first
         if (mergedCounts.all > 0) {
@@ -1063,10 +960,10 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn active')
                 .attr('data-filter', 'all')
-                .append(document.createTextNode('All '))
+                .append(document.createTextNode(ppPermissions.filterAll + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.all));
             
-            $filterContainer.append($allBtn);
+            $pillsContainer.append($allBtn);
         }
 
         // Add filter buttons only for types that exist
@@ -1075,10 +972,10 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'blocked')
-                .append(document.createTextNode('Blocked '))
+                .append(document.createTextNode(ppPermissions.filterBlocked + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.blocked));
             
-            $filterContainer.append($btn);
+            $pillsContainer.append($btn);
         }
 
         if (mergedCounts.allowed > 0) {
@@ -1086,10 +983,10 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'allowed')
-                .append(document.createTextNode('Enabled '))
+                .append(document.createTextNode(ppPermissions.filterEnabled + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.allowed));
             
-            $filterContainer.append($btn);
+            $pillsContainer.append($btn);
         }
 
         // Only show Default filter if it's not the same as All (i.e., there are other permission types)
@@ -1098,10 +995,10 @@
                 .attr('type', 'button')
                 .addClass('pp-filter-btn')
                 .attr('data-filter', 'pp-def')
-                .append(document.createTextNode('Default '))
+                .append(document.createTextNode(ppPermissions.filterDefault + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts['pp-def']));
             
-            $filterContainer.append($btn);
+            $pillsContainer.append($btn);
         }
 
         // Add type filters (Role/Group/Login State)
@@ -1116,10 +1013,10 @@
                     .addClass('pp-filter-btn pp-filter-type')
                     .attr('data-filter', 'role')
                     .attr('data-filter-type', 'agent-type')
-                    .append(document.createTextNode('Role '))
+                    .append(document.createTextNode(ppPermissions.filterRole + ' '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts.role));
                 
-                $filterContainer.append($roleBtn);
+                $pillsContainer.append($roleBtn);
             }
 
             // Add Group filter if groups exist
@@ -1129,10 +1026,10 @@
                     .addClass('pp-filter-btn pp-filter-type')
                     .attr('data-filter', 'group')
                     .attr('data-filter-type', 'agent-type')
-                    .append(document.createTextNode('Group '))
+                    .append(document.createTextNode(ppPermissions.filterGroup + ' '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts.group));
                 
-                $filterContainer.append($groupBtn);
+                $pillsContainer.append($groupBtn);
             }
             
             // Add Login State filter if login state items exist
@@ -1142,10 +1039,10 @@
                     .addClass('pp-filter-btn pp-filter-type')
                     .attr('data-filter', 'login-state')
                     .attr('data-filter-type', 'badge-type')
-                    .append(document.createTextNode('Login State '))
+                    .append(document.createTextNode(ppPermissions.filterLoginState + ' '))
                     .append($('<span>').addClass('pp-filter-count').text(mergedCounts['login-state']));
                 
-                $filterContainer.append($loginStateBtn);
+                $pillsContainer.append($loginStateBtn);
             }
         }
     }
@@ -1328,6 +1225,148 @@
             });
         }, 100);
     });
+
+    /**
+     * Sort permission items by specified criteria
+     * 
+     * @param {jQuery} $contentArea - The agent type content area containing items
+     * @param {string} sortBy - Sort criteria: 'name-asc', 'name-desc', 'users-asc', 'users-desc'
+     */
+    function sortPermissionItems($contentArea, sortBy) {
+        var $card = $contentArea.find('.pp-permission-card');
+        var $list = $card.find('.pp-permission-list');
+        var $items = $list.find('.pp-permission-list-item').not('.pp-item-removed');
+        
+        if ($items.length === 0) {
+            return;
+        }
+        
+        // Convert to array for sorting
+        var items = $items.toArray();
+        
+        // Sort based on criteria
+        items.sort(function(a, b) {
+            var $a = $(a);
+            var $b = $(b);
+            var result = 0;
+            
+            if (sortBy.startsWith('name-')) {
+                // Sort by name
+                var nameA = ($a.attr('data-item-name') || '').toLowerCase();
+                var nameB = ($b.attr('data-item-name') || '').toLowerCase();
+                
+                result = nameA.localeCompare(nameB);
+                
+                if (sortBy === 'name-desc') {
+                    result = -result;
+                }
+            } else if (sortBy.startsWith('users-')) {
+                // Sort by user count
+                var countA = parseInt($a.attr('data-user-count') || '0', 10);
+                var countB = parseInt($b.attr('data-user-count') || '0', 10);
+                
+                result = countA - countB;
+                
+                if (sortBy === 'users-desc') {
+                    result = -result;
+                }
+                
+                // Secondary sort by name (ascending) for equal counts
+                if (result === 0) {
+                    var nameA = ($a.attr('data-item-name') || '').toLowerCase();
+                    var nameB = ($b.attr('data-item-name') || '').toLowerCase();
+                    result = nameA.localeCompare(nameB);
+                }
+            }
+            
+            return result;
+        });
+        
+        // Reorder DOM elements
+        $.each(items, function(index, item) {
+            $list.append(item);
+        });
+        
+        // Store sort preference
+        var targetId = $contentArea.attr('id');
+        if (targetId) {
+            localStorage.setItem('pp_sort_' + targetId, sortBy);
+        }
+    }
+    
+    /**
+     * Handle sort dropdown change
+     */
+    $(document).on('change', '.pp-sort-select', function() {
+        var $select = $(this);
+        var sortBy = $select.val();
+        var targetId = $select.data('target');
+        var $contentArea = $('#' + targetId);
+        
+        if ($contentArea.length) {
+            sortPermissionItems($contentArea, sortBy);
+        }
+    });
+    
+    /**
+     * Initialize sorting on page load - restore saved preferences
+     */
+    $(document).ready(function() {
+        $('.pp-agent-type-content').each(function() {
+            var $contentArea = $(this);
+            var targetId = $contentArea.attr('id');
+            
+            if (targetId) {
+                var savedSort = localStorage.getItem('pp_sort_' + targetId);
+                
+                if (savedSort) {
+                    // Set dropdown to saved value
+                    var $select = $('.pp-sort-select[data-target="' + targetId + '"]');
+                    $select.val(savedSort);
+                    
+                    // Apply sort if content area is active
+                    if ($contentArea.hasClass('active')) {
+                        setTimeout(function() {
+                            sortPermissionItems($contentArea, savedSort);
+                        }, 100);
+                    }
+                }
+            }
+        });
+    });
+    
+    /**
+     * Apply saved sort when switching to a tab
+     */
+    $(document).on('click', '.pp-agent-type-tab', function() {
+        var targetId = $(this).data('agent-target');
+        var $contentArea = $('#' + targetId);
+        
+        setTimeout(function() {
+            var savedSort = localStorage.getItem('pp_sort_' + targetId);
+            
+            if (savedSort) {
+                var $select = $('.pp-sort-select[data-target="' + targetId + '"]');
+                $select.val(savedSort);
+                sortPermissionItems($contentArea, savedSort);
+            }
+        }, 150);
+    });
+    
+    /**
+     * Reapply sort after adding new users (maintains sort order)
+     */
+    function reapplySortAfterAdd($contentArea) {
+        var targetId = $contentArea.attr('id');
+        if (targetId) {
+            var savedSort = localStorage.getItem('pp_sort_' + targetId);
+            if (savedSort) {
+                setTimeout(function() {
+                    sortPermissionItems($contentArea, savedSort);
+                }, 200);
+            }
+        }
+    }
 
 })(jQuery);
 

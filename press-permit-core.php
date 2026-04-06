@@ -4,7 +4,7 @@
  * Plugin Name: PublishPress Permissions
  * Plugin URI:  https://publishpress.com/presspermit
  * Description: Advanced yet accessible content permissions. Give users or groups type-specific roles. Enable or block access for specific posts or terms.
- * Version: 4.7.0
+ * Version: 4.8.0
  * Author: PublishPress
  * Author URI:  https://publishpress.com/
  * Text Domain: press-permit-core
@@ -109,6 +109,21 @@ if (false === $presspermit_loaded_by_pro) {
         }
     }
 
+    add_filter(
+        'all_plugins',
+        function ($plugins) {
+            global $pagenow;
+            if (isset($pagenow) && 'plugins.php' === $pagenow) {
+                $plugin_basename = plugin_basename(__FILE__);
+                if (isset($plugins[$plugin_basename])) {
+                    $plugins[$plugin_basename]['Name']  = 'PublishPress Permissions Free';
+                    $plugins[$plugin_basename]['Title'] = 'PublishPress Permissions Free';
+                }
+            }
+            return $plugins;
+        }
+    );
+
     if ($pro_active) {
         add_filter(
             'plugin_row_meta',
@@ -209,7 +224,7 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
             return;
         }
 
-        define('PRESSPERMIT_VERSION', '4.7.0');
+        define('PRESSPERMIT_VERSION', '4.8.0');
 
         if (!defined('PRESSPERMIT_READ_PUBLIC_CAP')) {
             define('PRESSPERMIT_READ_PUBLIC_CAP', 'read');
