@@ -363,7 +363,7 @@ class ItemExceptionsUI
                         $icon = $this->getOperationIcon($op);
 
                         $type_label = esc_html(strtolower($type_name));
-                        $post_type_label = esc_html(strtolower($post_type_obj->labels->name));
+                        $post_type_label = (!empty($post_type_obj) && !empty($post_type_obj->labels->name)) ? esc_html(strtolower($post_type_obj->labels->name)) : esc_html(strtolower($type_obj->labels->singular_name));
                         $tooltips = [
                             'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), $type_label),
                             'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), $type_label),
@@ -381,6 +381,15 @@ class ItemExceptionsUI
                             $tooltips['read'] = sprintf(esc_html__('Control who can view %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
                             $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
                             $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+
+                            // For universal post type exceptions
+                            if ($post_type === '') {
+                                $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to all post types.', 'press-permit-core'), $post_type_label);
+                                $tooltips['edit'] = sprintf(esc_html__('Control who can edit all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['read'] = sprintf(esc_html__('Control who can view all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                            }
                         }
                         ?>
                         <button type="button" 
