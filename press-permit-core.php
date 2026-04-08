@@ -3,7 +3,7 @@
 /**
  * Plugin Name: PublishPress Permissions
  * Plugin URI:  https://publishpress.com/presspermit
- * Description: Advanced yet accessible content permissions. Give users or groups type-specific roles. Enable or block access for specific posts or terms.
+ * Description: PublishPress Permissions allows you to enable or deny access to posts, pages, categories, tags and more.
  * Version: 4.8.0
  * Author: PublishPress
  * Author URI:  https://publishpress.com/
