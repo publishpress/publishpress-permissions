@@ -1,0 +1,4026 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the same license as the PublishPress Permissions plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-18T15:16:27+00:00\n"
+"PO-Revision-Date: 2026-04-07 23:36+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: press-permit-core\n"
+"Language: tr_TR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: press-permit-core.php:4
+#: press-permit-core.php:4
+#. Plugin Name of the plugin
+msgid "PublishPress Permissions"
+msgstr "PublishPress İzinleri"
+
+#: press-permit-core.php:5, fuzzy
+#. Plugin URI of the plugin
+msgid "https://publishpress.com/presspermit"
+msgstr "https://publishpress.com/presspermit"
+
+#: press-permit-core.php:6
+#. Description of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: press-permit-core.php:9, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com/"
+msgstr "https://publishpress.com/"
+
+#: classes/PublishPress/Permissions.php:1258
+msgid "Edit Tag for All Post Types"
+msgstr "Tüm Gönderi Türleri İçin Etiketi Düzenle"
+
+#: classes/PublishPress/Permissions.php:1262
+msgid "Edit Tag for Posts"
+msgstr "Gönderiler İçin Etiketi Düzenle"
+
+#: classes/PublishPress/Permissions.php:1273
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:43
+msgid "Advanced Custom Fields"
+msgstr "Gelişmiş Özel Alanlar"
+
+#: classes/PublishPress/Permissions.php:1274
+msgid "Control access to Field Groups"
+msgstr "Alan Gruplarına erişimi kontrol et"
+
+#: classes/PublishPress/Permissions.php:1279
+msgid "Front-end visibility restrictions"
+msgstr "Ön uç görünürlük kısıtlamaları"
+
+#: classes/PublishPress/Permissions.php:1280
+msgid "Integration with permission groups"
+msgstr "İzin grupları ile entegrasyon"
+
+#: classes/PublishPress/Permissions.php:1288
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:45, fuzzy
+msgid "Beaver Builder"
+msgstr "Beaver Builder"
+
+#: classes/PublishPress/Permissions.php:1289
+msgid "Compatibility with Edit Permissions in Beaver Builder."
+msgstr "Beaver Builder'daki İzinleri Düzenle ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1293
+msgid "Beaver editor integration"
+msgstr "Beaver editör entegrasyonu"
+
+#: classes/PublishPress/Permissions.php:1294
+#: classes/PublishPress/Permissions.php:1353
+msgid "Widget-level permission controls"
+msgstr "Widget düzeyinde izin kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1295
+#: classes/PublishPress/Permissions.php:1354
+msgid "Template access restrictions"
+msgstr "Şablon erişim kısıtlamaları"
+
+#: classes/PublishPress/Permissions.php:1303
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:44
+msgid "bbPress Forums"
+msgstr "bbPress Forumları"
+
+#: classes/PublishPress/Permissions.php:1304
+msgid "Forum-specific permissions"
+msgstr "Forum özel izinleri"
+
+#: classes/PublishPress/Permissions.php:1309
+msgid "Topic creation restrictions"
+msgstr "Konu oluşturma kısıtlamaları"
+
+#: classes/PublishPress/Permissions.php:1310
+msgid "Forum access controls"
+msgstr "Forum erişim kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1318
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:47, fuzzy
+msgid "BuddyPress"
+msgstr "BuddyPress"
+
+#: classes/PublishPress/Permissions.php:1319
+msgid "Assign post permissions to BuddyPress groups"
+msgstr "BuddyPress gruplarına gönderi izinleri atayın"
+
+#: classes/PublishPress/Permissions.php:1324
+msgid "Assign term permissions to BuddyPress groups"
+msgstr "BuddyPress gruplarına terim izinleri atayın"
+
+#: classes/PublishPress/Permissions.php:1325
+msgid "Group-based content permissions"
+msgstr "Grup tabanlı içerik izinleri"
+
+#: classes/PublishPress/Permissions.php:1333
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:48
+msgid "CMS Tree View"
+msgstr "CMS Ağaç Görünümü"
+
+#: classes/PublishPress/Permissions.php:1334
+msgid "Compatibility with Edit Permissions in CMS Tree View."
+msgstr "CMS Ağaç Görünümü'nde İzinleri Düzenleme ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1338
+msgid "Permission-aware tree view"
+msgstr "İzin bilincine sahip ağaç görünümü"
+
+#: classes/PublishPress/Permissions.php:1339
+msgid "Hierarchical content controls"
+msgstr "Hiyerarşik içerik kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1347
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:49, fuzzy
+msgid "Elementor"
+msgstr "Elementor"
+
+#: classes/PublishPress/Permissions.php:1348
+msgid "Compatibility with Edit Permissions in Elementor."
+msgstr "Elementor'da İzinleri Düzenleme ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1352
+msgid "Elementor editor integration"
+msgstr "Elementor editör entegrasyonu"
+
+#: classes/PublishPress/Permissions.php:1362
+msgid "The Events Calendar"
+msgstr "Etkinlik Takvimi"
+
+#: classes/PublishPress/Permissions.php:1363
+msgid "Apply permission controls to events and event-related content."
+msgstr "Etkinlikler ve etkinlikle ilgili içeriklere izin kontrolleri uygulayın."
+
+#: classes/PublishPress/Permissions.php:1367
+msgid "Event post permissions"
+msgstr "Etkinlik gönderi izinleri"
+
+#: classes/PublishPress/Permissions.php:1368
+msgid "Event taxonomy controls"
+msgstr "Etkinlik taksonomi kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1376
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:50
+msgid "Nested Pages"
+msgstr "İç içe Sayfalar"
+
+#: classes/PublishPress/Permissions.php:1377
+msgid "Compatibility with Edit Permissions in Nested Pages."
+msgstr "İç içe Sayfalarda İzinleri Düzenleme ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1381
+msgid "Permission-aware nested view"
+msgstr "İzin bilincine sahip iç içe görünüm"
+
+#: classes/PublishPress/Permissions.php:1382
+msgid "Quick edit integration"
+msgstr "Hızlı düzenleme entegrasyonu"
+
+#: classes/PublishPress/Permissions.php:1390
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:51
+msgid "PublishPress Statuses"
+msgstr "PublishPress Statüleri"
+
+#: classes/PublishPress/Permissions.php:1391
+msgid "Compatibility with PublishPress Statuses plugin."
+msgstr "PublishPress Statüleri eklentisi ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1395
+msgid "Custom status permissions"
+msgstr "Özel statü izinleri"
+
+#: classes/PublishPress/Permissions.php:1396
+msgid "Workflow-specific access controls"
+msgstr "İş akışına özgü erişim kontrolü"
+
+#: classes/PublishPress/Permissions.php:1397
+msgid "Status-based editing capabilities"
+msgstr "Statü tabanlı düzenleme yetenekleri"
+
+#: classes/PublishPress/Permissions.php:1405
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52, fuzzy
+msgid "Relevanssi"
+msgstr "Relevanssi"
+
+#: classes/PublishPress/Permissions.php:1406
+msgid "Search result filtering"
+msgstr "Arama sonucu filtreleme"
+
+#: classes/PublishPress/Permissions.php:1411
+msgid "Permission-aware indexing"
+msgstr "İzin bilincine sahip indeksleme"
+
+#: classes/PublishPress/Permissions.php:1412
+msgid "Secure content discovery"
+msgstr "Güvenli içerik keşfi"
+
+#: classes/PublishPress/Permissions.php:1420
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53, fuzzy
+msgid "SearchWP"
+msgstr "SearchWP"
+
+#: classes/PublishPress/Permissions.php:1421
+msgid "Compatibility with SearchWP term filtering for advanced search capabilities."
+msgstr "Gelişmiş arama yetenekleri için SearchWP terim filtrelemesi ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1425
+msgid "Permission-aware search results"
+msgstr "İzin bilincine sahip arama sonuçları"
+
+#: classes/PublishPress/Permissions.php:1426
+msgid "Term-based filtering"
+msgstr "Terim tabanlı filtreleme"
+
+#: classes/PublishPress/Permissions.php:1427
+msgid "Advanced search controls"
+msgstr "Gelişmiş arama kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1435
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: classes/PublishPress/Permissions.php:1436
+msgid "Apply permission controls to WooCommerce products and product categories."
+msgstr "WooCommerce ürünleri ve ürün kategorilerine izin kontrolleri uygulayın."
+
+#: classes/PublishPress/Permissions.php:1440
+msgid "Product permissions"
+msgstr "Ürün izinleri"
+
+#: classes/PublishPress/Permissions.php:1441
+msgid "Product category controls"
+msgstr "Ürün kategori kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1449
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55, fuzzy
+msgid "WPML"
+msgstr "WPML"
+
+#: classes/PublishPress/Permissions.php:1450
+msgid "Permission synchronization across translations"
+msgstr "Çeviriler arasında izin senkronizasyonu"
+
+#: classes/PublishPress/Permissions.php:1455
+msgid "Language-specific content access"
+msgstr "Dil spesifik içerik erişimi"
+
+#: classes/PublishPress/Permissions.php:1456
+msgid "Multilingual permission management"
+msgstr "Çok dilli izin yönetimi"
+
+#: classes/PublishPress/Permissions.php:1464
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56, fuzzy
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: classes/PublishPress/Permissions.php:1465
+msgid "Exclude restricted posts from XML sitemaps to maintain proper SEO indexing."
+msgstr ""
+"Doğru SEO dizinlemesini sağlamak için kısıtlı gönderileri XML site "
+"haritalarından hariç tutun."
+
+#: classes/PublishPress/Permissions.php:1469
+msgid "Sitemap filtering for restricted content"
+msgstr "Kısıtlı içerik için site haritası filtreleme"
+
+#: classes/PublishPress/Permissions.php:1470
+msgid "Search engine visibility controls"
+msgstr "Arama motoru görünürlük kontrolleri"
+
+#: classes/PublishPress/Permissions.php:1471
+msgid "Permission-aware XML sitemaps"
+msgstr "İzin bilincine sahip XML site haritaları"
+
+#: classes/PublishPress/Permissions.php:1479
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57, fuzzy
+msgid "YooTheme"
+msgstr "YooTheme"
+
+#: classes/PublishPress/Permissions.php:1480
+msgid "Compatibility with YooTheme builder and term permissions."
+msgstr "YooTheme oluşturucu ve terim izinleri ile uyumluluk."
+
+#: classes/PublishPress/Permissions.php:1484
+msgid "Builder interface compatibility"
+msgstr "Oluşturucu arayüzü uyumluluğu"
+
+#: classes/PublishPress/Permissions.php:1485
+msgid "Term permission integration"
+msgstr "Terim izin entegrasyonu"
+
+#: classes/PublishPress/Permissions.php:1486
+msgid "Template access controls"
+msgstr "Şablon erişim kontrolleri"
+
+#: classes/PublishPress/Permissions/Admin.php:100
+msgid "Viewing"
+msgstr "Görüntüleme"
+
+#: classes/PublishPress/Permissions/Admin.php:165
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+msgid "Access Circles"
+msgstr "Erişim Daireleri"
+
+#: classes/PublishPress/Permissions/Admin.php:166
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
+msgid "Editing Permissions"
+msgstr "Düzenleme İzinleri"
+
+#: classes/PublishPress/Permissions/Admin.php:167
+msgid "Compatibility Pack"
+msgstr "Uyumluluk Paketi"
+
+#: classes/PublishPress/Permissions/Admin.php:168
+#: includes/CoreAdmin.php:67
+#: includes/CoreAdmin.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:83
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:84
+msgid "Teaser"
+msgstr "Tanıtım"
+
+#: classes/PublishPress/Permissions/Admin.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:34
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:109
+msgid "File Access"
+msgstr "Dosya Erişimi"
+
+#: classes/PublishPress/Permissions/Admin.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:109
+msgid "Membership"
+msgstr "Üyelik"
+
+#: classes/PublishPress/Permissions/Admin.php:171
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:36
+#: includes/promo/sync-promo.php:4
+msgid "User Posts"
+msgstr "Kullanıcı Paylaşımları"
+
+#: classes/PublishPress/Permissions/Admin.php:175
+msgid "Post-specific and category-specific permissions for creation and editing."
+msgstr "Oluşturma ve düzenleme için gönderi-özel ve kategori-özel izinler."
+
+#: classes/PublishPress/Permissions/Admin.php:177
+msgid "If you like %s, please leave us a %s rating. Thank you!"
+msgstr "Eğer %s'yi beğendiyseniz, lütfen bize bir %s puanı bırakın. Teşekkür ederiz!"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About PublishPress Permissions"
+msgstr "PublishPress İzinleri Hakkında"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About"
+msgstr "Hakkında"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Permissions Documentation"
+msgstr "İzinler Belgeleri"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Documentation"
+msgstr "Belgeler"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact the PublishPress team"
+msgstr "PublishPress ekibi ile iletişime geçin"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact"
+msgstr "İletişim"
+
+#: classes/PublishPress/Permissions/Compat/EyesOnly.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
+msgid "Permission Group"
+msgstr "İzin Grubu"
+
+#: classes/PublishPress/Permissions/Constants.php:21
+msgid "Extra Roles assignment available for {All} and {Anonymous} metagroups"
+msgstr "{All} ve {Anonymous} meta grupları için ek Roller ataması mevcut"
+
+#: classes/PublishPress/Permissions/Constants.php:24
+msgid "Don't assign or apply specific permissions for the 'post' type"
+msgstr "'Gönderi' türü için özel izinleri atamayın veya uygulamayın"
+
+#: classes/PublishPress/Permissions/Constants.php:32
+msgid "Don't assign or apply specific permissions for the 'page' type"
+msgstr "'Sayfa' türü için özel izinleri atamayın veya uygulamayın"
+
+#: classes/PublishPress/Permissions/Constants.php:33
+msgid "Don't assign or apply specific permissions for the 'media' type"
+msgstr "'Medya' türü için özel izinleri atamayın veya uygulamayın"
+
+#: classes/PublishPress/Permissions/Constants.php:34
+msgid "Include scheduled posts in the posts query if user can edit them"
+msgstr ""
+"Kullanıcı bunları düzenleyebiliyorsa, zamanlanmış gönderileri gönderi "
+"sorgusuna dahil et"
+
+#: classes/PublishPress/Permissions/Constants.php:41
+msgid "Don't filter term post counts in get_terms() call"
+msgstr "get_terms() çağrısında terim gönderi sayısını filtreleme"
+
+#: classes/PublishPress/Permissions/Constants.php:42
+msgid "Leave unreadable posts on WP Navigation Menus"
+msgstr "Okunamaz gönderileri WP Navigasyon Menülerinde bırak"
+
+#: classes/PublishPress/Permissions/Constants.php:43
+msgid "Don't apply CSS to hide empty Nav Menus"
+msgstr "Boş Nav Menülerini gizlemek için CSS uygulama"
+
+#: classes/PublishPress/Permissions/Constants.php:44
+msgid "For legacy Nav Menus, hide empty nav menu div"
+msgstr "Eski Nav Menüler için, boş nav menü div'ini gizle"
+
+#: classes/PublishPress/Permissions/Constants.php:45
+msgid "Leave terms with no readable posts on WP Navigation Menus"
+msgstr "Okunabilir gönderisi olmayan terimleri WP Navigasyon Menülerinde bırak"
+
+#: classes/PublishPress/Permissions/Constants.php:52
+msgid "Filter priority for 'get_pages' filter (default: 1)"
+msgstr "'get_pages' filtresi için filtre önceliği (varsayılan: 1)"
+
+#: classes/PublishPress/Permissions/Constants.php:64
+msgid "Attached Files Private setting available"
+msgstr "Eklendi Dosyalar Özel ayarı mevcut"
+
+#: classes/PublishPress/Permissions/Constants.php:107
+msgid "Comma-separated list of mime types to exclude from File Access filtering"
+msgstr ""
+"Dosya Erişimi filtrelemesinden hariç tutulacak mime türlerinin virgülle "
+"ayrılmış listesi"
+
+#: classes/PublishPress/Permissions/Constants.php:108
+msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
+msgstr "Dosya erişimi engellendiğinde, WP_Query 404 / 403 özelliğini ayarlamayın"
+
+#: classes/PublishPress/Permissions/Constants.php:110
+msgid "HTTP status code to send when file access is blocked"
+msgstr "Dosya erişimi engellendiğinde gönderilecek HTTP durum kodu"
+
+#: classes/PublishPress/Permissions/Constants.php:118
+msgid "Don't filter comment display or moderation within wp-admin"
+msgstr "wp-admin içinde yorum görüntüleme veya moderasyonunu filtrelemeyin"
+
+#: classes/PublishPress/Permissions/Constants.php:123
+msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
+msgstr ""
+"İzinler menüsünü Kullanıcılar altında konumlandırmak için yönetici menü "
+"indekslerini ayarlamayın"
+
+#: classes/PublishPress/Permissions/Constants.php:132
+msgid "Customize Permissions screen title for Groups"
+msgstr "Gruplar için İzinler ekran başlığını özelleştirin"
+
+#: classes/PublishPress/Permissions/Constants.php:139
+msgid "Customize Permission Groups caption on user profile"
+msgstr "Kullanıcı profilindeki İzin Grupları başlığını özelleştirin"
+
+#: classes/PublishPress/Permissions/Constants.php:140
+msgid "Only one group is selectable on Add User screen"
+msgstr "Kullanıcı Ekle ekranında yalnızca bir grup seçilebilir"
+
+#: classes/PublishPress/Permissions/Constants.php:141
+msgid "Only one group is selectable on Edit User screen"
+msgstr "Kullanıcı Düzenle ekranında yalnızca bir grup seçilebilir"
+
+#: classes/PublishPress/Permissions/Constants.php:142
+msgid "Display a custom hint on Permissions > User Groups"
+msgstr "İzinler > Kullanıcı Gruplarında özel bir ipucu görüntüle"
+
+#: classes/PublishPress/Permissions/Constants.php:143
+msgid "Max number of hierarchical posts / terms to display at one time (per page)"
+msgstr ""
+"Bir seferde görüntülenecek maksimum hiyerarşik gönderi / terim sayısı "
+"(sayfa başına)"
+
+#: classes/PublishPress/Permissions/Constants.php:145
+msgid "Make search function on the post selection metabox look at post content"
+msgstr ""
+"Gönderi seçim metabox'undaki arama işlevini gönderi içeriğine bakacak "
+"şekilde ayarla"
+
+#: classes/PublishPress/Permissions/Constants.php:148
+msgid "Make search function on the post selection metabox look at post excerpt"
+msgstr ""
+"Gönderi seçim metabox'undaki arama işlevini gönderi alıntısına bakacak "
+"şekilde ayarla"
+
+#: classes/PublishPress/Permissions/Constants.php:154
+msgid "Search by last name instead of display name"
+msgstr "Görüntüleme adı yerine soyadıyla ara"
+
+#: classes/PublishPress/Permissions/Constants.php:155
+msgid "User field to search by default"
+msgstr "Varsayılan olarak arama yapılacak kullanıcı alanı"
+
+#: classes/PublishPress/Permissions/Constants.php:156
+msgid "User meta fields selectable for search (comma-separated)"
+msgstr "Arama için seçilebilir kullanıcı meta alanları (virgülle ayrılmış)"
+
+#: classes/PublishPress/Permissions/Constants.php:157
+msgid "User meta fields which should be treated as numeric (comma-separated)"
+msgstr ""
+"Sayısal olarak ele alınması gereken kullanıcı meta alanları (virgülle "
+"ayrılmış)"
+
+#: classes/PublishPress/Permissions/Constants.php:158
+msgid "User meta fields which should be treated as boolean (comma-separated)"
+msgstr ""
+"Boolean olarak ele alınması gereken kullanıcı meta alanları (virgülle "
+"ayrılmış)"
+
+#: classes/PublishPress/Permissions/Constants.php:159
+msgid "Use display name for search results instead of user_login"
+msgstr "Arama sonuçları için kullanıcı_login yerine görüntüleme adını kullan"
+
+#: classes/PublishPress/Permissions/Constants.php:166
+msgid "Work around database setup warnings (at plugin activation) on some servers"
+msgstr ""
+"Bazı sunucularda veritabanı kurulumu uyarılarını (eklenti "
+"etkinleştirildiğinde) aşın"
+
+#: classes/PublishPress/Permissions/Constants.php:213
+msgid "Logged In"
+msgstr "Giriş Yapıldı"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:448
+msgid "Not Logged In"
+msgstr "Giriş Yapılmadı"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+msgid "Everyone"
+msgstr "Herkes"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/DB/Groups.php:469
+msgid "Change Request Notifications"
+msgstr "Değişiklik Talebi Bildirimleri"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/DB/Groups.php:469
+msgid "Pending Revision Monitors"
+msgstr "Bekleyen Revizyon İzleyicileri"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Scheduled Change Notifications"
+msgstr "Planlanan Değişiklik Bildirimleri"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Scheduled Revision Monitors"
+msgstr "Planlanan Revizyon İzleyicileri"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:486
+msgid "Authenticated site users, except for Administrators"
+msgstr "Yönetici hariç, kimlik doğrulanmış site kullanıcıları"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:488
+msgid "Anonymous users (not logged in)"
+msgstr "Anonim kullanıcılar (giriş yapmamış)"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:490
+msgid "All users (including anonymous)"
+msgstr "Tüm kullanıcılar (anonim olanlar dahil)"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:495
+#, php-format
+msgid "All users with the WordPress role of %s"
+msgstr "WordPress rolüne sahip tüm kullanıcılar %s"
+
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:145
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:90
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade %2$s to version %3$s or later."
+msgstr "%1$s, %2$s'yı %3$s veya daha yeni bir sürüme yükseltmeden çalışmayacak."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:112
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade WordPress to version %2$s or later."
+msgstr "%1$s, WordPress'i %2$s veya daha yeni bir sürüme yükseltmeden çalışmayacak."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:122
+#, php-format
+msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
+msgstr "%1$s modülü etkinleştirildi (%2$s klasöründe %3$s)."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:183
+msgid "Dismiss"
+msgstr "Kapat"
+
+#: classes/PublishPress/Permissions/Groups.php:54
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:335
+msgid "Custom Group"
+msgstr "Özel Grup"
+
+#: classes/PublishPress/Permissions/Groups.php:55
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+msgid "Custom Groups"
+msgstr "Özel Gruplar"
+
+#: classes/PublishPress/Permissions/Groups.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:41
+msgid "Groups"
+msgstr "Gruplar"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:95
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:158
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:190
+#, php-format
+msgid "(using default capabilities due to invalid %s definition)"
+msgstr "(geçersiz %s tanımı nedeniyle varsayılan yetenekler kullanılıyor)"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:144
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:168
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+msgstr "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:181
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:200
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s%3$s"
+msgstr "%1$s&nbsp;%2$s%3$s"
+
+#: classes/PublishPress/Permissions/PluginStatus.php:12
+#, php-format
+msgid "(login timed out)"
+msgstr "(giriş süresi doldu)"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
+msgid "View"
+msgstr "Görüntüle"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#, php-format
+msgid "Control assignment of terms to selected %s."
+msgstr "Seçilen %s için terimlerin atamasını kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
+#, php-format
+msgid "Control parent selection for selected %s."
+msgstr "Seçilen %s için üst öğe seçimini kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control editing of selected %s."
+msgstr "Seçilen %s için düzenlemeyi kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#, php-format
+msgid "Control publishing of selected %s."
+msgstr "Seçilen %s için yayınlamayı kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#, php-format
+msgid "Control deletion of selected %s."
+msgstr "Seçilen %s için silmeyi kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#, php-format
+msgid "Control term management for selected %s."
+msgstr "Seçilen %s için terim yönetimini kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#, php-format
+msgid "Control frontend viewing of selected %s."
+msgstr "Seçilen %s için ön uç görünümünü kontrol et."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:133
+msgid "Enable"
+msgstr "Etkinleştir"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:138
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:987
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
+msgid "Block"
+msgstr "Engelle"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:141
+msgid "Limit to"
+msgstr "Sınırlamak için"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:146
+msgid "Selected:"
+msgstr "Seçilen:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
+msgid "Nav Menus (Legacy)"
+msgstr "Geçmiş Nav Menüler"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:993
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:230
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
+msgid "Legacy"
+msgstr "Geçmiş"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:211
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:224
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:230
+#, fuzzy, php-format
+msgid "%s:"
+msgstr "%s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:258
+#, php-format
+msgid "Selected %s:"
+msgstr "Seçilen %s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:265
+#, php-format
+msgid "Sub-%s:"
+msgstr "Alt-%s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:298
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:174
+msgid "All Statuses"
+msgstr "Tüm Durumlar"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:311
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1902
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
+#, php-format
+msgid "%s Visibility"
+msgstr "%s Görünürlüğü"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:35
+msgid "No user/group specified."
+msgstr "Belirtilen kullanıcı/grup yok."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:52
+#: classes/PublishPress/Permissions/UI/GroupNew.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:21
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:36
+msgid "You are not permitted to do that."
+msgstr "Bunu yapmanıza izin verilmiyor."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:46
+msgid "Invalid user ID."
+msgstr "Geçersiz kullanıcı kimliği."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:55
+msgid "Invalid group ID."
+msgstr "Geçersiz grup kimliği."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:89
+msgid "Roles updated."
+msgstr "Roller güncellendi."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:92
+msgid "Specific Permissions updated."
+msgstr "Belirli İzinler güncellendi."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:95
+msgid "Roles and Permissions copied."
+msgstr "Roller ve İzinler kopyalandı."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:98
+msgid "Group updated."
+msgstr "Grup güncellendi."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:102
+#: classes/PublishPress/Permissions/UI/GroupNew.php:50
+msgid "Back to permissions list"
+msgstr "İzinler listesine geri dön"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Edit User Permissions"
+msgstr "Kullanıcı İzinlerini Düzenle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Add User Permissions"
+msgstr "Kullanıcı İzinleri Ekle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:132
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:282
+msgid "Edit Permissions"
+msgstr "İzinleri Düzenle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#, php-format
+msgid "Edit Permissions (%s)"
+msgstr "İzinleri Düzenle (%s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
+#, php-format
+msgid "%sEdit WordPress Role%s"
+msgstr "%sWordPress Rolünü Düzenle%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:144
+msgid "Edit role capabilities directly"
+msgstr "Rol yeteneklerini doğrudan düzenle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:272
+msgid "Add New"
+msgstr "Yeni Ekle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:195
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
+msgid "Name:"
+msgstr "İsim:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:206
+msgid "Email:"
+msgstr "E-posta:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:219
+msgid "Primary Role:"
+msgstr "Ana Rol:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:238
+msgid "User ID:"
+msgstr "Kullanıcı ID:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:246
+msgid "Member since:"
+msgstr "Üye Olunan Tarih:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:266
+msgid "Description:"
+msgstr "Açıklama:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:284
+msgid "Update Permissions"
+msgstr "İzinleri Güncelle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
+msgid "View Full Profile"
+msgstr "Tam Profili Görüntüle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:414
+msgid "View currently stored user permissions:"
+msgstr "Şu anda kayıtlı kullanıcı izinlerini görüntüle:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#, php-format
+msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
+msgstr "%1$sDoğrudan Ekstra Roller atanan Kullanıcılar%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:419
+#, php-format
+msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
+msgstr "%1$sDoğrudan Belirli İzinler atanan Kullanıcılar%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:420
+#, php-format
+msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
+msgstr "%1$sEkstra Rollere veya Belirli İzinlere sahip Kullanıcılar doğrudan%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:16
+msgid "Add Roles"
+msgstr "Rolleri Ekle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:17
+msgid "Clear"
+msgstr "Temizle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:18
+msgid "No statuses selected!"
+msgstr "Hiçbir durum seçilmedi!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:19
+msgid "Review the selection below, and then click <strong>Save Roles</strong>."
+msgstr ""
+"Aşağıdaki seçimi gözden geçirin ve ardından <strong>Rolleri Kaydet</strong> "
+"butonuna tıklayın."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:20
+msgid "Role already selected!"
+msgstr "Rol zaten seçildi!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+msgid "No Action selected!"
+msgstr "Hiçbir Eylem seçilmedi!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:22
+msgid "Saving Roles..."
+msgstr "Roller Kaydediliyor..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Reload form for further changes to this role"
+msgstr "Bu rol için daha fazla değişiklik yapmak üzere formu yeniden yükleyin"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:40
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
+msgid "Add Specific Permissions"
+msgstr "Belirli İzinleri Ekle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:41
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1402
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
+msgid "Remove"
+msgstr "Kaldır"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
+msgid "Permission already selected!"
+msgstr "İzin zaten seçildi!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+msgid "Saving Permissions..."
+msgstr "İzinler Kaydediliyor..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+msgid "Reload form for further changes to this permission"
+msgstr "Bu izin için daha fazla değişiklik yapmak üzere formu yeniden yükleyin"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+msgid "Permissions mirrored. Reload form to view newly saved permissions."
+msgstr ""
+"İzinler yansıtıldı. Yeni kaydedilen izinleri görmek için formu yeniden "
+"yükleyin."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+msgid "Permissions converted. Reload form to view newly saved permissions."
+msgstr ""
+"İzinler dönüştürüldü. Yeni kaydedilen izinleri görmek için formu yeniden "
+"yükleyin."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+msgid "No Qualification selected!"
+msgstr "Hiçbir Nitelik seçilmedi!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:62
+msgid "No items selected!"
+msgstr "Hiçbir öğe seçilmedi!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1274
+msgid "(no parent)"
+msgstr "(üst yok)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:897
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:273
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:275
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:545
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:547
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:553
+msgid "(none)"
+msgstr "(yok)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:69
+msgid "No results found."
+msgstr "Sonuç bulunamadı."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:92
+msgid "select..."
+msgstr "seç..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:985
+msgid "Nav Menu (Block)"
+msgstr "Navigasyon Menüsü (Blok)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:107
+msgid "All Post Types"
+msgstr "Tüm Gönderi Türleri"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
+msgid "n/a"
+msgstr "geçerli değil"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:129
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+msgid "Post Type"
+msgstr "Gönderi Türü"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+msgid "Operation"
+msgstr "İşlem"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+msgid "Adjustment"
+msgstr "Ayarlama"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
+msgid "Qualification"
+msgstr "Nitelik"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
+msgid "Statuses"
+msgstr "Durumlar"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:165
+msgid "for item"
+msgstr "öğe için"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:188
+msgid "Role"
+msgstr "Rol"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:256
+msgid "For Statuses"
+msgstr "Durumlar için"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:275
+msgid "Standard statuses"
+msgstr "Standart durumlar"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+msgid "Status: Private"
+msgstr "Durum: Özel"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+msgid "Add Role"
+msgstr "Rol Ekle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
+msgstr ""
+"bbPress forumları için roller atamak üzere Uyumluluk Paketi özelliğini "
+"etkinleştiriniz."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:300
+#, php-format
+msgid "Select %s"
+msgstr "%s Seçin"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:782
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1115
+msgid "Status"
+msgstr "Durum"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
+msgid "Save Roles"
+msgstr "Rolleri Kaydet"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
+msgid "Save Permissions"
+msgstr "İzinleri Kaydet"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
+msgid "Add Extra Roles"
+msgstr "Ekstra Roller Ekle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Copy"
+msgstr "Kopyala"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#, php-format
+msgid "Extra Roles %1$s(for this user)%2$s"
+msgstr "Ekstra Roller %1$s(bu kullanıcı için)%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:652
+msgid "Extra Roles"
+msgstr "Ekstra Roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:676
+msgid "Show Groups"
+msgstr "Grupları Göster"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:705
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:765
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1099
+msgid "item(s)"
+msgstr "öğe(ler)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:727
+msgid "Term Management"
+msgstr "Terim Yönetimi"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:737
+msgid "objects"
+msgstr "nesneler"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:732
+msgid "Direct-Assigned"
+msgstr "Doğrudan Atanan"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:738
+msgid "Disabled Type"
+msgstr "Devre Dışı Tür"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:764
+#, php-format
+msgid "%s Roles"
+msgstr "%s Roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:830
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:553
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:730
+msgid "Apply"
+msgstr "Uygula"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:991
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
+msgid "Nav Menu (Legacy)"
+msgstr "Geçmiş Nav Menü"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#, php-format
+msgid "%s Permissions"
+msgstr "%s İzinleri"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1029
+msgid "(all post types)"
+msgstr "(tüm gönderi türleri)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1050
+#, fuzzy, php-format
+msgid "%1$s (%2$s: %3$s)"
+msgstr "%1$s (%2$s: %3$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1051
+#, fuzzy, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+msgid "item"
+msgstr "öğe"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+msgid "items"
+msgstr "öğeler"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1150
+msgid "unpublished"
+msgstr "yayınlanmamış"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1157
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:290
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
+#, fuzzy, php-format
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1204
+#, php-format
+msgid "this %1$s"
+msgstr "bu %1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1209
+#, php-format
+msgid "sub-%1$s of this %2$s"
+msgstr "bu %2$s'nin alt-%1$s'si"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1215
+#, php-format
+msgid "this %1$s and its sub-%2$s"
+msgstr "bu %1$s ve onun alt-%2$s'leri"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1224
+#, php-format
+msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
+msgstr "%1$s erişimi için %2$s ETKİN, rol yeteneklerinden bağımsız olarak."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1257
+#, php-format
+msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
+msgstr "%1$s erişimi için %2$s ENGELLİ, başka bir İzinle etkinleştirilmediği sürece."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1264
+#, php-format
+msgid "Assigned for sub-%s only."
+msgstr "Sadece alt-%s için atanmıştır."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1353
+#, php-format
+msgid "Assigned for %s and sub-%s."
+msgstr "%s ve alt-%s için atanmıştır."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1377
+msgid "This Permission is redundant due to a corresponding Limitation."
+msgstr "Bu İzin, karşılık gelen bir Kısıtlama nedeniyle gereksizdir."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1384
+#, php-format
+msgid "Edit %s"
+msgstr "%s'yi Düzenle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
+#, php-format
+msgid "Assign for selected and sub-%s"
+msgstr "Seçilen ve alt-%s için Ata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1410
+#, php-format
+msgid "Assign for selected %s only"
+msgstr "Sadece seçilen %s için Ata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1414
+#, php-format
+msgid "Assign for sub-%s only"
+msgstr "Sadece alt-%s için Ata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1419
+msgid "Assign for selected and sub-terms"
+msgstr "Seçilen ve alt-terimler için Ata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+msgid "Assign for selected term only"
+msgstr "Sadece seçilen terim için Ata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1427
+msgid "Assign for sub-terms only"
+msgstr "Sadece alt-terimler için Ata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1438
+msgid "Convert to \"Enabled\""
+msgstr "\"Etkin\" olarak Dönüştür"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1439
+msgid "Convert to \"Blocked\""
+msgstr "\"Engellenmiş\" olarak Dönüştür"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1440
+msgid "Convert to \"Limit to\""
+msgstr "\"Sınırlı\" olarak Dönüştür"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1497
+#, php-format
+msgid "Mirror to %s"
+msgstr "%s'ye Yansıt"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1501
+#, php-format
+msgid "Mirror to %s %s"
+msgstr "%s %s'ye Yansıt"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1560
+msgid "= Enabled"
+msgstr "= Etkin"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+msgid "= Blocked"
+msgstr "= Engellenmiş"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1574
+msgid "= Limitation"
+msgstr "= Kısıtlama"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#, php-format
+msgid "= %1$s and sub-%1$s"
+msgstr "= %1$s ve alt-%1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1594
+#, php-format
+msgid "= sub-%s only"
+msgstr "= sadece alt-%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
+msgid "Note:"
+msgstr "Not:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1614
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1638
+#, php-format
+msgid "Sub-%1$s Permissions are not separately listed."
+msgstr "Alt-%1$s İzinleri ayrı olarak listelenmemiştir."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1618
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1642
+msgid "Show All"
+msgstr "Hepsini Göster"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1627
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1650
+#, php-format
+msgid "Hide auto-assigned Sub-%s Permissions"
+msgstr "Otomatik atanan Alt-%s İzinlerini Gizle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
+msgid " %1$sFix Sub-%2$s Permissions%3$s"
+msgstr " %1$sAlt-%2$s İzinlerini Düzelt%3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1711
+msgid "Group Restrictions are not available because of a constant definition"
+msgstr "Grup Kısıtlamaları bir sabit tanımı nedeniyle mevcut değil"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1728
+msgid "Group Members"
+msgstr "Grup Üyeleri"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1837
+msgid "Copy Roles and Permissions from:"
+msgstr "Rolleri ve İzinleri Kopyala:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1860
+msgid "Copy Roles and Permissions"
+msgstr "Rolleri ve İzinleri Kopyala"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+msgid "Limit to:"
+msgstr "Sınırla:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
+msgid "Blocked:"
+msgstr "Engellendi:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+msgid "Enabled:"
+msgstr "Etkin:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1895
+msgid "Direct-assigned"
+msgstr "Doğrudan atanan"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1908
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
+msgid "Standard Statuses"
+msgstr "Standart Durumlar"
+
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:60
+msgid "(invalid role definition)"
+msgstr "(geçersiz rol tanımı)"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:45
+#, php-format
+msgid "eligible (%d):"
+msgstr "uygun (%d):"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:47
+#, php-format
+msgid "current (%d):"
+msgstr "mevcut (%d):"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:123
+msgid "view / edit group"
+msgstr "grubu görüntüle / düzenle"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:124
+msgid "edit"
+msgstr "düzenle"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:58
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:290
+#, php-format
+msgid "Find Users by %s"
+msgstr "%s ile Kullanıcıları Bul"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:60
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:292
+msgid "Search Users"
+msgstr "Kullanıcıları Ara"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:295
+msgid "Search Custom Groups"
+msgstr "Özel Grupları Ara"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:83
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:312
+msgid "For additional fields, define constant PP_USER_SEARCH_META_FIELDS"
+msgstr "Ek alanlar için, sabit PP_USER_SEARCH_META_FIELDS tanımlayın"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "First Name"
+msgstr "Ad"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Last Name"
+msgstr "Soyad"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Nickname"
+msgstr "Takma Ad"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:110
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:339
+msgid "(user field)"
+msgstr "(kullanıcı alanı)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:140
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:369
+msgid "(any WP role)"
+msgstr "(herhangi bir WP rolü)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:156
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:428
+msgid "Search Results:"
+msgstr "Arama Sonuçları:"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:173
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:448
+msgid "Current Selections:"
+msgstr "Mevcut Seçimler:"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
+#: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
+#: classes/PublishPress/Permissions/UI/Groups.php:180
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:39
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:164
+msgid "Permissions"
+msgstr "İzinler"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:271
+msgid "Add New Permission Group"
+msgstr "Yeni İzin Grubu Ekle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
+msgid "Edit"
+msgstr "Düzenle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:96
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:97
+msgid "Role Usage"
+msgstr "Rol Kullanımı"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:310
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:311
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:107
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:108
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:64
+msgid "Edit Role Usage"
+msgstr "Rol Kullanımını Düzenle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:323
+msgid "Settings"
+msgstr "Ayarlar"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
+msgid "(Default access: Enabled)"
+msgstr "(Varsayılan erişim: Etkin)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:17
+msgid "(Default access: Blocked)"
+msgstr "(Varsayılan erişim: Engelli)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:18
+msgid "(No setting)"
+msgstr "(Hiçbir ayar yok)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:19
+msgid "Enabled"
+msgstr "Etkin"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:20
+msgid "Blocked"
+msgstr "Engellenmiş"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:21
+msgid "(Blocked)"
+msgstr "(Engellenmiş)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:22
+msgid "Unblocked"
+msgstr "Engellenmemiş"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:42
+msgid "Roles"
+msgstr "Roller"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:60
+msgid "User"
+msgstr "Kullanıcı"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
+#, php-format
+msgid "This %s"
+msgstr "Bu %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
+#, php-format
+msgid "Sub-%s"
+msgstr "Alt-%s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:273
+msgid "Default All"
+msgstr "Varsayılan Tümü"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:297
+msgid "Group restrictions are not recommended."
+msgstr "Grup kısıtlamaları önerilmez."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:377
+#, php-format
+msgid "%d role"
+msgid_plural "%d roles"
+msgstr[0] "%d rol"
+msgstr[1] "%d roller"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
+#, php-format
+msgid "%d group"
+msgid_plural "%d groups"
+msgstr[0] "%d grup"
+msgstr[1] "%d gruplar"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
+#, php-format
+msgid "%d user"
+msgid_plural "%d users"
+msgstr[0] "%d kullanıcı"
+msgstr[1] "%d kullanıcılar"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:385
+msgid "No exceptions configured"
+msgstr "Hiçbir istisna yapılandırılmamış"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+msgid "Roles & Groups"
+msgstr "Roller & Gruplar"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+msgid "Search roles and groups..."
+msgstr "Roller ve grupları ara..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+msgid "Search roles..."
+msgstr "Rolleri ara..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:522
+#: classes/PublishPress/Permissions/UI/Groups.php:211
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:544
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:720
+msgid "Select All"
+msgstr "Tümünü Seç"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:547
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:548
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:723
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:724
+msgid "Bulk Actions"
+msgstr "Toplu İşlemler"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:549
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:725
+msgid "Set to Enabled"
+msgstr "Etkin olarak ayarla"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:550
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+msgid "Set to Blocked"
+msgstr "Engellendi olarak ayarla"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:551
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:727
+msgid "Set to Default"
+msgstr "Varsayılan olarak ayarla"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:733
+msgid "selected"
+msgstr "seçildi"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:583
+msgid "Search and add users..."
+msgstr "Kullanıcıları ara ve ekle..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:655
+msgid "No role exceptions set"
+msgstr "Rol istisnası yok"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
+msgid "No specific user permissions. Use the search box to add users."
+msgstr ""
+"Belirli kullanıcı izinleri yok. Kullanıcı eklemek için arama kutusunu "
+"kullanın."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:728
+msgid "Remove Selected"
+msgstr "Seçilenleri Kaldır"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:977
+#: classes/PublishPress/Permissions/UI/Groups.php:240
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
+msgid "Login State"
+msgstr "Giriş Durumu"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:984
+msgid "Group"
+msgstr "Grup"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+msgid "Sub-Sections"
+msgstr "Alt Bölümler"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+msgid "This Section"
+msgstr "Bu Bölüm"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
+msgid "Remove user from exceptions"
+msgstr "Kullanıcıyı istisnalardan kaldır"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
+#, php-format
+msgid "Editing can't be granted to non-users."
+msgstr "Düzenleme, kullanıcı olmayanlara verilemez."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:112
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:481
+#: classes/PublishPress/Permissions/UI/Settings.php:102
+msgid "Permissions Settings"
+msgstr "İzin Ayarları"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:135
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:248
+#, php-format
+msgid "Permissions: %s"
+msgstr "İzinler: %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:156
+#, php-format
+msgid "Permissions: Select this %s as Parent"
+msgstr "İzinler: Bu %s'yi Ana olarak seç"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:164
+#, php-format
+msgid "Permissions: Assign Terms to this %s"
+msgstr "İzinler: Bu %s'ye Terimler ata"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:172
+#, php-format
+msgid "Permissions: %s this %s"
+msgstr "İzinler: Bu %s'yi %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:505
+#, php-format
+msgid "enable custom permissions for %s"
+msgstr "%s için özel izinleri etkinleştir"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:273
+msgid "Select as Parent"
+msgstr "Ana Ebeveyn Olarak Seç"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:278
+msgid "Assign Terms"
+msgstr "Şartları Ata"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:37
+#, php-format
+msgid "Specific Permissions %1$s(for this user)%2$s"
+msgstr "Özel İzinler %1$s(bu kullanıcı için)%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:81
+#, php-format
+msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
+msgstr "Ekstra Rolleri %1$s(birincil rol veya grup üyeliğinden)%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:90
+msgid "Specific Permissions (from primary role or group membership)"
+msgstr "Özel İzinler (birincil rol veya grup üyeliğinden)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:189
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:172
+msgid "Permission Groups"
+msgstr "İzin Grupları"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:221
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "Bu kullanıcı herhangi bir özel İzin Grubunun üyesi değildir."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:225
+msgid "Edit this user's group membership"
+msgstr "Bu kullanıcının grup üyeliğini düzenle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:234
+msgid "%s, more..."
+msgstr "%s, daha fazla..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:307
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
+msgid "edit user permissions"
+msgstr "kullanıcı izinlerini düzenle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:138
+#, php-format
+msgid "Assign to %s"
+msgstr "%s'ye Ata"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:141
+msgid "Assign (All Types)"
+msgstr "Ata (Tüm Türler)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#, php-format
+msgid "%s (All Content)"
+msgstr "%s (Tüm İçerik)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:243
+#, php-format
+msgid "Permissions: %1$s in %2$s"
+msgstr "İzinler: %1$s içinde %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:272
+#, php-format
+msgid "Permissions: Assign this %2$s to %3$s"
+msgstr "İzinler: bu %2$s'yı %3$s'ya ata"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
+#, php-format
+msgid "Permissions: Assign this %2$s for All Post Types"
+msgstr "İzinler: bu %2$s'yı Tüm Gönderi Türleri için ata"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:285
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:298
+#, php-format
+msgid "Permissions: %1$s %2$s in this %3$s"
+msgstr "İzinler: %1$s %2$s bu %3$s içinde"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:291
+#, php-format
+msgid "Permissions: %1$s all content in this %2$s for All Post Types"
+msgstr "İzinler: %1$s tüm içeriği bu %2$s için Tüm Gönderi Türleri içinde"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:304
+#, php-format
+msgid "Permissions: %1$s this %2$s"
+msgstr "İzinler: %1$s bu %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:325
+#, php-format
+msgid "Click to list/edit universal permissions"
+msgstr "Evrensel izinleri listelemek/düzenlemek için tıklayın"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:60
+#, php-format
+msgid "%1$s Permissions %2$s*%3$s"
+msgstr "%1$s İzinleri %2$s*%3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:62
+msgid "Universal Permissions"
+msgstr "Evrensel İzinler"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:69
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:72
+msgid "Permissions&hellip;"
+msgstr "İzinler&hellip;"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:81
+msgid "Add"
+msgstr "Ekle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:85
+msgid "Add selected users to Permission Group"
+msgstr "Seçilen kullanıcıları İzin Grubuna ekle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:95
+msgid "Remove selected users from Permission Group"
+msgstr "Seçilen kullanıcıları İzin Grubundan çıkar"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:103
+msgid "Click to show only users who have no group"
+msgstr "Grupları olmayan kullanıcıları göstermek için tıklayın"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:111
+msgid "Click to show only users who have extra roles"
+msgstr "Ek rollerine sahip kullanıcıları göstermek için tıklayın"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:122
+msgid "Click to show only users who have Specific Permissions assigned directly"
+msgstr "Doğrudan atanan Belirli İzinlere sahip kullanıcıları göstermek için tıklayın"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
+msgid "Specific Permissions"
+msgstr "Belirli İzinler"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:262
+msgid "edit group"
+msgstr "grubu düzenle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:321
+#, php-format
+msgid "%s more"
+msgstr "%s daha"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:39
+msgid "Group created."
+msgstr "Grup oluşturuldu."
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:79
+msgid "Create New Permission Group"
+msgstr "Yeni İzin Grubu Oluştur"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:81
+#, php-format
+msgid "Create New %s"
+msgstr "Yeni %s Oluştur"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:97
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:168
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:39
+msgid "Name"
+msgstr "İsim"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:103
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:656
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:709
+msgid "Description"
+msgstr "Açıklama"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:115
+msgid "Create Group"
+msgstr "Grup Oluştur"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:22
+msgid "Shop manager"
+msgstr "Mağaza yöneticisi"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:23
+msgid "Translator"
+msgstr "Çevirmen"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:24
+msgid "Customer"
+msgstr "Müşteri"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:90
+msgid "You have specified this group for deletion:"
+msgid_plural "You have specified these groups for deletion:"
+msgstr[0] "Bu grubu silmek için belirlediniz:"
+msgstr[1] "Bu grupları silmek için belirlediniz:"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:120
+msgid "There are no valid groups selected for deletion."
+msgstr "Silinmek üzere geçerli grup seçilmemiştir."
+
+#: classes/PublishPress/Permissions/UI/Groups.php:150
+#, php-format
+msgid "%s group deleted"
+msgid_plural "%s groups deleted"
+msgstr[0] "%s grup silindi"
+msgstr[1] "%s gruplar silindi"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:155
+msgid "New group created."
+msgstr "Yeni grup oluşturuldu."
+
+#: classes/PublishPress/Permissions/UI/Groups.php:199
+msgid "Add New Group"
+msgstr "Yeni Grup Ekle"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:206
+msgid "User Groups"
+msgstr "Kullanıcı Grupları"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:330
+msgid "WordPress Role"
+msgstr "WordPress Rolü"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+msgid "WordPress Roles"
+msgstr "WordPress Rolleri"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:247
+#, php-format
+msgid "%1$sGroup Type:%2$s %3$s"
+msgstr "%1$sGrup Türü:%2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
+msgid "All"
+msgstr "Tümü"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:275
+msgid "Has Permissions"
+msgstr "İzinleri Var"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:279
+#: classes/PublishPress/Permissions/UI/Groups.php:336
+msgid "Has Specific Permissions"
+msgstr "Özel İzinleri Var"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:282
+#: classes/PublishPress/Permissions/UI/Groups.php:343
+msgid "Has Extra Roles"
+msgstr "Ekstra Rolleri Var"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:287
+#, php-format
+msgid "Search Results for &#8220;%s&#8221;"
+msgstr "“%s” için Arama Sonuçları"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:296
+msgid "Search Groups"
+msgstr "Grupları Ara"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:322
+msgid "All Users"
+msgstr "Tüm Kullanıcılar"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:329
+msgid "Has Permissions Set Directly"
+msgstr "İzinler Doğrudan Ayarlandı"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:350
+msgid "No Custom Group"
+msgstr "Özel Grup Yok"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:115
+msgid "No matching groups were found."
+msgstr "Eşleşen gruplar bulunamadı."
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:154
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:95
+msgid "Delete"
+msgstr "Sil"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:169
+msgid "Type"
+msgstr "Tür"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:338
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:145
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:245
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:191
+msgid "Workflow"
+msgstr "İş Akışı"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:37
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:83
+msgid "edit group permissions"
+msgstr "grup izinlerini düzenle"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:326
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+msgid "ERROR"
+msgstr "HATA"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:327
+msgid "Please enter a group name."
+msgstr "Lütfen bir grup adı girin."
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:334
+msgid "This group name is already registered. Please choose another one."
+msgstr "Bu grup adı zaten kayıtlı. Lütfen başka bir tane seçin."
+
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:73
+msgid "You can&#8217;t delete that group."
+msgstr "O grubu silemezsiniz."
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:15
+msgid "To customize editing permissions, enable the Editing Permissions feature."
+msgstr ""
+"Düzenleme izinlerini özelleştirmek için Düzenleme İzinleri özelliğini "
+"etkinleştirin."
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:13
+msgid "Block URL access"
+msgstr "URL erişimini engelle"
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:16
+msgid "Customize"
+msgstr "Özelleştir"
+
+#: classes/PublishPress/Permissions/UI/HintsPostEdit.php:18
+#, php-format
+msgid "To customize publication workflow, %1$sinstall PublishPress Statuses%2$s."
+msgstr "Yayın akışını özelleştirmek için, %1$sPublishPress Durumları%2$s yükleyin."
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:11
+msgid "Show list of Permissions Pro features and screencasts"
+msgstr "İzinler Pro özellikleri ve ekran kayıtlarının listesini göster"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:166
+msgid "Knowledge Base"
+msgstr "Bilgi Tabanı"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:168
+msgid "Detailed Feature Grid"
+msgstr "Ayrıntılı Özellik Matrisi"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:170
+msgid "Contact Us"
+msgstr "Bizimle İletişime Geçin"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:172
+msgid "Purchase"
+msgstr "Satın Al"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:174
+msgid "Hide"
+msgstr "Gizle"
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:272
+#, php-format
+msgid "None. All %ss will be hidden by default."
+msgstr "Hiçbiri. Tüm %ss varsayılan olarak gizlenecektir."
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:335
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:495
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:748
+msgid "Add Selected Permissions"
+msgstr "Seçilen İzinleri Ekle"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:68
+msgid "If you need help or have a new feature request, let us know."
+msgstr "Yardım gerekiyorsa veya yeni bir özellik talebiniz varsa, bize bildirin."
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:193
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:231
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:269
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:291
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:108
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:305
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:191
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:227
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:249
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:137
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
+#: includes/CoreAdmin.php:111
+#: includes/CoreAdmin.php:112
+#: includes/CoreAdmin.php:243
+#: includes/promo/posts-teaser-promo.php:22
+#: includes/promo/statuses-promo.php:23
+#: includes/promo/sync-promo.php:22
+#: includes/promo/visibility-statuses-promo.php:23
+msgid "Upgrade to Pro"
+msgstr "Pro'ya Yükselt"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:241
+msgid "Request Support"
+msgstr "Destek Talep Et"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:248
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "Ayrıntılı belgeler ayrıca eklenti web sitesinde mevcuttur."
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:251
+msgid "View Knowledge Base"
+msgstr "Bilgi Tabanını Görüntüle"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:171
+msgid "All settings were updated."
+msgstr "Tüm ayarlar güncellendi."
+
+#: classes/PublishPress/Permissions/UI/Settings.php:179
+msgid "All settings were reset to defaults."
+msgstr "Tüm ayarlar varsayılan değerlere sıfırlandı."
+
+#: classes/PublishPress/Permissions/UI/Settings.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:575
+msgid "Save Changes"
+msgstr "Değişiklikleri Kaydet"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:223
+msgid "Upgrade to Permissions Pro"
+msgstr "İzinler Pro'ya Yükselt"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:224
+msgid "Need Permissions Support?"
+msgstr "İzinler Desteğine Mi İhtiyacınız Var?"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:60
+msgid "Remove the \"Private:\" and \"Protected\" prefix from Post, Page titles."
+msgstr "Gönderi, Sayfa başlıklarından \"Özel:\" ve \"Korunan\" ön ekini kaldırın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:78
+msgid "Note: Groups and Roles are always displayed on the Edit User screen."
+msgstr "Not: Gruplar ve Roller her zaman Kullanıcıyı Düzenle ekranında görüntülenir."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:92
+msgid "Disable Permissions filtering for users who are not logged in."
+msgstr "Giriş yapmamış kullanıcılar için İzinler filtrelemesini devre dışı bırakın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:95
+msgid "Legacy compatibility: front end term filters are not applied on some sites."
+msgstr "Eski uyumluluk: ön uç terim filtreleri bazı sitelerde uygulanmamaktadır."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:98
+msgid "Display descriptive captions on Permissions screens."
+msgstr "İzinler ekranlarında açıklayıcı başlıklar görüntüleyin."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:110
+msgid "You can add Permissions capabilities to a role using the %1$s plugin."
+msgstr "%1$s eklentisi kullanarak bir role İzin yetenekleri ekleyebilirsiniz."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:125
+msgid "Settings related to content editing permissions, provided by the %s module."
+msgstr "%s modülü tarafından sağlanan içerik düzenleme izinleri ile ilgili ayarlar."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:135
+msgid "Always auto-assign a post tag if none are selected"
+msgstr ""
+"Hiçbir gönderi etiketi seçilmediyse, her zaman bir gönderi etiketi otomatik "
+"atayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:219
+msgid "Always auto-assign a term of this taxonomy if none are selected"
+msgstr ""
+"Hiçbir terim seçilmediyse, her zaman bu taksonomiden bir terimi otomatik "
+"atayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:222
+msgid "Do not auto-assign a post tag"
+msgstr "Bir gönderi etiketi otomatik atamayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:231
+msgid "Do not auto-assign a term of this taxonomy"
+msgstr "Bu taksonomiden bir terimi otomatik atamayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:234
+msgid "Don't define an 'Approved' status, even if Status Control feature is active"
+msgstr "Aktif Durum Kontrol özelliği olsa bile 'Onaylı' bir durum tanımlamayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:245
+msgid "Limited User Editors can assign their own role"
+msgstr "Sınırlı Kullanıcı Editörleri kendi rolleri atayabilir"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:273
+msgid "Manage PublishPress Permissions plugin settings."
+msgstr "PublishPress Permissions eklentisi ayarlarını yönetin."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
+msgid "Create new Permission Groups and set the name and description."
+msgstr "Yeni İzin Grupları oluşturun ve adını ve açıklamasını ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:286
+msgid "Edit the name and description of existing Permission Groups."
+msgstr "Mevcut İzin Gruplarının adını ve açıklamasını düzenleyin."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
+msgid "Delete Permission Groups."
+msgstr "İzin Gruplarını silin."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:288
+msgid "If group editing is allowed, can also modify group membership."
+msgstr "Grup düzenlemesine izin veriliyorsa, grup üyeliğini de değiştirebilir."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:289
+msgid "Assign Extra Roles or Permissions."
+msgstr "Ek Roller veya İzinler atayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:290
+msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
+msgstr "İzinleri Düzenle ekranında Ek Roller veya İzinler atayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:291
+msgid "Set Viewing Permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Belirli Gönderiler, Kategoriler veya Terimler için Görüntüleme İzinlerini "
+"ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
+msgid "Set Editing Permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Belirli Gönderiler, Kategoriler veya Terimler için Düzenleme İzinlerini "
+"ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:297
+msgid "Set Revision Permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Belirli Gönderiler, Kategoriler veya Terimler için Revizyon İzinlerini "
+"ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:300
+msgid "Set \"Set as Parent\" Permissions for specific Posts."
+msgstr "Belirli Gönderiler için \"Ana Olarak Ayarla\" İzinlerini ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:301
+msgid "Set Term Assignment Permissions."
+msgstr "Terim Atama İzinlerini ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:302
+msgid "Set Term Management Permissions."
+msgstr "Terim Yönetimi İzinlerini ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:303
+msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
+msgstr ""
+"Belirli Kategoriler veya Terimler için \"Ana Ebeveyn Olarak Ayarla\" "
+"İzinlerini Ayarlayın."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:305
+msgid "Edit own file uploads, even if they become attached to an uneditable post."
+msgstr ""
+"Kendi dosya yüklemelerinizi düzenleyin, hatta bunlar düzenlenemez bir "
+"gönderiye eklenmiş olsa bile."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:306
+msgid "See other user's unattached file uploads in Media Library."
+msgstr ""
+"Diğer kullanıcıların eklenmemiş dosya yüklemelerini Medya Kütüphanesinde "
+"görün."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:307
+msgid "Do not alter the Media Library listing provided by WordPress."
+msgstr "WordPress tarafından sağlanan Medya Kütüphanesi listesini değiştirmeyin."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:310
+msgid "(Statuses Pro capability)"
+msgstr "(Durumlar Pro yeteneği)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:26
+msgid "Advanced"
+msgstr "Gelişmiş"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:33
+msgid "Advanced Settings"
+msgstr "Gelişmiş Ayarlar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:35
+msgid "Network-Wide Settings"
+msgstr "Ağ Genel Ayarları"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:36
+msgid "Editor Options"
+msgstr "Editör Seçenekleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:38
+msgid "Page Structure"
+msgstr "Sayfa Yapısı"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:40
+msgid "Permissions Capabilities"
+msgstr "İzin Yetenekleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:41
+msgid "Front End"
+msgstr "Ön Uç"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:42
+msgid "User Management"
+msgstr "Kullanıcı Yönetimi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:43
+msgid "Constants"
+msgstr "Sabit Değerler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:44
+msgid "Role Integration"
+msgstr "Rol Entegrasyonu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:45
+msgid "Nav Menu Editing"
+msgstr "Navigasyon Menüsü Düzenleme"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:46
+msgid "Miscellaneous"
+msgstr "Çeşitli"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:60
+msgid "Display all advanced settings"
+msgstr "Tüm gelişmiş ayarları göster"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:61
+msgid "Use modern tabbed metabox interface"
+msgstr "Modern sekmeli metabox arayüzünü kullan"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:62
+msgid "Delete settings on plugin deletion"
+msgstr "Eklenti silindiğinde ayarları sil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:63
+msgid "Post-specific Permissions take priority"
+msgstr "Gönderi özel İzinleri önceliklidir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:64
+msgid "Search Results include Media"
+msgstr "Arama Sonuçları Medyayı içerir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:65
+msgid "Regulate access to Category archive pages"
+msgstr "Kategori arşiv sayfalarına erişimi düzenle"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:66
+msgid "Performance: Don't filter category / tag counts"
+msgstr "Performans: kategori / etiket sayımlarını filtreleme"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:67
+msgid "Filter Menu Items"
+msgstr "Menü Öğelerini Filtrele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:68
+msgid "Page Parent selection for editable pages only"
+msgstr "Sadece düzenlenebilir sayfalar için Sayfa Üstünü seç"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:69
+msgid "Auto-assign available term if default term is unavailable"
+msgstr "Varsayılan terim mevcut değilse mevcut terimi otomatik ata"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:70
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:52
+msgid "List other user's uneditable posts"
+msgstr "Diğer kullanıcının düzenlenemez gönderilerini listele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:71
+msgid "Pages can be set or removed from Top Level by: "
+msgstr "Sayfalar Üst Düzeyden ayarlanabilir veya kaldırılabilir: "
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:72
+msgid "Tag creation requires Tag edit capability"
+msgstr "Etiket oluşturma, Etiket düzenleme yetkisi gerektirir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:77
+msgid "Type-specific Extra Roles grant all capabilities in Pattern Role"
+msgstr "Türe özel Ek Rolleri, Pattern Rolünde tüm yetkileri verir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:78
+msgid "Suppress \"Private: \" Caption"
+msgstr "“Özel: ” Başlığını gizle"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:79
+msgid "Select Permission Groups at User creation"
+msgstr "Kullanıcı oluştururken İzin Gruplarını seç"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:80
+msgid "Permission Groups on User Profile"
+msgstr "Kullanıcı Profilinde İzin Grupları"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:81
+msgid "Extra Roles on User Profile"
+msgstr "Kullanıcı Profilinde Ek Roller"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:82
+msgid "Order Page Parent dropdown by Title"
+msgstr "Sipariş Sayfası Üst menüyü Başlığa göre sırala"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:83
+msgid "Add taxonomy columns to Edit Posts screen"
+msgstr "Gönderi düzenleme ekranına taksonomi sütunları ekle"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:84
+msgid "Allow Renaming of uneditable Items"
+msgstr "Düzenlenemez Öğelerin yeniden adlandırılmasına izin ver"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:85
+msgid "Lock custom menu items"
+msgstr "Özel menü öğelerini kilitle"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:86
+msgid "Bulk Add Author Pages on Users screen"
+msgstr "Kullanıcılar ekranında Yazar Sayfalarını toplu ekle"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:108
+#, php-format
+msgid "%1$sDisable%2$s all filtering for anonymous users"
+msgstr "%1$sAnonim kullanıcılar için%2$s tüm filtrelemeyi devre dışı bırak"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:109
+#, php-format
+msgid "%1$sDo not apply%2$s metagroup permissions for Administrators"
+msgstr "%1$sYönetici için%2$s metagroup izinlerini uygulama"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:110
+msgid "Limit front-end category / term filtering"
+msgstr "Ön uç kategori / terim filtrelemesini sınırla"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:111
+msgid "User Search: Filter by WP role"
+msgstr "Kullanıcı Arama: WP rolüne göre filtrele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:112
+msgid "Display Administrative Hints"
+msgstr "Yönetimsel İpuçlarını Göster"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:113
+msgid "Display Module Hints"
+msgstr "Modül İpuçlarını Göster"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:114
+msgid "Detect Dynamically Mapped WP Roles"
+msgstr "Dinamik Olarak Haritalanmış WP Rollerini Tespit Et"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:115
+msgid "Non-Administrators can set Reading Permissions for their editable posts"
+msgstr ""
+"Yönetici olmayanlar, düzenlenebilir gönderileri için Okuma İzinlerini "
+"ayarlayabilir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:116
+msgid "Bulk Add / Remove Groups on Users Screen"
+msgstr "Kullanıcılar Ekranında Grupları Toplu Ekle / Çıkar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Non-Administrators can set Editing Permissions for their editable posts"
+msgstr ""
+"Yönetici olmayanlar, düzenlenebilir gönderileri için Düzenleme İzinlerini "
+"ayarlayabilir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
+msgid "Assign Publish Permissions separate from Edit Permissions"
+msgstr "Yayın İzinlerini Düzenleme İzinlerinden ayrı atayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:224
+msgid "The following would revert to default settings:"
+msgstr "Aşağıdakiler varsayılan ayarlara dönecektir:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:274
+msgid "The following would change from defaults to previously stored settings:"
+msgstr "Aşağıdakiler varsayılanlardan daha önce kaydedilen ayarlara değişecektir:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "no Page Parent filter"
+msgstr "sayfa üstü filtresi yok"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Authors, Editors and Administrators"
+msgstr "Sayfa Yazarları, Editörler ve Yöneticiler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Editors and Administrators"
+msgstr "Sayfa Editörleri ve Yöneticiler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Administrators"
+msgstr "Yöneticiler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:356
+msgid "Some term-limited editing configurations require this."
+msgstr "Bazı terim sınırlı düzenleme yapılandırmaları bunu gerektirir."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+msgid "%sPosts / Pages Listing:%s %s"
+msgstr "%sGönderiler / Sayfalar Listesi:%s %s"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:500
+msgid "User editing capabilities apply for"
+msgstr "Kullanıcı düzenleme yetkileri şunlar için geçerlidir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "any user"
+msgstr "herhangi bir kullanıcı"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "equal or lower role levels"
+msgstr "eşit veya daha düşük rol seviyeleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "lower role levels"
+msgstr "daha düşük rol seviyeleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:552
+#, php-format
+msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
+msgstr ""
+"Ekstra Rollerin nasıl uygulandığını kontrol etmek için %1$sRol "
+"Kullanımı%2$s bakın."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:654
+msgid "Defined Constant"
+msgstr "Tanımlı Süreklilik"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:655
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:708
+msgid "Setting"
+msgstr "Ayar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:707
+msgid "Available Constant"
+msgstr "Mevcut Süreklilik"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
+msgid "Revert to Defaults"
+msgstr "Varsayılanlara Geri Dön"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:20
+msgid "General"
+msgstr "Genel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:27
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:41
+msgid "Taxonomies"
+msgstr "Taksonomiler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:28
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:42
+msgid "Post Types"
+msgstr "Gönderi Türleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:29
+msgid "Database Maintenance"
+msgstr "Veritabanı Bakımı"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:43
+msgid "Enforce distinct edit, delete capability requirements for Media"
+msgstr "Medya için farklı düzenleme, silme yetenek gereksinimlerini zorunlu kıl"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:81
+msgid "Modify permissions for these Taxonomies:"
+msgstr "Bu Taksonomiler için izinleri değiştir:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:110
+msgid "Modify permissions for these Post Types:"
+msgstr "Bu Gönderi Türleri için izinleri değiştir:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:111
+msgid "This causes unique capabilities to be required for editing each post type. "
+msgstr ""
+"Bu, her gönderi türünü düzenlemek için benzersiz yeteneklerin gerekliliğini "
+"doğurur. "
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:173
+msgid "Nav Menus (Block)"
+msgstr "Navigasyon Menüler (Blok)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:203
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:384
+msgid "Metabox enabled"
+msgstr "Metabox etkin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:386
+msgid "Metabox disabled"
+msgstr "Metabox devre dışı"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:209
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:390
+msgid "Permissions screen enabled"
+msgstr "İzinler ekranı etkin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:211
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:392
+msgid "Permissions screen disabled"
+msgstr "İzinler ekranı devre dışı"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:229
+msgid "Enable metabox on %s editing screen"
+msgstr "%s düzenleme ekranında metabox'ı etkinleştir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:264
+msgid "Enable on Permissions screen"
+msgstr "İzinler ekranında etkinleştir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:120
+msgid "Make Unattached Files Private"
+msgstr "Bağlantısız Dosyaları Özel Yap"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:121
+msgid "Small Thumbnails Unfiltered"
+msgstr "Küçük Küçük Resimler Filtrelenmemiş"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:122
+msgid "Compatibility Mode: Apply extra redirect"
+msgstr "Uyumluluk Modu: Ek yönlendirme uygula"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:168
+msgid "Media File Protection"
+msgstr "Medya Dosyası Koruması"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:173
+msgid "Control direct access to Media files"
+msgstr "Medya dosyalarına doğrudan erişimi kontrol et"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:177
+msgid "Automatic .htaccess file management"
+msgstr "Otomatik .htaccess dosyası yönetimi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:181
+msgid "File Access key with on-demand regeneration"
+msgstr "Talebe bağlı yeniden oluşturma ile Dosya Erişim anahtarı"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:187
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:263
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:295
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:185
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
+#: includes/CoreAdmin.php:228
+msgid "Pro Feature"
+msgstr "Pro Özelliği"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:189
+msgid "Upgrade to Pro to unlock advanced file protection capabilities"
+msgstr "Gelişmiş dosya koruma yeteneklerini açmak için Pro'ya yükseltin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:196
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:234
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:272
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:296
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:301
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:315
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:325
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:194
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:230
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:254
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:141
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
+#: includes/CoreAdmin.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:678
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
+msgid "Learn More"
+msgstr "Daha Fazla Bilgi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:206
+msgid "Privacy & Performance"
+msgstr "Gizlilik & Performans"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:211
+msgid "Limit attachment access by post permissions"
+msgstr "Eklerin erişimini gönderi izinleri ile sınırlayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:215
+msgid "Make unattached files private"
+msgstr "Eki olmayan dosyaları özel yapın"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:219
+msgid "Directly control specific files"
+msgstr "Belirli dosyaları doğrudan kontrol edin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:227
+msgid "Optimize your site with advanced privacy and performance controls"
+msgstr "Gelişmiş gizlilik ve performans kontrolü ile sitenizi optimize edin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:244
+msgid "Advanced Integration"
+msgstr "Gelişmiş Entegrasyon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:249
+msgid "Nginx integration support"
+msgstr "Nginx entegrasyon desteği"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:253
+msgid "Process externally uploaded files"
+msgstr "Dışarıdan yüklenen dosyaları işleyin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:257
+msgid "Supports network (multisite) installs"
+msgstr "Ağ (çoklu site) kurulumlarını destekler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:265
+msgid "Get advanced integration features with Nginx, FTP, and more"
+msgstr "Nginx, FTP ve daha fazlası ile gelişmiş entegrasyon özellikleri edinin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:282
+msgid "Ready to secure your files?"
+msgstr "Dosyalarınızı güvence altına almaya hazır mısınız?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:285
+msgid "Integrations"
+msgstr "Entegrasyonlar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:32
+msgid "Compatibility Packs"
+msgstr "Uyumluluk Paketleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:46, fuzzy
+msgid "Breakdance"
+msgstr "Breakdance"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:103
+msgid "Unlock Pro Integrations"
+msgstr "Pro Entegrasyonları Aç"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:104
+msgid "Admin"
+msgstr "Yönetici"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:124
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:227
+msgid "Builder"
+msgstr "Oluşturucu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:127
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:237
+msgid "Cache"
+msgstr "Önbellek"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:243
+msgid "Community"
+msgstr "Topluluk"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:133
+msgid "E-Commerce"
+msgstr "E-Ticaret"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:136
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:231
+msgid "Events"
+msgstr "Etkinlikler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:139
+msgid "Multilingual"
+msgstr "Çok Dilli"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:142
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233, fuzzy
+msgid "SEO"
+msgstr "SEO"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:235
+msgid "Fields"
+msgstr "Alanlar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:239
+msgid "Commerce"
+msgstr "Ticaret"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:241
+msgid "Multilang"
+msgstr "Çok Dilli"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:261
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205, fuzzy
+msgid "Pro"
+msgstr "Pro"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:266
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin"
+msgstr "Aktif Eklenti"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:285
+msgid "Integration Active"
+msgstr "Entegrasyon Aktif"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:287
+msgid "Upgrade to Pro to enable this integration"
+msgstr "Bu entegrasyonu etkinleştirmek için Pro'ya yükseltin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:296
+#, php-format
+msgid "Unlock %s integration to enhance your revisions solution."
+msgstr "%s entegrasyonunu açarak revizyon çözümünüzü geliştirin."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin Integration"
+msgstr "Aktif Eklenti Entegrasyonu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:322
+msgid "Supported Plugin Integration"
+msgstr "Desteklenen Eklenti Entegrasyonu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:120
+msgid "Enable Circles"
+msgstr "Daireleri Etkinleştir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:121
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205
+msgid "Time-limited Membership"
+msgstr "Zaman Sınırlı Üyelik"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:122
+msgid "Membership Notifications"
+msgstr "Üyelik Bildirimleri"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:172
+msgid "Modify viewing or editing access"
+msgstr "Görme veya düzenleme erişimini değiştir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:178
+msgid "Use any Role or Permission Group"
+msgstr "Herhangi bir Rol veya İzin Grubunu kullanın"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:179
+msgid "Circle member's capabilities apply only for other member's posts"
+msgstr "Daire üyesinin yetenekleri sadece diğer üyelerin gönderileri için geçerlidir"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:187
+msgid "Upgrade to Pro to limit access based on post author relationships"
+msgstr "Gönderi yazar ilişkilerine göre erişimi sınırlamak için Pro'ya yükseltin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:208
+msgid "Create time-limited permission group memberships with automatic expiration."
+msgstr "Otomatik sona erme ile zaman sınırlı izin grubu üyelikleri oluşturun."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:213
+msgid "Delay membership start date"
+msgstr "Üyelik başlangıç tarihini ertele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:214
+msgid "Set membership expiration date"
+msgstr "Üyelik sona erme tarihini ayarla"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:215
+msgid "Group membership grants access to content of your choice"
+msgstr "Grup üyeliği, seçtiğiniz içeriğe erişim sağlar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:223
+msgid "Go Pro for time-limited group membership"
+msgstr "Zaman sınırlı grup üyeliği için Pro'ya geçin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:240
+msgid "Ready to enhance your membership features?"
+msgstr "Üyelik özelliklerinizi geliştirmeye hazır mısınız?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:243
+msgid "Features"
+msgstr "Özellikler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:40
+#: includes/SettingsTabInstall.php:44
+#: includes/SettingsTabInstall.php:45
+msgid "settings"
+msgstr "ayarlar"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:147
+msgid "Active"
+msgstr "Aktif"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:150
+msgid "Inactive"
+msgstr "Pasif"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:49
+msgid "User Posts Synchronization"
+msgstr "Kullanıcı Gönderileri Senkronizasyonu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:61
+msgid "Synchronize User Posts"
+msgstr "Kullanıcı Gönderilerini Senkronize Et"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:62
+msgid "Bulk Create Author Posts"
+msgstr "Toplu Yazar Gönderileri Oluştur"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:63
+msgid "Smart User Matching"
+msgstr "Akıllı Kullanıcı Eşleştirme"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:64
+msgid "Role-Based Synchronization"
+msgstr "Rol Tabanlı Senkronizasyon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:111
+msgid "Create Posts for Your Users"
+msgstr "Kullanıcılarınız için Gönderi Oluşturun"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:116
+msgid "Automatically generate posts for users"
+msgstr "Kullanıcılar için otomatik olarak gönderi oluşturun"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:120
+msgid "Set up posts for existing users"
+msgstr "Mevcut kullanıcılar için gönderileri ayarlayın"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:124
+msgid "Produce posts for users when they register"
+msgstr "Kullanıcılar kayıt olduğunda gönderi üretin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:132
+msgid "Upgrade to Pro to automatically generate posts for users"
+msgstr "Kullanıcılar için otomatik olarak gönderi oluşturmak için Pro'ya yükseltin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:151
+msgid "Bulk Page Creation"
+msgstr "Toplu Sayfa Oluşturma"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:156
+msgid "Generate posts for user roles that you select"
+msgstr "Seçtiğiniz kullanıcı rolleri için gönderi oluşturun"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:160
+msgid "Choose how many posts to create per user"
+msgstr "Her kullanıcı başına kaç gönderi oluşturulacağını seçin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:164
+msgid "Decide which status to use for new posts"
+msgstr "Yeni gönderiler için hangi durumu kullanacağınıza karar verin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:172
+msgid "Upgrade to Pro to unlock bulk page creation features"
+msgstr "Toplu sayfa oluşturma özelliklerini açmak için Pro'ya yükseltin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:191
+msgid "Advanced Configuration"
+msgstr "Gelişmiş Yapılandırma"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:196
+msgid "Automatically detect and avoid duplicate posts"
+msgstr "Otomatik olarak tekrar eden gönderileri tespit edin ve kaçının"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:200
+msgid "Add new pages to a parent page"
+msgstr "Yeni sayfaları bir üst sayfaya ekleyin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:204
+msgid "Allow users to edit their new posts"
+msgstr "Kullanıcıların yeni gönderilerini düzenlemelerine izin verin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:212
+msgid "Unlock advanced user synchronization features"
+msgstr "Gelişmiş kullanıcı senkronizasyon özelliklerini açın"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:231
+msgid "Ready to automatically generate posts for your users?"
+msgstr "Kullanıcılarınız için otomatik olarak gönderi oluşturmaya hazır mısınız?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:234
+msgid "Username"
+msgstr "Kullanıcı Adı"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:40
+msgid "Email"
+msgstr "E-posta"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:44
+#, php-format
+msgid "Specific Permissions %1$s"
+msgstr "Belirli İzinler %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned directly to the user"
+msgstr "Kullanıcıya doğrudan atanan belirli izinler"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned to the user or one of their groups"
+msgstr "Kullanıcıya veya gruplarından birine atanan belirli izinler"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "User Roles %1$s"
+msgstr "Kullanıcı Rolleri %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "Roles %1$s"
+msgstr "Roller %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned directly to the user"
+msgstr "Kullanıcıya doğrudan atanan roller"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned to the user or one of their groups"
+msgstr "Kullanıcıya veya gruplarından birine atanan roller"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:165
+msgid "Edit User"
+msgstr "Kullanıcıyı Düzenle"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:342
+msgid "Subscribers"
+msgstr "Aboneler"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:343
+msgid "Contributors"
+msgstr "Katkıda Bulunanlar"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:344
+msgid "Authors"
+msgstr "Yazarlar"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:345
+msgid "Editors"
+msgstr "Editörler"
+
+#: includes/CoreAdmin.php:28
+#, php-format
+msgid "Promo file not found."
+msgstr "Promo dosyası bulunamadı."
+
+#: includes/CoreAdmin.php:234
+msgid "Upgrade to Pro to unlock seamless integration."
+msgstr "Kesintisiz entegrasyonu açmak için Pro'ya yükselin."
+
+#: includes/promo/posts-teaser-promo.php:4
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Posts Teaser"
+msgstr "Gönderi Önizlemesi"
+
+#: includes/promo/posts-teaser-promo.php:18
+msgid "Post Statuses for Editorial Workflow"
+msgstr "Editoryal İş Akışı için Gönderi Durumları"
+
+#: includes/promo/statuses-promo.php:19
+msgid "Post Visibility Statuses"
+msgstr "Gönderi Görünürlük Durumları"
+
+#: includes/promo/visibility-statuses-promo.php:19
+msgid "License"
+msgstr "Lisans"
+
+#: includes/SettingsTabInstall.php:31
+msgid "Account"
+msgstr "Hesap"
+
+#: includes/SettingsTabInstall.php:32
+msgid "Version"
+msgstr "Sürüm"
+
+#: includes/SettingsTabInstall.php:68
+msgid "Version info was refreshed."
+msgstr "Sürüm bilgisi güncellendi."
+
+#: includes/SettingsTabInstall.php:122
+msgid "Further details for your installation:"
+msgstr "Kurulumunuz için daha fazla ayrıntı:"
+
+#: includes/SettingsTabInstall.php:131
+#, php-format
+msgid "PublishPress Permissions Version: %1$s %2$s"
+msgstr "PublishPress İzinler Sürümü: %1$s %2$s"
+
+#: includes/SettingsTabInstall.php:205
+#, php-format
+msgid "%s&nbsp;details"
+msgstr "%s&nbsp;ayrıntılar"
+
+#: includes/SettingsTabInstall.php:226
+msgid "Installation History"
+msgstr "Kurulum Geçmişi"
+
+#: includes/SettingsTabInstall.php:248
+#, php-format
+msgid "%s (previous install)"
+msgstr "%s (önceki kurulum)"
+
+#: includes/SettingsTabInstall.php:265
+#, php-format
+msgid "WordPress Version: %s"
+msgstr "WordPress Sürümü: %s"
+
+#: includes/SettingsTabInstall.php:269
+#, php-format
+msgid "PHP Version: %s"
+msgstr "PHP Versiyonu: %s"
+
+#: library/debug.php:17
+#, php-format
+msgid "%1$s queries in %2$s seconds. %3$s MB used."
+msgstr "%1$s sorguları %2$s saniyede. %3$s MB kullanıldı."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:163
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:188
+msgid "Term"
+msgstr "Terim"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:164
+msgid "Terms"
+msgstr "Terimler"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:234
+#, php-format
+msgid "%s Manager"
+msgstr "%s Yöneticisi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:206
+msgid "You do not have permission to update that Navigation Menu"
+msgstr "O Navigasyon Menüsünü güncelleme izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:208
+msgid "You do not have permission to create new Navigation Menus"
+msgstr "Yeni Navigasyon Menüsü oluşturma izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:216
+msgid "You do not have permission to delete that Navigation Menu."
+msgstr "O Navigasyon Menüsünü silme izniniz yok."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:483
+#, php-format
+msgid "The %s was saved, but you can no longer edit it."
+msgstr "%s kaydedildi, ancak artık düzenleyemezsiniz."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:488
+#, php-format
+msgid "Go to %s"
+msgstr "%s'ye git"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:498
+msgid "You do not have permission to move the menu item \"%1$s\""
+msgstr "Menü öğesini \"%1$s\" taşıma izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:433
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:443
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:453
+msgid "Return to Menu Editor"
+msgstr "Menü Düzenleyiciye Dön"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:439
+#, php-format
+msgid "You do not have permission to delete the menu item \"%1$s\""
+msgstr "Menü öğesini \"%1$s\" silme izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:449
+#, php-format
+msgid "You do not have permission to edit the menu item \"%1$s\""
+msgstr "Menü öğesini \"%1$s\" düzenleme izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:8
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:22
+msgid "Editing"
+msgstr "Düzenleme"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:11
+msgid "Publishing"
+msgstr "Yayınlama"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Request"
+msgstr "Talep"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "New Revision"
+msgstr "Yeni Revizyon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submitted Revision"
+msgstr "Gönderilen Revizyon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revision"
+msgstr "Revizyon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
+msgid "Set as Parent"
+msgstr "Ana Olarak Ayarla"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:38
+msgid "Assign Term"
+msgstr "Terim Ata"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:39
+msgid "Assignment"
+msgstr "Atama"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:44
+msgid "Management"
+msgstr "Yönetim"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:114
+msgid "(unpublished)"
+msgstr "(yayınlanmamış)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/NavMenu.php:95
+msgid "You are not permitted to manage menu locations"
+msgstr "Menü konumlarını yönetme izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:83
+msgid "Post Approved"
+msgstr "Gönderi Onaylandı"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:84
+msgid "Page Approved"
+msgstr "Sayfa Onaylandı"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:111
+#, php-format
+msgid "Author Search / Select"
+msgstr "Yazar Ara / Seç"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+msgid "select other"
+msgstr "başka birini seç"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+msgid "close"
+msgstr "kapat"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:47
+#, php-format
+msgid "Permissions: Select this %1$s as Parent for All Post Types"
+msgstr "İzinler: Bu %1$s'ı Tüm Gönderi Türleri için Ana Olarak Seçin"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:51
+#, php-format
+msgid "Permissions: %1$s this %2$s for All Post Types"
+msgstr "İzinler: %1$s bu %2$s'ı Tüm Gönderi Türleri için seçin"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEditWorkarounds.php:86
+msgid "You do not have permission to select that Parent"
+msgstr "O Ana'yı seçme izniniz yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:24
+#, php-format
+msgid "%s author page added"
+msgid_plural "%s author pages added"
+msgstr[0] "%s yazar sayfası eklendi"
+msgstr[1] "%s yazar sayfası eklendi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:30
+msgid "No users selected"
+msgstr "Hiçbir kullanıcı seçilmedi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:36
+msgid "Selected users already have specified author page"
+msgstr "Seçilen kullanıcıların zaten belirtilmiş bir yazar sayfası var"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:49
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:51
+msgid "Add Author Page&hellip;"
+msgstr "Yazar Sayfası Ekle&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:50
+msgid "make each selected user the author of a new page"
+msgstr "her seçilen kullanıcıyı yeni bir sayfanın yazarı yap"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:79
+msgid "pattern post sets default content and categories for author post"
+msgstr ""
+"şablon gönderisi yazar gönderisi için varsayılan içerik ve kategorileri "
+"ayarlar"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:81
+msgid "pattern post sets parent, default content and template for author page"
+msgstr "şablon gönderisi yazar sayfası için üst, varsayılan içerik ve şablon ayarlar"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:83
+msgid "pattern page sets parent and default content for author page"
+msgstr "şablon sayfası yazar sayfası için üst ve varsayılan içerik ayarlar"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:85
+msgid "patterned on&hellip;"
+msgstr "şuna dayanarak&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:92
+msgid "patterned on..."
+msgstr "şuna dayanarak..."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "Pattern ID:"
+msgstr "Şablon ID:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "enter post ID/slug"
+msgstr "gönderi ID'sini/slug'ını girin"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "Title:"
+msgstr "Başlık:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "supported tags are [username] and [userid]"
+msgstr "desteklenen etiketler [kullanıcıadı] ve [kullanıcıid]’dir"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:114
+msgid "Add Pages"
+msgstr "Sayfa Ekle"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Gutenberg/PostEdit.php:37
+msgid "(select...)"
+msgstr "(seçiniz...)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:36
+msgid "Role Usage edited."
+msgstr "Rol Kullanımı düzenlendi."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:71
+msgid "With Direct Assignment, capabilities are applied without modification."
+msgstr "Doğrudan Atama ile, yetenekler değişiklik olmadan uygulanır."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:92
+msgid "All Role Usage settings will be reset to DEFAULTS.  Are you sure?"
+msgstr "Tüm Rol Kullanımı ayarları varsayılanlara SIFIRLANACAK. Emin misiniz?"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:59
+msgid "Role Usage updated."
+msgstr "Rol Kullanımı güncellendi."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:78
+#, php-format
+msgid "Role Usage: %s"
+msgstr "Rol Kullanımı: %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:72
+msgid "Usage"
+msgstr "Kullanım"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:100
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:166
+msgid "no supplemental assignment"
+msgstr "ek atama yok"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:101
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:167
+msgid "Pattern Role"
+msgstr "Şablon Rolü"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:102
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:161
+msgid "Direct Assignment"
+msgstr "Doğrudan Atama"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:112
+msgid "Post Capabilities"
+msgstr "Gönderi Yetenekleri"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:116
+#, php-format
+msgid "Arbitrary Capabilities"
+msgstr "Rastgele Yetenekler"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:140
+#, php-format
+msgid "The following capabilities are included in supplemental %s roles:"
+msgstr "Aşağıdaki yetenekler ek %s rollerinde yer almaktadır:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:158
+msgid "Role Capabilities"
+msgstr "Rol Yetenekleri"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:161
+msgid "Notes regarding Pattern Roles"
+msgstr "Şablon Rolleri ile ilgili Notlar"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:188
+msgid "Back to Role Usage List"
+msgstr "Rol Kullanım Listesine Geri Dön"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:27
+msgid "Notes"
+msgstr "Notlar"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:37
+msgid "No matching roles were found."
+msgstr "Eşleşen roller bulunamadı."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:23
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:34
+msgid "Media Library"
+msgstr "Medya Kütüphanesi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:30
+msgid "Posts / Pages Listing"
+msgstr "Gönderiler / Sayfalar Listesi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:46
+msgid "List other users' files if attached to a editable post"
+msgstr ""
+"Düzenlenebilir bir gönderiye eklenmişse diğer kullanıcıların dosyalarını "
+"listele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:47
+msgid "List other users' files if attached to a viewable post"
+msgstr ""
+"Diğer kullanıcıların dosyalarını, görüntülenebilir bir gönderiye eklenmişse "
+"listele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:48
+msgid "List other users' unattached files by default"
+msgstr "Diğer kullanıcıların eklenmemiş dosyalarını varsayılan olarak listele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:49
+msgid "Edit other users' files if attached to an editable post"
+msgstr ""
+"Diğer kullanıcıların dosyalarını, düzenlenebilir bir gönderiye eklenmişse "
+"düzenle"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:50
+msgid "Prevent editing files if attached to a non-editable post"
+msgstr "Düzenlenemez bir gönderiye eklenmiş dosyaların düzenlenmesini engelle"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:51
+msgid "Users can always edit their own files"
+msgstr "Kullanıcılar her zaman kendi dosyalarını düzenleyebilir"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:106
+msgid "Limited Editing Elements"
+msgstr "Sınırlı Düzenleme Öğeleri"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:134
+msgid "Feature Moved"
+msgstr "Özellik Taşındı"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:140
+#, php-format
+msgid "Current Settings:"
+msgstr "Mevcut Ayarlar:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:156
+msgid "HTML Element IDs: "
+msgstr "HTML Eleman Kimlikleri: "
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:178
+msgid "List Files"
+msgstr "Dosyaları Listele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:189
+msgid "Edit Files"
+msgstr "Dosyaları Düzenle"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooks.php:623
+#, php-format
+msgid "You are not allowed to create new %s"
+msgstr "Yeni %s oluşturmanıza izin verilmiyor"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksAdmin.php:253
+msgid "access denied"
+msgstr "erişim reddedildi"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:128
+msgid "Approve"
+msgstr "Onayla"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:145
+msgid "Revisors"
+msgstr "Revizyoncular"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:146
+msgid "Revisor"
+msgstr "Revizyoncu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:623
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:676
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
+msgid "To read the full content, please log in to this site."
+msgstr "Tam içeriği okumak için lütfen bu siteye giriş yapın."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:711
+msgid "Content requires additional permissions."
+msgstr "İçerik ek izinler gerektiriyor."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+msgid "Read More"
+msgstr "Daha Fazla Oku"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
+msgid "Teaser Type"
+msgstr "Tanıtım Türü"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+msgid "Coverage"
+msgstr "Kapsam"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
+msgid "Teaser Text"
+msgstr "Tanıtım Metni"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+msgid "Read More Notice"
+msgstr "Daha Fazla Oku Bildirimi"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+msgid "Redirect"
+msgstr "Yönlendir"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
+msgid "Options"
+msgstr "Seçenekler"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+msgid "Hidden Content Teaser"
+msgstr "Gizli İçerik Tanıtımı"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+msgid "Display mode for readable private posts"
+msgstr "Okunabilir özel gönderiler için görüntüleme modu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+msgid "Display mode for readable non-private posts"
+msgstr "Okunabilir özel olmayan gönderiler için görüntüleme modu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+msgid "Feed Replacement Text (use %permalink% for post URL)"
+msgstr "Akış Değiştirme Metni (gönderi URL'si için %permalink% kullanın)"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+msgid "Login Notice Message"
+msgstr "Giriş Bildirim Mesajı"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Hide Featured Image when Teaser is applied"
+msgstr "Tanıtım uygulandığında Öne Çıkan Görüntüyü Gizle"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "%s is a PRO feature"
+msgstr "%s bir PRO özelliğidir"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:189
+#, php-format
+msgid "🔓 Unlock %s"
+msgstr "🔓 %s'yi Kilidini Aç"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
+msgid "This feature is available in PublishPress Permissions PRO"
+msgstr "Bu özellik PublishPress Permissions PRO'da mevcuttur"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:205
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
+msgid "Upgrade to PRO"
+msgstr "PRO'ya Yükselt"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:208
+msgid "Compare Features"
+msgstr "Özellikleri Karşılaştır"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:247
+msgid "All post teaser settings were updated."
+msgstr "Tüm gönderi önizleme ayarları güncellendi."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:255
+msgid "All post teaser settings were reset to defaults."
+msgstr "Tüm gönderi önizleme ayarları varsayılan değerlere sıfırlandı."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:265
+msgid "Teaser Settings"
+msgstr "Önizleme Ayarları"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458, fuzzy
+msgid "RSS"
+msgstr "RSS"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:477
+msgid "Display for readable private posts:"
+msgstr "Okunabilir özel gönderiler için gösterim:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Full Content"
+msgstr "Tam İçerik"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Excerpt Only"
+msgstr "Sadece Alıntı"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Title Only"
+msgstr "Sadece Başlık"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:502
+msgid "Display for readable non-private posts:"
+msgstr "Okunabilir özel olmayan gönderiler için gösterim:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:529
+msgid "Feed Replacement Text:"
+msgstr "Besleme Yerine Geçme Metni:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:554
+#, php-format
+msgid "Use %s for post URL"
+msgstr "%s'yi gönderi URL'si için kullanın"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:71
+msgid "Select Post Type to Configure"
+msgstr "Yapılandırmak için Gönderi Türü Seçin"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:72
+msgid "Choose which post type you want to configure teaser settings for."
+msgstr "Önizleme ayarlarını yapılandırmak istediğiniz gönderi türünü seçin."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:98
+#, php-format
+msgid "Pages and custom post types are available in %sPRO%s"
+msgstr "%sPRO%s'da sayfalar ve özel gönderi türleri mevcuttur"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:177
+msgid "WordPress default. Show \"Page not found\" screen"
+msgstr "WordPress varsayılanı. \"Sayfa bulunamadı\" ekranını göster"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:178
+msgid "Teaser text"
+msgstr "Önizleme metni"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:179
+msgid "Use content before Read More link as teaser text"
+msgstr "Daha Fazla Oku bağlantısından önceki içeriği önizleme metni olarak kullanın"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:180
+msgid "Use Excerpt as teaser text"
+msgstr "Alıntıyı önizleme metni olarak kullanın"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:181
+msgid "Use Excerpt or pre-More as teaser text"
+msgstr "Alıntıyı veya Daha Fazla'dan önceki kısmı önizleme metni olarak kullanın"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:182
+msgid "Use Excerpt, pre-More or First X Characters as teaser text"
+msgstr ""
+"Alıntıyı, Daha Fazla'dan önceki kısmı veya İlk X Karakteri önizleme metni "
+"olarak kullanın"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:183
+msgid "Redirect to another post"
+msgstr "Başka bir gönderiye yönlendir"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:194
+msgid "No teaser will be applied"
+msgstr "Hiçbir teaser uygulanmayacak"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:195
+msgid "Use configured teaser text to replace or supplement content"
+msgstr ""
+"İçeriği değiştirmek veya tamamlamak için yapılandırılmış teaser metnini "
+"kullanın"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:196
+msgid "Show a \"Read More\" link that requires login"
+msgstr "Giriş gerektiren bir &quot>Daha Fazla Oku\" bağlantısını göster"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:197
+msgid "Use the post excerpt as teaser content"
+msgstr "Gönderi alıntısını teaser içeriği olarak kullan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:198
+msgid "Use excerpt or content before More tag"
+msgstr "Daha Fazla etiketi öncesindeki alıntıyı veya içeriği kullan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:199
+msgid "Show the first X characters of the post content"
+msgstr "Gönderi içeriğinin ilk X karakterini göster"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+msgid "Redirect users to another page when they try to access restricted content"
+msgstr ""
+"Kullanıcıların kısıtlı içeriğe erişmeye çalıştıklarında başka bir sayfaya "
+"yönlendirin"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:206
+msgid "Use first X characters of content as teaser text"
+msgstr "İçeriğin ilk X karakterini teaser metni olarak kullan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:207
+msgid "Use excerpt or first X characters of content"
+msgstr "Alıntıyı veya içeriğin ilk X karakterini kullan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#, php-format
+msgid "Teaser Settings for %s"
+msgstr "%s için Teaser Ayarları"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
+msgid "Teaser Type:"
+msgstr "Teaser Türü:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:293
+#, php-format
+msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
+msgstr ""
+"%sPRO%s içinde Daha Fazla Oku bağlantıları, alıntılar ve yönlendirmeler "
+"mevcuttur"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:302
+msgid "Show only the first"
+msgstr "Sadece ilkini göster"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:309
+msgid "Chars"
+msgstr "Karakter"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:304
+msgid "characters"
+msgstr "karakter"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:308
+msgid "Max"
+msgstr "Maks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:310
+msgid "characters (leave empty for full excerpt)"
+msgstr "karakter (tam alıntı için boş bırakın)"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:320
+msgid "Teaser Application:"
+msgstr "Teaser Uygulaması:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:324
+msgid "List and Single view"
+msgstr "Liste ve Tekil görünüm"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:328
+msgid "Single view only"
+msgstr "Sadece tek görünüm"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+msgid "User Application:"
+msgstr "Kullanıcı Uygulaması:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
+msgid "Both"
+msgstr "Her ikisi"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:344
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:558
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Not Logged In Users"
+msgstr "Giriş Yapmamış Kullanıcılar"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:348
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:561
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Logged In Users"
+msgstr "Giriş Yapmış Kullanıcılar"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+msgid "Navigation Menus:"
+msgstr "Navigasyon Menüler:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
+msgid "Display links if user doesn't have access"
+msgstr "Kullanıcının erişimi yoksa bağlantıları göster"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:363
+msgid "Hide links if user doesn't have access"
+msgstr "Kullanıcının erişimi yoksa bağlantıları gizle"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+msgid "Private Posts:"
+msgstr "Özel Gönderiler:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+msgid "Apply Teaser to Private Posts"
+msgstr "Özel Gönderilere Teaser Uygula"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:376
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "Kullanıcının erişimi yoksa özel gönderileri gizle"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:381
+msgid "Hide for Custom Visibility"
+msgstr "Özel Görünürlük için Gizle"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:387
+msgid "Featured Image:"
+msgstr "Öne Çıkan Resim:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+msgid "Show featured image"
+msgstr "Öne çıkan resmi göster"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
+msgid "Hide featured image when teaser is applied"
+msgstr "Teaser uygulandığında öne çıkan resmi gizle"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:403
+msgid "Teaser Message Style:"
+msgstr "Teaser Mesajı Stili:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:411
+msgid "Use Default Teaser Message Style"
+msgstr "Varsayılan Teaser Mesajı Stilini Kullan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
+msgid "Use Custom Teaser Message Style"
+msgstr "Özel Teaser Mesajı Stilini Kullan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
+msgid "Teaser Message"
+msgstr "Teaser Mesajı"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+msgid "This field is required."
+msgstr "Bu alan gereklidir."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:460
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
+msgid "Replace Post Content With:"
+msgstr "Gönderi İçeriğini Şu ile Değiştir:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:526
+#, php-format
+msgid "Insert a login form by using %s[login_form]%s shortcode."
+msgstr "%s[login_form]%s kısa kodunu kullanarak bir giriş formu ekleyin."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Teaser Text Configuration"
+msgstr "Önizleme Metni Yapılandırması"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+msgid "Configure custom teaser text for this post type."
+msgstr "Bu gönderi türü için özel önizleme metni yapılandırın."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:589
+msgid "post title"
+msgstr "gönderi başlığı"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:590
+msgid "post content"
+msgstr "gönderi içeriği"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:597
+#, php-format
+msgid "Before %s:"
+msgstr "%s'den önce:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:598
+#, php-format
+msgid "After %s:"
+msgstr "%s'den sonra:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+msgid "Redirect Settings"
+msgstr "Yeniden Yönlendirme Ayarları"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+msgid "Redirect functionality is available in PRO"
+msgstr "Yeniden yönlendirme işlevi PRO'da mevcuttur"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:672
+msgid "Redirection"
+msgstr "Yeniden Yönlendirme"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:709
+msgid "Target Post Type"
+msgstr "Hedef Gönderi Türü"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:710
+msgid "Select Post"
+msgstr "Gönderi Seç"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:746
+msgid "Not Logged In:"
+msgstr "Giriş Yapmamış:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
+msgid "No redirect"
+msgstr "Yeniden yönlendirme yok"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:850
+msgid "Redirect to WordPress login"
+msgstr "WordPress girişine yönlendir"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:851
+msgid "Redirect to a custom post"
+msgstr "Özel bir gönderiye yönlendir"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:904
+msgid "This is a custom login page"
+msgstr "Bu özel bir giriş sayfasıdır"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+msgid "Logged in Users:"
+msgstr "Giriş Yapmış Kullanıcılar:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1042
+msgid "Message for Blocked Users"
+msgstr "Engellenen Kullanıcılar için Mesaj"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:935
+msgid "Teaser Message Style Customization"
+msgstr "Teaser Mesajı Stili Özelleştirme"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1145
+msgid "Customize the appearance of teaser message displayed to blocked users."
+msgstr ""
+"Engellenen kullanıcılara gösterilen teaser mesajının görünümünü "
+"özelleştirin."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1157
+msgid "Background Color:"
+msgstr "Arka Plan Rengi:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
+msgid "Text Color:"
+msgstr "Metin Rengi:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1181
+msgid "Border Color:"
+msgstr "Sınır Rengi:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+msgid "Border Width (px):"
+msgstr "Sınır Genişliği (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+msgid "Border Position:"
+msgstr "Sınır Pozisyonu:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1211
+msgid "Left"
+msgstr "Sol"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1212
+msgid "Right"
+msgstr "Sağ"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1213
+msgid "Top"
+msgstr "Üst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1214
+msgid "Bottom"
+msgstr "Alt"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1215
+msgid "All Sides"
+msgstr "Tüm Kenarlar"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+msgid "Padding (px):"
+msgstr "Yastıklama (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1234
+msgid "Border Radius (px):"
+msgstr "Kenar Yumuşatma (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+msgid "Font Size (px):"
+msgstr "Yazı Tipi Boyutu (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+msgid "Live Preview"
+msgstr "Canlı Önizleme"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+msgid "No Teaser"
+msgstr "Teaser Yok"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
+msgid "Configured Teaser Text"
+msgstr "Yapılandırılmış Teaser Metni"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
+msgid "This is a PRO feature"
+msgstr "Bu bir PRO özelliğidir"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
+#, php-format
+msgid "%s is available in PRO"
+msgstr "%s PRO'da mevcuttur"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:40
+msgid "Select a page"
+msgstr "Bir sayfa seçin"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:41
+msgid "Select terms"
+msgstr "Terimleri seçin"
+
+#: press-permit-core.php:117
+msgid "<strong>This plugin can be deleted.</strong>"
+msgstr "<strong>Bu eklenti silinebilir.</strong>"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:23
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:253
+msgctxt "user"
+msgid "Select &gt;"
+msgstr "Seçin &gt;"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:24
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:254
+msgctxt "user"
+msgid "&lt; Unselect"
+msgstr "&lt; Seçimi Kaldır"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:170
+msgctxt "count"
+msgid "%s..."
+msgstr "%s..."

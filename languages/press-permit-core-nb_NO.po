@@ -1,0 +1,4000 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the same license as the PublishPress Permissions plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-18T15:16:27+00:00\n"
+"PO-Revision-Date: 2026-04-07 23:37+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: press-permit-core\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nb-NO\n"
+
+#: press-permit-core.php:4
+#: press-permit-core.php:4
+#. Plugin Name of the plugin
+msgid "PublishPress Permissions"
+msgstr "PublishPress Tillatelser"
+
+#: press-permit-core.php:5, fuzzy
+#. Plugin URI of the plugin
+msgid "https://publishpress.com/presspermit"
+msgstr "https://publishpress.com/presspermit"
+
+#: press-permit-core.php:6
+#. Description of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: press-permit-core.php:9, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com/"
+msgstr "https://publishpress.com/"
+
+#: classes/PublishPress/Permissions.php:1258
+msgid "Edit Tag for All Post Types"
+msgstr "Rediger tagg for alle innleggstyper"
+
+#: classes/PublishPress/Permissions.php:1262
+msgid "Edit Tag for Posts"
+msgstr "Rediger tagg for innlegg"
+
+#: classes/PublishPress/Permissions.php:1273
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:43
+msgid "Advanced Custom Fields"
+msgstr "Avanserte tilpassede felt"
+
+#: classes/PublishPress/Permissions.php:1274
+msgid "Control access to Field Groups"
+msgstr "Kontroller tilgang til feltgrupper"
+
+#: classes/PublishPress/Permissions.php:1279
+msgid "Front-end visibility restrictions"
+msgstr "Begrensninger for synlighet på front-end"
+
+#: classes/PublishPress/Permissions.php:1280
+msgid "Integration with permission groups"
+msgstr "Integrasjon med tillatelsesgrupper"
+
+#: classes/PublishPress/Permissions.php:1288
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:45, fuzzy
+msgid "Beaver Builder"
+msgstr "Beaver Builder"
+
+#: classes/PublishPress/Permissions.php:1289
+msgid "Compatibility with Edit Permissions in Beaver Builder."
+msgstr "Kompatibilitet med rediger tillatelser i Beaver Builder."
+
+#: classes/PublishPress/Permissions.php:1293
+msgid "Beaver editor integration"
+msgstr "Integrasjon med Beaver-redigerer"
+
+#: classes/PublishPress/Permissions.php:1294
+#: classes/PublishPress/Permissions.php:1353
+msgid "Widget-level permission controls"
+msgstr "Tillatelseskontroller på widget-nivå"
+
+#: classes/PublishPress/Permissions.php:1295
+#: classes/PublishPress/Permissions.php:1354
+msgid "Template access restrictions"
+msgstr "Begrensninger for tilgang til maler"
+
+#: classes/PublishPress/Permissions.php:1303
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:44
+msgid "bbPress Forums"
+msgstr "bbPress Forum"
+
+#: classes/PublishPress/Permissions.php:1304
+msgid "Forum-specific permissions"
+msgstr "Forum-spesifikke tillatelser"
+
+#: classes/PublishPress/Permissions.php:1309
+msgid "Topic creation restrictions"
+msgstr "Begrensninger for emneopprettelse"
+
+#: classes/PublishPress/Permissions.php:1310
+msgid "Forum access controls"
+msgstr "Forumtilgangskontroller"
+
+#: classes/PublishPress/Permissions.php:1318
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:47, fuzzy
+msgid "BuddyPress"
+msgstr "BuddyPress"
+
+#: classes/PublishPress/Permissions.php:1319
+msgid "Assign post permissions to BuddyPress groups"
+msgstr "Tildel innleggstillatelser til BuddyPress-grupper"
+
+#: classes/PublishPress/Permissions.php:1324
+msgid "Assign term permissions to BuddyPress groups"
+msgstr "Tildel termstillatelser til BuddyPress-grupper"
+
+#: classes/PublishPress/Permissions.php:1325
+msgid "Group-based content permissions"
+msgstr "Gruppemessige innholdstillatelser"
+
+#: classes/PublishPress/Permissions.php:1333
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:48
+msgid "CMS Tree View"
+msgstr "CMS Trevisning"
+
+#: classes/PublishPress/Permissions.php:1334
+msgid "Compatibility with Edit Permissions in CMS Tree View."
+msgstr "Kompatibilitet med redigeringstillatelser i CMS Trevisning."
+
+#: classes/PublishPress/Permissions.php:1338
+msgid "Permission-aware tree view"
+msgstr "Tillatelsesbevisst trevisning"
+
+#: classes/PublishPress/Permissions.php:1339
+msgid "Hierarchical content controls"
+msgstr "Hierarkiske innholdskontroller"
+
+#: classes/PublishPress/Permissions.php:1347
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:49, fuzzy
+msgid "Elementor"
+msgstr "Elementor"
+
+#: classes/PublishPress/Permissions.php:1348
+msgid "Compatibility with Edit Permissions in Elementor."
+msgstr "Kompatibilitet med redigeringstillatelser i Elementor."
+
+#: classes/PublishPress/Permissions.php:1352
+msgid "Elementor editor integration"
+msgstr "Integrasjon av Elementor-editor"
+
+#: classes/PublishPress/Permissions.php:1362
+msgid "The Events Calendar"
+msgstr "Kalenderen for hendelser"
+
+#: classes/PublishPress/Permissions.php:1363
+msgid "Apply permission controls to events and event-related content."
+msgstr "Bruk tillatelseskontroller for hendelser og hendelsesrelatert innhold."
+
+#: classes/PublishPress/Permissions.php:1367
+msgid "Event post permissions"
+msgstr "Innleggstillatelser for hendelser"
+
+#: classes/PublishPress/Permissions.php:1368
+msgid "Event taxonomy controls"
+msgstr "Hendelsestaxonomikontroller"
+
+#: classes/PublishPress/Permissions.php:1376
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:50
+msgid "Nested Pages"
+msgstr "Nesting-sider"
+
+#: classes/PublishPress/Permissions.php:1377
+msgid "Compatibility with Edit Permissions in Nested Pages."
+msgstr "Kompatibilitet med redigeringstillatelser i Nesting-sider."
+
+#: classes/PublishPress/Permissions.php:1381
+msgid "Permission-aware nested view"
+msgstr "Tillatelsesbevisst nestet visning"
+
+#: classes/PublishPress/Permissions.php:1382
+msgid "Quick edit integration"
+msgstr "Rask redigering integrasjon"
+
+#: classes/PublishPress/Permissions.php:1390
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:51
+msgid "PublishPress Statuses"
+msgstr "PublishPress Statuser"
+
+#: classes/PublishPress/Permissions.php:1391
+msgid "Compatibility with PublishPress Statuses plugin."
+msgstr "Kompatibilitet med PublishPress Statuser-plugin."
+
+#: classes/PublishPress/Permissions.php:1395
+msgid "Custom status permissions"
+msgstr "Tilpassede statusrettigheter"
+
+#: classes/PublishPress/Permissions.php:1396
+msgid "Workflow-specific access controls"
+msgstr "Arbeidsflyt-spesifikke tilgangskontroller"
+
+#: classes/PublishPress/Permissions.php:1397
+msgid "Status-based editing capabilities"
+msgstr "Statusbaserte redigeringsmuligheter"
+
+#: classes/PublishPress/Permissions.php:1405
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52, fuzzy
+msgid "Relevanssi"
+msgstr "Relevanssi"
+
+#: classes/PublishPress/Permissions.php:1406
+msgid "Search result filtering"
+msgstr "Filtrering av søketreff"
+
+#: classes/PublishPress/Permissions.php:1411
+msgid "Permission-aware indexing"
+msgstr "Tillatelsesbevisst indeksering"
+
+#: classes/PublishPress/Permissions.php:1412
+msgid "Secure content discovery"
+msgstr "Sikker innholdoppdagelse"
+
+#: classes/PublishPress/Permissions.php:1420
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53, fuzzy
+msgid "SearchWP"
+msgstr "SearchWP"
+
+#: classes/PublishPress/Permissions.php:1421
+msgid "Compatibility with SearchWP term filtering for advanced search capabilities."
+msgstr "Kompatibilitet med SearchWP termfiltrering for avanserte søkemuligheter."
+
+#: classes/PublishPress/Permissions.php:1425
+msgid "Permission-aware search results"
+msgstr "Tillatelsesbevisste søketreff"
+
+#: classes/PublishPress/Permissions.php:1426
+msgid "Term-based filtering"
+msgstr "Term-basert filtrering"
+
+#: classes/PublishPress/Permissions.php:1427
+msgid "Advanced search controls"
+msgstr "Avanserte søkekontroller"
+
+#: classes/PublishPress/Permissions.php:1435
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: classes/PublishPress/Permissions.php:1436
+msgid "Apply permission controls to WooCommerce products and product categories."
+msgstr "Bruk tilgangskontroller på WooCommerce-produkter og produktkategorier."
+
+#: classes/PublishPress/Permissions.php:1440
+msgid "Product permissions"
+msgstr "Produktrettigheter"
+
+#: classes/PublishPress/Permissions.php:1441
+msgid "Product category controls"
+msgstr "Kontroller for produktkategori"
+
+#: classes/PublishPress/Permissions.php:1449
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55, fuzzy
+msgid "WPML"
+msgstr "WPML"
+
+#: classes/PublishPress/Permissions.php:1450
+msgid "Permission synchronization across translations"
+msgstr "Tillatelsessynkronisering på tvers av oversettelser"
+
+#: classes/PublishPress/Permissions.php:1455
+msgid "Language-specific content access"
+msgstr "Språkspesifikk tilgang til innhold"
+
+#: classes/PublishPress/Permissions.php:1456
+msgid "Multilingual permission management"
+msgstr "Flerspråklig tillatelsesadministrasjon"
+
+#: classes/PublishPress/Permissions.php:1464
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56, fuzzy
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: classes/PublishPress/Permissions.php:1465
+msgid "Exclude restricted posts from XML sitemaps to maintain proper SEO indexing."
+msgstr ""
+"Ekskluder begrensede innlegg fra XML-nettkart for å opprettholde riktig "
+"SEO-indeksering."
+
+#: classes/PublishPress/Permissions.php:1469
+msgid "Sitemap filtering for restricted content"
+msgstr "Filtrering av nettverk for begrenset innhold"
+
+#: classes/PublishPress/Permissions.php:1470
+msgid "Search engine visibility controls"
+msgstr "Kontroller for synlighet i søkemotorer"
+
+#: classes/PublishPress/Permissions.php:1471
+msgid "Permission-aware XML sitemaps"
+msgstr "Tillatelsesbevisste XML-nettkart"
+
+#: classes/PublishPress/Permissions.php:1479
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57, fuzzy
+msgid "YooTheme"
+msgstr "YooTheme"
+
+#: classes/PublishPress/Permissions.php:1480
+msgid "Compatibility with YooTheme builder and term permissions."
+msgstr "Kompatibilitet med YooTheme-builder og termintillatelser."
+
+#: classes/PublishPress/Permissions.php:1484
+msgid "Builder interface compatibility"
+msgstr "Kompatibilitet med byggegrensesnitt"
+
+#: classes/PublishPress/Permissions.php:1485
+msgid "Term permission integration"
+msgstr "Integrering av termintillatelser"
+
+#: classes/PublishPress/Permissions.php:1486
+msgid "Template access controls"
+msgstr "Kontroller for tilgang til maler"
+
+#: classes/PublishPress/Permissions/Admin.php:100
+msgid "Viewing"
+msgstr "Visning"
+
+#: classes/PublishPress/Permissions/Admin.php:165
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+msgid "Access Circles"
+msgstr "Tilgangssirkler"
+
+#: classes/PublishPress/Permissions/Admin.php:166
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
+msgid "Editing Permissions"
+msgstr "Redigering av tillatelser"
+
+#: classes/PublishPress/Permissions/Admin.php:167
+msgid "Compatibility Pack"
+msgstr "Kompatibilitetspakke"
+
+#: classes/PublishPress/Permissions/Admin.php:168
+#: includes/CoreAdmin.php:67
+#: includes/CoreAdmin.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:83
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:84, fuzzy
+msgid "Teaser"
+msgstr "Teaser"
+
+#: classes/PublishPress/Permissions/Admin.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:34
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:109
+msgid "File Access"
+msgstr "Filtilgang"
+
+#: classes/PublishPress/Permissions/Admin.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:109
+msgid "Membership"
+msgstr "Medlemskap"
+
+#: classes/PublishPress/Permissions/Admin.php:171
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:36
+#: includes/promo/sync-promo.php:4
+msgid "User Posts"
+msgstr "Brukerinnlegg"
+
+#: classes/PublishPress/Permissions/Admin.php:175
+msgid "Post-specific and category-specific permissions for creation and editing."
+msgstr ""
+"Innlegg-spesifikke og kategori-spesifikke tillatelser for oppretting og "
+"redigering."
+
+#: classes/PublishPress/Permissions/Admin.php:177
+msgid "If you like %s, please leave us a %s rating. Thank you!"
+msgstr "Hvis du liker %s, vennligst gi oss en %s vurdering. Takk!"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About PublishPress Permissions"
+msgstr "Om PublishPress Permissions"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About"
+msgstr "Om"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Permissions Documentation"
+msgstr "Dokumentasjon om tillatelser"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Documentation"
+msgstr "Dokumentasjon"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact the PublishPress team"
+msgstr "Kontakt PublishPress-teamet"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact"
+msgstr "Kontakt"
+
+#: classes/PublishPress/Permissions/Compat/EyesOnly.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
+msgid "Permission Group"
+msgstr "Tillatelsesgruppe"
+
+#: classes/PublishPress/Permissions/Constants.php:21
+msgid "Extra Roles assignment available for {All} and {Anonymous} metagroups"
+msgstr "Ekstra rolle tildeling tilgjengelig for {All} og {Anonymous} metagrupper"
+
+#: classes/PublishPress/Permissions/Constants.php:24
+msgid "Don't assign or apply specific permissions for the 'post' type"
+msgstr "Ikke tildel eller anvend spesifikke tillatelser for 'innlegg' typen"
+
+#: classes/PublishPress/Permissions/Constants.php:32
+msgid "Don't assign or apply specific permissions for the 'page' type"
+msgstr "Ikke tildel eller anvend spesifikke tillatelser for 'side' typen"
+
+#: classes/PublishPress/Permissions/Constants.php:33
+msgid "Don't assign or apply specific permissions for the 'media' type"
+msgstr "Ikke tildel eller anvend spesifikke tillatelser for 'media' typen"
+
+#: classes/PublishPress/Permissions/Constants.php:34
+msgid "Include scheduled posts in the posts query if user can edit them"
+msgstr ""
+"Inkluder planlagte innlegg i innleggsspørsmålet hvis brukeren kan redigere "
+"dem"
+
+#: classes/PublishPress/Permissions/Constants.php:41
+msgid "Don't filter term post counts in get_terms() call"
+msgstr "Filtrer ikke terminnleggsteller i get_terms() kall"
+
+#: classes/PublishPress/Permissions/Constants.php:42
+msgid "Leave unreadable posts on WP Navigation Menus"
+msgstr "La uleste innlegg være på WP Navigasjonsmenyer"
+
+#: classes/PublishPress/Permissions/Constants.php:43
+msgid "Don't apply CSS to hide empty Nav Menus"
+msgstr "Bruk ikke CSS for å skjule tomme navigasjonsmenyer"
+
+#: classes/PublishPress/Permissions/Constants.php:44
+msgid "For legacy Nav Menus, hide empty nav menu div"
+msgstr "For eldre navigasjonsmenyer, skjul tom div for navigasjonsmeny"
+
+#: classes/PublishPress/Permissions/Constants.php:45
+msgid "Leave terms with no readable posts on WP Navigation Menus"
+msgstr "La termer uten lesbare innlegg være på WP Navigasjonsmenyer"
+
+#: classes/PublishPress/Permissions/Constants.php:52
+msgid "Filter priority for 'get_pages' filter (default: 1)"
+msgstr "Filtreringsprioritet for 'get_pages' filter (standard: 1)"
+
+#: classes/PublishPress/Permissions/Constants.php:64
+msgid "Attached Files Private setting available"
+msgstr "Vedlagt filer Privat innstilling tilgjengelig"
+
+#: classes/PublishPress/Permissions/Constants.php:107
+msgid "Comma-separated list of mime types to exclude from File Access filtering"
+msgstr ""
+"Kommaseparert liste over mime-typer som skal ekskluderes fra Filtilgang "
+"filtrering"
+
+#: classes/PublishPress/Permissions/Constants.php:108
+msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
+msgstr "Når filtilgang er blokkert, ikke sett WP_Query 404 / 403 egenskap"
+
+#: classes/PublishPress/Permissions/Constants.php:110
+msgid "HTTP status code to send when file access is blocked"
+msgstr "HTTP statuskode å sende når filtilgang er blokkert"
+
+#: classes/PublishPress/Permissions/Constants.php:118
+msgid "Don't filter comment display or moderation within wp-admin"
+msgstr "Ikke filtrer kommentarvisning eller moderering innen wp-admin"
+
+#: classes/PublishPress/Permissions/Constants.php:123
+msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
+msgstr ""
+"Ikke juster admin menyindeksene for å plassere Tillatelser-menyen under "
+"Brukere"
+
+#: classes/PublishPress/Permissions/Constants.php:132
+msgid "Customize Permissions screen title for Groups"
+msgstr "Tilpass tittelen på Tilganger-skjermen for Grupper"
+
+#: classes/PublishPress/Permissions/Constants.php:139
+msgid "Customize Permission Groups caption on user profile"
+msgstr "Tilpass teksten for Tillatelsesgrupper på brukerprofilen"
+
+#: classes/PublishPress/Permissions/Constants.php:140
+msgid "Only one group is selectable on Add User screen"
+msgstr "Kun én gruppe kan velges på Legg til bruker-skjermen"
+
+#: classes/PublishPress/Permissions/Constants.php:141
+msgid "Only one group is selectable on Edit User screen"
+msgstr "Kun én gruppe kan velges på Rediger bruker-skjermen"
+
+#: classes/PublishPress/Permissions/Constants.php:142
+msgid "Display a custom hint on Permissions > User Groups"
+msgstr "Vis en tilpasset hint om Tillatelser > Brukergrupper"
+
+#: classes/PublishPress/Permissions/Constants.php:143
+msgid "Max number of hierarchical posts / terms to display at one time (per page)"
+msgstr "Maks antall hierarkiske innlegg / termer som skal vises samtidig (per side)"
+
+#: classes/PublishPress/Permissions/Constants.php:145
+msgid "Make search function on the post selection metabox look at post content"
+msgstr "Få søkefunksjonen i innleggvalgmetaboksen til å se på innlegginnhold"
+
+#: classes/PublishPress/Permissions/Constants.php:148
+msgid "Make search function on the post selection metabox look at post excerpt"
+msgstr "Få søkefunksjonen i innleggvalgmetaboksen til å se på innleggutdrag"
+
+#: classes/PublishPress/Permissions/Constants.php:154
+msgid "Search by last name instead of display name"
+msgstr "Søk etter etternavn i stedet for visningsnavn"
+
+#: classes/PublishPress/Permissions/Constants.php:155
+msgid "User field to search by default"
+msgstr "Brukerfelt som skal søkes etter som standard"
+
+#: classes/PublishPress/Permissions/Constants.php:156
+msgid "User meta fields selectable for search (comma-separated)"
+msgstr "Brukermeta-felt som kan velges for søk (komma-separert)"
+
+#: classes/PublishPress/Permissions/Constants.php:157
+msgid "User meta fields which should be treated as numeric (comma-separated)"
+msgstr "Brukermeta-felt som skal behandles som numeriske (komma-separert)"
+
+#: classes/PublishPress/Permissions/Constants.php:158
+msgid "User meta fields which should be treated as boolean (comma-separated)"
+msgstr "Brukermeta-felt som skal behandles som boolske (komma-separert)"
+
+#: classes/PublishPress/Permissions/Constants.php:159
+msgid "Use display name for search results instead of user_login"
+msgstr "Bruk visningsnavn for søkeresultater i stedet for bruker_login"
+
+#: classes/PublishPress/Permissions/Constants.php:166
+msgid "Work around database setup warnings (at plugin activation) on some servers"
+msgstr "Omgå databasen oppsettvarsler (ved plugin-aktivering) på noen servere"
+
+#: classes/PublishPress/Permissions/Constants.php:213
+msgid "Logged In"
+msgstr "Innlogget"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:448
+msgid "Not Logged In"
+msgstr "Ikke innlogget"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+msgid "Everyone"
+msgstr "Alle"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/DB/Groups.php:469
+msgid "Change Request Notifications"
+msgstr "Endringsforespørselvarsler"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/DB/Groups.php:469
+msgid "Pending Revision Monitors"
+msgstr "Ventende revisjonsmonitorer"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Scheduled Change Notifications"
+msgstr "Planlagte endringsvarsler"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Scheduled Revision Monitors"
+msgstr "Planlagte revisjonsmonitorer"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:486
+msgid "Authenticated site users, except for Administrators"
+msgstr "Autentiserte nettstedbrukere, unntatt administratorer"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:488
+msgid "Anonymous users (not logged in)"
+msgstr "Anonyme brukere (ikke innlogget)"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:490
+msgid "All users (including anonymous)"
+msgstr "Alle brukere (inkludert anonyme)"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:495
+#, php-format
+msgid "All users with the WordPress role of %s"
+msgstr "Alle brukere med WordPress-rollen %s"
+
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:145
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:90
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade %2$s to version %3$s or later."
+msgstr "%1$s vil ikke fungere før du oppgraderer %2$s til versjon %3$s eller senere."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:112
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade WordPress to version %2$s or later."
+msgstr ""
+"%1$s vil ikke fungere før du oppgraderer WordPress til versjon %2$s eller "
+"senere."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:122
+#, php-format
+msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
+msgstr "Duplisert %1$s-modul aktivert (%2$s i mappe %3$s)."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:183
+msgid "Dismiss"
+msgstr "Avvis"
+
+#: classes/PublishPress/Permissions/Groups.php:54
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:335
+msgid "Custom Group"
+msgstr "Egendefinert gruppe"
+
+#: classes/PublishPress/Permissions/Groups.php:55
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+msgid "Custom Groups"
+msgstr "Egendefinerte grupper"
+
+#: classes/PublishPress/Permissions/Groups.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:41
+msgid "Groups"
+msgstr "Grupper"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:95
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:158
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:190
+#, php-format
+msgid "(using default capabilities due to invalid %s definition)"
+msgstr "(bruker standardkapasiteter på grunn av ugyldig %s-definisjon)"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:144
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:168
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+msgstr "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:181
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:200
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s%3$s"
+msgstr "%1$s&nbsp;%2$s%3$s"
+
+#: classes/PublishPress/Permissions/PluginStatus.php:12
+#, php-format
+msgid "(login timed out)"
+msgstr "(innloggingen har timed out)"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
+msgid "View"
+msgstr "Vis"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#, php-format
+msgid "Control assignment of terms to selected %s."
+msgstr "Kontroller tildeling av vilkår til valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
+#, php-format
+msgid "Control parent selection for selected %s."
+msgstr "Kontroller valg av overordnet for valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control editing of selected %s."
+msgstr "Kontroller redigering av valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#, php-format
+msgid "Control publishing of selected %s."
+msgstr "Kontroller publisering av valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#, php-format
+msgid "Control deletion of selected %s."
+msgstr "Kontroller sletting av valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#, php-format
+msgid "Control term management for selected %s."
+msgstr "Kontroller vilkårshåndtering for valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#, php-format
+msgid "Control frontend viewing of selected %s."
+msgstr "Kontroller frontend-visning av valgt %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:133
+msgid "Enable"
+msgstr "Aktiver"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:138
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:987
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
+msgid "Block"
+msgstr "Blokker"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:141
+msgid "Limit to"
+msgstr "Begrens til"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:146
+msgid "Selected:"
+msgstr "Valgt:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
+msgid "Nav Menus (Legacy)"
+msgstr "Navigasjonsmenyer (Legacy)"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:993
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:230
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127, fuzzy
+msgid "Legacy"
+msgstr "Legacy"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:211
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:224
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:230
+#, fuzzy, php-format
+msgid "%s:"
+msgstr "%s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:258
+#, php-format
+msgid "Selected %s:"
+msgstr "Valgt %s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:265
+#, php-format
+msgid "Sub-%s:"
+msgstr "Undersub-%s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:298
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:174
+msgid "All Statuses"
+msgstr "Alle statuser"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:311
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1902
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
+#, php-format
+msgid "%s Visibility"
+msgstr "%s Synlighet"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:35
+msgid "No user/group specified."
+msgstr "Ingen bruker/grupppe spesifisert."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:52
+#: classes/PublishPress/Permissions/UI/GroupNew.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:21
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:36
+msgid "You are not permitted to do that."
+msgstr "Du har ikke tillatelse til å gjøre det."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:46
+msgid "Invalid user ID."
+msgstr "Ugyldig bruker-ID."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:55
+msgid "Invalid group ID."
+msgstr "Ugyldig gruppe-ID."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:89
+msgid "Roles updated."
+msgstr "Roller oppdatert."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:92
+msgid "Specific Permissions updated."
+msgstr "Spesifikke tillatelser oppdatert."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:95
+msgid "Roles and Permissions copied."
+msgstr "Roller og tillatelser kopiert."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:98
+msgid "Group updated."
+msgstr "Gruppen er oppdatert."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:102
+#: classes/PublishPress/Permissions/UI/GroupNew.php:50
+msgid "Back to permissions list"
+msgstr "Tilbake til tillatelseslisten"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Edit User Permissions"
+msgstr "Rediger brukerrettigheter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Add User Permissions"
+msgstr "Legg til brukerrettigheter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:132
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:282
+msgid "Edit Permissions"
+msgstr "Rediger rettigheter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#, php-format
+msgid "Edit Permissions (%s)"
+msgstr "Rediger rettigheter (%s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
+#, php-format
+msgid "%sEdit WordPress Role%s"
+msgstr "%sRediger WordPress-rolle%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:144
+msgid "Edit role capabilities directly"
+msgstr "Rediger rollefunksjoner direkte"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:272
+msgid "Add New"
+msgstr "Legg til ny"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:195
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
+msgid "Name:"
+msgstr "Navn:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:206
+msgid "Email:"
+msgstr "E-post:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:219
+msgid "Primary Role:"
+msgstr "Primær rolle:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:238
+msgid "User ID:"
+msgstr "Bruker-ID:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:246
+msgid "Member since:"
+msgstr "Medlem siden:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:266
+msgid "Description:"
+msgstr "Beskrivelse:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:284
+msgid "Update Permissions"
+msgstr "Oppdater rettigheter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
+msgid "View Full Profile"
+msgstr "Vis full profil"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:414
+msgid "View currently stored user permissions:"
+msgstr "Vis nåværende lagrede brukerrettigheter:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#, php-format
+msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
+msgstr "%1$sBrukere som har ekstra roller tildelt direkte%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:419
+#, php-format
+msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
+msgstr "%1$sBrukere som har spesifikke rettigheter tildelt direkte%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:420
+#, php-format
+msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
+msgstr "%1$sBrukere som har Ekstra Roller eller Spesifikke Rettigheter direkte%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:16
+msgid "Add Roles"
+msgstr "Legg til roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:17
+msgid "Clear"
+msgstr "Tøm"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:18
+msgid "No statuses selected!"
+msgstr "Ingen statusser valgt!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:19
+msgid "Review the selection below, and then click <strong>Save Roles</strong>."
+msgstr "Gjennomgå valget nedenfor, og klikk deretter <strong>Lagre roller</strong>."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:20
+msgid "Role already selected!"
+msgstr "Rolle allerede valgt!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+msgid "No Action selected!"
+msgstr "Ingen handling valgt!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:22
+msgid "Saving Roles..."
+msgstr "Lagrer roller..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Reload form for further changes to this role"
+msgstr "Last inn skjemaet på nytt for ytterligere endringer til denne rollen"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:40
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
+msgid "Add Specific Permissions"
+msgstr "Legg til spesifikke rettigheter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:41
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1402
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
+msgid "Remove"
+msgstr "Fjern"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
+msgid "Permission already selected!"
+msgstr "Rettighet allerede valgt!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+msgid "Saving Permissions..."
+msgstr "Lagrer rettigheter..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+msgid "Reload form for further changes to this permission"
+msgstr "Last inn skjemaet på nytt for ytterligere endringer til denne rettigheten"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+msgid "Permissions mirrored. Reload form to view newly saved permissions."
+msgstr ""
+"Rettigheter speilet. Last inn skjemaet på nytt for å se nylig lagrede "
+"rettigheter."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+msgid "Permissions converted. Reload form to view newly saved permissions."
+msgstr ""
+"Rettigheter konvertert. Last inn skjemaet på nytt for å se nylig lagrede "
+"rettigheter."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+msgid "No Qualification selected!"
+msgstr "Ingen kvalifikasjon valgt!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:62
+msgid "No items selected!"
+msgstr "Ingen elementer valgt!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1274
+msgid "(no parent)"
+msgstr "(ingen overordnet)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:897
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:273
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:275
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:545
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:547
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:553
+msgid "(none)"
+msgstr "(ingen)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:69
+msgid "No results found."
+msgstr "Ingen resultater funnet."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:92
+msgid "select..."
+msgstr "velg..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:985
+msgid "Nav Menu (Block)"
+msgstr "Navigasjonsmeny (Blokk)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:107
+msgid "All Post Types"
+msgstr "Alle innleggstyper"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
+msgid "n/a"
+msgstr "ikke tilgjengelig"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:129
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+msgid "Post Type"
+msgstr "Innleggstype"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+msgid "Operation"
+msgstr "Operasjon"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+msgid "Adjustment"
+msgstr "Justering"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
+msgid "Qualification"
+msgstr "Kvalifikasjon"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
+msgid "Statuses"
+msgstr "Statuser"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:165
+msgid "for item"
+msgstr "for element"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:188
+msgid "Role"
+msgstr "Rolle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:256
+msgid "For Statuses"
+msgstr "For statuser"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:275
+msgid "Standard statuses"
+msgstr "Standard statuser"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+msgid "Status: Private"
+msgstr "Status: Privat"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+msgid "Add Role"
+msgstr "Legg til rolle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
+msgstr ""
+"For å tildele roller for bbPress-forum, aktiver funksjonen "
+"Kompatibilitetspakke."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:300
+#, php-format
+msgid "Select %s"
+msgstr "Velg %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:782
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1115, fuzzy
+msgid "Status"
+msgstr "Status"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
+msgid "Save Roles"
+msgstr "Lagre roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
+msgid "Save Permissions"
+msgstr "Lagre rettigheter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
+msgid "Add Extra Roles"
+msgstr "Legg til ekstra roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Copy"
+msgstr "Kopier"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#, php-format
+msgid "Extra Roles %1$s(for this user)%2$s"
+msgstr "Ekstra roller %1$s(for denne brukeren)%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:652
+msgid "Extra Roles"
+msgstr "Ekstra roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:676
+msgid "Show Groups"
+msgstr "Vis grupper"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:705
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:765
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1099
+msgid "item(s)"
+msgstr "element(er)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:727
+msgid "Term Management"
+msgstr "Termadministrasjon"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:737
+msgid "objects"
+msgstr "objekter"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:732
+msgid "Direct-Assigned"
+msgstr "Direkte tildelt"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:738
+msgid "Disabled Type"
+msgstr "Deaktivert type"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:764
+#, php-format
+msgid "%s Roles"
+msgstr "%s roller"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:830
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:553
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:730
+msgid "Apply"
+msgstr "Bruk"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:991
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
+msgid "Nav Menu (Legacy)"
+msgstr "Navigasjonsmeny (Legacy)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#, php-format
+msgid "%s Permissions"
+msgstr "%s tillatelser"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1029
+msgid "(all post types)"
+msgstr "(alle innleggstyper)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1050
+#, fuzzy, php-format
+msgid "%1$s (%2$s: %3$s)"
+msgstr "%1$s (%2$s: %3$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1051
+#, fuzzy, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+msgid "item"
+msgstr "element"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+msgid "items"
+msgstr "elementer"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1150
+msgid "unpublished"
+msgstr "upublisert"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1157
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:290
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
+#, fuzzy, php-format
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1204
+#, php-format
+msgid "this %1$s"
+msgstr "denne %1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1209
+#, php-format
+msgid "sub-%1$s of this %2$s"
+msgstr "under-%1$s av denne %2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1215
+#, php-format
+msgid "this %1$s and its sub-%2$s"
+msgstr "denne %1$s og dens under-%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1224
+#, php-format
+msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
+msgstr "%1$s tilgang for %2$s er AKTIVERT, uavhengig av rollekapabiliteter."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1257
+#, php-format
+msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
+msgstr ""
+"%1$s tilgang for %2$s er BLOKKERT, med mindre det er aktivert av en annen "
+"tillatelse."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1264
+#, php-format
+msgid "Assigned for sub-%s only."
+msgstr "Tildelt for under-%s kun."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1353
+#, php-format
+msgid "Assigned for %s and sub-%s."
+msgstr "Tildelt for %s og under-%s."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1377
+msgid "This Permission is redundant due to a corresponding Limitation."
+msgstr "Denne tillatelsen er overflødig på grunn av en tilsvarende begrensning."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1384
+#, php-format
+msgid "Edit %s"
+msgstr "Rediger %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
+#, php-format
+msgid "Assign for selected and sub-%s"
+msgstr "Tildel for valgte og under-%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1410
+#, php-format
+msgid "Assign for selected %s only"
+msgstr "Tildel kun for valgte %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1414
+#, php-format
+msgid "Assign for sub-%s only"
+msgstr "Tildel kun for under-%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1419
+msgid "Assign for selected and sub-terms"
+msgstr "Tildel for valgte og under-begrepene"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+msgid "Assign for selected term only"
+msgstr "Tildel kun for valgt begrep"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1427
+msgid "Assign for sub-terms only"
+msgstr "Tildel kun for under-begrepene"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1438
+msgid "Convert to \"Enabled\""
+msgstr "Konverter til \"Aktivert\""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1439
+msgid "Convert to \"Blocked\""
+msgstr "Konverter til \"Blokkert\""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1440
+msgid "Convert to \"Limit to\""
+msgstr "Konverter til \"Begrens til\""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1497
+#, php-format
+msgid "Mirror to %s"
+msgstr "Speil til %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1501
+#, php-format
+msgid "Mirror to %s %s"
+msgstr "Speil til %s %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1560
+msgid "= Enabled"
+msgstr "= Aktivert"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+msgid "= Blocked"
+msgstr "= Blokkert"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1574
+msgid "= Limitation"
+msgstr "= Begrensning"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#, php-format
+msgid "= %1$s and sub-%1$s"
+msgstr "= %1$s og under-%1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1594
+#, php-format
+msgid "= sub-%s only"
+msgstr "= kun under-%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
+msgid "Note:"
+msgstr "Merk:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1614
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1638
+#, php-format
+msgid "Sub-%1$s Permissions are not separately listed."
+msgstr "Under-%1$s tillatelser er ikke oppført separat."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1618
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1642
+msgid "Show All"
+msgstr "Vis alle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1627
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1650
+#, php-format
+msgid "Hide auto-assigned Sub-%s Permissions"
+msgstr "Skjul automatisk tildelte Sub-%s tillatelser"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
+msgid " %1$sFix Sub-%2$s Permissions%3$s"
+msgstr " %1$sFiks Sub-%2$s tillatelser%3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1711
+msgid "Group Restrictions are not available because of a constant definition"
+msgstr "Gruppebegrensninger er ikke tilgjengelige på grunn av en konstant definisjon"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1728
+msgid "Group Members"
+msgstr "Gruppe medlemmer"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1837
+msgid "Copy Roles and Permissions from:"
+msgstr "Kopier roller og tillatelser fra:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1860
+msgid "Copy Roles and Permissions"
+msgstr "Kopier roller og tillatelser"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+msgid "Limit to:"
+msgstr "Begrens til:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
+msgid "Blocked:"
+msgstr "Blokkert:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+msgid "Enabled:"
+msgstr "Aktivert:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1895
+msgid "Direct-assigned"
+msgstr "Direkte tildelt"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1908
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
+msgid "Standard Statuses"
+msgstr "Standard statusser"
+
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:60
+msgid "(invalid role definition)"
+msgstr "(ugyldig rolledefinisjon)"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:45
+#, php-format
+msgid "eligible (%d):"
+msgstr "berettiget (%d):"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:47
+#, php-format
+msgid "current (%d):"
+msgstr "nåværende (%d):"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:123
+msgid "view / edit group"
+msgstr "vis / rediger gruppe"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:124
+msgid "edit"
+msgstr "rediger"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:58
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:290
+#, php-format
+msgid "Find Users by %s"
+msgstr "Finn brukere etter %s"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:60
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:292
+msgid "Search Users"
+msgstr "Søk etter brukere"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:295
+msgid "Search Custom Groups"
+msgstr "Søk etter tilpassede grupper"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:83
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:312
+msgid "For additional fields, define constant PP_USER_SEARCH_META_FIELDS"
+msgstr "For ytterligere felt, definer konstanten PP_USER_SEARCH_META_FIELDS"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "First Name"
+msgstr "Fornavn"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Last Name"
+msgstr "Etternavn"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Nickname"
+msgstr "Kallenavn"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:110
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:339
+msgid "(user field)"
+msgstr "(brukerfelt)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:140
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:369
+msgid "(any WP role)"
+msgstr "(hvilken som helst WP-rolle)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:156
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:428
+msgid "Search Results:"
+msgstr "Søkeresultater:"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:173
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:448
+msgid "Current Selections:"
+msgstr "Nåværende valg:"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
+#: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
+#: classes/PublishPress/Permissions/UI/Groups.php:180
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:39
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:164
+msgid "Permissions"
+msgstr "Tillatelser"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:271
+msgid "Add New Permission Group"
+msgstr "Legg til ny tillatelsesgruppe"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
+msgid "Edit"
+msgstr "Rediger"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:96
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:97
+msgid "Role Usage"
+msgstr "Rollebruk"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:310
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:311
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:107
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:108
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:64
+msgid "Edit Role Usage"
+msgstr "Rediger rollebruk"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:323
+msgid "Settings"
+msgstr "Innstillinger"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
+msgid "(Default access: Enabled)"
+msgstr "(Standard tilgang: Aktivert)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:17
+msgid "(Default access: Blocked)"
+msgstr "(Standard tilgang: Blokkert)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:18
+msgid "(No setting)"
+msgstr "(Ingen innstilling)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:19
+msgid "Enabled"
+msgstr "Aktivert"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:20
+msgid "Blocked"
+msgstr "Blokkert"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:21
+msgid "(Blocked)"
+msgstr "(Blokkert)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:22
+msgid "Unblocked"
+msgstr "Ikke blokkert"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:42
+msgid "Roles"
+msgstr "Roller"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:60
+msgid "User"
+msgstr "Bruker"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
+#, php-format
+msgid "This %s"
+msgstr "Denne %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
+#, php-format
+msgid "Sub-%s"
+msgstr "Unders-%s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:273
+msgid "Default All"
+msgstr "Standard Alle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:297
+msgid "Group restrictions are not recommended."
+msgstr "Gruppebegrensninger anbefales ikke."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:377
+#, php-format
+msgid "%d role"
+msgid_plural "%d roles"
+msgstr[0] "%d rolle"
+msgstr[1] "%d roller"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
+#, php-format
+msgid "%d group"
+msgid_plural "%d groups"
+msgstr[0] "%d gruppe"
+msgstr[1] "%d grupper"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
+#, php-format
+msgid "%d user"
+msgid_plural "%d users"
+msgstr[0] "%d bruker"
+msgstr[1] "%d brukere"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:385
+msgid "No exceptions configured"
+msgstr "Ingen unntak konfigurert"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+msgid "Roles & Groups"
+msgstr "Roller & Grupper"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+msgid "Search roles and groups..."
+msgstr "Søk etter roller og grupper..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+msgid "Search roles..."
+msgstr "Søk etter roller..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:522
+#: classes/PublishPress/Permissions/UI/Groups.php:211
+msgid "Users"
+msgstr "Brukere"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:544
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:720
+msgid "Select All"
+msgstr "Velg Alle"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:547
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:548
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:723
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:724
+msgid "Bulk Actions"
+msgstr "Massehandlinger"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:549
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:725
+msgid "Set to Enabled"
+msgstr "Sett til Aktivert"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:550
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+msgid "Set to Blocked"
+msgstr "Sett til Blokkert"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:551
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:727
+msgid "Set to Default"
+msgstr "Sett til Standard"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:733
+msgid "selected"
+msgstr "valgt"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:583
+msgid "Search and add users..."
+msgstr "Søk og legg til brukere..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:655
+msgid "No role exceptions set"
+msgstr "Ingen rolleunntak satt"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
+msgid "No specific user permissions. Use the search box to add users."
+msgstr "Ingen spesifikke brukerrettigheter. Bruk søkeboksen for å legge til brukere."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:728
+msgid "Remove Selected"
+msgstr "Fjern Valgte"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:977
+#: classes/PublishPress/Permissions/UI/Groups.php:240
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
+msgid "Login State"
+msgstr "Innloggingsstatus"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:984
+msgid "Group"
+msgstr "Gruppe"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+msgid "Sub-Sections"
+msgstr "Underseksjoner"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+msgid "This Section"
+msgstr "Denne Seksjonen"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
+msgid "Remove user from exceptions"
+msgstr "Fjern bruker fra unntak"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
+#, php-format
+msgid "Editing can't be granted to non-users."
+msgstr "Redigering kan ikke gis til ikke-brukere."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:112
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:481
+#: classes/PublishPress/Permissions/UI/Settings.php:102
+msgid "Permissions Settings"
+msgstr "Innstillinger for Rettigheter"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:135
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:248
+#, php-format
+msgid "Permissions: %s"
+msgstr "Rettigheter: %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:156
+#, php-format
+msgid "Permissions: Select this %s as Parent"
+msgstr "Rettigheter: Velg denne %s som Forelder"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:164
+#, php-format
+msgid "Permissions: Assign Terms to this %s"
+msgstr "Rettigheter: Tildel Termer til denne %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:172
+#, php-format
+msgid "Permissions: %s this %s"
+msgstr "Rettigheter: %s denne %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:505
+#, php-format
+msgid "enable custom permissions for %s"
+msgstr "aktiver tilpassede tillatelser for %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:273
+msgid "Select as Parent"
+msgstr "Velg som Forelder"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:278
+msgid "Assign Terms"
+msgstr "Tildel Vilkår"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:37
+#, php-format
+msgid "Specific Permissions %1$s(for this user)%2$s"
+msgstr "Spesifikke Tillatelser %1$s(for denne brukeren)%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:81
+#, php-format
+msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
+msgstr "Ekstra Roller %1$s(fra primær rolle eller gruppe medlemskap)%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:90
+msgid "Specific Permissions (from primary role or group membership)"
+msgstr "Spesifikke Tillatelser (fra primær rolle eller gruppe medlemskap)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:189
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:172
+msgid "Permission Groups"
+msgstr "Tillatelsesgrupper"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:221
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "Denne brukeren er ikke medlem av noen tilpassede Tillatelsesgrupper."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:225
+msgid "Edit this user's group membership"
+msgstr "Rediger denne brukerens gruppe medlemskap"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:234
+msgid "%s, more..."
+msgstr "%s, mer..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:307
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
+msgid "edit user permissions"
+msgstr "rediger brukertillatelser"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:138
+#, php-format
+msgid "Assign to %s"
+msgstr "Tildel til %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:141
+msgid "Assign (All Types)"
+msgstr "Tildel (Alle Typer)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#, php-format
+msgid "%s (All Content)"
+msgstr "%s (Alt Innhold)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:243
+#, php-format
+msgid "Permissions: %1$s in %2$s"
+msgstr "Tillatelser: %1$s i %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:272
+#, php-format
+msgid "Permissions: Assign this %2$s to %3$s"
+msgstr "Tillatelser: Tildel denne %2$s til %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
+#, php-format
+msgid "Permissions: Assign this %2$s for All Post Types"
+msgstr "Tillatelser: Tildel denne %2$s for Alle Innleggstyper"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:285
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:298
+#, php-format
+msgid "Permissions: %1$s %2$s in this %3$s"
+msgstr "Tillatelser: %1$s %2$s i dette %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:291
+#, php-format
+msgid "Permissions: %1$s all content in this %2$s for All Post Types"
+msgstr "Tillatelser: %1$s alt innhold i dette %2$s for Alle Innleggstyper"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:304
+#, php-format
+msgid "Permissions: %1$s this %2$s"
+msgstr "Tillatelser: %1$s denne %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:325
+#, php-format
+msgid "Click to list/edit universal permissions"
+msgstr "Klikk for å liste/redigere universelle tillatelser"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:60
+#, php-format
+msgid "%1$s Permissions %2$s*%3$s"
+msgstr "%1$s Tillatelser %2$s*%3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:62
+msgid "Universal Permissions"
+msgstr "Universelle Tillatelser"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:69
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:72
+msgid "Permissions&hellip;"
+msgstr "Tillatelser&hellip;"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:81
+msgid "Add"
+msgstr "Legg til"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:85
+msgid "Add selected users to Permission Group"
+msgstr "Legg til valgte brukere i Tillatelsesgruppe"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:95
+msgid "Remove selected users from Permission Group"
+msgstr "Fjern valgte brukere fra Tillatelsesgruppe"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:103
+msgid "Click to show only users who have no group"
+msgstr "Klikk for å vise bare brukere som ikke har gruppe"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:111
+msgid "Click to show only users who have extra roles"
+msgstr "Klikk for å vise bare brukere som har ekstra roller"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:122
+msgid "Click to show only users who have Specific Permissions assigned directly"
+msgstr "Klikk for å vise bare brukere som har spesifikke tillatelser tildelt direkte"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
+msgid "Specific Permissions"
+msgstr "Spesifikke Tillatelser"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:262
+msgid "edit group"
+msgstr "rediger gruppe"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:321
+#, php-format
+msgid "%s more"
+msgstr "%s mer"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:39
+msgid "Group created."
+msgstr "Gruppen er opprettet."
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:79
+msgid "Create New Permission Group"
+msgstr "Opprett Ny Tillatelsesgruppe"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:81
+#, php-format
+msgid "Create New %s"
+msgstr "Opprett Ny %s"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:97
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:168
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:39
+msgid "Name"
+msgstr "Navn"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:103
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:656
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:709
+msgid "Description"
+msgstr "Beskrivelse"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:115
+msgid "Create Group"
+msgstr "Opprett gruppe"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:22
+msgid "Shop manager"
+msgstr "Butikkadministrator"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:23
+msgid "Translator"
+msgstr "Oversetter"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:24
+msgid "Customer"
+msgstr "Kunde"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:90
+msgid "You have specified this group for deletion:"
+msgid_plural "You have specified these groups for deletion:"
+msgstr[0] "Du har spesifisert denne gruppen for sletting:"
+msgstr[1] "Du har spesifisert disse gruppene for sletting:"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:120
+msgid "There are no valid groups selected for deletion."
+msgstr "Det er ingen gyldige grupper valgt for sletting."
+
+#: classes/PublishPress/Permissions/UI/Groups.php:150
+#, php-format
+msgid "%s group deleted"
+msgid_plural "%s groups deleted"
+msgstr[0] "%s gruppe slettet"
+msgstr[1] "%s grupper slettet"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:155
+msgid "New group created."
+msgstr "Ny gruppe opprettet."
+
+#: classes/PublishPress/Permissions/UI/Groups.php:199
+msgid "Add New Group"
+msgstr "Legg til ny gruppe"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:206
+msgid "User Groups"
+msgstr "Brukergrupper"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:330
+msgid "WordPress Role"
+msgstr "WordPress-rolle"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+msgid "WordPress Roles"
+msgstr "WordPress-roller"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:247
+#, php-format
+msgid "%1$sGroup Type:%2$s %3$s"
+msgstr "%1$sGruppetype:%2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
+msgid "All"
+msgstr "Alle"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:275
+msgid "Has Permissions"
+msgstr "Har tillatelser"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:279
+#: classes/PublishPress/Permissions/UI/Groups.php:336
+msgid "Has Specific Permissions"
+msgstr "Har spesifikke tillatelser"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:282
+#: classes/PublishPress/Permissions/UI/Groups.php:343
+msgid "Has Extra Roles"
+msgstr "Har ekstra roller"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:287
+#, php-format
+msgid "Search Results for &#8220;%s&#8221;"
+msgstr "Søkeresultater for &#8220;%s&#8221;"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:296
+msgid "Search Groups"
+msgstr "Søk Grupper"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:322
+msgid "All Users"
+msgstr "Alle Brukere"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:329
+msgid "Has Permissions Set Directly"
+msgstr "Har Tillatelser Satt Direkte"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:350
+msgid "No Custom Group"
+msgstr "Ingen Egendefinert Gruppe"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:115
+msgid "No matching groups were found."
+msgstr "Ingen matchende grupper ble funnet."
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:154
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:95
+msgid "Delete"
+msgstr "Slett"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:169, fuzzy
+msgid "Type"
+msgstr "Type"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:338
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:145
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:245
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:191
+msgid "Workflow"
+msgstr "Arbeidsflyt"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:37
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:83
+msgid "edit group permissions"
+msgstr "rediger gruppetillatelser"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:326
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+msgid "ERROR"
+msgstr "FEIL"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:327
+msgid "Please enter a group name."
+msgstr "Vennligst skriv inn et gruppenavn."
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:334
+msgid "This group name is already registered. Please choose another one."
+msgstr "Dette gruppenavnet er allerede registrert. Vennligst velg et annet."
+
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:73
+msgid "You can&#8217;t delete that group."
+msgstr "Du kan&#8217;t slette den gruppen."
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:15
+msgid "To customize editing permissions, enable the Editing Permissions feature."
+msgstr ""
+"For å tilpasse redigeringstillatelser, aktiver funksjonen "
+"Redigeringstillatelser."
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:13
+msgid "Block URL access"
+msgstr "Blokker URL-tilgang"
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:16
+msgid "Customize"
+msgstr "Tilpass"
+
+#: classes/PublishPress/Permissions/UI/HintsPostEdit.php:18
+#, php-format
+msgid "To customize publication workflow, %1$sinstall PublishPress Statuses%2$s."
+msgstr ""
+"For å tilpasse publikasjonsarbeidsflyten, %1$sinstaller PublishPress "
+"Statuses%2$s."
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:11
+msgid "Show list of Permissions Pro features and screencasts"
+msgstr "Vis liste over Permissions Pro-funksjoner og skjermopptak"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:166
+msgid "Knowledge Base"
+msgstr "Kunnskapsbase"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:168
+msgid "Detailed Feature Grid"
+msgstr "Detaljert funksjonsoversikt"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:170
+msgid "Contact Us"
+msgstr "Kontakt oss"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:172
+msgid "Purchase"
+msgstr "Kjøp"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:174
+msgid "Hide"
+msgstr "Skjul"
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:272
+#, php-format
+msgid "None. All %ss will be hidden by default."
+msgstr "Ingen. Alle %ss vil bli skjult som standard."
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:335
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:495
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:748
+msgid "Add Selected Permissions"
+msgstr "Legg til valgte rettigheter"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:68
+msgid "If you need help or have a new feature request, let us know."
+msgstr "Hvis du trenger hjelp eller har en ny funksjonsforespørsel, gi oss beskjed."
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:193
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:231
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:269
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:291
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:108
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:305
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:191
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:227
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:249
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:137
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
+#: includes/CoreAdmin.php:111
+#: includes/CoreAdmin.php:112
+#: includes/CoreAdmin.php:243
+#: includes/promo/posts-teaser-promo.php:22
+#: includes/promo/statuses-promo.php:23
+#: includes/promo/sync-promo.php:22
+#: includes/promo/visibility-statuses-promo.php:23
+msgid "Upgrade to Pro"
+msgstr "Oppgrader til Pro"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:241
+msgid "Request Support"
+msgstr "Be om støtte"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:248
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "Detaljert dokumentasjon er også tilgjengelig på plugin-nettstedet."
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:251
+msgid "View Knowledge Base"
+msgstr "Vis kunnskapsbase"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:171
+msgid "All settings were updated."
+msgstr "Alle innstillinger ble oppdatert."
+
+#: classes/PublishPress/Permissions/UI/Settings.php:179
+msgid "All settings were reset to defaults."
+msgstr "Alle innstillinger ble tilbakestilt til standardinnstillinger."
+
+#: classes/PublishPress/Permissions/UI/Settings.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:575
+msgid "Save Changes"
+msgstr "Lagre endringer"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:223
+msgid "Upgrade to Permissions Pro"
+msgstr "Oppgrader til Permissions Pro"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:224
+msgid "Need Permissions Support?"
+msgstr "Trenger du Permissions-støtte?"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:60
+msgid "Remove the \"Private:\" and \"Protected\" prefix from Post, Page titles."
+msgstr "Fjern prefikset \"Privat:\" og \"Beskyttet\" fra Innlegg, Side titler."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:78
+msgid "Note: Groups and Roles are always displayed on the Edit User screen."
+msgstr "Merk: Grupper og Roller vises alltid på skjermen for Rediger Bruker."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:92
+msgid "Disable Permissions filtering for users who are not logged in."
+msgstr "Deaktiver tillatelsesfiltrering for brukere som ikke er logget inn."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:95
+msgid "Legacy compatibility: front end term filters are not applied on some sites."
+msgstr "Legacy kompatibilitet: front-end termfiltre brukes ikke på noen nettsteder."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:98
+msgid "Display descriptive captions on Permissions screens."
+msgstr "Vis beskrivende bildetekster på Tillatelsesskjermene."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:110
+msgid "You can add Permissions capabilities to a role using the %1$s plugin."
+msgstr ""
+"Du kan legge til tillatelsesfunksjoner til en rolle ved å bruke "
+"%1$s-pluginen."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:125
+msgid "Settings related to content editing permissions, provided by the %s module."
+msgstr ""
+"Innstillinger relatert til tillatelser for innholdsredigering, levert av "
+"%s-modulen."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:135
+msgid "Always auto-assign a post tag if none are selected"
+msgstr "Alltid automatisk tildele en innleggstag hvis ingen er valgt"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:219
+msgid "Always auto-assign a term of this taxonomy if none are selected"
+msgstr "Alltid automatisk tildele et begrep av denne taksonomien hvis ingen er valgt"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:222
+msgid "Do not auto-assign a post tag"
+msgstr "Ikke automatisk tildele en innleggstag"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:231
+msgid "Do not auto-assign a term of this taxonomy"
+msgstr "Ikke automatisk tildele et begrep av denne taksonomien"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:234
+msgid "Don't define an 'Approved' status, even if Status Control feature is active"
+msgstr ""
+"Ikke definer en 'Godkjent' status, selv om Statuskontroll-funksjonen er "
+"aktiv"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:245
+msgid "Limited User Editors can assign their own role"
+msgstr "Begrensede brukerredaktører kan tildele sin egen rolle"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:273
+msgid "Manage PublishPress Permissions plugin settings."
+msgstr "Administrer innstillinger for PublishPress Permissions-plugin."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
+msgid "Create new Permission Groups and set the name and description."
+msgstr "Opprett nye tillatelsesgrupper og sett navn og beskrivelse."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:286
+msgid "Edit the name and description of existing Permission Groups."
+msgstr "Rediger navn og beskrivelse av eksisterende tillatelsesgrupper."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
+msgid "Delete Permission Groups."
+msgstr "Slett tillatelsesgrupper."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:288
+msgid "If group editing is allowed, can also modify group membership."
+msgstr "Hvis gruppering av redigering er tillatt, kan også gruppemedlemskap endres."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:289
+msgid "Assign Extra Roles or Permissions."
+msgstr "Tildel ekstra roller eller tillatelser."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:290
+msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
+msgstr ""
+"Tildel ekstra roller eller tillatelser på skjermen for redigering av "
+"tillatelser."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:291
+msgid "Set Viewing Permissions for specific Posts, Categories or Terms."
+msgstr "Sett visningstillatelser for spesifikke innlegg, kategorier eller termer."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
+msgid "Set Editing Permissions for specific Posts, Categories or Terms."
+msgstr "Sett redigeringstillatelser for spesifikke innlegg, kategorier eller termer."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:297
+msgid "Set Revision Permissions for specific Posts, Categories or Terms."
+msgstr "Sett revisjonstillatelser for spesifikke innlegg, kategorier eller termer."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:300
+msgid "Set \"Set as Parent\" Permissions for specific Posts."
+msgstr "Sett \"Sett som forelder\" tillatelser for spesifikke innlegg."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:301
+msgid "Set Term Assignment Permissions."
+msgstr "Sett tillatelser for tildeling av termer."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:302
+msgid "Set Term Management Permissions."
+msgstr "Sett tillatelser for håndtering av termer."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:303
+msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
+msgstr ""
+"Sett \"Sett som Forelder\" tillatelser for spesifikke kategorier eller "
+"termer."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:305
+msgid "Edit own file uploads, even if they become attached to an uneditable post."
+msgstr ""
+"Rediger egne filopplastinger, selv om de blir knyttet til et "
+"ikke-redigerbart innlegg."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:306
+msgid "See other user's unattached file uploads in Media Library."
+msgstr "Se andre brukeres ikke-knyttede filopplastinger i Mediebiblioteket."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:307
+msgid "Do not alter the Media Library listing provided by WordPress."
+msgstr "Ikke endre Mediebibliotekets oppføring som tilbys av WordPress."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:310
+msgid "(Statuses Pro capability)"
+msgstr "(Status Pro-funksjon)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:26
+msgid "Advanced"
+msgstr "Avansert"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:33
+msgid "Advanced Settings"
+msgstr "Avanserte Innstillinger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:35
+msgid "Network-Wide Settings"
+msgstr "Nettverksomfattende Innstillinger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:36
+msgid "Editor Options"
+msgstr "Redigeringsalternativer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:38
+msgid "Page Structure"
+msgstr "Side Struktur"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:40
+msgid "Permissions Capabilities"
+msgstr "Tillatelsesmuligheter"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:41
+msgid "Front End"
+msgstr "Frontend"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:42
+msgid "User Management"
+msgstr "Brukeradministrasjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:43
+msgid "Constants"
+msgstr "Konstanter"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:44
+msgid "Role Integration"
+msgstr "Rolleintegrasjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:45
+msgid "Nav Menu Editing"
+msgstr "Redigering av navigasjonsmeny"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:46
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:60
+msgid "Display all advanced settings"
+msgstr "Vis alle avanserte innstillinger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:61
+msgid "Use modern tabbed metabox interface"
+msgstr "Bruk moderne fanebasert metabox-grensesnitt"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:62
+msgid "Delete settings on plugin deletion"
+msgstr "Slett innstillinger ved plugin-sletting"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:63
+msgid "Post-specific Permissions take priority"
+msgstr "Innlegg-spesifikke tillatelser har prioritet"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:64
+msgid "Search Results include Media"
+msgstr "Søkeresultater inkluderer medier"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:65
+msgid "Regulate access to Category archive pages"
+msgstr "Reguler tilgang til kategoriarkiv-sider"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:66
+msgid "Performance: Don't filter category / tag counts"
+msgstr "Ytelse: Ikke filtrer antall kategorier / tagger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:67
+msgid "Filter Menu Items"
+msgstr "Filtrer menyelementer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:68
+msgid "Page Parent selection for editable pages only"
+msgstr "Sideforeldrevalg for redigerbare sider kun"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:69
+msgid "Auto-assign available term if default term is unavailable"
+msgstr "Auto-tilordne tilgjengelig term hvis standardterm er utilgjengelig"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:70
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:52
+msgid "List other user's uneditable posts"
+msgstr "Liste over andres uredigerbare innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:71
+msgid "Pages can be set or removed from Top Level by: "
+msgstr "Sider kan settes eller fjernes fra toppnivå av: "
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:72
+msgid "Tag creation requires Tag edit capability"
+msgstr "Opprettelse av tagger krever redigeringsevne for tagger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:77
+msgid "Type-specific Extra Roles grant all capabilities in Pattern Role"
+msgstr "Type-spesifikke ekstra roller gir alle evner i mønsterrollen"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:78
+msgid "Suppress \"Private: \" Caption"
+msgstr "Undertrykk \"Privat: \" tekst"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:79
+msgid "Select Permission Groups at User creation"
+msgstr "Velg tillatelsesgrupper ved oppretting av bruker"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:80
+msgid "Permission Groups on User Profile"
+msgstr "Tillatelsesgrupper på brukerprofil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:81
+msgid "Extra Roles on User Profile"
+msgstr "Ekstra roller på brukerprofil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:82
+msgid "Order Page Parent dropdown by Title"
+msgstr "Bestillingsside Foreldre nedtrekksmeny etter Tittel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:83
+msgid "Add taxonomy columns to Edit Posts screen"
+msgstr "Legg til taksonomi kolonner til Rediger Innlegg skjerm"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:84
+msgid "Allow Renaming of uneditable Items"
+msgstr "Tillat omdøping av ikke-redigerbare elementer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:85
+msgid "Lock custom menu items"
+msgstr "Lås tilpassede meny-elementer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:86
+msgid "Bulk Add Author Pages on Users screen"
+msgstr "Bulk Legg til Forfatter Sider på Brukere skjerm"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:108
+#, php-format
+msgid "%1$sDisable%2$s all filtering for anonymous users"
+msgstr "%1$sDeaktiver%2$s all filtrering for anonyme brukere"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:109
+#, php-format
+msgid "%1$sDo not apply%2$s metagroup permissions for Administrators"
+msgstr "%1$sIkke bruk%2$s metagruppe tillatelser for Administratorer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:110
+msgid "Limit front-end category / term filtering"
+msgstr "Begrens front-end kategori / term filtrering"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:111
+msgid "User Search: Filter by WP role"
+msgstr "Brukersøk: Filtrer etter WP rolle"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:112
+msgid "Display Administrative Hints"
+msgstr "Vis Administrative Tips"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:113
+msgid "Display Module Hints"
+msgstr "Vis Modul Tips"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:114
+msgid "Detect Dynamically Mapped WP Roles"
+msgstr "Oppdag Dynamisk Kartlagte WP Roller"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:115
+msgid "Non-Administrators can set Reading Permissions for their editable posts"
+msgstr "Ikke-administratorer kan sette Lesetillatelser for sine redigerbare innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:116
+msgid "Bulk Add / Remove Groups on Users Screen"
+msgstr "Bulk Legg til / Fjern Grupper på Brukere Skjerm"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Non-Administrators can set Editing Permissions for their editable posts"
+msgstr ""
+"Ikke-administratorer kan sette Redigeringstillatelser for sine redigerbare "
+"innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
+msgid "Assign Publish Permissions separate from Edit Permissions"
+msgstr "Tildel Publiseringstillatelser separat fra Redigeringstillatelser"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:224
+msgid "The following would revert to default settings:"
+msgstr "Følgende vil bli tilbakestilt til standardinnstillinger:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:274
+msgid "The following would change from defaults to previously stored settings:"
+msgstr "Følgende vil endres fra standarder til tidligere lagrede innstillinger:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "no Page Parent filter"
+msgstr "ingen Side Forelder filter"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Authors, Editors and Administrators"
+msgstr "Sideforfattere, redaktører og administratorer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Editors and Administrators"
+msgstr "Side-redaktører og administratorer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Administrators"
+msgstr "Administratorer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:356
+msgid "Some term-limited editing configurations require this."
+msgstr "Noen redigeringskonfigurasjoner med begrenset begrep krever dette."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+msgid "%sPosts / Pages Listing:%s %s"
+msgstr "%sInnlegg / Sider Liste:%s %s"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:500
+msgid "User editing capabilities apply for"
+msgstr "Bruker redigeringskapabiliteter gjelder for"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "any user"
+msgstr "alle brukere"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "equal or lower role levels"
+msgstr "lik eller lavere rolle nivåer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "lower role levels"
+msgstr "lavere rolle nivåer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:552
+#, php-format
+msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
+msgstr "For å kontrollere hvordan Ekstra Roller brukes, se %1$sRollebruk%2$s."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:654
+msgid "Defined Constant"
+msgstr "Definert konstant"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:655
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:708
+msgid "Setting"
+msgstr "Innstilling"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:707
+msgid "Available Constant"
+msgstr "Tilgjengelig konstant"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
+msgid "Revert to Defaults"
+msgstr "Gjenopprett til standardinnstillinger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:20
+msgid "General"
+msgstr "Generelt"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:27
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:41
+msgid "Taxonomies"
+msgstr "Taksonomier"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:28
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:42
+msgid "Post Types"
+msgstr "Innleggstyper"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:29
+msgid "Database Maintenance"
+msgstr "Database vedlikehold"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:43
+msgid "Enforce distinct edit, delete capability requirements for Media"
+msgstr "Håndheve distinkte redigerings- og slettemuligheter for media"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:81
+msgid "Modify permissions for these Taxonomies:"
+msgstr "Endre tillatelser for disse taksonomiene:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:110
+msgid "Modify permissions for these Post Types:"
+msgstr "Endre tillatelser for disse innleggstypene:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:111
+msgid "This causes unique capabilities to be required for editing each post type. "
+msgstr "Dette medfører at unike muligheter kreves for å redigere hver innleggstype. "
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:173
+msgid "Nav Menus (Block)"
+msgstr "Navigasjonsmenyer (Blokk)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:203
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:384
+msgid "Metabox enabled"
+msgstr "Metaboks aktivert"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:386
+msgid "Metabox disabled"
+msgstr "Metaboks deaktivert"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:209
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:390
+msgid "Permissions screen enabled"
+msgstr "Tillatelsesskjerm aktivert"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:211
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:392
+msgid "Permissions screen disabled"
+msgstr "Tillatelsesskjerm deaktivert"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:229
+msgid "Enable metabox on %s editing screen"
+msgstr "Aktiver metaboks på %s redigeringsskjerm"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:264
+msgid "Enable on Permissions screen"
+msgstr "Aktiver på tillatelsesskjerm"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:120
+msgid "Make Unattached Files Private"
+msgstr "Gjør utilknyttede filer private"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:121
+msgid "Small Thumbnails Unfiltered"
+msgstr "Små miniaturer uten filter"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:122
+msgid "Compatibility Mode: Apply extra redirect"
+msgstr "Kompatibilitetsmodus: Bruk ekstra omdirigering"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:168
+msgid "Media File Protection"
+msgstr "Beskyttelse av mediefiler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:173
+msgid "Control direct access to Media files"
+msgstr "Kontroller direkte tilgang til mediefiler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:177
+msgid "Automatic .htaccess file management"
+msgstr "Automatisk .htaccess filhåndtering"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:181
+msgid "File Access key with on-demand regeneration"
+msgstr "Filtilgangsnøkkel med regenerering ved behov"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:187
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:263
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:295
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:185
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
+#: includes/CoreAdmin.php:228
+msgid "Pro Feature"
+msgstr "Pro-funksjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:189
+msgid "Upgrade to Pro to unlock advanced file protection capabilities"
+msgstr "Oppgrader til Pro for å låse opp avanserte filbeskyttelsesfunksjoner"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:196
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:234
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:272
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:296
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:301
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:315
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:325
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:194
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:230
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:254
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:141
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
+#: includes/CoreAdmin.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:678
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
+msgid "Learn More"
+msgstr "Lær mer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:206
+msgid "Privacy & Performance"
+msgstr "Personvern & ytelse"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:211
+msgid "Limit attachment access by post permissions"
+msgstr "Begrens tilgang til vedlegg etter innleggstillatelser"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:215
+msgid "Make unattached files private"
+msgstr "Gjør ikke-tilknyttede filer private"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:219
+msgid "Directly control specific files"
+msgstr "Kontroller spesifikke filer direkte"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:227
+msgid "Optimize your site with advanced privacy and performance controls"
+msgstr "Optimaliser nettstedet ditt med avanserte personverns- og ytelseskontroller"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:244
+msgid "Advanced Integration"
+msgstr "Avansert integrasjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:249
+msgid "Nginx integration support"
+msgstr "Nginx integrasjonsstøtte"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:253
+msgid "Process externally uploaded files"
+msgstr "Behandle eksternt opplastede filer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:257
+msgid "Supports network (multisite) installs"
+msgstr "Støtter nettverk (multisite) installasjoner"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:265
+msgid "Get advanced integration features with Nginx, FTP, and more"
+msgstr "Få avanserte integrasjonsfunksjoner med Nginx, FTP og mer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:282
+msgid "Ready to secure your files?"
+msgstr "Klar til å sikre filene dine?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:285
+msgid "Integrations"
+msgstr "Integrasjoner"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:32
+msgid "Compatibility Packs"
+msgstr "Kompatibilitetspakker"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:46, fuzzy
+msgid "Breakdance"
+msgstr "Breakdance"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:103
+msgid "Unlock Pro Integrations"
+msgstr "Lås opp Pro-integrasjoner"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:104
+msgid "Admin"
+msgstr "Admin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:124
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:227
+msgid "Builder"
+msgstr "Bygger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:127
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:237, fuzzy
+msgid "Cache"
+msgstr "Cache"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:243
+msgid "Community"
+msgstr "Fellesskap"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:133
+msgid "E-Commerce"
+msgstr "E-handel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:136
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:231
+msgid "Events"
+msgstr "Arrangementer"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:139
+msgid "Multilingual"
+msgstr "Flerspråklig"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:142
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233, fuzzy
+msgid "SEO"
+msgstr "SEO"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:235
+msgid "Fields"
+msgstr "Felter"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:239
+msgid "Commerce"
+msgstr "Handel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:241
+msgid "Multilang"
+msgstr "Flerspråk"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:261
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205, fuzzy
+msgid "Pro"
+msgstr "Pro"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:266
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin"
+msgstr "Aktiv plugin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:285
+msgid "Integration Active"
+msgstr "Integrasjon aktiv"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:287
+msgid "Upgrade to Pro to enable this integration"
+msgstr "Oppgrader til Pro for å aktivere denne integrasjonen"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:296
+#, php-format
+msgid "Unlock %s integration to enhance your revisions solution."
+msgstr "Lås opp %s-integrasjonen for å forbedre løsningen din for revisjoner."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin Integration"
+msgstr "Aktiv Plugin-integrasjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:322
+msgid "Supported Plugin Integration"
+msgstr "Støttet Plugin-integrasjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:120
+msgid "Enable Circles"
+msgstr "Aktiver Sirkler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:121
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205
+msgid "Time-limited Membership"
+msgstr "Tidsbegrenset Medlemskap"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:122
+msgid "Membership Notifications"
+msgstr "Medlemskapsvarsler"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:172
+msgid "Modify viewing or editing access"
+msgstr "Endre visnings- eller redigeringstilgang"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:178
+msgid "Use any Role or Permission Group"
+msgstr "Bruk hvilken som helst Rolle eller Tillatelsesgruppe"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:179
+msgid "Circle member's capabilities apply only for other member's posts"
+msgstr "Sirkels medlemmers evner gjelder kun for andre medlemmers innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:187
+msgid "Upgrade to Pro to limit access based on post author relationships"
+msgstr ""
+"Oppgrader til Pro for å begrense tilgang basert på forholdet mellom "
+"innleggforfattere"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:208
+msgid "Create time-limited permission group memberships with automatic expiration."
+msgstr "Opprett tidsbegrensede tillatelsesgruppemedlemskap med automatisk utløp."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:213
+msgid "Delay membership start date"
+msgstr "Forsink startdato for medlemskap"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:214
+msgid "Set membership expiration date"
+msgstr "Sett utløpsdato for medlemskap"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:215
+msgid "Group membership grants access to content of your choice"
+msgstr "Gruppemedlemskap gir tilgang til innhold etter eget valg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:223
+msgid "Go Pro for time-limited group membership"
+msgstr "Gå Pro for tidsbegrenset gruppemedlemskap"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:240
+msgid "Ready to enhance your membership features?"
+msgstr "Klar til å forbedre medlemskapsfunksjonene dine?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:243
+msgid "Features"
+msgstr "Funksjoner"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:40
+#: includes/SettingsTabInstall.php:44
+#: includes/SettingsTabInstall.php:45
+msgid "settings"
+msgstr "innstillinger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:147
+msgid "Active"
+msgstr "Aktiv"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:150
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:49
+msgid "User Posts Synchronization"
+msgstr "Brukerinnleggssynkronisering"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:61
+msgid "Synchronize User Posts"
+msgstr "Synkroniser brukerinnlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:62
+msgid "Bulk Create Author Posts"
+msgstr "Masseopprett forfatterinnlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:63
+msgid "Smart User Matching"
+msgstr "Smart brukermatching"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:64
+msgid "Role-Based Synchronization"
+msgstr "Rollebasert synkronisering"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:111
+msgid "Create Posts for Your Users"
+msgstr "Opprett innlegg for brukerne dine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:116
+msgid "Automatically generate posts for users"
+msgstr "Generer automatisk innlegg for brukere"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:120
+msgid "Set up posts for existing users"
+msgstr "Sett opp innlegg for eksisterende brukere"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:124
+msgid "Produce posts for users when they register"
+msgstr "Produser innlegg for brukere når de registrerer seg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:132
+msgid "Upgrade to Pro to automatically generate posts for users"
+msgstr "Oppgrader til Pro for å generere innlegg automatisk for brukere"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:151
+msgid "Bulk Page Creation"
+msgstr "Masseopprettelse av sider"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:156
+msgid "Generate posts for user roles that you select"
+msgstr "Generer innlegg for brukerroller som du velger"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:160
+msgid "Choose how many posts to create per user"
+msgstr "Velg hvor mange innlegg som skal opprettes per bruker"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:164
+msgid "Decide which status to use for new posts"
+msgstr "Bestem hvilken status som skal brukes for nye innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:172
+msgid "Upgrade to Pro to unlock bulk page creation features"
+msgstr "Oppgrader til Pro for å låse opp funksjoner for masseopprettelse av sider"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:191
+msgid "Advanced Configuration"
+msgstr "Avansert konfigurasjon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:196
+msgid "Automatically detect and avoid duplicate posts"
+msgstr "Automatisk oppdage og unngå doble innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:200
+msgid "Add new pages to a parent page"
+msgstr "Legg til nye sider til en foreldreside"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:204
+msgid "Allow users to edit their new posts"
+msgstr "Tillat brukere å redigere sine nye innlegg"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:212
+msgid "Unlock advanced user synchronization features"
+msgstr "Låse opp avanserte brukersynkroniseringsfunksjoner"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:231
+msgid "Ready to automatically generate posts for your users?"
+msgstr "Klar til å automatisk generere innlegg for brukerne dine?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:234
+msgid "Username"
+msgstr "Brukernavn"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:40
+msgid "Email"
+msgstr "E-post"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:44
+#, php-format
+msgid "Specific Permissions %1$s"
+msgstr "Spesifikke tillatelser %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned directly to the user"
+msgstr "Spesifikke tillatelser tildelt direkte til brukeren"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned to the user or one of their groups"
+msgstr "Spesifikke tillatelser tildelt til brukeren eller en av deres grupper"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "User Roles %1$s"
+msgstr "Brukerroller %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "Roles %1$s"
+msgstr "Roller %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned directly to the user"
+msgstr "Roller tildelt direkte til brukeren"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned to the user or one of their groups"
+msgstr "Roller tildelt til brukeren eller en av deres grupper"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:165
+msgid "Edit User"
+msgstr "Rediger bruker"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:342
+msgid "Subscribers"
+msgstr "Abonnenter"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:343
+msgid "Contributors"
+msgstr "Bidragsytere"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:344
+msgid "Authors"
+msgstr "Forfattere"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:345
+msgid "Editors"
+msgstr "Redaktører"
+
+#: includes/CoreAdmin.php:28
+#, php-format
+msgid "Promo file not found."
+msgstr "Promo-fil ikke funnet."
+
+#: includes/CoreAdmin.php:234
+msgid "Upgrade to Pro to unlock seamless integration."
+msgstr "Oppgrader til Pro for å låse opp sømløs integrasjon."
+
+#: includes/promo/posts-teaser-promo.php:4
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Posts Teaser"
+msgstr "Innholdsteaser"
+
+#: includes/promo/posts-teaser-promo.php:18
+msgid "Post Statuses for Editorial Workflow"
+msgstr "Innleggstatus for redaksjonelt arbeidsflyt"
+
+#: includes/promo/statuses-promo.php:19
+msgid "Post Visibility Statuses"
+msgstr "Synlighetsstatus for innlegg"
+
+#: includes/promo/visibility-statuses-promo.php:19
+msgid "License"
+msgstr "Lisens"
+
+#: includes/SettingsTabInstall.php:31
+msgid "Account"
+msgstr "Konto"
+
+#: includes/SettingsTabInstall.php:32
+msgid "Version"
+msgstr "Versjon"
+
+#: includes/SettingsTabInstall.php:68
+msgid "Version info was refreshed."
+msgstr "Versjonsinformasjonen ble oppdatert."
+
+#: includes/SettingsTabInstall.php:122
+msgid "Further details for your installation:"
+msgstr "Ytterligere detaljer for din installasjon:"
+
+#: includes/SettingsTabInstall.php:131
+#, php-format
+msgid "PublishPress Permissions Version: %1$s %2$s"
+msgstr "PublishPress Permissions Versjon: %1$s %2$s"
+
+#: includes/SettingsTabInstall.php:205
+#, php-format
+msgid "%s&nbsp;details"
+msgstr "%s&nbsp;detaljer"
+
+#: includes/SettingsTabInstall.php:226
+msgid "Installation History"
+msgstr "Installasjonshistorikk"
+
+#: includes/SettingsTabInstall.php:248
+#, php-format
+msgid "%s (previous install)"
+msgstr "%s (tidligere installasjon)"
+
+#: includes/SettingsTabInstall.php:265
+#, php-format
+msgid "WordPress Version: %s"
+msgstr "WordPress Versjon: %s"
+
+#: includes/SettingsTabInstall.php:269
+#, php-format
+msgid "PHP Version: %s"
+msgstr "PHP-versjon: %s"
+
+#: library/debug.php:17
+#, php-format
+msgid "%1$s queries in %2$s seconds. %3$s MB used."
+msgstr "%1$s forespørseler på %2$s sekunder. %3$s MB brukt."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:163
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:188
+msgid "Term"
+msgstr "Vilkår"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:164
+msgid "Terms"
+msgstr "Vilkår"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:234
+#, php-format
+msgid "%s Manager"
+msgstr "%s Behandler"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:206
+msgid "You do not have permission to update that Navigation Menu"
+msgstr "Du har ikke tillatelse til å oppdatere den Navigasjonsmenyen"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:208
+msgid "You do not have permission to create new Navigation Menus"
+msgstr "Du har ikke tillatelse til å opprette nye Navigasjonsmenyer"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:216
+msgid "You do not have permission to delete that Navigation Menu."
+msgstr "Du har ikke tillatelse til å slette den Navigasjonsmenyen."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:483
+#, php-format
+msgid "The %s was saved, but you can no longer edit it."
+msgstr "%s ble lagret, men du kan ikke lenger redigere den."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:488
+#, php-format
+msgid "Go to %s"
+msgstr "Gå til %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:498
+msgid "You do not have permission to move the menu item \"%1$s\""
+msgstr "Du har ikke tillatelse til å flytte meny-elementet \"%1$s\""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:433
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:443
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:453
+msgid "Return to Menu Editor"
+msgstr "Gå tilbake til Menyredigerer"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:439
+#, php-format
+msgid "You do not have permission to delete the menu item \"%1$s\""
+msgstr "Du har ikke tillatelse til å slette meny-elementet \"%1$s\""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:449
+#, php-format
+msgid "You do not have permission to edit the menu item \"%1$s\""
+msgstr "Du har ikke tillatelse til å redigere meny-elementet \"%1$s\""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:8
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:22
+msgid "Editing"
+msgstr "Redigerer"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:11
+msgid "Publishing"
+msgstr "Publisering"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Request"
+msgstr "Forespørsel"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "New Revision"
+msgstr "Ny revisjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submitted Revision"
+msgstr "Innsendt revisjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revision"
+msgstr "Revisjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
+msgid "Set as Parent"
+msgstr "Sett som forelder"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:38
+msgid "Assign Term"
+msgstr "Tildel begrep"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:39
+msgid "Assignment"
+msgstr "Oppgave"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:44
+msgid "Management"
+msgstr "Administrasjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:114
+msgid "(unpublished)"
+msgstr "(upublisert)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/NavMenu.php:95
+msgid "You are not permitted to manage menu locations"
+msgstr "Du har ikke tillatelse til å administrere menylokasjoner"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:83
+msgid "Post Approved"
+msgstr "Innlegg godkjent"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:84
+msgid "Page Approved"
+msgstr "Side godkjent"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:111
+#, php-format
+msgid "Author Search / Select"
+msgstr "Forfatter søk / Velg"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+msgid "select other"
+msgstr "velg annen"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+msgid "close"
+msgstr "lukk"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:47
+#, php-format
+msgid "Permissions: Select this %1$s as Parent for All Post Types"
+msgstr "Tillatelser: Velg denne %1$s som forelder for alle innleggstyper"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:51
+#, php-format
+msgid "Permissions: %1$s this %2$s for All Post Types"
+msgstr "Tillatelser: %1$s denne %2$s for alle innleggstyper"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEditWorkarounds.php:86
+msgid "You do not have permission to select that Parent"
+msgstr "Du har ikke tillatelse til å velge den forelderen"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:24
+#, php-format
+msgid "%s author page added"
+msgid_plural "%s author pages added"
+msgstr[0] "%s forfatter side lagt til"
+msgstr[1] "%s forfatter sider lagt til"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:30
+msgid "No users selected"
+msgstr "Ingen brukere valgt"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:36
+msgid "Selected users already have specified author page"
+msgstr "Valgte brukere har allerede spesifisert forfatter side"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:49
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:51
+msgid "Add Author Page&hellip;"
+msgstr "Legg til forfatterside&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:50
+msgid "make each selected user the author of a new page"
+msgstr "gjør hver valgt bruker til forfatter av en ny side"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:79
+msgid "pattern post sets default content and categories for author post"
+msgstr "mønsterinnlegg setter standardinnhold og kategorier for forfatterinnlegg"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:81
+msgid "pattern post sets parent, default content and template for author page"
+msgstr "mønsterinnlegg setter forelder, standardinnhold og mal for forfatterside"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:83
+msgid "pattern page sets parent and default content for author page"
+msgstr "mønsterside setter forelder og standardinnhold for forfatterside"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:85
+msgid "patterned on&hellip;"
+msgstr "mønstret på&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:92
+msgid "patterned on..."
+msgstr "mønstret på..."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "Pattern ID:"
+msgstr "Mønster-ID:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "enter post ID/slug"
+msgstr "angi innlegg ID/slug"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "Title:"
+msgstr "Tittel:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "supported tags are [username] and [userid]"
+msgstr "støttede tagger er [username] og [userid]"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:114
+msgid "Add Pages"
+msgstr "Legg til sider"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Gutenberg/PostEdit.php:37
+msgid "(select...)"
+msgstr "(velg...)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:36
+msgid "Role Usage edited."
+msgstr "Rollebruk redigert."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:71
+msgid "With Direct Assignment, capabilities are applied without modification."
+msgstr "Med direkte tildeling brukes mulighetene uten modifikasjon."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:92
+msgid "All Role Usage settings will be reset to DEFAULTS.  Are you sure?"
+msgstr ""
+"Alle rollebruksinnstillinger vil bli tilbakestilt til STANDARDVERDIER. Er "
+"du sikker?"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:59
+msgid "Role Usage updated."
+msgstr "Rollebruk oppdatert."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:78
+#, php-format
+msgid "Role Usage: %s"
+msgstr "Rollebruk: %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:72
+msgid "Usage"
+msgstr "Bruk"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:100
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:166
+msgid "no supplemental assignment"
+msgstr "ingen tilleggsoppgave"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:101
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:167
+msgid "Pattern Role"
+msgstr "Mønsterrolle"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:102
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:161
+msgid "Direct Assignment"
+msgstr "Direkte tildeling"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:112
+msgid "Post Capabilities"
+msgstr "Postmuligheter"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:116
+#, php-format
+msgid "Arbitrary Capabilities"
+msgstr "Beliebige muligheter"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:140
+#, php-format
+msgid "The following capabilities are included in supplemental %s roles:"
+msgstr "De følgende mulighetene er inkludert i tilleggs %s roller:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:158
+msgid "Role Capabilities"
+msgstr "Rollemuligheter"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:161
+msgid "Notes regarding Pattern Roles"
+msgstr "Notater angående Mønsterroller"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:188
+msgid "Back to Role Usage List"
+msgstr "Tilbake til rollebrukslisten"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:27
+msgid "Notes"
+msgstr "Notater"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:37
+msgid "No matching roles were found."
+msgstr "Ingen samsvarende roller ble funnet."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:23
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:34
+msgid "Media Library"
+msgstr "Mediebibliotek"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:30
+msgid "Posts / Pages Listing"
+msgstr "Liste over innlegg / sider"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:46
+msgid "List other users' files if attached to a editable post"
+msgstr ""
+"Liste over andre brukeres filer hvis de er knyttet til et redigerbart "
+"innlegg"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:47
+msgid "List other users' files if attached to a viewable post"
+msgstr "List andre brukeres filer hvis vedlagt et synlig innlegg"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:48
+msgid "List other users' unattached files by default"
+msgstr "List andre brukeres ikke-vedlagte filer som standard"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:49
+msgid "Edit other users' files if attached to an editable post"
+msgstr "Rediger andre brukeres filer hvis vedlagt et redigerbart innlegg"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:50
+msgid "Prevent editing files if attached to a non-editable post"
+msgstr "Forhindre redigering av filer hvis vedlagt et ikke-redigerbart innlegg"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:51
+msgid "Users can always edit their own files"
+msgstr "Brukere kan alltid redigere sine egne filer"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:106
+msgid "Limited Editing Elements"
+msgstr "Begrensede redigeringselementer"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:134
+msgid "Feature Moved"
+msgstr "Funksjon flyttet"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:140
+#, php-format
+msgid "Current Settings:"
+msgstr "Nåværende innstillinger:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:156
+msgid "HTML Element IDs: "
+msgstr "HTML Element ID-er: "
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:178
+msgid "List Files"
+msgstr "List filer"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:189
+msgid "Edit Files"
+msgstr "Rediger filer"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooks.php:623
+#, php-format
+msgid "You are not allowed to create new %s"
+msgstr "Du har ikke lov til å opprette nye %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksAdmin.php:253
+msgid "access denied"
+msgstr "tilgang nektet"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:128
+msgid "Approve"
+msgstr "Godkjenn"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:145, fuzzy
+msgid "Revisors"
+msgstr "Revisors"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:146, fuzzy
+msgid "Revisor"
+msgstr "Revisor"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:623
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:676
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
+msgid "To read the full content, please log in to this site."
+msgstr "For å lese hele innholdet, vennligst logg inn på dette nettstedet."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:711
+msgid "Content requires additional permissions."
+msgstr "Innholdet krever ytterligere tillatelser."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+msgid "Read More"
+msgstr "Les mer"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
+msgid "Teaser Type"
+msgstr "Teaser-type"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+msgid "Coverage"
+msgstr "Dekning"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
+msgid "Teaser Text"
+msgstr "Teaser-tekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+msgid "Read More Notice"
+msgstr "Les mer-melding"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+msgid "Redirect"
+msgstr "Omadressering"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
+msgid "Options"
+msgstr "Alternativer"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+msgid "Hidden Content Teaser"
+msgstr "Skjult innholdsteaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+msgid "Display mode for readable private posts"
+msgstr "Visningsmodus for lesbare private innlegg"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+msgid "Display mode for readable non-private posts"
+msgstr "Visningsmodus for lesbare ikke-private innlegg"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+msgid "Feed Replacement Text (use %permalink% for post URL)"
+msgstr "Erstatningstekst for feed (bruk %permalink% for innleggets URL)"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+msgid "Login Notice Message"
+msgstr "Innloggingsmelding"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Hide Featured Image when Teaser is applied"
+msgstr "Skjul utvalgt bilde når teaser er brukt"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "%s is a PRO feature"
+msgstr "%s er en PRO-funksjon"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:189
+#, php-format
+msgid "🔓 Unlock %s"
+msgstr "🔓 Lås opp %s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
+msgid "This feature is available in PublishPress Permissions PRO"
+msgstr "Denne funksjonen er tilgjengelig i PublishPress Permissions PRO"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:205
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
+msgid "Upgrade to PRO"
+msgstr "Oppgrader til PRO"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:208
+msgid "Compare Features"
+msgstr "Sammenlign funksjoner"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:247
+msgid "All post teaser settings were updated."
+msgstr "Alle innstillinger for post teaser ble oppdatert."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:255
+msgid "All post teaser settings were reset to defaults."
+msgstr ""
+"Alle innstillinger for post teaser ble tilbakestilt til "
+"standardinnstillinger."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:265
+msgid "Teaser Settings"
+msgstr "Teaserinnstillinger"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458, fuzzy
+msgid "RSS"
+msgstr "RSS"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:477
+msgid "Display for readable private posts:"
+msgstr "Visning for lesbare private innlegg:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Full Content"
+msgstr "Fullt innhold"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Excerpt Only"
+msgstr "Kun utdrag"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Title Only"
+msgstr "Kun tittel"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:502
+msgid "Display for readable non-private posts:"
+msgstr "Visning for lesbare ikke-private innlegg:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:529
+msgid "Feed Replacement Text:"
+msgstr "Erstatningstekst for feed:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:554
+#, php-format
+msgid "Use %s for post URL"
+msgstr "Bruk %s for post-URL"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:71
+msgid "Select Post Type to Configure"
+msgstr "Velg innleggstype for å konfigurere"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:72
+msgid "Choose which post type you want to configure teaser settings for."
+msgstr "Velg hvilken innleggstype du vil konfigurere teaserinnstillinger for."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:98
+#, php-format
+msgid "Pages and custom post types are available in %sPRO%s"
+msgstr "Sider og tilpassede innleggstyper er tilgjengelige i %sPRO%s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:177
+msgid "WordPress default. Show \"Page not found\" screen"
+msgstr "WordPress standard. Vis \"Siden ble ikke funnet\" skjerm"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:178
+msgid "Teaser text"
+msgstr "Teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:179
+msgid "Use content before Read More link as teaser text"
+msgstr "Bruk innholdet før Les mer-lenken som teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:180
+msgid "Use Excerpt as teaser text"
+msgstr "Bruk utdrag som teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:181
+msgid "Use Excerpt or pre-More as teaser text"
+msgstr "Bruk utdrag eller før-Mer som teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:182
+msgid "Use Excerpt, pre-More or First X Characters as teaser text"
+msgstr "Bruk utdrag, før-Mer eller de første X tegnene som teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:183
+msgid "Redirect to another post"
+msgstr "Omdiriger til et annet innlegg"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:194
+msgid "No teaser will be applied"
+msgstr "Ingen teaser vil bli brukt"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:195
+msgid "Use configured teaser text to replace or supplement content"
+msgstr "Bruk konfigurert teaser-tekst for å erstatte eller supplere innhold"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:196
+msgid "Show a \"Read More\" link that requires login"
+msgstr "Vis en \"Les mer\" lenke som krever innlogging"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:197
+msgid "Use the post excerpt as teaser content"
+msgstr "Bruk innleggets utdrag som teaser-innhold"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:198
+msgid "Use excerpt or content before More tag"
+msgstr "Bruk utdrag eller innhold før Mer-taggen"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:199
+msgid "Show the first X characters of the post content"
+msgstr "Vis de første X tegnene av innlegginnholdet"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+msgid "Redirect users to another page when they try to access restricted content"
+msgstr ""
+"Omdiriger brukere til en annen side når de forsøker å få tilgang til "
+"begrenset innhold"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:206
+msgid "Use first X characters of content as teaser text"
+msgstr "Bruk de første X tegnene av innholdet som teaser-tekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:207
+msgid "Use excerpt or first X characters of content"
+msgstr "Bruk utdrag eller de første X tegnene av innholdet"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#, php-format
+msgid "Teaser Settings for %s"
+msgstr "Teaserinnstillinger for %s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
+msgid "Teaser Type:"
+msgstr "Teasertype:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:293
+#, php-format
+msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
+msgstr "Les mer-lenker, utdrag og omdirigeringer er tilgjengelige i %sPRO%s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:302
+msgid "Show only the first"
+msgstr "Vis bare de første"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:309
+msgid "Chars"
+msgstr "Tegn"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:304
+msgid "characters"
+msgstr "tegn"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:308
+msgid "Max"
+msgstr "Maks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:310
+msgid "characters (leave empty for full excerpt)"
+msgstr "tegn (la stå tomt for full utdrag)"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:320
+msgid "Teaser Application:"
+msgstr "Teaserapplikasjon:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:324
+msgid "List and Single view"
+msgstr "Liste- og enkeltvisning"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:328
+msgid "Single view only"
+msgstr "Bare enkeltvisning"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+msgid "User Application:"
+msgstr "Brukerapplikasjon:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
+msgid "Both"
+msgstr "Begge"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:344
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:558
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Not Logged In Users"
+msgstr "Ikke innloggede brukere"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:348
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:561
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Logged In Users"
+msgstr "Innloggede brukere"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+msgid "Navigation Menus:"
+msgstr "Navigasjonsmenyer:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
+msgid "Display links if user doesn't have access"
+msgstr "Vis lenker hvis bruker ikke har tilgang"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:363
+msgid "Hide links if user doesn't have access"
+msgstr "Skjul lenker hvis bruker ikke har tilgang"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+msgid "Private Posts:"
+msgstr "Private innlegg:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+msgid "Apply Teaser to Private Posts"
+msgstr "Bruk teaser for private innlegg"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:376
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "Skjul private innlegg hvis bruker ikke har tilgang"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:381
+msgid "Hide for Custom Visibility"
+msgstr "Skjul for tilpasset synlighet"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:387
+msgid "Featured Image:"
+msgstr "Utvalgt bilde:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+msgid "Show featured image"
+msgstr "Vis utvalgt bilde"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
+msgid "Hide featured image when teaser is applied"
+msgstr "Skjul utvalgt bilde når teaser er brukt"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:403
+msgid "Teaser Message Style:"
+msgstr "Teaser melding stil:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:411
+msgid "Use Default Teaser Message Style"
+msgstr "Bruk standard teaser melding stil"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
+msgid "Use Custom Teaser Message Style"
+msgstr "Bruk tilpasset teaser melding stil"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
+msgid "Teaser Message"
+msgstr "Teaser melding"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+msgid "This field is required."
+msgstr "Dette feltet er påkrevd."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:460
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
+msgid "Replace Post Content With:"
+msgstr "Erstatt innlegginnhold med:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:526
+#, php-format
+msgid "Insert a login form by using %s[login_form]%s shortcode."
+msgstr "Sett inn et påloggingsskjema ved å bruke %s[login_form]%s kortkode."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Teaser Text Configuration"
+msgstr "Konfigurasjon av teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+msgid "Configure custom teaser text for this post type."
+msgstr "Konfigurer tilpasset teasertekst for denne innleggstypen."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:589
+msgid "post title"
+msgstr "innleggstittel"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:590
+msgid "post content"
+msgstr "innlegginnhold"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:597
+#, php-format
+msgid "Before %s:"
+msgstr "Før %s:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:598
+#, php-format
+msgid "After %s:"
+msgstr "Etter %s:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+msgid "Redirect Settings"
+msgstr "Omadresseringsinnstillinger"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+msgid "Redirect functionality is available in PRO"
+msgstr "Omadresseringsfunksjonalitet er tilgjengelig i PRO"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:672
+msgid "Redirection"
+msgstr "Omadressering"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:709
+msgid "Target Post Type"
+msgstr "Målinnleggstype"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:710
+msgid "Select Post"
+msgstr "Velg innlegg"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:746
+msgid "Not Logged In:"
+msgstr "Ikke pålogget:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
+msgid "No redirect"
+msgstr "Ingen omdirigering"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:850
+msgid "Redirect to WordPress login"
+msgstr "Omadresser til WordPress pålogging"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:851
+msgid "Redirect to a custom post"
+msgstr "Omadresser til et tilpasset innlegg"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:904
+msgid "This is a custom login page"
+msgstr "Dette er en tilpasset påloggingsside"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+msgid "Logged in Users:"
+msgstr "Innloggede brukere:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1042
+msgid "Message for Blocked Users"
+msgstr "Melding for blokkerte brukere"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:935
+msgid "Teaser Message Style Customization"
+msgstr "Tilpasning av stil for teaser-melding"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1145
+msgid "Customize the appearance of teaser message displayed to blocked users."
+msgstr "Tilpass utseendet til teaser-meldingen som vises til blokkerte brukere."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1157
+msgid "Background Color:"
+msgstr "Bakgrunnsfarge:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
+msgid "Text Color:"
+msgstr "Tekstfarge:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1181
+msgid "Border Color:"
+msgstr "Kantfarge:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+msgid "Border Width (px):"
+msgstr "Kantbredde (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+msgid "Border Position:"
+msgstr "Kantposisjon:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1211
+msgid "Left"
+msgstr "Venstre"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1212
+msgid "Right"
+msgstr "Høyre"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1213
+msgid "Top"
+msgstr "Topp"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1214
+msgid "Bottom"
+msgstr "Bunn"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1215
+msgid "All Sides"
+msgstr "Alle sider"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+msgid "Padding (px):"
+msgstr "Polstring (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1234, fuzzy
+msgid "Border Radius (px):"
+msgstr "Border Radius (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+msgid "Font Size (px):"
+msgstr "Skriftstørrelse (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+msgid "Live Preview"
+msgstr "Live forhåndsvisning"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+msgid "No Teaser"
+msgstr "Ingen teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
+msgid "Configured Teaser Text"
+msgstr "Konfigurert teasertekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
+msgid "This is a PRO feature"
+msgstr "Dette er en PRO-funksjon"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
+#, php-format
+msgid "%s is available in PRO"
+msgstr "%s er tilgjengelig i PRO"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:40
+msgid "Select a page"
+msgstr "Velg en side"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:41
+msgid "Select terms"
+msgstr "Velg vilkår"
+
+#: press-permit-core.php:117
+msgid "<strong>This plugin can be deleted.</strong>"
+msgstr "<strong>Denne pluginen kan slettes.</strong>"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:23
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:253
+msgctxt "user"
+msgid "Select &gt;"
+msgstr "Velg &gt;"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:24
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:254
+msgctxt "user"
+msgid "&lt; Unselect"
+msgstr "&lt; Avvelg"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:170
+msgctxt "count"
+msgid "%s..."
+msgstr "%s..."

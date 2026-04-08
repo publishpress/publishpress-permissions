@@ -1,0 +1,4020 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the same license as the PublishPress Permissions plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-18T15:16:27+00:00\n"
+"PO-Revision-Date: 2026-04-08 00:23+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: press-permit-core\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: et-EE\n"
+
+#: press-permit-core.php:4
+#: press-permit-core.php:4
+#. Plugin Name of the plugin
+msgid "PublishPress Permissions"
+msgstr "PublishPressi õigused"
+
+#: press-permit-core.php:5, fuzzy
+#. Plugin URI of the plugin
+msgid "https://publishpress.com/presspermit"
+msgstr "https://publishpress.com/presspermit"
+
+#: press-permit-core.php:6
+#. Description of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: press-permit-core.php:9, fuzzy
+#. Author URI of the plugin
+msgid "https://publishpress.com/"
+msgstr "https://publishpress.com/"
+
+#: classes/PublishPress/Permissions.php:1258
+msgid "Edit Tag for All Post Types"
+msgstr "Märgi redigeerimine kõigi postitustüüpide jaoks"
+
+#: classes/PublishPress/Permissions.php:1262
+msgid "Edit Tag for Posts"
+msgstr "Märgi redigeerimine postituste jaoks"
+
+#: classes/PublishPress/Permissions.php:1273
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:43
+msgid "Advanced Custom Fields"
+msgstr "Täpsemad kohandatud väljad"
+
+#: classes/PublishPress/Permissions.php:1274
+msgid "Control access to Field Groups"
+msgstr "Kontrollige juurdepääsu väljavaldkondadele"
+
+#: classes/PublishPress/Permissions.php:1279
+msgid "Front-end visibility restrictions"
+msgstr "Esipaneeli nähtavuse piirangud"
+
+#: classes/PublishPress/Permissions.php:1280
+msgid "Integration with permission groups"
+msgstr "Integreerimine õiguste gruppidega"
+
+#: classes/PublishPress/Permissions.php:1288
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:45, fuzzy
+msgid "Beaver Builder"
+msgstr "Beaver Builder"
+
+#: classes/PublishPress/Permissions.php:1289
+msgid "Compatibility with Edit Permissions in Beaver Builder."
+msgstr "Ühilduvus Beaver Builderi redigeerimise õigustega."
+
+#: classes/PublishPress/Permissions.php:1293
+msgid "Beaver editor integration"
+msgstr "Beaveri redaktori integreerimine"
+
+#: classes/PublishPress/Permissions.php:1294
+#: classes/PublishPress/Permissions.php:1353
+msgid "Widget-level permission controls"
+msgstr "Vidina taseme õiguste kontrollid"
+
+#: classes/PublishPress/Permissions.php:1295
+#: classes/PublishPress/Permissions.php:1354
+msgid "Template access restrictions"
+msgstr "Mallide juurdepääsu piirangud"
+
+#: classes/PublishPress/Permissions.php:1303
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:44
+msgid "bbPress Forums"
+msgstr "bbPress foorumid"
+
+#: classes/PublishPress/Permissions.php:1304
+msgid "Forum-specific permissions"
+msgstr "Foorumipõhised õigused"
+
+#: classes/PublishPress/Permissions.php:1309
+msgid "Topic creation restrictions"
+msgstr "Teema loomise piirangud"
+
+#: classes/PublishPress/Permissions.php:1310
+msgid "Forum access controls"
+msgstr "Foorumi juurdepääsukontrollid"
+
+#: classes/PublishPress/Permissions.php:1318
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:47, fuzzy
+msgid "BuddyPress"
+msgstr "BuddyPress"
+
+#: classes/PublishPress/Permissions.php:1319
+msgid "Assign post permissions to BuddyPress groups"
+msgstr "Määra postituste õigused BuddyPressi gruppidele"
+
+#: classes/PublishPress/Permissions.php:1324
+msgid "Assign term permissions to BuddyPress groups"
+msgstr "Määra terminite õigused BuddyPressi gruppidele"
+
+#: classes/PublishPress/Permissions.php:1325
+msgid "Group-based content permissions"
+msgstr "Grupipõhised sisu õigused"
+
+#: classes/PublishPress/Permissions.php:1333
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:48
+msgid "CMS Tree View"
+msgstr "CMS puu vaade"
+
+#: classes/PublishPress/Permissions.php:1334
+msgid "Compatibility with Edit Permissions in CMS Tree View."
+msgstr "Ühilduvus CMS puu vaates õiguste muutmisega."
+
+#: classes/PublishPress/Permissions.php:1338
+msgid "Permission-aware tree view"
+msgstr "Õigustest teadlik puu vaade"
+
+#: classes/PublishPress/Permissions.php:1339
+msgid "Hierarchical content controls"
+msgstr "Hierarhilised sisu kontrollid"
+
+#: classes/PublishPress/Permissions.php:1347
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:49, fuzzy
+msgid "Elementor"
+msgstr "Elementor"
+
+#: classes/PublishPress/Permissions.php:1348
+msgid "Compatibility with Edit Permissions in Elementor."
+msgstr "Ühilduvus Elementoris õiguste muutmisega."
+
+#: classes/PublishPress/Permissions.php:1352
+msgid "Elementor editor integration"
+msgstr "Elementori redigeerija integratsioon"
+
+#: classes/PublishPress/Permissions.php:1362
+msgid "The Events Calendar"
+msgstr "Ürituste kalender"
+
+#: classes/PublishPress/Permissions.php:1363
+msgid "Apply permission controls to events and event-related content."
+msgstr "Rakenda õiguste kontrollid üritustele ja üritustega seotud sisule."
+
+#: classes/PublishPress/Permissions.php:1367
+msgid "Event post permissions"
+msgstr "Ürituste postituste õigused"
+
+#: classes/PublishPress/Permissions.php:1368
+msgid "Event taxonomy controls"
+msgstr "Ürituste taksonoomia kontrollid"
+
+#: classes/PublishPress/Permissions.php:1376
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:50
+msgid "Nested Pages"
+msgstr "Pesastatud lehed"
+
+#: classes/PublishPress/Permissions.php:1377
+msgid "Compatibility with Edit Permissions in Nested Pages."
+msgstr "Ühilduvus pesastatud lehtede õiguste muutmisega."
+
+#: classes/PublishPress/Permissions.php:1381
+msgid "Permission-aware nested view"
+msgstr "Luba-teadlik pesastatud vaade"
+
+#: classes/PublishPress/Permissions.php:1382
+msgid "Quick edit integration"
+msgstr "Kiire redigeerimise integratsioon"
+
+#: classes/PublishPress/Permissions.php:1390
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:51
+msgid "PublishPress Statuses"
+msgstr "PublishPress olekud"
+
+#: classes/PublishPress/Permissions.php:1391
+msgid "Compatibility with PublishPress Statuses plugin."
+msgstr "Ühildub PublishPress olekute lisandmooduliga."
+
+#: classes/PublishPress/Permissions.php:1395
+msgid "Custom status permissions"
+msgstr "Kohandatud oleku õigused"
+
+#: classes/PublishPress/Permissions.php:1396
+msgid "Workflow-specific access controls"
+msgstr "Töövoo-spetsiifilised juurdepääsukontrollid"
+
+#: classes/PublishPress/Permissions.php:1397
+msgid "Status-based editing capabilities"
+msgstr "Olekutel põhinevad redigeerimisvõimalused"
+
+#: classes/PublishPress/Permissions.php:1405
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52, fuzzy
+msgid "Relevanssi"
+msgstr "Relevanssi"
+
+#: classes/PublishPress/Permissions.php:1406
+msgid "Search result filtering"
+msgstr "Otsingutulemuste filtreerimine"
+
+#: classes/PublishPress/Permissions.php:1411
+msgid "Permission-aware indexing"
+msgstr "Luba-teadlik indekseerimine"
+
+#: classes/PublishPress/Permissions.php:1412
+msgid "Secure content discovery"
+msgstr "Turvaline sisu avastamine"
+
+#: classes/PublishPress/Permissions.php:1420
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53, fuzzy
+msgid "SearchWP"
+msgstr "SearchWP"
+
+#: classes/PublishPress/Permissions.php:1421
+msgid "Compatibility with SearchWP term filtering for advanced search capabilities."
+msgstr ""
+"Ühildub SearchWP terminifiltreerimisega edasijõudnute otsinguvõimaluste "
+"jaoks."
+
+#: classes/PublishPress/Permissions.php:1425
+msgid "Permission-aware search results"
+msgstr "Luba-teadlikud otsingutulemused"
+
+#: classes/PublishPress/Permissions.php:1426
+msgid "Term-based filtering"
+msgstr "Terminipõhine filtreerimine"
+
+#: classes/PublishPress/Permissions.php:1427
+msgid "Advanced search controls"
+msgstr "Edasijõudnud otsingukontrollid"
+
+#: classes/PublishPress/Permissions.php:1435
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: classes/PublishPress/Permissions.php:1436
+msgid "Apply permission controls to WooCommerce products and product categories."
+msgstr "Kohaldage õiguse kontrolle WooCommerce'i toodetele ja tootekategooriatele."
+
+#: classes/PublishPress/Permissions.php:1440
+msgid "Product permissions"
+msgstr "Toote õigused"
+
+#: classes/PublishPress/Permissions.php:1441
+msgid "Product category controls"
+msgstr "Tootekategooria juhtnööride"
+
+#: classes/PublishPress/Permissions.php:1449
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55, fuzzy
+msgid "WPML"
+msgstr "WPML"
+
+#: classes/PublishPress/Permissions.php:1450
+msgid "Permission synchronization across translations"
+msgstr "Lubade sünkroonimine tõlgete vahel"
+
+#: classes/PublishPress/Permissions.php:1455
+msgid "Language-specific content access"
+msgstr "Keele-spetsiifiline sisu ligipääs"
+
+#: classes/PublishPress/Permissions.php:1456
+msgid "Multilingual permission management"
+msgstr "Mitmekeelse lubade haldamine"
+
+#: classes/PublishPress/Permissions.php:1464
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56, fuzzy
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: classes/PublishPress/Permissions.php:1465
+msgid "Exclude restricted posts from XML sitemaps to maintain proper SEO indexing."
+msgstr ""
+"Piiratud postituste välistamine XML saidikaartidest, et säilitada õige SEO "
+"indekseerimine."
+
+#: classes/PublishPress/Permissions.php:1469
+msgid "Sitemap filtering for restricted content"
+msgstr "Saidikaardi filtreerimine piiratud sisu jaoks"
+
+#: classes/PublishPress/Permissions.php:1470
+msgid "Search engine visibility controls"
+msgstr "Otsingumootori nähtavuse juhtnöörid"
+
+#: classes/PublishPress/Permissions.php:1471
+msgid "Permission-aware XML sitemaps"
+msgstr "Luba teadlikud XML saidikaardid"
+
+#: classes/PublishPress/Permissions.php:1479
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57, fuzzy
+msgid "YooTheme"
+msgstr "YooTheme"
+
+#: classes/PublishPress/Permissions.php:1480
+msgid "Compatibility with YooTheme builder and term permissions."
+msgstr "Ühilduvus YooTheme ehitaja ja terminite lubadega."
+
+#: classes/PublishPress/Permissions.php:1484
+msgid "Builder interface compatibility"
+msgstr "Ehitaja liidese ühilduvus"
+
+#: classes/PublishPress/Permissions.php:1485
+msgid "Term permission integration"
+msgstr "Termin lubade integreerimine"
+
+#: classes/PublishPress/Permissions.php:1486
+msgid "Template access controls"
+msgstr "Mallide ligipääsu juhtnöörid"
+
+#: classes/PublishPress/Permissions/Admin.php:100
+msgid "Viewing"
+msgstr "Vaates"
+
+#: classes/PublishPress/Permissions/Admin.php:165
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+msgid "Access Circles"
+msgstr "Ligipääs Rings"
+
+#: classes/PublishPress/Permissions/Admin.php:166
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
+msgid "Editing Permissions"
+msgstr "Lubade redigeerimine"
+
+#: classes/PublishPress/Permissions/Admin.php:167
+msgid "Compatibility Pack"
+msgstr "Ühilduvuspakk"
+
+#: classes/PublishPress/Permissions/Admin.php:168
+#: includes/CoreAdmin.php:67
+#: includes/CoreAdmin.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:83
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:84, fuzzy
+msgid "Teaser"
+msgstr "Teaser"
+
+#: classes/PublishPress/Permissions/Admin.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:34
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:109
+msgid "File Access"
+msgstr "Faili ligipääs"
+
+#: classes/PublishPress/Permissions/Admin.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:109
+msgid "Membership"
+msgstr "Liikmelisus"
+
+#: classes/PublishPress/Permissions/Admin.php:171
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:36
+#: includes/promo/sync-promo.php:4
+msgid "User Posts"
+msgstr "Kasutaja postitused"
+
+#: classes/PublishPress/Permissions/Admin.php:175
+msgid "Post-specific and category-specific permissions for creation and editing."
+msgstr ""
+"Postitusspetsiifilised ja kategooriaspetsifilised õigused loomise ja "
+"redigeerimise jaoks."
+
+#: classes/PublishPress/Permissions/Admin.php:177
+msgid "If you like %s, please leave us a %s rating. Thank you!"
+msgstr "Kui teile meeldib %s, palun jätke meile %s hinnang. Aitäh!"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About PublishPress Permissions"
+msgstr "PublishPressi õiguste kohta"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About"
+msgstr "Teave"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Permissions Documentation"
+msgstr "Luba dokumentatsioon"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Documentation"
+msgstr "Dokumentatsioon"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact the PublishPress team"
+msgstr "Võta ühendust PublishPressi meeskonnaga"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact"
+msgstr "Kontakt"
+
+#: classes/PublishPress/Permissions/Compat/EyesOnly.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
+msgid "Permission Group"
+msgstr "Luba grupp"
+
+#: classes/PublishPress/Permissions/Constants.php:21
+msgid "Extra Roles assignment available for {All} and {Anonymous} metagroups"
+msgstr "Lisa rollide määramine on saadaval {All} ja {Anonymous} metagruppide jaoks"
+
+#: classes/PublishPress/Permissions/Constants.php:24
+msgid "Don't assign or apply specific permissions for the 'post' type"
+msgstr "Ärge määrake ega rakendage spetsiifilisi lubade 'postituse' tüübi jaoks"
+
+#: classes/PublishPress/Permissions/Constants.php:32
+msgid "Don't assign or apply specific permissions for the 'page' type"
+msgstr "Ärge määrake ega rakendage spetsiifilisi lubade 'lehe' tüübi jaoks"
+
+#: classes/PublishPress/Permissions/Constants.php:33
+msgid "Don't assign or apply specific permissions for the 'media' type"
+msgstr "Ärge määrake ega rakendage spetsiifilisi lubade 'meedia' tüübi jaoks"
+
+#: classes/PublishPress/Permissions/Constants.php:34
+msgid "Include scheduled posts in the posts query if user can edit them"
+msgstr ""
+"Käivita ajastatud postitused postituste päringus, kui kasutajal on nende "
+"muutmiseks õigus"
+
+#: classes/PublishPress/Permissions/Constants.php:41
+msgid "Don't filter term post counts in get_terms() call"
+msgstr "Ära filtreeri terminit postituste arve get_terms() kõnes"
+
+#: classes/PublishPress/Permissions/Constants.php:42
+msgid "Leave unreadable posts on WP Navigation Menus"
+msgstr "Jäta loetamatud postitused WP navigeerimismenüüsse"
+
+#: classes/PublishPress/Permissions/Constants.php:43
+msgid "Don't apply CSS to hide empty Nav Menus"
+msgstr "Ära rakenda CSS-i, et peita tühje navigeerimismenüüsid"
+
+#: classes/PublishPress/Permissions/Constants.php:44
+msgid "For legacy Nav Menus, hide empty nav menu div"
+msgstr "Klassikaliste navigeerimismenüüde jaoks peida tühja navigeerimise menüü div"
+
+#: classes/PublishPress/Permissions/Constants.php:45
+msgid "Leave terms with no readable posts on WP Navigation Menus"
+msgstr "Jäta tingimused, millel ei ole loetavaid postitusi, WP navigeerimismenüüsse"
+
+#: classes/PublishPress/Permissions/Constants.php:52
+msgid "Filter priority for 'get_pages' filter (default: 1)"
+msgstr "Filtri prioriteet 'get_pages' filtrile (vaikimisi: 1)"
+
+#: classes/PublishPress/Permissions/Constants.php:64
+msgid "Attached Files Private setting available"
+msgstr "Privaatne seade \"Manustatud failid\" on saadaval"
+
+#: classes/PublishPress/Permissions/Constants.php:107
+msgid "Comma-separated list of mime types to exclude from File Access filtering"
+msgstr ""
+"Koma eraldatud loend mime tüüpidest, mida ei tohiks faili juurdepääsu "
+"filtreerimisest välja jätta"
+
+#: classes/PublishPress/Permissions/Constants.php:108
+msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
+msgstr ""
+"Kui faili juurdepääs on blokeeritud, siis ärge seadke WP_Query 404 / 403 "
+"atribuudiks"
+
+#: classes/PublishPress/Permissions/Constants.php:110
+msgid "HTTP status code to send when file access is blocked"
+msgstr "HTTP olekukood, mida saata, kui faili juurdepääs on blokeeritud"
+
+#: classes/PublishPress/Permissions/Constants.php:118
+msgid "Don't filter comment display or moderation within wp-admin"
+msgstr "Ärge filtreerige kommentaaride kuvamist või modereerimist wp-adminis"
+
+#: classes/PublishPress/Permissions/Constants.php:123
+msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
+msgstr ""
+"Ärge muutke admin menüü indekseid, et paigutada õiguste menüü kasutajate "
+"alla"
+
+#: classes/PublishPress/Permissions/Constants.php:132
+msgid "Customize Permissions screen title for Groups"
+msgstr "Kohandage õiguste ekraani pealkiri gruppide jaoks"
+
+#: classes/PublishPress/Permissions/Constants.php:139
+msgid "Customize Permission Groups caption on user profile"
+msgstr "Kohandage õiguste gruppide pealkiri kasutaja profiilis"
+
+#: classes/PublishPress/Permissions/Constants.php:140
+msgid "Only one group is selectable on Add User screen"
+msgstr "Ainult üks grupp on valitav Lisa kasutaja ekraanil"
+
+#: classes/PublishPress/Permissions/Constants.php:141
+msgid "Only one group is selectable on Edit User screen"
+msgstr "Ainult üks grupp on valitav Muuda kasutajat ekraanil"
+
+#: classes/PublishPress/Permissions/Constants.php:142
+msgid "Display a custom hint on Permissions > User Groups"
+msgstr "Kuva kohandatud vihje õiguste > Kasutajarühmad"
+
+#: classes/PublishPress/Permissions/Constants.php:143
+msgid "Max number of hierarchical posts / terms to display at one time (per page)"
+msgstr ""
+"Maksimaalne arv hierarhilisi postitusi / termineid, mida korraga kuvada "
+"(lehe kaupa)"
+
+#: classes/PublishPress/Permissions/Constants.php:145
+msgid "Make search function on the post selection metabox look at post content"
+msgstr "Tee postituste valiku metakastis otsingufunktsioon vaatama postituse sisu"
+
+#: classes/PublishPress/Permissions/Constants.php:148
+msgid "Make search function on the post selection metabox look at post excerpt"
+msgstr ""
+"Tee postituste valiku metakastis otsingufunktsioon vaatama postituse "
+"väljavõtet"
+
+#: classes/PublishPress/Permissions/Constants.php:154
+msgid "Search by last name instead of display name"
+msgstr "Otsi perekonnanime järgi, mitte kuvamisnime järgi"
+
+#: classes/PublishPress/Permissions/Constants.php:155
+msgid "User field to search by default"
+msgstr "Kasutaja väli, mille järgi vaikimisi otsida"
+
+#: classes/PublishPress/Permissions/Constants.php:156
+msgid "User meta fields selectable for search (comma-separated)"
+msgstr "Kasutaja metaandmed, mida saab otsimiseks valida (koma eraldatud)"
+
+#: classes/PublishPress/Permissions/Constants.php:157
+msgid "User meta fields which should be treated as numeric (comma-separated)"
+msgstr "Kasutaja metaandmed, mida tuleks käsitleda numbrilistena (koma eraldatud)"
+
+#: classes/PublishPress/Permissions/Constants.php:158
+msgid "User meta fields which should be treated as boolean (comma-separated)"
+msgstr ""
+"Kasutaja metaandmed, mida tuleks käsitleda boolean tüüpidena (koma "
+"eraldatud)"
+
+#: classes/PublishPress/Permissions/Constants.php:159
+msgid "Use display name for search results instead of user_login"
+msgstr "Kasuta otsingutulemustes kuvamisnime, mitte user_login"
+
+#: classes/PublishPress/Permissions/Constants.php:166
+msgid "Work around database setup warnings (at plugin activation) on some servers"
+msgstr ""
+"Ümbersuunamine andmebaasi seadistamise hoiatustele (plugina aktiveerimisel) "
+"mõnel serveril"
+
+#: classes/PublishPress/Permissions/Constants.php:213
+msgid "Logged In"
+msgstr "Sisse logitud"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:448
+msgid "Not Logged In"
+msgstr "Pole sisse logitud"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+msgid "Everyone"
+msgstr "Kõik"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/DB/Groups.php:469
+msgid "Change Request Notifications"
+msgstr "Muutmise taotluste teated"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/DB/Groups.php:469
+msgid "Pending Revision Monitors"
+msgstr "Ootel muudatuste jälgijad"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Scheduled Change Notifications"
+msgstr "Planeeritud muutmise teated"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Scheduled Revision Monitors"
+msgstr "Planeeritud ülevaatamise jälgijad"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:486
+msgid "Authenticated site users, except for Administrators"
+msgstr "Tuvastatud saidi kasutajad, välja arvatud administraatorid"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:488
+msgid "Anonymous users (not logged in)"
+msgstr "Anonüümsed kasutajad (pole sisse logitud)"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:490
+msgid "All users (including anonymous)"
+msgstr "Kõik kasutajad (sealhulgas anonüümsed)"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:495
+#, php-format
+msgid "All users with the WordPress role of %s"
+msgstr "Kõik kasutajad, kellel on WordPressi roll %s"
+
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:145
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:90
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade %2$s to version %3$s or later."
+msgstr "%1$s ei tööta, kuni uuendate %2$s versioonile %3$s või uuemale."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:112
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade WordPress to version %2$s or later."
+msgstr "%1$s ei tööta, kuni uuendate WordPressi versioonile %2$s või uuemale."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:122
+#, php-format
+msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
+msgstr "Kopeeritud %1$s moodul aktiveeritud (%2$s kaustas %3$s)."
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:183
+msgid "Dismiss"
+msgstr "Loobu"
+
+#: classes/PublishPress/Permissions/Groups.php:54
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:335
+msgid "Custom Group"
+msgstr "Kohandatud grupp"
+
+#: classes/PublishPress/Permissions/Groups.php:55
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+msgid "Custom Groups"
+msgstr "Kohandatud grupid"
+
+#: classes/PublishPress/Permissions/Groups.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:41
+msgid "Groups"
+msgstr "Grupid"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:95
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:158
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:190
+#, php-format
+msgid "(using default capabilities due to invalid %s definition)"
+msgstr "(kasutatakse vaikimisi võimeid kehtetu %s määratlemise tõttu)"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:144
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:168
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+msgstr "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:181
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:200
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s%3$s"
+msgstr "%1$s&nbsp;%2$s%3$s"
+
+#: classes/PublishPress/Permissions/PluginStatus.php:12
+#, php-format
+msgid "(login timed out)"
+msgstr "(sisselogimise aeg on lõppenud)"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
+msgid "View"
+msgstr "Vaata"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#, php-format
+msgid "Control assignment of terms to selected %s."
+msgstr "Kontrolli terminite määramist valitud %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
+#, php-format
+msgid "Control parent selection for selected %s."
+msgstr "Kontrolli vanema valikut valitud %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control editing of selected %s."
+msgstr "Kontrolli valitud %s redigeerimist."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#, php-format
+msgid "Control publishing of selected %s."
+msgstr "Kontrolli valitud %s avaldamist."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#, php-format
+msgid "Control deletion of selected %s."
+msgstr "Kontrolli valitud %s kustutamist."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#, php-format
+msgid "Control term management for selected %s."
+msgstr "Kontrolli terminite haldamist valitud %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#, php-format
+msgid "Control frontend viewing of selected %s."
+msgstr "Kontrolli valitud %s esitlemist eesmisel poolel."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:133
+msgid "Enable"
+msgstr "Luba"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:138
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:987
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
+msgid "Block"
+msgstr "Blokeeri"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:141
+msgid "Limit to"
+msgstr "Piira"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:146
+msgid "Selected:"
+msgstr "Valitud:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
+msgid "Nav Menus (Legacy)"
+msgstr "Nav Menüü (pärand)"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:993
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:230
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
+msgid "Legacy"
+msgstr "Pärand"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:211
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:224
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:230
+#, fuzzy, php-format
+msgid "%s:"
+msgstr "%s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:258
+#, php-format
+msgid "Selected %s:"
+msgstr "Valitud %s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:265
+#, php-format
+msgid "Sub-%s:"
+msgstr "Alam-%s:"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:298
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:174
+msgid "All Statuses"
+msgstr "Kõik olekud"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:311
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1902
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
+#, php-format
+msgid "%s Visibility"
+msgstr "%s nähtavus"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:35
+msgid "No user/group specified."
+msgstr "Kasutajat/grupi ei ole määratud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:52
+#: classes/PublishPress/Permissions/UI/GroupNew.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:21
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:36
+msgid "You are not permitted to do that."
+msgstr "Te ei tohi seda teha."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:46
+msgid "Invalid user ID."
+msgstr "Kehtetu kasutaja ID."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:55
+msgid "Invalid group ID."
+msgstr "Kehtetu grupi ID."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:89
+msgid "Roles updated."
+msgstr "Rolled on uuendatud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:92
+msgid "Specific Permissions updated."
+msgstr "Spetsiifilised õigused on uuendatud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:95
+msgid "Roles and Permissions copied."
+msgstr "Rollid ja õigused on kopeeritud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:98
+msgid "Group updated."
+msgstr "Rühm uuendatud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:102
+#: classes/PublishPress/Permissions/UI/GroupNew.php:50
+msgid "Back to permissions list"
+msgstr "Tagasi õiguste loendi juurde"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Edit User Permissions"
+msgstr "Kasutaja õiguste redigeerimine"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Add User Permissions"
+msgstr "Kasutaja õiguste lisamine"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:132
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:282
+msgid "Edit Permissions"
+msgstr "Õiguste redigeerimine"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#, php-format
+msgid "Edit Permissions (%s)"
+msgstr "Õiguste redigeerimine (%s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
+#, php-format
+msgid "%sEdit WordPress Role%s"
+msgstr "%sRedigeeri WordPressi rolli%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:144
+msgid "Edit role capabilities directly"
+msgstr "Redigeeri rolli võimeid otse"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:272
+msgid "Add New"
+msgstr "Lisa uus"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:195
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
+msgid "Name:"
+msgstr "Nimi:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:206
+msgid "Email:"
+msgstr "E-post:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:219
+msgid "Primary Role:"
+msgstr "Põhiroll:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:238
+msgid "User ID:"
+msgstr "Kasutaja ID:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:246
+msgid "Member since:"
+msgstr "Liige alates:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:266
+msgid "Description:"
+msgstr "Kirjeldus:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:284
+msgid "Update Permissions"
+msgstr "Uuenda õigusi"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
+msgid "View Full Profile"
+msgstr "Vaata täisprofiili"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:414
+msgid "View currently stored user permissions:"
+msgstr "Vaata hetkel salvestatud kasutaja õigusi:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#, php-format
+msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
+msgstr "%1$sKasutajad, kellele on määratud otse lisarolle%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:419
+#, php-format
+msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
+msgstr "%1$sKasutajad, kellele on määratud otse spetsiifilisi õigusi%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:420
+#, php-format
+msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
+msgstr "%1$sKasutajad, kellel on lisarollid või spetsiifilised õigused otse%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:16
+msgid "Add Roles"
+msgstr "Lisa rolle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:17
+msgid "Clear"
+msgstr "Tühjenda"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:18
+msgid "No statuses selected!"
+msgstr "Ühtegi staatust ei ole valitud!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:19
+msgid "Review the selection below, and then click <strong>Save Roles</strong>."
+msgstr ""
+"Vaadake allolevat valikut ja seejärel klõpsake <strong>Salvesta "
+"rollid</strong>."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:20
+msgid "Role already selected!"
+msgstr "Roll on juba valitud!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+msgid "No Action selected!"
+msgstr "Ühtegi tegevust ei ole valitud!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:22
+msgid "Saving Roles..."
+msgstr "Salvestan rolle..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Reload form for further changes to this role"
+msgstr "Laadi vorm uuesti, et teha edasisi muudatusi sellele rollile"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:40
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
+msgid "Add Specific Permissions"
+msgstr "Lisa spetsiifilised õigused"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:41
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1402
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
+msgid "Remove"
+msgstr "Eemalda"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
+msgid "Permission already selected!"
+msgstr "Õigus on juba valitud!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+msgid "Saving Permissions..."
+msgstr "Salvestan õigusi..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+msgid "Reload form for further changes to this permission"
+msgstr "Laadi vorm uuesti, et teha edasisi muudatusi sellele õigusele"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+msgid "Permissions mirrored. Reload form to view newly saved permissions."
+msgstr ""
+"Õigused on peegeldatud. Laadi vorm uuesti, et vaadata äsja salvestatud "
+"õigusi."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+msgid "Permissions converted. Reload form to view newly saved permissions."
+msgstr "Õigused on muudetud. Laadi vorm uuesti, et vaadata äsja salvestatud õigusi."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+msgid "No Qualification selected!"
+msgstr "Ühtegi kvalifikatsiooni ei ole valitud!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:62
+msgid "No items selected!"
+msgstr "Ühtegi eset ei ole valitud!"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1274
+msgid "(no parent)"
+msgstr "(ei ole vanemat)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:897
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:273
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:275
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:545
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:547
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:553
+msgid "(none)"
+msgstr "(puudub)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:69
+msgid "No results found."
+msgstr "Tulemusi ei leitud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:92
+msgid "select..."
+msgstr "vali..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:985
+msgid "Nav Menu (Block)"
+msgstr "Nav Menüü (Blokk)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:107
+msgid "All Post Types"
+msgstr "Kõik postituse tüübid"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
+msgid "n/a"
+msgstr "ei ole saadaval"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:129
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+msgid "Post Type"
+msgstr "Postituse tüüp"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+msgid "Operation"
+msgstr "Tegevus"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+msgid "Adjustment"
+msgstr "Kohandamine"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
+msgid "Qualification"
+msgstr "Kvalifikatsioon"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
+msgid "Statuses"
+msgstr "Staatused"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:165
+msgid "for item"
+msgstr "elemendi jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:188
+msgid "Role"
+msgstr "Roll"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:256
+msgid "For Statuses"
+msgstr "Staatusede jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:275
+msgid "Standard statuses"
+msgstr "Standardsed staatused"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+msgid "Status: Private"
+msgstr "Staatus: Privaatne"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+msgid "Add Role"
+msgstr "Lisa roll"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
+msgstr ""
+"bbPress foorumite rollide määramiseks aktiveeri ühilduvuse paketi "
+"funktsioon."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:300
+#, php-format
+msgid "Select %s"
+msgstr "Vali %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:782
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1115
+msgid "Status"
+msgstr "Oleku"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
+msgid "Save Roles"
+msgstr "Salvesta rollid"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
+msgid "Save Permissions"
+msgstr "Salvesta õigused"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
+msgid "Add Extra Roles"
+msgstr "Lisa lisarollid"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Copy"
+msgstr "Kopeeri"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#, php-format
+msgid "Extra Roles %1$s(for this user)%2$s"
+msgstr "Lisarollid %1$s(käesoleva kasutaja jaoks)%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:652
+msgid "Extra Roles"
+msgstr "Lisarollid"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:676
+msgid "Show Groups"
+msgstr "Näita gruppe"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:705
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:765
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1099
+msgid "item(s)"
+msgstr "ese(d)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:727
+msgid "Term Management"
+msgstr "Terminite haldus"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:737
+msgid "objects"
+msgstr "objektid"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:732
+msgid "Direct-Assigned"
+msgstr "Otseselt määratud"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:738
+msgid "Disabled Type"
+msgstr "Keelatud tüüp"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:764
+#, php-format
+msgid "%s Roles"
+msgstr "%s rolle"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:830
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:553
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:730
+msgid "Apply"
+msgstr "Kanna edasi"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:991
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
+msgid "Nav Menu (Legacy)"
+msgstr "Nav Menüü (pärand)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#, php-format
+msgid "%s Permissions"
+msgstr "%s Luba"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1029
+msgid "(all post types)"
+msgstr "(kõik postituse tüübid)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1050
+#, fuzzy, php-format
+msgid "%1$s (%2$s: %3$s)"
+msgstr "%1$s (%2$s: %3$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1051
+#, fuzzy, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+msgid "item"
+msgstr "ese"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+msgid "items"
+msgstr "esemed"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1150
+msgid "unpublished"
+msgstr "avalikustamata"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1157
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:290
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
+#, fuzzy, php-format
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1204
+#, php-format
+msgid "this %1$s"
+msgstr "see %1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1209
+#, php-format
+msgid "sub-%1$s of this %2$s"
+msgstr "sub-%1$s selle %2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1215
+#, php-format
+msgid "this %1$s and its sub-%2$s"
+msgstr "see %1$s ja selle sub-%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1224
+#, php-format
+msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
+msgstr "%1$s ligipääs %2$s on AKTIVEERITUD, olenemata rolli võimetest."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1257
+#, php-format
+msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
+msgstr ""
+"%1$s ligipääs %2$s on BLOKKEERITUD, välja arvatud juhul, kui see on lubatud "
+"teise Luba poolt."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1264
+#, php-format
+msgid "Assigned for sub-%s only."
+msgstr "Määratud ainult sub-%s jaoks."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1353
+#, php-format
+msgid "Assigned for %s and sub-%s."
+msgstr "Määratud %s ja sub-%s jaoks."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1377
+msgid "This Permission is redundant due to a corresponding Limitation."
+msgstr "See lubamine on liigne seoses vastava piiramisega."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1384
+#, php-format
+msgid "Edit %s"
+msgstr "Muuda %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
+#, php-format
+msgid "Assign for selected and sub-%s"
+msgstr "Määra valitud ja alam-%s jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1410
+#, php-format
+msgid "Assign for selected %s only"
+msgstr "Määra ainult valitud %s jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1414
+#, php-format
+msgid "Assign for sub-%s only"
+msgstr "Määra ainult alam-%s jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1419
+msgid "Assign for selected and sub-terms"
+msgstr "Määra valitud ja alam-tingimuste jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+msgid "Assign for selected term only"
+msgstr "Määra ainult valitud tingimuse jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1427
+msgid "Assign for sub-terms only"
+msgstr "Määra ainult alam-tingimuste jaoks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1438
+msgid "Convert to \"Enabled\""
+msgstr "Muutke \"Lubatud\" -ks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1439
+msgid "Convert to \"Blocked\""
+msgstr "Muutke \"Blokeeritud\" -ks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1440
+msgid "Convert to \"Limit to\""
+msgstr "Muutke \"Piira\" -ks"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1497
+#, php-format
+msgid "Mirror to %s"
+msgstr "Peegelda %s -le"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1501
+#, php-format
+msgid "Mirror to %s %s"
+msgstr "Peegelda %s %s -le"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1560
+msgid "= Enabled"
+msgstr "= Lubatud"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+msgid "= Blocked"
+msgstr "= Blokeeritud"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1574
+msgid "= Limitation"
+msgstr "= Piirang"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#, php-format
+msgid "= %1$s and sub-%1$s"
+msgstr "= %1$s ja alam-%1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1594
+#, php-format
+msgid "= sub-%s only"
+msgstr "= ainult alam-%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
+msgid "Note:"
+msgstr "Märkus:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1614
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1638
+#, php-format
+msgid "Sub-%1$s Permissions are not separately listed."
+msgstr "Alam-%1$s lubamisi ei ole eraldi loetletud."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1618
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1642
+msgid "Show All"
+msgstr "Kuva kõik"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1627
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1650
+#, php-format
+msgid "Hide auto-assigned Sub-%s Permissions"
+msgstr "Peida automaatselt määratud Sub-%s õigused"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
+msgid " %1$sFix Sub-%2$s Permissions%3$s"
+msgstr " %1$sParanda Sub-%2$s õigused%3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1711
+msgid "Group Restrictions are not available because of a constant definition"
+msgstr "Rühma piirangud ei ole saadaval pideva defineerimise tõttu"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1728
+msgid "Group Members"
+msgstr "Rühma liikmed"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1837
+msgid "Copy Roles and Permissions from:"
+msgstr "Kopeeri rolle ja õigusi järgmistelt:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1860
+msgid "Copy Roles and Permissions"
+msgstr "Kopeeri rolle ja õigusi"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+msgid "Limit to:"
+msgstr "Piira järgmistele:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
+msgid "Blocked:"
+msgstr "Blokeeritud:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+msgid "Enabled:"
+msgstr "Lubatud:"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1895
+msgid "Direct-assigned"
+msgstr "Otseselt määratud"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1908
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
+msgid "Standard Statuses"
+msgstr "Standardsed staatused"
+
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:60
+msgid "(invalid role definition)"
+msgstr "(kehtetu rolli määratlemine)"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:45
+#, php-format
+msgid "eligible (%d):"
+msgstr "kõlblikud (%d):"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:47
+#, php-format
+msgid "current (%d):"
+msgstr "praegused (%d):"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:123
+msgid "view / edit group"
+msgstr "vaata / muuda rühma"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:124
+msgid "edit"
+msgstr "muuda"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:58
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:290
+#, php-format
+msgid "Find Users by %s"
+msgstr "Leia kasutajad %s järgi"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:60
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:292
+msgid "Search Users"
+msgstr "Otsi kasutajaid"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:295
+msgid "Search Custom Groups"
+msgstr "Otsi kohandatud gruppe"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:83
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:312
+msgid "For additional fields, define constant PP_USER_SEARCH_META_FIELDS"
+msgstr "Lisaväljade jaoks määrake konstant PP_USER_SEARCH_META_FIELDS"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "First Name"
+msgstr "Eesnimi"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Last Name"
+msgstr "Perekonnanimi"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Nickname"
+msgstr "Hüüdnimi"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:110
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:339
+msgid "(user field)"
+msgstr "(kasutaja väli)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:140
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:369
+msgid "(any WP role)"
+msgstr "(ükskõik milline WP roll)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:156
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:428
+msgid "Search Results:"
+msgstr "Otsingutulemused:"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:173
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:448
+msgid "Current Selections:"
+msgstr "Praegused valikud:"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
+#: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
+#: classes/PublishPress/Permissions/UI/Groups.php:180
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:39
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:164
+msgid "Permissions"
+msgstr "Õigused"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:271
+msgid "Add New Permission Group"
+msgstr "Lisa uus õiguste grupp"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
+msgid "Edit"
+msgstr "Redigeeri"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:96
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:97
+msgid "Role Usage"
+msgstr "Rolli kasutamine"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:310
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:311
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:107
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:108
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:64
+msgid "Edit Role Usage"
+msgstr "Redigeeri rolli kasutust"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:323
+msgid "Settings"
+msgstr "Seaded"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
+msgid "(Default access: Enabled)"
+msgstr "(Vaikimisi juurdepääs: Lubatud)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:17
+msgid "(Default access: Blocked)"
+msgstr "(Vaikimisi juurdepääs: Blokeeritud)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:18
+msgid "(No setting)"
+msgstr "(Mingeid seadistusi ei ole)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:19
+msgid "Enabled"
+msgstr "Lubatud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:20
+msgid "Blocked"
+msgstr "Blokeeritud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:21
+msgid "(Blocked)"
+msgstr "(Blokeeritud)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:22
+msgid "Unblocked"
+msgstr "Avatud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:42
+msgid "Roles"
+msgstr "Rollid"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:60
+msgid "User"
+msgstr "Kasutaja"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
+#, php-format
+msgid "This %s"
+msgstr "See %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
+#, php-format
+msgid "Sub-%s"
+msgstr "Alam-%s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:273
+msgid "Default All"
+msgstr "Vaikimisi Kõik"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:297
+msgid "Group restrictions are not recommended."
+msgstr "Grupi piirangud ei ole soovitatavad."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:377
+#, php-format
+msgid "%d role"
+msgid_plural "%d roles"
+msgstr[0] "%d roll"
+msgstr[1] "%d rolli"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
+#, php-format
+msgid "%d group"
+msgid_plural "%d groups"
+msgstr[0] "%d grupp"
+msgstr[1] "%d gruppi"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
+#, php-format
+msgid "%d user"
+msgid_plural "%d users"
+msgstr[0] "%d kasutaja"
+msgstr[1] "%d kasutajat"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:385
+msgid "No exceptions configured"
+msgstr "Ei ole seadistatud erandeid"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+msgid "Roles & Groups"
+msgstr "Rollid & Grupid"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+msgid "Search roles and groups..."
+msgstr "Otsi rolle ja gruppe..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+msgid "Search roles..."
+msgstr "Otsi rolle..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:522
+#: classes/PublishPress/Permissions/UI/Groups.php:211
+msgid "Users"
+msgstr "Kasutajad"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:544
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:720
+msgid "Select All"
+msgstr "Vali Kõik"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:547
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:548
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:723
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:724
+msgid "Bulk Actions"
+msgstr "Hulgitoimingud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:549
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:725
+msgid "Set to Enabled"
+msgstr "Seadista lubatuks"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:550
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+msgid "Set to Blocked"
+msgstr "Seadista blokeeritud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:551
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:727
+msgid "Set to Default"
+msgstr "Seadista vaikeväärtuseks"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:733
+msgid "selected"
+msgstr "valitud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:583
+msgid "Search and add users..."
+msgstr "Otsi ja lisa kasutajaid..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:655
+msgid "No role exceptions set"
+msgstr "Ei ole määratud rolli erandeid"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
+msgid "No specific user permissions. Use the search box to add users."
+msgstr ""
+"Ei ole konkreetseid kasutaja õigusi. Kasutage otsingukasti kasutajate "
+"lisamiseks."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:728
+msgid "Remove Selected"
+msgstr "Eemalda valitud"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:977
+#: classes/PublishPress/Permissions/UI/Groups.php:240
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
+msgid "Login State"
+msgstr "Sisselogimise olek"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:984
+msgid "Group"
+msgstr "Rühm"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+msgid "Sub-Sections"
+msgstr "Alajaotused"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+msgid "This Section"
+msgstr "See jaotis"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
+msgid "Remove user from exceptions"
+msgstr "Eemalda kasutaja eranditest"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
+#, php-format
+msgid "Editing can't be granted to non-users."
+msgstr "Redigeerimist ei saa anda mittekasutajatele."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:112
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:481
+#: classes/PublishPress/Permissions/UI/Settings.php:102
+msgid "Permissions Settings"
+msgstr "Õiguste seaded"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:135
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:248
+#, php-format
+msgid "Permissions: %s"
+msgstr "Õigused: %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:156
+#, php-format
+msgid "Permissions: Select this %s as Parent"
+msgstr "Õigused: Määra see %s vanemaks"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:164
+#, php-format
+msgid "Permissions: Assign Terms to this %s"
+msgstr "Õigused: Määra tingimused sellele %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:172
+#, php-format
+msgid "Permissions: %s this %s"
+msgstr "Õigused: %s sellele %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:505
+#, php-format
+msgid "enable custom permissions for %s"
+msgstr "luba kohandatud õigused %s jaoks"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:273
+msgid "Select as Parent"
+msgstr "Vali vanem"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:278
+msgid "Assign Terms"
+msgstr "Määra tingimused"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:37
+#, php-format
+msgid "Specific Permissions %1$s(for this user)%2$s"
+msgstr "Spetsiifilised õigused %1$s(selle kasutaja jaoks)%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:81
+#, php-format
+msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
+msgstr "Lisarollid %1$s(peamisest rollist või grupi kuuluvusest)%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:90
+msgid "Specific Permissions (from primary role or group membership)"
+msgstr "Spetsiifilised õigused (peamisest rollist või grupi kuuluvusest)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:189
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:172
+msgid "Permission Groups"
+msgstr "Õiguste grupid"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:221
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "See kasutaja ei ole ühegi kohandatud õiguste grupi liige."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:225
+msgid "Edit this user's group membership"
+msgstr "Muuda selle kasutaja grupi kuuluvust"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:234
+msgid "%s, more..."
+msgstr "%s, rohkem..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:307
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
+msgid "edit user permissions"
+msgstr "muuda kasutaja õigusi"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:138
+#, php-format
+msgid "Assign to %s"
+msgstr "Määra %s-le"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:141
+msgid "Assign (All Types)"
+msgstr "Määra (kõik tüübid)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#, php-format
+msgid "%s (All Content)"
+msgstr "%s (kõik sisu)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:243
+#, php-format
+msgid "Permissions: %1$s in %2$s"
+msgstr "Õigused: %1$s %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:272
+#, php-format
+msgid "Permissions: Assign this %2$s to %3$s"
+msgstr "Õigused: Määra see %2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
+#, php-format
+msgid "Permissions: Assign this %2$s for All Post Types"
+msgstr "Õigused: Määra see %2$s kõigile postituste tüüpidele"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:285
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:298
+#, php-format
+msgid "Permissions: %1$s %2$s in this %3$s"
+msgstr "Õigused: %1$s %2$s selles %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:291
+#, php-format
+msgid "Permissions: %1$s all content in this %2$s for All Post Types"
+msgstr "Õigused: %1$s kogu sisu selles %2$s kõigile postituste tüüpidele"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:304
+#, php-format
+msgid "Permissions: %1$s this %2$s"
+msgstr "Õigused: %1$s see %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:325
+#, php-format
+msgid "Click to list/edit universal permissions"
+msgstr "Klõpsake, et loetleda/redigeerida universaalseid õigusi"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:60
+#, php-format
+msgid "%1$s Permissions %2$s*%3$s"
+msgstr "%1$s Õigused %2$s*%3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:62
+msgid "Universal Permissions"
+msgstr "Universaalsed õigused"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:69
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:72
+msgid "Permissions&hellip;"
+msgstr "Õigused&hellip;"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:81
+msgid "Add"
+msgstr "Lisa"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:85
+msgid "Add selected users to Permission Group"
+msgstr "Lisa valitud kasutajad õiguste rühma"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:95
+msgid "Remove selected users from Permission Group"
+msgstr "Eemalda valitud kasutajad õiguste rühmast"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:103
+msgid "Click to show only users who have no group"
+msgstr "Klõpsake, et näidata ainult kasutajaid, kellel ei ole rühma"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:111
+msgid "Click to show only users who have extra roles"
+msgstr "Klõpsake, et näidata ainult kasutajaid, kellel on lisarollid"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:122
+msgid "Click to show only users who have Specific Permissions assigned directly"
+msgstr ""
+"Klõpsake, et näidata ainult kasutajaid, kellel on määratud Spetsiifilised "
+"õigused"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
+msgid "Specific Permissions"
+msgstr "Spetsiifilised õigused"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:262
+msgid "edit group"
+msgstr "redigeeri rühma"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:321
+#, php-format
+msgid "%s more"
+msgstr "%s rohkem"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:39
+msgid "Group created."
+msgstr "Rühm loodud."
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:79
+msgid "Create New Permission Group"
+msgstr "Loo uus õiguste rühm"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:81
+#, php-format
+msgid "Create New %s"
+msgstr "Loo uus %s"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:97
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:168
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:39
+msgid "Name"
+msgstr "Nimi"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:103
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:656
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:709
+msgid "Description"
+msgstr "Kirjeldus"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:115
+msgid "Create Group"
+msgstr "Loo rühm"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:22
+msgid "Shop manager"
+msgstr "Poemanager"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:23
+msgid "Translator"
+msgstr "Tõlkija"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:24
+msgid "Customer"
+msgstr "Klient"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:90
+msgid "You have specified this group for deletion:"
+msgid_plural "You have specified these groups for deletion:"
+msgstr[0] "Olete määranud selle rühma kustutamiseks:"
+msgstr[1] "Olete määranud need rühmad kustutamiseks:"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:120
+msgid "There are no valid groups selected for deletion."
+msgstr "Kustutamiseks ei ole valitud kehtivaid rühmi."
+
+#: classes/PublishPress/Permissions/UI/Groups.php:150
+#, php-format
+msgid "%s group deleted"
+msgid_plural "%s groups deleted"
+msgstr[0] "%s rühm kustutatud"
+msgstr[1] "%s rühma kustutatud"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:155
+msgid "New group created."
+msgstr "Uus rühm on loodud."
+
+#: classes/PublishPress/Permissions/UI/Groups.php:199
+msgid "Add New Group"
+msgstr "Lisa uus rühm"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:206
+msgid "User Groups"
+msgstr "Kasutajarühmad"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:330
+msgid "WordPress Role"
+msgstr "WordPressi roll"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+msgid "WordPress Roles"
+msgstr "WordPressi rollid"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:247
+#, php-format
+msgid "%1$sGroup Type:%2$s %3$s"
+msgstr "%1$sRühma tüüp:%2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
+msgid "All"
+msgstr "Kõik"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:275
+msgid "Has Permissions"
+msgstr "Omab õigusi"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:279
+#: classes/PublishPress/Permissions/UI/Groups.php:336
+msgid "Has Specific Permissions"
+msgstr "Omab spetsiifilisi õigusi"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:282
+#: classes/PublishPress/Permissions/UI/Groups.php:343
+msgid "Has Extra Roles"
+msgstr "Omab lisa rolle"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:287
+#, php-format
+msgid "Search Results for &#8220;%s&#8221;"
+msgstr "Otsingutulemused &#8220;%s&#8221; jaoks"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:296
+msgid "Search Groups"
+msgstr "Otsi gruppe"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:322
+msgid "All Users"
+msgstr "Kõik kasutajad"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:329
+msgid "Has Permissions Set Directly"
+msgstr "Omandab õigused otse"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:350
+msgid "No Custom Group"
+msgstr "Ei ole kohandatud gruppi"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:115
+msgid "No matching groups were found."
+msgstr "Sobivaid gruppe ei leitud."
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:154
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:95
+msgid "Delete"
+msgstr "Kustuta"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:169
+msgid "Type"
+msgstr "Tüüp"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:338
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:145
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:245
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:191
+msgid "Workflow"
+msgstr "Töökäik"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:37
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:83
+msgid "edit group permissions"
+msgstr "muuda grupi õigusi"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:326
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+msgid "ERROR"
+msgstr "VIGA"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:327
+msgid "Please enter a group name."
+msgstr "Palun sisestage grupi nimi."
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:334
+msgid "This group name is already registered. Please choose another one."
+msgstr "See grupi nimi on juba registreeritud. Palun valige mõni muu."
+
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:73
+msgid "You can&#8217;t delete that group."
+msgstr "Te ei saa seda gruppi kustutada."
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:15
+msgid "To customize editing permissions, enable the Editing Permissions feature."
+msgstr ""
+"Redigeerimise õiguste kohandamiseks aktiveerige Redigeerimise Õiguste "
+"funktsioon."
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:13
+msgid "Block URL access"
+msgstr "Blokeeri URL-juurdepääs"
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:16
+msgid "Customize"
+msgstr "Kohanda"
+
+#: classes/PublishPress/Permissions/UI/HintsPostEdit.php:18
+#, php-format
+msgid "To customize publication workflow, %1$sinstall PublishPress Statuses%2$s."
+msgstr "Kohandamiseks avaldamise töövoogu, %1$sinstallige PublishPress Statuse%2$s."
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:11
+msgid "Show list of Permissions Pro features and screencasts"
+msgstr "Kuva loend Permissions Pro funktsioonidest ja ekraanividest"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:166
+msgid "Knowledge Base"
+msgstr "Teadmistebaas"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:168
+msgid "Detailed Feature Grid"
+msgstr "Üksikasjalik funktsioonide ruudustik"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:170
+msgid "Contact Us"
+msgstr "Võta meiega ühendust"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:172
+msgid "Purchase"
+msgstr "Osta"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:174
+msgid "Hide"
+msgstr "Peida"
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:272
+#, php-format
+msgid "None. All %ss will be hidden by default."
+msgstr "Ühtegi. Kõik %ss peidetakse vaikesätetena."
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:335
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:495
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:748
+msgid "Add Selected Permissions"
+msgstr "Lisa valitud õigused"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:68
+msgid "If you need help or have a new feature request, let us know."
+msgstr "Kui vajate abi või teil on uus funktsioonitaotlus, andke meile teada."
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:193
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:231
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:269
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:291
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:108
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:305
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:191
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:227
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:249
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:137
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
+#: includes/CoreAdmin.php:111
+#: includes/CoreAdmin.php:112
+#: includes/CoreAdmin.php:243
+#: includes/promo/posts-teaser-promo.php:22
+#: includes/promo/statuses-promo.php:23
+#: includes/promo/sync-promo.php:22
+#: includes/promo/visibility-statuses-promo.php:23
+msgid "Upgrade to Pro"
+msgstr "Uuendage Pro versioonile"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:241
+msgid "Request Support"
+msgstr "Küsi tuge"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:248
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "Üksikasjalik dokumentatsioon on saadaval ka plugina veebisaidil."
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:251
+msgid "View Knowledge Base"
+msgstr "Vaata teadmistebaasi"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:171
+msgid "All settings were updated."
+msgstr "Kõik seaded on uuendatud."
+
+#: classes/PublishPress/Permissions/UI/Settings.php:179
+msgid "All settings were reset to defaults."
+msgstr "Kõik seaded on lähtestatud vaikeseadetele."
+
+#: classes/PublishPress/Permissions/UI/Settings.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:575
+msgid "Save Changes"
+msgstr "Salvesta muudatused"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:223
+msgid "Upgrade to Permissions Pro"
+msgstr "Uuendage Permissions Pro versioonile"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:224
+msgid "Need Permissions Support?"
+msgstr "Vajate õiguste tuge?"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:60
+msgid "Remove the \"Private:\" and \"Protected\" prefix from Post, Page titles."
+msgstr ""
+"Eemaldage postituse ja lehe pealkirjadelt eellaused \"Privaat:\" ja "
+"\"Kaitstud\"."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:78
+msgid "Note: Groups and Roles are always displayed on the Edit User screen."
+msgstr "Märkus: Grupid ja rollid kuvatakse alati kasutaja redigeerimise ekraanil."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:92
+msgid "Disable Permissions filtering for users who are not logged in."
+msgstr "Keelake õiguste filtreerimine kasutajatele, kes ei ole sisse logitud."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:95
+msgid "Legacy compatibility: front end term filters are not applied on some sites."
+msgstr "Pärandühilduvus: esipaneeli terminifiltreid ei rakendata mõnel saidil."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:98
+msgid "Display descriptive captions on Permissions screens."
+msgstr "Kuvage kirjeldavad pealdised õiguste ekraanidel."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:110
+msgid "You can add Permissions capabilities to a role using the %1$s plugin."
+msgstr "Sa saad lisada õiguste võimalusi rollile, kasutades %1$s pluginit."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:125
+msgid "Settings related to content editing permissions, provided by the %s module."
+msgstr "Seaded, mis on seotud sisu redigeerimise õigustega, mida pakub %s moodul."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:135
+msgid "Always auto-assign a post tag if none are selected"
+msgstr "Alati automaatselt määrata postituse silt, kui ühtegi ei ole valitud"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:219
+msgid "Always auto-assign a term of this taxonomy if none are selected"
+msgstr ""
+"Alati automaatselt määrata selle taksonoomia termin, kui ühtegi ei ole "
+"valitud"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:222
+msgid "Do not auto-assign a post tag"
+msgstr "Ära määrake automaatselt postituse silti"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:231
+msgid "Do not auto-assign a term of this taxonomy"
+msgstr "Ära määrake automaatselt selle taksonoomia terminit"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:234
+msgid "Don't define an 'Approved' status, even if Status Control feature is active"
+msgstr ""
+"Ära määra 'Kinnitatud' staatust, isegi kui staatuse kontrolli funktsioon on "
+"aktiivne"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:245
+msgid "Limited User Editors can assign their own role"
+msgstr "Piiratud kasutaja redigeerijad saavad määrata oma rolli"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:273
+msgid "Manage PublishPress Permissions plugin settings."
+msgstr "Haldage PublishPress Permissions pistikprogrammi seadeid."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
+msgid "Create new Permission Groups and set the name and description."
+msgstr "Looge uusi õiguste gruppe ja seadke nimi ja kirjeldus."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:286
+msgid "Edit the name and description of existing Permission Groups."
+msgstr "Muuda olemasolevate õiguste gruppide nime ja kirjeldust."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
+msgid "Delete Permission Groups."
+msgstr "Kustutage õiguste grupid."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:288
+msgid "If group editing is allowed, can also modify group membership."
+msgstr "Kui grupiredigeerimine on lubatud, saab ka muuta grupi liikmeid."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:289
+msgid "Assign Extra Roles or Permissions."
+msgstr "Määrake täiendavad rollid või õigused."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:290
+msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
+msgstr "Määrake täiendavad rollid või õigused õiguste redigeerimise ekraanil."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:291
+msgid "Set Viewing Permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Seadke vaatamisõigused konkreetsetele postitustele, kategooriatele või "
+"terminitele."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
+msgid "Set Editing Permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Seadke redigeerimisõigused konkreetsetele postitustele, kategooriatele või "
+"terminitele."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:297
+msgid "Set Revision Permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Seadke redaktsioonide õigused konkreetsetele postitustele, kategooriatele "
+"või terminitele."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:300
+msgid "Set \"Set as Parent\" Permissions for specific Posts."
+msgstr "Seadke \"Seada vanemaks\" õigused konkreetsetele postitustele."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:301
+msgid "Set Term Assignment Permissions."
+msgstr "Seadke terminite määramise õigused."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:302
+msgid "Set Term Management Permissions."
+msgstr "Seadke terminite haldamise õigused."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:303
+msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
+msgstr ""
+"Määra \"Määra vanemaks\" õigused konkreetsete kategooriate või terminite "
+"jaoks."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:305
+msgid "Edit own file uploads, even if they become attached to an uneditable post."
+msgstr ""
+"Redigeeri oma failide üleslaadimisi, isegi kui need on seotud "
+"redigeerimiskindla postitusega."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:306
+msgid "See other user's unattached file uploads in Media Library."
+msgstr ""
+"Vaata teiste kasutajate mitte seotud failide üleslaadimisi Meedia "
+"raamatukogus."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:307
+msgid "Do not alter the Media Library listing provided by WordPress."
+msgstr "Ära muuda WordPressi poolt pakutud Meedia raamatukogu loetelu."
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:310
+msgid "(Statuses Pro capability)"
+msgstr "(Statuses Pro õiguse võimalus)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:26
+msgid "Advanced"
+msgstr "Täpsem"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:33
+msgid "Advanced Settings"
+msgstr "Täpsemad seaded"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:35
+msgid "Network-Wide Settings"
+msgstr "Võrguülesed seaded"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:36
+msgid "Editor Options"
+msgstr "Redaktori valikud"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:38
+msgid "Page Structure"
+msgstr "Lehe struktuur"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:40
+msgid "Permissions Capabilities"
+msgstr "Õiguste võimekus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:41
+msgid "Front End"
+msgstr "Esiplaan"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:42
+msgid "User Management"
+msgstr "Kasutaja haldus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:43
+msgid "Constants"
+msgstr "Konstandid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:44
+msgid "Role Integration"
+msgstr "Rolli integreerimine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:45
+msgid "Nav Menu Editing"
+msgstr "Nav Menüü Redigeerimine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:46
+msgid "Miscellaneous"
+msgstr "Mitmesuguseid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:60
+msgid "Display all advanced settings"
+msgstr "Kuva kõik täiustatud seaded"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:61
+msgid "Use modern tabbed metabox interface"
+msgstr "Kasuta kaasaegset vahelehtedega metaboxi liidest"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:62
+msgid "Delete settings on plugin deletion"
+msgstr "Kustuta seaded plugina kustutamisel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:63
+msgid "Post-specific Permissions take priority"
+msgstr "Postitusspetsiifilised õigused on prioriteetsed"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:64
+msgid "Search Results include Media"
+msgstr "Otsingutulemused sisaldavad meediat"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:65
+msgid "Regulate access to Category archive pages"
+msgstr "Reguleeri juurdepääsu kategooria arhiivilehtedele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:66
+msgid "Performance: Don't filter category / tag counts"
+msgstr "Tõhusus: Ära filtreeri kategooria / sildi arve"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:67
+msgid "Filter Menu Items"
+msgstr "Filtreeri Menüü Ained"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:68
+msgid "Page Parent selection for editable pages only"
+msgstr "Lehe Vanema valik ainult redigeeritavate lehtede jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:69
+msgid "Auto-assign available term if default term is unavailable"
+msgstr "Auto-määrake saadaval termin, kui vaikimisi termin pole saadaval"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:70
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:52
+msgid "List other user's uneditable posts"
+msgstr "Loetle teiste kasutajate redigeerimatuid postitusi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:71
+msgid "Pages can be set or removed from Top Level by: "
+msgstr "Lehti saab määrata või eemaldada Ülemisest Tasemest: "
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:72
+msgid "Tag creation requires Tag edit capability"
+msgstr "Sildi loomine nõuab sildi redigeerimise õigust"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:77
+msgid "Type-specific Extra Roles grant all capabilities in Pattern Role"
+msgstr "Tüüp-spetsiifilised Täiendavad Rollid annavad kõik õigused Malli Rollis"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:78
+msgid "Suppress \"Private: \" Caption"
+msgstr "Kasu \"Privaatne: \" Pealkirja peitmine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:79
+msgid "Select Permission Groups at User creation"
+msgstr "Vali Õigusgrupid kasutaja loomisel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:80
+msgid "Permission Groups on User Profile"
+msgstr "Õigusgrupid Kasutaja Profiilil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:81
+msgid "Extra Roles on User Profile"
+msgstr "Täiendavad Rollid Kasutaja Profiilil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:82
+msgid "Order Page Parent dropdown by Title"
+msgstr "Tellimuse lehe vanem rippmenüü pealkirja järgi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:83
+msgid "Add taxonomy columns to Edit Posts screen"
+msgstr "Lisa taksonoomia veerud Postituste redigeerimise ekraanile"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:84
+msgid "Allow Renaming of uneditable Items"
+msgstr "Luba muutmatute elementide ümbernimetamine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:85
+msgid "Lock custom menu items"
+msgstr "Lukusta kohandatud menüüelemendid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:86
+msgid "Bulk Add Author Pages on Users screen"
+msgstr "Korraga lisa autorite lehed kasutajate ekraanil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:108
+#, php-format
+msgid "%1$sDisable%2$s all filtering for anonymous users"
+msgstr "%1$sKeela%2$s kogu filtreerimine anonüümsetele kasutajatele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:109
+#, php-format
+msgid "%1$sDo not apply%2$s metagroup permissions for Administrators"
+msgstr "%1$sÄra rakenda%2$s metagrupi õigusi administraatoritele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:110
+msgid "Limit front-end category / term filtering"
+msgstr "Piira esikülje kategooria / mõiste filtreerimist"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:111
+msgid "User Search: Filter by WP role"
+msgstr "Kasutaja otsing: Filtreeri WP rolli järgi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:112
+msgid "Display Administrative Hints"
+msgstr "Kuva haldusnõuanded"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:113
+msgid "Display Module Hints"
+msgstr "Kuva mooduli nõuanded"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:114
+msgid "Detect Dynamically Mapped WP Roles"
+msgstr "Tuvasta dünaamiliselt kaardistatud WP rollid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:115
+msgid "Non-Administrators can set Reading Permissions for their editable posts"
+msgstr ""
+"Mitte-administraatorid saavad seadistada lugemise õigusi oma "
+"redigeeritavatele postitustele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:116
+msgid "Bulk Add / Remove Groups on Users Screen"
+msgstr "Korraga lisa / eemalda rühmad kasutajate ekraanil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Non-Administrators can set Editing Permissions for their editable posts"
+msgstr ""
+"Mitte-administraatorid saavad seadistada redigeerimise õigusi oma "
+"redigeeritavatele postitustele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
+msgid "Assign Publish Permissions separate from Edit Permissions"
+msgstr "Määra avaldamise õigused eraldi redigeerimise õigustest"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:224
+msgid "The following would revert to default settings:"
+msgstr "Järgmised taastatakse vaikeseadeteks:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:274
+msgid "The following would change from defaults to previously stored settings:"
+msgstr "Järgmised muutuvad vaikeseadetest varem salvestatud seadetekstideks:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "no Page Parent filter"
+msgstr "pole lehe vanema filtrit"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Authors, Editors and Administrators"
+msgstr "Lehe autorid, toimetajad ja administraatorid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Editors and Administrators"
+msgstr "Lehe toimetajad ja administraatorid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Administrators"
+msgstr "Administraatorid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:356
+msgid "Some term-limited editing configurations require this."
+msgstr "Mõned määratud toimetamise konfiguratsioonid nõuavad seda."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+msgid "%sPosts / Pages Listing:%s %s"
+msgstr "%sPostitused / Lehed nimekiri:%s %s"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:500
+msgid "User editing capabilities apply for"
+msgstr "Kasutaja toimetamisõigused kehtivad"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "any user"
+msgstr "iga kasutaja"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "equal or lower role levels"
+msgstr "võrdsete või madalamate rollitasemete jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "lower role levels"
+msgstr "madalamate rollitasemete jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:552
+#, php-format
+msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
+msgstr ""
+"Et kontrollida, kuidas täiendavaid rolle rakendatakse, vaadake %1$sRollide "
+"kasutus%2$s."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:654
+msgid "Defined Constant"
+msgstr "Määratud konstant"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:655
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:708
+msgid "Setting"
+msgstr "Seade"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:707
+msgid "Available Constant"
+msgstr "Saadaval konstant"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
+msgid "Revert to Defaults"
+msgstr "Taasta vaikeväärtused"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:20
+msgid "General"
+msgstr "Üldine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:27
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:41
+msgid "Taxonomies"
+msgstr "Taksonoomiad"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:28
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:42
+msgid "Post Types"
+msgstr "Postituste tüübid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:29
+msgid "Database Maintenance"
+msgstr "Andmebaasi hooldus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:43
+msgid "Enforce distinct edit, delete capability requirements for Media"
+msgstr "Kehtesta eraldi redigeerimise, kustutamise õiguste nõuded meedia jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:81
+msgid "Modify permissions for these Taxonomies:"
+msgstr "Muuda õigusi nendele taksonoomiatele:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:110
+msgid "Modify permissions for these Post Types:"
+msgstr "Muuda õigusi nendele postituste tüüpidele:"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:111
+msgid "This causes unique capabilities to be required for editing each post type. "
+msgstr "See nõuab iga postituse tüübi redigeerimiseks unikaalseid õigusi. "
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:173
+msgid "Nav Menus (Block)"
+msgstr "Navigeerimismenüüd (plokk)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:203
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:384
+msgid "Metabox enabled"
+msgstr "Metabox lubatud"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:386
+msgid "Metabox disabled"
+msgstr "Metabox keelatud"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:209
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:390
+msgid "Permissions screen enabled"
+msgstr "Õiguste ekraan lubatud"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:211
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:392
+msgid "Permissions screen disabled"
+msgstr "Õiguste ekraan keelatud"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:229
+msgid "Enable metabox on %s editing screen"
+msgstr "Luba metabox %s redigeerimise ekraanil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:264
+msgid "Enable on Permissions screen"
+msgstr "Luba õiguste ekraanil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:120
+msgid "Make Unattached Files Private"
+msgstr "Muuda kinnitamata faile privaatsuseks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:121
+msgid "Small Thumbnails Unfiltered"
+msgstr "Väikesed pisipildid filtreerimata"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:122
+msgid "Compatibility Mode: Apply extra redirect"
+msgstr "Ühilduvusrežiim: Rakenda täiendav ümbersuunamine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:168
+msgid "Media File Protection"
+msgstr "Meediafailide kaitse"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:173
+msgid "Control direct access to Media files"
+msgstr "Kontrolli meediafailide otsest juurdepääsu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:177
+msgid "Automatic .htaccess file management"
+msgstr "Automaatne .htaccess faili haldamine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:181
+msgid "File Access key with on-demand regeneration"
+msgstr "Faili juurdepääsu võti nõudmisel regeneratsiooniga"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:187
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:263
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:295
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:185
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
+#: includes/CoreAdmin.php:228
+msgid "Pro Feature"
+msgstr "Pro funktsioon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:189
+msgid "Upgrade to Pro to unlock advanced file protection capabilities"
+msgstr "Uuenda Pro versioonile, et avada täiustatud failikaitse võimalused"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:196
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:234
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:272
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:296
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:301
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:315
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:325
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:194
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:230
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:254
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:141
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
+#: includes/CoreAdmin.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:678
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
+msgid "Learn More"
+msgstr "Loe rohkem"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:206
+msgid "Privacy & Performance"
+msgstr "Privaatsus ja tulemuslikkus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:211
+msgid "Limit attachment access by post permissions"
+msgstr "Piira manuste juurdepääsu postituse õigustega"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:215
+msgid "Make unattached files private"
+msgstr "Tee kinnitamata failid privaatsed"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:219
+msgid "Directly control specific files"
+msgstr "Kontrolli otseselt konkreetseid faile"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:227
+msgid "Optimize your site with advanced privacy and performance controls"
+msgstr "Optimeeri oma sait täiustatud privaatsuse ja tulemuslikkuse seadete abil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:244
+msgid "Advanced Integration"
+msgstr "Täpne integratsioon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:249
+msgid "Nginx integration support"
+msgstr "Nginx integratsiooni tugi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:253
+msgid "Process externally uploaded files"
+msgstr "Töötle väliselt üles laaditud faile"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:257
+msgid "Supports network (multisite) installs"
+msgstr "Toetab võrgu (multisite) installatsioone"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:265
+msgid "Get advanced integration features with Nginx, FTP, and more"
+msgstr "Saa täiustatud integratsiooni funktsioone Nginxiga, FTP ja muu abil"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:282
+msgid "Ready to secure your files?"
+msgstr "Kas oled valmis oma faile turvama?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:285
+msgid "Integrations"
+msgstr "Integratsioonid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:32
+msgid "Compatibility Packs"
+msgstr "Ühilduvuse paketid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:46, fuzzy
+msgid "Breakdance"
+msgstr "Breakdance"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:103
+msgid "Unlock Pro Integrations"
+msgstr "Avage Pro integratsioonid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:104
+msgid "Admin"
+msgstr "Administraator"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:124
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:227
+msgid "Builder"
+msgstr "Kujundaja"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:127
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:237
+msgid "Cache"
+msgstr "Vahemälu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:243
+msgid "Community"
+msgstr "Kogukond"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:133
+msgid "E-Commerce"
+msgstr "E-kaubandus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:136
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:231
+msgid "Events"
+msgstr "Sündmused"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:139
+msgid "Multilingual"
+msgstr "Mitmekeelne"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:142
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233, fuzzy
+msgid "SEO"
+msgstr "SEO"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:235
+msgid "Fields"
+msgstr "Väljad"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:239
+msgid "Commerce"
+msgstr "Kaubandus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:241
+msgid "Multilang"
+msgstr "Mitmekeelne"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:261
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205, fuzzy
+msgid "Pro"
+msgstr "Pro"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:266
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin"
+msgstr "Aktiivne plugin"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:285
+msgid "Integration Active"
+msgstr "Integratsioon aktiivne"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:287
+msgid "Upgrade to Pro to enable this integration"
+msgstr "Uuendage Pro versioonile, et võimaldada seda integratsiooni"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:296
+#, php-format
+msgid "Unlock %s integration to enhance your revisions solution."
+msgstr "Avage %s integratsioon, et täiustada oma ülevaatuste lahendust."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin Integration"
+msgstr "Aktiivne pistikprogrammide integreerimine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:322
+msgid "Supported Plugin Integration"
+msgstr "Toetatud pistikprogrammide integreerimine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:120
+msgid "Enable Circles"
+msgstr "Luba ringid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:121
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205
+msgid "Time-limited Membership"
+msgstr "Aja piiratud liikmelisus"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:122
+msgid "Membership Notifications"
+msgstr "Liikmelisuse teated"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:172
+msgid "Modify viewing or editing access"
+msgstr "Muuda vaatamise või redigeerimise juurdepääsu"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:178
+msgid "Use any Role or Permission Group"
+msgstr "Kasutage mis tahes rolli või õiguste rühma"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:179
+msgid "Circle member's capabilities apply only for other member's posts"
+msgstr "Ringiliikme õigused kehtivad ainult teiste liikmete postituste jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:187
+msgid "Upgrade to Pro to limit access based on post author relationships"
+msgstr ""
+"Uuenda Pro versioonile, et piirata juurdepääsu postituste autorite suhete "
+"alusel"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:208
+msgid "Create time-limited permission group memberships with automatic expiration."
+msgstr "Loo ajaliselt piiratud õiguste rühma liikmelisused automaatse aegumisega."
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:213
+msgid "Delay membership start date"
+msgstr "Kasu liikmelisuse alguskuupäeva viibimist"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:214
+msgid "Set membership expiration date"
+msgstr "Sea liikmelisuse aegumise kuupäev"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:215
+msgid "Group membership grants access to content of your choice"
+msgstr "Grupp liikmelisus annab juurdepääsu valitud sisule"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:223
+msgid "Go Pro for time-limited group membership"
+msgstr "Mine Pro versioonile ajaliselt piiratud grupi liikmelisuse jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:240
+msgid "Ready to enhance your membership features?"
+msgstr "Kas oled valmis oma liikmelisuse funktsioone täiustama?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:243
+msgid "Features"
+msgstr "Funktsioonid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:40
+#: includes/SettingsTabInstall.php:44
+#: includes/SettingsTabInstall.php:45
+msgid "settings"
+msgstr "seaded"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:147
+msgid "Active"
+msgstr "Aktiivne"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:150
+msgid "Inactive"
+msgstr "Passiivne"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:49
+msgid "User Posts Synchronization"
+msgstr "Kasutaja Postituste Sünkroniseerimine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:61
+msgid "Synchronize User Posts"
+msgstr "Sünkroniseeri Kasutaja Postitused"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:62
+msgid "Bulk Create Author Posts"
+msgstr "Massiline Autorite Postituste Loomine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:63
+msgid "Smart User Matching"
+msgstr "Nutikas Kasutajate Sobitamine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:64
+msgid "Role-Based Synchronization"
+msgstr "Rollipõhine Sünkroniseerimine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:111
+msgid "Create Posts for Your Users"
+msgstr "Loo Postitusi Oma Kasutajatele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:116
+msgid "Automatically generate posts for users"
+msgstr "Generaatori postitusi kasutajatele automaatselt"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:120
+msgid "Set up posts for existing users"
+msgstr "Seadista postitused olemasolevatele kasutajatele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:124
+msgid "Produce posts for users when they register"
+msgstr "Toota postitusi kasutajatele, kui nad registreeruvad"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:132
+msgid "Upgrade to Pro to automatically generate posts for users"
+msgstr "Uuenda Pro versioonile, et genereerida postitusi kasutajatele automaatselt"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:151
+msgid "Bulk Page Creation"
+msgstr "Massiline Lehe Loomine"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:156
+msgid "Generate posts for user roles that you select"
+msgstr "Generaatori postitusi valitud kasutajarollidele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:160
+msgid "Choose how many posts to create per user"
+msgstr "Vali, kui palju postitusi luua iga kasutaja kohta"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:164
+msgid "Decide which status to use for new posts"
+msgstr "Otsusta, millist staatust kasutada uute postituste jaoks"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:172
+msgid "Upgrade to Pro to unlock bulk page creation features"
+msgstr "Uuenda Pro versioonile, et avada massilise lehe loomise funktsioonid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:191
+msgid "Advanced Configuration"
+msgstr "Täpsem Konfiguratsioon"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:196
+msgid "Automatically detect and avoid duplicate posts"
+msgstr "Avasta automaatselt ja väldi duplikaatpostitusi"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:200
+msgid "Add new pages to a parent page"
+msgstr "Lisa uusi lehti vanemale lehele"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:204
+msgid "Allow users to edit their new posts"
+msgstr "Luba kasutajatel oma uusi postitusi redigeerida"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:212
+msgid "Unlock advanced user synchronization features"
+msgstr "Avage täiustatud kasutaja sünkroonimise funktsioonid"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:231
+msgid "Ready to automatically generate posts for your users?"
+msgstr "Kas olete valmis automaatselt postitusi genereerima oma kasutajatele?"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:234
+msgid "Username"
+msgstr "Kasutajanimi"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:40
+msgid "Email"
+msgstr "E-post"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:44
+#, php-format
+msgid "Specific Permissions %1$s"
+msgstr "Spetsiifilised õigused %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned directly to the user"
+msgstr "Spetsiifilised õigused, mis on määratud otse kasutajale"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned to the user or one of their groups"
+msgstr "Spetsiifilised õigused, mis on määratud kasutajale või mõnele nende grupile"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "User Roles %1$s"
+msgstr "Kasutaja rollid %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "Roles %1$s"
+msgstr "Rollid %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned directly to the user"
+msgstr "Rollid, mis on määratud otse kasutajale"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned to the user or one of their groups"
+msgstr "Rollid, mis on määratud kasutajale või mõnele nende grupile"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:165
+msgid "Edit User"
+msgstr "Muuda kasutajat"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:342
+msgid "Subscribers"
+msgstr "Tellijad"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:343
+msgid "Contributors"
+msgstr "Kaastöötajad"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:344
+msgid "Authors"
+msgstr "Autorid"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:345
+msgid "Editors"
+msgstr "Toimetajad"
+
+#: includes/CoreAdmin.php:28
+#, php-format
+msgid "Promo file not found."
+msgstr "Promo faili ei leitud."
+
+#: includes/CoreAdmin.php:234
+msgid "Upgrade to Pro to unlock seamless integration."
+msgstr "Uuendage Pro versioonile, et avada sujuv integreerimine."
+
+#: includes/promo/posts-teaser-promo.php:4
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Posts Teaser"
+msgstr "Postituste eelvaade"
+
+#: includes/promo/posts-teaser-promo.php:18
+msgid "Post Statuses for Editorial Workflow"
+msgstr "Postituste staatused toimetuse töövoo jaoks"
+
+#: includes/promo/statuses-promo.php:19
+msgid "Post Visibility Statuses"
+msgstr "Postituste nähtavuse staatused"
+
+#: includes/promo/visibility-statuses-promo.php:19
+msgid "License"
+msgstr "Litsents"
+
+#: includes/SettingsTabInstall.php:31
+msgid "Account"
+msgstr "Konto"
+
+#: includes/SettingsTabInstall.php:32
+msgid "Version"
+msgstr "Versioon"
+
+#: includes/SettingsTabInstall.php:68
+msgid "Version info was refreshed."
+msgstr "Versiooni info on värskendatud."
+
+#: includes/SettingsTabInstall.php:122
+msgid "Further details for your installation:"
+msgstr "Edasised üksikasjad teie installatsiooni kohta:"
+
+#: includes/SettingsTabInstall.php:131
+#, php-format
+msgid "PublishPress Permissions Version: %1$s %2$s"
+msgstr "PublishPress Permissions versioon: %1$s %2$s"
+
+#: includes/SettingsTabInstall.php:205
+#, php-format
+msgid "%s&nbsp;details"
+msgstr "%s&nbsp;üksikasjad"
+
+#: includes/SettingsTabInstall.php:226
+msgid "Installation History"
+msgstr "Installatsiooni ajalugu"
+
+#: includes/SettingsTabInstall.php:248
+#, php-format
+msgid "%s (previous install)"
+msgstr "%s (eelmine installatsioon)"
+
+#: includes/SettingsTabInstall.php:265
+#, php-format
+msgid "WordPress Version: %s"
+msgstr "WordPressi versioon: %s"
+
+#: includes/SettingsTabInstall.php:269
+#, php-format
+msgid "PHP Version: %s"
+msgstr "PHP versioon: %s"
+
+#: library/debug.php:17
+#, php-format
+msgid "%1$s queries in %2$s seconds. %3$s MB used."
+msgstr "%1$s päringut %2$s sekundi jooksul. %3$s MB kasutatud."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:163
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:188
+msgid "Term"
+msgstr "Termin"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:164
+msgid "Terms"
+msgstr "Terminid"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:234
+#, php-format
+msgid "%s Manager"
+msgstr "%s haldur"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:206
+msgid "You do not have permission to update that Navigation Menu"
+msgstr "Teil ei ole õigust seda navigeerimismenüüd uuendada"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:208
+msgid "You do not have permission to create new Navigation Menus"
+msgstr "Teil ei ole õigust luua uusi navigeerimismenüü"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:216
+msgid "You do not have permission to delete that Navigation Menu."
+msgstr "Teil ei ole õigust seda navigeerimismenüüd kustutada."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:483
+#, php-format
+msgid "The %s was saved, but you can no longer edit it."
+msgstr "%s salvestati, kuid te ei saa seda enam redigeerida."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:488
+#, php-format
+msgid "Go to %s"
+msgstr "Mine %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:498
+msgid "You do not have permission to move the menu item \"%1$s\""
+msgstr "Teil ei ole õigust menüüelemendi \"%1$s\" liigutamiseks"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:433
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:443
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:453
+msgid "Return to Menu Editor"
+msgstr "Tagasi menüü redigeerijasse"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:439
+#, php-format
+msgid "You do not have permission to delete the menu item \"%1$s\""
+msgstr "Teil ei ole õigust menüüelemendi \"%1$s\" kustutamiseks"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:449
+#, php-format
+msgid "You do not have permission to edit the menu item \"%1$s\""
+msgstr "Teil ei ole õigust menüüelemendi \"%1$s\" redigeerimiseks"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:8
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:22
+msgid "Editing"
+msgstr "Redigeerimine"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:11
+msgid "Publishing"
+msgstr "Avaldamine"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Request"
+msgstr "Taotlus"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "New Revision"
+msgstr "Uus revisjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submitted Revision"
+msgstr "Esitatud revisjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revision"
+msgstr "Muudatus"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
+msgid "Set as Parent"
+msgstr "Seada vanemaks"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:38
+msgid "Assign Term"
+msgstr "Määra termin"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:39
+msgid "Assignment"
+msgstr "Määramine"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:44
+msgid "Management"
+msgstr "Halduse"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:114
+msgid "(unpublished)"
+msgstr "(avalikustamata)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/NavMenu.php:95
+msgid "You are not permitted to manage menu locations"
+msgstr "Teil ei ole lubatud hallata menüü asukohti"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:83
+msgid "Post Approved"
+msgstr "Postitus heaks kiidetud"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:84
+msgid "Page Approved"
+msgstr "Leht heaks kiidetud"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:111
+#, php-format
+msgid "Author Search / Select"
+msgstr "Autori otsing / Valik"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+msgid "select other"
+msgstr "vali teine"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+msgid "close"
+msgstr "sulge"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:47
+#, php-format
+msgid "Permissions: Select this %1$s as Parent for All Post Types"
+msgstr "Õigused: Valige see %1$s vanemaks kõigile postituste tüüpidele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:51
+#, php-format
+msgid "Permissions: %1$s this %2$s for All Post Types"
+msgstr "Õigused: %1$s see %2$s kõigile postituste tüüpidele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEditWorkarounds.php:86
+msgid "You do not have permission to select that Parent"
+msgstr "Teil ei ole lubatud valida seda vanemat"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:24
+#, php-format
+msgid "%s author page added"
+msgid_plural "%s author pages added"
+msgstr[0] "%s autorileht lisatud"
+msgstr[1] "%s autorilehte lisatud"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:30
+msgid "No users selected"
+msgstr "Kasutajaid ei ole valitud"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:36
+msgid "Selected users already have specified author page"
+msgstr "Valitud kasutajatel on juba määratud autorileht"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:49
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:51
+msgid "Add Author Page&hellip;"
+msgstr "Lisa autori leht&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:50
+msgid "make each selected user the author of a new page"
+msgstr "tee iga valitud kasutaja uue lehe autoriks"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:79
+msgid "pattern post sets default content and categories for author post"
+msgstr "mallipostitus määrab vaikimisi sisu ja kategooriad autori postitusele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:81
+msgid "pattern post sets parent, default content and template for author page"
+msgstr "mallipostitus määrab vanema, vaikimisi sisu ja malli autori lehele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:83
+msgid "pattern page sets parent and default content for author page"
+msgstr "mallileht määrab vanema ja vaikimisi sisu autori lehele"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:85
+msgid "patterned on&hellip;"
+msgstr "põhineb&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:92
+msgid "patterned on..."
+msgstr "põhineb..."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "Pattern ID:"
+msgstr "Malli ID:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "enter post ID/slug"
+msgstr "sisesta postituse ID/slug"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "Title:"
+msgstr "Pealkiri:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "supported tags are [username] and [userid]"
+msgstr "toetatud sildid on [username] ja [userid]"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:114
+msgid "Add Pages"
+msgstr "Lisa lehed"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Gutenberg/PostEdit.php:37
+msgid "(select...)"
+msgstr "(vali...)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:36
+msgid "Role Usage edited."
+msgstr "Rolli kasutus muudetud."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:71
+msgid "With Direct Assignment, capabilities are applied without modification."
+msgstr "Otsese määramise korral rakendatakse võimed ilma muudatusteta."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:92
+msgid "All Role Usage settings will be reset to DEFAULTS.  Are you sure?"
+msgstr "Kõik rolli kasutuse seaded lähtestatakse VAIKESEADETEKS. Kas oled kindel?"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:59
+msgid "Role Usage updated."
+msgstr "Rolli kasutus ajakohastatud."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:78
+#, php-format
+msgid "Role Usage: %s"
+msgstr "Rolli kasutus: %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:72
+msgid "Usage"
+msgstr "Kasutus"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:100
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:166
+msgid "no supplemental assignment"
+msgstr "ei ole täiendavat määramist"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:101
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:167
+msgid "Pattern Role"
+msgstr "Mustri roll"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:102
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:161
+msgid "Direct Assignment"
+msgstr "Otsene määramine"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:112
+msgid "Post Capabilities"
+msgstr "Postituste võimekused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:116
+#, php-format
+msgid "Arbitrary Capabilities"
+msgstr "Mugavad võimekused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:140
+#, php-format
+msgid "The following capabilities are included in supplemental %s roles:"
+msgstr "Järgmised võimekused on lisatud täiendavatesse %s rollidesse:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:158
+msgid "Role Capabilities"
+msgstr "Rolli võimekused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:161
+msgid "Notes regarding Pattern Roles"
+msgstr "Märkmed mustri rollide kohta"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:188
+msgid "Back to Role Usage List"
+msgstr "Tagasi rolli kasutusloendisse"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:27
+msgid "Notes"
+msgstr "Märkmed"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:37
+msgid "No matching roles were found."
+msgstr "Sobivaid rolle ei leitud."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:23
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:34
+msgid "Media Library"
+msgstr "Meedia raamatukogu"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:30
+msgid "Posts / Pages Listing"
+msgstr "Postituste / Lehtede loend"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:46
+msgid "List other users' files if attached to a editable post"
+msgstr "Loetlege teiste kasutajate failid, kui need on seotud muudetava postitusega"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:47
+msgid "List other users' files if attached to a viewable post"
+msgstr "Loetlege teiste kasutajate faile, kui need on seotud vaadatava postitusega"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:48
+msgid "List other users' unattached files by default"
+msgstr "Loetlege teiste kasutajate mitteseotud faile vaikimisi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:49
+msgid "Edit other users' files if attached to an editable post"
+msgstr ""
+"Redigeerige teiste kasutajate faile, kui need on seotud redigeeritava "
+"postitusega"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:50
+msgid "Prevent editing files if attached to a non-editable post"
+msgstr ""
+"Eemaldage redigeerimise võimalus failide puhul, kui need on seotud "
+"mitteredigeeritava postitusega"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:51
+msgid "Users can always edit their own files"
+msgstr "Kasutajad saavad alati redigeerida oma faile"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:106
+msgid "Limited Editing Elements"
+msgstr "Piiratud redigeerimise elemendid"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:134
+msgid "Feature Moved"
+msgstr "Funktsioon on liigutatud"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:140
+#, php-format
+msgid "Current Settings:"
+msgstr "Praegused seaded:"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:156
+msgid "HTML Element IDs: "
+msgstr "HTML Elementide ID-d: "
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:178
+msgid "List Files"
+msgstr "Loetlege faile"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:189
+msgid "Edit Files"
+msgstr "Redigeerige faile"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooks.php:623
+#, php-format
+msgid "You are not allowed to create new %s"
+msgstr "Teie ei tohi luua uusi %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksAdmin.php:253
+msgid "access denied"
+msgstr "juurdepääs keelatud"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:128
+msgid "Approve"
+msgstr "Kinnita"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:145
+msgid "Revisors"
+msgstr "Revisioonid"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:146, fuzzy
+msgid "Revisor"
+msgstr "Revisor"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:623
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:676
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
+msgid "To read the full content, please log in to this site."
+msgstr "Täieliku sisu lugemiseks palun logige sellele saidile sisse."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:711
+msgid "Content requires additional permissions."
+msgstr "Sisu vajab täiendavaid õigusi."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+msgid "Read More"
+msgstr "Loe rohkem"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
+msgid "Teaser Type"
+msgstr "Teaser'i tüüp"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+msgid "Coverage"
+msgstr "Katvus"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
+msgid "Teaser Text"
+msgstr "Teaser'i tekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+msgid "Read More Notice"
+msgstr "Loe rohkem teade"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+msgid "Redirect"
+msgstr "Suuna"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
+msgid "Options"
+msgstr "Valikud"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+msgid "Hidden Content Teaser"
+msgstr "Peidetud sisu Teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+msgid "Display mode for readable private posts"
+msgstr "Kuvatav režiim loetavatele privaatsetele postitustele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+msgid "Display mode for readable non-private posts"
+msgstr "Kuvatav režiim loetavatele mitteprivaatsetele postitustele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+msgid "Feed Replacement Text (use %permalink% for post URL)"
+msgstr "To feed asendustekst (kasuta %permalink% postituse URL-i jaoks)"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+msgid "Login Notice Message"
+msgstr "Sisselogimise teade"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Hide Featured Image when Teaser is applied"
+msgstr "Peida esiletõstetud pilt, kui Teaser on rakendatud"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "%s is a PRO feature"
+msgstr "%s on PRO funktsioon"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:189
+#, php-format
+msgid "🔓 Unlock %s"
+msgstr "🔓 Ava %s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
+msgid "This feature is available in PublishPress Permissions PRO"
+msgstr "See funktsioon on saadaval PublishPress Permissions PRO-s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:205
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
+msgid "Upgrade to PRO"
+msgstr "Uuenda PRO-ks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:208
+msgid "Compare Features"
+msgstr "Võrdle funktsioone"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:247
+msgid "All post teaser settings were updated."
+msgstr "Kõik postituste eelvaate seaded on uuendatud."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:255
+msgid "All post teaser settings were reset to defaults."
+msgstr "Kõik postituste eelvaate seaded on lähtestatud vaikeseadele."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:265
+msgid "Teaser Settings"
+msgstr "Eelvaate seaded"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458, fuzzy
+msgid "RSS"
+msgstr "RSS"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:477
+msgid "Display for readable private posts:"
+msgstr "Kuvamine loetavatele privaatsetele postitustele:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Full Content"
+msgstr "Täis sisu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Excerpt Only"
+msgstr "Ainult väljavõte"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Title Only"
+msgstr "Ainult pealkiri"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:502
+msgid "Display for readable non-private posts:"
+msgstr "Kuvamine loetavatele mitteprivaatsetele postitustele:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:529
+msgid "Feed Replacement Text:"
+msgstr "Toite asendustekst:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:554
+#, php-format
+msgid "Use %s for post URL"
+msgstr "Kasutage %s postituse URL-i jaoks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:71
+msgid "Select Post Type to Configure"
+msgstr "Valige konfigureeritav postituse tüüp"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:72
+msgid "Choose which post type you want to configure teaser settings for."
+msgstr ""
+"Valige, millise postituse tüübi jaoks soovite eelvaate seadeid "
+"konfigureerida."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:98
+#, php-format
+msgid "Pages and custom post types are available in %sPRO%s"
+msgstr "Leheküljed ja kohandatud postituse tüübid on saadaval %sPRO%s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:177
+msgid "WordPress default. Show \"Page not found\" screen"
+msgstr "WordPressi vaike. Kuvage \"Lehte ei leitud\" ekraan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:178
+msgid "Teaser text"
+msgstr "Eelvaate tekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:179
+msgid "Use content before Read More link as teaser text"
+msgstr "Kasutage sisu enne \"Loe rohkem\" linki kui eelvaate teksti"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:180
+msgid "Use Excerpt as teaser text"
+msgstr "Kasutage väljavõttu kui eelvaate teksti"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:181
+msgid "Use Excerpt or pre-More as teaser text"
+msgstr "Kasutage väljavõttu või enne \"Rohkem\" kui eelvaate teksti"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:182
+msgid "Use Excerpt, pre-More or First X Characters as teaser text"
+msgstr "Kasutage väljavõttu, enne \"Rohkem\" või esimest X märki kui eelvaate teksti"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:183
+msgid "Redirect to another post"
+msgstr "Suuna teisele postitusele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:194
+msgid "No teaser will be applied"
+msgstr "Teaserit ei rakendata"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:195
+msgid "Use configured teaser text to replace or supplement content"
+msgstr "Kasuta konfigureeritud teaseriteksti sisu asendamiseks või täiendamiseks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:196
+msgid "Show a \"Read More\" link that requires login"
+msgstr "Kuva \"Loe edasi\" link, mis nõuab sisselogimist"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:197
+msgid "Use the post excerpt as teaser content"
+msgstr "Kasuta postituse kokkuvõtet teaserisisuna"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:198
+msgid "Use excerpt or content before More tag"
+msgstr "Kasuta kokkuvõtet või sisu enne \"Rohkem\" märgendit"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:199
+msgid "Show the first X characters of the post content"
+msgstr "Kuva postituse sisu esimesed X tähemärki"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+msgid "Redirect users to another page when they try to access restricted content"
+msgstr "Suuna kasutajad teisele lehele, kui nad proovivad pääseda piiratud sisule"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:206
+msgid "Use first X characters of content as teaser text"
+msgstr "Kasuta sisu esimesi X tähemärki teaseritekstina"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:207
+msgid "Use excerpt or first X characters of content"
+msgstr "Kasuta kokkuvõtet või sisu esimesi X tähemärki"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#, php-format
+msgid "Teaser Settings for %s"
+msgstr "Teaseriseaded %s jaoks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
+msgid "Teaser Type:"
+msgstr "Teaseritüüp:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:293
+#, php-format
+msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
+msgstr "Loe edasi lingid, kokkuvõtted ja suunamised on saadaval %sPRO%s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:302
+msgid "Show only the first"
+msgstr "Kuva ainult esimesed"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:309
+msgid "Chars"
+msgstr "Tähemärki"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:304
+msgid "characters"
+msgstr "tähemärki"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:308, fuzzy
+msgid "Max"
+msgstr "Max"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:310
+msgid "characters (leave empty for full excerpt)"
+msgstr "tähemärki (jätke tühjaks, et saada täielik kokkuvõte)"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:320
+msgid "Teaser Application:"
+msgstr "Teaserite rakendamine:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:324
+msgid "List and Single view"
+msgstr "Loend ja Üksikvaade"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:328
+msgid "Single view only"
+msgstr "Ainult ühekordne vaade"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+msgid "User Application:"
+msgstr "Kasutaja rakendus:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
+msgid "Both"
+msgstr "Mõlemad"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:344
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:558
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Not Logged In Users"
+msgstr "Sisse logimata kasutajad"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:348
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:561
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Logged In Users"
+msgstr "Sisse logitud kasutajad"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+msgid "Navigation Menus:"
+msgstr "Navigeerimismenüüd:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
+msgid "Display links if user doesn't have access"
+msgstr "Kuva lingid, kui kasutajal ei ole ligipääsu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:363
+msgid "Hide links if user doesn't have access"
+msgstr "Peida lingid, kui kasutajal ei ole ligipääsu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+msgid "Private Posts:"
+msgstr "Privaatpostitused:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+msgid "Apply Teaser to Private Posts"
+msgstr "Rakenda reklaamivise privaatpostitustele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:376
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "Peida privaatpostitused, kui kasutajal ei ole ligipääsu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:381
+msgid "Hide for Custom Visibility"
+msgstr "Peida kohandatud nähtavuse jaoks"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:387
+msgid "Featured Image:"
+msgstr "Esiletõstetud pilt:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+msgid "Show featured image"
+msgstr "Kuva esiletõstetud pilt"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
+msgid "Hide featured image when teaser is applied"
+msgstr "Peida esiletõstetud pilt, kui reklaamivise on rakendatud"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:403
+msgid "Teaser Message Style:"
+msgstr "Reklaamivise sõnumi stiil:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:411
+msgid "Use Default Teaser Message Style"
+msgstr "Kasuta vaikimisi reklaamivise sõnumi stiili"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
+msgid "Use Custom Teaser Message Style"
+msgstr "Kasuta kohandatud reklaamivise sõnumi stiili"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
+msgid "Teaser Message"
+msgstr "Reklaamivise sõnum"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+msgid "This field is required."
+msgstr "See väli on kohustuslik."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:460
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
+msgid "Replace Post Content With:"
+msgstr "Asenda postituse sisu:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:526
+#, php-format
+msgid "Insert a login form by using %s[login_form]%s shortcode."
+msgstr "Sisestage sisselogimise vorm, kasutades %s[login_form]%s lühikoodi."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Teaser Text Configuration"
+msgstr "Teaser Teksti Konfiguratsioon"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+msgid "Configure custom teaser text for this post type."
+msgstr "Konfigureeri kohandatud teaser tekst selle postituse tüübi jaoks."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:589
+msgid "post title"
+msgstr "postituse pealkiri"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:590
+msgid "post content"
+msgstr "postituse sisu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:597
+#, php-format
+msgid "Before %s:"
+msgstr "Enne %s:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:598
+#, php-format
+msgid "After %s:"
+msgstr "Pärast %s:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+msgid "Redirect Settings"
+msgstr "Suunamisseaded"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+msgid "Redirect functionality is available in PRO"
+msgstr "Suunamisfunktsioon on saadaval PRO versioonis"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:672
+msgid "Redirection"
+msgstr "Suunamine"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:709
+msgid "Target Post Type"
+msgstr "Sihtpostituse tüüp"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:710
+msgid "Select Post"
+msgstr "Vali postitus"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:746
+msgid "Not Logged In:"
+msgstr "Ei ole sisse logitud:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
+msgid "No redirect"
+msgstr "Ei mingit suunamist"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:850
+msgid "Redirect to WordPress login"
+msgstr "Suuna WordPressi sisselogimisele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:851
+msgid "Redirect to a custom post"
+msgstr "Suuna kohandatud postitusele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:904
+msgid "This is a custom login page"
+msgstr "See on kohandatud sisselogimise leht"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+msgid "Logged in Users:"
+msgstr "Sisselogitud kasutajad:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1042
+msgid "Message for Blocked Users"
+msgstr "Sunditud kasutajate sõnum"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:935
+msgid "Teaser Message Style Customization"
+msgstr "Eelvaate sõnumi stiili kohandamine"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1145
+msgid "Customize the appearance of teaser message displayed to blocked users."
+msgstr "Kohanda blokeeritud kasutajatele kuvatava eelvaate sõnumi välimust."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1157
+msgid "Background Color:"
+msgstr "Taustavärv:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
+msgid "Text Color:"
+msgstr "Tekstivärv:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1181
+msgid "Border Color:"
+msgstr "Serva värv:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+msgid "Border Width (px):"
+msgstr "Serva laius (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+msgid "Border Position:"
+msgstr "Serva positsioon:"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1211
+msgid "Left"
+msgstr "Vasak"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1212
+msgid "Right"
+msgstr "Parem"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1213
+msgid "Top"
+msgstr "Üles"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1214
+msgid "Bottom"
+msgstr "Alumine"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1215
+msgid "All Sides"
+msgstr "Kõik küljed"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221, fuzzy
+msgid "Padding (px):"
+msgstr "Padding (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1234
+msgid "Border Radius (px):"
+msgstr "Piiri raadius (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+msgid "Font Size (px):"
+msgstr "Fondisuurus (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+msgid "Live Preview"
+msgstr "Reaalajas eelvaade"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+msgid "No Teaser"
+msgstr "Pole teaserit"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
+msgid "Configured Teaser Text"
+msgstr "Konfigureeritud teaser tekst"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
+msgid "This is a PRO feature"
+msgstr "See on PRO funktsioon"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
+#, php-format
+msgid "%s is available in PRO"
+msgstr "%s on saadaval PRO-s"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:40
+msgid "Select a page"
+msgstr "Vali leht"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:41
+msgid "Select terms"
+msgstr "Vali tingimused"
+
+#: press-permit-core.php:117
+msgid "<strong>This plugin can be deleted.</strong>"
+msgstr "<strong>Seda plugina saab kustutada.</strong>"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:23
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:253
+msgctxt "user"
+msgid "Select &gt;"
+msgstr "Vali &gt;"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:24
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:254
+msgctxt "user"
+msgid "&lt; Unselect"
+msgstr "&lt; Tühista valik"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:170
+msgctxt "count"
+msgid "%s..."
+msgstr "%s..."
