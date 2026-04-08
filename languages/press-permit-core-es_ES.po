@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Plugins - PublishPress Permissions: Control User Access "
 "for Posts, Pages, Categories, Tags - Stable (latest release)\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-03-18T15:16:27+00:00\n"
-"PO-Revision-Date: 2026-03-20 18:57+0100\n"
+"POT-Creation-Date: 2026-04-06T14:49:03+00:00\n"
+"PO-Revision-Date: 2026-04-07 12:47+0200\n"
 "Last-Translator: \n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -396,8 +396,8 @@ msgstr "Compatibility Pack"
 #: classes/PublishPress/Permissions/Admin.php:168 includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:83
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:84
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:90
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:91
 msgid "Teaser"
 msgstr "El avance"
 
@@ -1179,7 +1179,7 @@ msgstr "Todos los usuarios con el perfil de WordPress de %s"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:145
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
 #, php-format
@@ -1274,10 +1274,10 @@ msgstr ""
 "Permisos Pro y el soporte prioritario, %spor favor, renueva%s."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:117
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:183
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:245
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:287
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:185
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:247
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:289
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
@@ -1324,22 +1324,34 @@ msgid "Control frontend viewing of selected %s."
 msgstr ""
 "Controla la visualización por la interfaz pública de los %s seleccionados."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:133
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:375
+#, php-format
+msgid "Control who can create a revision of this %s."
+msgstr "Controla quién puede crear una revisión de este %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:376
+#, php-format
+msgid "Control who can submit a revision of this %s."
+msgstr "Controla quién puede enviar una revisión de este %s."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:135
 msgid "Enable"
 msgstr "Activar"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:138
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:140
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:987
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Bloque"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:141
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:143
 msgid "Limit to"
 msgstr "Limitar a"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:146
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:148
 msgid ""
 "Expand access to allow specified items regardless of role capabilities or "
 "restrictions."
@@ -1347,7 +1359,7 @@ msgstr ""
 "Amplíar el acceso para permitir los elementos especificados "
 "independientemente de las capacidades o restricciones de los perfiles."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:149
 msgid ""
 "Restrict access by blocking specified items unless an \"Enabled\" exception "
 "is also stored."
@@ -1355,7 +1367,7 @@ msgstr ""
 "Restringir el acceso bloqueando los elementos especificados a menos que "
 "también se haya almacenado una excepción «Activado»."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:148
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
 msgid ""
 "Restrict access by limiting role capabilities to apply only for specified "
 "items. Users still need capabilities in their main role or extra roles."
@@ -1364,7 +1376,7 @@ msgstr ""
 "se apliquen a elementos específicos. Los usuarios seguirán necesitando "
 "capacidades en su perfil principal o en perfiles adicionales."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:167
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:169
 msgid ""
 "Using group membership to block access is not recommended. Consider reducing "
 "the user's role capabilities and using group membership to add access."
@@ -1373,17 +1385,17 @@ msgstr ""
 "Considera reducir las capacidades del perfil del usuario y utilizar la "
 "membresía de grupo para añadir acceso."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:193
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:195
 msgid "Selected:"
 msgstr "Seleccionados:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:205
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
 msgid "Nav Menus (Legacy)"
 msgstr "Menús de navegación (heredado)"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:209
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:993
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:230
@@ -1391,29 +1403,29 @@ msgstr "Menús de navegación (heredado)"
 msgid "Legacy"
 msgstr "Heredado"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:211
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:224
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:230
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:213
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:226
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:232
 #, php-format
 msgid "%s:"
 msgstr "%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:258
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:260
 #, php-format
 msgid "Selected %s:"
 msgstr "%s seleccionados:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:265
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
 #, php-format
 msgid "Sub-%s:"
 msgstr "Sub-%s::"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:298
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:300
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:174
 msgid "All Statuses"
 msgstr "Todos los estados"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:311
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:313
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1902
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
@@ -1748,7 +1760,9 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:255
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:781
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:980
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "Perfil"
 
@@ -1866,8 +1880,8 @@ msgstr "%s perfiles"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:830
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:553
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:730
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:576
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:788
 msgid "Apply"
 msgstr "Aplicar"
 
@@ -2295,10 +2309,14 @@ msgid "(No setting)"
 msgstr "(Sin ajuste)"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:19
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:44
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:48
 msgid "Enabled"
 msgstr "Activado"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:20
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:43
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:47
 msgid "Blocked"
 msgstr "Bloqueado"
 
@@ -2311,7 +2329,7 @@ msgid "Unblocked"
 msgstr "Desbloqueado"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
 msgid "Roles"
@@ -2322,11 +2340,13 @@ msgid "User"
 msgstr "Usuario"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
 #, php-format
 msgid "This %s"
 msgstr "Este %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
 #, php-format
 msgid "Sub-%s"
 msgstr "Sub-%s"
@@ -2339,119 +2359,212 @@ msgstr "Por defecto todo"
 msgid "Group restrictions are not recommended."
 msgstr "Las restricciones de grupo no están recomendadas."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:377
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:368
 #, php-format
-msgid "%d role"
-msgid_plural "%d roles"
-msgstr[0] "%d perfil"
-msgstr[1] "%d perfiles"
+msgid "Control who can assign terms to this %s."
+msgstr "Controla quién puede asignar los términos a este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:369
+#, php-format
+msgid "Control who can choose the parent page for this %s."
+msgstr "Controla quién puede eligir la página padre para este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:370
+#, php-format
+msgid "Control editing of this %s."
+msgstr "Controla la edición de este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:371
+#, php-format
+msgid "Control publishing of this %s."
+msgstr "Controla la publicación de este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:372
+#, php-format
+msgid "Control deletion of this %s."
+msgstr "Controla el borrado de este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:373
+#, php-format
+msgid "Control term management for this %s."
+msgstr "Controla la gestión de términos para este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:374
+#, php-format
+msgid "Control frontend viewing of this %s."
+msgstr "Controla la visualización por la interfaz pública de este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:379
+#, php-format
+msgid "Control who add this %s to %s."
+msgstr "Controla quién puede añadir este %s a %s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
 #, php-format
-msgid "%d group"
-msgid_plural "%d groups"
-msgstr[0] "%d grupo"
-msgstr[1] "%d grupos"
+msgid "Control who can edit %s with this %s."
+msgstr "Controla quién puede editar %s con este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:381
+#, php-format
+msgid "Control who can view %s with this %s."
+msgstr "Controla quién puede ver %s con este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:382
+#, php-format
+msgid "Control who can create a revision of %s with this %s."
+msgstr "Controla quién puede crear una revisión de este %s con este %s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
 #, php-format
-msgid "%d user"
-msgid_plural "%d users"
-msgstr[0] "%d usuario"
-msgstr[1] "%d usuarios"
+msgid "Control who can submit a revision of %s with this %s."
+msgstr "Controla quién puede enviar una revisión de %s con este %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:385
-msgid "No exceptions configured"
-msgstr "No hay excepciones configuradas"
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:387
+#, php-format
+msgid "Control who add this %s to all post types."
+msgstr "Controla quién puede añadir este %s a todos los tipos de contenido."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:388
+#, php-format
+msgid "Control who can edit all post types in this %s."
+msgstr "Controla quién puede editar todos los tipos de contenido en este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:389
+#, php-format
+msgid "Control who can view all post types in this %s."
+msgstr "Controla quién puede ver todos los tipos de contenido en este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:390
+#, php-format
+msgid "Control who can create a revision of all post types in this %s."
+msgstr ""
+"Controla quién puede crear una revisión para todos los tipos de contenido en "
+"este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
+#, php-format
+msgid "Control who can submit a revision of all post types in this %s."
+msgstr ""
+"Controla quién puede enviar una revisión de todos los tipos de contenido en "
+"este %s."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
 msgid "Roles & Groups"
 msgstr "Perfiles y grupos"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:521
 msgid "Search roles and groups..."
 msgstr "Buscar perfiles y grupos…"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:521
 msgid "Search roles..."
 msgstr "Buscar perfiles…"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:522
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:532
 #: classes/PublishPress/Permissions/UI/Groups.php:211
 msgid "Users"
 msgstr "Usuarios"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:544
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:720
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:552
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+msgid "Sort by:"
+msgstr "Ordenar por:"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:554
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
+msgid "Name (A-Z)"
+msgstr "Nombre (A-Z)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:618
+msgid "Name (Z-A)"
+msgstr "Nombre (Z-A)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
+msgid "Most Users"
+msgstr "Más de usuarios"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:557
+msgid "Fewest Users"
+msgstr "Menos de usuarios"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:567
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:778
 msgid "Select All"
 msgstr "Seleccionar todo"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:547
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:548
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:724
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:781
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:782
 msgid "Bulk Actions"
 msgstr "Acciones en lote"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:549
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:725
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:572
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
 msgid "Set to Enabled"
 msgstr "Establecer como «Activado»"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:550
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:573
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:784
 msgid "Set to Blocked"
 msgstr "Establecer como «Bloqueado»"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:551
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:727
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:574
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:785
 msgid "Set to Default"
 msgstr "Establecer como por defecto"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:733
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:791
 msgid "selected"
 msgstr "seleccionado"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:583
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:606
 msgid "Search and add users..."
 msgstr "Buscar y añadir usuarios…"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:655
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:704
 msgid "No role exceptions set"
 msgstr "No hay excepciones de perfil establecidas"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:770
 msgid "No specific user permissions. Use the search box to add users."
 msgstr ""
 "No hay permisos específicos para usuario. Usa la caja de búsqueda para "
 "añadir los usuarios."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:728
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:786
 msgid "Remove Selected"
 msgstr "Eliminar seleccionado"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:977
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
 msgid "Login State"
 msgstr "Estado de acceso"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:984
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grupo"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
 msgid "Sub-Sections"
 msgstr "Subsecciones"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
 msgid "This Section"
 msgstr "Esta sección"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
-msgid "Remove user from exceptions"
-msgstr "Eliminar el usuario de las excepciones"
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
+msgid "Remove custom permissions for user"
+msgstr "Retirar los permisos personalizados para el usuario"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
 #, php-format
@@ -2471,49 +2584,88 @@ msgstr ""
 "Por favor, actualiza PublishPress Authors a la versión 3.8.0 o superior para "
 "la integración de los permisos."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:39
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:45
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:40
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:44
 msgid "Editing can't be granted to non-users."
 msgstr "No se puede conceder el permiso de edición a los no usuarios."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:112
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:481
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:41
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:45
+msgid "You can now set individual permissions for"
+msgstr "Ahora puedes establecer permisos individuales para"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:42
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:46
+#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
+msgid "All"
+msgstr "Todos"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:45
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:49
+msgid "Default"
+msgstr "Por defecto"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:50
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
+msgid "Please select a bulk action first."
+msgstr "Por favor, selecciona primero una acción por lote."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:51
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
+msgid "Please select at least one item."
+msgstr "Por favor, selecciona al menos un elemento."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:52
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:56
+msgid "Are you sure you want to remove the selected user(s) from exceptions?"
+msgstr ""
+"¿Seguro que quieres quitar los usuarios seleccionados de las excepciones?"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:53
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:57
+#, php-format
+msgid "Remove the custom permisisons for \"%s\"?"
+msgstr "¿Retirar los permisos personalizados para «%s»?"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:126
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:516
 #: classes/PublishPress/Permissions/UI/Settings.php:102
 msgid "Permissions Settings"
 msgstr "Ajustes de los permisos"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:135
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:248
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:149
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
 #, php-format
 msgid "Permissions: %s"
 msgstr "Permisos: %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:170
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "Permisos: Selecciona este %s como padre"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:164
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:178
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "Permisos: Asignar términos a esta %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:172
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:186
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "Permisos: %s este %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:505
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:236
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:540
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "activar los permisos personalizados para %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:273
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:286
 msgid "Select as Parent"
 msgstr "Seleccionar como padre"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:278
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:291
 msgid "Assign Terms"
 msgstr "Asignar términos"
 
@@ -2568,54 +2720,38 @@ msgstr "%s, más…"
 msgid "edit user permissions"
 msgstr "editar permisos de usuario"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:138
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
 #, php-format
 msgid "Assign to %s"
 msgstr "Asignar a %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:141
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:153
 msgid "Assign (All Types)"
 msgstr "Asignar (Todos los tipos)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
 #, php-format
-msgid "%s (All Content)"
-msgstr "%s (Contenido completo)"
+msgid "%s (All Types)"
+msgstr "%s (todos los tipos)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:243
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
+#, php-format
+msgid "%1$s %2$s in this %3$s"
+msgstr "%1$s %2$s en este %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:172
+#, php-format
+#| msgid "sub-%1$s of this %2$s"
+msgid "%1$s this %2$s"
+msgstr "%1$s este %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:273
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "Permisos: %1$s en %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:272
-#, php-format
-msgid "Permissions: Assign this %2$s to %3$s"
-msgstr "Permisos: Asignar este %2$s a %3$s"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
-#, php-format
-msgid "Permissions: Assign this %2$s for All Post Types"
-msgstr "Permisos: Asignar este %2$s para todos los tipos de contenido"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:285
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:298
-#, php-format
-msgid "Permissions: %1$s %2$s in this %3$s"
-msgstr "Permisos: %1$s %2$s en este %3$s"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:291
-#, php-format
-msgid "Permissions: %1$s all content in this %2$s for All Post Types"
-msgstr ""
-"Permisos: %1$s todo el contenido de este %2$s para todos los tipos de "
-"contenido"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:304
-#, php-format
-msgid "Permissions: %1$s this %2$s"
-msgstr "Permisos: %1$s este %2$s"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:325
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:287
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:360
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type. You can also "
@@ -2626,7 +2762,35 @@ msgstr ""
 "pueden %2$sdefinir permisos universales %3$s que se aplican a todos los "
 "tipos de contenido relaccionados%4$s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:539
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:316
+#, php-format
+msgid "Permissions: Assign this %2$s to %3$s"
+msgstr "Permisos: Asignar este %2$s a %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:322
+#, php-format
+msgid "Permissions: Assign this %2$s for All Post Types"
+msgstr "Permisos: Asignar este %2$s para todos los tipos de contenido"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:329
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:342
+#, php-format
+msgid "Permissions: %1$s %2$s in this %3$s"
+msgstr "Permisos: %1$s %2$s en este %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:335
+#, php-format
+msgid "Permissions: %1$s all content in this %2$s for All Post Types"
+msgstr ""
+"Permisos: %1$s todo el contenido de este %2$s para todos los tipos de "
+"contenido"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:348
+#, php-format
+msgid "Permissions: %1$s this %2$s"
+msgstr "Permisos: %1$s este %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:574
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
@@ -2800,11 +2964,6 @@ msgstr "Perfiles de WordPress"
 #, php-format
 msgid "%1$sGroup Type:%2$s %3$s"
 msgstr "%1$sTipo de grupo:%2$s %3$s"
-
-#: classes/PublishPress/Permissions/UI/Groups.php:256
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
-msgid "All"
-msgstr "Todos"
 
 #: classes/PublishPress/Permissions/UI/Groups.php:275
 msgid "Has Permissions"
@@ -4692,7 +4851,7 @@ msgid ""
 "Control access to post visibility statuses. This workflow feature is "
 "available in PublishPress Permissions Pro."
 msgstr ""
-"Control del acceso a los estados de visibilidad de las entradas. Esta "
+"Controla el acceso a los estados de visibilidad de las entradas. Esta "
 "característica de flujo de trabajo está disponible en PublishPress "
 "Permissions Pro."
 
@@ -5923,17 +6082,45 @@ msgstr "Esta es una característica PRO"
 msgid "%s is available in PRO"
 msgstr "%s está disponible en PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:40
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:48
 msgid "Select a page"
 msgstr "Seleccionar una página"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:41
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
 msgid "Select terms"
 msgstr "Seleccionar términos"
 
-#: press-permit-core.php:117
+#: press-permit-core.php:132
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Este plugin puede ser borrado.</strong>"
+
+#, php-format
+#~ msgid "%d role"
+#~ msgid_plural "%d roles"
+#~ msgstr[0] "%d perfil"
+#~ msgstr[1] "%d perfiles"
+
+#, php-format
+#~ msgid "%d group"
+#~ msgid_plural "%d groups"
+#~ msgstr[0] "%d grupo"
+#~ msgstr[1] "%d grupos"
+
+#, php-format
+#~ msgid "%d user"
+#~ msgid_plural "%d users"
+#~ msgstr[0] "%d usuario"
+#~ msgstr[1] "%d usuarios"
+
+#~ msgid "No exceptions configured"
+#~ msgstr "No hay excepciones configuradas"
+
+#~ msgid "Remove user from exceptions"
+#~ msgstr "Eliminar el usuario de las excepciones"
+
+#, php-format
+#~ msgid "%s (All Content)"
+#~ msgstr "%s (Contenido completo)"
 
 #~ msgid "(Default: Yes)"
 #~ msgstr "(Por defecto: Sí)"
@@ -6303,9 +6490,6 @@ msgstr "<strong>Este plugin puede ser borrado.</strong>"
 #~ msgid "%s permissions have not been added or blocked for any %s."
 #~ msgstr ""
 #~ "Los permisos de %s no han sido añadidos o bloqueados para ningún %s."
-
-#~ msgid "select users"
-#~ msgstr "selecciona los usuarios"
 
 #~ msgid "select groups"
 #~ msgstr "selecciona los grupos"
