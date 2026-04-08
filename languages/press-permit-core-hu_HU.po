@@ -10,29 +10,38 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-03-18T15:16:27+00:00\n"
-"PO-Revision-Date: 2026-04-07 23:36+0000\n"
+"PO-Revision-Date: 2026-04-08 03:35+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: hu-HU\n"
 
 #: press-permit-core.php:4
-#: press-permit-core.php:4
 #. Plugin Name of the plugin
 msgid "PublishPress Permissions"
 msgstr "PublishPress Jogosultságok"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
 
 #: press-permit-core.php:6
 #. Description of the plugin
+msgid ""
+"PublishPress Permissions allows you to enable or deny access to posts, "
+"pages, categories, tags and more."
+msgstr ""
+"A PublishPress Permissions lehetővé teszi a bejegyzések, oldalak, "
+"kategóriák, címkék és egyebek hozzáférésének engedélyezését vagy "
+"megtagadását."
+
+#: press-permit-core.php:8
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -51,6 +60,14 @@ msgid "Advanced Custom Fields"
 msgstr "Fejlett egyedi mezők"
 
 #: classes/PublishPress/Permissions.php:1274
+msgid ""
+"Control front-end access to Field Groups with advanced permission "
+"management."
+msgstr ""
+"A Field Groups előrehaladott jogosultságkezelésével vezérelheti a front-end "
+"hozzáférést."
+
+#: classes/PublishPress/Permissions.php:1278
 msgid "Control access to Field Groups"
 msgstr "Hozzáférés vezérlése a mezőcsoportokhoz"
 
@@ -63,7 +80,7 @@ msgid "Integration with permission groups"
 msgstr "Integráció jogosultsági csoportokkal"
 
 #: classes/PublishPress/Permissions.php:1288
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:45, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:45
 msgid "Beaver Builder"
 msgstr "Beaver Builder"
 
@@ -91,6 +108,14 @@ msgid "bbPress Forums"
 msgstr "bbPress Fórumok"
 
 #: classes/PublishPress/Permissions.php:1304
+msgid ""
+"Forum-specific permissions for bbPress with detailed control over forum "
+"access and participation."
+msgstr ""
+"A bbPress fórum-specifikus jogosultságai részletes ellenőrzést kínálnak a "
+"fórumhozzáférés és részvétel felett."
+
+#: classes/PublishPress/Permissions.php:1308
 msgid "Forum-specific permissions"
 msgstr "Fórum-specifikus jogosultságok"
 
@@ -103,11 +128,19 @@ msgid "Forum access controls"
 msgstr "Fórum hozzáférési vezérlők"
 
 #: classes/PublishPress/Permissions.php:1318
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:47, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:47
 msgid "BuddyPress"
 msgstr "BuddyPress"
 
 #: classes/PublishPress/Permissions.php:1319
+msgid ""
+"Assign post and term permissions to BuddyPress groups for enhanced content "
+"control."
+msgstr ""
+"A bejegyzések és kifejezések jogosultságait a BuddyPress csoportokhoz "
+"rendelheti a tartalom jobb ellenőrzése érdekében."
+
+#: classes/PublishPress/Permissions.php:1323
 msgid "Assign post permissions to BuddyPress groups"
 msgstr "Hozzárendelés a bejegyzések engedélyeinek a BuddyPress csoportokhoz"
 
@@ -137,7 +170,7 @@ msgid "Hierarchical content controls"
 msgstr "Hierarchikus tartalom vezérlők"
 
 #: classes/PublishPress/Permissions.php:1347
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:49, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:49
 msgid "Elementor"
 msgstr "Elementor"
 
@@ -206,11 +239,19 @@ msgid "Status-based editing capabilities"
 msgstr "Státusz alapú szerkesztési lehetőségek"
 
 #: classes/PublishPress/Permissions.php:1405
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52
 msgid "Relevanssi"
 msgstr "Relevanssi"
 
 #: classes/PublishPress/Permissions.php:1406
+msgid ""
+"Filter search results based on View Permissions for secure content "
+"discovery."
+msgstr ""
+"A nézet jogosultságai alapján szűrheti a keresési eredményeket a "
+"biztonságos tartalom felfedezéséhez."
+
+#: classes/PublishPress/Permissions.php:1410
 msgid "Search result filtering"
 msgstr "Keresési eredmények szűrése"
 
@@ -223,7 +264,7 @@ msgid "Secure content discovery"
 msgstr "Biztonságos tartalom felfedezése"
 
 #: classes/PublishPress/Permissions.php:1420
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53
 msgid "SearchWP"
 msgstr "SearchWP"
 
@@ -246,7 +287,7 @@ msgid "Advanced search controls"
 msgstr "Fejlett keresési vezérlők"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -265,11 +306,19 @@ msgid "Product category controls"
 msgstr "Termék kategória vezérlők"
 
 #: classes/PublishPress/Permissions.php:1449
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55
 msgid "WPML"
 msgstr "WPML"
 
 #: classes/PublishPress/Permissions.php:1450
+msgid ""
+"Multilingual support with permission synchronization across content "
+"translations."
+msgstr ""
+"Többnyelvű támogatás a jogosultságok szinkronizálásával a "
+"tartalomfordítások között."
+
+#: classes/PublishPress/Permissions.php:1454
 msgid "Permission synchronization across translations"
 msgstr "Engedély szinkronizálás a fordítások között"
 
@@ -282,7 +331,7 @@ msgid "Multilingual permission management"
 msgstr "Többnyelvű engedélykezelés"
 
 #: classes/PublishPress/Permissions.php:1464
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
@@ -305,7 +354,7 @@ msgid "Permission-aware XML sitemaps"
 msgstr "Engedély-érzékeny XML webhelytérképek"
 
 #: classes/PublishPress/Permissions.php:1479
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57
 msgid "YooTheme"
 msgstr "YooTheme"
 
@@ -347,8 +396,8 @@ msgstr "Kompatibilitási csomag"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:83
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:84
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:90
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:91
 msgid "Teaser"
 msgstr "Előzetes"
 
@@ -372,12 +421,136 @@ msgid "User Posts"
 msgstr "Felhasználói bejegyzések"
 
 #: classes/PublishPress/Permissions/Admin.php:175
+msgid ""
+"Visibility Circles and Editorial Circles block access to content not "
+"authored by other group members."
+msgstr ""
+"A láthatósági körök és szerkesztői körök blokkolják a más csoporttagok "
+"által nem szerkesztett tartalomhoz való hozzáférést."
+
+#: classes/PublishPress/Permissions/Admin.php:176
 msgid "Post-specific and category-specific permissions for creation and editing."
 msgstr ""
 "Bejegyzés- és kategória-specifikus jogosultságok a létrehozásra és "
 "szerkesztésre."
 
 #: classes/PublishPress/Permissions/Admin.php:177
+msgid ""
+"Integration with ACF, bbPress, BuddyPress, Relevanssi, WPML and other "
+"plugins; enhanced Multisite support."
+msgstr ""
+"Integráció az ACF, bbPress, BuddyPress, Relevanssi, WPML és más "
+"bővítményekkel; fejlettebb multisite támogatás."
+
+#: classes/PublishPress/Permissions/Admin.php:178
+msgid ""
+"On the site front end, display teaser text for unreadable posts instead of "
+"hiding them."
+msgstr ""
+"A weboldal front-endjén a nem olvasható bejegyzések helyett teaser szöveget "
+"jelenít meg ahelyett, hogy elrejtené őket."
+
+#: classes/PublishPress/Permissions/Admin.php:179
+msgid ""
+"Restrict direct file requests based on user's access to the page a file is "
+"attached to."
+msgstr ""
+"Közvetlen fájlkérelmek korlátozása a felhasználó hozzáférése alapján ahhoz "
+"az oldalhoz, amelyhez a fájl csatolva van."
+
+#: classes/PublishPress/Permissions/Admin.php:180
+msgid ""
+"Time-limit access customizations by delaying or expiring Permission Group "
+"membership."
+msgstr ""
+"Időkorlátos hozzáférési testreszabások a jogosultsági csoporttagság "
+"késleltetésével vagy lejáratával."
+
+#: classes/PublishPress/Permissions/Admin.php:181
+msgid ""
+"Auto-create a page for each user of specified roles. Compatible with "
+"several Team / Staff plugins."
+msgstr ""
+"Automatikusan létrehoz egy oldalt a megadott szerepkörű felhasználók "
+"számára. Kompatibilis több csapat / személyzeti bővítménnyel."
+
+#: classes/PublishPress/Permissions/Admin.php:185
+msgid ""
+"Visibility Circles and Editorial Circles block access to content not "
+"authored by other group members. Any WP Role, BuddyPress Group or custom "
+"Group can be marked as a Circle for specified post types."
+msgstr ""
+"A láthatósági körök és szerkesztői körök blokkolják a más csoporttagok "
+"által nem szerkesztett tartalomhoz való hozzáférést. Bármely WP szerep, "
+"BuddyPress csoport vagy egyedi csoport megjelölhető körként a megadott "
+"bejegyzéstípusokhoz."
+
+#: classes/PublishPress/Permissions/Admin.php:186
+msgid ""
+"Supports content-specific permissions for editing, term assignment and page "
+"parent selection. In combination with other modules, supports workflow "
+"statuses, PublishPress and PublishPress Revisions."
+msgstr ""
+"Tartalom-specifikus jogosultságokat támogat a szerkesztéshez, kifejezés "
+"hozzárendeléshez és oldal szülő kiválasztásához. Más modulokkal kombinálva "
+"támogatja a munkafolyamat állapotokat, a PublishPress-t és a PublishPress "
+"Revisions-t."
+
+#: classes/PublishPress/Permissions/Admin.php:187
+msgid ""
+"Adds compatibility or integration with ACF, bbPress, Relevanssi, CMS Tree "
+"Page View, Custom Post Type UI, Subscribe2, WPML, various other plugins. "
+"Configure any BuddyPress Group as a Permissions Group. For multisite, "
+"provides network-wide Permission Groups."
+msgstr ""
+"Kompatibilitást vagy integrációt ad az ACF, bbPress, Relevanssi, CMS Tree "
+"Page View, Custom Post Type UI, Subscribe2, WPML és különböző egyéb "
+"bővítményekkel. Bármely BuddyPress csoportot jogosultsági csoportként "
+"konfigurálhat. Multisite esetén hálózati szintű jogosultsági csoportokat "
+"biztosít."
+
+#: classes/PublishPress/Permissions/Admin.php:188
+msgid ""
+"On the site front end, replace non-readable content with placeholder text. "
+"Can be enabled for any post type. Custom filters are provided but no "
+"programming is required for basic usage."
+msgstr ""
+"A weboldal front-endjén a nem olvasható tartalmat helyettesítő szöveggel "
+"helyettesíti. Bármely bejegyzéstípushoz engedélyezhető. Egyedi szűrők "
+"állnak rendelkezésre, de az alapvető használathoz nem szükséges programozás."
+
+#: classes/PublishPress/Permissions/Admin.php:189
+msgid ""
+"Filters direct file access, based on user's access to post(s) which the "
+"file is attached to. No additional configuration required. Creates/modifies "
+".htaccess file in uploads folder (and in main folder for multisite)."
+msgstr ""
+"Szűri a közvetlen fájlhozzáférést a felhasználó post(ok)hoz való "
+"hozzáférése alapján, amelyhez a fájl csatolva van. Nincs szükség további "
+"konfigurációra. Létrehozza/módosítja a .htaccess fájlt az uploads mappában "
+"(és a fő mappában multisite esetén)."
+
+#: classes/PublishPress/Permissions/Admin.php:190
+msgid ""
+"Allows Permission Group membership to be date-limited (delayed and/or "
+"scheduled for expiration). Simple date picker UI alongside group membership "
+"selection."
+msgstr ""
+"Lehetővé teszi a jogosultsági csoporttagság időkorlátos beállítását "
+"(késleltetve és/vagy lejáratra ütemezve). Egyszerű dátumválasztó felület a "
+"csoporttagság kiválasztása mellett."
+
+#: classes/PublishPress/Permissions/Admin.php:191
+msgid ""
+"Create or synchronize posts to match users. Designed for Team / Staff "
+"plugins, but with broad usage potential."
+msgstr ""
+"Bejegyzések létrehozása vagy szinkronizálása a felhasználókhoz való "
+"illeszkedés érdekében. Csapat / személyzeti bővítményekhez készült, de "
+"széleskörű felhasználási lehetőséggel rendelkezik."
+
+#: classes/PublishPress/Permissions/Admin.php:230
+#, php-format
 msgid "If you like %s, please leave us a %s rating. Thank you!"
 msgstr "Ha tetszik a %s, kérjük, hagyjon egy %s értékelést. Köszönjük!"
 
@@ -406,17 +579,74 @@ msgid "Contact"
 msgstr "Kapcsolat"
 
 #: classes/PublishPress/Permissions/Compat/EyesOnly.php:14
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:170
 msgid "Permission Group"
 msgstr "Engedélycsoport"
 
 #: classes/PublishPress/Permissions/Constants.php:21
+msgid ""
+"Specific Permissions: restrictions ('Blocked') take priority over additions "
+"('Enabled')"
+msgstr ""
+"Speciális Jogosultságok: a korlátozások ('Blokkolt') prioritást élveznek a "
+"kiegészítésekkel ('Engedélyezett') szemben."
+
+#: classes/PublishPress/Permissions/Constants.php:22
+msgid ""
+"Specific Permissions: no restrictions ('Blocked') can be applied to "
+"custom-defined groups"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:23
 msgid "Extra Roles assignment available for {All} and {Anonymous} metagroups"
 msgstr ""
 "Extra szerepkörök hozzárendelése elérhető a {All} és {Anonymous} "
 "metacsoportok számára"
 
 #: classes/PublishPress/Permissions/Constants.php:24
+msgid ""
+"Allow the {All} and {Anonymous} metagroups to be granted specific reading "
+"permissions for private content"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:25
+msgid ""
+"Users who have specific editing permissions for a post or attachment can "
+"also delete it"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:26
+msgid ""
+"Users who have custom editing permissions for an attachment can also delete "
+"it"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:27
+msgid ""
+"Disable front end filtering if logged user is a content administrator "
+"(normally filter to force inclusion of readable private posts in "
+"get_pages() listing, post counts, etc."
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:28
+msgid ""
+"Disable front end filtering for all users (subject to limitation by "
+"PP_UNFILTERED_FRONT_TYPES)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:29
+msgid ""
+"Comma-separated list of post types to limit the effect of "
+"PP_UNFILTERED_FRONT and apply_filters( 'presspermit_skip_cap_filtering' )"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:30
+msgid ""
+"Specific Permissions: additions ('Enabled') are not applied, cannot be "
+"assigned"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:31
 msgid "Don't assign or apply specific permissions for the 'post' type"
 msgstr ""
 "Ne rendeljen hozzá vagy alkalmazzon specifikus engedélyeket a 'bejegyzés' "
@@ -435,6 +665,12 @@ msgstr ""
 "típushoz"
 
 #: classes/PublishPress/Permissions/Constants.php:34
+msgid ""
+"Don't assign or apply specific permissions for the specified custom post "
+"type"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:40
 msgid "Include scheduled posts in the posts query if user can edit them"
 msgstr ""
 "Tartalmazza a tervezett bejegyzéseket a bejegyzések lekérdezésében, ha a "
@@ -463,10 +699,100 @@ msgstr ""
 "navigációs menükben"
 
 #: classes/PublishPress/Permissions/Constants.php:52
+msgid ""
+"When Teaser is applied with Redirect enabled, append original url as "
+"redirect_to argument"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:53
+msgid ""
+"For Teaser compatibility, specify a redirect argument to use instead of "
+"redirect_to"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:54
+msgid ""
+"For Teaser compatibility, specify an additional redirect argument other "
+"than redirect_to"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:55
+msgid ""
+"For Teaser compatibility, prevent the pp_permissions argument from being "
+"appended to redirects"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:63
 msgid "Filter priority for 'get_pages' filter (default: 1)"
 msgstr "Szűrési prioritás a 'get_pages' szűrőhöz (alapértelmezett: 1)"
 
 #: classes/PublishPress/Permissions/Constants.php:64
+msgid ""
+"Don't include readable private pages in the Pages widget or other "
+"wp_list_pages() / get_pages() results    "
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:65
+msgid ""
+"If some pages have been suppressed from get_pages() results, change child "
+"pages' corresponding post_parent values to a visible ancestor"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:66
+msgid ""
+"Never modify the post_parent value in the get_pages() result set, even if "
+"some pages have been suppressed"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:67
+msgid ""
+"For performance, change the get_pages() database query to return only a "
+"subset of fields, excluding post_content"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:74
+msgid ""
+"Don't apply content teaser to get_pages() results (leave unreadable posts "
+"hidden)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:82
+msgid ""
+"If some terms have been suppressed from get_terms() results, change child "
+"terms' corresponding parent values to a visible ancestor"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:83
+msgid ""
+"Never modify the parent value in the get_terms() result set, even if some "
+"terms have been suppressed"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:90
+msgid ""
+"Set Author to current user if autoset_post_author / autoset_page_author "
+"capability is assigned"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:97
+msgid ""
+"Leave Media Library with normal access criteria based on user's role "
+"capabilities "
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:98
+msgid ""
+"Accommodate front end uploading solutions that require page editing "
+"capabilities for the async upload request"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:99
+msgid ""
+"Treat media attached to unregistered post types as unattached, to avoid "
+"improper and confusing filtering"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:106
 msgid "Attached Files Private setting available"
 msgstr "Csatolt fájlok privát beállítás elérhető"
 
@@ -477,6 +803,12 @@ msgstr ""
 "fájlhozzáférési szűrésből"
 
 #: classes/PublishPress/Permissions/Constants.php:108
+msgid ""
+"Comma-separated list of mime types to include in File Access filtering "
+"(bypassing others)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:109
 msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
 msgstr ""
 "Ha a fájlhozzáférés blokkolva van, ne állítsa be a WP_Query 404 / 403 "
@@ -489,16 +821,59 @@ msgstr ""
 "blokkolva van"
 
 #: classes/PublishPress/Permissions/Constants.php:118
+msgid ""
+"On Users listing, Permission groups in custom column are list filter links "
+"instead of group edit links"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:119
+#: classes/PublishPress/Permissions/Constants.php:120
+msgid ""
+"Unlock Permissions > Settings > Core > Admin Back End > 'Hide non-editable "
+"posts'"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:121
+msgid ""
+"Within the async-upload.php script, filter author's retrieval of the "
+"attachment they just uploaded"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:122
 msgid "Don't filter comment display or moderation within wp-admin"
 msgstr "Ne szűrje a megjegyzések megjelenítését vagy moderálását a wp-adminban"
 
 #: classes/PublishPress/Permissions/Constants.php:123
+msgid ""
+"Allow Administrators to be added to Permission Groups, even though they are "
+"not restricted"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:129
+msgid ""
+"If propagating permissions are assigned to a page branch, overwrite any "
+"explicitly assigned permissions in sub-pages"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:130
+msgid ""
+"Max number of specific permissions to insert in a single database query "
+"(default 1000)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:131
 msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
 msgstr ""
 "Ne módosítsa az admin menü indexeit, hogy a Jogosultságok menü a "
 "Felhasználók alatt helyezkedjen el"
 
 #: classes/PublishPress/Permissions/Constants.php:132
+msgid ""
+"Don't add a Permissions menu. Instead, add menu items to the Users and "
+"Settings menus."
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:138
 msgid "Customize Permissions screen title for Groups"
 msgstr "Testreszabja a Jogosultságok képernyő címét a Csoportok számára"
 
@@ -521,12 +896,30 @@ msgstr ""
 "csoportok menüpont alatt"
 
 #: classes/PublishPress/Permissions/Constants.php:143
+msgid ""
+"Max number of non-hierarchical posts / terms to display at one time (per "
+"page)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:144
 msgid "Max number of hierarchical posts / terms to display at one time (per page)"
 msgstr ""
 "Maximális számú hierarchikus bejegyzés / kifejezés, amely egyszerre "
 "megjeleníthető (oldalonként)"
 
 #: classes/PublishPress/Permissions/Constants.php:145
+msgid ""
+"Disable auto-determination of how many levels of page tree to make visble "
+"by default. Instead, use specified value."
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:146
+msgid ""
+"Target number of visible pages/terms, used for auto-determination of number "
+"of visible levels"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:147
 msgid "Make search function on the post selection metabox look at post content"
 msgstr ""
 "A bejegyzés kiválasztási metabox kereső funkciójának a bejegyzés tartalmára "
@@ -569,12 +962,72 @@ msgstr ""
 "helyett"
 
 #: classes/PublishPress/Permissions/Constants.php:166
+msgid ""
+"When synchronizing role metagroups to currently defined WP roles, don't "
+"delete groups for previously defined WP roles."
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:167
+msgid ""
+"Force detection of WP user roles which are appended dynamically but not "
+"stored to the WP database."
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:174
+msgid ""
+"To save memory on front end access, don't register any filters related to "
+"content editing"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:175
+msgid ""
+"Attached media do not have any comments, so don't append clauses to comment "
+"queries for them"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:176
+msgid ""
+"Reduce overhead of pages query (in get_pages() and wp-admin) by defaulting "
+"fields to a set list that does not include post_content "
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:177
+msgid ""
+"Reduce overhead of wp-admin posts query by defaulting fields to a set list "
+"that does not include post_content "
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:178
+msgid ""
+"Reduce overhead of wp-admin Media query by defaulting fields to a set list "
+"that does not include post_content "
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:179
+msgid ""
+"Reduce overhead of wp-admin query for specified custom post type by "
+"defaulting fields to a set list that does not include post_content "
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:185
 msgid "Work around database setup warnings (at plugin activation) on some servers"
 msgstr ""
 "Kerülje el az adatbázis beállítási figyelmeztetéseket (plugin "
 "aktiválásakor) egyes szervereken"
 
 #: classes/PublishPress/Permissions/Constants.php:213
+msgid ""
+"Development use only (suppresses post_status = 'publish' clause for "
+"unfiltered post types with anonymous user)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/Constants.php:214
+msgid ""
+"Development use only (on front end, do not replace 'post_status = "
+"'publish'' clause with filtered equivalent)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/DB/Groups.php:446
 msgid "Logged In"
 msgstr "Bejelentkezve"
 
@@ -624,17 +1077,24 @@ msgid "All users with the WordPress role of %s"
 msgstr "Minden felhasználó, akinek WordPress szerepe van: %s"
 
 #: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1063
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:90
+#, php-format
+msgid ""
+"%1$s won&#39;t work until you upgrade PHP to version %2$s or later. Current "
+"version: %3$s"
+msgstr ""
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:101
 #, php-format
 msgid "%1$s won&#39;t work until you upgrade %2$s to version %3$s or later."
 msgstr "%1$s nem fog működni, amíg nem frissíti a %2$s-t %3$s vagy újabb verzióra."
@@ -647,6 +1107,13 @@ msgstr ""
 "verzióra."
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:122
+#, php-format
+msgid ""
+"This version of %1$s cannot work with your current %2$s version. Please "
+"upgrade it to %3$s or later."
+msgstr ""
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:133
 #, php-format
 msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
 msgstr "Megismételt %1$s modul aktiválva (%2$s a %3$s mappában)."
@@ -681,18 +1148,31 @@ msgstr "(érvénytelen %s definíció miatt alapértelmezett képességeket hasz
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:144
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:168
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
 msgstr "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:181
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:200
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s&nbsp;%2$s%3$s"
 msgstr "%1$s&nbsp;%2$s%3$s"
 
 #: classes/PublishPress/Permissions/PluginStatus.php:12
 #, php-format
+msgid ""
+"Your license key has expired. For updates to PublishPress Permissions Pro "
+"and priority support, %splease renew%s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:185
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:247
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:289
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
 msgid "(login timed out)"
 msgstr "(a bejelentkezés időtúllépett)"
 
@@ -735,63 +1215,100 @@ msgstr "Szabályozza a kiválasztott %s kifejezés kezelését."
 msgid "Control frontend viewing of selected %s."
 msgstr "Szabályozza a kiválasztott %s frontend megjelenítését."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:133
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:375
+#, php-format
+msgid "Control who can create a revision of this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:376
+#, php-format
+msgid "Control who can submit a revision of this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:135
 msgid "Enable"
 msgstr "Engedélyez"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:138
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:140
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:987
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Blokkol"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:141
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:143
 msgid "Limit to"
 msgstr "Korlátozás"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:146
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:148
+msgid ""
+"Expand access to allow specified items regardless of role capabilities or "
+"restrictions."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:149
+msgid ""
+"Restrict access by blocking specified items unless an \"Enabled\" exception "
+"is also stored."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
+msgid ""
+"Restrict access by limiting role capabilities to apply only for specified "
+"items. Users still need capabilities in their main role or extra roles."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:169
+msgid ""
+"Using group membership to block access is not recommended. Consider "
+"reducing the user's role capabilities and using group membership to add "
+"access."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:195
 msgid "Selected:"
 msgstr "Kiválasztott:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:205
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
 msgid "Nav Menus (Legacy)"
 msgstr "Navigációs menük (Örökölt)"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:993
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:209
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:996
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:230
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:225
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
 msgid "Legacy"
 msgstr "Örökölt"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:211
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:224
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:230
-#, fuzzy, php-format
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:213
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:226
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:232
+#, php-format
 msgid "%s:"
 msgstr "%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:258
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:260
 #, php-format
 msgid "Selected %s:"
 msgstr "Kiválasztott %s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:265
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
 #, php-format
 msgid "Sub-%s:"
 msgstr "Al-%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:298
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:174
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:300
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:177
 msgid "All Statuses"
 msgstr "Minden állapot"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:311
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1902
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:313
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1905
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -882,7 +1399,7 @@ msgstr "Új hozzáadása"
 msgid "Name:"
 msgstr "Név:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:206, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:206
 msgid "Email:"
 msgstr "Email:"
 
@@ -971,18 +1488,24 @@ msgid "Reload form for further changes to this role"
 msgstr "Űrlap újratöltése további módosításokhoz ehhez a szerephez"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:40
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
 msgid "Add Specific Permissions"
 msgstr "Speciális Jogosultságok hozzáadása"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:41
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1402
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:413
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1405
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Eltávolítás"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
+msgid ""
+"Review the selection below, and then click <strong>Save "
+"Permissions</strong>."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
 msgid "Permission already selected!"
 msgstr "A jogosultság már ki van választva!"
 
@@ -1015,12 +1538,12 @@ msgid "No items selected!"
 msgstr "Nincs kiválasztott elem!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:63
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1274
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1277
 msgid "(no parent)"
 msgstr "(nincs szülő)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:897
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:273
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:275
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:545
@@ -1038,7 +1561,7 @@ msgid "select..."
 msgstr "válassz..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:985
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:988
 msgid "Nav Menu (Block)"
 msgstr "Navigációs menü (blokk)"
 
@@ -1046,29 +1569,29 @@ msgstr "Navigációs menü (blokk)"
 msgid "All Post Types"
 msgstr "Összes bejegyzéstípus"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
 msgid "n/a"
 msgstr "n/a"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:129
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:257
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:379
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
 msgid "Post Type"
 msgstr "Bejegyzéstípus"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:130
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
 msgid "Operation"
 msgstr "Művelet"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
 msgid "Adjustment"
 msgstr "Kiigazítás"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
 msgid "Qualification"
 msgstr "Képesítés"
 
@@ -1077,335 +1600,421 @@ msgstr "Képesítés"
 msgid "Statuses"
 msgstr "Státuszok"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:165
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:168
 msgid "for item"
 msgstr "az elemhez"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:188
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:191
+msgid ""
+"Warning: Content hidden by these Permissions will be displayed if PP is "
+"deactivated. Consider setting a private Visibility on Edit Post screen "
+"instead."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:223
+msgid ""
+"To assign page-specific Permissions for editing, parent selection or term "
+"assignment, enable the Editing Permissions feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:235
+msgid ""
+"To assign forum-specific Permissions for bbPress, activate the "
+"Compatibility Pack feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:238
+#, php-format
+msgid ""
+"To assign forum-specific Permissions for bbPress, %1$supgrade to "
+"Permissions Pro%2$s and enable the Compatibility Pack feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "Szerep"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:256
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:259
 msgid "For Statuses"
 msgstr "Státuszokhoz"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:275
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:278
 msgid "Standard statuses"
 msgstr "Általános státuszok"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:283
 msgid "Status: Private"
 msgstr "Státusz: Privát"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:288
 msgid "Add Role"
 msgstr "Szerep hozzáadása"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:300
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr ""
 "A bbPress fórumok szerepeinek hozzárendeléséhez aktiválja a Kompatibilitási "
 "csomag funkciót."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:300
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:303
+#, php-format
+msgid ""
+"To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
+"enable the Compatibility Pack feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:314
+msgid ""
+"To assign page-specific PublishPress Revision permissions, enable the "
+"Editing Permissions feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:345
 #, php-format
 msgid "Select %s"
 msgstr "Válassza ki %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:782
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1115
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:381
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:412
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:785
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
 msgid "Status"
 msgstr "Állapot"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:391
 msgid "Save Roles"
 msgstr "Szerepek mentése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:422
 msgid "Save Permissions"
 msgstr "Jogosultságok mentése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:455
 msgid "Add Extra Roles"
 msgstr "További szerepek hozzáadása"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:465
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "Másolás"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:654
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "További szerepek %1$s(ez a felhasználó számára)%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:652
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:655
 msgid "Extra Roles"
 msgstr "További szerepek"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:676
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
 msgid "Show Groups"
 msgstr "Csoportok megjelenítése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:705
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:765
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:708
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1014
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1102
 msgid "item(s)"
 msgstr "elem(ek)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:727
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:730
 msgid "Term Management"
 msgstr "Kifejezéskezelés"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:737
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:734
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
 msgid "objects"
 msgstr "objektumok"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:732
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:735
 msgid "Direct-Assigned"
 msgstr "Közvetlen hozzárendelés"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:738
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:741
 msgid "Disabled Type"
 msgstr "Letiltott típus"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:764
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
 #, php-format
 msgid "%s Roles"
 msgstr "%s szerep"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:830
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:553
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:730
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:833
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1524
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:576
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:788
 msgid "Apply"
 msgstr "Alkalmaz"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:991
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:223
 msgid "Nav Menu (Legacy)"
 msgstr "Navigációs menü (örökölt)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1011
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1014
 #, php-format
 msgid "%s Permissions"
 msgstr "%s jogosultságok"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1029
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1032
 msgid "(all post types)"
 msgstr "(minden bejegyzéstípus)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1050
-#, fuzzy, php-format
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
+#, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1051
-#, fuzzy, php-format
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
+#, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
 msgid "item"
 msgstr "elem"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1074
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
 msgid "items"
 msgstr "elemek"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1150
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
 msgid "unpublished"
 msgstr "nem közzétett"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1157
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:290
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
-#, fuzzy, php-format
+#, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1204
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1207
 #, php-format
 msgid "this %1$s"
 msgstr "ez a %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1209
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1212
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "az %1$s al-%2$s-e"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1215
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1218
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "ez a %1$s és annak al-%2$s-ei"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1224
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
+#, php-format
+msgid ""
+"%1$s access for %2$s is ENABLED within %3$s, regardless of role "
+"capabilities."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1235
+#, php-format
+msgid ""
+"%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
+"Permission."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1243
+#, php-format
+msgid ""
+"Any role-based %1$s access for %2$s is LIMITED. It applies only within "
+"%3$s, along with other specified %4$s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1253
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s hozzáférés %2$s-hez ENGEDÉLYEZVE, függetlenül a szerepképességektől."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1257
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1260
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "%1$s hozzáférés %2$s-hez BLOKKOLVA, hacsak egy másik jogosultság nem "
 "engedélyezi."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1264
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1267
+#, php-format
+msgid ""
+"Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
+"along with other specified %4$s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1348
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Csak al-%s-nek van hozzárendelve."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1353
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1356
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "%s-nek és al-%s-nek van hozzárendelve."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1377
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1380
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Ez a jogosultság redundáns egy megfelelő korlátozás miatt."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1384
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 #, php-format
 msgid "Edit %s"
 msgstr "Szerkesztés %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1409
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Kijelölt és al-%s hozzárendelése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1413
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Csak a kijelölt %s hozzárendelése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1414
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1417
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Csak az al-%s hozzárendelése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1419
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
 msgid "Assign for selected and sub-terms"
 msgstr "Kijelölt és al-kifejezések hozzárendelése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
 msgid "Assign for selected term only"
 msgstr "Csak a kijelölt kifejezés hozzárendelése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1427
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1430
 msgid "Assign for sub-terms only"
 msgstr "Csak az al-kifejezések hozzárendelése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1438
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1441
 msgid "Convert to \"Enabled\""
 msgstr "Átalakítás \"Engedélyezett\" formára"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1439
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1442
 msgid "Convert to \"Blocked\""
 msgstr "Átalakítás \"Blokkolt\" formára"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1440
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1443
 msgid "Convert to \"Limit to\""
 msgstr "Átalakítás \"Korlátozás\" formára"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1497
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
 #, php-format
 msgid "Mirror to %s"
 msgstr "Tükör %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1501
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Tükör %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1560
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1563
 msgid "= Enabled"
 msgstr "= Engedélyezett"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1570
 msgid "= Blocked"
 msgstr "= Blokkolt"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1574
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1577
 msgid "= Limitation"
 msgstr "= Korlátozás"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s és al-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1594
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1597
 #, php-format
 msgid "= sub-%s only"
 msgstr "= csak az al-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
 msgid "Note:"
 msgstr "Megjegyzés:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1614
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1638
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1617
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Az al-%1$s jogosultságok nincsenek külön felsorolva."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1618
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1642
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1621
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1645
 msgid "Show All"
 msgstr "Összes megjelenítése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1627
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1650
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1630
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1653
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Automatikusan hozzárendelt Sub-%s jogosultságok elrejtése"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1666
+msgid ""
+"Other plugins (or deactivation of PublishPress Permissions) can prevent "
+"sub-page permissions from being properly applied when a new sub-page is "
+"created."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1670
+#, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sJavítás Sub-%2$s Jogosultságok%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1711
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1714
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Csoportkorlátozások nem elérhetők folyamatos definíció miatt"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1728
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
+msgid ""
+"Permissions to enable access are not available because of a constant "
+"definition"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1791
 msgid "Group Members"
 msgstr "Csoporttagok"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1837
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
 msgid "Copy Roles and Permissions from:"
 msgstr "Szerepkörök és jogosultságok másolása innen:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1860
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1863
 msgid "Copy Roles and Permissions"
 msgstr "Szerepkörök és jogosultságok másolása"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
 msgid "Limit to:"
 msgstr "Korlátozás:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1883
 msgid "Blocked:"
 msgstr "Blokkolva:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1887
 msgid "Enabled:"
 msgstr "Engedélyezve:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1895
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
 msgid "Direct-assigned"
 msgstr "Közvetlenül hozzárendelt"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1908
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1911
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -1539,10 +2148,14 @@ msgid "(No setting)"
 msgstr "(Nincs beállítás)"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:19
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:44
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:48
 msgid "Enabled"
 msgstr "Engedélyezve"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:20
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:43
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:47
 msgid "Blocked"
 msgstr "Blokkolva"
 
@@ -1555,7 +2168,7 @@ msgid "Unblocked"
 msgstr "Nincs blokkolva"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
 msgid "Roles"
@@ -1566,11 +2179,13 @@ msgid "User"
 msgstr "Felhasználó"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
 #, php-format
 msgid "This %s"
 msgstr "Ez a %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
 #, php-format
 msgid "Sub-%s"
 msgstr "Al-%s"
@@ -1583,163 +2198,304 @@ msgstr "Alapértelmezett Összes"
 msgid "Group restrictions are not recommended."
 msgstr "Csoportkorlátozások nem ajánlottak."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:377
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:368
 #, php-format
-msgid "%d role"
-msgid_plural "%d roles"
-msgstr[0] "%d szerep"
-msgstr[1] "%d szerep"
+msgid "Control who can assign terms to this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:369
+#, php-format
+msgid "Control who can choose the parent page for this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:370
+#, php-format
+msgid "Control editing of this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:371
+#, php-format
+msgid "Control publishing of this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:372
+#, php-format
+msgid "Control deletion of this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:373
+#, php-format
+msgid "Control term management for this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:374
+#, php-format
+msgid "Control frontend viewing of this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:379
+#, php-format
+msgid "Control who add this %s to %s."
+msgstr ""
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
 #, php-format
-msgid "%d group"
-msgid_plural "%d groups"
-msgstr[0] "%d csoport"
-msgstr[1] "%d csoport"
+msgid "Control who can edit %s with this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:381
+#, php-format
+msgid "Control who can view %s with this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:382
+#, php-format
+msgid "Control who can create a revision of %s with this %s."
+msgstr ""
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
 #, php-format
-msgid "%d user"
-msgid_plural "%d users"
-msgstr[0] "%d felhasználó"
-msgstr[1] "%d felhasználó"
+msgid "Control who can submit a revision of %s with this %s."
+msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:385
-msgid "No exceptions configured"
-msgstr "Nincsenek beállított kivételek"
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:387
+#, php-format
+msgid "Control who add this %s to all post types."
+msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:510
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:388
+#, php-format
+msgid "Control who can edit all post types in this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:389
+#, php-format
+msgid "Control who can view all post types in this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:390
+#, php-format
+msgid "Control who can create a revision of all post types in this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
+#, php-format
+msgid "Control who can submit a revision of all post types in this %s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
 msgid "Roles & Groups"
 msgstr "Szerepek & Csoportok"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:521
 msgid "Search roles and groups..."
 msgstr "Szerepek és csoportok keresése..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:511
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:521
 msgid "Search roles..."
 msgstr "Szerepek keresése..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:522
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:532
 #: classes/PublishPress/Permissions/UI/Groups.php:211
 msgid "Users"
 msgstr "Felhasználók"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:544
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:720
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:552
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+msgid "Sort by:"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:554
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
+msgid "Name (A-Z)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:618
+msgid "Name (Z-A)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
+msgid "Most Users"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:557
+msgid "Fewest Users"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:567
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:778
 msgid "Select All"
 msgstr "Összes kijelölése"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:547
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:548
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:724
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:781
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:782
 msgid "Bulk Actions"
 msgstr "Tömeges műveletek"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:549
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:725
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:572
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
 msgid "Set to Enabled"
 msgstr "Engedélyezésre állítva"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:550
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:573
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:784
 msgid "Set to Blocked"
 msgstr "Blokkoltra állítva"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:551
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:727
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:574
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:785
 msgid "Set to Default"
 msgstr "Alapértelmezettként állítva"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:733
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:791
 msgid "selected"
 msgstr "kiválasztva"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:583
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:606
 msgid "Search and add users..."
 msgstr "Felhasználók keresése és hozzáadása..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:655
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:704
 msgid "No role exceptions set"
 msgstr "Nincsenek szerepkör kivételek beállítva"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:770
 msgid "No specific user permissions. Use the search box to add users."
 msgstr ""
 "Nincsenek konkrét felhasználói jogosultságok. Használja a keresőmezőt a "
 "felhasználók hozzáadásához."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:728
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:786
 msgid "Remove Selected"
 msgstr "Kiválasztott eltávolítása"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:977
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
 msgid "Login State"
 msgstr "Bejelentkezési állapot"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:984
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Csoport"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
 msgid "Sub-Sections"
 msgstr "Alszakaszok"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1029
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
 msgid "This Section"
 msgstr "Ez a szakasz"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
-msgid "Remove user from exceptions"
-msgstr "Felhasználó eltávolítása a kivételekből"
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
+msgid "Remove custom permissions for user"
+msgstr ""
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
 #, php-format
+msgid ""
+"PublishPress Permissions needs directions. Please go to %1$sPermissions > "
+"Settings%2$s and indicate which Post Types and Taxonomies should be "
+"filtered."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:88
+msgid ""
+"Please upgrade PublishPress Authors to version 3.8.0 or later for "
+"Permissions integration."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:40
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:44
 msgid "Editing can't be granted to non-users."
 msgstr "Szerkesztési jogosultságokat nem lehet biztosítani nem felhasználók számára."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:112
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:481
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:41
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:45
+msgid "You can now set individual permissions for"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:42
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:46
+#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
+msgid "All"
+msgstr "Összes"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:45
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:49
+msgid "Default"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:50
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
+msgid "Please select a bulk action first."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:51
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
+msgid "Please select at least one item."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:52
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:56
+msgid "Are you sure you want to remove the selected user(s) from exceptions?"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:53
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:57
+#, php-format
+msgid "Remove the custom permisisons for \"%s\"?"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:126
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:516
 #: classes/PublishPress/Permissions/UI/Settings.php:102
 msgid "Permissions Settings"
 msgstr "Jogosultsági beállítások"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:135
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:248
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:149
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
 #, php-format
 msgid "Permissions: %s"
 msgstr "Jogosultságok: %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:170
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "Jogosultságok: Válassza ezt %s szülőként"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:164
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:178
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "Jogosultságok: Határozatok hozzárendelése ehhez a %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:172
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:186
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "Jogosultságok: %s ez a %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:505
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:236
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:540
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "engedélyezze a testreszabott jogosultságokat a %s számára"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:273
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:286
 msgid "Select as Parent"
 msgstr "Válassza a Szülőt"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:278
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:291
 msgid "Assign Terms"
 msgstr "Kifejezések hozzárendelése"
 
@@ -1758,7 +2514,7 @@ msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Speciális Jogosultságok (a fő szerepből vagy csoporttagságból)"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:189
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:172
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
 msgid "Permission Groups"
 msgstr "Jogosultsági Csoportok"
 
@@ -1771,6 +2527,15 @@ msgid "Edit this user's group membership"
 msgstr "Szerkessze ezt a felhasználó csoporttagságát"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:234
+msgid ""
+"Note: BuddyPress Groups and other externally defined groups are not listed "
+"here, even if they modify permissions"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:299
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
+#, php-format
 msgid "%s, more..."
 msgstr "%s, több..."
 
@@ -1780,55 +2545,89 @@ msgstr "%s, több..."
 msgid "edit user permissions"
 msgstr "felhasználói jogosultságok szerkesztése"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:138
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
 #, php-format
 msgid "Assign to %s"
 msgstr "Hozzárendelés a %s-hez"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:141
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:153
 msgid "Assign (All Types)"
 msgstr "Hozzárendelés (Minden Típus)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
 #, php-format
-msgid "%s (All Content)"
-msgstr "%s (Minden Tartalom)"
+msgid "%s (All Types)"
+msgstr ""
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:243
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
+#, php-format
+msgid "%1$s %2$s in this %3$s"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:172
+#, php-format
+msgid "%1$s this %2$s"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:273
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "Jogosultságok: %1$s a %2$s-ben"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:272
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:287
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:360
+#, php-format
+msgid ""
+"Displayed permissions are those assigned for the \"%1$s\" type. You can "
+"also %2$sdefine universal %3$s permissions which apply to all related post "
+"types%4$s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:316
 #, php-format
 msgid "Permissions: Assign this %2$s to %3$s"
 msgstr "Jogosultságok: Hozzárendelés ehhez a %2$s-hez a %3$s-nek"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:322
 #, php-format
 msgid "Permissions: Assign this %2$s for All Post Types"
 msgstr "Jogosultságok: Hozzárendelés ehhez a %2$s-hez Minden Bejegyzés Típusra"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:285
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:298
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:329
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:342
 #, php-format
 msgid "Permissions: %1$s %2$s in this %3$s"
 msgstr "Jogosultságok: %1$s %2$s ebben a %3$s-ben"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:291
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:335
 #, php-format
 msgid "Permissions: %1$s all content in this %2$s for All Post Types"
 msgstr ""
 "Jogosultságok: %1$s minden tartalom ebben a %2$s-ben Minden Bejegyzés "
 "Típusra"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:304
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:348
 #, php-format
 msgid "Permissions: %1$s this %2$s"
 msgstr "Engedélyek: %1$s ez %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:325
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:574
 #, php-format
+msgid ""
+"Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
+"also %3$sdefine universal %4$s permissions which apply to all related post "
+"types%5$s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:38
+#, php-format
+msgid ""
+"Listed permissions are those assigned for the \"%1$s\" type. You can also "
+"%2$sdefine universal %3$s permissions which apply to all related post "
+"types%4$s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:58
 msgid "Click to list/edit universal permissions"
 msgstr "Kattintson az univerzális engedélyek listázásához/szerkesztéséhez"
 
@@ -1916,6 +2715,12 @@ msgid "Description"
 msgstr "Leírás"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:115
+msgid ""
+"Note: Groups are a more flexible alternative to user roles. You can create "
+"groups of users and give or deny them access to areas of your site."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:122
 msgid "Create Group"
 msgstr "Csoport létrehozása"
 
@@ -1973,11 +2778,6 @@ msgstr "WordPress szerepkörök"
 #, php-format
 msgid "%1$sGroup Type:%2$s %3$s"
 msgstr "%1$sCsoport típusa:%2$s %3$s"
-
-#: classes/PublishPress/Permissions/UI/Groups.php:256
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
-msgid "All"
-msgstr "Összes"
 
 #: classes/PublishPress/Permissions/UI/Groups.php:275
 msgid "Has Permissions"
@@ -2057,6 +2857,19 @@ msgid "You can&#8217;t delete that group."
 msgstr "Nem törölheti azt a csoportot."
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:15
+msgid ""
+"To block direct access to unreadable files, activate the File Access "
+"feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:18
+#, php-format
+msgid ""
+"To block direct access to unreadable files, %1$supgrade to Permissions "
+"Pro%2$s and enable the File Access feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:29
 msgid "To customize editing permissions, enable the Editing Permissions feature."
 msgstr ""
 "A szerkesztési jogosultságok testreszabásához engedélyezze a Szerkesztési "
@@ -2067,6 +2880,19 @@ msgid "Block URL access"
 msgstr "URL hozzáférés blokkolása"
 
 #: classes/PublishPress/Permissions/UI/HintsMedia.php:16
+msgid ""
+"To block direct URL access to attachments of unreadable posts, activate the "
+"File Access feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:19
+#, php-format
+msgid ""
+"To block direct URL access to attachments of unreadable posts, %1$supgrade "
+"to Permissions Pro%2$s and enable the File Access feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/HintsPostEdit.php:14
 msgid "Customize"
 msgstr "Testreszabás"
 
@@ -2174,12 +3000,60 @@ msgid "Need Permissions Support?"
 msgstr "Szüksége van engedélyek támogatására?"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:60
+msgid ""
+"If disabled, manually \"blocked\" posts can be unblocked by specific "
+"Category / Term Permissions."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:63
+msgid ""
+"If enabled, corresponding Media edit and delete capabilities must be added "
+"to existing roles."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:66
+msgid ""
+"For specialized Media Library permissions, enable the Editing Permissions "
+"feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:69
+msgid ""
+"To customize bbPress forum permissions, activate the Compatibility Pack "
+"feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:72
+msgid ""
+"To customize bbPress forum permissions, activate your Permissions Pro "
+"license key."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:75
 msgid "Remove the \"Private:\" and \"Protected\" prefix from Post, Page titles."
 msgstr ""
 "Távolítsa el a \"Privát:\" és \"Védett\" előtagot a Bejegyzés, Oldal "
 "címeiből."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:78
+msgid ""
+"If the user is blocked from reading posts in a category, also block access "
+"to category archive page."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:81
+msgid ""
+"Remove unreadable Menu Items. If menu rendering problems occur with a third "
+"party plugin, disable this setting."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:84
+msgid ""
+"Unmodified from WordPress default behavior. To enable filtering, remove "
+"constant definition PP_ADMIN_READONLY_LISTABLE."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:87
 msgid "Note: Groups and Roles are always displayed on the Edit User screen."
 msgstr ""
 "Megjegyzés: A Csoportok és Szerepkörök mindig megjelennek a Felhasználó "
@@ -2198,22 +3072,223 @@ msgstr ""
 "néhány webhelyen."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:98
+msgid ""
+"If checked, pages blocked from the \"All\" or \"Logged In\" groups will "
+"still be listed to Administrators."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:101
+msgid ""
+"If enabled, users with the pp_set_read_exceptions capability in the WP role "
+"can set reading permissions for their editable posts."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:104
+msgid ""
+"Display a role dropdown alongside the user search input box to narrow "
+"results."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:107
 msgid "Display descriptive captions on Permissions screens."
 msgstr "Jelenítse meg a leíró feliratokat a Jogosultságok képernyőkön."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:110
+msgid ""
+"Display descriptive captions for features available in missing or "
+"deactivated modules."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:113
+msgid ""
+"Extra Roles cause \"_posts\" capabilities in the Pattern Role (Author, "
+"Editor, etc.) to be assigned for the selected post type. Enable this "
+"setting to also include all other capabilities in the Pattern Role."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:116
+msgid ""
+"Detect user roles which are appended dynamically but not stored to the WP "
+"database. May be useful for sites that sync with Active Directory or other "
+"external user registration systems."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:119
+#, php-format
+msgid ""
+"You can adjust some Permissions behavior by %1$s adding capabilities to a "
+"WordPress role%2$s."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:122
+#, php-format
 msgid "You can add Permissions capabilities to a role using the %1$s plugin."
 msgstr ""
 "Jogosultságok képességeit hozzáadhat egy szerepkörhöz a %1$s bővítmény "
 "használatával."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:125
+msgid ""
+"Regardless of this setting, the pp_set_read_exceptions capability is also "
+"required."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:128
+msgid ""
+"Regardless of this setting, the pp_set_edit_exceptions capability is also "
+"required."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
+#, php-format
 msgid "Settings related to content editing permissions, provided by the %s module."
 msgstr ""
 "A tartalom szerkesztési jogosultságokkal kapcsolatos beállítások, amelyeket "
 "a %s modul biztosít."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:135
+msgid ""
+"If this setting is disabled, you can enable a role by giving it "
+"capabilities: list_others_posts, list_others_published_pages, etc."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:138
+msgid ""
+"Display a custom column on Edit Posts screen for all related taxonomies "
+"which are enabled for Permissions filtering."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:141
+msgid ""
+"Allows creation of a new post (of any type) for each selected user, using "
+"an existing post as the pattern."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:144
+msgid ""
+"Other users will be unable to publish new top-level pages (Parent = \"Main "
+"Page\"), or move a published page from \"Main Page\" to a different Parent."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:147
+msgid ""
+"This feature has been moved to PublishPress Capabilities > Editor Features "
+"> Element IDs. Please use the Capabilities plugin for better organization "
+"and enhanced functionality."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:150
+msgid ""
+"The following settings are currently overridden by the constant "
+"PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you "
+"maintain). Media Library access will not be altered by Permissions."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:153
+msgid ""
+"Show files uploaded by others users if they are attached to a post the user "
+"is allowed to view."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:156
+msgid ""
+"Show files uploaded by other users if they are attached to a post the user "
+"is allowed to edit."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:159
+msgid ""
+"Allow users to edit files uploaded by other users if they are attached to a "
+"post the user is allowed to edit."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:162
+msgid ""
+"Show users all the files in the Media Library. Unchecking this box will "
+"hide media files that are uploaded by other users."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:165
+msgid ""
+"Stop users from editing files uploaded by other users unless they are "
+"attached to a post the user is allowed to edit."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:168
+msgid ""
+"Allow users to edit files they have uploaded, regardless of other "
+"restrictions."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:171
+msgid ""
+"Allow non-Administrators to rename menu items they cannot fully edit. Menu "
+"items will be locked into current positions."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:174
+msgid ""
+"Prevent creation or editing of custom items for non-Administrators who lack "
+"edit_theme_options capability."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:177
+msgid ""
+"Prevent non-Administrators with user editing permissions from editing a "
+"higher-level user or assigning a role higher than their own."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:180
+msgid ""
+"If enabled, the capabilities pp_set_edit_exceptions, "
+"pp_set_associate_exceptions, etc. will be honored. See list of capabilities "
+"below."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:184
+msgid ""
+"Circle members will be blocked from accessing Revisions authored by "
+"non-members."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:196
+msgid ""
+"Enable post contributors or authors with pp_set_edit_exceptions capability "
+"to set editing Permissions on posts authored by others"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:200
+msgid ""
+"Permissions setting 'Pages can be set or removed from Top Level by' applies "
+"to 'page' type only"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:203
+msgid ""
+"If user cannot generally save pages to top level but a page they are "
+"editing is already there, allow it to stay at top level even if not yet "
+"published "
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:206
+msgid ""
+"Circle membership does not limit page association (page parent setting) "
+"ability"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:210
+msgid ""
+"Determines the default value of Permissions > Settings > Editing > "
+"Auto-assign default term"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:213
+msgid ""
+"Always auto-assign a category if none are selected and user lacks "
+"permission for default category"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:216
 msgid "Always auto-assign a post tag if none are selected"
 msgstr ""
 "Mindig automatikusan hozzárendel egy poszt címkét, ha egyik sincs "
@@ -2226,6 +3301,18 @@ msgstr ""
 "egyik sincs kiválasztva"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:222
+msgid ""
+"Determines the default setting of Permissions > Settings > Editing > "
+"Auto-assign default terms"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:225
+msgid ""
+"Do not auto-assign a category (except standard default category if user has "
+"permission)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:228
 msgid "Do not auto-assign a post tag"
 msgstr "Ne rendeljen automatikusan egy poszt címkét"
 
@@ -2234,20 +3321,95 @@ msgid "Do not auto-assign a term of this taxonomy"
 msgstr "Ne rendeljen automatikusan egy kifejezést erről a taxonómiáról"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:234
+msgid ""
+"Do not auto-assign a term if the user has permission for more than one term "
+"in the taxonomy"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:237
+msgid ""
+"If auto-assign term setting is enabled, apply it even if user does not have "
+"term assignment limitations"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:240
 msgid "Don't define an 'Approved' status, even if Status Control feature is active"
 msgstr ""
 "Ne definiáljon 'Jóváhagyott' státuszt, még ha a Státuszvezérlő funkció "
 "aktív is"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:245
+msgid ""
+"If user has Nav Menu management capabilities but can't "
+"'edit_theme_options', strip link out of wp-admin Appearance Menu instead of "
+"linking it to nav-menus"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:248
+msgid ""
+"Don't credit implicit 'manage_nav_menus' capability to users who have "
+"'edit_theme_options' or 'switch_themes' capability"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:251
+msgid ""
+"Prevent non-Administrators from adding new Nav Menu items to top level (add "
+"below existing editable items instead)"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:254
+msgid ""
+"For non-Administrators, new Nav Menu items default to being a child of "
+"first editable item "
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:257
+msgid ""
+"Don't require any additional capabilities for management of Nav Menu "
+"settings (normally require 'manage_menu_settings', 'edit_others_pages' or "
+"'publish_pages') "
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:260
+msgid ""
+"Eliminate extra filtering queries on Nav Menu update, even for "
+"non-Administrators"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:265
+msgid ""
+"Don't allow non-Administrators to see others' unattached uploads, "
+"regardless of Permissions settings.  Their own unattached uploads are still "
+"accessible unless option 'own_attachments_always_editable' is set false"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:270
 msgid "Limited User Editors can assign their own role"
 msgstr "A korlátozott felhasználói szerkesztők hozzárendelhetik a saját szerepüket"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:273
+msgid ""
+"Post Meta fields to copy when using 'Add Author Page' dropdown on Users "
+"screen"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:282
 msgid "Manage PublishPress Permissions plugin settings."
 msgstr "Kezelje a PublishPress Permissions bővítmény beállításait."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
+msgid ""
+"PublishPress Permissions will not apply any Extra Roles or Permissions to "
+"limit or expand viewing or editing access."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:284
+msgid ""
+"Manage other user's Permissions. Also grants capabilities for all post "
+"types and statuses."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:285
 msgid "Create new Permission Groups and set the name and description."
 msgstr ""
 "Hozzon létre új Jogosultsági Csoportokat, és állítsa be a nevet és a "
@@ -2324,10 +3486,43 @@ msgstr ""
 "Média Könyvtárban."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:307
+msgid ""
+"Can bypass restrictive \"Set as Parent\" Permissions (for all hierarchical "
+"post types)."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:309
 msgid "Do not alter the Media Library listing provided by WordPress."
 msgstr "Ne módosítsa a WordPress által biztosított Média Könyvtár listázását."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:310
+msgid ""
+"On the Posts screen, satisfy a missing edit_posts capability by listing "
+"uneditable drafts."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:311
+msgid ""
+"On the Posts screen, satisfy a missing edit_others_posts capability by "
+"listing other user's uneditable posts."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:312
+msgid ""
+"On the Pages screen, satisfy a missing edit_private_pages capability by "
+"listing uneditable private pages."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:313
+msgid ""
+"Allow non-Administrators to Quick Edit or Bulk Edit (possibly allowing them "
+"to bypass restrictions)."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:320
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:321
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:322
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:323
 msgid "(Statuses Pro capability)"
 msgstr "(Állapotok Pro képesség)"
 
@@ -2531,6 +3726,12 @@ msgstr ""
 "jogosultságoktól"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:224
+msgid ""
+"note: Plugin settings and configuration data will be deleted, but only "
+"after the last copy of Permissions / Permissions Pro is deleted."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:272
 msgid "The following would revert to default settings:"
 msgstr "A következők alapértelmezett beállításokra állítanak vissza:"
 
@@ -2557,10 +3758,37 @@ msgid "Administrators"
 msgstr "Rendszergazdák"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:356
+msgid ""
+"When saving a post, if the default term is not selectable, substitute first "
+"available."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:357
 msgid "Some term-limited editing configurations require this."
 msgstr "Néhány kifejezéskorlátozott szerkesztési konfiguráció ezt megköveteli."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+msgid ""
+"If enabled, users cannot create new tags for a post unless they have the "
+"edit_tags capability. You can manage this with a WordPress role editor like "
+"PublishPress Capabilities."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:368
+msgid ""
+"If enabled, users cannot create new tags for a post unless they have the "
+"edit_tags capability. You can manage this with Capabilities > Capabilities "
+"> Taxonomies for any role."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:373
+msgid ""
+"Display all permission operations in a single metabox with tabs (modern "
+"UI). When disabled, each operation has a separate metabox (legacy UI)."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:416
+#, php-format
 msgid "%sPosts / Pages Listing:%s %s"
 msgstr "%sBejegyzések / Oldalak listázása:%s %s"
 
@@ -2601,6 +3829,29 @@ msgid "Available Constant"
 msgstr "Elérhető Konstans"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
+msgid ""
+"To modify one or more default settings network-wide, <strong>copy</strong> "
+"the following code into your theme's <strong>functions.php</strong> file "
+"(or some other file which is always executed and not auto-updated) and "
+"modify as desired:"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:814
+msgid ""
+"To force the value of one or more settings network-wide, "
+"<strong>copy</strong> the following code into your theme's "
+"<strong>functions.php</strong> file (or some other file which is always "
+"executed and not auto-updated) and modify as desired:"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:849
+msgid ""
+"All settings in this form (including those on undisplayed tabs) will be "
+"reset to DEFAULTS.  Are you sure?"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:852
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "Alapértelmezett beállítások visszaállítása"
 
@@ -2663,6 +3914,14 @@ msgid "Permissions screen disabled"
 msgstr "Jogosultságok képernyő letiltva"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:229
+msgid ""
+"This feature allows you to restrict access to Media Library files when they "
+"are accessed via WordPress. To restrict viewing of files when they are "
+"visited directly via the URL, use the \"File Access\" feature."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:254
+#, php-format
 msgid "Enable metabox on %s editing screen"
 msgstr "Metabox engedélyezése a %s szerkesztési képernyőn"
 
@@ -2780,6 +4039,12 @@ msgid "Ready to secure your files?"
 msgstr "Készen áll a fájlok védelmére?"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:285
+msgid ""
+"Upgrade to Pro and get advanced file access control with all these features "
+"and more."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:25
 msgid "Integrations"
 msgstr "Integrációk"
 
@@ -2787,7 +4052,7 @@ msgstr "Integrációk"
 msgid "Compatibility Packs"
 msgstr "Kompatibilitási csomagok"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:46, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:46
 msgid "Breakdance"
 msgstr "Breakdance"
 
@@ -2796,11 +4061,18 @@ msgid "Unlock Pro Integrations"
 msgstr "Pro integrációk feloldása"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:104
+msgid ""
+"Upgrade to the Pro version for optimal compatibility and prompt, "
+"professional support."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:121
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229
 msgid "Admin"
 msgstr "Admin"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:124
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:227, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:227
 msgid "Builder"
 msgstr "Builder"
 
@@ -2828,7 +4100,7 @@ msgid "Multilingual"
 msgstr "Többnyelvű"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:142
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233
 msgid "SEO"
 msgstr "SEO"
 
@@ -2846,7 +4118,7 @@ msgstr "Többnyelvű"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:261
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
-#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205
 msgid "Pro"
 msgstr "Pro"
 
@@ -2890,6 +4162,12 @@ msgid "Membership Notifications"
 msgstr "Tagsági Értesítések"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:172
+msgid ""
+"Limit access based on post authorship and group membership for more "
+"granular permissions control."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:177
 msgid "Modify viewing or editing access"
 msgstr "A megtekintési vagy szerkesztési hozzáférés módosítása"
 
@@ -2934,6 +4212,12 @@ msgid "Ready to enhance your membership features?"
 msgstr "Készen áll a tagsági funkciók fejlesztésére?"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:243
+msgid ""
+"Upgrade to Pro and get advanced membership management with circles, "
+"time-limited memberships, and more."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:21
 msgid "Features"
 msgstr "Jellemzők"
 
@@ -3042,10 +4326,16 @@ msgstr ""
 "felhasználóid számára?"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:234
+msgid ""
+"Upgrade to Pro and get advanced user post generation with all these "
+"features and more."
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:38
 msgid "Username"
 msgstr "Felhasználónév"
 
-#: classes/PublishPress/Permissions/UI/UsersListTable.php:40, fuzzy
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:40
 msgid "Email"
 msgstr "Email"
 
@@ -3104,6 +4394,12 @@ msgstr "Szerkesztők"
 
 #: includes/CoreAdmin.php:28
 #, php-format
+msgid ""
+"You're using PublishPress Permissions Free. The Pro version has more "
+"features and support. %sUpgrade to Pro%s"
+msgstr ""
+
+#: includes/CoreAdmin.php:100
 msgid "Promo file not found."
 msgstr "A promo fájl nem található."
 
@@ -3117,14 +4413,38 @@ msgid "Posts Teaser"
 msgstr "Bejegyzések előnézete"
 
 #: includes/promo/posts-teaser-promo.php:18
+msgid ""
+"Show a teaser message or login prompt for protected content. Available in "
+"PublishPress Permissions Pro."
+msgstr ""
+
+#: includes/promo/statuses-promo.php:5
 msgid "Post Statuses for Editorial Workflow"
 msgstr "Bejegyzés állapotok az editorial munkafolyamat számára"
 
 #: includes/promo/statuses-promo.php:19
+msgid ""
+"Control access to custom post statuses. This workflow feature is available "
+"in PublishPress Permissions Pro."
+msgstr ""
+
+#: includes/promo/sync-promo.php:18
+msgid ""
+"Automatically generate a personal page for each user. This feature is "
+"available in PublishPress Permissions Pro."
+msgstr ""
+
+#: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "Bejegyzés láthatósági állapotok"
 
 #: includes/promo/visibility-statuses-promo.php:19
+msgid ""
+"Control access to post visibility statuses. This workflow feature is "
+"available in PublishPress Permissions Pro."
+msgstr ""
+
+#: includes/SettingsTabInstall.php:24
 msgid "License"
 msgstr "Licenc"
 
@@ -3145,6 +4465,28 @@ msgid "Further details for your installation:"
 msgstr "További részletek az Ön telepítéséhez:"
 
 #: includes/SettingsTabInstall.php:131
+#, php-format
+msgid ""
+"Your presspermit.com key has expired, but a <a href=\"%s\">PublishPress "
+"renewal</a> discount may be available."
+msgstr ""
+
+#: includes/SettingsTabInstall.php:136
+msgid ""
+"Permissions Pro was previously active. You are now running the free "
+"version, with fewer features."
+msgstr ""
+
+#: includes/SettingsTabInstall.php:141
+#, php-format
+msgid ""
+"A presspermit.com key appears to be active. <a href=\"%s\" "
+"target=\"_blank\">Contact us</a> for assistance in migrating your account "
+"to publishpress.com."
+msgstr ""
+
+#: includes/SettingsTabInstall.php:200
+#: includes/SettingsTabInstall.php:210
 #, php-format
 msgid "PublishPress Permissions Version: %1$s %2$s"
 msgstr "PublishPress Permissions verzió: %1$s %2$s"
@@ -3178,16 +4520,16 @@ msgstr "PHP verzió: %s"
 msgid "%1$s queries in %2$s seconds. %3$s MB used."
 msgstr "%1$s lekérdezés %2$s másodperc alatt. %3$s MB elfoglalva."
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:163
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:188
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:162
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:184
 msgid "Term"
 msgstr "Kifejezés"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:164
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:163
 msgid "Terms"
 msgstr "Kifejezések"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:234
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:229
 #, php-format
 msgid "%s Manager"
 msgstr "%s menedzser"
@@ -3215,6 +4557,13 @@ msgid "Go to %s"
 msgstr "Ugrás a %s"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:498
+msgid ""
+"The requested modification was processed, but you can no longer edit the "
+"post."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:429
+#, php-format
 msgid "You do not have permission to move the menu item \"%1$s\""
 msgstr "Nincs jogosultsága a menüpont áthelyezésére: \"%1$s\""
 
@@ -3295,6 +4644,19 @@ msgstr "Oldal jóváhagyva"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:111
 #, php-format
+msgid ""
+"Limited Editing Elements feature has moved to <a href=\"%s\">Capabilities > "
+"Editor Features</a>."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:117
+#, php-format
+msgid ""
+"Limited Editing Elements feature requires <a href=\"%s\" "
+"target=\"_blank\">PublishPress Capabilities</a> plugin."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
 msgid "Author Search / Select"
 msgstr "Szerző keresés / Kiválasztás"
 
@@ -3397,6 +4759,20 @@ msgid "Role Usage edited."
 msgstr "Szerepkörhasználat szerkesztve."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:71
+msgid ""
+"These optional settings customize how PublishPress Permissions applies "
+"extra roles. Your existing WP Role Definitions can be applied in two "
+"different ways:"
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:74
+msgid ""
+"Pattern Roles convert 'post' capabilities to the corresponding "
+"type-specific capability.  In a normal WP installation, this is the easiest "
+"solution."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:78
 msgid "With Direct Assignment, capabilities are applied without modification."
 msgstr ""
 "Közvetlen hozzárendeléssel a képességek módosítás nélkül kerülnek "
@@ -3443,6 +4819,12 @@ msgstr "Bejegyzés Képességek"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:116
 #, php-format
+msgid ""
+"Type-specific and/or status-specific equivalents of the following "
+"capabilities are included in supplemental %s roles:"
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:136
 msgid "Arbitrary Capabilities"
 msgstr "Tetszőleges Képességek"
 
@@ -3456,6 +4838,12 @@ msgid "Role Capabilities"
 msgstr "Szerep Képességek"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:161
+msgid ""
+"All capabilities defined for this WordPress role will be applied in "
+"supplemental assignments:"
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:178
 msgid "Notes regarding Pattern Roles"
 msgstr "Megjegyzések a Minta Szerepekkel kapcsolatban"
 
@@ -3468,6 +4856,27 @@ msgid "Notes"
 msgstr "Megjegyzések"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:37
+msgid ""
+"The 'posts' capabilities in a WP role determine its function as a Pattern "
+"Role for supplemental assignment to Permission Groups. When you assign the "
+"'Author' pattern role for Pages, edit_posts and edit_published_posts become "
+"edit_pages and edit_published_pages."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:40
+msgid ""
+"Role capabilities defined for other post types (i.e. 'edit_others_pages', "
+"'edit_things') are ignored unless Role Usage is set to Direct Assignment."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:43
+msgid ""
+"If one of the default roles is deleted from the WP database, it will remain "
+"available as a pattern role with default WP capabilities (but can be "
+"disabled here)."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:55
 msgid "No matching roles were found."
 msgstr "Nem találtunk megfelelő szerepeket."
 
@@ -3522,6 +4931,21 @@ msgstr "Funkció áthelyezve"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:140
 #, php-format
+msgid ""
+"The Limited Editing Elements feature has been moved to %1$sCapabilities > "
+"Editor Features > Element IDs%2$s for better organization and enhanced "
+"functionality."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:146
+#, php-format
+msgid ""
+"The Limited Editing Elements feature has been moved to the PublishPress "
+"Capabilities plugin. Please install %1$sPublishPress Capabilities%2$s to "
+"access this functionality."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:155
 msgid "Current Settings:"
 msgstr "Jelenlegi beállítások:"
 
@@ -3534,6 +4958,12 @@ msgid "List Files"
 msgstr "Fájlok listázása"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:189
+msgid ""
+"The following settings apply to users who are able to access the Media "
+"Library. Normally this requires the upload_files or edit_files capability."
+msgstr ""
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:202
 msgid "Edit Files"
 msgstr "Fájlok szerkesztése"
 
@@ -3629,6 +5059,13 @@ msgid "Hide Featured Image when Teaser is applied"
 msgstr "A kiemelt kép elrejtése, amikor az előzetes alkalmazva van"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid ""
+"\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
+"Staff, etc.)"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:139
+#, php-format
 msgid "%s is a PRO feature"
 msgstr "%s egy PRO funkció"
 
@@ -3663,7 +5100,7 @@ msgstr "Az összes poszt előnézeti beállítása alapértelmezettre lett vissz
 msgid "Teaser Settings"
 msgstr "Előnézeti beállítások"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458
 msgid "RSS"
 msgstr "RSS"
 
@@ -3811,7 +5248,7 @@ msgstr "Karakterek"
 msgid "characters"
 msgstr "karakter"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:308, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:308
 msgid "Max"
 msgstr "Max"
 
@@ -3906,10 +5343,23 @@ msgid "Use Custom Teaser Message Style"
 msgstr "Egyedi előzetes üzenet stílus használata"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
+msgid ""
+"Choose whether to use the default message style or customize the appearance "
+"of teaser messages."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:438
 msgid "Teaser Message"
 msgstr "Előzetes üzenet"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+msgid ""
+"Replace the post content entirely with custom content for users who don't "
+"have access."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:498
 msgid "This field is required."
 msgstr "Ez a mező kötelező."
 
@@ -3962,6 +5412,12 @@ msgid "Redirect functionality is available in PRO"
 msgstr "Az átirányító funkció a PRO verzióban érhető el"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:672
+msgid ""
+"Automatically redirect users to a login page or custom page when they try "
+"to access restricted content."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:708
 msgid "Redirection"
 msgstr "Átirányítás"
 
@@ -3998,6 +5454,12 @@ msgid "This is a custom login page"
 msgstr "Ez egy egyedi bejelentkező oldal"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+msgid ""
+"After the user logs in, they will be redirected back to the original post "
+"they were viewing."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
 msgid "Logged in Users:"
 msgstr "Bejelentkezett felhasználók:"
 
@@ -4008,6 +5470,42 @@ msgid "Message for Blocked Users"
 msgstr "Üzenet a blokkolt felhasználóknak"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:935
+msgid ""
+"Customize the message shown to users who are blocked from viewing the full "
+"content when using the \"Read More\" teaser type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:958
+msgid ""
+"This message will be displayed in a styled notice box above the teaser "
+"content for users who are not logged in."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+msgid ""
+"Customize the login notice message shown to non-logged-in users when using "
+"the \"Excerpt\" teaser type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1012
+msgid ""
+"This message will be displayed in a styled notice box below the excerpt "
+"teaser content for users who are not logged in."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
+msgid ""
+"Customize the login notice message shown to non-logged-in users when using "
+"the \"First X Characters\" teaser type."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1066
+msgid ""
+"This message will be displayed in a styled notice box below the truncated "
+"content teaser for users who are not logged in."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1144
 msgid "Teaser Message Style Customization"
 msgstr "Teaser üzenet stílusának testreszabása"
 
@@ -4074,6 +5572,12 @@ msgid "Live Preview"
 msgstr "Élő előnézet"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+msgid ""
+"This is how the teaser message will appear on your site. Changes update in "
+"real-time."
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
 msgid "No Teaser"
 msgstr "Nincs teaser"
 
@@ -4090,15 +5594,15 @@ msgstr "Ez egy PRO funkció"
 msgid "%s is available in PRO"
 msgstr "%s PRO-ban elérhető"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:40
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:48
 msgid "Select a page"
 msgstr "Válassz egy oldalt"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:41
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
 msgid "Select terms"
 msgstr "Válassz kifejezéseket"
 
-#: press-permit-core.php:117
+#: press-permit-core.php:132
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Ez a bővítmény törölhető.</strong>"
 
@@ -4116,5 +5620,27 @@ msgstr "&lt; Választás megszüntetése"
 
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:170
 msgctxt "count"
+msgid "Users"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:171
+msgctxt "count"
+msgid "Specific Permissions"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:172
+msgctxt "count"
+msgid "Extra Roles"
+msgstr ""
+
+#: classes/PublishPress/Permissions/UI/PluginPage.php:95
+msgctxt "groups per page (screen options)"
+msgid "Groups"
+msgstr ""
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:671
+#, php-format
+msgctxt "teaser suffix"
 msgid "%s..."
-msgstr "%s..."
+msgstr ""
