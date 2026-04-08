@@ -1907,6 +1907,107 @@
             "time": "2026-04-02T20:16:04+00:00"
         },
         {
+            "name": "publishpress/translations",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/publishpress/library-publishpress-translator.git",
+                "reference": "ea40919b8737a17e7dd6453b438854a0e8036278"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-publishpress-translator/zipball/ea40919b8737a17e7dd6453b438854a0e8036278",
+                "reference": "ea40919b8737a17e7dd6453b438854a0e8036278",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^7.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "automattic/vipwpcs": "^3.0",
+                "overtrue/phplint": "^2.1",
+                "phpcompatibility/php-compatibility": "^9.3",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0",
+                "publishpress/publishpress-phpcs-standards": "dev-main",
+                "sirbrillig/phpcs-variable-analysis": "^2.11",
+                "squizlabs/php_codesniffer": "^3.8",
+                "szepeviktor/phpstan-wordpress": "^1.3",
+                "wp-coding-standards/wpcs": "^3"
+            },
+            "bin": [
+                "bin/publishpress-translate"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PublishPress\\Translations\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com"
+                }
+            ],
+            "description": "AI-powered translation automation for PublishPress plugins using Potomatic",
+            "support": {
+                "issues": "https://github.com/publishpress/library-publishpress-translator/issues",
+                "source": "https://github.com/publishpress/library-publishpress-translator/tree/1.0.3"
+            },
+            "time": "2026-03-24T12:44:13+00:00"
+        },
+        {
+            "name": "ralouphie/getallheaders",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ralouphie/getallheaders.git",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ralouphie/getallheaders/zipball/120b605dfeb996808c31b6477290a714d356e822",
+                "reference": "120b605dfeb996808c31b6477290a714d356e822",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/phpunit": "^5 || ^6.5"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/getallheaders.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ralph Khattar",
+                    "email": "ralph.khattar@gmail.com"
+                }
+            ],
+            "description": "A polyfill for getallheaders.",
+            "support": {
+                "issues": "https://github.com/ralouphie/getallheaders/issues",
+                "source": "https://github.com/ralouphie/getallheaders/tree/develop"
+            },
+            "time": "2019-03-08T08:55:37+00:00"
+        },
+        {
             "name": "react/cache",
             "version": "v1.2.0",
             "source": {
