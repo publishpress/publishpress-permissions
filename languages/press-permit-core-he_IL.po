@@ -9,10 +9,11 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-03-18T15:16:27+00:00\n"
-"PO-Revision-Date: 2026-04-08 05:37+0000\n"
+"POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
+"PO-Revision-Date: 2026-04-10 13:54+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
+"% 10 == 0) ? 2 : 3)));\n"
 "Language: he_IL\n"
 "Plural-Forms: nplurals=4; plural=(n == 1 ? 0 : (n == 2 ? 1 : ((n > 10 && n % 10 == 0) ? 2 : 3)));\n"
 
@@ -21,7 +22,7 @@ msgstr ""
 msgid "PublishPress Permissions"
 msgstr "פרסום פרס הרשאות"
 
-#: press-permit-core.php:5
+#: press-permit-core.php:5, fuzzy
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -35,12 +36,12 @@ msgstr ""
 "PublishPress Permissions מאפשר לך לאפשר או למנוע גישה לפוסטים, דפים, "
 "קטגוריות, תגיות ועוד."
 
-#: press-permit-core.php:8
+#: press-permit-core.php:8, fuzzy
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9
+#: press-permit-core.php:9, fuzzy
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -232,7 +233,7 @@ msgid "Status-based editing capabilities"
 msgstr "יכולות עריכה מבוססות סטטוס"
 
 #: classes/PublishPress/Permissions.php:1405
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52, fuzzy
 msgid "Relevanssi"
 msgstr "Relevanssi"
 
@@ -255,7 +256,7 @@ msgid "Secure content discovery"
 msgstr "גילוי תוכן מאובטח"
 
 #: classes/PublishPress/Permissions.php:1420
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53, fuzzy
 msgid "SearchWP"
 msgstr "SearchWP"
 
@@ -276,7 +277,7 @@ msgid "Advanced search controls"
 msgstr "בקרות חיפוש מתקדמות"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -293,7 +294,7 @@ msgid "Product category controls"
 msgstr "בקרות קטגוריית מוצר"
 
 #: classes/PublishPress/Permissions.php:1449
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55, fuzzy
 msgid "WPML"
 msgstr "WPML"
 
@@ -316,7 +317,7 @@ msgid "Multilingual permission management"
 msgstr "ניהול הרשאות רב-לשוני"
 
 #: classes/PublishPress/Permissions.php:1464
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56, fuzzy
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
@@ -337,7 +338,7 @@ msgid "Permission-aware XML sitemaps"
 msgstr "מפות אתר XML מודעות להרשאות"
 
 #: classes/PublishPress/Permissions.php:1479
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57, fuzzy
 msgid "YooTheme"
 msgstr "YooTheme"
 
@@ -561,6 +562,8 @@ msgid ""
 "Specific Permissions: no restrictions ('Blocked') can be applied to "
 "custom-defined groups"
 msgstr ""
+"הרשאות ספציפיות: אין הגבלות ('חסום') שניתן להחיל על קבוצות שהוגדרו בהתאמה "
+"אישית"
 
 #: classes/PublishPress/Permissions/Constants.php:23
 msgid "Extra Roles assignment available for {All} and {Anonymous} metagroups"
@@ -571,18 +574,24 @@ msgid ""
 "Allow the {All} and {Anonymous} metagroups to be granted specific reading "
 "permissions for private content"
 msgstr ""
+"אפשר לקבוצות המטריות {All} ו-{Anonymous} להינתן הרשאות קריאה ספציפיות עבור "
+"תוכן פרטי"
 
 #: classes/PublishPress/Permissions/Constants.php:25
 msgid ""
 "Users who have specific editing permissions for a post or attachment can "
 "also delete it"
 msgstr ""
+"משתמשים שיש להם הרשאות עריכה ספציפיות עבור פוסט או קובץ מצורף יכולים גם "
+"למחוק אותו"
 
 #: classes/PublishPress/Permissions/Constants.php:26
 msgid ""
 "Users who have custom editing permissions for an attachment can also delete "
 "it"
 msgstr ""
+"משתמשים שיש להם הרשאות עריכה מותאמות אישית עבור קובץ מצורף יכולים גם למחוק "
+"אותו"
 
 #: classes/PublishPress/Permissions/Constants.php:27
 msgid ""
@@ -590,24 +599,30 @@ msgid ""
 "(normally filter to force inclusion of readable private posts in "
 "get_pages() listing, post counts, etc."
 msgstr ""
+"כבוי סינון בחזית אם המשתמש המחובר הוא מנהל תוכן (בדרך כלל לסנן כדי לכפות "
+"הכללה של פוסטים פרטיים ניתנים לקריאה ברשימת get_pages(), ספירת פוסטים וכו')"
 
 #: classes/PublishPress/Permissions/Constants.php:28
 msgid ""
 "Disable front end filtering for all users (subject to limitation by "
 "PP_UNFILTERED_FRONT_TYPES)"
 msgstr ""
+"כבוי סינון בחזית עבור כל המשתמשים (כפוף להגבלה לפי "
+"PP_UNFILTERED_FRONT_TYPES)"
 
 #: classes/PublishPress/Permissions/Constants.php:29
 msgid ""
 "Comma-separated list of post types to limit the effect of "
 "PP_UNFILTERED_FRONT and apply_filters( 'presspermit_skip_cap_filtering' )"
 msgstr ""
+"רשימה מופרדת בפסיקים של סוגי פוסטים כדי להגביל את השפעת PP_UNFILTERED_FRONT "
+"ולהחיל_filters( 'presspermit_skip_cap_filtering' )"
 
 #: classes/PublishPress/Permissions/Constants.php:30
 msgid ""
 "Specific Permissions: additions ('Enabled') are not applied, cannot be "
 "assigned"
-msgstr ""
+msgstr "הרשאות ספציפיות: תוספות ('מופעל') לא מיועדות, לא ניתן להקצות"
 
 #: classes/PublishPress/Permissions/Constants.php:31
 msgid "Don't assign or apply specific permissions for the 'post' type"
@@ -625,7 +640,7 @@ msgstr "אל תקצה או יישם הרשאות ספציפיות עבור סו�
 msgid ""
 "Don't assign or apply specific permissions for the specified custom post "
 "type"
-msgstr ""
+msgstr "אל תקצה או החיל הרשאות ספציפיות עבור סוג הפוסט המותאם שנמסר"
 
 #: classes/PublishPress/Permissions/Constants.php:40
 msgid "Include scheduled posts in the posts query if user can edit them"
@@ -655,25 +670,25 @@ msgstr "השאר מונחים ללא פוסטים קריאים בתפריטי ה
 msgid ""
 "When Teaser is applied with Redirect enabled, append original url as "
 "redirect_to argument"
-msgstr ""
+msgstr "כאשר טיזר מוחל עם הפניית משויכת, הוסף את ה-URL המקורי כארגומנט redirect_to"
 
 #: classes/PublishPress/Permissions/Constants.php:53
 msgid ""
 "For Teaser compatibility, specify a redirect argument to use instead of "
 "redirect_to"
-msgstr ""
+msgstr "למטרת תאימות עם טיזר, ציין ארגומנט הפנייה לשימוש במקום redirect_to"
 
 #: classes/PublishPress/Permissions/Constants.php:54
 msgid ""
 "For Teaser compatibility, specify an additional redirect argument other "
 "than redirect_to"
-msgstr ""
+msgstr "למטרת תאימות עם טיזר, ציין ארגומנט הפנייה נוסף מלבד redirect_to"
 
 #: classes/PublishPress/Permissions/Constants.php:55
 msgid ""
 "For Teaser compatibility, prevent the pp_permissions argument from being "
 "appended to redirects"
-msgstr ""
+msgstr "למטרת תאימות עם טיזר, מנע מהארגומנט pp_permissions להיות מצורף להפניות"
 
 #: classes/PublishPress/Permissions/Constants.php:63
 msgid "Filter priority for 'get_pages' filter (default: 1)"
@@ -684,66 +699,84 @@ msgid ""
 "Don't include readable private pages in the Pages widget or other "
 "wp_list_pages() / get_pages() results    "
 msgstr ""
+"אל תכלול דפי פרטיים ניתנים לקריאה בווידג'ט של דפים או בתוצאות אחרות של "
+"wp_list_pages() / get_pages()    "
 
 #: classes/PublishPress/Permissions/Constants.php:65
 msgid ""
 "If some pages have been suppressed from get_pages() results, change child "
 "pages' corresponding post_parent values to a visible ancestor"
 msgstr ""
+"אם כמה דפים הוסתרו מתוצאות get_pages(), שנה את הערכים post_parent המתאימים "
+"של דפי הילדים לאבות נראים"
 
 #: classes/PublishPress/Permissions/Constants.php:66
 msgid ""
 "Never modify the post_parent value in the get_pages() result set, even if "
 "some pages have been suppressed"
 msgstr ""
+"אל תשנה את ערך post_parent במערך התוצאות של get_pages(), גם אם כמה דפים "
+"הוסתרו"
 
 #: classes/PublishPress/Permissions/Constants.php:67
 msgid ""
 "For performance, change the get_pages() database query to return only a "
 "subset of fields, excluding post_content"
 msgstr ""
+"למטרת ביצועים, שנה את שאילתת מסד הנתונים של get_pages() כך שתשיב רק "
+"תת-קבוצה של שדות, לא כולל post_content"
 
 #: classes/PublishPress/Permissions/Constants.php:74
 msgid ""
 "Don't apply content teaser to get_pages() results (leave unreadable posts "
 "hidden)"
 msgstr ""
+"אל תחל על תוכן טיזר לתוצאות get_pages() (השאר פוסטים שאינם ניתנים לקריאה "
+"מוסתרים)"
 
 #: classes/PublishPress/Permissions/Constants.php:82
 msgid ""
 "If some terms have been suppressed from get_terms() results, change child "
 "terms' corresponding parent values to a visible ancestor"
 msgstr ""
+"אם כמה מונחים הוסתרו מתוצאות get_terms(), שנה את הערכים המתאימים של ההורים "
+"של המונחים לילדים לאבות נראים"
 
 #: classes/PublishPress/Permissions/Constants.php:83
 msgid ""
 "Never modify the parent value in the get_terms() result set, even if some "
 "terms have been suppressed"
-msgstr ""
+msgstr "אל תשנה את ערך ההורה במערך התוצאות של get_terms(), גם אם כמה מונחים הוסתרו"
 
 #: classes/PublishPress/Permissions/Constants.php:90
 msgid ""
 "Set Author to current user if autoset_post_author / autoset_page_author "
 "capability is assigned"
 msgstr ""
+"קבע את המחבר למשתמש הנוכחי אם ישנה יכולת autoset_post_author / "
+"autoset_page_author"
 
 #: classes/PublishPress/Permissions/Constants.php:97
 msgid ""
 "Leave Media Library with normal access criteria based on user's role "
 "capabilities "
-msgstr ""
+msgstr "השאר את ספריית המדיה עם קריטריוני גישה רגילים בהתבסס על יכולות תפקיד המשתמש"
 
 #: classes/PublishPress/Permissions/Constants.php:98
 msgid ""
 "Accommodate front end uploading solutions that require page editing "
 "capabilities for the async upload request"
 msgstr ""
+"התאם פתרונות העלאת קבצים בחזית שדורשים יכולות עריכת עמודים עבור בקשת ההעלאה "
+"האסינכרונית"
 
 #: classes/PublishPress/Permissions/Constants.php:99
 msgid ""
 "Treat media attached to unregistered post types as unattached, to avoid "
 "improper and confusing filtering"
 msgstr ""
+"טפל במדיה שצורפה לסוגי פוסטים לא רשומים כבלתי מצורפים, כדי להימנע מסינון לא "
+"נכון ומבלבל"
 
 #: classes/PublishPress/Permissions/Constants.php:106
 msgid "Attached Files Private setting available"
@@ -757,7 +790,7 @@ msgstr "רשימה מופרדת בפסיקים של סוגי mime שיש excluir
 msgid ""
 "Comma-separated list of mime types to include in File Access filtering "
 "(bypassing others)"
-msgstr ""
+msgstr "רשימה מופרדת בפסיקים של סוגי mime שיכללו בסינון גישת קבצים (מעקף אחרים)"
 
 #: classes/PublishPress/Permissions/Constants.php:109
 msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
@@ -772,6 +805,8 @@ msgid ""
 "On Users listing, Permission groups in custom column are list filter links "
 "instead of group edit links"
 msgstr ""
+"ברשימת המשתמשים, קבוצות ההרשאות בעמודה מותאמת אישית הן קישורי סינון ולא "
+"קישורי עריכה קבוצתיים"
 
 #: classes/PublishPress/Permissions/Constants.php:119
 #: classes/PublishPress/Permissions/Constants.php:120
@@ -779,12 +814,16 @@ msgid ""
 "Unlock Permissions > Settings > Core > Admin Back End > 'Hide non-editable "
 "posts'"
 msgstr ""
+"שחרר הרשאות > הגדרות > ליבה > ממשק ניהול אחורי > 'הסתר פוסטים שאינם ניתנים "
+"לעריכה'"
 
 #: classes/PublishPress/Permissions/Constants.php:121
 msgid ""
 "Within the async-upload.php script, filter author's retrieval of the "
 "attachment they just uploaded"
 msgstr ""
+"בתוך הסקריפט async-upload.php, סנן את השגת המחבר של הקובץ המצורף שהם העלו "
+"זה עתה"
 
 #: classes/PublishPress/Permissions/Constants.php:122
 msgid "Don't filter comment display or moderation within wp-admin"
@@ -794,19 +833,23 @@ msgstr "אל תסנן את תצוגת התגובות או המודרציה בת�
 msgid ""
 "Allow Administrators to be added to Permission Groups, even though they are "
 "not restricted"
-msgstr ""
+msgstr "אפשר להוסיף מנהלים לקבוצות הרשאות, למרות שהם אינם מוגבלים"
 
 #: classes/PublishPress/Permissions/Constants.php:129
 msgid ""
 "If propagating permissions are assigned to a page branch, overwrite any "
 "explicitly assigned permissions in sub-pages"
 msgstr ""
+"אם הרשאות המועברות משויכות לענף עמוד, כתוב מחדש כל הרשאה שהוקצתה במפורש "
+"בעמודים המשניים"
 
 #: classes/PublishPress/Permissions/Constants.php:130
 msgid ""
 "Max number of specific permissions to insert in a single database query "
 "(default 1000)"
 msgstr ""
+"מספר מקסימלי של הרשאות ספציפיות להכניס בשאילתת מסד נתונים אחת (ברירת מחדל "
+"1000)"
 
 #: classes/PublishPress/Permissions/Constants.php:131
 msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
@@ -816,7 +859,7 @@ msgstr "אל תשנה את האינדקסים של תפריט המנהל כדי 
 msgid ""
 "Don't add a Permissions menu. Instead, add menu items to the Users and "
 "Settings menus."
-msgstr ""
+msgstr "אל תוסיף תפריט הרשאות. במקום זאת, הוסף פריטי תפריט לתפריטי משתמשים והגדרות."
 
 #: classes/PublishPress/Permissions/Constants.php:138
 msgid "Customize Permissions screen title for Groups"
@@ -842,7 +885,7 @@ msgstr "הצג רמז מותאם אישית על הרשאות > קבוצות מ�
 msgid ""
 "Max number of non-hierarchical posts / terms to display at one time (per "
 "page)"
-msgstr ""
+msgstr "מספר מקסימלי של פוסטים / מונחים לא היררכיים להציג בבת אחת (לפי עמוד)"
 
 #: classes/PublishPress/Permissions/Constants.php:144
 msgid "Max number of hierarchical posts / terms to display at one time (per page)"
@@ -853,12 +896,16 @@ msgid ""
 "Disable auto-determination of how many levels of page tree to make visble "
 "by default. Instead, use specified value."
 msgstr ""
+"בטל את קביעת האוטומטית של כמה רמות של עץ עמודים לעשות נראות כברירת מחדל. "
+"במקום זאת, השתמש בערך המוגדר."
 
 #: classes/PublishPress/Permissions/Constants.php:146
 msgid ""
 "Target number of visible pages/terms, used for auto-determination of number "
 "of visible levels"
 msgstr ""
+"מספר היעד של עמודים/מונחים נראים, שמשמש לקביעת האוטומטית של מספר הרמות "
+"הנראות"
 
 #: classes/PublishPress/Permissions/Constants.php:147
 msgid "Make search function on the post selection metabox look at post content"
@@ -897,48 +944,60 @@ msgid ""
 "When synchronizing role metagroups to currently defined WP roles, don't "
 "delete groups for previously defined WP roles."
 msgstr ""
+"כאשר מסנכרנים קבוצות מטא תפקידים לתפקידים המוגדרים כיום ב-WP, אל תמחק "
+"קבוצות עבור תפקידי WP שניתן להגדיר בעבר."
 
 #: classes/PublishPress/Permissions/Constants.php:167
 msgid ""
 "Force detection of WP user roles which are appended dynamically but not "
 "stored to the WP database."
 msgstr ""
+"כפה זיהוי של תפקידי משתמש WP המתווספים דינמית אבל לא נשמרים במסד הנתונים של "
+"WP."
 
 #: classes/PublishPress/Permissions/Constants.php:174
 msgid ""
 "To save memory on front end access, don't register any filters related to "
 "content editing"
-msgstr ""
+msgstr "כדי לחסוך בזיכרון בגישה בחזית, אל תרשום שום מסננים הקשורים לעריכת תוכן"
 
 #: classes/PublishPress/Permissions/Constants.php:175
 msgid ""
 "Attached media do not have any comments, so don't append clauses to comment "
 "queries for them"
-msgstr ""
+msgstr "מדיה מצורפת אין להן שום תגובות, לכן אל תוסיף סעיפים לשאילתות תגובות עבורן"
 
 #: classes/PublishPress/Permissions/Constants.php:176
 msgid ""
 "Reduce overhead of pages query (in get_pages() and wp-admin) by defaulting "
 "fields to a set list that does not include post_content "
 msgstr ""
+"הפחת את העומס של שאילתות עמודים (ב-get_pages() וב-wp-admin) על ידי ברירת "
+"שדות לרשימה קבועה שאינה כוללת post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:177
 msgid ""
 "Reduce overhead of wp-admin posts query by defaulting fields to a set list "
 "that does not include post_content "
 msgstr ""
+"צמצם את העומס של שאילתות הפוסטים ב-wp-admin על ידי הגדרת שדות לרשימה קבועה "
+"שאינה כוללת post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:178
 msgid ""
 "Reduce overhead of wp-admin Media query by defaulting fields to a set list "
 "that does not include post_content "
 msgstr ""
+"צמצם את העומס של שאילתות המדיה ב-wp-admin על ידי הגדרת שדות לרשימה קבועה "
+"שאינה כוללת post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:179
 msgid ""
 "Reduce overhead of wp-admin query for specified custom post type by "
 "defaulting fields to a set list that does not include post_content "
 msgstr ""
+"צמצם את העומס של שאילתות wp-admin עבור סוג הפוסט המותאם שצוין על ידי הגדרת "
+"שדות לרשימה קבועה שאינה כוללת post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:185
 msgid "Work around database setup warnings (at plugin activation) on some servers"
@@ -949,12 +1008,16 @@ msgid ""
 "Development use only (suppresses post_status = 'publish' clause for "
 "unfiltered post types with anonymous user)"
 msgstr ""
+"שימוש לפיתוח בלבד (מדכא את תנאי post_status = 'publish' עבור סוגי פוסטים לא "
+"מסוננים עם משתמש אנונימי)"
 
 #: classes/PublishPress/Permissions/Constants.php:214
 msgid ""
 "Development use only (on front end, do not replace 'post_status = "
 "'publish'' clause with filtered equivalent)"
 msgstr ""
+"שימוש לפיתוח בלבד (בצד הקדמי, אל תחליף את התנאי 'post_status = 'publish'' "
+"עם מקבילה מסוננת)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:446
 msgid "Logged In"
@@ -975,8 +1038,9 @@ msgstr "התראות על בקשות שינויים"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:454
 #: classes/PublishPress/Permissions/DB/Groups.php:469
-msgid "Pending Revision Monitors"
-msgstr "מניחי שינויים ממתינים"
+#, fuzzy
+msgid "Submitted Revision Editors"
+msgstr "גרסה שהוגשה"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:458
 #: classes/PublishPress/Permissions/DB/Groups.php:473
@@ -1012,7 +1076,7 @@ msgstr "כל המשתמשים עם תפקיד WordPress של %s"
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s"
 msgstr "%1$s %2$s"
 
@@ -1021,7 +1085,7 @@ msgstr "%1$s %2$s"
 msgid ""
 "%1$s won&#39;t work until you upgrade PHP to version %2$s or later. Current "
 "version: %3$s"
-msgstr ""
+msgstr "%1$s לא יעבוד עד שתחליף את PHP לגרסה %2$s או מאוחרת יותר. גרסה נוכחית: %3$s"
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:101
 #, php-format
@@ -1039,6 +1103,8 @@ msgid ""
 "This version of %1$s cannot work with your current %2$s version. Please "
 "upgrade it to %3$s or later."
 msgstr ""
+"גרסה זו של %1$s אינה יכולה לעבוד עם גרסת %2$s הנוכחית שלך. אנא עדכן לגרסה "
+"%3$s או מאוחרת יותר."
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:133
 #, php-format
@@ -1075,13 +1141,13 @@ msgstr "(משתמש ביכולות ברירת מחדל עקב הגדרה לא ת
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:144
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:168
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
 msgstr "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:181
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:200
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s&nbsp;%2$s%3$s"
 msgstr "%1$s&nbsp;%2$s%3$s"
 
@@ -1091,6 +1157,8 @@ msgid ""
 "Your license key has expired. For updates to PublishPress Permissions Pro "
 "and priority support, %splease renew%s."
 msgstr ""
+"מפתח הרישוי שלך פג תוקף. עבור עדכונים ל-PublishPress Permissions Pro "
+"ולתמיכה עדיפות, %sאנא חRenew%s."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -1146,13 +1214,13 @@ msgstr "שלוט בהצגת קצה קדמי של %s הנבחרים."
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:375
 #, php-format
 msgid "Control who can create a revision of this %s."
-msgstr ""
+msgstr "שלוט מי יכול ליצור גרסה של %s זו."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:376
 #, php-format
 msgid "Control who can submit a revision of this %s."
-msgstr ""
+msgstr "שלוט מי יכול להגיש גרסה של %s זו."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:135
 msgid "Enable"
@@ -1173,19 +1241,23 @@ msgstr "מגבלה ל"
 msgid ""
 "Expand access to allow specified items regardless of role capabilities or "
 "restrictions."
-msgstr ""
+msgstr "הרחב את הגישה כדי לאפשר פריטים ספציפיים ללא קשר ליכולות או הגבלות תפקיד."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:149
 msgid ""
 "Restrict access by blocking specified items unless an \"Enabled\" exception "
 "is also stored."
 msgstr ""
+"הגבל את הגישה על ידי חסימת פריטים ספציפיים אלא אם כן חריג \"מאושר\" נשמר גם "
+"כן."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
 msgid ""
 "Restrict access by limiting role capabilities to apply only for specified "
 "items. Users still need capabilities in their main role or extra roles."
 msgstr ""
+"הגבל את הגישה על ידי הגבלת יכולות תפקידים כך שיתייחסו רק לפריטים ספציפיים. "
+"משתמשים עדיין צריכים יכולות בתפקיד הראשי או בתפקידים נוספים."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:169
 msgid ""
@@ -1193,6 +1265,8 @@ msgid ""
 "reducing the user's role capabilities and using group membership to add "
 "access."
 msgstr ""
+"שימוש בחברות קבוצתית כדי לחסום גישה אינו מומלץ. שקול להפחית את יכולות "
+"התפקיד של המשתמש ולהשתמש בחברות קבוצתית כדי להוסיף גישה."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:195
 msgid "Selected:"
@@ -1215,7 +1289,7 @@ msgstr "מורשת"
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:213
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:226
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:232
-#, php-format
+#, fuzzy, php-format
 msgid "%s:"
 msgstr "%s:"
 
@@ -1422,7 +1496,7 @@ msgstr "הסר"
 msgid ""
 "Review the selection below, and then click <strong>Save "
 "Permissions</strong>."
-msgstr ""
+msgstr "סקור את הבחירה למטה, ואז לחץ על <strong>שמור הרשאות</strong>."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
 msgid "Permission already selected!"
@@ -1525,18 +1599,22 @@ msgid ""
 "deactivated. Consider setting a private Visibility on Edit Post screen "
 "instead."
 msgstr ""
+"אזהרה: תוכן מוסתר על ידי הרשאות אלו יוצג אם PP לא פעיל. שקול לקבוע נראות "
+"פרטית במסך עריכת פוסט במקום זאת."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:223
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
 msgstr ""
+"כדי להקצות הרשאות ספציפיות לדף לעריכה, בחירת הורה או הקצאת מונח, הפעל את "
+"תכונת הרשאות העריכה."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:235
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
-msgstr ""
+msgstr "כדי להקצות הרשאות ספציפיות לפורום עבור bbPress, הפעל את תכונת חבילת התאימות."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:238
 #, php-format
@@ -1544,6 +1622,8 @@ msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
 "Permissions Pro%2$s and enable the Compatibility Pack feature."
 msgstr ""
+"כדי להקצות הרשאות ספציפיות לפורום עבור bbPress, %1$sשדרג ל-Permissions "
+"Pro%2$s והפעל את תכונת חבילת התאימות."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
@@ -1580,12 +1660,16 @@ msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
 "enable the Compatibility Pack feature."
 msgstr ""
+"כדי להקצות תפקידים לפורומים של bbPress, %1$sשדרג ל-Permissions Pro%2$s "
+"והפעל את תכונת חבילת התאימות."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:314
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
 msgstr ""
+"כדי להקצות הרשאות ספציפיות לדף של PublishPress Revision, הפעל את תכונת "
+"הרשאות העריכה."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:345
 #, php-format
@@ -1681,12 +1765,12 @@ msgid "(all post types)"
 msgstr "(כל סוגי הפוסטים)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
@@ -1706,7 +1790,7 @@ msgstr "לא פורסם"
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:290
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
-#, php-format
+#, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
@@ -1730,14 +1814,14 @@ msgstr "ה%s הזה ותת-%2$s שלו"
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
 "capabilities."
-msgstr ""
+msgstr "%1$s גישה עבור %2$s מופעלת בתוך %3$s, ללא קשר ליכולות התפקיד."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1235
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
 "Permission."
-msgstr ""
+msgstr "%1$s גישה עבור %2$s חסומה בתוך %3$s, אלא אם כן הופעלה על ידי הרשאה אחרת."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1243
 #, php-format
@@ -1745,6 +1829,8 @@ msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
 "%3$s, along with other specified %4$s."
 msgstr ""
+"כל גישה מבוססת תפקיד %1$s עבור %2$s מוגבלת. היא חלה רק בתוך %3$s, יחד עם "
+"%4$s אחרים שהוגדרו."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1253
 #, php-format
@@ -1762,6 +1848,8 @@ msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
 "along with other specified %4$s."
 msgstr ""
+"כל גישה מבוססת תפקיד %1$s עבור %2$s מוגבלת. היא חלה רק על %3$s, יחד עם %4$s "
+"אחרים שהוגדרו."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1348
 #, php-format
@@ -1881,6 +1969,8 @@ msgid ""
 "sub-page permissions from being properly applied when a new sub-page is "
 "created."
 msgstr ""
+"תוספים אחרים (או השבתת הרשאות PublishPress) עשויים למנוע מההגבלות של "
+"תתי-דפים להתבצע כראוי כאשר נוצר דף-משנה חדש."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1670
 #, php-format
@@ -1895,7 +1985,7 @@ msgstr "הגבלות קבוצתיות אינן זמינות עקב הגדרת ק
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
-msgstr ""
+msgstr "הרשאות להפעלת גישה אינן זמינות בגלל הגדרת קבועה"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1791
 msgid "Group Members"
@@ -2112,87 +2202,87 @@ msgstr "הגבלות קבוצות אינן מומלצות."
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:368
 #, php-format
 msgid "Control who can assign terms to this %s."
-msgstr ""
+msgstr "שלוט מי יכול להקצות מונחים ל%s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:369
 #, php-format
 msgid "Control who can choose the parent page for this %s."
-msgstr ""
+msgstr "שלוט מי יכול לבחור את הדף ההורי עבור %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:370
 #, php-format
 msgid "Control editing of this %s."
-msgstr ""
+msgstr "שלוט על עריכת %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:371
 #, php-format
 msgid "Control publishing of this %s."
-msgstr ""
+msgstr "שלוט על פרסום %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:372
 #, php-format
 msgid "Control deletion of this %s."
-msgstr ""
+msgstr "שלוט על מחיקת %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:373
 #, php-format
 msgid "Control term management for this %s."
-msgstr ""
+msgstr "שלוט על ניהול המונחים עבור %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:374
 #, php-format
 msgid "Control frontend viewing of this %s."
-msgstr ""
+msgstr "שלוט על צפייה בקצה הקדמי של %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:379
 #, php-format
 msgid "Control who add this %s to %s."
-msgstr ""
+msgstr "שלוט מי מוסיף את %s הזה ל%s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
 #, php-format
 msgid "Control who can edit %s with this %s."
-msgstr ""
+msgstr "שלוט מי יכול לערוך %s עם %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:381
 #, php-format
 msgid "Control who can view %s with this %s."
-msgstr ""
+msgstr "שלוט מי יכול לראות %s עם %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:382
 #, php-format
 msgid "Control who can create a revision of %s with this %s."
-msgstr ""
+msgstr "שלוט מי יכול ליצור גרסה של %s עם %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
 #, php-format
 msgid "Control who can submit a revision of %s with this %s."
-msgstr ""
+msgstr "שלוט מי יכול להגיש גרסה של %s עם %s הזה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:387
 #, php-format
 msgid "Control who add this %s to all post types."
-msgstr ""
+msgstr "שלוט מי מוסיף את %s הזה לכל סוגי הפוסטים."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:388
 #, php-format
 msgid "Control who can edit all post types in this %s."
-msgstr ""
+msgstr "שלוט מי יכול לערוך את כל סוגי הפוסטים ב-%s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:389
 #, php-format
 msgid "Control who can view all post types in this %s."
-msgstr ""
+msgstr "שלוט מי יכול לצפות בכל סוגי הפוסטים ב-%s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:390
 #, php-format
 msgid "Control who can create a revision of all post types in this %s."
-msgstr ""
+msgstr "שלוט מי יכול ליצור גרסה של כל סוגי הפוסטים ב-%s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
 #, php-format
 msgid "Control who can submit a revision of all post types in this %s."
-msgstr ""
+msgstr "שלוט מי יכול להגיש גרסה של כל סוגי הפוסטים ב-%s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
 msgid "Roles & Groups"
@@ -2214,25 +2304,25 @@ msgstr "משתמשים"
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:552
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
 msgid "Sort by:"
-msgstr ""
+msgstr "מיין לפי:"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:554
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
 msgid "Name (A-Z)"
-msgstr ""
+msgstr "שם (א'-ת')"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:618
 msgid "Name (Z-A)"
-msgstr ""
+msgstr "שם (ת'-א')"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
 msgid "Most Users"
-msgstr ""
+msgstr "הכי הרבה משתמשים"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:557
 msgid "Fewest Users"
-msgstr ""
+msgstr "הכי מעט משתמשים"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:567
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:778
@@ -2308,7 +2398,7 @@ msgstr "סעיף זה"
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
-msgstr ""
+msgstr "הסר הרשאות מותאמות אישית למשתמש"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
 #, php-format
@@ -2317,12 +2407,16 @@ msgid ""
 "Settings%2$s and indicate which Post Types and Taxonomies should be "
 "filtered."
 msgstr ""
+"PublishPress Permissions זקוק להנחיות. אנא עבור ל-%1$sהרשאות > הגדרות%2$s "
+"וציין אילו סוגי פוסטים וטקסונומיות צריכים להיות מסוננים."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:88
 msgid ""
 "Please upgrade PublishPress Authors to version 3.8.0 or later for "
 "Permissions integration."
 msgstr ""
+"אנא עדכן את PublishPress Authors לגרסה 3.8.0 או מאוחרת יותר כדי לאפשר "
+"אינטגרציה עם הרשאות."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:40
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:44
@@ -2332,7 +2426,7 @@ msgstr "לא ניתן להעניק עריכה למשתמשים שאינם משת
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:41
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:45
 msgid "You can now set individual permissions for"
-msgstr ""
+msgstr "כעת תוכל לקבוע הרשאות אישיות עבור"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:42
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:46
@@ -2344,28 +2438,28 @@ msgstr "הכל"
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:45
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:49
 msgid "Default"
-msgstr ""
+msgstr "ברירת מחדל"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:50
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
 msgid "Please select a bulk action first."
-msgstr ""
+msgstr "אנא בחר פעולה קבוצתית ראשונה."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:51
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
 msgid "Please select at least one item."
-msgstr ""
+msgstr "אנא בחר לפחות פריט אחד."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:52
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:56
 msgid "Are you sure you want to remove the selected user(s) from exceptions?"
-msgstr ""
+msgstr "האם אתה בטוח שברצונך להסיר את המשתמשים שנבחרו מהחרגות?"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:53
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:57
 #, php-format
 msgid "Remove the custom permisisons for \"%s\"?"
-msgstr ""
+msgstr "להסיר את ההרשאות המותאמות עבור \"%s\"?"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:126
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:516
@@ -2440,6 +2534,8 @@ msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
 msgstr ""
+"הערה: קבוצות BuddyPress וקבוצות אחרות שהוגדרו חיצונית אינן מופיעות כאן, גם "
+"אם הן משנה את ההרשאות"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:299
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
@@ -2466,17 +2562,17 @@ msgstr "הקצה (כל הסוגים)"
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
 #, php-format
 msgid "%s (All Types)"
-msgstr ""
+msgstr "%s (כל הסוגים)"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
 #, php-format
 msgid "%1$s %2$s in this %3$s"
-msgstr ""
+msgstr "%1$s %2$s ב-%3$s הזה"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:172
 #, php-format
 msgid "%1$s this %2$s"
-msgstr ""
+msgstr "%1$s זה %2$s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:273
 #, php-format
@@ -2491,6 +2587,8 @@ msgid ""
 "also %2$sdefine universal %3$s permissions which apply to all related post "
 "types%4$s."
 msgstr ""
+"הרשאות המוצגות הן אלה שהוקצו לסוג \"%1$s\". אתה יכול גם %2$sלהגדיר הרשאות "
+"אוניברסליות %3$s שיחולו על כל סוגי הפוסטים הקשורים%4$s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:316
 #, php-format
@@ -2525,6 +2623,8 @@ msgid ""
 "also %3$sdefine universal %4$s permissions which apply to all related post "
 "types%5$s."
 msgstr ""
+"הרשאות המוצגות הן אלה שהוקצו לסוג \"%1$s\".%2$sאתה יכול גם %3$sלהגדיר "
+"הרשאות אוניברסליות %4$s שיחולו על כל סוגי הפוסטים הקשורים%5$s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:38
 #, php-format
@@ -2533,6 +2633,8 @@ msgid ""
 "%2$sdefine universal %3$s permissions which apply to all related post "
 "types%4$s."
 msgstr ""
+"הרשאות המפורטות הן אלה שהוקצו לסוג \"%1$s\". אתה יכול גם %2$sלהגדיר הרשאות "
+"אוניברסליות %3$s שיחולו על כל סוגי הפוסטים הקשורים%4$s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:58
 msgid "Click to list/edit universal permissions"
@@ -2620,6 +2722,8 @@ msgid ""
 "Note: Groups are a more flexible alternative to user roles. You can create "
 "groups of users and give or deny them access to areas of your site."
 msgstr ""
+"הערה: קבוצות הן אלטרנטיבה יותר גמישה לתפקידי משתמש. אתה יכול ליצור קבוצות "
+"של משתמשים ולתת או למנוע מהם גישה לאזורים באתר שלך."
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:122
 msgid "Create Group"
@@ -2765,7 +2869,7 @@ msgstr "אינך יכול למחוק את הקבוצה הזו."
 msgid ""
 "To block direct access to unreadable files, activate the File Access "
 "feature."
-msgstr ""
+msgstr "כדי לחסום גישה ישירה לקבצים שלא ניתן לקרוא, הפעל את תכונת גישת הקבצים."
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:18
 #, php-format
@@ -2773,6 +2877,8 @@ msgid ""
 "To block direct access to unreadable files, %1$supgrade to Permissions "
 "Pro%2$s and enable the File Access feature."
 msgstr ""
+"כדי לחסום גישה ישירה לקבצים שלא ניתן לקרוא, %1$sשדרג ל-Permissions Pro%2$s "
+"והפעל את תכונת גישת הקבצים."
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:29
 msgid "To customize editing permissions, enable the Editing Permissions feature."
@@ -2787,6 +2893,8 @@ msgid ""
 "To block direct URL access to attachments of unreadable posts, activate the "
 "File Access feature."
 msgstr ""
+"כדי לחסום גישה ישירה ל-URL של קבצים מצורפים של פוסטים שלא ניתן לקרוא, הפעל "
+"את תכונת גישת הקבצים."
 
 #: classes/PublishPress/Permissions/UI/HintsMedia.php:19
 #, php-format
@@ -2794,6 +2902,8 @@ msgid ""
 "To block direct URL access to attachments of unreadable posts, %1$supgrade "
 "to Permissions Pro%2$s and enable the File Access feature."
 msgstr ""
+"כדי לחסום גישה ישירה ל-URL של קבצים מצורפים של פוסטים שלא ניתן לקרוא, "
+"%1$sשדרג ל-Permissions Pro%2$s והפעל את תכונת גישת הקבצים."
 
 #: classes/PublishPress/Permissions/UI/HintsPostEdit.php:14
 msgid "Customize"
@@ -2907,30 +3017,36 @@ msgid ""
 "If disabled, manually \"blocked\" posts can be unblocked by specific "
 "Category / Term Permissions."
 msgstr ""
+"אם זה מושבת, פוסטים שהיו \"חסומים\" ידנית יכולים להיות משוחזרים על ידי "
+"הרשאות קטגוריה / מונח ספציפיות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:63
 msgid ""
 "If enabled, corresponding Media edit and delete capabilities must be added "
 "to existing roles."
 msgstr ""
+"אם זה מופעל, יכולות עריכה ומחיקה מתאימות של מדיה חייבות להתווסף לתפקידים "
+"הקיימים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:66
 msgid ""
 "For specialized Media Library permissions, enable the Editing Permissions "
 "feature."
-msgstr ""
+msgstr "להרשאות ספריית מדיה מיוחדות, הפעל את תכונת הרשאות העריכה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:69
 msgid ""
 "To customize bbPress forum permissions, activate the Compatibility Pack "
 "feature."
-msgstr ""
+msgstr "כדי להתאים אישית את הרשאות פורום bbPress, הפעל את תכונת חבילת ההתאמה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:72
 msgid ""
 "To customize bbPress forum permissions, activate your Permissions Pro "
 "license key."
 msgstr ""
+"כדי להתאים אישית את הרשאות פורום bbPress, הפעל את מפתח הרישוי שלך "
+"ל-Permissions Pro."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:75
 msgid "Remove the \"Private:\" and \"Protected\" prefix from Post, Page titles."
@@ -2940,19 +3056,23 @@ msgstr "הסר את הקידומת \"פרטי:\" ו-\"מוגן\" משמות הפ
 msgid ""
 "If the user is blocked from reading posts in a category, also block access "
 "to category archive page."
-msgstr ""
+msgstr "אם המשתמש חסום מקריאת פוסטים בקטגוריה, חסום גם גישה לדף הארכיון של הקטגוריה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:81
 msgid ""
 "Remove unreadable Menu Items. If menu rendering problems occur with a third "
 "party plugin, disable this setting."
 msgstr ""
+"הסר פריטי תפריט שלא ניתן לקרוא. אם מתרחשות בעיות בהצגת התפריט עם תוסף של צד "
+"שלישי, השבת את הגדרה זו."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:84
 msgid ""
 "Unmodified from WordPress default behavior. To enable filtering, remove "
 "constant definition PP_ADMIN_READONLY_LISTABLE."
 msgstr ""
+"לא שונה מהתנהגות ברירת המחדל של WordPress. כדי לאפשר סינון, הסר את הגדרת "
+"הקבוע PP_ADMIN_READONLY_LISTABLE."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:87
 msgid "Note: Groups and Roles are always displayed on the Edit User screen."
@@ -2970,19 +3090,21 @@ msgstr "תאימות ישנה: פילטרי מונחים בחזית אינם מ�
 msgid ""
 "If checked, pages blocked from the \"All\" or \"Logged In\" groups will "
 "still be listed to Administrators."
-msgstr ""
+msgstr "אם נבדק, דפים חסומים מקבוצות \"כולם\" או \"מחוברים\" עדיין יופיעו למנהלים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:101
 msgid ""
 "If enabled, users with the pp_set_read_exceptions capability in the WP role "
 "can set reading permissions for their editable posts."
 msgstr ""
+"אם זה מופעל, משתמשים עם היכולת pp_set_read_exceptions בתפקיד ה-WP יכולים "
+"לקבוע הרשאות קריאה לפוסטים שניתן לערוך שלהם."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:104
 msgid ""
 "Display a role dropdown alongside the user search input box to narrow "
 "results."
-msgstr ""
+msgstr "הצג תפריט תפקידים לצד תיבת החיפוש של המשתמש כדי לצמצם תוצאות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:107
 msgid "Display descriptive captions on Permissions screens."
@@ -2992,7 +3114,7 @@ msgstr "הצג כותרות תיאוריות על מסכי הרשאות."
 msgid ""
 "Display descriptive captions for features available in missing or "
 "deactivated modules."
-msgstr ""
+msgstr "הצג כותרות תיאוריות עבור תכונות זמינות במודולים חסרים או מושבתים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:113
 msgid ""
@@ -3000,6 +3122,9 @@ msgid ""
 "Editor, etc.) to be assigned for the selected post type. Enable this "
 "setting to also include all other capabilities in the Pattern Role."
 msgstr ""
+"תפקידים נוספים גורמים לכך שיכולות \"_posts\" בתפקיד הדפוס (מחבר, עורך וכו') "
+"יוקצו לסוג הפוסט הנבחר. אפשר הגדרה זו כדי לכלול גם את כל שאר היכולות בתפקיד "
+"הדפוס."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:116
 msgid ""
@@ -3007,6 +3132,9 @@ msgid ""
 "database. May be useful for sites that sync with Active Directory or other "
 "external user registration systems."
 msgstr ""
+"גלה תפקידי משתמש המתווספים דינמית אך אינם נשמרים במסד הנתונים של WP. עשוי "
+"להיות שימושי עבור אתרים שמת синכרנים עם Active Directory או מערכות רישום "
+"משתמשים חיצוניות אחרות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:119
 #, php-format
@@ -3014,6 +3142,8 @@ msgid ""
 "You can adjust some Permissions behavior by %1$s adding capabilities to a "
 "WordPress role%2$s."
 msgstr ""
+"אתה יכול להתאים חלק מהתנהגות ההרשאות על ידי %1$s הוספת יכולות לתפקיד "
+"WordPress %2$s."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:122
 #, php-format
@@ -3024,13 +3154,13 @@ msgstr "אתה יכול להוסיף יכולות הרשאות לתפקיד בא
 msgid ""
 "Regardless of this setting, the pp_set_read_exceptions capability is also "
 "required."
-msgstr ""
+msgstr "בלי קשר להגדרה זו, היכולת pp_set_read_exceptions דרושה גם כן."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:128
 msgid ""
 "Regardless of this setting, the pp_set_edit_exceptions capability is also "
 "required."
-msgstr ""
+msgstr "בלי קשר להגדרה זו, היכולת pp_set_edit_exceptions דרושה גם כן."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
 #, php-format
@@ -3042,24 +3172,32 @@ msgid ""
 "If this setting is disabled, you can enable a role by giving it "
 "capabilities: list_others_posts, list_others_published_pages, etc."
 msgstr ""
+"אם הגדרה זו מושבתת, אתה יכול להפעיל תפקיד על ידי מתן יכולות: "
+"list_others_posts, list_others_published_pages וכו'."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:138
 msgid ""
 "Display a custom column on Edit Posts screen for all related taxonomies "
 "which are enabled for Permissions filtering."
 msgstr ""
+"הצג עמודה מותאמת אישית במסך עריכת פוסטים עבור כל הטקסונומיות הקשורות "
+"המאפשרות סינון הרשאות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:141
 msgid ""
 "Allows creation of a new post (of any type) for each selected user, using "
 "an existing post as the pattern."
 msgstr ""
+"מאפשר יצירת פוסט חדש (בכל סוג) עבור כל משתמש נבחר, תוך שימוש בפוסט קיים "
+"כדוגמה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:144
 msgid ""
 "Other users will be unable to publish new top-level pages (Parent = \"Main "
 "Page\"), or move a published page from \"Main Page\" to a different Parent."
 msgstr ""
+"משתמשים אחרים לא יוכלו לפרסם דפי עליונים חדשים (הורה = \"דף ראשי\"), או "
+"להעביר דף שפורסם מ\"דף ראשי\" להורה אחר."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:147
 msgid ""
@@ -3067,6 +3205,8 @@ msgid ""
 "> Element IDs. Please use the Capabilities plugin for better organization "
 "and enhanced functionality."
 msgstr ""
+"תכונה זו הועברה ל-PublishPress Capabilities > תכונות עורך > מזהי אלמנט. אנא "
+"השתמש בתוסף ההרשאות לארגון טוב יותר ולפונקציות משופרות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:150
 msgid ""
@@ -3074,60 +3214,79 @@ msgid ""
 "PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you "
 "maintain). Media Library access will not be altered by Permissions."
 msgstr ""
+"ההגדרות הבאות מוחלפות כרגע על ידי הקבוע PP_MEDIA_LIB_UNFILTERED (המוגדר "
+"ב-wp-config.php או קובץ אחר שאתה מתחזק). גישה לספריית המדיה לא תשתנה על ידי "
+"הרשאות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:153
 msgid ""
 "Show files uploaded by others users if they are attached to a post the user "
 "is allowed to view."
 msgstr ""
+"הצג קבצים שהועלו על ידי משתמשים אחרים אם הם מצורפים לפוסט שהמשתמש יכול "
+"לצפות בו."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:156
 msgid ""
 "Show files uploaded by other users if they are attached to a post the user "
 "is allowed to edit."
 msgstr ""
+"הצג קבצים שהועלו על ידי משתמשים אחרים אם הם מצורפים לפוסט שהמשתמש יכול "
+"לערוך."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:159
 msgid ""
 "Allow users to edit files uploaded by other users if they are attached to a "
 "post the user is allowed to edit."
 msgstr ""
+"אפשר למשתמשים לערוך קבצים שהועלו על ידי משתמשים אחרים אם הם מצורפים לפוסט "
+"שהמשתמש יכול לערוך."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:162
 msgid ""
 "Show users all the files in the Media Library. Unchecking this box will "
 "hide media files that are uploaded by other users."
 msgstr ""
+"הצג למשתמשים את כל הקבצים בספריית המדיה. ביטול סימון תיבה זו יסתיר קבצי "
+"מדיה שהועלו על ידי משתמשים אחרים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:165
 msgid ""
 "Stop users from editing files uploaded by other users unless they are "
 "attached to a post the user is allowed to edit."
 msgstr ""
+"מנע ממשתמשים לערוך קבצים שהועלו על ידי משתמשים אחרים אלא אם כן הם מצורפים "
+"לפוסט שהמשתמש יכול לערוך."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:168
 msgid ""
 "Allow users to edit files they have uploaded, regardless of other "
 "restrictions."
-msgstr ""
+msgstr "אפשר למשתמשים לערוך קבצים שהם העלו, ללא קשר להגבלות אחרות."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:171
 msgid ""
 "Allow non-Administrators to rename menu items they cannot fully edit. Menu "
 "items will be locked into current positions."
 msgstr ""
+"אפשר למי שאינם מנהלים לשנות את שמות פריטי התפריט שאינם יכולים לערוך במלואם. "
+"פריטי התפריט יהיו נעולים במיקומים הנוכחיים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:174
 msgid ""
 "Prevent creation or editing of custom items for non-Administrators who lack "
 "edit_theme_options capability."
 msgstr ""
+"מנע יצירה או עריכה של פריטים מותאמים אישית עבור משתמשים שאינם מנהלים שאין "
+"להם את היכולת edit_theme_options."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:177
 msgid ""
 "Prevent non-Administrators with user editing permissions from editing a "
 "higher-level user or assigning a role higher than their own."
 msgstr ""
+"מנע ממשתמשים שאינם מנהלים עם הרשאות עריכה לערוך משתמש ברמה גבוהה יותר או "
+"להקצות תפקיד גבוה יותר מזה שלהם."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:180
 msgid ""
@@ -3135,24 +3294,30 @@ msgid ""
 "pp_set_associate_exceptions, etc. will be honored. See list of capabilities "
 "below."
 msgstr ""
+"אם אפשר, היכולות pp_set_edit_exceptions, pp_set_associate_exceptions וכו' "
+"יכובדו. ראה רשימה של יכולות למטה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:184
 msgid ""
 "Circle members will be blocked from accessing Revisions authored by "
 "non-members."
-msgstr ""
+msgstr "חברי המעגל ייחסמו מלהגיע לגרסאות שנכתבו על ידי שאינם חברים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:196
 msgid ""
 "Enable post contributors or authors with pp_set_edit_exceptions capability "
 "to set editing Permissions on posts authored by others"
 msgstr ""
+"אפשר למשתמשי פוסט או מחברים עם היכולת pp_set_edit_exceptions לקבוע הרשאות "
+"עריכה על פוסטים שנכתבו על ידי אחרים"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:200
 msgid ""
 "Permissions setting 'Pages can be set or removed from Top Level by' applies "
 "to 'page' type only"
 msgstr ""
+"הגדרת הרשאות 'דפים יכולים להיות מוגדרים או מוסרים מרמה עליונה על ידי' חלה "
+"רק על סוג 'דף'"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:203
 msgid ""
@@ -3160,24 +3325,30 @@ msgid ""
 "editing is already there, allow it to stay at top level even if not yet "
 "published "
 msgstr ""
+"אם למשתמש אין אפשרות לשמור דפים לרמה עליונה אך דף שהוא עורך כבר נמצא שם, "
+"אפשר לו להישאר ברמה העליונה גם אם עדיין לא פורסם "
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:206
 msgid ""
 "Circle membership does not limit page association (page parent setting) "
 "ability"
-msgstr ""
+msgstr "חברות במעגל אינה מגבילה את היכולת לקשר דפים (הגדרת הורה לדף)"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:210
 msgid ""
 "Determines the default value of Permissions > Settings > Editing > "
 "Auto-assign default term"
 msgstr ""
+"קובע את הערך ברירת המחדל של הרשאות > הגדרות > עריכה > הקצה אוטומטית מונח "
+"ברירת מחדל"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:213
 msgid ""
 "Always auto-assign a category if none are selected and user lacks "
 "permission for default category"
 msgstr ""
+"תמיד הקצה אוטומטית קטגוריה אם אף אחת לא נבחרה והמשתמש חסר הרשאה עבור "
+"קטגוריה ברירת מחדל"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:216
 msgid "Always auto-assign a post tag if none are selected"
@@ -3192,12 +3363,16 @@ msgid ""
 "Determines the default setting of Permissions > Settings > Editing > "
 "Auto-assign default terms"
 msgstr ""
+"קובע את הגדרת ברירת המחדל של הרשאות > הגדרות > עריכה > הקצה אוטומטית מונחים "
+"ברירת מחדל"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:225
 msgid ""
 "Do not auto-assign a category (except standard default category if user has "
 "permission)"
 msgstr ""
+"אל תעשה הקצאה אוטומטית של קטגוריה (חוץ מקטגוריה ברירת מחדל סטנדרטית אם "
+"למשתמש יש הרשאה)"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:228
 msgid "Do not auto-assign a post tag"
@@ -3211,13 +3386,15 @@ msgstr "אל תקצה אוטומטית מונח של טקסונומיה זו"
 msgid ""
 "Do not auto-assign a term if the user has permission for more than one term "
 "in the taxonomy"
-msgstr ""
+msgstr "אל תעשה הקצאה אוטומטית של מונח אם למשתמש יש הרשאה למעלה ממונח אחד במיון"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:237
 msgid ""
 "If auto-assign term setting is enabled, apply it even if user does not have "
 "term assignment limitations"
 msgstr ""
+"אם הגדרת הקצאת מונח אוטומטית מופעלת, יש ליישם אותה גם אם למשתמש אין מגבלות "
+"על הקצאת מונחים"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:240
 msgid "Don't define an 'Approved' status, even if Status Control feature is active"
@@ -3229,24 +3406,32 @@ msgid ""
 "'edit_theme_options', strip link out of wp-admin Appearance Menu instead of "
 "linking it to nav-menus"
 msgstr ""
+"אם למשתמש יש יכולות ניהול תפריטי ניווט אך אינו יכול 'edit_theme_options', "
+"הסר את הקישור מתוך תפריט המראה של wp-admin במקום לקשר אותו לתפריטי ניווט"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:248
 msgid ""
 "Don't credit implicit 'manage_nav_menus' capability to users who have "
 "'edit_theme_options' or 'switch_themes' capability"
 msgstr ""
+"אל תזכה ביכולת המוסתרת 'manage_nav_menus' למשתמשים שיש להם את היכולת "
+"'edit_theme_options' או 'switch_themes'"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:251
 msgid ""
 "Prevent non-Administrators from adding new Nav Menu items to top level (add "
 "below existing editable items instead)"
 msgstr ""
+"מנע ממשתמשים שאינם מנהלים להוסיף פריטי תפריט ניווט חדשים לרמה העליונה (הוסף "
+"מתחת לפריטים הניתנים לעריכה הקיימים במקום)"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:254
 msgid ""
 "For non-Administrators, new Nav Menu items default to being a child of "
 "first editable item "
 msgstr ""
+"עבור משתמשים שאינם מנהלים, פריטי תפריט ניווט חדשים ברירת המחדל הם ילד של "
+"הפריט הראשון הניתן לעריכה "
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:257
 msgid ""
@@ -3254,12 +3439,14 @@ msgid ""
 "settings (normally require 'manage_menu_settings', 'edit_others_pages' or "
 "'publish_pages') "
 msgstr ""
+"אל תדרוש יכולות נוספות לניהול הגדרות תפריט ניווט (בדרך כלל דרוש "
+"'manage_menu_settings', 'edit_others_pages' או 'publish_pages') "
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:260
 msgid ""
 "Eliminate extra filtering queries on Nav Menu update, even for "
 "non-Administrators"
-msgstr ""
+msgstr "חסל שאילתות סינון נוספות על עדכון תפריט ניווט, גם עבור משתמשים שאינם מנהלים"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:265
 msgid ""
@@ -3267,6 +3454,9 @@ msgid ""
 "regardless of Permissions settings.  Their own unattached uploads are still "
 "accessible unless option 'own_attachments_always_editable' is set false"
 msgstr ""
+"אל תאפשר למשתמשים שאינם מנהלים לראות קבצים לא מצורפים של אחרים, ללא קשר "
+"להגדרות ההרשאות. הקבצים הלא מצורפים שלהם עדיין נגישים אלא אם האפשרות "
+"'own_attachments_always_editable' מוגדרת לשקר"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:270
 msgid "Limited User Editors can assign their own role"
@@ -3277,6 +3467,8 @@ msgid ""
 "Post Meta fields to copy when using 'Add Author Page' dropdown on Users "
 "screen"
 msgstr ""
+"שדות מטא של פוסטים להעתקה כאשר משתמשים ברשימה הנפתחת 'הוסף דף מחבר' במסך "
+"המשתמשים"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:282
 msgid "Manage PublishPress Permissions plugin settings."
@@ -3287,12 +3479,14 @@ msgid ""
 "PublishPress Permissions will not apply any Extra Roles or Permissions to "
 "limit or expand viewing or editing access."
 msgstr ""
+"הרשאות PublishPress לא יחולו על תפקידים או הרשאות נוספות כדי להגביל או "
+"להרחיב את הגישה לצפייה או לעריכה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:284
 msgid ""
 "Manage other user's Permissions. Also grants capabilities for all post "
 "types and statuses."
-msgstr ""
+msgstr "נהל את ההרשאות של משתמשים אחרים. גם מעניק יכולות לכל סוגי הפוסטים והמצבים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:285
 msgid "Create new Permission Groups and set the name and description."
@@ -3358,7 +3552,7 @@ msgstr "ראה את העלאות הקבצים הלא מחוברות של משת�
 msgid ""
 "Can bypass restrictive \"Set as Parent\" Permissions (for all hierarchical "
 "post types)."
-msgstr ""
+msgstr "יכול לעקוף הרשאות מגבילות \"קבע כהורה\" (לכל סוגי הפוסטים ההיררכיים)."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:309
 msgid "Do not alter the Media Library listing provided by WordPress."
@@ -3369,24 +3563,32 @@ msgid ""
 "On the Posts screen, satisfy a missing edit_posts capability by listing "
 "uneditable drafts."
 msgstr ""
+"במסך הפוסטים, סיים יכולת edit_posts חסרה על ידי רישום טיוטות שאינן ניתנות "
+"לעריכה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:311
 msgid ""
 "On the Posts screen, satisfy a missing edit_others_posts capability by "
 "listing other user's uneditable posts."
 msgstr ""
+"במסך הפוסטים, סיים יכולת edit_others_posts חסרה על ידי רישום פוסטים לא "
+"ניתנים לעריכה של משתמשים אחרים."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:312
 msgid ""
 "On the Pages screen, satisfy a missing edit_private_pages capability by "
 "listing uneditable private pages."
 msgstr ""
+"במסך הדפים, סיים יכולת edit_private_pages חסרה על ידי רישום דפים פרטיים לא "
+"ניתנים לעריכה."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:313
 msgid ""
 "Allow non-Administrators to Quick Edit or Bulk Edit (possibly allowing them "
 "to bypass restrictions)."
 msgstr ""
+"אפשר למשתמשים שאינם מנהלים לערוך במהירות או לערוך באופן מרוכז (עשוי לאפשר "
+"להם לעקוף מגבלות)."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:320
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:321
@@ -3587,6 +3789,8 @@ msgid ""
 "note: Plugin settings and configuration data will be deleted, but only "
 "after the last copy of Permissions / Permissions Pro is deleted."
 msgstr ""
+"הערה: הגדרות ותצורות של התוסף יימחקו, אך רק לאחר שהעותק האחרון של "
+"Permissions / Permissions Pro יימחק."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:272
 msgid "The following would revert to default settings:"
@@ -3617,6 +3821,8 @@ msgid ""
 "When saving a post, if the default term is not selectable, substitute first "
 "available."
 msgstr ""
+"כאשר שומרים פוסט, אם המונח ברירת המחדל אינו ניתן לבחירה, החלף במונח הראשון "
+"הזמין."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:357
 msgid "Some term-limited editing configurations require this."
@@ -3628,6 +3834,9 @@ msgid ""
 "edit_tags capability. You can manage this with a WordPress role editor like "
 "PublishPress Capabilities."
 msgstr ""
+"אם מופעל, משתמשים אינם יכולים ליצור תגים חדשים לפוסט אלא אם יש להם את יכולת "
+"edit_tags. אתה יכול לנהל זאת עם עורך תפקידים של WordPress כמו PublishPress "
+"Capabilities."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:368
 msgid ""
@@ -3635,12 +3844,16 @@ msgid ""
 "edit_tags capability. You can manage this with Capabilities > Capabilities "
 "> Taxonomies for any role."
 msgstr ""
+"אם מופעל, משתמשים אינם יכולים ליצור תגים חדשים לפוסט אלא אם יש להם את יכולת "
+"edit_tags. אתה יכול לנהל זאת עם יכולות > יכולות > טקסונומיות עבור כל תפקיד."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:373
 msgid ""
 "Display all permission operations in a single metabox with tabs (modern "
 "UI). When disabled, each operation has a separate metabox (legacy UI)."
 msgstr ""
+"הצג את כל פעולות ההרשאה במטא-בוקס אחד עם כרטיסיות (ממשק מודרני). כאשר זה "
+"מושבת, כל פעולה יש לה מטא-בוקס נפרד (ממשק ישן)."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:416
 #, php-format
@@ -3688,6 +3901,9 @@ msgid ""
 "(or some other file which is always executed and not auto-updated) and "
 "modify as desired:"
 msgstr ""
+"כדי לשנות הגדרה אחת או יותר ברירת המחדל ברשת, <strong>העתק</strong> את הקוד "
+"הבא לתוך קובץ <strong>functions.php</strong> של העיצוב שלך (או קובץ אחר "
+"שתמיד מתבצע ואינו מעודכן אוטומטית) ושנה לפי הצורך:"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:814
 msgid ""
@@ -3696,12 +3912,17 @@ msgid ""
 "<strong>functions.php</strong> file (or some other file which is always "
 "executed and not auto-updated) and modify as desired:"
 msgstr ""
+"כדי לכפות את הערך של הגדרה אחת או יותר ברשת, <strong>העתק</strong> את הקוד "
+"הבא לתוך קובץ <strong>functions.php</strong> של העיצוב שלך (או קובץ אחר "
+"שתמיד מתבצע ואינו מעודכן אוטומטית) ושנה לפי הצורך:"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:849
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
 msgstr ""
+"כל ההגדרות בטופס זה (כולל אלו בכרטיסיות שאינן מוצגות) יוחזרו לברירות המחדל. "
+"האם אתה בטוח?"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:852
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
@@ -3772,6 +3993,9 @@ msgid ""
 "are accessed via WordPress. To restrict viewing of files when they are "
 "visited directly via the URL, use the \"File Access\" feature."
 msgstr ""
+"תכונה זו מאפשרת לך להגביל גישה לקבצים בספריית המדיה כאשר הם ניגשים דרך "
+"WordPress. כדי להגביל צפייה בקבצים כאשר הם מבוקשים ישירות דרך ה-URL, השתמש "
+"בתכונת \"גישה לקבצים\"."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:254
 #, php-format
@@ -3895,7 +4119,7 @@ msgstr "מוכן לאבטח את הקבצים שלך?"
 msgid ""
 "Upgrade to Pro and get advanced file access control with all these features "
 "and more."
-msgstr ""
+msgstr "שדרגו לגרסה Pro וקבלו בקרת גישה לקבצים מתקדמת עם כל התכונות הללו ועוד."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:25
 msgid "Integrations"
@@ -3917,7 +4141,7 @@ msgstr "שחרר אינטגרציות פרו"
 msgid ""
 "Upgrade to the Pro version for optimal compatibility and prompt, "
 "professional support."
-msgstr ""
+msgstr "שדרגו לגרסה Pro עבור תאימות אופטימלית ותמיכה מקצועית מהירה."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:121
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229
@@ -3953,7 +4177,7 @@ msgid "Multilingual"
 msgstr "רב לשוני"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:142
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233, fuzzy
 msgid "SEO"
 msgstr "SEO"
 
@@ -4018,7 +4242,7 @@ msgstr "התראות חברות"
 msgid ""
 "Limit access based on post authorship and group membership for more "
 "granular permissions control."
-msgstr ""
+msgstr "מגביל גישה על בסיס מחבר הפוסט וחברות בקבוצה לשליטה מדויקת יותר בהרשאות."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:177
 msgid "Modify viewing or editing access"
@@ -4064,7 +4288,7 @@ msgstr "מוכן לשדרג את תכונות החברות שלך?"
 msgid ""
 "Upgrade to Pro and get advanced membership management with circles, "
 "time-limited memberships, and more."
-msgstr ""
+msgstr "שדרג ל-Pro וקבל ניהול חברויות מתקדם עם מעגלים, חברויות מוגבלות בזמן, ועוד."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabModules.php:21
 msgid "Features"
@@ -4172,7 +4396,7 @@ msgstr "מוכן ליצור פוסטים אוטומטית עבור המשתמש�
 msgid ""
 "Upgrade to Pro and get advanced user post generation with all these "
 "features and more."
-msgstr ""
+msgstr "שדרג ל-Pro וקבל יצירת פוסטים מתקדמת עם כל התכונות הללו ועוד."
 
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:38
 msgid "Username"
@@ -4239,6 +4463,8 @@ msgid ""
 "You're using PublishPress Permissions Free. The Pro version has more "
 "features and support. %sUpgrade to Pro%s"
 msgstr ""
+"אתה משתמש ב-PublishPress Permissions Free. לגרסה Pro יש תכונות נוספות "
+"ותמיכה. %sשדרג ל-Pro%s"
 
 #: includes/CoreAdmin.php:100
 msgid "Promo file not found."
@@ -4258,6 +4484,8 @@ msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
 "PublishPress Permissions Pro."
 msgstr ""
+"הצג הודעת טיזר או בקשה להתחברות עבור תוכן מוגן. זמין ב-PublishPress "
+"Permissions Pro."
 
 #: includes/promo/statuses-promo.php:5
 msgid "Post Statuses for Editorial Workflow"
@@ -4268,12 +4496,16 @@ msgid ""
 "Control access to custom post statuses. This workflow feature is available "
 "in PublishPress Permissions Pro."
 msgstr ""
+"שלוט בגישה לסטטוסים מותאמים לפוסטים. תכונת זרימת עבודה זו זמינה "
+"ב-PublishPress Permissions Pro."
 
 #: includes/promo/sync-promo.php:18
 msgid ""
 "Automatically generate a personal page for each user. This feature is "
 "available in PublishPress Permissions Pro."
 msgstr ""
+"צור אוטומטית עמוד אישי לכל משתמש. תכונה זו זמינה ב-PublishPress Permissions "
+"Pro."
 
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
@@ -4284,6 +4516,8 @@ msgid ""
 "Control access to post visibility statuses. This workflow feature is "
 "available in PublishPress Permissions Pro."
 msgstr ""
+"שלוט בגישה לסטטוסים של נראות פוסטים. תכונת זרימת עבודה זו זמינה "
+"ב-PublishPress Permissions Pro."
 
 #: includes/SettingsTabInstall.php:24
 msgid "License"
@@ -4311,12 +4545,14 @@ msgid ""
 "Your presspermit.com key has expired, but a <a href=\"%s\">PublishPress "
 "renewal</a> discount may be available."
 msgstr ""
+"המפתח שלך ל-presspermit.com פג תוקף, אך עשוי להיות הנחה על <a "
+"href=\"%s\">חידוש PublishPress</a>."
 
 #: includes/SettingsTabInstall.php:136
 msgid ""
 "Permissions Pro was previously active. You are now running the free "
 "version, with fewer features."
-msgstr ""
+msgstr "הרשאות Pro היו פעילות בעבר. אתה כרגע מפעיל את הגרסה החינמית, עם פחות תכונות."
 
 #: includes/SettingsTabInstall.php:141
 #, php-format
@@ -4325,6 +4561,9 @@ msgid ""
 "target=\"_blank\">Contact us</a> for assistance in migrating your account "
 "to publishpress.com."
 msgstr ""
+"מפתח presspermit.com נראה כאילו הוא פעיל. <a href=\"%s\" "
+"target=\"_blank\">צור קשר</a> לקבלת עזרה במעבר החשבון שלך "
+"ל-publishpress.com."
 
 #: includes/SettingsTabInstall.php:200
 #: includes/SettingsTabInstall.php:210
@@ -4401,7 +4640,7 @@ msgstr "עבור ל%s"
 msgid ""
 "The requested modification was processed, but you can no longer edit the "
 "post."
-msgstr ""
+msgstr "השינוי המבוקש עובד, אך אינך יכול יותר לערוך את הפוסט."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:429
 #, php-format
@@ -4488,7 +4727,7 @@ msgstr "דף אושר"
 msgid ""
 "Limited Editing Elements feature has moved to <a href=\"%s\">Capabilities > "
 "Editor Features</a>."
-msgstr ""
+msgstr "תכונת עריכת אלמנטים מוגבלת הועברה ל-<a href=\"%s\">יכולות > תכונות עורך</a>."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:117
 #, php-format
@@ -4496,6 +4735,8 @@ msgid ""
 "Limited Editing Elements feature requires <a href=\"%s\" "
 "target=\"_blank\">PublishPress Capabilities</a> plugin."
 msgstr ""
+"תכונת עריכת אלמנטים מוגבלת דורשת את התוסף <a href=\"%s\" "
+"target=\"_blank\">PublishPress Capabilities</a>."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
 msgid "Author Search / Select"
@@ -4603,6 +4844,9 @@ msgid ""
 "extra roles. Your existing WP Role Definitions can be applied in two "
 "different ways:"
 msgstr ""
+"הגדרות אופציונליות אלו מותאמות אישית כיצד PublishPress Permissions מיישם "
+"תפקידים נוספים. הגדרות תפקידי WP הקיימות שלך יכולות להיות מיועדות בשתי "
+"דרכים שונות:"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:74
 msgid ""
@@ -4610,6 +4854,8 @@ msgid ""
 "type-specific capability.  In a normal WP installation, this is the easiest "
 "solution."
 msgstr ""
+"תפקידי תבנית ממירים את יכולות ה'פוסט' ליכולת הספציפית לסוג המתאים. בהתקנה "
+"רגילה של WP, זו הפתרון הקל ביותר."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:78
 msgid "With Direct Assignment, capabilities are applied without modification."
@@ -4658,6 +4904,8 @@ msgid ""
 "Type-specific and/or status-specific equivalents of the following "
 "capabilities are included in supplemental %s roles:"
 msgstr ""
+"מקבילים ספציפיים לסוג ו/או סטטוס של היכולות הבאות כלולות בתפקידים משלימים "
+"%s:"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:136
 msgid "Arbitrary Capabilities"
@@ -4676,7 +4924,7 @@ msgstr "יכולות תפקיד"
 msgid ""
 "All capabilities defined for this WordPress role will be applied in "
 "supplemental assignments:"
-msgstr ""
+msgstr "כל היכולות המוגדרות עבור תפקיד WordPress זה ייושמו בהקצות משלימות:"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:178
 msgid "Notes regarding Pattern Roles"
@@ -4697,12 +4945,18 @@ msgid ""
 "'Author' pattern role for Pages, edit_posts and edit_published_posts become "
 "edit_pages and edit_published_pages."
 msgstr ""
+"היכולות של ה'פוסטים' בתפקיד WP קובעות את הפונקציה שלו כתפקיד תבנית להקצאה "
+"משלימה לקבוצות הרשאה. כאשר אתה מקצה את תפקיד התבנית 'מחבר' עבור דפים, "
+"edit_posts ו-edit_published_posts הופכים ל-edit_pages "
+"ו-edit_published_pages."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:40
 msgid ""
 "Role capabilities defined for other post types (i.e. 'edit_others_pages', "
 "'edit_things') are ignored unless Role Usage is set to Direct Assignment."
 msgstr ""
+"יכולות תפקיד המוגדרות עבור סוגי פוסטים אחרים (כגון 'edit_others_pages', "
+"'edit_things') מתעלמות אלא אם השימוש בתפקיד מוגדר כהקצאה ישירה."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:43
 msgid ""
@@ -4710,6 +4964,8 @@ msgid ""
 "available as a pattern role with default WP capabilities (but can be "
 "disabled here)."
 msgstr ""
+"אם אחת מהתפקידים המוגדרים כברירת מחדל נמחקה ממסד הנתונים של WP, היא תישאר "
+"זמינה כתפקיד תבנית עם יכולות WP ברירת מחדל (אך ניתן להשבית כאן)."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:55
 msgid "No matching roles were found."
@@ -4763,6 +5019,8 @@ msgid ""
 "Editor Features > Element IDs%2$s for better organization and enhanced "
 "functionality."
 msgstr ""
+"תכונת אלמנטים לעריכה מוגבלת הועברה ל-%1$sיכולות > תכונות עורך > מזהי "
+"אלמנט%2$s לארגון טוב יותר ופונקציונליות משופרת."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:146
 #, php-format
@@ -4771,6 +5029,8 @@ msgid ""
 "Capabilities plugin. Please install %1$sPublishPress Capabilities%2$s to "
 "access this functionality."
 msgstr ""
+"תכונת אלמנטים לעריכה מוגבלת הועברה לתוסף PublishPress Capabilities. אנא "
+"התקן %1$sPublishPress Capabilities%2$s כדי לגשת לפונקציאנליות זו."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:155
 msgid "Current Settings:"
@@ -4789,6 +5049,8 @@ msgid ""
 "The following settings apply to users who are able to access the Media "
 "Library. Normally this requires the upload_files or edit_files capability."
 msgstr ""
+"ההגדרות הבאות חלות על משתמשים שיכולים לגשת לספריית המדיה. בדרך כלל זה דורש "
+"את היכולת upload_files או edit_files."
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:202
 msgid "Edit Files"
@@ -4889,7 +5151,7 @@ msgstr "הסתיר תמונת כותרת כאשר טיזר מיושם"
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
-msgstr ""
+msgstr "הגדרות \"הסתר פרטי\" חלות רק על פרטיות מותאמת (חבר, פרימיום, צוות וכו')."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:139
 #, php-format
@@ -4927,7 +5189,7 @@ msgstr "כל הגדרות התצוגה של הפוסטים הוחזרו לברי
 msgid "Teaser Settings"
 msgstr "הגדרות תצוגה"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
@@ -5165,7 +5427,7 @@ msgstr "השתמש בסגנון הודעת תצוגה מקדימה מותאם א
 msgid ""
 "Choose whether to use the default message style or customize the appearance "
 "of teaser messages."
-msgstr ""
+msgstr "בחר אם להשתמש בסגנון ההודעה ברירת מחדל או להתאים את המראה של הודעות טיזר."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:438
 msgid "Teaser Message"
@@ -5175,7 +5437,7 @@ msgstr "הודעת תצוגה מקדימה"
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
-msgstr ""
+msgstr "החלף את תוכן הפוסט לחלוטין בתוכן מותאם עבור משתמשים שאין להם גישה."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:458
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:498
@@ -5233,6 +5495,8 @@ msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
 msgstr ""
+"הפנה אוטומטית משתמשים לדף התחברות או לדף מותאם כאשר הם מנסים לגשת לתוכן "
+"מוגבל."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:708
 msgid "Redirection"
@@ -5274,7 +5538,7 @@ msgstr "זוהי דף התחברות מותאם אישית"
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
-msgstr ""
+msgstr "אחרי שהמשתמש נכנס, הוא יופנה חזרה לפוסט המקורי שהוא צפה בו."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
 msgid "Logged in Users:"
@@ -5291,36 +5555,48 @@ msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
 msgstr ""
+"התאם את ההודעה המוצגת למשתמשים שחסומים מלצפות בתוכן המלא כשמשתמשים בסוג "
+"הטיזר \"קרא עוד\"."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:958
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for users who are not logged in."
 msgstr ""
+"ההודעה הזו תוצג בתיבת הודעה מעוצבת מעל תוכן הטיזר עבור משתמשים שאינם "
+"מחוברים."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
 msgid ""
 "Customize the login notice message shown to non-logged-in users when using "
 "the \"Excerpt\" teaser type."
 msgstr ""
+"התאם את הודעת ההודעה על התחברות המוצגת למשתמשים שאינם מחוברים כשמשתמשים "
+"בסוג הטיזר \"קטע\"."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1012
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for users who are not logged in."
 msgstr ""
+"ההודעה הזו תוצג בתיבת הודעה מעוצבת מתחת לתוכן הטיזר של הקטע עבור משתמשים "
+"שאינם מחוברים."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
 msgid ""
 "Customize the login notice message shown to non-logged-in users when using "
 "the \"First X Characters\" teaser type."
 msgstr ""
+"התאם את הודעת ההודעה על התחברות המוצגת למשתמשים שאינם מחוברים כשמשתמשים "
+"בסוג הטיזר \"X התווים הראשונים\"."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1066
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for users who are not logged in."
 msgstr ""
+"ההודעה הזו תוצג בתיבת הודעה מעוצבת מתחת לתוכן הטיזר המקוצר עבור משתמשים "
+"שאינם מחוברים."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1144
 msgid "Teaser Message Style Customization"
@@ -5390,7 +5666,7 @@ msgstr "תצוגה חיה"
 msgid ""
 "This is how the teaser message will appear on your site. Changes update in "
 "real-time."
-msgstr ""
+msgstr "כך תיראה הודעת הטיזר באתר שלך. השינויים מתעדכנים בזמן אמת."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
 msgid "No Teaser"
@@ -5436,26 +5712,26 @@ msgstr "&lt; בטל בחירה"
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:170
 msgctxt "count"
 msgid "Users"
-msgstr ""
+msgstr "משתמשים"
 
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:171
 msgctxt "count"
 msgid "Specific Permissions"
-msgstr ""
+msgstr "הרשאות ספציפיות"
 
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:172
 msgctxt "count"
 msgid "Extra Roles"
-msgstr ""
+msgstr "תפקידים נוספים"
 
 #: classes/PublishPress/Permissions/UI/PluginPage.php:95
 msgctxt "groups per page (screen options)"
 msgid "Groups"
-msgstr ""
+msgstr "קבוצות"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:671
-#, php-format
+#, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."
-msgstr ""
+msgstr "%s..."
