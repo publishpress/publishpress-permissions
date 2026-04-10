@@ -25,7 +25,8 @@
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
       "phpstan/extension-installer": true
-    }
+    },
+    "process-timeout": 7200
   },
   "prefer-stable": true,
   "minimum-stability": "stable",
@@ -44,7 +45,8 @@
     "automattic/vipwpcs": "^2.3",
     "publishpress/publishpress-phpcs-standards": "dev-main",
     "szepeviktor/phpstan-wordpress": "^1.1",
-    "phpstan/extension-installer": "^1.2"
+    "phpstan/extension-installer": "^1.2",
+    "publishpress/translations": "^1.0.0"
   },
   "scripts": {
     "build": "build zip",
@@ -73,7 +75,15 @@
     "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
     "pre-update-cmd": "composer update --working-dir=./lib",
     "pre-install-cmd": "composer install --working-dir=./lib",
-    "term": "cd dev-workspace && ./run"
+    "term": "cd dev-workspace && ./run",
+    "translate": "vendor/bin/publishpress-translate",
+    "translate:dry-run": "vendor/bin/publishpress-translate --dry-run",
+    "translate:download": "vendor/bin/publishpress-translate --download",
+    "translate:upload": "vendor/bin/publishpress-translate --upload",
+    "translate:custom": "vendor/bin/publishpress-translate --languages",
+    "translate:force": "vendor/bin/publishpress-translate --force",
+    "translate:force-custom": "vendor/bin/publishpress-translate --force --languages",
+    "translate:repair-plurals": "php vendor/bin/publishpress-translate --repair-plurals"
   },
   "extra": {
     "plugin-slug": "press-permit-core",

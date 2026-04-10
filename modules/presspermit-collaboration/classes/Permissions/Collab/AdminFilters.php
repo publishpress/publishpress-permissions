@@ -29,7 +29,6 @@ class AdminFilters
         add_filter('presspermit_exception_types', [$this, 'fltExceptionTypes']);
         add_filter('presspermit_append_exception_types', [$this, 'fltAppendExceptionTypes']);
         add_action('presspermit_role_types_dropdown', [$this, 'actDropdownTaxonomyTypes']);
-        add_action('presspermit_exception_types_dropdown', [$this, 'actDropdownTaxonomyTypes']);
 
         // called by ajax-exceptions-ui
         add_filter('presspermit_exception_operations', [$this, 'fltExceptionOperations'], 2, 3);
@@ -178,15 +177,11 @@ class AdminFilters
 
     function actDropdownTaxonomyTypes($args = [])
     {
-        // This function is now only used for the role types dropdown
-        // For role types, we still need to add the Term option via direct output
-        if (current_action() === 'presspermit_role_types_dropdown') {
-            if (
-                empty($args['agent']) || empty($args['agent']->metagroup_id)
-                || !in_array($args['agent']->metagroup_id, ['wp_anon', 'wp_all'], true)
-            ) {
-                echo "<option value='_term_'>" . esc_html__('Term', 'press-permit-core') . '</option>';
-            }
+        if (
+            empty($args['agent']) || empty($args['agent']->metagroup_id)
+            || !in_array($args['agent']->metagroup_id, ['wp_anon', 'wp_all'], true)
+        ) {
+            echo "<option value='_term_'>" . esc_html__('Term', 'press-permit-core') . '</option>';
         }
     }
 

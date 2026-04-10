@@ -451,7 +451,7 @@ class Groups
         } elseif ('wp_role' == $metagroup_type) {
             switch ($meta_id) {
                 case 'rvy_pending_rev_notice':
-                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Pending Revision Monitors', 'press-permit-core');
+                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Submitted Revision Editors', 'press-permit-core');
                     break;
 
                 case 'rvy_scheduled_rev_notice':
@@ -466,7 +466,7 @@ class Groups
         } else {
             switch ($meta_id) {
                 case 'rvy_pending_rev_notice':
-                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Pending Revision Monitors', 'press-permit-core');
+                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Submitted Revision Editors', 'press-permit-core');
                     break;
 
                 case 'rvy_scheduled_rev_notice':

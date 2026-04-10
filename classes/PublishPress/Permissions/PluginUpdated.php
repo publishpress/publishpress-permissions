@@ -319,7 +319,7 @@ class PluginUpdated
         // add metagroups for Revisionary notification recipients
         $metagroups['rvy_pending_rev_notice'] = (object)[
             'type' => 'rvy_notice',
-            'name' => 'Pending Revision Monitors',
+            'name' => 'Submitted Revision Editors',
             'descript' => 'Administrators / Publishers to notify (by default) of pending revisions'
         ];
 
