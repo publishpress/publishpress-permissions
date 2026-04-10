@@ -545,13 +545,13 @@ class AgentsDynamicUI
             $_args = ['omit_admins' => $allow_administrator_members ? '0' : '1', 'metagroups' => 0];
 
             if (!PWP::empty_REQUEST('page') && PWP::REQUEST_key_match('page', 'presspermit-edit-permissions')) {
-                if ($group = presspermit()->groups()->getGroupByName('[Pending Revision Monitors]')) {
+                if ($group = presspermit()->groups()->getGroupByName('[Submitted Revision Editors]')) {
                     if ($group->ID == $agent_id) {
                         $_args['omit_admins'] = 0;
                     }
                 }
 
-                if ($group = presspermit()->groups()->getGroupByName('Pending Revision Monitors')) {
+                if ($group = presspermit()->groups()->getGroupByName('Submitted Revision Editors')) {
                     if ($group->ID == $agent_id) {
                         $_args['omit_admins'] = 0;
                     }
