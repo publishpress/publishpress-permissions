@@ -1,5 +1,5 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Permissions 4.7.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-17 13:45+0000\n"
+"PO-Revision-Date: 2026-04-17 18:02+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: th\n"
@@ -18,8 +18,8 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "สิทธิ์การเผยแพร่ Press"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
 #: press-permit-core.php:5, fuzzy
 #. Plugin URI of the plugin
@@ -1045,14 +1045,17 @@ msgstr ""
 "'publish'' ด้วยตัวกรองที่เทียบเท่า)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "เข้าสู่ระบบแล้ว"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "ไม่ได้เข้าสู่ระบบ"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "ทุกคน"
 
@@ -1063,6 +1066,7 @@ msgstr "การแจ้งเตือนการเปลี่ยนแป
 
 #: classes/PublishPress/Permissions/DB/Groups.php:458
 #: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "การแก้ไขที่ส่งแล้ว"
@@ -1074,6 +1078,7 @@ msgstr "การแจ้งเตือนการเปลี่ยนแป
 
 #: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "การตรวจสอบการแก้ไขที่กำหนดเวลา"
 
@@ -1082,10 +1087,12 @@ msgid "Authenticated site users, except for Administrators"
 msgstr "ผู้ใช้เว็บไซต์ที่ผ่านการตรวจสอบแล้ว ยกเว้นผู้ดูแลระบบ"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "ผู้ใช้ที่ไม่ระบุชื่อ (ไม่ได้เข้าสู่ระบบ)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "ผู้ใช้ทุกคน (รวมถึงผู้ใช้ที่ไม่ระบุชื่อ)"
 
@@ -1186,6 +1193,28 @@ msgid ""
 msgstr ""
 "รหัสใบอนุญาตของคุณหมดอายุแล้ว สำหรับการอัปเดต PublishPress Permissions Pro "
 "และการสนับสนุนลำดับความสำคัญ %sกรุณาทำการต่ออายุ%s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "ผู้ใช้ทั้งหมดที่มีบทบาท WordPress %s"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "ผู้ใช้ทั้งหมดที่เข้าสู่ระบบและมีบทบาทในเว็บไซต์"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "ผู้ใช้ที่จะแจ้งเมื่อมีการส่งการแก้ไข"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "ผู้ใช้ที่จะแจ้งเมื่อมีการเผยแพร่การแก้ไขที่กำหนดเวลา"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -4768,17 +4797,53 @@ msgstr "กำลังแก้ไข"
 msgid "Publishing"
 msgstr "กำลังเผยแพร่"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "สำเนาที่ทำงานของ"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "สำเนาที่ทำงาน"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "ส่งการเปลี่ยนแปลงไปยัง"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "ส่งการเปลี่ยนแปลง"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "คำขอ"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "สร้างการแก้ไขของ"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "สร้างการแก้ไข"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "การแก้ไขใหม่"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "ส่งการแก้ไขของ"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "ส่งการแก้ไข"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "การแก้ไขที่ส่งแล้ว"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "แก้ไข"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"

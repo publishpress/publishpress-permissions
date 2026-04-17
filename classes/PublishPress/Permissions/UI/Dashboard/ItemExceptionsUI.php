@@ -815,6 +815,12 @@ class ItemExceptionsUI
                         </div>
                         <?php
                     }
+
+                    // Always render a hidden template for JS to clone when adding users.
+                    // Ensures the cloned structure always matches what PHP renders,
+                    // even when the list is initially empty.
+                    $this->render->setOptions('user');
+                    $this->renderUserItemTemplate($op, $for_item_type, $hierarchical, $type_obj);
                     ?>
                 </div>
             </div>
@@ -1142,6 +1148,69 @@ class ItemExceptionsUI
                     </div>
                 </div>
                 <?php
+    }
+
+    /**
+     * Render a hidden template item for the Users list.
+     * Always rendered regardless of whether the list has items, so JS can
+     * always clone a structurally correct item without duplicating PHP logic.
+     */
+    private function renderUserItemTemplate($op, $for_item_type, $hierarchical, $type_obj)
+    {
+        $mode_label_item = '';
+        $mode_label_children = '';
+
+        if ($hierarchical) {
+            if ($type_obj && isset($type_obj->labels->singular_name, $type_obj->labels->name)) {
+                $mode_label_item = sprintf(__('This %s', 'press-permit-core'), $type_obj->labels->singular_name);
+                $mode_label_children = sprintf(__('Sub-%s', 'press-permit-core'), $type_obj->labels->name);
+            } else {
+                $mode_label_item = __('This Section', 'press-permit-core');
+                $mode_label_children = __('Sub-Sections', 'press-permit-core');
+            }
+        }
+        ?>
+        <div class="pp-item-template" aria-hidden="true" style="display:none"
+             data-agent-type="user" data-agent-id="" data-user-count="0" data-item-name="">
+            <div class="item-checkbox">
+                <input type="checkbox" class="pp-item-checkbox" id="pp-item-template-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" disabled />
+            </div>
+            <div class="item-name">
+                <label for="pp-item-template-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" title=""></label>
+            </div>
+            <div class="pp-permission-control">
+                <div class="pp-permission-select pp-item-select">
+                    <?php if ($hierarchical && $mode_label_item) : ?>
+                        <label class="pp-select-label"><?php echo esc_html($mode_label_item); ?></label>
+                    <?php endif; ?>
+                    <select name="" class="pp-def" autocomplete="off" disabled>
+                        <?php foreach ($this->render->options['standard'] as $val => $lbl) : ?>
+                            <option value="<?php echo esc_attr($val); ?>"
+                                    class="<?php echo esc_attr($this->render->opt_class[$val] ?? 'pp-def'); ?>">
+                                <?php echo esc_html($lbl); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php if ($hierarchical) : ?>
+                <div class="pp-permission-select pp-children-select">
+                    <label class="pp-select-label"><?php echo esc_html($mode_label_children); ?></label>
+                    <select name="" class="pp-def" autocomplete="off" disabled>
+                        <?php foreach ($this->render->options['standard'] as $val => $lbl) : ?>
+                            <option value="<?php echo esc_attr($val); ?>"
+                                    class="<?php echo esc_attr($this->render->opt_class[$val] ?? 'pp-def'); ?>">
+                                <?php echo esc_html($lbl); ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <?php endif; ?>
+                <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>">
+                    <span class="dashicons dashicons-trash"></span>
+                </button>
+            </div>
+        </div>
+        <?php
     }
 
     function generateTooltip($tooltip, $text = '', $position = 'top', $useIcon = true, $args = array('class' => '', 'html' => ''))
