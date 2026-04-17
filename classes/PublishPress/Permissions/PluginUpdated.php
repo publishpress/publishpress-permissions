@@ -289,8 +289,8 @@ class PluginUpdated
             if (!isset($metagroups[$metagroup_id])) {
                 $metagroups[$metagroup_id] = (object)[
                     'type' => 'wp_role',
-                    'name' => sprintf('[WP %s]', $role_name),
-                    'descript' => sprintf('All users with a WordPress %s role', $role_name)
+                    'name' => sprintf(__('[WP %s]', 'press-permit-core'), $role_name),
+                    'descript' => sprintf(__('All users with a WordPress %s role', 'press-permit-core'), $role_name)
                 ];
             }
         }
@@ -298,35 +298,35 @@ class PluginUpdated
         // add a metagroup for anonymous users
         $metagroups['wp_anon'] = (object)[
             'type' => 'wp_role',
-            'name' => 'Not Logged In',
-            'descript' => 'Anonymous users (not logged in)'
+            'name' => __('Not Logged In', 'press-permit-core'),
+            'descript' => __('Anonymous users (not logged in)', 'press-permit-core')
         ];
 
         // add a metagroup for authenticated users
         $metagroups['wp_auth'] = (object)[
             'type' => 'wp_role',
-            'name' => 'Logged In',
-            'descript' => 'All users who are logged in and have a role on the site'
+            'name' => __('Logged In', 'press-permit-core'),
+            'descript' => __('All users who are logged in and have a role on the site', 'press-permit-core')
         ];
 
         // add a metagroup for all users
         $metagroups['wp_all'] = (object)[
             'type' => 'wp_role',
-            'name' => 'Everyone',
-            'descript' => 'All users (including anonymous)'
+            'name' => __('Everyone', 'press-permit-core'),
+            'descript' => __('All users (including anonymous)', 'press-permit-core')
         ];
 
         // add metagroups for Revisionary notification recipients
         $metagroups['rvy_pending_rev_notice'] = (object)[
             'type' => 'rvy_notice',
-            'name' => 'Pending Revision Monitors',
-            'descript' => 'Administrators / Publishers to notify (by default) of pending revisions'
+            'name' => __('Submitted Revision Editors', 'press-permit-core'),
+            'descript' => __('Users to notify when revisions are submitted', 'press-permit-core')
         ];
 
         $metagroups['rvy_scheduled_rev_notice'] = (object)[
             'type' => 'rvy_notice',
-            'name' => 'Scheduled Revision Monitors',
-            'descript' => 'Administrators / Publishers to notify when any scheduled revision is published'
+            'name' => __('Scheduled Revision Monitors', 'press-permit-core'),
+            'descript' => __('Users to notify when scheduled revisions are published', 'press-permit-core')
         ];
 
         $do_group_deletions = defined('PP_AUTODELETE_ROLE_METAGROUPS') && PP_AUTODELETE_ROLE_METAGROUPS;

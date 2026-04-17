@@ -378,12 +378,16 @@ class Groups
 
                 if (!isset($all_group)) {
                     $all_group = $pp_groups->getMetagroup('wp_role', 'wp_all');
-                    $all_group->add_date_gmt = constant('PRESSPERMIT_MIN_DATE_STRING');
+                    if ($all_group) {
+                        $all_group->add_date_gmt = constant('PRESSPERMIT_MIN_DATE_STRING');
+                    }
                 }
 
                 if (!isset($auth_group)) {
                     $auth_group = $pp_groups->getMetagroup('wp_role', 'wp_auth');
-                    $auth_group->add_date_gmt = constant('PRESSPERMIT_MIN_DATE_STRING');
+                    if ($auth_group) {
+                        $auth_group->add_date_gmt = constant('PRESSPERMIT_MIN_DATE_STRING');
+                    }
                 }
 
                 foreach (array_keys($new_items) as $ckey) {
@@ -451,7 +455,7 @@ class Groups
         } elseif ('wp_role' == $metagroup_type) {
             switch ($meta_id) {
                 case 'rvy_pending_rev_notice':
-                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Pending Revision Monitors', 'press-permit-core');
+                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Submitted Revision Editors', 'press-permit-core');
                     break;
 
                 case 'rvy_scheduled_rev_notice':
@@ -466,7 +470,7 @@ class Groups
         } else {
             switch ($meta_id) {
                 case 'rvy_pending_rev_notice':
-                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Pending Revision Monitors', 'press-permit-core');
+                    return (defined('PUBLISHPRESS_REVISIONS_VERSION')) ? esc_html__('Change Request Notifications', 'press-permit-core') : esc_html__('Submitted Revision Editors', 'press-permit-core');
                     break;
 
                 case 'rvy_scheduled_rev_notice':
