@@ -1,5 +1,5 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Permissions 4.7.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-17 13:45+0000\n"
+"PO-Revision-Date: 2026-04-17 18:02+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -18,8 +18,8 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPress Jogosultságok"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
 #: press-permit-core.php:5, fuzzy
 #. Plugin URI of the plugin
@@ -1128,14 +1128,17 @@ msgstr ""
 "'publish'' klauzulát a szűrt megfelelőjére)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "Bejelentkezve"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "Nincs bejelentkezve"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "Mindenki"
 
@@ -1146,6 +1149,7 @@ msgstr "Változtatási kérelem értesítések"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:458
 #: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "Benyújtott revízió"
@@ -1157,6 +1161,7 @@ msgstr "Ütemezett változtatási értesítések"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "Ütemezett revízió figyelők"
 
@@ -1165,10 +1170,12 @@ msgid "Authenticated site users, except for Administrators"
 msgstr "Hitelesített webhely felhasználók, kivéve az adminisztrátorokat"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "Anonim felhasználók (nincsenek bejelentkezve)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "Minden felhasználó (beleértve az anonimokat)"
 
@@ -1271,6 +1278,30 @@ msgid ""
 msgstr ""
 "A licenckulcsa lejárt. A PublishPress Permissions Pro frissítéseihez és "
 "prioritási támogatáshoz, %sújítsa meg%s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "Minden felhasználó, akinek WordPress %s szerepe van"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "Minden felhasználó, aki be van jelentkezve és szerepe van az oldalon"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "Felhasználók, akiket értesíteni kell, amikor a módosításokat benyújtják"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr ""
+"Felhasználók, akiket értesíteni kell, amikor a beütemezett módosítások "
+"közzétételre kerülnek"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -4989,17 +5020,53 @@ msgstr "Szerkesztés"
 msgid "Publishing"
 msgstr "Közzététel"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "Munkamásolat"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "Munkamásolat"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "Változások benyújtása ide"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "Változások benyújtása"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "Kérelem"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "Módosítás létrehozása"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "Módosítás létrehozása"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "Új revízió"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "Módosítás benyújtása ide"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "Módosítás benyújtása"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "Benyújtott revízió"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "Felülvizsgálat"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"

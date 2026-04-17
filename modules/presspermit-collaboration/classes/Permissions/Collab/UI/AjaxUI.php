@@ -12,11 +12,11 @@ class AjaxUI
 
         if (defined('PUBLISHPRESS_REVISIONS_VERSION')) {
             if (rvy_get_option('revision_statuses_noun_labels')) {
-            	$op_captions['copy'] = (object)['label' => esc_html__('Working Copy of'), 'abbrev' => esc_html__('Working Copy'), 'noun_label' => esc_html__('Copy', 'press-permit-core')];
-            	$op_captions['revise'] = (object)['label' => esc_html__('Submit Changes to'), 'abbrev' => esc_html__('Submit Changes'), 'noun_label' => esc_html__('Request', 'press-permit-core')];
+            	$op_captions['copy'] = (object)['label' => esc_html__('Working Copy of', 'press-permit-core'), 'abbrev' => esc_html__('Working Copy', 'press-permit-core'), 'noun_label' => esc_html__('Copy', 'press-permit-core')];
+            	$op_captions['revise'] = (object)['label' => esc_html__('Submit Changes to', 'press-permit-core'), 'abbrev' => esc_html__('Submit Changes', 'press-permit-core'), 'noun_label' => esc_html__('Request', 'press-permit-core')];
             } else {
-                $op_captions['copy'] = (object)['label' => esc_html__('Create Revision of'), 'abbrev' => esc_html__('Create Revision'), 'noun_label' => esc_html__('New Revision', 'press-permit-core')];
-                $op_captions['revise'] = (object)['label' => esc_html__('Submit Revision of'), 'abbrev' => esc_html__('Submit Revision'), 'noun_label' => esc_html__('Submitted Revision', 'press-permit-core')];
+                $op_captions['copy'] = (object)['label' => esc_html__('Create Revision of', 'press-permit-core'), 'abbrev' => esc_html__('Create Revision', 'press-permit-core'), 'noun_label' => esc_html__('New Revision', 'press-permit-core')];
+                $op_captions['revise'] = (object)['label' => esc_html__('Submit Revision of', 'press-permit-core'), 'abbrev' => esc_html__('Submit Revision', 'press-permit-core'), 'noun_label' => esc_html__('Submitted Revision', 'press-permit-core')];
             }
 
             foreach(['label', 'abbrev', 'noun_label'] as $prop) {
@@ -24,7 +24,7 @@ class AjaxUI
                 $op_captions['revise']->$prop = str_replace(' ', '&nbsp;', $op_captions['revise']->$prop);
             }
         } elseif (defined('REVISIONARY_VERSION')) {
-            $op_captions['revise'] = (object)['label' => esc_html__('Revise'), 'noun_label' => esc_html__('Revision', 'press-permit-core')];
+            $op_captions['revise'] = (object)['label' => esc_html__('Revise', 'press-permit-core'), 'noun_label' => esc_html__('Revision', 'press-permit-core')];
         }
 
         $op_captions = array_merge($op_captions, [

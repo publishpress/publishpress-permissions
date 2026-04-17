@@ -1,5 +1,5 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Permissions 4.8.1\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
-"PO-Revision-Date: 2026-04-17 13:45+0000\n"
+"PO-Revision-Date: 2026-04-17 18:02+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: zh_CN\n"
@@ -18,8 +18,8 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPress 权限"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
 #: press-permit-core.php:5, fuzzy
 #. Plugin URI of the plugin
@@ -935,14 +935,17 @@ msgid ""
 msgstr "仅限开发使用（在前端，不要用过滤后的等价项替换 'post_status = 'publish'' 子句）"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "已登录"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "未登录"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "所有人"
 
@@ -953,6 +956,7 @@ msgstr "变更请求通知"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:458
 #: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "已提交的修订版"
@@ -964,6 +968,7 @@ msgstr "已安排的变更通知"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "已安排的修订监控"
 
@@ -972,10 +977,12 @@ msgid "Authenticated site users, except for Administrators"
 msgstr "经过身份验证的网站用户，管理员除外"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "匿名用户（未登录）"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "所有用户（包括匿名）"
 
@@ -1070,6 +1077,28 @@ msgid ""
 "Your license key has expired. For updates to PublishPress Permissions Pro "
 "and priority support, %splease renew%s."
 msgstr "您的许可证密钥已过期。要获取 PublishPress Permissions Pro 的更新和优先支持，%s请续订%s。"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "所有具有 WordPress %s 角色的用户"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "所有已登录并在网站上具有角色的用户"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "提交修订时要通知的用户"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "发布计划修订时要通知的用户"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -4440,17 +4469,53 @@ msgstr "编辑中"
 msgid "Publishing"
 msgstr "发布中"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "工作副本"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "工作副本"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "提交更改到"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "提交更改"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "请求"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "创建修订"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "创建修订"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "新修订版"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "提交修订"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "提交修订"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "已提交的修订版"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "修订"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"

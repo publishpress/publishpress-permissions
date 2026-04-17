@@ -1,5 +1,5 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Permissions 4.7.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-17 13:45+0000\n"
+"PO-Revision-Date: 2026-04-17 18:02+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: sk_SK\n"
@@ -18,8 +18,8 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublikáciaPress Povolenia"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
 #: press-permit-core.php:5, fuzzy
 #. Plugin URI of the plugin
@@ -1095,14 +1095,17 @@ msgstr ""
 "'post_status = 'publish'' filtrami ekvivalentom)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "Prihlásený"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "Nepřihlásený"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "Každý"
 
@@ -1113,6 +1116,7 @@ msgstr "Oznámenia o zmenách požiadaviek"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:458
 #: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "Predložená revízia"
@@ -1124,6 +1128,7 @@ msgstr "Naplánované oznámenia o zmenách"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "Naplánované revízne monitorovanie"
 
@@ -1132,10 +1137,12 @@ msgid "Authenticated site users, except for Administrators"
 msgstr "Autentifikovaní používatelia stránky, okrem administrátorov"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "Anonymní používatelia (neprihlásení)"
 
 #: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "Všetci používatelia (vrátane anonymných)"
 
@@ -1238,6 +1245,30 @@ msgid ""
 msgstr ""
 "Vaša licenčná kľúčová platnosť vypršala. Pre aktualizácie PublishPress "
 "Permissions Pro a prioritnú podporu, %sprosím obnovte%s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "Všetci používatelia s rolou WordPress %s"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "Všetci používatelia, ktorí sú prihlásení a majú rolu na stránke"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "Používatelia, ktorých je potrebné informovať, keď sú predložené revízie"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr ""
+"Používatelia, ktorých je potrebné informovať, keď sú naplánované revízie "
+"zverejnené"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -4892,17 +4923,53 @@ msgstr "Úprava"
 msgid "Publishing"
 msgstr "Publikovanie"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "Pracovná kópia"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "Pracovná kópia"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "Predložiť zmeny do"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "Predložiť zmeny"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "Žiadosť"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "Vytvoriť revíziu"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "Vytvoriť revíziu"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "Nová revízia"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "Predložiť revíziu"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "Predložiť revíziu"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "Predložená revízia"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "Revidovať"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"
