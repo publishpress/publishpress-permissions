@@ -532,7 +532,12 @@ class AgentsDynamicUI
                 'ppListbox', 
                 [
                     'omit_admins' => !empty($allow_administrator_members) ? '0' : '1', 
-                    'metagroups' => 1
+                    'metagroups' => 1,
+                    'placeholder' => [
+                        'pp_group' => esc_html__('Search for a group', 'press-permit-core'),
+                        'user' => esc_html__('Search for a user', 'press-permit-core'),
+                        'select-author' => esc_html__('Search for an author', 'press-permit-core'),
+                    ],
                 ]
             );
 
@@ -582,6 +587,11 @@ class AgentsDynamicUI
                 }
             }
 
+            $_args['placeholder'] = [
+                'pp_group'      => esc_html__('Search for a group', 'press-permit-core'),
+                'user'          => esc_html__('Search for a user', 'press-permit-core'),
+                'select-author' => esc_html__('Search for an author', 'press-permit-core'),
+            ];
             wp_localize_script('presspermit-listbox', 'ppListbox', $_args);
 
             if (!apply_filters('presspermit_override_agent_select_js', false)) {

@@ -32,10 +32,7 @@
             let selector = "#v2_" + args2.search_id;
             const [op, forItemType, agentType] = args2.topic.replace(/\\:/g, ':').split(':');
             const selectedValues = $(selector).val() || [];
-            let agent_type_lbl = args2.agent_type;
-            if (args2.agent_type == 'pp_group') {
-                agent_type_lbl = 'group';
-            }
+            let agent_type_lbl = ppListbox.placeholder[args2.agent_type] || args2.agent_type;
 
             if (!['member', 'select-author'].includes(args2.topic)) {
                 // Clear all existing hidden inputs for this agent type
@@ -56,7 +53,7 @@
             }
 
             $(selector).select2({
-              placeholder: "Search for a " + agent_type_lbl,
+              placeholder: agent_type_lbl,
               dropdownAutoWidth: true,
               dropdownCssClass: 'pp-select2-dropdown',
               containerCssClass: 'pp-select2-container',
