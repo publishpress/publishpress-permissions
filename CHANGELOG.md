@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.8.1] - 13 April, 2026
+[4.8.1] - 21 April, 2026
 
 - Added: Expanded language support with 34 languages through new translation system integration. #2273
 - Changed: Renamed “Pending Revision Monitors” for clearer understanding. #2279
