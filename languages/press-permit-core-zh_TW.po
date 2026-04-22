@@ -1,0 +1,5543 @@
+# Copyright (C) 2026 PublishPress
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: PublishPress Permissions 4.8.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
+"PO-Revision-Date: 2026-04-22 12:00+0000\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: press-permit-core\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: press-permit-core.php:4
+#. Plugin Name of the plugin
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
+
+#: press-permit-core.php:5
+#. Plugin URI of the plugin
+msgid "https://publishpress.com/presspermit"
+msgstr "https://publishpress.com/presspermit"
+
+#: press-permit-core.php:6
+#. Description of the plugin
+msgid ""
+"PublishPress Permissions allows you to enable or deny access to posts, "
+"pages, categories, tags and more."
+msgstr "PublishPress 權限允許您啟用或拒絕對文章、頁面、類別、標籤等的訪問。"
+
+#: press-permit-core.php:8
+#. Author of the plugin
+msgid "PublishPress"
+msgstr "PublishPress"
+
+#: press-permit-core.php:9
+#. Author URI of the plugin
+msgid "https://publishpress.com/"
+msgstr "https://publishpress.com/"
+
+#: classes/PublishPress/Permissions.php:1258
+msgid "Edit Tag for All Post Types"
+msgstr "編輯所有文章類型的標籤"
+
+#: classes/PublishPress/Permissions.php:1262
+msgid "Edit Tag for Posts"
+msgstr "編輯文章的標籤"
+
+#: classes/PublishPress/Permissions.php:1273
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:43
+msgid "Advanced Custom Fields"
+msgstr "高級自訂欄位"
+
+#: classes/PublishPress/Permissions.php:1274
+msgid ""
+"Control front-end access to Field Groups with advanced permission "
+"management."
+msgstr "通過先進的權限管理控制前端對欄位組的訪問。"
+
+#: classes/PublishPress/Permissions.php:1278
+msgid "Control access to Field Groups"
+msgstr "控制對欄位組的訪問"
+
+#: classes/PublishPress/Permissions.php:1279
+msgid "Front-end visibility restrictions"
+msgstr "前端可見性限制"
+
+#: classes/PublishPress/Permissions.php:1280
+msgid "Integration with permission groups"
+msgstr "與權限組的整合"
+
+#: classes/PublishPress/Permissions.php:1288
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:45, fuzzy
+msgid "Beaver Builder"
+msgstr "Beaver Builder"
+
+#: classes/PublishPress/Permissions.php:1289
+msgid "Compatibility with Edit Permissions in Beaver Builder."
+msgstr "與 Beaver Builder 中的編輯權限相容。"
+
+#: classes/PublishPress/Permissions.php:1293
+msgid "Beaver editor integration"
+msgstr "Beaver 編輯器整合"
+
+#: classes/PublishPress/Permissions.php:1294
+#: classes/PublishPress/Permissions.php:1353
+msgid "Widget-level permission controls"
+msgstr "小工具級別的權限控制"
+
+#: classes/PublishPress/Permissions.php:1295
+#: classes/PublishPress/Permissions.php:1354
+msgid "Template access restrictions"
+msgstr "模板訪問限制"
+
+#: classes/PublishPress/Permissions.php:1303
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:44
+msgid "bbPress Forums"
+msgstr "bbPress 論壇"
+
+#: classes/PublishPress/Permissions.php:1304
+msgid ""
+"Forum-specific permissions for bbPress with detailed control over forum "
+"access and participation."
+msgstr "為 bbPress 提供特定於論壇的權限，詳細控制論壇的訪問和參與。"
+
+#: classes/PublishPress/Permissions.php:1308
+msgid "Forum-specific permissions"
+msgstr "論壇專屬權限"
+
+#: classes/PublishPress/Permissions.php:1309
+msgid "Topic creation restrictions"
+msgstr "主題創建限制"
+
+#: classes/PublishPress/Permissions.php:1310
+msgid "Forum access controls"
+msgstr "論壇訪問控制"
+
+#: classes/PublishPress/Permissions.php:1318
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:47, fuzzy
+msgid "BuddyPress"
+msgstr "BuddyPress"
+
+#: classes/PublishPress/Permissions.php:1319
+msgid ""
+"Assign post and term permissions to BuddyPress groups for enhanced content "
+"control."
+msgstr "為 BuddyPress 組分配文章和術語權限，以增強內容控制。"
+
+#: classes/PublishPress/Permissions.php:1323
+msgid "Assign post permissions to BuddyPress groups"
+msgstr "將發文權限分配給 BuddyPress 群組"
+
+#: classes/PublishPress/Permissions.php:1324
+msgid "Assign term permissions to BuddyPress groups"
+msgstr "將術語權限分配給 BuddyPress 群組"
+
+#: classes/PublishPress/Permissions.php:1325
+msgid "Group-based content permissions"
+msgstr "基於群組的內容權限"
+
+#: classes/PublishPress/Permissions.php:1333
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:48
+msgid "CMS Tree View"
+msgstr "CMS 樹狀視圖"
+
+#: classes/PublishPress/Permissions.php:1334
+msgid "Compatibility with Edit Permissions in CMS Tree View."
+msgstr "與 CMS 樹狀視圖中的編輯權限兼容。"
+
+#: classes/PublishPress/Permissions.php:1338
+msgid "Permission-aware tree view"
+msgstr "權限感知的樹狀視圖"
+
+#: classes/PublishPress/Permissions.php:1339
+msgid "Hierarchical content controls"
+msgstr "分層內容控制"
+
+#: classes/PublishPress/Permissions.php:1347
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:49, fuzzy
+msgid "Elementor"
+msgstr "Elementor"
+
+#: classes/PublishPress/Permissions.php:1348
+msgid "Compatibility with Edit Permissions in Elementor."
+msgstr "與 Elementor 中的編輯權限兼容。"
+
+#: classes/PublishPress/Permissions.php:1352
+msgid "Elementor editor integration"
+msgstr "Elementor 編輯器集成"
+
+#: classes/PublishPress/Permissions.php:1362
+msgid "The Events Calendar"
+msgstr "事件日曆"
+
+#: classes/PublishPress/Permissions.php:1363
+msgid "Apply permission controls to events and event-related content."
+msgstr "將權限控制應用於事件和事件相關內容。"
+
+#: classes/PublishPress/Permissions.php:1367
+msgid "Event post permissions"
+msgstr "事件發文權限"
+
+#: classes/PublishPress/Permissions.php:1368
+msgid "Event taxonomy controls"
+msgstr "事件分類控制"
+
+#: classes/PublishPress/Permissions.php:1376
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:50
+msgid "Nested Pages"
+msgstr "巢狀頁面"
+
+#: classes/PublishPress/Permissions.php:1377
+msgid "Compatibility with Edit Permissions in Nested Pages."
+msgstr "與巢狀頁面中的編輯權限兼容。"
+
+#: classes/PublishPress/Permissions.php:1381
+msgid "Permission-aware nested view"
+msgstr "具權限感知的巢狀視圖"
+
+#: classes/PublishPress/Permissions.php:1382
+msgid "Quick edit integration"
+msgstr "快速編輯整合"
+
+#: classes/PublishPress/Permissions.php:1390
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:51
+msgid "PublishPress Statuses"
+msgstr "PublishPress 狀態"
+
+#: classes/PublishPress/Permissions.php:1391
+msgid "Compatibility with PublishPress Statuses plugin."
+msgstr "與 PublishPress 狀態插件的相容性。"
+
+#: classes/PublishPress/Permissions.php:1395
+msgid "Custom status permissions"
+msgstr "自訂狀態權限"
+
+#: classes/PublishPress/Permissions.php:1396
+msgid "Workflow-specific access controls"
+msgstr "特定工作流程的存取控制"
+
+#: classes/PublishPress/Permissions.php:1397
+msgid "Status-based editing capabilities"
+msgstr "基於狀態的編輯能力"
+
+#: classes/PublishPress/Permissions.php:1405
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:52, fuzzy
+msgid "Relevanssi"
+msgstr "Relevanssi"
+
+#: classes/PublishPress/Permissions.php:1406
+msgid ""
+"Filter search results based on View Permissions for secure content "
+"discovery."
+msgstr "根據查看權限過濾搜索結果，以安全地發現內容。"
+
+#: classes/PublishPress/Permissions.php:1410
+msgid "Search result filtering"
+msgstr "搜索結果過濾"
+
+#: classes/PublishPress/Permissions.php:1411
+msgid "Permission-aware indexing"
+msgstr "具權限感知的索引"
+
+#: classes/PublishPress/Permissions.php:1412
+msgid "Secure content discovery"
+msgstr "安全內容發現"
+
+#: classes/PublishPress/Permissions.php:1420
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:53, fuzzy
+msgid "SearchWP"
+msgstr "SearchWP"
+
+#: classes/PublishPress/Permissions.php:1421
+msgid "Compatibility with SearchWP term filtering for advanced search capabilities."
+msgstr "與 SearchWP 术语过滤的相容性，以實現更高級的搜索能力。"
+
+#: classes/PublishPress/Permissions.php:1425
+msgid "Permission-aware search results"
+msgstr "具權限感知的搜索結果"
+
+#: classes/PublishPress/Permissions.php:1426
+msgid "Term-based filtering"
+msgstr "基於术语的過濾"
+
+#: classes/PublishPress/Permissions.php:1427
+msgid "Advanced search controls"
+msgstr "高級搜索控制"
+
+#: classes/PublishPress/Permissions.php:1435
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#: classes/PublishPress/Permissions.php:1436
+msgid "Apply permission controls to WooCommerce products and product categories."
+msgstr "對 WooCommerce 產品和產品類別應用權限控制。"
+
+#: classes/PublishPress/Permissions.php:1440
+msgid "Product permissions"
+msgstr "產品權限"
+
+#: classes/PublishPress/Permissions.php:1441
+msgid "Product category controls"
+msgstr "產品類別控制"
+
+#: classes/PublishPress/Permissions.php:1449
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:55, fuzzy
+msgid "WPML"
+msgstr "WPML"
+
+#: classes/PublishPress/Permissions.php:1450
+msgid ""
+"Multilingual support with permission synchronization across content "
+"translations."
+msgstr "多語言支持，並在內容翻譯中同步權限。"
+
+#: classes/PublishPress/Permissions.php:1454
+msgid "Permission synchronization across translations"
+msgstr "翻譯之間的權限同步"
+
+#: classes/PublishPress/Permissions.php:1455
+msgid "Language-specific content access"
+msgstr "特定語言的內容訪問"
+
+#: classes/PublishPress/Permissions.php:1456
+msgid "Multilingual permission management"
+msgstr "多語言權限管理"
+
+#: classes/PublishPress/Permissions.php:1464
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:56, fuzzy
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: classes/PublishPress/Permissions.php:1465
+msgid "Exclude restricted posts from XML sitemaps to maintain proper SEO indexing."
+msgstr "從 XML 網站地圖中排除受限文章以維持正確的 SEO 索引。"
+
+#: classes/PublishPress/Permissions.php:1469
+msgid "Sitemap filtering for restricted content"
+msgstr "受限內容的網站地圖過濾"
+
+#: classes/PublishPress/Permissions.php:1470
+msgid "Search engine visibility controls"
+msgstr "搜尋引擎可見性控制"
+
+#: classes/PublishPress/Permissions.php:1471
+msgid "Permission-aware XML sitemaps"
+msgstr "具權限的 XML 網站地圖"
+
+#: classes/PublishPress/Permissions.php:1479
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:57, fuzzy
+msgid "YooTheme"
+msgstr "YooTheme"
+
+#: classes/PublishPress/Permissions.php:1480
+msgid "Compatibility with YooTheme builder and term permissions."
+msgstr "與 YooTheme 建構器和術語權限的相容性。"
+
+#: classes/PublishPress/Permissions.php:1484
+msgid "Builder interface compatibility"
+msgstr "建構器介面相容性"
+
+#: classes/PublishPress/Permissions.php:1485
+msgid "Term permission integration"
+msgstr "術語權限整合"
+
+#: classes/PublishPress/Permissions.php:1486
+msgid "Template access controls"
+msgstr "模板訪問控制"
+
+#: classes/PublishPress/Permissions/Admin.php:100
+msgid "Viewing"
+msgstr "查看"
+
+#: classes/PublishPress/Permissions/Admin.php:165
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+msgid "Access Circles"
+msgstr "訪問圈"
+
+#: classes/PublishPress/Permissions/Admin.php:166
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
+msgid "Editing Permissions"
+msgstr "編輯權限"
+
+#: classes/PublishPress/Permissions/Admin.php:167
+msgid "Compatibility Pack"
+msgstr "相容性包"
+
+#: classes/PublishPress/Permissions/Admin.php:168
+#: includes/CoreAdmin.php:67
+#: includes/CoreAdmin.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:90
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:91
+msgid "Teaser"
+msgstr "預告"
+
+#: classes/PublishPress/Permissions/Admin.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:34
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:109
+msgid "File Access"
+msgstr "文件存取"
+
+#: classes/PublishPress/Permissions/Admin.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:80
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:109
+msgid "Membership"
+msgstr "會員資格"
+
+#: classes/PublishPress/Permissions/Admin.php:171
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:36
+#: includes/promo/sync-promo.php:4
+msgid "User Posts"
+msgstr "使用者貼文"
+
+#: classes/PublishPress/Permissions/Admin.php:175
+msgid ""
+"Visibility Circles and Editorial Circles block access to content not "
+"authored by other group members."
+msgstr "可見性圓圈和編輯圓圈阻止訪問非其他組成員創建的內容。"
+
+#: classes/PublishPress/Permissions/Admin.php:176
+msgid "Post-specific and category-specific permissions for creation and editing."
+msgstr "針對創建和編輯的帖子特定和類別特定權限。"
+
+#: classes/PublishPress/Permissions/Admin.php:177
+msgid ""
+"Integration with ACF, bbPress, BuddyPress, Relevanssi, WPML and other "
+"plugins; enhanced Multisite support."
+msgstr "與 ACF、bbPress、BuddyPress、Relevanssi、WPML 及其他插件集成；增強的多站點支持。"
+
+#: classes/PublishPress/Permissions/Admin.php:178
+msgid ""
+"On the site front end, display teaser text for unreadable posts instead of "
+"hiding them."
+msgstr "在網站前端，顯示未讀文章的提示文本，而不是將其隱藏。"
+
+#: classes/PublishPress/Permissions/Admin.php:179
+msgid ""
+"Restrict direct file requests based on user's access to the page a file is "
+"attached to."
+msgstr "根據用戶對文件所附頁面的訪問限制直接文件請求。"
+
+#: classes/PublishPress/Permissions/Admin.php:180
+msgid ""
+"Time-limit access customizations by delaying or expiring Permission Group "
+"membership."
+msgstr "通過延遲或過期權限組成員身份來限制訪問時間。"
+
+#: classes/PublishPress/Permissions/Admin.php:181
+msgid ""
+"Auto-create a page for each user of specified roles. Compatible with "
+"several Team / Staff plugins."
+msgstr "為指定角色的每個用戶自動創建一個頁面。與多個團隊/工作人員插件兼容。"
+
+#: classes/PublishPress/Permissions/Admin.php:185
+msgid ""
+"Visibility Circles and Editorial Circles block access to content not "
+"authored by other group members. Any WP Role, BuddyPress Group or custom "
+"Group can be marked as a Circle for specified post types."
+msgstr "可見性圓圈和編輯圓圈阻止訪問非其他組成員創建的內容。任何 WP 角色、BuddyPress 組或自定義組都可以標記為特定文章類型的圓圈。"
+
+#: classes/PublishPress/Permissions/Admin.php:186
+msgid ""
+"Supports content-specific permissions for editing, term assignment and page "
+"parent selection. In combination with other modules, supports workflow "
+"statuses, PublishPress and PublishPress Revisions."
+msgstr ""
+"支持內容特定的編輯、術語分配和頁面父級選擇的權限。與其他模塊結合使用，支持工作流狀態、PublishPress 和 PublishPress "
+"Revisions。"
+
+#: classes/PublishPress/Permissions/Admin.php:187
+msgid ""
+"Adds compatibility or integration with ACF, bbPress, Relevanssi, CMS Tree "
+"Page View, Custom Post Type UI, Subscribe2, WPML, various other plugins. "
+"Configure any BuddyPress Group as a Permissions Group. For multisite, "
+"provides network-wide Permission Groups."
+msgstr ""
+"增加與 ACF、bbPress、Relevanssi、CMS 樹頁面視圖、自定義文章類型 UI、Subscribe2、WPML "
+"和其他各種插件的兼容性或集成。將任何 BuddyPress 組配置為權限組。對於多站點，提供網絡範圍的權限組。"
+
+#: classes/PublishPress/Permissions/Admin.php:188
+msgid ""
+"On the site front end, replace non-readable content with placeholder text. "
+"Can be enabled for any post type. Custom filters are provided but no "
+"programming is required for basic usage."
+msgstr "在網站前端，用佔位符文本替換不可讀內容。可以為任何文章類型啟用。提供自定義過濾器，但基本使用不需要編程。"
+
+#: classes/PublishPress/Permissions/Admin.php:189
+msgid ""
+"Filters direct file access, based on user's access to post(s) which the "
+"file is attached to. No additional configuration required. Creates/modifies "
+".htaccess file in uploads folder (and in main folder for multisite)."
+msgstr "根據用戶對附加文件的文章的訪問過濾直接文件訪問。無需額外配置。在上傳文件夾中創建/修改 .htaccess 文件（多站點的主文件夾中也會修改）。"
+
+#: classes/PublishPress/Permissions/Admin.php:190
+msgid ""
+"Allows Permission Group membership to be date-limited (delayed and/or "
+"scheduled for expiration). Simple date picker UI alongside group membership "
+"selection."
+msgstr "允許權限組成員身份設置日期限制（延遲和/或計劃過期）。簡單的日期選擇器 UI 與組成員身份選擇並存。"
+
+#: classes/PublishPress/Permissions/Admin.php:191
+msgid ""
+"Create or synchronize posts to match users. Designed for Team / Staff "
+"plugins, but with broad usage potential."
+msgstr "創建或同步文章以匹配用戶。專為團隊/工作人員插件設計，但具有廣泛的使用潛力。"
+
+#: classes/PublishPress/Permissions/Admin.php:230
+#, php-format
+msgid "If you like %s, please leave us a %s rating. Thank you!"
+msgstr "如果您喜歡 %s，請給我們留下 %s 評分。謝謝！"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About PublishPress Permissions"
+msgstr "關於 PublishPress 權限"
+
+#: classes/PublishPress/Permissions/Admin.php:241
+msgid "About"
+msgstr "關於"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Permissions Documentation"
+msgstr "權限文檔"
+
+#: classes/PublishPress/Permissions/Admin.php:243
+msgid "Documentation"
+msgstr "文檔"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact the PublishPress team"
+msgstr "聯繫 PublishPress 團隊"
+
+#: classes/PublishPress/Permissions/Admin.php:245
+msgid "Contact"
+msgstr "聯繫"
+
+#: classes/PublishPress/Permissions/Compat/EyesOnly.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:170
+msgid "Permission Group"
+msgstr "權限組"
+
+#: classes/PublishPress/Permissions/Constants.php:21
+msgid ""
+"Specific Permissions: restrictions ('Blocked') take priority over additions "
+"('Enabled')"
+msgstr "特定權限：限制（'阻止的'）優先於添加（'啟用的'）"
+
+#: classes/PublishPress/Permissions/Constants.php:22
+msgid ""
+"Specific Permissions: no restrictions ('Blocked') can be applied to "
+"custom-defined groups"
+msgstr "特定權限：無限制（'封鎖'）可應用於自定義定義的群組"
+
+#: classes/PublishPress/Permissions/Constants.php:23
+msgid "Extra Roles assignment available for {All} and {Anonymous} metagroups"
+msgstr "為 {All} 和 {Anonymous} 元群組提供額外角色分配"
+
+#: classes/PublishPress/Permissions/Constants.php:24
+msgid ""
+"Allow the {All} and {Anonymous} metagroups to be granted specific reading "
+"permissions for private content"
+msgstr "允許 {All} 和 {Anonymous} 元群組獲得私人內容的特定閱讀權限"
+
+#: classes/PublishPress/Permissions/Constants.php:25
+msgid ""
+"Users who have specific editing permissions for a post or attachment can "
+"also delete it"
+msgstr "擁有特定編輯權限的用戶可以刪除該帖子或附件"
+
+#: classes/PublishPress/Permissions/Constants.php:26
+msgid ""
+"Users who have custom editing permissions for an attachment can also delete "
+"it"
+msgstr "擁有自定義編輯權限的用戶可以刪除該附件"
+
+#: classes/PublishPress/Permissions/Constants.php:27
+msgid ""
+"Disable front end filtering if logged user is a content administrator "
+"(normally filter to force inclusion of readable private posts in "
+"get_pages() listing, post counts, etc."
+msgstr "如果登錄用戶是內容管理員，則禁用前端過濾（通常過濾以強制將可讀的私人帖子包含在 get_pages() 列表、帖子計數等中）"
+
+#: classes/PublishPress/Permissions/Constants.php:28
+msgid ""
+"Disable front end filtering for all users (subject to limitation by "
+"PP_UNFILTERED_FRONT_TYPES)"
+msgstr "禁用所有用戶的前端過濾（受 PP_UNFILTERED_FRONT_TYPES 的限制）"
+
+#: classes/PublishPress/Permissions/Constants.php:29
+msgid ""
+"Comma-separated list of post types to limit the effect of "
+"PP_UNFILTERED_FRONT and apply_filters( 'presspermit_skip_cap_filtering' )"
+msgstr ""
+"用逗號分隔的帖子類型列表，以限制 PP_UNFILTERED_FRONT "
+"的影響並應用過濾器（'presspermit_skip_cap_filtering'）"
+
+#: classes/PublishPress/Permissions/Constants.php:30
+msgid ""
+"Specific Permissions: additions ('Enabled') are not applied, cannot be "
+"assigned"
+msgstr "特定權限：新增（'啟用'）未被應用，無法分配"
+
+#: classes/PublishPress/Permissions/Constants.php:31
+msgid "Don't assign or apply specific permissions for the 'post' type"
+msgstr "不要為 'post' 類型分配或應用特定權限"
+
+#: classes/PublishPress/Permissions/Constants.php:32
+msgid "Don't assign or apply specific permissions for the 'page' type"
+msgstr "不要為 'page' 類型分配或應用特定權限"
+
+#: classes/PublishPress/Permissions/Constants.php:33
+msgid "Don't assign or apply specific permissions for the 'media' type"
+msgstr "不要為 'media' 類型分配或應用特定權限"
+
+#: classes/PublishPress/Permissions/Constants.php:34
+msgid ""
+"Don't assign or apply specific permissions for the specified custom post "
+"type"
+msgstr "不要為指定的自定義帖子類型分配或應用特定權限"
+
+#: classes/PublishPress/Permissions/Constants.php:40
+msgid "Include scheduled posts in the posts query if user can edit them"
+msgstr "如果用戶可以編輯，則在文章查詢中包含計劃的文章"
+
+#: classes/PublishPress/Permissions/Constants.php:41
+msgid "Don't filter term post counts in get_terms() call"
+msgstr "在 get_terms() 調用中不過濾術語文章數量"
+
+#: classes/PublishPress/Permissions/Constants.php:42
+msgid "Leave unreadable posts on WP Navigation Menus"
+msgstr "在 WP 導航菜單中保留不可讀的文章"
+
+#: classes/PublishPress/Permissions/Constants.php:43
+msgid "Don't apply CSS to hide empty Nav Menus"
+msgstr "不應用 CSS 隱藏空的導航菜單"
+
+#: classes/PublishPress/Permissions/Constants.php:44
+msgid "For legacy Nav Menus, hide empty nav menu div"
+msgstr "對於舊版導航菜單，隱藏空的導航菜單 div"
+
+#: classes/PublishPress/Permissions/Constants.php:45
+msgid "Leave terms with no readable posts on WP Navigation Menus"
+msgstr "在 WP 導航菜單中保留沒有可讀文章的術語"
+
+#: classes/PublishPress/Permissions/Constants.php:52
+msgid ""
+"When Teaser is applied with Redirect enabled, append original url as "
+"redirect_to argument"
+msgstr "當啟用重定向的 Teaser 被應用時，將原始 URL 附加為 redirect_to 參數"
+
+#: classes/PublishPress/Permissions/Constants.php:53
+msgid ""
+"For Teaser compatibility, specify a redirect argument to use instead of "
+"redirect_to"
+msgstr "為了兼容 Teaser，指定一個重定向參數以替代 redirect_to"
+
+#: classes/PublishPress/Permissions/Constants.php:54
+msgid ""
+"For Teaser compatibility, specify an additional redirect argument other "
+"than redirect_to"
+msgstr "為了兼容 Teaser，指定一個除了 redirect_to 以外的額外重定向參數"
+
+#: classes/PublishPress/Permissions/Constants.php:55
+msgid ""
+"For Teaser compatibility, prevent the pp_permissions argument from being "
+"appended to redirects"
+msgstr "為了兼容 Teaser，防止 pp_permissions 參數被附加到重定向中"
+
+#: classes/PublishPress/Permissions/Constants.php:63
+msgid "Filter priority for 'get_pages' filter (default: 1)"
+msgstr "'get_pages' 過濾器的過濾優先級 (默認: 1)"
+
+#: classes/PublishPress/Permissions/Constants.php:64
+msgid ""
+"Don't include readable private pages in the Pages widget or other "
+"wp_list_pages() / get_pages() results    "
+msgstr "不要在 Pages 小部件或其他 wp_list_pages() / get_pages() 結果中包含可讀的私人頁面    "
+
+#: classes/PublishPress/Permissions/Constants.php:65
+msgid ""
+"If some pages have been suppressed from get_pages() results, change child "
+"pages' corresponding post_parent values to a visible ancestor"
+msgstr "如果某些頁面已從 get_pages() 結果中隱藏，則將子頁面的相應 post_parent 值更改為可見的祖先"
+
+#: classes/PublishPress/Permissions/Constants.php:66
+msgid ""
+"Never modify the post_parent value in the get_pages() result set, even if "
+"some pages have been suppressed"
+msgstr "永遠不要修改 get_pages() 結果集中的 post_parent 值，即使某些頁面已被隱藏"
+
+#: classes/PublishPress/Permissions/Constants.php:67
+msgid ""
+"For performance, change the get_pages() database query to return only a "
+"subset of fields, excluding post_content"
+msgstr "為了性能，將 get_pages() 數據庫查詢更改為僅返回部分字段，排除 post_content"
+
+#: classes/PublishPress/Permissions/Constants.php:74
+msgid ""
+"Don't apply content teaser to get_pages() results (leave unreadable posts "
+"hidden)"
+msgstr "不要將內容 Teaser 應用於 get_pages() 結果（保留不可讀的帖子隱藏）"
+
+#: classes/PublishPress/Permissions/Constants.php:82
+msgid ""
+"If some terms have been suppressed from get_terms() results, change child "
+"terms' corresponding parent values to a visible ancestor"
+msgstr "如果某些術語已從 get_terms() 結果中隱藏，則將子術語的相應父值更改為可見的祖先"
+
+#: classes/PublishPress/Permissions/Constants.php:83
+msgid ""
+"Never modify the parent value in the get_terms() result set, even if some "
+"terms have been suppressed"
+msgstr "永遠不要修改 get_terms() 結果集中的父值，即使某些術語已被隱藏"
+
+#: classes/PublishPress/Permissions/Constants.php:90
+msgid ""
+"Set Author to current user if autoset_post_author / autoset_page_author "
+"capability is assigned"
+msgstr "如果分配了 autoset_post_author / autoset_page_author 能力，則將作者設置為當前用戶"
+
+#: classes/PublishPress/Permissions/Constants.php:97
+msgid ""
+"Leave Media Library with normal access criteria based on user's role "
+"capabilities "
+msgstr "根據用戶的角色能力，保持媒體庫的正常訪問標準"
+
+#: classes/PublishPress/Permissions/Constants.php:98
+msgid ""
+"Accommodate front end uploading solutions that require page editing "
+"capabilities for the async upload request"
+msgstr "適應需要頁面編輯能力的前端上傳解決方案，用於異步上傳請求"
+
+#: classes/PublishPress/Permissions/Constants.php:99
+msgid ""
+"Treat media attached to unregistered post types as unattached, to avoid "
+"improper and confusing filtering"
+msgstr "將附加到未註冊的文章類型的媒體視為未附加，以避免不當和混淆的過濾"
+
+#: classes/PublishPress/Permissions/Constants.php:106
+msgid "Attached Files Private setting available"
+msgstr "附加檔案私密設定可用"
+
+#: classes/PublishPress/Permissions/Constants.php:107
+msgid "Comma-separated list of mime types to exclude from File Access filtering"
+msgstr "要從檔案訪問過濾中排除的 mime 類型的逗號分隔列表"
+
+#: classes/PublishPress/Permissions/Constants.php:108
+msgid ""
+"Comma-separated list of mime types to include in File Access filtering "
+"(bypassing others)"
+msgstr "以逗號分隔的 MIME 類型列表，用於文件訪問過濾（繞過其他類型）"
+
+#: classes/PublishPress/Permissions/Constants.php:109
+msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
+msgstr "當檔案訪問被阻止時，不設置 WP_Query 的 404 / 403 屬性"
+
+#: classes/PublishPress/Permissions/Constants.php:110
+msgid "HTTP status code to send when file access is blocked"
+msgstr "當檔案訪問被阻止時發送的 HTTP 狀態碼"
+
+#: classes/PublishPress/Permissions/Constants.php:118
+msgid ""
+"On Users listing, Permission groups in custom column are list filter links "
+"instead of group edit links"
+msgstr "在用戶列表中，自定義列中的權限組是列表過濾鏈接，而不是組編輯鏈接"
+
+#: classes/PublishPress/Permissions/Constants.php:119
+#: classes/PublishPress/Permissions/Constants.php:120
+msgid ""
+"Unlock Permissions > Settings > Core > Admin Back End > 'Hide non-editable "
+"posts'"
+msgstr "解鎖權限 > 設定 > 核心 > 管理後端 > '隱藏不可編輯的文章'"
+
+#: classes/PublishPress/Permissions/Constants.php:121
+msgid ""
+"Within the async-upload.php script, filter author's retrieval of the "
+"attachment they just uploaded"
+msgstr "在 async-upload.php 腳本中，過濾作者對他們剛上傳的附件的檢索"
+
+#: classes/PublishPress/Permissions/Constants.php:122
+msgid "Don't filter comment display or moderation within wp-admin"
+msgstr "在 wp-admin 中不要過濾評論顯示或審核"
+
+#: classes/PublishPress/Permissions/Constants.php:123
+msgid ""
+"Allow Administrators to be added to Permission Groups, even though they are "
+"not restricted"
+msgstr "允許將管理員添加到權限組，即使他們沒有被限制"
+
+#: classes/PublishPress/Permissions/Constants.php:129
+msgid ""
+"If propagating permissions are assigned to a page branch, overwrite any "
+"explicitly assigned permissions in sub-pages"
+msgstr "如果將傳播權限分配給頁面分支，則覆蓋子頁面中明確分配的任何權限"
+
+#: classes/PublishPress/Permissions/Constants.php:130
+msgid ""
+"Max number of specific permissions to insert in a single database query "
+"(default 1000)"
+msgstr "在單個數據庫查詢中插入的特定權限的最大數量（默認 1000）"
+
+#: classes/PublishPress/Permissions/Constants.php:131
+msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
+msgstr "不要調整管理菜單索引以將權限菜單放在用戶下"
+
+#: classes/PublishPress/Permissions/Constants.php:132
+msgid ""
+"Don't add a Permissions menu. Instead, add menu items to the Users and "
+"Settings menus."
+msgstr "不添加權限菜單。相反，將菜單項添加到用戶和設置菜單中。"
+
+#: classes/PublishPress/Permissions/Constants.php:138
+msgid "Customize Permissions screen title for Groups"
+msgstr "自訂群組的權限螢幕標題"
+
+#: classes/PublishPress/Permissions/Constants.php:139
+msgid "Customize Permission Groups caption on user profile"
+msgstr "自訂用戶檔案上的權限組標題"
+
+#: classes/PublishPress/Permissions/Constants.php:140
+msgid "Only one group is selectable on Add User screen"
+msgstr "在新增用戶螢幕上只能選擇一個群組"
+
+#: classes/PublishPress/Permissions/Constants.php:141
+msgid "Only one group is selectable on Edit User screen"
+msgstr "在編輯用戶螢幕上只能選擇一個群組"
+
+#: classes/PublishPress/Permissions/Constants.php:142
+msgid "Display a custom hint on Permissions > User Groups"
+msgstr "在權限 > 使用者群組上顯示自訂提示"
+
+#: classes/PublishPress/Permissions/Constants.php:143
+msgid ""
+"Max number of non-hierarchical posts / terms to display at one time (per "
+"page)"
+msgstr "一次顯示的非層級文章/術語的最大數量（每頁）"
+
+#: classes/PublishPress/Permissions/Constants.php:144
+msgid "Max number of hierarchical posts / terms to display at one time (per page)"
+msgstr "一次最多顯示的階層性文章/術語數量（每頁）"
+
+#: classes/PublishPress/Permissions/Constants.php:145
+msgid ""
+"Disable auto-determination of how many levels of page tree to make visble "
+"by default. Instead, use specified value."
+msgstr "禁用自動確定默認顯示多少層頁面樹。相反，使用指定的值。"
+
+#: classes/PublishPress/Permissions/Constants.php:146
+msgid ""
+"Target number of visible pages/terms, used for auto-determination of number "
+"of visible levels"
+msgstr "可見頁面/術語的目標數量，用於自動確定可見層級的數量"
+
+#: classes/PublishPress/Permissions/Constants.php:147
+msgid "Make search function on the post selection metabox look at post content"
+msgstr "讓文章選擇元框上的搜尋功能查看文章內容"
+
+#: classes/PublishPress/Permissions/Constants.php:148
+msgid "Make search function on the post selection metabox look at post excerpt"
+msgstr "讓文章選擇元框上的搜尋功能查看文章摘要"
+
+#: classes/PublishPress/Permissions/Constants.php:154
+msgid "Search by last name instead of display name"
+msgstr "按照姓氏搜尋，而不是顯示名稱"
+
+#: classes/PublishPress/Permissions/Constants.php:155
+msgid "User field to search by default"
+msgstr "預設搜尋的使用者欄位"
+
+#: classes/PublishPress/Permissions/Constants.php:156
+msgid "User meta fields selectable for search (comma-separated)"
+msgstr "可供搜尋的使用者元欄位（以逗號分隔）"
+
+#: classes/PublishPress/Permissions/Constants.php:157
+msgid "User meta fields which should be treated as numeric (comma-separated)"
+msgstr "應視為數字的使用者元欄位（以逗號分隔）"
+
+#: classes/PublishPress/Permissions/Constants.php:158
+msgid "User meta fields which should be treated as boolean (comma-separated)"
+msgstr "應視為布林值的使用者元欄位（以逗號分隔）"
+
+#: classes/PublishPress/Permissions/Constants.php:159
+msgid "Use display name for search results instead of user_login"
+msgstr "使用顯示名稱作為搜尋結果，而不是 user_login"
+
+#: classes/PublishPress/Permissions/Constants.php:166
+msgid ""
+"When synchronizing role metagroups to currently defined WP roles, don't "
+"delete groups for previously defined WP roles."
+msgstr "在將角色元組同步到當前定義的 WP 角色時，不要刪除先前定義的 WP 角色的組。"
+
+#: classes/PublishPress/Permissions/Constants.php:167
+msgid ""
+"Force detection of WP user roles which are appended dynamically but not "
+"stored to the WP database."
+msgstr "強制檢測動態附加但未存儲到 WP 數據庫的 WP 用戶角色。"
+
+#: classes/PublishPress/Permissions/Constants.php:174
+msgid ""
+"To save memory on front end access, don't register any filters related to "
+"content editing"
+msgstr "為了節省前端訪問的內存，不要註冊與內容編輯相關的任何過濾器"
+
+#: classes/PublishPress/Permissions/Constants.php:175
+msgid ""
+"Attached media do not have any comments, so don't append clauses to comment "
+"queries for them"
+msgstr "附加媒體沒有任何評論，因此不要為它們的評論查詢附加條款"
+
+#: classes/PublishPress/Permissions/Constants.php:176
+msgid ""
+"Reduce overhead of pages query (in get_pages() and wp-admin) by defaulting "
+"fields to a set list that does not include post_content "
+msgstr "通過將字段默認設置為不包括 post_content 的固定列表，減少頁面查詢的開銷（在 get_pages() 和 wp-admin 中）"
+
+#: classes/PublishPress/Permissions/Constants.php:177
+msgid ""
+"Reduce overhead of wp-admin posts query by defaulting fields to a set list "
+"that does not include post_content "
+msgstr "透過將欄位預設為不包括 post_content 的固定列表來減少 wp-admin 文章查詢的開銷"
+
+#: classes/PublishPress/Permissions/Constants.php:178
+msgid ""
+"Reduce overhead of wp-admin Media query by defaulting fields to a set list "
+"that does not include post_content "
+msgstr "透過將欄位預設為不包括 post_content 的固定列表來減少 wp-admin 媒體查詢的開銷"
+
+#: classes/PublishPress/Permissions/Constants.php:179
+msgid ""
+"Reduce overhead of wp-admin query for specified custom post type by "
+"defaulting fields to a set list that does not include post_content "
+msgstr "透過將欄位預設為不包括 post_content 的固定列表來減少 wp-admin 指定自定義文章類型的查詢開銷"
+
+#: classes/PublishPress/Permissions/Constants.php:185
+msgid "Work around database setup warnings (at plugin activation) on some servers"
+msgstr "在某些伺服器上繞過資料庫設置警告（在外掛啟用時）"
+
+#: classes/PublishPress/Permissions/Constants.php:213
+msgid ""
+"Development use only (suppresses post_status = 'publish' clause for "
+"unfiltered post types with anonymous user)"
+msgstr "僅供開發使用（對於未過濾的文章類型，抑制 post_status = 'publish' 子句，並針對匿名用戶）"
+
+#: classes/PublishPress/Permissions/Constants.php:214
+msgid ""
+"Development use only (on front end, do not replace 'post_status = "
+"'publish'' clause with filtered equivalent)"
+msgstr "僅供開發使用（在前端，不要將 'post_status = 'publish'' 子句替換為過濾的等效項）"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
+msgid "Logged In"
+msgstr "已登入"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
+msgid "Not Logged In"
+msgstr "未登入"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
+msgid "Everyone"
+msgstr "所有人"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+msgid "Change Request Notifications"
+msgstr "變更請求通知"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
+#, fuzzy
+msgid "Submitted Revision Editors"
+msgstr "已提交的修訂版"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+msgid "Scheduled Change Notifications"
+msgstr "排定的變更通知"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
+msgid "Scheduled Revision Monitors"
+msgstr "排定的修訂監控"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:490
+msgid "Authenticated site users, except for Administrators"
+msgstr "經過身份驗證的網站用戶，除了管理員"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
+msgid "Anonymous users (not logged in)"
+msgstr "匿名用戶（未登入）"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
+msgid "All users (including anonymous)"
+msgstr "所有用戶（包括匿名用戶）"
+
+#: classes/PublishPress/Permissions/DB/Groups.php:499
+#, php-format
+msgid "All users with the WordPress role of %s"
+msgstr "所有擁有 %s WordPress 角色的用戶"
+
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1063
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
+#, fuzzy, php-format
+msgid "%1$s %2$s"
+msgstr "%1$s %2$s"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:90
+#, php-format
+msgid ""
+"%1$s won&#39;t work until you upgrade PHP to version %2$s or later. Current "
+"version: %3$s"
+msgstr "%1$s 在您升級 PHP 至版本 %2$s 或更高版本之前無法正常運作。當前版本：%3$s"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:101
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade %2$s to version %3$s or later."
+msgstr "%1$s 不會工作，直到您將 %2$s 升級到 %3$s 或更高版本。"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:112
+#, php-format
+msgid "%1$s won&#39;t work until you upgrade WordPress to version %2$s or later."
+msgstr "%1$s 不會工作，直到您將 WordPress 升級到 %2$s 或更高版本。"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:122
+#, php-format
+msgid ""
+"This version of %1$s cannot work with your current %2$s version. Please "
+"upgrade it to %3$s or later."
+msgstr "此版本的 %1$s 無法與您當前的 %2$s 版本一起使用。請將其升級至 %3$s 或更高版本。"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:133
+#, php-format
+msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
+msgstr "已啟用重複的 %1$s 模組 (%2$s 在資料夾 %3$s 中)。"
+
+#: classes/PublishPress/Permissions/ErrorNotice.php:183
+msgid "Dismiss"
+msgstr "關閉"
+
+#: classes/PublishPress/Permissions/Groups.php:54
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:335
+msgid "Custom Group"
+msgstr "自訂群組"
+
+#: classes/PublishPress/Permissions/Groups.php:55
+#: classes/PublishPress/Permissions/UI/Groups.php:237
+msgid "Custom Groups"
+msgstr "自訂群組"
+
+#: classes/PublishPress/Permissions/Groups.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:41
+msgid "Groups"
+msgstr "群組"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:95
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:158
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:190
+#, php-format
+msgid "(using default capabilities due to invalid %s definition)"
+msgstr "(由於無效的 %s 定義，使用預設功能)"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:144
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:168
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+msgstr "%1$s&nbsp;%2$s&nbsp;%3$s-&nbsp;%4$s%5$s%6$s"
+
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:181
+#: classes/PublishPress/Permissions/PermissionsAdmin.php:200
+#, fuzzy, php-format
+msgid "%1$s&nbsp;%2$s%3$s"
+msgstr "%1$s&nbsp;%2$s%3$s"
+
+#: classes/PublishPress/Permissions/PluginStatus.php:12
+#, php-format
+msgid ""
+"Your license key has expired. For updates to PublishPress Permissions Pro "
+"and priority support, %splease renew%s."
+msgstr "您的授權金鑰已過期。欲獲得 PublishPress Permissions Pro 的更新和優先支援，%s請續訂%s。"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "所有擁有 WordPress %s 角色的使用者"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "所有已登入且在網站上擁有角色的使用者"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "當提交修訂時通知的使用者"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "當預定修訂發佈時通知的使用者"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:185
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:247
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:289
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
+msgid "(login timed out)"
+msgstr "(登入逾時)"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
+msgid "View"
+msgstr "檢視"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#, php-format
+msgid "Control assignment of terms to selected %s."
+msgstr "控制指定 %s 的術語分配。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
+#, php-format
+msgid "Control parent selection for selected %s."
+msgstr "控制選擇的 %s 的父項選擇。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control editing of selected %s."
+msgstr "控制選擇的 %s 的編輯。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#, php-format
+msgid "Control publishing of selected %s."
+msgstr "控制選擇的 %s 的發佈。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#, php-format
+msgid "Control deletion of selected %s."
+msgstr "控制選擇的 %s 的刪除。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#, php-format
+msgid "Control term management for selected %s."
+msgstr "控制選擇的 %s 的術語管理。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#, php-format
+msgid "Control frontend viewing of selected %s."
+msgstr "控制選擇的 %s 的前端檢視。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:375
+#, php-format
+msgid "Control who can create a revision of this %s."
+msgstr "控制誰可以為此 %s 創建修訂。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:376
+#, php-format
+msgid "Control who can submit a revision of this %s."
+msgstr "控制誰可以提交此 %s 的修訂。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:135
+msgid "Enable"
+msgstr "啟用"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:140
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
+msgid "Block"
+msgstr "封鎖"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:143
+msgid "Limit to"
+msgstr "限制為"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:148
+msgid ""
+"Expand access to allow specified items regardless of role capabilities or "
+"restrictions."
+msgstr "擴大訪問權限，允許指定項目無論角色能力或限制如何。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:149
+msgid ""
+"Restrict access by blocking specified items unless an \"Enabled\" exception "
+"is also stored."
+msgstr "限制訪問權限，阻止指定項目，除非還存有「啟用」例外。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
+msgid ""
+"Restrict access by limiting role capabilities to apply only for specified "
+"items. Users still need capabilities in their main role or extra roles."
+msgstr "通過限制角色能力僅適用於指定項目來限制訪問權限。用戶仍需在其主要角色或額外角色中擁有能力。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:169
+msgid ""
+"Using group membership to block access is not recommended. Consider "
+"reducing the user's role capabilities and using group membership to add "
+"access."
+msgstr "使用群組成員身份來阻止訪問並不建議。考慮減少用戶的角色能力，並使用群組成員身份來添加訪問權限。"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:195
+msgid "Selected:"
+msgstr "已選擇："
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
+msgid "Nav Menus (Legacy)"
+msgstr "導航菜單（舊版）"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:209
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:996
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:225
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
+msgid "Legacy"
+msgstr "舊版"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:213
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:226
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:232
+#, php-format
+msgid "%s:"
+msgstr "%s："
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:260
+#, php-format
+msgid "Selected %s:"
+msgstr "已選擇 %s："
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
+#, php-format
+msgid "Sub-%s:"
+msgstr "子-%s："
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:300
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:177
+msgid "All Statuses"
+msgstr "所有狀態"
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:313
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1905
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
+#, php-format
+msgid "%s Visibility"
+msgstr "%s 可見性"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:35
+msgid "No user/group specified."
+msgstr "未指定用戶/群組。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:52
+#: classes/PublishPress/Permissions/UI/GroupNew.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:21
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:36
+msgid "You are not permitted to do that."
+msgstr "您不被允許這樣做。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:46
+msgid "Invalid user ID."
+msgstr "無效的用戶 ID。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:55
+msgid "Invalid group ID."
+msgstr "無效的群組 ID。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:89
+msgid "Roles updated."
+msgstr "角色已更新。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:92
+msgid "Specific Permissions updated."
+msgstr "特定權限已更新。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:95
+msgid "Roles and Permissions copied."
+msgstr "角色和權限已複製。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:98
+msgid "Group updated."
+msgstr "群組已更新。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:102
+#: classes/PublishPress/Permissions/UI/GroupNew.php:50
+msgid "Back to permissions list"
+msgstr "回到權限列表"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Edit User Permissions"
+msgstr "編輯用戶權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:128
+msgid "Add User Permissions"
+msgstr "新增用戶權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:132
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:282
+msgid "Edit Permissions"
+msgstr "編輯權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#, php-format
+msgid "Edit Permissions (%s)"
+msgstr "編輯權限 (%s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
+#, php-format
+msgid "%sEdit WordPress Role%s"
+msgstr "%s編輯 WordPress 角色%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:144
+msgid "Edit role capabilities directly"
+msgstr "直接編輯角色能力"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:272
+msgid "Add New"
+msgstr "新增"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:195
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
+msgid "Name:"
+msgstr "名稱："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:206
+msgid "Email:"
+msgstr "電子郵件："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:219
+msgid "Primary Role:"
+msgstr "主要角色："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:238
+msgid "User ID:"
+msgstr "用戶 ID："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:246
+msgid "Member since:"
+msgstr "成員自："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:266
+msgid "Description:"
+msgstr "描述："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:284
+msgid "Update Permissions"
+msgstr "更新權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
+msgid "View Full Profile"
+msgstr "查看完整個人資料"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:414
+msgid "View currently stored user permissions:"
+msgstr "查看當前存儲的用戶權限："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#, php-format
+msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
+msgstr "%1$s直接分配額外角色的用戶%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:419
+#, php-format
+msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
+msgstr "%1$s直接分配特定權限的用戶%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:420
+#, php-format
+msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
+msgstr "%1$s擁有額外角色或特定權限的用戶直接%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:16
+msgid "Add Roles"
+msgstr "添加角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:17
+msgid "Clear"
+msgstr "清除"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:18
+msgid "No statuses selected!"
+msgstr "未選擇任何狀態！"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:19
+msgid "Review the selection below, and then click <strong>Save Roles</strong>."
+msgstr "檢查以下選擇，然後點擊 <strong>保存角色</strong>。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:20
+msgid "Role already selected!"
+msgstr "角色已選擇！"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+msgid "No Action selected!"
+msgstr "未選擇任何操作！"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:22
+msgid "Saving Roles..."
+msgstr "正在保存角色..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Reload form for further changes to this role"
+msgstr "重新載入表單以進行此角色的進一步更改"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:40
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
+msgid "Add Specific Permissions"
+msgstr "添加特定權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:41
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:413
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1405
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
+msgid "Remove"
+msgstr "移除"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
+msgid ""
+"Review the selection below, and then click <strong>Save "
+"Permissions</strong>."
+msgstr "檢查以下選擇，然後點擊 <strong>保存權限</strong>。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
+msgid "Permission already selected!"
+msgstr "權限已選擇！"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+msgid "Saving Permissions..."
+msgstr "正在保存權限..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+msgid "Reload form for further changes to this permission"
+msgstr "重新載入表單以進行此權限的進一步更改"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+msgid "Permissions mirrored. Reload form to view newly saved permissions."
+msgstr "權限已鏡像。重新載入表單以查看新保存的權限。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+msgid "Permissions converted. Reload form to view newly saved permissions."
+msgstr "權限已轉換。重新載入表單以查看新保存的權限。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+msgid "No Qualification selected!"
+msgstr "未選擇任何資質！"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:62
+msgid "No items selected!"
+msgstr "未選擇任何項目！"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1277
+msgid "(no parent)"
+msgstr "(無父項)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:273
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:275
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:545
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:547
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:553
+msgid "(none)"
+msgstr "(無)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:69
+msgid "No results found."
+msgstr "未找到結果。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:92
+msgid "select..."
+msgstr "選擇..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:988
+msgid "Nav Menu (Block)"
+msgstr "導航菜單（區塊）"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:107
+msgid "All Post Types"
+msgstr "所有文章類型"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
+msgid "n/a"
+msgstr "不適用"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:129
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:257
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:379
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
+msgid "Post Type"
+msgstr "文章類型"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
+msgid "Operation"
+msgstr "操作"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+msgid "Adjustment"
+msgstr "調整"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+msgid "Qualification"
+msgstr "資格"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
+msgid "Statuses"
+msgstr "狀態"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:168
+msgid "for item"
+msgstr "針對項目"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:191
+msgid ""
+"Warning: Content hidden by these Permissions will be displayed if PP is "
+"deactivated. Consider setting a private Visibility on Edit Post screen "
+"instead."
+msgstr "警告：這些權限隱藏的內容將在 PP 被停用時顯示。考慮在編輯文章螢幕上設置私有可見性。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:223
+msgid ""
+"To assign page-specific Permissions for editing, parent selection or term "
+"assignment, enable the Editing Permissions feature."
+msgstr "要為編輯指定頁面特定的權限，請啟用編輯權限功能。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:235
+msgid ""
+"To assign forum-specific Permissions for bbPress, activate the "
+"Compatibility Pack feature."
+msgstr "要為 bbPress 指定論壇特定的權限，請啟用相容性包功能。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:238
+#, php-format
+msgid ""
+"To assign forum-specific Permissions for bbPress, %1$supgrade to "
+"Permissions Pro%2$s and enable the Compatibility Pack feature."
+msgstr "要為 bbPress 指定論壇特定的權限，%1$s升級至 Permissions Pro%2$s 並啟用相容性包功能。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
+msgid "Role"
+msgstr "角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:259
+msgid "For Statuses"
+msgstr "針對狀態"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:278
+msgid "Standard statuses"
+msgstr "標準狀態"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:283
+msgid "Status: Private"
+msgstr "狀態：私人"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:288
+msgid "Add Role"
+msgstr "新增角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:300
+msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
+msgstr "要為 bbPress 論壇分配角色，請啟用相容性套件功能。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:303
+#, php-format
+msgid ""
+"To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
+"enable the Compatibility Pack feature."
+msgstr "要為 bbPress 論壇指定角色，%1$s升級至 Permissions Pro%2$s 並啟用相容性包功能。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:314
+msgid ""
+"To assign page-specific PublishPress Revision permissions, enable the "
+"Editing Permissions feature."
+msgstr "要分配特定頁面的 PublishPress 修訂權限，請啟用編輯權限功能。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:345
+#, php-format
+msgid "Select %s"
+msgstr "選擇 %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:381
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:412
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:785
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
+msgid "Status"
+msgstr "狀態"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:391
+msgid "Save Roles"
+msgstr "保存角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:422
+msgid "Save Permissions"
+msgstr "保存權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:455
+msgid "Add Extra Roles"
+msgstr "新增額外角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:465
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Copy"
+msgstr "複製"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:654
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#, php-format
+msgid "Extra Roles %1$s(for this user)%2$s"
+msgstr "額外角色 %1$s（對於此用戶）%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:655
+msgid "Extra Roles"
+msgstr "額外角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
+msgid "Show Groups"
+msgstr "顯示群組"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:708
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1014
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1102
+msgid "item(s)"
+msgstr "項目"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:730
+msgid "Term Management"
+msgstr "術語管理"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:734
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
+msgid "objects"
+msgstr "物件"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:735
+msgid "Direct-Assigned"
+msgstr "直接分配"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:741
+msgid "Disabled Type"
+msgstr "禁用類型"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
+#, php-format
+msgid "%s Roles"
+msgstr "%s 角色"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:833
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1524
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:576
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:788
+msgid "Apply"
+msgstr "應用"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:223
+msgid "Nav Menu (Legacy)"
+msgstr "導航菜單（舊版）"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1014
+#, php-format
+msgid "%s Permissions"
+msgstr "%s 權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1032
+msgid "(all post types)"
+msgstr "(所有文章類型)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
+#, fuzzy, php-format
+msgid "%1$s (%2$s: %3$s)"
+msgstr "%1$s (%2$s: %3$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1054
+#, fuzzy, php-format
+msgid "%1$s %2$s %3$s"
+msgstr "%1$s %2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
+msgid "item"
+msgstr "項目"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
+msgid "items"
+msgstr "項目"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
+msgid "unpublished"
+msgstr "未發佈"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:290
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
+#, fuzzy, php-format
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1207
+#, php-format
+msgid "this %1$s"
+msgstr "這個 %1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1212
+#, php-format
+msgid "sub-%1$s of this %2$s"
+msgstr "這個 %2$s 的子-%1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1218
+#, php-format
+msgid "this %1$s and its sub-%2$s"
+msgstr "這個 %1$s 及其子-%2$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
+#, php-format
+msgid ""
+"%1$s access for %2$s is ENABLED within %3$s, regardless of role "
+"capabilities."
+msgstr "%1$s 對 %2$s 在 %3$s 內部是啟用的，不受角色能力的限制。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1235
+#, php-format
+msgid ""
+"%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
+"Permission."
+msgstr "%1$s 對 %2$s 在 %3$s 內部是被阻止的，除非由其他權限啟用。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1243
+#, php-format
+msgid ""
+"Any role-based %1$s access for %2$s is LIMITED. It applies only within "
+"%3$s, along with other specified %4$s."
+msgstr "任何基於角色的 %1$s 對 %2$s 的訪問是有限制的。它僅適用於 %3$s，並與其他指定的 %4$s 相關。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1253
+#, php-format
+msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
+msgstr "%1$s 對 %2$s 的訪問已啟用，無論角色能力如何。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1260
+#, php-format
+msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
+msgstr "%1$s 對 %2$s 的訪問被阻止，除非由其他權限啟用。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1267
+#, php-format
+msgid ""
+"Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
+"along with other specified %4$s."
+msgstr "任何基於角色的 %1$s 對 %2$s 的訪問是有限制的。它僅適用於 %3$s，並與其他指定的 %4$s 相關。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1348
+#, php-format
+msgid "Assigned for sub-%s only."
+msgstr "僅分配給子-%s。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1356
+#, php-format
+msgid "Assigned for %s and sub-%s."
+msgstr "分配給 %s 和子-%s。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1380
+msgid "This Permission is redundant due to a corresponding Limitation."
+msgstr "此權限因相應的限制而冗餘。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
+#, php-format
+msgid "Edit %s"
+msgstr "編輯 %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1409
+#, php-format
+msgid "Assign for selected and sub-%s"
+msgstr "為所選和子-%s 指派"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1413
+#, php-format
+msgid "Assign for selected %s only"
+msgstr "僅為所選 %s 指派"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1417
+#, php-format
+msgid "Assign for sub-%s only"
+msgstr "僅為子-%s 指派"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
+msgid "Assign for selected and sub-terms"
+msgstr "為所選和子條款指派"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+msgid "Assign for selected term only"
+msgstr "僅為所選條款指派"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1430
+msgid "Assign for sub-terms only"
+msgstr "僅為子條款指派"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1441
+msgid "Convert to \"Enabled\""
+msgstr "轉換為 \"啟用\""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1442
+msgid "Convert to \"Blocked\""
+msgstr "轉換為 \"阻止\""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1443
+msgid "Convert to \"Limit to\""
+msgstr "轉換為 \"限制為\""
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
+#, php-format
+msgid "Mirror to %s"
+msgstr "鏡像到 %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
+#, php-format
+msgid "Mirror to %s %s"
+msgstr "鏡像到 %s %s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1563
+msgid "= Enabled"
+msgstr "= 啟用"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1570
+msgid "= Blocked"
+msgstr "= 阻止"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1577
+msgid "= Limitation"
+msgstr "= 限制"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
+#, php-format
+msgid "= %1$s and sub-%1$s"
+msgstr "= %1$s 和子-%1$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1597
+#, php-format
+msgid "= sub-%s only"
+msgstr "= 僅子-%s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
+msgid "Note:"
+msgstr "注意："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1617
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#, php-format
+msgid "Sub-%1$s Permissions are not separately listed."
+msgstr "子-%1$s 權限未單獨列出。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1621
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1645
+msgid "Show All"
+msgstr "顯示所有"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1630
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1653
+#, php-format
+msgid "Hide auto-assigned Sub-%s Permissions"
+msgstr "隱藏自動分配的子-%s 權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1666
+msgid ""
+"Other plugins (or deactivation of PublishPress Permissions) can prevent "
+"sub-page permissions from being properly applied when a new sub-page is "
+"created."
+msgstr "其他插件（或停用 PublishPress 權限）可能會在創建新子頁面時，導致子頁面權限無法正確應用。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1670
+#, php-format
+msgid " %1$sFix Sub-%2$s Permissions%3$s"
+msgstr " %1$s修復子-%2$s 權限%3$s"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1714
+msgid "Group Restrictions are not available because of a constant definition"
+msgstr "由於常量定義，群組限制不可用"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
+msgid ""
+"Permissions to enable access are not available because of a constant "
+"definition"
+msgstr "由於常數定義，無法使用啟用訪問的權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1791
+msgid "Group Members"
+msgstr "群組成員"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
+msgid "Copy Roles and Permissions from:"
+msgstr "從以下位置複製角色和權限："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1863
+msgid "Copy Roles and Permissions"
+msgstr "複製角色和權限"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1880
+msgid "Limit to:"
+msgstr "限制為："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1883
+msgid "Blocked:"
+msgstr "已阻止："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1887
+msgid "Enabled:"
+msgstr "已啟用："
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
+msgid "Direct-assigned"
+msgstr "直接分配"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1911
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
+msgid "Standard Statuses"
+msgstr "標準狀態"
+
+#: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:60
+msgid "(invalid role definition)"
+msgstr "(無效的角色定義)"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:45
+#, php-format
+msgid "eligible (%d):"
+msgstr "符合資格 (%d)："
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:47
+#, php-format
+msgid "current (%d):"
+msgstr "當前 (%d)："
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:123
+msgid "view / edit group"
+msgstr "查看 / 編輯群組"
+
+#: classes/PublishPress/Permissions/UI/AgentsChecklist.php:124
+msgid "edit"
+msgstr "編輯"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:58
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:290
+#, php-format
+msgid "Find Users by %s"
+msgstr "按 %s 查找用戶"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:60
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:292
+msgid "Search Users"
+msgstr "搜尋使用者"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:63
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:295
+msgid "Search Custom Groups"
+msgstr "搜尋自訂群組"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:83
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:312
+msgid "For additional fields, define constant PP_USER_SEARCH_META_FIELDS"
+msgstr "要額外的欄位，請定義常數 PP_USER_SEARCH_META_FIELDS"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "First Name"
+msgstr "名字"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Last Name"
+msgstr "姓氏"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:85
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:314
+msgid "Nickname"
+msgstr "暱稱"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:110
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:339
+msgid "(user field)"
+msgstr "(使用者欄位)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:140
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:369
+msgid "(any WP role)"
+msgstr "(任何 WP 角色)"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:156
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:428
+msgid "Search Results:"
+msgstr "搜尋結果："
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:173
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:448
+msgid "Current Selections:"
+msgstr "當前選擇："
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:537
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:591
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:140
+msgid "Search for a group"
+msgstr "搜尋群組"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:538
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:592
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:141
+msgid "Search for a user"
+msgstr "搜尋使用者"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:539
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:593
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:142
+msgid "Search for an author"
+msgstr "搜尋作者"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
+#: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
+#: classes/PublishPress/Permissions/UI/Groups.php:180
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:39
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:164
+msgid "Permissions"
+msgstr "權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:271
+msgid "Add New Permission Group"
+msgstr "新增權限群組"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
+msgid "Edit"
+msgstr "編輯"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:96
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:97
+msgid "Role Usage"
+msgstr "角色使用情況"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:310
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:311
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:107
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:108
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:64
+msgid "Edit Role Usage"
+msgstr "編輯角色使用情況"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:323
+msgid "Settings"
+msgstr "設定"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
+msgid "(Default access: Enabled)"
+msgstr "(預設存取：啟用)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:17
+msgid "(Default access: Blocked)"
+msgstr "(預設存取：阻止)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:18
+msgid "(No setting)"
+msgstr "(無設定)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:19
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:44
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:48
+msgid "Enabled"
+msgstr "已啟用"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:20
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:43
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:47
+msgid "Blocked"
+msgstr "已封鎖"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:21
+msgid "(Blocked)"
+msgstr "(已封鎖)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:22
+msgid "Unblocked"
+msgstr "未封鎖"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:42
+msgid "Roles"
+msgstr "角色"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:60
+msgid "User"
+msgstr "使用者"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
+#, php-format
+msgid "This %s"
+msgstr "這 %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
+#, php-format
+msgid "Sub-%s"
+msgstr "子-%s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:273
+msgid "Default All"
+msgstr "預設全部"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:297
+msgid "Group restrictions are not recommended."
+msgstr "不建議使用群組限制。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:368
+#, php-format
+msgid "Control who can assign terms to this %s."
+msgstr "控制誰可以將術語分配給這個 %s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:369
+#, php-format
+msgid "Control who can choose the parent page for this %s."
+msgstr "控制誰可以為這個 %s 選擇父頁面。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:370
+#, php-format
+msgid "Control editing of this %s."
+msgstr "控制這個 %s 的編輯。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:371
+#, php-format
+msgid "Control publishing of this %s."
+msgstr "控制這個 %s 的發布。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:372
+#, php-format
+msgid "Control deletion of this %s."
+msgstr "控制這個 %s 的刪除。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:373
+#, php-format
+msgid "Control term management for this %s."
+msgstr "控制這個 %s 的術語管理。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:374
+#, php-format
+msgid "Control frontend viewing of this %s."
+msgstr "控制這個 %s 的前端查看。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:379
+#, php-format
+msgid "Control who add this %s to %s."
+msgstr "控制誰可以將這個 %s 添加到 %s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:380
+#, php-format
+msgid "Control who can edit %s with this %s."
+msgstr "控制誰可以用這個 %s 編輯 %s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:381
+#, php-format
+msgid "Control who can view %s with this %s."
+msgstr "控制誰可以用這個 %s 查看 %s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:382
+#, php-format
+msgid "Control who can create a revision of %s with this %s."
+msgstr "控制誰可以用這個 %s 創建 %s 的修訂。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:383
+#, php-format
+msgid "Control who can submit a revision of %s with this %s."
+msgstr "控制誰可以用這個 %s 提交 %s 的修訂。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:387
+#, php-format
+msgid "Control who add this %s to all post types."
+msgstr "控制誰可以將這個 %s 添加到所有帖子類型。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:388
+#, php-format
+msgid "Control who can edit all post types in this %s."
+msgstr "控制誰可以編輯此 %s 中的所有貼文類型。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:389
+#, php-format
+msgid "Control who can view all post types in this %s."
+msgstr "控制誰可以查看此 %s 中的所有貼文類型。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:390
+#, php-format
+msgid "Control who can create a revision of all post types in this %s."
+msgstr "控制誰可以創建此 %s 中的所有貼文類型的修訂。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
+#, php-format
+msgid "Control who can submit a revision of all post types in this %s."
+msgstr "控制誰可以提交此 %s 中的所有貼文類型的修訂。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:520
+msgid "Roles & Groups"
+msgstr "角色與群組"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:521
+msgid "Search roles and groups..."
+msgstr "搜尋角色和群組..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:521
+msgid "Search roles..."
+msgstr "搜尋角色..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:532
+#: classes/PublishPress/Permissions/UI/Groups.php:211
+msgid "Users"
+msgstr "使用者"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:552
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+msgid "Sort by:"
+msgstr "排序依據："
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:554
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
+msgid "Name (A-Z)"
+msgstr "名稱 (A-Z)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:618
+msgid "Name (Z-A)"
+msgstr "名稱 (Z-A)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:556
+msgid "Most Users"
+msgstr "最多用戶"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:557
+msgid "Fewest Users"
+msgstr "最少用戶"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:567
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:778
+msgid "Select All"
+msgstr "全選"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:781
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:782
+msgid "Bulk Actions"
+msgstr "批次操作"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:572
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
+msgid "Set to Enabled"
+msgstr "設為啟用"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:573
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:784
+msgid "Set to Blocked"
+msgstr "設為封鎖"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:574
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:785
+msgid "Set to Default"
+msgstr "設為預設"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:791
+msgid "selected"
+msgstr "已選取"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:606
+msgid "Search and add users..."
+msgstr "搜尋並添加使用者..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:704
+msgid "No role exceptions set"
+msgstr "未設定角色例外"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:770
+msgid "No specific user permissions. Use the search box to add users."
+msgstr "沒有特定的使用者權限。使用搜尋框添加使用者。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:786
+msgid "Remove Selected"
+msgstr "移除選取項目"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
+#: classes/PublishPress/Permissions/UI/Groups.php:240
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
+msgid "Login State"
+msgstr "登入狀態"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
+msgid "Group"
+msgstr "群組"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
+msgid "Sub-Sections"
+msgstr "子項目"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
+msgid "This Section"
+msgstr "此區段"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
+msgid "Remove custom permissions for user"
+msgstr "移除用戶的自定義權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:35
+#, php-format
+msgid ""
+"PublishPress Permissions needs directions. Please go to %1$sPermissions > "
+"Settings%2$s and indicate which Post Types and Taxonomies should be "
+"filtered."
+msgstr ""
+"PublishPress Permissions 需要指示。請前往 %1$sPermissions > 設定%2$s "
+"並指明哪些貼文類型和分類法應該被過濾。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PluginAdmin.php:88
+msgid ""
+"Please upgrade PublishPress Authors to version 3.8.0 or later for "
+"Permissions integration."
+msgstr "請將 PublishPress Authors 升級到 3.8.0 版本或更高版本以進行權限整合。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:40
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:44
+msgid "Editing can't be granted to non-users."
+msgstr "編輯權限無法授予非使用者。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:41
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:45
+msgid "You can now set individual permissions for"
+msgstr "您現在可以為"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:42
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:46
+#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
+msgid "All"
+msgstr "全部"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:45
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:49
+msgid "Default"
+msgstr "預設"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:50
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
+msgid "Please select a bulk action first."
+msgstr "請先選擇一個批次動作。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:51
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
+msgid "Please select at least one item."
+msgstr "請至少選擇一項。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:52
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:56
+msgid "Are you sure you want to remove the selected user(s) from exceptions?"
+msgstr "您確定要從例外中移除所選的用戶嗎？"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:53
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:57
+#, php-format
+msgid "Remove the custom permisisons for \"%s\"?"
+msgstr "移除 \"%s\" 的自定義權限？"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:126
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:516
+#: classes/PublishPress/Permissions/UI/Settings.php:102
+msgid "Permissions Settings"
+msgstr "權限設定"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:149
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
+#, php-format
+msgid "Permissions: %s"
+msgstr "權限：%s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:170
+#, php-format
+msgid "Permissions: Select this %s as Parent"
+msgstr "權限：將此 %s 設為父項"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:178
+#, php-format
+msgid "Permissions: Assign Terms to this %s"
+msgstr "權限：將條件指派給此 %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:186
+#, php-format
+msgid "Permissions: %s this %s"
+msgstr "權限：%s 此 %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:236
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:540
+#, php-format
+msgid "enable custom permissions for %s"
+msgstr "為 %s 啟用自訂權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:286
+msgid "Select as Parent"
+msgstr "選擇為父項"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:291
+msgid "Assign Terms"
+msgstr "指派條款"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:37
+#, php-format
+msgid "Specific Permissions %1$s(for this user)%2$s"
+msgstr "特定權限 %1$s（對於此用戶）%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:81
+#, php-format
+msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
+msgstr "額外角色 %1$s（來自主要角色或群組成員身份）%2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:90
+msgid "Specific Permissions (from primary role or group membership)"
+msgstr "特定權限（來自主要角色或群組成員身份）"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:189
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
+msgid "Permission Groups"
+msgstr "權限群組"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:221
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "此用戶不是任何自訂權限群組的成員。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:225
+msgid "Edit this user's group membership"
+msgstr "編輯此用戶的群組成員身份"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:234
+msgid ""
+"Note: BuddyPress Groups and other externally defined groups are not listed "
+"here, even if they modify permissions"
+msgstr "注意：BuddyPress 群組和其他外部定義的群組不在此列，即使它們修改了權限。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:299
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
+#, php-format
+msgid "%s, more..."
+msgstr "%s，更多..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:307
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
+msgid "edit user permissions"
+msgstr "編輯用戶權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#, php-format
+msgid "Assign to %s"
+msgstr "指派給 %s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:153
+msgid "Assign (All Types)"
+msgstr "指派（所有類型）"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
+#, php-format
+msgid "%s (All Types)"
+msgstr "%s (所有類型)"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
+#, php-format
+msgid "%1$s %2$s in this %3$s"
+msgstr "%1$s %2$s 在這個 %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:172
+#, php-format
+msgid "%1$s this %2$s"
+msgstr "%1$s 這個 %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:273
+#, php-format
+msgid "Permissions: %1$s in %2$s"
+msgstr "權限：%1$s 在 %2$s 中"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:287
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:360
+#, php-format
+msgid ""
+"Displayed permissions are those assigned for the \"%1$s\" type. You can "
+"also %2$sdefine universal %3$s permissions which apply to all related post "
+"types%4$s."
+msgstr "顯示的權限是為 \"%1$s\" 類型所分配的。您也可以 %2$s定義通用 %3$s 權限，這些權限適用於所有相關的文章類型%4$s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:316
+#, php-format
+msgid "Permissions: Assign this %2$s to %3$s"
+msgstr "權限：將此 %2$s 指派給 %3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:322
+#, php-format
+msgid "Permissions: Assign this %2$s for All Post Types"
+msgstr "權限：將此 %2$s 指派給所有文章類型"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:329
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:342
+#, php-format
+msgid "Permissions: %1$s %2$s in this %3$s"
+msgstr "權限：%1$s %2$s 在此 %3$s 中"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:335
+#, php-format
+msgid "Permissions: %1$s all content in this %2$s for All Post Types"
+msgstr "權限：%1$s 在此 %2$s 中的所有內容，適用於所有文章類型"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:348
+#, php-format
+msgid "Permissions: %1$s this %2$s"
+msgstr "權限：%1$s 此 %2$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:574
+#, php-format
+msgid ""
+"Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
+"also %3$sdefine universal %4$s permissions which apply to all related post "
+"types%5$s."
+msgstr "顯示的權限是為 \"%1$s\" 類型所分配的。%2$s您也可以 %3$s定義通用 %4$s 權限，這些權限適用於所有相關的文章類型%5$s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:38
+#, php-format
+msgid ""
+"Listed permissions are those assigned for the \"%1$s\" type. You can also "
+"%2$sdefine universal %3$s permissions which apply to all related post "
+"types%4$s."
+msgstr "列出的權限是為 \"%1$s\" 類型所分配的。您也可以 %2$s定義通用 %3$s 權限，這些權限適用於所有相關的文章類型%4$s。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:58
+msgid "Click to list/edit universal permissions"
+msgstr "點擊以列出/編輯通用權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:60
+#, php-format
+msgid "%1$s Permissions %2$s*%3$s"
+msgstr "%1$s 權限 %2$s*%3$s"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/TermsListing.php:62
+msgid "Universal Permissions"
+msgstr "通用權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:69
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:72
+msgid "Permissions&hellip;"
+msgstr "權限&hellip;"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:81
+msgid "Add"
+msgstr "新增"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:85
+msgid "Add selected users to Permission Group"
+msgstr "將選定的用戶添加到權限組"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:95
+msgid "Remove selected users from Permission Group"
+msgstr "從權限組中移除選定的用戶"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:103
+msgid "Click to show only users who have no group"
+msgstr "點擊以僅顯示沒有群組的用戶"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:111
+msgid "Click to show only users who have extra roles"
+msgstr "點擊以僅顯示具有額外角色的用戶"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:122
+msgid "Click to show only users who have Specific Permissions assigned directly"
+msgstr "點擊以僅顯示直接分配了特定權限的用戶"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
+msgid "Specific Permissions"
+msgstr "特定權限"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:262
+msgid "edit group"
+msgstr "編輯群組"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:321
+#, php-format
+msgid "%s more"
+msgstr "%s 更多"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:39
+msgid "Group created."
+msgstr "群組已創建。"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:79
+msgid "Create New Permission Group"
+msgstr "創建新權限組"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:81
+#, php-format
+msgid "Create New %s"
+msgstr "創建新 %s"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:97
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:168
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:39
+msgid "Name"
+msgstr "名稱"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:103
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:656
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:709
+msgid "Description"
+msgstr "描述"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:115
+msgid ""
+"Note: Groups are a more flexible alternative to user roles. You can create "
+"groups of users and give or deny them access to areas of your site."
+msgstr "注意：群組是一種比用戶角色更靈活的替代方案。您可以創建用戶群組並給予或拒絕他們訪問您網站某些區域的權限。"
+
+#: classes/PublishPress/Permissions/UI/GroupNew.php:122
+msgid "Create Group"
+msgstr "創建群組"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:22
+msgid "Shop manager"
+msgstr "商店經理"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:23
+msgid "Translator"
+msgstr "翻譯者"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:24
+msgid "Customer"
+msgstr "顧客"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:90
+msgid "You have specified this group for deletion:"
+msgid_plural "You have specified these groups for deletion:"
+msgstr[0] "您已指定此群組進行刪除："
+
+#: classes/PublishPress/Permissions/UI/Groups.php:120
+msgid "There are no valid groups selected for deletion."
+msgstr "沒有選定的有效群組進行刪除。"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:150
+#, php-format
+msgid "%s group deleted"
+msgid_plural "%s groups deleted"
+msgstr[0] "%s 群組已刪除"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:155
+msgid "New group created."
+msgstr "新群組已創建。"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:199
+msgid "Add New Group"
+msgstr "添加新群組"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:206
+msgid "User Groups"
+msgstr "用戶群組"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:330
+msgid "WordPress Role"
+msgstr "WordPress 角色"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:234
+msgid "WordPress Roles"
+msgstr "WordPress 角色"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:247
+#, php-format
+msgid "%1$sGroup Type:%2$s %3$s"
+msgstr "%1$s群組類型：%2$s %3$s"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:275
+msgid "Has Permissions"
+msgstr "擁有權限"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:279
+#: classes/PublishPress/Permissions/UI/Groups.php:336
+msgid "Has Specific Permissions"
+msgstr "擁有特定權限"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:282
+#: classes/PublishPress/Permissions/UI/Groups.php:343
+msgid "Has Extra Roles"
+msgstr "擁有額外角色"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:287
+#, php-format
+msgid "Search Results for &#8220;%s&#8221;"
+msgstr "搜尋結果為「%s」"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:296
+msgid "Search Groups"
+msgstr "搜尋群組"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:322
+msgid "All Users"
+msgstr "所有用戶"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:329
+msgid "Has Permissions Set Directly"
+msgstr "擁有直接設置的權限"
+
+#: classes/PublishPress/Permissions/UI/Groups.php:350
+msgid "No Custom Group"
+msgstr "無自訂群組"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:115
+msgid "No matching groups were found."
+msgstr "未找到匹配的群組。"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:154
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:95
+msgid "Delete"
+msgstr "刪除"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:169
+msgid "Type"
+msgstr "類型"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:338
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:145
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:245
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:191
+msgid "Workflow"
+msgstr "工作流程"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:37
+#: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:83
+msgid "edit group permissions"
+msgstr "編輯群組權限"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:326
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+msgid "ERROR"
+msgstr "錯誤"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:327
+msgid "Please enter a group name."
+msgstr "請輸入群組名稱。"
+
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:334
+msgid "This group name is already registered. Please choose another one."
+msgstr "此群組名稱已被註冊。請選擇其他名稱。"
+
+#: classes/PublishPress/Permissions/UI/Handlers/Groups.php:73
+msgid "You can&#8217;t delete that group."
+msgstr "您無法刪除該群組。"
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:15
+msgid ""
+"To block direct access to unreadable files, activate the File Access "
+"feature."
+msgstr "要阻止對無法讀取文件的直接訪問，請啟用文件訪問功能。"
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:18
+#, php-format
+msgid ""
+"To block direct access to unreadable files, %1$supgrade to Permissions "
+"Pro%2$s and enable the File Access feature."
+msgstr "要阻止對無法讀取文件的直接訪問，%1$s升級到 Permissions Pro%2$s 並啟用文件訪問功能。"
+
+#: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:29
+msgid "To customize editing permissions, enable the Editing Permissions feature."
+msgstr "要自訂編輯權限，請啟用編輯權限功能。"
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:13
+msgid "Block URL access"
+msgstr "阻止 URL 訪問"
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:16
+msgid ""
+"To block direct URL access to attachments of unreadable posts, activate the "
+"File Access feature."
+msgstr "要阻止對無法讀取文章的附件的直接 URL 訪問，請啟用文件訪問功能。"
+
+#: classes/PublishPress/Permissions/UI/HintsMedia.php:19
+#, php-format
+msgid ""
+"To block direct URL access to attachments of unreadable posts, %1$supgrade "
+"to Permissions Pro%2$s and enable the File Access feature."
+msgstr "要阻止對無法讀取文章的附件的直接 URL 訪問，%1$s升級到 Permissions Pro%2$s 並啟用文件訪問功能。"
+
+#: classes/PublishPress/Permissions/UI/HintsPostEdit.php:14
+msgid "Customize"
+msgstr "自訂"
+
+#: classes/PublishPress/Permissions/UI/HintsPostEdit.php:18
+#, php-format
+msgid "To customize publication workflow, %1$sinstall PublishPress Statuses%2$s."
+msgstr "要自訂出版工作流程，%1$s安裝 PublishPress 狀態%2$s。"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:11
+msgid "Show list of Permissions Pro features and screencasts"
+msgstr "顯示 Permissions Pro 功能和螢幕錄影的列表"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:166
+msgid "Knowledge Base"
+msgstr "知識庫"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:168
+msgid "Detailed Feature Grid"
+msgstr "詳細功能表"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:170
+msgid "Contact Us"
+msgstr "聯繫我們"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:172
+msgid "Purchase"
+msgstr "購買"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:174
+msgid "Hide"
+msgstr "隱藏"
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:272
+#, php-format
+msgid "None. All %ss will be hidden by default."
+msgstr "無。所有 %ss 將預設隱藏。"
+
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:335
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:495
+#: classes/PublishPress/Permissions/UI/ItemsMetabox.php:748
+msgid "Add Selected Permissions"
+msgstr "新增所選權限"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:68
+msgid "If you need help or have a new feature request, let us know."
+msgstr "如果您需要幫助或有新的功能要求，請告訴我們。"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:193
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:231
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:269
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:291
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:108
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:305
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:191
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:227
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:249
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:137
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
+#: includes/CoreAdmin.php:111
+#: includes/CoreAdmin.php:112
+#: includes/CoreAdmin.php:243
+#: includes/promo/posts-teaser-promo.php:22
+#: includes/promo/statuses-promo.php:23
+#: includes/promo/sync-promo.php:22
+#: includes/promo/visibility-statuses-promo.php:23
+msgid "Upgrade to Pro"
+msgstr "升級到專業版"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:241
+msgid "Request Support"
+msgstr "請求支援"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:248
+msgid "Detailed documentation is also available on the plugin website."
+msgstr "詳細文檔也可在插件網站上獲得。"
+
+#: classes/PublishPress/Permissions/UI/PromoBanner.php:251
+msgid "View Knowledge Base"
+msgstr "查看知識庫"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:171
+msgid "All settings were updated."
+msgstr "所有設置已更新。"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:179
+msgid "All settings were reset to defaults."
+msgstr "所有設置已重置為預設值。"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:575
+msgid "Save Changes"
+msgstr "儲存變更"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:223
+msgid "Upgrade to Permissions Pro"
+msgstr "升級到 Permissions Pro"
+
+#: classes/PublishPress/Permissions/UI/Settings.php:224
+msgid "Need Permissions Support?"
+msgstr "需要權限支援嗎？"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:60
+msgid ""
+"If disabled, manually \"blocked\" posts can be unblocked by specific "
+"Category / Term Permissions."
+msgstr "如果禁用，手動“封鎖”的文章可以通過特定的類別/術語權限解封。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:63
+msgid ""
+"If enabled, corresponding Media edit and delete capabilities must be added "
+"to existing roles."
+msgstr "如果啟用，必須將相應的媒體編輯和刪除能力添加到現有角色中。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:66
+msgid ""
+"For specialized Media Library permissions, enable the Editing Permissions "
+"feature."
+msgstr "要獲得專門的媒體庫權限，請啟用編輯權限功能。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:69
+msgid ""
+"To customize bbPress forum permissions, activate the Compatibility Pack "
+"feature."
+msgstr "要自定義 bbPress 論壇權限，請啟用兼容包功能。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:72
+msgid ""
+"To customize bbPress forum permissions, activate your Permissions Pro "
+"license key."
+msgstr "要自定義 bbPress 論壇權限，請啟用您的 Permissions Pro 許可證金鑰。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:75
+msgid "Remove the \"Private:\" and \"Protected\" prefix from Post, Page titles."
+msgstr "從帖子、頁面標題中刪除「私密：」和「受保護」前綴。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:78
+msgid ""
+"If the user is blocked from reading posts in a category, also block access "
+"to category archive page."
+msgstr "如果用戶被阻止閱讀某類別的文章，也要阻止訪問類別存檔頁面。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:81
+msgid ""
+"Remove unreadable Menu Items. If menu rendering problems occur with a third "
+"party plugin, disable this setting."
+msgstr "移除無法讀取的菜單項。如果與第三方插件發生菜單渲染問題，請禁用此設定。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:84
+msgid ""
+"Unmodified from WordPress default behavior. To enable filtering, remove "
+"constant definition PP_ADMIN_READONLY_LISTABLE."
+msgstr "未經修改的 WordPress 預設行為。要啟用過濾，請移除常量定義 PP_ADMIN_READONLY_LISTABLE。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:87
+msgid "Note: Groups and Roles are always displayed on the Edit User screen."
+msgstr "注意：群組和角色始終顯示在編輯用戶屏幕上。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:92
+msgid "Disable Permissions filtering for users who are not logged in."
+msgstr "對於未登錄的用戶禁用權限過濾。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:95
+msgid "Legacy compatibility: front end term filters are not applied on some sites."
+msgstr "舊版相容性：前端術語過濾在某些網站上不適用。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:98
+msgid ""
+"If checked, pages blocked from the \"All\" or \"Logged In\" groups will "
+"still be listed to Administrators."
+msgstr "如果勾選，從“所有”或“已登入”群組中阻止的頁面仍將列出給管理員。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:101
+msgid ""
+"If enabled, users with the pp_set_read_exceptions capability in the WP role "
+"can set reading permissions for their editable posts."
+msgstr "如果啟用，擁有 pp_set_read_exceptions 能力的用戶可以為他們可編輯的文章設置閱讀權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:104
+msgid ""
+"Display a role dropdown alongside the user search input box to narrow "
+"results."
+msgstr "在用戶搜索輸入框旁顯示角色下拉選單以縮小結果。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:107
+msgid "Display descriptive captions on Permissions screens."
+msgstr "在權限屏幕上顯示描述性標題。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:110
+msgid ""
+"Display descriptive captions for features available in missing or "
+"deactivated modules."
+msgstr "顯示缺失或已停用模組中可用功能的描述性標題。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:113
+msgid ""
+"Extra Roles cause \"_posts\" capabilities in the Pattern Role (Author, "
+"Editor, etc.) to be assigned for the selected post type. Enable this "
+"setting to also include all other capabilities in the Pattern Role."
+msgstr "額外角色會導致「_posts」能力在選定的帖子類型中被分配給模式角色（作者、編輯等）。啟用此設定以同時包含模式角色中的所有其他能力。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:116
+msgid ""
+"Detect user roles which are appended dynamically but not stored to the WP "
+"database. May be useful for sites that sync with Active Directory or other "
+"external user registration systems."
+msgstr "檢測動態附加但未存儲到WP數據庫的用戶角色。對於與Active Directory或其他外部用戶註冊系統同步的網站可能會有用。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:119
+#, php-format
+msgid ""
+"You can adjust some Permissions behavior by %1$s adding capabilities to a "
+"WordPress role%2$s."
+msgstr "您可以透過 %1$s 為WordPress角色添加能力 %2$s 來調整某些權限行為。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:122
+#, php-format
+msgid "You can add Permissions capabilities to a role using the %1$s plugin."
+msgstr "您可以使用 %1$s 插件為角色添加權限功能。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:125
+msgid ""
+"Regardless of this setting, the pp_set_read_exceptions capability is also "
+"required."
+msgstr "無論此設定如何，pp_set_read_exceptions能力也是必需的。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:128
+msgid ""
+"Regardless of this setting, the pp_set_edit_exceptions capability is also "
+"required."
+msgstr "無論此設定如何，pp_set_edit_exceptions能力也是必需的。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
+#, php-format
+msgid "Settings related to content editing permissions, provided by the %s module."
+msgstr "與內容編輯權限相關的設定，由 %s 模組提供。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:135
+msgid ""
+"If this setting is disabled, you can enable a role by giving it "
+"capabilities: list_others_posts, list_others_published_pages, etc."
+msgstr "如果此設定被禁用，您可以通過給予以下能力來啟用角色：list_others_posts、list_others_published_pages等。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:138
+msgid ""
+"Display a custom column on Edit Posts screen for all related taxonomies "
+"which are enabled for Permissions filtering."
+msgstr "在編輯帖子屏幕上顯示一個自定義列，對於所有啟用權限過濾的相關分類法。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:141
+msgid ""
+"Allows creation of a new post (of any type) for each selected user, using "
+"an existing post as the pattern."
+msgstr "允許為每個選定的用戶創建一個新的帖子（任何類型），使用現有的帖子作為模式。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:144
+msgid ""
+"Other users will be unable to publish new top-level pages (Parent = \"Main "
+"Page\"), or move a published page from \"Main Page\" to a different Parent."
+msgstr "其他用戶將無法發布新的頂級頁面（父級 = \"主頁\"），或將已發布的頁面從\"主頁\"移動到其他父級。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:147
+msgid ""
+"This feature has been moved to PublishPress Capabilities > Editor Features "
+"> Element IDs. Please use the Capabilities plugin for better organization "
+"and enhanced functionality."
+msgstr ""
+"此功能已移至PublishPress Capabilities > 編輯器功能 > "
+"元素ID。請使用Capabilities插件以獲得更好的組織和增強功能。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:150
+msgid ""
+"The following settings are currently overridden by the constant "
+"PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you "
+"maintain). Media Library access will not be altered by Permissions."
+msgstr ""
+"以下設定目前被常量PP_MEDIA_LIB_UNFILTERED（定義在wp-config."
+"php或您維護的其他文件中）覆蓋。媒體庫的訪問將不會被權限更改。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:153
+msgid ""
+"Show files uploaded by others users if they are attached to a post the user "
+"is allowed to view."
+msgstr "如果其他用戶上傳的文件與用戶可以查看的帖子相關聯，則顯示這些文件。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:156
+msgid ""
+"Show files uploaded by other users if they are attached to a post the user "
+"is allowed to edit."
+msgstr "如果其他用戶上傳的文件與用戶可以編輯的帖子相關聯，則顯示這些文件。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:159
+msgid ""
+"Allow users to edit files uploaded by other users if they are attached to a "
+"post the user is allowed to edit."
+msgstr "如果其他用戶上傳的文件與用戶可以編輯的帖子相關聯，則允許用戶編輯這些文件。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:162
+msgid ""
+"Show users all the files in the Media Library. Unchecking this box will "
+"hide media files that are uploaded by other users."
+msgstr "顯示媒體庫中的所有文件。取消選中此框將隱藏其他用戶上傳的媒體文件。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:165
+msgid ""
+"Stop users from editing files uploaded by other users unless they are "
+"attached to a post the user is allowed to edit."
+msgstr "阻止用戶編輯其他用戶上傳的文件，除非這些文件與用戶可以編輯的帖子相關聯。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:168
+msgid ""
+"Allow users to edit files they have uploaded, regardless of other "
+"restrictions."
+msgstr "允許用戶編輯他們上傳的文件，無論其他限制如何。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:171
+msgid ""
+"Allow non-Administrators to rename menu items they cannot fully edit. Menu "
+"items will be locked into current positions."
+msgstr "允許非管理員重新命名他們無法完全編輯的菜單項目。菜單項目將鎖定在當前位置。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:174
+msgid ""
+"Prevent creation or editing of custom items for non-Administrators who lack "
+"edit_theme_options capability."
+msgstr "防止未具備 edit_theme_options 能力的非管理員創建或編輯自定義項目。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:177
+msgid ""
+"Prevent non-Administrators with user editing permissions from editing a "
+"higher-level user or assigning a role higher than their own."
+msgstr "防止擁有用戶編輯權限的非管理員編輯更高級別的用戶或指派高於其自身的角色。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:180
+msgid ""
+"If enabled, the capabilities pp_set_edit_exceptions, "
+"pp_set_associate_exceptions, etc. will be honored. See list of capabilities "
+"below."
+msgstr "如果啟用，將遵循能力 pp_set_edit_exceptions、pp_set_associate_exceptions 等。請參見下面的能力列表。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:184
+msgid ""
+"Circle members will be blocked from accessing Revisions authored by "
+"non-members."
+msgstr "圓圈成員將被阻止訪問非成員創建的修訂版本。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:196
+msgid ""
+"Enable post contributors or authors with pp_set_edit_exceptions capability "
+"to set editing Permissions on posts authored by others"
+msgstr "啟用具有 pp_set_edit_exceptions 能力的帖子貢獻者或作者，讓他們可以為其他人創建的帖子設置編輯權限"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:200
+msgid ""
+"Permissions setting 'Pages can be set or removed from Top Level by' applies "
+"to 'page' type only"
+msgstr "權限設置 '頁面可以由' 設置或移除自頂級僅適用於 '頁面' 類型"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:203
+msgid ""
+"If user cannot generally save pages to top level but a page they are "
+"editing is already there, allow it to stay at top level even if not yet "
+"published "
+msgstr "如果用戶通常無法將頁面保存到頂級，但他們正在編輯的頁面已經在那裡，則允許它保持在頂級，即使尚未發布 "
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:206
+msgid ""
+"Circle membership does not limit page association (page parent setting) "
+"ability"
+msgstr "圓圈會員資格不限制頁面關聯（頁面父級設置）能力"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:210
+msgid ""
+"Determines the default value of Permissions > Settings > Editing > "
+"Auto-assign default term"
+msgstr "確定權限 > 設置 > 編輯 > 自動分配默認術語的默認值"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:213
+msgid ""
+"Always auto-assign a category if none are selected and user lacks "
+"permission for default category"
+msgstr "如果沒有選擇任何類別且用戶缺乏默認類別權限，始終自動分配一個類別"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:216
+msgid "Always auto-assign a post tag if none are selected"
+msgstr "如果未選擇任何帖子標籤，則始終自動分配一個帖子標籤"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:219
+msgid "Always auto-assign a term of this taxonomy if none are selected"
+msgstr "如果未選擇任何術語，則始終自動分配此分類的術語"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:222
+msgid ""
+"Determines the default setting of Permissions > Settings > Editing > "
+"Auto-assign default terms"
+msgstr "確定權限 > 設置 > 編輯 > 自動分配默認術語的默認設置"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:225
+msgid ""
+"Do not auto-assign a category (except standard default category if user has "
+"permission)"
+msgstr "不自動分配類別（如果用戶有權限則除外標準默認類別）"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:228
+msgid "Do not auto-assign a post tag"
+msgstr "不要自動分配帖子標籤"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:231
+msgid "Do not auto-assign a term of this taxonomy"
+msgstr "不要自動分配此分類的術語"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:234
+msgid ""
+"Do not auto-assign a term if the user has permission for more than one term "
+"in the taxonomy"
+msgstr "如果用戶在該分類法中對多個術語有權限，則不自動分配術語"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:237
+msgid ""
+"If auto-assign term setting is enabled, apply it even if user does not have "
+"term assignment limitations"
+msgstr "如果啟用了自動分配術語設置，即使用戶沒有術語分配限制，也應適用該設置"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:240
+msgid "Don't define an 'Approved' status, even if Status Control feature is active"
+msgstr "不要定義 '已批准' 狀態，即使狀態控制功能處於活動狀態"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:245
+msgid ""
+"If user has Nav Menu management capabilities but can't "
+"'edit_theme_options', strip link out of wp-admin Appearance Menu instead of "
+"linking it to nav-menus"
+msgstr ""
+"如果用戶擁有導航菜單管理能力但無法'edit_theme_options'，則將鏈接從 wp-admin 外觀菜單中移除，而不是將其鏈接到 "
+"nav-menus"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:248
+msgid ""
+"Don't credit implicit 'manage_nav_menus' capability to users who have "
+"'edit_theme_options' or 'switch_themes' capability"
+msgstr "不向擁有'edit_theme_options'或'switch_themes'能力的用戶授予隱含的'manage_nav_menus'能力"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:251
+msgid ""
+"Prevent non-Administrators from adding new Nav Menu items to top level (add "
+"below existing editable items instead)"
+msgstr "防止非管理員將新的導航菜單項目添加到頂級（請在現有可編輯項目下方添加）"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:254
+msgid ""
+"For non-Administrators, new Nav Menu items default to being a child of "
+"first editable item "
+msgstr "對於非管理員，新的導航菜單項目默認為第一個可編輯項目的子項"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:257
+msgid ""
+"Don't require any additional capabilities for management of Nav Menu "
+"settings (normally require 'manage_menu_settings', 'edit_others_pages' or "
+"'publish_pages') "
+msgstr ""
+"管理導航菜單設置不需要任何額外能力（通常需要'manage_menu_settings'、'edit_others_pages'或'publish_"
+"pages'）"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:260
+msgid ""
+"Eliminate extra filtering queries on Nav Menu update, even for "
+"non-Administrators"
+msgstr "消除導航菜單更新時的額外過濾查詢，即使對於非管理員也是如此"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:265
+msgid ""
+"Don't allow non-Administrators to see others' unattached uploads, "
+"regardless of Permissions settings.  Their own unattached uploads are still "
+"accessible unless option 'own_attachments_always_editable' is set false"
+msgstr ""
+"不允許非管理員查看其他用戶未附加的上傳，無論權限設置如何。用戶自己的未附加上傳仍然可訪問，除非選項'own_attachments_always_"
+"editable'設置為 false"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:270
+msgid "Limited User Editors can assign their own role"
+msgstr "有限用戶編輯者可以分配自己的角色"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:273
+msgid ""
+"Post Meta fields to copy when using 'Add Author Page' dropdown on Users "
+"screen"
+msgstr "在用戶螢幕上使用'新增作者頁面'下拉選單時要複製的文章元數據欄位"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:282
+msgid "Manage PublishPress Permissions plugin settings."
+msgstr "管理 PublishPress 權限插件設置。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
+msgid ""
+"PublishPress Permissions will not apply any Extra Roles or Permissions to "
+"limit or expand viewing or editing access."
+msgstr "PublishPress 權限不會應用任何額外的角色或權限來限制或擴展查看或編輯訪問權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:284
+msgid ""
+"Manage other user's Permissions. Also grants capabilities for all post "
+"types and statuses."
+msgstr "管理其他用戶的權限。此外，授予所有文章類型和狀態的能力。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:285
+msgid "Create new Permission Groups and set the name and description."
+msgstr "創建新的權限組並設置名稱和描述。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:286
+msgid "Edit the name and description of existing Permission Groups."
+msgstr "編輯現有權限組的名稱和描述。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
+msgid "Delete Permission Groups."
+msgstr "刪除權限組。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:288
+msgid "If group editing is allowed, can also modify group membership."
+msgstr "如果允許群組編輯，還可以修改群組成員資格。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:289
+msgid "Assign Extra Roles or Permissions."
+msgstr "分配額外角色或權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:290
+msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
+msgstr "在編輯權限屏幕上分配額外角色或權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:291
+msgid "Set Viewing Permissions for specific Posts, Categories or Terms."
+msgstr "為特定文章、分類或術語設置查看權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
+msgid "Set Editing Permissions for specific Posts, Categories or Terms."
+msgstr "為特定文章、分類或術語設置編輯權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:297
+msgid "Set Revision Permissions for specific Posts, Categories or Terms."
+msgstr "為特定文章、分類或術語設置修訂權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:300
+msgid "Set \"Set as Parent\" Permissions for specific Posts."
+msgstr "為特定文章設置 \"設為父項\" 權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:301
+msgid "Set Term Assignment Permissions."
+msgstr "設置術語分配權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:302
+msgid "Set Term Management Permissions."
+msgstr "設置術語管理權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:303
+msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
+msgstr "為特定類別或術語設置「設為父項」權限。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:305
+msgid "Edit own file uploads, even if they become attached to an uneditable post."
+msgstr "編輯自己的檔案上傳，即使它們附加到不可編輯的文章上。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:306
+msgid "See other user's unattached file uploads in Media Library."
+msgstr "在媒體庫中查看其他用戶的未附加檔案上傳。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:307
+msgid ""
+"Can bypass restrictive \"Set as Parent\" Permissions (for all hierarchical "
+"post types)."
+msgstr "可以繞過限制性的 \"設為父項\" 權限（適用於所有層級文章類型）。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:309
+msgid "Do not alter the Media Library listing provided by WordPress."
+msgstr "請勿更改 WordPress 提供的媒體庫列表。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:310
+msgid ""
+"On the Posts screen, satisfy a missing edit_posts capability by listing "
+"uneditable drafts."
+msgstr "在文章螢幕上，通過列出不可編輯的草稿來滿足缺少 edit_posts 能力的要求。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:311
+msgid ""
+"On the Posts screen, satisfy a missing edit_others_posts capability by "
+"listing other user's uneditable posts."
+msgstr "在文章螢幕上，通過列出其他用戶的不可編輯文章來滿足缺少 edit_others_posts 能力的要求。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:312
+msgid ""
+"On the Pages screen, satisfy a missing edit_private_pages capability by "
+"listing uneditable private pages."
+msgstr "在頁面螢幕上，通過列出不可編輯的私人頁面來滿足缺少 edit_private_pages 能力的要求。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:313
+msgid ""
+"Allow non-Administrators to Quick Edit or Bulk Edit (possibly allowing them "
+"to bypass restrictions)."
+msgstr "允許非管理員快速編輯或批量編輯（可能允許他們繞過限制）。"
+
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:320
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:321
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:322
+#: classes/PublishPress/Permissions/UI/SettingsAdmin.php:323
+msgid "(Statuses Pro capability)"
+msgstr "(狀態專業能力)"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:26
+msgid "Advanced"
+msgstr "進階"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:33
+msgid "Advanced Settings"
+msgstr "進階設定"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:35
+msgid "Network-Wide Settings"
+msgstr "網路全域設定"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:36
+msgid "Editor Options"
+msgstr "編輯器選項"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:38
+msgid "Page Structure"
+msgstr "頁面結構"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:40
+msgid "Permissions Capabilities"
+msgstr "權限功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:41
+msgid "Front End"
+msgstr "前端"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:42
+msgid "User Management"
+msgstr "用戶管理"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:43
+msgid "Constants"
+msgstr "常數"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:44
+msgid "Role Integration"
+msgstr "角色整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:45
+msgid "Nav Menu Editing"
+msgstr "導航菜單編輯"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:46
+msgid "Miscellaneous"
+msgstr "其他"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:60
+msgid "Display all advanced settings"
+msgstr "顯示所有進階設定"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:61
+msgid "Use modern tabbed metabox interface"
+msgstr "使用現代的分頁元框介面"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:62
+msgid "Delete settings on plugin deletion"
+msgstr "插件刪除時刪除設定"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:63
+msgid "Post-specific Permissions take priority"
+msgstr "特定文章的權限優先"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:64
+msgid "Search Results include Media"
+msgstr "搜尋結果包括媒體"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:65
+msgid "Regulate access to Category archive pages"
+msgstr "調節對分類存檔頁面的訪問"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:66
+msgid "Performance: Don't filter category / tag counts"
+msgstr "性能：不過濾分類/標籤計數"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:67
+msgid "Filter Menu Items"
+msgstr "篩選菜單項目"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:68
+msgid "Page Parent selection for editable pages only"
+msgstr "僅可編輯頁面的頁面父項選擇"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:69
+msgid "Auto-assign available term if default term is unavailable"
+msgstr "如果預設術語不可用，自動分配可用術語"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:70
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:52
+msgid "List other user's uneditable posts"
+msgstr "列出其他用戶的不可編輯文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:71
+msgid "Pages can be set or removed from Top Level by: "
+msgstr "頁面可以通過以下方式設置或移除為頂層："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:72
+msgid "Tag creation requires Tag edit capability"
+msgstr "標籤創建需要標籤編輯能力"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:77
+msgid "Type-specific Extra Roles grant all capabilities in Pattern Role"
+msgstr "類型特定的額外角色授予模式角色中的所有能力"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:78
+msgid "Suppress \"Private: \" Caption"
+msgstr "抑制「私人：」標題"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:79
+msgid "Select Permission Groups at User creation"
+msgstr "在用戶創建時選擇權限組"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:80
+msgid "Permission Groups on User Profile"
+msgstr "用戶檔案上的權限組"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:81
+msgid "Extra Roles on User Profile"
+msgstr "用戶檔案上的額外角色"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:82
+msgid "Order Page Parent dropdown by Title"
+msgstr "按標題排序訂單頁面父項下拉選單"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:83
+msgid "Add taxonomy columns to Edit Posts screen"
+msgstr "在編輯文章螢幕中添加分類法欄位"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:84
+msgid "Allow Renaming of uneditable Items"
+msgstr "允許重新命名不可編輯項目"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:85
+msgid "Lock custom menu items"
+msgstr "鎖定自訂選單項目"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:86
+msgid "Bulk Add Author Pages on Users screen"
+msgstr "在用戶螢幕上批量新增作者頁面"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:108
+#, php-format
+msgid "%1$sDisable%2$s all filtering for anonymous users"
+msgstr "%1$s停用%2$s 所有匿名用戶的過濾"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:109
+#, php-format
+msgid "%1$sDo not apply%2$s metagroup permissions for Administrators"
+msgstr "%1$s不應用%2$s 給管理員的元組權限"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:110
+msgid "Limit front-end category / term filtering"
+msgstr "限制前端分類/術語過濾"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:111
+msgid "User Search: Filter by WP role"
+msgstr "用戶搜尋：按 WP 角色過濾"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:112
+msgid "Display Administrative Hints"
+msgstr "顯示管理提示"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:113
+msgid "Display Module Hints"
+msgstr "顯示模組提示"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:114
+msgid "Detect Dynamically Mapped WP Roles"
+msgstr "檢測動態映射的 WP 角色"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:115
+msgid "Non-Administrators can set Reading Permissions for their editable posts"
+msgstr "非管理員可以為他們可編輯的文章設置閱讀權限"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:116
+msgid "Bulk Add / Remove Groups on Users Screen"
+msgstr "在用戶螢幕上批量新增/移除群組"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Non-Administrators can set Editing Permissions for their editable posts"
+msgstr "非管理員可以為他們可編輯的文章設置編輯權限"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
+msgid "Assign Publish Permissions separate from Edit Permissions"
+msgstr "將發布權限與編輯權限分開分配"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:224
+msgid ""
+"note: Plugin settings and configuration data will be deleted, but only "
+"after the last copy of Permissions / Permissions Pro is deleted."
+msgstr "注意：插件設置和配置數據將被刪除，但只有在最後一份權限 / Permissions Pro 被刪除後才會刪除。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:272
+msgid "The following would revert to default settings:"
+msgstr "以下將恢復為默認設置："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:274
+msgid "The following would change from defaults to previously stored settings:"
+msgstr "以下將從默認值更改為先前存儲的設置："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "no Page Parent filter"
+msgstr "無頁面父項過濾"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Authors, Editors and Administrators"
+msgstr "頁面作者、編輯和管理員"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Page Editors and Administrators"
+msgstr "頁面編輯和管理員"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:328
+msgid "Administrators"
+msgstr "管理員"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:356
+msgid ""
+"When saving a post, if the default term is not selectable, substitute first "
+"available."
+msgstr "保存文章時，如果默認術語不可選，則替換為第一個可用的。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:357
+msgid "Some term-limited editing configurations require this."
+msgstr "某些有限術語的編輯配置需要這樣做。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+msgid ""
+"If enabled, users cannot create new tags for a post unless they have the "
+"edit_tags capability. You can manage this with a WordPress role editor like "
+"PublishPress Capabilities."
+msgstr ""
+"如果啟用，用戶無法為文章創建新標籤，除非他們擁有 edit_tags 能力。您可以使用 PublishPress Capabilities 等 "
+"WordPress 角色編輯器來管理此設定。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:368
+msgid ""
+"If enabled, users cannot create new tags for a post unless they have the "
+"edit_tags capability. You can manage this with Capabilities > Capabilities "
+"> Taxonomies for any role."
+msgstr ""
+"如果啟用，用戶無法為文章創建新標籤，除非他們擁有 edit_tags 能力。您可以通過 Capabilities > Capabilities > "
+"Taxonomies 管理任何角色的此設定。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:373
+msgid ""
+"Display all permission operations in a single metabox with tabs (modern "
+"UI). When disabled, each operation has a separate metabox (legacy UI)."
+msgstr "在單個元框中顯示所有權限操作，並帶有選項卡（現代 UI）。當禁用時，每個操作都有一個單獨的元框（舊版 UI）。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:416
+#, php-format
+msgid "%sPosts / Pages Listing:%s %s"
+msgstr "%s文章 / 頁面列表:%s %s"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:500
+msgid "User editing capabilities apply for"
+msgstr "用戶編輯能力適用於"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "any user"
+msgstr "任何用戶"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "equal or lower role levels"
+msgstr "相等或較低角色級別"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:503
+msgid "lower role levels"
+msgstr "較低角色級別"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:552
+#, php-format
+msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
+msgstr "要控制額外角色的應用方式，請參見 %1$s角色使用%2$s。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:654
+msgid "Defined Constant"
+msgstr "已定義常量"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:655
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:708
+msgid "Setting"
+msgstr "設定"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:707
+msgid "Available Constant"
+msgstr "可用常量"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
+msgid ""
+"To modify one or more default settings network-wide, <strong>copy</strong> "
+"the following code into your theme's <strong>functions.php</strong> file "
+"(or some other file which is always executed and not auto-updated) and "
+"modify as desired:"
+msgstr ""
+"要在整個網絡上修改一個或多個默認設置，<strong>複製</strong>以下代碼到您主題的 "
+"<strong>functions.php</strong> 文件（或其他始終執行且不會自動更新的文件）並根據需要修改："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:814
+msgid ""
+"To force the value of one or more settings network-wide, "
+"<strong>copy</strong> the following code into your theme's "
+"<strong>functions.php</strong> file (or some other file which is always "
+"executed and not auto-updated) and modify as desired:"
+msgstr ""
+"要在整個網絡上強制一個或多個設置的值，<strong>複製</strong>以下代碼到您主題的 "
+"<strong>functions.php</strong> 文件（或其他始終執行且不會自動更新的文件）並根據需要修改："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:849
+msgid ""
+"All settings in this form (including those on undisplayed tabs) will be "
+"reset to DEFAULTS.  Are you sure?"
+msgstr "此表單中的所有設置（包括未顯示選項卡上的設置）將重置為默認值。您確定嗎？"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:852
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
+msgid "Revert to Defaults"
+msgstr "恢復為預設值"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:20
+msgid "General"
+msgstr "一般"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:27
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:41
+msgid "Taxonomies"
+msgstr "分類法"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:28
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:42
+msgid "Post Types"
+msgstr "文章類型"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:29
+msgid "Database Maintenance"
+msgstr "資料庫維護"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:43
+msgid "Enforce distinct edit, delete capability requirements for Media"
+msgstr "強制對媒體執行不同的編輯、刪除能力要求"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:81
+msgid "Modify permissions for these Taxonomies:"
+msgstr "修改這些分類法的權限："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:110
+msgid "Modify permissions for these Post Types:"
+msgstr "修改這些文章類型的權限："
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:111
+msgid "This causes unique capabilities to be required for editing each post type. "
+msgstr "這會要求每種文章類型具有唯一的編輯能力。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:173
+msgid "Nav Menus (Block)"
+msgstr "導航菜單（區塊）"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:203
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:384
+msgid "Metabox enabled"
+msgstr "已啟用元框"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:205
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:386
+msgid "Metabox disabled"
+msgstr "已禁用元框"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:209
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:390
+msgid "Permissions screen enabled"
+msgstr "已啟用權限螢幕"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:211
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:392
+msgid "Permissions screen disabled"
+msgstr "已禁用權限螢幕"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:229
+msgid ""
+"This feature allows you to restrict access to Media Library files when they "
+"are accessed via WordPress. To restrict viewing of files when they are "
+"visited directly via the URL, use the \"File Access\" feature."
+msgstr "此功能允許您限制訪問媒體庫文件，當它們通過 WordPress 訪問時。要限制文件在通過 URL 直接訪問時的查看，請使用 \"文件訪問\" 功能。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:254
+#, php-format
+msgid "Enable metabox on %s editing screen"
+msgstr "在 %s 編輯螢幕上啟用元框"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabCore.php:264
+msgid "Enable on Permissions screen"
+msgstr "在權限螢幕上啟用"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:120
+msgid "Make Unattached Files Private"
+msgstr "將未附加檔案設為私人"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:121
+msgid "Small Thumbnails Unfiltered"
+msgstr "小縮圖未過濾"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:122
+msgid "Compatibility Mode: Apply extra redirect"
+msgstr "相容模式：應用額外重定向"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:168
+msgid "Media File Protection"
+msgstr "媒體檔案保護"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:173
+msgid "Control direct access to Media files"
+msgstr "控制對媒體檔案的直接存取"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:177
+msgid "Automatic .htaccess file management"
+msgstr "自動 .htaccess 檔案管理"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:181
+msgid "File Access key with on-demand regeneration"
+msgstr "隨需再生的檔案存取金鑰"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:187
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:225
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:263
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:295
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:185
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
+#: includes/CoreAdmin.php:228
+msgid "Pro Feature"
+msgstr "專業功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:189
+msgid "Upgrade to Pro to unlock advanced file protection capabilities"
+msgstr "升級至專業版以解鎖進階檔案保護功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:196
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:234
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:272
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:296
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:301
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:315
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:325
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:194
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:230
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:254
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:141
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
+#: includes/CoreAdmin.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:678
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
+msgid "Learn More"
+msgstr "了解更多"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:206
+msgid "Privacy & Performance"
+msgstr "隱私與效能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:211
+msgid "Limit attachment access by post permissions"
+msgstr "依據文章權限限制附件存取"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:215
+msgid "Make unattached files private"
+msgstr "將未附加的檔案設為私密"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:219
+msgid "Directly control specific files"
+msgstr "直接控制特定檔案"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:227
+msgid "Optimize your site with advanced privacy and performance controls"
+msgstr "利用進階隱私與效能控制來優化您的網站"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:244
+msgid "Advanced Integration"
+msgstr "進階整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:249
+msgid "Nginx integration support"
+msgstr "支援 Nginx 整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:253
+msgid "Process externally uploaded files"
+msgstr "處理外部上傳的檔案"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:257
+msgid "Supports network (multisite) installs"
+msgstr "支援網路（多站點）安裝"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:265
+msgid "Get advanced integration features with Nginx, FTP, and more"
+msgstr "獲取與 Nginx、FTP 等的進階整合功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:282
+msgid "Ready to secure your files?"
+msgstr "準備好保護您的檔案了嗎？"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabFileAccess.php:285
+msgid ""
+"Upgrade to Pro and get advanced file access control with all these features "
+"and more."
+msgstr "升級到專業版，獲取所有這些功能以及更多的高級文件訪問控制。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:25
+msgid "Integrations"
+msgstr "整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:32
+msgid "Compatibility Packs"
+msgstr "相容性套件"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:46
+msgid "Breakdance"
+msgstr "霹靂舞"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:103
+msgid "Unlock Pro Integrations"
+msgstr "解鎖專業整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:104
+msgid ""
+"Upgrade to the Pro version for optimal compatibility and prompt, "
+"professional support."
+msgstr "升級到專業版以獲得最佳兼容性和及時的專業支持。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:121
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229
+msgid "Admin"
+msgstr "管理員"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:124
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:227
+msgid "Builder"
+msgstr "建置者"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:127
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:237
+msgid "Cache"
+msgstr "快取"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:130
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:243
+msgid "Community"
+msgstr "社群"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:133
+msgid "E-Commerce"
+msgstr "電子商務"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:136
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:231
+msgid "Events"
+msgstr "事件"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:139
+msgid "Multilingual"
+msgstr "多語言"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:142
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:233
+msgid "SEO"
+msgstr "搜尋引擎最佳化"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:235
+msgid "Fields"
+msgstr "欄位"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:239
+msgid "Commerce"
+msgstr "商業"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:241
+msgid "Multilang"
+msgstr "多語言"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:261
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:169
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205
+msgid "Pro"
+msgstr "專業版"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:266
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin"
+msgstr "啟用的外掛程式"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:285
+msgid "Integration Active"
+msgstr "整合已啟用"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:287
+msgid "Upgrade to Pro to enable this integration"
+msgstr "升級到專業版以啟用此整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:296
+#, php-format
+msgid "Unlock %s integration to enhance your revisions solution."
+msgstr "解鎖 %s 整合以增強您的修訂解決方案。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:312
+msgid "Active Plugin Integration"
+msgstr "啟用插件整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:322
+msgid "Supported Plugin Integration"
+msgstr "支援的插件整合"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:120
+msgid "Enable Circles"
+msgstr "啟用圈子"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:121
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:205
+msgid "Time-limited Membership"
+msgstr "限時會員"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:122
+msgid "Membership Notifications"
+msgstr "會員通知"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:172
+msgid ""
+"Limit access based on post authorship and group membership for more "
+"granular permissions control."
+msgstr "根據文章作者和群組成員身份限制訪問，以獲得更細緻的權限控制。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:177
+msgid "Modify viewing or editing access"
+msgstr "修改檢視或編輯訪問權限"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:178
+msgid "Use any Role or Permission Group"
+msgstr "使用任何角色或權限群組"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:179
+msgid "Circle member's capabilities apply only for other member's posts"
+msgstr "圈子成員的能力僅適用於其他成員的文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:187
+msgid "Upgrade to Pro to limit access based on post author relationships"
+msgstr "升級至專業版，以根據文章作者關係限制訪問"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:208
+msgid "Create time-limited permission group memberships with automatic expiration."
+msgstr "建立限時的權限群組會員資格，並自動過期。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:213
+msgid "Delay membership start date"
+msgstr "延遲會員開始日期"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:214
+msgid "Set membership expiration date"
+msgstr "設定會員到期日期"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:215
+msgid "Group membership grants access to content of your choice"
+msgstr "群組會員資格授予訪問您選擇的內容"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:223
+msgid "Go Pro for time-limited group membership"
+msgstr "升級至專業版以獲得限時群組會員資格"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:240
+msgid "Ready to enhance your membership features?"
+msgstr "準備好提升您的會員功能了嗎？"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:243
+msgid ""
+"Upgrade to Pro and get advanced membership management with circles, "
+"time-limited memberships, and more."
+msgstr "升級至專業版，獲得圓圈、高時限會員管理及更多進階會員管理功能。"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:21
+msgid "Features"
+msgstr "功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:40
+#: includes/SettingsTabInstall.php:44
+#: includes/SettingsTabInstall.php:45
+msgid "settings"
+msgstr "設定"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:147
+msgid "Active"
+msgstr "啟用"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabModules.php:150
+msgid "Inactive"
+msgstr "不活躍"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:49
+msgid "User Posts Synchronization"
+msgstr "用戶文章同步"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:61
+msgid "Synchronize User Posts"
+msgstr "同步用戶文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:62
+msgid "Bulk Create Author Posts"
+msgstr "批量創建作者文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:63
+msgid "Smart User Matching"
+msgstr "智慧用戶匹配"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:64
+msgid "Role-Based Synchronization"
+msgstr "基於角色的同步"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:111
+msgid "Create Posts for Your Users"
+msgstr "為您的用戶創建文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:116
+msgid "Automatically generate posts for users"
+msgstr "自動為用戶生成文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:120
+msgid "Set up posts for existing users"
+msgstr "為現有用戶設置文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:124
+msgid "Produce posts for users when they register"
+msgstr "用戶註冊時為其生成文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:132
+msgid "Upgrade to Pro to automatically generate posts for users"
+msgstr "升級到專業版以自動為用戶生成文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:151
+msgid "Bulk Page Creation"
+msgstr "批量頁面創建"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:156
+msgid "Generate posts for user roles that you select"
+msgstr "為您選擇的用戶角色生成文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:160
+msgid "Choose how many posts to create per user"
+msgstr "選擇每個用戶創建多少篇文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:164
+msgid "Decide which status to use for new posts"
+msgstr "決定新文章使用哪種狀態"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:172
+msgid "Upgrade to Pro to unlock bulk page creation features"
+msgstr "升級到專業版以解鎖批量頁面創建功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:191
+msgid "Advanced Configuration"
+msgstr "進階配置"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:196
+msgid "Automatically detect and avoid duplicate posts"
+msgstr "自動檢測並避免重複文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:200
+msgid "Add new pages to a parent page"
+msgstr "將新頁面添加到父頁面"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:204
+msgid "Allow users to edit their new posts"
+msgstr "允許用戶編輯其新文章"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:212
+msgid "Unlock advanced user synchronization features"
+msgstr "解鎖進階使用者同步功能"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:231
+msgid "Ready to automatically generate posts for your users?"
+msgstr "準備好自動為您的使用者生成帖子了嗎？"
+
+#: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:234
+msgid ""
+"Upgrade to Pro and get advanced user post generation with all these "
+"features and more."
+msgstr "升級至專業版，獲得所有這些功能及更多的進階用戶文章生成。"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:38
+msgid "Username"
+msgstr "使用者名稱"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:40
+msgid "Email"
+msgstr "電子郵件"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:44
+#, php-format
+msgid "Specific Permissions %1$s"
+msgstr "特定權限 %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned directly to the user"
+msgstr "直接分配給使用者的特定權限"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:45
+msgid "Specific Permissions assigned to the user or one of their groups"
+msgstr "分配給使用者或其群組之一的特定權限"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "User Roles %1$s"
+msgstr "使用者角色 %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:48
+#, php-format
+msgid "Roles %1$s"
+msgstr "角色 %1$s"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned directly to the user"
+msgstr "直接分配給使用者的角色"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:49
+msgid "Roles assigned to the user or one of their groups"
+msgstr "分配給使用者或其群組之一的角色"
+
+#: classes/PublishPress/Permissions/UI/UsersListTable.php:165
+msgid "Edit User"
+msgstr "編輯使用者"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:342
+msgid "Subscribers"
+msgstr "訂閱者"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:343
+msgid "Contributors"
+msgstr "貢獻者"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:344
+msgid "Authors"
+msgstr "作者"
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:345
+msgid "Editors"
+msgstr "編輯"
+
+#: includes/CoreAdmin.php:28
+#, php-format
+msgid ""
+"You're using PublishPress Permissions Free. The Pro version has more "
+"features and support. %sUpgrade to Pro%s"
+msgstr "您正在使用 PublishPress Permissions 免費版。專業版擁有更多功能和支援。 %s升級至專業版%s"
+
+#: includes/CoreAdmin.php:100
+msgid "Promo file not found."
+msgstr "找不到促銷文件。"
+
+#: includes/CoreAdmin.php:234
+msgid "Upgrade to Pro to unlock seamless integration."
+msgstr "升級到 Pro 以解鎖無縫整合。"
+
+#: includes/promo/posts-teaser-promo.php:4
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Posts Teaser"
+msgstr "文章預覽"
+
+#: includes/promo/posts-teaser-promo.php:18
+msgid ""
+"Show a teaser message or login prompt for protected content. Available in "
+"PublishPress Permissions Pro."
+msgstr "顯示受保護內容的預告訊息或登錄提示。此功能在 PublishPress Permissions 專業版中可用。"
+
+#: includes/promo/statuses-promo.php:5
+msgid "Post Statuses for Editorial Workflow"
+msgstr "編輯工作流程的文章狀態"
+
+#: includes/promo/statuses-promo.php:19
+msgid ""
+"Control access to custom post statuses. This workflow feature is available "
+"in PublishPress Permissions Pro."
+msgstr "控制對自定義文章狀態的訪問。此工作流程功能在 PublishPress Permissions 專業版中可用。"
+
+#: includes/promo/sync-promo.php:18
+msgid ""
+"Automatically generate a personal page for each user. This feature is "
+"available in PublishPress Permissions Pro."
+msgstr "為每個用戶自動生成個人頁面。此功能在 PublishPress Permissions 專業版中可用。"
+
+#: includes/promo/visibility-statuses-promo.php:5
+msgid "Post Visibility Statuses"
+msgstr "文章可見性狀態"
+
+#: includes/promo/visibility-statuses-promo.php:19
+msgid ""
+"Control access to post visibility statuses. This workflow feature is "
+"available in PublishPress Permissions Pro."
+msgstr "控制對文章可見性狀態的訪問。此工作流程功能在 PublishPress Permissions 專業版中可用。"
+
+#: includes/SettingsTabInstall.php:24
+msgid "License"
+msgstr "許可證"
+
+#: includes/SettingsTabInstall.php:31
+msgid "Account"
+msgstr "帳戶"
+
+#: includes/SettingsTabInstall.php:32
+msgid "Version"
+msgstr "版本"
+
+#: includes/SettingsTabInstall.php:68
+msgid "Version info was refreshed."
+msgstr "版本信息已刷新。"
+
+#: includes/SettingsTabInstall.php:122
+msgid "Further details for your installation:"
+msgstr "您的安裝的進一步詳細信息："
+
+#: includes/SettingsTabInstall.php:131
+#, php-format
+msgid ""
+"Your presspermit.com key has expired, but a <a href=\"%s\">PublishPress "
+"renewal</a> discount may be available."
+msgstr "您的 presspermit.com 密鑰已過期，但可能有 <a href=\"%s\">PublishPress 續訂</a> 折扣可用。"
+
+#: includes/SettingsTabInstall.php:136
+msgid ""
+"Permissions Pro was previously active. You are now running the free "
+"version, with fewer features."
+msgstr "Permissions Pro 之前已啟用。您現在使用的是免費版，功能較少。"
+
+#: includes/SettingsTabInstall.php:141
+#, php-format
+msgid ""
+"A presspermit.com key appears to be active. <a href=\"%s\" "
+"target=\"_blank\">Contact us</a> for assistance in migrating your account "
+"to publishpress.com."
+msgstr ""
+"一個 presspermit.com 密鑰似乎是有效的。<a href=\"%s\" "
+"target=\"_blank\">聯繫我們</a>以獲取將您的帳戶遷移至 publishpress.com 的幫助。"
+
+#: includes/SettingsTabInstall.php:200
+#: includes/SettingsTabInstall.php:210
+#, php-format
+msgid "PublishPress Permissions Version: %1$s %2$s"
+msgstr "PublishPress Permissions 版本：%1$s %2$s"
+
+#: includes/SettingsTabInstall.php:205
+#, php-format
+msgid "%s&nbsp;details"
+msgstr "%s&nbsp;詳細信息"
+
+#: includes/SettingsTabInstall.php:226
+msgid "Installation History"
+msgstr "安裝歷史"
+
+#: includes/SettingsTabInstall.php:248
+#, php-format
+msgid "%s (previous install)"
+msgstr "%s（以前的安裝）"
+
+#: includes/SettingsTabInstall.php:265
+#, php-format
+msgid "WordPress Version: %s"
+msgstr "WordPress 版本：%s"
+
+#: includes/SettingsTabInstall.php:269
+#, php-format
+msgid "PHP Version: %s"
+msgstr "PHP 版本: %s"
+
+#: library/debug.php:17
+#, php-format
+msgid "%1$s queries in %2$s seconds. %3$s MB used."
+msgstr "%1$s 個查詢在 %2$s 秒內執行。使用了 %3$s MB。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:162
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:184
+msgid "Term"
+msgstr "術語"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:163
+msgid "Terms"
+msgstr "術語"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:229
+#, php-format
+msgid "%s Manager"
+msgstr "%s 管理員"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:206
+msgid "You do not have permission to update that Navigation Menu"
+msgstr "您沒有權限更新該導航菜單"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:208
+msgid "You do not have permission to create new Navigation Menus"
+msgstr "您沒有權限創建新的導航菜單"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/AdminWorkarounds.php:216
+msgid "You do not have permission to delete that Navigation Menu."
+msgstr "您沒有權限刪除該導航菜單。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:483
+#, php-format
+msgid "The %s was saved, but you can no longer edit it."
+msgstr "%s 已保存，但您無法再編輯它。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:488
+#, php-format
+msgid "Go to %s"
+msgstr "前往 %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/CapabilityFiltersAdmin.php:498
+msgid ""
+"The requested modification was processed, but you can no longer edit the "
+"post."
+msgstr "請求的修改已處理，但您不再能編輯該文章。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:429
+#, php-format
+msgid "You do not have permission to move the menu item \"%1$s\""
+msgstr "您沒有權限移動菜單項目 “%1$s”"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:433
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:443
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:453
+msgid "Return to Menu Editor"
+msgstr "返回菜單編輯器"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:439
+#, php-format
+msgid "You do not have permission to delete the menu item \"%1$s\""
+msgstr "您沒有權限刪除菜單項目 “%1$s”"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/NavMenus.php:449
+#, php-format
+msgid "You do not have permission to edit the menu item \"%1$s\""
+msgstr "您沒有權限編輯菜單項目 “%1$s”"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:8
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:22
+msgid "Editing"
+msgstr "編輯中"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:11
+msgid "Publishing"
+msgstr "發佈中"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "工作副本"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "工作副本"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "提交變更至"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "提交變更"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Request"
+msgstr "請求"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "創建修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "創建修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "New Revision"
+msgstr "新修訂版"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "提交修訂至"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "提交修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submitted Revision"
+msgstr "已提交的修訂版"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revision"
+msgstr "修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
+msgid "Set as Parent"
+msgstr "設為父項"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:38
+msgid "Assign Term"
+msgstr "指派術語"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:39
+msgid "Assignment"
+msgstr "指派"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:44
+msgid "Management"
+msgstr "管理"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:114
+msgid "(unpublished)"
+msgstr "(未發布)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/NavMenu.php:95
+msgid "You are not permitted to manage menu locations"
+msgstr "您沒有權限管理菜單位置"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:83
+msgid "Post Approved"
+msgstr "文章已批准"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:84
+msgid "Page Approved"
+msgstr "頁面已批准"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:111
+#, php-format
+msgid ""
+"Limited Editing Elements feature has moved to <a href=\"%s\">Capabilities > "
+"Editor Features</a>."
+msgstr "有限的編輯元素功能已移至 <a href=\"%s\">功能 > 編輯器功能</a>。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:117
+#, php-format
+msgid ""
+"Limited Editing Elements feature requires <a href=\"%s\" "
+"target=\"_blank\">PublishPress Capabilities</a> plugin."
+msgstr ""
+"有限的編輯元素功能需要 <a href=\"%s\" target=\"_blank\">PublishPress Capabilities</a> "
+"插件。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:261
+msgid "Author Search / Select"
+msgstr "作者搜尋 / 選擇"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:289
+msgid "select other"
+msgstr "選擇其他"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:290
+msgid "close"
+msgstr "關閉"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:47
+#, php-format
+msgid "Permissions: Select this %1$s as Parent for All Post Types"
+msgstr "權限：將此 %1$s 選為所有文章類型的父項"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEdit.php:51
+#, php-format
+msgid "Permissions: %1$s this %2$s for All Post Types"
+msgstr "權限：%1$s 此 %2$s 用於所有文章類型"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/TermEditWorkarounds.php:86
+msgid "You do not have permission to select that Parent"
+msgstr "您沒有權限選擇該父項"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:24
+#, php-format
+msgid "%s author page added"
+msgid_plural "%s author pages added"
+msgstr[0] "%s 作者頁面已添加"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:30
+msgid "No users selected"
+msgstr "未選擇任何用戶"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:36
+msgid "Selected users already have specified author page"
+msgstr "選擇的用戶已擁有指定的作者頁面"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:49
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:51
+msgid "Add Author Page&hellip;"
+msgstr "新增作者頁面&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:50
+msgid "make each selected user the author of a new page"
+msgstr "將每位選定的用戶設為新頁面的作者"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:79
+msgid "pattern post sets default content and categories for author post"
+msgstr "模式文章設置作者文章的預設內容和類別"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:81
+msgid "pattern post sets parent, default content and template for author page"
+msgstr "模式文章設置作者頁面的父級、預設內容和模板"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:83
+msgid "pattern page sets parent and default content for author page"
+msgstr "模式頁面設置作者頁面的父級和預設內容"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:85
+msgid "patterned on&hellip;"
+msgstr "基於&hellip;"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:92
+msgid "patterned on..."
+msgstr "基於..."
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "Pattern ID:"
+msgstr "模式 ID："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:108
+msgid "enter post ID/slug"
+msgstr "輸入文章 ID/別名"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "Title:"
+msgstr "標題："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:113
+msgid "supported tags are [username] and [userid]"
+msgstr "支援的標籤有 [username] 和 [userid]"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:114
+msgid "Add Pages"
+msgstr "新增頁面"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Gutenberg/PostEdit.php:37
+msgid "(select...)"
+msgstr "(選擇...)"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:36
+msgid "Role Usage edited."
+msgstr "角色使用已編輯。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:71
+msgid ""
+"These optional settings customize how PublishPress Permissions applies "
+"extra roles. Your existing WP Role Definitions can be applied in two "
+"different ways:"
+msgstr "這些可選設置自定義 PublishPress Permissions 如何應用額外角色。您現有的 WP 角色定義可以以兩種不同的方式應用："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:74
+msgid ""
+"Pattern Roles convert 'post' capabilities to the corresponding "
+"type-specific capability.  In a normal WP installation, this is the easiest "
+"solution."
+msgstr "模式角色將 'post' 能力轉換為相應的類型特定能力。在正常的 WP 安裝中，這是最簡單的解決方案。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:78
+msgid "With Direct Assignment, capabilities are applied without modification."
+msgstr "使用直接指派，能力不經修改而直接應用。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:92
+msgid "All Role Usage settings will be reset to DEFAULTS.  Are you sure?"
+msgstr "所有角色使用設定將重置為預設值。您確定嗎？"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:59
+msgid "Role Usage updated."
+msgstr "角色使用已更新。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:78
+#, php-format
+msgid "Role Usage: %s"
+msgstr "角色使用： %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:92
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:72
+msgid "Usage"
+msgstr "使用情況"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:100
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:166
+msgid "no supplemental assignment"
+msgstr "無補充指派"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:101
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:167
+msgid "Pattern Role"
+msgstr "模式角色"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:102
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:161
+msgid "Direct Assignment"
+msgstr "直接指派"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:112
+msgid "Post Capabilities"
+msgstr "後置能力"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:116
+#, php-format
+msgid ""
+"Type-specific and/or status-specific equivalents of the following "
+"capabilities are included in supplemental %s roles:"
+msgstr "以下能力的類型特定和/或狀態特定的等價物包含在補充 %s 角色中："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:136
+msgid "Arbitrary Capabilities"
+msgstr "任意能力"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:140
+#, php-format
+msgid "The following capabilities are included in supplemental %s roles:"
+msgstr "以下能力包含在補充 %s 角色中："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:158
+msgid "Role Capabilities"
+msgstr "角色能力"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:161
+msgid ""
+"All capabilities defined for this WordPress role will be applied in "
+"supplemental assignments:"
+msgstr "為此 WordPress 角色定義的所有能力將在補充分配中應用："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:178
+msgid "Notes regarding Pattern Roles"
+msgstr "有關模式角色的注意事項"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageEdit.php:188
+msgid "Back to Role Usage List"
+msgstr "返回角色使用情況列表"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:27
+msgid "Notes"
+msgstr "備註"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:37
+msgid ""
+"The 'posts' capabilities in a WP role determine its function as a Pattern "
+"Role for supplemental assignment to Permission Groups. When you assign the "
+"'Author' pattern role for Pages, edit_posts and edit_published_posts become "
+"edit_pages and edit_published_pages."
+msgstr ""
+"WP 角色中的 'posts' 能力確定其作為模式角色的功能，以補充分配給權限組。當您為頁面指派 'Author' 模式角色時，edit_posts "
+"和 edit_published_posts 變為 edit_pages 和 edit_published_pages。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:40
+msgid ""
+"Role capabilities defined for other post types (i.e. 'edit_others_pages', "
+"'edit_things') are ignored unless Role Usage is set to Direct Assignment."
+msgstr "為其他文章類型定義的角色能力（即 'edit_others_pages'，'edit_things'）將被忽略，除非角色使用設置為直接分配。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:43
+msgid ""
+"If one of the default roles is deleted from the WP database, it will remain "
+"available as a pattern role with default WP capabilities (but can be "
+"disabled here)."
+msgstr "如果 WP 資料庫中刪除了一個預設角色，它將作為一個模式角色保留，擁有預設的 WP 能力（但可以在這裡禁用）。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:55
+msgid "No matching roles were found."
+msgstr "未找到匹配的角色。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:23
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:34
+msgid "Media Library"
+msgstr "媒體庫"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:30
+msgid "Posts / Pages Listing"
+msgstr "文章 / 頁面列表"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:46
+msgid "List other users' files if attached to a editable post"
+msgstr "如果附加到可編輯文章，則列出其他用戶的文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:47
+msgid "List other users' files if attached to a viewable post"
+msgstr "如果附加到可查看的帖子，則列出其他用戶的文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:48
+msgid "List other users' unattached files by default"
+msgstr "預設情況下列出其他用戶的未附加文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:49
+msgid "Edit other users' files if attached to an editable post"
+msgstr "如果附加到可編輯的帖子，則編輯其他用戶的文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:50
+msgid "Prevent editing files if attached to a non-editable post"
+msgstr "如果附加到不可編輯的帖子，則防止編輯文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:51
+msgid "Users can always edit their own files"
+msgstr "用戶始終可以編輯自己的文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:106
+msgid "Limited Editing Elements"
+msgstr "有限編輯元素"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:134
+msgid "Feature Moved"
+msgstr "功能已移動"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:140
+#, php-format
+msgid ""
+"The Limited Editing Elements feature has been moved to %1$sCapabilities > "
+"Editor Features > Element IDs%2$s for better organization and enhanced "
+"functionality."
+msgstr "有限編輯元素功能已移至 %1$s能力 > 編輯器功能 > 元素 ID%2$s，以便更好地組織和增強功能。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:146
+#, php-format
+msgid ""
+"The Limited Editing Elements feature has been moved to the PublishPress "
+"Capabilities plugin. Please install %1$sPublishPress Capabilities%2$s to "
+"access this functionality."
+msgstr "有限編輯元素功能已移至 PublishPress 能力插件。請安裝 %1$sPublishPress 能力%2$s 以訪問此功能。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:155
+msgid "Current Settings:"
+msgstr "當前設置："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:156
+msgid "HTML Element IDs: "
+msgstr "HTML 元素 ID："
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:178
+msgid "List Files"
+msgstr "列出文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:189
+msgid ""
+"The following settings apply to users who are able to access the Media "
+"Library. Normally this requires the upload_files or edit_files capability."
+msgstr "以下設置適用於可以訪問媒體庫的用戶。通常這需要 upload_files 或 edit_files 能力。"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:202
+msgid "Edit Files"
+msgstr "編輯文件"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooks.php:623
+#, php-format
+msgid "You are not allowed to create new %s"
+msgstr "您不允許創建新的 %s"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksAdmin.php:253
+msgid "access denied"
+msgstr "訪問被拒絕"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:128
+msgid "Approve"
+msgstr "批准"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:145
+msgid "Revisors"
+msgstr "審核者"
+
+#: modules/presspermit-collaboration/classes/Permissions/CollabHooksCompat.php:146
+msgid "Revisor"
+msgstr "審核者"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:623
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:676
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
+msgid "To read the full content, please log in to this site."
+msgstr "要閱讀完整內容，請登錄此網站。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:711
+msgid "Content requires additional permissions."
+msgstr "內容需要額外的權限。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+msgid "Read More"
+msgstr "閱讀更多"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
+msgid "Teaser Type"
+msgstr "預告類型"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+msgid "Coverage"
+msgstr "覆蓋範圍"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
+msgid "Teaser Text"
+msgstr "預告文字"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+msgid "Read More Notice"
+msgstr "閱讀更多通知"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+msgid "Redirect"
+msgstr "重定向"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
+msgid "Options"
+msgstr "選項"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+msgid "Hidden Content Teaser"
+msgstr "隱藏內容預告"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+msgid "Display mode for readable private posts"
+msgstr "可讀取私人帖文的顯示模式"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+msgid "Display mode for readable non-private posts"
+msgstr "可讀取非私人帖文的顯示模式"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+msgid "Feed Replacement Text (use %permalink% for post URL)"
+msgstr "資訊流替代文字（使用 %permalink% 作為帖文網址）"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+msgid "Login Notice Message"
+msgstr "登錄通知訊息"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Hide Featured Image when Teaser is applied"
+msgstr "應用預告時隱藏特色圖片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid ""
+"\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
+"Staff, etc.)"
+msgstr "\"隱藏私密\" 設置僅適用於自定義隱私（會員、高級、員工等）。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:139
+#, php-format
+msgid "%s is a PRO feature"
+msgstr "%s 是一個專業功能"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:189
+#, php-format
+msgid "🔓 Unlock %s"
+msgstr "🔓 解鎖 %s"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
+msgid "This feature is available in PublishPress Permissions PRO"
+msgstr "此功能在 PublishPress Permissions PRO 中可用"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:205
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
+msgid "Upgrade to PRO"
+msgstr "升級到專業版"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:208
+msgid "Compare Features"
+msgstr "比較功能"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:247
+msgid "All post teaser settings were updated."
+msgstr "所有文章預覽設定已更新。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:255
+msgid "All post teaser settings were reset to defaults."
+msgstr "所有文章預覽設定已重置為預設值。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:265
+msgid "Teaser Settings"
+msgstr "預覽設定"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:458, fuzzy
+msgid "RSS"
+msgstr "RSS"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:477
+msgid "Display for readable private posts:"
+msgstr "可讀取的私人文章顯示為："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Full Content"
+msgstr "完整內容"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Excerpt Only"
+msgstr "僅摘要"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:508
+msgid "Title Only"
+msgstr "僅標題"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:502
+msgid "Display for readable non-private posts:"
+msgstr "可讀取的非私人文章顯示為："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:529
+msgid "Feed Replacement Text:"
+msgstr "摘要替代文字："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:554
+#, php-format
+msgid "Use %s for post URL"
+msgstr "使用 %s 作為文章網址"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:71
+msgid "Select Post Type to Configure"
+msgstr "選擇要配置的文章類型"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:72
+msgid "Choose which post type you want to configure teaser settings for."
+msgstr "選擇您想要配置預覽設定的文章類型。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:98
+#, php-format
+msgid "Pages and custom post types are available in %sPRO%s"
+msgstr "頁面和自定義文章類型在 %sPRO%s 中可用"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:177
+msgid "WordPress default. Show \"Page not found\" screen"
+msgstr "WordPress 預設。顯示 \"頁面未找到\" 螢幕"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:178
+msgid "Teaser text"
+msgstr "預覽文字"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:179
+msgid "Use content before Read More link as teaser text"
+msgstr "在“閱讀更多”連結之前使用內容作為預覽文字"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:180
+msgid "Use Excerpt as teaser text"
+msgstr "使用摘要作為預覽文字"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:181
+msgid "Use Excerpt or pre-More as teaser text"
+msgstr "使用摘要或“閱讀更多”前的內容作為預覽文字"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:182
+msgid "Use Excerpt, pre-More or First X Characters as teaser text"
+msgstr "使用摘要、“閱讀更多”前的內容或前 X 個字元作為預覽文字"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:183
+msgid "Redirect to another post"
+msgstr "重定向到另一篇文章"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:194
+msgid "No teaser will be applied"
+msgstr "不會應用預告片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:195
+msgid "Use configured teaser text to replace or supplement content"
+msgstr "使用配置的預告片文本來替換或補充內容"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:196
+msgid "Show a \"Read More\" link that requires login"
+msgstr "顯示一個需要登錄的「閱讀更多」連結"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:197
+msgid "Use the post excerpt as teaser content"
+msgstr "使用文章摘要作為預告片內容"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:198
+msgid "Use excerpt or content before More tag"
+msgstr "使用「更多」標籤之前的摘要或內容"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:199
+msgid "Show the first X characters of the post content"
+msgstr "顯示文章內容的前 X 個字符"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+msgid "Redirect users to another page when they try to access restricted content"
+msgstr "當用戶嘗試訪問受限內容時，將其重定向到另一頁面"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:206
+msgid "Use first X characters of content as teaser text"
+msgstr "使用內容的前 X 個字符作為預告片文本"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:207
+msgid "Use excerpt or first X characters of content"
+msgstr "使用摘要或內容的前 X 個字符"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#, php-format
+msgid "Teaser Settings for %s"
+msgstr "%s 的預告片設置"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
+msgid "Teaser Type:"
+msgstr "預告片類型："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:293
+#, php-format
+msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
+msgstr "在 %sPRO%s 中提供閱讀更多連結、摘要和重定向"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:302
+msgid "Show only the first"
+msgstr "僅顯示前"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:309
+msgid "Chars"
+msgstr "個字符"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:304
+msgid "characters"
+msgstr "字符"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:308
+msgid "Max"
+msgstr "最大"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:310
+msgid "characters (leave empty for full excerpt)"
+msgstr "字符（留空以獲取完整摘要）"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:320
+msgid "Teaser Application:"
+msgstr "預告片應用："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:324
+msgid "List and Single view"
+msgstr "列表和單一視圖"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:328
+msgid "Single view only"
+msgstr "僅單一視圖"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+msgid "User Application:"
+msgstr "用戶應用程式："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
+msgid "Both"
+msgstr "兩者"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:344
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:558
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Not Logged In Users"
+msgstr "未登入用戶"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:348
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:561
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+msgid "Logged In Users"
+msgstr "已登入用戶"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+msgid "Navigation Menus:"
+msgstr "導航菜單："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
+msgid "Display links if user doesn't have access"
+msgstr "如果用戶沒有訪問權限則顯示鏈接"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:363
+msgid "Hide links if user doesn't have access"
+msgstr "如果用戶沒有訪問權限則隱藏鏈接"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+msgid "Private Posts:"
+msgstr "私人帖子："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+msgid "Apply Teaser to Private Posts"
+msgstr "對私人帖子應用預告片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:376
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "如果用戶沒有訪問權限則隱藏私人帖子"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:381
+msgid "Hide for Custom Visibility"
+msgstr "隱藏自定義可見性"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:387
+msgid "Featured Image:"
+msgstr "特色圖片："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+msgid "Show featured image"
+msgstr "顯示特色圖片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
+msgid "Hide featured image when teaser is applied"
+msgstr "在應用預告片時隱藏特色圖片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:403
+msgid "Teaser Message Style:"
+msgstr "預告片消息樣式："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:411
+msgid "Use Default Teaser Message Style"
+msgstr "使用預設預告片消息樣式"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
+msgid "Use Custom Teaser Message Style"
+msgstr "使用自定義預告片消息樣式"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
+msgid ""
+"Choose whether to use the default message style or customize the appearance "
+"of teaser messages."
+msgstr "選擇是否使用預設消息樣式或自定義預告消息的外觀。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:438
+msgid "Teaser Message"
+msgstr "預告片消息"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+msgid ""
+"Replace the post content entirely with custom content for users who don't "
+"have access."
+msgstr "為沒有訪問權限的用戶完全替換帖子內容為自定義內容。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:498
+msgid "This field is required."
+msgstr "此欄位為必填。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:460
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
+msgid "Replace Post Content With:"
+msgstr "用以下內容替換文章內容："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:526
+#, php-format
+msgid "Insert a login form by using %s[login_form]%s shortcode."
+msgstr "使用 %s[login_form]%s 短代碼插入登錄表單。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Teaser Text Configuration"
+msgstr "預告文本配置"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+msgid "Configure custom teaser text for this post type."
+msgstr "為此文章類型配置自訂預告文本。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:589
+msgid "post title"
+msgstr "文章標題"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:590
+msgid "post content"
+msgstr "文章內容"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:597
+#, php-format
+msgid "Before %s:"
+msgstr "在 %s 之前："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:598
+#, php-format
+msgid "After %s:"
+msgstr "在 %s 之後："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+msgid "Redirect Settings"
+msgstr "重定向設置"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:671
+msgid "Redirect functionality is available in PRO"
+msgstr "重定向功能僅在專業版中可用"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:672
+msgid ""
+"Automatically redirect users to a login page or custom page when they try "
+"to access restricted content."
+msgstr "當用戶嘗試訪問受限內容時，自動將其重定向到登錄頁面或自定義頁面。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:708
+msgid "Redirection"
+msgstr "重定向"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:709
+msgid "Target Post Type"
+msgstr "目標文章類型"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:710
+msgid "Select Post"
+msgstr "選擇文章"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:746
+msgid "Not Logged In:"
+msgstr "未登錄："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
+msgid "No redirect"
+msgstr "不重定向"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:850
+msgid "Redirect to WordPress login"
+msgstr "重定向到 WordPress 登錄頁面"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:851
+msgid "Redirect to a custom post"
+msgstr "重定向到自訂文章"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:904
+msgid "This is a custom login page"
+msgstr "這是一個自訂的登錄頁面"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:809
+msgid ""
+"After the user logs in, they will be redirected back to the original post "
+"they were viewing."
+msgstr "用戶登錄後，將被重定向回他們原本查看的帖子。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
+msgid "Logged in Users:"
+msgstr "已登錄用戶："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1042
+msgid "Message for Blocked Users"
+msgstr "阻止用戶的消息"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:935
+msgid ""
+"Customize the message shown to users who are blocked from viewing the full "
+"content when using the \"Read More\" teaser type."
+msgstr "自定義在使用 \"閱讀更多\" 預告類型時顯示給被阻止查看完整內容的用戶的消息。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:958
+msgid ""
+"This message will be displayed in a styled notice box above the teaser "
+"content for users who are not logged in."
+msgstr "此消息將顯示在預告內容上方的樣式通知框中，對於未登錄的用戶來說。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+msgid ""
+"Customize the login notice message shown to non-logged-in users when using "
+"the \"Excerpt\" teaser type."
+msgstr "自定義在使用 \"摘錄\" 預告類型時顯示給未登錄用戶的登錄通知消息。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1012
+msgid ""
+"This message will be displayed in a styled notice box below the excerpt "
+"teaser content for users who are not logged in."
+msgstr "此消息將顯示在摘錄預告內容下方的樣式通知框中，對於未登錄的用戶來說。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
+msgid ""
+"Customize the login notice message shown to non-logged-in users when using "
+"the \"First X Characters\" teaser type."
+msgstr "自定義在使用 \"前 X 個字符\" 預告類型時顯示給未登錄用戶的登錄通知消息。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1066
+msgid ""
+"This message will be displayed in a styled notice box below the truncated "
+"content teaser for users who are not logged in."
+msgstr "此消息將顯示在截斷內容預告下方的樣式通知框中，對於未登錄的用戶來說。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1144
+msgid "Teaser Message Style Customization"
+msgstr "摘要消息樣式自訂"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1145
+msgid "Customize the appearance of teaser message displayed to blocked users."
+msgstr "自訂顯示給被阻止用戶的摘要消息的外觀。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1157
+msgid "Background Color:"
+msgstr "背景顏色："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
+msgid "Text Color:"
+msgstr "文字顏色："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1181
+msgid "Border Color:"
+msgstr "邊框顏色："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+msgid "Border Width (px):"
+msgstr "邊框寬度 (px)："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+msgid "Border Position:"
+msgstr "邊框位置："
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1211
+msgid "Left"
+msgstr "左側"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1212
+msgid "Right"
+msgstr "右側"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1213
+msgid "Top"
+msgstr "上方"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1214
+msgid "Bottom"
+msgstr "底部"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1215
+msgid "All Sides"
+msgstr "所有邊緣"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+msgid "Padding (px):"
+msgstr "內邊距 (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1234
+msgid "Border Radius (px):"
+msgstr "邊框圓角 (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+msgid "Font Size (px):"
+msgstr "字體大小 (px):"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+msgid "Live Preview"
+msgstr "即時預覽"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+msgid ""
+"This is how the teaser message will appear on your site. Changes update in "
+"real-time."
+msgstr "這就是預告消息在您網站上顯示的樣子。更改會即時更新。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
+msgid "No Teaser"
+msgstr "無預告"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
+msgid "Configured Teaser Text"
+msgstr "已配置的預告文本"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
+msgid "This is a PRO feature"
+msgstr "這是一項專業功能"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
+#, php-format
+msgid "%s is available in PRO"
+msgstr "%s 在專業版中可用"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:48
+msgid "Select a page"
+msgstr "選擇一個頁面"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
+msgid "Select terms"
+msgstr "選擇條款"
+
+#: press-permit-core.php:117
+msgid "<strong>This plugin can be deleted.</strong>"
+msgstr "<strong>此插件可以被刪除。</strong>"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:23
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:253
+msgctxt "user"
+msgid "Select &gt;"
+msgstr "選擇 &gt;"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:24
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:254
+msgctxt "user"
+msgid "&lt; Unselect"
+msgstr "&lt; 取消選擇"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:170
+msgctxt "count"
+msgid "Users"
+msgstr "用戶"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:171
+msgctxt "count"
+msgid "Specific Permissions"
+msgstr "特定權限"
+
+#: classes/PublishPress/Permissions/UI/GroupsListTable.php:172
+msgctxt "count"
+msgid "Extra Roles"
+msgstr "額外角色"
+
+#: classes/PublishPress/Permissions/UI/PluginPage.php:95
+msgctxt "groups per page (screen options)"
+msgid "Groups"
+msgstr "群組"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:671
+#, fuzzy, php-format
+msgctxt "teaser suffix"
+msgid "%s..."
+msgstr "%s..."

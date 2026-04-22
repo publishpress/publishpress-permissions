@@ -1,6 +1,16 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.1] - 21 April, 2026
+
+- Added: Expanded language support with 34 languages through new translation system integration. #2273
+- Changed: Renamed “Pending Revision Monitors” for clearer understanding. #2279
+- Changed: Plugin description on the WordPress plugin screen. #2274
+- Changed: PublishPress plugins list in readme.txt. #2278
+- Changed: French, Spanish, and Italian translations. #2276
+- Fixed: Issue with terms handling on the Permissions screen. #2275
+- Fixed: Issue uncaught error add_date_gmt in DB/Groups.php. #2294
+
 [4.8.0] - 6 April, 2026
 
 - Added: Filter and sort options in the Permissions metabox for easier navigation and management. #2253

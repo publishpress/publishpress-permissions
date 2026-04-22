@@ -134,8 +134,13 @@ class PostEdit
             'presspermit-listbox', 
             'ppListbox', 
             [
-                'omit_admins' => !defined('PP_ADMINS_IN_PERMISSION_GROUPS') || !PP_ADMINS_IN_PERMISSION_GROUPS ? '1' : 0, 
-                'metagroups' => 1
+                'omit_admins' => !defined('PP_ADMINS_IN_PERMISSION_GROUPS') || !PP_ADMINS_IN_PERMISSION_GROUPS ? '1': 0, 
+                'metagroups'  => 1,
+                'placeholder' => [
+                    'pp_group'      => esc_html__('Search for a group', 'press-permit-core'),
+                    'user'          => esc_html__('Search for a user', 'press-permit-core'),
+                    'select-author' => esc_html__('Search for an author', 'press-permit-core'),
+                ],
             ]
         );
 

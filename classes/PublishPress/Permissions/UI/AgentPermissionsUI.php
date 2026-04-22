@@ -148,6 +148,9 @@ class AgentPermissionsUI
                             if ($is_anon)
                                 unset($type_objects['attachment']);
 
+                            if ($is_all_anon)
+                                unset($type_objects['_term_']);
+
                             self::drawTypeOptions($type_objects, ['option_any' => true]);
                             do_action('presspermit_exception_types_dropdown', $args);
 
