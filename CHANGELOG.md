@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Changed: PublishPress plugins list in readme.txt. #2278
 - Changed: French, Spanish, and Italian translations. #2276
 - Fixed: Issue with terms handling on the Permissions screen. #2275
+- Fixed: Issue uncaught error add_date_gmt in DB/Groups.php. #2294
 
 [4.8.0] - 6 April, 2026
 
