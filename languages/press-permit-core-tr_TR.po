@@ -1,8 +1,8 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Project-Id-Version: PublishPress Permissions Free 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-10 14:48+0000\n"
+"PO-Revision-Date: 2026-04-22 11:58+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: tr_TR\n"
@@ -18,10 +18,10 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPress İzinleri"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -35,12 +35,12 @@ msgstr ""
 "PublishPress İzinleri, yazılara, sayfalara, kategorilere, etiketlere ve "
 "daha fazlasına erişimi etkinleştirmenizi veya reddetmenizi sağlar."
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -280,7 +280,7 @@ msgid "Advanced search controls"
 msgstr "Gelişmiş arama kontrolleri"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1080,52 +1080,59 @@ msgstr ""
 "Sadece geliştirme kullanımı (ön uçta, 'post_status = 'publish'' ifadesini "
 "filtrelenmiş eşdeğeri ile değiştirmeyin)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:446
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "Giriş Yapıldı"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:448
+#: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "Giriş Yapılmadı"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "Herkes"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
 msgid "Change Request Notifications"
 msgstr "Değişiklik Talebi Bildirimleri"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "Gönderilen Revizyon"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
 msgid "Scheduled Change Notifications"
 msgstr "Planlanan Değişiklik Bildirimleri"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "Planlanan Revizyon İzleyicileri"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:486
+#: classes/PublishPress/Permissions/DB/Groups.php:490
 msgid "Authenticated site users, except for Administrators"
 msgstr "Yönetici hariç, kimlik doğrulanmış site kullanıcıları"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:488
+#: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "Anonim kullanıcılar (giriş yapmamış)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:490
+#: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "Tüm kullanıcılar (anonim olanlar dahil)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:495
+#: classes/PublishPress/Permissions/DB/Groups.php:499
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "WordPress rolüne sahip tüm kullanıcılar %s"
@@ -1222,6 +1229,28 @@ msgid ""
 msgstr ""
 "Lisans anahtarınızın süresi doldu. PublishPress Permissions Pro için "
 "güncellemeler ve öncelikli destek için %s lütfen yenileyin %s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "WordPress %s rolüne sahip tüm kullanıcılar"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "Oturum açmış ve sitede bir rolü olan tüm kullanıcılar"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "Revizyonlar gönderildiğinde bildirilmesi gereken kullanıcılar"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "Planlanan revizyonlar yayımlandığında bildirilmesi gereken kullanıcılar"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -1706,7 +1735,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2184,6 +2213,24 @@ msgstr "Arama Sonuçları:"
 msgid "Current Selections:"
 msgstr "Mevcut Seçimler:"
 
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:537
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:591
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:140
+msgid "Search for a group"
+msgstr "Bir grup ara"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:538
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:592
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:141
+msgid "Search for a user"
+msgstr "Bir kullanıcı ara"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:539
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:593
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:142
+msgid "Search for an author"
+msgstr "Bir yazar ara"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
@@ -2265,13 +2312,15 @@ msgid "User"
 msgstr "Kullanıcı"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "Bu %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, php-format
 msgid "Sub-%s"
 msgstr "Alt-%s"
@@ -2463,7 +2512,7 @@ msgstr ""
 msgid "Remove Selected"
 msgstr "Seçilenleri Kaldır"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2471,21 +2520,24 @@ msgstr "Seçilenleri Kaldır"
 msgid "Login State"
 msgstr "Giriş Durumu"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grup"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Alt Bölümler"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "Bu Bölüm"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -4843,17 +4895,53 @@ msgstr "Düzenleme"
 msgid "Publishing"
 msgstr "Yayınlama"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "Çalışma Kopyası"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "Çalışma Kopyası"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "Değişiklikleri Gönder"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "Değişiklikleri Gönder"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "Talep"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "Revizyon Oluştur"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "Revizyon Oluştur"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "Yeni Revizyon"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "Revizyonu Gönder"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "Revizyonu Gönder"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "Gönderilen Revizyon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "Gözden Geçir"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"
@@ -4911,15 +4999,15 @@ msgstr ""
 "Sınırlı Düzenleme Elemanları özelliği <a href=\"%s\" "
 "target=\"_blank\">PublishPress Yetenekleri</a> eklentisini gerektirir."
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:261
 msgid "Author Search / Select"
 msgstr "Yazar Ara / Seç"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:289
 msgid "select other"
 msgstr "başka birini seç"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:290
 msgid "close"
 msgstr "kapat"
 
@@ -5899,7 +5987,7 @@ msgstr "Bir sayfa seçin"
 msgid "Select terms"
 msgstr "Terimleri seçin"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Bu eklenti silinebilir.</strong>"
 

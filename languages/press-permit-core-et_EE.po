@@ -1,8 +1,8 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Project-Id-Version: PublishPress Permissions Free 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-10 14:02+0000\n"
+"PO-Revision-Date: 2026-04-22 12:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -18,10 +18,10 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPressi õigused"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -35,12 +35,12 @@ msgstr ""
 "PublishPress Permissions võimaldab sul lubada või keelata juurdepääsu "
 "postitustele, lehtedele, kategooriatele, siltidele ja muule."
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -284,7 +284,7 @@ msgid "Advanced search controls"
 msgstr "Edasijõudnud otsingukontrollid"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1089,52 +1089,59 @@ msgstr ""
 "Ainult arenduse kasutamiseks (esifoonil, ära asenda 'post_status = "
 "'publish'' klauslit filtreeritud ekvivalentiga)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:446
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "Sisse logitud"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:448
+#: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "Pole sisse logitud"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "Kõik"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
 msgid "Change Request Notifications"
 msgstr "Muutmise taotluste teated"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "Esitatud revisjon"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
 msgid "Scheduled Change Notifications"
 msgstr "Planeeritud muutmise teated"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "Planeeritud ülevaatamise jälgijad"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:486
+#: classes/PublishPress/Permissions/DB/Groups.php:490
 msgid "Authenticated site users, except for Administrators"
 msgstr "Tuvastatud saidi kasutajad, välja arvatud administraatorid"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:488
+#: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "Anonüümsed kasutajad (pole sisse logitud)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:490
+#: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "Kõik kasutajad (sealhulgas anonüümsed)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:495
+#: classes/PublishPress/Permissions/DB/Groups.php:499
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "Kõik kasutajad, kellel on WordPressi roll %s"
@@ -1231,6 +1238,28 @@ msgid ""
 msgstr ""
 "Teie litsentsivõti on aegunud. Uuenduste saamiseks PublishPress Permissions "
 "Pro ja prioriteetse toe jaoks, %spalun uuendage%s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "Kõik kasutajad, kellel on WordPressi %s roll"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "Kõik kasutajad, kes on sisse logitud ja kellel on saidil roll"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "Kasutajad, kellele teavitada, kui muudatused on esitatud"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "Kasutajad, kellele teavitada, kui ajastatud muudatused on avaldatud"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -1712,7 +1741,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2192,6 +2221,24 @@ msgstr "Otsingutulemused:"
 msgid "Current Selections:"
 msgstr "Praegused valikud:"
 
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:537
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:591
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:140
+msgid "Search for a group"
+msgstr "Otsi gruppi"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:538
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:592
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:141
+msgid "Search for a user"
+msgstr "Otsi kasutajat"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:539
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:593
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:142
+msgid "Search for an author"
+msgstr "Otsi autorit"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
@@ -2273,13 +2320,15 @@ msgid "User"
 msgstr "Kasutaja"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "See %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, php-format
 msgid "Sub-%s"
 msgstr "Alam-%s"
@@ -2467,7 +2516,7 @@ msgstr ""
 msgid "Remove Selected"
 msgstr "Eemalda valitud"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2475,21 +2524,24 @@ msgstr "Eemalda valitud"
 msgid "Login State"
 msgstr "Sisselogimise olek"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Rühm"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Alajaotused"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "See jaotis"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -4850,17 +4902,53 @@ msgstr "Redigeerimine"
 msgid "Publishing"
 msgstr "Avaldamine"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "Töökopia"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "Töökopia"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "Esita muudatused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "Esita muudatused"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "Taotlus"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "Loo muudatused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "Loo muudatused"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "Uus revisjon"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "Esita muudatused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "Esita muudatused"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "Esitatud revisjon"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "Muuda"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"
@@ -4918,15 +5006,15 @@ msgstr ""
 "Piiratud redigeerimise elemendi funktsioon nõuab <a href=\"%s\" "
 "target=\"_blank\">PublishPress Capabilities</a> pluginat."
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:261
 msgid "Author Search / Select"
 msgstr "Autori otsing / Valik"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:289
 msgid "select other"
 msgstr "vali teine"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:290
 msgid "close"
 msgstr "sulge"
 
@@ -5891,7 +5979,7 @@ msgstr "Vali leht"
 msgid "Select terms"
 msgstr "Vali tingimused"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Seda plugina saab kustutada.</strong>"
 

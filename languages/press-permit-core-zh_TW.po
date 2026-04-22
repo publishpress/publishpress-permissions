@@ -1,16 +1,16 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Project-Id-Version: PublishPress Permissions 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-10 14:48+0000\n"
+"POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
+"PO-Revision-Date: 2026-04-22 12:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: zh_TW\n"
@@ -18,10 +18,10 @@ msgstr ""
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPress 權限"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -33,12 +33,12 @@ msgid ""
 "pages, categories, tags and more."
 msgstr "PublishPress 權限允許您啟用或拒絕對文章、頁面、類別、標籤等的訪問。"
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -272,7 +272,7 @@ msgid "Advanced search controls"
 msgstr "高級搜索控制"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -934,52 +934,59 @@ msgid ""
 "'publish'' clause with filtered equivalent)"
 msgstr "僅供開發使用（在前端，不要將 'post_status = 'publish'' 子句替換為過濾的等效項）"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:446
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "已登入"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:448
+#: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "未登入"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "所有人"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
 msgid "Change Request Notifications"
 msgstr "變更請求通知"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "已提交的修訂版"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
 msgid "Scheduled Change Notifications"
 msgstr "排定的變更通知"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "排定的修訂監控"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:486
+#: classes/PublishPress/Permissions/DB/Groups.php:490
 msgid "Authenticated site users, except for Administrators"
 msgstr "經過身份驗證的網站用戶，除了管理員"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:488
+#: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "匿名用戶（未登入）"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:490
+#: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "所有用戶（包括匿名用戶）"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:495
+#: classes/PublishPress/Permissions/DB/Groups.php:499
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "所有擁有 %s WordPress 角色的用戶"
@@ -1070,6 +1077,28 @@ msgid ""
 "Your license key has expired. For updates to PublishPress Permissions Pro "
 "and priority support, %splease renew%s."
 msgstr "您的授權金鑰已過期。欲獲得 PublishPress Permissions Pro 的更新和優先支援，%s請續訂%s。"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "所有擁有 WordPress %s 角色的使用者"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "所有已登入且在網站上擁有角色的使用者"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "當提交修訂時通知的使用者"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "當預定修訂發佈時通知的使用者"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -1527,7 +1556,7 @@ msgstr "要為 bbPress 指定論壇特定的權限，%1$s升級至 Permissions P
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -1988,6 +2017,24 @@ msgstr "搜尋結果："
 msgid "Current Selections:"
 msgstr "當前選擇："
 
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:537
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:591
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:140
+msgid "Search for a group"
+msgstr "搜尋群組"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:538
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:592
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:141
+msgid "Search for a user"
+msgstr "搜尋使用者"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:539
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:593
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:142
+msgid "Search for an author"
+msgstr "搜尋作者"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
@@ -2069,13 +2116,15 @@ msgid "User"
 msgstr "使用者"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "這 %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, php-format
 msgid "Sub-%s"
 msgstr "子-%s"
@@ -2261,7 +2310,7 @@ msgstr "沒有特定的使用者權限。使用搜尋框添加使用者。"
 msgid "Remove Selected"
 msgstr "移除選取項目"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2269,21 +2318,24 @@ msgstr "移除選取項目"
 msgid "Login State"
 msgstr "登入狀態"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "群組"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "子項目"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "此區段"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -4426,17 +4478,53 @@ msgstr "編輯中"
 msgid "Publishing"
 msgstr "發佈中"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "工作副本"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "工作副本"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "提交變更至"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "提交變更"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "請求"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "創建修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "創建修訂"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "新修訂版"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "提交修訂至"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "提交修訂"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "已提交的修訂版"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "修訂"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"
@@ -4492,15 +4580,15 @@ msgstr ""
 "有限的編輯元素功能需要 <a href=\"%s\" target=\"_blank\">PublishPress Capabilities</a> "
 "插件。"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:261
 msgid "Author Search / Select"
 msgstr "作者搜尋 / 選擇"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:289
 msgid "select other"
 msgstr "選擇其他"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:290
 msgid "close"
 msgstr "關閉"
 
@@ -5411,7 +5499,7 @@ msgstr "選擇一個頁面"
 msgid "Select terms"
 msgstr "選擇條款"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>此插件可以被刪除。</strong>"
 

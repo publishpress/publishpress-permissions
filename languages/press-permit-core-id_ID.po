@@ -1,5 +1,5 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Plugins - PublishPress Permissions: Control User Access "
@@ -11,19 +11,19 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-08T03:11:58+00:00\n"
-"PO-Revision-Date: 2026-04-10 14:47+0000\n"
+"PO-Revision-Date: 2026-04-22 11:58+0000\n"
 "X-Generator: Loco https://localise.biz/\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "Language: id-ID\n"
 "X-Loco-Version: 2.6.11; wp-6.7.1\n"
 
-#: press-permit-core.php:4, fuzzy
+#: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPress Permissions"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -37,12 +37,12 @@ msgstr ""
 "PublishPress Permissions memungkinkan Anda untuk mengizinkan atau menolak "
 "akses ke pos, halaman, kategori, tag, dan lainnya."
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -284,7 +284,7 @@ msgid "Advanced search controls"
 msgstr "Kontrol pencarian lanjutan"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -580,8 +580,8 @@ msgid ""
 "Specific Permissions: restrictions ('Blocked') take priority over additions "
 "('Enabled')"
 msgstr ""
-"Izin Khusus: pembatasan ('Diblokir') memiliki prioritas dibandingkan "
-"penambahan ('Diaktifkan')"
+"Izin Khusus: pembatasan ('Blok') memiliki prioritas di atas penambahan "
+"('Aktifkan')"
 
 #: classes/PublishPress/Permissions/Constants.php:22
 msgid ""
@@ -600,7 +600,7 @@ msgid ""
 "Allow the {All} and {Anonymous} metagroups to be granted specific reading "
 "permissions for private content"
 msgstr ""
-"Izinkan metagroup {All} dan {Anonymous} diberikan izin membaca khusus untuk "
+"Izinkan metagrup {Semua} dan {Anonymous} diberikan izin baca khusus untuk "
 "konten pribadi"
 
 #: classes/PublishPress/Permissions/Constants.php:25
@@ -625,65 +625,67 @@ msgid ""
 "(normally filter to force inclusion of readable private posts in "
 "get_pages() listing, post counts, etc."
 msgstr ""
-"Nonaktifkan penyaringan front end jika pengguna yang masuk adalah "
-"administrator konten (normalnya filter untuk memaksa penyertaan postingan "
-"pribadi yang dapat dibaca dalam daftar get_pages(), hitungan posting, dll."
+"Nonaktifkan penyaringan depan jika pengguna yang masuk adalah administrator "
+"konten (biasanya menyaring untuk memaksa inklusi kiriman pribadi yang dapat "
+"dibaca dalam daftar get_pages(), hitungan kiriman, dll.)"
 
 #: classes/PublishPress/Permissions/Constants.php:28
 msgid ""
 "Disable front end filtering for all users (subject to limitation by "
 "PP_UNFILTERED_FRONT_TYPES)"
 msgstr ""
-"Nonaktifkan penyaringan front end untuk semua pengguna (tergantung pada "
-"batasan oleh PP_UNFILTERED_FRONT_TYPES)"
+"Nonaktifkan penyaringan depan untuk semua pengguna (tergantung pada "
+"pembatasan oleh PP_UNFILTERED_FRONT_TYPES)"
 
 #: classes/PublishPress/Permissions/Constants.php:29
 msgid ""
 "Comma-separated list of post types to limit the effect of "
 "PP_UNFILTERED_FRONT and apply_filters( 'presspermit_skip_cap_filtering' )"
 msgstr ""
-"Daftar tipe pos yang dipisahkan dengan koma untuk membatasi efek dari "
-"PP_UNFILTERED_FRONT dan apply_filters( 'presspermit_skip_cap_filtering' )"
+"Daftar jenis kiriman yang dipisahkan koma untuk membatasi efek "
+"PP_UNFILTERED_FRONT dan apply_filters('presspermit_skip_cap_filtering')"
 
 #: classes/PublishPress/Permissions/Constants.php:30
 msgid ""
 "Specific Permissions: additions ('Enabled') are not applied, cannot be "
 "assigned"
 msgstr ""
-"Izin Khusus: tambahan ('Diaktifkan') tidak diterapkan, tidak dapat "
+"Izin Khusus: penambahan ('Aktifkan') tidak diterapkan, tidak dapat "
 "ditugaskan"
 
 #: classes/PublishPress/Permissions/Constants.php:31
 msgid "Don't assign or apply specific permissions for the 'post' type"
-msgstr "Jangan tugaskan atau terapkan izin khusus untuk tipe 'pos'"
+msgstr "Jangan berikan akses atau menerapkan izin khusus untuk tipe 'artikel'"
 
 #: classes/PublishPress/Permissions/Constants.php:32
 msgid "Don't assign or apply specific permissions for the 'page' type"
-msgstr "Jangan tugaskan atau terapkan izin khusus untuk tipe 'halaman'"
+msgstr "Jangan berikan akses atau menerapkan izin khusus untuk tipe 'halaman"
 
 #: classes/PublishPress/Permissions/Constants.php:33
 msgid "Don't assign or apply specific permissions for the 'media' type"
-msgstr "Jangan tugaskan atau terapkan izin khusus untuk tipe 'media'"
+msgstr "Jangan berikan akses atau menerapkan izin khusus untuk tipe 'media'"
 
 #: classes/PublishPress/Permissions/Constants.php:34
 msgid ""
 "Don't assign or apply specific permissions for the specified custom post "
 "type"
 msgstr ""
-"Jangan tugaskan atau terapkan izin khusus untuk tipe pos kustom yang "
-"ditentukan"
+"Jangan menetapkan atau menerapkan izin khusus untuk jenis kiriman kustom "
+"yang ditentukan"
 
 #: classes/PublishPress/Permissions/Constants.php:40
 msgid "Include scheduled posts in the posts query if user can edit them"
-msgstr "Sertakan pos terjadwal dalam kueri pos jika pengguna dapat mengeditnya"
+msgstr ""
+"Sertakan kiriman terjadwal dalam kueri kiriman jika pengguna dapat "
+"mengeditnya"
 
 #: classes/PublishPress/Permissions/Constants.php:41
 msgid "Don't filter term post counts in get_terms() call"
-msgstr "Jangan filter jumlah pos istilah dalam panggilan get_terms()"
+msgstr "Jangan menyaring hitungan kiriman term dalam panggilan get_terms()"
 
 #: classes/PublishPress/Permissions/Constants.php:42
 msgid "Leave unreadable posts on WP Navigation Menus"
-msgstr "Biarkan pos yang tidak terbaca di Menu Navigasi WP"
+msgstr "Biarkan kiriman yang tidak dapat dibaca pada Menu Navigasi WP"
 
 #: classes/PublishPress/Permissions/Constants.php:43
 msgid "Don't apply CSS to hide empty Nav Menus"
@@ -695,7 +697,7 @@ msgstr "Untuk Menu Navigasi lama, sembunyikan div menu navigasi kosong"
 
 #: classes/PublishPress/Permissions/Constants.php:45
 msgid "Leave terms with no readable posts on WP Navigation Menus"
-msgstr "Biarkan istilah tanpa pos yang dapat dibaca di Menu Navigasi WP"
+msgstr "Biarkan term tanpa kiriman yang dapat dibaca pada Menu Navigasi WP"
 
 #: classes/PublishPress/Permissions/Constants.php:52
 msgid ""
@@ -731,31 +733,31 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/Constants.php:63
 msgid "Filter priority for 'get_pages' filter (default: 1)"
-msgstr "Prioritas filter untuk filter 'get_pages' (default: 1)"
+msgstr "Prioritas penyaringan untuk filter 'get_pages' (default: 1)"
 
 #: classes/PublishPress/Permissions/Constants.php:64
 msgid ""
 "Don't include readable private pages in the Pages widget or other "
 "wp_list_pages() / get_pages() results    "
 msgstr ""
-"Jangan sertakan halaman pribadi yang dapat dibaca dalam widget Halaman atau "
-"hasil wp_list_pages() / get_pages()    "
+"Jangan termasuk halaman pribadi yang dapat dibaca dalam widget Halaman atau "
+"hasil lainnya dari wp_list_pages() / get_pages()    "
 
 #: classes/PublishPress/Permissions/Constants.php:65
 msgid ""
 "If some pages have been suppressed from get_pages() results, change child "
 "pages' corresponding post_parent values to a visible ancestor"
 msgstr ""
-"Jika beberapa halaman telah disembunyikan dari hasil get_pages(), ubah "
-"nilai post_parent halaman anak yang sesuai ke nenek moyang yang terlihat"
+"Jika beberapa halaman telah dibatasi dari hasil get_pages(), ubah nilai "
+"post_parent yang sesuai dengan halaman anak ke leluhur yang terlihat"
 
 #: classes/PublishPress/Permissions/Constants.php:66
 msgid ""
 "Never modify the post_parent value in the get_pages() result set, even if "
 "some pages have been suppressed"
 msgstr ""
-"Jangan pernah memodifikasi nilai post_parent dalam hasil set get_pages(), "
-"bahkan jika beberapa halaman telah disembunyikan"
+"Jangan pernah memodifikasi nilai post_parent dalam set hasil get_pages(), "
+"bahkan jika beberapa halaman telah dibatasi"
 
 #: classes/PublishPress/Permissions/Constants.php:67
 msgid ""
@@ -763,7 +765,7 @@ msgid ""
 "subset of fields, excluding post_content"
 msgstr ""
 "Untuk kinerja, ubah kueri database get_pages() untuk mengembalikan hanya "
-"subset bidang, kecuali post_content"
+"subset bidang, tidak termasuk post_content"
 
 #: classes/PublishPress/Permissions/Constants.php:74
 msgid ""
@@ -778,16 +780,16 @@ msgid ""
 "If some terms have been suppressed from get_terms() results, change child "
 "terms' corresponding parent values to a visible ancestor"
 msgstr ""
-"Jika beberapa istilah telah disembunyikan dari hasil get_terms(), ubah "
-"nilai parent yang sesuai untuk istilah anak ke nenek moyang yang terlihat"
+"Jika beberapa istilah telah dibatasi dari hasil get_terms(), ubah nilai "
+"induk yang sesuai dengan istilah anak ke leluhur yang terlihat"
 
 #: classes/PublishPress/Permissions/Constants.php:83
 msgid ""
 "Never modify the parent value in the get_terms() result set, even if some "
 "terms have been suppressed"
 msgstr ""
-"Jangan pernah memodifikasi nilai parent dalam hasil set get_terms(), bahkan "
-"jika beberapa istilah telah disembunyikan"
+"Jangan pernah memodifikasi nilai induk dalam set hasil get_terms(), bahkan "
+"jika beberapa istilah telah dibatasi"
 
 #: classes/PublishPress/Permissions/Constants.php:90
 msgid ""
@@ -802,7 +804,7 @@ msgid ""
 "Leave Media Library with normal access criteria based on user's role "
 "capabilities "
 msgstr ""
-"Biarkan Media Library dengan kriteria akses normal berdasarkan kemampuan "
+"Biarkan Media Library dengan kriteria akses normal berdasarkan kapabilitas "
 "peran pengguna "
 
 #: classes/PublishPress/Permissions/Constants.php:98
@@ -853,8 +855,8 @@ msgid ""
 "On Users listing, Permission groups in custom column are list filter links "
 "instead of group edit links"
 msgstr ""
-"Pada daftar Pengguna, Grup Izin di kolom kustom adalah tautan penyaring "
-"daftar daripada tautan pengeditan grup"
+"Pada daftar Pengguna, kelompok Izin dalam kolom kustom adalah tautan filter "
+"daftar alih-alih tautan edit grup"
 
 #: classes/PublishPress/Permissions/Constants.php:119
 #: classes/PublishPress/Permissions/Constants.php:120
@@ -862,8 +864,8 @@ msgid ""
 "Unlock Permissions > Settings > Core > Admin Back End > 'Hide non-editable "
 "posts'"
 msgstr ""
-"Buka Kunci Izin > Pengaturan > Inti > Admin Back End > 'Sembunyikan pos "
-"yang tidak dapat diedit'"
+"Buka kunci Permissions > Pengaturan > Inti > Admin Back End > 'Sembunyikan "
+"pos yang tidak dapat diedit'"
 
 #: classes/PublishPress/Permissions/Constants.php:121
 msgid ""
@@ -875,7 +877,7 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/Constants.php:122
 msgid "Don't filter comment display or moderation within wp-admin"
-msgstr "Jangan saring tampilan komentar atau moderasi dalam wp-admin"
+msgstr "Jangan menyaring tampilan atau moderasi komentar dalam wp-admin"
 
 #: classes/PublishPress/Permissions/Constants.php:123
 msgid ""
@@ -890,7 +892,7 @@ msgid ""
 "If propagating permissions are assigned to a page branch, overwrite any "
 "explicitly assigned permissions in sub-pages"
 msgstr ""
-"Jika izin yang menyebar ditugaskan ke cabang halaman, timpa izin yang "
+"Jika izin penyebaran ditugaskan ke cabang halaman, timpa semua izin yang "
 "ditugaskan secara eksplisit di sub-halaman"
 
 #: classes/PublishPress/Permissions/Constants.php:130
@@ -898,19 +900,21 @@ msgid ""
 "Max number of specific permissions to insert in a single database query "
 "(default 1000)"
 msgstr ""
-"Jumlah maksimum izin tertentu yang dapat dimasukkan dalam satu kueri basis "
-"data (default 1000)"
+"Jumlah maksimum izin khusus yang akan dimasukkan dalam satu kueri database "
+"(default 1000)"
 
 #: classes/PublishPress/Permissions/Constants.php:131
 msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
-msgstr "Jangan ubah indeks menu admin untuk menempatkan menu Izin di bawah Pengguna"
+msgstr ""
+"Jangan menyesuaikan indeks menu admin untuk menempatkan menu Izin di bawah "
+"Pengguna"
 
 #: classes/PublishPress/Permissions/Constants.php:132
 msgid ""
 "Don't add a Permissions menu. Instead, add menu items to the Users and "
 "Settings menus."
 msgstr ""
-"Jangan tambahkan menu Izin. Sebagai gantinya, tambahkan item menu ke menu "
+"Jangan tambahkan menu Izin. Sebaliknya, tambahkan item menu ke menu "
 "Pengguna dan Pengaturan."
 
 #: classes/PublishPress/Permissions/Constants.php:138
@@ -923,11 +927,11 @@ msgstr "Sesuaikan keterangan Grup Izin di profil pengguna"
 
 #: classes/PublishPress/Permissions/Constants.php:140
 msgid "Only one group is selectable on Add User screen"
-msgstr "Hanya satu grup yang dapat dipilih di layar Tambah Pengguna"
+msgstr "Hanya satu grup yang dapat dipilih pada layar Tambah Pengguna"
 
 #: classes/PublishPress/Permissions/Constants.php:141
 msgid "Only one group is selectable on Edit User screen"
-msgstr "Hanya satu grup yang dapat dipilih di layar Edit Pengguna"
+msgstr "Hanya satu grup yang dapat dipilih pada layar Edit Pengguna."
 
 #: classes/PublishPress/Permissions/Constants.php:142
 msgid "Display a custom hint on Permissions > User Groups"
@@ -938,38 +942,38 @@ msgid ""
 "Max number of non-hierarchical posts / terms to display at one time (per "
 "page)"
 msgstr ""
-"Jumlah maksimum pos / istilah non-hierarkis yang ditampilkan pada satu "
-"waktu (per halaman)"
+"Jumlah maksimum pos/istilah non-hirarkis yang akan ditampilkan sekaligus "
+"(per halaman)"
 
 #: classes/PublishPress/Permissions/Constants.php:144
 msgid "Max number of hierarchical posts / terms to display at one time (per page)"
 msgstr ""
-"Jumlah maksimum pos / istilah hierarkis yang ditampilkan pada satu waktu "
-"(per halaman)"
+"Jumlah maksimum pos/istilah hirarkis yang akan ditampilkan sekaligus (per "
+"halaman)"
 
 #: classes/PublishPress/Permissions/Constants.php:145
 msgid ""
 "Disable auto-determination of how many levels of page tree to make visble "
 "by default. Instead, use specified value."
 msgstr ""
-"Nonaktifkan penentuan otomatis berapa banyak level pohon halaman yang akan "
-"ditampilkan secara default. Sebagai gantinya, gunakan nilai yang ditentukan."
+"Nonaktifkan penentuan otomatis berapa banyak tingkat pohon halaman yang "
+"terlihat secara default. Sebaliknya, gunakan nilai yang ditentukan."
 
 #: classes/PublishPress/Permissions/Constants.php:146
 msgid ""
 "Target number of visible pages/terms, used for auto-determination of number "
 "of visible levels"
 msgstr ""
-"Jumlah halaman/istilah yang terlihat, digunakan untuk penentuan otomatis "
-"jumlah level yang terlihat"
+"Jumlah target halaman/istilah yang terlihat, digunakan untuk penentuan "
+"otomatis jumlah tingkat yang terlihat"
 
 #: classes/PublishPress/Permissions/Constants.php:147
 msgid "Make search function on the post selection metabox look at post content"
-msgstr "Buat fungsi pencarian di metabox pemilihan pos memperhatikan konten pos"
+msgstr "Buat fungsi pencarian pada kotak seleksi pos melihat konten pos"
 
 #: classes/PublishPress/Permissions/Constants.php:148
 msgid "Make search function on the post selection metabox look at post excerpt"
-msgstr "Buat fungsi pencarian di metabox pemilihan pos memperhatikan kutipan pos"
+msgstr "Buat fungsi pencarian pada kotak seleksi pos melihat cuplikan pos"
 
 #: classes/PublishPress/Permissions/Constants.php:154
 msgid "Search by last name instead of display name"
@@ -977,25 +981,19 @@ msgstr "Cari berdasarkan nama belakang alih-alih nama tampilan"
 
 #: classes/PublishPress/Permissions/Constants.php:155
 msgid "User field to search by default"
-msgstr "Bidang pengguna untuk pencarian secara default"
+msgstr "Bidang pengguna untuk dicari secara default"
 
 #: classes/PublishPress/Permissions/Constants.php:156
 msgid "User meta fields selectable for search (comma-separated)"
-msgstr ""
-"Bidang meta pengguna yang dapat dipilih untuk pencarian (dipisahkan dengan "
-"koma)"
+msgstr "Bidang meta pengguna yang dapat dipilih untuk pencarian (dipisahkan koma)"
 
 #: classes/PublishPress/Permissions/Constants.php:157
 msgid "User meta fields which should be treated as numeric (comma-separated)"
-msgstr ""
-"Bidang meta pengguna yang harus diperlakukan sebagai numerik (dipisahkan "
-"dengan koma)"
+msgstr "Bidang meta pengguna yang harus dianggap sebagai numerik (dipisahkan koma)"
 
 #: classes/PublishPress/Permissions/Constants.php:158
 msgid "User meta fields which should be treated as boolean (comma-separated)"
-msgstr ""
-"Bidang meta pengguna yang harus diperlakukan sebagai boolean (dipisahkan "
-"dengan koma)"
+msgstr "Bidang meta pengguna yang harus dianggap sebagai boolean (dipisahkan koma)"
 
 #: classes/PublishPress/Permissions/Constants.php:159
 msgid "Use display name for search results instead of user_login"
@@ -1006,8 +1004,8 @@ msgid ""
 "When synchronizing role metagroups to currently defined WP roles, don't "
 "delete groups for previously defined WP roles."
 msgstr ""
-"Saat menyinkronkan metagroup peran ke peran WP yang saat ini didefinisikan, "
-"jangan hapus grup untuk peran WP yang didefinisikan sebelumnya."
+"Saat menyinkronkan metagrup peran ke peran WP yang saat ini ditentukan, "
+"jangan hapus grup untuk peran WP yang sudah ditentukan sebelumnya."
 
 #: classes/PublishPress/Permissions/Constants.php:167
 msgid ""
@@ -1022,7 +1020,7 @@ msgid ""
 "To save memory on front end access, don't register any filters related to "
 "content editing"
 msgstr ""
-"Untuk menghemat memori pada akses front end, jangan daftarkan filter "
+"Untuk menghemat memori pada akses frontend, jangan mendaftarkan filter "
 "terkait pengeditan konten"
 
 #: classes/PublishPress/Permissions/Constants.php:175
@@ -1030,23 +1028,23 @@ msgid ""
 "Attached media do not have any comments, so don't append clauses to comment "
 "queries for them"
 msgstr ""
-"Media yang dilampirkan tidak memiliki komentar, jadi jangan tambahkan "
-"klausa untuk kueri komentar untuk mereka"
+"Media terlampir tidak memiliki komentar, jadi jangan tambahkan klausa ke "
+"kueri komentar untuk mereka"
 
 #: classes/PublishPress/Permissions/Constants.php:176
 msgid ""
 "Reduce overhead of pages query (in get_pages() and wp-admin) by defaulting "
 "fields to a set list that does not include post_content "
 msgstr ""
-"Kurangi overhead kueri halaman (dalam get_pages() dan wp-admin) dengan "
-"mengatur field ke daftar tetap yang tidak termasuk post_content "
+"Kurangi beban kueri halaman (dalam get_pages() dan wp-admin) dengan "
+"memberikan nilai default ke daftar yang tidak termasuk post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:177
 msgid ""
 "Reduce overhead of wp-admin posts query by defaulting fields to a set list "
 "that does not include post_content "
 msgstr ""
-"Kurangi overhead kueri pos wp-admin dengan mengatur field ke daftar tetap "
+"Kurangi beban kueri wp-admin pos dengan memberikan nilai default ke daftar "
 "yang tidak termasuk post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:178
@@ -1054,16 +1052,16 @@ msgid ""
 "Reduce overhead of wp-admin Media query by defaulting fields to a set list "
 "that does not include post_content "
 msgstr ""
-"Kurangi overhead kueri Media wp-admin dengan mengatur field ke daftar tetap "
-"yang tidak termasuk post_content "
+"Kurangi beban kueri wp-admin Media dengan memberikan nilai default ke "
+"daftar yang tidak termasuk post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:179
 msgid ""
 "Reduce overhead of wp-admin query for specified custom post type by "
 "defaulting fields to a set list that does not include post_content "
 msgstr ""
-"Kurangi overhead kueri wp-admin untuk tipe pos kustom yang ditentukan "
-"dengan mengatur field ke daftar tetap yang tidak termasuk post_content "
+"Kurangi beban kueri wp-admin untuk jenis pos kustom tertentu dengan "
+"memberikan nilai default ke daftar yang tidak termasuk post_content "
 
 #: classes/PublishPress/Permissions/Constants.php:185
 msgid "Work around database setup warnings (at plugin activation) on some servers"
@@ -1076,62 +1074,69 @@ msgid ""
 "Development use only (suppresses post_status = 'publish' clause for "
 "unfiltered post types with anonymous user)"
 msgstr ""
-"Penggunaan pengembangan saja (menyembunyikan klausa post_status = 'publish' "
-"untuk tipe pos yang tidak terfilter dengan pengguna anonim)"
+"Hanya untuk penggunaan pengembangan (menekan klausa post_status = 'publish' "
+"untuk jenis pos yang tidak difilter dengan pengguna anonim)"
 
 #: classes/PublishPress/Permissions/Constants.php:214
 msgid ""
 "Development use only (on front end, do not replace 'post_status = "
 "'publish'' clause with filtered equivalent)"
 msgstr ""
-"Penggunaan pengembangan saja (di front end, jangan ganti klausa "
-"'post_status = 'publish'' dengan padanan yang terfilter)"
+"Hanya untuk penggunaan pengembangan (di frontend, jangan menggantikan "
+"klausa 'post_status = 'publish'' dengan setara yang difilter)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:446
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "Sudah Login"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:448
+#: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "Belum Login"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "Semua"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
 msgid "Change Request Notifications"
 msgstr "Notifikasi Permintaan Perubahan"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 msgid "Submitted Revision Editors"
 msgstr "Editor Revisi yang Dikirim"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
 msgid "Scheduled Change Notifications"
 msgstr "Jadwalkan Pemberitahuan Perubahan"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "Pemantau Revisi Terjadwal"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:486
+#: classes/PublishPress/Permissions/DB/Groups.php:490
 msgid "Authenticated site users, except for Administrators"
 msgstr "Pengguna situs yang terautentikasi, kecuali untuk Administrator"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:488
+#: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "Pengguna anonim (tidak masuk)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:490
+#: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "Semua pengguna (termasuk anonim)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:495
+#: classes/PublishPress/Permissions/DB/Groups.php:499
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "Semua pengguna dengan peran WordPress %s"
@@ -1186,7 +1191,7 @@ msgstr "Modul %1$s duplikat diaktifkan (%2$s di folder %3$s)."
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:183
 msgid "Dismiss"
-msgstr "Abaikan"
+msgstr "Tutup"
 
 #: classes/PublishPress/Permissions/Groups.php:54
 #: classes/PublishPress/Permissions/UI/Groups.php:237
@@ -1232,6 +1237,28 @@ msgid ""
 msgstr ""
 "Kunci lisensi Anda telah kedaluwarsa. Untuk pembaruan untuk PublishPress "
 "Permissions Pro dan dukungan prioritas, %ssilakan perbaharui%s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "Semua pengguna dengan peran WordPress %s"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "Semua pengguna yang sudah masuk dan memiliki peran di situs"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "Pengguna yang diberi tahu saat revisi diajukan"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "Pengguna yang diberi tahu saat revisi terjadwal diterbitkan"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -1712,7 +1739,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2185,6 +2212,24 @@ msgstr "Hasil Pencarian:"
 msgid "Current Selections:"
 msgstr "Pilihan Saat Ini:"
 
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:537
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:591
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:140
+msgid "Search for a group"
+msgstr "Cari grup"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:538
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:592
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:141
+msgid "Search for a user"
+msgstr "Cari pengguna"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:539
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:593
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:142
+msgid "Search for an author"
+msgstr "Cari penulis"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
@@ -2198,9 +2243,9 @@ msgstr "Izin"
 msgid "Add New Permission Group"
 msgstr "Tambah Grup Izin Baru"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286, fuzzy
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
 msgid "Edit"
-msgstr "Edit"
+msgstr "Sunting"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
@@ -2266,13 +2311,15 @@ msgid "User"
 msgstr "Pengguna"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "Ini %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, fuzzy, php-format
 msgid "Sub-%s"
 msgstr "Sub-%s"
@@ -2460,7 +2507,7 @@ msgstr ""
 msgid "Remove Selected"
 msgstr "Hapus yang Dipilih"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2468,21 +2515,24 @@ msgstr "Hapus yang Dipilih"
 msgid "Login State"
 msgstr "Status Login"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grup"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Sub-Bagian"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "Bagian Ini"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -3110,8 +3160,8 @@ msgid ""
 "If disabled, manually \"blocked\" posts can be unblocked by specific "
 "Category / Term Permissions."
 msgstr ""
-"Jika dinonaktifkan, pos yang secara manual \"diblokir\" dapat dibuka "
-"blokirnya oleh Izin Kategori / Istilah tertentu."
+"Jika dinonaktifkan, secara manual, artikel yang 'diblokir' dapat dibuka "
+"kembali berdasarkan Izin Kategori / Term tertentu."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:63
 msgid ""
@@ -3158,16 +3208,16 @@ msgid ""
 "Remove unreadable Menu Items. If menu rendering problems occur with a third "
 "party plugin, disable this setting."
 msgstr ""
-"Hapus Item Menu yang tidak dapat dibaca. Jika masalah rendering menu "
-"terjadi dengan plugin pihak ketiga, nonaktifkan pengaturan ini."
+"Hapus Item Menu yang tidak dapat dibaca. Jika terjadi masalah rendering "
+"menu dengan plugin pihak ketiga, nonaktifkan pengaturan ini."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:84
 msgid ""
 "Unmodified from WordPress default behavior. To enable filtering, remove "
 "constant definition PP_ADMIN_READONLY_LISTABLE."
 msgstr ""
-"Tidak dimodifikasi dari perilaku default WordPress. Untuk mengaktifkan "
-"penyaringan, hapus definisi konstanta PP_ADMIN_READONLY_LISTABLE."
+"Tidak diubah dari perilaku default WordPress. Untuk mengaktifkan "
+"penyaringan, hapus definisi konstan PP_ADMIN_READONLY_LISTABLE."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:87
 msgid "Note: Groups and Roles are always displayed on the Edit User screen."
@@ -3175,7 +3225,7 @@ msgstr "Catatan: Grup dan Peran selalu ditampilkan di layar Edit Pengguna."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:92
 msgid "Disable Permissions filtering for users who are not logged in."
-msgstr "Nonaktifkan penyaringan Izin untuk pengguna yang tidak masuk."
+msgstr "Nonaktifkan Penyaringan Izin untuk pengguna yang tidak masuk."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:95
 msgid "Legacy compatibility: front end term filters are not applied on some sites."
@@ -3189,7 +3239,7 @@ msgid ""
 "still be listed to Administrators."
 msgstr ""
 "Jika dicentang, halaman yang diblokir dari grup \"Semua\" atau \"Masuk\" "
-"tetap akan terdaftar untuk Administrator."
+"masih akan terdaftar untuk Administrator."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:101
 msgid ""
@@ -3197,14 +3247,14 @@ msgid ""
 "can set reading permissions for their editable posts."
 msgstr ""
 "Jika diaktifkan, pengguna dengan kemampuan pp_set_read_exceptions dalam "
-"peran WP dapat mengatur izin baca untuk pos yang dapat mereka edit."
+"peran WP dapat menetapkan izin baca untuk posting yang dapat diedit mereka."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:104
 msgid ""
 "Display a role dropdown alongside the user search input box to narrow "
 "results."
 msgstr ""
-"Tampilkan dropdown peran di samping kotak input pencarian pengguna untuk "
+"Tampilkan dropdown peran di sebelah kotak input pencarian pengguna untuk "
 "mempersempit hasil."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:107
@@ -3235,9 +3285,9 @@ msgid ""
 "database. May be useful for sites that sync with Active Directory or other "
 "external user registration systems."
 msgstr ""
-"Mendeteksi peran pengguna yang ditambahkan secara dinamis tetapi tidak "
-"disimpan ke database WP. Mungkin berguna untuk situs yang disinkronkan "
-"dengan Active Directory atau sistem pendaftaran pengguna eksternal lainnya."
+"Deteksi peran pengguna yang ditambahkan secara dinamis tetapi tidak "
+"disimpan dalam database WP. Mungkin berguna untuk situs yang disinkronkan "
+"dengan Active Directory atau sistem registrasi pengguna eksternal lainnya."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:119
 #, php-format
@@ -3274,9 +3324,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:132
 #, php-format
 msgid "Settings related to content editing permissions, provided by the %s module."
-msgstr ""
-"Pengaturan yang terkait dengan izin pengeditan konten, disediakan oleh "
-"modul %s."
+msgstr "Pengaturan terkait izin pengeditan konten, disediakan oleh modul %s."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:135
 msgid ""
@@ -3292,16 +3340,16 @@ msgid ""
 "Display a custom column on Edit Posts screen for all related taxonomies "
 "which are enabled for Permissions filtering."
 msgstr ""
-"Tampilkan kolom kustom di layar Edit Pos untuk semua taksonomi terkait yang "
-"diaktifkan untuk penyaringan Izin."
+"Tampilkan kolom kustom pada layar Edit Pos untuk semua taksonomi terkait "
+"yang diaktifkan untuk penyaringan Izin"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:141
 msgid ""
 "Allows creation of a new post (of any type) for each selected user, using "
 "an existing post as the pattern."
 msgstr ""
-"Memungkinkan pembuatan pos baru (dari jenis apa pun) untuk setiap pengguna "
-"yang dipilih, menggunakan pos yang ada sebagai pola."
+"Mengizinkan pembuatan pos baru (dari jenis apa pun) untuk setiap pengguna "
+"yang dipilih, menggunakan pos yang sudah ada sebagai pola."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:144
 msgid ""
@@ -3328,9 +3376,9 @@ msgid ""
 "PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you "
 "maintain). Media Library access will not be altered by Permissions."
 msgstr ""
-"Pengaturan berikut saat ini ditimpa oleh konstanta PP_MEDIA_LIB_UNFILTERED "
-"(didefinisikan dalam wp-config.php atau beberapa file lain yang Anda "
-"kelola). Akses Media Library tidak akan diubah oleh Izin."
+"Pengaturan berikut saat ini diabaikan oleh konstanta "
+"PP_MEDIA_LIB_UNFILTERED (didefinisikan di wp-config.php atau beberapa file "
+"lain yang Anda atur). Akses Pustaka Media tidak akan diubah oleh Izin."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:153
 msgid ""
@@ -3403,7 +3451,7 @@ msgid ""
 "higher-level user or assigning a role higher than their own."
 msgstr ""
 "Cegah non-Administrator dengan izin pengeditan pengguna dari mengedit "
-"pengguna tingkat lebih tinggi atau memberikan peran yang lebih tinggi dari "
+"pengguna tingkat lebih tinggi atau menugaskan peran yang lebih tinggi dari "
 "peran mereka sendiri."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:180
@@ -3414,7 +3462,7 @@ msgid ""
 msgstr ""
 "Jika diaktifkan, kemampuan pp_set_edit_exceptions, "
 "pp_set_associate_exceptions, dll. akan dihormati. Lihat daftar kemampuan di "
-"bawah."
+"bawah ini."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:184
 msgid ""
@@ -3430,16 +3478,16 @@ msgid ""
 "to set editing Permissions on posts authored by others"
 msgstr ""
 "Aktifkan kontributor pos atau penulis dengan kemampuan "
-"pp_set_edit_exceptions untuk mengatur Izin pengeditan pada pos yang ditulis "
-"oleh orang lain"
+"pp_set_edit_exceptions untuk menetapkan Izin Pengeditan pada pos yang "
+"ditulis oleh orang lain"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:200
 msgid ""
 "Permissions setting 'Pages can be set or removed from Top Level by' applies "
 "to 'page' type only"
 msgstr ""
-"Pengaturan izin 'Halaman dapat diatur atau dihapus dari Tingkat Atas oleh' "
-"berlaku hanya untuk jenis 'halaman'"
+"Pengaturan Izin 'Halaman dapat ditetapkan atau dihapus dari Tingkat Atas "
+"oleh' berlaku hanya untuk jenis 'halaman'"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:203
 msgid ""
@@ -3447,17 +3495,17 @@ msgid ""
 "editing is already there, allow it to stay at top level even if not yet "
 "published "
 msgstr ""
-"Jika pengguna umumnya tidak dapat menyimpan halaman ke tingkat atas tetapi "
-"halaman yang mereka edit sudah ada di sana, izinkan untuk tetap di tingkat "
-"atas meskipun belum diterbitkan "
+"Jika pengguna secara umum tidak dapat menyimpan halaman ke tingkat atas "
+"tetapi halaman yang sedang mereka edit sudah ada di sana, izinkan agar "
+"tetap berada di tingkat atas meskipun belum dipublikasikan "
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:206
 msgid ""
 "Circle membership does not limit page association (page parent setting) "
 "ability"
 msgstr ""
-"Keanggotaan lingkaran tidak membatasi kemampuan asosiasi halaman "
-"(pengaturan induk halaman)"
+"Keanggotaan dalam lingkaran tidak membatasi kemampuan asosiasi halaman "
+"(pengaturan halaman induk)"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:210
 msgid ""
@@ -3536,7 +3584,7 @@ msgid ""
 "linking it to nav-menus"
 msgstr ""
 "Jika pengguna memiliki kemampuan manajemen Menu Navigasi tetapi tidak dapat "
-"'edit_theme_options', hapus tautan dari menu Tampilan wp-admin alih-alih "
+"'edit_theme_options', hilangkan tautan dari Menu Tampilan wp-admin daripada "
 "menghubungkannya ke nav-menus"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:248
@@ -3544,16 +3592,16 @@ msgid ""
 "Don't credit implicit 'manage_nav_menus' capability to users who have "
 "'edit_theme_options' or 'switch_themes' capability"
 msgstr ""
-"Jangan berikan kemampuan 'manage_nav_menus' secara implisit kepada pengguna "
-"yang memiliki kemampuan 'edit_theme_options' atau 'switch_themes'"
+"Jangan berikan kredit kemampuan 'manage_nav_menus' secara implisit kepada "
+"pengguna yang memiliki kemampuan 'edit_theme_options' atau 'switch_themes'"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:251
 msgid ""
 "Prevent non-Administrators from adding new Nav Menu items to top level (add "
 "below existing editable items instead)"
 msgstr ""
-"Cegah non-Administrator dari menambahkan item Menu Navigasi baru ke level "
-"atas (tambahkan di bawah item yang dapat diedit yang ada)"
+"Mencegah non-Administrator menambahkan item Menu Navigasi baru ke tingkat "
+"atas (tambahkan di bawah item yang dapat diedit yang sudah ada)"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:254
 msgid ""
@@ -3561,7 +3609,7 @@ msgid ""
 "first editable item "
 msgstr ""
 "Untuk non-Administrator, item Menu Navigasi baru secara default menjadi "
-"anak dari item yang dapat diedit pertama"
+"anak dari item yang dapat diedit pertama "
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:257
 msgid ""
@@ -3569,17 +3617,17 @@ msgid ""
 "settings (normally require 'manage_menu_settings', 'edit_others_pages' or "
 "'publish_pages') "
 msgstr ""
-"Jangan memerlukan kemampuan tambahan untuk pengelolaan pengaturan Menu "
-"Navigasi (biasanya memerlukan 'manage_menu_settings', 'edit_others_pages' "
-"atau 'publish_pages')"
+"Tidak memerlukan kemampuan tambahan untuk pengelolaan pengaturan Menu "
+"Navigasi (biasanya memerlukan 'manage_menu_settings', 'edit_others_pages', "
+"atau 'publish_pages') "
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:260
 msgid ""
 "Eliminate extra filtering queries on Nav Menu update, even for "
 "non-Administrators"
 msgstr ""
-"Hilangkan kueri penyaringan tambahan pada pembaruan Menu Navigasi, bahkan "
-"untuk non-Administrator"
+"Hapus kueri penyaringan tambahan pada pembaruan Menu Navigasi, bahkan untuk "
+"non-Administrator"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:265
 msgid ""
@@ -3587,22 +3635,22 @@ msgid ""
 "regardless of Permissions settings.  Their own unattached uploads are still "
 "accessible unless option 'own_attachments_always_editable' is set false"
 msgstr ""
-"Jangan izinkan non-Administrator untuk melihat unggahan terlampir orang "
-"lain, terlepas dari pengaturan Izin. Unggahan terlampir mereka sendiri "
-"tetap dapat diakses kecuali opsi 'own_attachments_always_editable' disetel "
-"false"
+"Jangan izinkan non-Administrator melihat unggahan yang tidak terlampir "
+"milik orang lain, terlepas dari pengaturan Izin. Unggahan yang tidak "
+"terlampir milik mereka sendiri tetap dapat diakses kecuali opsi "
+"'own_attachments_always_editable' diatur sebagai false"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:270
 msgid "Limited User Editors can assign their own role"
-msgstr "Editor Pengguna Terbatas dapat menetapkan peran mereka sendiri"
+msgstr "Editor Pengguna Terbatas dapat menugaskan peran mereka sendiri"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:273
 msgid ""
 "Post Meta fields to copy when using 'Add Author Page' dropdown on Users "
 "screen"
 msgstr ""
-"Bidang Meta Pos untuk disalin saat menggunakan dropdown 'Tambahkan Halaman "
-"Penulis' di layar Pengguna"
+"Field Meta Pos untuk disalin saat menggunakan dropdown 'Tambahkan Halaman "
+"Penulis' pada layar Pengguna"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:282
 msgid "Manage PublishPress Permissions plugin settings."
@@ -3811,7 +3859,7 @@ msgstr "Atur akses ke halaman arsip Kategori"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:66
 msgid "Performance: Don't filter category / tag counts"
-msgstr "Kinerja: Jangan saring jumlah kategori / tag"
+msgstr "Kinerja: Jangan menyaring hitungan kategori / tag"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:67
 msgid "Filter Menu Items"
@@ -4302,7 +4350,7 @@ msgstr ""
 "yang cepat."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:121
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229
 msgid "Admin"
 msgstr "Admin"
 
@@ -4840,17 +4888,53 @@ msgstr "Editing"
 msgid "Publishing"
 msgstr "Publikasi"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "Salinan Pekerjaan dari"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "Salinan Pekerjaan"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "Kirim Perubahan ke"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "Kirim Perubahan"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "Permintaan"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "Membuat Revisi dari"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "Buat Revisi"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "Revisi Baru"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "Kirim Revisi dari"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "Kirim Revisi"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "Revisi yang telah dikirim"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "Revisi"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"
@@ -4908,15 +4992,15 @@ msgstr ""
 "Fitur Elemen Pengeditan Terbatas memerlukan plugin <a href=\"%s\" "
 "target=\"_blank\">PublishPress Capabilities</a>."
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:261
 msgid "Author Search / Select"
 msgstr "Cari / Pilih Penulis"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:289
 msgid "select other"
 msgstr "pilih yang lain"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:290
 msgid "close"
 msgstr "tutup"
 
@@ -5302,7 +5386,7 @@ msgstr "Pilihan"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
 msgid "Hidden Content Teaser"
-msgstr "Teaser Konten Tersembunyi"
+msgstr "Pemantik Konten Tersembunyi"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
 msgid "Display mode for readable private posts"
@@ -5886,7 +5970,7 @@ msgstr "Pilih halaman"
 msgid "Select terms"
 msgstr "Pilih istilah"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Plugin ini dapat dihapus.</strong>"
 
@@ -5920,7 +6004,7 @@ msgstr "Peran Tambahan"
 #: classes/PublishPress/Permissions/UI/PluginPage.php:95
 msgctxt "groups per page (screen options)"
 msgid "Groups"
-msgstr "Grup"
+msgstr "Kelompok"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:671

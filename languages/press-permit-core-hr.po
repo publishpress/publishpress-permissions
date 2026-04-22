@@ -1,8 +1,8 @@
 # Copyright (C) 2026 PublishPress
-# This file is distributed under the same license as the PublishPress Permissions plugin.
+# This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Project-Id-Version: PublishPress Permissions Free 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,19 +10,18 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-10 14:00+0000\n"
+"PO-Revision-Date: 2026-04-22 12:00+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
-">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 "Language: hr\n"
 "Plural-Forms: nplurals=3; plural=(n % 10 == 1 && n % 100 != 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
 #: press-permit-core.php:4
 #. Plugin Name of the plugin
-msgid "PublishPress Permissions"
-msgstr "PublishPress Dozvole"
+msgid "PublishPress Permissions Free"
+msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -36,12 +35,12 @@ msgstr ""
 "PublishPress Permissions omogućuje vam omogućavanje ili uskraćivanje "
 "pristupa postovima, stranicama, kategorijama, oznakama i više."
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -285,7 +284,7 @@ msgid "Advanced search controls"
 msgstr "Napredne kontrole pretraživanja"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1094,52 +1093,59 @@ msgstr ""
 "Samo za razvojne svrhe (na prednjem kraju, nemojte zamijeniti 'post_status "
 "= 'publish'' uvjet s filtriranim ekvivalentom)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:446
+#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/PluginUpdated.php:308
 msgid "Logged In"
 msgstr "Prijavljen"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:448
+#: classes/PublishPress/Permissions/DB/Groups.php:452
+#: classes/PublishPress/Permissions/PluginUpdated.php:301
 msgid "Not Logged In"
 msgstr "Nije prijavljen"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:450
+#: classes/PublishPress/Permissions/DB/Groups.php:454
+#: classes/PublishPress/Permissions/PluginUpdated.php:315
 msgid "Everyone"
 msgstr "Svi"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
 msgid "Change Request Notifications"
 msgstr "Obavijesti o promjenama zahtjeva"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:454
-#: classes/PublishPress/Permissions/DB/Groups.php:469
+#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/PluginUpdated.php:322
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "Poslana revizija"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
 msgid "Scheduled Change Notifications"
 msgstr "Zakazane obavijesti o promjenama"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
-#: classes/PublishPress/Permissions/DB/Groups.php:473
+#: classes/PublishPress/Permissions/DB/Groups.php:462
+#: classes/PublishPress/Permissions/DB/Groups.php:477
+#: classes/PublishPress/Permissions/PluginUpdated.php:328
 msgid "Scheduled Revision Monitors"
 msgstr "Zakazani monitori revizije"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:486
+#: classes/PublishPress/Permissions/DB/Groups.php:490
 msgid "Authenticated site users, except for Administrators"
 msgstr "Autorizirani korisnici stranice, osim Administratora"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:488
+#: classes/PublishPress/Permissions/DB/Groups.php:492
+#: classes/PublishPress/Permissions/PluginUpdated.php:302
 msgid "Anonymous users (not logged in)"
 msgstr "Anonimni korisnici (nisu prijavljeni)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:490
+#: classes/PublishPress/Permissions/DB/Groups.php:494
+#: classes/PublishPress/Permissions/PluginUpdated.php:316
 msgid "All users (including anonymous)"
 msgstr "Svi korisnici (uključujući anonimne)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:495
+#: classes/PublishPress/Permissions/DB/Groups.php:499
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "Svi korisnici s WordPress ulogom %s"
@@ -1236,6 +1242,28 @@ msgid ""
 msgstr ""
 "Vaš ključ licence je istekao. Za ažuriranja za PublishPress Permissions Pro "
 "i prioritetnu podršku, %sponovno ga aktivirajte%s."
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:292
+#, fuzzy, php-format
+msgid "[WP %s]"
+msgstr "[WP %s]"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:293
+#, php-format
+msgid "All users with a WordPress %s role"
+msgstr "Svi korisnici s WordPress %s ulogom"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:309
+msgid "All users who are logged in and have a role on the site"
+msgstr "Svi korisnici koji su prijavljeni i imaju ulogu na stranici"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:323
+msgid "Users to notify when revisions are submitted"
+msgstr "Korisnici koje obavijestiti kada su revizije poslane"
+
+#: classes/PublishPress/Permissions/PluginUpdated.php:329
+msgid "Users to notify when scheduled revisions are published"
+msgstr "Korisnici koje obavijestiti kada su zakazane revizije objavljene"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
@@ -1720,7 +1748,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2198,6 +2226,24 @@ msgstr "Rezultati pretraživanja:"
 msgid "Current Selections:"
 msgstr "Trenutni odabiri:"
 
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:537
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:591
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:140
+msgid "Search for a group"
+msgstr "Pretraži grupu"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:538
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:592
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:141
+msgid "Search for a user"
+msgstr "Pretraži korisnika"
+
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:539
+#: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:593
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:142
+msgid "Search for an author"
+msgstr "Pretraži autora"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
@@ -2279,13 +2325,15 @@ msgid "User"
 msgstr "Korisnik"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "Ovo %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, php-format
 msgid "Sub-%s"
 msgstr "Pod-%s"
@@ -2473,7 +2521,7 @@ msgstr ""
 msgid "Remove Selected"
 msgstr "Ukloni Odabrano"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2481,21 +2529,24 @@ msgstr "Ukloni Odabrano"
 msgid "Login State"
 msgstr "Stanje Prijave"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grupa"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Pododjeljci"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "Ovaj Odjeljak"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -4328,7 +4379,7 @@ msgstr ""
 "profesionalnu podršku."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:121
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229
 msgid "Admin"
 msgstr "Admin"
 
@@ -4866,17 +4917,53 @@ msgstr "Uređivanje"
 msgid "Publishing"
 msgstr "Objavljivanje"
 
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy of"
+msgstr "Radna kopija od"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
+msgid "Working Copy"
+msgstr "Radna kopija"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes to"
+msgstr "Podnesi promjene na"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
+msgid "Submit Changes"
+msgstr "Podnesi promjene"
+
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:16
 msgid "Request"
 msgstr "Zahtjev"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision of"
+msgstr "Izradi reviziju od"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
+msgid "Create Revision"
+msgstr "Izradi reviziju"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:18
 msgid "New Revision"
 msgstr "Nova revizija"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision of"
+msgstr "Podnesi reviziju od"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
+msgid "Submit Revision"
+msgstr "Podnesi reviziju"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:19
 msgid "Submitted Revision"
 msgstr "Poslana revizija"
+
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
+msgid "Revise"
+msgstr "Revidiraj"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:27
 msgid "Revision"
@@ -4934,15 +5021,15 @@ msgstr ""
 "Značajka Ograničeni elementi uređivanja zahtijeva <a href=\"%s\" "
 "target=\"_blank\">PublishPress Capabilities</a> dodatak."
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:256
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:261
 msgid "Author Search / Select"
 msgstr "Pretraživanje / Odabir autora"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:284
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:289
 msgid "select other"
 msgstr "odaberi drugo"
 
-#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:285
+#: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:290
 msgid "close"
 msgstr "zatvori"
 
@@ -5911,7 +5998,7 @@ msgstr "Odaberite stranicu"
 msgid "Select terms"
 msgstr "Odaberite uvjete"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Ovaj dodatak se može izbrisati.</strong>"
 

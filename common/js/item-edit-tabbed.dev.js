@@ -640,9 +640,6 @@
         var itemIdAttr = agentType + '-' + userId;
         var defaultValue = '2'; // Enable by default
         var cssClass = 'pp-yes2'; // CSS class for enabled state
-        
-        // Check if hierarchical permissions are needed (look for existing items with children selects)
-        var hasHierarchical = $list.find('.pp-permission-list-item .pp-children-select').length > 0;
 
         // Check if this user already exists in the list (possibly marked as removed)
         var $existingItem = $list.find('.pp-permission-list-item[data-agent-type="' + agentType + '"][data-agent-id="' + userId + '"]');
@@ -672,87 +669,57 @@
             return; // Exit early - item restored
         }
 
-        // Create a new list item (user doesn't exist yet)
-        var $newItem = $('<div>')
+        // Clone the hidden PHP-rendered template item.
+        // PHP always outputs this template regardless of whether the list has items,
+        // so JS never needs to manually construct options, labels, or hierarchy.
+        var $template = $list.find('.pp-item-template');
+        var $newItem = $template.clone(false); // shallow clone (no event handlers)
+
+        // Convert from template to a live list item
+        $newItem
+            .removeClass('pp-item-template')
             .addClass('pp-permission-list-item pp-new-item')
+            .addClass(String(userName).toLowerCase().replace(/\s+/g, '-'))
+            .removeAttr('aria-hidden')
             .attr('data-agent-type', agentType)
             .attr('data-agent-id', userId)
+            .attr('data-item-name', String(userName).toLowerCase())
             .css('display', 'none');
 
-        // Item checkbox
-        var $checkbox = $('<div>')
-            .addClass('item-checkbox')
-            .append(
-                $('<input>')
-                    .attr('type', 'checkbox')
-                    .addClass('pp-item-checkbox')
-                    .attr('id', 'pp-item-' + itemIdAttr)
-            );
-
-        // Item name
-        var $itemName = $('<div>')
-            .addClass('item-name')
+        // Update checkbox id/label pair
+        $newItem.find('.pp-item-checkbox')
+            .attr('id', 'pp-item-' + itemIdAttr)
+            .prop('checked', false)
+            .prop('disabled', false);
+        $newItem.find('.item-name label')
+            .attr('for', 'pp-item-' + itemIdAttr)
             .attr('title', userName)
-            .append(
-                $('<label>')
-                    .attr('for', 'pp-item-' + itemIdAttr)
-                    .text(userName)
-            );
+            .text(userName);
 
-        // Permission control container
-        var $permissionControl = $('<div>').addClass('pp-permission-control');
-        
-        // Create "This Category" / "item" select
+        // Update item select: assign name, enable, and set to default enabled value
+        var $itemSelectEl = $newItem.find('.pp-item-select select');
         var selectNameItem = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][item][' + userId + ']';
-        var $itemSelect = $('<div>')
-            .addClass('pp-permission-select pp-item-select')
-            .append(
-                hasHierarchical ? $('<label>').addClass('pp-select-label').text('This Category') : null
-            )
-            .append(
-                $('<select>')
-                    .attr('name', selectNameItem)
-                    .addClass(cssClass)
-                    .attr('autocomplete', 'off')
-                    .append($('<option>').val('').addClass('pp-def').text('No setting'))
-                    .append($('<option>').val('0').addClass('pp-no2').text('Blocked'))
-                    .append($('<option>').val('2').addClass('pp-yes2').attr('selected', 'selected').text('Enabled'))
-            );
-        
-        $permissionControl.append($itemSelect);
-        
-        // If hierarchical, create "Sub-Categories" / "children" select
-        if (hasHierarchical) {
-            var selectNameChildren = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][children][' + userId + ']';
-            var $childrenSelect = $('<div>')
-                .addClass('pp-permission-select pp-children-select')
-                .append(
-                    $('<label>').addClass('pp-select-label').text('Sub-Categories')
-                )
-                .append(
-                    $('<select>')
-                        .attr('name', selectNameChildren)
-                        .addClass('pp-def') // Default to "No setting" for children
-                        .attr('autocomplete', 'off')
-                        .append($('<option>').val('').addClass('pp-def').attr('selected', 'selected').text('No setting'))
-                        .append($('<option>').val('0').addClass('pp-no2').text('Blocked'))
-                        .append($('<option>').val('2').addClass('pp-yes2').text('Enabled'))
-                );
-            
-            $permissionControl.append($childrenSelect);
-        }
-        
-        // Add delete button
-        $permissionControl.append(
-            $('<button>')
-                .attr('type', 'button')
-                .addClass('pp-delete-item')
-                .attr('title', ppPermissions.deleteItemTitle)
-                .append($('<span>').addClass('dashicons dashicons-trash'))
-        );
+        $itemSelectEl
+            .attr('name', selectNameItem)
+            .prop('disabled', false)
+            .val(defaultValue)
+            .removeClass()
+            .addClass(cssClass);
 
-        // Assemble the item
-        $newItem.append($checkbox).append($itemName).append($permissionControl);
+        // Update children select: assign name, enable, reset to no-setting
+        var $childrenSelectEl = $newItem.find('.pp-children-select select');
+        if ($childrenSelectEl.length) {
+            var selectNameChildren = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][children][' + userId + ']';
+            $childrenSelectEl
+                .attr('name', selectNameChildren)
+                .prop('disabled', false)
+                .val('')
+                .removeClass()
+                .addClass('pp-def');
+        }
+
+        // Update delete button title (in case ppPermissions loaded after template was rendered)
+        // $newItem.find('.pp-delete-item').attr('title', ppPermissions.deleteItemTitle);
 
         // Remove "no results" and empty state messages if they exist
         $list.find('.pp-no-search-results, .pp-empty-state').remove();
@@ -881,15 +848,6 @@
             // Fallback for old structure (if any)
             $pillsContainer = $filterContainer;
         }
-
-        // Map CSS classes to filter definitions
-        var filterDefs = {
-            'pp-def': { label: 'Default', icon: '' },
-            'pp-no': { label: 'Blocked', icon: '' },
-            'pp-no2': { label: 'Blocked', icon: '' },
-            'pp-yes': { label: 'Enabled', icon: '' },
-            'pp-yes2': { label: 'Enabled', icon: '' }
-        };
 
         // Count occurrences of each permission type
         var counts = {
