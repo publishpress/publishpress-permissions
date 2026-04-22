@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
-"PO-Revision-Date: 2026-04-17 18:02+0000\n"
+"PO-Revision-Date: 2026-04-22 11:58+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: pt_PT\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "PublishPress Permissions Free"
 msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -40,7 +40,7 @@ msgstr ""
 msgid "PublishPress"
 msgstr "PublicarPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -284,7 +284,7 @@ msgid "Advanced search controls"
 msgstr "Controles de pesquisa avançados"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1763,7 +1763,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2346,13 +2346,15 @@ msgid "User"
 msgstr "Utilizador"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "Este %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, fuzzy, php-format
 msgid "Sub-%s"
 msgstr "Sub-%s"
@@ -2544,7 +2546,7 @@ msgstr ""
 msgid "Remove Selected"
 msgstr "Remover Selecionados"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2552,21 +2554,24 @@ msgstr "Remover Selecionados"
 msgid "Login State"
 msgstr "Estado de Login"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grupo"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Subsecções"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "Esta Secção"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -2927,8 +2932,8 @@ msgstr "Cliente"
 #: classes/PublishPress/Permissions/UI/Groups.php:90
 msgid "You have specified this group for deletion:"
 msgid_plural "You have specified these groups for deletion:"
-msgstr[0] "Você especificou este grupo para eliminação:|"
-msgstr[1] "Você especificou estes grupos para eliminação:"
+msgstr[0] "Você especificou este grupo para eliminação:"
+msgstr[1] ""
 
 #: classes/PublishPress/Permissions/UI/Groups.php:120
 msgid "There are no valid groups selected for deletion."
@@ -2938,8 +2943,8 @@ msgstr "Não há grupos válidos selecionados para eliminação."
 #, php-format
 msgid "%s group deleted"
 msgid_plural "%s groups deleted"
-msgstr[0] "%s grupo eliminado|"
-msgstr[1] "%s grupos eliminados"
+msgstr[0] "%s grupo eliminado"
+msgstr[1] ""
 
 #: classes/PublishPress/Permissions/UI/Groups.php:155
 msgid "New group created."
@@ -4421,7 +4426,7 @@ msgstr ""
 "profissional rápido."
 
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:121
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:229
 msgid "Admin"
 msgstr "Admin"
 
@@ -6058,7 +6063,7 @@ msgstr "Selecione uma página"
 msgid "Select terms"
 msgstr "Selecione termos"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Este plugin pode ser removido.</strong>"
 

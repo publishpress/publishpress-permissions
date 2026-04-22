@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Project-Id-Version: PublishPress Permissions Free 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,11 +10,9 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-17 18:02+0000\n"
+"PO-Revision-Date: 2026-04-22 11:58+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
-"&& (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
-"&& (n % 100 < 10 || n % 100 >= 20) ? 1: 2);\n"
 "Language: pl_PL\n"
 "Plural-Forms: nplurals=3; plural=(n == 1 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
 
@@ -23,7 +21,7 @@ msgstr ""
 msgid "PublishPress Permissions Free"
 msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -37,12 +35,12 @@ msgstr ""
 "PublishPress Permissions umożliwia włączenie lub zablokowanie dostępu do "
 "postów, stron, kategorii, tagów i innych."
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -286,7 +284,7 @@ msgid "Advanced search controls"
 msgstr "Zaawansowane kontrole wyszukiwania"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1756,7 +1754,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2331,13 +2329,15 @@ msgid "User"
 msgstr "Użytkownik"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "To %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, fuzzy, php-format
 msgid "Sub-%s"
 msgstr "Sub-%s"
@@ -2529,7 +2529,7 @@ msgstr ""
 msgid "Remove Selected"
 msgstr "Usuń Wybrane"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2537,21 +2537,24 @@ msgstr "Usuń Wybrane"
 msgid "Login State"
 msgstr "Stan logowania"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grupa"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Podsekcje"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "Ta sekcja"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -5070,9 +5073,9 @@ msgstr "Nie masz uprawnień do wyboru tego rodzica"
 #, php-format
 msgid "%s author page added"
 msgid_plural "%s author pages added"
-msgstr[0] "Dodano stronę autora %s|"
-msgstr[1] "Dodano strony autorów %s|"
-msgstr[2] "Dodano strony autorów %s"
+msgstr[0] "Dodano stronę autora %s"
+msgstr[1] ""
+msgstr[2] ""
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:30
 msgid "No users selected"
@@ -6024,7 +6027,7 @@ msgstr "Wybierz stronę"
 msgid "Select terms"
 msgstr "Wybierz warunki"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>Ten wtyczka może być usunięta.</strong>"
 

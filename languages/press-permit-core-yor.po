@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the PublishPress Permissions Free plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: PublishPress Permissions 4.7.0\n"
+"Project-Id-Version: PublishPress Permissions Free 4.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T10:18:08+00:00\n"
-"PO-Revision-Date: 2026-04-17 18:02+0000\n"
+"PO-Revision-Date: 2026-04-22 11:58+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: yor\n"
@@ -21,7 +21,7 @@ msgstr ""
 msgid "PublishPress Permissions Free"
 msgstr "PublishPress Permissions Free"
 
-#: press-permit-core.php:5, fuzzy
+#: press-permit-core.php:5
 #. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
@@ -35,12 +35,12 @@ msgstr ""
 "PublishPress Permissions jẹ ki o le mu tabi kọ iraye si awọn ifiweranṣẹ, "
 "awọn oju-iwe, awọn ẹka, awọn afi ati diẹ sii."
 
-#: press-permit-core.php:8, fuzzy
+#: press-permit-core.php:8
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#: press-permit-core.php:9, fuzzy
+#: press-permit-core.php:9
 #. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
@@ -284,7 +284,7 @@ msgid "Advanced search controls"
 msgstr "Iṣakoso àwárí to ti ni ilọsiwaju"
 
 #: classes/PublishPress/Permissions.php:1435
-#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:54
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -1719,7 +1719,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:258
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:380
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:784
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1038
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1044
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -2291,13 +2291,15 @@ msgid "User"
 msgstr "Olumulo"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1093
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1099
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1165
 #, php-format
 msgid "This %s"
 msgstr "Eyi %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1092
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1098
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
 #, fuzzy, php-format
 msgid "Sub-%s"
 msgstr "Sub-%s"
@@ -2483,7 +2485,7 @@ msgstr "Ko si awọn igbanilaaye olumulo pato. Lo apoti wiwa lati fi awọn olum
 msgid "Remove Selected"
 msgstr "Yọ Yiyan"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1041
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 #: classes/PublishPress/Permissions/UI/Groups.php:240
@@ -2491,21 +2493,24 @@ msgstr "Yọ Yiyan"
 msgid "Login State"
 msgstr "Ipo Iwọle"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1048
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
 msgid "Sub-Sections"
 msgstr "Ipin-kekere"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1096
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1102
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1168
 msgid "This Section"
 msgstr "Ipin yii"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1144
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -5922,7 +5927,7 @@ msgstr "Yan oju-iwe kan"
 msgid "Select terms"
 msgstr "Yan awọn ofin"
 
-#: press-permit-core.php:132
+#: press-permit-core.php:117
 msgid "<strong>This plugin can be deleted.</strong>"
 msgstr "<strong>A le pa plugin yii.</strong>"
 
