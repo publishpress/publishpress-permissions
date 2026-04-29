@@ -314,7 +314,18 @@ class TeaserHooks
         $opt_redirect = (is_user_logged_in()) ? 'teaser_redirect' : 'teaser_redirect_anon';
         $opt_page = (is_user_logged_in()) ? 'teaser_redirect_page' : 'teaser_redirect_anon_page';
 
-        if (!$option_val = $pp->getTypeOption($opt_redirect, $wp_query->post->post_type))
+        // Ensure $wp_query->post is set and is an object before accessing post_type
+        $post_type = null;
+        if (!empty($wp_query->post) && is_object($wp_query->post) && isset($wp_query->post->post_type)) {
+            $post_type = $wp_query->post->post_type;
+        } elseif (!empty($wp_query->queried_object) && is_object($wp_query->queried_object) && isset($wp_query->queried_object->post_type)) {
+            $post_type = $wp_query->queried_object->post_type;
+        }
+
+        if (!$post_type)
+            return;
+
+        if (!$option_val = $pp->getTypeOption($opt_redirect, $post_type))
             return;
 
         if ($pp->isContentAdministrator())
