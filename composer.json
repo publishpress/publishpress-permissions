@@ -43,7 +43,7 @@
     "wp-cli/i18n-command": "^2.2",
     "friendsofphp/php-cs-fixer": "^3.4",
     "automattic/vipwpcs": "^2.3",
-    "publishpress/publishpress-phpcs-standards": "dev-main",
+    "publishpress/publishpress-phpcs-standards": "^1.0.0",
     "szepeviktor/phpstan-wordpress": "^1.1",
     "phpstan/extension-installer": "^1.2",
     "publishpress/translations": "^1.0.0"
@@ -54,7 +54,7 @@
     "build:clean": "build clean",
     "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
     "gen:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "gen:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,vendor, --allow-root",
+    "gen:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
     "check:longpath": "longpath .",
     "check:lint": "phplint",
     "check:phpcs": "phpcs",
@@ -83,9 +83,20 @@
     "translate:custom": "vendor/bin/publishpress-translate --languages",
     "translate:force": "vendor/bin/publishpress-translate --force",
     "translate:force-custom": "vendor/bin/publishpress-translate --force --languages",
-    "translate:repair-plurals": "php vendor/bin/publishpress-translate --repair-plurals",
+    "translate:repair-plurals": "vendor/bin/publishpress-translate --repair-plurals",
     "translate:clean-po": "vendor/bin/publishpress-translate --clean-po",
-    "translate:sync-files": "vendor/bin/publishpress-translate --sync-files"
+    "translate:sync-files": "vendor/bin/publishpress-translate --sync-files",
+    "translate:audit": "vendor/bin/publishpress-translate --audit",
+    "translate:audit:report": "vendor/bin/publishpress-translate --audit --audit-mode=report",
+    "translate:compile": [
+      "@translate:mo",
+      "@translate:json",
+      "@translate:php"
+    ],
+    "translate:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
+    "translate:mo": "wp i18n make-mo ./languages ./languages --allow-root",
+    "translate:json": "bash ./dev-workspace/scripts/lang-make-json.sh",
+    "translate:php": "wp i18n make-php ./languages --allow-root"
   },
   "extra": {
     "plugin-slug": "press-permit-core",
