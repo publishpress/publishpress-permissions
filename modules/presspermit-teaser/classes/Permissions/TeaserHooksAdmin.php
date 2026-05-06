@@ -89,7 +89,7 @@ class TeaserHooksAdmin
             $options_menu,
             __('Teaser', 'press-permit-core'),
             __('Teaser', 'press-permit-core'),
-            'read',
+            'pp_manage_teaser',
             'presspermit-posts-teaser',
             $handler
         );

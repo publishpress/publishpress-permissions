@@ -336,6 +336,28 @@ class ItemExceptionsUI
         $via_item_source = (isset($args['via_item_source'])) ? $args['via_item_source'] : '';
         $via_item_type = (isset($args['via_item_type'])) ? $args['via_item_type'] : '';
 
+        // Per-tab capability enforcement: administrators always pass; non-admins must hold the
+        // specific exception-setting capability for the operation.
+        $is_administrator = presspermit()->isUserAdministrator();
+        $op_caps = [
+            'read'      => 'pp_set_read_exceptions',
+            'edit'      => 'pp_set_edit_exceptions',
+            'publish'   => 'pp_set_edit_exceptions',
+            'assign'    => 'pp_set_term_assign_exceptions',
+            'associate' => ('term' === $via_item_source) ? 'pp_set_term_associate_exceptions' : 'pp_set_associate_exceptions',
+        ];
+        $operations = array_filter($operations, function ($op_data) use ($is_administrator, $op_caps) {
+            if ($is_administrator) {
+                return true;
+            }
+            $op = $op_data['op'];
+            return !isset($op_caps[$op]) || current_user_can($op_caps[$op]);
+        });
+
+        if (empty($operations)) {
+            return;
+        }
+
         // Get type object for labels
         $type_obj = ('post' == $via_item_source) ? get_post_type_object($via_item_type) : get_taxonomy($via_item_type);
         $type_name = ($type_obj) ? $type_obj->labels->singular_name : $via_item_type;

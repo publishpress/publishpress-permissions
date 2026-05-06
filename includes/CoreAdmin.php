@@ -66,7 +66,7 @@ class CoreAdmin
                 $pp_options_menu,
                 esc_html__('Teaser', 'press-permit-core'),
                 esc_html__('Teaser', 'press-permit-core'),
-                'read',
+                'pp_manage_teaser',
                 'presspermit-posts-teaser',
                 $handler
             );

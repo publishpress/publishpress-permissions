@@ -60,6 +60,9 @@ class PermissionsHooksAdmin
         add_filter('cme_presspermit_capabilities', [$this, 'fltOrderPermissionsCapabilities'], 999);
         add_filter('cme_capability_descriptions', [$this, 'fltCapabilityDescriptions']);
 
+        // Backward compat: grant pp_manager to users who have pp_edit_groups
+        add_filter('user_has_cap', [$this, 'fltBackCompatManagerCap'], 1, 3);
+
         add_action('presspermit_trigger_cache_flush', [$this, 'wpeCacheFlush']);
         add_action('presspermit_activate', [$this, 'actPluginSettingsUpdated']);
         add_action('shutdown', [$this, 'actConfigUpdateFollowup']);
@@ -197,6 +200,18 @@ class PermissionsHooksAdmin
         return Permissions\UI\SettingsAdmin::setCapabilityDescriptions($pp_caps);
     }
 
+    /**
+     * Backward compat: users with pp_edit_groups implicitly receive pp_manager so existing
+     * permission setups continue working after the new granular cap is introduced.
+     */
+    public function fltBackCompatManagerCap($allcaps, $caps, $args)
+    {
+        if (in_array('pp_manager', $caps, true) && !empty($allcaps['pp_edit_groups'])) {
+            $allcaps['pp_manager'] = true;
+        }
+        return $allcaps;
+    }
+
     public function fltFlagPermissionsCapabilities($caps) {
         $caps = array_merge(
             $caps,
@@ -209,6 +224,8 @@ class PermissionsHooksAdmin
                 'pp_edit_groups',
                 'pp_manage_members',
                 'pp_manage_settings',
+                'pp_manager',
+                'pp_manage_teaser',
                 'pp_set_read_exceptions',
                 'pp_unfiltered',
             ]
