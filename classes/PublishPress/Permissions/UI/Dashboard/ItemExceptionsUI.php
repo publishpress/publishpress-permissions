@@ -340,11 +340,11 @@ class ItemExceptionsUI
         // specific exception-setting capability for the operation.
         $is_administrator = presspermit()->isUserAdministrator();
         $op_caps = [
-            'read'      => 'pp_set_read_exceptions',
-            'edit'      => 'pp_set_edit_exceptions',
-            'publish'   => 'pp_set_edit_exceptions',
-            'assign'    => 'pp_set_term_assign_exceptions',
-            'associate' => ('term' === $via_item_source) ? 'pp_set_term_associate_exceptions' : 'pp_set_associate_exceptions',
+            'read'      => 'pp_set_view_permissions',
+            'edit'      => 'pp_set_edit_permissions',
+            'publish'   => 'pp_set_edit_permissions',
+            'assign'    => 'pp_set_term_assign_permissions',
+            'associate' => ('term' === $via_item_source) ? 'pp_set_term_associate_permissions' : 'pp_set_associate_permissions',
         ];
         $operations = array_filter($operations, function ($op_data) use ($is_administrator, $op_caps) {
             if ($is_administrator) {

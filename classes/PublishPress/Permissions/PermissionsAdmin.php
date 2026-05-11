@@ -29,7 +29,7 @@ class PermissionsAdmin
         }
 
         if (in_array($via_item_source, ['post', 'term'], true) && ('read' == $operation)) {
-            $can = $is_administrator || current_user_can('pp_set_read_exceptions');
+            $can = $is_administrator || current_user_can('pp_set_view_permissions');
         } else {
             $can = false;
         }

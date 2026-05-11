@@ -60,6 +60,9 @@ class PermissionsHooksAdmin
         add_filter('cme_presspermit_capabilities', [$this, 'fltOrderPermissionsCapabilities'], 999);
         add_filter('cme_capability_descriptions', [$this, 'fltCapabilityDescriptions']);
 
+        // Provide grouped cap payload to PublishPress Capabilities (v2.43+) for sub-headings on Capabilities screen
+        add_filter('cme_plugin_capabilities', [$this, 'fltPluginCapabilities'], 5);
+
         // Backward compat: grant pp_manager to users who have pp_edit_groups
         add_filter('user_has_cap', [$this, 'fltBackCompatManagerCap'], 1, 3);
 
@@ -203,12 +206,34 @@ class PermissionsHooksAdmin
     /**
      * Backward compat: users with pp_edit_groups implicitly receive pp_manager so existing
      * permission setups continue working after the new granular cap is introduced.
+     *
+     * Also maps old pp_set_*_exceptions cap names to their new pp_set_*_permissions equivalents
+     * so external code checking old cap names continues to work after the rename.
      */
     public function fltBackCompatManagerCap($allcaps, $caps, $args)
     {
         if (in_array('pp_manager', $caps, true) && !empty($allcaps['pp_edit_groups'])) {
             $allcaps['pp_manager'] = true;
         }
+
+        // Old → new cap name aliases
+        static $exceptions_to_permissions = [
+            'pp_set_read_exceptions'          => 'pp_set_view_permissions',
+            'pp_set_edit_exceptions'          => 'pp_set_edit_permissions',
+            'pp_set_associate_exceptions'     => 'pp_set_associate_permissions',
+            'pp_set_term_assign_exceptions'   => 'pp_set_term_assign_permissions',
+            'pp_set_term_manage_exceptions'   => 'pp_set_term_manage_permissions',
+            'pp_set_term_associate_exceptions' => 'pp_set_term_associate_permissions',
+            'pp_set_revise_exceptions'        => 'pp_set_revise_permissions',
+            'pp_set_copy_exceptions'          => 'pp_set_copy_permissions',
+        ];
+
+        foreach ($caps as $cap) {
+            if (isset($exceptions_to_permissions[$cap]) && !empty($allcaps[$exceptions_to_permissions[$cap]])) {
+                $allcaps[$cap] = true;
+            }
+        }
+
         return $allcaps;
     }
 
@@ -226,7 +251,7 @@ class PermissionsHooksAdmin
                 'pp_manage_settings',
                 'pp_manager',
                 'pp_manage_teaser',
-                'pp_set_read_exceptions',
+                'pp_set_view_permissions',
                 'pp_unfiltered',
             ]
         );
@@ -238,12 +263,12 @@ class PermissionsHooksAdmin
             [
                 'pp_define_moderation',             // obsolete
                 'pp_manage_capabilities',           // not a real capability
-                'pp_set_edit_exceptions',           // Collaboration
-                'pp_set_revise_exceptions',         // Collaboration          
-                'pp_set_associate_exceptions',      // Collaboration
-                'pp_set_term_assign_exceptions',    // Collaboration
-                'pp_set_term_manage_exceptions',    // Collaboration
-                'pp_set_term_associate_exceptions', // Collaboration
+                'pp_set_edit_permissions',           // Collaboration
+                'pp_set_revise_permissions',         // Collaboration          
+                'pp_set_associate_permissions',      // Collaboration
+                'pp_set_term_assign_permissions',    // Collaboration
+                'pp_set_term_manage_permissions',    // Collaboration
+                'pp_set_term_associate_permissions', // Collaboration
                 'edit_own_attachments',             // Collaboration
                 'list_others_unattached_files',     // Collaboration
                 'pp_associate_any_page',            // Collaboration
@@ -273,6 +298,52 @@ class PermissionsHooksAdmin
 
     public function fltCapabilityDescriptions($descripts) {
         return apply_filters('presspermit_cap_descriptions', $descripts);
+    }
+
+    /**
+     * Provide grouped cap payload to PublishPress Capabilities (v2.43+).
+     * The Capabilities plugin renders sub-headings when the first value in the payload is itself an array.
+     */
+    public function fltPluginCapabilities($plugin_caps) {
+        $core_only = !presspermit()->moduleActive('collaboration');
+
+        $permission_management_group = [
+            'pp_set_view_permissions'         => esc_html__('Set Viewing Permissions for specific Posts, Categories or Terms.', 'press-permit-core'),
+        ];
+
+        if (!$core_only) {
+            $permission_management_group['pp_set_edit_permissions']          = esc_html__('Set Editing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
+            $permission_management_group['pp_set_associate_permissions']     = esc_html__('Set "Set as Parent" Permissions for specific Posts.', 'press-permit-core');
+            $permission_management_group['pp_set_term_assign_permissions']   = esc_html__('Set Term Assignment Permissions.', 'press-permit-core');
+            $permission_management_group['pp_set_term_manage_permissions']   = esc_html__('Set Term Management Permissions.', 'press-permit-core');
+            $permission_management_group['pp_set_term_associate_permissions'] = esc_html__('Set "Set as Parent" Permissions for specific Categories or Terms.', 'press-permit-core');
+
+            if (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) {
+                $permission_management_group['pp_set_revise_permissions'] = esc_html__('Set Revision Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
+                $permission_management_group['pp_set_copy_permissions']   = esc_html__('Set Copy Permissions for specific Posts.', 'press-permit-core');
+            }
+        }
+
+        $plugin_caps['PublishPress Permissions'] = [
+            esc_html__('Permissions & Access', 'press-permit-core') => [
+                'pp_administer_content' => esc_html__('Manage other user\'s Permissions. Also grants capabilities for all post types and statuses.', 'press-permit-core'),
+                'pp_manage_settings'    => esc_html__('Access the Permissions Settings admin screen.', 'press-permit-core'),
+                'pp_manager'            => esc_html__('Access the Permissions manager (Groups and Roles) admin screen.', 'press-permit-core'),
+                'pp_manage_teaser'      => esc_html__('Access the Teaser settings admin screen.', 'press-permit-core'),
+                'pp_unfiltered'         => esc_html__('PublishPress Permissions will not apply any Extra Roles or Permissions to limit or expand viewing or editing access.', 'press-permit-core'),
+            ],
+            esc_html__('Roles & Groups', 'press-permit-core') => [
+                'pp_assign_roles'   => esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core'),
+                'pp_assign_bulk_roles' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
+                'pp_create_groups'  => esc_html__('Create new Permission Groups and set the name and description.', 'press-permit-core'),
+                'pp_edit_groups'    => esc_html__('Edit the name and description of existing Permission Groups.', 'press-permit-core'),
+                'pp_delete_groups'  => esc_html__('Delete Permission Groups.', 'press-permit-core'),
+                'pp_manage_members' => esc_html__('If group editing is allowed, can also modify group membership.', 'press-permit-core'),
+            ],
+            esc_html__('Set Permissions', 'press-permit-core') => $permission_management_group,
+        ];
+
+        return $plugin_caps;
     }
 
     /**

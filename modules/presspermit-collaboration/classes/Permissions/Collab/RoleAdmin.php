@@ -129,7 +129,7 @@ class RoleAdmin
                 }
             }
 
-            $can_assign_edit_exceptions = $can_edit_published && current_user_can('pp_set_edit_exceptions');
+            $can_assign_edit_exceptions = $can_edit_published && current_user_can('pp_set_edit_permissions');
         }
 
         switch ($operation) {
@@ -140,32 +140,32 @@ class RoleAdmin
 
             case 'copy':
                 $can = defined('PUBLISHPRESS_REVISIONS_VERSION') && ($is_administrator || $can_assign_edit_exceptions || (
-                    $can_edit_published && current_user_can('pp_set_copy_exceptions'))
+                    $can_edit_published && current_user_can('pp_set_copy_permissions'))
                 );
                 break;
 
             case 'revise':
                 $can = (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) && ($is_administrator || $can_assign_edit_exceptions || (
-                    $can_edit_published && current_user_can('pp_set_revise_exceptions'))
+                    $can_edit_published && current_user_can('pp_set_revise_permissions'))
                 );
                 break;
 
             case 'associate':
                 if ('term' == $via_item_source) {
                     $can = is_taxonomy_hierarchical($for_item_type) 
-                    && ($is_administrator || current_user_can('pp_set_term_associate_exceptions'));
+                    && ($is_administrator || current_user_can('pp_set_term_associate_permissions'));
                 } else {
                     $can = is_post_type_hierarchical($for_item_type) && ($is_administrator 
-                    || ($can_edit_published && current_user_can('pp_set_associate_exceptions')));
+                    || ($can_edit_published && current_user_can('pp_set_associate_permissions')));
                 }
                 break;
 
             case 'assign':
-                $can = $is_administrator || ($can_edit_published && current_user_can('pp_set_term_assign_exceptions'));
+                $can = $is_administrator || ($can_edit_published && current_user_can('pp_set_term_assign_permissions'));
                 break;
 
             case 'manage':
-                $can = $is_administrator || current_user_can('pp_set_term_manage_exceptions');
+                $can = $is_administrator || current_user_can('pp_set_term_manage_permissions');
                 break;
         }
 
