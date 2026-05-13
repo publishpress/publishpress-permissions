@@ -24,19 +24,19 @@ class Updated
     public static function populateRoles()
     {
         if ($role = @get_role('administrator')) {
-            $role->add_cap('pp_set_edit_exceptions');
-            $role->add_cap('pp_set_associate_exceptions');
-            $role->add_cap('pp_set_term_assign_exceptions');
-            $role->add_cap('pp_set_term_manage_exceptions');
-            $role->add_cap('pp_set_term_associate_exceptions');
+            $role->add_cap('pp_set_edit_permissions');
+            $role->add_cap('pp_set_associate_permissions');
+            $role->add_cap('pp_set_term_assign_permissions');
+            $role->add_cap('pp_set_term_manage_permissions');
+            $role->add_cap('pp_set_term_associate_permissions');
         }
 
         if ($role = @get_role('editor')) {
-            $role->add_cap('pp_set_edit_exceptions');
-            $role->add_cap('pp_set_associate_exceptions');
-            $role->add_cap('pp_set_term_assign_exceptions');
-            $role->add_cap('pp_set_term_manage_exceptions');
-            $role->add_cap('pp_set_term_associate_exceptions');
+            $role->add_cap('pp_set_edit_permissions');
+            $role->add_cap('pp_set_associate_permissions');
+            $role->add_cap('pp_set_term_assign_permissions');
+            $role->add_cap('pp_set_term_manage_permissions');
+            $role->add_cap('pp_set_term_associate_permissions');
         }
 
         update_option('ppce_added_role_caps_21beta', true);

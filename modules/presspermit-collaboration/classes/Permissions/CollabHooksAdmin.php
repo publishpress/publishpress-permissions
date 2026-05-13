@@ -67,11 +67,11 @@ class CollabHooksAdmin
         $caps = array_merge(
             $caps,
             [
-                'pp_set_edit_exceptions',                      
-                'pp_set_associate_exceptions',      
-                'pp_set_term_assign_exceptions',    
-                'pp_set_term_manage_exceptions',    
-                'pp_set_term_associate_exceptions', 
+                'pp_set_edit_permissions',                      
+                'pp_set_associate_permissions',      
+                'pp_set_term_assign_permissions',    
+                'pp_set_term_manage_permissions',    
+                'pp_set_term_associate_permissions', 
                 'edit_own_attachments',             
                 'list_others_unattached_files',     
                 'pp_associate_any_page',            
@@ -84,7 +84,7 @@ class CollabHooksAdmin
         );
 
         if ((defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION'))) {
-            $caps []= 'pp_set_revise_exceptions';
+            $caps []= 'pp_set_revise_permissions';
         }
         
         return $caps;
