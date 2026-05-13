@@ -216,6 +216,13 @@ class PermissionsHooksAdmin
             $allcaps['pp_manager'] = true;
         }
 
+        // Grant pp_manage_teaser to users who have pp_manage_settings (backward compat for new cap).
+        // pp_manage_teaser was introduced alongside pp_manager; roles without it yet should still
+        // see the Teaser menu if they can manage other settings.
+        if (in_array('pp_manage_teaser', $caps, true) && !empty($allcaps['pp_manage_settings'])) {
+            $allcaps['pp_manage_teaser'] = true;
+        }
+
         // Old → new cap name aliases
         static $exceptions_to_permissions = [
             'pp_set_read_exceptions'          => 'pp_set_view_permissions',
