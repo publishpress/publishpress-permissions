@@ -122,10 +122,6 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         $get_posts = new \WP_Query;
         $posts = $get_posts->query($args);
-        if (!$get_posts->post_count) {
-            echo '<p>' . esc_html__('No items.') . '</p>';
-            return;
-        }
 
         $num_pages = $get_posts->max_num_pages;
 
@@ -307,6 +303,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     echo $checkbox_items;  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
                     ?>
                 </ul>
+                <p class="pp-no-items" style="display:none"><?php esc_html_e('No items.'); ?></p>
                 <?php if (!empty($page_links)) : ?>
                     <div class="add-menu-item-pagelinks">
                         <?php 

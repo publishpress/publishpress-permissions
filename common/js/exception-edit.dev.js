@@ -320,11 +320,17 @@ jQuery(document).ready(function ($) {
     var pressPermitNoneItemVisibility = function() {
         var mod_type = $('input[name="pp_select_x_mod_type"]:checked').val();
 
-        if ('include' == mod_type || (('exclude' == mod_type) && ('associate' == $('input[name="pp_select_x_operation"]').val()))) {
-            $('td.pp-select-items input.menu-item-checkbox[value="0"]').closest('li').show();
-        } else {
-            $('td.pp-select-items input.menu-item-checkbox[value="0"]').closest('li').hide();
-        }
+        var showNone = 'include' == mod_type || (('exclude' == mod_type) && ('associate' == $('input[name="pp_select_x_operation"]').val()));
+
+        $('td.pp-select-items input.menu-item-checkbox[value="0"]').closest('li').toggle(showNone);
+
+        $('td.pp-select-items .posttypediv').each(function() {
+            var hasRealItems = $(this).find('input.menu-item-checkbox[value!="0"]').length > 0;
+            var showItems = hasRealItems || showNone;
+            $(this).find('.pp-no-items').toggle(!showItems);
+            $(this).find('a.select-all').toggle(showItems);
+            $(this).show();
+        });
     }
 
     var presspermitReloadStatus = function () {
@@ -358,19 +364,18 @@ jQuery(document).ready(function ($) {
         $('#pp_add_exception').css('width', 'auto');
     });
 
-    $('td.pp-select-x-operation').on('click', function() {
-        var sel = $(this).find('input:checked').val();
+    $('td.pp-select-x-operation').on('change', 'input[type="radio"]', function() {
+        var sel = $(this).val();
         if (sel) {
             presspermitLastOp = sel;
         }
         presspermitReloadViaType();
     });
 
-    $('td.pp-select-x-operation').on('click', presspermitReloadModificationType);
-    $('td.pp-select-x-operation').on('click', presspermitReloadStatus);
+    $('td.pp-select-x-operation').on('change', 'input[type="radio"]', presspermitReloadModificationType);
 
-    $('td.pp-select-x-mod-type').on('click', function() {
-        var sel = $(this).find('input:checked').val();
+    $('td.pp-select-x-mod-type').on('change', 'input[type="radio"]', function() {
+        var sel = $(this).val();
         if (sel) {
             presspermitLastModType = sel;
         }
@@ -454,11 +459,12 @@ jQuery(document).ready(function ($) {
     var presspermitDrawViaTypes = function (data, txtStatus) {
         sel = $('select[name="pp_select_x_via_type"]');
         sel.html(data);
-        sel.triggerHandler('change');
         $('.pp-select-x-via-type').show();
 
         if (presspermitLastViaType && $('select[name="pp_select_x_via_type"] option[value="' + presspermitLastViaType + '"]').length) {
             $('select[name="pp_select_x_via_type"]').val(presspermitLastViaType).change();
+        } else {
+            sel.triggerHandler('change');
         }
 
         presspermitXajaxUI_done();
