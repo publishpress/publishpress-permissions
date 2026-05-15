@@ -867,6 +867,8 @@ class AgentPermissionsUI
 
             public static function currentExceptionsUI($exc_results, $args = [])
             {
+                global $wp_roles;
+
                 $defaults = [
                     'read_only'         => false,
                     'class'             => 'pp-group-roles',
@@ -952,6 +954,10 @@ class AgentPermissionsUI
 
                     if (!empty($row->inherited_from)) {
                         $exceptions[$row->via_item_source][$via_type][$row->for_item_type][$row->operation][$row->mod_type][$row->for_item_status][$row->item_id]['inherited_from'] = $row->inherited_from;
+                    }
+
+                    if ('pp_group' == $row->agent_type) {
+                        $exceptions[$row->via_item_source][$via_type][$row->for_item_type][$row->operation][$row->mod_type][$row->for_item_status][$row->item_id]['group_id'] = $row->agent_id;
                     }
                 }
 
@@ -1093,6 +1099,8 @@ class AgentPermissionsUI
                                     }
                                 }
 
+                                $group_info = [];
+
                                 ?>
                                 <div class='permission-type op-<?php echo esc_attr($operation);?>'>
                                 <?php
@@ -1124,9 +1132,8 @@ class AgentPermissionsUI
                                 echo esc_html($via_type_obj->labels->name);
                                 echo '</th>';
 
-                                if (!$read_only) {
-                                    echo '<th class="edit-column"></th>';
-                                }
+                                echo '<th class="edit-column" style="text-align:left">' . __('Group', 'press-permit-core') . '</th>';
+
                                 echo '</tr>';
                                 echo '</thead>';
                                 echo '<tbody>';
@@ -1335,6 +1342,25 @@ class AgentPermissionsUI
                                                     ],
                                                 ];
                                                 echo wp_kses($item_label, $allowed_html);
+                                                echo '</td>';
+
+                                                echo "<td>";
+                                                if (!empty($exceptions[$via_src][$via_type][$for_type][$operation][$mod_type][$status][$item_id]['group_id'])) {
+                                                    $group_id = $exceptions[$via_src][$via_type][$for_type][$operation][$mod_type][$status][$item_id]['group_id'];
+
+                                                    if (!isset($group_info[$group_id])) {
+                                                        $group_info[$group_id] = pp_get_group($group_id);
+
+                                                        if (!empty($group_info[$group_id]->metagroup_type) && ('wp_role' == $group_info[$group_id]->metagroup_type) && !empty($wp_roles->role_names[$group_info[$group_id]->metagroup_id])) {
+                                                            $group_info[$group_id]->name = $wp_roles->role_names[$group_info[$group_id]->metagroup_id];
+                                                        }
+                                                    }
+
+                                                    if (!empty($group_info[$group_id])) {
+                                                        $url = admin_url('admin.php?page=presspermit-edit-permissions&action=edit&agent_id=' . $group_id);
+                                                        echo '<a href="' . esc_url($url) . '">' . $group_info[$group_id]->name . '</a>';
+                                                    }
+                                                }
                                                 echo '</td>';
 
                                                 echo "</tr>";
