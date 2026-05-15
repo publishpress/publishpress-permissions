@@ -1,6 +1,22 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.2] - 19 May, 2026
+
+- Added: Support for displaying all Permissions inherited from Permission Groups for individual users. #2323
+- Added: Fallback capability support for pp_manage_teaser. #2318
+- Added: Support for alternate pseudo IDs in map_meta_cap filtering. #2305
+- Changed: Improved clarity of capability descriptions and related interface text. #2309
+- Changed: Prevented the plugin name from being translated for better brand consistency. #2308
+- Changed: Improved teaser interface by hiding unnecessary extra columns. #2319
+- Fixed: Assign Terms restrictions were not applied correctly in some situations. #2324
+- Fixed: Permissions metabox on Edit Term screens now properly supports “Manage Term” and “Set Parent” operations. #2321
+- Fixed: “None” checkbox was missing in Edit Permissions when no items were published. #2320
+- Fixed: Assign Terms option incorrectly appeared for Pages. #2307
+- Fixed: Null post type warning in TeaserHooks.php under certain configurations. #2306
+- Fixed: Prevented infinite ancestor count loops for taxonomy terms. #2312
+- Fixed: Spacing and layout issues in the Permissions metabox for some languages. #2317
+
 [4.8.1] - 21 April, 2026
 
 - Added: Expanded language support with 34 languages through new translation system integration. #2273
