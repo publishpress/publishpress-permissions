@@ -4,7 +4,8 @@ jQuery(document).ready(function ($) {
     $('#pp_current_roles').show();
 
     $("a.pp-show-groups").on('click', function () {
-        $('#userprofile_groupsdiv_pp').show();
+        $('#userprofile_groupsdiv_pp').toggle();
+        $(this).text($(this).text() == ppCred.showGroups ? ppCred.hideGroups : ppCred.showGroups);
         return false;
     });
 

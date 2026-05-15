@@ -21,6 +21,8 @@ class AgentPermissionsUI
             'noAction' => esc_html__('No Action selected!', 'press-permit-core'),
             'submissionMsg' => esc_html__('Saving Roles...', 'press-permit-core'),
             'reloadRequired' => esc_html__('Reload form for further changes to this role', 'press-permit-core'),
+            'showGroups' => esc_html__('Show Groups', 'press-permit-core'),
+            'hideGroups' => esc_html__('Hide Groups', 'press-permit-core'),
             'ajaxurl' => wp_nonce_url(admin_url(''), 'pp-ajax'),
         ];
 
@@ -676,7 +678,7 @@ class AgentPermissionsUI
                 echo '<div id="pp_current_roles" class="container">';
 
                 if ($show_groups_link) : ?>
-                &nbsp;&bull;&nbsp;<small><a class='pp-show-groups' href='#'><?php _e('Show Groups', 'press-permit-core'); ?></a></small>
+                <a class='pp-show-groups btn btn-primary' href='#' style="display:inline-block;margin-bottom: 10px;"><?php _e('Show Groups', 'press-permit-core'); ?></a>
                 <?php endif;
 
                 $_class = ($read_only) ? 'pp-readonly' : '';
