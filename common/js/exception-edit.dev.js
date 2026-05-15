@@ -534,9 +534,9 @@ jQuery(document).ready(function ($) {
         var data = {
             'pp_ajax_agent_exceptions': op,
             'pp_for_type': $('select[name="pp_select_x_for_type"]').val(),
-            'pp_operation': $('input[name="pp_select_x_operation"]').val(),
+            'pp_operation': $('input[name="pp_select_x_operation"]:checked').val() || '',
             'pp_via_type': $('select[name="pp_select_x_via_type"]').val(),
-            'pp_mod_type': $('input[name="pp_select_x_mod_type"]').val(),
+            'pp_mod_type': $('input[name="pp_select_x_mod_type"]:checked').val() || '',
             'pp_agent_id': ppRestrict.agentID,
             'pp_agent_type': ppRestrict.agentType,
             'pp_item_id': item_id

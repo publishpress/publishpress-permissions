@@ -141,10 +141,8 @@ class PostEdit
 
         $operations = apply_filters('presspermit_item_edit_exception_ops', $ops, 'post', $post_type);
 
-        // Hide 'assign' operation for the 'page' post type (pages don't use term assignment)
-        if ($post_type === 'page') {
-            unset($operations['assign']);
-        }
+        // 'assign' controls which terms a user can assign globally, not per-post. Invalid in the post editor context.
+        unset($operations['assign']);
 
         // Check if tabbed metabox is enabled
         if ($pp->getOption('use_tabbed_metabox')) {
