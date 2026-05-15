@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-05-15 17:54+0000\n"
+"PO-Revision-Date: 2026-05-15 18:55+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: tr_TR\n"
@@ -1138,9 +1138,9 @@ msgid "All users with the WordPress role of %s"
 msgstr "WordPress rolüne sahip tüm kullanıcılar %s"
 
 #: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1055
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1058
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1061
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1064
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1067
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
@@ -1253,10 +1253,10 @@ msgid "Users to notify when scheduled revisions are published"
 msgstr "Planlanan revizyonlar yayımlandığında bildirilmesi gereken kullanıcılar"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:119
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:185
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:247
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:289
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:126
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:192
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:254
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:296
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
@@ -1314,22 +1314,30 @@ msgstr "Bu %s'nin bir revizyonunu kimin oluşturabileceğini kontrol edin."
 msgid "Control who can submit a revision of this %s."
 msgstr "Bu %s'nin bir revizyonunu kimin gönderebileceğini kontrol edin."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:135
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:99
+msgid "Control parent selection for selected terms."
+msgstr "Seçilen terimler için kontrol ebeveyn seçim."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
+msgid "Allow users to manage selected terms."
+msgstr "Kullanıcıların seçilen terimleri yönetmesine izin ver."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:142
 msgid "Enable"
 msgstr "Etkinleştir"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:140
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:988
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Engelle"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:143
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
 msgid "Limit to"
 msgstr "Sınırlamak için"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:148
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
 msgid ""
 "Expand access to allow specified items regardless of role capabilities or "
 "restrictions."
@@ -1337,7 +1345,7 @@ msgstr ""
 "Rol yetenekleri veya kısıtlamaları dikkate almaksızın belirtilen maddelere "
 "erişimi genişletin."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:149
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:156
 msgid ""
 "Restrict access by blocking specified items unless an \"Enabled\" exception "
 "is also stored."
@@ -1345,7 +1353,7 @@ msgstr ""
 "Bir \"Etkin\" istisnası saklanmadığı sürece belirtilen maddeleri "
 "engelleyerek erişimi kısıtlayın."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:157
 msgid ""
 "Restrict access by limiting role capabilities to apply only for specified "
 "items. Users still need capabilities in their main role or extra roles."
@@ -1354,7 +1362,7 @@ msgstr ""
 "sınırlayarak kısıtlayın. Kullanıcıların ana rolleri veya ek rollerde "
 "yeteneklere ihtiyacı vardır."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:169
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:176
 msgid ""
 "Using group membership to block access is not recommended. Consider "
 "reducing the user's role capabilities and using group membership to add "
@@ -1364,48 +1372,48 @@ msgstr ""
 "rol yeteneklerini azaltmayı ve erişim eklemek için grup üyeliğini "
 "kullanmayı düşünün."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:195
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:202
 msgid "Selected:"
 msgstr "Seçilen:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:214
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
 msgid "Nav Menus (Legacy)"
 msgstr "Geçmiş Nav Menüler"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:209
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:216
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1000
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:225
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
 msgid "Legacy"
 msgstr "Geçmiş"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:213
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:226
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:232
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:220
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:233
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:239
 #, fuzzy, php-format
 msgid "%s:"
 msgstr "%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:260
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
 #, php-format
 msgid "Selected %s:"
 msgstr "Seçilen %s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:274
 #, php-format
 msgid "Sub-%s:"
 msgstr "Alt-%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:300
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:307
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:179
 msgid "All Statuses"
 msgstr "Tüm Durumlar"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:313
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1961
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:320
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1987
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1604,7 +1612,7 @@ msgstr "Belirli İzinleri Ekle"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:415
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1457
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Kaldır"
@@ -1650,12 +1658,12 @@ msgid "No items selected!"
 msgstr "Hiçbir öğe seçilmedi!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1279
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1286
 msgid "(no parent)"
 msgstr "(üst yok)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:898
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1673,7 +1681,7 @@ msgid "select..."
 msgstr "seç..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:986
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:992
 msgid "Nav Menu (Block)"
 msgstr "Navigasyon Menüsü (Blok)"
 
@@ -1807,7 +1815,7 @@ msgstr "%s Seçin"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:383
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:414
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:786
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1126
 msgid "Status"
 msgstr "Durum"
 
@@ -1840,8 +1848,8 @@ msgstr "Ekstra Roller"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:710
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:769
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1012
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1100
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1108
 msgid "item(s)"
 msgstr "öğe(ler)"
 
@@ -1868,49 +1876,56 @@ msgid "%s Roles"
 msgstr "%s Roller"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:831
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1576
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
 msgid "Apply"
 msgstr "Uygula"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:992
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:998
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:223
 msgid "Nav Menu (Legacy)"
 msgstr "Geçmiş Nav Menü"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1012
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
 #, php-format
 msgid "%s Permissions"
 msgstr "%s İzinleri"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1030
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1036
 msgid "(all post types)"
 msgstr "(tüm gönderi türleri)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1051
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1052
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1058
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1075
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
 msgid "item"
 msgstr "öğe"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1075
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
 msgid "items"
 msgstr "öğeler"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1155
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
+msgid "Group"
+msgstr "Grup"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1162
 msgid "unpublished"
 msgstr "yayınlanmamış"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1162
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:332
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
@@ -1918,22 +1933,22 @@ msgstr "yayınlanmamış"
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1209
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1216
 #, php-format
 msgid "this %1$s"
 msgstr "bu %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1214
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1221
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "bu %2$s'nin alt-%1$s'si"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1220
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "bu %1$s ve onun alt-%2$s'leri"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
@@ -1942,7 +1957,7 @@ msgstr ""
 "%1$s için %2$s erişimi %3$s içinde ETKİN, rol yeteneklerinden bağımsız "
 "olarak."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1244
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -1951,7 +1966,7 @@ msgstr ""
 "%1$s için %2$s erişimi %3$s içinde ENGELLENDİ, başka bir İzin tarafından "
 "etkinleştirilmediği sürece."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1245
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1252
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -1960,17 +1975,17 @@ msgstr ""
 "Herhangi bir rol tabanlı %1$s erişimi %2$s için SINIRLIDIR. Bu yalnızca "
 "%3$s içinde geçerlidir, belirtilen diğer %4$s ile birlikte."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1255
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1262
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s erişimi için %2$s ETKİN, rol yeteneklerinden bağımsız olarak."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1262
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1269
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr "%1$s erişimi için %2$s ENGELLİ, başka bir İzinle etkinleştirilmediği sürece."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1269
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1276
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -1979,121 +1994,121 @@ msgstr ""
 "Herhangi bir rol tabanlı %1$s erişimi %2$s için SINIRLIDIR. Bu yalnızca "
 "%3$s için geçerlidir, belirtilen diğer %4$s ile birlikte."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1314
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1400
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1321
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Sadece alt-%s için atanmıştır."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1322
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1329
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1434
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "%s ve alt-%s için atanmıştır."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1432
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1458
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Bu İzin, karşılık gelen bir Kısıtlama nedeniyle gereksizdir."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1439
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
 #, php-format
 msgid "Edit %s"
 msgstr "%s'yi Düzenle"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1461
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Seçilen ve alt-%s için Ata"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1491
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Sadece seçilen %s için Ata"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1469
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1495
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Sadece alt-%s için Ata"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1474
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
 msgid "Assign for selected and sub-terms"
 msgstr "Seçilen ve alt-terimler için Ata"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1478
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
 msgid "Assign for selected term only"
 msgstr "Sadece seçilen terim için Ata"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1482
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1508
 msgid "Assign for sub-terms only"
 msgstr "Sadece alt-terimler için Ata"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1493
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1519
 msgid "Convert to \"Enabled\""
 msgstr "\"Etkin\" olarak Dönüştür"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1494
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1520
 msgid "Convert to \"Blocked\""
 msgstr "\"Engellenmiş\" olarak Dönüştür"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1495
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
 msgid "Convert to \"Limit to\""
 msgstr "\"Sınırlı\" olarak Dönüştür"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1552
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1578
 #, php-format
 msgid "Mirror to %s"
 msgstr "%s'ye Yansıt"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1556
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1582
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "%s %s'ye Yansıt"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
 msgid "= Enabled"
 msgstr "= Etkin"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1622
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1648
 msgid "= Blocked"
 msgstr "= Engellenmiş"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1629
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1655
 msgid "= Limitation"
 msgstr "= Kısıtlama"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1643
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1669
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s ve alt-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1649
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1675
 #, php-format
 msgid "= sub-%s only"
 msgstr "= sadece alt-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1667
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1691
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1693
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1717
 msgid "Note:"
 msgstr "Not:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1669
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1693
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1695
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1719
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Alt-%1$s İzinleri ayrı olarak listelenmemiştir."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1673
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1697
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1699
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1723
 msgid "Show All"
 msgstr "Hepsini Göster"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1682
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1705
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1708
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Otomatik atanan Alt-%s İzinlerini Gizle"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1718
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1744
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2103,50 +2118,50 @@ msgstr ""
 "yeni bir alt sayfa oluşturulduğunda alt sayfa izinlerinin düzgün bir "
 "şekilde uygulanmasını engelleyebilir."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1722
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1748
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sAlt-%2$s İzinlerini Düzelt%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1766
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1792
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Grup Kısıtlamaları bir sabit tanımı nedeniyle mevcut değil"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1783
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1809
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "Erişimi etkinleştirmek için izinler mevcut değil çünkü bir sabit tanımı var."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1847
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1873
 msgid "Group Members"
 msgstr "Grup Üyeleri"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1896
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1922
 msgid "Copy Roles and Permissions from:"
 msgstr "Rolleri ve İzinleri Kopyala:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1919
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1945
 msgid "Copy Roles and Permissions"
 msgstr "Rolleri ve İzinleri Kopyala"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1936
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1962
 msgid "Limit to:"
 msgstr "Sınırla:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1939
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1965
 msgid "Blocked:"
 msgstr "Engellendi:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1943
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1969
 msgid "Enabled:"
 msgstr "Etkin:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1954
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1980
 msgid "Direct-assigned"
 msgstr "Doğrudan atanan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1967
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1993
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2537,12 +2552,6 @@ msgstr "Seçilenleri Kaldır"
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
 msgid "Login State"
 msgstr "Giriş Durumu"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
-msgid "Group"
-msgstr "Grup"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1191
