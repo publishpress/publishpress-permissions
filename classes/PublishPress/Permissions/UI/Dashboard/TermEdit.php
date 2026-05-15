@@ -266,6 +266,8 @@ class TermEdit
 
         // Check if tabbed metabox is enabled
         if ($pp->getOption('use_tabbed_metabox')) {
+            $operations = apply_filters('presspermit_term_exceptions_metaboxes', $operations, $taxonomy, $post_type);
+
             // Register single tabbed metabox for all operations
             if (!empty($operations)) {
                 $caption = ($post_type)
