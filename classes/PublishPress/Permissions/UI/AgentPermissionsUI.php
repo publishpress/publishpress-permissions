@@ -1109,9 +1109,11 @@ class AgentPermissionsUI
                                 echo '<table class="table table-responsive table-sortable">';
                                 echo '<thead>';
                                 echo '<tr>';
-                                echo '<th class="checkbox-column">';
-                                echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '" type="checkbox" />';
-                                echo '</th>';
+                                if (!$read_only) {
+                                    echo '<th class="checkbox-column">';
+                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '" type="checkbox" />';
+                                    echo '</th>';
+                                }
                                 echo '<th class="icon-column sortable"></th>';
                                 
                                 if (!empty($any_status_captions)) {
@@ -1124,7 +1126,9 @@ class AgentPermissionsUI
                                 echo esc_html($via_type_obj->labels->name);
                                 echo '</th>';
 
-                                echo '<th class="edit-column"></th>';
+                                if (!$read_only) {
+                                    echo '<th class="edit-column"></th>';
+                                }
                                 echo '</tr>';
                                 echo '</thead>';
                                 echo '<tbody>';
@@ -1284,11 +1288,61 @@ class AgentPermissionsUI
                                             );
 
                                             if ($read_only) {
-                                                if ($item_links) {
-                                                    $item_edit_url = '';
-                                                    echo "<div><a href='" . esc_url($item_edit_url) . "' class='" . esc_attr($class) . "'>" . esc_url($item_path) . "</a></div>";
-                                                } else
-                                                    echo "<div><span class='" . esc_attr($class) . "'>" . esc_html($item_path) . "</span></div>";
+                                                echo "<tr>";
+                                                echo "<td class='icon-column' data-sort='" . esc_attr($mod_type) . "'>";
+                                                echo '<span data-toggle="tooltip" data-placement="top">';
+                                                if ('additional' == $mod_type) {
+                                                    echo '<i class="dashicons dashicons-yes-alt" style="color:#10b981;"></i>';
+                                                } elseif ('exclude' == $mod_type) {
+                                                    echo '<i class="dashicons dashicons-no-alt" style="color:#ef4444;"></i>';
+                                                } elseif ('include' == $mod_type) {
+                                                    echo '<i class="dashicons dashicons-warning" style="color:#f59e0b;"></i>';
+                                                }
+                                                echo '<span class="tooltip-text"><span>';
+                                                echo esc_html($tooltip_text);
+                                                echo '</span><i></i></span></span>';
+                                                echo "</td>";
+
+                                                if (!empty($any_status_captions)) {
+                                                    echo "<td>" . esc_html($status_label) . "</td>";
+                                                }
+
+                                                echo '<td class="assign-for-column">';
+                                                if ($assign_child_only) {
+                                                    ?>
+                                                    <span data-toggle="tooltip" data-placement="top">
+                                                    <i class="dashicons dashicons-networking assign-child"></i>
+                                                    <span class="tooltip-text"><span>
+                                                    <?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name)); ?>
+                                                    </span><i></i></span></span>
+                                                    <?php
+                                                } elseif ($assign_both) {
+                                                    ?>
+                                                    <span data-toggle="tooltip" data-placement="top">
+                                                    <i class="dashicons dashicons-networking assign-both"></i>
+                                                    <span class="tooltip-text"><span>
+                                                    <?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name)); ?>
+                                                    </span><i></i></span></span>
+                                                    <?php
+                                                }
+                                                echo '</td>';
+
+                                                echo "<td>";
+                                                $allowed_html = [
+                                                    'i' => [],
+                                                    'span' => [
+                                                        'data-toggle'    => true,
+                                                        'data-placement' => true,
+                                                        'class'          => true,
+                                                    ],
+                                                ];
+                                                echo wp_kses($item_label, $allowed_html);
+                                                echo '</td>';
+
+                                                echo "</tr>";
+
+                                                $item_count++;
+                                                $section_item_count++;
                                             } else {
                                                 $cb_id = 'pp_edit_exception_' . str_replace(',', '_', $ass_id);
 
@@ -1739,6 +1793,10 @@ class AgentPermissionsUI
                 <?php endif;
 
                 echo '</div>';  // pp_current_exceptions
+
+                if ($read_only) {
+                    echo '<br />';
+                }
             }
             
             // Called once each for members checklist, managers checklist in admin UI.

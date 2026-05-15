@@ -343,7 +343,6 @@ class AgentPermissions
                             // @todo: Consider how to reinstate a read-only summary of the extra Roles and Permissions the user has from Group membership
 
                             // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-                            /*
                             $roles = [];
                             $user = $pp->getUser($agent_id);
                             $user->retrieveExtraGroups();
@@ -405,7 +404,6 @@ class AgentPermissions
                             );
 
                             AgentPermissionsUI::currentExceptionsUI($exceptions, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption, 'show_groups_link' => true]);
-                            */
                         } else {
                         ?>
                             <h4>
