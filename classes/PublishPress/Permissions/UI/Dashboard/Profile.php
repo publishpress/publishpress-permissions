@@ -35,15 +35,34 @@ class Profile
         );
 
         $caption = sprintf(esc_html__('Specific Permissions %1$s(for this user)%2$s', 'press-permit-core'), '', '');
-        $new_permissions_link = true;
-        $maybe_display_note = !$has_user_roles;
-        $display_limit = 12;
-        $echo = true;
 
-        self::abbreviatedExceptionsList(
-            'user',
-            $user->ID,
-            compact('edit_url', 'caption', 'new_permissions_link', 'maybe_display_note', 'display_limit', 'echo')
+        $_args = [
+            'assign_for'         => '',
+            'agent_type'         => 'user',
+            'agent_id'           => $user->ID,
+            'post_types'         => array_keys($post_types),
+            'taxonomies'         => array_keys($taxonomies),
+            'return_raw_results' => true,
+        ];
+
+        if (PWP::empty_REQUEST('show_propagated')) {
+            $_args['inherited_from'] = 0;
+        }
+
+        require_once(PRESSPERMIT_CLASSPATH . '/DB/Permissions.php');
+        \PublishPress\Permissions\DB\Permissions::expose_orphaned_exception_items();
+
+        $exc = $pp->getExceptions($_args);
+
+        \PublishPress\Permissions\UI\AgentPermissionsUI::currentExceptionsUI(
+            $exc,
+            [
+                'read_only'         => true,
+                'class'             => 'pp-user-roles',
+                'caption'           => $caption,
+                'hidden_exceptions' => \PublishPress\Permissions\DB\Permissions::$hidden_exceptions,
+                'agent_type'        => 'user',
+            ]
         );
     }
 
@@ -82,14 +101,37 @@ class Profile
             ]
         );
 
-        self::abbreviatedExceptionsList(
-            'user',
-            $user->ID,
+        $exceptions = [];
+
+        require_once(PRESSPERMIT_CLASSPATH . '/DB/Permissions.php');
+        \PublishPress\Permissions\DB\Permissions::expose_orphaned_exception_items();
+
+        $_args = [
+            'assign_for'         => '',
+            'inherited_from'     => 0,
+            'post_types'         => array_keys($post_types),
+            'taxonomies'         => array_keys($taxonomies),
+            'return_raw_results' => true,
+        ];
+
+        foreach (array_keys($user->groups) as $agent_type) {
+            $_args['agent_type']       = $agent_type;
+            $_args['query_agent_ids']  = array_keys($user->groups[$agent_type]);
+            $_args['ug_clause']        = " AND e.agent_type = '$agent_type' AND e.agent_id IN ('"
+                . implode("','", array_keys($user->groups[$agent_type])) . "')";
+
+            $exceptions = array_merge($exceptions, $pp->getExceptions($_args));
+        }
+
+        \PublishPress\Permissions\UI\AgentPermissionsUI::currentExceptionsUI(
+            $exceptions,
             [
-                'edit_url' => '',
-                'caption' => esc_html__('Specific Permissions (from primary role or group membership)', 'press-permit-core'),
-                'join_groups' => 'groups_only',
-                'display_limit' => 12
+                'read_only'         => true,
+                'class'             => 'pp-group-roles',
+                'caption'           => esc_html__('Specific Permissions (from primary role or group membership)', 'press-permit-core'),
+                'hidden_exceptions' => \PublishPress\Permissions\DB\Permissions::$hidden_exceptions,
+                'agent_type'        => 'user',
+                'show_groups_link'  => true,
             ]
         );
     }
