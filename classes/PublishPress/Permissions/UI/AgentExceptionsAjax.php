@@ -93,6 +93,13 @@ class AgentExceptionsAjax
                     'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), esc_html($items_label)),
                     'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), esc_html($items_label)),
                 ];
+
+                if ($for_type === '_term_') {
+                    $tooltips = [
+                        'associate' => esc_html__('Control parent selection for selected terms.', 'press-permit-core'),
+                        'manage'    => esc_html__('Allow users to manage selected terms.', 'press-permit-core'),
+                    ];
+                }
                 ?>
                 <div>
                 <?php foreach ($ops as $val => $title) :?>
