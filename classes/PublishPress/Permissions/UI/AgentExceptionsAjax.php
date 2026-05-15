@@ -83,7 +83,7 @@ class AgentExceptionsAjax
                 }
 
                 $tooltips = [
-                    'assign'    => sprintf(esc_html__('Control assignment of terms to selected %s.', 'press-permit-core'), esc_html($items_label)),
+                    'assign'    => sprintf(esc_html__('Control assignment of selected terms to %s.', 'press-permit-core'), esc_html($items_label)),
                     'associate' => sprintf(esc_html__('Control parent selection for selected %s.', 'press-permit-core'), esc_html($items_label)),
                     'edit'      => sprintf(esc_html__('Control editing of selected %s.', 'press-permit-core'), esc_html($items_label)),
                     'publish'   => sprintf(esc_html__('Control publishing of selected %s.', 'press-permit-core'), esc_html($items_label)),
