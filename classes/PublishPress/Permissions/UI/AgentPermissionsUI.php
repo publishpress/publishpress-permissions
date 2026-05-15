@@ -716,7 +716,6 @@ class AgentPermissionsUI
                     ksort($type_roles[$source_name]);
 
                     foreach (array_keys($type_roles[$source_name]) as $object_type) {
-                        $any_done = false;
                         $item_count = 0;
 
                         if ($type_obj = $pp->getTypeObject($source_name, $object_type)) {
@@ -776,11 +775,11 @@ class AgentPermissionsUI
                             echo '<table class="table table-responsive table-sortable">';
                             echo '<thead>';
                             echo '<tr>';
-                            echo '<th class="checkbox-column">';
                             if (!$read_only) {
+                                echo '<th class="checkbox-column">';
                                 echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type) . '" type="checkbox" />';
+                                echo '</th>';
                             }
-                            echo '</th>';
                             echo '<th class="role-column sortable asc">' . esc_html__('Role', 'press-permit-core') . '</th>';
                             echo '<th class="status-column sortable">' . esc_html__('Status', 'press-permit-core') . '</th>';
                             echo '<th class="edit-column"></th>';
@@ -800,16 +799,13 @@ class AgentPermissionsUI
                                 }
 
                                 echo '<tr class="checkbox-row">';
-                                echo '<td class="checkbox-column">';
-                                if ($read_only) {
-                                    if (!empty($any_done)) echo ',&nbsp; ';
-                                    $any_done = true;
-                                } else {
+                                if (!$read_only) {
+                                    echo '<td class="checkbox-column">';
                                     $ass_id = $roles[$role_name];
                                     $cb_id = 'pp_edit_role_' . str_replace(',', '_', $ass_id);
                                     echo '<input id="' . esc_attr($cb_id) . '" type="checkbox" name="pp_edit_role[]" value="' . esc_attr($ass_id) . '">';
+                                    echo '</td>';
                                 }
-                                echo '</td>';
                                 echo '<td>';
                                 $pp_admin->getRoleTitle($role_name, ['include_warnings' => true, 'echo' => true, 'status_suffix' => false]);
                                 echo '</td>';
@@ -1367,9 +1363,9 @@ class AgentPermissionsUI
                                                 }
 
                                                 echo "<tr class='checkbox-row " . esc_attr($tr_class) . "'>";
-
+                                                if (!$read_only) {
                                                 echo "<td class='checkbox-column'><input id='" . esc_attr($cb_id) . "' type='checkbox' name='pp_edit_exception[]' value='" . esc_attr($ass_id) . "' class='" . esc_attr($class) . "' autocomplete='off'></td> ";
-                                                
+                                                }
                                                 echo "<td class='icon-column' data-sort='" . esc_attr($mod_type) . "'>";
                                                 echo '<span data-toggle="tooltip" data-placement="top">';
                                                 
