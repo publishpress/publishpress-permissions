@@ -388,7 +388,7 @@ class ItemExceptionsUI
                         $post_type_label = (!empty($post_type_obj) && !empty($post_type_obj->labels->name)) ? esc_html(strtolower($post_type_obj->labels->name)) : esc_html(strtolower($type_obj->labels->singular_name));
                         $tooltips = [
                             'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), $type_label),
-                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), $type_label),
+                            'associate' => sprintf(esc_html__('Control who can select this page as parent %s.', 'press-permit-core'), $type_label),
                             'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), $type_label),
                             'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), $type_label),
                             'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), $type_label),
