@@ -100,6 +100,10 @@ class AgentExceptionsAjax
                         'associate' => esc_html__('Control parent selection for selected terms.', 'press-permit-core'),
                         'manage'    => esc_html__('Allow users to manage selected terms.', 'press-permit-core'),
                     ];
+                } elseif ($for_source_name === 'pp_group') {
+                    $tooltips = [
+                        'manage' => esc_html__('Control management of selected groups.', 'press-permit-core'),
+                    ];
                 }
                 ?>
                 <div>
