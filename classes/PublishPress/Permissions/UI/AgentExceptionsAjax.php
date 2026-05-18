@@ -81,10 +81,11 @@ class AgentExceptionsAjax
                 } else {
                     $items_label = strtolower(esc_html__('Posts'));    
                 }
+                $items_label_singular = isset($type_obj->name) ? $type_obj->name : rtrim($items_label, 's');
 
                 $tooltips = [
                     'assign'    => sprintf(esc_html__('Control assignment of selected terms to %s.', 'press-permit-core'), esc_html($items_label)),
-                    'associate' => sprintf(esc_html__('Control parent selection for selected %s.', 'press-permit-core'), esc_html($items_label)),
+                    'associate' => sprintf(esc_html__('Control if this %s can be selected as a Parent Page.', 'press-permit-core'), esc_html($items_label_singular)),
                     'edit'      => sprintf(esc_html__('Control editing of selected %s.', 'press-permit-core'), esc_html($items_label)),
                     'publish'   => sprintf(esc_html__('Control publishing of selected %s.', 'press-permit-core'), esc_html($items_label)),
                     'delete'    => sprintf(esc_html__('Control deletion of selected %s.', 'press-permit-core'), esc_html($items_label)),
