@@ -92,7 +92,9 @@ class PageFilters
         if (!in_array($post_type, $enabled_post_types, true))
             return $results;
 
-        if (!empty($args['name']) && ('parent_id' == $args['name']) 
+        $is_parent_dropdown = !empty($args['name']) && in_array($args['name'], ['parent_id', 'post_parent'], true);
+
+        if ($is_parent_dropdown
         && !presspermit()->moduleActive('collaboration')) {
             return $results;
         }
@@ -122,7 +124,7 @@ class PageFilters
 
         // =========== PressPermit: Avoid conflict with ACF, other plugins
         if (
-            is_admin() && (empty($args['name']) || ('parent_id' !== $args['name']))
+            is_admin() && !$is_parent_dropdown
             && false !== strpos($args['sort_column'], 'menu_order') && ('edit.php' != $pagenow)
             && !defined('PP_GET_PAGES_LEGACY_FILTER')
         ) {
@@ -467,6 +469,26 @@ class PageFilters
                     $post_type,
                     $args
                 );
+            } elseif ($is_parent_dropdown) {
+                $clauses = compact('distinct', 'fields', 'join', 'where', 'groupby', 'orderby', 'limits');
+
+                $required_operation = presspermit()->getOption('page_parent_editable_only') ? 'edit' : 'associate';
+                $col_id = (strpos($clauses['where'], $wpdb->posts)) ? "$wpdb->posts.ID" : 'ID';
+                $col_status = (strpos($clauses['where'], $wpdb->posts)) ? "$wpdb->posts.post_status" : 'post_status';
+
+                if ($restriction_where = self::getRestrictionClause($required_operation, $post_type, compact('col_id'))) {
+                    $clauses['where'] .= $restriction_where;
+                }
+
+                if ($additional_ids = presspermit()->getUser()->getExceptionPosts($required_operation, 'additional', $post_type)) {
+                    if (empty($clauses['where'])) {
+                        $clauses['where'] = 'AND 1=1';
+                    }
+
+                    $clauses['where'] = " AND ( ( 1=1 {$clauses['where']} ) OR ("
+                        . " $col_id IN ('" . implode("','", array_unique($additional_ids)) . "')"
+                        . " AND $col_status NOT IN ('" . implode("','", get_post_stati(['internal' => true])) . "') ) )";
+                }
             } else {
                 // Pass query through the request filter
                 $_args['post_types'] = $post_type;
