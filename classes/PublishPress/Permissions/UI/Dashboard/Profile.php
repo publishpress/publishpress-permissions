@@ -317,7 +317,7 @@ class Profile
 
         $count_args = ['query_agent_ids' => (array)$agent_id, 'join_groups' => $join_groups];
         $exc_data = \PublishPress\Permissions\DB\PermissionsMeta::countExceptions($agent_type, $count_args);
-        $badge_count = isset($exc_data[$agent_id]['exceptions']) ? count($exc_data[$agent_id]['exceptions']) : 0;
+        $badge_count = $exc_data[$agent_id]['exc_count'] ?? 0;
 
         $args['show_link'] = false;
         $args['force_refresh'] = true;
@@ -438,7 +438,7 @@ class Profile
 
         $count_args = ['query_agent_ids' => (array)$agent_id, 'join_groups' => $join_groups];
         $role_data = \PublishPress\Permissions\DB\PermissionsMeta::countRoles($agent_type, $count_args);
-        $badge_count = isset($role_data[$agent_id]['roles']) ? count($role_data[$agent_id]['roles']) : 0;
+        $badge_count = $role_data[$agent_id]['role_count'] ?? 0;
 
         $args['show_link'] = false;
         $args['force_refresh'] = true;
