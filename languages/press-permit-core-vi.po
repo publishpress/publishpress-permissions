@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-05-15 18:55+0000\n"
+"PO-Revision-Date: 2026-05-19 18:45+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: vi\n"
@@ -1139,10 +1139,10 @@ msgstr "Tất cả người dùng (bao gồm cả ẩn danh)"
 msgid "All users with the WordPress role of %s"
 msgstr "Tất cả người dùng có vai trò WordPress là %s"
 
-#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1061
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1064
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1067
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:148
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:952
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:955
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:958
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
@@ -1259,10 +1259,10 @@ msgid "Users to notify when scheduled revisions are published"
 msgstr "Người dùng cần thông báo khi có bản sửa đổi đã lên lịch được công bố"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:126
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:192
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:254
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:296
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:131
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:197
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:259
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:301
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
@@ -1273,77 +1273,81 @@ msgstr "(phiên đăng nhập đã hết thời gian)"
 msgid "View"
 msgstr "Xem"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
 #, php-format
 msgid "Control assignment of selected terms to %s."
 msgstr "Quản lý việc gán các thuật ngữ đã chọn cho %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
-#, php-format
-msgid "Control parent selection for selected %s."
-msgstr "Kiểm soát lựa chọn cha mẹ cho %s đã chọn."
-
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control if this %s can be selected as a Parent Page."
+msgstr "Kiểm soát xem %s này có thể được chọn làm Trang Cha hay không."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
 #, php-format
 msgid "Control editing of selected %s."
 msgstr "Kiểm soát việc chỉnh sửa %s đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
 #, php-format
 msgid "Control publishing of selected %s."
 msgstr "Kiểm soát việc xuất bản %s đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
 #, php-format
 msgid "Control deletion of selected %s."
 msgstr "Kiểm soát việc xóa %s đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
 #, php-format
 msgid "Control term management for selected %s."
 msgstr "Kiểm soát quản lý thuật ngữ cho %s đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
 #, php-format
 msgid "Control frontend viewing of selected %s."
 msgstr "Kiểm soát việc xem trên giao diện trước của %s đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
 #, php-format
 msgid "Control who can create a revision of this %s."
 msgstr "Kiểm soát ai có thể tạo một phiên bản của %s này."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:95
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
 #, php-format
 msgid "Control who can submit a revision of this %s."
 msgstr "Kiểm soát ai có thể gửi một phiên bản của %s này."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:99
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
 msgid "Control parent selection for selected terms."
 msgstr "Kiểm soát việc chọn cha cho các thuật ngữ đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:101
 msgid "Allow users to manage selected terms."
 msgstr "Cho phép người dùng quản lý các thuật ngữ đã chọn."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:142
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:105
+msgid "Control management of selected groups."
+msgstr "Quản lý kiểm soát các nhóm đã chọn."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
 msgid "Enable"
 msgstr "Kích hoạt"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:152
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:886
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Chặn"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
 msgid "Limit to"
 msgstr "Giới hạn đến"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:160
 msgid ""
 "Expand access to allow specified items regardless of role capabilities or "
 "restrictions."
@@ -1351,7 +1355,7 @@ msgstr ""
 "Mở rộng quyền truy cập để cho phép các mục đã chỉ định bất kể khả năng hoặc "
 "hạn chế vai trò."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:156
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:161
 msgid ""
 "Restrict access by blocking specified items unless an \"Enabled\" exception "
 "is also stored."
@@ -1359,7 +1363,7 @@ msgstr ""
 "Hạn chế quyền truy cập bằng cách chặn các mục đã chỉ định trừ khi một ngoại "
 "lệ \"Đã bật\" cũng được lưu trữ."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:157
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:162
 msgid ""
 "Restrict access by limiting role capabilities to apply only for specified "
 "items. Users still need capabilities in their main role or extra roles."
@@ -1368,7 +1372,7 @@ msgstr ""
 "các mục đã chỉ định. Người dùng vẫn cần có khả năng trong vai trò chính của "
 "họ hoặc vai trò bổ sung."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:176
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:181
 msgid ""
 "Using group membership to block access is not recommended. Consider "
 "reducing the user's role capabilities and using group membership to add "
@@ -1378,48 +1382,48 @@ msgstr ""
 "nghị. Hãy xem xét việc giảm khả năng vai trò của người dùng và sử dụng tư "
 "cách thành viên nhóm để thêm quyền truy cập."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:202
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
 msgid "Selected:"
 msgstr "Đã chọn:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:214
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:219
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
 msgid "Nav Menus (Legacy)"
 msgstr "Menu điều hướng (Cũ)"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:216
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1000
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:221
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:892
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:225
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
 msgid "Legacy"
 msgstr "Cũ"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:220
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:233
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:239
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:225
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:238
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:244
 #, fuzzy, php-format
 msgid "%s:"
 msgstr "%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:272
 #, php-format
 msgid "Selected %s:"
 msgstr "Đã chọn %s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:274
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:279
 #, php-format
 msgid "Sub-%s:"
 msgstr "Phụ-%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:307
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:312
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:179
 msgid "All Statuses"
 msgstr "Tất cả trạng thái"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:320
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1987
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1863
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1601,7 +1605,7 @@ msgid "Reload form for further changes to this role"
 msgstr "Tải lại biểu mẫu để thực hiện các thay đổi thêm cho vai trò này"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:681
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:586
 msgid "Show Groups"
 msgstr "Hiện nhóm"
 
@@ -1610,13 +1614,13 @@ msgid "Hide Groups"
 msgstr "Ẩn nhóm"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:454
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:431
 msgid "Add Specific Permissions"
 msgstr "Thêm quyền cụ thể"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:415
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:392
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Gỡ bỏ"
@@ -1658,12 +1662,12 @@ msgid "No items selected!"
 msgstr "Không có mục nào được chọn!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1286
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1177
 msgid "(no parent)"
 msgstr "(không có cha)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:788
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1681,7 +1685,7 @@ msgid "select..."
 msgstr "chọn..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:992
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:884
 msgid "Nav Menu (Block)"
 msgstr "Menu Điều Hướng (Khối)"
 
@@ -1694,24 +1698,24 @@ msgid "n/a"
 msgstr "không áp dụng"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:259
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:381
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:358
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:386
 msgid "Post Type"
 msgstr "Loại Bài Đăng"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:387
 msgid "Operation"
 msgstr "Hoạt Động"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:411
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
 msgid "Adjustment"
 msgstr "Điều Chỉnh"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:134
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:412
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:389
 msgid "Qualification"
 msgstr "Trình Độ"
 
@@ -1734,7 +1738,7 @@ msgstr ""
 "hiệu hóa. Hãy xem xét việc thiết lập một Tính riêng tư trên màn hình Chỉnh "
 "sửa Bài viết thay vào đó."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:225
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:202
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
@@ -1742,7 +1746,7 @@ msgstr ""
 "Để chỉ định Quyền cụ thể cho trang để chỉnh sửa, lựa chọn cha hoặc gán "
 "thuật ngữ, hãy kích hoạt tính năng Quyền Chỉnh sửa."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:214
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
@@ -1750,7 +1754,7 @@ msgstr ""
 "Để chỉ định Quyền cụ thể cho diễn đàn cho bbPress, hãy kích hoạt tính năng "
 "Gói Tương thích."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:240
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:217
 #, php-format
 msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
@@ -1759,38 +1763,38 @@ msgstr ""
 "Để chỉ định Quyền cụ thể cho diễn đàn cho bbPress, %1$s nâng cấp lên "
 "Permissions Pro %2$s và kích hoạt tính năng Gói Tương thích."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:260
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:382
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:785
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:359
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "Vai Trò"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:261
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:238
 msgid "For Statuses"
 msgstr "Cho Trạng Thái"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:257
 msgid "Standard statuses"
 msgstr "Trạng thái tiêu chuẩn"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:262
 msgid "Status: Private"
 msgstr "Trạng Thái: Riêng tư"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:290
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:267
 msgid "Add Role"
 msgstr "Thêm vai trò"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:302
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:279
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr ""
 "Để gán vai trò cho các diễn đàn bbPress, hãy kích hoạt tính năng "
 "Compatibility Pack."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:305
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #, php-format
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
@@ -1799,7 +1803,7 @@ msgstr ""
 "Để chỉ định vai trò cho diễn đàn bbPress, %1$s nâng cấp lên Permissions Pro "
 "%2$s và kích hoạt tính năng Gói Tương thích."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:316
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:293
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
@@ -1807,148 +1811,150 @@ msgstr ""
 "Để phân quyền cho các quyền cụ thể của PublishPress Revision trên trang, "
 "hãy kích hoạt tính năng Quyền chỉnh sửa."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:347
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:324
 #, php-format
 msgid "Select %s"
 msgstr "Chọn %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:383
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:414
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:786
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1126
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:360
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:391
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1017
 msgid "Status"
 msgstr "Trạng thái"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:393
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:370
 msgid "Save Roles"
 msgstr "Lưu vai trò"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:401
 msgid "Save Permissions"
 msgstr "Lưu quyền"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:457
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:434
 msgid "Add Extra Roles"
 msgstr "Thêm vai trò bổ sung"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:467
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:444
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "Sao chép"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:656
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:557
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:27
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Vai trò bổ sung %1$s(cho người dùng này)%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:657
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:558
 msgid "Extra Roles"
 msgstr "Vai trò bổ sung"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:710
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:769
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1108
-msgid "item(s)"
-msgstr "mục"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:622
 msgid "Term Management"
 msgstr "Quản lý thuật ngữ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:735
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:741
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:626
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:632
 msgid "objects"
 msgstr "đối tượng"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:736
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:627
 msgid "Direct-Assigned"
 msgstr "Gán trực tiếp"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:742
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:633
 msgid "Disabled Type"
 msgstr "Loại bị vô hiệu hóa"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:661
 #, php-format
 msgid "%s Roles"
 msgstr "%s Vai trò"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:831
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:662
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:743
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:999
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1644
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:335
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:456
+msgid "item(s)"
+msgstr "mục"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:722
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1489
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
 msgid "Apply"
 msgstr "Áp dụng"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:998
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:890
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:223
 msgid "Nav Menu (Legacy)"
 msgstr "Menu điều hướng (Cũ)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
-#, php-format
-msgid "%s Permissions"
-msgstr "%s Quyền hạn"
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:903
+msgid "(from primary role or group membership)"
+msgstr "(từ vai trò chính hoặc tư cách thành viên nhóm)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1036
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:920
 msgid "(all post types)"
 msgstr "(tất cả các loại bài viết)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:948
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1058
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:949
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:972
 msgid "item"
 msgstr "mục"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:972
 msgid "items"
 msgstr "các mục"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1026
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Nhóm"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1162
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
 msgid "unpublished"
 msgstr "chưa xuất bản"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:332
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:261
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:382
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1216
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1107
 #, php-format
 msgid "this %1$s"
 msgstr "mục %1$s này"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1221
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1112
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "sub-%1$s của %2$s này"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "mục %1$s này và các sub-%2$s của nó"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1127
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
@@ -1957,7 +1963,7 @@ msgstr ""
 "%1$s quyền truy cập cho %2$s được KÍCH HOẠT trong %3$s, bất kể khả năng vai "
 "trò."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1244
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -1966,7 +1972,7 @@ msgstr ""
 "%1$s quyền truy cập cho %2$s bị CHẶN trong %3$s, trừ khi được kích hoạt bởi "
 "một Quyền khác."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1252
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -1975,19 +1981,19 @@ msgstr ""
 "Bất kỳ quyền truy cập dựa trên vai trò %1$s cho %2$s đều BỊ HẠN. Nó chỉ áp "
 "dụng trong %3$s, cùng với các %4$s khác được chỉ định."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1262
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "Quyền truy cập %1$s cho %2$s là ĐƯỢC KÍCH HOẠT, bất kể khả năng vai trò."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1269
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "Quyền truy cập %1$s cho %2$s là BỊ CHẶN, trừ khi được kích hoạt bởi một "
 "Quyền khác."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1276
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1167
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -1996,121 +2002,121 @@ msgstr ""
 "Bất kỳ quyền truy cập dựa trên vai trò %1$s cho %2$s đều BỊ HẠN. Nó chỉ áp "
 "dụng cho %3$s, cùng với các %4$s khác được chỉ định."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1321
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1212
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1315
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Chỉ được phân công cho sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1329
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1434
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1220
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1323
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Được phân công cho %s và sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1458
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1347
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Quyền này là thừa do một Giới hạn tương ứng."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1354
 #, php-format
 msgid "Edit %s"
 msgstr "Chỉnh sửa %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1374
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Gán cho %s đã chọn và phụ-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1491
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1378
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Gán cho %s đã chọn chỉ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1495
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1382
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Gán cho phụ-%s chỉ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 msgid "Assign for selected and sub-terms"
 msgstr "Gán cho các điều khoản đã chọn và phụ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1391
 msgid "Assign for selected term only"
 msgstr "Gán cho điều khoản đã chọn chỉ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1508
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1395
 msgid "Assign for sub-terms only"
 msgstr "Gán cho các điều khoản phụ chỉ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1519
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
 msgid "Convert to \"Enabled\""
 msgstr "Chuyển đổi thành \"Đã kích hoạt\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1520
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
 msgid "Convert to \"Blocked\""
 msgstr "Chuyển đổi thành \"Bị chặn\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
 msgid "Convert to \"Limit to\""
 msgstr "Chuyển đổi thành \"Giới hạn đến\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1578
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
 #, php-format
 msgid "Mirror to %s"
 msgstr "Gương đến %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1582
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1469
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Gương đến %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1517
 msgid "= Enabled"
 msgstr "= Đã kích hoạt"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1648
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1524
 msgid "= Blocked"
 msgstr "= Bị chặn"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1655
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1531
 msgid "= Limitation"
 msgstr "= Giới hạn"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1669
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1545
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s và phụ-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1675
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1551
 #, php-format
 msgid "= sub-%s only"
 msgstr "= phụ-%s chỉ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1693
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1717
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1569
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1593
 msgid "Note:"
 msgstr "Lưu ý:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1695
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1719
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1571
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1595
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Quyền phụ-%1$s không được liệt kê riêng biệt."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1699
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1723
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1575
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1599
 msgid "Show All"
 msgstr "Hiển thị Tất cả"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1708
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1584
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1607
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Ẩn quyền Sub-%s được tự động gán"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1744
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1620
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2119,50 +2125,55 @@ msgstr ""
 "Các plugin khác (hoặc việc vô hiệu hóa Quyền PublishPress) có thể ngăn cản "
 "việc áp dụng đúng quyền cho các trang con khi một trang con mới được tạo."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1748
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1624
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sSửa quyền Sub-%2$s%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1792
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1644
+#, php-format
+msgid "%s Permissions"
+msgstr "%s Quyền hạn"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1668
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Giới hạn Nhóm không khả dụng do định nghĩa hằng số"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1809
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1685
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "Các quyền để kích hoạt quyền truy cập không có sẵn do định nghĩa hằng số"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1873
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1749
 msgid "Group Members"
 msgstr "Thành viên Nhóm"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1922
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1798
 msgid "Copy Roles and Permissions from:"
 msgstr "Sao chép Vai trò và Quyền từ:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1945
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1821
 msgid "Copy Roles and Permissions"
 msgstr "Sao chép Vai trò và Quyền"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1962
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1838
 msgid "Limit to:"
 msgstr "Giới hạn đến:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1965
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1841
 msgid "Blocked:"
 msgstr "Bị chặn:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1969
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1845
 msgid "Enabled:"
 msgstr "Đã kích hoạt:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1980
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
 msgid "Direct-assigned"
 msgstr "Gán trực tiếp"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1993
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1869
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2301,6 +2312,9 @@ msgid "Settings"
 msgstr "Cài đặt"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+msgid "(Default access)"
+msgstr "(quyền truy cập mặc định)"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
 msgid "(Default access: Enabled)"
 msgstr "(Quyền truy cập mặc định: Đã bật)"
@@ -2373,8 +2387,8 @@ msgstr "Kiểm soát ai có thể gán các thuật ngữ cho %s này."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
 #, php-format
-msgid "Control who can choose the parent page for this %s."
-msgstr "Kiểm soát ai có thể chọn trang cha cho %s này."
+msgid "Control who can select this page as parent %s."
+msgstr "Kiểm soát ai có thể chọn trang này làm %s cha."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:392
 #, php-format
@@ -2676,29 +2690,29 @@ msgstr "Gán Điều Khoản"
 msgid "Specific Permissions %1$s(for this user)%2$s"
 msgstr "Quyền Cụ Thể %1$s(cho người dùng này)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:100
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:50
 #, php-format
 msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
 msgstr "Vai Trò Bổ Sung %1$s(từ vai trò chính hoặc tư cách thành viên nhóm)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:131
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:61
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Quyền Cụ Thể (từ vai trò chính hoặc tư cách thành viên nhóm)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:231
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:160
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
 msgid "Permission Groups"
 msgstr "Nhóm Quyền"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:263
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:192
 msgid "This user is not a member of any custom Permission Groups."
 msgstr "Người dùng này không phải là thành viên của bất kỳ Nhóm Quyền tùy chỉnh nào."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:267
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:196
 msgid "Edit this user's group membership"
 msgstr "Chỉnh sửa tư cách thành viên nhóm của người dùng này"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:276
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:205
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2706,15 +2720,18 @@ msgstr ""
 "Lưu ý: Nhóm BuddyPress và các nhóm được định nghĩa bên ngoài khác không "
 "được liệt kê ở đây, ngay cả khi chúng sửa đổi quyền."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:341
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:270
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:391
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, thêm nữa..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:349
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:360
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:278
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:399
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:410
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "chỉnh sửa quyền người dùng"

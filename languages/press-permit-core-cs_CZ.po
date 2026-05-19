@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-05-15 18:55+0000\n"
+"PO-Revision-Date: 2026-05-19 18:45+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: cs_CZ\n"
@@ -1145,10 +1145,10 @@ msgstr "Všichni uživatelé (včetně anonymních)"
 msgid "All users with the WordPress role of %s"
 msgstr "Všichni uživatelé s rolí WordPress %s"
 
-#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1061
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1064
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1067
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:148
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:952
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:955
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:958
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
@@ -1265,10 +1265,10 @@ msgstr ""
 "revize"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:126
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:192
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:254
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:296
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:131
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:197
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:259
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:301
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
@@ -1279,77 +1279,81 @@ msgstr "(čas pro přihlášení vypršel)"
 msgid "View"
 msgstr "Zobrazit"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
 #, php-format
 msgid "Control assignment of selected terms to %s."
 msgstr "Ovládání přiřazení vybraných termínů k %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
-#, php-format
-msgid "Control parent selection for selected %s."
-msgstr "Ovládat výběr rodiče pro vybraný %s."
-
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control if this %s can be selected as a Parent Page."
+msgstr "Ovládejte, zda může být tento %s vybrán jako rodičovská stránka."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
 #, php-format
 msgid "Control editing of selected %s."
 msgstr "Ovládat úpravy vybraného %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
 #, php-format
 msgid "Control publishing of selected %s."
 msgstr "Ovládat publikování vybraného %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
 #, php-format
 msgid "Control deletion of selected %s."
 msgstr "Ovládat mazání vybraného %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
 #, php-format
 msgid "Control term management for selected %s."
 msgstr "Ovládat správu termínů pro vybraný %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
 #, php-format
 msgid "Control frontend viewing of selected %s."
 msgstr "Ovládat zobrazení na frontendu pro vybraný %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
 #, php-format
 msgid "Control who can create a revision of this %s."
 msgstr "Ovládejte, kdo může vytvořit revizi tohoto %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:95
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
 #, php-format
 msgid "Control who can submit a revision of this %s."
 msgstr "Ovládejte, kdo může předložit revizi tohoto %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:99
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
 msgid "Control parent selection for selected terms."
 msgstr "Ovládat výběr rodiče pro vybrané termíny."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:101
 msgid "Allow users to manage selected terms."
 msgstr "Umožnit uživatelům spravovat vybrané termíny."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:142
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:105
+msgid "Control management of selected groups."
+msgstr "Ovládejte správu vybraných skupin."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
 msgid "Enable"
 msgstr "Povolit"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:152
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:886
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Blokovat"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
 msgid "Limit to"
 msgstr "Omezeno na"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:160
 msgid ""
 "Expand access to allow specified items regardless of role capabilities or "
 "restrictions."
@@ -1357,7 +1361,7 @@ msgstr ""
 "Rozšiřte přístup, aby umožnil specifikované položky bez ohledu na "
 "schopnosti nebo omezení rolí."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:156
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:161
 msgid ""
 "Restrict access by blocking specified items unless an \"Enabled\" exception "
 "is also stored."
@@ -1365,7 +1369,7 @@ msgstr ""
 "Omezení přístupu blokováním specifikovaných položek, pokud není uložena "
 "také výjimka \"Povoleno\"."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:157
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:162
 msgid ""
 "Restrict access by limiting role capabilities to apply only for specified "
 "items. Users still need capabilities in their main role or extra roles."
@@ -1374,7 +1378,7 @@ msgstr ""
 "specifikované položky. Uživatelé stále potřebují schopnosti ve své hlavní "
 "roli nebo dodatečných rolích."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:176
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:181
 msgid ""
 "Using group membership to block access is not recommended. Consider "
 "reducing the user's role capabilities and using group membership to add "
@@ -1384,48 +1388,48 @@ msgstr ""
 "snížení schopností uživatele a použití členství ve skupině pro přidání "
 "přístupu."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:202
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
 msgid "Selected:"
 msgstr "Vybráno:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:214
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:219
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
 msgid "Nav Menus (Legacy)"
 msgstr "Navigační menu (Legacy)"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:216
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1000
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:221
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:892
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:225
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127, fuzzy
 msgid "Legacy"
 msgstr "Legacy"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:220
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:233
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:239
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:225
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:238
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:244
 #, fuzzy, php-format
 msgid "%s:"
 msgstr "%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:272
 #, php-format
 msgid "Selected %s:"
 msgstr "Vybráno %s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:274
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:279
 #, php-format
 msgid "Sub-%s:"
 msgstr "Pod-%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:307
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:312
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:179
 msgid "All Statuses"
 msgstr "Všechny stavy"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:320
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1987
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1863
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1607,7 +1611,7 @@ msgid "Reload form for further changes to this role"
 msgstr "Načíst formulář pro další změny této role"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:681
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:586
 msgid "Show Groups"
 msgstr "Zobrazit skupiny"
 
@@ -1616,13 +1620,13 @@ msgid "Hide Groups"
 msgstr "Skrýt skupiny"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:454
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:431
 msgid "Add Specific Permissions"
 msgstr "Přidat Specifická Oprávnění"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:415
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:392
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Odstranit"
@@ -1668,12 +1672,12 @@ msgid "No items selected!"
 msgstr "Žádné položky nebyly vybrány!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1286
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1177
 msgid "(no parent)"
 msgstr "(žádný rodič)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:788
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1691,7 +1695,7 @@ msgid "select..."
 msgstr "vybrat..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:992
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:884
 msgid "Nav Menu (Block)"
 msgstr "Navigační menu (blok)"
 
@@ -1704,24 +1708,24 @@ msgid "n/a"
 msgstr "n/a"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:259
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:381
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:358
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:386
 msgid "Post Type"
 msgstr "Typ příspěvku"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:387
 msgid "Operation"
 msgstr "Operace"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:411
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
 msgid "Adjustment"
 msgstr "Úprava"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:134
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:412
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:389
 msgid "Qualification"
 msgstr "Kvalifikace"
 
@@ -1744,7 +1748,7 @@ msgstr ""
 "deaktivováno. Zvažte nastavení soukromé viditelnosti na obrazovce Úprava "
 "příspěvku místo toho."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:225
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:202
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
@@ -1752,7 +1756,7 @@ msgstr ""
 "Pro přiřazení oprávnění specifických pro stránku pro úpravy, výběr rodičů "
 "nebo přiřazení termínů aktivujte funkci Oprávnění pro úpravy."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:214
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
@@ -1760,7 +1764,7 @@ msgstr ""
 "Pro přiřazení oprávnění specifických pro fórum pro bbPress aktivujte funkci "
 "Kompatibilní balíček."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:240
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:217
 #, php-format
 msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
@@ -1770,36 +1774,36 @@ msgstr ""
 "%1$saktualizujte na Permissions Pro%2$s a aktivujte funkci Kompatibilní "
 "balíček."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:260
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:382
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:785
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:359
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50, fuzzy
 msgid "Role"
 msgstr "Role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:261
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:238
 msgid "For Statuses"
 msgstr "Pro stavy"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:257
 msgid "Standard statuses"
 msgstr "Standardní stavy"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:262
 msgid "Status: Private"
 msgstr "Stav: Soukromý"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:290
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:267
 msgid "Add Role"
 msgstr "Přidat roli"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:302
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:279
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr "Pro přiřazení rolí pro fóra bbPress aktivujte funkci Kompatibilní balíček."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:305
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #, php-format
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
@@ -1808,7 +1812,7 @@ msgstr ""
 "Pro přiřazení rolí pro fóra bbPress, %1$saktualizujte na Permissions "
 "Pro%2$s a aktivujte funkci Kompatibilní balíček."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:316
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:293
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
@@ -1816,148 +1820,150 @@ msgstr ""
 "Pro přiřazení oprávnění PublishPress Revision specifických pro stránku "
 "aktivujte funkci Oprávnění pro úpravy."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:347
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:324
 #, php-format
 msgid "Select %s"
 msgstr "Vybrat %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:383
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:414
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:786
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1126
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:360
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:391
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1017
 msgid "Status"
 msgstr "Stav"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:393
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:370
 msgid "Save Roles"
 msgstr "Uložit role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:401
 msgid "Save Permissions"
 msgstr "Uložit oprávnění"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:457
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:434
 msgid "Add Extra Roles"
 msgstr "Přidat další role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:467
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:444
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "Kopírovat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:656
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:557
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:27
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Další role %1$s(pro tohoto uživatele)%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:657
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:558
 msgid "Extra Roles"
 msgstr "Další role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:710
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:769
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1108
-msgid "item(s)"
-msgstr "položka(e)"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:622
 msgid "Term Management"
 msgstr "Správa termínů"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:735
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:741
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:626
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:632
 msgid "objects"
 msgstr "objekty"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:736
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:627
 msgid "Direct-Assigned"
 msgstr "Přímo přiřazeno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:742
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:633
 msgid "Disabled Type"
 msgstr "Deaktivovaný typ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:661
 #, php-format
 msgid "%s Roles"
 msgstr "%s rolí"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:831
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:662
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:743
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:999
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1644
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:335
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:456
+msgid "item(s)"
+msgstr "položka(e)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:722
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1489
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
 msgid "Apply"
 msgstr "Použít"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:998
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:890
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:223
 msgid "Nav Menu (Legacy)"
 msgstr "Navigační menu (Legacy)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
-#, php-format
-msgid "%s Permissions"
-msgstr "%s Oprávnění"
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:903
+msgid "(from primary role or group membership)"
+msgstr "(z primární role nebo členství ve skupině)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1036
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:920
 msgid "(all post types)"
 msgstr "(všechny typy příspěvků)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:948
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1058
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:949
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:972
 msgid "item"
 msgstr "položka"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:972
 msgid "items"
 msgstr "položky"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1026
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Skupina"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1162
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
 msgid "unpublished"
 msgstr "nepublikováno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:332
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:261
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:382
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1216
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1107
 #, php-format
 msgid "this %1$s"
 msgstr "tato %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1221
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1112
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "sub-%1$s této %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "tato %1$s a její sub-%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1127
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
@@ -1966,7 +1972,7 @@ msgstr ""
 "%1$s přístup pro %2$s je POVOLEN v rámci %3$s, bez ohledu na schopnosti "
 "role."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1244
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -1975,7 +1981,7 @@ msgstr ""
 "%1$s přístup pro %2$s je ZAKÁZÁN v rámci %3$s, pokud není povolen jiným "
 "oprávněním."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1252
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -1984,17 +1990,17 @@ msgstr ""
 "Jakýkoli přístup založený na roli %1$s pro %2$s je OMEZEN. Platí pouze v "
 "rámci %3$s, spolu s dalšími specifikovanými %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1262
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s přístup pro %2$s je POVOLEN, bez ohledu na schopnosti role."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1269
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr "%1$s přístup pro %2$s je ZABLOKOVÁN, pokud není povolen jiným Oprávněním."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1276
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1167
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -2003,121 +2009,121 @@ msgstr ""
 "Jakýkoli přístup založený na roli %1$s pro %2$s je OMEZEN. Platí pouze pro "
 "%3$s, spolu s dalšími specifikovanými %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1321
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1212
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1315
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Přiřazeno pouze pro sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1329
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1434
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1220
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1323
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Přiřazeno pro %s a sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1458
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1347
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Toto oprávnění je nadbytečné kvůli odpovídajícímu omezení."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1354
 #, php-format
 msgid "Edit %s"
 msgstr "Upravit %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1374
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Přiřadit pro vybrané a sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1491
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1378
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Přiřadit pouze pro vybrané %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1495
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1382
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Přiřadit pouze pro sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 msgid "Assign for selected and sub-terms"
 msgstr "Přiřadit pro vybrané a sub-podmínky"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1391
 msgid "Assign for selected term only"
 msgstr "Přiřadit pouze pro vybranou podmínku"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1508
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1395
 msgid "Assign for sub-terms only"
 msgstr "Přiřadit pouze pro sub-podmínky"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1519
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
 msgid "Convert to \"Enabled\""
 msgstr "Převést na \"Povoleno\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1520
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
 msgid "Convert to \"Blocked\""
 msgstr "Převést na \"Blokováno\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
 msgid "Convert to \"Limit to\""
 msgstr "Převést na \"Omezeno na\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1578
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
 #, php-format
 msgid "Mirror to %s"
 msgstr "Zrcadlit na %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1582
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1469
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Zrcadlit na %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1517
 msgid "= Enabled"
 msgstr "= Povoleno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1648
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1524
 msgid "= Blocked"
 msgstr "= Blokováno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1655
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1531
 msgid "= Limitation"
 msgstr "= Omezení"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1669
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1545
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s a sub-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1675
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1551
 #, php-format
 msgid "= sub-%s only"
 msgstr "= pouze sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1693
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1717
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1569
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1593
 msgid "Note:"
 msgstr "Poznámka:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1695
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1719
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1571
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1595
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Oprávnění sub-%1$s nejsou uvedena samostatně."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1699
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1723
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1575
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1599
 msgid "Show All"
 msgstr "Zobrazit vše"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1708
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1584
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1607
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Skrýt automaticky přiřazená oprávnění Sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1744
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1620
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2126,50 +2132,55 @@ msgstr ""
 "Jiné pluginy (nebo deaktivace PublishPress Permissions) mohou zabránit "
 "správnému použití oprávnění podstránek při vytvoření nové podstránky."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1748
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1624
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sOpravit oprávnění Sub-%2$s%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1792
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1644
+#, php-format
+msgid "%s Permissions"
+msgstr "%s Oprávnění"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1668
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Omezení skupin nejsou k dispozici kvůli definici konstanty"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1809
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1685
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "Oprávnění pro povolení přístupu nejsou k dispozici kvůli definici konstanty"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1873
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1749
 msgid "Group Members"
 msgstr "Členové skupiny"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1922
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1798
 msgid "Copy Roles and Permissions from:"
 msgstr "Kopírovat role a oprávnění z:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1945
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1821
 msgid "Copy Roles and Permissions"
 msgstr "Kopírovat role a oprávnění"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1962
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1838
 msgid "Limit to:"
 msgstr "Omezeno na:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1965
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1841
 msgid "Blocked:"
 msgstr "Blokováno:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1969
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1845
 msgid "Enabled:"
 msgstr "Povoleno:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1980
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
 msgid "Direct-assigned"
 msgstr "Přímo přiřazeno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1993
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1869
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2308,6 +2319,9 @@ msgid "Settings"
 msgstr "Nastavení"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+msgid "(Default access)"
+msgstr "(Výchozí přístup)"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
 msgid "(Default access: Enabled)"
 msgstr "(Výchozí přístup: Povolen)"
@@ -2380,8 +2394,8 @@ msgstr "Ovládejte, kdo může přiřadit termíny k tomuto %s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
 #, php-format
-msgid "Control who can choose the parent page for this %s."
-msgstr "Ovládejte, kdo může vybrat rodičovskou stránku pro toto %s."
+msgid "Control who can select this page as parent %s."
+msgstr "Ovládejte, kdo může vybrat tuto stránku jako rodičovské %s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:392
 #, php-format
@@ -2682,29 +2696,29 @@ msgstr "Přiřadit podmínky"
 msgid "Specific Permissions %1$s(for this user)%2$s"
 msgstr "Specifická oprávnění %1$s(pro tohoto uživatele)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:100
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:50
 #, php-format
 msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
 msgstr "Další role %1$s(z primární role nebo členství ve skupině)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:131
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:61
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Specifická oprávnění (z primární role nebo členství ve skupině)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:231
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:160
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
 msgid "Permission Groups"
 msgstr "Skupiny oprávnění"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:263
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:192
 msgid "This user is not a member of any custom Permission Groups."
 msgstr "Tento uživatel není členem žádných vlastních skupin oprávnění."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:267
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:196
 msgid "Edit this user's group membership"
 msgstr "Upravit členství této skupiny uživatele"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:276
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:205
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2712,15 +2726,18 @@ msgstr ""
 "Poznámka: Skupiny BuddyPress a další externě definované skupiny zde nejsou "
 "uvedeny, i když mění oprávnění"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:341
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:270
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:391
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, více..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:349
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:360
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:278
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:399
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:410
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "upravit oprávnění uživatele"
