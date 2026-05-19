@@ -114,6 +114,17 @@ class PermissionsMeta
             );
         }
 
+        // Sort results to match operation priority order used in currentExceptionsUI
+        $ops_order = array_flip($pp->getOperations());
+        usort($results, function ($a, $b) use ($ops_order) {
+            $op_a = $ops_order[$a->operation] ?? PHP_INT_MAX;
+            $op_b = $ops_order[$b->operation] ?? PHP_INT_MAX;
+            if ($op_a !== $op_b) {
+                return $op_a - $op_b;
+            }
+            return strcmp($a->for_item_type ?? '', $b->for_item_type ?? '');
+        });
+
         foreach ($results as $row) {
             if (!$row->for_item_type)
                 $type_label = '';
