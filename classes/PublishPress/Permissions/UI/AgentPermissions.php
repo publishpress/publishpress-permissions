@@ -363,7 +363,7 @@ class AgentPermissions
                             Dashboard\Profile::displayUserGroups(
                                 $agent_id,
                                 [
-                                    'initial_hide' => true,
+                                    'initial_hide' => false,
                                     'selected_only' => true,
                                     'force_display' => true,
                                     'edit_membership_link' => true,
@@ -379,7 +379,7 @@ class AgentPermissions
                                 ''
                             );
 
-                            AgentPermissionsUI::currentRolesUI($roles, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption, 'show_groups_link' => true]);
+                            AgentPermissionsUI::currentRolesUI($roles, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption]);
 
                             $exceptions = [];
 
@@ -403,7 +403,7 @@ class AgentPermissions
                                 ''
                             );
 
-                            AgentPermissionsUI::currentExceptionsUI($exceptions, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption, 'show_groups_link' => true]);
+                            AgentPermissionsUI::currentExceptionsUI($exceptions, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption]);
                         } else {
                         ?>
                             <h4>

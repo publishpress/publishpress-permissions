@@ -175,13 +175,19 @@ class PermissionsMeta
                 $agent_clause = '';
             }
 
+            if ('groups_only' === $join_groups) {
+                $role_type_clause = "( r.agent_type = 'pp_group' AND r.agent_id = gm.group_id )";
+            } else {
+                $role_type_clause = "( ( r.agent_type = 'user' AND r.agent_id = gm.user_id ) OR ( r.agent_type = 'pp_group' AND r.agent_id = gm.group_id ) )";
+            }
+
             // Direct query of plugin tables for admin query, joining users table for labels (clauses sanitized above)
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $results = $wpdb->get_results(
                 "SELECT u.ID AS agent_id, r.role_name, COUNT(*) AS rolecount FROM $wpdb->users AS u"  // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users
                 . " INNER JOIN $wpdb->pp_group_members AS gm ON ( gm.user_id = u.ID $agent_clause )"  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
                 . " INNER JOIN $wpdb->ppc_roles AS r"
-                . " ON ( ( r.agent_type = 'user' AND r.agent_id = gm.user_id ) OR ( r.agent_type = 'pp_group' AND r.agent_id = gm.group_id ) )"
+                . " ON $role_type_clause"  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
                 . " GROUP BY u.ID, r.role_name"
             );
         } else {
