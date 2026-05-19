@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-05-15 18:55+0000\n"
+"PO-Revision-Date: 2026-05-19 18:45+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: yor\n"
@@ -1126,10 +1126,10 @@ msgstr "Gbogbo awọn olumulo (pẹlu aibikita)"
 msgid "All users with the WordPress role of %s"
 msgstr "Gbogbo awọn olumulo pẹlu ipa WordPress ti %s"
 
-#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:137
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1061
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1064
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1067
+#: classes/PublishPress/Permissions/DB/PermissionsMeta.php:148
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:952
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:955
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:958
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
@@ -1244,10 +1244,10 @@ msgid "Users to notify when scheduled revisions are published"
 msgstr "Awọn olumulo lati jẹ ki a mọ nigbati awọn atunṣe ti a ṣe eto ba ti tẹjade"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:64
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:126
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:192
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:254
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:296
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:131
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:197
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:259
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:301
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:44
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:66
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemAjax.php:26
@@ -1258,77 +1258,81 @@ msgstr "(iṣaaju ikọkọ ti pari)"
 msgid "View"
 msgstr "Wo"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:86
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
 #, php-format
 msgid "Control assignment of selected terms to %s."
 msgstr "Ṣakoso pinpin awọn ọrọ ti a yan si %s."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:87
-#, php-format
-msgid "Control parent selection for selected %s."
-msgstr "Ṣakoso yiyan obi fun %s ti a yan."
-
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:88
+#, php-format
+msgid "Control if this %s can be selected as a Parent Page."
+msgstr "Ṣakoso ti %s yii le jẹ yiyan gẹgẹ bi Ojú-iwe Iya."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
 #, php-format
 msgid "Control editing of selected %s."
 msgstr "Ṣakoso ṣiṣatunkọ ti %s ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:89
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
 #, php-format
 msgid "Control publishing of selected %s."
 msgstr "Ṣakoso ikede ti %s ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:90
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
 #, php-format
 msgid "Control deletion of selected %s."
 msgstr "Ṣakoso piparẹ ti %s ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:91
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
 #, php-format
 msgid "Control term management for selected %s."
 msgstr "Ṣakoso iṣakoso ọrọ fun %s ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:92
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
 #, php-format
 msgid "Control frontend viewing of selected %s."
 msgstr "Ṣakoso wiwo iwaju ti %s ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:93
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
 #, php-format
 msgid "Control who can create a revision of this %s."
 msgstr "Ṣakoso ẹni tí ó lè dá àtúnṣe ti %s yìí sílẹ̀."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:95
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
 #, php-format
 msgid "Control who can submit a revision of this %s."
 msgstr "Ṣakoso ẹni tí ó lè fi àtúnṣe ti %s yìí sílẹ̀."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:99
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
 msgid "Control parent selection for selected terms."
 msgstr "Ṣakoso yiyan obi fun awọn ọrọ ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:100
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:101
 msgid "Allow users to manage selected terms."
 msgstr "Gba awọn olumulo laaye lati ṣakoso awọn ọrọ ti a yan."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:142
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:105
+msgid "Control management of selected groups."
+msgstr "Ṣakoso iṣakoso ti awọn ẹgbẹ ti a yan."
+
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
 msgid "Enable"
 msgstr "Mu ṣiṣẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:147
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:152
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:994
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:886
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Dena"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:150
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
 msgid "Limit to"
 msgstr "Iwọn si"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:155
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:160
 msgid ""
 "Expand access to allow specified items regardless of role capabilities or "
 "restrictions."
@@ -1336,7 +1340,7 @@ msgstr ""
 "Fa àfihàn pọ̀ sí i láti jẹ́ kí àwọn ohun tí a tọka sí ní wọlé láìka agbara "
 "ipa tàbí ìdènà."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:156
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:161
 msgid ""
 "Restrict access by blocking specified items unless an \"Enabled\" exception "
 "is also stored."
@@ -1344,7 +1348,7 @@ msgstr ""
 "Dènà àfihàn nipa didín àwọn ohun tí a tọka sí ayafi pé àpẹẹrẹ \"Enabled\" "
 "tún ti fipamọ́."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:157
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:162
 msgid ""
 "Restrict access by limiting role capabilities to apply only for specified "
 "items. Users still need capabilities in their main role or extra roles."
@@ -1352,7 +1356,7 @@ msgstr ""
 "Dènà àfihàn nipa didín agbara ipa sí i lati lo fún àwọn ohun tí a tọka sí. "
 "Àwọn olumulo ṣi nilo agbara ní ipa wọn àkọ́kọ́ tàbí àwọn ipa afikun."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:176
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:181
 msgid ""
 "Using group membership to block access is not recommended. Consider "
 "reducing the user's role capabilities and using group membership to add "
@@ -1361,48 +1365,48 @@ msgstr ""
 "Lilo ìṣeduro ẹgbẹ́ láti dènà àfihàn kò jẹ́ ohun tó dára. Ronú pẹ̀lú dín "
 "agbara ipa olumulo àti lilo ìṣeduro ẹgbẹ́ láti fi àfihàn kun."
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:202
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:207
 msgid "Selected:"
 msgstr "Ti a yan:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:214
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:219
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:125
 msgid "Nav Menus (Legacy)"
 msgstr "Awọn akojọ aṣayan Nav (Iwa atijọ)"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:216
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1000
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:221
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:892
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:225
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
 msgid "Legacy"
 msgstr "Iwa atijọ"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:220
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:233
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:239
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:225
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:238
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:244
 #, fuzzy, php-format
 msgid "%s:"
 msgstr "%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:267
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:272
 #, php-format
 msgid "Selected %s:"
 msgstr "Ti a yan %s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:274
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:279
 #, fuzzy, php-format
 msgid "Sub-%s:"
 msgstr "Sub-%s:"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:307
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:312
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:179
 msgid "All Statuses"
 msgstr "Gbogbo Awọn ipo"
 
-#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:320
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1987
+#: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1863
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1586,7 +1590,7 @@ msgid "Reload form for further changes to this role"
 msgstr "Tun awọn fọọmu ṣe fun awọn ayipada si ipa yii"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:681
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:586
 msgid "Show Groups"
 msgstr "Fihan Awọn ẹgbẹ"
 
@@ -1595,13 +1599,13 @@ msgid "Hide Groups"
 msgstr "Tọju Awọn Ẹgbẹ"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:454
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:431
 msgid "Add Specific Permissions"
 msgstr "Fi Awọn igbanilaaye pato kun"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:415
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:392
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Yọ"
@@ -1645,12 +1649,12 @@ msgid "No items selected!"
 msgstr "Ko si awọn nkan ti a yan!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1286
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1177
 msgid "(no parent)"
 msgstr "(ko si baba)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:900
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:788
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1668,7 +1672,7 @@ msgid "select..."
 msgstr "yan..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:99
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:992
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:884
 msgid "Nav Menu (Block)"
 msgstr "Àtọọ́ka Àtúnṣe (Blọ́kì)"
 
@@ -1681,24 +1685,24 @@ msgid "n/a"
 msgstr "n/a"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:131
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:259
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:381
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:358
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:386
 msgid "Post Type"
 msgstr "Irú Ifiweranṣẹ"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:132
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:387
 msgid "Operation"
 msgstr "Iṣẹ"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:133
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:411
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
 msgid "Adjustment"
 msgstr "Àtúnṣe"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:134
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:412
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:389
 msgid "Qualification"
 msgstr "Ìmúrasílẹ̀"
 
@@ -1720,7 +1724,7 @@ msgstr ""
 "Ikilọ: Àkópọ̀ tí a pamọ́ nipasẹ Àṣẹ wọ̀nyí yóò hàn bí PP ba ti dákẹ́. Ronú "
 "pẹ̀lú ṣíṣe àtọkànwá àfihàn àkọ́kọ́ ní iboju Ṣatunkọ Àtúnṣe dipo."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:225
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:202
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
@@ -1728,13 +1732,13 @@ msgstr ""
 "Láti assign àṣẹ pàtó ojúewé fún ṣiṣatunkọ, àṣàyàn ìyá tàbí ìpinnu àkópọ̀, "
 "ṣe àfihàn ẹya Àṣẹ Ṣatunkọ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:214
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
 msgstr "Láti assign àṣẹ pàtó fún bbPress, ṣiṣé ẹya Compatibility Pack."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:240
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:217
 #, php-format
 msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
@@ -1743,36 +1747,36 @@ msgstr ""
 "Láti assign àṣẹ pàtó fún bbPress, %1$s ṣe àtúnṣe sí Permissions Pro %2$s "
 "àti ṣiṣé ẹya Compatibility Pack."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:260
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:382
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:785
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:359
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "Ipa"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:261
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:238
 msgid "For Statuses"
 msgstr "Fun Ipo"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:280
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:257
 msgid "Standard statuses"
 msgstr "Ipo boṣewa"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:285
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:262
 msgid "Status: Private"
 msgstr "Ipo: Ikọkọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:290
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:267
 msgid "Add Role"
 msgstr "Fikun Role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:302
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:279
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr "Lati yan awọn ipa fun awọn apejọ bbPress, muu ẹya Compatibility Pack ṣiṣẹ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:305
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #, php-format
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
@@ -1781,161 +1785,163 @@ msgstr ""
 "Láti assign ipa fún bbPress forums, %1$s ṣe àtúnṣe sí Permissions Pro %2$s "
 "àti ṣiṣé ẹya Compatibility Pack."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:316
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:293
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
 msgstr "Lati fi awọn aṣẹ atunṣe PublishPress pato oju-iwe, mu ẹya Aṣẹ Iṣatunkọ ṣiṣẹ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:347
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:324
 #, php-format
 msgid "Select %s"
 msgstr "Yan %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:383
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:414
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:786
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1126
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:360
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:391
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1017
 msgid "Status"
 msgstr "Ipo"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:393
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:370
 msgid "Save Roles"
 msgstr "Fipamọ Awọn Role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:401
 msgid "Save Permissions"
 msgstr "Fipamọ Awọn igbanilaaye"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:457
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:434
 msgid "Add Extra Roles"
 msgstr "Fikun Awọn Role afikun"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:467
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:444
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "Daakọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:656
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:32
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:557
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:27
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Awọn Role afikun %1$s(fun olumulo yii)%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:657
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:558
 msgid "Extra Roles"
 msgstr "Awọn Role afikun"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:710
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:769
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1108
-msgid "item(s)"
-msgstr "nkan(s)"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:622
 msgid "Term Management"
 msgstr "Iṣakoso Ọrọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:735
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:741
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:626
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:632
 msgid "objects"
 msgstr "awọn nkan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:736
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:627
 msgid "Direct-Assigned"
 msgstr "Taara-Yan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:742
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:633
 msgid "Disabled Type"
 msgstr "Iru ti a ti pa"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:661
 #, php-format
 msgid "%s Roles"
 msgstr "%s Awọn Role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:831
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:662
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:743
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:999
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1644
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:335
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:456
+msgid "item(s)"
+msgstr "nkan(s)"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:722
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1489
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
 msgid "Apply"
 msgstr "Lo"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:998
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:890
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:223
 msgid "Nav Menu (Legacy)"
 msgstr "Àtẹ́lẹwọ́ àkópọ̀ (Iṣẹ́ àtijọ́)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1018
-#, php-format
-msgid "%s Permissions"
-msgstr "%s Àṣẹ"
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:903
+msgid "(from primary role or group membership)"
+msgstr "(lati ipa akọkọ tabi ọmọ ẹgbẹ ẹgbẹ)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1036
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:920
 msgid "(all post types)"
 msgstr "( gbogbo irú ìfọ́rọ́wérọ́ )"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1057
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:948
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1058
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:949
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:972
 msgid "item"
 msgstr "nkan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1081
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:972
 msgid "items"
 msgstr "nkan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1026
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1162
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1053
 msgid "unpublished"
 msgstr "ti a kò tẹ̀jáde"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1060
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:332
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:261
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:382
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1216
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1107
 #, php-format
 msgid "this %1$s"
 msgstr "eyi %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1221
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1112
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "sub-%1$s ti eyi %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1227
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1118
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "eyi %1$s àti sub-%2$s rẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1127
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
 "capabilities."
 msgstr "%1$s iraye si %2$s ti wa ni ṢIṢE laarin %3$s, laibikita awọn agbara ipa."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1244
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -1944,7 +1950,7 @@ msgstr ""
 "%1$s iraye si %2$s ti wa ni DENA laarin %3$s, ayafi ti a mu ṣiṣẹ nipasẹ Aṣẹ "
 "miiran."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1252
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -1953,19 +1959,19 @@ msgstr ""
 "Iṣẹ-ṣiṣe %1$s ti o da lori ipa fun %2$s jẹ IYỌRỌ. O ṣiṣẹ nikan laarin %3$s, "
 "pẹlu awọn %4$s miiran ti a sọ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1262
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s iraye si fun %2$s ti wa ni ṢÍṢÉ, laibikita awọn agbara ipa."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1269
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "%1$s iraye si fun %2$s ti wa ni DÍMÚ, ayafi ti a ba mu ṣiṣẹ́ nípa Àṣẹ "
 "mìíràn."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1276
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1167
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -1974,121 +1980,121 @@ msgstr ""
 "Iṣẹ-ṣiṣe %1$s ti o da lori ipa fun %2$s jẹ IYỌRỌ. O ṣiṣẹ nikan fun %3$s, "
 "pẹlu awọn %4$s miiran ti a sọ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1321
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1212
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1315
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Ti yan fun sub-%s nikan."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1329
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1434
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1220
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1323
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Ti yan fun %s àti sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1458
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1347
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Iwe-aṣẹ yii jẹ alaimuṣinṣin nitori ihamọ ti o baamu."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1354
 #, php-format
 msgid "Edit %s"
 msgstr "Ṣatunkọ %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1374
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Yàn fun ti a yan ati sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1491
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1378
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Yàn fun ti a yan %s nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1495
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1382
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Yàn fun sub-%s nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1500
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 msgid "Assign for selected and sub-terms"
 msgstr "Yàn fun ti a yan ati sub-ọrọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1504
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1391
 msgid "Assign for selected term only"
 msgstr "Yàn fun ọrọ ti a yan nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1508
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1395
 msgid "Assign for sub-terms only"
 msgstr "Yàn fun sub-ọrọ nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1519
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1406
 msgid "Convert to \"Enabled\""
 msgstr "Yipada si \"Ti mu ṣiṣẹ\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1520
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
 msgid "Convert to \"Blocked\""
 msgstr "Yipada si \"Ti dani\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1521
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
 msgid "Convert to \"Limit to\""
 msgstr "Yipada si \"Ihamọ si\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1578
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1465
 #, php-format
 msgid "Mirror to %s"
 msgstr "Mirọ si %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1582
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1469
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Mirọ si %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1517
 msgid "= Enabled"
 msgstr "= Ti mu ṣiṣẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1648
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1524
 msgid "= Blocked"
 msgstr "= Ti dani"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1655
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1531
 msgid "= Limitation"
 msgstr "= Ihamọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1669
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1545
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s ati sub-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1675
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1551
 #, php-format
 msgid "= sub-%s only"
 msgstr "= sub-%s nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1693
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1717
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1569
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1593
 msgid "Note:"
 msgstr "Ak note:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1695
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1719
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1571
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1595
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Iwe-aṣẹ Sub-%1$s ko ti wa ni atokọ ni oriṣiriṣi."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1699
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1723
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1575
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1599
 msgid "Show All"
 msgstr "Fihan Gbogbo"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1708
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1731
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1584
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1607
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Pa Sub-%s Aṣẹ ti a fiwe si laifọwọyi"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1744
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1620
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2097,50 +2103,55 @@ msgstr ""
 "Awọn afikun miiran (tabi ifagile ti Aṣẹ PublishPress) le ṣe idiwọ fun awọn "
 "aṣẹ sub-page lati jẹ ti a lo ni deede nigbati a ṣẹda sub-page tuntun."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1748
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1624
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sṢatunṣe Sub-%2$s Aṣẹ%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1792
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1644
+#, php-format
+msgid "%s Permissions"
+msgstr "%s Àṣẹ"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1668
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Awọn ihamọ ẹgbẹ ko wa nitori itumọ iduroṣinṣin kan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1809
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1685
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "Awọn aṣẹ lati mu iraye si ṣiṣẹ ko si nitori itumọ aimi kan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1873
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1749
 msgid "Group Members"
 msgstr "Awọn ọmọ ẹgbẹ Ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1922
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1798
 msgid "Copy Roles and Permissions from:"
 msgstr "Daakọ Awọn ipa ati Awọn aṣẹ lati:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1945
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1821
 msgid "Copy Roles and Permissions"
 msgstr "Daakọ Awọn ipa ati Awọn aṣẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1962
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1838
 msgid "Limit to:"
 msgstr "Dín si:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1965
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1841
 msgid "Blocked:"
 msgstr "Dena:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1969
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1845
 msgid "Enabled:"
 msgstr "Mu ṣiṣẹ:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1980
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
 msgid "Direct-assigned"
 msgstr "Ti a fiwe si taara"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1993
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1869
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2279,6 +2290,9 @@ msgid "Settings"
 msgstr "Awọn Eto"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
+msgid "(Default access)"
+msgstr "(Iwọle aiyipada)"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:16
 msgid "(Default access: Enabled)"
 msgstr "(Iwọle aiyipada: Ti muu ṣiṣẹ)"
@@ -2351,8 +2365,8 @@ msgstr "Ṣakoso ẹni ti o le fi awọn ọrọ sori %s yii."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
 #, php-format
-msgid "Control who can choose the parent page for this %s."
-msgstr "Ṣakoso ẹni ti o le yan oju-iwe obi fun %s yii."
+msgid "Control who can select this page as parent %s."
+msgstr "Ṣakoso ẹni ti o le yan oju-iwe yii gẹgẹ bi iya %s."
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:392
 #, php-format
@@ -2650,29 +2664,29 @@ msgstr "Yàn Awọn Ọrọ"
 msgid "Specific Permissions %1$s(for this user)%2$s"
 msgstr "Ẹtọ Pataki %1$s(fun olumulo yii)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:100
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:50
 #, php-format
 msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
 msgstr "Ipa afikun %1$s(lati ipa akọkọ tabi ẹgbẹ membership)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:131
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:61
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Ẹtọ Pataki (lati ipa akọkọ tabi ẹgbẹ membership)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:231
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:160
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:171
 msgid "Permission Groups"
 msgstr "Ẹgbẹ Ẹtọ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:263
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:192
 msgid "This user is not a member of any custom Permission Groups."
 msgstr "Olumulo yii kii ṣe ọmọ ẹgbẹ eyikeyi Ẹgbẹ Ẹtọ aṣa."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:267
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:196
 msgid "Edit this user's group membership"
 msgstr "Ṣatunkọ membership ẹgbẹ olumulo yii"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:276
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:205
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2680,15 +2694,18 @@ msgstr ""
 "Akiyesi: Awọn ẹgbẹ BuddyPress ati awọn ẹgbẹ ti a ṣalaye ni ita ko si nibi, "
 "paapaa ti wọn ba yi awọn ẹtọ pada"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:341
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:270
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:391
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, siwaju..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:349
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:360
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:278
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:399
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:410
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "ṣatunkọ awọn ẹtọ olumulo"
