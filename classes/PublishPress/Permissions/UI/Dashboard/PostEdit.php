@@ -98,7 +98,8 @@ class PostEdit
         $exc_args = ['via_item_source' => 'post', 'for_item_source' => 'post'];
         $can_use_metabox = current_user_can('pp_assign_roles')
             || $pp_admin->canSetExceptions('read', $post_type, $exc_args)
-            || $pp_admin->canSetExceptions('edit', $post_type, $exc_args);
+            || $pp_admin->canSetExceptions('edit', $post_type, $exc_args)
+            || $pp_admin->canSetExceptions('associate', $post_type, $exc_args);
 
         if (!$can_use_metabox || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
             return;
@@ -232,7 +233,8 @@ class PostEdit
         $exc_args = ['via_item_source' => 'post', 'for_item_source' => 'post'];
         $can_use_metabox = current_user_can('pp_assign_roles')
             || $pp_admin->canSetExceptions('read', $typenow, $exc_args)
-            || $pp_admin->canSetExceptions('edit', $typenow, $exc_args);
+            || $pp_admin->canSetExceptions('edit', $typenow, $exc_args)
+            || $pp_admin->canSetExceptions('associate', $typenow, $exc_args);
 
         if ($can_use_metabox) {
             $this->initItemExceptionsUI();
