@@ -158,13 +158,13 @@ class RoleAdmin
                     $can = is_taxonomy_hierarchical($for_item_type) 
                     && ($is_administrator || current_user_can('pp_set_term_associate_permissions'));
                 } else {
-                    $can = is_post_type_hierarchical($for_item_type) && ($is_administrator 
-                    || ($can_edit_published && current_user_can('pp_set_associate_permissions')));
+                    $can = is_post_type_hierarchical($for_item_type) 
+                    && ($is_administrator || current_user_can('pp_set_associate_permissions'));
                 }
                 break;
 
             case 'assign':
-                $can = $is_administrator || ($can_edit_published && current_user_can('pp_set_term_assign_permissions'));
+                $can = $is_administrator || current_user_can('pp_set_term_assign_permissions');
                 break;
 
             case 'manage':

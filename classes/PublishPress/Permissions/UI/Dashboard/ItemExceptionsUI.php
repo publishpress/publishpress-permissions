@@ -345,6 +345,9 @@ class ItemExceptionsUI
             'publish'   => 'pp_set_edit_permissions',
             'assign'    => 'pp_set_term_assign_permissions',
             'associate' => ('term' === $via_item_source) ? 'pp_set_term_associate_permissions' : 'pp_set_associate_permissions',
+            'manage'    => 'pp_set_term_manage_permissions',
+            'copy'      => 'pp_set_copy_permissions',
+            'revise'    => 'pp_set_revise_permissions',
         ];
         $operations = array_filter($operations, function ($op_data) use ($is_administrator, $op_caps) {
             if ($is_administrator) {

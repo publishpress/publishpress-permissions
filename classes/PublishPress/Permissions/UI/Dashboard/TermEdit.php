@@ -242,10 +242,16 @@ class TermEdit
             return;
         }
 
-        if (
-            !current_user_can('pp_assign_roles')
-            || apply_filters('presspermit_disable_exception_ui', false, 'term', $tt_id, $post_type)
-        ) {
+        $pp_admin = $pp->admin();
+        $exc_args_post = ['via_item_source' => 'term', 'via_item_type' => $taxonomy, 'for_item_source' => 'post'];
+        $can_use_metabox = current_user_can('pp_assign_roles')
+            || $pp_admin->canSetExceptions('read', $post_type, $exc_args_post)
+            || $pp_admin->canSetExceptions('edit', $post_type, $exc_args_post)
+            || current_user_can('pp_set_term_assign_permissions')
+            || current_user_can('pp_set_term_manage_permissions')
+            || current_user_can('pp_set_term_associate_permissions');
+
+        if (!$can_use_metabox || apply_filters('presspermit_disable_exception_ui', false, 'term', $tt_id, $post_type)) {
             return;
         }
 
@@ -411,7 +417,16 @@ class TermEdit
         $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
         $taxonomy = PWP::REQUEST_key('taxonomy');
 
-        if (current_user_can('pp_assign_roles')) {
+        $pp_admin = presspermit()->admin();
+        $exc_args_post = ['via_item_source' => 'term', 'via_item_type' => $taxonomy, 'for_item_source' => 'post'];
+        $can_use_metabox = current_user_can('pp_assign_roles')
+            || $pp_admin->canSetExceptions('read', $post_type, $exc_args_post)
+            || $pp_admin->canSetExceptions('edit', $post_type, $exc_args_post)
+            || current_user_can('pp_set_term_assign_permissions')
+            || current_user_can('pp_set_term_manage_permissions')
+            || current_user_can('pp_set_term_associate_permissions');
+
+        if ($can_use_metabox) {
             $this->initItemExceptionsUI();
 
             $tt_id = PWP::termidToTtid($tag_ID, $taxonomy);
@@ -440,10 +455,16 @@ class TermEdit
 
         $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
 
-        if (
-            !current_user_can('pp_assign_roles')
-            || apply_filters('presspermit_disable_exception_ui', false, 'term', $tag->term_taxonomy_id, $post_type)
-        ) {
+        $pp_admin = presspermit()->admin();
+        $exc_args_post = ['via_item_source' => 'term', 'via_item_type' => $taxonomy, 'for_item_source' => 'post'];
+        $can_use_metabox = current_user_can('pp_assign_roles')
+            || $pp_admin->canSetExceptions('read', $post_type, $exc_args_post)
+            || $pp_admin->canSetExceptions('edit', $post_type, $exc_args_post)
+            || current_user_can('pp_set_term_assign_permissions')
+            || current_user_can('pp_set_term_manage_permissions')
+            || current_user_can('pp_set_term_associate_permissions');
+
+        if (!$can_use_metabox || apply_filters('presspermit_disable_exception_ui', false, 'term', $tag->term_taxonomy_id, $post_type)) {
             return;
         }
         
