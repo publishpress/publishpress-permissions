@@ -14,6 +14,10 @@ class Groups
         $pp_admin = $pp->admin();
         $pp_groups = $pp->groups();
 
+        if (!current_user_can('pp_manager') && !$pp_groups->anyGroupManager()) {
+            wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
+        }
+
         /**
          * Need to add dummy constants because this data dynamically comes from the database
          * and we want to use sync tool from loco translate to get this data automatically

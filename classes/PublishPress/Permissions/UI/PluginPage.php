@@ -43,7 +43,7 @@ class PluginPage
         global $pagenow;
 
         if (('upload.php' == $pagenow) && !defined('PRESSPERMIT_FILE_ACCESS_VERSION')
-            && current_user_can('pp_manage_settings') && presspermit()->getOption('display_extension_hints')
+            && current_user_can('pp_manager') && presspermit()->getOption('display_extension_hints')
         ) {
             require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsMedia.php');
             HintsMedia::fileFilteringPromo();

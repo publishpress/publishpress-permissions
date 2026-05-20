@@ -10,7 +10,7 @@ class RoleUsage
         $url = apply_filters('presspermit_role_usage_base_url', 'admin.php');
         $redirect = $err = false;
 
-        if (!current_user_can('pp_manage_settings'))
+        if (!current_user_can('pp_manager'))
             wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
 
         $pp = presspermit();

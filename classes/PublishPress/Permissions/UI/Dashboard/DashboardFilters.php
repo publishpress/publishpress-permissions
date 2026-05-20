@@ -222,8 +222,9 @@ class DashboardFilters
 
         $do_groups = current_user_can('pp_manager') || current_user_can('pp_edit_groups') || presspermit()->groups()->anyGroupManager();
         $do_settings = current_user_can('pp_manage_settings');
+        $do_teaser = current_user_can('pp_manage_teaser');
 
-        if (!$do_groups && !$do_settings) {
+        if (!$do_groups && !$do_settings && !$do_teaser) {
             return;
         }
 
@@ -249,15 +250,45 @@ class DashboardFilters
                 }
             }
 
-            add_menu_page(
-                $permissions_title,
-                $permissions_title,
-                'read',
-                $pp_cred_menu,
-                [__CLASS__, 'actMenuHandler'],
-                'dashicons-unlock',
-                $menu_order
-            );
+            if ($do_groups) {
+                // Full manager access: top-level menu points to the Groups screen.
+                add_menu_page(
+                    $permissions_title,
+                    $permissions_title,
+                    'read',
+                    $pp_cred_menu,
+                    [__CLASS__, 'actMenuHandler'],
+                    'dashicons-unlock',
+                    $menu_order
+                );
+            } elseif ($do_settings) {
+                // Settings-only access: top-level menu points directly to the Settings screen
+                // so the sidebar never shows a link to the groups page.
+                add_menu_page(
+                    $permissions_title,
+                    $permissions_title,
+                    'pp_manage_settings',
+                    'presspermit-settings',
+                    [__CLASS__, 'actMenuHandler'],
+                    'dashicons-unlock',
+                    $menu_order
+                );
+                $pp_cred_menu    = 'presspermit-settings';
+                $pp_options_menu = 'presspermit-settings';
+            } else {
+                // Teaser-only access: top-level menu points directly to the Teaser screen.
+                add_menu_page(
+                    $permissions_title,
+                    $permissions_title,
+                    'pp_manage_teaser',
+                    'presspermit-posts-teaser',
+                    [__CLASS__, 'actMenuHandler'],
+                    'dashicons-unlock',
+                    $menu_order
+                );
+                $pp_cred_menu    = 'presspermit-posts-teaser';
+                $pp_options_menu = 'presspermit-posts-teaser';
+            }
         }
 
         $handler = [__CLASS__, 'actMenuHandler'];
@@ -316,17 +347,19 @@ class DashboardFilters
             }
         }
 
-        if ($do_settings) {
+        if ($do_settings || $do_teaser) {
             do_action('presspermit_permissions_menu', $pp_options_menu, $handler);
 
-            $settings_caption = ('presspermit-groups' == $pp_options_menu)
-                ? esc_html__('Settings', 'press-permit-core')
-                : $permissions_title;
+            if ($do_settings) {
+                $settings_caption = ('options-general.php' == $pp_options_menu)
+                    ? $permissions_title
+                    : esc_html__('Settings', 'press-permit-core');
 
-            add_submenu_page($pp_options_menu, $settings_caption, $settings_caption, 'pp_manage_settings', 'presspermit-settings', $handler);
+                add_submenu_page($pp_options_menu, $settings_caption, $settings_caption, 'pp_manage_settings', 'presspermit-settings', $handler);
+            }
         }
 
-        do_action('presspermit_admin_menu');
+        do_action('presspermit_admin_menu', $pp_options_menu, $handler);
     }
 
     public function actUserUi($user = false)
