@@ -124,7 +124,7 @@ class PluginPage
                     }
                 }
             }
-        } elseif (PWP::empty_REQUEST('group_variant') && !current_user_can('edit_users')) {
+        } elseif (PWP::empty_REQUEST('group_variant') && !current_user_can('edit_users') && !current_user_can('pp_manager')) {
             $group_variant = 'pp_group';
         }
 
