@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-05-19 18:46+0000\n"
+"PO-Revision-Date: 2026-05-20 18:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
@@ -1214,13 +1214,13 @@ msgid "Dismiss"
 msgstr "Respinge"
 
 #: classes/PublishPress/Permissions/Groups.php:54
-#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/Groups.php:241
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:335
 msgid "Custom Group"
 msgstr "Grup personalizat"
 
 #: classes/PublishPress/Permissions/Groups.php:55
-#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/Groups.php:241
 msgid "Custom Groups"
 msgstr "Grupuri personalizate"
 
@@ -1331,13 +1331,13 @@ msgid "Control frontend viewing of selected %s."
 msgstr "Controlați vizualizarea frontend pentru %s selectat."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:400
 #, php-format
 msgid "Control who can create a revision of this %s."
 msgstr "Controlează cine poate crea o revizie a acestui %s."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:95
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:401
 #, php-format
 msgid "Control who can submit a revision of this %s."
 msgstr "Controlează cine poate trimite o revizie a acestui %s."
@@ -1459,6 +1459,7 @@ msgstr "Niciun utilizator/grup specificat."
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:49
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:52
 #: classes/PublishPress/Permissions/UI/GroupNew.php:29
+#: classes/PublishPress/Permissions/UI/Groups.php:18
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
@@ -1508,7 +1509,7 @@ msgstr "Adaugă permisiuni utilizator"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:130
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:132
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:282
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:313
 msgid "Edit Permissions"
 msgstr "Editează permisiunile"
 
@@ -1527,7 +1528,7 @@ msgid "Edit role capabilities directly"
 msgstr "Editează capacitățile rolului direct"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:156
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:272
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:303
 msgid "Add New"
 msgstr "Adaugă nou"
 
@@ -1802,7 +1803,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:359
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1069
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -1919,8 +1920,8 @@ msgstr "element(e)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:722
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1489
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:813
 msgid "Apply"
 msgstr "Aplică"
 
@@ -1956,7 +1957,7 @@ msgid "items"
 msgstr "elemente"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1026
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1073
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
@@ -2314,39 +2315,39 @@ msgstr "Caută un utilizator"
 msgid "Search for an author"
 msgstr "Caută un autor"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:241
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:297
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
-#: classes/PublishPress/Permissions/UI/Groups.php:180
+#: classes/PublishPress/Permissions/UI/Groups.php:184
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:39
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:164
 msgid "Permissions"
 msgstr "Permisiuni"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:271
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:302
 msgid "Add New Permission Group"
 msgstr "Adaugă grup de permisiuni nou"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:317
 msgid "Edit"
 msgstr "Editează"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:329
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:330
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:96
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:97
 msgid "Role Usage"
 msgstr "Utilizarea rolului"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:310
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:311
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:341
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:342
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:107
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:108
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:64
 msgid "Edit Role Usage"
 msgstr "Editează utilizarea rolului"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:356
 msgid "Settings"
 msgstr "Setări"
 
@@ -2387,7 +2388,7 @@ msgid "Unblocked"
 msgstr "Deblocat"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:542
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:545
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
 msgid "Roles"
@@ -2398,15 +2399,15 @@ msgid "User"
 msgstr "Utilizator"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1121
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1187
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
 #, php-format
 msgid "This %s"
 msgstr "Acest %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1188
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1191
 #, fuzzy, php-format
 msgid "Sub-%s"
 msgstr "Sub-%s"
@@ -2419,206 +2420,206 @@ msgstr "Implicit Toate"
 msgid "Group restrictions are not recommended."
 msgstr "Restricțiile de grup nu sunt recomandate."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:390
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:393
 #, php-format
 msgid "Control who can assign terms to this %s."
 msgstr "Controlați cine poate atribui termeni acestui %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:394
 #, php-format
 msgid "Control who can select this page as parent %s."
 msgstr "Controlează cine poate selecta această pagină ca părinte %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:392
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:395
 #, php-format
 msgid "Control editing of this %s."
 msgstr "Controlați editarea acestui %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:393
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:396
 #, php-format
 msgid "Control publishing of this %s."
 msgstr "Controlați publicarea acestui %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:394
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
 #, php-format
 msgid "Control deletion of this %s."
 msgstr "Controlați ștergerea acestui %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:395
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
 #, php-format
 msgid "Control term management for this %s."
 msgstr "Controlați gestionarea termenilor pentru acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:396
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:399
 #, php-format
 msgid "Control frontend viewing of this %s."
 msgstr "Controlați vizualizarea frontend a acestui %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:401
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:404
 #, php-format
 msgid "Control who add this %s to %s."
 msgstr "Controlați cine adaugă acest %s la %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:402
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:405
 #, php-format
 msgid "Control who can edit %s with this %s."
 msgstr "Controlați cine poate edita %s cu acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:403
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:406
 #, php-format
 msgid "Control who can view %s with this %s."
 msgstr "Controlați cine poate vizualiza %s cu acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:404
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:407
 #, php-format
 msgid "Control who can create a revision of %s with this %s."
 msgstr "Controlați cine poate crea o revizie a %s cu acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:405
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:408
 #, php-format
 msgid "Control who can submit a revision of %s with this %s."
 msgstr "Controlați cine poate trimite o revizie a %s cu acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:409
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:412
 #, php-format
 msgid "Control who add this %s to all post types."
 msgstr "Controlați cine adaugă acest %s la toate tipurile de postări."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:410
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:413
 #, php-format
 msgid "Control who can edit all post types in this %s."
 msgstr "Controlează cine poate edita toate tipurile de postări în acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:411
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:414
 #, php-format
 msgid "Control who can view all post types in this %s."
 msgstr "Controlează cine poate vizualiza toate tipurile de postări în acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:412
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:415
 #, php-format
 msgid "Control who can create a revision of all post types in this %s."
 msgstr ""
 "Controlează cine poate crea o revizie a tuturor tipurilor de postări în "
 "acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:413
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:416
 #, php-format
 msgid "Control who can submit a revision of all post types in this %s."
 msgstr ""
 "Controlează cine poate trimite o revizie a tuturor tipurilor de postări în "
 "acest %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:542
-#: classes/PublishPress/PermissionsHooksAdmin.php:342
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:545
+#: classes/PublishPress/PermissionsHooksAdmin.php:346
 msgid "Roles & Groups"
 msgstr "Roluri & Grupuri"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:543
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:546
 msgid "Search roles and groups..."
 msgstr "Caută roluri și grupuri..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:543
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:546
 msgid "Search roles..."
 msgstr "Caută roluri..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:554
-#: classes/PublishPress/Permissions/UI/Groups.php:211
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:557
+#: classes/PublishPress/Permissions/UI/Groups.php:215
 msgid "Users"
 msgstr "Utilizatori"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:574
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:637
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:577
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
 msgid "Sort by:"
 msgstr "Sortează după:"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:576
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
 msgid "Name (A-Z)"
 msgstr "Nume (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:577
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Name (Z-A)"
 msgstr "Nume (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:578
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:581
 msgid "Most Users"
 msgstr "Cei mai mulți utilizatori"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Fewest Users"
 msgstr "Cei mai puțini utilizatori"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:589
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:800
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:592
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:803
 msgid "Select All"
 msgstr "Selectează Tot"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:592
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:593
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:803
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:804
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:595
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:596
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:806
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:807
 msgid "Bulk Actions"
 msgstr "Acțiuni în masă"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:594
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:805
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:597
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:808
 msgid "Set to Enabled"
 msgstr "Setează la Activat"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:595
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:806
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:809
 msgid "Set to Blocked"
 msgstr "Setat pe Blocat"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:596
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:807
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
 msgid "Set to Default"
 msgstr "Setat pe Implicit"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:813
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:604
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:816
 msgid "selected"
 msgstr "selectat"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:631
 msgid "Search and add users..."
 msgstr "Caută și adaugă utilizatori..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:729
 msgid "No role exceptions set"
 msgstr "Nici o excepție de rol setată"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:792
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:795
 msgid "No specific user permissions. Use the search box to add users."
 msgstr ""
 "Nici o permisiune specifică pentru utilizatori. Folosește caseta de căutare "
 "pentru a adăuga utilizatori."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:808
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:811
 msgid "Remove Selected"
 msgstr "Îndepărtează Selectat"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1063
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
-#: classes/PublishPress/Permissions/UI/Groups.php:240
+#: classes/PublishPress/Permissions/UI/Groups.php:244
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
 msgid "Login State"
 msgstr "Stare de Conectare"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1191
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1194
 msgid "Sub-Sections"
 msgstr "Subsecțiuni"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1193
 msgid "This Section"
 msgstr "Această Secțiune"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1230
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1233
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -2655,7 +2656,7 @@ msgstr "Acum poți seta permisiuni individuale pentru"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:42
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:46
-#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/Groups.php:260
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
 msgid "All"
 msgstr "Toate"
@@ -2688,44 +2689,44 @@ msgstr ""
 msgid "Remove the custom permisisons for \"%s\"?"
 msgstr "Îndepărtezi permisiunile personalizate pentru \"%s\"?"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:126
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:518
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:133
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:539
 #: classes/PublishPress/Permissions/UI/Settings.php:102
 msgid "Permissions Settings"
 msgstr "Setări Permisiuni"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:152
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:280
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:159
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:286
 #, php-format
 msgid "Permissions: %s"
 msgstr "Permisiuni: %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:173
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:180
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "Permisiuni: Selectează acest %s ca Părinte"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:181
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:188
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "Permisiuni: Atribuie Termeni acestui %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:189
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:196
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "Permisiuni: %s acest %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:239
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:542
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:253
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:563
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "activează permisiuni personalizate pentru %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:303
 msgid "Select as Parent"
 msgstr "Selectează ca Părinte"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:294
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:308
 msgid "Assign Terms"
 msgstr "Atribuie Termeni"
 
@@ -2804,13 +2805,13 @@ msgstr "%1$s %2$s în acest %3$s"
 msgid "%1$s this %2$s"
 msgstr "%1$s acest %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:275
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:281
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "Permisiuni: %1$s în %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:289
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:362
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:295
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:368
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type. You can "
@@ -2821,35 +2822,35 @@ msgstr ""
 "asemenea, poți %2$sdefini permisiuni universale %3$s care se aplică tuturor "
 "tipurilor de postări asociate%4$s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:324
 #, php-format
 msgid "Permissions: Assign this %2$s to %3$s"
 msgstr "Permisiuni: Atribuie acest %2$s la %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:324
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:330
 #, php-format
 msgid "Permissions: Assign this %2$s for All Post Types"
 msgstr "Permisiuni: Atribuie acest %2$s pentru Toate Tipurile de Postări"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:331
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:344
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:337
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:350
 #, php-format
 msgid "Permissions: %1$s %2$s in this %3$s"
 msgstr "Permisiuni: %1$s %2$s în acest %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:337
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:343
 #, php-format
 msgid "Permissions: %1$s all content in this %2$s for All Post Types"
 msgstr ""
 "Permisiuni: %1$s tot conținutul în acest %2$s pentru Toate Tipurile de "
 "Postări"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:350
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:356
 #, php-format
 msgid "Permissions: %1$s this %2$s"
 msgstr "Permisiuni: %1$s această %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:576
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:597
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
@@ -2967,30 +2968,30 @@ msgstr ""
 msgid "Create Group"
 msgstr "Creează Grup"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:22
+#: classes/PublishPress/Permissions/UI/Groups.php:26
 msgid "Shop manager"
 msgstr "Manager de Magazin"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:23
+#: classes/PublishPress/Permissions/UI/Groups.php:27
 msgid "Translator"
 msgstr "Traducător"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:24
+#: classes/PublishPress/Permissions/UI/Groups.php:28
 msgid "Customer"
 msgstr "Client"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:90
+#: classes/PublishPress/Permissions/UI/Groups.php:94
 msgid "You have specified this group for deletion:"
 msgid_plural "You have specified these groups for deletion:"
 msgstr[0] "Ați specificat acest grup pentru ștergere:"
 msgstr[1] "Ați specificat aceste grupuri pentru ștergere:"
 msgstr[2] "Ați specificat aceste grupuri pentru ștergere:"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:120
+#: classes/PublishPress/Permissions/UI/Groups.php:124
 msgid "There are no valid groups selected for deletion."
 msgstr "Nu există grupuri valide selectate pentru ștergere."
 
-#: classes/PublishPress/Permissions/UI/Groups.php:150
+#: classes/PublishPress/Permissions/UI/Groups.php:154
 #, php-format
 msgid "%s group deleted"
 msgid_plural "%s groups deleted"
@@ -2998,64 +2999,64 @@ msgstr[0] "Grupul %s a fost șters"
 msgstr[1] "Grupurile %s au fost șterse"
 msgstr[2] "Grupurile %s au fost șterse"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:155
+#: classes/PublishPress/Permissions/UI/Groups.php:159
 msgid "New group created."
 msgstr "Grup nou creat."
 
-#: classes/PublishPress/Permissions/UI/Groups.php:199
+#: classes/PublishPress/Permissions/UI/Groups.php:203
 msgid "Add New Group"
 msgstr "Adaugă Grup Nou"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:206
+#: classes/PublishPress/Permissions/UI/Groups.php:210
 msgid "User Groups"
 msgstr "Grupuri Utilizatori"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/Groups.php:238
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:330
 msgid "WordPress Role"
 msgstr "Rol WordPress"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/Groups.php:238
 msgid "WordPress Roles"
 msgstr "Roluri WordPress"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:247
+#: classes/PublishPress/Permissions/UI/Groups.php:251
 #, php-format
 msgid "%1$sGroup Type:%2$s %3$s"
 msgstr "%1$sTip Grup:%2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:275
+#: classes/PublishPress/Permissions/UI/Groups.php:279
 msgid "Has Permissions"
 msgstr "Are Permisiuni"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:279
-#: classes/PublishPress/Permissions/UI/Groups.php:336
+#: classes/PublishPress/Permissions/UI/Groups.php:283
+#: classes/PublishPress/Permissions/UI/Groups.php:340
 msgid "Has Specific Permissions"
 msgstr "Are Permisiuni Specifice"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:282
-#: classes/PublishPress/Permissions/UI/Groups.php:343
+#: classes/PublishPress/Permissions/UI/Groups.php:286
+#: classes/PublishPress/Permissions/UI/Groups.php:347
 msgid "Has Extra Roles"
 msgstr "Are Roluri Extra"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:287
+#: classes/PublishPress/Permissions/UI/Groups.php:291
 #, php-format
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr "Rezultatele căutării pentru &#8220;%s&#8221;"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:296
+#: classes/PublishPress/Permissions/UI/Groups.php:300
 msgid "Search Groups"
 msgstr "Căutare Grupuri"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:322
+#: classes/PublishPress/Permissions/UI/Groups.php:326
 msgid "All Users"
 msgstr "Toți Utilizatorii"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:329
+#: classes/PublishPress/Permissions/UI/Groups.php:333
 msgid "Has Permissions Set Directly"
 msgstr "Are Permisiuni Setate Direct"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:350
+#: classes/PublishPress/Permissions/UI/Groups.php:354
 msgid "No Custom Group"
 msgstr "Fără Grup Personalizat"
 
@@ -3211,9 +3212,9 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
-#: includes/CoreAdmin.php:111
-#: includes/CoreAdmin.php:112
-#: includes/CoreAdmin.php:243
+#: includes/CoreAdmin.php:117
+#: includes/CoreAdmin.php:118
+#: includes/CoreAdmin.php:251
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -3756,19 +3757,16 @@ msgid "Manage PublishPress Permissions plugin settings."
 msgstr "Gestionează setările pluginului PublishPress Permissions."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:277
-#: classes/PublishPress/PermissionsHooksAdmin.php:338
 msgid "Access the Permissions manager (Groups and Roles) admin screen."
 msgstr ""
 "Accesează ecranul de administrare al managerului de permisiuni (Grupuri și "
 "Roluri)."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:278
-#: classes/PublishPress/PermissionsHooksAdmin.php:339
 msgid "Access the Teaser settings admin screen."
 msgstr "Accesează ecranul de administrare al setărilor Teaser."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:279
-#: classes/PublishPress/PermissionsHooksAdmin.php:340
 msgid ""
 "PublishPress Permissions will not apply any Extra Roles or Permissions to "
 "limit or expand viewing or editing access."
@@ -3777,7 +3775,6 @@ msgstr ""
 "pentru a limita sau extinde accesul de vizualizare sau editare."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:280
-#: classes/PublishPress/PermissionsHooksAdmin.php:336
 msgid ""
 "Manage other user's Permissions. Also grants capabilities for all post "
 "types and statuses."
@@ -3786,73 +3783,63 @@ msgstr ""
 "pentru toate tipurile de postări și statusuri."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:281
-#: classes/PublishPress/PermissionsHooksAdmin.php:345
 msgid "Create new Permission Groups and set the name and description."
 msgstr "Creează grupuri noi de Permisiuni și setează numele și descrierea."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:282
-#: classes/PublishPress/PermissionsHooksAdmin.php:346
 msgid "Edit the name and description of existing Permission Groups."
 msgstr "Editează numele și descrierea grupurilor de Permisiuni existente."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
-#: classes/PublishPress/PermissionsHooksAdmin.php:347
 msgid "Delete Permission Groups."
 msgstr "Șterge grupurile de Permisiuni."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:284
-#: classes/PublishPress/PermissionsHooksAdmin.php:348
 msgid "If group editing is allowed, can also modify group membership."
 msgstr "Dacă editarea grupului este permisă, poate modifica și apartenența la grup."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:285
-#: classes/PublishPress/PermissionsHooksAdmin.php:343
+#: classes/PublishPress/PermissionsHooksAdmin.php:347
 msgid "Assign Extra Roles or Permissions."
 msgstr "Atribuie roluri sau permisiuni suplimentare."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:286
-#: classes/PublishPress/PermissionsHooksAdmin.php:344
+#: classes/PublishPress/PermissionsHooksAdmin.php:348
 msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
 msgstr "Atribuie roluri sau permisiuni suplimentare pe ecranul Editează Permisiuni."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
-#: classes/PublishPress/PermissionsHooksAdmin.php:318
 msgid "Set Viewing Permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Setează Permisiunile de Vizualizare pentru Postări, Categorii sau Termeni "
 "specifici."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:290
-#: classes/PublishPress/PermissionsHooksAdmin.php:322
 msgid "Set Editing Permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Setează Permisiunile de Editare pentru Postări, Categorii sau Termeni "
 "specifici."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:293
-#: classes/PublishPress/PermissionsHooksAdmin.php:329
+#: classes/PublishPress/PermissionsHooksAdmin.php:333
 msgid "Set Revision Permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Setează Permisiunile de Revizie pentru Postări, Categorii sau Termeni "
 "specifici."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:296
-#: classes/PublishPress/PermissionsHooksAdmin.php:323
 msgid "Set \"Set as Parent\" Permissions for specific Posts."
 msgstr "Setează Permisiunile \"Setează ca Părinte\" pentru Postări specifice."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:297
-#: classes/PublishPress/PermissionsHooksAdmin.php:324
 msgid "Set Term Assignment Permissions."
 msgstr "Setează Permisiunile de Atribuire a Termenilor."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:298
-#: classes/PublishPress/PermissionsHooksAdmin.php:325
 msgid "Set Term Management Permissions."
 msgstr "Setează Permisiunile de Gestionare a Termenilor."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:299
-#: classes/PublishPress/PermissionsHooksAdmin.php:326
 msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
 msgstr ""
 "Setați permisiunile \"Setare ca Părinte\" pentru categorii sau termeni "
@@ -4386,7 +4373,7 @@ msgstr "Cheia de acces la fișiere cu regenerare la cerere"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:228
+#: includes/CoreAdmin.php:236
 msgid "Pro Feature"
 msgstr "Funcție Pro"
 
@@ -4410,7 +4397,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:240
+#: includes/CoreAdmin.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:678
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
@@ -4802,35 +4789,97 @@ msgstr "Roluri atribuite utilizatorului sau uneia dintre grupurile sale"
 msgid "Edit User"
 msgstr "Editează utilizator"
 
+#: classes/PublishPress/PermissionsHooksAdmin.php:322
+msgid "Set Viewing permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Setați permisiunile de vizualizare pentru Postări, Categorii sau Termeni "
+"specifici."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:326
+msgid "Set Editing permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Setați permisiunile de editare pentru Postări, Categorii sau Termeni "
+"specifici."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:327
+msgid "Set \"Set as Parent\" permissions for specific Pages."
+msgstr "Setați permisiunile \"Setați ca Părinte\" pentru Pagini specifice."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:328
+msgid "Set Assign Term permissions."
+msgstr "Setați permisiunile de Atribuire a Termenilor."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:329
+msgid "Set Manage Term permissions."
+msgstr "Setați permisiunile de Gestionare a Termenilor."
+
 #: classes/PublishPress/PermissionsHooksAdmin.php:330
+msgid "Set \"Set as Parent\" permissions for specific Categories or Terms."
+msgstr ""
+"Setați permisiunile \"Setați ca Părinte\" pentru Categorii sau Termeni "
+"specifici."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:334
 msgid "Set Copy Permissions for specific Posts."
 msgstr "Setează permisiunile de copiere pentru postări specifice."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:335
+#: classes/PublishPress/PermissionsHooksAdmin.php:339
 msgid "Permissions & Access"
 msgstr "Permisiuni & Acces"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:337
-msgid "Access the Permissions Settings admin screen."
-msgstr "Accesează ecranul de administrare al setărilor de permisiuni."
+#: classes/PublishPress/PermissionsHooksAdmin.php:340
+msgid "Full editing access for all post types."
+msgstr "Acces complet la editare pentru toate tipurile de postări."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:341
+msgid "Access to the Settings screen."
+msgstr "Acces la ecranul de Setări."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:342
+msgid "Access to the Permissions screen."
+msgstr "Acces la ecranul de Permisiuni."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:343
+msgid "Access to the Teaser screen."
+msgstr "Acces la ecranul de Teaser."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:344
+msgid "All Enabled and Blocked Permissions are ignored for this role."
+msgstr "Toate Permisiunile Activate și Blocate sunt ignorate pentru acest rol."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:349
+msgid "Create Custom Groups."
+msgstr "Creați Grupuri Personalizate."
 
 #: classes/PublishPress/PermissionsHooksAdmin.php:350
+msgid "Edit Custom Groups."
+msgstr "Editați Grupuri Personalizate."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:351
+msgid "Delete Custom Groups."
+msgstr "Ștergeți Grupuri Personalizate."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:352
+msgid "Manage members in Custom Groups."
+msgstr "Gestionați membrii în Grupuri Personalizate."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:354
 msgid "Set Permissions"
 msgstr "Setează permisiuni"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:437
+#: classes/PublishPress/PermissionsHooksAdmin.php:441
 msgid "Subscribers"
 msgstr "Abonați"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:438
+#: classes/PublishPress/PermissionsHooksAdmin.php:442
 msgid "Contributors"
 msgstr "Contribuitori"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:439
+#: classes/PublishPress/PermissionsHooksAdmin.php:443
 msgid "Authors"
 msgstr "Autori"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:440, fuzzy
+#: classes/PublishPress/PermissionsHooksAdmin.php:444, fuzzy
 msgid "Editors"
 msgstr "Editors"
 
@@ -4847,7 +4896,7 @@ msgstr ""
 msgid "Promo file not found."
 msgstr "Fișierul promoțional nu a fost găsit."
 
-#: includes/CoreAdmin.php:234
+#: includes/CoreAdmin.php:242
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Faci upgrade la Pro pentru a debloca integrarea fără întreruperi."
 

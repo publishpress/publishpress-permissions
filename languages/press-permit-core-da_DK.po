@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-05-19 18:45+0000\n"
+"PO-Revision-Date: 2026-05-20 18:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1191,13 +1191,13 @@ msgid "Dismiss"
 msgstr "Afvis"
 
 #: classes/PublishPress/Permissions/Groups.php:54
-#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/Groups.php:241
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:335
 msgid "Custom Group"
 msgstr "Brugerdefineret gruppe"
 
 #: classes/PublishPress/Permissions/Groups.php:55
-#: classes/PublishPress/Permissions/UI/Groups.php:237
+#: classes/PublishPress/Permissions/UI/Groups.php:241
 msgid "Custom Groups"
 msgstr "Brugerdefinerede grupper"
 
@@ -1308,13 +1308,13 @@ msgid "Control frontend viewing of selected %s."
 msgstr "Kontroller frontend-visning af valgt %s."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:94
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:400
 #, php-format
 msgid "Control who can create a revision of this %s."
 msgstr "Kontroller, hvem der kan oprette en revision af dette %s."
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:95
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:401
 #, php-format
 msgid "Control who can submit a revision of this %s."
 msgstr "Kontroller, hvem der kan indsende en revision af dette %s."
@@ -1436,6 +1436,7 @@ msgstr "Ingen bruger/grupper specificeret."
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:49
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:52
 #: classes/PublishPress/Permissions/UI/GroupNew.php:29
+#: classes/PublishPress/Permissions/UI/Groups.php:18
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
@@ -1485,7 +1486,7 @@ msgstr "Tilføj brugerrettigheder"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:130
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:132
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:282
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:313
 msgid "Edit Permissions"
 msgstr "Rediger rettigheder"
 
@@ -1504,7 +1505,7 @@ msgid "Edit role capabilities directly"
 msgstr "Rediger rollekapaciteter direkte"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:156
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:272
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:303
 msgid "Add New"
 msgstr "Tilføj ny"
 
@@ -1770,7 +1771,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:237
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:359
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1069
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:46
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
@@ -1887,8 +1888,8 @@ msgstr "element(er)"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:722
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1489
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:813
 msgid "Apply"
 msgstr "Anvend"
 
@@ -1924,7 +1925,7 @@ msgid "items"
 msgstr "elementer"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1026
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1070
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1073
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:47
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
@@ -2280,39 +2281,39 @@ msgstr "Søg efter en bruger"
 msgid "Search for an author"
 msgstr "Søg efter en forfatter"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:240
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:266
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:241
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:297
 #: classes/PublishPress/Permissions/UI/Dashboard/PostsListing.php:82
-#: classes/PublishPress/Permissions/UI/Groups.php:180
+#: classes/PublishPress/Permissions/UI/Groups.php:184
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:39
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:164
 msgid "Permissions"
 msgstr "Tilladelser"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:271
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:302
 msgid "Add New Permission Group"
 msgstr "Tilføj ny tilladelsesgruppe"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:286
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:317
 msgid "Edit"
 msgstr "Rediger"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:298
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:299
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:329
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:330
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:96
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:97
 msgid "Role Usage"
 msgstr "Rollebrug"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:310
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:311
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:341
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:342
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:107
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardFilters.php:108
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:64
 msgid "Edit Role Usage"
 msgstr "Rediger rollebrug"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:356
 msgid "Settings"
 msgstr "Indstillinger"
 
@@ -2353,7 +2354,7 @@ msgid "Unblocked"
 msgstr "Afblokeret"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:56
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:542
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:545
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
 msgid "Roles"
@@ -2364,15 +2365,15 @@ msgid "User"
 msgstr "Bruger"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:198
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1121
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1187
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
 #, php-format
 msgid "This %s"
 msgstr "Denne %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:203
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1188
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1191
 #, php-format
 msgid "Sub-%s"
 msgstr "Under-%s"
@@ -2385,204 +2386,204 @@ msgstr "Standard Alle"
 msgid "Group restrictions are not recommended."
 msgstr "Gruppebegrænsninger anbefales ikke."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:390
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:393
 #, php-format
 msgid "Control who can assign terms to this %s."
 msgstr "Kontroller, hvem der kan tildele termer til denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:391
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:394
 #, php-format
 msgid "Control who can select this page as parent %s."
 msgstr "Kontroller hvem der kan vælge denne side som overordnet %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:392
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:395
 #, php-format
 msgid "Control editing of this %s."
 msgstr "Kontroller redigering af denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:393
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:396
 #, php-format
 msgid "Control publishing of this %s."
 msgstr "Kontroller publicering af denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:394
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:397
 #, php-format
 msgid "Control deletion of this %s."
 msgstr "Kontroller sletning af denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:395
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:398
 #, php-format
 msgid "Control term management for this %s."
 msgstr "Kontroller termhåndtering for denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:396
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:399
 #, php-format
 msgid "Control frontend viewing of this %s."
 msgstr "Kontroller frontend visning af denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:401
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:404
 #, php-format
 msgid "Control who add this %s to %s."
 msgstr "Kontroller, hvem der tilføjer denne %s til %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:402
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:405
 #, php-format
 msgid "Control who can edit %s with this %s."
 msgstr "Kontroller, hvem der kan redigere %s med denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:403
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:406
 #, php-format
 msgid "Control who can view %s with this %s."
 msgstr "Kontroller, hvem der kan se %s med denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:404
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:407
 #, php-format
 msgid "Control who can create a revision of %s with this %s."
 msgstr "Kontroller, hvem der kan oprette en revision af %s med denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:405
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:408
 #, php-format
 msgid "Control who can submit a revision of %s with this %s."
 msgstr "Kontroller, hvem der kan indsende en revision af %s med denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:409
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:412
 #, php-format
 msgid "Control who add this %s to all post types."
 msgstr "Kontroller, hvem der tilføjer denne %s til alle posttyper."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:410
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:413
 #, php-format
 msgid "Control who can edit all post types in this %s."
 msgstr "Kontroller, hvem der kan redigere alle indlægstyper i denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:411
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:414
 #, php-format
 msgid "Control who can view all post types in this %s."
 msgstr "Kontroller, hvem der kan se alle indlægstyper i denne %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:412
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:415
 #, php-format
 msgid "Control who can create a revision of all post types in this %s."
 msgstr ""
 "Kontroller, hvem der kan oprette en revision af alle indlægstyper i denne "
 "%s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:413
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:416
 #, php-format
 msgid "Control who can submit a revision of all post types in this %s."
 msgstr ""
 "Kontroller, hvem der kan indsende en revision af alle indlægstyper i denne "
 "%s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:542
-#: classes/PublishPress/PermissionsHooksAdmin.php:342
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:545
+#: classes/PublishPress/PermissionsHooksAdmin.php:346
 msgid "Roles & Groups"
 msgstr "Roller & Grupper"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:543
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:546
 msgid "Search roles and groups..."
 msgstr "Søg roller og grupper..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:543
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:546
 msgid "Search roles..."
 msgstr "Søg roller..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:554
-#: classes/PublishPress/Permissions/UI/Groups.php:211
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:557
+#: classes/PublishPress/Permissions/UI/Groups.php:215
 msgid "Users"
 msgstr "Brugere"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:574
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:637
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:577
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
 msgid "Sort by:"
 msgstr "Sorter efter:"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:576
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
 msgid "Name (A-Z)"
 msgstr "Navn (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:577
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Name (Z-A)"
 msgstr "Navn (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:578
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:581
 msgid "Most Users"
 msgstr "Flest brugere"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:579
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Fewest Users"
 msgstr "Færrest brugere"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:589
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:800
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:592
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:803
 msgid "Select All"
 msgstr "Vælg Alle"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:592
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:593
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:803
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:804
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:595
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:596
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:806
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:807
 msgid "Bulk Actions"
 msgstr "Massehandlinger"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:594
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:805
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:597
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:808
 msgid "Set to Enabled"
 msgstr "Indstil til Aktiveret"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:595
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:806
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:598
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:809
 msgid "Set to Blocked"
 msgstr "Sat til Blokeret"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:596
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:807
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:810
 msgid "Set to Default"
 msgstr "Sat til Standard"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:813
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:604
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:816
 msgid "selected"
 msgstr "valgt"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:631
 msgid "Search and add users..."
 msgstr "Søg og tilføj brugere..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:726
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:729
 msgid "No role exceptions set"
 msgstr "Ingen rolleundtagelser sat"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:792
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:795
 msgid "No specific user permissions. Use the search box to add users."
 msgstr "Ingen specifikke brugerrettigheder. Brug søgefeltet til at tilføje brugere."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:808
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:811
 msgid "Remove Selected"
 msgstr "Fjern Valgte"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1063
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1066
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:48
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
-#: classes/PublishPress/Permissions/UI/Groups.php:240
+#: classes/PublishPress/Permissions/UI/Groups.php:244
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:327
 msgid "Login State"
 msgstr "Loginstatus"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1191
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1194
 msgid "Sub-Sections"
 msgstr "Underafsnit"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1124
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1193
 msgid "This Section"
 msgstr "Dette Afsnit"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1166
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1230
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1233
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:49
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Remove custom permissions for user"
@@ -2619,7 +2620,7 @@ msgstr "Du kan nu indstille individuelle tilladelser for"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:42
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:46
-#: classes/PublishPress/Permissions/UI/Groups.php:256
+#: classes/PublishPress/Permissions/UI/Groups.php:260
 #: classes/PublishPress/Permissions/UI/SettingsTabIntegrations.php:118
 msgid "All"
 msgstr "Alle"
@@ -2650,44 +2651,44 @@ msgstr "Er du sikker på, at du vil fjerne den valgte bruger(e) fra undtagelser?
 msgid "Remove the custom permisisons for \"%s\"?"
 msgstr "Fjern de brugerdefinerede tilladelser for \"%s\"?"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:126
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:518
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:133
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:539
 #: classes/PublishPress/Permissions/UI/Settings.php:102
 msgid "Permissions Settings"
 msgstr "Rettighedsindstillinger"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:152
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:280
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:159
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:286
 #, php-format
 msgid "Permissions: %s"
 msgstr "Rettigheder: %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:173
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:180
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "Rettigheder: Vælg denne %s som Forælder"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:181
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:188
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "Rettigheder: Tildel Termer til denne %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:189
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:196
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "Rettigheder: %s denne %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:239
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:542
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:253
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:563
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "aktiver brugerdefinerede tilladelser for %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:303
 msgid "Select as Parent"
 msgstr "Vælg som forælder"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:294
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:308
 msgid "Assign Terms"
 msgstr "Tildel vilkår"
 
@@ -2766,13 +2767,13 @@ msgstr "%1$s %2$s i denne %3$s"
 msgid "%1$s this %2$s"
 msgstr "%1$s denne %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:275
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:281
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "Tilladelser: %1$s i %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:289
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:362
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:295
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:368
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type. You can "
@@ -2783,33 +2784,33 @@ msgstr ""
 "%2$sdefinere universelle %3$s tilladelser, som gælder for alle relaterede "
 "indlægstyper%4$s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:324
 #, php-format
 msgid "Permissions: Assign this %2$s to %3$s"
 msgstr "Tilladelser: Tildel denne %2$s til %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:324
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:330
 #, php-format
 msgid "Permissions: Assign this %2$s for All Post Types"
 msgstr "Tilladelser: Tildel denne %2$s for alle indlægstyper"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:331
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:344
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:337
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:350
 #, php-format
 msgid "Permissions: %1$s %2$s in this %3$s"
 msgstr "Tilladelser: %1$s %2$s i denne %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:337
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:343
 #, php-format
 msgid "Permissions: %1$s all content in this %2$s for All Post Types"
 msgstr "Tilladelser: %1$s alt indhold i denne %2$s for alle indlægstyper"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:350
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:356
 #, php-format
 msgid "Permissions: %1$s this %2$s"
 msgstr "Tilladelser: %1$s denne %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:576
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:597
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
@@ -2925,93 +2926,93 @@ msgstr ""
 msgid "Create Group"
 msgstr "Opret gruppe"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:22
+#: classes/PublishPress/Permissions/UI/Groups.php:26
 msgid "Shop manager"
 msgstr "Butikschef"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:23
+#: classes/PublishPress/Permissions/UI/Groups.php:27
 msgid "Translator"
 msgstr "Oversætter"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:24
+#: classes/PublishPress/Permissions/UI/Groups.php:28
 msgid "Customer"
 msgstr "Kunde"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:90
+#: classes/PublishPress/Permissions/UI/Groups.php:94
 msgid "You have specified this group for deletion:"
 msgid_plural "You have specified these groups for deletion:"
 msgstr[0] "Du har angivet denne gruppe til sletning:"
 msgstr[1] "Du har angivet disse grupper til sletning:"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:120
+#: classes/PublishPress/Permissions/UI/Groups.php:124
 msgid "There are no valid groups selected for deletion."
 msgstr "Der er ingen gyldige grupper valgt til sletning."
 
-#: classes/PublishPress/Permissions/UI/Groups.php:150
+#: classes/PublishPress/Permissions/UI/Groups.php:154
 #, php-format
 msgid "%s group deleted"
 msgid_plural "%s groups deleted"
 msgstr[0] "%s gruppe slettet"
 msgstr[1] "%s grupper slettet"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:155
+#: classes/PublishPress/Permissions/UI/Groups.php:159
 msgid "New group created."
 msgstr "Ny gruppe oprettet."
 
-#: classes/PublishPress/Permissions/UI/Groups.php:199
+#: classes/PublishPress/Permissions/UI/Groups.php:203
 msgid "Add New Group"
 msgstr "Tilføj ny gruppe"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:206
+#: classes/PublishPress/Permissions/UI/Groups.php:210
 msgid "User Groups"
 msgstr "Brugergrupper"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/Groups.php:238
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:330
 msgid "WordPress Role"
 msgstr "WordPress-rolle"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:234
+#: classes/PublishPress/Permissions/UI/Groups.php:238
 msgid "WordPress Roles"
 msgstr "WordPress-roller"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:247
+#: classes/PublishPress/Permissions/UI/Groups.php:251
 #, php-format
 msgid "%1$sGroup Type:%2$s %3$s"
 msgstr "%1$sGrupptype:%2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:275
+#: classes/PublishPress/Permissions/UI/Groups.php:279
 msgid "Has Permissions"
 msgstr "Har rettigheder"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:279
-#: classes/PublishPress/Permissions/UI/Groups.php:336
+#: classes/PublishPress/Permissions/UI/Groups.php:283
+#: classes/PublishPress/Permissions/UI/Groups.php:340
 msgid "Has Specific Permissions"
 msgstr "Har specifikke rettigheder"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:282
-#: classes/PublishPress/Permissions/UI/Groups.php:343
+#: classes/PublishPress/Permissions/UI/Groups.php:286
+#: classes/PublishPress/Permissions/UI/Groups.php:347
 msgid "Has Extra Roles"
 msgstr "Har ekstra roller"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:287
+#: classes/PublishPress/Permissions/UI/Groups.php:291
 #, php-format
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr "Søgeresultater for &#8220;%s&#8221;"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:296
+#: classes/PublishPress/Permissions/UI/Groups.php:300
 msgid "Search Groups"
 msgstr "Søg grupper"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:322
+#: classes/PublishPress/Permissions/UI/Groups.php:326
 msgid "All Users"
 msgstr "Alle brugere"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:329
+#: classes/PublishPress/Permissions/UI/Groups.php:333
 msgid "Has Permissions Set Directly"
 msgstr "Har tilladelser sat direkte"
 
-#: classes/PublishPress/Permissions/UI/Groups.php:350
+#: classes/PublishPress/Permissions/UI/Groups.php:354
 msgid "No Custom Group"
 msgstr "Ingen brugerdefineret gruppe"
 
@@ -3167,9 +3168,9 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:177
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:217
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
-#: includes/CoreAdmin.php:111
-#: includes/CoreAdmin.php:112
-#: includes/CoreAdmin.php:243
+#: includes/CoreAdmin.php:117
+#: includes/CoreAdmin.php:118
+#: includes/CoreAdmin.php:251
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -3692,17 +3693,14 @@ msgid "Manage PublishPress Permissions plugin settings."
 msgstr "Administrer PublishPress Permissions plugin indstillinger."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:277
-#: classes/PublishPress/PermissionsHooksAdmin.php:338
 msgid "Access the Permissions manager (Groups and Roles) admin screen."
 msgstr "Adgang til tilladelsesmanageren (Grupper og Roller) admin skærm."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:278
-#: classes/PublishPress/PermissionsHooksAdmin.php:339
 msgid "Access the Teaser settings admin screen."
 msgstr "Adgang til Teaser indstillinger admin skærm."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:279
-#: classes/PublishPress/PermissionsHooksAdmin.php:340
 msgid ""
 "PublishPress Permissions will not apply any Extra Roles or Permissions to "
 "limit or expand viewing or editing access."
@@ -3711,7 +3709,6 @@ msgstr ""
 "for at begrænse eller udvide visnings- eller redigeringsadgang."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:280
-#: classes/PublishPress/PermissionsHooksAdmin.php:336
 msgid ""
 "Manage other user's Permissions. Also grants capabilities for all post "
 "types and statuses."
@@ -3720,71 +3717,61 @@ msgstr ""
 "posttyper og statusser."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:281
-#: classes/PublishPress/PermissionsHooksAdmin.php:345
 msgid "Create new Permission Groups and set the name and description."
 msgstr "Opret nye tilladelsesgrupper og indstil navn og beskrivelse."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:282
-#: classes/PublishPress/PermissionsHooksAdmin.php:346
 msgid "Edit the name and description of existing Permission Groups."
 msgstr "Rediger navn og beskrivelse af eksisterende tilladelsesgrupper."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:283
-#: classes/PublishPress/PermissionsHooksAdmin.php:347
 msgid "Delete Permission Groups."
 msgstr "Slet tilladelsesgrupper."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:284
-#: classes/PublishPress/PermissionsHooksAdmin.php:348
 msgid "If group editing is allowed, can also modify group membership."
 msgstr "Hvis gruppe redigering er tilladt, kan også ændre gruppemedlemskab."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:285
-#: classes/PublishPress/PermissionsHooksAdmin.php:343
+#: classes/PublishPress/PermissionsHooksAdmin.php:347
 msgid "Assign Extra Roles or Permissions."
 msgstr "Tildel ekstra roller eller tilladelser."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:286
-#: classes/PublishPress/PermissionsHooksAdmin.php:344
+#: classes/PublishPress/PermissionsHooksAdmin.php:348
 msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
 msgstr "Tildel ekstra roller eller tilladelser på skærmen Rediger tilladelser."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
-#: classes/PublishPress/PermissionsHooksAdmin.php:318
 msgid "Set Viewing Permissions for specific Posts, Categories or Terms."
 msgstr "Indstil visningstilladelser for specifikke indlæg, kategorier eller termer."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:290
-#: classes/PublishPress/PermissionsHooksAdmin.php:322
 msgid "Set Editing Permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Indstil redigeringstilladelser for specifikke indlæg, kategorier eller "
 "termer."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:293
-#: classes/PublishPress/PermissionsHooksAdmin.php:329
+#: classes/PublishPress/PermissionsHooksAdmin.php:333
 msgid "Set Revision Permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Indstil revisions tilladelser for specifikke indlæg, kategorier eller "
 "termer."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:296
-#: classes/PublishPress/PermissionsHooksAdmin.php:323
 msgid "Set \"Set as Parent\" Permissions for specific Posts."
 msgstr "Indstil \"Sæt som forælder\" tilladelser for specifikke indlæg."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:297
-#: classes/PublishPress/PermissionsHooksAdmin.php:324
 msgid "Set Term Assignment Permissions."
 msgstr "Indstil tilladelser til tildeling af termer."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:298
-#: classes/PublishPress/PermissionsHooksAdmin.php:325
 msgid "Set Term Management Permissions."
 msgstr "Indstil tilladelser til termadministration."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:299
-#: classes/PublishPress/PermissionsHooksAdmin.php:326
 msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
 msgstr ""
 "Indstil \"Indstil som Forælder\" rettigheder for specifikke kategorier "
@@ -4305,7 +4292,7 @@ msgstr "Filadgangsnøgle med on-demand regenerering"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:228
+#: includes/CoreAdmin.php:236
 msgid "Pro Feature"
 msgstr "Pro-funktion"
 
@@ -4327,7 +4314,7 @@ msgstr "Opgrader til Pro for at låse op for avancerede filbeskyttelsesfunktione
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:240
+#: includes/CoreAdmin.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:678
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
@@ -4715,35 +4702,95 @@ msgstr "Roller tildelt til brugeren eller en af deres grupper"
 msgid "Edit User"
 msgstr "Rediger bruger"
 
+#: classes/PublishPress/PermissionsHooksAdmin.php:322
+msgid "Set Viewing permissions for specific Posts, Categories or Terms."
+msgstr "Indstil visningsrettigheder for specifikke indlæg, kategorier eller termer."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:326
+msgid "Set Editing permissions for specific Posts, Categories or Terms."
+msgstr ""
+"Indstil redigeringsrettigheder for specifikke indlæg, kategorier eller "
+"termer."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:327
+msgid "Set \"Set as Parent\" permissions for specific Pages."
+msgstr "Indstil \"Sæt som forælder\" rettigheder for specifikke sider."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:328
+msgid "Set Assign Term permissions."
+msgstr "Indstil tildel term-rettigheder."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:329
+msgid "Set Manage Term permissions."
+msgstr "Indstil administration af term-rettigheder."
+
 #: classes/PublishPress/PermissionsHooksAdmin.php:330
+msgid "Set \"Set as Parent\" permissions for specific Categories or Terms."
+msgstr ""
+"Indstil \"Sæt som forælder\" rettigheder for specifikke kategorier eller "
+"termer."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:334
 msgid "Set Copy Permissions for specific Posts."
 msgstr "Indstil kopitilladelser for specifikke indlæg."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:335
+#: classes/PublishPress/PermissionsHooksAdmin.php:339
 msgid "Permissions & Access"
 msgstr "Tilladelser & Adgang"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:337
-msgid "Access the Permissions Settings admin screen."
-msgstr "Adgang til tilladelsesindstillinger admin skærm."
+#: classes/PublishPress/PermissionsHooksAdmin.php:340
+msgid "Full editing access for all post types."
+msgstr "Fuldt redigeringsadgang for alle indlægstyper."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:341
+msgid "Access to the Settings screen."
+msgstr "Adgang til indstillingsskærmen."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:342
+msgid "Access to the Permissions screen."
+msgstr "Adgang til tilladelsesskærmen."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:343
+msgid "Access to the Teaser screen."
+msgstr "Adgang til teaser-skærmen."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:344
+msgid "All Enabled and Blocked Permissions are ignored for this role."
+msgstr "Alle aktiverede og blokerede rettigheder ignoreres for denne rolle."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:349
+msgid "Create Custom Groups."
+msgstr "Opret brugerdefinerede grupper."
 
 #: classes/PublishPress/PermissionsHooksAdmin.php:350
+msgid "Edit Custom Groups."
+msgstr "Rediger brugerdefinerede grupper."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:351
+msgid "Delete Custom Groups."
+msgstr "Slet brugerdefinerede grupper."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:352
+msgid "Manage members in Custom Groups."
+msgstr "Administrer medlemmer i brugerdefinerede grupper."
+
+#: classes/PublishPress/PermissionsHooksAdmin.php:354
 msgid "Set Permissions"
 msgstr "Indstil tilladelser"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:437
+#: classes/PublishPress/PermissionsHooksAdmin.php:441
 msgid "Subscribers"
 msgstr "Abonnenter"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:438
+#: classes/PublishPress/PermissionsHooksAdmin.php:442
 msgid "Contributors"
 msgstr "Bidragydere"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:439
+#: classes/PublishPress/PermissionsHooksAdmin.php:443
 msgid "Authors"
 msgstr "Forfattere"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:440
+#: classes/PublishPress/PermissionsHooksAdmin.php:444
 msgid "Editors"
 msgstr "Redaktører"
 
@@ -4760,7 +4807,7 @@ msgstr ""
 msgid "Promo file not found."
 msgstr "Promo-fil ikke fundet."
 
-#: includes/CoreAdmin.php:234
+#: includes/CoreAdmin.php:242
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Opgrader til Pro for at låse op for problemfri integration."
 
