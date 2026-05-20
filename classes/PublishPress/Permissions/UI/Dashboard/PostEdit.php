@@ -80,7 +80,7 @@ class PostEdit
         $pp = presspermit();
 
         if (
-            current_user_can('pp_manage_settings')
+            current_user_can('pp_manager')
             && (!$pp->moduleActive('collaboration') || !class_exists('PublishPress\Statuses\StatusControl'))
             && $pp->getOption('display_extension_hints')
         ) {
@@ -94,7 +94,10 @@ class PostEdit
         // ========= register WP-rendered metaboxes ============
         $post_type = PWP::findPostType();
 
-        if (!current_user_can('pp_assign_roles') || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
+        $can_use_metabox = current_user_can('pp_assign_roles')
+            || presspermit()->admin()->canSetExceptions('read', $post_type, ['via_item_source' => 'post', 'for_item_source' => 'post']);
+
+        if (!$can_use_metabox || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
             return;
         }
 
@@ -222,7 +225,10 @@ class PostEdit
         if (!in_array($typenow, presspermit()->getEnabledPostTypes(), true) || in_array($typenow, ['revision']))
             return;
 
-        if (current_user_can('pp_assign_roles')) {
+        $can_use_metabox = current_user_can('pp_assign_roles')
+            || presspermit()->admin()->canSetExceptions('read', $typenow, ['via_item_source' => 'post', 'for_item_source' => 'post']);
+
+        if ($can_use_metabox) {
             $this->initItemExceptionsUI();
 
             $args = ['post_types' => (array)$typenow, 'hierarchical' => is_post_type_hierarchical($typenow)];  // via_src, for_src, via_type, item_id, args

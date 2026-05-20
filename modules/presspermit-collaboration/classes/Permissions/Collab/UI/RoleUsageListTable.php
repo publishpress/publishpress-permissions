@@ -35,7 +35,7 @@ class RoleUsageListTable extends \WP_List_Table
 
     function ajax_user_can()
     {
-        return current_user_can('pp_manage_settings');
+        return current_user_can('pp_manager');
     }
 
     function prepare_items()
@@ -114,7 +114,7 @@ class RoleUsageListTable extends \WP_List_Table
 
         static $can_manage;
         if (!isset($can_manage)) {
-            $can_manage = current_user_can('pp_manage_settings');
+            $can_manage = current_user_can('pp_manager');
         }
 
         echo "<tr>";

@@ -216,11 +216,15 @@ class PermissionsHooksAdmin
             $allcaps['pp_manager'] = true;
         }
 
-        // Grant pp_manage_teaser to users who have pp_manage_settings (backward compat for new cap).
-        // pp_manage_teaser was introduced alongside pp_manager; roles without it yet should still
-        // see the Teaser menu if they can manage other settings.
-        if (in_array('pp_manage_teaser', $caps, true) && !empty($allcaps['pp_manage_settings'])) {
-            $allcaps['pp_manage_teaser'] = true;
+        // Backward compat for sites upgrading from < 4.8.2: pp_manage_teaser was not yet a
+        // distinct cap, so any pp_manager holder implicitly had teaser access. From 4.8.2 onward
+        // populateRoles() explicitly assigns pp_manage_teaser, so this grant is no longer needed.
+        if (in_array('pp_manage_teaser', $caps, true) && !empty($allcaps['pp_manager'])) {
+            $ver = get_option('presspermit_version');
+            $installed = ($ver && is_array($ver) && !empty($ver['version'])) ? $ver['version'] : '';
+            if (!$installed || version_compare($installed, '4.8.2', '<')) {
+                $allcaps['pp_manage_teaser'] = true;
+            }
         }
 
         // Old → new cap name aliases
