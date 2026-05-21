@@ -139,6 +139,11 @@ class PluginUpdated
             self::convertCapabilityNames();
             update_option('presspermit_caps_exceptions_renamed', true);
         }
+
+        if ($prev_version && !get_option('presspermit_caps_bulk_assign_renamed')) {
+            self::convertCapabilityNames('pp_bulk_assign_roles');
+            update_option('presspermit_caps_bulk_assign_renamed', true);
+        }
     }
 
     public static function deactivateModules($args = []) {
@@ -191,6 +196,7 @@ class PluginUpdated
             'pp_edit_groups', 
             'pp_delete_groups', 
             'pp_manage_members', 
+            'pp_manage_permissions',
             'pp_set_view_permissions',
             'pp_manager',
             'pp_manage_teaser',
@@ -396,38 +402,60 @@ class PluginUpdated
      *
      * Runs automatically once on plugin update. Can also be called directly.
      */
-    public static function convertCapabilityNames()
+    public static function convertCapabilityNames($capabilities_id = '')
     {
-        self::migrateStoredCapabilityNames([
-            'pp_set_read_exceptions'           => 'pp_set_view_permissions',
-            'pp_set_edit_exceptions'           => 'pp_set_edit_permissions',
-            'pp_set_associate_exceptions'      => 'pp_set_associate_permissions',
-            'pp_set_term_assign_exceptions'    => 'pp_set_term_assign_permissions',
-            'pp_set_term_manage_exceptions'    => 'pp_set_term_manage_permissions',
-            'pp_set_term_associate_exceptions' => 'pp_set_term_associate_permissions',
-            'pp_set_revise_exceptions'         => 'pp_set_revise_permissions',
-            'pp_set_copy_exceptions'           => 'pp_set_copy_permissions',
-        ]);
+        switch ($capabilities_id) {
+            case 'pp_bulk_assign_roles':
+                self::migrateStoredCapabilityNames([
+                    'pp_bulk_assign_roles' => 'pp_manage_permissions',
+                ]);
+
+                break;
+
+            default:
+                self::migrateStoredCapabilityNames([
+                    'pp_set_read_exceptions'           => 'pp_set_view_permissions',
+                    'pp_set_edit_exceptions'           => 'pp_set_edit_permissions',
+                    'pp_set_associate_exceptions'      => 'pp_set_associate_permissions',
+                    'pp_set_term_assign_exceptions'    => 'pp_set_term_assign_permissions',
+                    'pp_set_term_manage_exceptions'    => 'pp_set_term_manage_permissions',
+                    'pp_set_term_associate_exceptions' => 'pp_set_term_associate_permissions',
+                    'pp_set_revise_exceptions'         => 'pp_set_revise_permissions',
+                    'pp_set_copy_exceptions'           => 'pp_set_copy_permissions',
+                ]);
+        }
     }
 
     /**
      * Reverse the cap rename — restore pp_set_*_permissions back to pp_set_*_exceptions.
      * Run on demand to prepare the database for a previous plugin version.
      */
-    public static function deconvertCapabilityNames()
+    public static function deconvertCapabilityNames($capabilities_id = '')
     {
-        self::migrateStoredCapabilityNames([
-            'pp_set_view_permissions'           => 'pp_set_read_exceptions',
-            'pp_set_edit_permissions'           => 'pp_set_edit_exceptions',
-            'pp_set_associate_permissions'      => 'pp_set_associate_exceptions',
-            'pp_set_term_assign_permissions'    => 'pp_set_term_assign_exceptions',
-            'pp_set_term_manage_permissions'    => 'pp_set_term_manage_exceptions',
-            'pp_set_term_associate_permissions' => 'pp_set_term_associate_exceptions',
-            'pp_set_revise_permissions'         => 'pp_set_revise_exceptions',
-            'pp_set_copy_permissions'           => 'pp_set_copy_exceptions',
-        ]);
+        switch ($capabilities_id) {
+            case 'pp_bulk_assign_roles':
+                self::migrateStoredCapabilityNames([
+                    'pp_manage_permissions' => 'pp_bulk_assign_roles',
+                ]);
 
-        delete_option('presspermit_caps_exceptions_renamed');
+                delete_option('presspermit_caps_bulk_assign_renamed');
+
+                break;
+
+            default:
+                self::migrateStoredCapabilityNames([
+                    'pp_set_view_permissions'           => 'pp_set_read_exceptions',
+                    'pp_set_edit_permissions'           => 'pp_set_edit_exceptions',
+                    'pp_set_associate_permissions'      => 'pp_set_associate_exceptions',
+                    'pp_set_term_assign_permissions'    => 'pp_set_term_assign_exceptions',
+                    'pp_set_term_manage_permissions'    => 'pp_set_term_manage_exceptions',
+                    'pp_set_term_associate_permissions' => 'pp_set_term_associate_exceptions',
+                    'pp_set_revise_permissions'         => 'pp_set_revise_exceptions',
+                    'pp_set_copy_permissions'           => 'pp_set_copy_exceptions',
+                ]);
+
+                delete_option('presspermit_caps_exceptions_renamed');
+        }
     }
 
     /**

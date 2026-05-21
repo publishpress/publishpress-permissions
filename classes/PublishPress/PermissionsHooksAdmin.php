@@ -253,11 +253,11 @@ class PermissionsHooksAdmin
             $caps,
             [
                 'pp_administer_content',
-                'pp_assign_bulk_roles', 
                 'pp_create_groups',
                 'pp_delete_groups',
                 'pp_edit_groups',
                 'pp_manage_members',
+                'pp_manage_permissions',
                 'pp_manage_settings',
                 'pp_manager',
                 'pp_manage_teaser',
@@ -352,14 +352,13 @@ class PermissionsHooksAdmin
         $plugin_caps['PublishPress Permissions'] = [
             esc_html__('Permissions & Access', 'press-permit-core') => [
                 'pp_administer_content' => esc_html__('Full editing access for all post types.', 'press-permit-core'),
+                'pp_manage_permissions' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
                 'pp_manage_settings'    => esc_html__('Access to the Settings screen.', 'press-permit-core'),
                 'pp_manager'            => esc_html__('Access to the Permissions screen.', 'press-permit-core'),
                 'pp_manage_teaser'      => esc_html__('Access to the Teaser screen.', 'press-permit-core'),
                 'pp_unfiltered'         => esc_html__('All Enabled and Blocked Permissions are ignored for this role.', 'press-permit-core'),
             ],
             esc_html__('Roles & Groups', 'press-permit-core') => [
-                'pp_assign_roles'      => esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core'),
-                'pp_assign_bulk_roles' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
                 'pp_create_groups'     => esc_html__('Create Custom Groups.', 'press-permit-core'),
                 'pp_edit_groups'       => esc_html__('Edit Custom Groups.', 'press-permit-core'),
                 'pp_delete_groups'     => esc_html__('Delete Custom Groups.', 'press-permit-core'),

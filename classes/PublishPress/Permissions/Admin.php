@@ -51,8 +51,10 @@ class Admin
     // allow lockdown to non-Administrators (while still allowing item-specific role editing for those who have assign_roles capability)
     public function bulkRolesEnabled()
     {
-        return (current_user_can('pp_assign_bulk_roles')
-            && !defined('PP_DISABLE_BULK_ROLES')) || (current_user_can('edit_users'));
+        return (current_user_can('pp_manage_permissisons')
+        || (defined('PP_ENABLE_BULK_ROLES') && current_user_can('pp_assign_bulk_roles'))
+        || (!defined('PP_PERMISSIONS_DISREGARD_EDIT_USERS_CAP') && current_user_can('edit_users'))
+        );
     }
 
     public function canSetAnyPostPermissions($post_type = '') {
