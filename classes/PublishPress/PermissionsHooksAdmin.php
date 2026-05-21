@@ -263,6 +263,19 @@ class PermissionsHooksAdmin
             ]
         );
 
+        $caps = array_diff(
+            $caps, 
+            [
+                'pp_set_read_exceptions',
+                'pp_set_edit_exceptions',
+                'pp_set_revise_exceptions',
+                'pp_set_associate_exceptions',
+                'pp_set_term_assign_exceptions',
+                'pp_set_term_manage_exceptions',
+                'pp_set_term_associate_exceptions',
+            ]
+        );
+
         // Prevent PublishPress Capabilities from Pro listing capabilities of modules which are not enabled
         // These will be added by the related module.
         $caps = array_diff(
