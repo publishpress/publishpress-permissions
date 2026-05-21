@@ -253,7 +253,6 @@ class PermissionsHooksAdmin
             $caps,
             [
                 'pp_administer_content',
-                'pp_assign_roles',
                 'pp_assign_bulk_roles', 
                 'pp_create_groups',
                 'pp_delete_groups',
@@ -267,6 +266,7 @@ class PermissionsHooksAdmin
             ]
         );
 
+        // Remove obsolete capabilities from Capabilities UI
         $caps = array_diff(
             $caps, 
             [
@@ -277,6 +277,7 @@ class PermissionsHooksAdmin
                 'pp_set_term_assign_exceptions',
                 'pp_set_term_manage_exceptions',
                 'pp_set_term_associate_exceptions',
+                'pp_assign_roles'
             ]
         );
 

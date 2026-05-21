@@ -37,7 +37,9 @@ class DashboardFilters
         } elseif (('term.php' == $pagenow) || (('edit-tags.php' == $pagenow)
                 && PWP::is_REQUEST('action', 'edit'))
         ) {
-            if (current_user_can('pp_assign_roles')) {
+            $taxonomy = PWP::REQUEST_key('taxonomy');
+
+            if (presspermit()->admin()->canSetAnyTermPermissions('', $taxonomy)) {
                 require_once(PRESSPERMIT_CLASSPATH . '/UI/Dashboard/TermEdit.php');
                 new TermEdit();
             }
@@ -137,10 +139,9 @@ class DashboardFilters
 		$agent_id = PWP::REQUEST_int('agent_id');
 
         $load_role_scripts = $pp->groups()->userCan('pp_manage_members', $agent_id, $agent_type)
-        || $pp->groups()->anyGroupManager() || current_user_can('pp_assign_roles')
-        || $pp->admin()->bulkRolesEnabled();
+        || $pp->groups()->anyGroupManager() || $pp->admin()->bulkRolesEnabled();
 
-        $load_exception_scripts = current_user_can('pp_assign_roles') || presspermit()->admin()->bulkRolesEnabled();
+        $load_exception_scripts = presspermit()->admin()->bulkRolesEnabled();
 
         if ( $load_role_scripts || $load_exception_scripts ) {
             require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');

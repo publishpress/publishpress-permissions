@@ -282,7 +282,6 @@ class SettingsAdmin
         $pp_caps['pp_edit_groups'] = esc_html__('Edit the name and description of existing Permission Groups.', 'press-permit-core');
         $pp_caps['pp_delete_groups'] = esc_html__('Delete Permission Groups.', 'press-permit-core');
         $pp_caps['pp_manage_members'] = esc_html__('If group editing is allowed, can also modify group membership.', 'press-permit-core');
-        $pp_caps['pp_assign_roles'] = esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core');
         $pp_caps['pp_assign_bulk_roles'] = esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core');
         $pp_caps['pp_set_view_permissions'] = esc_html__('Set Viewing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
 

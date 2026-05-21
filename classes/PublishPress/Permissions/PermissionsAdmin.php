@@ -44,17 +44,21 @@ class PermissionsAdmin
             return true;
         }
 
-        if (!current_user_can('pp_assign_roles')) {
-            return false;
-        }
-
         $can_do = false;
 
         if ($type_obj = get_post_type_object($item_type)) {
+            if (!presspermit()->admin()->canSetAnyPostPermissions($item_type)) {
+            return false;
+        }
+
             if (!empty($type_obj->cap->edit_published_posts)) {
                 $can_do = current_user_can($type_obj->cap->edit_published_posts);
             }
         } elseif ($tx_obj = get_taxonomy($item_type)) {
+            if (!presspermit()->admin()->canSetAnyTermPermissions('', $item_type)) {
+                return false;
+            }
+
             if (!empty($tx_obj->cap->manage_categories)) {
                 $can_do = current_user_can($tx_obj->cap->manage_categories);
             }

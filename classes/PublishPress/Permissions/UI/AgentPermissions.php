@@ -332,7 +332,7 @@ class AgentPermissions
 
                 <div style='clear:both'></div>
                 <?php
-                if (current_user_can('pp_assign_roles') && $pp_admin->bulkRolesEnabled()) {
+                if ($pp_admin->bulkRolesEnabled()) {
                     AgentPermissionsUI::drawGroupPermissions($agent_id, $agent_type, $url, $wp_http_referer, compact('agent'));
                 }
 
