@@ -221,7 +221,7 @@ class DashboardFilters
             return;
         }
 
-        $do_groups = current_user_can('pp_manager') || current_user_can('pp_edit_groups') || presspermit()->groups()->anyGroupManager();
+        $do_groups = current_user_can('pp_manage_permissions') || current_user_can('pp_edit_groups') || presspermit()->groups()->anyGroupManager();
         $do_settings = current_user_can('pp_manage_settings');
         $do_teaser = current_user_can('pp_manage_teaser');
 
@@ -295,7 +295,7 @@ class DashboardFilters
         $handler = [__CLASS__, 'actMenuHandler'];
 
         if ($do_groups) {
-            add_submenu_page($pp_cred_menu, esc_html__('Permissions', 'press-permit-core'), esc_html__('Permissions', 'press-permit-core'), 'pp_manager', 'presspermit-groups', $handler);
+            add_submenu_page($pp_cred_menu, esc_html__('Permissions', 'press-permit-core'), esc_html__('Permissions', 'press-permit-core'), 'read', 'presspermit-groups', $handler);
 
             if (current_user_can('pp_create_groups') && ('presspermit-group-new' == $pp_plugin_page)) {
                 add_submenu_page(

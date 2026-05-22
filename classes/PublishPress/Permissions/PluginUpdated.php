@@ -198,7 +198,6 @@ class PluginUpdated
             'pp_manage_members', 
             'pp_manage_permissions',
             'pp_set_view_permissions',
-            'pp_manager',
             'pp_manage_teaser',
             ], 
             true
@@ -219,7 +218,6 @@ class PluginUpdated
             $role->add_cap('pp_delete_groups');
             $role->add_cap('pp_manage_members');
             $role->add_cap('pp_set_view_permissions');
-            $role->add_cap('pp_manager');
             $role->add_cap('pp_moderate_any');
         }
 

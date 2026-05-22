@@ -160,10 +160,13 @@ class UsersListTable extends \WP_List_Table
                 $edit_permissions_url = esc_url(admin_url('admin.php?page=presspermit-edit-permissions&action=edit&agent_id=' . $item->ID . '&agent_type=user'));
                 $edit_user_url = get_edit_user_link($item->ID);
 
-                $row_actions = $this->row_actions([
-                    'edit-permissions' => '<a href="' . $edit_permissions_url . '">' . esc_html__('Permissions', 'press-permit-core') . '</a>',
-                    'edit' => '<a href="' . esc_url($edit_user_url) . '">' . esc_html__('Edit User', 'press-permit-core') . '</a>',
-                ]);
+                $actions = ['edit-permissions' => '<a href="' . $edit_permissions_url . '">' . esc_html__('Permissions', 'press-permit-core') . '</a>'];
+
+                if (current_user_can('edit_users')) {
+                    $actions['edit'] = '<a href="' . esc_url($edit_user_url) . '">' . esc_html__('Edit User', 'press-permit-core') . '</a>';
+                }
+
+                $row_actions = $this->row_actions($actions);
 
                 return '<strong><a href="' . esc_url($edit_permissions_url) . '">' . esc_html($item->user_login) . '</a></strong><br>' . $row_actions;
             case 'user_email':
