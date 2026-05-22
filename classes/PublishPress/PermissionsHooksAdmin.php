@@ -355,7 +355,7 @@ class PermissionsHooksAdmin
             ],
             esc_html__('Roles & Groups', 'press-permit-core') => [
                 'pp_create_groups'      => esc_html__('Create Custom Groups.', 'press-permit-core'),
-                'pp_edit_groups'        => esc_html__('Edit Custom Groups.', 'press-permit-core'),
+                'pp_edit_groups'        => esc_html__('View user groups on the Permissions screen and access the editing screen for user groups.', 'press-permit-core'),
                 'pp_delete_groups'      => esc_html__('Delete Custom Groups.', 'press-permit-core'),
                 'pp_manage_members'     => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
             ],
