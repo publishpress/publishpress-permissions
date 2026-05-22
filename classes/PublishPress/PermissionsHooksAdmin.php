@@ -212,14 +212,10 @@ class PermissionsHooksAdmin
      */
     public function fltBackCompatManagerCap($allcaps, $caps, $args)
     {
-        if (in_array('pp_manager', $caps, true) && !empty($allcaps['pp_edit_groups'])) {
-            $allcaps['pp_manager'] = true;
-        }
-
         // Backward compat for sites upgrading from < 4.8.2: pp_manage_teaser was not yet a
         // distinct cap, so any pp_manager holder implicitly had teaser access. From 4.8.2 onward
         // populateRoles() explicitly assigns pp_manage_teaser, so this grant is no longer needed.
-        if (in_array('pp_manage_teaser', $caps, true) && !empty($allcaps['pp_manager'])) {
+        if (in_array('pp_manage_teaser', $caps, true) && !empty($allcaps['pp_manage_settings'])) {
             $ver = get_option('presspermit_version');
             $installed = ($ver && is_array($ver) && !empty($ver['version'])) ? $ver['version'] : '';
             if (!$installed || version_compare($installed, '4.8.2', '<')) {
@@ -253,20 +249,19 @@ class PermissionsHooksAdmin
             $caps,
             [
                 'pp_administer_content',
-                'pp_assign_roles',
-                'pp_assign_bulk_roles', 
                 'pp_create_groups',
                 'pp_delete_groups',
                 'pp_edit_groups',
                 'pp_manage_members',
+                'pp_manage_permissions',
                 'pp_manage_settings',
-                'pp_manager',
                 'pp_manage_teaser',
                 'pp_set_view_permissions',
                 'pp_unfiltered',
             ]
         );
 
+        // Remove obsolete capabilities from Capabilities UI
         $caps = array_diff(
             $caps, 
             [
@@ -277,6 +272,8 @@ class PermissionsHooksAdmin
                 'pp_set_term_assign_exceptions',
                 'pp_set_term_manage_exceptions',
                 'pp_set_term_associate_exceptions',
+                'pp_assign_roles',
+                'pp_manager'
             ]
         );
 
@@ -351,18 +348,16 @@ class PermissionsHooksAdmin
         $plugin_caps['PublishPress Permissions'] = [
             esc_html__('Permissions & Access', 'press-permit-core') => [
                 'pp_administer_content' => esc_html__('Full editing access for all post types.', 'press-permit-core'),
+                'pp_manage_permissions' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
                 'pp_manage_settings'    => esc_html__('Access to the Settings screen.', 'press-permit-core'),
-                'pp_manager'            => esc_html__('Access to the Permissions screen.', 'press-permit-core'),
                 'pp_manage_teaser'      => esc_html__('Access to the Teaser screen.', 'press-permit-core'),
                 'pp_unfiltered'         => esc_html__('All Enabled and Blocked Permissions are ignored for this role.', 'press-permit-core'),
             ],
             esc_html__('Roles & Groups', 'press-permit-core') => [
-                'pp_assign_roles'      => esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core'),
-                'pp_assign_bulk_roles' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
-                'pp_create_groups'     => esc_html__('Create Custom Groups.', 'press-permit-core'),
-                'pp_edit_groups'       => esc_html__('Edit Custom Groups.', 'press-permit-core'),
-                'pp_delete_groups'     => esc_html__('Delete Custom Groups.', 'press-permit-core'),
-                'pp_manage_members'    => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
+                'pp_create_groups'      => esc_html__('Create Custom Groups.', 'press-permit-core'),
+                'pp_edit_groups'        => esc_html__('Edit Custom Groups.', 'press-permit-core'),
+                'pp_delete_groups'      => esc_html__('Delete Custom Groups.', 'press-permit-core'),
+                'pp_manage_members'     => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
             ],
             esc_html__('Set Permissions', 'press-permit-core') => $permission_management_group,
         ];

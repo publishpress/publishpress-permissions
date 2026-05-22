@@ -321,7 +321,7 @@ class UsersListing
                     $role_titles[] = str_replace(' ', '&nbsp;', sprintf(__('%s more', 'press-permit-core'), (int) $excess));
                 }
 
-                if ($do_edit_link = current_user_can('pp_assign_roles') && 
+                if ($do_edit_link = presspermit()->admin()->bulkRolesEnabled() && 
                     (is_multisite() || current_user_can('edit_user', $id)) && 
                     !$is_plain_export) {
                     $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";

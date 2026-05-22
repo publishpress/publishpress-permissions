@@ -113,7 +113,7 @@ class AgentExceptionsAjax
                         <?php
                         echo isset($tooltips[$val]) ? 
                             sprintf(
-                                '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 3px;"></i></span>',
+                                '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 5px;"></i></span>',
                                 esc_html($title),
                                 esc_html($tooltips[$val])
                             ) : esc_html($title); ?>
@@ -170,7 +170,7 @@ class AgentExceptionsAjax
                             <?php
                             echo isset($tooltips[$mod_type]) ? 
                                 sprintf(
-                                    '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 3px;"></i></span>',
+                                    '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 5px;"></i></span>',
                                     esc_html($title),
                                     esc_html($tooltips[$mod_type])
                                 ) : esc_html($title); 

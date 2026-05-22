@@ -8,9 +8,6 @@ class ItemsMetaboxAjax
     {
         check_ajax_referer('pp-ajax');
 
-        if ( ! current_user_can( 'pp_assign_roles' ) )
-            wp_die( -1 );
-
         require_once( PRESSPERMIT_CLASSPATH . '/UI/ItemsMetabox.php' );
 
         if (PWP::is_POST('item-type', 'post_type')) {
@@ -27,6 +24,16 @@ class ItemsMetaboxAjax
         // Nonce verificaiton is not needed here, as this is just UI output
         if (!PWP::empty_POST('item-object')) {
             $item_type = PWP::POST_key('item-object');
+
+            if ('posttype' == $type) {            
+                if (!presspermit()->admin()->canSetAnyPostPermissions($item_type)) {
+                    wp_die( -1 );
+                }
+            } else {
+                if (!presspermit()->admin()->canSetAnyTermPermissions('', $item_type)) {
+                    wp_die( -1 );
+                }
+            }
 
             if (!empty($items[$item_type])) {
                 $item = $items[$item_type];

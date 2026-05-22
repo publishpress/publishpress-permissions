@@ -17,7 +17,7 @@ class RoleUsage
     }
 
     private function display() {
-        if (!current_user_can('pp_manager'))
+        if (!current_user_can('pp_manage_settings'))
             wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
 
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/RoleUsageListTable.php');

@@ -80,7 +80,7 @@ class PostEdit
         $pp = presspermit();
 
         if (
-            current_user_can('pp_manager')
+            current_user_can('pp_manage_settings')
             && (!$pp->moduleActive('collaboration') || !class_exists('PublishPress\Statuses\StatusControl'))
             && $pp->getOption('display_extension_hints')
         ) {
@@ -94,14 +94,7 @@ class PostEdit
         // ========= register WP-rendered metaboxes ============
         $post_type = PWP::findPostType();
 
-        $pp_admin = presspermit()->admin();
-        $exc_args = ['via_item_source' => 'post', 'for_item_source' => 'post'];
-        $can_use_metabox = current_user_can('pp_assign_roles')
-            || $pp_admin->canSetExceptions('read', $post_type, $exc_args)
-            || $pp_admin->canSetExceptions('edit', $post_type, $exc_args)
-            || $pp_admin->canSetExceptions('associate', $post_type, $exc_args);
-
-        if (!$can_use_metabox || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
+        if (!presspermit()->admin()->canSetAnyPostPermissions($post_type) || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
             return;
         }
 
@@ -229,14 +222,7 @@ class PostEdit
         if (!in_array($typenow, presspermit()->getEnabledPostTypes(), true) || in_array($typenow, ['revision']))
             return;
 
-        $pp_admin = presspermit()->admin();
-        $exc_args = ['via_item_source' => 'post', 'for_item_source' => 'post'];
-        $can_use_metabox = current_user_can('pp_assign_roles')
-            || $pp_admin->canSetExceptions('read', $typenow, $exc_args)
-            || $pp_admin->canSetExceptions('edit', $typenow, $exc_args)
-            || $pp_admin->canSetExceptions('associate', $typenow, $exc_args);
-
-        if ($can_use_metabox) {
+        if (presspermit()->admin()->canSetAnyPostPermissions($typenow)) {
             $this->initItemExceptionsUI();
 
             $args = ['post_types' => (array)$typenow, 'hierarchical' => is_post_type_hierarchical($typenow)];  // via_src, for_src, via_type, item_id, args

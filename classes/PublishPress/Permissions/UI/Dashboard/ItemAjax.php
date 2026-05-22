@@ -27,10 +27,6 @@ class ItemAjax
                     exit;
                 }
 
-				if (!current_user_can('pp_assign_roles')) {
-					exit;	
-				}
-
                 $id_sfx = (!empty($_GET['id_sfx'])) ? sanitize_text_field($_GET['id_sfx']) : '';
 
                 if (!$id_sfx) {

@@ -155,11 +155,9 @@ class RoleAdmin
 
             case 'associate':
                 if ('term' == $via_item_source) {
-                    $can = is_taxonomy_hierarchical($for_item_type) 
-                    && ($is_administrator || current_user_can('pp_set_term_associate_permissions'));
+                    $can = $is_administrator || current_user_can('pp_set_term_associate_permissions');
                 } else {
-                    $can = is_post_type_hierarchical($for_item_type) 
-                    && ($is_administrator || current_user_can('pp_set_associate_permissions'));
+                    $can = $is_administrator || current_user_can('pp_set_associate_permissions');
                 }
                 break;
 

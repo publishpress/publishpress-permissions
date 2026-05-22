@@ -32,7 +32,7 @@ class RoleUsageEdit {
             $wp_http_referer = '';
         }
 
-        if (!current_user_can('pp_manager'))
+        if (!current_user_can('pp_manage_settings'))
             wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
 
         if (!$role = PWP::REQUEST_key('role')) {

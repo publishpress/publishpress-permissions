@@ -37,7 +37,9 @@ class DashboardFilters
         } elseif (('term.php' == $pagenow) || (('edit-tags.php' == $pagenow)
                 && PWP::is_REQUEST('action', 'edit'))
         ) {
-            if (current_user_can('pp_assign_roles')) {
+            $taxonomy = PWP::REQUEST_key('taxonomy');
+
+            if (presspermit()->admin()->canSetAnyTermPermissions('', $taxonomy)) {
                 require_once(PRESSPERMIT_CLASSPATH . '/UI/Dashboard/TermEdit.php');
                 new TermEdit();
             }
@@ -137,10 +139,9 @@ class DashboardFilters
 		$agent_id = PWP::REQUEST_int('agent_id');
 
         $load_role_scripts = $pp->groups()->userCan('pp_manage_members', $agent_id, $agent_type)
-        || $pp->groups()->anyGroupManager() || current_user_can('pp_assign_roles')
-        || $pp->admin()->bulkRolesEnabled();
+        || $pp->groups()->anyGroupManager() || $pp->admin()->bulkRolesEnabled();
 
-        $load_exception_scripts = current_user_can('pp_assign_roles') || presspermit()->admin()->bulkRolesEnabled();
+        $load_exception_scripts = presspermit()->admin()->bulkRolesEnabled();
 
         if ( $load_role_scripts || $load_exception_scripts ) {
             require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
@@ -220,7 +221,7 @@ class DashboardFilters
             return;
         }
 
-        $do_groups = current_user_can('pp_manager') || current_user_can('pp_edit_groups') || presspermit()->groups()->anyGroupManager();
+        $do_groups = current_user_can('pp_manage_permissions') || current_user_can('pp_edit_groups') || presspermit()->groups()->anyGroupManager();
         $do_settings = current_user_can('pp_manage_settings');
         $do_teaser = current_user_can('pp_manage_teaser');
 
@@ -294,7 +295,7 @@ class DashboardFilters
         $handler = [__CLASS__, 'actMenuHandler'];
 
         if ($do_groups) {
-            add_submenu_page($pp_cred_menu, esc_html__('Permissions', 'press-permit-core'), esc_html__('Permissions', 'press-permit-core'), 'pp_manager', 'presspermit-groups', $handler);
+            add_submenu_page($pp_cred_menu, esc_html__('Permissions', 'press-permit-core'), esc_html__('Permissions', 'press-permit-core'), 'read', 'presspermit-groups', $handler);
 
             if (current_user_can('pp_create_groups') && ('presspermit-group-new' == $pp_plugin_page)) {
                 add_submenu_page(
