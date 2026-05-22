@@ -97,7 +97,7 @@ class AgentExceptionsAjax
 
                 if ($for_type === '_term_') {
                     $tooltips = [
-                        'associate' => esc_html__('Control parent selection for selected terms.', 'press-permit-core'),
+                        'associate' => esc_html__('Control which terms can be set as a Parent of other terms.', 'press-permit-core'),
                         'manage'    => esc_html__('Allow users to manage selected terms.', 'press-permit-core'),
                     ];
                 } elseif ($for_source_name === 'pp_group') {
