@@ -80,7 +80,7 @@ class PostEdit
         $pp = presspermit();
 
         if (
-            current_user_can('pp_manager')
+            current_user_can('pp_manage_settings')
             && (!$pp->moduleActive('collaboration') || !class_exists('PublishPress\Statuses\StatusControl'))
             && $pp->getOption('display_extension_hints')
         ) {

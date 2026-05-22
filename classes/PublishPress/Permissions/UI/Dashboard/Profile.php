@@ -394,7 +394,7 @@ class Profile
                 if ($echo) {
                     echo '<span class="pp-group-site-roles">';
 
-                    if ($show_link && current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
+                    if ($show_link && current_user_can('pp_manage_permissions') && (is_multisite() || current_user_can('edit_user', $id))) {
                         $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
                         echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . wp_kses_post($titles_list) . "</a><br />";
                     } else {
@@ -405,7 +405,7 @@ class Profile
                 } else {
                     $role_str = '<span class="pp-group-site-roles">';
 
-                    if ($show_link && current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
+                    if ($show_link && current_user_can('pp_manage_permissions') && (is_multisite() || current_user_can('edit_user', $id))) {
                         $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
                         $role_str .= "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . wp_kses_post($titles_list) . "</a><br />";
                     } else {
