@@ -10,6 +10,23 @@ class PostEdit
 
     public function __construct()
     {
+        add_action('enqueue_block_assets', [$this, 'actEnqueueScripts']);
+
+        add_action('admin_head', [$this, 'actAdminHead']);
+
+        add_action('admin_menu', [$this, 'actAddMetaBoxes']);
+        add_action('do_meta_boxes', [$this, 'actPrepMetaboxes']);
+
+        add_action('admin_print_scripts', ['\PublishPress\Permissions\UI\Dashboard\ItemEdit', 'scriptItemEdit']);
+
+        add_action('admin_print_footer_scripts', [$this, 'actScriptEditParentLink']);
+        add_action('admin_print_footer_scripts', [$this, 'actScriptForceAutosaveBeforeUpload']);
+
+        do_action('presspermit_post_edit_ui');
+    }
+
+    public function actEnqueueScripts()
+    {
         wp_enqueue_style('presspermit-item-edit', PRESSPERMIT_URLPATH . '/common/css/item-edit.css', [], PRESSPERMIT_VERSION);
 
         // Enqueue tabbed metabox styles and scripts if enabled
@@ -23,18 +40,18 @@ class PostEdit
             }
             wp_enqueue_style('presspermit-select2-css');
             wp_enqueue_script('presspermit-select2-js');
-            
+
             wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', ['presspermit-select2-css'], PRESSPERMIT_VERSION);
-            
+
             $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
             wp_enqueue_script('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . "/common/js/item-edit-tabbed{$suffix}.js", ['jquery', 'presspermit-select2-js'], PRESSPERMIT_VERSION, true);
-            
+
             // Localize script with AJAX URL and nonce for user search
             wp_localize_script('presspermit-item-edit-tabbed', 'PPAgentSelect', [
                 'ajaxurl' => wp_nonce_url(admin_url(''), 'pp-ajax'),
                 'ajaxhandler' => 'got_ajax_listbox'
             ]);
-            
+
             // Localize script with translated messages
             wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
                 'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core'),
@@ -53,18 +70,6 @@ class PostEdit
                 'confirmDeleteItem'              => esc_html__('Remove the custom permisisons for "%s"?', 'press-permit-core'),
             ]);
         }
-
-        add_action('admin_head', [$this, 'actAdminHead']);
-
-        add_action('admin_menu', [$this, 'actAddMetaBoxes']);
-        add_action('do_meta_boxes', [$this, 'actPrepMetaboxes']);
-
-        add_action('admin_print_scripts', ['\PublishPress\Permissions\UI\Dashboard\ItemEdit', 'scriptItemEdit']);
-
-        add_action('admin_print_footer_scripts', [$this, 'actScriptEditParentLink']);
-        add_action('admin_print_footer_scripts', [$this, 'actScriptForceAutosaveBeforeUpload']);
-
-        do_action('presspermit_post_edit_ui');
     }
 
     public function initItemExceptionsUI()
