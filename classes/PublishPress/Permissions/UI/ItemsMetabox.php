@@ -207,7 +207,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 <p class="quick-search-wrap">
                     <input type="search" class="pp-quick-search input-with-default-title"
                         title="<?php esc_attr_e('Search'); ?>" value="<?php echo esc_attr($searched); ?>"
-                        name="quick-search-posttype-<?php echo esc_attr($post_type_name); ?>"/>
+                        name="quick-search-posttype-<?php echo esc_attr($post_type_name); ?>" placeholder="Search" />
                     <img class="waiting" style="display:none"
                         src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
                     <?php submit_button(esc_html__('Search'), 'quick-search-submit button-secondary hide-if-js', 'submit', false, ['id' => 'submit-quick-search-posttype-' . $post_type_name]); ?>
@@ -699,7 +699,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 <p class="quick-search-wrap">
                     <input type="search" class="pp-quick-search input-with-default-title"
                         title="<?php esc_attr_e('Search'); ?>" value="<?php echo esc_attr($searched); ?>"
-                        name="quick-search-taxonomy-<?php echo esc_attr($taxonomy_name); ?>"/>
+                        name="quick-search-taxonomy-<?php echo esc_attr($taxonomy_name); ?>" placeholder="Search" />
 
                     <img class="waiting" style="display:none"
                         src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
