@@ -353,9 +353,9 @@ class PermissionsHooksAdmin
                 'pp_manage_teaser'      => esc_html__('Access to the Teaser screen.', 'press-permit-core'),
                 'pp_unfiltered'         => esc_html__('All Enabled and Blocked Permissions are ignored for this role.', 'press-permit-core'),
             ],
-            esc_html__('Roles & Groups', 'press-permit-core') => [
+            esc_html__('Custom Groups', 'press-permit-core') => [
                 'pp_create_groups'      => esc_html__('Create Custom Groups.', 'press-permit-core'),
-                'pp_edit_groups'        => esc_html__('View user roles and custom groups on the Permissions screen. Also allows access to the editing screen for custom groups.', 'press-permit-core'),
+                'pp_edit_groups'        => esc_html__('View Custom Groups on the Permissions screen. Also allows access to the editing screen for Custom Groups.', 'press-permit-core'),
                 'pp_delete_groups'      => esc_html__('Delete Custom Groups.', 'press-permit-core'),
                 'pp_manage_members'     => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
             ],

@@ -10,7 +10,8 @@ class PostEdit
 
     public function __construct()
     {
-        add_action('enqueue_block_assets', [$this, 'actEnqueueScripts']);
+        add_action('enqueue_block_assets', [$this, 'actEnqueueBlockAssets']);
+        add_action('admin_enqueue_scripts', [$this, 'actEnqueueScripts']);
 
         add_action('admin_head', [$this, 'actAdminHead']);
 
@@ -23,6 +24,29 @@ class PostEdit
         add_action('admin_print_footer_scripts', [$this, 'actScriptForceAutosaveBeforeUpload']);
 
         do_action('presspermit_post_edit_ui');
+    }
+
+    public function actEnqueueBlockAssets()
+    {
+        if (!is_admin()) {
+            return;
+        }
+
+        $post_type = PWP::findPostType();
+        if (!PWP::isBlockEditorActive($post_type)) {
+            return;
+        }
+
+        wp_enqueue_style('presspermit-item-edit', PRESSPERMIT_URLPATH . '/common/css/item-edit.css', [], PRESSPERMIT_VERSION);
+
+        if (presspermit()->getOption('use_tabbed_metabox')) {
+            if (!wp_style_is('presspermit-select2-css', 'registered')) {
+                wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', array(), '4.0.13', 'screen');
+            }
+
+            wp_enqueue_style('presspermit-select2-css');
+            wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', ['presspermit-select2-css'], PRESSPERMIT_VERSION);
+        }
     }
 
     public function actEnqueueScripts()
@@ -238,7 +262,7 @@ class PostEdit
     public function drawSettingsUI($object, $box)
     {
         if ($type_obj = get_post_type_object($object->post_type)) :
-?>
+        ?>
             <label for="pp_enable_post_type"><input type="checkbox" name="pp_enable_post_type"
                     id="pp_enable_post_type" />
                 <?php printf(esc_html__('enable custom permissions for %s', 'press-permit-core'), esc_html($type_obj->labels->name)); ?>
@@ -357,7 +381,7 @@ class PostEdit
                 });
                 /* ]]> */
             </script>
-<?php
+            <?php
         endif;
     } // end function
 }
