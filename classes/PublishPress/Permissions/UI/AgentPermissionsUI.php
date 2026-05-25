@@ -580,7 +580,7 @@ class AgentPermissionsUI
                 $roles_ui_count++;
                 $uid = $roles_ui_count;
 
-                echo '<div id="pp_current_roles_' . $uid . '" class="pp-current-roles-container container">';
+                echo '<div id="pp_current_roles_' . esc_attr($uid) . '" class="pp-current-roles-container container">';
 
                 if ($show_groups_link) : ?>
                 <a class='pp-show-groups btn btn-primary' href='#' style="display:inline-block;margin-bottom: 10px;"><?php _e('Show Groups', 'press-permit-core'); ?></a>
@@ -672,7 +672,7 @@ class AgentPermissionsUI
                             echo '<tr>';
                             if (!$read_only) {
                                 echo '<th class="checkbox-column">';
-                                echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type) . '_' . $uid . '" type="checkbox" />';
+                                echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type . '_' . $uid) . '" type="checkbox" />';
                                 echo '</th>';
                             }
                             echo '<th class="role-column sortable asc">' . esc_html__('Role', 'press-permit-core') . '</th>';
@@ -746,6 +746,7 @@ class AgentPermissionsUI
                 if ($show_controls) echo '<span class="expand-icon">▼</span>';
                 echo '</div>';
                 echo '</div>'; // end section-header
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Generated markup is assembled from escaped fragments above.
                 echo $_section_html;
                 echo '</div>'; // end permission-section
                 echo '</div>'; // end container
@@ -853,7 +854,7 @@ class AgentPermissionsUI
                 $exceptions_ui_count++;
                 $uid = $exceptions_ui_count;
 
-                echo "<div id='pp_current_exceptions_" . $uid . "' class='pp-current-exceptions-container container'>"; // wrapper div for all exceptions
+                echo "<div id='pp_current_exceptions_" . esc_attr($uid) . "' class='pp-current-exceptions-container container'>"; // wrapper div for all exceptions
 
                 if (PWP::empty_REQUEST('all_types') && !empty($exceptions['post'])) {
                     $all_types = array_fill_keys(array_merge($post_types, $taxonomies, ['']), true);
@@ -1008,7 +1009,7 @@ class AgentPermissionsUI
                                 echo '<tr>';
                                 if (!$read_only) {
                                     echo '<th class="checkbox-column">';
-                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '_' . $uid . '" type="checkbox" />';
+                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '_' . esc_attr($uid) . '" type="checkbox" />';
                                     echo '</th>';
                                 }
                                 echo '<th class="icon-column sortable"></th>';
@@ -1023,7 +1024,7 @@ class AgentPermissionsUI
                                 echo esc_html($via_type_obj->labels->name);
                                 echo '</th>';
 
-                                echo '<th class="edit-column" style="text-align:left">' . __('Group', 'press-permit-core') . '</th>';
+                                echo '<th class="edit-column" style="text-align:left">' . esc_html__('Group', 'press-permit-core') . '</th>';
 
                                 echo '</tr>';
                                 echo '</thead>';
@@ -1249,7 +1250,7 @@ class AgentPermissionsUI
 
                                                     if (!empty($group_info[$group_id])) {
                                                         $url = admin_url('admin.php?page=presspermit-edit-permissions&action=edit&agent_id=' . $group_id);
-                                                        echo '<a href="' . esc_url($url) . '">' . $group_info[$group_id]->name . '</a>';
+                                                        echo '<a href="' . esc_url($url) . '">' . esc_html($group_info[$group_id]->name) . '</a>';
                                                     }
                                                 }
                                                 echo '</td>';
@@ -1647,6 +1648,7 @@ class AgentPermissionsUI
                         echo '</div>';
                         echo '</div>';
                         echo "<div class='section-content'>";
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Generated markup is assembled from escaped fragments above.
                         echo $_section_html;
                         echo '</div>';  // section-content
                         echo '</div>';  // permission-section
