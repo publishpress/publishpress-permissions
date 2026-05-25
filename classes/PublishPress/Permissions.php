@@ -270,6 +270,7 @@ class Permissions
             'display_extension_hints' => 1,
             'dynamic_wp_roles' => 0,
             'non_admins_set_read_exceptions' => 1,
+            'non_admins_set_edit_exceptions' => 1,
             'user_search_by_role' => 0,
             'anonymous_unfiltered' => 0,
             'users_bulk_groups' => 1,
