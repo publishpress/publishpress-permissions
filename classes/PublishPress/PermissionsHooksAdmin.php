@@ -359,7 +359,7 @@ class PermissionsHooksAdmin
                 'pp_delete_groups'      => esc_html__('Delete Custom Groups.', 'press-permit-core'),
                 'pp_manage_members'     => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
             ],
-            esc_html__('Set Permissions', 'press-permit-core') => $permission_management_group,
+            esc_html__('Set Permissions in Post or Term Editing Screen', 'press-permit-core') => $permission_management_group,
         ];
 
         return $plugin_caps;
