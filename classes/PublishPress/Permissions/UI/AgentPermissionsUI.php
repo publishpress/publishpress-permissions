@@ -367,7 +367,7 @@ class AgentPermissionsUI
 
             <div id="pp_save_roles">
                 <p class="submit">
-                    <input id="submit_roles" class="button button-primary pp-button" type="submit" value="<?php esc_attr_e('Save Roles', 'press-permit-core'); ?>" name="submit">
+                    <input id="submit_roles" class="button button-primary pp-primary-button pp-button" type="submit" value="<?php esc_attr_e('Save Roles', 'press-permit-core'); ?>" name="submit">
                 </p>
             </div>
         </div>
@@ -398,7 +398,7 @@ class AgentPermissionsUI
 
             <div id="pp_save_exceptions">
                 <p class="submit">
-                    <input id="submit_exc" class="button button-primary pp-button" type="submit" value="<?php esc_attr_e('Save Permissions', 'press-permit-core'); ?>" name="submit">
+                    <input id="submit_exc" class="button button-primary pp-primary-button pp-button" type="submit" value="<?php esc_attr_e('Save Permissions', 'press-permit-core'); ?>" name="submit">
                 </p>
 
             </div>
@@ -1820,7 +1820,7 @@ class AgentPermissionsUI
 
             <br />
             <div>
-                <input id="pp_clone_permissions" class="button button-primary pp-button" type="submit" name="pp_clone_permissions" value="<?php esc_attr_e('Copy Roles and Permissions', 'press-permit-core'); ?>">
+                <input id="pp_clone_permissions" class="button button-primary pp-primary-button pp-button" type="submit" name="pp_clone_permissions" value="<?php esc_attr_e('Copy Roles and Permissions', 'press-permit-core'); ?>">
             </div>
         <?php
             }
