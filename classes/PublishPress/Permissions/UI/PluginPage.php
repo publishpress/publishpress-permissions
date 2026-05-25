@@ -71,8 +71,8 @@ class PluginPage
                 $agent_type = '';
             }
 
+            $pp_groups = presspermit()->groups();
             $agent_type = self::getAgentType($agent_type);
-
             $group_variant = self::getGroupVariant();
 
             if ( ! $this->table = apply_filters('presspermit_groups_list_table', false, $agent_type) ) {
