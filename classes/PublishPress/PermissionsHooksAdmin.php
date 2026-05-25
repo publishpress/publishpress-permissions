@@ -347,15 +347,15 @@ class PermissionsHooksAdmin
 
         $plugin_caps['PublishPress Permissions'] = [
             esc_html__('Permissions & Access', 'press-permit-core') => [
-                'pp_administer_content' => esc_html__('Full editing access for all post types.', 'press-permit-core'),
+                'pp_administer_content' => esc_html__('Full editing access for all post types. Also gives the ability to edit Permissions for user roles.', 'press-permit-core'),
                 'pp_manage_permissions' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
                 'pp_manage_settings'    => esc_html__('Access to the Settings screen.', 'press-permit-core'),
                 'pp_manage_teaser'      => esc_html__('Access to the Teaser screen.', 'press-permit-core'),
                 'pp_unfiltered'         => esc_html__('All Enabled and Blocked Permissions are ignored for this role.', 'press-permit-core'),
             ],
-            esc_html__('Roles & Groups', 'press-permit-core') => [
+            esc_html__('Custom Groups', 'press-permit-core') => [
                 'pp_create_groups'      => esc_html__('Create Custom Groups.', 'press-permit-core'),
-                'pp_edit_groups'        => esc_html__('View user groups on the Permissions screen and access the editing screen for user groups.', 'press-permit-core'),
+                'pp_edit_groups'        => esc_html__('View Custom Groups on the Permissions screen. Also allows access to the editing screen for Custom Groups.', 'press-permit-core'),
                 'pp_delete_groups'      => esc_html__('Delete Custom Groups.', 'press-permit-core'),
                 'pp_manage_members'     => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
             ],
