@@ -164,6 +164,7 @@ class TermEdit
                         );
                 } else {
                     $caption = ($post_type) ? sprintf(
+                        // esc_html__('%1$s %2$s', 'press-permit-core'),
                         esc_html__('%1$s %2$s in this %3$s', 'press-permit-core'),
                         esc_html($op_obj->label),
                         $type_obj->labels->name,
