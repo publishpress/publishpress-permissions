@@ -356,7 +356,7 @@ class PermissionsHooksAdmin
             $permission_management_group['pp_set_edit_permissions']           = esc_html__('Set Editing permissions for specific Posts, Categories or Terms.', 'press-permit-core');
             $permission_management_group['pp_set_associate_permissions']      = esc_html__('Set "Set as Parent" permissions for specific Pages.', 'press-permit-core');
             $permission_management_group['pp_set_term_assign_permissions']    = esc_html__('Set Assign Term permissions.', 'press-permit-core');
-            $permission_management_group['pp_set_term_manage_permissions']    = esc_html__('Set Manage Term permissions.', 'press-permit-core');
+            $permission_management_group['pp_set_term_manage_permissions']    = esc_html__('Set "Manage This Term" permissions for specific terms.', 'press-permit-core');
             $permission_management_group['pp_set_term_associate_permissions'] = esc_html__('Set "Set as Parent" permissions for specific Categories or Terms.', 'press-permit-core');
 
             if (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) {
