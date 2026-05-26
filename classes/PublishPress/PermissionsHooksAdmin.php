@@ -212,6 +212,26 @@ class PermissionsHooksAdmin
      */
     public function fltBackCompatManagerCap($allcaps, $caps, $args)
     {
+        // Grant edit_theme_options for block editor to allow global styles and iframe CSS
+        if (in_array('edit_theme_options', $caps, true)) {
+            global $pagenow;
+            
+            // Only grant in block editor context (post edit screens)
+            if (is_admin() && in_array($pagenow, ['post.php', 'post-new.php'], true)) {
+                // Check if user has edit capabilities for current post type
+                $post_type = PWP::findPostType();
+                
+                if ($post_type && PWP::isBlockEditorActive($post_type)) {
+                    $type_obj = get_post_type_object($post_type);
+                    
+                    // Grant if user can edit posts of this type
+                    if ($type_obj && !empty($allcaps[$type_obj->cap->edit_posts])) {
+                        $allcaps['edit_theme_options'] = true;
+                    }
+                }
+            }
+        }
+        
         // Backward compat for sites upgrading from < 4.8.2: pp_manage_teaser was not yet a
         // distinct cap, so any pp_manager holder implicitly had teaser access. From 4.8.2 onward
         // populateRoles() explicitly assigns pp_manage_teaser, so this grant is no longer needed.
