@@ -163,13 +163,8 @@ class TermEdit
                             $op_obj->label
                         );
                 } else {
-                    $caption = ($post_type) ? sprintf(
-                        esc_html__('%1$s %2$s in this %3$s', 'press-permit-core'),
-                        esc_html($op_obj->label),
-                        $type_obj->labels->name,
-                        $tx->labels->singular_name
-                    ) : sprintf(
-                        esc_html__('%1$s this %2$s', 'press-permit-core'),
+                    $caption = sprintf(
+                        esc_html__('%1$s %2$s', 'press-permit-core'),
                         esc_html($op_obj->label),
                         $tx->labels->singular_name
                     );
