@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.8.2] - 26 May, 2026
+[4.8.2] - 27 May, 2026
 
 - Added: Support for displaying all Permissions inherited from Permission Groups for individual users. #2323
 - Added: Fallback capability support for pp_manage_teaser. #2318
