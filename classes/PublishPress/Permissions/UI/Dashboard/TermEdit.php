@@ -260,6 +260,12 @@ class TermEdit
             ? ['read' => true] : [];
 
         $operations = apply_filters('presspermit_item_edit_exception_ops', $ops, 'post', $taxonomy, $post_type);
+        $is_hierarchical = is_taxonomy_hierarchical($taxonomy);
+
+        if (!$is_hierarchical) {
+            // Non-hierarchical taxonomies don't have parent-child relationships, so 'associate' operation is not applicable
+            unset($operations['associate']);
+        }
 
         // Check if tabbed metabox is enabled
         if ($pp->getOption('use_tabbed_metabox')) {
