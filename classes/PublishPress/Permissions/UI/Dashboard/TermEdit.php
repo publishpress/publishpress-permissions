@@ -447,7 +447,7 @@ class TermEdit
         ?>
         <div id="poststuff" class="metabox-holder">
             <div id="post-body">
-                <div id="post-body-content" style="position: relative;z-index: 1;">
+                <div id="post-body-content" style="position: relative;z-index: 1;display: contents;">
                     <?php
 
                     require_once(ABSPATH . 'wp-admin/includes/meta-boxes.php');
