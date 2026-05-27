@@ -274,7 +274,6 @@ class SettingsAdmin
 
     static function setCapabilityDescriptions($pp_caps) {
         $pp_caps['pp_manage_settings'] = esc_html__('Manage PublishPress Permissions plugin settings.', 'press-permit-core');
-        $pp_caps['pp_manager'] = esc_html__('Access the Permissions manager (Groups and Roles) admin screen.', 'press-permit-core');
         $pp_caps['pp_manage_teaser'] = esc_html__('Access the Teaser settings admin screen.', 'press-permit-core');
         $pp_caps['pp_unfiltered'] = esc_html__('PublishPress Permissions will not apply any Extra Roles or Permissions to limit or expand viewing or editing access.', 'press-permit-core');
         $pp_caps['pp_administer_content'] = esc_html__('Manage other user\'s Permissions. Also grants capabilities for all post types and statuses.', 'press-permit-core');
@@ -282,8 +281,7 @@ class SettingsAdmin
         $pp_caps['pp_edit_groups'] = esc_html__('Edit the name and description of existing Permission Groups.', 'press-permit-core');
         $pp_caps['pp_delete_groups'] = esc_html__('Delete Permission Groups.', 'press-permit-core');
         $pp_caps['pp_manage_members'] = esc_html__('If group editing is allowed, can also modify group membership.', 'press-permit-core');
-        $pp_caps['pp_assign_roles'] = esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core');
-        $pp_caps['pp_assign_bulk_roles'] = esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core');
+        $pp_caps['pp_manage_permissions'] = esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core');
         $pp_caps['pp_set_view_permissions'] = esc_html__('Set Viewing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
 
 		if (presspermit()->moduleActive('collaboration')) {

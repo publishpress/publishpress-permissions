@@ -653,7 +653,7 @@ jQuery(document).ready(function ($) {
 
     // ========== Begin "Edit Exception" Submission scripts ==========
     // Handle expansion/collapse of sections exceptions
-    $('#pp_current_exceptions .section-header').on('click', function(e) {
+    $('.pp-current-exceptions-container .section-header').on('click', function(e) {
         // Only proceed if the click wasn't on the search box or its children
         if (!$(e.target).closest('.search-box').length) {
             const $section = $(this).closest('.permission-section');
@@ -663,7 +663,7 @@ jQuery(document).ready(function ($) {
     });
     
     // Handle expansion/collapse of subsections exceptions
-    $('#pp_current_exceptions .subsection-header').on('click', function(e) {
+    $('.pp-current-exceptions-container .subsection-header').on('click', function(e) {
         // Only proceed if the click wasn't on the search box or its children
         if (!$(e.target).closest('.search-box').length) {
             const $section = $(this).closest('.permission-type');
@@ -673,7 +673,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Handle row click to toggle checkbox
-    $('#pp_current_exceptions .checkbox-row').on('click', function (e) {
+    $('.pp-current-exceptions-container .checkbox-row').on('click', function (e) {
         // Prevent triggering the event if the user clicks directly on the checkbox or an anchor
         if ($(e.target).is('input[type="checkbox"]') || $(e.target).is('a')) {
             return;
@@ -684,7 +684,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Handle "Select All" checkbox
-    $('#pp_current_exceptions input[id^="cb-select-all-"]').on('change', function () {
+    $('.pp-current-exceptions-container input[id^="cb-select-all-"]').on('change', function () {
         const isChecked = $(this).is(':checked');
         const table = $(this).closest('table');
         
@@ -696,7 +696,7 @@ jQuery(document).ready(function ($) {
     });
     
     // Handle individual checkbox behavior
-    $('#pp_current_exceptions .checkbox-row input[type="checkbox"]').on('change', function () {
+    $('.pp-current-exceptions-container .checkbox-row input[type="checkbox"]').on('change', function () {
         const table = $(this).closest('table');
         const selectAllCheckbox = table.find('thead input[type="checkbox"]');
         const allCheckboxes = table.find('tbody input[type="checkbox"]:not([disabled])');
@@ -710,17 +710,17 @@ jQuery(document).ready(function ($) {
         table.closest('.permission-type').find('.pp-exception-bulk-edit').toggle(anyChecked);
     });
 
-    $('#pp_current_exceptions input').on('click', function (e) {
+    $('.pp-current-exceptions-container input').on('click', function (e) {
         $(this).closest('div.pp-current-type-roles').find('div.pp-exception-bulk-edit').show();
     });
 
-    $('#pp_current_exceptions .pp_check_all').on('click', function (e) {
+    $('.pp-current-exceptions-container .pp_check_all').on('click', function (e) {
         $(this).closest('td').find('input[name="pp_edit_exception[]"][disabled!="true"]').prop('checked', $(this).is(':checked'));
     });
 
     var presspermitCurrentExceptionsAjaxDone = function () {
-        $('#pp_current_exceptions input.submit-edit-item-exception').prop('disabled', false);
-        $('#pp_current_exceptions .waiting').hide();
+        $('.pp-current-exceptions-container input.submit-edit-item-exception').prop('disabled', false);
+        $('.pp-current-exceptions-container .waiting').hide();
     }
 
     var presspermitRemoveExceptionsDone = function (data, txtStatus) {
@@ -740,7 +740,7 @@ jQuery(document).ready(function ($) {
         var deleted_ass_ids = data.split('|');
 
         $.each(deleted_ass_ids, function (index, value) {
-            cbid = $('#pp_current_exceptions input[name="pp_edit_exception[]"][value="' + value + '"]').attr('id');
+            cbid = $('.pp-current-exceptions-container input[name="pp_edit_exception[]"][value="' + value + '"]').attr('id');
             if ($('#' + cbid).closest('tr.checkbox-row').length) {
                 $('#' + cbid).closest('tr.checkbox-row').remove();
             } else {
@@ -749,7 +749,7 @@ jQuery(document).ready(function ($) {
 
             var ass_ids = value.split(','); // some checkboxes represent both an item and child exception_item
             for (i = 0; i < ass_ids.length; ++i) {
-                $('#pp_current_exceptions label[class~="from_' + ass_ids[i] + '"]').parent().remove();
+                $('.pp-current-exceptions-container label[class~="from_' + ass_ids[i] + '"]').parent().remove();
             }
         });
     }
@@ -797,7 +797,7 @@ jQuery(document).ready(function ($) {
         var edited_eitem_ids = edit_data[1].split('|');
 
         $.each(edited_eitem_ids, function (index, value) {
-            cbid = $('#pp_current_exceptions input[name="pp_edit_exception[]"][value="' + value + '"]').attr('id');
+            cbid = $('.pp-current-exceptions-container input[name="pp_edit_exception[]"][value="' + value + '"]').attr('id');
             
             if (('exceptions_mirror' == operation) || ('exceptions_convert' == operation)) {
                 $('#' + cbid).closest('div').find('label input').attr('class', set_class);
@@ -820,7 +820,7 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    $('#pp_current_exceptions input.submit-edit-item-exception').on('click', function (e) {
+    $('.pp-current-exceptions-container input.submit-edit-item-exception').on('click', function (e) {
         var action = $(this).closest('div.pp-exception-bulk-edit').find('select').first().val();
 
         if (!action) {
@@ -890,5 +890,26 @@ jQuery(document).ready(function ($) {
     });
 
     // ========== End "Edit Exception" Submission scripts ==========
+
+    // ========== Begin "Anonymous Warning" scripts ==========
+    if ($('#pp-all-anon-warning').length) {
+        $(document).on('change', 'select[name="pp_select_x_for_type"]', function() {
+            $('#pp-all-anon-warning').hide();
+        });
+
+        var handle_anon_warning = function() {
+            if (('read' == $('input[name="pp_select_x_operation"]').val()) &&
+                ('additional' != $('input[name="pp_select_x_mod_type"]').val()) &&
+                ('pp-post-object' == $('select[name="pp_select_x_via_type"] option:selected').attr('class'))) {
+                $('#pp-all-anon-warning').show();
+            } else {
+                $('#pp-all-anon-warning').hide();
+            }
+        }
+
+        $(document).on('pp_exceptions_ui', handle_anon_warning);
+        $(document).on('change', 'select[name="pp_select_x_via_type"]', handle_anon_warning);
+    }
+    // ========== End "Anonymous Warning" scripts ==========
 });
 

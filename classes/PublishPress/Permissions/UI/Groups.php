@@ -14,6 +14,12 @@ class Groups
         $pp_admin = $pp->admin();
         $pp_groups = $pp->groups();
 
+        $can_manage_groups = current_user_can('pp_edit_groups') || $pp_groups->anyGroupManager();
+
+        if (!$can_manage_groups && (!current_user_can('list_users') || !presspermit()->admin()->bulkRolesEnabled())) {
+            wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
+        }
+
         /**
          * Need to add dummy constants because this data dynamically comes from the database
          * and we want to use sync tool from loco translate to get this data automatically
@@ -42,7 +48,15 @@ class Groups
         if (!$active_tab = PluginPage::viewFilter('permissions_tab')) {
             $active_tab = 'user-group';
         }
-    
+
+        if (('user-group' == $active_tab) && !$can_manage_groups) {
+            $active_tab = 'users';
+        }
+
+        if (('users' == $active_tab) && !current_user_can('list_users') && !presspermit()->admin()->bulkRolesEnabled()) {
+            $active_tab = 'user-group';
+        }
+
         if ('users' == $active_tab) {
             $agent_type = 'user';
             $group_variant = '';
@@ -188,6 +202,14 @@ class Groups
                     <?php
                     $tab = PluginPage::viewFilter('permissions_tab');
 
+                    if (('user-group' == $tab) && !$can_manage_groups) {
+                        $tab = 'users';
+                    }
+            
+                    if (('users' == $tab) && !current_user_can('list_users') && !presspermit()->admin()->bulkRolesEnabled()) {
+                        $tab = 'user-group';
+                    }
+
                     $gvar = ($group_variant) ? $group_variant : 'pp_group';
                     if (('user' != $agent_type) && $pp_groups->groupTypeEditable($gvar) && current_user_can('pp_create_groups')):
                         $_url = admin_url('admin.php?page=presspermit-group-new');
@@ -200,12 +222,14 @@ class Groups
                         <hr class="wp-header-end" />
                     <?php endif; ?>
                     <ul class="nav-tab-wrapper" style="margin-bottom: -0.1em; border-bottom: unset">
+                        <?php if (current_user_can('pp_edit_groups') || $pp_groups->anyGroupManager()) :?>
                         <li
                             class="nav-tab<?php echo (!$tab || ('user-group' == $tab)) ? ' nav-tab-active' : ''; ?>">
                             <a href="<?php echo esc_url(admin_url('admin.php?page=presspermit-groups&permissions_tab=user-group')); ?>">
                                 <?php esc_html_e('User Groups', 'press-permit-core'); ?>
                             </a>
                         </li>
+                        <?php endif;?>
                         <li class="nav-tab<?php echo ('users' == $tab) ? ' nav-tab-active' : ''; ?>">
                             <a href="<?php echo esc_url(admin_url('admin.php?page=presspermit-groups&permissions_tab=users')); ?>">
                                 <?php esc_html_e('Users', 'press-permit-core'); ?>

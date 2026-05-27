@@ -12,7 +12,7 @@ class ItemExceptionsRenderUI
     public function __construct()
     {
         $this->opt_labels = [
-            'default' => esc_html__('(Default access: Enabled)', 'press-permit-core'),
+            'default' => esc_html__('(Default access)', 'press-permit-core'),
             'default_yes' => esc_html__('(Default access: Enabled)', 'press-permit-core'),
             'default_no' => esc_html__('(Default access: Blocked)', 'press-permit-core'),
             'no_setting' => esc_html__('(No setting)', 'press-permit-core'),

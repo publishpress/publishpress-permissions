@@ -39,7 +39,13 @@ class ItemSave
 
         do_action("presspermit_process_exceptions_{$via_item_source}_{$item_id}");
 
-        if ($can_assign_roles = current_user_can('pp_assign_roles')) {
+        if ('term' == $via_item_source) {
+            $can_assign_roles = presspermit()->admin()->canSetAnyTermPermissions('', $via_item_type);
+        } else {
+            $can_assign_roles = presspermit()->admin()->canSetAnyPostPermissions();
+        }
+
+        if ($can_assign_roles) {
             if (apply_filters('presspermit_disable_exception_edit', false, $via_item_source, $item_id) 
             || apply_filters('presspermit_disable_exception_ui', false, $via_item_source, $item_id, '') 
             ) {

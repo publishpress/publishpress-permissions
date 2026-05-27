@@ -46,7 +46,7 @@ class PostsListing
 
     public function fltManagePostsColumns($columns)
     {
-        if (current_user_can('pp_assign_roles')) {
+        if (presspermit()->admin()->bulkRolesEnabled()) {
             if (!isset($this->exceptions)) {
                 global $wpdb, $typenow;
 

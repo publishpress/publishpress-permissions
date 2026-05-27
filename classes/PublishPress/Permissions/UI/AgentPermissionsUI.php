@@ -192,29 +192,6 @@ class AgentPermissionsUI
             <div id="pp-all-anon-warning" class="pp-red" style="display:none;">
                 <?php esc_html_e('Warning: Content hidden by these Permissions will be displayed if PP is deactivated. Consider setting a private Visibility on Edit Post screen instead.', 'press-permit-core'); ?>
             </div>
-
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function($) {
-                    $(document).on('change', 'select[name="pp_select_x_for_type"]', function() {
-                        $('#pp-all-anon-warning').hide();
-                    });
-
-                    var handle_anon_warning = function() {
-                        if (('read' == $('input[name="pp_select_x_operation"]').val()) &&
-                            ('additional' != $('input[name="pp_select_x_mod_type"]').val()) &&
-                            ('pp-post-object' == $('select[name="pp_select_x_via_type"] option:selected').attr('class'))) {
-                            $('#pp-all-anon-warning').show();
-                        } else {
-                            $('#pp-all-anon-warning').hide();
-                        }
-                    }
-
-                    $(document).on('pp_exceptions_ui', handle_anon_warning);
-                    $(document).on('change', 'select[name="pp_select_x_via_type"]', handle_anon_warning);
-                });
-                /* ]]> */
-            </script>
         <?php endif; ?>
 
         <div class='pp-ext-promo'>
@@ -390,7 +367,7 @@ class AgentPermissionsUI
 
             <div id="pp_save_roles">
                 <p class="submit">
-                    <input id="submit_roles" class="button button-primary pp-button" type="submit" value="<?php esc_attr_e('Save Roles', 'press-permit-core'); ?>" name="submit">
+                    <input id="submit_roles" class="button button-primary pp-primary-button pp-button" type="submit" value="<?php esc_attr_e('Save Roles', 'press-permit-core'); ?>" name="submit">
                 </p>
             </div>
         </div>
@@ -421,7 +398,7 @@ class AgentPermissionsUI
 
             <div id="pp_save_exceptions">
                 <p class="submit">
-                    <input id="submit_exc" class="button button-primary pp-button" type="submit" value="<?php esc_attr_e('Save Permissions', 'press-permit-core'); ?>" name="submit">
+                    <input id="submit_exc" class="button button-primary pp-primary-button pp-button" type="submit" value="<?php esc_attr_e('Save Permissions', 'press-permit-core'); ?>" name="submit">
                 </p>
 
             </div>
@@ -565,82 +542,6 @@ class AgentPermissionsUI
                 self::currentExceptionsUI($exc, $args);
 
                 do_action('presspermit_group_roles_ui', $agent_type, $agent_id);
-                ?>
-                <script type="text/javascript">
-                    /* <![CDATA[ */
-                    jQuery(document).ready(function ($) {
-                        // Store original order for each table
-                        $('table.table-sortable').each(function () {
-                            var $tbody = $(this).find('tbody');
-                            $tbody.data('original-order', $tbody.children('tr').toArray());
-                        });
-
-                        $('table.table-sortable th.sortable').css('cursor', 'pointer').on('click', function () {
-                            var $th = $(this);
-                            var $table = $th.closest('table.table-sortable');
-                            var colIndex = $th.index();
-                            if (!$th.data('sort-state')) {
-                                if ($th.hasClass('asc')) {
-                                    $th.data('sort-state', 'asc');
-                                } else if ($th.hasClass('desc')) {
-                                    $th.data('sort-state', 'desc');
-                                }
-                            }
-                            var state = $th.data('sort-state') || 'none'; // none, asc, desc
-
-                            // Cycle state: none -> asc -> desc -> none
-                            if (state === 'none') {
-                                state = 'asc';
-                            } else if (state === 'asc') {
-                                state = 'desc';
-                            } else {
-                                state = 'none';
-                            }
-                            $th.data('sort-state', state);
-
-                            // Remove sort classes and data from other headers
-                            $table.find('th.sortable').not($th).removeClass('asc desc').data('sort-state', 'none');
-                            $th.removeClass('asc desc');
-                            if (state === 'asc') {
-                                $th.addClass('asc');
-                            } else if (state === 'desc') {
-                                $th.addClass('desc');
-                            }
-
-                            var $tbody = $table.find('tbody');
-                            var $rows;
-                            if (state === 'none') {
-                                // Restore original order from data
-                                var originalRows = $tbody.data('original-order');
-                                if (originalRows) {
-                                    $tbody.empty();
-                                    $.each(originalRows, function (idx, row) {
-                                        $tbody.append(row);
-                                    });
-                                }
-                            } else {
-                                var asc = (state === 'asc');
-                                $rows = $tbody.children('tr').get().sort(function (a, b) {
-                                    var aCol = $(a).children('td').eq(colIndex);
-                                    var bCol = $(b).children('td').eq(colIndex);
-                                    var aText = aCol.text().toLowerCase();
-                                    var bText = bCol.text().toLowerCase();
-                                    if (aCol.data('sort')) aText = aCol.data('sort').toLowerCase();
-                                    if (bCol.data('sort')) bText = bCol.data('sort').toLowerCase();
-                                    if (aText < bText) return asc ? -1 : 1;
-                                    if (aText > bText) return asc ? 1 : -1;
-                                    return 0;
-                                });
-                                $tbody.empty();
-                                $.each($rows, function (idx, row) {
-                                    $tbody.append(row);
-                                });
-                            }
-                        });
-                    });
-                    /* ]]> */
-                </script>
-                <?php
             }
 
             public static function currentRolesUI($roles, $args = [])
@@ -675,7 +576,11 @@ class AgentPermissionsUI
                 $pp = presspermit();
                 $pp_admin = $pp->admin();
 
-                echo '<div id="pp_current_roles" class="container">';
+                static $roles_ui_count = 0;
+                $roles_ui_count++;
+                $uid = $roles_ui_count;
+
+                echo '<div id="pp_current_roles_' . esc_attr($uid) . '" class="pp-current-roles-container container">';
 
                 if ($show_groups_link) : ?>
                 <a class='pp-show-groups btn btn-primary' href='#' style="display:inline-block;margin-bottom: 10px;"><?php _e('Show Groups', 'press-permit-core'); ?></a>
@@ -699,26 +604,12 @@ class AgentPermissionsUI
 
                 $show_controls = empty($args['context']) || ('edit-permissions' == $args['context']);
 
-                echo "<div class='permission-section'>";
-                echo '<div class="section-header">';
-                echo '<h2 class="section-title">';
-                if ($link) {
-                    echo "<a href='" . esc_url($link) . "'>" . esc_html($caption) . "</a>";
-                } else {
-                    esc_html_e($caption);
-                }
-                echo ' <span class="badge badge-count" style="display:none"><span class="count-num">0</span> ' . esc_html__('item(s)', 'press-permit-core') . '</span>';
-                echo '</h2>';
-                echo '<div class="section-controls">';
-                if ($show_controls) echo '<span class="expand-icon">▼</span>';
-                echo '</div>';
-                echo '</div>'; // end section-header
+                ob_start();
                 $section_item_count = 0;
                 foreach (array_keys($type_roles) as $source_name) {
                     ksort($type_roles[$source_name]);
 
                     foreach (array_keys($type_roles[$source_name]) as $object_type) {
-                        $item_count = 0;
 
                         if ($type_obj = $pp->getTypeObject($source_name, $object_type)) {
                             $type_caption = $type_obj->labels->singular_name;
@@ -758,7 +649,9 @@ class AgentPermissionsUI
 
                         // site roles
                         if (!empty($type_roles[$source_name][$object_type])) {
-                            $permissions_section_id = 'pp_current_' . esc_attr($source_name) . "_" . esc_attr($object_type) . '_site_roles';
+                            $item_count = count($type_roles[$source_name][$object_type]);
+                            $section_item_count += $item_count;
+                            $permissions_section_id = 'pp_current_' . esc_attr($source_name) . "_" . esc_attr($object_type) . '_site_roles_' . $uid;
                             echo '<div id="' . esc_attr($permissions_section_id) . '" class="section-content">';
                             ?>
                             <div class="for-type for-type-<?php echo esc_attr($object_type);?>">
@@ -766,7 +659,7 @@ class AgentPermissionsUI
                             <div class="subsection-header permission-type-header">
                             <h3 class="section-title permission-type-title">
                                 <?php echo esc_html(sprintf(__('%s Roles', 'press-permit-core'), $type_caption)); ?>
-                                <span class="badge badge-count" style=""><span class="count-num">0</span> <?php esc_html_e('item(s)', 'press-permit-core');?></span>
+                                <span class="badge badge-count"><span class="count-num"><?php echo esc_html($item_count); ?></span> <?php esc_html_e('item(s)', 'press-permit-core');?></span>
                             </h3>
                             <div class="section-controls">
                             <?php if ($show_controls) echo '<span class="expand-icon">▼</span>';?>
@@ -779,7 +672,7 @@ class AgentPermissionsUI
                             echo '<tr>';
                             if (!$read_only) {
                                 echo '<th class="checkbox-column">';
-                                echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type) . '" type="checkbox" />';
+                                echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type . '_' . $uid) . '" type="checkbox" />';
                                 echo '</th>';
                             }
                             echo '<th class="role-column sortable asc">' . esc_html__('Role', 'press-permit-core') . '</th>';
@@ -818,8 +711,6 @@ class AgentPermissionsUI
                                 }
                                 echo '</td>';
                                 echo '</tr>';
-                                $item_count++;
-                                $section_item_count++;
                             }
 
                             echo '</div>';
@@ -832,41 +723,41 @@ class AgentPermissionsUI
                             echo '<img class="waiting" style="display:none;" src="' . esc_url(admin_url('images/wpspin_light.gif')) . '" alt="" />';
                             echo '</div>'; // end pp-role-bulk-edit
                             echo '</div>'; // end subsection-content
-                            ?>
-                            <script type="text/javascript">
-                                /* <![CDATA[ */
-                                jQuery(document).ready(function ($) {
-                                    $('#<?php echo esc_attr($permissions_section_id);?> div.for-type-<?php echo esc_attr($object_type);?> h3 span.count-num').html('<?php echo esc_attr($item_count);?>');
-                                    $('#<?php echo esc_attr($permissions_section_id);?> div.for-type-<?php echo esc_attr($object_type);?> span.badge-count').show();
-                                });
-                                /* ]]> */
-                            </script>
-                            <?php
                             echo '</div>'; // end permission-type
                             echo '</div>'; // end for-type
                             echo '</div>'; // end section-content
                         }
                     } // end foreach object_type
                 } // end foreach source_name
+
+                $_section_html = ob_get_clean();
+
+                echo "<div class='permission-section'>";
+                echo '<div class="section-header">';
+                echo '<h2 class="section-title">';
+                if ($link) {
+                    echo "<a href='" . esc_url($link) . "'>" . esc_html($caption) . "</a>";
+                } else {
+                    esc_html_e($caption);
+                }
+                echo ' <span class="badge badge-count"><span class="count-num">' . esc_html($section_item_count) . '</span> ' . esc_html__('item(s)', 'press-permit-core') . '</span>';
+                echo '</h2>';
+                echo '<div class="section-controls">';
+                if ($show_controls) echo '<span class="expand-icon">▼</span>';
+                echo '</div>';
+                echo '</div>'; // end section-header
+                // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Generated markup is assembled from escaped fragments above.
+                echo $_section_html;
                 echo '</div>'; // end permission-section
                 echo '</div>'; // end container
-
-                ?>
-                <script type="text/javascript">
-                    /* <![CDATA[ */
-                    jQuery(document).ready(function ($) {
-                        $('#pp_current_roles h2 span.count-num').html('<?php echo esc_attr($section_item_count);?>');
-                        $('#pp_current_roles h2 span.badge-count').show();
-                    });
-                    /* ]]> */
-                </script>
-                <?php
 
                 return true;
             }
 
             public static function currentExceptionsUI($exc_results, $args = [])
             {
+                global $wp_roles;
+
                 $defaults = [
                     'read_only'         => false,
                     'class'             => 'pp-group-roles',
@@ -953,9 +844,17 @@ class AgentPermissionsUI
                     if (!empty($row->inherited_from)) {
                         $exceptions[$row->via_item_source][$via_type][$row->for_item_type][$row->operation][$row->mod_type][$row->for_item_status][$row->item_id]['inherited_from'] = $row->inherited_from;
                     }
+
+                    if ('pp_group' == $row->agent_type) {
+                        $exceptions[$row->via_item_source][$via_type][$row->for_item_type][$row->operation][$row->mod_type][$row->for_item_status][$row->item_id]['group_id'] = $row->agent_id;
+                    }
                 }
 
-                echo "<div id='pp_current_exceptions' class='container'>"; // wrapper div for all exceptions
+                static $exceptions_ui_count = 0;
+                $exceptions_ui_count++;
+                $uid = $exceptions_ui_count;
+
+                echo "<div id='pp_current_exceptions_" . esc_attr($uid) . "' class='pp-current-exceptions-container container'>"; // wrapper div for all exceptions
 
                 if (PWP::empty_REQUEST('all_types') && !empty($exceptions['post'])) {
                     $all_types = array_fill_keys(array_merge($post_types, $taxonomies, ['']), true);
@@ -1000,21 +899,13 @@ class AgentPermissionsUI
 
                         $any_redundant = false;
 
-                        $permissions_section_id = 'pp_current_' . esc_attr($via_src) . "_" . esc_attr($via_type) . '_roles';
+                        $permissions_section_id = 'pp_current_' . esc_attr($via_src) . "_" . esc_attr($via_type) . '_roles_' . $uid;
+                        $primary_role_group_suffix = (strpos($caption, '(from primary role or group membership)') !== false)
+                            ? ' ' . __('(from primary role or group membership)', 'press-permit-core')
+                            : '';
+                        $caption = strpos($caption, '(from primary role or group membership)') !== false ? sprintf($caption, $via_type_caption) : $caption . ' ' . $via_type_caption;
 
-                        ?>
-                        <div id='<?php echo esc_attr($permissions_section_id);?>' class='permission-section'>
-                        <?php
-
-                        // @todo: plural solution for js-based count refresh
-
-                        echo '<div class="section-header">';
-                        echo '<h2 class="section-title">' . sprintf(esc_html__('%s Permissions', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name)) . ' <span class="badge badge-count" style="display:none"><span class="count-num">0</span> ' . esc_html__('item(s)', 'press-permit-core') . '</span></h2>';
-                        echo '<div class="section-controls">';
-                        echo '<span class="expand-icon">▼</span>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo "<div class='section-content'>";
+                        ob_start();
 
                         ksort($exceptions[$via_src][$via_type]);
                         foreach (array_keys($exceptions[$via_src][$via_type]) as $for_type) {
@@ -1039,10 +930,17 @@ class AgentPermissionsUI
                             <?php
 
                             foreach (array_keys($exceptions[$via_src][$via_type][$for_type]) as $operation) {
-                                $item_count = 0;
-
                                 if (!$operation_obj = $pp_admin->getOperationObject($operation, $for_type))
                                     continue;
+
+                                $item_count = 0;
+                                foreach (array_keys($exceptions[$via_src][$via_type][$for_type][$operation]) as $_mod_type) {
+                                    if (!self::getModificationObject($_mod_type)) continue;
+                                    foreach (array_keys($exceptions[$via_src][$via_type][$for_type][$operation][$_mod_type]) as $_status) {
+                                        $item_count += count(array_intersect_key($item_paths[$via_src], $exceptions[$via_src][$via_type][$for_type][$operation][$_mod_type][$_status]));
+                                    }
+                                }
+                                $section_item_count += $item_count;
 
                                 $op_label = (!empty($operation_obj->abbrev)) ? $operation_obj->abbrev : $operation_obj->label;
 
@@ -1093,11 +991,13 @@ class AgentPermissionsUI
                                     }
                                 }
 
+                                $group_info = [];
+
                                 ?>
                                 <div class='permission-type op-<?php echo esc_attr($operation);?>'>
                                 <?php
                                 echo '<div class="subsection-header permission-type-header">';
-                                echo '<h3 class="section-title permission-type-title">' . esc_html($op_caption) . ' <span class="badge badge-count" style="display:none"><span class="count-num">0</span> ' . esc_html__('item(s)', 'press-permit-core') . '</span></h3>';
+                                echo '<h3 class="section-title permission-type-title">' . esc_html($op_caption) . ' <span class="badge badge-count"><span class="count-num">' . esc_html($item_count) . '</span> ' . esc_html__('item(s)', 'press-permit-core') . '</span></h3>';
                                 echo '<div class="section-controls">';
                                 echo '<span class="expand-icon">▼</span>';
                                 echo '</div>';
@@ -1109,7 +1009,7 @@ class AgentPermissionsUI
                                 echo '<tr>';
                                 if (!$read_only) {
                                     echo '<th class="checkbox-column">';
-                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '" type="checkbox" />';
+                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '_' . esc_attr($uid) . '" type="checkbox" />';
                                     echo '</th>';
                                 }
                                 echo '<th class="icon-column sortable"></th>';
@@ -1124,9 +1024,8 @@ class AgentPermissionsUI
                                 echo esc_html($via_type_obj->labels->name);
                                 echo '</th>';
 
-                                if (!$read_only) {
-                                    echo '<th class="edit-column"></th>';
-                                }
+                                echo '<th class="edit-column" style="text-align:left">' . esc_html__('Group', 'press-permit-core') . '</th>';
+
                                 echo '</tr>';
                                 echo '</thead>';
                                 echo '<tbody>';
@@ -1337,10 +1236,27 @@ class AgentPermissionsUI
                                                 echo wp_kses($item_label, $allowed_html);
                                                 echo '</td>';
 
+                                                echo "<td>";
+                                                if (!empty($exceptions[$via_src][$via_type][$for_type][$operation][$mod_type][$status][$item_id]['group_id'])) {
+                                                    $group_id = $exceptions[$via_src][$via_type][$for_type][$operation][$mod_type][$status][$item_id]['group_id'];
+
+                                                    if (!isset($group_info[$group_id])) {
+                                                        $group_info[$group_id] = pp_get_group($group_id);
+
+                                                        if (!empty($group_info[$group_id]->metagroup_type) && ('wp_role' == $group_info[$group_id]->metagroup_type) && !empty($wp_roles->role_names[$group_info[$group_id]->metagroup_id])) {
+                                                            $group_info[$group_id]->name = $wp_roles->role_names[$group_info[$group_id]->metagroup_id];
+                                                        }
+                                                    }
+
+                                                    if (!empty($group_info[$group_id])) {
+                                                        $url = admin_url('admin.php?page=presspermit-edit-permissions&action=edit&agent_id=' . $group_id);
+                                                        echo '<a href="' . esc_url($url) . '">' . esc_html($group_info[$group_id]->name) . '</a>';
+                                                    }
+                                                }
+                                                echo '</td>';
+
                                                 echo "</tr>";
 
-                                                $item_count++;
-                                                $section_item_count++;
                                             } else {
                                                 $cb_id = 'pp_edit_exception_' . str_replace(',', '_', $ass_id);
 
@@ -1438,8 +1354,6 @@ class AgentPermissionsUI
                                             
                                                 echo '<td class="edit-column"><a href="' . esc_url($edit_url) . '">' . sprintf(esc_html__('Edit %s', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name)) . '</a></td>';
 
-                                                $item_count++;
-                                                $section_item_count++;
                                             }
                                         } // end foreach item
 
@@ -1586,17 +1500,6 @@ class AgentPermissionsUI
                                 echo '</div>';  // pp-exception-bulk-edit
                                 echo '</div>';  // end subsection-content
 
-                                ?>
-                                <script type="text/javascript">
-                                    /* <![CDATA[ */
-                                    jQuery(document).ready(function ($) {
-                                        $('#<?php echo esc_attr($permissions_section_id);?> div.for-type-<?php echo esc_attr($for_type);?> div.op-<?php echo esc_attr($operation);?> h3 span.count-num').html('<?php echo esc_attr($item_count);?>');
-                                        $('#<?php echo esc_attr($permissions_section_id);?> div.for-type-<?php echo esc_attr($for_type);?> div.op-<?php echo esc_attr($operation);?> span.badge-count').show();
-                                    });
-                                    /* ]]> */
-                                </script>
-                                <?php
-
                                 echo '</div>';  // end section-content (within for_type operation)
 
                             } // end foreach operation
@@ -1734,20 +1637,21 @@ class AgentPermissionsUI
                             }
                         }
 
+                        $_section_html = ob_get_clean();
+                        ?>
+                        <div id='<?php echo esc_attr($permissions_section_id);?>' class='permission-section'>
+                        <?php
+                        echo '<div class="section-header">';
+                        echo '<h2 class="section-title">' . esc_html(sprintf(esc_html__('%s Permissions', 'press-permit-core'), $via_type_caption) . $primary_role_group_suffix) . ' <span class="badge badge-count"><span class="count-num">' . esc_html($section_item_count) . '</span> ' . esc_html__('item(s)', 'press-permit-core') . '</span></h2>';
+                        echo '<div class="section-controls">';
+                        echo '<span class="expand-icon">▼</span>';
+                        echo '</div>';
+                        echo '</div>';
+                        echo "<div class='section-content'>";
+                        // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Generated markup is assembled from escaped fragments above.
+                        echo $_section_html;
                         echo '</div>';  // section-content
                         echo '</div>';  // permission-section
-                        ?>
-
-                        <script type="text/javascript">
-                            /* <![CDATA[ */
-                            jQuery(document).ready(function ($) {
-                                $('#<?php echo esc_attr($permissions_section_id);?> h2 span.count-num').html('<?php echo esc_attr($section_item_count);?>');
-                                $('#<?php echo esc_attr($permissions_section_id);?> h2 span.badge-count').show();
-                            });
-                            /* ]]> */
-                        </script>
-                        
-                        <?php
                     } // end foreach via_type
 
                 } // end foreach via_src
@@ -1916,7 +1820,7 @@ class AgentPermissionsUI
 
             <br />
             <div>
-                <input id="pp_clone_permissions" class="button button-primary pp-button" type="submit" name="pp_clone_permissions" value="<?php esc_attr_e('Copy Roles and Permissions', 'press-permit-core'); ?>">
+                <input id="pp_clone_permissions" class="button button-primary pp-primary-button pp-button" type="submit" name="pp_clone_permissions" value="<?php esc_attr_e('Copy Roles and Permissions', 'press-permit-core'); ?>">
             </div>
         <?php
             }

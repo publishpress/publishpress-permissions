@@ -212,15 +212,35 @@ class PermissionsHooksAdmin
      */
     public function fltBackCompatManagerCap($allcaps, $caps, $args)
     {
-        if (in_array('pp_manager', $caps, true) && !empty($allcaps['pp_edit_groups'])) {
-            $allcaps['pp_manager'] = true;
+        // Grant edit_theme_options for block editor to allow global styles and iframe CSS
+        if (in_array('edit_theme_options', $caps, true)) {
+            global $pagenow;
+            
+            // Only grant in block editor context (post edit screens)
+            if (is_admin() && in_array($pagenow, ['post.php', 'post-new.php'], true)) {
+                // Check if user has edit capabilities for current post type
+                $post_type = PWP::findPostType();
+                
+                if ($post_type && PWP::isBlockEditorActive($post_type)) {
+                    $type_obj = get_post_type_object($post_type);
+                    
+                    // Grant if user can edit posts of this type
+                    if ($type_obj && !empty($allcaps[$type_obj->cap->edit_posts])) {
+                        $allcaps['edit_theme_options'] = true;
+                    }
+                }
+            }
         }
-
-        // Grant pp_manage_teaser to users who have pp_manage_settings (backward compat for new cap).
-        // pp_manage_teaser was introduced alongside pp_manager; roles without it yet should still
-        // see the Teaser menu if they can manage other settings.
+        
+        // Backward compat for sites upgrading from < 4.8.2: pp_manage_teaser was not yet a
+        // distinct cap, so any pp_manager holder implicitly had teaser access. From 4.8.2 onward
+        // populateRoles() explicitly assigns pp_manage_teaser, so this grant is no longer needed.
         if (in_array('pp_manage_teaser', $caps, true) && !empty($allcaps['pp_manage_settings'])) {
-            $allcaps['pp_manage_teaser'] = true;
+            $ver = get_option('presspermit_version');
+            $installed = ($ver && is_array($ver) && !empty($ver['version'])) ? $ver['version'] : '';
+            if (!$installed || version_compare($installed, '4.8.2', '<')) {
+                $allcaps['pp_manage_teaser'] = true;
+            }
         }
 
         // Old → new cap name aliases
@@ -249,17 +269,31 @@ class PermissionsHooksAdmin
             $caps,
             [
                 'pp_administer_content',
-                'pp_assign_roles',
-                'pp_assign_bulk_roles', 
                 'pp_create_groups',
                 'pp_delete_groups',
                 'pp_edit_groups',
                 'pp_manage_members',
+                'pp_manage_permissions',
                 'pp_manage_settings',
-                'pp_manager',
                 'pp_manage_teaser',
                 'pp_set_view_permissions',
                 'pp_unfiltered',
+            ]
+        );
+
+        // Remove obsolete capabilities from Capabilities UI
+        $caps = array_diff(
+            $caps, 
+            [
+                'pp_set_read_exceptions',
+                'pp_set_edit_exceptions',
+                'pp_set_revise_exceptions',
+                'pp_set_associate_exceptions',
+                'pp_set_term_assign_exceptions',
+                'pp_set_term_manage_exceptions',
+                'pp_set_term_associate_exceptions',
+                'pp_assign_roles',
+                'pp_manager'
             ]
         );
 
@@ -315,15 +349,15 @@ class PermissionsHooksAdmin
         $core_only = !presspermit()->moduleActive('collaboration');
 
         $permission_management_group = [
-            'pp_set_view_permissions'         => esc_html__('Set Viewing Permissions for specific Posts, Categories or Terms.', 'press-permit-core'),
+            'pp_set_view_permissions'         => esc_html__('Set Viewing permissions for specific Posts, Categories or Terms.', 'press-permit-core'),
         ];
 
         if (!$core_only) {
-            $permission_management_group['pp_set_edit_permissions']          = esc_html__('Set Editing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
-            $permission_management_group['pp_set_associate_permissions']     = esc_html__('Set "Set as Parent" Permissions for specific Posts.', 'press-permit-core');
-            $permission_management_group['pp_set_term_assign_permissions']   = esc_html__('Set Term Assignment Permissions.', 'press-permit-core');
-            $permission_management_group['pp_set_term_manage_permissions']   = esc_html__('Set Term Management Permissions.', 'press-permit-core');
-            $permission_management_group['pp_set_term_associate_permissions'] = esc_html__('Set "Set as Parent" Permissions for specific Categories or Terms.', 'press-permit-core');
+            $permission_management_group['pp_set_edit_permissions']           = esc_html__('Set Editing permissions for specific Posts, Categories or Terms.', 'press-permit-core');
+            $permission_management_group['pp_set_associate_permissions']      = esc_html__('Set "Set as Parent" permissions for specific Pages.', 'press-permit-core');
+            $permission_management_group['pp_set_term_assign_permissions']    = esc_html__('Set Assign Term permissions.', 'press-permit-core');
+            $permission_management_group['pp_set_term_manage_permissions']    = esc_html__('Set "Manage This Term" permissions for specific terms.', 'press-permit-core');
+            $permission_management_group['pp_set_term_associate_permissions'] = esc_html__('Set "Set as Parent" permissions for specific Categories or Terms.', 'press-permit-core');
 
             if (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) {
                 $permission_management_group['pp_set_revise_permissions'] = esc_html__('Set Revision Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
@@ -333,21 +367,19 @@ class PermissionsHooksAdmin
 
         $plugin_caps['PublishPress Permissions'] = [
             esc_html__('Permissions & Access', 'press-permit-core') => [
-                'pp_administer_content' => esc_html__('Manage other user\'s Permissions. Also grants capabilities for all post types and statuses.', 'press-permit-core'),
-                'pp_manage_settings'    => esc_html__('Access the Permissions Settings admin screen.', 'press-permit-core'),
-                'pp_manager'            => esc_html__('Access the Permissions manager (Groups and Roles) admin screen.', 'press-permit-core'),
-                'pp_manage_teaser'      => esc_html__('Access the Teaser settings admin screen.', 'press-permit-core'),
-                'pp_unfiltered'         => esc_html__('PublishPress Permissions will not apply any Extra Roles or Permissions to limit or expand viewing or editing access.', 'press-permit-core'),
+                'pp_administer_content' => esc_html__('Full editing access for all post types. Also gives the ability to edit Permissions for user roles.', 'press-permit-core'),
+                'pp_manage_permissions' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
+                'pp_manage_settings'    => esc_html__('Access to the Settings screen.', 'press-permit-core'),
+                'pp_manage_teaser'      => esc_html__('Access to the Teaser screen.', 'press-permit-core'),
+                'pp_unfiltered'         => esc_html__('All Enabled and Blocked Permissions are ignored for this role.', 'press-permit-core'),
             ],
-            esc_html__('Roles & Groups', 'press-permit-core') => [
-                'pp_assign_roles'   => esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core'),
-                'pp_assign_bulk_roles' => esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core'),
-                'pp_create_groups'  => esc_html__('Create new Permission Groups and set the name and description.', 'press-permit-core'),
-                'pp_edit_groups'    => esc_html__('Edit the name and description of existing Permission Groups.', 'press-permit-core'),
-                'pp_delete_groups'  => esc_html__('Delete Permission Groups.', 'press-permit-core'),
-                'pp_manage_members' => esc_html__('If group editing is allowed, can also modify group membership.', 'press-permit-core'),
+            esc_html__('Custom Groups', 'press-permit-core') => [
+                'pp_create_groups'      => esc_html__('Create Custom Groups.', 'press-permit-core'),
+                'pp_edit_groups'        => esc_html__('View Custom Groups on the Permissions screen. Also allows access to the editing screen for Custom Groups.', 'press-permit-core'),
+                'pp_delete_groups'      => esc_html__('Delete Custom Groups.', 'press-permit-core'),
+                'pp_manage_members'     => esc_html__('Manage members in Custom Groups.', 'press-permit-core'),
             ],
-            esc_html__('Set Permissions', 'press-permit-core') => $permission_management_group,
+            esc_html__('Set Permissions in Post or Term Editing Screen', 'press-permit-core') => $permission_management_group,
         ];
 
         return $plugin_caps;

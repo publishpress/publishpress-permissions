@@ -71,13 +71,17 @@ class PluginPage
                 $agent_type = '';
             }
 
+            $pp_groups = presspermit()->groups();
             $agent_type = self::getAgentType($agent_type);
-
             $group_variant = self::getGroupVariant();
 
             if ( ! $this->table = apply_filters('presspermit_groups_list_table', false, $agent_type) ) {
                 if (!$active_tab = PluginPage::viewFilter('permissions_tab')) {
-                    $active_tab = 'user-group';
+                    if (current_user_can('pp_edit_groups') || $pp_groups->anyGroupManager()) {
+                        $active_tab = 'user-group';
+                    } else {
+                        $active_tab = 'users';
+                    }
                 }
 
                 if ($active_tab === 'users') {
@@ -124,7 +128,7 @@ class PluginPage
                     }
                 }
             }
-        } elseif (PWP::empty_REQUEST('group_variant') && !current_user_can('edit_users')) {
+        } elseif (PWP::empty_REQUEST('group_variant') && !current_user_can('edit_users') && !current_user_can('pp_manage_permissions')) {
             $group_variant = 'pp_group';
         }
 

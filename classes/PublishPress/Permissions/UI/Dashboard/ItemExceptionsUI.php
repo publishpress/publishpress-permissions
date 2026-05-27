@@ -345,6 +345,9 @@ class ItemExceptionsUI
             'publish'   => 'pp_set_edit_permissions',
             'assign'    => 'pp_set_term_assign_permissions',
             'associate' => ('term' === $via_item_source) ? 'pp_set_term_associate_permissions' : 'pp_set_associate_permissions',
+            'manage'    => 'pp_set_term_manage_permissions',
+            'copy'      => 'pp_set_copy_permissions',
+            'revise'    => 'pp_set_revise_permissions',
         ];
         $operations = array_filter($operations, function ($op_data) use ($is_administrator, $op_caps) {
             if ($is_administrator) {
@@ -388,7 +391,7 @@ class ItemExceptionsUI
                         $post_type_label = (!empty($post_type_obj) && !empty($post_type_obj->labels->name)) ? esc_html(strtolower($post_type_obj->labels->name)) : esc_html(strtolower($type_obj->labels->singular_name));
                         $tooltips = [
                             'assign'    => sprintf(esc_html__('Control who can assign terms to this %s.', 'press-permit-core'), $type_label),
-                            'associate' => sprintf(esc_html__('Control who can choose the parent page for this %s.', 'press-permit-core'), $type_label),
+                            'associate' => sprintf(esc_html__('Control who can select this page as parent %s.', 'press-permit-core'), $type_label),
                             'edit'      => sprintf(esc_html__('Control editing of this %s.', 'press-permit-core'), $type_label),
                             'publish'   => sprintf(esc_html__('Control publishing of this %s.', 'press-permit-core'), $type_label),
                             'delete'    => sprintf(esc_html__('Control deletion of this %s.', 'press-permit-core'), $type_label),
@@ -398,18 +401,19 @@ class ItemExceptionsUI
                             'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), $type_label),
                         ];
                         if (!empty($type_obj->name) && in_array($type_obj->name, ['post_tag', 'category'])) {
-                            $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to %s.', 'press-permit-core'), $type_label, $post_type_label);
-                            $tooltips['edit'] = sprintf(esc_html__('Control who can edit %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
-                            $tooltips['read'] = sprintf(esc_html__('Control who can view %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
-                            $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
-                            $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['assign']    = sprintf(esc_html__('Control who add this %s to %s.', 'press-permit-core'), $type_label, $post_type_label);
+                            $tooltips['edit']      = sprintf(esc_html__('Control who can edit %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['read']      = sprintf(esc_html__('Control who can view %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['copy']      = sprintf(esc_html__('Control who can create a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['revise']    = sprintf(esc_html__('Control who can submit a revision of %s with this %s.', 'press-permit-core'), $post_type_label, $type_label);
+                            $tooltips['associate'] = sprintf(esc_html__('Control who can select this %s as a parent %s.', 'press-permit-core'), $type_label, $type_label);
 
                             // For universal post type exceptions
                             if ($post_type === '') {
                                 $tooltips['assign'] = sprintf(esc_html__('Control who add this %s to all post types.', 'press-permit-core'), $post_type_label);
-                                $tooltips['edit'] = sprintf(esc_html__('Control who can edit all post types in this %s.', 'press-permit-core'), $post_type_label);
-                                $tooltips['read'] = sprintf(esc_html__('Control who can view all post types in this %s.', 'press-permit-core'), $post_type_label);
-                                $tooltips['copy'] = sprintf(esc_html__('Control who can create a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['edit']   = sprintf(esc_html__('Control who can edit all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['read']   = sprintf(esc_html__('Control who can view all post types in this %s.', 'press-permit-core'), $post_type_label);
+                                $tooltips['copy']   = sprintf(esc_html__('Control who can create a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
                                 $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
                             }
                         }
