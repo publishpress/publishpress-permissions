@@ -10,6 +10,47 @@ class PostEdit
 
     public function __construct()
     {
+        add_action('enqueue_block_assets', [$this, 'actEnqueueBlockAssets']);
+        add_action('admin_enqueue_scripts', [$this, 'actEnqueueScripts']);
+
+        add_action('admin_head', [$this, 'actAdminHead']);
+
+        add_action('admin_menu', [$this, 'actAddMetaBoxes']);
+        add_action('do_meta_boxes', [$this, 'actPrepMetaboxes']);
+
+        add_action('admin_print_scripts', ['\PublishPress\Permissions\UI\Dashboard\ItemEdit', 'scriptItemEdit']);
+
+        add_action('admin_print_footer_scripts', [$this, 'actScriptEditParentLink']);
+        add_action('admin_print_footer_scripts', [$this, 'actScriptForceAutosaveBeforeUpload']);
+
+        do_action('presspermit_post_edit_ui');
+    }
+
+    public function actEnqueueBlockAssets()
+    {
+        if (!is_admin()) {
+            return;
+        }
+
+        $post_type = PWP::findPostType();
+        if (!PWP::isBlockEditorActive($post_type)) {
+            return;
+        }
+
+        wp_enqueue_style('presspermit-item-edit', PRESSPERMIT_URLPATH . '/common/css/item-edit.css', [], PRESSPERMIT_VERSION);
+
+        if (presspermit()->getOption('use_tabbed_metabox')) {
+            if (!wp_style_is('presspermit-select2-css', 'registered')) {
+                wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', array(), '4.0.13', 'screen');
+            }
+
+            wp_enqueue_style('presspermit-select2-css');
+            wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', ['presspermit-select2-css'], PRESSPERMIT_VERSION);
+        }
+    }
+
+    public function actEnqueueScripts()
+    {
         wp_enqueue_style('presspermit-item-edit', PRESSPERMIT_URLPATH . '/common/css/item-edit.css', [], PRESSPERMIT_VERSION);
 
         // Enqueue tabbed metabox styles and scripts if enabled
@@ -23,18 +64,18 @@ class PostEdit
             }
             wp_enqueue_style('presspermit-select2-css');
             wp_enqueue_script('presspermit-select2-js');
-            
+
             wp_enqueue_style('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . '/common/css/item-edit-tabbed.css', ['presspermit-select2-css'], PRESSPERMIT_VERSION);
-            
+
             $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
             wp_enqueue_script('presspermit-item-edit-tabbed', PRESSPERMIT_URLPATH . "/common/js/item-edit-tabbed{$suffix}.js", ['jquery', 'presspermit-select2-js'], PRESSPERMIT_VERSION, true);
-            
+
             // Localize script with AJAX URL and nonce for user search
             wp_localize_script('presspermit-item-edit-tabbed', 'PPAgentSelect', [
                 'ajaxurl' => wp_nonce_url(admin_url(''), 'pp-ajax'),
                 'ajaxhandler' => 'got_ajax_listbox'
             ]);
-            
+
             // Localize script with translated messages
             wp_localize_script('presspermit-item-edit-tabbed', 'ppPermissions', [
                 'bulkActionNotAvailableNonUsers' => esc_html__("Editing can't be granted to non-users.", 'press-permit-core'),
@@ -53,18 +94,6 @@ class PostEdit
                 'confirmDeleteItem'              => esc_html__('Remove the custom permisisons for "%s"?', 'press-permit-core'),
             ]);
         }
-
-        add_action('admin_head', [$this, 'actAdminHead']);
-
-        add_action('admin_menu', [$this, 'actAddMetaBoxes']);
-        add_action('do_meta_boxes', [$this, 'actPrepMetaboxes']);
-
-        add_action('admin_print_scripts', ['\PublishPress\Permissions\UI\Dashboard\ItemEdit', 'scriptItemEdit']);
-
-        add_action('admin_print_footer_scripts', [$this, 'actScriptEditParentLink']);
-        add_action('admin_print_footer_scripts', [$this, 'actScriptForceAutosaveBeforeUpload']);
-
-        do_action('presspermit_post_edit_ui');
     }
 
     public function initItemExceptionsUI()
@@ -94,7 +123,7 @@ class PostEdit
         // ========= register WP-rendered metaboxes ============
         $post_type = PWP::findPostType();
 
-        if (!current_user_can('pp_assign_roles') || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
+        if (!presspermit()->admin()->canSetAnyPostPermissions($post_type) || apply_filters('presspermit_disable_exception_ui', false, 'post', PWP::getPostID(), $post_type)) {
             return;
         }
 
@@ -140,6 +169,9 @@ class PostEdit
             ? ['read' => true] : [];
 
         $operations = apply_filters('presspermit_item_edit_exception_ops', $ops, 'post', $post_type);
+
+        // 'assign' controls which terms a user can assign globally, not per-post. Invalid in the post editor context.
+        unset($operations['assign']);
 
         // Check if tabbed metabox is enabled
         if ($pp->getOption('use_tabbed_metabox')) {
@@ -219,7 +251,7 @@ class PostEdit
         if (!in_array($typenow, presspermit()->getEnabledPostTypes(), true) || in_array($typenow, ['revision']))
             return;
 
-        if (current_user_can('pp_assign_roles')) {
+        if (presspermit()->admin()->canSetAnyPostPermissions($typenow)) {
             $this->initItemExceptionsUI();
 
             $args = ['post_types' => (array)$typenow, 'hierarchical' => is_post_type_hierarchical($typenow)];  // via_src, for_src, via_type, item_id, args
@@ -230,7 +262,7 @@ class PostEdit
     public function drawSettingsUI($object, $box)
     {
         if ($type_obj = get_post_type_object($object->post_type)) :
-?>
+        ?>
             <label for="pp_enable_post_type"><input type="checkbox" name="pp_enable_post_type"
                     id="pp_enable_post_type" />
                 <?php printf(esc_html__('enable custom permissions for %s', 'press-permit-core'), esc_html($type_obj->labels->name)); ?>
@@ -349,7 +381,7 @@ class PostEdit
                 });
                 /* ]]> */
             </script>
-<?php
+            <?php
         endif;
     } // end function
 }

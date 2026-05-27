@@ -9,7 +9,7 @@ class CoreAdmin
         add_action('presspermit_permissions_menu', [$this, 'actAdminMenuPromos'], 12, 2);
         add_action('presspermit_menu_handler', [$this, 'menuHandler']);
 
-        add_action('presspermit_admin_menu', [$this, 'actAdminMenu'], 999);
+        add_action('presspermit_admin_menu', [$this, 'actAdminMenu'], 999, 2);
 
         add_action('admin_enqueue_scripts', function () {
             if (presspermitPluginPage()) {
@@ -66,7 +66,7 @@ class CoreAdmin
                 $pp_options_menu,
                 esc_html__('Teaser', 'press-permit-core'),
                 esc_html__('Teaser', 'press-permit-core'),
-                'read',
+                'pp_manage_teaser',
                 'presspermit-posts-teaser',
                 $handler
             );
@@ -102,17 +102,23 @@ class CoreAdmin
         }
     }
 
-    function actAdminMenu()
+    function actAdminMenu($pp_options_menu = '', $handler = null)
     {
-        $pp_cred_menu = presspermit()->admin()->getMenuParams('permits');
+        if (!$pp_options_menu) {
+            $pp_options_menu = presspermit()->admin()->getMenuParams('permits');
+        }
+
+        if (!$handler) {
+            $handler = ['PublishPress\Permissions\UI\Dashboard\DashboardFilters', 'actMenuHandler'];
+        }
 
         add_submenu_page(
-            $pp_cred_menu,
+            $pp_options_menu,
             esc_html__('Upgrade to Pro', 'press-permit-core'),
             esc_html__('Upgrade to Pro', 'press-permit-core'),
             'read',
             'permissions-pro',
-            ['PublishPress\Permissions\UI\Dashboard\DashboardFilters', 'actMenuHandler']
+            $handler
         );
     }
 
@@ -121,7 +127,9 @@ class CoreAdmin
         $url = 'https://publishpress.com/links/permissions-menu';
 ?>
         <style type="text/css">
-            #toplevel_page_presspermit-groups ul li:last-of-type a {
+            #toplevel_page_presspermit-groups ul li:last-of-type a,
+            #toplevel_page_presspermit-settings ul li:last-of-type a,
+            #toplevel_page_presspermit-posts-teaser ul li:last-of-type a {
                 font-weight: bold !important;
                 color: #FEB123 !important;
             }
@@ -130,7 +138,7 @@ class CoreAdmin
         <script type="text/javascript">
             /* <![CDATA[ */
             jQuery(document).ready(function ($) {
-                $('#toplevel_page_presspermit-groups ul li:last a').attr('href', '<?php echo esc_url($url); ?>').attr('target', '_blank').css('font-weight', 'bold').css('color', '#FEB123');
+                $('#toplevel_page_presspermit-groups ul li:last a, #toplevel_page_presspermit-settings ul li:last a, #toplevel_page_presspermit-posts-teaser ul li:last a').attr('href', '<?php echo esc_url($url); ?>').attr('target', '_blank').css('font-weight', 'bold').css('color', '#FEB123');
             });
             /* ]]> */
         </script>

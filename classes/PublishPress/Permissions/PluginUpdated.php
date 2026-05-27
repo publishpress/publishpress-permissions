@@ -132,6 +132,18 @@ class PluginUpdated
                 $wpdb->query("UPDATE $wpdb->ppc_exceptions SET for_item_source = 'post' WHERE for_item_source = 'all'");
             } else break;
         } while (0); // end single-pass version check loop
+
+        // One-time migration: rename stored pp_set_*_exceptions cap names to pp_set_*_permissions.
+        // Runs on any update from a previous version until the flag option is set.
+        if ($prev_version && !get_option('presspermit_caps_exceptions_renamed')) {
+            self::convertCapabilityNames();
+            update_option('presspermit_caps_exceptions_renamed', true);
+        }
+
+        if ($prev_version && !get_option('presspermit_caps_bulk_assign_renamed')) {
+            self::convertCapabilityNames('pp_bulk_assign_roles');
+            update_option('presspermit_caps_bulk_assign_renamed', true);
+        }
     }
 
     public static function deactivateModules($args = []) {
@@ -184,8 +196,9 @@ class PluginUpdated
             'pp_edit_groups', 
             'pp_delete_groups', 
             'pp_manage_members', 
-            'pp_assign_roles', 
-            'pp_set_read_exceptions'
+            'pp_manage_permissions',
+            'pp_set_view_permissions',
+            'pp_manage_teaser',
             ], 
             true
         );
@@ -204,8 +217,7 @@ class PluginUpdated
             $role->add_cap('pp_edit_groups');
             $role->add_cap('pp_delete_groups');
             $role->add_cap('pp_manage_members');
-            $role->add_cap('pp_assign_roles');
-            $role->add_cap('pp_set_read_exceptions');
+            $role->add_cap('pp_set_view_permissions');
             $role->add_cap('pp_moderate_any');
         }
 
@@ -380,5 +392,136 @@ class PluginUpdated
         }
 
         update_option('presspermit_wp_role_sync', true);
+    }
+
+    /**
+     * Rename stored pp_set_*_exceptions capability names to pp_set_*_permissions
+     * in WP role definitions and individual user capability overrides.
+     *
+     * Runs automatically once on plugin update. Can also be called directly.
+     */
+    public static function convertCapabilityNames($capabilities_id = '')
+    {
+        switch ($capabilities_id) {
+            case 'pp_bulk_assign_roles':
+                self::migrateStoredCapabilityNames([
+                    'pp_bulk_assign_roles' => 'pp_manage_permissions',
+                ]);
+
+                break;
+
+            default:
+                self::migrateStoredCapabilityNames([
+                    'pp_set_read_exceptions'           => 'pp_set_view_permissions',
+                    'pp_set_edit_exceptions'           => 'pp_set_edit_permissions',
+                    'pp_set_associate_exceptions'      => 'pp_set_associate_permissions',
+                    'pp_set_term_assign_exceptions'    => 'pp_set_term_assign_permissions',
+                    'pp_set_term_manage_exceptions'    => 'pp_set_term_manage_permissions',
+                    'pp_set_term_associate_exceptions' => 'pp_set_term_associate_permissions',
+                    'pp_set_revise_exceptions'         => 'pp_set_revise_permissions',
+                    'pp_set_copy_exceptions'           => 'pp_set_copy_permissions',
+                ]);
+        }
+    }
+
+    /**
+     * Reverse the cap rename — restore pp_set_*_permissions back to pp_set_*_exceptions.
+     * Run on demand to prepare the database for a previous plugin version.
+     */
+    public static function deconvertCapabilityNames($capabilities_id = '')
+    {
+        switch ($capabilities_id) {
+            case 'pp_bulk_assign_roles':
+                self::migrateStoredCapabilityNames([
+                    'pp_manage_permissions' => 'pp_bulk_assign_roles',
+                ]);
+
+                delete_option('presspermit_caps_bulk_assign_renamed');
+
+                break;
+
+            default:
+                self::migrateStoredCapabilityNames([
+                    'pp_set_view_permissions'           => 'pp_set_read_exceptions',
+                    'pp_set_edit_permissions'           => 'pp_set_edit_exceptions',
+                    'pp_set_associate_permissions'      => 'pp_set_associate_exceptions',
+                    'pp_set_term_assign_permissions'    => 'pp_set_term_assign_exceptions',
+                    'pp_set_term_manage_permissions'    => 'pp_set_term_manage_exceptions',
+                    'pp_set_term_associate_permissions' => 'pp_set_term_associate_exceptions',
+                    'pp_set_revise_permissions'         => 'pp_set_revise_exceptions',
+                    'pp_set_copy_permissions'           => 'pp_set_copy_exceptions',
+                ]);
+
+                delete_option('presspermit_caps_exceptions_renamed');
+        }
+    }
+
+    /**
+     * Apply a capability name mapping to all stored WP role definitions and user capability overrides.
+     *
+     * @param array $cap_map  Associative array of [ old_cap_name => new_cap_name ]
+     */
+    private static function migrateStoredCapabilityNames(array $cap_map)
+    {
+        global $wpdb;
+
+        $blog_prefix = $wpdb->get_blog_prefix();
+        $roles_option = $blog_prefix . 'user_roles';
+
+        // --- Update WP role definitions stored in the user_roles option ---
+        $roles = get_option($roles_option);
+        if (is_array($roles)) {
+            $updated = false;
+            foreach ($roles as $role_slug => $role_data) {
+                if (!empty($role_data['capabilities']) && is_array($role_data['capabilities'])) {
+                    foreach ($cap_map as $old_cap => $new_cap) {
+                        if (isset($role_data['capabilities'][$old_cap]) && !isset($role_data['capabilities'][$new_cap])) {
+                            $roles[$role_slug]['capabilities'][$new_cap] = $role_data['capabilities'][$old_cap];
+                            unset($roles[$role_slug]['capabilities'][$old_cap]);
+                            $updated = true;
+                        }
+                    }
+                }
+            }
+            if ($updated) {
+                update_option($roles_option, $roles);
+                // Refresh the in-memory WP_Roles instance
+                global $wp_roles;
+                if (isset($wp_roles)) {
+                    $wp_roles->reinit();
+                }
+            }
+        }
+
+        // --- Update individual user capability overrides stored in usermeta ---
+        $caps_meta_key = $blog_prefix . 'capabilities';
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $user_rows = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT user_id, meta_value FROM {$wpdb->usermeta} WHERE meta_key = %s",
+                $caps_meta_key
+            )
+        );
+        // phpcs:enable
+
+        foreach ($user_rows as $row) {
+            $user_caps = maybe_unserialize($row->meta_value);
+            if (!is_array($user_caps)) {
+                continue;
+            }
+
+            $updated = false;
+            foreach ($cap_map as $old_cap => $new_cap) {
+                if (isset($user_caps[$old_cap]) && !isset($user_caps[$new_cap])) {
+                    $user_caps[$new_cap] = $user_caps[$old_cap];
+                    unset($user_caps[$old_cap]);
+                    $updated = true;
+                }
+            }
+
+            if ($updated) {
+                update_user_meta((int) $row->user_id, $caps_meta_key, $user_caps);
+            }
+        }
     }
 }

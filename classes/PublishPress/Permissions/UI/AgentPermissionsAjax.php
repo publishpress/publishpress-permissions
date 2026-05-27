@@ -42,7 +42,7 @@ class AgentPermissionsAjax
 
                 $deleted_ass_ids = [];
 
-                if (!current_user_can('pp_assign_roles') || !$pp_admin->bulkRolesEnabled()) {
+                if (!$pp_admin->bulkRolesEnabled()) {
                     exit;
                 }
 
@@ -101,7 +101,7 @@ class AgentPermissionsAjax
             case 'exceptions_remove':
                 $deleted_eitem_ids = [];
 
-                if (!current_user_can('pp_assign_roles') || !$pp_admin->bulkRolesEnabled()) {
+                if (!$pp_admin->bulkRolesEnabled()) {
                     exit;
                 }
 
@@ -162,7 +162,7 @@ class AgentPermissionsAjax
                 $edited_input_ids = [];
                 $all_eitem_ids = [];
 
-                if (!current_user_can('pp_assign_roles')) {
+                if (!presspermit()->admin()->bulkRolesEnabled()) {
                     exit;
                 }
 

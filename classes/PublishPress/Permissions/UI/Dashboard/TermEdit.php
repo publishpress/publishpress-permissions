@@ -163,13 +163,8 @@ class TermEdit
                             $op_obj->label
                         );
                 } else {
-                    $caption = ($post_type) ? sprintf(
-                        esc_html__('%1$s %2$s in this %3$s', 'press-permit-core'),
-                        esc_html($op_obj->label),
-                        $type_obj->labels->name,
-                        $tx->labels->singular_name
-                    ) : sprintf(
-                        esc_html__('%1$s this %2$s', 'press-permit-core'),
+                    $caption = sprintf(
+                        esc_html__('%1$s %2$s', 'press-permit-core'),
                         esc_html($op_obj->label),
                         $tx->labels->singular_name
                     );
@@ -242,10 +237,7 @@ class TermEdit
             return;
         }
 
-        if (
-            !current_user_can('pp_assign_roles')
-            || apply_filters('presspermit_disable_exception_ui', false, 'term', $tt_id, $post_type)
-        ) {
+        if (!presspermit()->admin()->canSetAnyTermPermissions($post_type, $taxonomy) || apply_filters('presspermit_disable_exception_ui', false, 'term', $tt_id, $post_type)) {
             return;
         }
 
@@ -263,9 +255,17 @@ class TermEdit
             ? ['read' => true] : [];
 
         $operations = apply_filters('presspermit_item_edit_exception_ops', $ops, 'post', $taxonomy, $post_type);
+        $is_hierarchical = is_taxonomy_hierarchical($taxonomy);
+
+        if (!$is_hierarchical) {
+            // Non-hierarchical taxonomies don't have parent-child relationships, so 'associate' operation is not applicable
+            unset($operations['associate']);
+        }
 
         // Check if tabbed metabox is enabled
         if ($pp->getOption('use_tabbed_metabox')) {
+            $operations = apply_filters('presspermit_term_exceptions_metaboxes', $operations, $taxonomy, $post_type);
+
             // Register single tabbed metabox for all operations
             if (!empty($operations)) {
                 $caption = ($post_type)
@@ -409,7 +409,7 @@ class TermEdit
         $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
         $taxonomy = PWP::REQUEST_key('taxonomy');
 
-        if (current_user_can('pp_assign_roles')) {
+        if (presspermit()->admin()->canSetAnyTermPermissions($post_type, $taxonomy)) {
             $this->initItemExceptionsUI();
 
             $tt_id = PWP::termidToTtid($tag_ID, $taxonomy);
@@ -438,10 +438,7 @@ class TermEdit
 
         $post_type = (!PWP::empty_REQUEST('pp_universal')) ? '' : $typenow;
 
-        if (
-            !current_user_can('pp_assign_roles')
-            || apply_filters('presspermit_disable_exception_ui', false, 'term', $tag->term_taxonomy_id, $post_type)
-        ) {
+        if (!presspermit()->admin()->canSetAnyTermPermissions($post_type, $taxonomy) || apply_filters('presspermit_disable_exception_ui', false, 'term', $tag->term_taxonomy_id, $post_type)) {
             return;
         }
         
@@ -451,7 +448,7 @@ class TermEdit
         ?>
         <div id="poststuff" class="metabox-holder">
             <div id="post-body">
-                <div id="post-body-content" style="position: relative;z-index: 1;">
+                <div id="post-body-content" style="position: relative;z-index: 1;display: contents;">
                     <?php
 
                     require_once(ABSPATH . 'wp-admin/includes/meta-boxes.php');
@@ -506,7 +503,7 @@ class TermEdit
         <br/><br/>
         <div id="poststuff" class="metabox-holder">
             <div id="post-body">
-                <div id="post-body-content" style="position: relative;z-index: 1;">
+                <div id="post-body-content" style="position: relative;z-index: 1;display: contents;">
                     <?php
 
                     require_once(ABSPATH . 'wp-admin/includes/meta-boxes.php');

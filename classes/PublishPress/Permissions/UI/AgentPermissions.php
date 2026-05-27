@@ -332,7 +332,7 @@ class AgentPermissions
 
                 <div style='clear:both'></div>
                 <?php
-                if (current_user_can('pp_assign_roles') && $pp_admin->bulkRolesEnabled()) {
+                if ($pp_admin->bulkRolesEnabled()) {
                     AgentPermissionsUI::drawGroupPermissions($agent_id, $agent_type, $url, $wp_http_referer, compact('agent'));
                 }
 
@@ -343,7 +343,6 @@ class AgentPermissions
                             // @todo: Consider how to reinstate a read-only summary of the extra Roles and Permissions the user has from Group membership
 
                             // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-                            /*
                             $roles = [];
                             $user = $pp->getUser($agent_id);
                             $user->retrieveExtraGroups();
@@ -364,7 +363,7 @@ class AgentPermissions
                             Dashboard\Profile::displayUserGroups(
                                 $agent_id,
                                 [
-                                    'initial_hide' => true,
+                                    'initial_hide' => false,
                                     'selected_only' => true,
                                     'force_display' => true,
                                     'edit_membership_link' => true,
@@ -380,7 +379,7 @@ class AgentPermissions
                                 ''
                             );
 
-                            AgentPermissionsUI::currentRolesUI($roles, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption, 'show_groups_link' => true]);
+                            AgentPermissionsUI::currentRolesUI($roles, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption]);
 
                             $exceptions = [];
 
@@ -404,8 +403,7 @@ class AgentPermissions
                                 ''
                             );
 
-                            AgentPermissionsUI::currentExceptionsUI($exceptions, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption, 'show_groups_link' => true]);
-                            */
+                            AgentPermissionsUI::currentExceptionsUI($exceptions, ['read_only' => true, 'class' => 'pp-group-roles', 'caption' => $role_group_caption]);
                         } else {
                         ?>
                             <h4>

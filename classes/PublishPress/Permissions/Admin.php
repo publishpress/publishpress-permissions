@@ -51,8 +51,28 @@ class Admin
     // allow lockdown to non-Administrators (while still allowing item-specific role editing for those who have assign_roles capability)
     public function bulkRolesEnabled()
     {
-        return (current_user_can('pp_assign_roles') && (current_user_can('pp_administer_content') || current_user_can('pp_assign_bulk_roles'))
-            && !defined('PP_DISABLE_BULK_ROLES')) || (current_user_can('edit_users'));
+        return (current_user_can('pp_manage_permissions')
+        || (defined('PP_ENABLE_BULK_ROLES') && current_user_can('pp_assign_bulk_roles'))
+        || (!defined('PP_PERMISSIONS_DISREGARD_EDIT_USERS_CAP') && current_user_can('edit_users'))
+        );
+    }
+
+    public function canSetAnyPostPermissions($post_type = '') {
+        $exc_args = ['via_item_source' => 'post', 'for_item_source' => 'post'];
+
+        return $this->canSetExceptions('read', $post_type, $exc_args)
+            || $this->canSetExceptions('edit', $post_type, $exc_args)
+            || $this->canSetExceptions('associate', $post_type, $exc_args);
+    }
+
+    public function canSetAnyTermPermissions($post_type = '', $taxonomy = '') {
+        $exc_args = ['via_item_source' => 'term', 'via_item_type' => $taxonomy, 'for_item_source' => 'post'];
+
+        return $this->canSetExceptions('read', $post_type, $exc_args)
+            || $this->canSetExceptions('edit', $post_type, $exc_args)
+            || current_user_can('pp_set_term_assign_permissions')
+            || current_user_can('pp_set_term_manage_permissions')
+            || current_user_can('pp_set_term_associate_permissions');
     }
 
     public function userCanAdminRole($role_name, $post_type, $item_id = 0)

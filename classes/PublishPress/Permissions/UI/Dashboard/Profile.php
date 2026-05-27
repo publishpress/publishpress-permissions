@@ -9,76 +9,47 @@ class Profile
 {
     public static function displayUserAssignedRoles($user)
     {
-        $roles = [];
-
-        $pp = presspermit();
-
-        $post_types = $pp->getEnabledPostTypes([], 'object');
-        $taxonomies = $pp->getEnabledTaxonomies([], 'object');
-
         $is_administrator = current_user_can('pp_administer_content') && current_user_can('list_users');
 
-        $edit_url = ($is_administrator)
-            ? "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user"
+        $current_roles_edit_url = $is_administrator
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_1")
             : '';
 
-        $roles = $pp->getRoles($user->ID, 'user', ['post_types' => $post_types, 'taxonomies' => $taxonomies]);
+        $edit_url = $is_administrator
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_exceptions_1")
+            : '';
 
-        $has_user_roles = \PublishPress\Permissions\UI\AgentPermissionsUI::currentRolesUI(
-            $roles,
+        self::abbreviatedRolesList(
+            'user',
+            $user->ID,
             [
-                'read_only' => true,
-                'context' => 'user-edit',
-                'caption' => sprintf(esc_html__('Extra Roles %1$s(for this user)%2$s', 'press-permit-core'), '', ''),
-                'link' => $edit_url
+                'edit_url' => $current_roles_edit_url,
+                'caption'  => sprintf(esc_html__('Extra Roles %1$s(for this user)%2$s', 'press-permit-core'), '', ''),
+                'display_limit' => 5,
             ]
         );
-
-        $caption = sprintf(esc_html__('Specific Permissions %1$s(for this user)%2$s', 'press-permit-core'), '', '');
-        $new_permissions_link = true;
-        $maybe_display_note = !$has_user_roles;
-        $display_limit = 12;
-        $echo = true;
 
         self::abbreviatedExceptionsList(
             'user',
             $user->ID,
-            compact('edit_url', 'caption', 'new_permissions_link', 'maybe_display_note', 'display_limit', 'echo')
+            [
+                'edit_url'      => $edit_url,
+                'caption'       => sprintf(esc_html__('Specific Permissions %1$s(for this user)%2$s', 'press-permit-core'), '', ''),
+                'display_limit' => 12,
+            ]
         );
     }
 
     public static function displayUserRoles($user)
     {
-        $roles = [];
-
-        $pp = presspermit();
-
-        $post_types = $pp->getEnabledPostTypes([], 'object');
-        $taxonomies = $pp->getEnabledTaxonomies([], 'object');
-
-        $user->retrieveExtraGroups();
-        $user->getSiteRoles();
-
-        foreach (array_keys($user->groups) as $agent_type) {
-            foreach (array_keys($user->groups[$agent_type]) as $agent_id) {
-                $roles = array_merge(
-                    $roles,
-                    $pp->getRoles(
-                        $agent_id,
-                        $agent_type,
-                        ['post_types' => $post_types, 'taxonomies' => $taxonomies, 'query_agent_ids' => array_keys($user->groups[$agent_type])]
-                    )
-                );
-            }
-        }
-
-        \PublishPress\Permissions\UI\AgentPermissionsUI::currentRolesUI(
-            $roles,
+        self::abbreviatedRolesList(
+            'user',
+            $user->ID,
             [
-                'read_only' => true,
-                'context' => 'user-edit',
-                'link' => '',
-                'caption' => sprintf(esc_html__('Extra Roles %1$s(from primary role or group membership)%2$s', 'press-permit-core'), '', '')
+                'edit_url' => '',
+                'caption'  => sprintf(esc_html__('Extra Roles %1$s(from primary role or group membership)%2$s', 'press-permit-core'), '', ''),
+                'join_groups' => 'groups_only',
+                'display_limit' => 5,
             ]
         );
 
@@ -89,7 +60,7 @@ class Profile
                 'edit_url' => '',
                 'caption' => esc_html__('Specific Permissions (from primary role or group membership)', 'press-permit-core'),
                 'join_groups' => 'groups_only',
-                'display_limit' => 12
+                'display_limit' => 12,
             ]
         );
     }
@@ -302,7 +273,7 @@ class Profile
                 if ($echo) {
                     echo '<span class="pp-group-site-roles">';
 
-                    if ($show_link && current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
+                    if ($show_link && presspermit()->admin()->bulkRolesEnabled() && (is_multisite() || current_user_can('edit_user', $id))) {
                         $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
                         echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . esc_html($titles_list) . "</a><br />";
                     } else {
@@ -313,7 +284,7 @@ class Profile
                 } else {
                     $exc_str = '<span class="pp-group-site-roles">';
 
-                    if ($show_link && current_user_can('pp_assign_roles') && (is_multisite() || current_user_can('edit_user', $id))) {
+                    if ($show_link && presspermit()->admin()->bulkRolesEnabled() && (is_multisite() || current_user_can('edit_user', $id))) {
                         $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
                         $exc_str .= "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . esc_html($titles_list) . "</a><br />";
                     } else {
@@ -344,14 +315,13 @@ class Profile
             $$var = $args[$var];
         }
 
-        $pp = presspermit();
+        $count_args = ['query_agent_ids' => (array)$agent_id, 'join_groups' => $join_groups];
+        $exc_data = \PublishPress\Permissions\DB\PermissionsMeta::countExceptions($agent_type, $count_args);
+        $badge_count = $exc_data[$agent_id]['exc_count'] ?? 0;
 
         $args['show_link'] = false;
         $args['force_refresh'] = true;
         $args['echo'] = true;
-
-        $new_permissions_link = $maybe_display_note && $pp->isUserAdministrator()
-            && $pp->admin()->bulkRolesEnabled() && current_user_can('list_users');
 
         ob_start();
         ?>
@@ -362,14 +332,136 @@ class Profile
                     <?php
                     if ($edit_url) echo "<a href='" . esc_url($edit_url) . "'>" . esc_html($caption) . "</a>"; else echo esc_html($caption);
                     ?>
+                    <?php if ($badge_count): ?><span class="badge badge-count"><span class="count-num"><?php echo (int)$badge_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span><?php endif; ?>
                 </h2>
             </div>
-            <div id="pp_current_post_post_site_roles" class="section-content">
+            <div id="pp_current_post_post_site_roles_<?php echo esc_attr($agent_id); ?>" class="section-content">
                 <div class="for-type for-type-post">
                 <div class="permission-type">
                     <div class="subsection-header permission-type-header">
                     <h3 class="section-title permission-type-title">
                         <?php self::listAgentExceptions($agent_type, $agent_id, $args); ?>
+                    </h3>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        <?php
+    }
+
+    public static function listAgentRoles($agent_type, $id, $args = [])
+    {
+        static $role_info;
+
+        $defaults = ['query_agent_ids' => [], 'show_link' => true, 'join_groups' => true, 'force_refresh' => false, 'display_limit' => 3, 'echo' => false];
+        $args = array_merge($defaults, $args);
+        foreach (array_keys($defaults) as $var) {
+            $$var = $args[$var];
+        }
+
+        if (empty($args['query_agent_ids'])) {
+            $args['query_agent_ids'] = (array)$id;
+        }
+
+        if (!isset($role_info) || $force_refresh) {
+            $role_info = \PublishPress\Permissions\DB\PermissionsMeta::countRoles($agent_type, $args);
+        }
+
+        $role_str = '';
+
+        if (isset($role_info[$id])) {
+            if (isset($role_info[$id]['roles'])) {
+                $any_roles = true;
+
+                $role_titles = [];
+                $i = 0;
+                foreach ($role_info[$id]['roles'] as $role_title => $role_count) {
+                    $i++;
+                    $role_titles[] = sprintf(esc_html__('%1$s (%2$s)', 'press-permit-core'), $role_title, $role_count);
+                    if ($i >= $display_limit) {
+                        break;
+                    }
+                }
+
+                $titles_list = implode(', ', $role_titles);
+
+                if (count($role_info[$id]['roles']) > $display_limit) {
+                    $titles_list = sprintf(__('%s, more...', 'press-permit-core'), $titles_list);
+                }
+
+                if ($echo) {
+                    echo '<span class="pp-group-site-roles">';
+
+                    if ($show_link && current_user_can('pp_manage_permissions') && (is_multisite() || current_user_can('edit_user', $id))) {
+                        $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
+                        echo "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . wp_kses_post($titles_list) . "</a><br />";
+                    } else {
+                        echo wp_kses_post($titles_list);
+                    }
+
+                    echo '</span>';
+                } else {
+                    $role_str = '<span class="pp-group-site-roles">';
+
+                    if ($show_link && current_user_can('pp_manage_permissions') && (is_multisite() || current_user_can('edit_user', $id))) {
+                        $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
+                        $role_str .= "<a href='" . esc_url($edit_link) . "' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>" . wp_kses_post($titles_list) . "</a><br />";
+                    } else {
+                        $role_str .= wp_kses_post($titles_list);
+                    }
+
+                    $role_str .= '</span>';
+                }
+            }
+        }
+
+        return ($echo) ? !empty($any_roles) : $role_str;
+    }
+
+    private static function abbreviatedRolesList($agent_type, $agent_id, $args = [])
+    {
+        $defaults = [
+            'caption' => '',
+            'edit_url' => '',
+            'join_groups' => false,
+            'class' => '',
+            'new_permissions_link' => false,
+            'maybe_display_note' => true
+        ];
+
+        $args = array_merge($defaults, $args);
+        foreach (array_keys($defaults) as $var) {
+            $$var = $args[$var];
+        }
+
+        $count_args = ['query_agent_ids' => (array)$agent_id, 'join_groups' => $join_groups];
+        $role_data = \PublishPress\Permissions\DB\PermissionsMeta::countRoles($agent_type, $count_args);
+        $badge_count = $role_data[$agent_id]['role_count'] ?? 0;
+
+        $args['show_link'] = false;
+        $args['force_refresh'] = true;
+        $args['echo'] = true;
+
+        ob_start();
+        ?>
+        <div class='pp_current_exceptions_profile pp_current_roles_profile <?php echo esc_attr($class); ?>'>
+            <div class="permission-section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <?php
+                    if ($edit_url) echo "<a href='" . esc_url($edit_url) . "'>" . esc_html($caption) . "</a>"; else echo esc_html($caption);
+                    ?>
+                    <?php if ($badge_count): ?><span class="badge badge-count"><span class="count-num"><?php echo (int)$badge_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span><?php endif; ?>
+                </h2>
+            </div>
+            <div id="pp_current_roles_<?php echo esc_attr($agent_id); ?>" class="section-content">
+                <div class="for-type for-type-post">
+                <div class="permission-type">
+                    <div class="subsection-header permission-type-header">
+                    <h3 class="section-title permission-type-title">
+                        <?php self::listAgentRoles($agent_type, $agent_id, $args); ?>
                     </h3>
                     </div>
                 </div>

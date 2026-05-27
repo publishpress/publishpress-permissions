@@ -1353,6 +1353,13 @@
       background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
       color: #0c4a6e;
       border: 1px solid #7dd3fc;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      text-overflow: ellipsis; 
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     /* Hover effects */
@@ -1387,10 +1394,14 @@
 
 .pp-item-select {
   flex: 1;
+  width: 100%;
+  max-width: 100%;
 }
 
 .pp-children-select {
   flex: 1;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Select Labels (for hierarchical items with sub-categories) */

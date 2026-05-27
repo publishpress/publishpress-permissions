@@ -96,13 +96,13 @@ class AgentsAjax
             }
         }
 
-        if (empty($verified)) {
-            if (!current_user_can('pp_manage_members') && !current_user_can('pp_assign_roles')) {
-                die(-1);
-            }
-        }
-
         if ('user' == $agent_type) {
+            if (empty($verified)) {
+                    if (!current_user_can('pp_manage_members')) {
+                    die(-1);
+                }
+            }
+
             if (0 === strpos($orig_search_str, ' ')) {
                 $orderby = 'user_login';
                 $order = 'ASC';
@@ -229,8 +229,6 @@ class AgentsAjax
                 }
             }
         } else {
-            $reqd_caps = apply_filters('presspermit_edit_groups_reqd_caps', ['pp_edit_groups']);
-
             // determine all currently stored groups (of any status) for user in question (not necessarily logged user)
             if (!empty($agent_id)) {
                 $omit_groups = $pp_groups->getGroupsForUser($agent_id, $agent_type, ['status' => 'any']);

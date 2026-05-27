@@ -81,10 +81,11 @@ class AgentExceptionsAjax
                 } else {
                     $items_label = strtolower(esc_html__('Posts'));    
                 }
+                $items_label_singular = isset($type_obj->name) ? $type_obj->name : rtrim($items_label, 's');
 
                 $tooltips = [
-                    'assign'    => sprintf(esc_html__('Control assignment of terms to selected %s.', 'press-permit-core'), esc_html($items_label)),
-                    'associate' => sprintf(esc_html__('Control parent selection for selected %s.', 'press-permit-core'), esc_html($items_label)),
+                    'assign'    => sprintf(esc_html__('Control assignment of selected terms to %s.', 'press-permit-core'), esc_html($items_label)),
+                    'associate' => sprintf(esc_html__('Control if this %s can be selected as a Parent Page.', 'press-permit-core'), esc_html($items_label_singular)),
                     'edit'      => sprintf(esc_html__('Control editing of selected %s.', 'press-permit-core'), esc_html($items_label)),
                     'publish'   => sprintf(esc_html__('Control publishing of selected %s.', 'press-permit-core'), esc_html($items_label)),
                     'delete'    => sprintf(esc_html__('Control deletion of selected %s.', 'press-permit-core'), esc_html($items_label)),
@@ -93,6 +94,17 @@ class AgentExceptionsAjax
                     'copy'      => sprintf(esc_html__('Control who can create a revision of this %s.', 'press-permit-core'), esc_html($items_label)),
                     'revise'    => sprintf(esc_html__('Control who can submit a revision of this %s.', 'press-permit-core'), esc_html($items_label)),
                 ];
+
+                if ($for_type === '_term_') {
+                    $tooltips = [
+                        'associate' => esc_html__('Control which terms can be set as a Parent of other terms.', 'press-permit-core'),
+                        'manage'    => esc_html__('Allow users to manage selected terms.', 'press-permit-core'),
+                    ];
+                } elseif ($for_source_name === 'pp_group') {
+                    $tooltips = [
+                        'manage' => esc_html__('Control management of selected groups.', 'press-permit-core'),
+                    ];
+                }
                 ?>
                 <div>
                 <?php foreach ($ops as $val => $title) :?>
@@ -101,7 +113,7 @@ class AgentExceptionsAjax
                         <?php
                         echo isset($tooltips[$val]) ? 
                             sprintf(
-                                '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 3px;"></i></span>',
+                                '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 5px;"></i></span>',
                                 esc_html($title),
                                 esc_html($tooltips[$val])
                             ) : esc_html($title); ?>
@@ -158,7 +170,7 @@ class AgentExceptionsAjax
                             <?php
                             echo isset($tooltips[$mod_type]) ? 
                                 sprintf(
-                                    '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 3px;"></i></span>',
+                                    '<span data-toggle="tooltip" data-placement="top">%s<span class="tooltip-text"><span>%s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;margin-left: 5px;"></i></span>',
                                     esc_html($title),
                                     esc_html($tooltips[$mod_type])
                                 ) : esc_html($title); 

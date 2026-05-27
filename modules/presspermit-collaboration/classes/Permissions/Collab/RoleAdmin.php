@@ -103,33 +103,36 @@ class RoleAdmin
             $user = presspermit()->getUser();
 
             $can_assign_edit_exceptions = false;
+            $can_edit_published = false;
 
-            if (presspermit()->getOption('non_admins_set_edit_exceptions') 
-            && defined('PP_NON_EDITORS_SET_EDIT_EXCEPTIONS') && PP_NON_EDITORS_SET_EDIT_EXCEPTIONS
-            ) {
-                $can_edit_published = true;
-            } else {
-                $can_edit_published = false;
+            if (presspermit()->getOption('non_admins_set_edit_exceptions')) {
+                // The pp_set_edit_permissions cap is the explicit grant for setting edit exceptions.
+                // No additional post-type cap requirement is needed when the option is enabled.
+                $can_assign_edit_exceptions = current_user_can('pp_set_edit_permissions');
 
-                if ($type_obj = get_post_type_object($for_item_type)) {
-                    $can_edit_published = !empty($user->allcaps[$type_obj->cap->edit_published_posts]);
+                // Legacy path: also support users who have the appropriate post-type editing caps
+                // (edit_published + edit_others) in combination with the PP_NON_EDITORS_SET_EDIT_EXCEPTIONS constant.
+                if (!$can_assign_edit_exceptions) {
+                    if ($type_obj = get_post_type_object($for_item_type)) {
+                        $can_edit_published = !empty($user->allcaps[$type_obj->cap->edit_published_posts]);
 
-                    if ($can_edit_published) {
-                        // also require edit_others_posts (unless this is a post-assigned exception for user's own post)
-                        if (!$can_edit_published = !empty($user->allcaps[$type_obj->cap->edit_others_posts])) {
-                            if ('post' == $via_item_source) {
-                                if (!$item_id)
-                                    $item_id = PWP::getPostID();
+                        if ($can_edit_published) {
+                            if (!$can_edit_published = !empty($user->allcaps[$type_obj->cap->edit_others_posts])) {
+                                if ('post' == $via_item_source) {
+                                    if (!$item_id)
+                                        $item_id = PWP::getPostID();
 
-                                $_post = ($item_id) ? get_post($item_id) : false;
-                                $can_edit_published = $_post && ($_post->post_author == $user->ID);
+                                    $_post = ($item_id) ? get_post($item_id) : false;
+                                    $can_edit_published = $_post && ($_post->post_author == $user->ID);
+                                }
                             }
                         }
                     }
+
+                    $can_assign_edit_exceptions = $can_edit_published
+                        && (defined('PP_NON_EDITORS_SET_EDIT_EXCEPTIONS') && PP_NON_EDITORS_SET_EDIT_EXCEPTIONS);
                 }
             }
-
-            $can_assign_edit_exceptions = $can_edit_published && current_user_can('pp_set_edit_exceptions');
         }
 
         switch ($operation) {
@@ -140,32 +143,30 @@ class RoleAdmin
 
             case 'copy':
                 $can = defined('PUBLISHPRESS_REVISIONS_VERSION') && ($is_administrator || $can_assign_edit_exceptions || (
-                    $can_edit_published && current_user_can('pp_set_copy_exceptions'))
+                    $can_edit_published && current_user_can('pp_set_copy_permissions'))
                 );
                 break;
 
             case 'revise':
                 $can = (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) && ($is_administrator || $can_assign_edit_exceptions || (
-                    $can_edit_published && current_user_can('pp_set_revise_exceptions'))
+                    $can_edit_published && current_user_can('pp_set_revise_permissions'))
                 );
                 break;
 
             case 'associate':
                 if ('term' == $via_item_source) {
-                    $can = is_taxonomy_hierarchical($for_item_type) 
-                    && ($is_administrator || current_user_can('pp_set_term_associate_exceptions'));
+                    $can = $is_administrator || current_user_can('pp_set_term_associate_permissions');
                 } else {
-                    $can = is_post_type_hierarchical($for_item_type) && ($is_administrator 
-                    || ($can_edit_published && current_user_can('pp_set_associate_exceptions')));
+                    $can = $is_administrator || current_user_can('pp_set_associate_permissions');
                 }
                 break;
 
             case 'assign':
-                $can = $is_administrator || ($can_edit_published && current_user_can('pp_set_term_assign_exceptions'));
+                $can = $is_administrator || current_user_can('pp_set_term_assign_permissions');
                 break;
 
             case 'manage':
-                $can = $is_administrator || current_user_can('pp_set_term_manage_exceptions');
+                $can = $is_administrator || current_user_can('pp_set_term_manage_permissions');
                 break;
         }
 

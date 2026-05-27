@@ -1,6 +1,34 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.2] - 27 May, 2026
+
+- Added: Support for displaying all Permissions inherited from Permission Groups for individual users. #2323
+- Added: Fallback capability support for pp_manage_teaser. #2318
+- Added: Support for alternate pseudo IDs in map_meta_cap filtering. #2305
+- Added: Group names are now displayed in the Group Permissions list for better clarity. #2328
+- Added: Separate capabilities for managing term permissions and edit permissions. #2366 #2365
+- Changed: Improved clarity of capability descriptions and related interface text. #2309
+- Changed: Prevented the plugin name from being translated for better brand consistency. #2308
+- Changed: Improved teaser interface by hiding unnecessary extra columns. #2319
+- Changed: Improved tooltip descriptions for Assign Terms, Set as Parent, Permission Groups, and Term Permissions screens. #2381 #2342 #2341 #2335 #2332
+- Changed: Improved clarity of capability descriptions and Permissions screen wording. #2367
+- Changed: Translation updates and localization improvements. #2348
+- Fixed: Assign Terms restrictions were not applied correctly in some situations. #2324
+- Fixed: Permissions metabox on Edit Term screens now properly supports “Manage Term” and “Set Parent” operations. #2321
+- Fixed: “None” checkbox was missing in Edit Permissions when no items were published. #2320
+- Fixed: Assign Terms option incorrectly appeared for Pages. #2307
+- Fixed: Null post type warning in TeaserHooks.php under certain configurations. #2306
+- Fixed: Prevented infinite ancestor count loops for taxonomy terms. #2312
+- Fixed: Spacing and layout issues in the Permissions metabox for some languages. #2317
+- Fixed: Users can now properly access the Permissions editing screen when allowed by configuration. #2368
+- Fixed: “Set as Parent” restrictions were not working correctly for taxonomy terms. #2344
+- Fixed: CSS file was incorrectly loaded inside iframe contexts in WP7. #2380
+- Fixed: Incorrect default handling for pp_manage_settings capabilities. #2363
+- Removed: Unused pp_assign_roles capability. #2377
+- Removed: Inactive pp_set_read_exceptions and pp_set_edit_exceptions capabilities from the Capabilities UI. #2375
+
+
 [4.8.1] - 21 April, 2026
 
 - Added: Expanded language support with 34 languages through new translation system integration. #2273

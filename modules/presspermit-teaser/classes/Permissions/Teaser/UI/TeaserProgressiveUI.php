@@ -706,8 +706,8 @@ class TeaserProgressiveUI {
                     <tr>
                         <th></th>
                         <th><?php _e('Redirection', 'press-permit-core') ?></th>
-                        <th><?php _e('Target Post Type', 'press-permit-core') ?></th>
-                        <th><?php _e('Select Post', 'press-permit-core') ?></th>
+                        <th data-title="<?php _e('Target Post Type', 'press-permit-core') ?>"><?php _e('Target Post Type', 'press-permit-core') ?></th>
+                        <th data-title="<?php _e('Select Post', 'press-permit-core') ?>"><?php _e('Select Post', 'press-permit-core') ?></th>
                     </tr>
                 </thead>
                 <tbody>

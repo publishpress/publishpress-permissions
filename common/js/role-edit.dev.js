@@ -1,10 +1,11 @@
 jQuery(document).ready(function ($) {
     $('.pp_group-profile div.pp-group_members, .pp_net_group-profile div.pp-group_members, .permissions_page_presspermit-edit-permissions div.pp-group_members').show();
     $('#pp-add-permissions').show();
-    $('#pp_current_roles').show();
+    $('.pp-current-roles-container').show();
 
     $("a.pp-show-groups").on('click', function () {
-        $('#userprofile_groupsdiv_pp').show();
+        $('#userprofile_groupsdiv_pp').toggle();
+        $(this).text($(this).text() == ppCred.showGroups ? ppCred.hideGroups : ppCred.showGroups);
         return false;
     });
 
@@ -201,7 +202,7 @@ jQuery(document).ready(function ($) {
 
     // ========== Begin "Edit Roles" Submission scripts ==========
     // Handle expansion/collapse of sections roles
-    $('#pp_current_roles .section-header').on('click', function(e) {
+    $('.pp-current-roles-container .section-header').on('click', function(e) {
         // Only proceed if the click wasn't on the search box or its children
         if (!$(e.target).closest('.search-box').length) {
             const $section = $(this).closest('.permission-section');
@@ -211,7 +212,7 @@ jQuery(document).ready(function ($) {
     });
     
     // Handle expansion/collapse of subsections roles
-    $('#pp_current_roles .subsection-header').on('click', function(e) {
+    $('.pp-current-roles-container .subsection-header').on('click', function(e) {
         // Only proceed if the click wasn't on the search box or its children
         if (!$(e.target).closest('.search-box').length) {
             const $section = $(this).closest('.permission-type');
@@ -221,7 +222,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Handle row click to toggle checkbox
-    $('#pp_current_roles .checkbox-row').on('click', function (e) {
+    $('.pp-current-roles-container .checkbox-row').on('click', function (e) {
         // Prevent triggering the event if the user clicks directly on the checkbox or an anchor
         if ($(e.target).is('input[type="checkbox"]') || $(e.target).is('a')) {
             return;
@@ -232,7 +233,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Handle "Select All" checkbox
-    $('#pp_current_roles input[id^="cb-select-all-"]').on('change', function () {
+    $('.pp-current-roles-container input[id^="cb-select-all-"]').on('change', function () {
         const isChecked = $(this).is(':checked');
         const table = $(this).closest('table');
         
@@ -244,7 +245,7 @@ jQuery(document).ready(function ($) {
     });
 
     // Handle individual checkbox behavior
-    $('#pp_current_roles .checkbox-row input[type="checkbox"]').on('change', function () {
+    $('.pp-current-roles-container .checkbox-row input[type="checkbox"]').on('change', function () {
         const table = $(this).closest('table');
         const selectAllCheckbox = table.find('thead input[type="checkbox"]');
         const allCheckboxes = table.find('tbody input[type="checkbox"]:not([disabled])');
@@ -258,24 +259,24 @@ jQuery(document).ready(function ($) {
         table.closest('.permission-type').find('.pp-role-bulk-edit').toggle(anyChecked);
     });
 
-    $('#pp_current_roles .type-roles-wrapper input').on('click', function (e) {
+    $('.pp-current-roles-container .type-roles-wrapper input').on('click', function (e) {
         //$(this).closest('div.pp-current-roles').find('div.pp-role-bulk-edit').show();
         $('div.pp-role-bulk-edit').show();
     });
 
-    $('#pp_current_roles .checkbox-row .pp_clear').on('click', function (e) {
+    $('.pp-current-roles-container .checkbox-row .pp_clear').on('click', function (e) {
         e.stopPropagation();
         const roleId = $(this).closest('tr').find('input[type="checkbox"]').val();
         if (roleId) presspermitAjaxSubmit('roles_remove', presspermitRemoveRolesDone, roleId);
     });
 
-    $('#pp_current_roles .pp_check_all').on('click', function (e) {
+    $('.pp-current-roles-container .pp_check_all').on('click', function (e) {
         $(this).closest('td').find('input[name="pp_edit_role[]"][disabled!="true"]').prop('checked', $(this).is(':checked'));
     });
 
     var presspermitCurrentRolesAjaxDone = function () {
-        $('#pp_current_roles input.submit-edit-item-role').prop('disabled', false);
-        $('#pp_current_roles .waiting').hide();
+        $('.pp-current-roles-container input.submit-edit-item-role').prop('disabled', false);
+        $('.pp-current-roles-container .waiting').hide();
     }
 
     var presspermitRemoveRolesDone = function (data, txtStatus) {
@@ -295,9 +296,9 @@ jQuery(document).ready(function ($) {
         var deleted_ass_ids = data.split('|');
 
         $.each(deleted_ass_ids, function (index, value) {
-            const row = $(`#pp_current_roles input[name="pp_edit_role[]"][value="${value}"]`).closest('tr');
+            const row = $(`.pp-current-roles-container input[name="pp_edit_role[]"][value="${value}"]`).closest('tr');
             if (!row.length){
-                cbid = $('#pp_current_roles input[name="pp_edit_role[]"][value="' + value + '"]').attr('id');
+                cbid = $('.pp-current-roles-container input[name="pp_edit_role[]"][value="' + value + '"]').attr('id');
                 $('#' + cbid).closest('label').remove();
             } else {
                 const table = row.closest('table');
@@ -309,7 +310,7 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    $('#pp_current_roles input.submit-edit-item-role').on('click', function (e) {
+    $('.pp-current-roles-container input.submit-edit-item-role').on('click', function (e) {
         //var action = $(this).closest('div.pp-current-roles').find('div.pp-role-bulk-edit select').first().val();
         var action = $('div.pp-role-bulk-edit select').val();
 
@@ -320,7 +321,7 @@ jQuery(document).ready(function ($) {
 
         var selected_ids = new Array();
         //$(this).closest('div.pp-current-roles').find('input[type="checkbox"]:checked').each(function(){
-        $('#pp_current_roles').find('input[type="checkbox"]:checked').each(function () {
+        $('.pp-current-roles-container').find('input[type="checkbox"]:checked').each(function () {
             selected_ids.push($(this).attr('value'));
         });
 
@@ -361,5 +362,76 @@ jQuery(document).ready(function ($) {
         return;
     }
     // ========== End "Edit Role" Submission scripts ==========
+
+    // ========== Begin "Table Sort" scripts ==========
+    // Store original order for each table
+    $('table.table-sortable').each(function () {
+        var $tbody = $(this).find('tbody');
+        $tbody.data('original-order', $tbody.children('tr').toArray());
+    });
+
+    $('table.table-sortable th.sortable').css('cursor', 'pointer').on('click', function () {
+        var $th = $(this);
+        var $table = $th.closest('table.table-sortable');
+        var colIndex = $th.index();
+        if (!$th.data('sort-state')) {
+            if ($th.hasClass('asc')) {
+                $th.data('sort-state', 'asc');
+            } else if ($th.hasClass('desc')) {
+                $th.data('sort-state', 'desc');
+            }
+        }
+        var state = $th.data('sort-state') || 'none'; // none, asc, desc
+
+        // Cycle state: none -> asc -> desc -> none
+        if (state === 'none') {
+            state = 'asc';
+        } else if (state === 'asc') {
+            state = 'desc';
+        } else {
+            state = 'none';
+        }
+        $th.data('sort-state', state);
+
+        // Remove sort classes and data from other headers
+        $table.find('th.sortable').not($th).removeClass('asc desc').data('sort-state', 'none');
+        $th.removeClass('asc desc');
+        if (state === 'asc') {
+            $th.addClass('asc');
+        } else if (state === 'desc') {
+            $th.addClass('desc');
+        }
+
+        var $tbody = $table.find('tbody');
+        var $rows;
+        if (state === 'none') {
+            // Restore original order from data
+            var originalRows = $tbody.data('original-order');
+            if (originalRows) {
+                $tbody.empty();
+                $.each(originalRows, function (idx, row) {
+                    $tbody.append(row);
+                });
+            }
+        } else {
+            var asc = (state === 'asc');
+            $rows = $tbody.children('tr').get().sort(function (a, b) {
+                var aCol = $(a).children('td').eq(colIndex);
+                var bCol = $(b).children('td').eq(colIndex);
+                var aText = aCol.text().toLowerCase();
+                var bText = bCol.text().toLowerCase();
+                if (aCol.data('sort')) aText = aCol.data('sort').toLowerCase();
+                if (bCol.data('sort')) bText = bCol.data('sort').toLowerCase();
+                if (aText < bText) return asc ? -1 : 1;
+                if (aText > bText) return asc ? 1 : -1;
+                return 0;
+            });
+            $tbody.empty();
+            $.each($rows, function (idx, row) {
+                $tbody.append(row);
+            });
+        }
+    });
+    // ========== End "Table Sort" scripts ==========
 });
 

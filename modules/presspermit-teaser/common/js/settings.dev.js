@@ -234,8 +234,29 @@ jQuery(document).ready(function ($) {
     });
 
     // Handle redirect dropdown change in the separate redirect section
+    function updateRedirectTargetColumnsVisibility($section) {
+        var $redirectModes = $section.find('select.teaser-redirect-mode');
+        var allNoRedirect = $redirectModes.length && $redirectModes.filter(function () {
+            return $(this).val() === '(select)';
+        }).length === 0;
+
+        $section.find('th').filter(function () {
+            return !!$(this).data('title');
+        }).each(function () {
+            var $th = $(this);
+            var titleText = $th.data('title');
+            $th.text(allNoRedirect ? '' : titleText);
+        });
+    }
+
     $('.teaser-redirect-section select.teaser-redirect-mode').on('change', function() {
         $(this).parent('td').siblings('td').find('div.pp-select-dynamic-wrapper').toggle($(this).val() == '(select)');
+        updateRedirectTargetColumnsVisibility($(this).closest('.teaser-redirect-section'));
+    });
+
+    // Initialize redirect target columns visibility on page load
+    $('.teaser-redirect-section').each(function () {
+        updateRedirectTargetColumnsVisibility($(this));
     });
 
     // ========================================================================

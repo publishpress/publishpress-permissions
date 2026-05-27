@@ -97,9 +97,6 @@ class SettingsAdmin
         case 'suppress_administrator_metagroups' :
         return __('If checked, pages blocked from the "All" or "Logged In" groups will still be listed to Administrators.', 'press-permit-core');
 
-        case 'suppress_administrator_metagroups' :
-        return __('If enabled, users with the pp_set_read_exceptions capability in the WP role can set reading permissions for their editable posts.', 'press-permit-core');
-
         case 'user_search_by_role' :
         return __('Display a role dropdown alongside the user search input box to narrow results.', 'press-permit-core');
 
@@ -122,10 +119,10 @@ class SettingsAdmin
         return __('You can add Permissions capabilities to a role using the %1$s plugin.', 'press-permit-core');
 
         case 'non_admins_set_read_exceptions' :
-        return __('Regardless of this setting, the pp_set_read_exceptions capability is also required.', 'press-permit-core');
+        return __('Regardless of this setting, the pp_set_view_permissions capability is also required.', 'press-permit-core');
 
         case 'non_admins_set_edit_exceptions' :
-        return __('Regardless of this setting, the pp_set_edit_exceptions capability is also required.', 'press-permit-core');
+        return __('Regardless of this setting, the pp_set_edit_permissions capability is also required.', 'press-permit-core');
 
         // Editing
         case 'collaborative-publishing' :
@@ -176,9 +173,6 @@ class SettingsAdmin
         case 'limit_user_edit_by_level' :
         return __('Prevent non-Administrators with user editing permissions from editing a higher-level user or assigning a role higher than their own.', 'press-permit-core');
 
-        case 'non_admins_set_edit_exceptions' :
-        return __('If enabled, the capabilities pp_set_edit_exceptions, pp_set_associate_exceptions, etc. will be honored. See list of capabilities below.', 'press-permit-core');
-
         // Circles
         case 'access_circles_limit_revisions':
         return __('Circle members will be blocked from accessing Revisions authored by non-members.', 'press-permit-core');
@@ -193,7 +187,7 @@ class SettingsAdmin
         switch ($constant) {
 
         case 'PP_NON_EDITORS_SET_EDIT_EXCEPTIONS' :
-		return esc_html__("Enable post contributors or authors with pp_set_edit_exceptions capability to set editing Permissions on posts authored by others", 'press-permit-core');
+		return esc_html__("Enable post contributors or authors with pp_set_edit_permissions capability to set editing Permissions on posts authored by others", 'press-permit-core');
 
         // 'editing'
         case 'PP_LOCK_OPTION_PAGES_ONLY' :
@@ -280,27 +274,27 @@ class SettingsAdmin
 
     static function setCapabilityDescriptions($pp_caps) {
         $pp_caps['pp_manage_settings'] = esc_html__('Manage PublishPress Permissions plugin settings.', 'press-permit-core');
+        $pp_caps['pp_manage_teaser'] = esc_html__('Access the Teaser settings admin screen.', 'press-permit-core');
         $pp_caps['pp_unfiltered'] = esc_html__('PublishPress Permissions will not apply any Extra Roles or Permissions to limit or expand viewing or editing access.', 'press-permit-core');
         $pp_caps['pp_administer_content'] = esc_html__('Manage other user\'s Permissions. Also grants capabilities for all post types and statuses.', 'press-permit-core');
         $pp_caps['pp_create_groups'] = esc_html__('Create new Permission Groups and set the name and description.', 'press-permit-core');
         $pp_caps['pp_edit_groups'] = esc_html__('Edit the name and description of existing Permission Groups.', 'press-permit-core');
         $pp_caps['pp_delete_groups'] = esc_html__('Delete Permission Groups.', 'press-permit-core');
         $pp_caps['pp_manage_members'] = esc_html__('If group editing is allowed, can also modify group membership.', 'press-permit-core');
-        $pp_caps['pp_assign_roles'] = esc_html__('Assign Extra Roles or Permissions.', 'press-permit-core');
-        $pp_caps['pp_assign_bulk_roles'] = esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core');
-        $pp_caps['pp_set_read_exceptions'] = esc_html__('Set Viewing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
+        $pp_caps['pp_manage_permissions'] = esc_html__('Assign Extra Roles or Permissions on the Edit Permissions screen.', 'press-permit-core');
+        $pp_caps['pp_set_view_permissions'] = esc_html__('Set Viewing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
 
 		if (presspermit()->moduleActive('collaboration')) {
-            $pp_caps['pp_set_edit_exceptions'] =            esc_html__('Set Editing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
+            $pp_caps['pp_set_edit_permissions'] =            esc_html__('Set Editing Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
 
             if ((defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION'))) {
-	            $pp_caps['pp_set_revise_exceptions'] = esc_html__('Set Revision Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
+	            $pp_caps['pp_set_revise_permissions'] = esc_html__('Set Revision Permissions for specific Posts, Categories or Terms.', 'press-permit-core');
 	        }
 	
-	        $pp_caps['pp_set_associate_exceptions'] =       esc_html__('Set "Set as Parent" Permissions for specific Posts.', 'press-permit-core');
-	        $pp_caps['pp_set_term_assign_exceptions'] =     esc_html__('Set Term Assignment Permissions.', 'press-permit-core');
-	        $pp_caps['pp_set_term_manage_exceptions'] =     esc_html__('Set Term Management Permissions.', 'press-permit-core');
-	        $pp_caps['pp_set_term_associate_exceptions'] =  esc_html__('Set "Set as Parent" Permissions for specific Categories or Terms.', 'press-permit-core');
+	        $pp_caps['pp_set_associate_permissions'] =       esc_html__('Set "Set as Parent" Permissions for specific Posts.', 'press-permit-core');
+	        $pp_caps['pp_set_term_assign_permissions'] =     esc_html__('Set Term Assignment Permissions.', 'press-permit-core');
+	        $pp_caps['pp_set_term_manage_permissions'] =     esc_html__('Set Term Management Permissions.', 'press-permit-core');
+	        $pp_caps['pp_set_term_associate_permissions'] =  esc_html__('Set "Set as Parent" Permissions for specific Categories or Terms.', 'press-permit-core');
 	
 	        $pp_caps['edit_own_attachments'] =          esc_html__('Edit own file uploads, even if they become attached to an uneditable post.', 'press-permit-core');
 	        $pp_caps['list_others_unattached_files'] =  esc_html__("See other user's unattached file uploads in Media Library.", 'press-permit-core');

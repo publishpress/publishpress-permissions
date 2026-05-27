@@ -47,7 +47,7 @@ class AgentEdit
                 $agent_id = PWP::REQUEST_int('agent_id');
                 check_admin_referer('pp-update-clone_' . $agent_id, '_pp_nonce_clone');
 
-                if (current_user_can('pp_assign_roles') && $pp->admin()->bulkRolesEnabled() && PWP::is_REQUEST('pp_select_role')) {
+                if ($pp->admin()->bulkRolesEnabled() && PWP::is_REQUEST('pp_select_role')) {
                     $agent_id = PWP::REQUEST_int('agent_id');
                     require_once(PRESSPERMIT_CLASSPATH . '/DB/Cloner.php');
                     \PublishPress\Permissions\DB\Cloner::clonePermissions(
@@ -65,7 +65,7 @@ class AgentEdit
                 $agent_id = PWP::REQUEST_int('agent_id');
                 check_admin_referer('pp-update-roles_' . $agent_id, '_pp_nonce_roles');
 
-                if (current_user_can('pp_assign_roles') && $pp->admin()->bulkRolesEnabled()) {
+                if ($pp->admin()->bulkRolesEnabled()) {
                     $this->editGroupRoles($agent_id, $agent_type);
                 }
 
@@ -87,7 +87,7 @@ class AgentEdit
                 $agent_id = PWP::REQUEST_int('agent_id');
                 check_admin_referer('pp-update-exceptions_' . $agent_id, '_pp_nonce_exceptions');
 
-                if (current_user_can('pp_assign_roles') && $pp->admin()->bulkRolesEnabled()) {
+                if ($pp->admin()->bulkRolesEnabled()) {
                     $this->editAgentExceptions($agent_id, $agent_type);
                 }
 
@@ -164,7 +164,7 @@ class AgentEdit
 
     private function editGroupRoles($agent_id, $agent_type)
     {
-        if (!current_user_can('pp_assign_roles') || !presspermit()->admin()->bulkRolesEnabled())
+        if (!presspermit()->admin()->bulkRolesEnabled())
             return;
 
         check_admin_referer('pp-update-roles_' . $agent_id, '_pp_nonce_roles');
@@ -195,7 +195,7 @@ class AgentEdit
 
     private function editAgentExceptions($agent_id, $agent_type)
     {
-        if (!current_user_can('pp_assign_roles') || !presspermit()->admin()->bulkRolesEnabled())
+        if (!presspermit()->admin()->bulkRolesEnabled())
             return;
 
         check_admin_referer('pp-update-exceptions_' . $agent_id, '_pp_nonce_exceptions');

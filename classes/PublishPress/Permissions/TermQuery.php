@@ -4,7 +4,7 @@ namespace PublishPress\Permissions;
 
 class TermQuery
 {
-    // derived from WP _pad_term_counts(), but includes private posts in counts based on current user's access 
+    // derived from WP _pad_term_counts(), but includes private posts in counts based on current user's access
     public static function tallyTermCounts(&$terms, $taxonomy, $args = [])
     {
         global $wpdb;
@@ -20,6 +20,8 @@ class TermQuery
         }
 
         $term_items = [];
+        $terms_by_id = [];
+        $term_ids = [];
 
         if ($terms) {
             if (!is_object(reset($terms))) {
@@ -98,21 +100,35 @@ class TermQuery
 
         foreach ($results as $row) {
             $id = $term_ids[$row->term_taxonomy_id];
-            $term_items[$id][$row->object_id] = isset($term_items[$id][$row->object_id]) ? ++$term_items[$id][$row->object_id] : 1;
+            $term_items[$id][$row->object_id] = 1;
         }
+
+        $max_depth = count($terms_by_id);
 
         // Touch every ancestor's lookup row for each post in each term
         foreach ($term_ids as $term_id) {
-            $child = $term_id;  // phpcs:ignore WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
+            $child = $term_id;
+            $seen = [];
+            $depth = 0;
 
-            while (!empty($terms_by_id[$child]) && $parent = $terms_by_id[$child]->parent) {  // phpcs:ignore WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
+            while (!empty($terms_by_id[$child]) && $parent = (int) $terms_by_id[$child]->parent) {  // phpcs:ignore WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
+                if (
+                    isset($seen[$child])
+                    || isset($seen[$parent])
+                    || ++$depth > $max_depth
+                    || empty($terms_by_id[$parent])
+                ) {
+                    break;
+                }
+
                 if (!empty($term_items[$term_id])) {
                     foreach ($term_items[$term_id] as $item_id => $touches) {
-                        $term_items[$parent][$item_id] = isset($term_items[$parent][$item_id]) ? ++$term_items[$parent][$item_id] : 1;
+                        $term_items[$parent][$item_id] = 1;
                     }
                 }
 
-                $child = $parent;  // phpcs:ignore WordPress.CodeAnalysis.AssignmentInCondition.FoundInWhileCondition
+                $seen[$child] = true;
+                $child = $parent;
             }
         }
 

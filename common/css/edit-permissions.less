@@ -515,6 +515,7 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 
   .permission-type thead tr th {
     border-top: none;
+    text-align: left;
   }
 
   .permission-type-header {
@@ -751,22 +752,24 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   }
 
   .icon-column {
-    vertical-align: bottom;
+    vertical-align: baseline;
   }
 
   .edit-column {
     width: 10%;
-    text-align: right;
+    .pp_clear {
+      float: right;
+    }
   }
 }
 
-#pp_current_exceptions {
+.pp-current-exceptions-container {
   margin-top: 36px;
-  margin-bottom: 80px;
+  margin-bottom: 36px;
   .sectionSubsection();
 }
 
-#pp_current_roles, .pp_current_exceptions_profile, .pp_user_profile {
+.pp-current-roles-container, .pp_current_exceptions_profile, .pp_user_profile {
   margin-top: 24px;
   margin-bottom: 16px;
 
@@ -792,7 +795,9 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 
   .edit-column {
     width: 10%;
-    text-align: right;
+    .pp_clear {
+      float: right;
+    }
   }
   
   table tr th {
