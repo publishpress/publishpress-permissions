@@ -21,6 +21,8 @@ class AdminFilters
 
         add_filter('user_has_cap', [$this, 'fltHasEditUserCap'], 99, 3);
 
+        add_filter('pre_user_query', [$this, 'fltHideUneditableUsers']);
+
         add_filter('presspermit_append_attachment_clause', [$this, 'fltAppendAttachmentClause'], 10, 3);
 
         add_filter('presspermit_operation_captions', [$this, 'fltOperationCaptions']);
@@ -257,6 +259,59 @@ class AdminFilters
         return $type_roles;
     }
 
+    // Hide users that the current user cannot edit from WP admin user list and plugin's own user table.
+    function fltHideUneditableUsers($query_obj)
+    {
+        global $pagenow;
+
+        if (!is_admin()) return $query_obj;
+
+        $is_users_page  = ('users.php' === $pagenow);
+        $is_plugin_page = ('admin.php' === $pagenow
+            && in_array(presspermitPluginPage(), ['presspermit-edit-permissions', 'presspermit-users'], true));
+
+        if (!$is_users_page && !$is_plugin_page) return $query_obj;
+
+        if (!presspermit()->filteringEnabled()) return $query_obj;
+
+        // Bypass only for true content administrators. Note: isUserAdministrator() merely checks the
+        // edit_users cap, which is exactly what lower-level user-managers hold — using it here would
+        // wrongly exempt the very users this feature is meant to restrict.
+        if (presspermit()->isContentAdministrator()) return $query_obj;
+
+        // Feature master switch.
+        if (!presspermit()->getOption('limit_user_edit_enabled')) return $query_obj;
+
+        $editing_limitation = presspermit()->getOption('limit_user_edit_by_level');
+
+        // Default to '1' (equal-or-lower) when enabled but no explicit mode is saved.
+        if (!$editing_limitation || '0' === (string) $editing_limitation) {
+            $editing_limitation = '1';
+        }
+
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
+        $uneditable_roles = Users::getUneditableRoles($editing_limitation);
+        if (!$uneditable_roles) return $query_obj;
+
+        global $current_user, $wpdb;
+
+        // Match the role name as it appears quoted in the serialized wp_capabilities meta_value,
+        // e.g. "editor" — so a role like "editor" cannot partially match "senior_editor".
+        $roles_regex = '"(' . implode('|', array_map('sanitize_key', $uneditable_roles)) . ')"';
+
+        // Always preserve the current user so they never vanish from their own list view.
+        $query_obj->query_where .= $wpdb->prepare(
+            " AND ({$wpdb->users}.ID = %d OR {$wpdb->users}.ID NOT IN ("
+            . "SELECT user_id FROM {$wpdb->usermeta} "
+            . "WHERE meta_key = %s AND meta_value REGEXP %s))",
+            $current_user->ID,
+            $wpdb->get_blog_prefix() . 'capabilities',
+            $roles_regex
+        );
+
+        return $query_obj;
+    }
+
     // Optionally, prevent anyone from editing or deleting a user whose level is higher than their own
     function fltHasEditUserCap($wp_sitecaps, $orig_reqd_caps, $args)
     {
@@ -272,7 +327,9 @@ class AdminFilters
                 return $wp_sitecaps;
             }
 
-            if ($editing_limitation = presspermit()->getOption('limit_user_edit_by_level')) {
+            if (presspermit()->getOption('limit_user_edit_enabled')
+                && ($editing_limitation = presspermit()->getOption('limit_user_edit_by_level'))
+            ) {
                 require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
                 $wp_sitecaps = Users::hasEditUserCap($wp_sitecaps, $orig_reqd_caps, $args, $editing_limitation);
             }
@@ -372,10 +429,17 @@ class AdminFilters
     // optional filter for WP role edit based on user level
     function fltEditableRoles($roles)
     {
-        if (!presspermit()->filteringEnabled() || !presspermit()->getOption('limit_user_edit_by_level'))
+        if (!presspermit()->filteringEnabled())
+            return $roles;
+
+        if (!presspermit()->getOption('limit_user_edit_enabled'))
+            return $roles;
+
+        $editing_limitation = presspermit()->getOption('limit_user_edit_by_level');
+        if (!$editing_limitation || '0' === (string) $editing_limitation)
             return $roles;
 
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
-        return Users::editableRoles($roles);
+        return Users::editableRoles($roles, $editing_limitation);
     }
 }

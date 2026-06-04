@@ -4,7 +4,7 @@ namespace PublishPress\Permissions\Collab;
 class Users
 {
     // optional filter for WP role edit based on user level
-    public static function editableRoles($roles)
+    public static function editableRoles($roles, $editing_limitation = '')
     {
         global $current_user, $pagenow;
 
@@ -13,13 +13,23 @@ class Users
         $current_user_level = self::getUserLevel($current_user->ID);
 
         foreach (array_keys($roles) as $role_name) {
-            if (isset($role_levels[$role_name]) && ($role_levels[$role_name] > $current_user_level)) {
+            if (!isset($role_levels[$role_name])) continue;
+
+            $level = $role_levels[$role_name];
+
+            // Always remove roles strictly above the current user's level.
+            if ($level > $current_user_level) {
                 unset($roles[$role_name]);
 
-            } elseif (!presspermit()->isUserAdministrator() 
-            && in_array($pagenow, ['users.php', 'user-edit.php', 'user-new.php']) 
-            && !defined('PPCE_CAN_ASSIGN_OWN_ROLE') 
-            && isset($role_levels[$role_name]) && ($role_levels[$role_name] >= $current_user_level)
+            // On user-management pages, also remove same-level roles for non-admins to prevent
+            // privilege escalation — UNLESS the mode is '1' (equal-or-lower), where assigning
+            // same-level roles is intentionally allowed, or PPCE_CAN_ASSIGN_OWN_ROLE overrides.
+            } elseif (
+                !presspermit()->isUserAdministrator()
+                && in_array($pagenow, ['users.php', 'user-edit.php', 'user-new.php'])
+                && !defined('PPCE_CAN_ASSIGN_OWN_ROLE')
+                && '1' !== $editing_limitation
+                && $level >= $current_user_level
             ) {
                 unset($roles[$role_name]);
             }
@@ -27,19 +37,48 @@ class Users
         return $roles;
     }
 
+    // Returns role names that the current user cannot edit based on the level restriction setting.
+    // Used to filter user lists so uneditable users are hidden.
+    public static function getUneditableRoles($editing_limitation)
+    {
+        global $current_user;
+
+        $role_levels       = self::getRoleLevels();
+        $current_user_level = self::getUserLevel($current_user->ID);
+
+        $uneditable_roles = [];
+        foreach ($role_levels as $role_name => $level) {
+            $uneditable = ('lower_levels' === $editing_limitation)
+                ? ($level >= $current_user_level)
+                : ($level > $current_user_level);
+
+            if ($uneditable) {
+                $uneditable_roles[] = $role_name;
+            }
+        }
+
+        return $uneditable_roles;
+    }
+
     public static function hasEditUserCap($wp_sitecaps, $orig_reqd_caps, $args, $editing_limitation)
     {
+        // '0' / falsy = "any user" — no restriction.  Defensive guard in case caller passes it through.
+        if (!$editing_limitation || '0' === (string) $editing_limitation) {
+            return $wp_sitecaps;
+        }
+
         // prevent anyone from editing a user whose level is higher than their own
         $levels = self::getUserLevel([(int) $args[1], (int) $args[2]]);
 
-        // finally, compare would-be editor's level with target user's
-        if (
-        (('lower_levels' == $editing_limitation) && ($levels[$args[2]] >= $levels[$args[1]]))
-        || ($levels[$args[2]] > $levels[$args[1]])
-        || apply_filters('presspermit_block_user_edit', false, (int) $args[2])
-        ) {
+        // 'lower_levels': can only edit users with strictly lower role level.
+        // '1' (equal or lower): can edit same and lower; block only strictly higher.
+        $block = ('lower_levels' === $editing_limitation)
+            ? ($levels[$args[2]] >= $levels[$args[1]])
+            : ($levels[$args[2]] > $levels[$args[1]]);
+
+        if ($block || apply_filters('presspermit_block_user_edit', false, (int) $args[2])) {
             $wp_sitecaps = array_diff_key(
-                $wp_sitecaps, 
+                $wp_sitecaps,
                 array_fill_keys(['edit_users', 'delete_users', 'remove_users', 'promote_users'], true)
             );
         }
@@ -79,6 +118,16 @@ class Users
                 if (empty($user_levels[$current_user->ID])) {
                     $user_levels[$current_user->ID] = (int) get_user_meta( $current_user->ID, $wpdb->get_blog_prefix() . 'user_level', true );
                 }
+
+                // Fallback to native WP roles when legacy user_level meta is absent (modern WordPress).
+                if (empty($user_levels[$current_user->ID]) && !empty($current_user->roles)) {
+                    foreach ($current_user->roles as $role_name) {
+                        if (!isset($role_levels[$role_name])) continue;
+                        if ($role_levels[$role_name] > $user_levels[$current_user->ID]) {
+                            $user_levels[$current_user->ID] = $role_levels[$role_name];
+                        }
+                    }
+                }
             } else {
                 if (!empty($wp_user_search->results)) {
                     $query_users = $wp_user_search->results;
@@ -112,6 +161,23 @@ class Users
 	                if ($no_role_users = array_diff($query_users, array_keys($user_levels)))
 	                    $user_levels = $user_levels + array_fill_keys($no_role_users, 0);
 	            }
+
+                // For requested user IDs that are still at level 0 (not synced to pp_groups or
+                // assigned a custom role without level_X caps), fall back to native WP role data.
+                foreach ($user_ids as $uid) {
+                    $uid = (int) $uid;
+                    if (!empty($user_levels[$uid])) continue;
+
+                    $user_obj = get_userdata($uid);
+                    if ($user_obj && !empty($user_obj->roles)) {
+                        foreach ($user_obj->roles as $role_name) {
+                            if (!isset($role_levels[$role_name])) continue;
+                            if (!isset($user_levels[$uid]) || $role_levels[$role_name] > $user_levels[$uid]) {
+                                $user_levels[$uid] = $role_levels[$role_name];
+                            }
+                        }
+                    }
+                }
         	}
         }
 
@@ -139,6 +205,20 @@ class Users
             for ($i = 0; $i <= 10; $i++)
                 if (!empty($role->capabilities["level_$i"]))
                     $level = $i;
+
+            // For roles that lack legacy level_X caps (custom roles), infer level from capabilities.
+            if (0 === $level) {
+                $caps = $role->capabilities;
+                if (!empty($caps['manage_options']) || !empty($caps['delete_users']) || !empty($caps['edit_users'])) {
+                    $level = 10;
+                } elseif (!empty($caps['edit_others_posts']) || !empty($caps['edit_pages'])) {
+                    $level = 7;
+                } elseif (!empty($caps['publish_posts'])) {
+                    $level = 2;
+                } elseif (!empty($caps['edit_posts'])) {
+                    $level = 1;
+                }
+            }
 
             $role_levels[$role_name] = $level;
         }

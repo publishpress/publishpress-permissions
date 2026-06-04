@@ -321,21 +321,10 @@ class UsersListing
                     $role_titles[] = str_replace(' ', '&nbsp;', sprintf(__('%s more', 'press-permit-core'), (int) $excess));
                 }
 
-                if ($do_edit_link = presspermit()->admin()->bulkRolesEnabled() && 
-                    (is_multisite() || current_user_can('edit_user', $id)) && 
-                    !$is_plain_export) {
-                    $edit_link = "admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$id&amp;agent_type=user";
-                    $content .= "<a href='" . esc_url($edit_link) . "' ' title='" . esc_attr__('edit user permissions', 'press-permit-core') . "'>";
-                }
-
                 if ($is_plain_export) {
                     $content .= implode(', ', $role_titles);
                 } else {
                     $content .= '<span class="pp-group-site-roles">' . implode(', ', $role_titles) . '</span>';
-                }
-
-                if ($do_edit_link && !$is_plain_export) {
-                    $content .= '</a>';	
                 }
 
                 break;
