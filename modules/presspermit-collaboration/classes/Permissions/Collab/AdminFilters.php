@@ -321,18 +321,64 @@ class AdminFilters
     }
 
     // Hide the role filter links (e.g. "Administrator (1) | Editor (1)") above the Users list for
-    // any role the current user cannot edit.
+    // any role the current user cannot edit, and recompute the remaining counts to match the
+    // filtered (visible) set so they stay consistent with fltHideUneditableUsers().
     function fltHideUneditableRoleViews($views)
     {
         if (!$uneditable_roles = $this->currentUserUneditableRoles()) {
             return $views;
         }
 
+        // Remove the links for roles that cannot be edited.
         foreach ($uneditable_roles as $role_name) {
             unset($views[$role_name]);
         }
 
+        // The current user is always preserved in their own list (see fltHideUneditableUsers), even
+        // if their own role is itself uneditable (e.g. 'lower_levels' mode). Account for that here.
+        $current_user = wp_get_current_user();
+        $current_user_preserved = (bool) array_intersect((array) $current_user->roles, $uneditable_roles);
+
+        // "All" = users without any uneditable role, plus the preserved current user if applicable.
+        if (isset($views['all'])) {
+            $all_query = new \WP_User_Query(
+                ['role__not_in' => $uneditable_roles, 'fields' => 'ID', 'number' => 1, 'count_total' => true]
+            );
+
+            $all_count = (int) $all_query->get_total();
+
+            if ($current_user_preserved) {
+                $all_count++;
+            }
+
+            $views['all'] = $this->replaceViewCount($views['all'], $all_count);
+        }
+
+        // Recompute each remaining role link: users with that role but none of the uneditable roles.
+        foreach (array_keys($views) as $key) {
+            if (in_array($key, ['all', 'none'], true)) {
+                continue;
+            }
+
+            $role_query = new \WP_User_Query(
+                ['role' => $key, 'role__not_in' => $uneditable_roles, 'fields' => 'ID', 'number' => 1, 'count_total' => true]
+            );
+
+            $views[$key] = $this->replaceViewCount($views[$key], (int) $role_query->get_total());
+        }
+
         return $views;
+    }
+
+    // Replace the "(N)" inside a WP list-table view link's count span, preserving all other markup.
+    private function replaceViewCount($view_html, $count)
+    {
+        return preg_replace(
+            '/(<span class="count">\()[^<]*?(\)<\/span>)/',
+            '${1}' . esc_html(number_format_i18n($count)) . '$2',
+            $view_html,
+            1
+        );
     }
 
     // Optionally, prevent anyone from editing or deleting a user whose level is higher than their own
