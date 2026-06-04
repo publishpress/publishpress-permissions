@@ -22,6 +22,7 @@ class AdminFilters
         add_filter('user_has_cap', [$this, 'fltHasEditUserCap'], 99, 3);
 
         add_filter('pre_user_query', [$this, 'fltHideUneditableUsers']);
+        add_filter('views_users', [$this, 'fltHideUneditableRoleViews']);
 
         add_filter('presspermit_append_attachment_clause', [$this, 'fltAppendAttachmentClause'], 10, 3);
 
@@ -259,6 +260,31 @@ class AdminFilters
         return $type_roles;
     }
 
+    // Returns the role slugs the current user cannot edit when the level-restriction feature is
+    // active, or an empty array when the feature does not apply to the current user/context.
+    private function currentUserUneditableRoles()
+    {
+        if (!presspermit()->filteringEnabled()) return [];
+
+        // Bypass only for true content administrators. Note: isUserAdministrator() merely checks the
+        // edit_users cap, which is exactly what lower-level user-managers hold — using it here would
+        // wrongly exempt the very users this feature is meant to restrict.
+        if (presspermit()->isContentAdministrator()) return [];
+
+        // Feature master switch.
+        if (!presspermit()->getOption('limit_user_edit_enabled')) return [];
+
+        $editing_limitation = presspermit()->getOption('limit_user_edit_by_level');
+
+        // Default to '1' (equal-or-lower) when enabled but no explicit mode is saved.
+        if (!$editing_limitation || '0' === (string) $editing_limitation) {
+            $editing_limitation = '1';
+        }
+
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
+        return Users::getUneditableRoles($editing_limitation);
+    }
+
     // Hide users that the current user cannot edit from WP admin user list and plugin's own user table.
     function fltHideUneditableUsers($query_obj)
     {
@@ -272,25 +298,7 @@ class AdminFilters
 
         if (!$is_users_page && !$is_plugin_page) return $query_obj;
 
-        if (!presspermit()->filteringEnabled()) return $query_obj;
-
-        // Bypass only for true content administrators. Note: isUserAdministrator() merely checks the
-        // edit_users cap, which is exactly what lower-level user-managers hold — using it here would
-        // wrongly exempt the very users this feature is meant to restrict.
-        if (presspermit()->isContentAdministrator()) return $query_obj;
-
-        // Feature master switch.
-        if (!presspermit()->getOption('limit_user_edit_enabled')) return $query_obj;
-
-        $editing_limitation = presspermit()->getOption('limit_user_edit_by_level');
-
-        // Default to '1' (equal-or-lower) when enabled but no explicit mode is saved.
-        if (!$editing_limitation || '0' === (string) $editing_limitation) {
-            $editing_limitation = '1';
-        }
-
-        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
-        $uneditable_roles = Users::getUneditableRoles($editing_limitation);
+        $uneditable_roles = $this->currentUserUneditableRoles();
         if (!$uneditable_roles) return $query_obj;
 
         global $current_user, $wpdb;
@@ -310,6 +318,21 @@ class AdminFilters
         );
 
         return $query_obj;
+    }
+
+    // Hide the role filter links (e.g. "Administrator (1) | Editor (1)") above the Users list for
+    // any role the current user cannot edit.
+    function fltHideUneditableRoleViews($views)
+    {
+        if (!$uneditable_roles = $this->currentUserUneditableRoles()) {
+            return $views;
+        }
+
+        foreach ($uneditable_roles as $role_name) {
+            unset($views[$role_name]);
+        }
+
+        return $views;
     }
 
     // Optionally, prevent anyone from editing or deleting a user whose level is higher than their own
