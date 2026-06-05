@@ -6,11 +6,14 @@ class Users
     // optional filter for WP role edit based on user level
     public static function editableRoles($roles, $editing_limitation = '')
     {
-        global $current_user, $pagenow;
-
         $role_levels = self::getRoleLevels();
 
-        $current_user_level = self::getUserLevel($current_user->ID);
+        $current_user_level = self::currentUserLevel();
+
+        // Bypass for true content administrators only. isUserAdministrator() merely checks edit_users,
+        // which lower-level user managers hold — using it here would wrongly let an Author keep the
+        // same-level "Author" option in 'lower_levels' mode.
+        $is_admin = presspermit()->isContentAdministrator();
 
         foreach (array_keys($roles) as $role_name) {
             if (!isset($role_levels[$role_name])) continue;
@@ -21,12 +24,13 @@ class Users
             if ($level > $current_user_level) {
                 unset($roles[$role_name]);
 
-            // On user-management pages, also remove same-level roles for non-admins to prevent
-            // privilege escalation — UNLESS the mode is '1' (equal-or-lower), where assigning
-            // same-level roles is intentionally allowed, or PPCE_CAN_ASSIGN_OWN_ROLE overrides.
+            // In 'lower_levels' mode, also remove same-level roles for non-admins to prevent
+            // privilege escalation. Applied to ALL role-assignment dropdowns (add user, edit user,
+            // and the bulk "Change role to" control) — not a hardcoded page list. The '1'
+            // (equal-or-lower) mode intentionally allows same-level assignment, and
+            // PPCE_CAN_ASSIGN_OWN_ROLE overrides.
             } elseif (
-                !presspermit()->isUserAdministrator()
-                && in_array($pagenow, ['users.php', 'user-edit.php', 'user-new.php'])
+                !$is_admin
                 && !defined('PPCE_CAN_ASSIGN_OWN_ROLE')
                 && '1' !== $editing_limitation
                 && $level >= $current_user_level
@@ -41,10 +45,16 @@ class Users
     // Used to filter user lists so uneditable users are hidden.
     public static function getUneditableRoles($editing_limitation)
     {
-        global $current_user;
+        $role_levels        = self::getRoleLevels();
+        $current_user_level = self::currentUserLevel();
 
-        $role_levels       = self::getRoleLevels();
-        $current_user_level = self::getUserLevel($current_user->ID);
+        // Fail-safe: if the current user's level cannot be determined (0), do NOT restrict anything.
+        // A level-0 user has no basis to limit others, and restricting here (especially in
+        // 'lower_levels' mode, where level 0 would mark EVERY role uneditable) would wrongly empty
+        // the entire users list ("No users found"). Better to show all than to hide everyone.
+        if ($current_user_level <= 0) {
+            return [];
+        }
 
         $uneditable_roles = [];
         foreach ($role_levels as $role_name => $level) {
@@ -58,6 +68,53 @@ class Users
         }
 
         return $uneditable_roles;
+    }
+
+    // Robustly determine the current user's role level, independent of the static getUserLevel cache.
+    // Considers (and takes the highest of): super-admin/administrator, legacy user_level meta, the
+    // levels of their assigned WP roles, and their EFFECTIVE capabilities (allcaps) — the latter
+    // covers content caps granted via PublishPress permission groups rather than the WP role itself,
+    // which getRoleLevels() (role-cap based) cannot see.
+    public static function currentUserLevel()
+    {
+        global $current_user, $wpdb;
+
+        if (current_user_can('administrator')
+            || (is_multisite() && function_exists('is_super_admin') && is_super_admin())
+        ) {
+            return 10;
+        }
+
+        $role_levels = self::getRoleLevels();
+
+        $level = (int) get_user_meta($current_user->ID, $wpdb->get_blog_prefix() . 'user_level', true);
+
+        if (!empty($current_user->role_level)) {
+            $level = max($level, (int) $current_user->role_level);
+        }
+
+        if (!empty($current_user->roles)) {
+            foreach ($current_user->roles as $role_name) {
+                if (isset($role_levels[$role_name])) {
+                    $level = max($level, (int) $role_levels[$role_name]);
+                }
+            }
+        }
+
+        // Infer from effective capabilities. Note: edit_users is intentionally NOT treated as
+        // administrator-level, because lower-level user managers legitimately hold it.
+        $caps = (array) $current_user->allcaps;
+        if (!empty($caps['manage_options'])) {
+            $level = max($level, 10);
+        } elseif (!empty($caps['edit_others_posts']) || !empty($caps['edit_pages'])) {
+            $level = max($level, 7);
+        } elseif (!empty($caps['publish_posts'])) {
+            $level = max($level, 2);
+        } elseif (!empty($caps['edit_posts'])) {
+            $level = max($level, 1);
+        }
+
+        return $level;
     }
 
     public static function hasEditUserCap($wp_sitecaps, $orig_reqd_caps, $args, $editing_limitation)
@@ -113,21 +170,26 @@ class Users
             global $wp_user_search, $current_user, $wpdb;
 
             if ((count($user_ids) == 1) && (current($user_ids) == $current_user->ID)) {
-                $user_levels[$current_user->ID] = !empty($current_user->role_level) ? $current_user->role_level : 0;
+                $level = !empty($current_user->role_level) ? (int) $current_user->role_level : 0;
 
-                if (empty($user_levels[$current_user->ID])) {
-                    $user_levels[$current_user->ID] = (int) get_user_meta( $current_user->ID, $wpdb->get_blog_prefix() . 'user_level', true );
+                $meta_level = (int) get_user_meta($current_user->ID, $wpdb->get_blog_prefix() . 'user_level', true);
+                if ($meta_level > $level) {
+                    $level = $meta_level;
                 }
 
-                // Fallback to native WP roles when legacy user_level meta is absent (modern WordPress).
-                if (empty($user_levels[$current_user->ID]) && !empty($current_user->roles)) {
+                // Always also consider native WP roles and keep the highest level. A stale or low
+                // user_level meta (common on modern WordPress) must not under-count the current user's
+                // level — otherwise lower roles like Subscriber get hidden from their own list even
+                // though they remain editable (the edit-cap check derives level from the WP role).
+                if (!empty($current_user->roles)) {
                     foreach ($current_user->roles as $role_name) {
-                        if (!isset($role_levels[$role_name])) continue;
-                        if ($role_levels[$role_name] > $user_levels[$current_user->ID]) {
-                            $user_levels[$current_user->ID] = $role_levels[$role_name];
+                        if (isset($role_levels[$role_name]) && ($role_levels[$role_name] > $level)) {
+                            $level = $role_levels[$role_name];
                         }
                     }
                 }
+
+                $user_levels[$current_user->ID] = $level;
             } else {
                 if (!empty($wp_user_search->results)) {
                     $query_users = $wp_user_search->results;
@@ -207,9 +269,12 @@ class Users
                     $level = $i;
 
             // For roles that lack legacy level_X caps (custom roles), infer level from capabilities.
+            // Only manage_options marks administrator level; edit_users/delete_users are intentionally
+            // excluded so a lower-level "user manager" role is ranked by its content caps, not jumped
+            // to level 10 (which would otherwise make its holders able to edit nearly everyone).
             if (0 === $level) {
                 $caps = $role->capabilities;
-                if (!empty($caps['manage_options']) || !empty($caps['delete_users']) || !empty($caps['edit_users'])) {
+                if (!empty($caps['manage_options'])) {
                     $level = 10;
                 } elseif (!empty($caps['edit_others_posts']) || !empty($caps['edit_pages'])) {
                     $level = 7;

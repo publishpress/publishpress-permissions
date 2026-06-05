@@ -303,9 +303,11 @@ class AdminFilters
 
         global $current_user, $wpdb;
 
-        // Match the role name as it appears quoted in the serialized wp_capabilities meta_value,
-        // e.g. "editor" — so a role like "editor" cannot partially match "senior_editor".
-        $roles_regex = '"(' . implode('|', array_map('sanitize_key', $uneditable_roles)) . ')"';
+        // Match the role as an ACTIVE entry in the serialized wp_capabilities meta_value, e.g.
+        // "editor";b:1 — quote-anchored so "editor" can't partial-match "senior_editor", and the
+        // ;b:1 suffix so a stale/disabled role (e.g. a demoted user's "editor";b:0) is NOT matched.
+        // This keeps row-hiding consistent with get_userdata()->roles, which lists only active roles.
+        $roles_regex = '"(' . implode('|', array_map('sanitize_key', $uneditable_roles)) . ')";b:1';
 
         // Always preserve the current user so they never vanish from their own list view.
         $query_obj->query_where .= $wpdb->prepare(
