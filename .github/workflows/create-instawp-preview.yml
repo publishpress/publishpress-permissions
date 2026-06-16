@@ -1,0 +1,307 @@
+name: Create InstaWP Preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      requested_by:
+        description: "Slack user ID who requested the preview"
+        required: true
+        type: string
+
+      slack_channel:
+        description: "Slack channel ID to notify"
+        required: true
+        type: string
+
+      repository:
+        description: "Repository key from Slack Worker"
+        required: true
+        type: string
+
+      target_ref:
+        description: "Branch name or Pull Request number"
+        required: true
+        type: string
+
+      run_tests:
+        description: "Run Ghost Inspector tests"
+        required: true
+        default: "yes"
+        type: string
+
+      tmate_enabled:
+        description: 'Enable "tmate" for debugging'
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+  pull-requests: read
+
+env:
+  PLUGIN_SLUG: press-permit-core
+  BUILD_DIR: dist/press-permit-core
+  PACKAGE_DIR: package
+  PACKAGE_FILE: press-permit-core-preview.zip
+
+jobs:
+  create-preview:
+    name: Build package and create InstaWP preview
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Linux packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq zip unzip rsync
+
+      - name: Setup tmate session for debugging
+        uses: mxschmitt/action-tmate@v3
+        if: ${{ inputs.tmate_enabled }}
+        timeout-minutes: 10
+        with:
+          detached: true
+
+      - name: Resolve branch or PR
+        id: resolve
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const input = '${{ inputs.target_ref }}'.trim();
+
+            if (/^\d+$/.test(input)) {
+              const pr = await github.rest.pulls.get({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: Number(input)
+              });
+
+              core.setOutput('type', 'pull_request');
+              core.setOutput('label', `PR #${input}`);
+              core.setOutput('checkout_ref', pr.data.head.sha);
+              core.setOutput('source_branch', pr.data.head.ref);
+              core.setOutput('source_sha', pr.data.head.sha);
+            } else {
+              core.setOutput('type', 'branch');
+              core.setOutput('label', input);
+              core.setOutput('checkout_ref', input);
+              core.setOutput('source_branch', input);
+              core.setOutput('source_sha', input);
+            }
+
+      - name: Checkout selected branch or PR
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.resolve.outputs.checkout_ref }}
+
+      - name: Create .env file
+        run: |
+          cp "$GITHUB_WORKSPACE/.env.example" "$GITHUB_WORKSPACE/.env"
+
+      - name: Fix permissions
+        run: |
+          chmod +x "$GITHUB_WORKSPACE/dev-workspace/run"
+          chmod +x "$GITHUB_WORKSPACE/dev-workspace/scripts/"*.sh
+
+      - name: Prepare Composer
+        run: |
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer validate
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer install
+
+      - name: Show version of tools inside the dev-workspace
+        run: |
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer info:versions
+
+      - name: Run lint check
+        run: |
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer check:lint
+
+      - name: Build plugin package
+        run: |
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer build
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "$GITHUB_WORKSPACE/${BUILD_DIR}" ]; then
+            echo "Build directory not found: $GITHUB_WORKSPACE/${BUILD_DIR}"
+            echo "Available dist files:"
+            find "$GITHUB_WORKSPACE/dist" -maxdepth 3 -type f -o -type d || true
+            exit 1
+          fi
+
+          echo "Build output found:"
+          ls -la "$GITHUB_WORKSPACE/${BUILD_DIR}"
+
+      - name: Create plugin ZIP for InstaWP
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/${PACKAGE_DIR}"
+
+          cd "$GITHUB_WORKSPACE/dist"
+
+          zip -r "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}" "${PLUGIN_SLUG}"
+
+          echo "Created package:"
+          ls -lh "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
+
+      - name: Upload package as GitHub artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ env.PACKAGE_FILE }}
+          path: ${{ env.PACKAGE_DIR }}/${{ env.PACKAGE_FILE }}
+          retention-days: 7
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install InstaWP CLI
+        run: |
+          npm install -g @instawp/cli@beta
+
+      - name: Create InstaWP preview site
+        id: instawp
+        env:
+          INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
+        run: |
+          SITE_NAME="preview-${{ github.event.repository.name }}-${{ github.run_id }}"
+
+          echo "Creating InstaWP site: ${SITE_NAME}"
+
+          instawp create --name "${SITE_NAME}" --json > instawp-site.json
+
+          cat instawp-site.json
+
+          SITE_ID=$(jq -r '.data.id // .id // .site.id // .site_id // empty' instawp-site.json)
+          SITE_URL=$(jq -r '.data.url // .url // .site.url // .wp_url // .site_url // empty' instawp-site.json)
+
+          if [ -z "$SITE_ID" ]; then
+            echo "Could not detect InstaWP site ID from response."
+            cat instawp-site.json
+            exit 1
+          fi
+
+          if [ -z "$SITE_URL" ]; then
+            echo "Could not detect InstaWP site URL from response."
+            cat instawp-site.json
+            exit 1
+          fi
+
+          echo "site_id=${SITE_ID}" >> "$GITHUB_OUTPUT"
+          echo "site_url=${SITE_URL}" >> "$GITHUB_OUTPUT"
+
+          echo "Created InstaWP site:"
+          echo "ID: ${SITE_ID}"
+          echo "URL: ${SITE_URL}"
+
+      - name: Upload package to InstaWP site
+        env:
+          INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
+        run: |
+          PACKAGE_PATH="$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
+          SITE_ID="${{ steps.instawp.outputs.site_id }}"
+
+          echo "Copying package to InstaWP site..."
+
+          # Create temporary directory on the InstaWP site.
+          instawp exec "${SITE_ID}" "mkdir -p /tmp/deploypress-preview" --api
+
+          # This assumes the InstaWP CLI supports sync push to a remote path.
+          # If your CLI version does not support this, use the R2/S3 URL method below instead.
+          instawp sync push "${SITE_ID}" \
+            --path "$GITHUB_WORKSPACE/${PACKAGE_DIR}/" \
+            --remote-path "/tmp/deploypress-preview/" \
+            --api
+
+      - name: Install and activate package on InstaWP
+        env:
+          INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
+        run: |
+          SITE_ID="${{ steps.instawp.outputs.site_id }}"
+
+          echo "Installing plugin ZIP on InstaWP site..."
+
+          instawp wp "${SITE_ID}" -- plugin install "/tmp/deploypress-preview/${PACKAGE_FILE}" --force --activate --api
+
+          echo "Installed plugins:"
+          instawp wp "${SITE_ID}" -- plugin list --api
+
+      - name: Run Ghost Inspector tests
+        id: ghost
+        if: ${{ inputs.run_tests == 'yes' && secrets.GHOST_INSPECTOR_API_KEY != '' && secrets.GHOST_INSPECTOR_SUITE_ID != '' }}
+        env:
+          GHOST_INSPECTOR_API_KEY: ${{ secrets.GHOST_INSPECTOR_API_KEY }}
+          GHOST_INSPECTOR_SUITE_ID: ${{ secrets.GHOST_INSPECTOR_SUITE_ID }}
+          SITE_URL: ${{ steps.instawp.outputs.site_url }}
+        run: |
+          echo "Triggering Ghost Inspector tests for ${SITE_URL}"
+
+          curl -sS \
+            "https://api.ghostinspector.com/v1/suites/${GHOST_INSPECTOR_SUITE_ID}/execute/" \
+            --get \
+            --data-urlencode "apiKey=${GHOST_INSPECTOR_API_KEY}" \
+            --data-urlencode "startUrl=${SITE_URL}" \
+            > ghost-response.json
+
+          cat ghost-response.json
+
+          RESULT_URL=$(jq -r '.data.results[0].urls.html // .data.url // .url // empty' ghost-response.json)
+
+          echo "result_url=${RESULT_URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Notify Slack success
+        if: success()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL: ${{ inputs.slack_channel }}
+          SITE_URL: ${{ steps.instawp.outputs.site_url }}
+          GHOST_RESULT_URL: ${{ steps.ghost.outputs.result_url }}
+        run: |
+          MESSAGE="✅ InstaWP preview site is ready.
+
+Repository: *${{ github.event.repository.name }}*
+Requested by: <@${{ inputs.requested_by }}>
+Ref: *${{ steps.resolve.outputs.label }}*
+Site: ${SITE_URL}"
+
+          if [ -n "${GHOST_RESULT_URL}" ]; then
+            MESSAGE="${MESSAGE}
+
+Ghost Inspector: ${GHOST_RESULT_URL}"
+          fi
+
+          jq -n \
+            --arg channel "${SLACK_CHANNEL}" \
+            --arg text "${MESSAGE}" \
+            '{channel: $channel, text: $text}' \
+            > slack-payload.json
+
+          curl -sS -X POST "https://slack.com/api/chat.postMessage" \
+            -H "Authorization: Bearer ${SLACK_BOT_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data @slack-payload.json
+
+      - name: Notify Slack failure
+        if: failure()
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          SLACK_CHANNEL: ${{ inputs.slack_channel }}
+        run: |
+          MESSAGE="❌ InstaWP preview creation failed.
+
+Repository: *${{ github.event.repository.name }}*
+Requested by: <@${{ inputs.requested_by }}>
+Ref: *${{ inputs.target_ref }}*
+GitHub run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+          jq -n \
+            --arg channel "${SLACK_CHANNEL}" \
+            --arg text "${MESSAGE}" \
+            '{channel: $channel, text: $text}' \
+            > slack-payload.json
+
+          curl -sS -X POST "https://slack.com/api/chat.postMessage" \
+            -H "Authorization: Bearer ${SLACK_BOT_TOKEN}" \
+            -H "Content-Type: application/json" \
+            --data @slack-payload.json
