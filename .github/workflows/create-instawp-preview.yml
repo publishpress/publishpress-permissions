@@ -164,16 +164,102 @@ jobs:
         env:
           INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
         run: |
-          SITE_NAME="preview-${{ github.event.repository.name }}-${{ github.run_id }}"
+          REPO_NAME="${{ github.event.repository.name }}"
+
+          case "${REPO_NAME}" in
+            publishpress-authors)
+              REPO_SHORT="authors"
+              ;;
+            publishpress-authors-pro)
+              REPO_SHORT="authors-pro"
+              ;;
+            publishpress-blocks)
+              REPO_SHORT="blocks"
+              ;;
+            publishpress-blocks-pro)
+              REPO_SHORT="blocks-pro"
+              ;;
+            publishpress-capabilities)
+              REPO_SHORT="capabilities"
+              ;;
+            publishpress-capabilities-pro)
+              REPO_SHORT="caps-pro"
+              ;;
+            publishpress-cart)
+              REPO_SHORT="cart"
+              ;;
+            publishpress-cart-pro)
+              REPO_SHORT="cart-pro"
+              ;;
+            publishpress-checklists)
+              REPO_SHORT="checklists"
+              ;;
+            publishpress-checklists-pro)
+              REPO_SHORT="checks-pro"
+              ;;
+            publishpress-future)
+              REPO_SHORT="future"
+              ;;
+            publishpress-future-pro)
+              REPO_SHORT="future-pro"
+              ;;
+            publishpress-hub)
+              REPO_SHORT="hub"
+              ;;
+            publishpress-permissions)
+              REPO_SHORT="permissions"
+              ;;
+            publishpress-permissions-pro)
+              REPO_SHORT="perms-pro"
+              ;;
+            publishpress-planner)
+              REPO_SHORT="planner"
+              ;;
+            publishpress-planner-pro)
+              REPO_SHORT="planner-pro"
+              ;;
+            publishpress-revisions)
+              REPO_SHORT="revisions"
+              ;;
+            publishpress-revisions-pro)
+              REPO_SHORT="revs-pro"
+              ;;
+            publishpress-shortlinks)
+              REPO_SHORT="shortlinks"
+              ;;
+            publishpress-shortlinks-pro)
+              REPO_SHORT="links-pro"
+              ;;
+            publishpress-statuses)
+              REPO_SHORT="statuses"
+              ;;
+            publishpress-statuses-pro)
+              REPO_SHORT="status-pro"
+              ;;
+            *)
+              REPO_SHORT=$(echo "${REPO_NAME}" | sed 's/^publishpress-//' | cut -c1-12)
+              ;;
+          esac
+
+          RUN_ID="${{ github.run_id }}"
+          SITE_NAME="${REPO_SHORT}-${RUN_ID}"
+
+          if [ ${#SITE_NAME} -gt 30 ]; then
+            RUN_SHORT=$(echo "${RUN_ID}" | tail -c 11)
+            MAX_REPO_LENGTH=$((30 - 1 - ${#RUN_SHORT}))
+            REPO_SHORT=$(echo "${REPO_SHORT}" | cut -c1-${MAX_REPO_LENGTH})
+            SITE_NAME="${REPO_SHORT}-${RUN_SHORT}"
+          fi
 
           echo "Creating InstaWP site: ${SITE_NAME}"
+          echo "Site name length: ${#SITE_NAME}"
 
-          instawp create --name "${SITE_NAME}" --json > instawp-site.json
+          instawp create --name "${SITE_NAME}" --temporary --json > instawp-site.json
 
           cat instawp-site.json
 
           SITE_ID=$(jq -r '.data.id // .id // .site.id // .site_id // empty' instawp-site.json)
-          SITE_URL=$(jq -r '.data.url // .url // .site.url // .wp_url // .site_url // empty' instawp-site.json)
+          SITE_URL=$(jq -r '.data.wp_url // .data.url // .url // .site.url // .wp_url // .site_url // empty' instawp-site.json)
 
           if [ -z "$SITE_ID" ]; then
             echo "Could not detect InstaWP site ID from response."
