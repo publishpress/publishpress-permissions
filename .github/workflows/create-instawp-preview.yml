@@ -43,6 +43,7 @@ env:
   BUILD_DIR: dist/press-permit-core
   PACKAGE_DIR: package
   PACKAGE_FILE: press-permit-core-preview.zip
+  BUILD_CACHE_VERSION: v1
 
 jobs:
   create-preview:
@@ -82,11 +83,17 @@ jobs:
               core.setOutput('source_branch', pr.data.head.ref);
               core.setOutput('source_sha', pr.data.head.sha);
             } else {
+              const branch = await github.rest.repos.getBranch({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                branch: input
+              });
+
               core.setOutput('type', 'branch');
               core.setOutput('label', input);
-              core.setOutput('checkout_ref', input);
+              core.setOutput('checkout_ref', branch.data.commit.sha);
               core.setOutput('source_branch', input);
-              core.setOutput('source_sha', input);
+              core.setOutput('source_sha', branch.data.commit.sha);
             }
 
       - name: Checkout selected branch or PR
@@ -284,20 +291,23 @@ jobs:
         env:
           INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
         run: |
-          PACKAGE_PATH="$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
           SITE_ID="${{ steps.instawp.outputs.site_id }}"
+          PACKAGE_PATH="$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
 
-          echo "Copying package to InstaWP site..."
+          echo "Checking local package..."
+          test -f "$PACKAGE_PATH"
+          ls -lh "$PACKAGE_PATH"
 
-          # Create temporary directory on the InstaWP site.
-          instawp exec "${SITE_ID}" "mkdir -p /tmp/deploypress-preview" --api
+          echo "Create upload directory on InstaWP site..."
+          instawp exec "${SITE_ID}" mkdir -p wp-content/uploads/deploypress-preview --api
 
-          # This assumes the InstaWP CLI supports sync push to a remote path.
-          # If your CLI version does not support this, use the R2/S3 URL method below instead.
+          echo "Sync package directory to InstaWP site..."
           instawp sync push "${SITE_ID}" \
             --path "$GITHUB_WORKSPACE/${PACKAGE_DIR}/" \
-            --remote-path "/tmp/deploypress-preview/" \
             --api
+
+          echo "List remote files..."
+          instawp exec "${SITE_ID}" ls -lah wp-content/uploads/deploypress-preview --api
 
       - name: Install and activate package on InstaWP
         env:
