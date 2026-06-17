@@ -260,15 +260,15 @@ jobs:
         run: |
           MESSAGE="✅ InstaWP preview site is ready.
 
-Repository: *${{ github.event.repository.name }}*
-Requested by: <@${{ inputs.requested_by }}>
-Ref: *${{ steps.resolve.outputs.label }}*
-Site: ${SITE_URL}"
+          Repository: *${{ github.event.repository.name }}*
+          Requested by: <@${{ inputs.requested_by }}>
+          Ref: *${{ steps.resolve.outputs.label }}*
+          Site: ${SITE_URL}"
 
           if [ -n "${GHOST_RESULT_URL}" ]; then
             MESSAGE="${MESSAGE}
 
-Ghost Inspector: ${GHOST_RESULT_URL}"
+          Ghost Inspector: ${GHOST_RESULT_URL}"
           fi
 
           jq -n \
@@ -290,10 +290,10 @@ Ghost Inspector: ${GHOST_RESULT_URL}"
         run: |
           MESSAGE="❌ InstaWP preview creation failed.
 
-Repository: *${{ github.event.repository.name }}*
-Requested by: <@${{ inputs.requested_by }}>
-Ref: *${{ inputs.target_ref }}*
-GitHub run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          Repository: *${{ github.event.repository.name }}*
+          Requested by: <@${{ inputs.requested_by }}>
+          Ref: *${{ inputs.target_ref }}*
+          GitHub run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
           jq -n \
             --arg channel "${SLACK_CHANNEL}" \
