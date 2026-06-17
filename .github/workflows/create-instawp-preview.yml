@@ -40,10 +40,7 @@ permissions:
   pull-requests: read
 
 env:
-  PLUGIN_SLUG: press-permit-core
-  BUILD_DIR: dist/press-permit-core
   PACKAGE_DIR: package
-  PACKAGE_FILE: press-permit-core-preview.zip
   REMOTE_UPLOAD_DIR: wp-content/uploads/deploypress-preview
 
 jobs:
@@ -123,6 +120,53 @@ jobs:
         with:
           ref: ${{ steps.resolve.outputs.checkout_ref }}
 
+      - name: Read plugin config from composer.json
+        id: plugin-config
+        run: |
+          if [ ! -f "$GITHUB_WORKSPACE/composer.json" ]; then
+            echo "composer.json not found."
+            exit 1
+          fi
+
+          PLUGIN_SLUG=$(jq -r '.extra["plugin-slug"] // empty' "$GITHUB_WORKSPACE/composer.json")
+          PLUGIN_NAME=$(jq -r '.extra["plugin-name"] // empty' "$GITHUB_WORKSPACE/composer.json")
+          PLUGIN_FOLDER=$(jq -r '.extra["plugin-folder"] // empty' "$GITHUB_WORKSPACE/composer.json")
+
+          if [ -z "${PLUGIN_SLUG}" ]; then
+            echo "Missing extra.plugin-slug in composer.json"
+            exit 1
+          fi
+
+          if [ -z "${PLUGIN_NAME}" ]; then
+            echo "Missing extra.plugin-name in composer.json"
+            exit 1
+          fi
+
+          if [ -z "${PLUGIN_FOLDER}" ]; then
+            PLUGIN_FOLDER="${PLUGIN_SLUG}"
+          fi
+
+          BUILD_DIR="dist/${PLUGIN_FOLDER}"
+          PACKAGE_FILE="${PLUGIN_NAME}-preview.zip"
+
+          echo "plugin_slug=${PLUGIN_SLUG}" >> "$GITHUB_OUTPUT"
+          echo "plugin_name=${PLUGIN_NAME}" >> "$GITHUB_OUTPUT"
+          echo "plugin_folder=${PLUGIN_FOLDER}" >> "$GITHUB_OUTPUT"
+          echo "build_dir=${BUILD_DIR}" >> "$GITHUB_OUTPUT"
+          echo "package_file=${PACKAGE_FILE}" >> "$GITHUB_OUTPUT"
+
+          echo "PLUGIN_SLUG=${PLUGIN_SLUG}" >> "$GITHUB_ENV"
+          echo "PLUGIN_NAME=${PLUGIN_NAME}" >> "$GITHUB_ENV"
+          echo "PLUGIN_FOLDER=${PLUGIN_FOLDER}" >> "$GITHUB_ENV"
+          echo "BUILD_DIR=${BUILD_DIR}" >> "$GITHUB_ENV"
+          echo "PACKAGE_FILE=${PACKAGE_FILE}" >> "$GITHUB_ENV"
+
+          echo "Plugin slug: ${PLUGIN_SLUG}"
+          echo "Plugin name: ${PLUGIN_NAME}"
+          echo "Plugin folder: ${PLUGIN_FOLDER}"
+          echo "Build directory: ${BUILD_DIR}"
+          echo "Package file: ${PACKAGE_FILE}"
+
       - name: Create .env file
         run: |
           cp "$GITHUB_WORKSPACE/.env.example" "$GITHUB_WORKSPACE/.env"
@@ -167,7 +211,7 @@ jobs:
 
           cd "$GITHUB_WORKSPACE/dist"
 
-          zip -r "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}" "${PLUGIN_SLUG}"
+          zip -r "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}" "${PLUGIN_FOLDER}"
 
           echo "Created package:"
           ls -lh "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
