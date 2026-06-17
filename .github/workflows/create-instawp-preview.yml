@@ -26,8 +26,11 @@ on:
       run_tests:
         description: "Run Ghost Inspector tests"
         required: true
-        default: "yes"
-        type: string
+        default: "no"
+        type: choice
+        options:
+          - "yes"
+          - "no"
 
       tmate_enabled:
         description: 'Enable "tmate" for debugging'
@@ -39,23 +42,54 @@ permissions:
   contents: read
   pull-requests: read
 
+concurrency:
+  group: instawp-preview-${{ github.repository }}-${{ inputs.target_ref }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
 env:
   PLUGIN_SLUG: press-permit-core
   BUILD_DIR: dist/press-permit-core
   PACKAGE_DIR: package
   PACKAGE_FILE: press-permit-core-preview.zip
+
+  LOCAL_SYNC_ROOT: instawp-upload
+  LOCAL_SYNC_WP_CONTENT: instawp-upload/wp-content
+  LOCAL_UPLOAD_DIR: instawp-upload/wp-content/uploads/deploypress-preview
   REMOTE_UPLOAD_DIR: wp-content/uploads/deploypress-preview
 
 jobs:
   create-preview:
     name: Build package and create InstaWP preview
     runs-on: ubuntu-latest
+    timeout-minutes: 45
 
     steps:
+      - name: Validate required secrets and inputs
+        env:
+          INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          REQUESTED_BY: ${{ inputs.requested_by }}
+          SLACK_CHANNEL: ${{ inputs.slack_channel }}
+          TARGET_REF: ${{ inputs.target_ref }}
+        run: |
+          set -Eeuo pipefail
+
+          test -n "$INSTAWP_TOKEN" || { echo "Missing INSTAWP_TOKEN"; exit 1; }
+          test -n "$SLACK_BOT_TOKEN" || { echo "Missing SLACK_BOT_TOKEN"; exit 1; }
+          test -n "$REQUESTED_BY" || { echo "Missing requested_by input"; exit 1; }
+          test -n "$SLACK_CHANNEL" || { echo "Missing slack_channel input"; exit 1; }
+          test -n "$TARGET_REF" || { echo "Missing target_ref input"; exit 1; }
+
       - name: Install Linux packages
         run: |
+          set -Eeuo pipefail
+
           sudo apt-get update
-          sudo apt-get install -y jq zip unzip rsync
+          sudo apt-get install -y --no-install-recommends jq zip rsync
 
       - name: Setup tmate session for debugging
         uses: mxschmitt/action-tmate@v3
@@ -84,17 +118,11 @@ jobs:
               core.setOutput('source_branch', pr.data.head.ref);
               core.setOutput('source_sha', pr.data.head.sha);
             } else {
-              const branch = await github.rest.repos.getBranch({
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                branch: input
-              });
-
               core.setOutput('type', 'branch');
               core.setOutput('label', input);
-              core.setOutput('checkout_ref', branch.data.commit.sha);
+              core.setOutput('checkout_ref', input);
               core.setOutput('source_branch', input);
-              core.setOutput('source_sha', branch.data.commit.sha);
+              core.setOutput('source_sha', '');
             }
 
       - name: Checkout selected branch or PR
@@ -104,36 +132,68 @@ jobs:
 
       - name: Create .env file
         run: |
+          set -Eeuo pipefail
+
+          if [ ! -f "$GITHUB_WORKSPACE/.env.example" ]; then
+            echo ".env.example not found"
+            exit 1
+          fi
+
           cp "$GITHUB_WORKSPACE/.env.example" "$GITHUB_WORKSPACE/.env"
 
-      - name: Fix permissions
+      - name: Fix script permissions
         run: |
+          set -Eeuo pipefail
+
           chmod +x "$GITHUB_WORKSPACE/dev-workspace/run"
-          chmod +x "$GITHUB_WORKSPACE/dev-workspace/scripts/"*.sh
+
+          if compgen -G "$GITHUB_WORKSPACE/dev-workspace/scripts/*.sh" > /dev/null; then
+            chmod +x "$GITHUB_WORKSPACE/dev-workspace/scripts/"*.sh
+          fi
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.composer/cache
+            vendor
+          key: composer-${{ runner.os }}-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-${{ runner.os }}-
 
       - name: Prepare Composer
         run: |
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer validate
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer install
+          set -Eeuo pipefail
 
-      - name: Show version of tools inside the dev-workspace
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer validate
+          "$GITHUB_WORKSPACE/dev-workspace/run" composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Show tool versions
         run: |
+          set -Eeuo pipefail
+
           "$GITHUB_WORKSPACE/dev-workspace/run" composer info:versions
 
       - name: Run lint check
         run: |
+          set -Eeuo pipefail
+
           "$GITHUB_WORKSPACE/dev-workspace/run" composer check:lint
 
       - name: Build plugin package
         run: |
+          set -Eeuo pipefail
+
           "$GITHUB_WORKSPACE/dev-workspace/run" composer build
 
       - name: Verify build output
         run: |
+          set -Eeuo pipefail
+
           if [ ! -d "$GITHUB_WORKSPACE/${BUILD_DIR}" ]; then
             echo "Build directory not found: $GITHUB_WORKSPACE/${BUILD_DIR}"
             echo "Available dist files:"
-            find "$GITHUB_WORKSPACE/dist" -maxdepth 3 -type f -o -type d || true
+            find "$GITHUB_WORKSPACE/dist" -maxdepth 3 \( -type f -o -type d \) -print || true
             exit 1
           fi
 
@@ -142,20 +202,32 @@ jobs:
 
       - name: Create plugin ZIP for InstaWP
         run: |
+          set -Eeuo pipefail
+
           mkdir -p "$GITHUB_WORKSPACE/${PACKAGE_DIR}"
 
           cd "$GITHUB_WORKSPACE/dist"
+
+          if [ ! -d "$PLUGIN_SLUG" ]; then
+            echo "Expected plugin directory not found: $GITHUB_WORKSPACE/dist/${PLUGIN_SLUG}"
+            ls -la "$GITHUB_WORKSPACE/dist"
+            exit 1
+          fi
 
           zip -r "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}" "${PLUGIN_SLUG}"
 
           echo "Created package:"
           ls -lh "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
 
+          echo "Package checksum:"
+          sha256sum "$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
+
       - name: Upload package as GitHub artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ env.PACKAGE_FILE }}
+          name: preview-package-${{ github.run_id }}
           path: ${{ env.PACKAGE_DIR }}/${{ env.PACKAGE_FILE }}
+          if-no-files-found: error
           retention-days: 7
 
       - name: Install Node.js
@@ -165,14 +237,23 @@ jobs:
 
       - name: Install InstaWP CLI
         run: |
+          set -Eeuo pipefail
+
           npm install -g @instawp/cli@beta
+
+          echo "InstaWP CLI version:"
           instawp --version || true
+
+          echo "InstaWP sync help:"
+          instawp sync push --help || true
 
       - name: Create InstaWP preview site
         id: instawp
         env:
           INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
         run: |
+          set -Eeuo pipefail
+
           REPO_NAME="${{ github.event.repository.name }}"
 
           case "${REPO_NAME}" in
@@ -250,14 +331,20 @@ jobs:
               ;;
           esac
 
-          RUN_ID="${{ github.run_id }}"
-          SITE_NAME="${REPO_SHORT}-${RUN_ID}"
+          RUN_SHORT=$(echo "${{ github.run_id }}" | tail -c 7)
+
+          if [ -n "${{ steps.resolve.outputs.source_sha }}" ]; then
+            SHA_SHORT=$(echo "${{ steps.resolve.outputs.source_sha }}" | cut -c1-7)
+          else
+            SHA_SHORT=$(git rev-parse --short=7 HEAD)
+          fi
+
+          SITE_NAME="${REPO_SHORT}-${RUN_SHORT}-${SHA_SHORT}"
 
           if [ ${#SITE_NAME} -gt 30 ]; then
-            RUN_SHORT=$(echo "${RUN_ID}" | tail -c 11)
-            MAX_REPO_LENGTH=$((30 - 1 - ${#RUN_SHORT}))
+            MAX_REPO_LENGTH=$((30 - 1 - ${#RUN_SHORT} - 1 - ${#SHA_SHORT}))
             REPO_SHORT=$(echo "${REPO_SHORT}" | cut -c1-${MAX_REPO_LENGTH})
-            SITE_NAME="${REPO_SHORT}-${RUN_SHORT}"
+            SITE_NAME="${REPO_SHORT}-${RUN_SHORT}-${SHA_SHORT}"
           fi
 
           echo "Creating InstaWP site: ${SITE_NAME}"
@@ -265,6 +352,7 @@ jobs:
 
           instawp create --name "${SITE_NAME}" --temporary --json > instawp-site.json
 
+          echo "Raw InstaWP response:"
           cat instawp-site.json
 
           SITE_ID=$(jq -r '.data.id // .id // .site.id // .site_id // empty' instawp-site.json)
@@ -282,52 +370,68 @@ jobs:
             exit 1
           fi
 
-          echo "site_id=${SITE_ID}" >> "$GITHUB_OUTPUT"
-          echo "site_url=${SITE_URL}" >> "$GITHUB_OUTPUT"
+          {
+            echo "site_id=${SITE_ID}"
+            echo "site_url=${SITE_URL}"
+            echo "site_name=${SITE_NAME}"
+          } >> "$GITHUB_OUTPUT"
 
           echo "Created InstaWP site:"
+          echo "Name: ${SITE_NAME}"
           echo "ID: ${SITE_ID}"
           echo "URL: ${SITE_URL}"
 
-      - name: Prepare package path for InstaWP sync
+      - name: Prepare minimal package sync directory
         run: |
+          set -Eeuo pipefail
+
           PACKAGE_PATH="$GITHUB_WORKSPACE/${PACKAGE_DIR}/${PACKAGE_FILE}"
-          LOCAL_UPLOAD_DIR="$GITHUB_WORKSPACE/${REMOTE_UPLOAD_DIR}"
+          LOCAL_UPLOAD_PATH="$GITHUB_WORKSPACE/${LOCAL_UPLOAD_DIR}"
 
           echo "Checking local package..."
           test -f "$PACKAGE_PATH"
           ls -lh "$PACKAGE_PATH"
+          sha256sum "$PACKAGE_PATH"
 
-          echo "Preparing local wp-content upload directory..."
-          mkdir -p "$LOCAL_UPLOAD_DIR"
+          echo "Preparing minimal sync root..."
+          rm -rf "$GITHUB_WORKSPACE/${LOCAL_SYNC_ROOT}"
+          mkdir -p "$LOCAL_UPLOAD_PATH"
 
-          echo "Copying package into wp-content upload path..."
-          cp "$PACKAGE_PATH" "$LOCAL_UPLOAD_DIR/${PACKAGE_FILE}"
+          cp "$PACKAGE_PATH" "$LOCAL_UPLOAD_PATH/${PACKAGE_FILE}"
 
-          echo "Prepared files:"
-          find "$GITHUB_WORKSPACE/wp-content" -maxdepth 4 -type f -print
-          ls -lh "$LOCAL_UPLOAD_DIR"
+          echo "Prepared files for InstaWP sync:"
+          find "$GITHUB_WORKSPACE/${LOCAL_SYNC_ROOT}" -type f -print
+          ls -lh "$LOCAL_UPLOAD_PATH"
 
       - name: Upload package to InstaWP site
         env:
           INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
         run: |
+          set -Eeuo pipefail
+
           SITE_ID="${{ steps.instawp.outputs.site_id }}"
 
           echo "Creating remote upload directory..."
           instawp exec "${SITE_ID}" mkdir -p "${REMOTE_UPLOAD_DIR}" --api
 
-          echo "Syncing local wp-content to InstaWP site..."
+          echo "Dry-run sync to InstaWP site..."
           instawp sync push "${SITE_ID}" \
-            --path "$GITHUB_WORKSPACE/wp-content/"
+            --path "$GITHUB_WORKSPACE/${LOCAL_SYNC_WP_CONTENT}/" \
+            --dry-run
 
-          echo "Checking remote files..."
+          echo "Syncing minimal wp-content directory to InstaWP site..."
+          instawp sync push "${SITE_ID}" \
+            --path "$GITHUB_WORKSPACE/${LOCAL_SYNC_WP_CONTENT}/"
+
+          echo "Checking remote upload directory..."
           instawp exec "${SITE_ID}" ls -lah "${REMOTE_UPLOAD_DIR}" --api
 
       - name: Install and activate package on InstaWP
         env:
           INSTAWP_TOKEN: ${{ secrets.INSTAWP_TOKEN }}
         run: |
+          set -Eeuo pipefail
+
           SITE_ID="${{ steps.instawp.outputs.site_id }}"
           REMOTE_PACKAGE="${REMOTE_UPLOAD_DIR}/${PACKAGE_FILE}"
 
@@ -337,7 +441,7 @@ jobs:
           echo "Installing plugin ZIP on InstaWP site..."
           instawp wp "${SITE_ID}" -- plugin install "${REMOTE_PACKAGE}" --force --activate --api
 
-          echo "Installed plugins:"
+          echo "Installed plugin status:"
           instawp wp "${SITE_ID}" -- plugin list --api
 
       - name: Run Ghost Inspector tests
@@ -348,6 +452,8 @@ jobs:
           GHOST_INSPECTOR_SUITE_ID: ${{ secrets.GHOST_INSPECTOR_SUITE_ID }}
           SITE_URL: ${{ steps.instawp.outputs.site_url }}
         run: |
+          set -Eeuo pipefail
+
           if [ -z "${GHOST_INSPECTOR_API_KEY}" ] || [ -z "${GHOST_INSPECTOR_SUITE_ID}" ]; then
             echo "Ghost Inspector secrets are missing. Skipping tests."
             echo "result_url=" >> "$GITHUB_OUTPUT"
@@ -356,7 +462,7 @@ jobs:
 
           echo "Triggering Ghost Inspector tests for ${SITE_URL}"
 
-          curl -sS \
+          curl -fsS \
             "https://api.ghostinspector.com/v1/suites/${GHOST_INSPECTOR_SUITE_ID}/execute/" \
             --get \
             --data-urlencode "apiKey=${GHOST_INSPECTOR_API_KEY}" \
@@ -375,14 +481,19 @@ jobs:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL: ${{ inputs.slack_channel }}
           SITE_URL: ${{ steps.instawp.outputs.site_url }}
+          SITE_NAME: ${{ steps.instawp.outputs.site_name }}
           GHOST_RESULT_URL: ${{ steps.ghost.outputs.result_url }}
         run: |
+          set -Eeuo pipefail
+
           MESSAGE="✅ InstaWP preview site is ready.
 
           Repository: *${{ github.event.repository.name }}*
           Requested by: <@${{ inputs.requested_by }}>
           Ref: *${{ steps.resolve.outputs.label }}*
-          Site: ${SITE_URL}"
+          Site name: *${SITE_NAME}*
+          Site: ${SITE_URL}
+          GitHub run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
           if [ -n "${GHOST_RESULT_URL}" ]; then
             MESSAGE="${MESSAGE}
@@ -396,7 +507,7 @@ jobs:
             '{channel: $channel, text: $text}' \
             > slack-payload.json
 
-          curl -sS -X POST "https://slack.com/api/chat.postMessage" \
+          curl -fsS -X POST "https://slack.com/api/chat.postMessage" \
             -H "Authorization: Bearer ${SLACK_BOT_TOKEN}" \
             -H "Content-Type: application/json" \
             --data @slack-payload.json
@@ -406,12 +517,19 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL: ${{ inputs.slack_channel }}
+          SITE_URL: ${{ steps.instawp.outputs.site_url }}
+          SITE_NAME: ${{ steps.instawp.outputs.site_name }}
         run: |
+          set -Eeuo pipefail
+
           MESSAGE="❌ InstaWP preview creation failed.
 
           Repository: *${{ github.event.repository.name }}*
           Requested by: <@${{ inputs.requested_by }}>
-          Ref: *${{ inputs.target_ref }}*
+          Requested ref: *${{ inputs.target_ref }}*
+          Resolved ref: *${{ steps.resolve.outputs.label }}*
+          Site name: ${SITE_NAME}
+          Site: ${SITE_URL}
           GitHub run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
 
           jq -n \
@@ -420,7 +538,7 @@ jobs:
             '{channel: $channel, text: $text}' \
             > slack-payload.json
 
-          curl -sS -X POST "https://slack.com/api/chat.postMessage" \
+          curl -fsS -X POST "https://slack.com/api/chat.postMessage" \
             -H "Authorization: Bearer ${SLACK_BOT_TOKEN}" \
             -H "Content-Type: application/json" \
             --data @slack-payload.json
