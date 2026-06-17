@@ -228,12 +228,18 @@ jobs:
 
       - name: Run Ghost Inspector tests
         id: ghost
-        if: ${{ inputs.run_tests == 'yes' && secrets.GHOST_INSPECTOR_API_KEY != '' && secrets.GHOST_INSPECTOR_SUITE_ID != '' }}
+        if: ${{ inputs.run_tests == 'yes' }}
         env:
           GHOST_INSPECTOR_API_KEY: ${{ secrets.GHOST_INSPECTOR_API_KEY }}
           GHOST_INSPECTOR_SUITE_ID: ${{ secrets.GHOST_INSPECTOR_SUITE_ID }}
           SITE_URL: ${{ steps.instawp.outputs.site_url }}
         run: |
+          if [ -z "${GHOST_INSPECTOR_API_KEY}" ] || [ -z "${GHOST_INSPECTOR_SUITE_ID}" ]; then
+            echo "Ghost Inspector secrets are missing. Skipping tests."
+            echo "result_url=" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           echo "Triggering Ghost Inspector tests for ${SITE_URL}"
 
           curl -sS \
