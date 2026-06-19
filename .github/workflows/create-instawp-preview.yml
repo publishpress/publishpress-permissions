@@ -181,10 +181,6 @@ jobs:
           "$GITHUB_WORKSPACE/dev-workspace/run" composer validate
           "$GITHUB_WORKSPACE/dev-workspace/run" composer install
 
-      - name: Show version of tools inside the dev-workspace
-        run: |
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer info:versions
-
       - name: Run lint check
         run: |
           "$GITHUB_WORKSPACE/dev-workspace/run" composer check:lint
