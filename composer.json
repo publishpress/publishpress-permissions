@@ -19,17 +19,19 @@
     }
   ],
   "config": {
-    "preferred-install": {
-      "*": "dist"
-    },
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
-      "phpstan/extension-installer": true
+      "php-http/discovery": true,
+      "phpstan/extension-installer": true,
+      "publishpress/dev-workspace": true
+    },
+    "preferred-install": {
+      "*": "dist"
     },
     "process-timeout": 7200
   },
   "prefer-stable": true,
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "require": {
     "php": ">=7.2.5",
     "ext-json": "*"
@@ -46,61 +48,34 @@
     "publishpress/publishpress-phpcs-standards": "^1.0.0",
     "szepeviktor/phpstan-wordpress": "^1.1",
     "phpstan/extension-installer": "^1.2",
-    "publishpress/translations": "^1.0.0"
+    "publishpress/translations": "^1.0.0",
+    "publishpress/dev-workspace": "^1.5.0"
   },
   "scripts": {
-    "build": "build zip",
-    "build:dir": "build dir",
-    "build:clean": "build clean",
-    "info:versions": "bash ./dev-workspace/scripts/dependency-versions.sh",
+    "build:dir": "@pack:dir",
+    "build:clean": "@pack:clean",
     "gen:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "gen:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
-    "check:longpath": "longpath .",
-    "check:lint": "phplint",
-    "check:phpcs": "phpcs",
-    "check:php": [
-      "@check:php56",
-      "@check:php72",
-      "@check:php74",
-      "@check:php80",
-      "@check:php81",
-      "@check:php82"
-    ],
-    "check:php56": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 5.6 ./press-permit-core.php",
-    "check:php72": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.2",
-    "check:php74": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 7.4",
-    "check:php80": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.0",
-    "check:php81": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.1",
-    "check:php82": "phpcs --standard=.phpcs-php-compatibility.xml --runtime-set testVersion 8.2",
+    "gen:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace-cache,vendor,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
+    "check:lint": "@lint:php",
+    "check:phpcs": "@lint:phpcs",
+    "check:php56": "@check:php-5.6",
+    "check:php72": "@check:php-7.2",
+    "check:php74": "@check:php-7.4",
+    "check:php80": "@check:php-8.0",
+    "check:php81": "@check:php-8.1",
+    "check:php82": "@check:php-8.2",
     "pre-autoload-dump": "composer dumpautoload --working-dir=./lib",
     "pre-update-cmd": "composer update --working-dir=./lib",
     "pre-install-cmd": "composer install --working-dir=./lib",
-    "term": "cd dev-workspace && ./run",
-    "translate": "vendor/bin/publishpress-translate",
-    "translate:dry-run": "vendor/bin/publishpress-translate --dry-run",
-    "translate:download": "vendor/bin/publishpress-translate --download",
-    "translate:upload": "vendor/bin/publishpress-translate --upload",
-    "translate:custom": "vendor/bin/publishpress-translate --languages",
-    "translate:force": "vendor/bin/publishpress-translate --force",
-    "translate:force-custom": "vendor/bin/publishpress-translate --force --languages",
-    "translate:repair-plurals": "vendor/bin/publishpress-translate --repair-plurals",
-    "translate:clean-po": "vendor/bin/publishpress-translate --clean-po",
-    "translate:sync-files": "vendor/bin/publishpress-translate --sync-files",
-    "translate:audit": "vendor/bin/publishpress-translate --audit",
-    "translate:audit:report": "vendor/bin/publishpress-translate --audit --audit-mode=report",
-    "translate:compile": [
-      "@translate:mo",
-      "@translate:json",
-      "@translate:php"
-    ],
-    "translate:pot": "wp i18n make-pot . languages/press-permit-core.pot --domain=press-permit-core --exclude=dev-workspace,.wordpress-org,.github,dist,tests,lib,tmp,doc,*.js,*.js.map --allow-root",
-    "translate:mo": "wp i18n make-mo ./languages ./languages --allow-root",
-    "translate:json": "bash ./dev-workspace/scripts/lang-make-json.sh",
-    "translate:php": "wp i18n make-php ./languages --allow-root"
+    "term": "bash ./vendor/publishpress/dev-workspace/scripts/run.sh"
   },
   "extra": {
     "plugin-slug": "press-permit-core",
     "plugin-name": "publishpress-permissions",
-    "plugin-folder": "press-permit-core"
+    "plugin-folder": "press-permit-core",
+    "version-constant": "PRESSPERMIT_VERSION",
+    "plugin-lang-domain": "press-permit-core",
+    "plugin-github-repo": "publishpress/publishpress-permissions",
+    "plugin-composer-package": "publishpress/publishpress-permissions"
   }
 }
