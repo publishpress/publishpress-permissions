@@ -579,6 +579,30 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     flex: 1;
 }
 
+.pp-teaser-editor-row {
+    align-items: flex-start;
+}
+
+.pp-teaser-editor-row > div:first-child {
+    flex-basis: 18%;
+    padding-top: 7px;
+}
+
+.pp-teaser-editor-row > div:nth-child(2) {
+    min-width: 0;
+}
+
+.pp-teaser-editor-row .wp-switch-editor {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 782px) {
+    .pp-teaser-editor-row > div:first-child {
+        flex-basis: auto;
+        padding-top: 0;
+    }
+}
+
 /* Field groups */
 .pp-field-group {
     margin-bottom: 15px;

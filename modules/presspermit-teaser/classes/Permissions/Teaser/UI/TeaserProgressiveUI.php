@@ -658,12 +658,16 @@ class TeaserProgressiveUI {
             
             <div class="pp-teaser-text-container">
                 <div class="pp-teaser-text-content active">
-                    <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
-                        <h4 style="margin-bottom: 10px; font-weight: 600;">
-                            <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
-                            <span class="pp-required-indicator" style="color: red;">*</span>
-                        </h4>
-                        <div>
+                    <div class="pp-field-row pp-teaser-editor-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
+                        <div class="pp-teaser-editor-label">
+                            <label for="<?php echo esc_attr($editor_id); ?>">
+                                <strong>
+                                    <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
+                                    <span class="pp-required-indicator" style="color: red;">*</span>
+                                </strong>
+                            </label>
+                        </div>
+                        <div class="pp-teaser-editor-control">
                             <?php
                             wp_editor($teaser_text, $editor_id, $editor_settings);
                             ?>
@@ -750,7 +754,7 @@ class TeaserProgressiveUI {
                     $id = $object_type . '_' . $option_basename;
                     $name = "{$option_basename}[{$object_type}]";
                     ?>
-                    <div class="pp-field-row" data-field-action="<?php echo esc_attr($action); ?>" data-field-item="<?php echo esc_attr($item); ?>">
+                    <div class="pp-field-row pp-teaser-editor-row" data-field-action="<?php echo esc_attr($action); ?>" data-field-item="<?php echo esc_attr($item); ?>">
                         <div>
                             <label for="<?php echo esc_attr($id); ?>">
                                 <strong><?php echo esc_html($actions_display[$action]); ?></strong>
