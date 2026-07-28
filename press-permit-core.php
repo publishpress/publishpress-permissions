@@ -11,6 +11,8 @@
  * Domain Path: /languages/
  * Requires at least: 5.5
  * Requires PHP: 7.2.5
+ * License: GPL v3 or later
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
  *
  * Copyright (c) 2025 PublishPress
  *

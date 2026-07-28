@@ -6,6 +6,7 @@ class TeaserHooks
     private static $instance = null;
     public $teaser_disabled = false; // kill switch to support universal teaser disable by API
     private $excerpt_post = false;
+    private $theme_preview_title_filtered = false;
     public $teased_excerpts = [];
     public $is_archive_teaser = false;
 
@@ -28,7 +29,13 @@ class TeaserHooks
 
         add_filter('login_redirect', [$this, 'fltEnforceTeaserLoginRedirect'], PHP_INT_MAX - 1, 3);
 
+        add_action('template_redirect', [$this, 'actThemePreview'], 0);
         add_action('template_redirect', [$this, 'actMaybeRedirect'], 5);
+        // phpcs:ignore WordPressVIPMinimum.UserExperience.AdminBarRemoval.RemovalDetected -- The admin bar is hidden only inside the isolated preview frame.
+        add_filter('show_admin_bar', [$this, 'fltThemePreviewAdminBar']);
+        add_filter('the_title', [$this, 'fltThemeTeaserPreviewTitle'], PHP_INT_MAX, 2);
+        add_filter('the_content', [$this, 'fltThemeTeaserPreviewContent'], PHP_INT_MAX);
+        add_action('wp_footer', [$this, 'actThemeTeaserPreviewScript'], PHP_INT_MAX);
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
 
@@ -40,6 +47,366 @@ class TeaserHooks
         add_action('presspermit_force_term_teaser', [$this, 'actForceTermTeaser']);
     }
 
+    private function getThemePreviewState()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $state = isset($_GET['pp_permissions_teaser_preview']) ? $_GET['pp_permissions_teaser_preview'] : '';
+        $state = sanitize_key(wp_unslash($state));
+
+        return in_array($state, ['404', 'teaser'], true) ? $state : '';
+    }
+
+    private function isThemePreviewRequest($state = '')
+    {
+        $preview_state = $this->getThemePreviewState();
+
+        return $preview_state && (!$state || $state === $preview_state);
+    }
+
+    function actThemePreview()
+    {
+        $preview_state = $this->getThemePreviewState();
+
+        if (!$preview_state || is_admin()) {
+            return;
+        }
+
+        $this->teaser_disabled = true;
+
+        global $wp_query;
+
+        if (!$wp_query) {
+            return;
+        }
+
+        // The default preview and the no-sample-post fallback intentionally use the theme's 404 template.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
+        $use_404_template = ('404' === $preview_state) || !empty($_GET['pp_permissions_teaser_fallback']);
+
+        if ($use_404_template) {
+            $wp_query->set_404();
+            status_header(404);
+        }
+
+        nocache_headers();
+
+        // Keep WordPress from guessing and redirecting an intentional preview URL.
+        remove_action('template_redirect', 'redirect_canonical');
+    }
+
+    function fltThemePreviewAdminBar($show)
+    {
+        return $this->isThemePreviewRequest() ? false : $show;
+    }
+
+    private function getThemeTeaserPreviewPostType()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? $_GET['pp_permissions_teaser_post_type'] : '';
+        $post_type = sanitize_key(wp_unslash($post_type));
+
+        if ($post_type && post_type_exists($post_type)) {
+            return $post_type;
+        }
+
+        $queried_object = get_queried_object();
+
+        return ($queried_object instanceof \WP_Post) ? $queried_object->post_type : 'post';
+    }
+
+    private function isThemeTeaserPreviewMainPost($post_id = 0)
+    {
+        if (!$this->isThemePreviewRequest('teaser') || is_admin()) {
+            return false;
+        }
+
+        $queried_post_id = (int) get_queried_object_id();
+
+        return $queried_post_id && (!$post_id || $queried_post_id === (int) $post_id);
+    }
+
+    function fltThemeTeaserPreviewTitle($title, $post_id)
+    {
+        if ($this->theme_preview_title_filtered
+            || !$this->isThemeTeaserPreviewMainPost($post_id)
+            || !in_the_loop()
+            || !is_main_query()
+        ) {
+            return $title;
+        }
+
+        $this->theme_preview_title_filtered = true;
+
+        $post_type = $this->getThemeTeaserPreviewPostType();
+        $type_obj = get_post_type_object($post_type);
+        $singular_label = $type_obj ? $type_obj->labels->singular_name : __('Post', 'press-permit-core');
+        $sample_title = sprintf(
+            /* translators: %s is the singular post type label, such as Post or Page. */
+            __('A Sample %s', 'press-permit-core'),
+            $singular_label
+        );
+        $prefix = wp_strip_all_tags((string) presspermit()->getTypeOption('tease_prepend_name_anon', $post_type));
+        $suffix = wp_strip_all_tags((string) presspermit()->getTypeOption('tease_append_name_anon', $post_type));
+
+        return implode(' ', array_filter([$prefix, $sample_title, $suffix]));
+    }
+
+    private function getThemeTeaserPreviewNoticeStyle($post_type)
+    {
+        $defaults = [
+            'backgroundColor' => '#f0f6fc',
+            'textColor' => '#1d2327',
+            'borderColor' => '#0073aa',
+            'borderWidth' => 4,
+            'borderPosition' => 'left',
+            'padding' => 15,
+            'borderRadius' => 0,
+            'fontSize' => 14,
+        ];
+
+        if ('custom' !== presspermit()->getTypeOption('teaser_notice_style_mode', $post_type)) {
+            return $defaults;
+        }
+
+        $border_width = presspermit()->getTypeOption('teaser_notice_border_width', $post_type);
+        $padding = presspermit()->getTypeOption('teaser_notice_padding', $post_type);
+        $border_radius = presspermit()->getTypeOption('teaser_notice_border_radius', $post_type);
+        $font_size = presspermit()->getTypeOption('teaser_notice_font_size', $post_type);
+        $style = [
+            'backgroundColor' => sanitize_hex_color(
+                (string) presspermit()->getTypeOption('teaser_notice_bg_color', $post_type)
+            ) ?: $defaults['backgroundColor'],
+            'textColor' => sanitize_hex_color(
+                (string) presspermit()->getTypeOption('teaser_notice_text_color', $post_type)
+            ) ?: $defaults['textColor'],
+            'borderColor' => sanitize_hex_color(
+                (string) presspermit()->getTypeOption('teaser_notice_border_color', $post_type)
+            ) ?: $defaults['borderColor'],
+            'borderWidth' => is_numeric($border_width) ? (int) $border_width : $defaults['borderWidth'],
+            'borderPosition' => (string) presspermit()->getTypeOption('teaser_notice_border_position', $post_type),
+            'padding' => is_numeric($padding) ? (int) $padding : $defaults['padding'],
+            'borderRadius' => is_numeric($border_radius) ? (int) $border_radius : $defaults['borderRadius'],
+            'fontSize' => is_numeric($font_size) ? (int) $font_size : $defaults['fontSize'],
+        ];
+
+        $style['borderWidth'] = max(0, min(20, $style['borderWidth']));
+        $style['padding'] = max(0, min(50, $style['padding']));
+        $style['borderRadius'] = max(0, min(50, $style['borderRadius']));
+        $style['fontSize'] = max(10, min(30, $style['fontSize']));
+
+        if (!in_array($style['borderPosition'], ['left', 'right', 'top', 'bottom', 'all'], true)) {
+            $style['borderPosition'] = $defaults['borderPosition'];
+        }
+
+        return $style;
+    }
+
+    private function getThemeTeaserPreviewNoticeStyleAttribute($post_type)
+    {
+        $style = $this->getThemeTeaserPreviewNoticeStyle($post_type);
+        $border_property = ('all' === $style['borderPosition'])
+            ? 'border'
+            : 'border-' . $style['borderPosition'];
+
+        return sprintf(
+            'padding: %1$dpx; background: %2$s; color: %3$s; %4$s: %5$dpx solid %6$s; margin: 15px 0; font-size: %7$dpx; line-height: 1.6; border-radius: %8$dpx;',
+            $style['padding'],
+            $style['backgroundColor'],
+            $style['textColor'],
+            $border_property,
+            $style['borderWidth'],
+            $style['borderColor'],
+            $style['fontSize'],
+            $style['borderRadius']
+        );
+    }
+
+    function fltThemeTeaserPreviewContent($content)
+    {
+        global $post;
+
+        if (!$post || !$this->isThemeTeaserPreviewMainPost($post->ID) || !in_the_loop() || !is_main_query()) {
+            return $content;
+        }
+
+        $post_type = $this->getThemeTeaserPreviewPostType();
+        $default_message = __('You do not have permission to view the full content.', 'press-permit-core');
+        $teaser_text = wp_strip_all_tags(
+            (string) presspermit()->getTypeOption('tease_replace_content_anon', $post_type)
+        );
+        $prefix = wp_strip_all_tags(
+            (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
+        );
+        $suffix = wp_strip_all_tags(
+            (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
+        );
+        $preview_text = implode(' ', array_filter([$prefix, $teaser_text ?: $default_message, $suffix]));
+
+        return sprintf(
+            '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
+            esc_attr($this->getThemeTeaserPreviewNoticeStyleAttribute($post_type)),
+            wpautop(esc_html($preview_text))
+        );
+    }
+
+    function actThemeTeaserPreviewScript()
+    {
+        if (!$this->isThemePreviewRequest('teaser') || is_admin()) {
+            return;
+        }
+        ?>
+        <script id="pp-permissions-theme-teaser-preview">
+        (function () {
+            'use strict';
+
+            var messageAction = 'pp_permissions_teaser_preview_update';
+            var readyAction = 'pp_permissions_teaser_preview_ready';
+
+            function getPreviewRoot() {
+                return document.querySelector('main, .site-main, #main, #primary') || document.body;
+            }
+
+            function getPreviewTitle(root) {
+                return root.querySelector('.entry-title, .wp-block-post-title, .page-title, h1');
+            }
+
+            function getPreviewContent(root, title) {
+                var previewContent = document.getElementById('pp-permissions-theme-teaser-content');
+
+                if (previewContent) {
+                    return previewContent;
+                }
+
+                var contentArea = root.querySelector('.entry-content, .wp-block-post-content, .page-content');
+                previewContent = document.createElement('div');
+                previewContent.id = 'pp-permissions-theme-teaser-content';
+                previewContent.className = 'pp-teaser-notice';
+
+                if (contentArea) {
+                    contentArea.textContent = '';
+                    contentArea.appendChild(previewContent);
+                } else if (title && title.parentNode) {
+                    title.parentNode.insertBefore(previewContent, title.nextSibling);
+                } else {
+                    root.appendChild(previewContent);
+                }
+
+                return previewContent;
+            }
+
+            function getNumber(value, fallback, minimum, maximum) {
+                var number = parseInt(value, 10);
+
+                if (isNaN(number)) {
+                    number = fallback;
+                }
+
+                return Math.max(minimum, Math.min(maximum, number));
+            }
+
+            function getColor(value, fallback) {
+                return /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(String(value || '')) ? value : fallback;
+            }
+
+            function applyNoticeStyle(content, noticeStyle) {
+                if (!content) {
+                    return;
+                }
+
+                noticeStyle = noticeStyle && typeof noticeStyle === 'object' ? noticeStyle : {};
+
+                var backgroundColor = getColor(noticeStyle.backgroundColor, '#f0f6fc');
+                var textColor = getColor(noticeStyle.textColor, '#1d2327');
+                var borderColor = getColor(noticeStyle.borderColor, '#0073aa');
+                var borderWidth = getNumber(noticeStyle.borderWidth, 4, 0, 20);
+                var padding = getNumber(noticeStyle.padding, 15, 0, 50);
+                var borderRadius = getNumber(noticeStyle.borderRadius, 0, 0, 50);
+                var fontSize = getNumber(noticeStyle.fontSize, 14, 10, 30);
+                var allowedPositions = ['left', 'right', 'top', 'bottom', 'all'];
+                var borderPosition = allowedPositions.indexOf(noticeStyle.borderPosition) > -1
+                    ? noticeStyle.borderPosition
+                    : 'left';
+
+                content.style.padding = padding + 'px';
+                content.style.backgroundColor = backgroundColor;
+                content.style.color = textColor;
+                content.style.margin = '15px 0';
+                content.style.fontSize = fontSize + 'px';
+                content.style.lineHeight = '1.6';
+                content.style.borderRadius = borderRadius + 'px';
+                content.style.border = '';
+                content.style.borderLeft = '';
+                content.style.borderRight = '';
+                content.style.borderTop = '';
+                content.style.borderBottom = '';
+
+                if ('all' === borderPosition) {
+                    content.style.border = borderWidth + 'px solid ' + borderColor;
+                } else {
+                    content.style.setProperty(
+                        'border-' + borderPosition,
+                        borderWidth + 'px solid ' + borderColor
+                    );
+                }
+            }
+
+            function applyPreview(payload) {
+                if (!payload || typeof payload !== 'object') {
+                    return;
+                }
+
+                var root = getPreviewRoot();
+                var title = getPreviewTitle(root);
+                var content = getPreviewContent(root, title);
+
+                if (title && typeof payload.title === 'string') {
+                    title.textContent = payload.title;
+                }
+
+                if (content && typeof payload.content === 'string') {
+                    content.textContent = '';
+                    var paragraph = document.createElement('p');
+                    paragraph.textContent = payload.content;
+                    content.appendChild(paragraph);
+                }
+
+                applyNoticeStyle(content, payload.noticeStyle);
+
+                var images = root.querySelectorAll('.post-thumbnail, .wp-block-post-featured-image, img.wp-post-image');
+                Array.prototype.forEach.call(images, function (image) {
+                    image.style.display = payload.hideThumbnail ? 'none' : '';
+                });
+
+                var comments = root.querySelectorAll('.comments-area, .wp-block-comments');
+                Array.prototype.forEach.call(comments, function (commentArea) {
+                    commentArea.style.display = payload.disableComments ? 'none' : '';
+                });
+            }
+
+            window.addEventListener('message', function (event) {
+                if (event.origin !== window.location.origin || !event.data || event.data.action !== messageAction) {
+                    return;
+                }
+
+                applyPreview(event.data.payload);
+            });
+
+            if (window.location.hash.indexOf('#pp_permissions_teaser=') === 0) {
+                try {
+                    applyPreview(JSON.parse(decodeURIComponent(window.location.hash.substring(23))));
+                } catch (error) {
+                    // Keep the server-rendered preview if the URL fragment is incomplete or invalid.
+                }
+            }
+
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ action: readyAction }, window.location.origin);
+            }
+        }());
+        </script>
+        <?php
+    }
+
     function fltDefaultOptions($defaults)
     {
         $extra = [
@@ -47,6 +414,7 @@ class TeaserHooks
             'rss_nonprivate_feed_mode' => 'full_content',
             'feed_teaser' => __("View the content of this <a href='%permalink%'>article</a>"),  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             'teaser_hide_thumbnail' => [],
+            'teaser_disable_comments' => ['' => 1],
             'teaser_hide_custom_private_only' => false,
             'teaser_hide_links_taxonomy' => '',
             'teaser_hide_links_term' => '',
@@ -289,7 +657,7 @@ class TeaserHooks
 
     function actMaybeRedirect()
     {
-        if (defined('DOING_CRON') || !PWP::isFront()) {
+        if (defined('DOING_CRON') || !PWP::isFront() || $this->isThemePreviewRequest()) {
             return;
         }
 

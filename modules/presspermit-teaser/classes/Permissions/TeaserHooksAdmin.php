@@ -7,6 +7,7 @@ class TeaserHooksAdmin
     {
         add_action('presspermit_menu_handler', [$this, 'actMenuHandler']);
         add_action('presspermit_permissions_menu', [$this, 'act_permissions_menu'], 10, 2);
+        add_action('presspermit_update_options', [$this, 'syncSharedAudienceSettings']);
 
         add_action( 'wp_ajax_pp_search_posts', [$this, 'searchPosts'] );
         add_action( 'wp_ajax_pp_search_terms', [$this, 'searchTerms'] );
@@ -53,6 +54,41 @@ class TeaserHooksAdmin
 
                 wp_enqueue_style('presspermit-teaser-settings', $urlpath . '/common/css/settings.css', [], PRESSPERMIT_TEASER_VERSION);
             });
+        }
+    }
+
+    function syncSharedAudienceSettings()
+    {
+        // The settings handler verifies the nonce and capability before this action runs.
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing
+        if (!isset($_POST['pp_teaser_shared_audience'])
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            || !is_string($_POST['pp_teaser_shared_audience'])
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            || '1' !== sanitize_key(wp_unslash($_POST['pp_teaser_shared_audience']))
+        ) {
+            return;
+        }
+
+        $shared_option_pairs = [
+            'tease_replace_content_anon' => 'tease_replace_content',
+            'tease_prepend_content_anon' => 'tease_prepend_content',
+            'tease_append_content_anon' => 'tease_append_content',
+            'tease_prepend_name_anon' => 'tease_prepend_name',
+            'tease_append_name_anon' => 'tease_append_name',
+            'teaser_redirect_anon' => 'teaser_redirect',
+            'teaser_redirect_anon_page' => 'teaser_redirect_page',
+            'teaser_redirect_anon_post_type' => 'teaser_redirect_post_type',
+            'teaser_redirect_custom_login_page_anon' => 'teaser_redirect_custom_login_page',
+        ];
+
+        foreach ($shared_option_pairs as $source_option => $target_option) {
+            // Preserve editor HTML here; the established option sanitizer runs after this synchronization.
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing
+            if (isset($_POST[$source_option]) && is_array($_POST[$source_option])) {
+                // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing
+                $_POST[$target_option] = $_POST[$source_option];
+            }
         }
     }
 
