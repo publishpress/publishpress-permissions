@@ -69,4 +69,9 @@ if (presspermit()->registerModule(
 
     require_once(__DIR__ . '/classes/Permissions/ContentVisibility.php');
     new \PublishPress\Permissions\ContentVisibility();
+
+    if (is_admin()) {
+        require_once(__DIR__ . '/classes/Permissions/ContentVisibilityAdmin.php');
+        new \PublishPress\Permissions\ContentVisibilityAdmin();
+    }
 }

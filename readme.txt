@@ -77,7 +77,9 @@ The optional Content Visibility module provides the `[pp_restrict]` shortcode. Y
 
 For example, `[pp_restrict logged="in"]Members-only content.[/pp_restrict]` displays its content only to logged-in visitors. Multiple conditions use `relation="all"` by default, or you can set `relation="any"` when any condition should grant access.
 
-Activate Content Visibility under Permissions > Settings > Features.
+Activate Content Visibility under Permissions > Settings > Features. You can
+then view and copy all available examples under Permissions > Settings >
+Shortcodes.
 
 ## Feature 7. Show Teasers for Restricted Content (Pro Version) ##
 

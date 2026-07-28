@@ -63,10 +63,13 @@ specific cache and CDN configuration.
 1. Install and activate PublishPress Permissions.
 2. Go to Permissions > Settings > Features.
 3. Activate the Content Visibility module.
-4. Add a Content Visibility shortcode to a post, page, or other supported
+4. Open Permissions > Settings > Shortcodes to view and copy the available
+   shortcode examples.
+5. Add a Content Visibility shortcode to a post, page, or other supported
    content area.
 
 == Changelog ==
 
 = 0.1.0 =
-* Add the Content Visibility module and legacy Eyes Only shortcode migration.
+* Add the Content Visibility module, shortcode reference screen, and legacy
+  Eyes Only shortcode migration.
