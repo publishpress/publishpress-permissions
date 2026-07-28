@@ -257,16 +257,6 @@ padding-bottom: 4px;
     width: 100%;
   }
 
-  .pp-teaser-rss-options .form-table th,
-  .pp-teaser-rss-options .form-table td {
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-  }
-
-  .pp-teaser-rss-options .form-table td {
-    padding-top: 0;
-  }
 }
 
 /* Expandable Row Styles (from Sync module pattern) */
@@ -696,37 +686,18 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     border-top: 1px solid #c3c4c7;
 }
 
-.pp-teaser-options-section-title {
+.pp-teaser-rss-options .pp-teaser-rss-table {
     margin: 0;
-    padding: 8px 10px;
-    color: #2c3338;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.4;
-    border-bottom: 1px solid #c3c4c7;
+    border: 0;
+    box-shadow: none;
 }
 
 .pp-teaser-rss-description {
     margin: 0;
-    padding: 12px 10px 0;
 }
 
-.pp-teaser-rss-options .form-table {
-    margin: 0;
-    table-layout: fixed;
-}
-
-.pp-teaser-rss-options .form-table tr:nth-child(odd) {
-    background: #f6f7f7;
-}
-
-.pp-teaser-rss-options .form-table th {
-    width: 25%;
-    padding: 15px 10px;
-}
-
-.pp-teaser-rss-options .form-table td {
-    padding: 15px 10px;
+.pp-teaser-rss-options .wp-switch-editor {
+    margin-top: 0;
 }
 
 /* Full teaser preview */

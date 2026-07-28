@@ -222,19 +222,37 @@ class PostsTeaser
             SettingsAdmin::echoStr('teaser_block_all_rss');
             $rss_hint = trim(ob_get_clean());
         }
+
+        $captions = [
+            'full_content' => esc_html__('Full Content', 'press-permit-core'),
+            'excerpt_only' => esc_html__('Excerpt Only', 'press-permit-core'),
+            'title_only' => esc_html__('Title Only', 'press-permit-core'),
+        ];
         ?>
         <div class="pp-teaser-rss-options">
-            <h2 class="pp-teaser-options-section-title">
-                <?php esc_html_e('RSS', 'press-permit-core'); ?>
-            </h2>
+            <table class="widefat fixed striped teaser-table pp-teaser-rss-table">
+                <colgroup>
+                    <col style="width: 25%;">
+                    <col style="width: 75%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('RSS', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if ($rss_hint) : ?>
+                    <tr class="pp-teaser-rss-description-row">
+                        <td colspan="2">
+                            <p class="description pp-teaser-rss-description">
+                                <?php echo wp_kses_post($rss_hint); ?>
+                            </p>
+                        </td>
+                    </tr>
+                <?php endif; ?>
 
-            <?php if ($rss_hint) : ?>
-                <p class="description pp-teaser-rss-description">
-                    <?php echo wp_kses_post($rss_hint); ?>
-                </p>
-            <?php endif; ?>
-
-            <table class="form-table">
                 <?php
                 if (in_array('rss_private_feed_mode', $ui->form_options[$tab][$section], true)) :
                     $ui->all_options[] = 'rss_private_feed_mode';
@@ -246,12 +264,6 @@ class PostsTeaser
                         <td>
                             <select name="rss_private_feed_mode" id="rss_private_feed_mode" autocomplete="off">
                                 <?php
-                                $captions = [
-                                    'full_content' => esc_html__('Full Content', 'press-permit-core'),
-                                    'excerpt_only' => esc_html__('Excerpt Only', 'press-permit-core'),
-                                    'title_only' => esc_html__('Title Only', 'press-permit-core'),
-                                ];
-
                                 foreach ($captions as $key => $caption) :
                                     ?>
                                     <option value="<?php echo esc_attr($key); ?>"<?php selected($ui->getOption('rss_private_feed_mode'), $key); ?>>
@@ -274,12 +286,6 @@ class PostsTeaser
                         <td>
                             <select name="rss_nonprivate_feed_mode" id="rss_nonprivate_feed_mode" autocomplete="off">
                                 <?php
-                                $captions = [
-                                    'full_content' => esc_html__('Full Content', 'press-permit-core'),
-                                    'excerpt_only' => esc_html__('Excerpt Only', 'press-permit-core'),
-                                    'title_only' => esc_html__('Title Only', 'press-permit-core'),
-                                ];
-
                                 foreach ($captions as $key => $caption) :
                                     ?>
                                     <option value="<?php echo esc_attr($key); ?>"<?php selected($ui->getOption('rss_nonprivate_feed_mode'), $key); ?>>
@@ -331,6 +337,7 @@ class PostsTeaser
                         </td>
                     </tr>
                 <?php endif; ?>
+                </tbody>
             </table>
         </div>
         <?php
