@@ -53,8 +53,17 @@ class TermQuery
             );
         } else {
             $join = '';
-            
-            if ($stati = get_post_stati(['public' => true, 'private' => true], 'names', 'or')) {
+
+            $stati = get_post_stati(['public' => true, 'private' => true], 'names', 'or');
+
+            // Attachments are always stored with post_status 'inherit', which is neither
+            // public nor private, so include it whenever attachments are among the counted
+            // object types (e.g. a media-folder taxonomy) or the count would wrongly show 0.
+            if (in_array('attachment', $object_types, true)) {
+                $stati[] = 'inherit';
+            }
+
+            if ($stati) {
                 $stati_csv = implode("', '", array_map('sanitize_key', $stati));
                 $status_clause = "AND post_status IN ('$stati_csv')";
             } else {
