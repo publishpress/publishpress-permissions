@@ -467,11 +467,14 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     padding: 15px;
 }
 
-/* Ensure radio buttons are visible in tables */
+/* Ensure radio buttons are visible in tables. display/vertical-align used to be forced here with
+   !important, but that fought WordPress 7.0's own radio-button box model (which positions the
+   checked-state dot based on the input's own display/alignment) and made the checked dot render
+   as an off-center crescent instead of a filled circle (#2438). Plain margin spacing is enough to
+   keep the radios visible without overriding how core lays them out. */
 .teaser-table input[type="radio"] {
-    display: inline-block !important;
+    display: inline-block;
     margin-right: 5px;
-    vertical-align: middle;
 }
 
 .pp-teaser-card h3 {
