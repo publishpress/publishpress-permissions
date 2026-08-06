@@ -16,6 +16,7 @@ class TermFilters
     private $parent_remap_enabled = true;
     private $count_filters_obj;
     private $disable_next_count_filtering = false;
+    private $hierarchy_remap_taxonomies = [];
 
     public function __construct()
     {
@@ -23,6 +24,7 @@ class TermFilters
         add_filter('get_terms_args', [$this, 'fltGetTermsRestoreArgs'], 51, 2);
 
         add_filter('terms_clauses', [$this, 'fltTermsClauses'], 50, 3);
+        add_filter('get_terms', [$this, 'fltRemapTermHierarchy'], 20, 3);
 
         if (!presspermit()->isUserUnfiltered())
             add_filter('get_the_terms', [$this, 'fltGetTheTerms'], 10, 3);
@@ -217,7 +219,15 @@ class TermFilters
         $defaults = ['skip_teaser' => false, 'post_type' => '', 'required_operation' => ''];
         $args = wp_parse_args($args, $defaults);
 
-        if (!$this->disable_next_count_filtering) {
+        // REST term endpoints (used heavily by the block editor on post-new.php / post.php)
+        // rely on pagination. The term count filter disables core pagination so it can
+        // post-process full result sets, which can exhaust memory on large taxonomies.
+        $skip_count_filtering = (
+            presspermit()->doing_rest
+            && ('WP_REST_Terms_Controller' == REST::instance()->endpoint_class)
+        ) || in_array($pagenow, ['post.php', 'post-new.php', 'press-this.php'], true);
+
+        if (!$skip_count_filtering && !$this->disable_next_count_filtering) {
             if (('all' == $args['fields']) || $args['hide_empty'] || $args['pad_counts']) {
                 if (apply_filters('presspermit_apply_term_count_filters', true, $args, $taxonomies) 
                 && (empty($pagenow) || ('edit-tags.php' != $pagenow) || defined('PRESSPERMIT_LEGACY_ADMIN_TERM_COUNT_FILTER'))
@@ -269,9 +279,14 @@ class TermFilters
 
         $user = presspermit()->getUser();
 
+        $skip_count_filtering = (
+            presspermit()->doing_rest
+            && ('WP_REST_Terms_Controller' == REST::instance()->endpoint_class)
+        ) || in_array($pagenow, ['post.php', 'post-new.php', 'press-this.php'], true);
+
         if ($this->disable_next_count_filtering) {
             $this->disable_next_count_filtering = false;
-        } else {
+        } elseif (!$skip_count_filtering) {
             if (('all' == $args['fields']) || $args['hide_empty'] || $args['pad_counts']) {
                 // adds get_terms filter to adjust post counts based on current user's access and pad_counts setting
                 if (apply_filters('presspermit_apply_term_count_filters', true, $args, $taxonomies)) {
@@ -312,6 +327,7 @@ class TermFilters
         // NOTE: If hide_empty is true, additional filtering will be applied to the results based on a full posts query.  
         // Posts may have direct restrictions which make them inaccessable regardless of term restrictions.
         $all_excluded_ttids = [];
+        $filtered_taxonomies = [];
 
         $enabled_types = presspermit()->getEnabledPostTypes();
         $required_operation = $args['required_operation'];
@@ -446,9 +462,12 @@ class TermFilters
                 if ($exc) {
                     // but don't exclude a term which is explicitly included for one or more post types
                     if (count($exception_types) > 1) {
-                        $all_excluded_ttids = array_merge($all_excluded_ttids, array_diff($exc, $included_ttids));
-                    } else {
+                        $exc = array_diff($exc, $included_ttids);
+                    }
+
+                    if ($exc) {
                         $all_excluded_ttids = array_merge($all_excluded_ttids, $exc);
+                        $filtered_taxonomies[$taxonomy] = true;
                     }
                 }
             }
@@ -467,6 +486,8 @@ class TermFilters
                     $clauses['where'] .= " AND ( tt.taxonomy != '$taxonomy' "
                         . "OR tt.term_taxonomy_id IN ('" . implode("','", array_unique($included_ttids)) . "') )";
                 }
+
+                $filtered_taxonomies[$taxonomy] = true;
             }
         }
 
@@ -479,6 +500,51 @@ class TermFilters
             $clauses['where'] .= " AND tt.term_taxonomy_id NOT IN ('" . implode("','", $all_excluded_ttids) . "')";
         }
 
+        if (('all' == ($args['get'] ?? '')) && empty($args['parent'])
+        && in_array($required_operation, ['assign', 'manage'], true)
+        ) {
+            foreach (array_keys($filtered_taxonomies) as $taxonomy) {
+                if (is_taxonomy_hierarchical($taxonomy)) {
+                    $this->hierarchy_remap_taxonomies[$taxonomy] = true;
+                }
+            }
+        }
+
         return $clauses;
+    }
+
+    /**
+     * Restore hierarchy for a restricted wp_terms_checklist() result.
+     */
+    public function fltRemapTermHierarchy($terms, $taxonomies, $args)
+    {
+        $remap_taxonomies = $this->hierarchy_remap_taxonomies;
+        $this->hierarchy_remap_taxonomies = [];
+        $taxonomies = (array) $taxonomies;
+
+        if (empty($remap_taxonomies) || empty($terms) || !is_array($terms) || (1 != count($taxonomies))) {
+            return $terms;
+        }
+
+        $taxonomy = reset($taxonomies);
+        if (empty($remap_taxonomies[$taxonomy]) || !is_object(reset($terms))) {
+            return $terms;
+        }
+
+        require_once(PRESSPERMIT_CLASSPATH_COMMON . '/Ancestry.php');
+
+        $ancestors = \PressShack\Ancestry::getTermAncestors($taxonomy);
+        $remap_args = [
+            'child_of' => (int) ($args['child_of'] ?? 0),
+            'parent' => (int) ($args['parent'] ?? 0),
+            'exclude' => $args['exclude'] ?? false, // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+            'orderby' => $args['orderby'] ?? 'name',
+            'col_id' => 'term_id',
+            'col_parent' => 'parent',
+        ];
+
+        \PressShack\Ancestry::remapTree($terms, $ancestors, $remap_args);
+
+        return $terms;
     }
 }
