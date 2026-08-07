@@ -2,6 +2,7 @@
 
 Milestone: https://github.com/publishpress/publishpress-permissions/milestone/47
 Generated: 2026-08-07
+Updated: 2026-08-07 — execution complete, see "Outcome" section at the bottom.
 
 ## Scope note
 
@@ -150,3 +151,26 @@ commit for this work.
 
 Branches are left for the user to review/push/PR — this plan doesn't assume
 push or PR creation unless separately requested.
+
+## Outcome
+
+10 of the 13 issues were fixed, each on its own branch off `development`:
+
+| Issue | Branch |
+|---|---|
+| #2345 | `fix/csp-inline-script-2345` |
+| #2422 | `fix/attachment-term-counts-2422` |
+| #2421 | `fix/term-checklist-hierarchy-2421` |
+| #2314 | `fix/nav-menu-cache-invalidation-2314` |
+| #2315 | `fix/targeted-cache-invalidation-2315` |
+| #2218 | `fix/post-count-sync-2218` |
+| #2436 | `fix/contributor-post-totals-2436` |
+| #2420 | `fix/tabbed-metabox-legacy-settings-2420` |
+| #2438 | `fix/teaser-design-wp7-2438` (best-effort — no live WP 7.0 to verify against; worth a visual check) |
+| #2316 | `fix/multisite-uninstall-batching-2316` (scoped to this repo's `uninstall.php`; other cited locations are in the Pro repo) |
+
+3 issues were left unfixed, by user decision, since none had enough
+information to scope a real fix:
+- **#2343** — empty issue template, no repro steps; maintainer already asked the reporter for detail.
+- **#2322** — only links a private Slack thread, no other description.
+- **#2418** — asks for WP 7.1 real-time-collab metabox support with no concrete API/behavior detail to implement against.
