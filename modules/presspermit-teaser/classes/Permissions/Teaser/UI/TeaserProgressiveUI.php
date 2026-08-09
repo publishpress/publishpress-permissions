@@ -99,8 +99,15 @@ class TeaserProgressiveUI {
         <?php
     }
 
+    private function getFirstPostType() {
+        $post_types = array_keys($this->use_teaser);
+
+        return $post_types ? reset($post_types) : 'post';
+    }
+
     private function renderPostTypeSelector($select_id = 'pp_current_post_type') {
-        $default_post_type = $this->isFeatureAvailable('post_type_' . array_key_first($this->use_teaser)) ? array_key_first($this->use_teaser) : 'post';
+        $first_post_type = $this->getFirstPostType();
+        $default_post_type = $this->isFeatureAvailable('post_type_' . $first_post_type) ? $first_post_type : 'post';
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
         $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $default_post_type;
         
@@ -177,7 +184,7 @@ class TeaserProgressiveUI {
         <?php
         // Get current post type from POST or use first one as default
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
-        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : array_key_first($this->use_teaser);
+        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $this->getFirstPostType();
         $is_current = ($object_type === $current_post_type);
         $display_style = $is_current ? '' : 'display:none;';
         ?>
@@ -226,7 +233,7 @@ class TeaserProgressiveUI {
 
     private function renderPostTypeContent($object_type) {
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
-        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : array_key_first($this->use_teaser);
+        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $this->getFirstPostType();
         $is_current = ($object_type === $current_post_type);
         $display_style = $is_current ? '' : 'display:none;';
         ?>
@@ -249,7 +256,7 @@ class TeaserProgressiveUI {
         $item_label = $type_obj ? $type_obj->labels->name : $object_type;
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
-        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : array_key_first($this->use_teaser);
+        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $this->getFirstPostType();
         $is_current = ($object_type === $current_post_type);
         $display_style = $is_current ? '' : 'display:none;';
         ?>
@@ -541,6 +548,26 @@ class TeaserProgressiveUI {
             '404',
             home_url('/')
         );
+        $sample_post_ids = get_posts([
+            'post_type' => $object_type,
+            'post_status' => 'publish',
+            'posts_per_page' => 1,
+            'fields' => 'ids',
+            'orderby' => 'date',
+            'order' => 'DESC',
+            'no_found_rows' => true,
+        ]);
+        $theme_teaser_base_url = $sample_post_ids ? get_permalink(reset($sample_post_ids)) : home_url('/');
+        $theme_teaser_args = [
+            'pp_permissions_teaser_preview' => 'teaser',
+            'pp_permissions_teaser_post_type' => $object_type,
+        ];
+
+        if (!$sample_post_ids) {
+            $theme_teaser_args['pp_permissions_teaser_fallback'] = '404';
+        }
+
+        $theme_teaser_url = add_query_arg($theme_teaser_args, $theme_teaser_base_url);
 
         $sample_title = sprintf(
             /* translators: %s is the singular post type label, such as Post or Page. */
@@ -590,7 +617,8 @@ class TeaserProgressiveUI {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="<?php esc_attr_e('Open full preview in a new tab', 'press-permit-core'); ?>"
-                            data-theme-preview-url="<?php echo esc_url($theme_404_url); ?>"
+                            data-default-preview-url="<?php echo esc_url($theme_404_url); ?>"
+                            data-teaser-preview-url="<?php echo esc_url($theme_teaser_url); ?>"
                         >
                             <?php esc_html_e('Open full preview', 'press-permit-core'); ?>
                             <span class="dashicons dashicons-external" aria-hidden="true"></span>
@@ -606,12 +634,13 @@ class TeaserProgressiveUI {
                         <div class="pp-teaser-preview-state pp-teaser-preview-default-response">
                             <div class="pp-teaser-preview-theme-loading" aria-live="polite">
                                 <span class="spinner is-active" aria-hidden="true"></span>
-                                <span><?php esc_html_e('Loading the Page Not Found design from your active theme…', 'press-permit-core'); ?></span>
+                                <span><?php esc_html_e('Loading the preview from your active theme…', 'press-permit-core'); ?></span>
                             </div>
                             <iframe
                                 class="pp-teaser-preview-theme-frame"
-                                data-src="<?php echo esc_url($theme_404_url); ?>"
-                                title="<?php esc_attr_e('Page Not Found preview from the active theme', 'press-permit-core'); ?>"
+                                data-default-src="<?php echo esc_url($theme_404_url); ?>"
+                                data-teaser-src="<?php echo esc_url($theme_teaser_url); ?>"
+                                title="<?php esc_attr_e('Teaser preview from the active theme', 'press-permit-core'); ?>"
                                 loading="lazy"
                                 scrolling="yes"
                                 sandbox="allow-same-origin allow-scripts"
@@ -651,7 +680,7 @@ class TeaserProgressiveUI {
                 </div>
 
                 <p class="description">
-                    <?php esc_html_e('The Page Not Found state uses your active theme. Other states use sample content and may vary with your theme and the selected post.', 'press-permit-core'); ?>
+                    <?php esc_html_e('The Default WordPress and Teaser Text states use your active theme. Other states use sample content and may vary with your theme and the selected post.', 'press-permit-core'); ?>
                 </p>
             </div>
         </section>
