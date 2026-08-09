@@ -293,6 +293,76 @@ jQuery(document).ready(function ($) {
             .add(getTeaserSitePreview($container).find('.pp-teaser-notice-preview'));
     }
 
+    function escapePreviewAttribute(value) {
+        return String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    function updateExternalPreviewLink($sitePreview, teaserType) {
+        var $link = $sitePreview.find('.pp-teaser-preview-external-link');
+        var themePreviewUrl = String($link.data('theme-preview-url') || '');
+        var previousObjectUrl = $link.data('preview-object-url');
+
+        if (!$link.length) {
+            return;
+        }
+
+        if (previousObjectUrl && window.URL && window.URL.revokeObjectURL) {
+            window.URL.revokeObjectURL(previousObjectUrl);
+            $link.removeData('preview-object-url');
+        }
+
+        if (teaserType === '0' || !window.Blob || !window.URL || !window.URL.createObjectURL) {
+            $link.attr('href', themePreviewUrl);
+            return;
+        }
+
+        var activeStateSelector = teaserType === 'redirect'
+            ? '.pp-teaser-preview-redirect-response'
+            : '.pp-teaser-preview-content';
+        var $article = $sitePreview.find('.pp-teaser-preview-article').clone();
+
+        $article
+            .removeAttr('aria-live')
+            .find('.pp-teaser-preview-state')
+            .not(activeStateSelector)
+            .remove();
+
+        $article.find(activeStateSelector).css(
+            'display',
+            teaserType === 'redirect' ? 'flex' : 'block'
+        );
+        $article.find('[aria-live]').removeAttr('aria-live');
+
+        var stylesheetUrl = String($sitePreview.data('preview-stylesheet-url') || '');
+        var documentTitle = String($sitePreview.data('preview-document-title') || '');
+        var previewDocument = '<!doctype html>'
+            + '<html><head><meta charset="utf-8">'
+            + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            + '<title>' + escapePreviewAttribute(documentTitle) + '</title>'
+            + '<link rel="stylesheet" href="' + escapePreviewAttribute(stylesheetUrl) + '">'
+            + '<style>'
+            + 'html,body{margin:0;min-height:100%;}'
+            + 'body{box-sizing:border-box;padding:32px;background:#f0f0f1;}'
+            + '.pp-teaser-preview-article{box-sizing:border-box;width:100%;min-height:0;'
+            + 'max-width:none;margin:0 auto;border:1px solid #c3c4c7;'
+            + 'box-shadow:0 5px 18px rgba(0,0,0,.08);}'
+            + '@media(max-width:782px){body{padding:16px;}}'
+            + '</style></head><body>'
+            + $article.prop('outerHTML')
+            + '</body></html>';
+        var objectUrl = window.URL.createObjectURL(
+            new window.Blob([previewDocument], { type: 'text/html' })
+        );
+
+        $link
+            .attr('href', objectUrl)
+            .data('preview-object-url', objectUrl);
+    }
+
     function loadTheme404Preview($sitePreview) {
         var $frame = $sitePreview.find('.pp-teaser-preview-theme-frame');
         var previewUrl = $frame.data('src');
@@ -380,6 +450,7 @@ jQuery(document).ready(function ($) {
 
             $article.attr('data-preview-state', 'default');
             $sitePreview.addClass('is-ready');
+            updateExternalPreviewLink($sitePreview, teaserType);
             return;
         }
 
@@ -387,6 +458,7 @@ jQuery(document).ready(function ($) {
             $sitePreview.find('.pp-teaser-preview-redirect-response').css('display', 'flex');
             $article.attr('data-preview-state', 'redirect');
             $sitePreview.addClass('is-ready');
+            updateExternalPreviewLink($sitePreview, teaserType);
             return;
         }
 
@@ -430,6 +502,7 @@ jQuery(document).ready(function ($) {
 
         $article.attr('data-preview-state', 'teaser');
         $sitePreview.addClass('is-ready');
+        updateExternalPreviewLink($sitePreview, teaserType);
     }
 
     // Function to update preview text based on teaser type
