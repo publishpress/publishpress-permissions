@@ -548,9 +548,19 @@ class TeaserProgressiveUI {
                 </p>
 
                 <div class="pp-teaser-preview-frame">
-                    <div class="pp-teaser-preview-browser-bar" aria-hidden="true">
-                        <span></span><span></span><span></span>
+                    <div class="pp-teaser-preview-browser-bar">
+                        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
                         <strong><?php esc_html_e('Site Preview', 'press-permit-core'); ?></strong>
+                        <a
+                            class="pp-teaser-preview-external-link"
+                            href="<?php echo esc_url($theme_404_url); ?>"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="<?php esc_attr_e('Open full preview in a new tab', 'press-permit-core'); ?>"
+                        >
+                            <?php esc_html_e('Open full preview', 'press-permit-core'); ?>
+                            <span class="dashicons dashicons-external" aria-hidden="true"></span>
+                        </a>
                     </div>
 
                     <article class="pp-teaser-preview-article" aria-live="polite">
@@ -576,12 +586,6 @@ class TeaserProgressiveUI {
                             ></iframe>
                             <div class="pp-teaser-preview-theme-error" hidden>
                                 <?php esc_html_e('The theme preview could not be displayed in this frame.', 'press-permit-core'); ?>
-                            </div>
-                            <div class="pp-teaser-preview-theme-actions">
-                                <span><?php esc_html_e('Live preview from the active theme', 'press-permit-core'); ?></span>
-                                <a href="<?php echo esc_url($theme_404_url); ?>" target="_blank" rel="noopener noreferrer">
-                                    <?php esc_html_e('Open full preview', 'press-permit-core'); ?>
-                                </a>
                             </div>
                         </div>
 
