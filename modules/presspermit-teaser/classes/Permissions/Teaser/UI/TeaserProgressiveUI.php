@@ -7,7 +7,7 @@ namespace PublishPress\Permissions\Teaser\UI;
  */
 class TeaserProgressiveUI {
     use TeaserUIBaseTrait;
-    
+
     private $pp;
     private $ui;
     private $use_teaser;
@@ -33,9 +33,6 @@ class TeaserProgressiveUI {
     public function render() {
         ?>
         <div id='teaser_usage-post' class="pp-teaser-progressive-ui">
-            
-            <!-- STEP 1: Select Post Type -->
-            <?php $this->renderPostTypeSelector(); ?>
 
             <!-- Settings for each post type (shown/hidden based on selection) -->
             <?php foreach ($this->use_teaser as $object_type => $teaser_setting) : ?>
@@ -106,16 +103,7 @@ class TeaserProgressiveUI {
     }
 
     private function renderPostTypeSelector($select_id = 'pp_current_post_type') {
-        $first_post_type = $this->getFirstPostType();
-        $default_post_type = $this->isFeatureAvailable('post_type_' . $first_post_type) ? $first_post_type : 'post';
-        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
-        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $default_post_type;
-        
-        // Get available post types (filtered by trait in FREE, all in PRO)
-        $available_post_types = $this->getAvailablePostTypes();
-        
         ?>
-        <!-- DEBUG: Available post types: <?php echo esc_html(implode(', ', $available_post_types)); ?> | use_teaser: <?php echo esc_html(implode(', ', array_keys($this->use_teaser))); ?> -->
         <div class="pp-post-type-selector">
             <table class="widefat fixed striped teaser-table">
                 <thead>
@@ -129,37 +117,44 @@ class TeaserProgressiveUI {
                 <tbody>
                     <tr>
                         <td colspan="2">
-                            <div class="pp-field-group">
-                                <select id="<?php echo esc_attr($select_id); ?>" class="regular-text pp-current-post-type">
-                                    <?php foreach ($this->use_teaser as $object_type => $teaser_setting) :                                         
-                                        $type_obj = get_post_type_object($object_type);
-                                        $item_label = $type_obj ? $type_obj->labels->name : $object_type;
-
-                                        // Check if this post type is available in current version
-                                        $is_available = $this->isFeatureAvailable('post_type_' . $object_type);
-                                        $disabled = $is_available ? '' : ' disabled';
-                                    ?>
-                                        <option value="<?php echo esc_attr($object_type); ?>"<?php selected($object_type, $current_post_type); ?><?php echo esc_attr($disabled); ?>>
-                                            <?php echo esc_html($item_label); ?><?php if (!$is_available) echo ' [PRO]'; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <?php if (!$this->isProVersion()) : ?>
-                                <p class="description">
-                                    <?php 
-                                    printf(
-                                        esc_html__('Pages and custom post types are available in %sPRO%s', 'press-permit-core'),
-                                        '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
-                                        '</a>'
-                                    ); 
-                                    ?>
-                                </p>
-                                <?php endif; ?>
-                            </div>
+                            <?php $this->renderPostTypeSelectorControl($select_id); ?>
                         </td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+        <?php
+    }
+
+    private function renderPostTypeSelectorControl($select_id) {
+        $first_post_type = $this->getFirstPostType();
+        $default_post_type = $this->isFeatureAvailable('post_type_' . $first_post_type) ? $first_post_type : 'post';
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
+        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $default_post_type;
+        ?>
+        <div class="pp-field-group">
+            <select id="<?php echo esc_attr($select_id); ?>" class="regular-text pp-current-post-type">
+                <?php foreach ($this->use_teaser as $object_type => $teaser_setting) :
+                    $type_obj = get_post_type_object($object_type);
+                    $item_label = $type_obj ? $type_obj->labels->name : $object_type;
+                    $is_available = $this->isFeatureAvailable('post_type_' . $object_type);
+                    ?>
+                    <option value="<?php echo esc_attr($object_type); ?>"<?php selected($object_type, $current_post_type); ?><?php disabled(!$is_available); ?>>
+                        <?php echo esc_html($item_label); ?><?php if (!$is_available) esc_html_e(' [PRO]', 'press-permit-core'); ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+            <?php if (!$this->isProVersion()) : ?>
+                <p class="description">
+                    <?php
+                    printf(
+                        esc_html__('Pages and custom post types are available in %sPRO%s', 'press-permit-core'),
+                        '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
+                        '</a>'
+                    );
+                    ?>
+                </p>
+            <?php endif; ?>
         </div>
         <?php
     }
@@ -322,6 +317,15 @@ class TeaserProgressiveUI {
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <th>
+                        <?php esc_html_e('Select Post Type to Configure:', 'press-permit-core'); ?>
+                        <?php $this->generateTooltip(esc_html__('Choose which post type you want to configure teaser settings for.', 'press-permit-core')); ?>
+                    </th>
+                    <td>
+                        <?php $this->renderPostTypeSelectorControl('pp_current_post_type_' . $object_type); ?>
+                    </td>
+                </tr>
                 <!-- Teaser Type Section -->
                 <?php
                 // Register the new options for saving
