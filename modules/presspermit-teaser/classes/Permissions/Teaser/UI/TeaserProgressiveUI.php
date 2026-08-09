@@ -537,6 +537,8 @@ class TeaserProgressiveUI {
             data-sample-content="<?php echo esc_attr($sample_content); ?>"
             data-sample-excerpt="<?php echo esc_attr($sample_excerpt); ?>"
             data-default-message="<?php echo esc_attr($default_message); ?>"
+            data-preview-stylesheet-url="<?php echo esc_url(plugins_url('common/css/settings.css', PRESSPERMIT_TEASER_FILE)); ?>"
+            data-preview-document-title="<?php esc_attr_e('Teaser Preview', 'press-permit-core'); ?>"
         >
             <div class="pp-teaser-preview-header">
                 <h3><?php esc_html_e('Teaser Preview', 'press-permit-core'); ?></h3>
@@ -557,6 +559,7 @@ class TeaserProgressiveUI {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="<?php esc_attr_e('Open full preview in a new tab', 'press-permit-core'); ?>"
+                            data-theme-preview-url="<?php echo esc_url($theme_404_url); ?>"
                         >
                             <?php esc_html_e('Open full preview', 'press-permit-core'); ?>
                             <span class="dashicons dashicons-external" aria-hidden="true"></span>
