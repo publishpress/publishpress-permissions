@@ -6,6 +6,7 @@ class TeaserHooks
     private static $instance = null;
     public $teaser_disabled = false; // kill switch to support universal teaser disable by API
     private $excerpt_post = false;
+    private $theme_preview_title_filtered = false;
     public $teased_excerpts = [];
     public $is_archive_teaser = false;
 
@@ -28,9 +29,13 @@ class TeaserHooks
 
         add_filter('login_redirect', [$this, 'fltEnforceTeaserLoginRedirect'], PHP_INT_MAX - 1, 3);
 
-        add_action('template_redirect', [$this, 'actTheme404Preview'], 0);
+        add_action('template_redirect', [$this, 'actThemePreview'], 0);
         add_action('template_redirect', [$this, 'actMaybeRedirect'], 5);
-        add_filter('show_admin_bar', [$this, 'fltTheme404PreviewAdminBar']);
+        // phpcs:ignore WordPressVIPMinimum.UserExperience.AdminBarRemoval.RemovalDetected -- The admin bar is hidden only inside the isolated preview frame.
+        add_filter('show_admin_bar', [$this, 'fltThemePreviewAdminBar']);
+        add_filter('the_title', [$this, 'fltThemeTeaserPreviewTitle'], PHP_INT_MAX, 2);
+        add_filter('the_content', [$this, 'fltThemeTeaserPreviewContent'], PHP_INT_MAX);
+        add_action('wp_footer', [$this, 'actThemeTeaserPreviewScript'], PHP_INT_MAX);
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
 
@@ -42,19 +47,31 @@ class TeaserHooks
         add_action('presspermit_force_term_teaser', [$this, 'actForceTermTeaser']);
     }
 
-    private function isTheme404PreviewRequest()
+    private function getThemePreviewState()
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
-        return isset($_GET['pp_permissions_teaser_preview'])
-            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
-            && '404' === sanitize_key(wp_unslash($_GET['pp_permissions_teaser_preview']));
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $state = isset($_GET['pp_permissions_teaser_preview']) ? $_GET['pp_permissions_teaser_preview'] : '';
+        $state = sanitize_key(wp_unslash($state));
+
+        return in_array($state, ['404', 'teaser'], true) ? $state : '';
     }
 
-    function actTheme404Preview()
+    private function isThemePreviewRequest($state = '')
     {
-        if (!$this->isTheme404PreviewRequest() || is_admin()) {
+        $preview_state = $this->getThemePreviewState();
+
+        return $preview_state && (!$state || $state === $preview_state);
+    }
+
+    function actThemePreview()
+    {
+        $preview_state = $this->getThemePreviewState();
+
+        if (!$preview_state || is_admin()) {
             return;
         }
+
+        $this->teaser_disabled = true;
 
         global $wp_query;
 
@@ -62,17 +79,202 @@ class TeaserHooks
             return;
         }
 
-        $wp_query->set_404();
-        status_header(404);
+        // The default preview and the no-sample-post fallback intentionally use the theme's 404 template.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
+        $use_404_template = ('404' === $preview_state) || !empty($_GET['pp_permissions_teaser_fallback']);
+
+        if ($use_404_template) {
+            $wp_query->set_404();
+            status_header(404);
+        }
+
         nocache_headers();
 
-        // Keep WordPress from guessing and redirecting this intentional 404 URL.
+        // Keep WordPress from guessing and redirecting an intentional preview URL.
         remove_action('template_redirect', 'redirect_canonical');
     }
 
-    function fltTheme404PreviewAdminBar($show)
+    function fltThemePreviewAdminBar($show)
     {
-        return $this->isTheme404PreviewRequest() ? false : $show;
+        return $this->isThemePreviewRequest() ? false : $show;
+    }
+
+    private function getThemeTeaserPreviewPostType()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? $_GET['pp_permissions_teaser_post_type'] : '';
+        $post_type = sanitize_key(wp_unslash($post_type));
+
+        if ($post_type && post_type_exists($post_type)) {
+            return $post_type;
+        }
+
+        $queried_object = get_queried_object();
+
+        return ($queried_object instanceof \WP_Post) ? $queried_object->post_type : 'post';
+    }
+
+    private function isThemeTeaserPreviewMainPost($post_id = 0)
+    {
+        if (!$this->isThemePreviewRequest('teaser') || is_admin()) {
+            return false;
+        }
+
+        $queried_post_id = (int) get_queried_object_id();
+
+        return $queried_post_id && (!$post_id || $queried_post_id === (int) $post_id);
+    }
+
+    function fltThemeTeaserPreviewTitle($title, $post_id)
+    {
+        if ($this->theme_preview_title_filtered
+            || !$this->isThemeTeaserPreviewMainPost($post_id)
+            || !in_the_loop()
+            || !is_main_query()
+        ) {
+            return $title;
+        }
+
+        $this->theme_preview_title_filtered = true;
+
+        $post_type = $this->getThemeTeaserPreviewPostType();
+        $type_obj = get_post_type_object($post_type);
+        $singular_label = $type_obj ? $type_obj->labels->singular_name : __('Post', 'press-permit-core');
+        $sample_title = sprintf(
+            /* translators: %s is the singular post type label, such as Post or Page. */
+            __('A Sample %s', 'press-permit-core'),
+            $singular_label
+        );
+        $prefix = wp_strip_all_tags((string) presspermit()->getTypeOption('tease_prepend_name_anon', $post_type));
+        $suffix = wp_strip_all_tags((string) presspermit()->getTypeOption('tease_append_name_anon', $post_type));
+
+        return implode(' ', array_filter([$prefix, $sample_title, $suffix]));
+    }
+
+    function fltThemeTeaserPreviewContent($content)
+    {
+        global $post;
+
+        if (!$post || !$this->isThemeTeaserPreviewMainPost($post->ID) || !in_the_loop() || !is_main_query()) {
+            return $content;
+        }
+
+        $post_type = $this->getThemeTeaserPreviewPostType();
+        $default_message = __('You do not have permission to view the full content.', 'press-permit-core');
+        $teaser_text = wp_strip_all_tags(
+            (string) presspermit()->getTypeOption('tease_replace_content_anon', $post_type)
+        );
+        $prefix = wp_strip_all_tags(
+            (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
+        );
+        $suffix = wp_strip_all_tags(
+            (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
+        );
+        $preview_text = implode(' ', array_filter([$prefix, $teaser_text ?: $default_message, $suffix]));
+
+        return sprintf(
+            '<div id="pp-permissions-theme-teaser-content">%s</div>',
+            wpautop(esc_html($preview_text))
+        );
+    }
+
+    function actThemeTeaserPreviewScript()
+    {
+        if (!$this->isThemePreviewRequest('teaser') || is_admin()) {
+            return;
+        }
+        ?>
+        <script id="pp-permissions-theme-teaser-preview">
+        (function () {
+            'use strict';
+
+            var messageAction = 'pp_permissions_teaser_preview_update';
+            var readyAction = 'pp_permissions_teaser_preview_ready';
+
+            function getPreviewRoot() {
+                return document.querySelector('main, .site-main, #main, #primary') || document.body;
+            }
+
+            function getPreviewTitle(root) {
+                return root.querySelector('.entry-title, .wp-block-post-title, .page-title, h1');
+            }
+
+            function getPreviewContent(root, title) {
+                var previewContent = document.getElementById('pp-permissions-theme-teaser-content');
+
+                if (previewContent) {
+                    return previewContent;
+                }
+
+                var contentArea = root.querySelector('.entry-content, .wp-block-post-content, .page-content');
+                previewContent = document.createElement('div');
+                previewContent.id = 'pp-permissions-theme-teaser-content';
+
+                if (contentArea) {
+                    contentArea.textContent = '';
+                    contentArea.appendChild(previewContent);
+                } else if (title && title.parentNode) {
+                    title.parentNode.insertBefore(previewContent, title.nextSibling);
+                } else {
+                    root.appendChild(previewContent);
+                }
+
+                return previewContent;
+            }
+
+            function applyPreview(payload) {
+                if (!payload || typeof payload !== 'object') {
+                    return;
+                }
+
+                var root = getPreviewRoot();
+                var title = getPreviewTitle(root);
+                var content = getPreviewContent(root, title);
+
+                if (title && typeof payload.title === 'string') {
+                    title.textContent = payload.title;
+                }
+
+                if (content && typeof payload.content === 'string') {
+                    content.textContent = '';
+                    var paragraph = document.createElement('p');
+                    paragraph.textContent = payload.content;
+                    content.appendChild(paragraph);
+                }
+
+                var images = root.querySelectorAll('.post-thumbnail, .wp-block-post-featured-image, img.wp-post-image');
+                Array.prototype.forEach.call(images, function (image) {
+                    image.style.display = payload.hideThumbnail ? 'none' : '';
+                });
+
+                var comments = root.querySelectorAll('.comments-area, .wp-block-comments');
+                Array.prototype.forEach.call(comments, function (commentArea) {
+                    commentArea.style.display = 'none';
+                });
+            }
+
+            window.addEventListener('message', function (event) {
+                if (event.origin !== window.location.origin || !event.data || event.data.action !== messageAction) {
+                    return;
+                }
+
+                applyPreview(event.data.payload);
+            });
+
+            if (window.location.hash.indexOf('#pp_permissions_teaser=') === 0) {
+                try {
+                    applyPreview(JSON.parse(decodeURIComponent(window.location.hash.substring(23))));
+                } catch (error) {
+                    // Keep the server-rendered preview if the URL fragment is incomplete or invalid.
+                }
+            }
+
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({ action: readyAction }, window.location.origin);
+            }
+        }());
+        </script>
+        <?php
     }
 
     function fltDefaultOptions($defaults)
@@ -324,7 +526,7 @@ class TeaserHooks
 
     function actMaybeRedirect()
     {
-        if (defined('DOING_CRON') || !PWP::isFront()) {
+        if (defined('DOING_CRON') || !PWP::isFront() || $this->isThemePreviewRequest()) {
             return;
         }
 
