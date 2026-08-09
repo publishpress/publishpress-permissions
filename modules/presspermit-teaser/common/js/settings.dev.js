@@ -279,6 +279,14 @@ jQuery(document).ready(function ($) {
         }).first();
     }
 
+    function getTeaserContentContainer($container) {
+        var postType = String($container.data('post-type') || '');
+
+        return $('.pp-teaser-content-container').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        }).first();
+    }
+
     function getTeaserSettingsContainer($element) {
         var $postTypeContainer = $element.closest('[data-post-type]');
         var postType = String($postTypeContainer.data('post-type') || '');
@@ -540,6 +548,7 @@ jQuery(document).ready(function ($) {
     // Function to update teaser settings visibility based on selected type
     function updateTeaserSettings(selectedType, $container) {
         var $optionsContainer = getTeaserOptionsContainer($container);
+        var $contentContainer = getTeaserContentContainer($container);
 
         // Show/hide number input based on type
         if (selectedType == 'x_chars') {
@@ -577,25 +586,25 @@ jQuery(document).ready(function ($) {
         if (selectedType == '0') {
             // No Teaser: hide everything
             $optionsContainer.find('.pp-teaser-application-fields').slideUp(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
+            $contentContainer.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == 'redirect') {
             // Redirect: show only redirect settings and application fields
             $optionsContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
+            $contentContainer.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideDown(300);
             $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == '1') {
             // Teaser Text: show teaser text card and application fields, hide redirect
             $optionsContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideDown(300);
+            $contentContainer.find('.pp-teaser-text-card').slideDown(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == 'read_more') {
             // Read More: show read more notice and application fields
             $optionsContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
+            $contentContainer.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             // Hide other notice cards first, then show read more notice
             $noticeCards.not('.pp-read-more-notice-card').stop(true, false).fadeOut(250);
@@ -603,7 +612,7 @@ jQuery(document).ready(function ($) {
         } else if (selectedType == 'excerpt') {
             // Excerpt: show excerpt notice and application fields
             $optionsContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
+            $contentContainer.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             // Hide other notice cards first, then show excerpt notice
             $noticeCards.not('.pp-excerpt-notice-card').stop(true, false).fadeOut(250);
@@ -611,7 +620,7 @@ jQuery(document).ready(function ($) {
         } else if (selectedType == 'x_chars' || selectedType == 'more') {
             // X Chars or More: show x chars notice and application fields
             $optionsContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
+            $contentContainer.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             // Hide other notice cards first, then show x chars notice
             $noticeCards.not('.pp-x-chars-notice-card').stop(true, false).fadeOut(250);
@@ -619,7 +628,7 @@ jQuery(document).ready(function ($) {
         } else {
             // Other teaser types: show application fields only
             $optionsContainer.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideUp(300);
+            $contentContainer.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
         }
@@ -638,12 +647,16 @@ jQuery(document).ready(function ($) {
         
         // Hide all containers
         $('.pp-teaser-settings-container').removeClass('active').hide();
+        $('.pp-teaser-content-container').removeClass('active').hide();
         $('.pp-teaser-options-container').removeClass('active').hide();
         $('.pp-teaser-preview-container').removeClass('active').hide();
         
         // Show selected container with animation
         var $selectedContainer = $('.pp-teaser-settings-container[data-post-type="' + selectedType + '"]');
         $selectedContainer.addClass('active pp-fade-in').show();
+        $('.pp-teaser-content-container[data-post-type="' + selectedType + '"]')
+            .addClass('active pp-fade-in')
+            .show();
         $('.pp-teaser-options-container[data-post-type="' + selectedType + '"]')
             .addClass('active pp-fade-in')
             .show();
@@ -704,6 +717,11 @@ jQuery(document).ready(function ($) {
 
             $('.pp-teaser-options-container').removeClass('active').hide();
             $('.pp-teaser-options-container').filter(function() {
+                return String($(this).data('post-type') || '') === activePostType;
+            }).addClass('active').show();
+
+            $('.pp-teaser-content-container').removeClass('active').hide();
+            $('.pp-teaser-content-container').filter(function() {
                 return String($(this).data('post-type') || '') === activePostType;
             }).addClass('active').show();
 
@@ -795,8 +813,8 @@ jQuery(document).ready(function ($) {
     // Monitor TinyMCE editor changes for teaser text
     $(document).on('input keyup', 'textarea[id*="tease_replace_content"]', function() {
         var editorId = $(this).attr('id');
-        var $container = $(this).closest('.pp-teaser-settings-container');
-        var $preview = $container.find('.pp-teaser-notice-preview');
+        var $container = getTeaserSettingsContainer($(this));
+        var $preview = getTeaserNoticePreviews($container);
         var value = '';
         
         // Try to get content from TinyMCE if active
@@ -823,7 +841,7 @@ jQuery(document).ready(function ($) {
         'input keyup',
         'textarea[id*="tease_prepend_"], textarea[id*="tease_append_"]',
         function() {
-            var $container = $(this).closest('.pp-teaser-settings-container');
+            var $container = getTeaserSettingsContainer($(this));
 
             updateTeaserPreviewText($container);
         }
@@ -865,8 +883,8 @@ jQuery(document).ready(function ($) {
         if (editor.id.indexOf('tease_replace_content') > -1) {
             editor.on('keyup change', function() {
                 var value = editor.getContent({format: 'text'});
-                var $container = $('#' + editor.id).closest('.pp-teaser-settings-container');
-                var $preview = $container.find('.pp-teaser-notice-preview');
+                var $container = getTeaserSettingsContainer($('#' + editor.id));
+                var $preview = getTeaserNoticePreviews($container);
                 
                 $preview
                     .data('teaser-text-anon', value)
@@ -878,7 +896,7 @@ jQuery(document).ready(function ($) {
 
         if (editor.id.indexOf('tease_prepend_') > -1 || editor.id.indexOf('tease_append_') > -1) {
             editor.on('keyup change', function() {
-                var $container = $(document.getElementById(editor.id)).closest('.pp-teaser-settings-container');
+                var $container = getTeaserSettingsContainer($(document.getElementById(editor.id)));
 
                 updateTeaserPreviewText($container);
             });
@@ -996,24 +1014,25 @@ jQuery(document).ready(function ($) {
     
     // Form validation before submission
     $('#pp_settings_form').on('submit', function(e) {
-        // Only run validation if we're on the teaser settings tab
-        var $teaserSettingsSection = $('#ppp-tab-teaser-settings');
-        if (!$teaserSettingsSection.is(':visible')) {
-            return; // Not on teaser settings tab, allow form submission
+        // Only run validation if we're on the Teaser Content tab.
+        var $teaserContentSection = $('#ppp-tab-teaser-content');
+        if (!$teaserContentSection.is(':visible')) {
+            return; // Not on the Teaser Content tab, allow form submission.
         }
 
         var errors = [];
 
-        // Check each teaser settings container (not just visible ones)
-        $('.pp-teaser-settings-container').each(function() {
-            var $container = $(this);
-            var postType = $container.data('post-type');
-            var teaserType = $container.find('.pp-teaser-type-select').val();
+        // Check each content container (not just the visible one).
+        $('.pp-teaser-content-container').each(function() {
+            var $contentContainer = $(this);
+            var postType = $contentContainer.data('post-type');
+            var $settingsContainer = getTeaserSettingsContainer($contentContainer);
+            var teaserType = $settingsContainer.find('.pp-teaser-type-select').val();
 
             // Only validate if teaser type is 1 (Teaser text)
             if (teaserType == '1') {
                 // Check the shared teaser message for required content.
-                $container.find('.pp-teaser-text-content').each(function() {
+                $contentContainer.find('.pp-teaser-text-content').each(function() {
                     var $tabContent = $(this);
                     var $requiredFields = $tabContent.find('.pp-required-field[data-field-action="replace"][data-field-item="content"]');
                     
@@ -1035,25 +1054,13 @@ jQuery(document).ready(function ($) {
             var firstError = errors[0];
             if (firstError) {
                 // Switch to the post type with error if needed
-                var $targetContainer = $('.pp-teaser-settings-container[data-post-type="' + firstError.postType + '"]');
+                var $targetContainer = $('.pp-teaser-content-container[data-post-type="' + firstError.postType + '"]');
                 
                 if (!$targetContainer.hasClass('active')) {
-                    // Update post type selector
-                    $('.pp-current-post-type').val(firstError.postType);
-                    
-                    // Hide all containers
-                    $('.pp-teaser-settings-container').removeClass('active').hide();
-                    $('.pp-teaser-options-container').removeClass('active').hide();
-                    $('.pp-teaser-preview-container').removeClass('active').hide();
-                    
-                    // Show target container
-                    $targetContainer.addClass('active pp-fade-in').show();
-                    $('.pp-teaser-options-container[data-post-type="' + firstError.postType + '"]')
-                        .addClass('active pp-fade-in')
-                        .show();
-                    $('.pp-teaser-preview-container[data-post-type="' + firstError.postType + '"]')
-                        .addClass('active pp-fade-in')
-                        .show();
+                    $('.pp-current-post-type')
+                        .first()
+                        .val(firstError.postType)
+                        .trigger('change');
                 }
                 
                 // Scroll to first error with animation
