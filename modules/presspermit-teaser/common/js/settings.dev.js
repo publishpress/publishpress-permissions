@@ -498,6 +498,60 @@ jQuery(document).ready(function ($) {
         return htmlToPlainText(value);
     }
 
+    function getTeaserStyleNumber($container, optionName, fallback, minimum, maximum) {
+        var value = parseInt($container.find('[name*="' + optionName + '"]').val(), 10);
+
+        if (isNaN(value)) {
+            value = fallback;
+        }
+
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    function getTeaserStyleColor($container, optionName, fallback) {
+        var value = String($container.find('[name*="' + optionName + '"]').val() || '');
+
+        return /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(value) ? value : fallback;
+    }
+
+    function getTeaserNoticeStyle($container) {
+        var useCustomStyle = String(
+            $container.find('.pp-teaser-notice-style-select').val() || 'default'
+        ) === 'custom';
+        var borderPosition = useCustomStyle
+            ? String($container.find('[name*="teaser_notice_border_position"]').val() || 'left')
+            : 'left';
+
+        if (['left', 'right', 'top', 'bottom', 'all'].indexOf(borderPosition) === -1) {
+            borderPosition = 'left';
+        }
+
+        return {
+            backgroundColor: useCustomStyle
+                ? getTeaserStyleColor($container, 'teaser_notice_bg_color', '#f0f6fc')
+                : '#f0f6fc',
+            textColor: useCustomStyle
+                ? getTeaserStyleColor($container, 'teaser_notice_text_color', '#1d2327')
+                : '#1d2327',
+            borderColor: useCustomStyle
+                ? getTeaserStyleColor($container, 'teaser_notice_border_color', '#0073aa')
+                : '#0073aa',
+            borderWidth: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_border_width', 4, 0, 20)
+                : 4,
+            borderPosition: borderPosition,
+            padding: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_padding', 15, 0, 50)
+                : 15,
+            borderRadius: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_border_radius', 0, 0, 50)
+                : 0,
+            fontSize: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_font_size', 14, 10, 30)
+                : 14
+        };
+    }
+
     function updateTeaserSitePreview($container, teaserType, messageText) {
         var $sitePreview = getTeaserSitePreview($container);
         var $optionsContainer = getTeaserOptionsContainer($container);
@@ -550,7 +604,8 @@ jQuery(document).ready(function ($) {
             $sitePreview.data('theme-teaser-payload', {
                 title: titleText,
                 content: [contentPrefix, teaserContent, contentSuffix].filter(Boolean).join(' '),
-                hideThumbnail: hideThumbnail
+                hideThumbnail: hideThumbnail,
+                noticeStyle: getTeaserNoticeStyle($container)
             });
             $sitePreview.find('.pp-teaser-preview-default-response').show();
             $article.attr('data-preview-state', 'theme-teaser');
@@ -900,6 +955,12 @@ jQuery(document).ready(function ($) {
     // Handle change event for any teaser notice style select
     $(document).on('change', '.pp-teaser-notice-style-select', function() {
         toggleTeaserNoticeStyleSettings($(this));
+    });
+
+    $(document).on('pp_teaser_notice_style_updated', function(event, $container) {
+        if ($container && $container.length) {
+            updateTeaserPreviewText($container);
+        }
     });
 
     // Monitor TinyMCE editor changes for teaser text
