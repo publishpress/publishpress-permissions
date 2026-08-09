@@ -78,6 +78,27 @@ class TeaserProgressiveUI {
         <?php
     }
 
+    public function renderContent() {
+        ?>
+        <div id="teaser_content-post" class="pp-teaser-progressive-content-ui">
+
+            <?php $this->renderPostTypeSelector('pp_content_current_post_type'); ?>
+
+            <div class="pp-teaser-content-settings-area">
+                <?php foreach ($this->use_teaser as $object_type => $teaser_setting) : ?>
+                    <?php
+                    if (!in_array($object_type, $this->getAvailablePostTypes(), true)) {
+                        continue;
+                    }
+
+                    $this->renderPostTypeContent($object_type);
+                    ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php
+    }
+
     private function renderPostTypeSelector($select_id = 'pp_current_post_type') {
         $default_post_type = $this->isFeatureAvailable('post_type_' . array_key_first($this->use_teaser)) ? array_key_first($this->use_teaser) : 'post';
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
@@ -189,19 +210,9 @@ class TeaserProgressiveUI {
             <?php $this->renderXCharsNoticeCard($object_type); ?>
             </div>
 
-            <!-- Teaser Message (always visible when teaser type = 1) -->
-            <div class="pp-conditional-settings pp-teaser-text-card">
-            <?php $this->renderTeaserMessage($object_type); ?>
-            </div>
-
             <!-- Teaser Notice Style Settings (per post type) -->
             <div class="pp-conditional-settings pp-teaser-notice-style-settings">
             <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
-            </div>
-
-            <!-- Teaser Text Configuration -->
-            <div class="pp-conditional-settings pp-teaser-text-card">
-            <?php $this->renderTeaserTextCard($object_type); ?>
             </div>
 
             <!-- Redirect Settings (shown only when redirect is selected) -->
@@ -209,6 +220,26 @@ class TeaserProgressiveUI {
             <?php $this->renderRedirectSection($object_type); ?>
             </div>
 
+        </div>
+        <?php
+    }
+
+    private function renderPostTypeContent($object_type) {
+        // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
+        $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : array_key_first($this->use_teaser);
+        $is_current = ($object_type === $current_post_type);
+        $display_style = $is_current ? '' : 'display:none;';
+        ?>
+        <div class="pp-teaser-content-container<?php echo $is_current ? ' active' : ''; ?>" data-post-type="<?php echo esc_attr($object_type); ?>" style="<?php echo esc_attr($display_style); ?>">
+            <!-- Teaser Message (shown only when teaser type = 1) -->
+            <div class="pp-conditional-settings pp-teaser-text-card">
+                <?php $this->renderTeaserMessage($object_type); ?>
+            </div>
+
+            <!-- Teaser Text Configuration (shown only when teaser type = 1) -->
+            <div class="pp-conditional-settings pp-teaser-text-card">
+                <?php $this->renderTeaserTextCard($object_type); ?>
+            </div>
         </div>
         <?php
     }

@@ -396,6 +396,12 @@ class PostsTeaser
                   </a>
                 </li>
 
+                <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-content') echo ' nav-tab-active';?>">
+                  <a href="#ppp-tab-teaser-content">
+                      <?php _e('Teaser Content', 'press-permit-core') ?>
+                  </a>
+                </li>
+
                 <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
                   <a href="#ppp-tab-options">
                       <?php _e('Options', 'press-permit-core') ?>
@@ -559,6 +565,14 @@ class PostsTeaser
             </section>
         <?php
         endif; // any options accessable in this section
+
+
+        if (isset($progressive_ui)) : ?>
+            <section id="ppp-tab-teaser-content" style="display:<?php if ($current_tab === 'ppp-tab-teaser-content') echo 'block'; else echo 'none'; ?>;">
+                <?php $progressive_ui->renderContent(); ?>
+            </section>
+        <?php
+        endif;
 
 
         $section = 'options';                                // --- OPTIONS SECTION ---
