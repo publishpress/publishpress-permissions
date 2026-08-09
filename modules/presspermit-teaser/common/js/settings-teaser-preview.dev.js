@@ -90,6 +90,8 @@ jQuery(document).ready(function($) {
             // Set specific border
             $preview.css('border-' + borderPosition, borderWidth + 'px solid ' + borderColor);
         }
+
+        $(document).trigger('pp_teaser_notice_style_updated', [$activeContainer]);
     }
 
     // Initialize color pickers after DOM is ready
