@@ -8,14 +8,36 @@ section[id*="ppp-tab-"] {
   margin-top: 20px;
 }
 
+.pp-teaser-tabs-header {
+  position: relative;
+}
+
+.pp-teaser-tabs-header .nav-tab-wrapper {
+  box-sizing: border-box;
+  padding-right: 140px;
+}
+
 .pp-teaser-top-actions {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 0 10px;
+  bottom: 8px;
+  margin: 0;
+  position: absolute;
+  right: 0;
 }
 
 .pp-teaser-top-actions .pp-teaser-top-save {
   margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .pp-teaser-tabs-header .nav-tab-wrapper {
+    padding-right: 0;
+    padding-top: 48px;
+  }
+
+  .pp-teaser-top-actions {
+    bottom: auto;
+    top: 8px;
+  }
 }
 
 span.teaser-num-chars input {
