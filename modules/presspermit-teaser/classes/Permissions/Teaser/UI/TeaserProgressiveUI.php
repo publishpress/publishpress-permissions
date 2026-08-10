@@ -760,15 +760,6 @@ class TeaserProgressiveUI {
                             <?php
                             wp_editor($teaser_text, $editor_id, $editor_settings);
                             ?>
-                            <p class="pp-add-login-form">
-                                <?php
-                                printf(
-                                    esc_html__( 'Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core' ),
-                                    '<a href="#">',
-                                    '</a>'
-                                );
-                                ?>
-                            </p>
                         </div>
                     </div>
                     <?php $this->renderTeaserTextFields($object_type, '_anon'); ?>
