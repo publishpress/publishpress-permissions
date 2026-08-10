@@ -911,34 +911,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // Login form shortcode insertion for progressive UI
-    $('.pp-add-login-form a').on('click', function(e) {
-        e.preventDefault();
-        
-        // Find the editor - works for both table-based (td) and div-based layouts
-        var $container = $(this).closest('td, div');
-        var editorId = $container.find('.wp-editor-area').attr('id');
-        
-        if (editorId) {
-            // Check if TinyMCE is active for this editor
-            if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
-                var editor = tinymce.get(editorId);
-                var content = editor.getContent();
-                
-                if (content.indexOf('[login_form]') === -1) {
-                    editor.setContent(content + '[login_form]');
-                }
-            } else {
-                // Fallback to textarea (when in Text/HTML mode)
-                var $textarea = $('#' + editorId);
-                if ($textarea.length && $textarea.val().indexOf('[login_form]') === -1) {
-                    $textarea.val($textarea.val() + '[login_form]');
-                }
-            }
-        }
-        return false;
-    });
-
     // Teaser Notice Style Mode Toggle
     function toggleTeaserNoticeStyleSettings($select) {
         var $settingsContainer = $select.closest('.pp-teaser-settings-container');
