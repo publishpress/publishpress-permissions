@@ -628,10 +628,6 @@ class TeaserProgressiveUI {
             </div>
 
             <div class="pp-teaser-preview-panel-body">
-                <p class="description pp-teaser-preview-intro">
-                    <?php esc_html_e('See what any visitor without permission will see for these settings.', 'press-permit-core'); ?>
-                </p>
-
                 <div class="pp-teaser-preview-frame">
                     <div class="pp-teaser-preview-browser-bar">
                         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
@@ -1401,7 +1397,7 @@ class TeaserProgressiveUI {
                                             <?php echo esc_html($preview_text); ?>
                                         </div>
                                         <p class="description">
-                                            <?php esc_html_e('This is how the teaser message will appear on your site. Changes update in real-time.', 'press-permit-core'); ?>
+                                            <?php esc_html_e('This is how the teaser message will appear on your site.', 'press-permit-core'); ?>
                                         </p>
                 </div>
             </div>
