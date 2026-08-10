@@ -237,14 +237,9 @@ class TeaserProgressiveUI {
         $display_style = $is_current ? '' : 'display:none;';
         ?>
         <div class="pp-teaser-content-container<?php echo $is_current ? ' active' : ''; ?>" data-post-type="<?php echo esc_attr($object_type); ?>" style="<?php echo esc_attr($display_style); ?>">
-            <!-- Teaser Message (shown only when teaser type = 1) -->
+            <!-- Teaser content (shown only when teaser type = 1) -->
             <div class="pp-conditional-settings pp-teaser-text-card">
-                <?php $this->renderTeaserMessage($object_type); ?>
-            </div>
-
-            <!-- Teaser Text Configuration (shown only when teaser type = 1) -->
-            <div class="pp-conditional-settings pp-teaser-text-card">
-                <?php $this->renderTeaserTextCard($object_type); ?>
+                <?php $this->renderTeaserContentCard($object_type); ?>
             </div>
         </div>
         <?php
@@ -717,7 +712,7 @@ class TeaserProgressiveUI {
         <?php
     }
 
-    private function renderTeaserMessage($object_type) {
+    private function renderTeaserContentCard($object_type) {
         $teaser_text = wp_unslash(
             $this->getSharedAudienceOption(
                 'tease_replace_content_anon',
@@ -747,7 +742,7 @@ class TeaserProgressiveUI {
                     <tr>
                         <th colspan="2">
                             <strong><?php esc_html_e('Teaser Message', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Replace the post content entirely with custom content for users who don\'t have access.', 'press-permit-core')) ?>
+                            <?php $this->generateTooltip(esc_html__('Configure replacement content and optional text before or after the post title and content.', 'press-permit-core')) ?>
                         </th>
                     </tr>
                 </thead>
@@ -755,13 +750,10 @@ class TeaserProgressiveUI {
             
             <div class="pp-teaser-text-container">
                 <div class="pp-teaser-text-content active">
-                    <div class="pp-field-row pp-teaser-editor-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
+                    <div class="pp-field-row pp-teaser-editor-row" data-field-action="replace" data-field-item="content">
                         <div class="pp-teaser-editor-label">
                             <label for="<?php echo esc_attr($editor_id); ?>">
-                                <strong>
-                                    <?php esc_html_e('Replace Post Content With', 'press-permit-core'); ?>
-                                    <span class="pp-required-indicator" style="color: red;">*</span>
-                                </strong>
+                                <strong><?php esc_html_e('Replace Post Content', 'press-permit-core'); ?></strong>
                             </label>
                         </div>
                         <div class="pp-teaser-editor-control">
@@ -779,28 +771,6 @@ class TeaserProgressiveUI {
                             </p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <?php
-    }
-
-    private function renderTeaserTextCard($object_type) {
-        ?>
-        <div class="">
-            <table class="widefat">
-                <thead>
-                    <tr>
-                        <th colspan="2">
-                            <strong><?php esc_html_e('Teaser Text Configuration', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Configure custom teaser text for this post type.', 'press-permit-core')) ?>
-                        </th>
-                    </tr>
-                </thead>
-            </table>
-            
-            <div class="pp-teaser-text-container">
-                <div class="pp-teaser-text-content active">
                     <?php $this->renderTeaserTextFields($object_type, '_anon'); ?>
                 </div>
             </div>
