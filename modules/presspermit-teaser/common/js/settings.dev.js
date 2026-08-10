@@ -577,6 +577,9 @@ jQuery(document).ready(function ($) {
         var hideThumbnail = String(
             $optionsContainer.find('input[name^="teaser_hide_thumbnail"]:checked').val() || '0'
         ) === '1';
+        var disableComments = $optionsContainer
+            .find('input[name^="teaser_disable_comments"][type="checkbox"]')
+            .is(':checked');
 
         $states.hide();
         $image.hide();
@@ -605,6 +608,7 @@ jQuery(document).ready(function ($) {
                 title: titleText,
                 content: [contentPrefix, teaserContent, contentSuffix].filter(Boolean).join(' '),
                 hideThumbnail: hideThumbnail,
+                disableComments: disableComments,
                 noticeStyle: getTeaserNoticeStyle($container)
             });
             $sitePreview.find('.pp-teaser-preview-default-response').show();
@@ -828,7 +832,7 @@ jQuery(document).ready(function ($) {
 
     $(document).on(
         'input change',
-        'input[name^="teaser_hide_thumbnail"], input[name^="x_chars_num_chars"], input[name^="excerpt_num_chars"]',
+        'input[name^="teaser_hide_thumbnail"], input[name^="teaser_disable_comments"], input[name^="x_chars_num_chars"], input[name^="excerpt_num_chars"]',
         function() {
             var $container = getTeaserSettingsContainer($(this));
 

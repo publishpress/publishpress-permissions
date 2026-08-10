@@ -16,6 +16,7 @@ class TeaserProgressiveUI {
     private $hide_links;
     private $arr_num_chars;
     private $hide_thumbnail;
+    private $disable_comments;
     private $blockEditorActive;
 
     public function __construct($pp, $ui, $use_teaser, $options_data, $blockEditorActive = true) {
@@ -27,6 +28,7 @@ class TeaserProgressiveUI {
         $this->hide_links = $options_data['hide_links'];
         $this->arr_num_chars = $options_data['arr_num_chars'];
         $this->hide_thumbnail = $options_data['hide_thumbnail'];
+        $this->disable_comments = $options_data['disable_comments'];
         $this->blockEditorActive = $blockEditorActive;
     }
 
@@ -516,6 +518,21 @@ class TeaserProgressiveUI {
                         <label>
                             <input type="radio" name="teaser_hide_thumbnail[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($hide_thumbnail_val, 1); ?>>
                             <?php esc_html_e('Hide featured image when teaser is applied', 'press-permit-core'); ?>
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <th><?php esc_html_e('Comments Area:', 'press-permit-core'); ?></th>
+                    <td>
+                        <?php
+                        $disable_comments_val = isset($this->disable_comments[$object_type])
+                            ? $this->disable_comments[$object_type]
+                            : 1;
+                        ?>
+                        <label>
+                            <input type="hidden" name="teaser_disable_comments[<?php echo esc_attr($object_type); ?>]" value="0">
+                            <input type="checkbox" name="teaser_disable_comments[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($disable_comments_val, 1); ?>>
+                            <?php esc_html_e('Disable the comments area when Teaser is applied', 'press-permit-core'); ?>
                         </label>
                     </td>
                 </tr>
