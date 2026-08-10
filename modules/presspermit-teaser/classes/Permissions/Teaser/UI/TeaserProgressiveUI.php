@@ -321,8 +321,7 @@ class TeaserProgressiveUI {
             <tbody>
                 <tr>
                     <th>
-                        <?php esc_html_e('Select Post Type to Configure:', 'press-permit-core'); ?>
-                        <?php $this->generateTooltip(esc_html__('Choose which post type you want to configure teaser settings for.', 'press-permit-core')); ?>
+                        <?php esc_html_e('Post Type', 'press-permit-core'); ?>
                     </th>
                     <td>
                         <?php $this->renderPostTypeSelectorControl('pp_current_post_type_' . $object_type); ?>
