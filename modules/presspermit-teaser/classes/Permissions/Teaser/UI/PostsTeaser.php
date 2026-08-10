@@ -390,25 +390,28 @@ class PostsTeaser
 			endif;
 			?>
 
-            <ul id="publishpress-permissions-teaser-tabs" class="nav-tab-wrapper">
-                <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-settings') echo ' nav-tab-active';?>">
-                  <a href="#ppp-tab-teaser-settings">
-                      <?php _e('Teaser Settings', 'press-permit-core') ?>
-                  </a>
-                </li>
+            <div class="pp-teaser-tabs-header">
+                <ul id="publishpress-permissions-teaser-tabs" class="nav-tab-wrapper">
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-settings') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-teaser-settings">
+                          <?php _e('Teaser Settings', 'press-permit-core') ?>
+                      </a>
+                    </li>
 
-                <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-content') echo ' nav-tab-active';?>">
-                  <a href="#ppp-tab-teaser-content">
-                      <?php _e('Teaser Content', 'press-permit-core') ?>
-                  </a>
-                </li>
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-content') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-teaser-content">
+                          <?php _e('Teaser Content', 'press-permit-core') ?>
+                      </a>
+                    </li>
 
-                <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
-                  <a href="#ppp-tab-options">
-                      <?php _e('Options', 'press-permit-core') ?>
-                  </a>
-                </li>
-            </ul>
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-options">
+                          <?php _e('Options', 'press-permit-core') ?>
+                      </a>
+                    </li>
+                </ul>
+                <?php $this->renderTopSaveButton(); ?>
+            </div>
 
             <div id="pp-teaser">
 
@@ -532,7 +535,6 @@ class PostsTeaser
 
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
-			<?php $this->renderTopSaveButton(); ?>
 			<p>
             <?php
 			if (empty($displayed_teaser_caption)) {
@@ -580,7 +582,6 @@ class PostsTeaser
 
         if (isset($progressive_ui)) : ?>
             <section id="ppp-tab-teaser-content" style="display:<?php if ($current_tab === 'ppp-tab-teaser-content') echo 'block'; else echo 'none'; ?>;">
-                <?php $this->renderTopSaveButton(); ?>
                 <?php $progressive_ui->renderContent(); ?>
             </section>
         <?php
@@ -590,7 +591,6 @@ class PostsTeaser
         $section = 'options';                                // --- OPTIONS SECTION ---
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-options" style="display:<?php if ($current_tab === 'ppp-tab-options') echo 'block'; else echo 'none'; ?>;">
-            <?php $this->renderTopSaveButton(); ?>
             <div class="pp-teaser-options">
             <?php
             if (isset($progressive_ui)) {
