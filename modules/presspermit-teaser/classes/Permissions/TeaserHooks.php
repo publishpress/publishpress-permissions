@@ -379,7 +379,7 @@ class TeaserHooks
 
                 var comments = root.querySelectorAll('.comments-area, .wp-block-comments');
                 Array.prototype.forEach.call(comments, function (commentArea) {
-                    commentArea.style.display = 'none';
+                    commentArea.style.display = payload.disableComments ? 'none' : '';
                 });
             }
 
@@ -414,6 +414,7 @@ class TeaserHooks
             'rss_nonprivate_feed_mode' => 'full_content',
             'feed_teaser' => __("View the content of this <a href='%permalink%'>article</a>"),  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             'teaser_hide_thumbnail' => [],
+            'teaser_disable_comments' => ['' => 1],
             'teaser_hide_custom_private_only' => false,
             'teaser_hide_links_taxonomy' => '',
             'teaser_hide_links_term' => '',

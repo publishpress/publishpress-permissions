@@ -56,6 +56,7 @@ class PostsTeaser
             'feed_teaser' => esc_html__('Feed Replacement Text (use %permalink% for post URL)', 'press-permit-core'),
             'read_more_login_notice' => esc_html__('Teaser Notice Message', 'press-permit-core'),
             'teaser_hide_thumbnail' => esc_html__('Hide Featured Image when Teaser is applied', 'press-permit-core'),
+            'teaser_disable_comments' => esc_html__('Disable Comments when Teaser is applied', 'press-permit-core'),
             'teaser_hide_custom_private_only' => esc_html__('"Hide Private" settings only apply to custom privacy (Member, Premium, Staff, etc.)', 'press-permit-core'),
         ];
 
@@ -66,7 +67,7 @@ class PostsTeaser
     {
         $new = [
             'teaser_type' => ['use_teaser', 'tease_logged_only'],
-            'coverage' => ['teaser_hide_custom_private_only', 'tease_public_posts_only', 'tease_direct_access_only', 'teaser_hide_thumbnail'],
+            'coverage' => ['teaser_hide_custom_private_only', 'tease_public_posts_only', 'tease_direct_access_only', 'teaser_hide_thumbnail', 'teaser_disable_comments'],
             'menu' => [''],
             'redirect' => ['teaser_redirect_anon', 'teaser_redirect_anon_page', 'teaser_redirect', 'teaser_redirect_page', 'teaser_redirect_custom_login_page_anon', 'teaser_redirect_custom_login_page'],
             'teaser_text' => ['tease_replace_content', 'tease_replace_content_anon', 'tease_prepend_content', 'tease_prepend_content_anon',
@@ -487,6 +488,14 @@ class PostsTeaser
             $opt_vals = $ui->getOptionArray($option_hide_thumbnail);
             $hide_thumbnail = array_diff_key(array_merge($opt_available, $default_options[$option_hide_thumbnail] ?? [], $opt_vals), $no_tease_types);
 
+            $option_disable_comments = 'teaser_disable_comments';
+            $ui->all_otype_options[] = $option_disable_comments;
+            $disable_comments = [];
+
+            foreach ($available_post_types as $post_type) {
+                $disable_comments[$post_type] = (int) (bool) $pp->getTypeOption($option_disable_comments, $post_type, true);
+            }
+
             // Register teaser text options as per-post-type
             $teaser_text_options = [
                 'tease_prepend_name',
@@ -555,7 +564,8 @@ class PostsTeaser
                 'direct_only' => $direct_only,
                 'hide_links' => $hide_links,
                 'arr_num_chars' => $arr_num_chars,
-                'hide_thumbnail' => $hide_thumbnail
+                'hide_thumbnail' => $hide_thumbnail,
+                'disable_comments' => $disable_comments,
             ];
             
             $progressive_ui = new TeaserProgressiveUI($pp, $ui, $use_teaser, $options_data, $this->blockEditorActive);
