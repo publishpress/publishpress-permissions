@@ -371,7 +371,7 @@ class TeaserProgressiveUI {
                 ?>
                 <tr>
                     <th style="width: 30%;">
-                        <?php esc_html_e('Teaser Type:', 'press-permit-core'); ?>
+                        <?php esc_html_e('Teaser Type', 'press-permit-core'); ?>
                         <?php if (!$this->isProVersion()) : ?>
                             <p class="description pp-teaser-setting-description">
                                 <?php
@@ -418,7 +418,7 @@ class TeaserProgressiveUI {
                 </tr>
                 <tr>
                     <th>
-                        <?php esc_html_e('Teaser Message Style:', 'press-permit-core'); ?>
+                        <?php esc_html_e('Teaser Message Style', 'press-permit-core'); ?>
                         <p class="description pp-teaser-setting-description">
                             <?php esc_html_e('Choose whether to use the default message style or customize the appearance of teaser messages.', 'press-permit-core'); ?>
                         </p>
@@ -470,7 +470,7 @@ class TeaserProgressiveUI {
             <tbody class="pp-teaser-application-fields">
                 <!-- Teaser Application Section -->
                 <tr>
-                    <th style="width: 30%;"><?php esc_html_e('Teaser Application:', 'press-permit-core'); ?></th>
+                    <th style="width: 30%;"><?php esc_html_e('Teaser Application', 'press-permit-core'); ?></th>
                     <td>
                         <label style="margin-right: 20px;">
                             <input type="radio" name="tease_direct_access_only[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($direct_only_val, 0); ?>>
@@ -485,7 +485,7 @@ class TeaserProgressiveUI {
 
                 <!-- Navigation Menus Section -->
                 <tr>
-                    <th><?php esc_html_e('Navigation Menus:', 'press-permit-core'); ?></th>
+                    <th><?php esc_html_e('Navigation Menus', 'press-permit-core'); ?></th>
                     <td>
                         <label style="margin-right: 20px;">
                             <input type="radio" name="teaser_hide_menu_links_type[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($hide_links_val, 0); ?>>
@@ -498,7 +498,7 @@ class TeaserProgressiveUI {
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Private Posts:', 'press-permit-core'); ?></th>
+                    <th><?php esc_html_e('Private Posts', 'press-permit-core'); ?></th>
                     <td>
                         <label style="margin-right: 20px;">
                             <input type="radio" name="tease_public_posts_only[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($hide_private_val, '0'); ?>>
@@ -517,7 +517,7 @@ class TeaserProgressiveUI {
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Featured Image:', 'press-permit-core'); ?></th>
+                    <th><?php esc_html_e('Featured Image', 'press-permit-core'); ?></th>
                     <td>
                         <?php
                         $hide_thumbnail_val = !empty($this->hide_thumbnail[$object_type]) ? $this->hide_thumbnail[$object_type] : 0;
@@ -533,7 +533,7 @@ class TeaserProgressiveUI {
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Comments Area:', 'press-permit-core'); ?></th>
+                    <th><?php esc_html_e('Comments Area', 'press-permit-core'); ?></th>
                     <td>
                         <?php
                         $disable_comments_val = isset($this->disable_comments[$object_type])
@@ -761,7 +761,7 @@ class TeaserProgressiveUI {
                         <div class="pp-teaser-editor-label">
                             <label for="<?php echo esc_attr($editor_id); ?>">
                                 <strong>
-                                    <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
+                                    <?php esc_html_e('Replace Post Content With', 'press-permit-core'); ?>
                                     <span class="pp-required-indicator" style="color: red;">*</span>
                                 </strong>
                             </label>
@@ -827,8 +827,8 @@ class TeaserProgressiveUI {
             $item_heading = ucfirst($item);
 
             $actions_display = [
-                'prepend' => sprintf(esc_html__('Before %s:', 'press-permit-core'), $trans_headings[$item]),
-                'append' => sprintf(esc_html__('After %s:', 'press-permit-core'), $trans_headings[$item])
+                'prepend' => sprintf(esc_html__('Before %s', 'press-permit-core'), $trans_headings[$item]),
+                'append' => sprintf(esc_html__('After %s', 'press-permit-core'), $trans_headings[$item])
             ];
             ?>
             <div class="pp-teaser-text-section">
@@ -994,7 +994,7 @@ class TeaserProgressiveUI {
                 <tr>
                     <th>
                         <label for='<?php echo esc_attr($id); ?>'>
-                        <?php esc_html_e('All Blocked Users:', 'press-permit-core');
+                        <?php esc_html_e('All Blocked Users', 'press-permit-core');
                         ?>
                         </label>
                     </th>
@@ -1319,7 +1319,7 @@ class TeaserProgressiveUI {
                                 <div>
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_bg_color_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Background Color:', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Background Color', 'press-permit-core'); ?>
                                         </label>
                                         <input type="text" 
                                                name="teaser_notice_bg_color[<?php echo esc_attr($object_type); ?>]" 
@@ -1331,7 +1331,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_text_color_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Text Color:', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Text Color', 'press-permit-core'); ?>
                                         </label>
                                         <input type="text" 
                                                name="teaser_notice_text_color[<?php echo esc_attr($object_type); ?>]" 
@@ -1343,7 +1343,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_border_color_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Border Color:', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Border Color', 'press-permit-core'); ?>
                                         </label>
                                         <input type="text" 
                                                name="teaser_notice_border_color[<?php echo esc_attr($object_type); ?>]" 
@@ -1355,7 +1355,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_border_width_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Border Width (px):', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Border Width (px)', 'press-permit-core'); ?>
                                         </label>
                                         <input type="number" 
                                                name="teaser_notice_border_width[<?php echo esc_attr($object_type); ?>]" 
@@ -1368,7 +1368,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_border_position_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Border Position:', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Border Position', 'press-permit-core'); ?>
                                         </label>
                                         <select name="teaser_notice_border_position[<?php echo esc_attr($object_type); ?>]" 
                                                 id="teaser_notice_border_position_<?php echo esc_attr($object_type); ?>" 
@@ -1383,7 +1383,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_padding_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Padding (px):', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Padding (px)', 'press-permit-core'); ?>
                                         </label>
                                         <input type="number" 
                                                name="teaser_notice_padding[<?php echo esc_attr($object_type); ?>]" 
@@ -1396,7 +1396,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_border_radius_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Border Radius (px):', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Border Radius (px)', 'press-permit-core'); ?>
                                         </label>
                                         <input type="number" 
                                                name="teaser_notice_border_radius[<?php echo esc_attr($object_type); ?>]" 
@@ -1409,7 +1409,7 @@ class TeaserProgressiveUI {
 
                                     <div class="pp-field-row" style="margin-bottom: 15px;">
                                         <label for="teaser_notice_font_size_<?php echo esc_attr($object_type); ?>" style="display: block; margin-bottom: 5px; font-weight: 600;">
-                                            <?php esc_html_e('Font Size (px):', 'press-permit-core'); ?>
+                                            <?php esc_html_e('Font Size (px)', 'press-permit-core'); ?>
                                         </label>
                                         <input type="number" 
                                                name="teaser_notice_font_size[<?php echo esc_attr($object_type); ?>]" 
