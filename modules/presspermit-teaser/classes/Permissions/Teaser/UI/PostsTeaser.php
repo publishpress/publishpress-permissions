@@ -532,6 +532,7 @@ class PostsTeaser
 
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
+			<?php $this->renderTopSaveButton(); ?>
 			<p>
             <?php
 			if (empty($displayed_teaser_caption)) {
@@ -579,6 +580,7 @@ class PostsTeaser
 
         if (isset($progressive_ui)) : ?>
             <section id="ppp-tab-teaser-content" style="display:<?php if ($current_tab === 'ppp-tab-teaser-content') echo 'block'; else echo 'none'; ?>;">
+                <?php $this->renderTopSaveButton(); ?>
                 <?php $progressive_ui->renderContent(); ?>
             </section>
         <?php
@@ -588,6 +590,7 @@ class PostsTeaser
         $section = 'options';                                // --- OPTIONS SECTION ---
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-options" style="display:<?php if ($current_tab === 'ppp-tab-options') echo 'block'; else echo 'none'; ?>;">
+            <?php $this->renderTopSaveButton(); ?>
             <div class="pp-teaser-options">
             <?php
             if (isset($progressive_ui)) {
@@ -620,5 +623,16 @@ class PostsTeaser
     </form>
     <?php
 
+    }
+
+    private function renderTopSaveButton()
+    {
+        ?>
+        <div class="pp-teaser-top-actions">
+            <button type="submit" name="presspermit_submit" value="1" class="button button-primary pp-teaser-top-save">
+                <?php esc_html_e('Save Changes', 'press-permit-core'); ?>
+            </button>
+        </div>
+        <?php
     }
 }
