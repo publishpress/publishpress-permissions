@@ -367,6 +367,9 @@ class PostsTeaser
                 <h1 class="wp-heading-inline">
                     <?php echo esc_html(__('Posts Teaser', 'press-permit-core')); ?>
                 </h1>
+                <p class="description">
+                    <?php esc_html_e("Use these settings to control what users see when they don't have access to your content.", 'press-permit-core'); ?>
+                </p>
             </header>
 
 			<?php
