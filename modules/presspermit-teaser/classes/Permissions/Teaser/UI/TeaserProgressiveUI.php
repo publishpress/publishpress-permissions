@@ -128,7 +128,7 @@ class TeaserProgressiveUI {
         <?php
     }
 
-    private function renderPostTypeSelectorControl($select_id) {
+    private function renderPostTypeSelectorControl($select_id, $show_description = true) {
         $first_post_type = $this->getFirstPostType();
         $default_post_type = $this->isFeatureAvailable('post_type_' . $first_post_type) ? $first_post_type : 'post';
         // phpcs:ignore WordPress.Security.NonceVerification.Missing -- POST data used only for display state, not saved
@@ -146,18 +146,25 @@ class TeaserProgressiveUI {
                     </option>
                 <?php endforeach; ?>
             </select>
-            <?php if (!$this->isProVersion()) : ?>
-                <p class="description">
-                    <?php
-                    printf(
-                        esc_html__('Pages and custom post types are available in %sPRO%s', 'press-permit-core'),
-                        '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
-                        '</a>'
-                    );
-                    ?>
-                </p>
-            <?php endif; ?>
+            <?php if ($show_description) $this->renderPostTypeSelectorDescription(); ?>
         </div>
+        <?php
+    }
+
+    private function renderPostTypeSelectorDescription() {
+        if ($this->isProVersion()) {
+            return;
+        }
+        ?>
+        <p class="description pp-teaser-setting-description">
+            <?php
+            printf(
+                esc_html__('Pages and custom post types are available in %sPRO%s', 'press-permit-core'),
+                '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
+                '</a>'
+            );
+            ?>
+        </p>
         <?php
     }
 
@@ -322,9 +329,10 @@ class TeaserProgressiveUI {
                 <tr>
                     <th>
                         <?php esc_html_e('Post Type', 'press-permit-core'); ?>
+                        <?php $this->renderPostTypeSelectorDescription(); ?>
                     </th>
                     <td>
-                        <?php $this->renderPostTypeSelectorControl('pp_current_post_type_' . $object_type); ?>
+                        <?php $this->renderPostTypeSelectorControl('pp_current_post_type_' . $object_type, false); ?>
                     </td>
                 </tr>
                 <!-- Teaser Type Section -->
@@ -362,7 +370,20 @@ class TeaserProgressiveUI {
                 $excerpt_num_style = ('excerpt' !== $teaser_setting) ? 'display:none;' : '';
                 ?>
                 <tr>
-                    <th style="width: 30%;"><?php esc_html_e('Teaser Type:', 'press-permit-core'); ?></th>
+                    <th style="width: 30%;">
+                        <?php esc_html_e('Teaser Type:', 'press-permit-core'); ?>
+                        <?php if (!$this->isProVersion()) : ?>
+                            <p class="description pp-teaser-setting-description">
+                                <?php
+                                printf(
+                                    esc_html__('Read More links, excerpts, and redirects are available in %sPRO%s', 'press-permit-core'),
+                                    '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
+                                    '</a>'
+                                );
+                                ?>
+                            </p>
+                        <?php endif; ?>
+                    </th>
                     <td>
                         <select name="<?php echo esc_attr($name); ?>" class="regular-text pp-teaser-type-select">
                             <?php foreach ($captions as $teaser_option_val => $teaser_caption) : 
@@ -381,18 +402,7 @@ class TeaserProgressiveUI {
                             <?php endforeach; ?>
                         </select>
                         <input type="hidden" name="tease_logged_only[<?php echo esc_attr($object_type); ?>]" value="0">
-                        <?php if (!$this->isProVersion()) : ?>
-                        <p class="description" style="margin-top: 8px;">
-                            <?php 
-                            printf(
-                                esc_html__('Read More links, excerpts, and redirects are available in %sPRO%s', 'press-permit-core'),
-                                '<a href="https://publishpress.com/links/permissions-banner" target="_blank" rel="noopener noreferrer">',
-                                '</a>'
-                            ); 
-                            ?>
-                        </p>
-                        <?php endif; ?>
-                        
+
                         <span class="pp-num-chars-setting" style="<?php echo esc_attr($num_style); ?>; margin-left: 10px;">
                             <span><?php esc_html_e('Show only the first', 'press-permit-core'); ?></span>
                             <input type="number" id="<?php echo esc_attr($id_x_chars); ?>" name="<?php echo esc_attr($name_x_chars); ?>" value="<?php echo esc_attr($x_chars_value); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
@@ -407,7 +417,12 @@ class TeaserProgressiveUI {
                     </td>
                 </tr>
                 <tr>
-                    <th><?php esc_html_e('Teaser Message Style:', 'press-permit-core'); ?></th>
+                    <th>
+                        <?php esc_html_e('Teaser Message Style:', 'press-permit-core'); ?>
+                        <p class="description pp-teaser-setting-description">
+                            <?php esc_html_e('Choose whether to use the default message style or customize the appearance of teaser messages.', 'press-permit-core'); ?>
+                        </p>
+                    </th>
                     <td>
                         <?php
                         $teaser_notice_mode = $this->pp->getTypeOption('teaser_notice_style_mode', $object_type) ?: 'default';
@@ -421,9 +436,6 @@ class TeaserProgressiveUI {
                                 <?php esc_html_e('Use Custom Teaser Message Style', 'press-permit-core'); ?>
                             </option>
                         </select>
-                        <p class="description">
-                            <?php esc_html_e('Choose whether to use the default message style or customize the appearance of teaser messages.', 'press-permit-core'); ?>
-                        </p>
                     </td>
                 </tr>
             </tbody>
