@@ -467,13 +467,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     padding: 15px;
 }
 
-/* Ensure radio buttons are visible in tables */
-.teaser-table input[type="radio"] {
-    display: inline-block !important;
-    margin-right: 5px;
-    vertical-align: middle;
-}
-
 .pp-teaser-card h3 {
     margin: 0 0 4px 0;
     font-size: 13px;
@@ -521,21 +514,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-teaser-type-option:hover {
     border-color: #2271b1;
     background: #f0f6fc;
-}
-
-.pp-teaser-type-option input[type="radio"] {
-    margin: 2px 10px 0 0;
-    flex-shrink: 0;
-}
-
-.pp-teaser-type-option input[type="radio"]:checked + .pp-option-label {
-    font-weight: 600;
-}
-
-.pp-teaser-type-option:has(input[type="radio"]:checked) {
-    border-color: #2271b1;
-    background: #f0f6fc;
-    box-shadow: 0 0 0 1px #2271b1;
 }
 
 .pp-option-label {
@@ -616,11 +594,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-radio-group label:hover {
     border-color: #2271b1;
     background: #f9f9f9;
-}
-
-.pp-radio-group input[type="radio"] {
-    margin: 2px 8px 0 0;
-    flex-shrink: 0;
 }
 
 .pp-radio-group label strong {
