@@ -216,9 +216,6 @@ class NavMenus
             $post_parent = self::flt_menu_item_parent($meta_value, $object_id, $menu);
 
             if ($post_parent && ($post_parent != $meta_value)) {
-                // Route through update_post_meta() (instead of a direct $wpdb write) so WordPress's
-                // normal meta cache invalidation runs. The re-entrancy guard prevents this call from
-                // looping back into this same update_post_metadata filter.
                 $in_progress = true;
                 update_post_meta($object_id, $meta_key, $post_parent);
                 $in_progress = false;
