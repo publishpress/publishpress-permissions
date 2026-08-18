@@ -415,10 +415,6 @@ class PermissionsHooksAdmin
         // If there's no cache, we don't need to flush anyway.
 
         if ( !empty($wp_object_cache) && is_object( $wp_object_cache ) ) {
-            // A plugin settings save only affects permission-filtered post/term data, so on
-            // backends that support it, flush just those groups instead of the whole shared
-            // object cache (avoids evicting unrelated cached data on Redis/Memcached, especially
-            // in multisite where the cache is shared across sites).
             if ( function_exists( 'wp_cache_supports' ) && wp_cache_supports( 'flush_group' ) ) {
                 foreach ( ['posts', 'terms', 'post_meta', 'term_meta'] as $group ) {
                     wp_cache_flush_group( $group );

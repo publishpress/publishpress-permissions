@@ -15,9 +15,6 @@ class PostsListingNonAdministrator
     public function act_flush_page_cache()
     {
         if (is_post_type_hierarchical(PWP::findPostType())) {
-            // Only the 'posts' group's cached hierarchy data (e.g. all_page_ids) is stale here,
-            // so flush just that group on backends that support it rather than the whole shared
-            // object cache.
             if (function_exists('wp_cache_supports') && wp_cache_supports('flush_group')) {
                 wp_cache_flush_group('posts');
             } else {
