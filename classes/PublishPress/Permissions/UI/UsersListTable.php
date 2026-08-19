@@ -162,7 +162,7 @@ class UsersListTable extends \WP_List_Table
 
                 $actions = ['edit-permissions' => '<a href="' . $edit_permissions_url . '">' . esc_html__('Permissions', 'press-permit-core') . '</a>'];
 
-                if (current_user_can('edit_users')) {
+                if (current_user_can('edit_user', $item->ID)) {
                     $actions['edit'] = '<a href="' . esc_url($edit_user_url) . '">' . esc_html__('Edit User', 'press-permit-core') . '</a>';
                 }
 
