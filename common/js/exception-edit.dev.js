@@ -563,7 +563,10 @@ jQuery(document).ready(function ($) {
     }
 
     var presspermitExceptionsSearchTimer;
-    $('.pp-quick-search').keypress(function (e) {
+    // Delegated on the persistent container (not the .pp-quick-search inputs themselves), since pagination
+    // in item-metabox.js replaces a metabox's inner markup via AJAX, which would otherwise leave the newly
+    // inserted search input without its keypress handler.
+    $('#menu-settings-column').on('keypress', '.pp-quick-search', function (e) {
         var t = $(this);
 
         if (13 == e.which) {
@@ -576,7 +579,7 @@ jQuery(document).ready(function ($) {
         presspermitExceptionsSearchTimer = setTimeout(function () {
             presspermitUpdateQuickSearchResults(t);
         }, 400);
-    }).attr('autocomplete', 'off');
+    });
 
     var presspermitUpdateQuickSearchResults = function (input) {
         var panel, params,
