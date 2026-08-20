@@ -563,7 +563,7 @@ jQuery(document).ready(function ($) {
     }
 
     var presspermitExceptionsSearchTimer;
-    $('.pp-quick-search').keypress(function (e) {
+    $('#menu-settings-column').on('keypress', '.pp-quick-search', function (e) {
         var t = $(this);
 
         if (13 == e.which) {
@@ -576,7 +576,7 @@ jQuery(document).ready(function ($) {
         presspermitExceptionsSearchTimer = setTimeout(function () {
             presspermitUpdateQuickSearchResults(t);
         }, 400);
-    }).attr('autocomplete', 'off');
+    });
 
     var presspermitUpdateQuickSearchResults = function (input) {
         var panel, params,
