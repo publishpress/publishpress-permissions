@@ -17,22 +17,47 @@ jQuery(document).ready(function($) {
             return; // Exit if no active container
         }
         
-        // Get the preview element within the active container
-        var $preview = $activeContainer.find('.pp-teaser-notice-preview');
+        var postType = String($activeContainer.data('post-type') || '');
+        var $sitePreview = $('.pp-teaser-site-preview').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        }).first();
+
+        // Update both the full preview and the focused style preview.
+        var $preview = $activeContainer.find('.pp-teaser-notice-preview')
+            .add($sitePreview.find('.pp-teaser-notice-preview'));
         
         if (!$preview.length) {
             return; // Exit if preview element doesn't exist
         }
         
-        // Get values from inputs within the active container
-        var bgColor = $activeContainer.find('[name*="teaser_notice_bg_color"]').val() || '#f0f6fc';
-        var textColor = $activeContainer.find('[name*="teaser_notice_text_color"]').val() || '#1d2327';
-        var borderColor = $activeContainer.find('[name*="teaser_notice_border_color"]').val() || '#0073aa';
-        var borderWidth = $activeContainer.find('[name*="teaser_notice_border_width"]').val() || '4';
-        var borderPosition = $activeContainer.find('[name*="teaser_notice_border_position"]').val() || 'left';
-        var padding = $activeContainer.find('[name*="teaser_notice_padding"]').val() || '15';
-        var borderRadius = $activeContainer.find('[name*="teaser_notice_border_radius"]').val() || '0';
-        var fontSize = $activeContainer.find('[name*="teaser_notice_font_size"]').val() || '14';
+        var styleMode = $activeContainer.find('.pp-teaser-notice-style-select').val() || 'default';
+        var useCustomStyle = styleMode === 'custom';
+
+        // Default styles match the front-end output in PostsTeaser::wrapTeaserNotice().
+        var bgColor = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_bg_color"]').val() || '#f0f6fc')
+            : '#f0f6fc';
+        var textColor = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_text_color"]').val() || '#1d2327')
+            : '#1d2327';
+        var borderColor = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_border_color"]').val() || '#0073aa')
+            : '#0073aa';
+        var borderWidth = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_border_width"]').val() || '4')
+            : '4';
+        var borderPosition = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_border_position"]').val() || 'left')
+            : 'left';
+        var padding = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_padding"]').val() || '15')
+            : '15';
+        var borderRadius = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_border_radius"]').val() || '0')
+            : '0';
+        var fontSize = useCustomStyle
+            ? ($activeContainer.find('[name*="teaser_notice_font_size"]').val() || '14')
+            : '14';
         
         // Apply styles to preview with smooth transition
         $preview.css({
@@ -84,7 +109,7 @@ jQuery(document).ready(function($) {
     }, 200);
 
     // Update preview when any style input changes - using event delegation
-    $(document).on('input change', '.pp-style-input', function() {
+    $(document).on('input change', '.pp-style-input, .pp-teaser-notice-style-select', function() {
         updateTeaserNoticePreview();
     });
 
@@ -94,7 +119,7 @@ jQuery(document).ready(function($) {
     });
 
     // Update preview when post type is changed
-    $(document).on('change', '#pp_current_post_type', function() {
+    $(document).on('change', '.pp-current-post-type', function() {
         setTimeout(updateTeaserNoticePreview, 100);
     });
 

@@ -549,15 +549,10 @@ class PostsTeaser
             // Get login notice message for excerpt teaser
             $login_notice = presspermit()->getTypeOption('excerpt_login_notice', $post_type);
             if (empty($login_notice)) {
-                $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
             }
             
-            // Build notice HTML for non-logged-in users
-            $notice_html = '';
-            global $current_user;
-            if ($current_user->ID == 0) {
-                $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-            }
+            $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
             
             // Wrap excerpt in paragraph block markup to prevent theme layout issues
             // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
@@ -594,15 +589,10 @@ class PostsTeaser
                         // Get login notice message
                         $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
                         if (empty($login_notice)) {
-                            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                            $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
                         }
                         
-                        // Build notice HTML for non-logged-in users
-                        $notice_html = '';
-                        global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
-                        if ($current_user->ID == 0) {
-                            $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-                        }
+                        $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
                         
                         // Wrap excerpt in paragraph block markup to prevent theme layout issues
                         if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
@@ -620,15 +610,10 @@ class PostsTeaser
                     // Get login notice message
                     $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
                     if (empty($login_notice)) {
-                        $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                        $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
                     }
                     
-                    // Build notice HTML for non-logged-in users
-                    $notice_html = '';
-                    global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
-                    if ($current_user->ID == 0) {
-                        $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-                    }
+                    $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
                     
                     // Wrap excerpt in paragraph block markup to prevent theme layout issues
                     if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
@@ -673,15 +658,10 @@ class PostsTeaser
                 // Get login notice message for x_chars teaser
                 $login_notice = presspermit()->getTypeOption('x_chars_login_notice', $post_type);
                 if (empty($login_notice)) {
-                    $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                    $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
                 }
                 
-                // Build notice HTML for non-logged-in users
-                $notice_html = '';
-                global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
-                if ($current_user->ID == 0) {
-                    $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-                }
+                $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
                 
                 // Wrap in proper markup to prevent layout issues
                 if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {

@@ -1,6 +1,15 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.9.0] - 28 July, 2026
+
+- Added: Live preview of Teaser settings, including the active theme's Page Not Found design in a scrollable site preview. #2333
+- Changed: Use one shared Teaser configuration and message for logged-in and logged-out blocked users.
+- Changed: Placed the Teaser Preview directly below the per-post-type Teaser Settings.
+- Changed: Moved Teaser Application, Navigation Menus, Private Posts, and Featured Image controls to the Options tab.
+- Changed: Combined the per-post-type Teaser options and RSS controls into one settings area.
+- Fixed: Corrected Teaser radio button alignment with the WordPress 7.1 admin styles.
+
 [4.8.2] - 27 May, 2026
 
 - Added: Support for displaying all Permissions inherited from Permission Groups for individual users. #2323
