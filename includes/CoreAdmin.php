@@ -44,7 +44,7 @@ class CoreAdmin
         add_filter(
             "presspermit_unavailable_modules",
             function ($modules) {
-                // Allow Teaser module in Free. Keep other Pro modules unavailable.
+                // Keep the bundled Free modules available. Hide Pro-only modules.
                 $pro_only = [
                     'presspermit-circles',
                     'presspermit-compatibility',
