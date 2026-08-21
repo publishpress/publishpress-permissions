@@ -28,7 +28,9 @@ class TeaserHooks
 
         add_filter('login_redirect', [$this, 'fltEnforceTeaserLoginRedirect'], PHP_INT_MAX - 1, 3);
 
+        add_action('template_redirect', [$this, 'actTheme404Preview'], 0);
         add_action('template_redirect', [$this, 'actMaybeRedirect'], 5);
+        add_filter('show_admin_bar', [$this, 'fltTheme404PreviewAdminBar']);
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
 
@@ -38,6 +40,39 @@ class TeaserHooks
 
         add_filter('get_the_excerpt', [$this, 'fltPostExcerpt'], 50, 2);
         add_action('presspermit_force_term_teaser', [$this, 'actForceTermTeaser']);
+    }
+
+    private function isTheme404PreviewRequest()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
+        return isset($_GET['pp_permissions_teaser_preview'])
+            // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
+            && '404' === sanitize_key(wp_unslash($_GET['pp_permissions_teaser_preview']));
+    }
+
+    function actTheme404Preview()
+    {
+        if (!$this->isTheme404PreviewRequest() || is_admin()) {
+            return;
+        }
+
+        global $wp_query;
+
+        if (!$wp_query) {
+            return;
+        }
+
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+
+        // Keep WordPress from guessing and redirecting this intentional 404 URL.
+        remove_action('template_redirect', 'redirect_canonical');
+    }
+
+    function fltTheme404PreviewAdminBar($show)
+    {
+        return $this->isTheme404PreviewRequest() ? false : $show;
     }
 
     function fltDefaultOptions($defaults)
