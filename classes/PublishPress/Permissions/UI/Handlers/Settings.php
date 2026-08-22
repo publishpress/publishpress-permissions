@@ -200,6 +200,8 @@ class Settings
             );
         }
 
+        unset($deactivated['presspermit-collaboration']);
+
         if ($_deactivated !== $deactivated) {
             foreach (array_diff_key($deactivated, $_deactivated) as $module_name => $module) {
                 do_action($module_name . '_deactivate');

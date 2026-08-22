@@ -17,6 +17,7 @@ class DashboardFilters
         do_action('_presspermit_admin_ui');
 
         // ============== UI-related filters ================
+        add_action('admin_init', [$this, 'actActivationRedirect']);
         add_action('admin_menu', [$this, 'actBuildMenu'], 21);
 
         add_action('show_user_profile', [$this, 'actUserUi'], 2);
@@ -154,6 +155,36 @@ class DashboardFilters
                 \PublishPress\Permissions\UI\AgentPermissionsUI::exceptionAssignmentScripts();
             }
         }
+    }
+
+    public function actActivationRedirect()
+    {
+        global $pagenow;
+
+        if (!get_option('presspermit_activation')) {
+            return;
+        }
+
+        delete_option('presspermit_activation');
+
+        if (!current_user_can('pp_manage_settings') || is_network_admin()) {
+            return;
+        }
+
+        if (wp_doing_ajax() || wp_doing_cron() || wp_is_json_request()) {
+            return;
+        }
+
+        if (!empty($_REQUEST['activate-multi']) || !empty($_REQUEST['action']) && ('error_scrape' === sanitize_key($_REQUEST['action']))) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+            return;
+        }
+
+        if ('admin.php' === $pagenow && 'presspermit-settings' === PWP::REQUEST_key('page')) {
+            return;
+        }
+
+        wp_safe_redirect(admin_url('admin.php?page=presspermit-settings'));
+        exit;
     }
 
     public function actReinstateSoloSubmenus()

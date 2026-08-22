@@ -120,10 +120,15 @@ class SettingsTabModules
                         if (!empty($all_modules)): ?>
                             <div class="pp-integrations-container">
                                 <div class="pp-integrations-grid">
-                                    <?php foreach ($all_modules as $module):
-                                        $slug = $module['slug'];
-                                        $is_active = $module['is_active'];
-                                        $plugin_slug = $module['plugin_slug'];
+                                     <?php foreach ($all_modules as $module):
+                                         $slug = $module['slug'];
+
+                                         if ('collaboration' === $slug) {
+                                             continue;
+                                         }
+
+                                         $is_active = $module['is_active'];
+                                         $plugin_slug = $module['plugin_slug'];
 
                                         // Get title and info
                                         if ($is_active) {

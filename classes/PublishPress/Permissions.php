@@ -242,6 +242,7 @@ class Permissions
         $this->default_options = [
             'enabled_taxonomies' => ['category' => true, 'post_tag' => true],
             'enabled_post_types' => array_fill_keys(['post', 'page'], true),
+            'display_group_exceptions' => 0,
             'define_media_post_caps' => 0,
             'define_create_posts_cap' => 0,
             'strip_private_caption' => 1,
@@ -383,6 +384,7 @@ class Permissions
     public function loadModules()
     {
         $inactive_modules = (array) $this->getOption('deactivated_modules');
+        unset($inactive_modules['presspermit-collaboration']);
 
         $dir = PRESSPERMIT_ABSPATH . '/modules/';
 
@@ -428,6 +430,7 @@ class Permissions
     public function getDeactivatedModules()
     {
         $modules = (array) $this->getOption('deactivated_modules');
+        unset($modules['presspermit-collaboration']);
         return array_intersect_key($modules, array_fill_keys($this->getAvailableModules(), true));
     }
 

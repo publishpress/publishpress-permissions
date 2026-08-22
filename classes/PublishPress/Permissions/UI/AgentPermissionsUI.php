@@ -91,6 +91,8 @@ class AgentPermissionsUI
             return;
         }
 
+        $type_objects = self::filterExceptionTypeObjects($type_objects);
+
         echo "<option class='pp-opt-none' value=''>" . esc_html__('select...', 'press-permit-core') . '</option>';
 
         foreach ($type_objects as $_type => $type_obj) {
@@ -114,6 +116,15 @@ class AgentPermissionsUI
                 echo "<option value='-1'>" . esc_html__('n/a', 'press-permit-core') . '</option>';
             }
         }
+    }
+
+    private static function filterExceptionTypeObjects($type_objects)
+    {
+        if (!presspermit()->getOption('display_group_exceptions')) {
+            unset($type_objects['pp_group'], $type_objects['pp_net_group']);
+        }
+
+        return $type_objects;
     }
 
     private static function selectExceptionsUi($type_objects, $taxonomy_objects, $args = [])
@@ -298,6 +309,8 @@ class AgentPermissionsUI
 
             private static function itemSelectUI($type_objects)
             {
+                $type_objects = self::filterExceptionTypeObjects($type_objects);
+
                 require_once(PRESSPERMIT_CLASSPATH . '/UI/ItemsMetabox.php');
 
                 add_filter('get_terms_args', [__CLASS__, 'fltTermSelectNoPaging'], 50, 2);
