@@ -480,6 +480,7 @@ class CapabilityFilters
     {
         // ================= EARLY EXIT CHECKS (if the provided reqd_caps do not need filtering or need special case filtering ==================
         global $pagenow;
+		static $run_count;
 
         $pp = presspermit();
 
@@ -490,6 +491,10 @@ class CapabilityFilters
         // ========================================== ARGUMENT TRANSLATION AND STATUS DETECTION =============================================
         $post_id = (isset($args[2])) ? (int) $args[2] : PWP::getPostID();
 
+		if (!isset($run_count)) {
+			$run_count = [];
+		}
+		
         $post_type = PWP::findPostType($post_id); // will be pulled from object
 
         $pp_reqd_caps = array_map('sanitize_key', (array)$args[0]); // already cast to array
@@ -527,7 +532,20 @@ class CapabilityFilters
         // Note: At this point, we have a nonzero post_id...
         do_action('presspermit_has_post_cap_pre', $pp_reqd_caps, 'post', $post_type, $post_id); // cache clearing / refresh forcing can be applied here
 
-        $memcache_disabled = $pp->flags['memcache_disabled'];
+		if (class_exists('Inpsyde\MultilingualPress\MultilingualPress')) {
+			if (!isset($run_count[$required_operation])) {
+				$run_count[$required_operation] = [];
+			}
+			
+			if (!isset($run_count[$required_operation][$post_id])) {
+				$run_count[$required_operation][$post_id] = 1;
+			} else {
+				$run_count[$required_operation][$post_id]++;
+			}
+		}
+		
+		$memcache_disabled = $pp->flags['memcache_disabled'] 
+			|| ((class_exists('Inpsyde\MultilingualPress\MultilingualPress') || defined('PRESSPERMIT_ADMIN_MEMCACHE_IGNORE_INITIAL')) && $run_count[$required_operation][$post_id] < 2 && !defined('PRESSPERMIT_MULTILINGUALPRESS_FORCE_MEMCACHE'));
 
         // skip the memcache under certain circumstances
         if (!$memcache_disabled) {

@@ -53,8 +53,14 @@ class TermQuery
             );
         } else {
             $join = '';
-            
-            if ($stati = get_post_stati(['public' => true, 'private' => true], 'names', 'or')) {
+
+            $stati = get_post_stati(['public' => true, 'private' => true], 'names', 'or');
+
+            if (in_array('attachment', $object_types, true)) {
+                $stati[] = 'inherit';
+            }
+
+            if ($stati) {
                 $stati_csv = implode("', '", array_map('sanitize_key', $stati));
                 $status_clause = "AND post_status IN ('$stati_csv')";
             } else {

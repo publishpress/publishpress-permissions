@@ -178,6 +178,7 @@ class CollabHooks
             'admin_nav_menu_filter_items' => 1,
             'admin_nav_menu_partial_editing' => 0,
             'admin_nav_menu_lock_custom' => 1,
+            'limit_user_edit_enabled' => 0,
             'limit_user_edit_by_level' => 1,
             'add_author_pages' => 0,
             'publish_author_pages' => 0,

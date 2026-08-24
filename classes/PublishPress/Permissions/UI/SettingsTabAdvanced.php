@@ -117,6 +117,7 @@ class SettingsTabAdvanced
             'list_all_constants'                     => esc_html__('Display all available constant definitions'),
             'non_admins_set_edit_exceptions'         => esc_html__('Non-Administrators can set Editing Permissions for their editable posts', 'press-permit-core'),
             'publish_exceptions'                     => esc_html__('Assign Publish Permissions separate from Edit Permissions', 'press-permit-core'),
+            'limit_user_edit_enabled'                => esc_html__('Limit user editing capabilities by role level', 'press-permit-core'),
             'limit_user_edit_by_level'               => 'limit_user_edit_by_level', // not actually displayed; include to regulate display of setting
             'user_permissions'                       => 'user_permissions'          // not actually displayed; include to regulate display of setting
         ];
@@ -141,6 +142,7 @@ class SettingsTabAdvanced
                     'admin_nav_menu_partial_editing',
                     'admin_nav_menu_lock_custom',
                     'add_author_pages',
+                    'limit_user_edit_enabled',
                     'limit_user_edit_by_level',
                     'non_admins_set_edit_exceptions',
                     'publish_exceptions',
@@ -163,7 +165,7 @@ class SettingsTabAdvanced
             $additional = [
                 'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap', 'use_tabbed_metabox'],
                 'permissions'         => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
-                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_by_level', 'user_permissions'],
+                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_enabled', 'limit_user_edit_by_level', 'user_permissions'],
                 'front_end'           => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
                 'role_integration'    => ['pattern_roles_include_generic_rolecaps', 'dynamic_wp_roles'],
                 'nav_menu_management' => ['admin_nav_menu_partial_editing', 'admin_nav_menu_lock_custom'],
@@ -489,30 +491,53 @@ class SettingsTabAdvanced
                     </div>
 
                     <?php if (in_array('limit_user_edit_by_level', $ui->form_options[$tab][$section])):
-                        $option_name = 'limit_user_edit_by_level';
-                        $ui->all_options[] = $option_name;
-                        if (!$option_val = $ui->getOption($option_name)) {
-                            $option_val = '0';
-                        }
+                        $feature_enabled = (bool) $ui->getOption('limit_user_edit_enabled');
                         ?>
                         <div style="margin-top:30px">
+                        <?php
+                        // Master enable/disable checkbox for the user-editing level restriction.
+                        $ui->optionCheckbox('limit_user_edit_enabled', $tab, $section, '', '', ['style' => 'margin-right:6px']);
+                        ?>
+                        </div>
+
+                        <?php
+                        $option_name = 'limit_user_edit_by_level';
+                        $ui->all_options[] = $option_name;
+                        $option_val = $ui->getOption($option_name);
+                        if (!$option_val || '0' === (string) $option_val) {
+                            $option_val = '1';
+                        }
+                        $sub_style = $feature_enabled ? '' : 'display:none';
+                        ?>
+                        <div id="pp_limit_user_edit_by_level_wrap" style="margin-top:20px; <?php echo esc_attr($sub_style); ?>">
                         <?php
                         esc_html_e('User editing capabilities apply for', 'press-permit-core');
                         echo "&nbsp;<select name='" . esc_attr($option_name) . "' id='" . esc_attr($option_name) . "' autocomplete='off'>";
 
-                        $captions = ['0' => esc_html__("any user", 'press-permit-core'), '1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
+                        $captions = ['1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
                         foreach ($captions as $key => $value) {
-                            $selected = ($option_val == $key) ? 'selected="' : '';
-                            echo "\n\t<option value='" . esc_attr($key) . "' " . esc_attr($selected) . ">" . esc_html($captions[$key]) . "</option>";
+                            $selected = ($option_val == $key) ? 'selected="selected"' : '';
+                            echo "\n\t<option value='" . esc_attr($key) . "' " . $selected . ">" . esc_html($captions[$key]) . "</option>";
                         }
                         ?>
-                        </select></div>
+                        </select>
 
                         <div class='pp-subtext'>
                             <?php
                             SettingsAdmin::echoStr('limit_user_edit_by_level');
                             ?>
                         </div>
+                        </div>
+
+                        <script type="text/javascript">
+                        /* <![CDATA[ */
+                        jQuery(document).ready(function($) {
+                            $('#limit_user_edit_enabled').on('change', function() {
+                                $('#pp_limit_user_edit_by_level_wrap').toggle( $(this).is(':checked') );
+                            });
+                        });
+                        /* ]]> */
+                        </script>
                     <?php endif;?>
 
                     <?php

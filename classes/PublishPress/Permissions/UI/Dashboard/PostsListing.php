@@ -16,7 +16,7 @@ class PostsListing
         add_filter("manage_{$post_type}_posts_columns", [$this, 'fltManagePostsColumns'], 50); // need late priority to avoid being wiped by other plugins
         add_action("manage_{$post_type}_posts_custom_column", [$this, 'fltManagePostsCustomColumn'], 10, 2);
 
-        add_filter('wp_count_posts', [$this, 'fltCountPosts']);
+        add_filter('wp_count_posts', [$this, 'fltCountPosts'], 10, 2);
         add_filter('query', [$this, 'fltCountPostsQuery']);
 
         do_action('presspermit_post_listing_ui');
@@ -24,9 +24,49 @@ class PostsListing
         add_filter('postsFields', [$this, 'fltPostsFields']); // perf
     }
 
-    public function fltCountPosts($counts) {
+    public function fltCountPosts($counts, $type = '') {
         // don't count posts that are stored with a status that's no longer registered
         $counts = array_intersect_key((array) $counts, array_fill_keys(get_post_stati(), true));
+
+        // wp_count_posts() caches its raw, site-wide result in the 'counts' cache group, keyed only
+        // by post type (not by user), so that cached value can't be corrected in fltCountPostsQuery
+        // without leaking one user's permission-filtered counts to another user on a persistent
+        // object cache. Instead, recompute status counts here - after the (possibly cached) raw
+        // result - with our own permission-scoped query, so status-link / pagination counts (e.g.
+        // "All (6)") match what the current user can actually see, same as the filtered list itself.
+        if (!presspermit()->isUserUnfiltered() && class_exists('\PublishPress\Permissions\PostFilters')) {
+            global $wpdb;
+
+            $post_type = $type ?: (PWP::REQUEST_key('post_type') ?: 'post');
+
+            $join = \PublishPress\Permissions\PostFilters::instance()->fltPostsJoin('', ['context' => 'count_posts']);
+            $perm_where = \PublishPress\Permissions\PostFilters::instance()->getPostsWhere(
+                ['post_types' => [$post_type], 'required_operation' => 'edit', 'join' => $join, 'context' => 'count_posts']
+            );
+
+            $statuses_csv = implode("','", array_map('sanitize_key', array_keys($counts)));
+
+            if ($statuses_csv) {
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+                $results = $wpdb->get_results(
+                    $wpdb->prepare(
+                        "SELECT post_status, COUNT(*) AS num_posts FROM $wpdb->posts $join"                             // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                        . " WHERE post_type = %s AND post_status IN ('$statuses_csv') $perm_where"                       // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                        . " GROUP BY post_status",
+                        $post_type
+                    )
+                );
+
+                $filtered_counts = array_fill_keys(array_keys($counts), 0);
+                foreach ($results as $row) {
+                    if (isset($filtered_counts[$row->post_status])) {
+                        $filtered_counts[$row->post_status] = (int) $row->num_posts;
+                    }
+                }
+
+                $counts = $filtered_counts;
+            }
+        }
 
         return (object) $counts;
     }
@@ -36,7 +76,7 @@ class PostsListing
 
         if (!empty($typenow)) {
             if (strpos($query, "ELECT COUNT( 1 )")) {
-                $statuses_clause = " AND post_status IN ('" . implode("','", get_post_stati()) . "')"; 
+                $statuses_clause = " AND post_status IN ('" . implode("','", get_post_stati()) . "')";
                 $query = str_replace("WHERE post_type = '$typenow'", "WHERE post_type = '$typenow' $statuses_clause", $query);
             }
         }

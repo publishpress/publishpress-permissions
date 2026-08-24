@@ -415,7 +415,13 @@ class PermissionsHooksAdmin
         // If there's no cache, we don't need to flush anyway.
 
         if ( !empty($wp_object_cache) && is_object( $wp_object_cache ) ) {
-            @wp_cache_flush();
+            if ( function_exists( 'wp_cache_supports' ) && wp_cache_supports( 'flush_group' ) ) {
+                foreach ( ['posts', 'terms', 'post_meta', 'term_meta'] as $group ) {
+                    wp_cache_flush_group( $group );
+                }
+            } else {
+                @wp_cache_flush();
+            }
         }
     }
 

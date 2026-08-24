@@ -178,15 +178,16 @@ class TermEdit
             }
         }
         
-        // Determine for_item_type based on operation types
-        $operation_keys = array_keys($box['args']['operations']);
-        $has_term_ops = !empty(array_intersect($operation_keys, ['manage', 'associate']));
-        $for_item_type = $has_term_ops ? $taxonomy : $post_type;
-
+        // 'for_item_type' here is the base/default key (used by the read/edit/assign tabs, stored
+        // per post type). The 'manage'/'associate' tabs are term-level operations, stored keyed by
+        // the taxonomy (via_item_type) instead - ItemExceptionsUI::drawTabbedExceptionsUI() applies
+        // that per-operation override. Previously this collapsed to $taxonomy for every tab in the
+        // box whenever a term-level operation was also present, which broke lookup of existing
+        // read/edit/assign exceptions (e.g. "View Posts") stored under the post type (#2420).
         $args = [
             'via_item_source' => 'term',
             'for_item_source' => 'post',
-            'for_item_type' => $for_item_type,
+            'for_item_type' => $post_type,
             'via_item_type' => $taxonomy,
             'item_id' => $term->term_taxonomy_id
         ];

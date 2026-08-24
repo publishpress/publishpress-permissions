@@ -15,7 +15,11 @@ class PostsListingNonAdministrator
     public function act_flush_page_cache()
     {
         if (is_post_type_hierarchical(PWP::findPostType())) {
-            wp_cache_flush();
+            if (function_exists('wp_cache_supports') && wp_cache_supports('flush_group')) {
+                wp_cache_flush_group('posts');
+            } else {
+                wp_cache_flush();
+            }
         }
     }
 

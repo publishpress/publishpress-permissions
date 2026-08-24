@@ -21,6 +21,9 @@ class AdminFilters
 
         add_filter('user_has_cap', [$this, 'fltHasEditUserCap'], 99, 3);
 
+        add_filter('pre_user_query', [$this, 'fltHideUneditableUsers']);
+        add_filter('views_users', [$this, 'fltHideUneditableRoleViews']);
+
         add_filter('presspermit_append_attachment_clause', [$this, 'fltAppendAttachmentClause'], 10, 3);
 
         add_filter('presspermit_operation_captions', [$this, 'fltOperationCaptions']);
@@ -257,6 +260,129 @@ class AdminFilters
         return $type_roles;
     }
 
+    // Returns the role slugs the current user cannot edit when the level-restriction feature is
+    // active, or an empty array when the feature does not apply to the current user/context.
+    private function currentUserUneditableRoles()
+    {
+        if (!presspermit()->filteringEnabled()) return [];
+
+        // Bypass only for true content administrators. Note: isUserAdministrator() merely checks the
+        // edit_users cap, which is exactly what lower-level user-managers hold — using it here would
+        // wrongly exempt the very users this feature is meant to restrict.
+        if (presspermit()->isContentAdministrator()) return [];
+
+        // Feature master switch.
+        if (!presspermit()->getOption('limit_user_edit_enabled')) return [];
+
+        $editing_limitation = presspermit()->getOption('limit_user_edit_by_level');
+
+        // Default to '1' (equal-or-lower) when enabled but no explicit mode is saved.
+        if (!$editing_limitation || '0' === (string) $editing_limitation) {
+            $editing_limitation = '1';
+        }
+
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
+        return Users::getUneditableRoles($editing_limitation);
+    }
+
+    // Hide users that the current user cannot edit from WP admin user list and plugin's own user table.
+    function fltHideUneditableUsers($query_obj)
+    {
+        global $pagenow;
+
+        if (!is_admin()) return $query_obj;
+
+        $is_users_page  = ('users.php' === $pagenow);
+        $is_plugin_page = ('admin.php' === $pagenow
+            && in_array(presspermitPluginPage(), ['presspermit-edit-permissions', 'presspermit-users'], true));
+
+        if (!$is_users_page && !$is_plugin_page) return $query_obj;
+
+        $uneditable_roles = $this->currentUserUneditableRoles();
+        if (!$uneditable_roles) return $query_obj;
+
+        global $current_user, $wpdb;
+
+        // Match the role as an ACTIVE entry in the serialized wp_capabilities meta_value, e.g.
+        // "editor";b:1 — quote-anchored so "editor" can't partial-match "senior_editor", and the
+        // ;b:1 suffix so a stale/disabled role (e.g. a demoted user's "editor";b:0) is NOT matched.
+        // This keeps row-hiding consistent with get_userdata()->roles, which lists only active roles.
+        $roles_regex = '"(' . implode('|', array_map('sanitize_key', $uneditable_roles)) . ')";b:1';
+
+        // Always preserve the current user so they never vanish from their own list view.
+        $query_obj->query_where .= $wpdb->prepare(
+            " AND ({$wpdb->users}.ID = %d OR {$wpdb->users}.ID NOT IN ("
+            . "SELECT user_id FROM {$wpdb->usermeta} "
+            . "WHERE meta_key = %s AND meta_value REGEXP %s))",
+            $current_user->ID,
+            $wpdb->get_blog_prefix() . 'capabilities',
+            $roles_regex
+        );
+
+        return $query_obj;
+    }
+
+    // Hide the role filter links (e.g. "Administrator (1) | Editor (1)") above the Users list for
+    // any role the current user cannot edit, and recompute the remaining counts to match the
+    // filtered (visible) set so they stay consistent with fltHideUneditableUsers().
+    function fltHideUneditableRoleViews($views)
+    {
+        if (!$uneditable_roles = $this->currentUserUneditableRoles()) {
+            return $views;
+        }
+
+        // Remove the links for roles that cannot be edited.
+        foreach ($uneditable_roles as $role_name) {
+            unset($views[$role_name]);
+        }
+
+        // The current user is always preserved in their own list (see fltHideUneditableUsers), even
+        // if their own role is itself uneditable (e.g. 'lower_levels' mode). Account for that here.
+        $current_user = wp_get_current_user();
+        $current_user_preserved = (bool) array_intersect((array) $current_user->roles, $uneditable_roles);
+
+        // "All" = users without any uneditable role, plus the preserved current user if applicable.
+        if (isset($views['all'])) {
+            $all_query = new \WP_User_Query(
+                ['role__not_in' => $uneditable_roles, 'fields' => 'ID', 'number' => 1, 'count_total' => true]
+            );
+
+            $all_count = (int) $all_query->get_total();
+
+            if ($current_user_preserved) {
+                $all_count++;
+            }
+
+            $views['all'] = $this->replaceViewCount($views['all'], $all_count);
+        }
+
+        // Recompute each remaining role link: users with that role but none of the uneditable roles.
+        foreach (array_keys($views) as $key) {
+            if (in_array($key, ['all', 'none'], true)) {
+                continue;
+            }
+
+            $role_query = new \WP_User_Query(
+                ['role' => $key, 'role__not_in' => $uneditable_roles, 'fields' => 'ID', 'number' => 1, 'count_total' => true]
+            );
+
+            $views[$key] = $this->replaceViewCount($views[$key], (int) $role_query->get_total());
+        }
+
+        return $views;
+    }
+
+    // Replace the "(N)" inside a WP list-table view link's count span, preserving all other markup.
+    private function replaceViewCount($view_html, $count)
+    {
+        return preg_replace(
+            '/(<span class="count">\()[^<]*?(\)<\/span>)/',
+            '${1}' . esc_html(number_format_i18n($count)) . '$2',
+            $view_html,
+            1
+        );
+    }
+
     // Optionally, prevent anyone from editing or deleting a user whose level is higher than their own
     function fltHasEditUserCap($wp_sitecaps, $orig_reqd_caps, $args)
     {
@@ -272,7 +398,9 @@ class AdminFilters
                 return $wp_sitecaps;
             }
 
-            if ($editing_limitation = presspermit()->getOption('limit_user_edit_by_level')) {
+            if (presspermit()->getOption('limit_user_edit_enabled')
+                && ($editing_limitation = presspermit()->getOption('limit_user_edit_by_level'))
+            ) {
                 require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
                 $wp_sitecaps = Users::hasEditUserCap($wp_sitecaps, $orig_reqd_caps, $args, $editing_limitation);
             }
@@ -372,10 +500,17 @@ class AdminFilters
     // optional filter for WP role edit based on user level
     function fltEditableRoles($roles)
     {
-        if (!presspermit()->filteringEnabled() || !presspermit()->getOption('limit_user_edit_by_level'))
+        if (!presspermit()->filteringEnabled())
+            return $roles;
+
+        if (!presspermit()->getOption('limit_user_edit_enabled'))
+            return $roles;
+
+        $editing_limitation = presspermit()->getOption('limit_user_edit_by_level');
+        if (!$editing_limitation || '0' === (string) $editing_limitation)
             return $roles;
 
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/Users.php');
-        return Users::editableRoles($roles);
+        return Users::editableRoles($roles, $editing_limitation);
     }
 }

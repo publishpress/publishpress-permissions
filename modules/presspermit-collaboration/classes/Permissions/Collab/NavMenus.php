@@ -209,19 +209,16 @@ class NavMenus
 
     public function fltUpdateNavMenuItemParent($bypass, $object_id, $meta_key, $meta_value, $prev_value)
     {
-        if ('_menu_item_menu_item_parent' == $meta_key) {
+        static $in_progress = false;
+
+        if (('_menu_item_menu_item_parent' == $meta_key) && !$in_progress) {
             $menu = self::determine_selected_menu();
             $post_parent = self::flt_menu_item_parent($meta_value, $object_id, $menu);
 
             if ($post_parent && ($post_parent != $meta_value)) {
-                global $wpdb;
-
-                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-                if (!$wpdb->update($wpdb->postmeta, ['meta_value' => $post_parent], ['meta_key' => $meta_key, 'post_id' => $object_id])) {
-
-                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.SlowDBQuery.slow_db_query_meta_value
-                    $wpdb->insert($wpdb->postmeta, ['meta_value' => $post_parent, 'meta_key' => $meta_key, 'post_id' => $object_id]);
-                }
+                $in_progress = true;
+                update_post_meta($object_id, $meta_key, $post_parent);
+                $in_progress = false;
 
                 $bypass = true;
             }

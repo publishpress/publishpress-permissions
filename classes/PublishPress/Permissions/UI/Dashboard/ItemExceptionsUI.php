@@ -380,9 +380,16 @@ class ItemExceptionsUI
                 <div class="pp-operation-tabs">
                     <?php 
                     $first = true;
-                    foreach ($operations as $op_data) : 
+                    foreach ($operations as $op_data) :
                         $op = $op_data['op'];
-                        $tab_id = "pp-tab-{$op}-{$for_item_type}";
+                        // 'manage' and 'associate' are term-level operations (stored keyed by the
+                        // taxonomy), while the other operations are stored keyed by the post type -
+                        // same distinction the legacy (non-tabbed) metabox UI makes. Using a single
+                        // $for_item_type for every tab here caused, e.g., the "View Posts" tab to look
+                        // up exceptions under the wrong key whenever a category (hierarchical taxonomy)
+                        // also exposed an 'associate' tab, always showing "No setting" (#2420).
+                        $item_for_item_type = in_array($op, ['manage', 'associate'], true) ? $via_item_type : $for_item_type;
+                        $tab_id = "pp-tab-{$op}-{$item_for_item_type}";
 
                         // Get icon based on operation
                         $icon = $this->getOperationIcon($op);
@@ -444,25 +451,27 @@ class ItemExceptionsUI
                 <div class="pp-tabbed-content">
                     <?php 
                     $first = true;
-                    foreach ($operations as $op_data) : 
+                    foreach ($operations as $op_data) :
                         $op = $op_data['op'];
-                        $tab_id = "pp-tab-{$op}-{$for_item_type}";
-                        
+                        $item_for_item_type = in_array($op, ['manage', 'associate'], true) ? $via_item_type : $for_item_type;
+                        $tab_id = "pp-tab-{$op}-{$item_for_item_type}";
+
                         // Create a box array for compatibility with existing drawExceptionsUI
                         $box = [
-                            'id' => "pp_{$op}_{$for_item_type}_exceptions_tab",
+                            'id' => "pp_{$op}_{$item_for_item_type}_exceptions_tab",
                             'args' => ['op' => $op]
                         ];
                     ?>
                         <div id="<?php echo esc_attr($tab_id); ?>" class="pp-tab-pane <?php echo $first ? 'active' : ''; ?>">
                             <div class="pp-operation-content">
                                 <?php
-                                // Call the new tabbed operation content method
-                                $this->drawTabbedOperationContent($op, $args);
+                                // Call the new tabbed operation content method, with for_item_type
+                                // corrected per-operation (see note above).
+                                $this->drawTabbedOperationContent($op, array_merge($args, ['for_item_type' => $item_for_item_type]));
                                 ?>
                             </div>
                         </div>
-                    <?php 
+                    <?php
                         $first = false;
                     endforeach; 
                     ?>

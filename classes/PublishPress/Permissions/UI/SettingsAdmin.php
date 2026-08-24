@@ -171,7 +171,7 @@ class SettingsAdmin
         return __('Prevent creation or editing of custom items for non-Administrators who lack edit_theme_options capability.', 'press-permit-core');
 
         case 'limit_user_edit_by_level' :
-        return __('Prevent non-Administrators with user editing permissions from editing a higher-level user or assigning a role higher than their own.', 'press-permit-core');
+        return __('Prevent non-Administrators with user editing permissions from editing or viewing a higher-level user or assigning a role higher than their own.', 'press-permit-core');
 
         // Circles
         case 'access_circles_limit_revisions':
