@@ -1,6 +1,25 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.3] - 24 Aug, 2026
+
+- Added: An option to enable or disable role-level editing restrictions in User Management. #2419
+- Added: Support for inherited statuses when calculating attachment term counts. #2450
+- Added: A changelog synchronization workflow to help keep release information up to date. #2442
+- Changed: Improved plugin configuration handling in the release and deployment workflows. #2435
+- Changed: Improved translation files using the latest translations from Weblate. #2412
+- Fixed: Quick search now continues to work correctly after navigating through paginated item-selection lists. #2460
+- Fixed: Existing category exceptions no longer incorrectly display “No setting” in tabbed permission metaboxes. #2456
+- Fixed: Role-level editing restrictions in User Management now work correctly and can be enabled or disabled as needed. #2419
+- Fixed: Attachment term counts now correctly include inherited statuses. #2450
+- Fixed: Navigation menu parent corrections are now saved correctly. #2452
+- Fixed: Editing restrictions no longer incorrectly block some Posts when MultilingualPress is active. #2444
+- Fixed: Contributors no longer see unfiltered post totals when they should only see filtered results. #2455
+- Fixed: Post-list status and pagination counts now correctly reflect the filtered results. #2454
+- Fixed: Teaser table radio buttons no longer render incorrectly as broken crescent-shaped controls in WordPress 7.0. #2457
+- Fixed: CSP-related issues with the script used to hide empty menus. #2449
+- Fixed: Cache handling now avoids unnecessary full WordPress cache flushes. #2453
+
 [4.8.2] - 27 May, 2026
 
 - Added: Support for displaying all Permissions inherited from Permission Groups for individual users. #2323
