@@ -4,7 +4,7 @@
  * Plugin Name: PublishPress Permissions Free
  * Plugin URI:  https://publishpress.com/presspermit
  * Description: PublishPress Permissions allows you to enable or deny access to posts, pages, categories, tags and more.
- * Version: 4.8.3-alpha.2
+ * Version: 4.8.3
  * Author: PublishPress
  * Author URI:  https://publishpress.com/
  * Text Domain: press-permit-core
