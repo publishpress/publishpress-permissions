@@ -219,15 +219,7 @@ class TermFilters
         $defaults = ['skip_teaser' => false, 'post_type' => '', 'required_operation' => ''];
         $args = wp_parse_args($args, $defaults);
 
-        // REST term endpoints (used heavily by the block editor on post-new.php / post.php)
-        // rely on pagination. The term count filter disables core pagination so it can
-        // post-process full result sets, which can exhaust memory on large taxonomies.
-        $skip_count_filtering = (
-            presspermit()->doing_rest
-            && ('WP_REST_Terms_Controller' == REST::instance()->endpoint_class)
-        ) || in_array($pagenow, ['post.php', 'post-new.php', 'press-this.php'], true);
-
-        if (!$skip_count_filtering && !$this->disable_next_count_filtering) {
+        if (!$this->disable_next_count_filtering) {
             if (('all' == $args['fields']) || $args['hide_empty'] || $args['pad_counts']) {
                 if (apply_filters('presspermit_apply_term_count_filters', true, $args, $taxonomies) 
                 && (empty($pagenow) || ('edit-tags.php' != $pagenow) || defined('PRESSPERMIT_LEGACY_ADMIN_TERM_COUNT_FILTER'))
@@ -279,14 +271,9 @@ class TermFilters
 
         $user = presspermit()->getUser();
 
-        $skip_count_filtering = (
-            presspermit()->doing_rest
-            && ('WP_REST_Terms_Controller' == REST::instance()->endpoint_class)
-        ) || in_array($pagenow, ['post.php', 'post-new.php', 'press-this.php'], true);
-
         if ($this->disable_next_count_filtering) {
             $this->disable_next_count_filtering = false;
-        } elseif (!$skip_count_filtering) {
+        } else {
             if (('all' == $args['fields']) || $args['hide_empty'] || $args['pad_counts']) {
                 // adds get_terms filter to adjust post counts based on current user's access and pad_counts setting
                 if (apply_filters('presspermit_apply_term_count_filters', true, $args, $taxonomies)) {
