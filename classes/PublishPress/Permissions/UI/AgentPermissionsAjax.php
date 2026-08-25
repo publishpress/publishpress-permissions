@@ -366,6 +366,8 @@ class AgentPermissionsAjax
             return $ass_ids;
         }
 
+        $pp_admin = presspermit()->admin();
+
         global $wpdb;
         $add_ids_csv = implode("','", array_map('intval', $ass_ids));
 

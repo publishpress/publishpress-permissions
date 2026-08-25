@@ -1610,8 +1610,7 @@ class AgentPermissionsUI
                                 }
 
                                 if (defined('WP_DEBUG') || defined('PRESSPERMIT_DEBUG')) {
-
-                                    $fix_child_url = add_query_arg('pp_fix_child_exceptions', '1', esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $fix_child_url = remove_query_arg(['pp_fix_child_exceptions', '_wpnonce'], esc_url_raw($_SERVER['REQUEST_URI']));
 
                                     if (PWP::empty_REQUEST('show_propagated')) {
                                         echo '&nbsp;&nbsp;&bull;';
@@ -1623,9 +1622,12 @@ class AgentPermissionsUI
                                         '<span data-toggle="tooltip" data-placement="top">%1$s<span class="tooltip-text"><span style="white-space: normal;">%2$s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;padding-top:2px"></i></span>',
                                         sprintf(
                                             esc_html__(' %1$sFix Sub-%2$s Permissions%3$s', 'press-permit-core'),
-                                        "&nbsp;<a href='" . esc_url($fix_child_url) . "' class='btn btn-link' style='padding-right:4px'>",
+	                                        '<form action="' . esc_url($fix_child_url) . '" method="post" style="display:inline">'
+	                                            . wp_nonce_field('pp-fix-child-exceptions', '_wpnonce', true, false)
+	                                            . '<input type="hidden" name="pp_fix_child_exceptions" value="1" />'
+	                                            . '<button type="submit" class="btn btn-link" style="padding-right:4px;background:none;border:0">',
                                             esc_html($via_type_obj->labels->singular_name),
-                                            '</a>'
+                                            '</button></form>'
                                         ),
                                         esc_html($fix_sub_tooltip)
                                     );
