@@ -612,6 +612,8 @@ class PostsTeaser
                         }
                     } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                         $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
+                    } else {
+                        $post->post_content = self::getReadMoreFallbackContent($post_type);
                     }
                 }
             } else {
@@ -638,6 +640,8 @@ class PostsTeaser
                     }
                 } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                     $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
+                } else {
+                    $post->post_content = self::getReadMoreFallbackContent($post_type);
                 }
             }
 
@@ -794,6 +798,23 @@ class PostsTeaser
 
         if (presspermit()->getTypeOption('teaser_hide_thumbnail', $post->post_type))
             add_filter('get_post_metadata', [__CLASS__, 'fltHidePostThumbnail'], 10, 3);
+    }
+
+    /**
+     * Get safe fallback content when a Read More teaser has no usable teaser source.
+     *
+     * @param string $post_type Post type slug.
+     * @return string Wrapped fallback notice.
+     */
+    private static function getReadMoreFallbackContent($post_type)
+    {
+        $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
+
+        if (empty($login_notice)) {
+            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+        }
+
+        return self::wrapTeaserNotice(esc_html($login_notice), $post_type);
     }
 
     public static function fltHidePostThumbnail($thumb_id, $object_id, $meta_key)
