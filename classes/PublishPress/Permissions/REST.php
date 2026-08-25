@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+require_once(PRESSPERMIT_CLASSPATH . '/RESTHelper.php');
+
 class REST
 {
     var $route = '';
@@ -126,6 +128,8 @@ class REST
                     continue;
                 }
 
+                $this->is_view_method = in_array($method, [\WP_REST_Server::READABLE, 'GET']);
+
                 if (is_object($handler['callback'][0])) {
 					$this->endpoint_class = get_class($handler['callback'][0]);
 
@@ -137,12 +141,18 @@ class REST
 				
                 if (!in_array($this->endpoint_class, $post_endpoints, true) && !in_array($this->endpoint_class, $term_endpoints, true)
                 ) {
-                    continue;
+                    if ('WP_REST_Comments_Controller' == $this->endpoint_class) {
+                        if ($this->is_view_method && ($comment_denied = RESTHelper::confirmCommentReadable($request))) {
+                            return $comment_denied;
+                        }
+
+                    } else {
+                        continue;
+                    }
                 }
 				
                 $this->route = $route;
 
-                $this->is_view_method = in_array($method, [\WP_REST_Server::READABLE, 'GET']);
                 $this->params = $request->get_params();
                 
                 $headers = $request->get_headers();
