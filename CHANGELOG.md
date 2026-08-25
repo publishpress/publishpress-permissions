@@ -1,6 +1,10 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.4-alpha.1] - 24 Aug, 2026
+
+- Fixed: Nested Assign-Term restrictions now preserve their hierarchy in post editor term checklists. #2421
+
 [4.8.3] - 24 Aug, 2026
 
 - Added: An option to enable or disable role-level editing restrictions in User Management. #2419

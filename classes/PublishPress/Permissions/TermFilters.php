@@ -16,7 +16,7 @@ class TermFilters
     private $parent_remap_enabled = true;
     private $count_filters_obj;
     private $disable_next_count_filtering = false;
-    private $hierarchy_normalize_taxonomies = [];
+    private $hierarchy_remap_taxonomies = [];
 
     public function __construct()
     {
@@ -24,7 +24,7 @@ class TermFilters
         add_filter('get_terms_args', [$this, 'fltGetTermsRestoreArgs'], 51, 2);
 
         add_filter('terms_clauses', [$this, 'fltTermsClauses'], 50, 3);
-        add_filter('get_terms', [$this, 'fltNormalizeTermHierarchy'], 20, 3);
+        add_filter('get_terms', [$this, 'fltRemapTermHierarchy'], 20, 3);
 
         if (!presspermit()->isUserUnfiltered())
             add_filter('get_the_terms', [$this, 'fltGetTheTerms'], 10, 3);
@@ -314,6 +314,7 @@ class TermFilters
         // NOTE: If hide_empty is true, additional filtering will be applied to the results based on a full posts query.  
         // Posts may have direct restrictions which make them inaccessable regardless of term restrictions.
         $all_excluded_ttids = [];
+        $filtered_taxonomies = [];
 
         $enabled_types = presspermit()->getEnabledPostTypes();
         $required_operation = $args['required_operation'];
@@ -321,15 +322,6 @@ class TermFilters
         foreach ($taxonomies as $taxonomy) {
             $excluded_ttids = $included_ttids = [];
             $any_non_inclusions = false;
-
-            // A restricted (assign/manage) term set can omit a returned term's ancestor(s), which
-            // leaves Walker_Category_Checklist (used by wp_terms_checklist() in the post editor) unable
-            // to place that term correctly: it falls back to treating an arbitrary term as the tree
-            // root instead of the actually-restricted one. Flag the taxonomy so the get_terms filter
-            // below can mark any such orphaned term as a root once the final term set is known.
-            if (in_array($required_operation, ['assign', 'manage'], true) && is_taxonomy_hierarchical($taxonomy)) {
-                $this->hierarchy_normalize_taxonomies[$taxonomy] = true;
-            }
 
             if (!in_array($required_operation, ['manage', 'associate'], true)) {
                 $universal = [];
@@ -457,9 +449,12 @@ class TermFilters
                 if ($exc) {
                     // but don't exclude a term which is explicitly included for one or more post types
                     if (count($exception_types) > 1) {
-                        $all_excluded_ttids = array_merge($all_excluded_ttids, array_diff($exc, $included_ttids));
-                    } else {
+                        $exc = array_diff($exc, $included_ttids);
+                    }
+
+                    if ($exc) {
                         $all_excluded_ttids = array_merge($all_excluded_ttids, $exc);
+                        $filtered_taxonomies[$taxonomy] = true;
                     }
                 }
             }
@@ -478,6 +473,8 @@ class TermFilters
                     $clauses['where'] .= " AND ( tt.taxonomy != '$taxonomy' "
                         . "OR tt.term_taxonomy_id IN ('" . implode("','", array_unique($included_ttids)) . "') )";
                 }
+
+                $filtered_taxonomies[$taxonomy] = true;
             }
         }
 
@@ -490,47 +487,50 @@ class TermFilters
             $clauses['where'] .= " AND tt.term_taxonomy_id NOT IN ('" . implode("','", $all_excluded_ttids) . "')";
         }
 
+        if (('all' == ($args['get'] ?? '')) && empty($args['parent'])
+        && in_array($required_operation, ['assign', 'manage'], true)
+        ) {
+            foreach (array_keys($filtered_taxonomies) as $taxonomy) {
+                if (is_taxonomy_hierarchical($taxonomy)) {
+                    $this->hierarchy_remap_taxonomies[$taxonomy] = true;
+                }
+            }
+        }
+
         return $clauses;
     }
 
     /**
-     * Fix hierarchy for a restricted (assign/manage) term set: a term whose parent was filtered
-     * out of the returned set (because the user isn't permitted to see that ancestor) still carries
-     * the original, absent parent id. WP's Walker_Category_Checklist then has no true top-level
-     * element to build the tree from and falls back to treating an arbitrary term as root, which
-     * scrambles the checklist (see #2421). Re-root any such orphaned term to 0 so the walker treats
-     * it as the subtree root it actually is.
+     * Restore hierarchy for a restricted wp_terms_checklist() result.
      */
-    public function fltNormalizeTermHierarchy($terms, $taxonomies, $args)
+    public function fltRemapTermHierarchy($terms, $taxonomies, $args)
     {
-        // Consume (and clear) the flag set for this get_terms() call, regardless of outcome below,
-        // so it can never bleed into a later, unrelated call.
-        $normalize_taxonomies = $this->hierarchy_normalize_taxonomies;
-        $this->hierarchy_normalize_taxonomies = [];
+        $remap_taxonomies = $this->hierarchy_remap_taxonomies;
+        $this->hierarchy_remap_taxonomies = [];
+        $taxonomies = (array) $taxonomies;
 
-        if (empty($normalize_taxonomies) || empty($terms) || !is_array($terms)) {
+        if (empty($remap_taxonomies) || empty($terms) || !is_array($terms) || (1 != count($taxonomies))) {
             return $terms;
         }
 
-        if (!is_object(reset($terms))) {
+        $taxonomy = reset($taxonomies);
+        if (empty($remap_taxonomies[$taxonomy]) || !is_object(reset($terms))) {
             return $terms;
         }
 
-        $present_ids = [];
-        foreach ($terms as $term) {
-            if (isset($term->term_id)) {
-                $present_ids[$term->term_id] = true;
-            }
-        }
+        require_once(PRESSPERMIT_CLASSPATH_COMMON . '/Ancestry.php');
 
-        foreach ($terms as $term) {
-            if (
-                !empty($term->taxonomy) && !empty($normalize_taxonomies[$term->taxonomy])
-                && !empty($term->parent) && empty($present_ids[$term->parent])
-            ) {
-                $term->parent = 0;
-            }
-        }
+        $ancestors = \PressShack\Ancestry::getTermAncestors($taxonomy);
+        $remap_args = [
+            'child_of' => (int) ($args['child_of'] ?? 0),
+            'parent' => (int) ($args['parent'] ?? 0),
+            'exclude' => $args['exclude'] ?? false, // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+            'orderby' => $args['orderby'] ?? 'name',
+            'col_id' => 'term_id',
+            'col_parent' => 'parent',
+        ];
+
+        \PressShack\Ancestry::remapTree($terms, $ancestors, $remap_args);
 
         return $terms;
     }
