@@ -7,6 +7,8 @@ class CommentFilters
     public function __construct() {
         add_filter('comments_clauses', [$this, 'fltCommentsClauses'], 10, 2);
         add_filter('comment_feed_where', [$this, 'fltCommentFeedWhere']);
+        add_filter('comments_array', [$this, 'fltCommentResults'], 99);
+        add_filter('the_comments', [$this, 'fltCommentResults'], 99);
     }
 
     public function fltCommentsClauses($clauses, $qry_obj = false, $args = [])
@@ -86,5 +88,16 @@ class CommentFilters
         );
 
         return preg_replace('/^\s*AND\s+/i', 'WHERE ', $where, 1);
+    }
+
+    public function fltCommentResults($comments)
+    {
+        foreach (array_keys((array) $comments) as $key) {
+            if (!empty($comments[$key]->comment_post_ID) && !current_user_can('read_post', $comments[$key]->comment_post_ID)) {
+                unset($comments[$key]);
+            }
+        }
+
+        return $comments;
     }
 }
