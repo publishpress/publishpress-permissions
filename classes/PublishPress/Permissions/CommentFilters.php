@@ -6,6 +6,7 @@ class CommentFilters
 {
     public function __construct() {
         add_filter('comments_clauses', [$this, 'fltCommentsClauses'], 10, 2);
+        add_filter('comment_feed_where', [$this, 'fltCommentFeedWhere']);
     }
 
     public function fltCommentsClauses($clauses, $qry_obj = false, $args = [])
@@ -66,5 +67,24 @@ class CommentFilters
         }
 
         return $clauses;
+    }
+
+    public function fltCommentFeedWhere($where)
+    {
+        global $wpdb;
+
+        $query_contexts = ['comments'];
+
+        $where = preg_replace("/ post_status\s*=\s*[']?publish[']?/", " {$wpdb->posts}.post_status = 'publish'", $where);
+
+        $where = preg_replace('/^\s*WHERE\s+/i', '', $where);
+
+        $where = apply_filters(
+            'presspermit_posts_where',
+            'AND ' . $where,
+            ['skip_teaser' => true, 'query_contexts' => $query_contexts]
+        );
+
+        return preg_replace('/^\s*AND\s+/i', 'WHERE ', $where, 1);
     }
 }
