@@ -166,9 +166,14 @@ class REST
                     $this->operation = 'read';
                 }
 
-			  // voluntary filtering of get_items (for WYSIWY can edit, etc.)
-                if ($this->is_view_method && ('read' == $this->operation) && !PWP::empty_REQUEST('operation')) {
-                    $this->operation = PWP::REQUEST_key('operation');
+                // Allow authenticated clients to narrow a readable REST request to edit/delete checks,
+                // but never let a public request widen the derived read operation.
+                if ($this->is_view_method && ('read' == $this->operation) && is_user_logged_in() && !PWP::empty_REQUEST('operation')) {
+                    $requested_operation = PWP::REQUEST_key('operation');
+
+                    if (in_array($requested_operation, ['read', 'edit', 'delete'], true)) {
+                        $this->operation = $requested_operation;
+                    }
                 }
 			
                 // NOTE: setting or default may be adapted downstream
@@ -230,9 +235,17 @@ class REST
                     if (!presspermit()->isContentAdministrator()) {
                         // do this here because WP does not trigger a capability check if the post type is public
                         if ($this->post_id && in_array($this->post_type, presspermit()->getEnabledPostTypes(), true)) {
+                            $post_status = get_post_field('post_status', $this->post_id);
+                            $post_status_obj = get_post_status_object($post_status);
+
+                            // For view-method requests on public posts, always enforce PP's read gate even if
+                            // the caller supplied another operation hint.
+                            if ($this->is_view_method && !empty($post_status_obj->public) && !current_user_can('read_post', $this->post_id)) {
+                                return self::rest_denied();
+                            }
+
                             if ('read' == $this->operation) {
-                                $post_status_obj = get_post_status_object(get_post_field('post_status', $this->post_id));
-                                $check_cap = ($post_status_obj->public) ? 'read_post' : '';
+                                $check_cap = (!empty($post_status_obj->public)) ? 'read_post' : '';
 
                             } elseif(in_array($this->operation, ['edit','delete'], true)) {
                                 $check_cap = "{$this->operation}_post";
@@ -241,7 +254,7 @@ class REST
                             }
 
                             if ($check_cap && ! current_user_can($check_cap, $this->post_id) 
-                            && (('edit' != $this->operation) || ('trash' != get_post_field('post_status', $this->post_id)))
+                            && (('edit' != $this->operation) || ('trash' != $post_status))
                             ) { // Avoid conflicts with WP trashing. WP will still prevent editing of trashed posts
                                 return self::rest_denied();
                             }
