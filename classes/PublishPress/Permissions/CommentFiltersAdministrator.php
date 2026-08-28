@@ -6,7 +6,8 @@ class CommentFiltersAdministrator
 {
     public function __construct() {
         add_filter('comments_clauses', [$this, 'fltCommentsClauses']);
-        add_filter('comment_feed_where', [$this, 'fltCommentFeedWhere']);
+        add_filter('comment_feed_join', [$this, 'fltCommentFeedJoin'], 10, 2);
+        add_filter('comment_feed_where', [$this, 'fltCommentFeedWhere'], 10, 2);
     }
 
     public function fltCommentsClauses($clauses)
@@ -45,5 +46,16 @@ class CommentFiltersAdministrator
             " AND {$wpdb->posts}.post_status IN ($status_csv)",
             $where
         );
+    }
+
+    public function fltCommentFeedJoin($join, $query_obj = false)
+    {
+        global $wpdb;
+
+        if (false === strpos($join, $wpdb->posts)) {
+            $join .= " JOIN {$wpdb->posts} ON ( {$wpdb->comments}.comment_post_ID = {$wpdb->posts}.ID )";
+        }
+
+        return $join;
     }
 }

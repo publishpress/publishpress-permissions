@@ -6,7 +6,8 @@ class CommentFilters
 {
     public function __construct() {
         add_filter('comments_clauses', [$this, 'fltCommentsClauses'], 10, 2);
-        add_filter('comment_feed_where', [$this, 'fltCommentFeedWhere']);
+        add_filter('comment_feed_join', [$this, 'fltCommentFeedJoin'], 10, 2);
+        add_filter('comment_feed_where', [$this, 'fltCommentFeedWhere'], 10, 2);
         add_filter('comments_array', [$this, 'fltCommentResults'], 99);
         add_filter('the_comments', [$this, 'fltCommentResults'], 99);
     }
@@ -114,6 +115,17 @@ class CommentFilters
         );
 
         return "WHERE 1=1 $pp_where AND $where";
+    }
+
+    public function fltCommentFeedJoin($join, $query_obj = false)
+    {
+        global $wpdb;
+
+        if (false === strpos($join, $wpdb->posts)) {
+            $join .= " JOIN {$wpdb->posts} ON ( {$wpdb->comments}.comment_post_ID = {$wpdb->posts}.ID )";
+        }
+
+        return $join;
     }
 
     public function fltCommentResults($comments)
