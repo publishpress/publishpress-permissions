@@ -32,6 +32,10 @@ class REST
     {
         add_filter('presspermit_rest_post_cap_requirement', [$this, 'fltRestPostCapRequirement'], 10, 2);
         add_filter('rest_attachment_query', [$this, 'fltRestAttachmentQuery'], 10, 2);
+
+        foreach (get_taxonomies(['show_in_rest' => true], 'names') as $taxonomy) {
+            add_filter("rest_{$taxonomy}_query", [$this, 'fltRestTermQuery'], 10, 2);
+        }
     }
 
     public static function getPostType()
@@ -277,7 +281,7 @@ class REST
                         }
                     }
 
-                } elseif (in_array($this->endpoint_class, $term_endpoints)) { 
+                } elseif ($this->isRestController($handler['callback'][0], $term_endpoints)) { 
                     if (!empty($this->referer) && strpos($this->referer, 'post-new.php') && !empty($this->endpoint_class) && ('WP_REST_Terms_Controller' == $this->endpoint_class)) {
                         $this->operation = 'assign';
                         $this->is_view_method = false;
@@ -289,13 +293,17 @@ class REST
                     
                     $this->is_terms_request = true;
 
-                    if (empty($args['taxonomy'])) break;
+                    if (!empty($args['taxonomy'])) {
+                        $this->taxonomy = $args['taxonomy'];
+                    } elseif (is_object($handler['callback'][0]) && !empty($handler['callback'][0]->taxonomy)) {
+                        $this->taxonomy = $handler['callback'][0]->taxonomy;
+                    }
 
-                    $this->taxonomy = $args['taxonomy'];
+                    if (empty($this->taxonomy)) break;
 
                     if (!presspermit()->isContentAdministrator()) {
-                        if (!empty($args['post'])) {
-                            $post_id = $this->params['post'];
+                        if (!empty($this->params['post'])) {
+                            $post_id = (int) $this->params['post'];
 
                             $check_cap = ('read' == $required_operation) ? 'read_post' : 'edit_post';
 
@@ -304,13 +312,13 @@ class REST
                             }
                         }
 
-                        if (!empty($params['id'])) {
+                        if (!empty($this->params['id'])) {
                             $user_terms = get_terms(
                                 $this->taxonomy, 
                                 ['required_operation' => $required_operation, 'hide_empty' => 0, 'fields' => 'ids']
                             );
 
-                            if (!in_array($params['id'], $user_terms)) {
+                            if (!in_array((int) $this->params['id'], array_map('intval', (array) $user_terms), true)) {
                                 return self::rest_denied();
                             }
                         }
@@ -385,6 +393,22 @@ class REST
             if (!$args['post_parent__in']) {
                 $args['post_parent__in'] = [0];
             }
+        }
+
+        return $args;
+    }
+
+    public function fltRestTermQuery($args, $request)
+    {
+        if (!in_array($request->get_method(), [\WP_REST_Server::READABLE, 'GET'], true) || presspermit()->isContentAdministrator()) {
+            return $args;
+        }
+
+        $post_id = (int) $request->get_param('post');
+
+        if ($post_id && !current_user_can('read_post', $post_id)) {
+            $args['post'] = 0;
+            $args['object_ids'] = [0];
         }
 
         return $args;
