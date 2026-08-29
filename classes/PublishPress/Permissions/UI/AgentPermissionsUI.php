@@ -193,6 +193,10 @@ class AgentPermissionsUI
 
                     <td class="pp-select-items" style="display:none;padding-right:0">
                         <?php self::itemSelectUI(array_merge($type_objects, $taxonomy_objects)); ?>
+                        <p class="pp-checkbox pp-block-all-default" style="display:none">
+                            <input type="checkbox" id="pp_block_all_default" />
+                            <label for="pp_block_all_default"><?php esc_html_e('Block all Pages by default', 'press-permit-core'); ?></label>
+                        </p>
                     </td>
 
                 </tr>

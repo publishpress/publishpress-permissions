@@ -321,10 +321,21 @@ jQuery(document).ready(function ($) {
 
     var pressPermitNoneItemVisibility = function() {
         var mod_type = $('input[name="pp_select_x_mod_type"]:checked').val();
+        var operation = $('input[name="pp_select_x_operation"]:checked').val();
+        var for_type = $('select[name="pp_select_x_for_type"]').val();
+        var noneItem = $('td.pp-select-items input.menu-item-checkbox[value="0"]');
+        var blockAll = $('#pp_block_all_default');
+        var showBlockAll = 'include' == mod_type && 'page' == for_type;
+        var showNone = (('include' == mod_type) && !showBlockAll) || (('exclude' == mod_type) && ('associate' == operation));
+        var hasSelectedPages = showBlockAll && $('td.pp-select-items .posttypediv:visible input.menu-item-checkbox[value!="0"]:checked').length > 0;
 
-        var showNone = 'include' == mod_type || (('exclude' == mod_type) && ('associate' == $('input[name="pp_select_x_operation"]').val()));
+        noneItem.closest('li').toggle(showNone);
+        blockAll.closest('.pp-block-all-default').toggle(showBlockAll);
 
-        $('td.pp-select-items input.menu-item-checkbox[value="0"]').closest('li').toggle(showNone);
+        if (showBlockAll) {
+            blockAll.prop('checked', hasSelectedPages || noneItem.is(':checked')).prop('disabled', hasSelectedPages);
+            noneItem.prop('checked', !hasSelectedPages && blockAll.is(':checked'));
+        }
 
         $('td.pp-select-items .posttypediv').each(function() {
             var hasRealItems = $(this).find('input.menu-item-checkbox[value!="0"]').length > 0;
@@ -334,6 +345,14 @@ jQuery(document).ready(function ($) {
             $(this).show();
         });
     }
+
+    $(document).on('change', 'td.pp-select-items input.menu-item-checkbox, #pp_block_all_default', function() {
+        if ('pp_block_all_default' == this.id) {
+            $('td.pp-select-items .posttypediv:visible input.menu-item-checkbox[value="0"]').prop('checked', this.checked);
+        }
+
+        pressPermitNoneItemVisibility();
+    });
 
     var presspermitReloadStatus = function () {
         var op = $('input[name="pp_select_x_operation"]').val();
