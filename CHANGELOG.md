@@ -1,6 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.8.4] - 1 Sept, 2026
+- Fixed: Resolved a security issue involving insecure direct object references (IDOR) in REST API comment read permissions. #2481
+
 [4.8.3] - 24 Aug, 2026
 
 - Added: An option to enable or disable role-level editing restrictions in User Management. #2419
