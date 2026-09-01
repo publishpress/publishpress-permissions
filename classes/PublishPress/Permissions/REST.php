@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+require_once(PRESSPERMIT_CLASSPATH . '/RESTHelper.php');
+
 class REST
 {
     var $route = '';
@@ -29,6 +31,11 @@ class REST
     private function __construct()
     {
         add_filter('presspermit_rest_post_cap_requirement', [$this, 'fltRestPostCapRequirement'], 10, 2);
+        add_filter('rest_attachment_query', [$this, 'fltRestAttachmentQuery'], 10, 2);
+
+        foreach (get_taxonomies(['show_in_rest' => true], 'names') as $taxonomy) {
+            add_filter("rest_{$taxonomy}_query", [$this, 'fltRestTermQuery'], 10, 2);
+        }
     }
 
     public static function getPostType()
@@ -69,6 +76,15 @@ class REST
         
         $extra_route_endpoints = array_replace($post_endpoints, $term_endpoints);
         $endpoint_post_types = [];
+
+        foreach (presspermit()->getEnabledPostTypes(['show_in_rest' => true], 'object') as $type_obj) {
+            if (!empty($type_obj->rest_controller_class)) {
+                $post_endpoints[] = $type_obj->rest_controller_class;
+                $endpoint_post_types[$type_obj->rest_controller_class] = $type_obj->name;
+            }
+        }
+
+        $endpoint_post_types['WP_REST_Attachments_Controller'] = 'attachment';
 		
         foreach($extra_route_endpoints as $route => $endpoint) {
             if ($route && !is_numeric($route)) {
@@ -104,6 +120,7 @@ class REST
         }
 
         $post_endpoints[]= 'WP_REST_Posts_Controller';
+        $post_endpoints[]= 'WP_REST_Attachments_Controller';
         $post_endpoints[]= 'WP_REST_Autosaves_Controller';
         $term_endpoints[]= 'WP_REST_Terms_Controller';
 		
@@ -126,6 +143,8 @@ class REST
                     continue;
                 }
 
+                $this->is_view_method = in_array($method, [\WP_REST_Server::READABLE, 'GET']);
+
                 if (is_object($handler['callback'][0])) {
 					$this->endpoint_class = get_class($handler['callback'][0]);
 
@@ -135,14 +154,20 @@ class REST
                     continue;
                 }
 				
-                if (!in_array($this->endpoint_class, $post_endpoints, true) && !in_array($this->endpoint_class, $term_endpoints, true)
+                if (!$this->isRestController($handler['callback'][0], $post_endpoints) && !$this->isRestController($handler['callback'][0], $term_endpoints)
                 ) {
-                    continue;
+                    if ('WP_REST_Comments_Controller' == $this->endpoint_class) {
+                        if ($this->is_view_method && ($comment_denied = RESTHelper::confirmCommentReadable($request))) {
+                            return $comment_denied;
+                        }
+
+                    } else {
+                        continue;
+                    }
                 }
 				
                 $this->route = $route;
 
-                $this->is_view_method = in_array($method, [\WP_REST_Server::READABLE, 'GET']);
                 $this->params = $request->get_params();
                 
                 $headers = $request->get_headers();
@@ -156,9 +181,14 @@ class REST
                     $this->operation = 'read';
                 }
 
-			  // voluntary filtering of get_items (for WYSIWY can edit, etc.)
-                if ($this->is_view_method && ('read' == $this->operation) && !PWP::empty_REQUEST('operation')) {
-                    $this->operation = PWP::REQUEST_key('operation');
+                // Allow authenticated clients to narrow a readable REST request to edit/delete checks,
+                // but never let a public request widen the derived read operation.
+                if ($this->is_view_method && ('read' == $this->operation) && is_user_logged_in() && !PWP::empty_REQUEST('operation')) {
+                    $requested_operation = PWP::REQUEST_key('operation');
+
+                    if (in_array($requested_operation, ['read', 'edit', 'delete'], true)) {
+                        $this->operation = $requested_operation;
+                    }
                 }
 			
                 // NOTE: setting or default may be adapted downstream
@@ -170,7 +200,7 @@ class REST
                     }
                 }
 
-                if (in_array($this->endpoint_class, $post_endpoints)) {
+                if ($this->isRestController($handler['callback'][0], $post_endpoints)) {
                     $this->post_type = (!empty($args['post_type'])) ? $args['post_type'] : '';
                     
                     if (!$this->post_type && !empty($endpoint_post_types[$this->endpoint_class])) {
@@ -219,10 +249,23 @@ class REST
 
                     if (!presspermit()->isContentAdministrator()) {
                         // do this here because WP does not trigger a capability check if the post type is public
-                        if ($this->post_id && in_array($this->post_type, presspermit()->getEnabledPostTypes(), true)) {
+                        if ($this->post_id && (('attachment' == $this->post_type) || in_array($this->post_type, presspermit()->getEnabledPostTypes(), true))) {
+                            $post_status = get_post_field('post_status', $this->post_id);
+                            $post_status_obj = get_post_status_object($post_status);
+                            $parent_id = ('attachment' == $this->post_type) ? (int) get_post_field('post_parent', $this->post_id) : 0;
+
+                            // For any view-method request on a resolved item, always enforce PP's read gate
+                            // even if the caller supplied another operation hint or the controller is not the
+                            // default posts controller (e.g. attachments / custom REST controllers).
+                            if ($this->is_view_method && (
+                                !current_user_can('read_post', $this->post_id)
+                                || ($parent_id && !current_user_can('read_post', $parent_id))
+                            )) {
+                                return self::rest_denied();
+                            }
+
                             if ('read' == $this->operation) {
-                                $post_status_obj = get_post_status_object(get_post_field('post_status', $this->post_id));
-                                $check_cap = ($post_status_obj->public) ? 'read_post' : '';
+                                $check_cap = (!empty($post_status_obj->public)) ? 'read_post' : '';
 
                             } elseif(in_array($this->operation, ['edit','delete'], true)) {
                                 $check_cap = "{$this->operation}_post";
@@ -231,14 +274,14 @@ class REST
                             }
 
                             if ($check_cap && ! current_user_can($check_cap, $this->post_id) 
-                            && (('edit' != $this->operation) || ('trash' != get_post_field('post_status', $this->post_id)))
+                            && (('edit' != $this->operation) || ('trash' != $post_status))
                             ) { // Avoid conflicts with WP trashing. WP will still prevent editing of trashed posts
                                 return self::rest_denied();
                             }
                         }
                     }
 
-                } elseif (in_array($this->endpoint_class, $term_endpoints)) { 
+                } elseif ($this->isRestController($handler['callback'][0], $term_endpoints)) { 
                     if (!empty($this->referer) && strpos($this->referer, 'post-new.php') && !empty($this->endpoint_class) && ('WP_REST_Terms_Controller' == $this->endpoint_class)) {
                         $this->operation = 'assign';
                         $this->is_view_method = false;
@@ -250,13 +293,17 @@ class REST
                     
                     $this->is_terms_request = true;
 
-                    if (empty($args['taxonomy'])) break;
+                    if (!empty($args['taxonomy'])) {
+                        $this->taxonomy = $args['taxonomy'];
+                    } elseif (is_object($handler['callback'][0]) && !empty($handler['callback'][0]->taxonomy)) {
+                        $this->taxonomy = $handler['callback'][0]->taxonomy;
+                    }
 
-                    $this->taxonomy = $args['taxonomy'];
+                    if (empty($this->taxonomy)) break;
 
                     if (!presspermit()->isContentAdministrator()) {
-                        if (!empty($args['post'])) {
-                            $post_id = $this->params['post'];
+                        if (!empty($this->params['post'])) {
+                            $post_id = (int) $this->params['post'];
 
                             $check_cap = ('read' == $required_operation) ? 'read_post' : 'edit_post';
 
@@ -265,13 +312,13 @@ class REST
                             }
                         }
 
-                        if (!empty($params['id'])) {
+                        if (!empty($this->params['id'])) {
                             $user_terms = get_terms(
                                 $this->taxonomy, 
                                 ['required_operation' => $required_operation, 'hide_empty' => 0, 'fields' => 'ids']
                             );
 
-                            if (!in_array($params['id'], $user_terms)) {
+                            if (!in_array((int) $this->params['id'], array_map('intval', (array) $user_terms), true)) {
                                 return self::rest_denied();
                             }
                         }
@@ -303,5 +350,82 @@ class REST
     function fltRestPostID($post_id)
     {
         return ($this->post_id) ? $this->post_id : $post_id;
+    }
+
+    public function fltRestAttachmentQuery($args, $request)
+    {
+        if (!in_array($request->get_method(), [\WP_REST_Server::READABLE, 'GET'], true) || presspermit()->isContentAdministrator()) {
+            return $args;
+        }
+
+        if (!class_exists('\PublishPress\Permissions\PostFilters')) {
+            require_once(PRESSPERMIT_CLASSPATH . '/PostFilters.php');
+        }
+
+        global $wpdb;
+
+        $join = PostFilters::instance()->fltPostsJoin('', ['context' => 'rest_attachment_query']);
+        $where = PostFilters::instance()->getPostsWhere(
+            [
+                'post_types' => ['attachment'],
+                'required_operation' => 'read',
+                'force_types' => true,
+                'src_table' => $wpdb->posts,
+                'join' => $join,
+            ]
+        );
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
+        $readable_ids = $wpdb->get_col(
+            "SELECT {$wpdb->posts}.ID FROM {$wpdb->posts} $join WHERE {$wpdb->posts}.post_type = 'attachment' $where" // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        );
+
+        $args['post__in'] = $readable_ids ? array_map('intval', $readable_ids) : [0];
+
+        if (!empty($args['post_parent__in'])) {
+            $args['post_parent__in'] = array_values(
+                array_intersect(
+                    array_map('intval', (array) $args['post_parent__in']),
+                    array_map('intval', wp_list_pluck((array) get_posts(['post_type' => 'attachment', 'post__in' => $args['post__in'], 'posts_per_page' => -1]), 'post_parent'))
+                )
+            );
+
+            if (!$args['post_parent__in']) {
+                $args['post_parent__in'] = [0];
+            }
+        }
+
+        return $args;
+    }
+
+    public function fltRestTermQuery($args, $request)
+    {
+        if (!in_array($request->get_method(), [\WP_REST_Server::READABLE, 'GET'], true) || presspermit()->isContentAdministrator()) {
+            return $args;
+        }
+
+        $post_id = (int) $request->get_param('post');
+
+        if ($post_id && !current_user_can('read_post', $post_id)) {
+            $args['post'] = 0;
+            $args['object_ids'] = [0];
+        }
+
+        return $args;
+    }
+
+    private function isRestController($controller, $allowed_classes)
+    {
+        foreach ((array) $allowed_classes as $allowed_class) {
+            if (is_object($controller) && is_a($controller, $allowed_class)) {
+                return true;
+            }
+
+            if (is_string($controller) && ($controller === $allowed_class || is_subclass_of($controller, $allowed_class))) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

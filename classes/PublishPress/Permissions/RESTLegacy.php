@@ -10,6 +10,8 @@ class RESTLegacy
         if (!is_wp_error($rest_response) && !in_array($request->get_method(), [\WP_REST_Server::READABLE, 'GET'], true))
             return $rest_response;
 
+        require_once(PRESSPERMIT_CLASSPATH . '/RESTHelper.php');
+
         $pp = presspermit();
 
         $path = $request->get_route();
@@ -35,6 +37,11 @@ class RESTLegacy
                                         }
                                     }
                                 }
+                            }
+
+                        } elseif ('WP_REST_Comments_Controller' == get_class($handler['callback'][0])) {
+                            if ($comment_denied = RESTHelper::confirmCommentReadable($request)) {
+                                return $comment_denied;
                             }
                         }
                     }
