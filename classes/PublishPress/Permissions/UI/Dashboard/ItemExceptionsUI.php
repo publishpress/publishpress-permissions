@@ -194,9 +194,9 @@ class ItemExceptionsUI
                                 <?php if ($hierarchical) : ?>
                                     <thead>
                                         <tr>
-                                            <th></th>
-                                            <th><?php printf(esc_html__('This %s', 'press-permit-core'), esc_html($type_obj->labels->singular_name)); ?></th>
-                                            <th><?php
+                                            <th scope="col"><?php esc_html_e('Agent', 'press-permit-core'); ?></th>
+                                            <th scope="col"><?php printf(esc_html__('This %s', 'press-permit-core'), esc_html($type_obj->labels->singular_name)); ?></th>
+                                            <th scope="col"><?php
                                                 if ($caption = apply_filters('presspermit_item_assign_for_children_caption', '', $via_item_type))
                                                     printf(esc_html($caption));
                                                 else
@@ -377,7 +377,7 @@ class ItemExceptionsUI
         <div class="pp-tabbed-metabox">
             <!-- Left Sidebar with Operation Tabs -->
             <div class="pp-tabbed-sidebar">
-                <div class="pp-operation-tabs">
+                <div class="pp-operation-tabs" role="tablist" aria-label="<?php esc_attr_e('Permission operations', 'press-permit-core'); ?>">
                     <?php 
                     $first = true;
                     foreach ($operations as $op_data) :
@@ -424,11 +424,17 @@ class ItemExceptionsUI
                                 $tooltips['revise'] = sprintf(esc_html__('Control who can submit a revision of all post types in this %s.', 'press-permit-core'), $post_type_label);
                             }
                         }
+                        $operation_tab_id = "pp-operation-tab-{$tab_id}";
                         ?>
                         <button type="button" 
                                 class="pp-operation-tab <?php echo $first ? 'active' : ''; ?>" 
-                                data-target="<?php echo esc_attr($tab_id); ?>">
-                            <span class="dashicons <?php echo esc_attr($icon); ?>"></span>
+                                id="<?php echo esc_attr($operation_tab_id); ?>"
+                                data-target="<?php echo esc_attr($tab_id); ?>"
+                                role="tab"
+                                aria-controls="<?php echo esc_attr($tab_id); ?>"
+                                aria-selected="<?php echo $first ? 'true' : 'false'; ?>"
+                                tabindex="<?php echo $first ? '0' : '-1'; ?>">
+                            <span class="dashicons <?php echo esc_attr($icon); ?>" aria-hidden="true"></span>
                             <span class="pp-tab-label">
                             <?php
                             echo isset($tooltips[$op]) ? 
@@ -455,6 +461,7 @@ class ItemExceptionsUI
                         $op = $op_data['op'];
                         $item_for_item_type = in_array($op, ['manage', 'associate'], true) ? $via_item_type : $for_item_type;
                         $tab_id = "pp-tab-{$op}-{$item_for_item_type}";
+                        $operation_tab_id = "pp-operation-tab-{$tab_id}";
 
                         // Create a box array for compatibility with existing drawExceptionsUI
                         $box = [
@@ -462,7 +469,10 @@ class ItemExceptionsUI
                             'args' => ['op' => $op]
                         ];
                     ?>
-                        <div id="<?php echo esc_attr($tab_id); ?>" class="pp-tab-pane <?php echo $first ? 'active' : ''; ?>">
+                        <div id="<?php echo esc_attr($tab_id); ?>" class="pp-tab-pane <?php echo $first ? 'active' : ''; ?>"
+                             role="tabpanel"
+                             aria-labelledby="<?php echo esc_attr($operation_tab_id); ?>"
+                             aria-hidden="<?php echo $first ? 'false' : 'true'; ?>">
                             <div class="pp-operation-content">
                                 <?php
                                 // Call the new tabbed operation content method, with for_item_type
@@ -554,28 +564,53 @@ class ItemExceptionsUI
         $has_custom_groups = !empty($this->data->agent_info['pp_group']);
         $roles_groups_label = $has_custom_groups ? __('Roles & Groups', 'press-permit-core') : __('Roles', 'press-permit-core');
         $search_placeholder = $has_custom_groups ? __('Search roles and groups...', 'press-permit-core') : __('Search roles...', 'press-permit-core');
+        $roles_groups_id = "pp-roles-groups-{$op}-{$for_item_type}";
+        $users_id = "pp-users-{$op}-{$for_item_type}";
+        $roles_groups_tab_id = "pp-agent-tab-roles-{$op}-{$for_item_type}";
+        $users_tab_id = "pp-agent-tab-users-{$op}-{$for_item_type}";
+        $roles_groups_search_id = "pp-agent-search-{$op}-{$for_item_type}";
+        $roles_groups_sort_id = "pp-agent-sort-roles-{$op}-{$for_item_type}";
+        $users_sort_id = "pp-agent-sort-users-{$op}-{$for_item_type}";
 
         ?>
         <!-- Sub-tabs for agent types -->
-        <div class="pp-agent-type-tabs">
-            <button type="button" class="pp-agent-type-tab active" data-agent-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
-                <span class="dashicons dashicons-groups"></span>
+        <div class="pp-agent-type-tabs" role="tablist" aria-label="<?php esc_attr_e('Agent types', 'press-permit-core'); ?>">
+            <button type="button" class="pp-agent-type-tab active"
+                    id="<?php echo esc_attr($roles_groups_tab_id); ?>"
+                    data-agent-target="<?php echo esc_attr($roles_groups_id); ?>"
+                    role="tab"
+                    aria-controls="<?php echo esc_attr($roles_groups_id); ?>"
+                    aria-selected="true"
+                    tabindex="0">
+                <span class="dashicons dashicons-groups" aria-hidden="true"></span>
                 <?php echo esc_html($roles_groups_label); ?>
             </button>
-            <button type="button" class="pp-agent-type-tab" data-agent-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
-                <span class="dashicons dashicons-admin-users"></span>
+            <button type="button" class="pp-agent-type-tab"
+                    id="<?php echo esc_attr($users_tab_id); ?>"
+                    data-agent-target="<?php echo esc_attr($users_id); ?>"
+                    role="tab"
+                    aria-controls="<?php echo esc_attr($users_id); ?>"
+                    aria-selected="false"
+                    tabindex="-1">
+                <span class="dashicons dashicons-admin-users" aria-hidden="true"></span>
                 <?php esc_html_e('Users', 'press-permit-core'); ?>
             </button>
         </div>
 
         <!-- Roles & Groups Content -->
-        <div id="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-agent-type-content active">
+        <div id="<?php echo esc_attr($roles_groups_id); ?>" class="pp-agent-type-content active"
+             role="tabpanel"
+             aria-labelledby="<?php echo esc_attr($roles_groups_tab_id); ?>"
+             aria-hidden="false">
             <!-- Search Box -->
             <div class="pp-search-box">
-                <span class="dashicons dashicons-search"></span>
-                <input type="text" class="pp-search-input" placeholder="<?php echo esc_attr($search_placeholder); ?>" />
-                <button type="button" class="pp-search-clear" style="display: none;">
-                    <span class="dashicons dashicons-no-alt"></span>
+                <span class="dashicons dashicons-search" aria-hidden="true"></span>
+                <label class="screen-reader-text" for="<?php echo esc_attr($roles_groups_search_id); ?>">
+                    <?php printf(esc_html__('Search %s', 'press-permit-core'), esc_html($roles_groups_label)); ?>
+                </label>
+                <input id="<?php echo esc_attr($roles_groups_search_id); ?>" type="text" class="pp-search-input" placeholder="<?php echo esc_attr($search_placeholder); ?>" />
+                <button type="button" class="pp-search-clear" style="display: none;" aria-label="<?php esc_attr_e('Clear search', 'press-permit-core'); ?>">
+                    <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
                 </button>
             </div>
             <!-- Filter Pills and Sort Controls (combined row) -->
@@ -584,8 +619,8 @@ class ItemExceptionsUI
                     <!-- Filter pills will be dynamically inserted here by JavaScript -->
                 </div>
                 <div class="pp-sort-controls">
-                    <label class="pp-sort-label"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
-                    <select class="pp-sort-select" data-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                    <label class="pp-sort-label" for="<?php echo esc_attr($roles_groups_sort_id); ?>"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
+                    <select id="<?php echo esc_attr($roles_groups_sort_id); ?>" class="pp-sort-select" data-target="<?php echo esc_attr($roles_groups_id); ?>">
                         <option value="name-asc"><?php esc_html_e('Name (A-Z)', 'press-permit-core'); ?></option>
                         <option value="name-desc"><?php esc_html_e('Name (Z-A)', 'press-permit-core'); ?></option>
                         <option value="users-desc" class="pp-sort-by-users"><?php esc_html_e('Most Users', 'press-permit-core'); ?></option>
@@ -627,10 +662,16 @@ class ItemExceptionsUI
         </div>
 
         <!-- Users Content -->
-        <div id="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" class="pp-agent-type-content">
+        <div id="<?php echo esc_attr($users_id); ?>" class="pp-agent-type-content"
+             role="tabpanel"
+             aria-labelledby="<?php echo esc_attr($users_tab_id); ?>"
+             aria-hidden="true">
             <!-- Search Box with Select2 -->
             <div class="pp-search-box pp-search-box-select2">
-                <span class="dashicons dashicons-search"></span>
+                <span class="dashicons dashicons-search" aria-hidden="true"></span>
+                <label class="screen-reader-text" for="pp-user-search-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                    <?php esc_html_e('Search and add users', 'press-permit-core'); ?>
+                </label>
                 <select 
                     id="pp-user-search-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" 
                     class="pp-search-input pp-user-search-select2" 
@@ -647,8 +688,8 @@ class ItemExceptionsUI
                     <!-- Filter pills will be dynamically inserted here by JavaScript -->
                 </div>
                 <div class="pp-sort-controls pp-sort-controls-users">
-                    <label class="pp-sort-label"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
-                    <select class="pp-sort-select" data-target="pp-users-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
+                    <label class="pp-sort-label" for="<?php echo esc_attr($users_sort_id); ?>"><?php esc_html_e('Sort by:', 'press-permit-core'); ?></label>
+                    <select id="<?php echo esc_attr($users_sort_id); ?>" class="pp-sort-select" data-target="<?php echo esc_attr($users_id); ?>">
                         <option value="name-asc"><?php esc_html_e('Name (A-Z)', 'press-permit-core'); ?></option>
                         <option value="name-desc"><?php esc_html_e('Name (Z-A)', 'press-permit-core'); ?></option>
                     </select>
@@ -1143,6 +1184,7 @@ class ItemExceptionsUI
                                 <?php endif; ?>
                                 <select name="pp_exceptions[<?php echo esc_attr($for_type); ?>][<?php echo esc_attr($op); ?>][<?php echo esc_attr($agent_type); ?>][<?php echo esc_attr($mode); ?>][<?php echo esc_attr($agent_id); ?>]" 
                                         class="<?php echo esc_attr($mode_select_class); ?>" 
+                                        aria-label="<?php echo esc_attr(sprintf(__('%1$s permission for %2$s', 'press-permit-core'), $mode_label, $_name)); ?>"
                                         <?php echo $mode_disabled ? 'disabled="disabled"' : ''; ?>
                                         autocomplete="off">
                                     <?php 
@@ -1176,8 +1218,8 @@ class ItemExceptionsUI
                         <?php endforeach; ?>
                         
                         <?php if ('user' == $agent_type) : ?>
-                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>">
-                            <span class="dashicons dashicons-trash"></span>
+                        <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>" aria-label="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>">
+                            <span class="dashicons dashicons-trash" aria-hidden="true"></span>
                         </button>
                         <?php endif; ?>
                     </div>
@@ -1218,7 +1260,7 @@ class ItemExceptionsUI
                     <?php if ($hierarchical && $mode_label_item) : ?>
                         <label class="pp-select-label"><?php echo esc_html($mode_label_item); ?></label>
                     <?php endif; ?>
-                    <select name="" class="pp-def" autocomplete="off" disabled>
+                    <select name="" class="pp-def" aria-label="<?php echo esc_attr(sprintf(__('%s permission', 'press-permit-core'), $mode_label_item ?: __('This Section', 'press-permit-core'))); ?>" autocomplete="off" disabled>
                         <?php foreach ($this->render->options['standard'] as $val => $lbl) : ?>
                             <option value="<?php echo esc_attr($val); ?>"
                                     class="<?php echo esc_attr($this->render->opt_class[$val] ?? 'pp-def'); ?>">
@@ -1230,7 +1272,7 @@ class ItemExceptionsUI
                 <?php if ($hierarchical) : ?>
                 <div class="pp-permission-select pp-children-select">
                     <label class="pp-select-label"><?php echo esc_html($mode_label_children); ?></label>
-                    <select name="" class="pp-def" autocomplete="off" disabled>
+                    <select name="" class="pp-def" aria-label="<?php echo esc_attr(sprintf(__('%s permission', 'press-permit-core'), $mode_label_children)); ?>" autocomplete="off" disabled>
                         <?php foreach ($this->render->options['standard'] as $val => $lbl) : ?>
                             <option value="<?php echo esc_attr($val); ?>"
                                     class="<?php echo esc_attr($this->render->opt_class[$val] ?? 'pp-def'); ?>">

@@ -9,6 +9,114 @@
         initTabbedMetabox();
     });
 
+    function setTabState($tab, $tabs, $panes, targetId, moveFocus) {
+        $tabs
+            .removeClass('active')
+            .attr('aria-selected', 'false')
+            .attr('tabindex', '-1');
+        $panes
+            .removeClass('active')
+            .attr('aria-hidden', 'true');
+
+        $tab
+            .addClass('active')
+            .attr('aria-selected', 'true')
+            .attr('tabindex', '0');
+        $panes.filter(function() {
+            return this.id === targetId;
+        }).addClass('active').attr('aria-hidden', 'false');
+
+        if (moveFocus) {
+            $tab.trigger('focus');
+        }
+    }
+
+    function handleTabKeydown(e, $tab, $tabs, activate) {
+        var key = e.key || {
+            13: 'Enter',
+            32: ' ',
+            35: 'End',
+            36: 'Home',
+            37: 'ArrowLeft',
+            38: 'ArrowUp',
+            39: 'ArrowRight',
+            40: 'ArrowDown'
+        }[e.which];
+        var nextIndex;
+
+        if (key === 'Enter' || key === ' ') {
+            e.preventDefault();
+            activate($tab, true);
+            return;
+        }
+
+        if (key === 'Home') {
+            e.preventDefault();
+            activate($tabs.first(), true);
+            return;
+        }
+
+        if (key === 'End') {
+            e.preventDefault();
+            activate($tabs.last(), true);
+            return;
+        }
+
+        if (key !== 'ArrowLeft' && key !== 'ArrowUp' && key !== 'ArrowRight' && key !== 'ArrowDown') {
+            return;
+        }
+
+        e.preventDefault();
+        nextIndex = $tabs.index($tab);
+        if (key === 'ArrowLeft' || key === 'ArrowUp') {
+            nextIndex = nextIndex > 0 ? nextIndex - 1 : $tabs.length - 1;
+        } else {
+            nextIndex = nextIndex < $tabs.length - 1 ? nextIndex + 1 : 0;
+        }
+        activate($tabs.eq(nextIndex), true);
+    }
+
+    function activateOperationTab($tab, moveFocus, persist) {
+        if (!$tab || !$tab.length) {
+            return;
+        }
+
+        var targetPane = $tab.data('target');
+        var $container = $tab.closest('.pp-tabbed-metabox');
+        var $tabs = $container.find('.pp-operation-tab');
+        var $panes = $container.find('.pp-tab-pane');
+
+        setTabState($tab, $tabs, $panes, targetPane, moveFocus);
+
+        if (persist !== false) {
+            var metaboxId = $container.closest('.postbox').attr('id');
+            if (metaboxId) {
+                localStorage.setItem('pp_active_tab_' + metaboxId, targetPane);
+            }
+        }
+    }
+
+    function activateAgentTab($tab, moveFocus, persist) {
+        if (!$tab || !$tab.length) {
+            return;
+        }
+
+        var targetContent = $tab.data('agent-target');
+        var $section = $tab.closest('.pp-tab-pane');
+        var $tabs = $section.find('.pp-agent-type-tab');
+        var $panes = $section.find('.pp-agent-type-content');
+
+        setTabState($tab, $tabs, $panes, targetContent, moveFocus);
+
+        if (persist !== false) {
+            var metaboxId = $section.closest('.postbox').attr('id');
+            var operationTab = $section.attr('id');
+            if (metaboxId && operationTab) {
+                localStorage.setItem('pp_active_agent_tab_' + metaboxId + '_' + operationTab, targetContent);
+            }
+        }
+    }
+
     /**
      * Initialize tabbed metabox functionality
      */
@@ -16,48 +124,25 @@
         // Main operation tab switching
         $('.pp-operation-tab').on('click', function(e) {
             e.preventDefault();
-            
+            activateOperationTab($(this), false);
+        });
+
+        $('.pp-operation-tabs').on('keydown', '.pp-operation-tab', function(e) {
             var $tab = $(this);
-            var targetPane = $tab.data('target');
-            var $container = $tab.closest('.pp-tabbed-metabox');
-            
-            // Remove active state from all tabs and panes in this container
-            $container.find('.pp-operation-tab').removeClass('active');
-            $container.find('.pp-tab-pane').removeClass('active');
-            
-            // Add active state to clicked tab and corresponding pane
-            $tab.addClass('active');
-            $container.find('#' + targetPane).addClass('active');
-            
-            // Store active tab in localStorage for persistence
-            var metaboxId = $container.closest('.postbox').attr('id');
-            if (metaboxId) {
-                localStorage.setItem('pp_active_tab_' + metaboxId, targetPane);
-            }
+            var $tabs = $tab.closest('.pp-operation-tabs').find('.pp-operation-tab');
+            handleTabKeydown(e, $tab, $tabs, activateOperationTab);
         });
 
         // Agent type sub-tab switching (Roles & Groups / Users)
         $(document).on('click', '.pp-agent-type-tab', function(e) {
             e.preventDefault();
-            
+            activateAgentTab($(this), false);
+        });
+
+        $(document).on('keydown', '.pp-agent-type-tab', function(e) {
             var $tab = $(this);
-            var targetContent = $tab.data('agent-target');
-            var $section = $tab.closest('.pp-tab-pane');
-            
-            // Remove active state from all sub-tabs and content in this section
-            $section.find('.pp-agent-type-tab').removeClass('active');
-            $section.find('.pp-agent-type-content').removeClass('active');
-            
-            // Add active state to clicked tab and corresponding content
-            $tab.addClass('active');
-            $section.find('#' + targetContent).addClass('active');
-            
-            // Store in localStorage
-            var metaboxId = $section.closest('.postbox').attr('id');
-            var operationTab = $section.attr('id');
-            if (metaboxId && operationTab) {
-                localStorage.setItem('pp_active_agent_tab_' + metaboxId + '_' + operationTab, targetContent);
-            }
+            var $tabs = $tab.closest('.pp-agent-type-tabs').find('.pp-agent-type-tab');
+            handleTabKeydown(e, $tab, $tabs, activateAgentTab);
         });
         
         // Restore active tabs from localStorage on page load
@@ -70,12 +155,10 @@
                 var savedTab = localStorage.getItem('pp_active_tab_' + metaboxId);
                 
                 if (savedTab && $container.find('#' + savedTab).length) {
-                    // Activate saved tab
-                    $container.find('.pp-operation-tab').removeClass('active');
-                    $container.find('.pp-tab-pane').removeClass('active');
-                    
-                    $container.find('.pp-operation-tab[data-target="' + savedTab + '"]').addClass('active');
-                    $container.find('#' + savedTab).addClass('active');
+                    var $savedOperationTab = $container.find('.pp-operation-tab').filter(function() {
+                        return $(this).data('target') === savedTab;
+                    });
+                    activateOperationTab($savedOperationTab, false, false);
                 }
 
                 // Restore agent type sub-tabs for each operation
@@ -85,11 +168,10 @@
                     var savedAgentTab = localStorage.getItem('pp_active_agent_tab_' + metaboxId + '_' + operationTab);
                     
                     if (savedAgentTab && $pane.find('#' + savedAgentTab).length) {
-                        $pane.find('.pp-agent-type-tab').removeClass('active');
-                        $pane.find('.pp-agent-type-content').removeClass('active');
-                        
-                        $pane.find('.pp-agent-type-tab[data-agent-target="' + savedAgentTab + '"]').addClass('active');
-                        $pane.find('#' + savedAgentTab).addClass('active');
+                        var $savedAgentTab = $pane.find('.pp-agent-type-tab').filter(function() {
+                            return $(this).data('agent-target') === savedAgentTab;
+                        });
+                        activateAgentTab($savedAgentTab, false, false);
                     }
                 });
             }
@@ -1327,4 +1409,3 @@
     }
 
 })(jQuery);
-
