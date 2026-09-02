@@ -166,12 +166,12 @@ class ReadMoreHandler
         $link_text = str_replace('%post_title%', get_the_title($post->ID), $link_text);
         $link_text = str_replace('%permalink%', $permalink, $link_text);
         
-        // Add informational message for non-logged-in users (only on single post pages)
+        // Add the shared informational message for blocked users on single post pages.
         $info_message = '';
-        if (!is_user_logged_in() && (is_single() || is_page())) {
+        if (is_single() || is_page()) {
             $notice_text = presspermit()->getTypeOption('read_more_login_notice', $post_type);
             if (empty($notice_text)) {
-                $notice_text = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                $notice_text = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
             }
             
             $info_message = sprintf(
