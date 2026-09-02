@@ -8,6 +8,38 @@ section[id*="ppp-tab-"] {
   margin-top: 20px;
 }
 
+.pp-teaser-tabs-header {
+  position: relative;
+}
+
+.pp-teaser-tabs-header .nav-tab-wrapper {
+  box-sizing: border-box;
+  padding-right: 140px;
+}
+
+.pp-teaser-top-actions {
+  bottom: 8px;
+  margin: 0;
+  position: absolute;
+  right: 0;
+}
+
+.pp-teaser-top-actions .pp-teaser-top-save {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .pp-teaser-tabs-header .nav-tab-wrapper {
+    padding-right: 0;
+    padding-top: 48px;
+  }
+
+  .pp-teaser-top-actions {
+    bottom: auto;
+    top: 8px;
+  }
+}
+
 span.teaser-num-chars input {
 width: 40px;
 vertical-align: middle;
@@ -64,6 +96,14 @@ vertical-align: middle;
 
 #pp-teaser section table.teaser-table tr th {
 font-weight: bold;
+}
+
+#pp-teaser section table.teaser-table tr th .pp-teaser-setting-description {
+  margin: 5px 0 0;
+  color: #646970;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
 }
 
 #pp-teaser .form-table tr.col-headers th {
@@ -222,31 +262,41 @@ padding-bottom: 4px;
   }
 
   /* Teaser Progressive UI: drop fixed column widths on narrow screens to avoid horizontal scroll */
-  .pp-teaser-progressive-ui .teaser-table {
+  .pp-teaser-progressive-ui .teaser-table,
+  .pp-teaser-progressive-options-ui .teaser-table {
     table-layout: auto;
   }
 
   .pp-teaser-progressive-ui .teaser-table colgroup,
-  .pp-teaser-progressive-ui .teaser-table colgroup col {
+  .pp-teaser-progressive-ui .teaser-table colgroup col,
+  .pp-teaser-progressive-options-ui .teaser-table colgroup,
+  .pp-teaser-progressive-options-ui .teaser-table colgroup col {
     display: none;
   }
 
   .pp-teaser-progressive-ui .teaser-table tr th,
   .pp-teaser-progressive-ui .teaser-table tr td,
   .pp-teaser-progressive-ui .teaser-table tr th[style],
-  .pp-teaser-progressive-ui .teaser-table tr td[style] {
+  .pp-teaser-progressive-ui .teaser-table tr td[style],
+  .pp-teaser-progressive-options-ui .teaser-table tr th,
+  .pp-teaser-progressive-options-ui .teaser-table tr td,
+  .pp-teaser-progressive-options-ui .teaser-table tr th[style],
+  .pp-teaser-progressive-options-ui .teaser-table tr td[style] {
     width: 100% !important;
   }
 
-  .pp-teaser-progressive-ui .pp-field-row {
+  .pp-teaser-progressive-ui .pp-field-row,
+  .pp-teaser-progressive-options-ui .pp-field-row {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .pp-teaser-progressive-ui .pp-field-row > div:first-child {
+  .pp-teaser-progressive-ui .pp-field-row > div:first-child,
+  .pp-teaser-progressive-options-ui .pp-field-row > div:first-child {
     flex-basis: auto;
     width: 100%;
   }
+
 }
 
 /* Expandable Row Styles (from Sync module pattern) */
@@ -467,6 +517,16 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     padding: 15px;
 }
 
+/* Ensure radio buttons are visible in tables */
+.teaser-table input[type="radio"] {
+    align-items: center;
+    display: inline-flex !important;
+    justify-content: center;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+
 .pp-teaser-card h3 {
     margin: 0 0 4px 0;
     font-size: 13px;
@@ -485,7 +545,50 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     padding: 10px;
     background: #fff;
     border: 1px solid #c3c4c7;
+    /* The header directly above is a thead-only table (no tbody), so its own bottom border
+       sits flush against this div's top edge -- drop this side to avoid a doubled line,
+       matching the single divider the other cards get from one continuous table. */
+    border-top: none;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+/* Tab Styles */
+.pp-teaser-text-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #dcdcde;
+}
+
+.pp-teaser-text-tab {
+    padding: 8px 16px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    color: #646970;
+    transition: color 0.2s ease, border-color 0.2s ease;
+    margin-bottom: -2px;
+}
+
+.pp-teaser-text-tab:hover {
+    color: #1d2327;
+}
+
+.pp-teaser-text-tab.active {
+    color: #2271b1;
+    border-bottom-color: #2271b1;
+    font-weight: 600;
+}
+
+.pp-teaser-text-content {
+    display: none;
+}
+
+.pp-teaser-text-content.active {
+    display: block;
 }
 
 .pp-teaser-type-select {
@@ -514,6 +617,21 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-teaser-type-option:hover {
     border-color: #2271b1;
     background: #f0f6fc;
+}
+
+.pp-teaser-type-option input[type="radio"] {
+    margin: 2px 10px 0 0;
+    flex-shrink: 0;
+}
+
+.pp-teaser-type-option input[type="radio"]:checked + .pp-option-label {
+    font-weight: 600;
+}
+
+.pp-teaser-type-option:has(input[type="radio"]:checked) {
+    border-color: #2271b1;
+    background: #f0f6fc;
+    box-shadow: 0 0 0 1px #2271b1;
 }
 
 .pp-option-label {
@@ -549,6 +667,30 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 
 .pp-field-row > div:nth-child(2) {
     flex: 1;
+}
+
+.pp-teaser-editor-row {
+    align-items: flex-start;
+}
+
+.pp-teaser-editor-row > div:first-child {
+    flex-basis: 18%;
+    padding-top: 7px;
+}
+
+.pp-teaser-editor-row > div:nth-child(2) {
+    min-width: 0;
+}
+
+.pp-teaser-editor-row .wp-switch-editor {
+    margin-top: 0;
+}
+
+@media screen and (max-width: 782px) {
+    .pp-teaser-editor-row > div:first-child {
+        flex-basis: auto;
+        padding-top: 0;
+    }
 }
 
 /* Field groups */
@@ -596,6 +738,11 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     background: #f9f9f9;
 }
 
+.pp-radio-group input[type="radio"] {
+    margin: 2px 8px 0 0;
+    flex-shrink: 0;
+}
+
 .pp-radio-group label strong {
     display: block;
     margin-bottom: 2px;
@@ -608,37 +755,6 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     color: #646970;
     font-weight: normal;
     line-height: 1.4;
-}
-
-/* Tab Styles */
-.pp-teaser-text-tabs {
-    display: flex;
-    gap: 5px;
-    margin-bottom: 15px;
-    border-bottom: 2px solid #dcdcde;
-}
-
-.pp-teaser-text-tab {
-    padding: 8px 16px;
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    font-size: 13px;
-    font-weight: 500;
-    color: #646970;
-    transition: all 0.2s ease;
-    margin-bottom: -2px;
-}
-
-.pp-teaser-text-tab:hover {
-    color: #1d2327;
-}
-
-.pp-teaser-text-tab.active {
-    color: #2271b1;
-    border-bottom-color: #2271b1;
-    font-weight: 600;
 }
 
 .pp-teaser-text-content {
@@ -654,6 +770,382 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     display: block;
 }
 
+.pp-teaser-options-container.active {
+    display: block;
+}
+
+.pp-teaser-options-settings-area {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.pp-teaser-options-settings-area .pp-teaser-options-container .teaser-table {
+    margin-top: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.pp-teaser-rss-options {
+    border-top: 1px solid #c3c4c7;
+}
+
+.pp-teaser-rss-options .pp-teaser-rss-table {
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.pp-teaser-rss-description {
+    margin: 0;
+}
+
+.pp-teaser-rss-options .wp-switch-editor {
+    margin-top: 0;
+}
+
+/* Two-column layout: settings on the left, preview pinned on the right so it stays
+   in view while editing without needing to scroll up/down to compare changes. */
+.pp-teaser-settings-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(410px, 510px);
+    align-items: start;
+    gap: 20px;
+}
+
+.pp-teaser-settings-main {
+    min-width: 0;
+}
+
+.pp-teaser-preview-container {
+    position: sticky;
+    top: 40px;
+    /* WP core gives .wp-switch-editor tab buttons position:relative;z-index:1
+       (so they sit above the textarea's top border). Without a z-index here,
+       those buttons can paint above this panel once the settings content
+       scrolls underneath it while pinned. */
+    z-index: 10;
+}
+
+/* Desktop preview mode: reflow to a single full-width column with the preview
+   on top (instead of the narrow sidebar column), so the scaled-down desktop
+   page is actually legible - and keep it sticky so it stays in view while the
+   settings below are edited, without needing to scroll back up. Mobile mode
+   stays pinned in its usual sidebar column. */
+.pp-teaser-settings-layout.is-desktop-expanded {
+    grid-template-columns: 1fr;
+    /* Spacing below the preview comes entirely from .teaser-table's own
+       margin-top: 20px (the "Teaser Settings for ..." table directly below
+       it) - same as the gap between every other card. A grid row-gap here
+       would stack on top of that and double it. */
+    gap: 0;
+}
+
+.pp-teaser-preview-container.is-desktop-expanded {
+    order: -1;
+    grid-column: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/* The section normally gets a top margin to offset it from the sidebar
+   column's top edge; in desktop mode it's the first thing in the layout, so
+   that would just be unwanted top padding above the panel. */
+.pp-teaser-preview-container.is-desktop-expanded .pp-teaser-site-preview {
+    margin-top: 0;
+}
+
+@media (max-width: 1199px) {
+    .pp-teaser-settings-layout {
+        display: block;
+    }
+
+    .pp-teaser-preview-container {
+        position: static;
+        top: auto;
+    }
+}
+
+/* Full teaser preview */
+.pp-teaser-site-preview {
+    margin-top: 20px;
+}
+
+.pp-teaser-preview-panel-body {
+    padding: 0;
+}
+
+.pp-teaser-preview-frame {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 6px;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, .08);
+}
+
+.pp-teaser-preview-browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    padding: 0 12px;
+    color: #50575e;
+    background: #f0f0f1;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.pp-teaser-preview-browser-bar > span {
+    width: 9px;
+    height: 9px;
+    background: #a7aaad;
+    border-radius: 50%;
+}
+
+.pp-teaser-preview-browser-bar strong {
+    margin-left: 6px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+}
+
+.pp-teaser-preview-device-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    margin-left: auto;
+}
+
+.pp-teaser-preview-device-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    color: #50575e;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.pp-teaser-preview-device-btn .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+.pp-teaser-preview-device-btn:hover {
+    color: #1d2327;
+    background: #e0e0e1;
+}
+
+.pp-teaser-preview-device-btn.active {
+    color: #2271b1;
+    background: #fff;
+    border-color: #c3c4c7;
+}
+
+.pp-teaser-preview-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.pp-teaser-preview-external-link .dashicons {
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* Every reachable teaser type ends up here with no padding (see
+   updateTeaserSitePreview() in settings.dev.js, which always sets
+   data-preview-state to "default" or "theme-teaser") - so this is the
+   default from the start rather than something JS has to switch to. */
+.pp-teaser-preview-article {
+    padding: 0;
+    color: #1d2327;
+    background: #fff;
+}
+
+/* Both of these are only ever used by the Blob fallback in
+   updateExternalPreviewLink() (see settings.dev.js) - every teaser type shows
+   the real theme iframe instead and JS unconditionally hides these on load.
+   Starting them hidden avoids a flash of this mock content (and its height)
+   before JS runs. */
+.pp-teaser-preview-image {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    height: 120px;
+    margin-bottom: 24px;
+    color: #646970;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    background:
+        linear-gradient(135deg, rgba(34, 113, 177, .08), rgba(34, 113, 177, .18)),
+        #f0f6fc;
+    border-radius: 4px;
+}
+
+.pp-teaser-preview-title {
+    display: none;
+    margin: 0 0 16px;
+    color: #1d2327;
+    font-size: 26px;
+    line-height: 1.25;
+}
+
+.pp-teaser-preview-state {
+    display: none;
+}
+
+.pp-teaser-preview-content {
+    color: #3c434a;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.pp-teaser-preview-body {
+    margin: 0 0 16px;
+}
+
+.pp-teaser-preview-default-response {
+    /* Every teaser type ends up showing this state (see updateTeaserSitePreview()
+       in settings.dev.js) - start it visible instead of waiting for JS, so the
+       panel is already at its real size on first paint with no height jump. */
+    display: block;
+    position: relative;
+    padding: 0;
+    text-align: left;
+    background: #f6f7f7;
+}
+
+.pp-teaser-preview-viewport {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 450px;
+    background: #e2e4e7;
+}
+
+/* Mobile gets extra height (see also updateTeaserPreviewViewport() in
+   settings.dev.js, which computes the same number). data-device is rendered
+   server-side from the saved cookie (see getTeaserPreviewDeviceMode() in
+   TeaserProgressiveUI.php), so this already matches on first paint - no
+   waiting for JS to switch it, no jump. */
+.pp-teaser-preview-viewport[data-device="mobile"] {
+    height: 650px;
+}
+
+.pp-teaser-preview-frame-sizer {
+    /* Width/height are set inline by JS (updateTeaserPreviewViewport). Fall
+       back to filling the viewport until then, instead of the browser's
+       intrinsic ~300x150 default for an unstyled iframe wrapper. */
+    width: 100%;
+    height: 100%;
+    position: relative;
+    flex: 0 0 auto;
+    overflow: hidden;
+    background: #fff;
+}
+
+.pp-teaser-preview-theme-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 0;
+    opacity: 0;
+    pointer-events: none;
+    transform-origin: top left;
+    transition: opacity .2s ease;
+}
+
+.pp-teaser-preview-theme-frame.is-loaded {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pp-teaser-preview-theme-loading {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px;
+    color: #646970;
+    text-align: center;
+}
+
+.pp-teaser-preview-theme-loading .spinner {
+    float: none;
+    margin: 0;
+}
+
+.pp-teaser-preview-theme-error {
+    padding: 40px 24px;
+    color: #646970;
+    text-align: center;
+}
+
+.pp-teaser-preview-redirect-response p {
+    margin: 0;
+    color: #646970;
+}
+
+.pp-teaser-preview-redirect-response {
+    align-items: flex-start;
+    gap: 14px;
+    padding: 24px;
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+}
+
+.pp-teaser-preview-redirect-response .dashicons {
+    width: 28px;
+    height: 28px;
+    color: #2271b1;
+    font-size: 28px;
+}
+
+.pp-teaser-preview-redirect-response strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.pp-teaser-preview-panel-body > .description:last-child {
+    margin: 12px 0 0;
+}
+
+@media (max-width: 782px) {
+    .pp-teaser-preview-viewport {
+        height: 430px;
+    }
+
+    .pp-teaser-preview-viewport[data-device="mobile"] {
+        height: 630px;
+    }
+
+    .pp-teaser-preview-title {
+        font-size: 22px;
+    }
+}
+
 /* Hide conditional elements by default to prevent flash */
 .pp-teaser-redirect-settings,
 .pp-teaser-text-card,
@@ -663,6 +1155,145 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 .pp-teaser-application-fields,
 .pp-teaser-notice-style-settings {
     display: none;
+}
+
+.teaser-notice-style-section {
+    margin-top: 20px;
+}
+
+.pp-teaser-notice-style-fields {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 12px 16px;
+    margin-bottom: 15px;
+    padding: 15px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    /* Same reasoning as .pp-teaser-text-container: the header above is a thead-only table
+       sitting flush against this div, so drop the top edge to avoid a doubled border line. */
+    border-top: none;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.pp-teaser-notice-style-fields .pp-field-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    margin: 0;
+    gap: 0;
+}
+
+.pp-teaser-notice-style-fields label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+@media (max-width: 1300px) {
+    .pp-teaser-notice-style-fields {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 700px) {
+    .pp-teaser-notice-style-fields {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Border position: icon buttons instead of a dropdown */
+.pp-border-position-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+}
+
+.pp-border-position-option {
+    position: relative;
+    display: block;
+    margin: 0;
+    cursor: pointer;
+}
+
+.pp-border-position-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+}
+
+.pp-border-position-icon {
+    display: block;
+    box-sizing: border-box;
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 2px;
+}
+
+.pp-border-position-option:hover .pp-border-position-icon {
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.pp-border-position-icon--left {
+    border-left: 3px solid #8c8f94;
+}
+
+.pp-border-position-icon--right {
+    border-right: 3px solid #8c8f94;
+}
+
+.pp-border-position-icon--top {
+    border-top: 3px solid #8c8f94;
+}
+
+.pp-border-position-icon--bottom {
+    border-bottom: 3px solid #8c8f94;
+}
+
+.pp-border-position-icon--all {
+    border-width: 3px;
+    border-color: #8c8f94;
+}
+
+.pp-border-position-option input[type="radio"]:checked + .pp-border-position-icon {
+    background: #f0f6fc;
+    box-shadow: 0 0 0 1px #2271b1;
+}
+
+.pp-border-position-option input[type="radio"]:checked + .pp-border-position-icon--left {
+    border-left-color: #2271b1;
+}
+
+.pp-border-position-option input[type="radio"]:checked + .pp-border-position-icon--right {
+    border-right-color: #2271b1;
+}
+
+.pp-border-position-option input[type="radio"]:checked + .pp-border-position-icon--top {
+    border-top-color: #2271b1;
+}
+
+.pp-border-position-option input[type="radio"]:checked + .pp-border-position-icon--bottom {
+    border-bottom-color: #2271b1;
+}
+
+.pp-border-position-option input[type="radio"]:checked + .pp-border-position-icon--all {
+    border-color: #2271b1;
+}
+
+.pp-border-position-option:focus-within .pp-border-position-icon {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+}
+
+@media (max-width: 600px) {
+    .pp-teaser-notice-style-fields {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Conditional settings */

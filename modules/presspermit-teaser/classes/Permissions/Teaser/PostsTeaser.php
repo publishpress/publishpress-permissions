@@ -547,17 +547,13 @@ class PostsTeaser
             }
             
             // Get login notice message for excerpt teaser
-            $login_notice = presspermit()->getTypeOption('excerpt_login_notice', $post_type);
-            if (empty($login_notice)) {
-                $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+            $login_notice = wp_unslash((string) presspermit()->getTypeOption('excerpt_login_notice', $post_type));
+            if ('' === $login_notice) {
+                $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
             }
-            
-            // Build notice HTML for non-logged-in users
-            $notice_html = '';
-            global $current_user;
-            if ($current_user->ID == 0) {
-                $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-            }
+
+            // Not escaped: preserves formatting entered via the notice's rich-text editor.
+            $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
             
             // Wrap excerpt in paragraph block markup to prevent theme layout issues
             // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
@@ -592,17 +588,13 @@ class PostsTeaser
                     // Fallback: no more tag found, use configured teaser text or excerpt
                     if (!empty($post->post_excerpt)) {
                         // Get login notice message
-                        $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
-                        if (empty($login_notice)) {
-                            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                        $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
+                        if ('' === $login_notice) {
+                            $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
                         }
-                        
-                        // Build notice HTML for non-logged-in users
-                        $notice_html = '';
-                        global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
-                        if ($current_user->ID == 0) {
-                            $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-                        }
+
+                        // Not escaped: preserves formatting entered via the notice's rich-text editor.
+                        $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
                         
                         // Wrap excerpt in paragraph block markup to prevent theme layout issues
                         if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
@@ -612,23 +604,21 @@ class PostsTeaser
                         }
                     } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                         $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
+                    } else {
+                        $post->post_content = self::getReadMoreFallbackContent($post_type);
                     }
                 }
             } else {
                 // Fallback: no more tag found, use excerpt or configured teaser text
                 if (!empty($post->post_excerpt)) {
                     // Get login notice message
-                    $login_notice = presspermit()->getTypeOption('read_more_login_notice', $post_type);
-                    if (empty($login_notice)) {
-                        $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                    $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
+                    if ('' === $login_notice) {
+                        $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
                     }
-                    
-                    // Build notice HTML for non-logged-in users
-                    $notice_html = '';
-                    global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
-                    if ($current_user->ID == 0) {
-                        $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-                    }
+
+                    // Not escaped: preserves formatting entered via the notice's rich-text editor.
+                    $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
                     
                     // Wrap excerpt in paragraph block markup to prevent theme layout issues
                     if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
@@ -638,6 +628,8 @@ class PostsTeaser
                     }
                 } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                     $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
+                } else {
+                    $post->post_content = self::getReadMoreFallbackContent($post_type);
                 }
             }
 
@@ -671,17 +663,13 @@ class PostsTeaser
                 $teaser_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $teaser_text);
                 
                 // Get login notice message for x_chars teaser
-                $login_notice = presspermit()->getTypeOption('x_chars_login_notice', $post_type);
-                if (empty($login_notice)) {
-                    $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                $login_notice = wp_unslash((string) presspermit()->getTypeOption('x_chars_login_notice', $post_type));
+                if ('' === $login_notice) {
+                    $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
                 }
-                
-                // Build notice HTML for non-logged-in users
-                $notice_html = '';
-                global $current_user; // phpcs:ignore VariableAnalysis.CodeAnalysis.VariableAnalysis.VariableRedeclaration
-                if ($current_user->ID == 0) {
-                    $notice_html = self::wrapTeaserNotice(esc_html($login_notice), $post_type);
-                }
+
+                // Not escaped: preserves formatting entered via the notice's rich-text editor.
+                $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
                 
                 // Wrap in proper markup to prevent layout issues
                 if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
@@ -794,6 +782,24 @@ class PostsTeaser
 
         if (presspermit()->getTypeOption('teaser_hide_thumbnail', $post->post_type))
             add_filter('get_post_metadata', [__CLASS__, 'fltHidePostThumbnail'], 10, 3);
+    }
+
+    /**
+     * Get safe fallback content when a Read More teaser has no usable teaser source.
+     *
+     * @param string $post_type Post type slug.
+     * @return string Wrapped fallback notice.
+     */
+    private static function getReadMoreFallbackContent($post_type)
+    {
+        $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
+
+        if ('' === $login_notice) {
+            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+        }
+
+        // Not escaped: preserves formatting entered via the notice's rich-text editor.
+        return self::wrapTeaserNotice($login_notice, $post_type);
     }
 
     public static function fltHidePostThumbnail($thumb_id, $object_id, $meta_key)

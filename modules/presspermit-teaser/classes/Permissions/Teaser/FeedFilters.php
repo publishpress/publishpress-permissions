@@ -27,6 +27,25 @@ class FeedFilters
         }
     }
 
+    // Checks whether a logged-out visitor would be able to read this specific post, independent
+    // of who is actually making the current request (a real feed reader has no session at all,
+    // and even a logged-in admin testing /feed directly should see the same masking a visitor would).
+    private function isReadableByAnonymous($post_id)
+    {
+        if (empty($post_id)) {
+            return false;
+        }
+
+        $pp = presspermit();
+        $original_user_id = $pp->getUser()->ID;
+
+        $pp->setUser(0);
+        $can_read = (new \WP_User(0))->has_cap('read_post', $post_id);
+        $pp->setUser($original_user_id);
+
+        return $can_read;
+    }
+
     private function replaceFeedTeaserPlaceholder($content)
     {
         global $post;
@@ -43,10 +62,23 @@ class FeedFilters
     {
         global $post;
 
-        if (!empty($post) && !empty($post->pp_teaser))
+        if (empty($post))
+            return $text;
+
+        if (!empty($post->pp_teaser))
             return $text;
 
         $pp = presspermit();
+
+        // Matches the "Settings on this tab do not apply" notice on the Options tab: RSS masking
+        // only applies to post types that have Teaser enabled at all.
+        if (!$pp->getTypeOption('tease_post_types', $post->post_type))
+            return $text;
+
+        // Only mask posts a logged-out visitor is actually blocked from -- not every post of a
+        // teased-enabled type regardless of whether this specific one is actually restricted.
+        if ($this->isReadableByAnonymous($post->ID))
+            return $text;
 
         if ($post->post_status == 'private')
             $feed_privacy = $pp->getOption('rss_private_feed_mode');
