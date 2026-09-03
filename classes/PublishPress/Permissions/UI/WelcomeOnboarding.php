@@ -7,8 +7,9 @@ namespace PublishPress\Permissions\UI;
  * "take the tour" admin notice, and the progress card on the Permissions
  * screen.
  *
- * The stylesheet loads on the welcome page, on the two screens that show the
- * progress card, and wherever the activation notice is due — nowhere else.
+ * The stylesheet loads on the welcome page, on the Permissions screen that
+ * shows the progress card, and wherever the activation notice is due — nowhere
+ * else.
  *
  * Instantiated once from PermissionsHooksAdmin::__construct().
  */
@@ -20,8 +21,8 @@ class WelcomeOnboarding
     /** Screens that render the wizard, the progress card, or both. */
     private static $asset_pages = ['presspermit-welcome', 'presspermit-groups', 'presspermit-settings'];
 
-    /** Screens that render the progress card. */
-    private static $card_pages = ['presspermit-groups', 'presspermit-settings'];
+    /** Only the main Permissions screen renders the persistent setup card. */
+    private static $card_pages = ['presspermit-groups'];
 
     public function __construct()
     {
@@ -149,7 +150,6 @@ class WelcomeOnboarding
      */
     public function actProgressCard()
     {
-        return;
         if (!in_array(presspermitPluginPage(), self::$card_pages, true)) {
             return;
         }
@@ -224,6 +224,7 @@ class WelcomeOnboarding
                             <a href="<?php echo esc_url($task['url']); ?>"><?php esc_html_e('Do it', 'press-permit-core'); ?></a>
                         <?php else : ?>
                             <span class="pp-onboard-card-count"><?php echo esc_html($task['detail']); ?></span>
+                            <a href="<?php echo esc_url($task['url']); ?>"><?php esc_html_e('View', 'press-permit-core'); ?></a>
                         <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
@@ -264,14 +265,14 @@ class WelcomeOnboarding
                     _n('%s group', '%s groups', $groups, 'press-permit-core'),
                     number_format_i18n($groups)
                 ),
-                'url'    => admin_url('admin.php?page=presspermit-group-new'),
+                'url'    => admin_url('admin.php?page=presspermit-groups'),
             ],
 
             'exception' => [
-                'label'  => __('Set permissions on one post or page', 'press-permit-core'),
+                'label'  => __('Open a post or page and use its Permissions panel', 'press-permit-core'),
                 'done'   => ($exceptions > 0),
                 'detail' => __('done', 'press-permit-core'),
-                'url'    => admin_url('edit.php?post_type=page'),
+                'url'    => $this->postPermissionsUrl(),
             ],
         ];
 
@@ -286,19 +287,12 @@ class WelcomeOnboarding
     }
 
     /**
-     * Treated as configured once the enabled set differs from the install
-     * default of post + page, i.e. the user has actually been through the
-     * Post Types setting.
+     * A setup task is complete only when at least one post type is enabled.
+     * This keeps the checkbox state consistent with the count shown to users.
      */
     private function postTypesConfigured()
     {
-        $enabled = (array) get_option('presspermit_enabled_post_types', []);
-
-        $enabled = array_keys(array_filter($enabled));
-
-        sort($enabled);
-
-        return (['page', 'post'] !== $enabled);
+        return $this->enabledPostTypeCount() > 0;
     }
 
     private function customGroupCount()
@@ -313,14 +307,58 @@ class WelcomeOnboarding
         return (int) $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->pp_groups WHERE metagroup_id = ''");
     }
 
+    /**
+     * Send users to a listing for an enabled post type. Posts are preferred
+     * when both Posts and Pages are enabled, matching the onboarding path.
+     */
+    private function postPermissionsUrl()
+    {
+        $enabled = (array) presspermit()->getEnabledPostTypes();
+        $post_types = [];
+
+        foreach ($enabled as $key => $value) {
+            $post_type = is_string($value) ? $value : (is_string($key) ? $key : '');
+
+            if ($post_type && !in_array($post_type, $post_types, true)) {
+                $post_types[] = $post_type;
+            }
+        }
+
+        if (in_array('post', $post_types, true)) {
+            return admin_url('edit.php');
+        }
+
+        if (in_array('page', $post_types, true)) {
+            return add_query_arg('post_type', 'page', admin_url('edit.php'));
+        }
+
+        foreach ($post_types as $post_type) {
+            if (post_type_exists($post_type)) {
+                return add_query_arg('post_type', sanitize_key($post_type), admin_url('edit.php'));
+            }
+        }
+
+        // With no enabled post type, send the user to the setting that enables
+        // one instead of an empty or irrelevant listing.
+        return admin_url('admin.php?page=presspermit-settings&pp_tab=core');
+    }
+
     private function exceptionCount()
     {
         global $wpdb;
 
-        if (empty($wpdb->ppc_exceptions)) {
+        if (empty($wpdb->ppc_exceptions) || empty($wpdb->ppc_exception_items)) {
             return 0;
         }
 
-        return (int) $wpdb->get_var("SELECT COUNT(*) FROM $wpdb->ppc_exceptions");
+        // Count only item-level post exceptions, which are created from a
+        // post/page Permissions panel. Role- or term-level exceptions should
+        // not complete this checklist task.
+        return (int) $wpdb->get_var(
+            "SELECT COUNT(DISTINCT i.item_id) FROM $wpdb->ppc_exception_items AS i"
+            . " INNER JOIN $wpdb->ppc_exceptions AS e ON e.exception_id = i.exception_id"
+            . " WHERE e.for_item_source = 'post' AND e.via_item_source = 'post'"
+            . " AND i.item_id > 0"
+        );
     }
 }

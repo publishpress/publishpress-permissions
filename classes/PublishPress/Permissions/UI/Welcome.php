@@ -108,40 +108,40 @@ class Welcome
             3 => [
                 'title'    => __('Choose the content you want to control', 'press-permit-core'),
                 'sub'      => __('Permissions only filters the post types and taxonomies you switch on. Everything else behaves like standard WordPress.', 'press-permit-core'),
-                'art'      => 'step-features',
-                'art_alt'  => __('The Features tab of the Permissions settings screen', 'press-permit-core'),
+                'art'      => 'step-general',
+                'art_alt'  => __('The General tab of the Permissions settings screen', 'press-permit-core'),
                 'callouts' => [
                     __('Open Permissions, then Settings.', 'press-permit-core'),
-                    __('The Features tab lists every module you can turn on.', 'press-permit-core'),
+                    __('On the General tab, find Post Types and Taxonomies.', 'press-permit-core'),
                     __('Tick the post types and taxonomies you want to manage.', 'press-permit-core'),
                 ],
                 'link_label' => __('Open Settings', 'press-permit-core'),
-                'link_url'   => admin_url('admin.php?page=presspermit-settings&pp_tab=modules'),
+                'link_url'   => admin_url('admin.php?page=presspermit-settings#pp-core'),
             ],
 
             4 => [
-                'title'    => __('Put people into a group', 'press-permit-core'),
-                'sub'      => __('A group hands the same access to several users at once. Name it after the job it does, not the person doing it.', 'press-permit-core'),
+                'title'    => __('Create a Permission Group', 'press-permit-core'),
+                'sub'      => __('A Permission Group lets you give the same access to several users at once. Start with a clear name and description.', 'press-permit-core'),
                 'art'      => 'step-groups',
-                'art_alt'  => __('The Permissions groups screen', 'press-permit-core'),
+                'art_alt'  => __('The Permissions User Groups screen', 'press-permit-core'),
                 'callouts' => [
-                    __('Go to Permissions and choose Add New.', 'press-permit-core'),
-                    __('Add members from your existing user list.', 'press-permit-core'),
-                    __('Give the group the access it needs.', 'press-permit-core'),
+                    __('Open Permissions to reach User Groups.', 'press-permit-core'),
+                    __('Click Add New Group.', 'press-permit-core'),
+                    __('Name and describe the group on the next screen, then create it.', 'press-permit-core'),
                 ],
                 'link_label' => $this->canManageGroups() ? __('Open Permissions', 'press-permit-core') : '',
                 'link_url'   => admin_url('admin.php?page=presspermit-groups'),
             ],
 
             5 => [
-                'title'    => __('Set who can read one page', 'press-permit-core'),
-                'sub'      => __('Every post and page has a Permissions panel for read and edit access. What you set there overrides the role.', 'press-permit-core'),
+                'title'    => __('Add members and fine-tune access', 'press-permit-core'),
+                'sub'      => __('Add users to your Permission Group, set specific access for a post type, and use a post or page Permissions panel when one item needs an override.', 'press-permit-core'),
                 'art'      => 'step-post-edit',
-                'art_alt'  => __('The Permissions panel on the post editing screen', 'press-permit-core'),
+                'art_alt'  => __('Group members, specific permissions, and the post Permissions panel', 'press-permit-core'),
                 'callouts' => [
-                    __('Edit any post or page.', 'press-permit-core'),
-                    __('Find the Permissions panel.', 'press-permit-core'),
-                    __('Enable or block a group or a role.', 'press-permit-core'),
+                    __('Add users in the Group Members box.', 'press-permit-core'),
+                    __('Add Specific Permissions for a post type.', 'press-permit-core'),
+                    __('Use the post/page Permissions panel for a one-off override.', 'press-permit-core'),
                 ],
                 'link_label' => __('Open a page to try it', 'press-permit-core'),
                 'link_url'   => admin_url('edit.php?post_type=page'),
@@ -187,13 +187,26 @@ class Welcome
         $class = ('svg' == pathinfo($found, PATHINFO_EXTENSION))
             ? 'pp-wc-figure pp-wc-figure-diagram'
             : 'pp-wc-figure';
+        $class .= ' pp-wc-figure-' . sanitize_html_class($slug);
 
         printf('<div class="%s">', esc_attr($class));
 
         if ($found) {
+            $src = PRESSPERMIT_URLPATH . $found;
+            $asset_path = PRESSPERMIT_ABSPATH . $found;
+
+            // Version bundled artwork so browsers do not retain an outdated asset.
+            if (file_exists($asset_path)) {
+                $version = md5_file($asset_path);
+
+                if ($version) {
+                    $src = add_query_arg('ver', substr($version, 0, 12), $src);
+                }
+            }
+
             printf(
                 '<img src="%s" alt="%s" />',
-                esc_url(PRESSPERMIT_URLPATH . $found),
+                esc_url($src),
                 esc_attr($alt)
             );
         } else {
@@ -417,15 +430,20 @@ class Welcome
     private function stepPro()
     {
         $groups_url = admin_url('admin.php?page=presspermit-groups');
+        $settings_url = admin_url('admin.php?page=presspermit-settings&pp_tab=core');
+        $group_new_url = admin_url('admin.php?page=presspermit-group-new');
+        $post_permissions_url = admin_url('edit.php?post_type=page');
         ?>
         <h1><?php esc_html_e('That is the whole plugin', 'press-permit-core'); ?></h1>
-        <p class="pp-wc-lede"><?php esc_html_e('Nothing on your site changed. Here is what to do first:', 'press-permit-core'); ?></p>
+        <p class="pp-wc-lede"><?php esc_html_e('Nothing on your site changed. Here is what to do next:', 'press-permit-core'); ?></p>
 
+        <h2 class="pp-wc-nextsteps-title"><?php esc_html_e('What to do next', 'press-permit-core'); ?></h2>
         <ul class="pp-wc-nextsteps">
-            <li><?php esc_html_e('Create the group you have in mind for your team.', 'press-permit-core'); ?></li>
-            <li><?php esc_html_e('Hide a page from logged out visitors.', 'press-permit-core'); ?></li>
-            <li><?php esc_html_e('Check the Features tab for modules you skipped.', 'press-permit-core'); ?></li>
+            <li><a href="<?php echo esc_url($settings_url); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Choose the content you want to control.', 'press-permit-core'); ?></a></li>
+            <li><a href="<?php echo esc_url($group_new_url); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Create your first permission group.', 'press-permit-core'); ?></a></li>
+            <li><a href="<?php echo esc_url($post_permissions_url); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e('Set permissions on one post or page.', 'press-permit-core'); ?></a></li>
         </ul>
+        <p class="pp-wc-nextsteps-note"><?php esc_html_e('Each link opens in a new tab so you can return to this guide.', 'press-permit-core'); ?></p>
 
         <div class="pp-wc-finish">
             <a class="button button-primary" href="<?php echo esc_url($this->canManageGroups() ? $groups_url : admin_url('admin.php?page=presspermit-settings')); ?>">
@@ -440,7 +458,7 @@ class Welcome
         <?php if (!presspermit()->isPro()) : ?>
             <div class="pp-wc-pro">
                 <div class="pp-wc-pro-head">
-                    <span class="pp-wc-pro-badge"><?php esc_html_e('Pro', 'press-permit-core'); ?></span>
+                    <span class="pp-wc-pro-badge pp-tab-badge pp-pro-badge">PRO</span>
                     <h2><?php esc_html_e('If you need more control', 'press-permit-core'); ?></h2>
                 </div>
 

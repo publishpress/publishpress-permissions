@@ -561,10 +561,117 @@
 #pp-welcome-wrapper .pp-wc-pin-2 { top: 14px; right: 16px; }
 #pp-welcome-wrapper .pp-wc-pin-3 { bottom: 16px; right: 16px; }
 
+/* Step 3 follows the real navigation path: sidebar, General tab, Post Types. */
+#pp-welcome-wrapper .pp-wc-figure-step-general .pp-wc-pin-1 {
+    top: 61%;
+    left: 10%;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-general .pp-wc-pin-2 {
+    top: 12%;
+    left: 22%;
+    right: auto;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-general .pp-wc-pin-3 {
+    top:35%;
+    left: 33%;
+    right: auto;
+    bottom: auto;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-general img {
+    /* Crop the less important far-right edge so the settings controls remain readable. */
+    height: 300px;
+    object-fit: cover;
+    object-position: left top;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-general .pp-wc-pin {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+/* Step 4 follows the two-page free flow: groups list, then the new-group form. */
+#pp-welcome-wrapper .pp-wc-figure-step-groups .pp-wc-pin-1 {
+    top: 32%;
+    left: 10%;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-groups .pp-wc-pin-2 {
+    top: 10%;
+    left: 40%;
+    right: auto;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-groups .pp-wc-pin-3 {
+    top: 66%;
+    left: 43%;
+    right: auto;
+    bottom: auto;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-groups .pp-wc-pin {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-groups img {
+    height: 300px;
+    object-fit: cover;
+    object-position: left top;
+}
+
+/* Step 5 combines group-level setup with the existing item-level override. */
+#pp-welcome-wrapper .pp-wc-figure-step-post-edit .pp-wc-pin-1 {
+    top: 27%;
+    left: 20%;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-post-edit .pp-wc-pin-2 {
+    top: 35%;
+    left: 24%;
+    right: auto;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-post-edit .pp-wc-pin-3 {
+    top: 66%;
+    left: 66%;
+    right: auto;
+    bottom: auto;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-post-edit .pp-wc-pin {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    line-height: 20px;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+#pp-welcome-wrapper .pp-wc-figure-step-post-edit img {
+    height: 380px;
+    object-fit: cover;
+    object-position: left top;
+}
+
 /* ----------------------------------------------------------- step 6 finish */
 
-#pp-welcome-wrapper .pp-wc-nextsteps {
+#pp-welcome-wrapper .pp-wc-nextsteps-title {
     margin: 20px 0 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111827;
+}
+
+#pp-welcome-wrapper .pp-wc-nextsteps {
+    margin: 10px 0 0;
     padding: 0;
     list-style: none;
     border: 1px solid #e5e7eb;
@@ -577,6 +684,24 @@
     border-bottom: 1px solid #f1f2f4;
     font-size: 14px;
     color: #374151;
+}
+
+#pp-welcome-wrapper .pp-wc-nextsteps li a {
+    color: #4f46e5;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+#pp-welcome-wrapper .pp-wc-nextsteps li a:hover,
+#pp-welcome-wrapper .pp-wc-nextsteps li a:focus {
+    color: #3730a3;
+    text-decoration: underline;
+}
+
+#pp-welcome-wrapper .pp-wc-nextsteps-note {
+    margin: 8px 0 0;
+    font-size: 12px;
+    color: #9ca3af;
 }
 
 #pp-welcome-wrapper .pp-wc-nextsteps li:last-child {
@@ -601,7 +726,7 @@
 #pp-welcome-wrapper .pp-wc-pro-head {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 6px;
 }
 
 #pp-welcome-wrapper .pp-wc-pro-head h2 {
@@ -609,14 +734,31 @@
 }
 
 #pp-welcome-wrapper .pp-wc-pro-badge {
-    padding: 4px 9px;
-    border-radius: 6px;
-    background: #fef3c7;
-    color: #92400e;
-    font-size: 10.5px;
-    font-weight: 700;
-    letter-spacing: .06em;
+    display: inline-block;
+    vertical-align: middle;
+    padding: 2px 6px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 0;
+    letter-spacing: .5px;
     text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.3);
+    animation: pp-badge-pulse 2s infinite;
+}
+
+@keyframes pp-badge-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+#pp-welcome-wrapper .pp-wc-pro-head:hover .pp-wc-pro-badge,
+#pp-welcome-wrapper .pp-wc-pro-badge:hover {
+    animation: none;
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
 }
 
 #pp-welcome-wrapper .pp-wc-pro-list {
