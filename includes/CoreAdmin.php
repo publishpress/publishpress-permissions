@@ -150,7 +150,8 @@ class CoreAdmin
         $pro_modules = array_diff(
             presspermit()->getAvailableModules(['force_all' => true]),
             $active_module_plugin_slugs,
-            array_keys($inactive)
+            array_keys($inactive),
+            presspermit()->getRequiredModules()
         );
 
         sort($pro_modules);
