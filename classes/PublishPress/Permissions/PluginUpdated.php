@@ -170,6 +170,8 @@ class PluginUpdated
             $new_deactivations = array_diff($new_deactivations, $args['activate']);
         }
 
+        $new_deactivations = array_diff($new_deactivations, presspermit()->getRequiredModules());
+
         if (!is_array($deactivated)) {
             $deactivated = [];
         }
@@ -182,6 +184,8 @@ class PluginUpdated
             $deactivated, 
             array_fill_keys($new_deactivations, (object)[])
         );
+
+        $deactivated = array_diff_key($deactivated, array_fill_keys(presspermit()->getRequiredModules(), true));
         
         update_option('presspermit_deactivated_modules', $deactivated);
     }

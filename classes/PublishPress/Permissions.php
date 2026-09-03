@@ -383,6 +383,7 @@ class Permissions
     public function loadModules()
     {
         $inactive_modules = (array) $this->getOption('deactivated_modules');
+        $inactive_modules = array_diff_key($inactive_modules, array_fill_keys($this->getRequiredModules(), true));
 
         $dir = PRESSPERMIT_ABSPATH . '/modules/';
 
@@ -419,6 +420,11 @@ class Permissions
         return $modules;
     }
 
+    public function getRequiredModules()
+    {
+        return ['presspermit-collaboration'];
+    }
+
     public function moduleExists($slug)
     {
         return in_array($slug, $this->getAvailableModules());
@@ -427,6 +433,7 @@ class Permissions
     public function getDeactivatedModules()
     {
         $modules = (array) $this->getOption('deactivated_modules');
+        $modules = array_diff_key($modules, array_fill_keys($this->getRequiredModules(), true));
         return array_intersect_key($modules, array_fill_keys($this->getAvailableModules(), true));
     }
 
