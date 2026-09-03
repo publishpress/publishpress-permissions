@@ -69,6 +69,9 @@ class PermissionsHooksAdmin
         add_action('presspermit_trigger_cache_flush', [$this, 'wpeCacheFlush']);
         add_action('presspermit_activate', [$this, 'actPluginSettingsUpdated']);
         add_action('shutdown', [$this, 'actConfigUpdateFollowup']);
+
+        require_once(PRESSPERMIT_CLASSPATH . '/UI/WelcomeOnboarding.php');
+        new Permissions\UI\WelcomeOnboarding();
     }
 
     public function init()

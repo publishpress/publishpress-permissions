@@ -415,7 +415,7 @@ class Permissions
 
     public function getSkippedModules()
     {
-        $modules = [];
+        $modules = ['presspermit-collaboration'];
 
         return $modules;
     }

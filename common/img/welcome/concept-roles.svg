@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" role="img" aria-label="Three users receiving the same role access">
+  <style>
+    .pp-role-user { animation: pp-role-user 5.6s cubic-bezier(.45, 0, .2, 1) infinite; transform-box: fill-box; transform-origin: center; }
+    .pp-role-user-2 { animation-delay: .52s; }
+    .pp-role-user-3 { animation-delay: 1.04s; }
+    .pp-role-signal { animation: pp-role-signal 5.6s cubic-bezier(.45, 0, .2, 1) infinite; transform-box: fill-box; transform-origin: center; }
+    .pp-role-access { animation: pp-role-access 5.6s cubic-bezier(.45, 0, .2, 1) infinite; transform-box: fill-box; transform-origin: left center; }
+    .pp-role-access-2 { animation-delay: .14s; }
+    .pp-role-access-3 { animation-delay: .28s; }
+    @keyframes pp-role-user {
+      0%, 12%, 78%, 100% { opacity: .42; transform: scale(1); }
+      20%, 31% { opacity: 1; transform: scale(1.12); }
+      40% { opacity: .42; transform: scale(1); }
+    }
+    @keyframes pp-role-signal {
+      0%, 18%, 76%, 100% { opacity: 0; transform: translateX(0) scale(.55); }
+      25% { opacity: 1; transform: translateX(12px) scale(1); }
+      54% { opacity: 1; transform: translateX(128px) scale(1); }
+      63% { opacity: 0; transform: translateX(138px) scale(.55); }
+    }
+    @keyframes pp-role-access {
+      0%, 27%, 82%, 100% { opacity: .24; transform: scaleX(.16); }
+      43%, 70% { opacity: 1; transform: scaleX(1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .pp-role-user, .pp-role-signal, .pp-role-access { animation: none; } }
+  </style>
+  <rect x="64" y="6" width="130" height="52" rx="6" fill="#fff" stroke="#dcdcde" stroke-width="2" />
+  <g fill="#655997">
+    <circle class="pp-role-user pp-role-user-1" cx="14" cy="14" r="6" />
+    <circle class="pp-role-user pp-role-user-2" cx="14" cy="32" r="6" />
+    <circle class="pp-role-user pp-role-user-3" cx="14" cy="50" r="6" />
+  </g>
+  <path d="M20 14h10M20 32h10M20 50h10M30 14v36M30 32h15" fill="none" stroke="#c3c4c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M43 25l14 7-14 7z" fill="#655997" opacity=".72" />
+  <circle class="pp-role-signal" cx="31" cy="32" r="3" fill="#655997" />
+  <g fill="#655997">
+    <rect class="pp-role-access pp-role-access-1" x="74" y="14" width="110" height="8" rx="4" opacity=".35" />
+    <rect class="pp-role-access pp-role-access-2" x="74" y="28" width="110" height="8" rx="4" opacity=".35" />
+    <rect class="pp-role-access pp-role-access-3" x="74" y="42" width="110" height="8" rx="4" opacity=".35" />
+  </g>
+</svg>
