@@ -105,30 +105,25 @@ class PermissionsHooksAdmin
             new Permissions\UI\Handlers\Settings();
         }
 
-        if (!PWP::empty_REQUEST('presspermit_refresh_updates') || !PWP::empty_REQUEST('pp_renewal')) {
+        if (!PWP::empty_REQUEST('presspermit_refresh_updates')) {
             if (!current_user_can('pp_manage_settings')) {
                 wp_die(esc_html(PWP::__wp('Cheatin&#8217; uh?')));
             }
     
-            if (!PWP::empty_REQUEST('presspermit_refresh_updates')) {
-                check_admin_referer('presspermit-refresh-updates');
+            delete_site_transient('update_plugins');
+            delete_option('_site_transient_update_plugins');
+            wp_update_plugins();
+            wp_redirect(admin_url('admin.php?page=presspermit-settings&presspermit_refresh_done=1'));
+            exit;
+        }
 
-                delete_site_transient('update_plugins');
-                delete_option('_site_transient_update_plugins');
-                wp_update_plugins();
-                wp_redirect(admin_url('admin.php?page=presspermit-settings&presspermit_refresh_done=1'));
-                exit;
+        if (!PWP::empty_REQUEST('pp_renewal') && presspermit()->isPro()) {
+            if (!current_user_can('pp_manage_settings')) {
+                wp_die(esc_html(PWP::__wp('Cheatin&#8217; uh?')));
             }
-    
-            if (!PWP::empty_REQUEST('pp_renewal')) {
-                if (presspermit()->isPro()) {
-                    include_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-renewal-redirect.php');
-                } else {
-                    include_once(PRESSPERMIT_ABSPATH . '/includes/renewal-redirect.php');
-                }
-    
-                exit;
-            }
+
+            include_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-renewal-redirect.php');
+            exit;
         }
 
         if (get_option('presspermit_refresh_role_usage')) {
