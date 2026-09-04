@@ -31,20 +31,10 @@ class Agents
 
         if ($single_select) {
             $ajax_selection = false;
-            ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('ul.pp-agents-list input[type=checkbox]').on('click', function() {
-                        $('ul.pp-agents-list input[type=checkbox]').not(this).prop('checked', false);
-                    });
-                });
-                /* ]]> */
-            </script>
-            <?php
+            presspermit_enqueue_admin_script();
         }
 
-        echo '<div class="pp_agents_wrapper">';
+        echo '<div class="pp_agents_wrapper' . ($single_select ? ' pp-single-select' : '') . '">';
 
         if ($ajax_selection) {
             $agents_ajax = $this->agentsDynamicUI();

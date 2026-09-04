@@ -402,7 +402,7 @@ class AgentPermissionsUI
                         <th><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                         <th></th>
                         <th><?php esc_html_e('Status', 'press-permit-core'); ?></th>
-                        <th><a class="pp_clear_all" href="javascript:void(0)"><?php esc_html_e('Remove', 'press-permit-core'); ?></a></th>
+                        <th><a class="pp_clear_all" href="#"><?php esc_html_e('Remove', 'press-permit-core'); ?></a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -462,7 +462,7 @@ class AgentPermissionsUI
                 foreach ($perms as $perm_type => $_caption) {
                     $class = ("pp-add-$perm_type" == $current_tab) ? 'agp-selected_agent' : 'agp-unselected_agent';
 
-                    echo "<li class='agp-agent pp-add-" . esc_attr($perm_type) . " pp-add-permissions " . esc_attr($class) . "'><a class='pp-add-" . esc_attr($perm_type) . "' href='javascript:void(0)'>"
+                    echo "<li class='agp-agent pp-add-" . esc_attr($perm_type) . " pp-add-permissions " . esc_attr($class) . "'><a class='pp-add-" . esc_attr($perm_type) . "' href='#'>"
                         . esc_html($_caption) . '</a></li>';
                 }
                 echo '</ul>';
@@ -720,7 +720,7 @@ class AgentPermissionsUI
                                 echo '<td>' . esc_html(self::getRoleStatusLabel($role_name)) . ' </td>';
                                 echo '<td class="edit-column">';
                                 if (!$read_only) {
-                                    echo '<a href="javascript:void(0)" class="pp_clear" onclick="event.stopPropagation();">' . esc_html__('Delete') . '</a>';
+                                    echo '<a href="#" class="pp_clear">' . esc_html__('Delete') . '</a>';
                                 }
                                 echo '</td>';
                                 echo '</tr>';

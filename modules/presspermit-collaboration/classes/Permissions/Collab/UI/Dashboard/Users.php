@@ -9,130 +9,108 @@ class Users
         }
     }
 
-    // todo: move to js
     public function act_add_member_page_js()
     {
-        if (!presspermit()->getOption('add_author_pages'))
+        if (!presspermit()->getOption('add_author_pages')) {
             return;
-        ?>
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            jQuery(document).ready(function ($) {
-                <?php if ( !PWP::empty_REQUEST('ppmessage') ) {
-                switch(PWP::REQUEST_int('ppmessage')) {
-                case 1: ?>
-                var msg = '<?php if (PWP::is_REQUEST('ppcount')) printf(esc_html(_n('%s author page added', '%s author pages added', (int) PWP::REQUEST_int('ppcount'), 'press-permit-core')), (int) PWP::REQUEST_int('ppcount')); ?>';
-                var cls = 'updated';
-                <?php
-                break;
-                case 2 :
-                ?>
-                var msg = '<?php esc_html_e('No users selected', 'press-permit-core'); ?>';
-                var cls = 'error';
-                <?php
-                break;
-                case 3 :
-                ?>
-                var msg = '<?php esc_html_e('Selected users already have specified author page', 'press-permit-core'); ?>';
-                var cls = 'error';
-                <?php
-                break;
-                } // end switch
-                ?>
-                $('div.wrap h2').after('<div id="message" class="' + cls + ' below-h2"><p>' + msg + '</p></div>');
-                <?php
-                } // endif message arg
-                ?>
+        }
 
-                elems =
-                    '<div id="member_page_adder" class="alignleft actions" style="margin-left:5px;padding-left:5px;margin-bottom:5px">' +
-                    '<label class="screen-reader-text" for="member_page_type"><?php esc_html_e('Add Author Page&hellip;', 'press-permit-core') ?></label>' +
-                    '<select name="member_page_type" id="member_page_type" title="<?php esc_attr_e('make each selected user the author of a new page', 'press-permit-core'); ?>" autocomplete="off">' +
-                    '<option value=""><?php esc_html_e('Add Author Page&hellip;', 'press-permit-core') ?></option>' +
-                    <?php
-                    $post_types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
-                    unset($post_types['attachment']);
-                    foreach( $post_types as $post_type => $type_obj ):
-                    if (!current_user_can($type_obj->cap->edit_others_posts)) {
-                        unset($post_types[$post_type]);
-                        continue;
+        $message = '';
+        $message_class = '';
+        if (!PWP::empty_REQUEST('ppmessage')) {
+            switch (PWP::REQUEST_int('ppmessage')) {
+                case 1:
+                    if (PWP::is_REQUEST('ppcount')) {
+                        $count = PWP::REQUEST_int('ppcount');
+                        $message = sprintf(
+                            _n('%s author page added', '%s author pages added', $count, 'press-permit-core'),
+                            $count
+                        );
                     }
-                    ?>
-                    '<option value="<?php echo esc_attr($post_type);?>"><?php echo esc_html($type_obj->labels->singular_name);?></option>' +
-                    <?php endforeach;?>
-                    '</select>' +
+                    $message_class = 'updated';
+                    break;
+                case 2:
+                    $message = __('No users selected', 'press-permit-core');
+                    $message_class = 'error';
+                    break;
+                case 3:
+                    $message = __('Selected users already have specified author page', 'press-permit-core');
+                    $message_class = 'error';
+                    break;
+            }
+        }
 
-                    <?php
-                    global $wpdb;
+        $post_types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
+        unset($post_types['attachment']);
+        foreach ($post_types as $post_type => $type_obj) {
+            if (!current_user_can($type_obj->cap->edit_others_posts)) {
+                unset($post_types[$post_type]);
+            }
+        }
 
-                    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-                    $exclude = $wpdb->get_col("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_pp_auto_inserted'");
+        global $wpdb;
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $exclude = $wpdb->get_col("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = '_pp_auto_inserted'");
 
-                    foreach( $post_types as $post_type => $type_obj ) :
+        presspermit_enqueue_admin_script();
+        ?>
+        <div class="pp-member-page-adder-config" data-message="<?php echo esc_attr($message); ?>" data-message-class="<?php echo esc_attr($message_class); ?>" hidden>
+            <div id="member_page_adder" class="alignleft actions" style="margin-left:5px;padding-left:5px;margin-bottom:5px">
+                <label class="screen-reader-text" for="member_page_type"><?php esc_html_e('Add Author Page&hellip;', 'press-permit-core'); ?></label>
+                <select name="member_page_type" id="member_page_type" title="<?php esc_attr_e('make each selected user the author of a new page', 'press-permit-core'); ?>" autocomplete="off">
+                    <option value=""><?php esc_html_e('Add Author Page&hellip;', 'press-permit-core'); ?></option>
+                    <?php foreach ($post_types as $post_type => $type_obj) : ?>
+                        <option value="<?php echo esc_attr($post_type); ?>"><?php echo esc_html($type_obj->labels->singular_name); ?></option>
+                    <?php endforeach; ?>
+                </select>
+
+                <?php foreach ($post_types as $post_type => $type_obj) :
+                    $total_posts = 0;
                     if ($type_obj->hierarchical) {
-                        $num_posts = wp_count_posts($post_type);
-                        $total_posts = array_sum((array)$num_posts);
+                        $total_posts = array_sum((array) wp_count_posts($post_type));
                     }
 
                     $input_name = "member_page_pattern_$post_type";
-                    if (!$type_obj->hierarchical)
+                    if (!$type_obj->hierarchical) {
                         $title = __('pattern post sets default content and categories for author post', 'press-permit-core');
-                    elseif ('page' == $post_type)
+                    } elseif ('page' == $post_type) {
                         $title = __('pattern post sets parent, default content and template for author page', 'press-permit-core');
-                    else
+                    } else {
                         $title = __('pattern page sets parent and default content for author page', 'press-permit-core');
-                    ?>
-                    '<label class="screen-reader-text" for="member_page_pattern_<?php echo esc_attr($post_type);?>"><?php esc_html_e('patterned on&hellip;', 'press-permit-core') ?></label>' +
-                    '<span id="member_page_pattern_div_<?php echo esc_attr($post_type);?>" class="member-page-pattern" style="display:none;margin-left:10px;" title="<?php echo esc_attr($title);?>" >' +
-                    <?php
-                    if ($type_obj->hierarchical && ($total_posts < 200)) {
-                        $dropdown_args = [
-                            'post_type' => esc_attr($post_type),
-                            'name' => esc_attr($input_name),
-                            'show_option_none' => esc_html__('patterned on...', 'press-permit-core'),
-                            'sort_column' => 'menu_order, post_title',
-                            'echo' => 0,
-                            'exclude' => array_map('intval', $exclude),  // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
-                        ];
-                        $pages = str_replace("'", '"', wp_dropdown_pages($dropdown_args));  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-                        $pages = str_replace("\n", '', $pages);
-                        $pages = str_replace("\r", '', $pages);
-                    } else {
-                        $pages = '';
                     }
-
-                    if ( $pages ) :
                     ?>
-                    '<?php echo $pages; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>' +
-                    <?php else:?>
-                    '<?php esc_html_e('Pattern ID:', 'press-permit-core');?><input type="text" name="<?php echo esc_attr($input_name);?>" id="<?php echo esc_attr($input_name);?>" size="20" placeholder="<?php esc_attr_e('enter post ID/slug', 'press-permit-core');?>" /></span>' +
-                    <?php endif;?>
-                    '</span>' +
-                    <?php endforeach;?>
+                    <label class="screen-reader-text" for="<?php echo esc_attr($input_name); ?>"><?php esc_html_e('patterned on&hellip;', 'press-permit-core'); ?></label>
+                    <span id="member_page_pattern_div_<?php echo esc_attr($post_type); ?>" class="member-page-pattern" style="display:none;margin-left:10px;" title="<?php echo esc_attr($title); ?>">
+                        <?php
+                        if ($type_obj->hierarchical && ($total_posts < 200)) {
+                            echo wp_dropdown_pages( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+                                [
+                                    'post_type' => $post_type,
+                                    'name' => $input_name,
+                                    'show_option_none' => esc_html__('patterned on...', 'press-permit-core'),
+                                    'sort_column' => 'menu_order, post_title',
+                                    'echo' => 0,
+                                    'exclude' => array_map('intval', $exclude), // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+                                ]
+                            );
+                        } else {
+                            esc_html_e('Pattern ID:', 'press-permit-core');
+                            ?>
+                            <input type="text" name="<?php echo esc_attr($input_name); ?>" id="<?php echo esc_attr($input_name); ?>" size="20" placeholder="<?php esc_attr_e('enter post ID/slug', 'press-permit-core'); ?>" />
+                            <?php
+                        }
+                        ?>
+                    </span>
+                <?php endforeach; ?>
 
-                    '<span id="member_page_title" style="display:none;margin-left:10px;margin-right:5px"><?php esc_html_e('Title:', 'press-permit-core');?><input type="text" name="member_page_title" id="member_page_title" value="[username]" title="<?php esc_attr_e('supported tags are [username] and [userid]', 'press-permit-core');?>" size="30" /></span>' +
-                    '<span id="member_page_add" style="display:none"><?php submit_button(esc_html__('Add Pages', 'press-permit-core'), 'secondary', 'add_member_page', false); ?></span>' +
-                    '<?php wp_nonce_field('add-author-pages', '_pp_permissions_nonce');?>' +
-                    '</div>';
-
-                $("select[name='action']").closest('div.top').find('div.tablenav-pages').after($(elems));
-
-                $("#member_page_type").on('change', function()
-                {
-                    $("#member_page_title").toggle($(this).val() != '');
-                    $("#member_page_add").toggle($(this).val() != '');
-                    $("span.member-page-pattern").hide();
-                    $("#member_page_pattern_div_" + $(this).val()).show();
-
-                    if ($(this).val()) {
-                        $('#member_page_adder').addClass('pp-bg-gray');
-                    } else {
-                        $('#member_page_adder').removeClass('pp-bg-gray');
-                    }
-                });
-            });
-            /* ]]> */
-        </script>
+                <span id="member_page_title" style="display:none;margin-left:10px;margin-right:5px">
+                    <?php esc_html_e('Title:', 'press-permit-core'); ?>
+                    <input type="text" name="member_page_title" value="[username]" title="<?php esc_attr_e('supported tags are [username] and [userid]', 'press-permit-core'); ?>" size="30" />
+                </span>
+                <span id="member_page_add" style="display:none"><?php submit_button(esc_html__('Add Pages', 'press-permit-core'), 'secondary', 'add_member_page', false); ?></span>
+                <?php wp_nonce_field('add-author-pages', '_pp_permissions_nonce'); ?>
+            </div>
+        </div>
         <?php
     } // end function add_member_page_js
 } // end class

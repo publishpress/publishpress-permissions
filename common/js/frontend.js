@@ -1,0 +1,1 @@
+(function(){function t(){var n=document.querySelector(".pp-hide-empty-menu-config");if(!n)return;document.querySelectorAll("ul.nav-menu").forEach(function(e){if(e.querySelectorAll("li").length===0){if(e.style.display="none",n.dataset.hideParentDiv==="1"&&e.parentElement.nodeName==="DIV")e.parentElement.style.display="none"}})}t()})();

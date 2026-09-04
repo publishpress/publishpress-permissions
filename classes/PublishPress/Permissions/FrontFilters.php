@@ -48,28 +48,10 @@ class FrontFilters
             return;
         }
 
-        $legacy_div_toggle = defined('PRESSPERMIT_HIDE_EMPTY_NAV_MENU_DIV') /* legacy nav menu support */
-            ? 'if (ulist.parentElement.nodeName == "DIV") { ulist.parentElement.style.display = "none"; }'
-            : '';
-
-        $js = '
-            document.querySelectorAll("ul.nav-menu").forEach(
-                ulist => {
-                    if (ulist.querySelectorAll("li").length == 0) {
-                        ulist.style.display = "none";
-                        ' . $legacy_div_toggle . '
-                    }
-                }
-            );
-        ';
-
-        // wp_print_inline_script_tag() (WP 5.7+) lets WP tag the script with a CSP nonce when one is active.
-        // Fall back to a raw <script> tag on the older WP versions this plugin still supports.
-        if (function_exists('wp_print_inline_script_tag')) {
-            wp_print_inline_script_tag($js);
-        } else {
-            echo '<script type="text/javascript">' . $js . '</script>';
-        }
+        presspermit_enqueue_front_script();
+        ?>
+        <span class="pp-hide-empty-menu-config" data-hide-parent-div="<?php echo defined('PRESSPERMIT_HIDE_EMPTY_NAV_MENU_DIV') ? '1' : '0'; ?>" hidden></span>
+        <?php
     }
 
     public function fltTitle($title)

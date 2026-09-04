@@ -156,39 +156,9 @@ class PostEdit
     {
         $user = presspermit()->getUser();
 
-        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])) : ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function($) {
-                    $(document).on('focus', 'div.supports-drag-drop', function() {
-                        $('div.media-router a:first').hide();
-                        $('div.media-router a:nth-child(2)').click();
-                    });
-                    $(document).on('mouseover', 'div.supports-drag-drop', function() {
-                        $('div.media-menu a:nth-child(2)').hide();
-                        $('div.media-menu a:nth-child(5)').hide();
-                    });
-                });
-                //]]>
-            </script>
-        <?php
-        endif;
-
-        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])) : ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function($) {
-                    $(document).on('focus', 'div.supports-drag-drop', function() {
-                        $('div.media-router a:first').hide();
-                        $('div.media-router a:nth-child(2)').click();
-                    });
-                    $(document).on('mouseover', 'div.supports-drag-drop', function() {
-                        $('div.media-menu a:nth-child(2)').hide();
-                        $('div.media-menu a:nth-child(5)').hide();
-                    });
-                });
-                //]]>
-            </script>
+        if (empty($user->allcaps['upload_files']) && !empty($user->allcaps['edit_files'])) :
+            presspermit_enqueue_admin_script(); ?>
+            <span class="pp-suppress-upload-ui" hidden></span>
             <?php
         endif;
     }
@@ -273,26 +243,15 @@ class PostEdit
             $agents = presspermit()->admin()->agents();
             ?>
 
-            <div id="pp_author_search_ui_base" style="display:none">
-                <div class="pp-agent-select pp-agents-selection"><?php $agents->agentsUI('user', [], 'select-author', [], $args); ?></div>
+            <?php presspermit_enqueue_admin_script(); ?>
+            <div class="pp-author-search-config" data-title="<?php echo esc_attr($title); ?>"
+                data-open-label="<?php esc_attr_e('select other', 'press-permit-core'); ?>"
+                data-close-label="<?php esc_attr_e('close', 'press-permit-core'); ?>" hidden>
+                <div class="pp-author-search-ui-base">
+                    <div class="pp-agent-select pp-agents-selection"><?php $agents->agentsUI('user', [], 'select-author', [], $args); ?></div>
+                </div>
             </div>
-
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function($) {
-                    var author_el = $('#pp_author_search_ui_base').html();
-                    $('#pp_author_search_ui_base').remove();
-                    $("#post_author_override").after(
-                        '<div id="pp_author_search" class="pp-select-author" style="display:none">' +
-                        author_el +
-                        '</div>&nbsp;' +
-                        '<a href="#" class="pp-add-author" style="margin-left:8px" title="<?php echo esc_attr($title); ?>"><?php esc_html_e('select other', 'press-permit-core'); ?></a>' +
-                        '<a class="pp-close-add-author" href="#" style="display:none;"><?php esc_html_e('close', 'press-permit-core'); ?></a>'
-                    );
-                });
-                /* ]]> */
-            </script>
-<?php
+            <?php
         endif;
     }
 }
