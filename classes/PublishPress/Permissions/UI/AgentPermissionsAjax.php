@@ -369,7 +369,7 @@ class AgentPermissionsAjax
         $pp_admin = presspermit()->admin();
 
         global $wpdb;
-        $add_ids_csv = implode("','", array_map('intval', $ass_ids));
+        $ass_ids_csv = implode("','", array_map('intval', $ass_ids));
 
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_results(

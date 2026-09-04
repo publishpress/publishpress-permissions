@@ -111,6 +111,8 @@ class PermissionsHooksAdmin
             }
     
             if (!PWP::empty_REQUEST('presspermit_refresh_updates')) {
+                check_admin_referer('presspermit-refresh-updates');
+
                 delete_site_transient('update_plugins');
                 delete_option('_site_transient_update_plugins');
                 wp_update_plugins();
@@ -567,6 +569,10 @@ class PermissionsHooksAdmin
     public function dashboardDismissMsg()
     {
         check_ajax_referer('pp-dismiss-msg');
+
+        if (!current_user_can('pp_manage_settings')) {
+            wp_die(-1);
+        }
 
         $dismissals = get_option('presspermit_dismissals');
         if (!is_array($dismissals)) {
