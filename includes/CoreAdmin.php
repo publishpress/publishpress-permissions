@@ -82,12 +82,23 @@ class CoreAdmin
 
             // Only redirect for 'sync'
             if ($slug === 'sync') {
-                // Use JavaScript redirect to avoid header issues
-                ?>
-                <script type="text/javascript">
-                    window.location.href = <?php echo wp_json_encode(admin_url('admin.php?page=presspermit-settings&pp_tab=sync_posts')); ?>;
-                </script>
-                <?php
+                // This callback exits before the footer, so print the external redirect script immediately.
+                $handle = 'presspermit-settings-redirect';
+                $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+
+                echo '<span class="pp-version-notice-redirect" data-redirect-to="'
+                    . esc_url(admin_url('admin.php?page=presspermit-settings&pp_tab=sync_posts'))
+                    . '" hidden></span>';
+
+                wp_register_script(
+                    $handle,
+                    plugins_url("common/js/redirect{$suffix}.js", PRESSPERMIT_FILE),
+                    [],
+                    PRESSPERMIT_VERSION,
+                    false
+                );
+                wp_enqueue_script($handle);
+                wp_print_scripts($handle);
                 exit;
             }
 
@@ -135,13 +146,8 @@ class CoreAdmin
             }
         </style>
 
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            jQuery(document).ready(function ($) {
-                $('#toplevel_page_presspermit-groups ul li:last a, #toplevel_page_presspermit-settings ul li:last a, #toplevel_page_presspermit-posts-teaser ul li:last a').attr('href', '<?php echo esc_url($url); ?>').attr('target', '_blank').css('font-weight', 'bold').css('color', '#FEB123');
-            });
-            /* ]]> */
-        </script>
+        <?php presspermit_enqueue_admin_script(); ?>
+        <span class="pp-upgrade-menu-config" data-url="<?php echo esc_url($url); ?>" hidden></span>
         <?php
     }
 

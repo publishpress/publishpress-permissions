@@ -51,21 +51,10 @@ class DashboardFiltersNonAdministrator
         global $current_user, $pagenow;
 
         // In case we are fudging the edit_theme_options cap for nav menu management, keep other Appearance menu items hidden
-        if (empty($current_user->allcaps['edit_theme_options'])) : ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('#menu-appearance .wp-submenu-wrap a[href!="nav-menus.php"]').not('[class*="wp-has-submenu"]').parent().remove();
-
-                    <?php if ( defined('PP_SUPPRESS_APPEARANCE_LINK') ): ?>
-                    $('#menu-appearance .wp-submenu-wrap a[href="nav-menus.php"]').closest('li.menu-top').find('a.menu-top').attr('href', 'javascript:blank()');
-                    <?php else: ?>
-                    $('#menu-appearance .wp-submenu-wrap a[href="nav-menus.php"]').closest('li.menu-top').find('a.menu-top').attr('href', 'nav-menus.php');
-                    <?php endif;?>
-                });
-                /* ]]> */
-            </script>
-        <?php
+        if (empty($current_user->allcaps['edit_theme_options'])) :
+            presspermit_enqueue_admin_script(); ?>
+            <span class="pp-appearance-menu-config" data-suppress-link="<?php echo defined('PP_SUPPRESS_APPEARANCE_LINK') ? '1' : '0'; ?>" hidden></span>
+            <?php
         endif;  // limited nav menu manager?
     } // end function footer_scripts
 

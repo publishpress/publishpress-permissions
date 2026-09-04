@@ -51,6 +51,10 @@ jQuery(document).ready(function ($) {
             e.preventDefault();
         }
     });
+
+    $('.pp-confirm-submit').on('click', function () {
+        return window.confirm($(this).data('confirm'));
+    });
 });
 
 jQuery(document).ready(function ($) {

@@ -46,6 +46,7 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', "#pp_tbl_exception_selections .pp_clear", function (e) {
+        e.preventDefault();
         var presspermitXid = $(this).closest('tr').find('input[name="pp_presspermitXid[]"]').val();
 
         if (typeof presspermitAllExceptionData[presspermitXid] != 'undefined') {
@@ -56,7 +57,8 @@ jQuery(document).ready(function ($) {
         e.stopPropagation();
     });
 
-    $('.pp_clear_all').on('click', function () {
+    $('.pp_clear_all').on('click', function (e) {
+        e.preventDefault();
         $('.pp_clear').trigger('click');
     });
 
@@ -249,7 +251,7 @@ jQuery(document).ready(function ($) {
                             + '<td>' + selected_caption + '</td>'
                             + '<td>' + item_caption + '</td>'
                             + '<td>' + lblStatus + '</td>'
-                            + '<td><div class="pp_clear">' + ' <a href="javascript:void(0)" class="pp_clear">' + ppRestrict.clearException + '</a></div>'
+                            + '<td><div class="pp_clear">' + ' <a href="#" class="pp_clear">' + ppRestrict.clearException + '</a></div>'
                             + '<input type="hidden" name="pp_presspermitXid[]" value="' + presspermitXid + '" />'
                             + '<input type="hidden" name="pp_add_exception[' + presspermitXid + '][for_type]" value="' + for_type + '" />'
                             + '<input type="hidden" name="pp_add_exception[' + presspermitXid + '][operation]" value="' + op + '" />'
@@ -912,4 +914,3 @@ jQuery(document).ready(function ($) {
     }
     // ========== End "Anonymous Warning" scripts ==========
 });
-

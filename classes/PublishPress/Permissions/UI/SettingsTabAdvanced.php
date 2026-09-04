@@ -268,7 +268,7 @@ class SettingsTabAdvanced
                     ?>
 
                     <?php if ($caution_option_names) :?>
-                        <div class="pp-advanced-caution" style="display:none">
+                        <div class="pp-advanced-caution" data-options-enabled="<?php echo $this->enabled ? '1' : '0'; ?>" style="display:none">
                         <span class="pp-caution">
                         <?php
                         if ($this->enabled) {
@@ -288,19 +288,7 @@ class SettingsTabAdvanced
                         </ul>
                         </div>
 
-                        <script type="text/javascript">
-                            /* <![CDATA[ */
-                            jQuery(document).ready(function ($) {
-                                $('input#advanced_options').on('click', function() {
-                                    <?php if ($this->enabled) :?>
-                                        $(this).closest('td').find('div.pp-advanced-caution').slideToggle($(this).prop('checked'));
-                                    <?php else:?>
-                                        $(this).closest('td').find('div.pp-advanced-caution').slideToggle(!$(this).prop('checked'));
-                                    <?php endif;?>
-                                });
-                            });
-                            /* ]]> */
-                        </script>
+                        <?php presspermit_enqueue_admin_script(); ?>
 
                     <?php endif;?>
 
@@ -531,15 +519,7 @@ class SettingsTabAdvanced
                         </div>
                         </div>
 
-                        <script type="text/javascript">
-                        /* <![CDATA[ */
-                        jQuery(document).ready(function($) {
-                            $('#limit_user_edit_enabled').on('change', function() {
-                                $('#pp_limit_user_edit_by_level_wrap').toggle( $(this).is(':checked') );
-                            });
-                        });
-                        /* ]]> */
-                        </script>
+                        <?php presspermit_enqueue_admin_script(); ?>
                     <?php endif;?>
 
                     <?php
@@ -797,15 +777,7 @@ class SettingsTabAdvanced
                 </td>
             </tr>
 
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('input#list_all_constants').on('click', function() {
-                        $('#pp_available_constants').toggle($(this).prop('checked'));
-                    });
-                });
-                /* ]]> */
-            </script>
+            <?php presspermit_enqueue_admin_script(); ?>
         <?php endif;
 
         if (is_multisite()) {
@@ -877,7 +849,7 @@ class SettingsTabAdvanced
                 ?>
                 <p class="submit pp-submit-alternate" style="border:none;float:right">
                     <input type="submit" name="presspermit_defaults" value="<?php esc_attr_e('Revert to Defaults', 'press-permit-core') ?>"
-                        onclick="<?php echo "javascript:if (confirm('" . esc_attr($msg) . "')) {return true;} else {return false;}"; ?>" />
+                        class="pp-confirm-submit" data-confirm="<?php echo esc_attr($msg); ?>" />
                 </p>
 
             </td>
