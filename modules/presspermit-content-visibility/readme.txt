@@ -2,11 +2,9 @@
 Contributors: publishpress
 Tags: permissions, content visibility, shortcode, access control
 Requires at least: 5.5
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.2.5
 Stable tag: 0.1.0
-License: GPLv3 or later
-License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Conditionally show or hide sections of post content for the current visitor.
 
