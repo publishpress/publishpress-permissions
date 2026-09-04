@@ -33,6 +33,14 @@ class PluginUpdated
                 update_option('presspermit_deactivated_modules', $deactivated_modules);
             }
 
+            if (!get_option('presspermit_display_group_exceptions')) {
+                // Preserve visibility for sites that already manage Permission Groups via Specific Permissions.
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+                if ($wpdb->get_var("SELECT exception_id FROM $wpdb->ppc_exceptions WHERE for_item_source = 'pp_group' LIMIT 1")) {
+                    update_option('presspermit_display_group_exceptions', 1);
+                }
+            }
+
             if (version_compare($prev_version, '2.7-beta', '>=')
             && version_compare($prev_version, '2.7-beta3', '<')
             ) {

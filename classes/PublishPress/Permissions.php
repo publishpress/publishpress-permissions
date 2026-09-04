@@ -242,6 +242,7 @@ class Permissions
         $this->default_options = [
             'enabled_taxonomies' => ['category' => true, 'post_tag' => true],
             'enabled_post_types' => array_fill_keys(['post', 'page'], true),
+            'display_group_exceptions' => 0,
             'define_media_post_caps' => 0,
             'define_create_posts_cap' => 0,
             'strip_private_caption' => 1,
