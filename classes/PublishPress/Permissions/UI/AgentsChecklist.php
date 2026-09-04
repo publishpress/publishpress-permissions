@@ -15,7 +15,13 @@ class AgentsChecklist
     // for group selection only
     public static function display($agents_subset, $agent_type, $all_agents, $name_attrib, $item_assignments, $args)
     {
-        $defaults = ['eligible_ids' => [], 'locked_ids' => [], 'show_subset_caption' => true, 'hide_checkboxes' => false];
+        $defaults = [
+            'eligible_ids' => [],
+            'locked_ids' => [],
+            'show_subset_caption' => true,
+            'hide_checkboxes' => false,
+            'link_captions' => false
+        ];
         $args = array_merge($defaults, $args);
         foreach (array_keys($defaults) as $var) {
             $$var = $args[$var];
@@ -147,13 +153,21 @@ class AgentsChecklist
             else
                 echo "<input type='checkbox' name='" . esc_attr($name_attrib) . "[]'" . esc_attr($disabled) . esc_attr($checked) . " value='" . esc_attr($id) . "' id='r" . esc_attr("{$exec_count}_{$id}") . "' />";
 
-            echo "<label for='" . esc_attr("r{$exec_count}_{$id}"). "'>";
-            echo ' ' . esc_html($captions[$id]);
-            echo '</label>';
+            $can_edit_group = $edit_link_base && presspermit()->groups()->userCan('pp_edit_groups', $id, $agent_type);
 
-            if ($edit_link_base && presspermit()->groups()->userCan('pp_edit_groups', $id, $agent_type))
+            if ($link_captions && $can_edit_group) {
                 echo ' <a href="' . esc_url($edit_link_base . $id) . '" target="_blank" title="' . esc_attr($edit_title_text) . '">'
-                    . esc_html($edit_caption) . '</a>';
+                    . esc_html($captions[$id]) . '</a>';
+            } else {
+                echo "<label for='" . esc_attr("r{$exec_count}_{$id}"). "'>";
+                echo ' ' . esc_html($captions[$id]);
+                echo '</label>';
+
+                if ($can_edit_group) {
+                    echo ' <a href="' . esc_url($edit_link_base . $id) . '" target="_blank" title="' . esc_attr($edit_title_text) . '">'
+                        . esc_html($edit_caption) . '</a>';
+                }
+            }
 
             echo '</li>';
         } //foreach agent
