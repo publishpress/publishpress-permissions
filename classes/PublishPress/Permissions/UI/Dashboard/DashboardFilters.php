@@ -182,7 +182,7 @@ class DashboardFilters
 
         if (in_array($pp_page, [
             'presspermit-settings', 'presspermit-groups', 'presspermit-users',
-            'presspermit-edit-permissions', 'presspermit-group-new',
+            'presspermit-edit-permissions', 'presspermit-group-new', 'presspermit-welcome',
         ], true)) {
             $class_name = ('presspermit-edit-permissions' == $pp_page)
             ? 'AgentPermissions' 
@@ -357,6 +357,17 @@ class DashboardFilters
                     : esc_html__('Settings', 'press-permit-core');
 
                 add_submenu_page($pp_options_menu, $settings_caption, $settings_caption, 'pp_manage_settings', 'presspermit-settings', $handler);
+
+                if ('presspermit-welcome' == $pp_plugin_page) {
+                    add_submenu_page(
+                        $pp_options_menu,
+                        esc_html__('Welcome', 'press-permit-core'),
+                        '- ' . esc_html__('Welcome', 'press-permit-core'),
+                        'pp_manage_settings',
+                        'presspermit-welcome',
+                        $handler
+                    );
+                }
             }
         }
 

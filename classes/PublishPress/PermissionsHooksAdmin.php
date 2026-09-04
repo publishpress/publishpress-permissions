@@ -69,6 +69,9 @@ class PermissionsHooksAdmin
         add_action('presspermit_trigger_cache_flush', [$this, 'wpeCacheFlush']);
         add_action('presspermit_activate', [$this, 'actPluginSettingsUpdated']);
         add_action('shutdown', [$this, 'actConfigUpdateFollowup']);
+
+        require_once(PRESSPERMIT_CLASSPATH . '/UI/WelcomeOnboarding.php');
+        new Permissions\UI\WelcomeOnboarding();
     }
 
     public function init()
@@ -77,6 +80,8 @@ class PermissionsHooksAdmin
             require_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-maint.php');
             Permissions\PressPermitMaint::adminRedirectCheck();
         }
+
+        $this->actMaybeRedirectToWelcome();
 
         require_once(PRESSPERMIT_CLASSPATH . '/CapabilityFiltersAdmin.php');
         new Permissions\CapabilityFiltersAdmin();
@@ -486,6 +491,41 @@ class PermissionsHooksAdmin
         }
 
         return $roles;
+    }
+
+    public function actMaybeRedirectToWelcome()
+    {
+        if (!get_option('presspermit_activation')) {
+            return;
+        }
+
+        if (wp_doing_ajax()) {
+            return;
+        }
+
+        if (is_network_admin() || (is_multisite() && PWP::isNetworkActivated())) {
+            delete_option('presspermit_activation');
+            return;
+        }
+
+        if (PWP::is_REQUEST('activate-multi')) {
+            delete_option('presspermit_activation');
+            return;
+        }
+
+        if (!current_user_can('pp_manage_settings')) {
+            return;
+        }
+
+        if ('presspermit-welcome' == presspermitPluginPage()) {
+            delete_option('presspermit_activation');
+            return;
+        }
+
+        delete_option('presspermit_activation');
+
+        wp_safe_redirect(admin_url('admin.php?page=presspermit-welcome'));
+        exit;
     }
 
     // For old extensions linking to page=pp-settings.php, redirect to page=presspermit-settings, preserving other request args
