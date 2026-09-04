@@ -103,7 +103,14 @@ class SettingsTabInstall
         }
 
         $msg = '';
-        $url = 'https://publishpress.com/pricing/';
+        $site = preg_replace('#^https?://#i', '', untrailingslashit(site_url('')));
+        $url = add_query_arg(
+            [
+                'pkg' => 'press-permit-pro',
+                'site' => $site,
+            ],
+            'https://publishpress.com/pricing/'
+        );
 
         $key_string = (is_array($opt_val) && count($opt_val) > 1) ? $opt_val[1] : '';
         $expire_date = (is_array($opt_val) && isset($opt_val['expire_date_gmt'])) ? $opt_val['expire_date_gmt'] : '';
@@ -129,7 +136,7 @@ class SettingsTabInstall
                                         if ($expire_days < 365) {
                                             printf(
                                                 esc_html__('Your presspermit.com key has expired, but a <a href="%s">PublishPress renewal</a> discount may be available.', 'press-permit-core'),
-                                                'admin.php?page=presspermit-settings&amp;pp_renewal=1'
+                                                esc_url($url)
                                             );
                                         }
                                     } elseif ($modern_pro_version) {
