@@ -14,11 +14,6 @@ class AgentPermissions
         $pp_admin = $pp->admin();
         $pp_groups = $pp->groups();
 
-        if (!PWP::empty_REQUEST('pp_fix_child_exceptions')) {
-            require_once(PRESSPERMIT_CLASSPATH . '/DB/PermissionsUpdate.php');
-            \PublishPress\Permissions\DB\PermissionsUpdate::ensureExceptionPropagation();
-        }
-
         require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
 
         if (!$agent_type = PWP::REQUEST_key('agent_type')) {
@@ -54,6 +49,17 @@ class AgentPermissions
             if (!$agent) {
                 wp_die(esc_html__('Invalid group ID.', 'press-permit-core'));
             }
+        }
+
+        if (PWP::is_POST('pp_fix_child_exceptions')) {
+            check_admin_referer('pp-fix-child-exceptions');
+
+            if (!current_user_can('pp_manage_permissions')) {
+                wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
+            }
+
+            require_once(PRESSPERMIT_CLASSPATH . '/DB/PermissionsUpdate.php');
+            \PublishPress\Permissions\DB\PermissionsUpdate::ensureExceptionPropagation();
         }
 
         if ($metagroup_type) {  // metagroups cannot have name/description manually edited

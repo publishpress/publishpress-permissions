@@ -184,12 +184,13 @@ class ErrorNotice
                 </p></div>
         <?php endif;
         }
+		$notice_nonce = wp_create_nonce('pp-dismiss-msg');
 		?>
 		<script type="text/javascript">
             jQuery(document).ready( function($) {
                 $('a.presspermit-dismiss-notice').on('click', function(e) {
                     $(this).closest('div').slideUp();
-                    jQuery.post(ajaxurl, {action:"pp_dismiss_msg", msg_id:$(this).attr('id'), cookie: encodeURIComponent(document.cookie)});
+                    jQuery.post(ajaxurl, {action:"pp_dismiss_msg", msg_id:$(this).attr('id'), cookie: encodeURIComponent(document.cookie), _ajax_nonce:"<?php echo esc_js($notice_nonce); ?>"});
                 });
             });
 		</script>
