@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" role="img" aria-label="One item receiving an exception override">
+  <style>
+    .pp-exception-focus { animation: pp-exception-focus 7.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .pp-exception-symbol { transform-box: fill-box; transform-origin: center; }
+    .pp-exception-check { animation: pp-exception-check 7.2s ease-in-out infinite; }
+    .pp-exception-x { animation: pp-exception-x 7.2s ease-in-out infinite; }
+    .pp-exception-warning { animation: pp-exception-warning 7.2s ease-in-out infinite; }
+    @keyframes pp-exception-focus {
+      0%, 22%, 80%, 100% { opacity: .08; }
+      10%, 18%, 38%, 56%, 68%, 86% { opacity: .34; }
+    }
+    @keyframes pp-exception-check {
+      0%, 7%, 36%, 100% { opacity: 0; }
+      13%, 30% { opacity: 1; }
+    }
+    @keyframes pp-exception-x {
+      0%, 32%, 62%, 100% { opacity: 0; }
+      40%, 56% { opacity: 1; }
+    }
+    @keyframes pp-exception-warning {
+      0%, 58%, 92%, 100% { opacity: 0; }
+      67%, 86% { opacity: 1; }
+    }
+    @media (prefers-reduced-motion: reduce) { .pp-exception-focus, .pp-exception-check, .pp-exception-x, .pp-exception-warning { animation: none; } }
+  </style>
+  <g stroke="#c3c4c7" stroke-width="2">
+    <rect x="34" y="7" width="140" height="14" rx="4" fill="#f0f0f1" />
+    <rect x="34" y="43" width="140" height="14" rx="4" fill="#f0f0f1" />
+  </g>
+  <rect x="34" y="25" width="140" height="14" rx="4" fill="#f0f0f1" stroke="#c3c4c7" stroke-width="2" />
+  <g>
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 18;0 18;0 -18;0 -18;0 0" keyTimes="0;.34;.43;.56;.66;.82;1" keySplines=".45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1" calcMode="spline" dur="7.2s" repeatCount="indefinite" />
+    <rect x="34" y="25" width="140" height="14" rx="4" fill="#fff" stroke="#655997" stroke-width="2.5" />
+    <rect class="pp-exception-focus" x="34" y="25" width="140" height="14" rx="4" fill="#f6f5f9" stroke="#655997" stroke-width="2.5" />
+    <circle cx="42" cy="32" r="3" fill="#655997">
+      <animate attributeName="cx" values="42;166;42;166;42;166;42" keyTimes="0;.28;.43;.56;.66;.82;1" keySplines=".45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1" calcMode="spline" dur="7.2s" repeatCount="indefinite" />
+      <animate attributeName="opacity" values="0;1;1;0;1;1;0;1;1;0" keyTimes="0;.08;.24;.36;.43;.56;.62;.67;.82;1" calcMode="linear" dur="7.2s" repeatCount="indefinite" />
+    </circle>
+    <path class="pp-exception-symbol pp-exception-check" d="M100 32l3 2.5 5.5-6" fill="none" stroke="#655997" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1" />
+    <g class="pp-exception-symbol pp-exception-x" fill="none" stroke="#655997" stroke-width="2" stroke-linecap="round" opacity="0">
+      <path d="M100 29l8 6" />
+      <path d="M108 29l-8 6" />
+    </g>
+    <g class="pp-exception-symbol pp-exception-warning" fill="none" stroke="#655997" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0">
+      <path d="M104 28l5 8h-10z" />
+      <path d="M104 30.5v2.5" />
+      <circle cx="104" cy="35" r=".7" fill="#655997" stroke="none" />
+    </g>
+  </g>
+  <rect class="pp-exception-badge" x="12" y="25" width="14" height="14" rx="3" fill="#655997">
+    <animateTransform attributeName="transform" type="translate" values="0 0;0 0;0 18;0 18;0 -18;0 -18;0 0" keyTimes="0;.34;.43;.56;.66;.82;1" keySplines=".45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1;.45 0 .2 1" calcMode="spline" dur="7.2s" repeatCount="indefinite" />
+  </rect>
+</svg>

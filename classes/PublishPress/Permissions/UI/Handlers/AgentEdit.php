@@ -185,6 +185,12 @@ class AgentEdit
                     foreach ($_POST['pp_add_role'] as $add_role) {
                         $attrib_cond = (!empty($add_role['attrib_cond'])) ? ':' . PWP::sanitizeEntry(sanitize_text_field($add_role['attrib_cond'])) : '';
                         $role = (isset($add_role['role'])) ? PWP::sanitizeEntry(sanitize_text_field($add_role['role'])) : '';
+                        $role_type = (isset($add_role['type'])) ? sanitize_key($add_role['type']) : '';
+                        $base_role_name = strtok($role, ':');
+
+                        if (!$role || !$role_type || !$base_role_name || !presspermit()->admin()->userCanAdminRole($base_role_name, $role_type)) {
+                            continue;
+                        }
 
                         presspermit()->assignRoles(["{$role}{$attrib_cond}" => [$_agent_id => true]], $agent_type);
                     }

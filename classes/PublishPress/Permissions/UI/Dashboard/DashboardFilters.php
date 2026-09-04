@@ -182,7 +182,7 @@ class DashboardFilters
 
         if (in_array($pp_page, [
             'presspermit-settings', 'presspermit-groups', 'presspermit-users',
-            'presspermit-edit-permissions', 'presspermit-group-new',
+            'presspermit-edit-permissions', 'presspermit-group-new', 'presspermit-welcome',
         ], true)) {
             $class_name = ('presspermit-edit-permissions' == $pp_page)
             ? 'AgentPermissions' 
@@ -357,6 +357,17 @@ class DashboardFilters
                     : esc_html__('Settings', 'press-permit-core');
 
                 add_submenu_page($pp_options_menu, $settings_caption, $settings_caption, 'pp_manage_settings', 'presspermit-settings', $handler);
+
+                if ('presspermit-welcome' == $pp_plugin_page) {
+                    add_submenu_page(
+                        $pp_options_menu,
+                        esc_html__('Welcome', 'press-permit-core'),
+                        '- ' . esc_html__('Welcome', 'press-permit-core'),
+                        'pp_manage_settings',
+                        'presspermit-welcome',
+                        $handler
+                    );
+                }
             }
         }
 
@@ -395,16 +406,17 @@ class DashboardFilters
             require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
         }
 
-        if ($is_administrator || $pp->getOption('display_user_profile_groups')) {
-            Profile::displayUserGroups($pp_profile_user->ID);
-        }
-
-        if ($is_administrator || $pp->getOption('display_user_profile_roles')) {
-            Profile::displayUserAssignedRoles($pp_profile_user);
-        }
-
-        if ($is_administrator || $pp->getOption('display_user_profile_roles')) {
-            Profile::displayUserRoles($pp_profile_user);
+        if (
+            $is_administrator || $pp->getOption('display_user_profile_roles')
+            || $pp->getOption('display_user_profile_groups')
+        ) {
+            Profile::displayUserPermissionsSummary(
+                $pp_profile_user,
+                [
+                    'show_groups' => $is_administrator || $pp->getOption('display_user_profile_groups'),
+                    'show_roles' => $is_administrator || $pp->getOption('display_user_profile_roles'),
+                ]
+            );
         }
     }
 

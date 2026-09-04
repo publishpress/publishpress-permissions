@@ -6,6 +6,7 @@ class TeaserHooks
     private static $instance = null;
     public $teaser_disabled = false; // kill switch to support universal teaser disable by API
     private $excerpt_post = false;
+    private $theme_preview_title_filtered = false;
     public $teased_excerpts = [];
     public $is_archive_teaser = false;
 
@@ -28,7 +29,13 @@ class TeaserHooks
 
         add_filter('login_redirect', [$this, 'fltEnforceTeaserLoginRedirect'], PHP_INT_MAX - 1, 3);
 
+        add_action('template_redirect', [$this, 'actThemePreview'], 0);
         add_action('template_redirect', [$this, 'actMaybeRedirect'], 5);
+        // phpcs:ignore WordPressVIPMinimum.UserExperience.AdminBarRemoval.RemovalDetected -- The admin bar is hidden only inside the isolated preview frame.
+        add_filter('show_admin_bar', [$this, 'fltThemePreviewAdminBar']);
+        add_filter('the_title', [$this, 'fltThemeTeaserPreviewTitle'], PHP_INT_MAX, 2);
+        add_filter('the_content', [$this, 'fltThemeTeaserPreviewContent'], PHP_INT_MAX);
+        add_action('wp_enqueue_scripts', [$this, 'actEnqueueThemeTeaserPreviewScript']);
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
 
@@ -40,6 +47,316 @@ class TeaserHooks
         add_action('presspermit_force_term_teaser', [$this, 'actForceTermTeaser']);
     }
 
+    private function getThemePreviewState()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $state = isset($_GET['pp_permissions_teaser_preview']) ? $_GET['pp_permissions_teaser_preview'] : '';
+        $state = sanitize_key(wp_unslash($state));
+
+        return in_array($state, ['404', 'teaser'], true) ? $state : '';
+    }
+
+    private function isThemePreviewRequest($state = '')
+    {
+        $preview_state = $this->getThemePreviewState();
+
+        return $preview_state && (!$state || $state === $preview_state);
+    }
+
+    function actThemePreview()
+    {
+        $preview_state = $this->getThemePreviewState();
+
+        if (!$preview_state || is_admin()) {
+            return;
+        }
+
+        $this->teaser_disabled = true;
+
+        global $wp_query;
+
+        if (!$wp_query) {
+            return;
+        }
+
+        // The default preview and the no-sample-post fallback intentionally use the theme's 404 template.
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only preview request; no data is saved.
+        $use_404_template = ('404' === $preview_state) || !empty($_GET['pp_permissions_teaser_fallback']);
+
+        if ($use_404_template) {
+            $wp_query->set_404();
+            status_header(404);
+        }
+
+        nocache_headers();
+
+        // Keep WordPress from guessing and redirecting an intentional preview URL.
+        remove_action('template_redirect', 'redirect_canonical');
+    }
+
+    function fltThemePreviewAdminBar($show)
+    {
+        return $this->isThemePreviewRequest() ? false : $show;
+    }
+
+    private function getThemeTeaserPreviewPostType()
+    {
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? $_GET['pp_permissions_teaser_post_type'] : '';
+        $post_type = sanitize_key(wp_unslash($post_type));
+
+        if ($post_type && post_type_exists($post_type)) {
+            return $post_type;
+        }
+
+        $queried_object = get_queried_object();
+
+        return ($queried_object instanceof \WP_Post) ? $queried_object->post_type : 'post';
+    }
+
+    private function isThemeTeaserPreviewMainPost($post_id = 0)
+    {
+        if (!$this->isThemePreviewRequest('teaser') || is_admin()) {
+            return false;
+        }
+
+        $queried_post_id = (int) get_queried_object_id();
+
+        return $queried_post_id && (!$post_id || $queried_post_id === (int) $post_id);
+    }
+
+    private function getThemeTeaserPreviewTeaserType()
+    {
+        $allowed = ['1', 'read_more', 'excerpt', 'x_chars', 'more', 'redirect'];
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
+        $type = isset($_GET['pp_permissions_teaser_type']) ? $_GET['pp_permissions_teaser_type'] : '1';
+        $type = sanitize_key(wp_unslash($type));
+
+        return in_array($type, $allowed, true) ? $type : '1';
+    }
+
+    // Mirrors the "Not Logged In" branch of TeaserHooks::actMaybeRedirect(), which is what a
+    // blocked visitor previewing this page would actually experience.
+    private function getThemeTeaserPreviewRedirectTarget($post_type)
+    {
+        $option_val = presspermit()->getTypeOption('teaser_redirect_anon', $post_type);
+
+        if ('(login)' === $option_val) {
+            return wp_login_url();
+        }
+
+        if ('(select)' === $option_val) {
+            $page_id = presspermit()->getTypeOption('teaser_redirect_anon_page', $post_type);
+
+            if (is_numeric($page_id)) {
+                $redirect_post_type = presspermit()->getTypeOption('teaser_redirect_anon_post_type', $post_type) ?: 'page';
+                $redirect_post = get_post($page_id);
+
+                if ($redirect_post && 'publish' === $redirect_post->post_status && $redirect_post->post_type === $redirect_post_type) {
+                    return get_permalink($page_id);
+                }
+
+                return wp_login_url();
+            }
+        }
+
+        return '';
+    }
+
+    function fltThemeTeaserPreviewTitle($title, $post_id)
+    {
+        if ($this->theme_preview_title_filtered
+            || !$this->isThemeTeaserPreviewMainPost($post_id)
+            || !in_the_loop()
+            || !is_main_query()
+        ) {
+            return $title;
+        }
+
+        $this->theme_preview_title_filtered = true;
+
+        $post_type = $this->getThemeTeaserPreviewPostType();
+        $type_obj = get_post_type_object($post_type);
+        $singular_label = $type_obj ? $type_obj->labels->singular_name : __('Post', 'press-permit-core');
+        $sample_title = sprintf(
+            /* translators: %s is the singular post type label, such as Post or Page. */
+            __('A Sample %s', 'press-permit-core'),
+            $singular_label
+        );
+
+        // Prepend/append title text only applies to the "Teaser Text" type on the front end.
+        if ('1' !== $this->getThemeTeaserPreviewTeaserType()) {
+            return $sample_title;
+        }
+
+        // Not stripped: the front end concatenates these directly into post_title, formatting included.
+        $prefix = wp_unslash((string) presspermit()->getTypeOption('tease_prepend_name_anon', $post_type));
+        $suffix = wp_unslash((string) presspermit()->getTypeOption('tease_append_name_anon', $post_type));
+
+        return implode(' ', array_filter([$prefix, $sample_title, $suffix]));
+    }
+
+    private function getThemeTeaserPreviewNoticeStyle($post_type)
+    {
+        $defaults = [
+            'backgroundColor' => '#f0f6fc',
+            'textColor' => '#1d2327',
+            'borderColor' => '#0073aa',
+            'borderWidth' => 4,
+            'borderPosition' => 'left',
+            'padding' => 15,
+            'borderRadius' => 0,
+            'fontSize' => 14,
+        ];
+
+        if ('custom' !== presspermit()->getTypeOption('teaser_notice_style_mode', $post_type)) {
+            return $defaults;
+        }
+
+        $border_width = presspermit()->getTypeOption('teaser_notice_border_width', $post_type);
+        $padding = presspermit()->getTypeOption('teaser_notice_padding', $post_type);
+        $border_radius = presspermit()->getTypeOption('teaser_notice_border_radius', $post_type);
+        $font_size = presspermit()->getTypeOption('teaser_notice_font_size', $post_type);
+        $style = [
+            'backgroundColor' => sanitize_hex_color(
+                (string) presspermit()->getTypeOption('teaser_notice_bg_color', $post_type)
+            ) ?: $defaults['backgroundColor'],
+            'textColor' => sanitize_hex_color(
+                (string) presspermit()->getTypeOption('teaser_notice_text_color', $post_type)
+            ) ?: $defaults['textColor'],
+            'borderColor' => sanitize_hex_color(
+                (string) presspermit()->getTypeOption('teaser_notice_border_color', $post_type)
+            ) ?: $defaults['borderColor'],
+            'borderWidth' => is_numeric($border_width) ? (int) $border_width : $defaults['borderWidth'],
+            'borderPosition' => (string) presspermit()->getTypeOption('teaser_notice_border_position', $post_type),
+            'padding' => is_numeric($padding) ? (int) $padding : $defaults['padding'],
+            'borderRadius' => is_numeric($border_radius) ? (int) $border_radius : $defaults['borderRadius'],
+            'fontSize' => is_numeric($font_size) ? (int) $font_size : $defaults['fontSize'],
+        ];
+
+        $style['borderWidth'] = max(0, min(20, $style['borderWidth']));
+        $style['padding'] = max(0, min(50, $style['padding']));
+        $style['borderRadius'] = max(0, min(50, $style['borderRadius']));
+        $style['fontSize'] = max(10, min(30, $style['fontSize']));
+
+        if (!in_array($style['borderPosition'], ['left', 'right', 'top', 'bottom', 'all'], true)) {
+            $style['borderPosition'] = $defaults['borderPosition'];
+        }
+
+        return $style;
+    }
+
+    private function getThemeTeaserPreviewNoticeStyleAttribute($post_type)
+    {
+        $style = $this->getThemeTeaserPreviewNoticeStyle($post_type);
+        $border_property = ('all' === $style['borderPosition'])
+            ? 'border'
+            : 'border-' . $style['borderPosition'];
+
+        return sprintf(
+            'padding: %1$dpx; background: %2$s; color: %3$s; %4$s: %5$dpx solid %6$s; margin: 15px 0; font-size: %7$dpx; line-height: 1.6; border-radius: %8$dpx;',
+            $style['padding'],
+            $style['backgroundColor'],
+            $style['textColor'],
+            $border_property,
+            $style['borderWidth'],
+            $style['borderColor'],
+            $style['fontSize'],
+            $style['borderRadius']
+        );
+    }
+
+    function fltThemeTeaserPreviewContent($content)
+    {
+        global $post;
+
+        if (!$post || !$this->isThemeTeaserPreviewMainPost($post->ID) || !in_the_loop() || !is_main_query()) {
+            return $content;
+        }
+
+        $post_type = $this->getThemeTeaserPreviewPostType();
+        $teaser_type = $this->getThemeTeaserPreviewTeaserType();
+        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $style_attr = esc_attr($this->getThemeTeaserPreviewNoticeStyleAttribute($post_type));
+
+        if ('redirect' === $teaser_type) {
+            $target_url = $this->getThemeTeaserPreviewRedirectTarget($post_type);
+            $message = $target_url
+                ? sprintf(
+                    /* translators: %s is a link to the URL visitors without access are redirected to. */
+                    esc_html__('Visitors without access are redirected to: %s', 'press-permit-core'),
+                    '<a href="' . esc_url($target_url) . '">' . esc_html($target_url) . '</a>'
+                )
+                : esc_html__('Visitors without access are redirected away from this page.', 'press-permit-core');
+
+            return sprintf(
+                '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
+                $style_attr,
+                wpautop($message)
+            );
+        }
+
+        if (in_array($teaser_type, ['read_more', 'excerpt', 'x_chars', 'more'], true)) {
+            // Not escaped: these notice messages preserve their formatting on the front end
+            // (see PostsTeaser::wrapTeaserNotice() usage).
+            $option_map = [
+                'read_more' => 'read_more_login_notice',
+                'excerpt' => 'excerpt_login_notice',
+                'x_chars' => 'x_chars_login_notice',
+                'more' => 'x_chars_login_notice',
+            ];
+            $message = wp_unslash((string) presspermit()->getTypeOption($option_map[$teaser_type], $post_type));
+            $message = ('' !== $message) ? $message : $default_message;
+
+            return sprintf(
+                '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
+                $style_attr,
+                wpautop($message)
+            );
+        }
+
+        // "Teaser Text": not stripped, since the replace/prepend/append fields preserve their
+        // formatting on the front end (see PostsTeaser::getTeaserText()).
+        $teaser_text = wp_unslash(
+            (string) presspermit()->getTypeOption('tease_replace_content_anon', $post_type)
+        );
+        $prefix = wp_unslash(
+            (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
+        );
+        $suffix = wp_unslash(
+            (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
+        );
+        $preview_text = implode(' ', array_filter([$prefix, ('' !== $teaser_text) ? $teaser_text : $default_message, $suffix]));
+
+        return sprintf(
+            '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
+            $style_attr,
+            wpautop($preview_text)
+        );
+    }
+
+    function actEnqueueThemeTeaserPreviewScript()
+    {
+        if (!$this->isThemePreviewRequest('teaser') || is_admin()) {
+            return;
+        }
+
+        // Enqueued as an external file (rather than echoed inline) so it isn't blocked by a
+        // site's Content-Security-Policy script-src directive when it doesn't allow inline
+        // scripts (no 'unsafe-inline'/nonce/hash) - this script has no PHP-injected dynamic
+        // values, so nothing is lost by loading it as a plain static file.
+        $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+        $urlpath = plugins_url('', PRESSPERMIT_TEASER_FILE);
+
+        wp_enqueue_script(
+            'presspermit-theme-teaser-preview',
+            $urlpath . "/common/js/theme-teaser-preview{$suffix}.js",
+            [],
+            PRESSPERMIT_TEASER_VERSION,
+            true
+        );
+    }
+
     function fltDefaultOptions($defaults)
     {
         $extra = [
@@ -47,6 +364,7 @@ class TeaserHooks
             'rss_nonprivate_feed_mode' => 'full_content',
             'feed_teaser' => __("View the content of this <a href='%permalink%'>article</a>"),  // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
             'teaser_hide_thumbnail' => [],
+            'teaser_disable_comments' => ['' => 1],
             'teaser_hide_custom_private_only' => false,
             'teaser_hide_links_taxonomy' => '',
             'teaser_hide_links_term' => '',
@@ -98,6 +416,14 @@ class TeaserHooks
             if (!presspermit()->isContentAdministrator() && !$this->teaser_disabled) {
                 require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostFiltersFront.php');
                 new Teaser\PostFiltersFront();
+            }
+
+            // Not gated by isContentAdministrator(): RSS masking is meant to apply even for
+            // qualified/logged-in users, since feed readers cache the raw content regardless
+            // of who was logged in when it was fetched (see the "RSS" options hint text).
+            if (!$this->teaser_disabled) {
+                require_once(PRESSPERMIT_TEASER_CLASSPATH . '/FeedFilters.php');
+                new Teaser\FeedFilters();
             }
         }
     }
@@ -289,7 +615,7 @@ class TeaserHooks
 
     function actMaybeRedirect()
     {
-        if (defined('DOING_CRON') || !PWP::isFront()) {
+        if (defined('DOING_CRON') || !PWP::isFront() || $this->isThemePreviewRequest()) {
             return;
         }
 
@@ -427,7 +753,7 @@ class TeaserHooks
             if (isset($_POST[$option_basename])) {
                 presspermit()->updateOption(
                     $default_prefix . $option_basename,
-                    $_POST[$option_basename], // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                    preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $_POST[$option_basename]),    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
                     $args
                 );
             }

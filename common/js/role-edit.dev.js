@@ -22,7 +22,8 @@ jQuery(document).ready(function ($) {
     var presspermitAllRoleData = [];
     var presspermitEID = -1;
 
-    $(".pp-add-permissions > a").on('click', function () {
+    $(".pp-add-permissions > a").on('click', function (e) {
+        e.preventDefault();
         $(".pp-add-permissions > a").parent().removeClass('agp-selected_agent').addClass('agp-unselected_agent');
         $(this).parent().removeClass('agp-unselected_agent').addClass('agp-selected_agent');
         $('div.pp-add-permissions').hide();
@@ -43,6 +44,7 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', "#pp_tbl_role_selections .pp_clear", function (e) {
+        e.preventDefault();
         var presspermitEID = $(this).closest('tr').find('input[name="pp_presspermitEID[]"]').val();
 
         if (typeof presspermitAllRoleData[presspermitEID] != 'undefined') {
@@ -87,7 +89,7 @@ jQuery(document).ready(function ($) {
                     '<tr><td>' + $('select[name="pp_select_type"] option:selected').html() + '</td>'
                     + '<td>' + $('select[name="pp_select_role"] option:selected').html() + '</td>'
                     + '<td>' + lbl.html() + '</td>'
-                    + '<td><div class="pp_clear"><a href="javascript:void(0)" class="pp_clear">' + ppCred.clearRole + '</a></div>'
+                    + '<td><div class="pp_clear"><a href="#" class="pp_clear">' + ppCred.clearRole + '</a></div>'
                     + '<input type="hidden" name="pp_presspermitEID[]" value="' + presspermitEID + '" />'
                     + '<input type="hidden" name="pp_add_role[' + presspermitEID + '][type]" value="' + $('select[name="pp_select_type"]').val() + '" />'
                     + '<input type="hidden" name="pp_add_role[' + presspermitEID + '][role]" value="' + $('select[name="pp_select_role"]').val() + '" />'
@@ -265,6 +267,7 @@ jQuery(document).ready(function ($) {
     });
 
     $('.pp-current-roles-container .checkbox-row .pp_clear').on('click', function (e) {
+        e.preventDefault();
         e.stopPropagation();
         const roleId = $(this).closest('tr').find('input[type="checkbox"]').val();
         if (roleId) presspermitAjaxSubmit('roles_remove', presspermitRemoveRolesDone, roleId);
@@ -434,4 +437,3 @@ jQuery(document).ready(function ($) {
     });
     // ========== End "Table Sort" scripts ==========
 });
-

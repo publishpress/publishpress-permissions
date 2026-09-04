@@ -356,31 +356,17 @@ class PostEdit
         ) {
             return;
         }
+        presspermit_enqueue_admin_script();
         ?>
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            jQuery(document).ready(function($) {
-                $('#pageparentdiv div.inside p').first().wrapInner('<a href="post.php?post=<?php echo esc_attr($post->post_parent); ?>&amp;action=edit">');
-            });
-            /* ]]> */
-        </script>
+        <span class="pp-edit-parent-config" data-url="<?php echo esc_url(admin_url('post.php?post=' . (int) $post->post_parent . '&action=edit')); ?>" hidden></span>
         <?php
     } // end function
 
     public function actScriptForceAutosaveBeforeUpload()
     {  // under some configuration, it is necessary to pre-assign categories. Autosave accomplishes this by triggering save_post action handlers.
-        if (!presspermit()->isUserUnfiltered()) : ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function($) {
-                    $('#wp-content-media-buttons a').on('click', function() {
-                        if ($('#post-status-info span.autosave-message').html() == '&nbsp;') {
-                            autosave();
-                        }
-                    });
-                });
-                /* ]]> */
-            </script>
+        if (!presspermit()->isUserUnfiltered()) :
+            presspermit_enqueue_admin_script(); ?>
+            <span class="pp-force-autosave-before-upload" hidden></span>
             <?php
         endif;
     } // end function

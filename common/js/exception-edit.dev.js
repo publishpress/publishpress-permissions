@@ -3,6 +3,8 @@ jQuery(document).ready(function ($) {
     var presspermitItemPath = new Object;
     var presspermitAllExceptionData = [];
     var presspermitXid = -1;
+    // Distinguish a user's block-all choice from the checked state forced by selected Pages.
+    var presspermitBlockAllExplicit = false;
 
     $('ul.categorychecklist ul.children li[style="display:none"]').parent().prevAll('input.menu-item-checkbox').next('span').html(' + ');
 
@@ -46,6 +48,7 @@ jQuery(document).ready(function ($) {
     });
 
     $(document).on('click', "#pp_tbl_exception_selections .pp_clear", function (e) {
+        e.preventDefault();
         var presspermitXid = $(this).closest('tr').find('input[name="pp_presspermitXid[]"]').val();
 
         if (typeof presspermitAllExceptionData[presspermitXid] != 'undefined') {
@@ -56,7 +59,8 @@ jQuery(document).ready(function ($) {
         e.stopPropagation();
     });
 
-    $('.pp_clear_all').on('click', function () {
+    $('.pp_clear_all').on('click', function (e) {
+        e.preventDefault();
         $('.pp_clear').trigger('click');
     });
 
@@ -118,6 +122,19 @@ jQuery(document).ready(function ($) {
         $('div.pp-ext-promo').hide();
 
         var items = $('#menu-settings-column').find('.tabs-panel-active .categorychecklist li input:checked');
+        var for_type = $('select[name="pp_select_x_for_type"]').val();
+        var mod_type = $('input[name="pp_select_x_mod_type"]:checked').val();
+
+        // Selected Page limitations imply block-all. Store item 0 only for an explicit standalone choice.
+        if ('page' == for_type && 'include' == mod_type) {
+            var selectedPages = $('#posttype-page .tabs-panel-active input.menu-item-checkbox[value!="0"]:checked');
+
+            if (selectedPages.length) {
+                items = selectedPages;
+            } else if (presspermitBlockAllExplicit) {
+                items = $('#posttype-page input.menu-item-checkbox[value="0"]').first();
+            }
+        }
 
         if (!$('input[name="pp_select_x_operation"]').val()) {
             $('#pp_item_selection_msg').html(ppRestrict.noOp);
@@ -165,10 +182,8 @@ jQuery(document).ready(function ($) {
             }
         }
 
-        var for_type = $('select[name="pp_select_x_for_type"]').val();
         var op = $('input[name="pp_select_x_operation"]:checked').val();
         var via_type = $('select[name="pp_select_x_via_type"]').val();
-        var mod_type = $('input[name="pp_select_x_mod_type"]:checked').val();
 
         var for_type_caption = $('select[name="pp_select_x_for_type"] option:selected').html()
         var op_caption = $('input[name="pp_select_x_operation"]:checked').next('span').html()
@@ -196,6 +211,10 @@ jQuery(document).ready(function ($) {
 
             if (typeof (itemdata['menu-item-object-id'] != 'undefined')) {
                 item_caption = itemdata['menu-item-title'];
+
+                if ('page' == for_type && 'include' == mod_type && '0' == itemdata['menu-item-object-id']) {
+                    item_caption = $('#pp_block_all_default').next('label').text();
+                }
 
                 if (hier_type) {
                     if (typeof (presspermitItemPath[itemdata['menu-item-object-id']]) != 'undefined')
@@ -249,7 +268,7 @@ jQuery(document).ready(function ($) {
                             + '<td>' + selected_caption + '</td>'
                             + '<td>' + item_caption + '</td>'
                             + '<td>' + lblStatus + '</td>'
-                            + '<td><div class="pp_clear">' + ' <a href="javascript:void(0)" class="pp_clear">' + ppRestrict.clearException + '</a></div>'
+                            + '<td><div class="pp_clear">' + ' <a href="#" class="pp_clear">' + ppRestrict.clearException + '</a></div>'
                             + '<input type="hidden" name="pp_presspermitXid[]" value="' + presspermitXid + '" />'
                             + '<input type="hidden" name="pp_add_exception[' + presspermitXid + '][for_type]" value="' + for_type + '" />'
                             + '<input type="hidden" name="pp_add_exception[' + presspermitXid + '][operation]" value="' + op + '" />'
@@ -269,6 +288,8 @@ jQuery(document).ready(function ($) {
         });
 
         $("#pp_add_exception .menu-item-checkbox").prop('checked', false);
+        presspermitBlockAllExplicit = false;
+        pressPermitNoneItemVisibility();
 
         if (duplicate && !any_added) {
             $('#pp_item_selection_msg').html(ppRestrict.alreadyException);
@@ -319,10 +340,26 @@ jQuery(document).ready(function ($) {
 
     var pressPermitNoneItemVisibility = function() {
         var mod_type = $('input[name="pp_select_x_mod_type"]:checked').val();
+        var operation = $('input[name="pp_select_x_operation"]:checked').val();
+        var for_type = $('select[name="pp_select_x_for_type"]').val();
+        var noneItem = $('td.pp-select-items input.menu-item-checkbox[value="0"]');
+        var pageNoneItem = $('#posttype-page input.menu-item-checkbox[value="0"]');
+        var blockAll = $('#pp_block_all_default');
+        var showBlockAll = 'include' == mod_type && 'page' == for_type;
+        var showNone = (('include' == mod_type) && !showBlockAll) || (('exclude' == mod_type) && ('associate' == operation));
+        var hasSelectedPages = showBlockAll && $('#posttype-page .tabs-panel-active input.menu-item-checkbox[value!="0"]:checked').length > 0;
 
-        var showNone = 'include' == mod_type || (('exclude' == mod_type) && ('associate' == $('input[name="pp_select_x_operation"]').val()));
+        noneItem.closest('li').toggle(showNone);
+        blockAll.closest('.pp-block-all-default').toggle(showBlockAll);
 
-        $('td.pp-select-items input.menu-item-checkbox[value="0"]').closest('li').toggle(showNone);
+        if (showBlockAll) {
+            blockAll.prop('checked', hasSelectedPages || presspermitBlockAllExplicit).prop('disabled', hasSelectedPages);
+            pageNoneItem.prop('checked', !hasSelectedPages && presspermitBlockAllExplicit);
+        } else {
+            presspermitBlockAllExplicit = false;
+            blockAll.prop('checked', false).prop('disabled', false);
+            pageNoneItem.prop('checked', false);
+        }
 
         $('td.pp-select-items .posttypediv').each(function() {
             var hasRealItems = $(this).find('input.menu-item-checkbox[value!="0"]').length > 0;
@@ -332,6 +369,16 @@ jQuery(document).ready(function ($) {
             $(this).show();
         });
     }
+
+    $(document).on('change', 'td.pp-select-items input.menu-item-checkbox, #pp_block_all_default', function() {
+        if ('pp_block_all_default' == this.id) {
+            presspermitBlockAllExplicit = this.checked;
+        }
+
+        pressPermitNoneItemVisibility();
+    });
+
+    $(document).on('presspermit-items-selection-change', pressPermitNoneItemVisibility);
 
     var presspermitReloadStatus = function () {
         var op = $('input[name="pp_select_x_operation"]').val();
@@ -403,6 +450,7 @@ jQuery(document).ready(function ($) {
         $('#pp_add_exception').css('width', '100%');
 
         $('input.menu-item-checkbox').prop('checked', false);
+        pressPermitNoneItemVisibility();
     });
 
     $('select[name="pp_select_x_via_type"]').on('click', function () {
@@ -912,4 +960,3 @@ jQuery(document).ready(function ($) {
     }
     // ========== End "Anonymous Warning" scripts ==========
 });
-

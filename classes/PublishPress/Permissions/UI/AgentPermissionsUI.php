@@ -91,6 +91,8 @@ class AgentPermissionsUI
             return;
         }
 
+        $type_objects = self::filterExceptionTypeObjects($type_objects);
+
         echo "<option class='pp-opt-none' value=''>" . esc_html__('select...', 'press-permit-core') . '</option>';
 
         foreach ($type_objects as $_type => $type_obj) {
@@ -114,6 +116,15 @@ class AgentPermissionsUI
                 echo "<option value='-1'>" . esc_html__('n/a', 'press-permit-core') . '</option>';
             }
         }
+    }
+
+    private static function filterExceptionTypeObjects($type_objects)
+    {
+        if (!presspermit()->getOption('display_group_exceptions')) {
+            unset($type_objects['pp_group'], $type_objects['pp_net_group']);
+        }
+
+        return $type_objects;
     }
 
     private static function selectExceptionsUi($type_objects, $taxonomy_objects, $args = [])
@@ -182,6 +193,10 @@ class AgentPermissionsUI
 
                     <td class="pp-select-items" style="display:none;padding-right:0">
                         <?php self::itemSelectUI(array_merge($type_objects, $taxonomy_objects)); ?>
+                        <p class="pp-checkbox pp-block-all-default" style="display:none">
+                            <input type="checkbox" id="pp_block_all_default" />
+                            <label for="pp_block_all_default"><?php esc_html_e('Block all Pages by default', 'press-permit-core'); ?></label>
+                        </p>
                     </td>
 
                 </tr>
@@ -298,6 +313,8 @@ class AgentPermissionsUI
 
             private static function itemSelectUI($type_objects)
             {
+                $type_objects = self::filterExceptionTypeObjects($type_objects);
+
                 require_once(PRESSPERMIT_CLASSPATH . '/UI/ItemsMetabox.php');
 
                 add_filter('get_terms_args', [__CLASS__, 'fltTermSelectNoPaging'], 50, 2);
@@ -389,7 +406,7 @@ class AgentPermissionsUI
                         <th><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                         <th></th>
                         <th><?php esc_html_e('Status', 'press-permit-core'); ?></th>
-                        <th><a class="pp_clear_all" href="javascript:void(0)"><?php esc_html_e('Remove', 'press-permit-core'); ?></a></th>
+                        <th><a class="pp_clear_all" href="#"><?php esc_html_e('Remove', 'press-permit-core'); ?></a></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -449,7 +466,7 @@ class AgentPermissionsUI
                 foreach ($perms as $perm_type => $_caption) {
                     $class = ("pp-add-$perm_type" == $current_tab) ? 'agp-selected_agent' : 'agp-unselected_agent';
 
-                    echo "<li class='agp-agent pp-add-" . esc_attr($perm_type) . " pp-add-permissions " . esc_attr($class) . "'><a class='pp-add-" . esc_attr($perm_type) . "' href='javascript:void(0)'>"
+                    echo "<li class='agp-agent pp-add-" . esc_attr($perm_type) . " pp-add-permissions " . esc_attr($class) . "'><a class='pp-add-" . esc_attr($perm_type) . "' href='#'>"
                         . esc_html($_caption) . '</a></li>';
                 }
                 echo '</ul>';
@@ -707,7 +724,7 @@ class AgentPermissionsUI
                                 echo '<td>' . esc_html(self::getRoleStatusLabel($role_name)) . ' </td>';
                                 echo '<td class="edit-column">';
                                 if (!$read_only) {
-                                    echo '<a href="javascript:void(0)" class="pp_clear" onclick="event.stopPropagation();">' . esc_html__('Delete') . '</a>';
+                                    echo '<a href="#" class="pp_clear">' . esc_html__('Delete') . '</a>';
                                 }
                                 echo '</td>';
                                 echo '</tr>';
@@ -1610,8 +1627,7 @@ class AgentPermissionsUI
                                 }
 
                                 if (defined('WP_DEBUG') || defined('PRESSPERMIT_DEBUG')) {
-
-                                    $fix_child_url = add_query_arg('pp_fix_child_exceptions', '1', esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $fix_child_url = remove_query_arg(['pp_fix_child_exceptions', '_wpnonce'], esc_url_raw($_SERVER['REQUEST_URI']));
 
                                     if (PWP::empty_REQUEST('show_propagated')) {
                                         echo '&nbsp;&nbsp;&bull;';
@@ -1623,9 +1639,12 @@ class AgentPermissionsUI
                                         '<span data-toggle="tooltip" data-placement="top">%1$s<span class="tooltip-text"><span style="white-space: normal;">%2$s</span><i></i></span><i class="dashicons dashicons-info-outline" style="font-size: 18px;width: 16px;height: 16px;padding-top:2px"></i></span>',
                                         sprintf(
                                             esc_html__(' %1$sFix Sub-%2$s Permissions%3$s', 'press-permit-core'),
-                                        "&nbsp;<a href='" . esc_url($fix_child_url) . "' class='btn btn-link' style='padding-right:4px'>",
+	                                        '<form action="' . esc_url($fix_child_url) . '" method="post" style="display:inline">'
+	                                            . wp_nonce_field('pp-fix-child-exceptions', '_wpnonce', true, false)
+	                                            . '<input type="hidden" name="pp_fix_child_exceptions" value="1" />'
+	                                            . '<button type="submit" class="btn btn-link" style="padding-right:4px;background:none;border:0">',
                                             esc_html($via_type_obj->labels->singular_name),
-                                            '</a>'
+                                            '</button></form>'
                                         ),
                                         esc_html($fix_sub_tooltip)
                                     );

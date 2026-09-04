@@ -69,6 +69,9 @@ class PermissionsHooksAdmin
         add_action('presspermit_trigger_cache_flush', [$this, 'wpeCacheFlush']);
         add_action('presspermit_activate', [$this, 'actPluginSettingsUpdated']);
         add_action('shutdown', [$this, 'actConfigUpdateFollowup']);
+
+        require_once(PRESSPERMIT_CLASSPATH . '/UI/WelcomeOnboarding.php');
+        new Permissions\UI\WelcomeOnboarding();
     }
 
     public function init()
@@ -77,6 +80,8 @@ class PermissionsHooksAdmin
             require_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-maint.php');
             Permissions\PressPermitMaint::adminRedirectCheck();
         }
+
+        $this->actMaybeRedirectToWelcome();
 
         require_once(PRESSPERMIT_CLASSPATH . '/CapabilityFiltersAdmin.php');
         new Permissions\CapabilityFiltersAdmin();
@@ -100,28 +105,25 @@ class PermissionsHooksAdmin
             new Permissions\UI\Handlers\Settings();
         }
 
-        if (!PWP::empty_REQUEST('presspermit_refresh_updates') || !PWP::empty_REQUEST('pp_renewal')) {
+        if (!PWP::empty_REQUEST('presspermit_refresh_updates')) {
             if (!current_user_can('pp_manage_settings')) {
                 wp_die(esc_html(PWP::__wp('Cheatin&#8217; uh?')));
             }
     
-            if (!PWP::empty_REQUEST('presspermit_refresh_updates')) {
-                delete_site_transient('update_plugins');
-                delete_option('_site_transient_update_plugins');
-                wp_update_plugins();
-                wp_redirect(admin_url('admin.php?page=presspermit-settings&presspermit_refresh_done=1'));
-                exit;
+            delete_site_transient('update_plugins');
+            delete_option('_site_transient_update_plugins');
+            wp_update_plugins();
+            wp_redirect(admin_url('admin.php?page=presspermit-settings&presspermit_refresh_done=1'));
+            exit;
+        }
+
+        if (!PWP::empty_REQUEST('pp_renewal') && presspermit()->isPro()) {
+            if (!current_user_can('pp_manage_settings')) {
+                wp_die(esc_html(PWP::__wp('Cheatin&#8217; uh?')));
             }
-    
-            if (!PWP::empty_REQUEST('pp_renewal')) {
-                if (presspermit()->isPro()) {
-                    include_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-renewal-redirect.php');
-                } else {
-                    include_once(PRESSPERMIT_ABSPATH . '/includes/renewal-redirect.php');
-                }
-    
-                exit;
-            }
+
+            include_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-renewal-redirect.php');
+            exit;
         }
 
         if (get_option('presspermit_refresh_role_usage')) {
@@ -488,6 +490,41 @@ class PermissionsHooksAdmin
         return $roles;
     }
 
+    public function actMaybeRedirectToWelcome()
+    {
+        if (!get_option('presspermit_activation')) {
+            return;
+        }
+
+        if (wp_doing_ajax()) {
+            return;
+        }
+
+        if (is_network_admin() || (is_multisite() && PWP::isNetworkActivated())) {
+            delete_option('presspermit_activation');
+            return;
+        }
+
+        if (PWP::is_REQUEST('activate-multi')) {
+            delete_option('presspermit_activation');
+            return;
+        }
+
+        if (!current_user_can('pp_manage_settings')) {
+            return;
+        }
+
+        if ('presspermit-welcome' == presspermitPluginPage()) {
+            delete_option('presspermit_activation');
+            return;
+        }
+
+        delete_option('presspermit_activation');
+
+        wp_safe_redirect(admin_url('admin.php?page=presspermit-welcome'));
+        exit;
+    }
+
     // For old extensions linking to page=pp-settings.php, redirect to page=presspermit-settings, preserving other request args
     public function actSettingsPageMaybeRedirect()
     {
@@ -526,12 +563,16 @@ class PermissionsHooksAdmin
 
     public function dashboardDismissMsg()
     {
+        check_ajax_referer('pp-dismiss-msg');
+
+        if (!current_user_can('pp_manage_settings')) {
+            wp_die(-1);
+        }
+
         $dismissals = get_option('presspermit_dismissals');
         if (!is_array($dismissals)) {
             $dismissals = [];
         }
-
-        // phpcs Note: No need for nonce verification on the notice dismissal
 
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
         $msg_id = (isset($_REQUEST['msg_id'])) ? sanitize_key($_REQUEST['msg_id']) : 'post_blockage_priority';

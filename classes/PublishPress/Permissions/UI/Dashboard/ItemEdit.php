@@ -16,19 +16,5 @@ class ItemEdit
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
         wp_enqueue_script('presspermit-item-edit', PRESSPERMIT_URLPATH . "/common/js/item-edit{$suffix}.js", [], PRESSPERMIT_VERSION);
 
-        if (taxonomy_exists($object_type))
-            $type_obj = get_taxonomy($object_type);
-        else
-            $type_obj = get_post_type_object($object_type);
-
-        if ($type_obj) {
-            ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                var pp_hier_type = '<?php echo esc_attr($type_obj->hierarchical); ?>';
-                /* ]]> */
-            </script>
-            <?php
-        }
     }
 }

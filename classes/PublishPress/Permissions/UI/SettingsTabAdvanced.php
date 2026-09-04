@@ -70,6 +70,7 @@ class SettingsTabAdvanced
             'list_others_uneditable_posts'           => esc_html__('List other user\'s uneditable posts', 'press-permit-core'),
             'lock_top_pages'                         => esc_html__('Pages can be set or removed from Top Level by: ', 'press-permit-core'),
             'create_tag_require_edit_cap'            => esc_html__('Tag creation requires Tag edit capability', 'press-permit-core'),
+            'display_group_exceptions'               => esc_html__('Permission Groups in Edit Permissions', 'press-permit-core'),
         ];
 
         // Settings that are displayed if already set to a non-default value, or if "Display all" is enabled
@@ -165,7 +166,7 @@ class SettingsTabAdvanced
             $additional = [
                 'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap', 'use_tabbed_metabox'],
                 'permissions'         => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
-                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_enabled', 'limit_user_edit_by_level', 'user_permissions'],
+                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'display_group_exceptions', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_enabled', 'limit_user_edit_by_level', 'user_permissions'],
                 'front_end'           => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
                 'role_integration'    => ['pattern_roles_include_generic_rolecaps', 'dynamic_wp_roles'],
                 'nav_menu_management' => ['admin_nav_menu_partial_editing', 'admin_nav_menu_lock_custom'],
@@ -267,7 +268,7 @@ class SettingsTabAdvanced
                     ?>
 
                     <?php if ($caution_option_names) :?>
-                        <div class="pp-advanced-caution" style="display:none">
+                        <div class="pp-advanced-caution" data-options-enabled="<?php echo $this->enabled ? '1' : '0'; ?>" style="display:none">
                         <span class="pp-caution">
                         <?php
                         if ($this->enabled) {
@@ -287,19 +288,7 @@ class SettingsTabAdvanced
                         </ul>
                         </div>
 
-                        <script type="text/javascript">
-                            /* <![CDATA[ */
-                            jQuery(document).ready(function ($) {
-                                $('input#advanced_options').on('click', function() {
-                                    <?php if ($this->enabled) :?>
-                                        $(this).closest('td').find('div.pp-advanced-caution').slideToggle($(this).prop('checked'));
-                                    <?php else:?>
-                                        $(this).closest('td').find('div.pp-advanced-caution').slideToggle(!$(this).prop('checked'));
-                                    <?php endif;?>
-                                });
-                            });
-                            /* ]]> */
-                        </script>
+                        <?php presspermit_enqueue_admin_script(); ?>
 
                     <?php endif;?>
 
@@ -476,6 +465,7 @@ class SettingsTabAdvanced
                     $hint = SettingsAdmin::getStr('display_user_profile_roles');
                     $ui->optionCheckbox('display_user_profile_groups', $tab, $section);
                     $ui->optionCheckbox('display_user_profile_roles', $tab, $section, $hint);
+                    $ui->optionCheckbox('display_group_exceptions', $tab, $section, true);
 
                     $ui->optionCheckbox('user_search_by_role', $tab, $section, true);
 
@@ -529,15 +519,7 @@ class SettingsTabAdvanced
                         </div>
                         </div>
 
-                        <script type="text/javascript">
-                        /* <![CDATA[ */
-                        jQuery(document).ready(function($) {
-                            $('#limit_user_edit_enabled').on('change', function() {
-                                $('#pp_limit_user_edit_by_level_wrap').toggle( $(this).is(':checked') );
-                            });
-                        });
-                        /* ]]> */
-                        </script>
+                        <?php presspermit_enqueue_admin_script(); ?>
                     <?php endif;?>
 
                     <?php
@@ -795,15 +777,7 @@ class SettingsTabAdvanced
                 </td>
             </tr>
 
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('input#list_all_constants').on('click', function() {
-                        $('#pp_available_constants').toggle($(this).prop('checked'));
-                    });
-                });
-                /* ]]> */
-            </script>
+            <?php presspermit_enqueue_admin_script(); ?>
         <?php endif;
 
         if (is_multisite()) {
@@ -875,7 +849,7 @@ class SettingsTabAdvanced
                 ?>
                 <p class="submit pp-submit-alternate" style="border:none;float:right">
                     <input type="submit" name="presspermit_defaults" value="<?php esc_attr_e('Revert to Defaults', 'press-permit-core') ?>"
-                        onclick="<?php echo "javascript:if (confirm('" . esc_attr($msg) . "')) {return true;} else {return false;}"; ?>" />
+                        class="pp-confirm-submit" data-confirm="<?php echo esc_attr($msg); ?>" />
                 </p>
 
             </td>
