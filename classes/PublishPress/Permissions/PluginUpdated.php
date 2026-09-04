@@ -26,6 +26,13 @@ class PluginUpdated
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE 'buffer_metagroup_id_%'");
 
+            $deactivated_modules = (array) get_option('presspermit_deactivated_modules');
+            $required_modules = array_intersect_key($deactivated_modules, array_fill_keys(presspermit()->getRequiredModules(), true));
+            if ($required_modules) {
+                $deactivated_modules = array_diff_key($deactivated_modules, $required_modules);
+                update_option('presspermit_deactivated_modules', $deactivated_modules);
+            }
+
             if (version_compare($prev_version, '2.7-beta', '>=')
             && version_compare($prev_version, '2.7-beta3', '<')
             ) {
