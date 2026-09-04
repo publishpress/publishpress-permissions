@@ -405,6 +405,7 @@ class Permissions
             'presspermit-circles',
             'presspermit-collaboration',
             'presspermit-compatibility',
+            'presspermit-content-visibility',
             'presspermit-file-access',
             'presspermit-membership',
             'presspermit-sync',
