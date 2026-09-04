@@ -86,13 +86,13 @@ class CoreAdmin
                 $handle = 'presspermit-settings-redirect';
                 $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 
-                echo '<span class="pp-version-notice-redirect" data-redirect-to="'
+                echo '<span class="pp-settings-redirect" data-redirect-to="'
                     . esc_url(admin_url('admin.php?page=presspermit-settings&pp_tab=sync_posts'))
                     . '" hidden></span>';
 
                 wp_register_script(
                     $handle,
-                    plugins_url("common/js/redirect{$suffix}.js", PRESSPERMIT_FILE),
+                    plugins_url("common/js/settings-redirect{$suffix}.js", PRESSPERMIT_FILE),
                     [],
                     PRESSPERMIT_VERSION,
                     false
