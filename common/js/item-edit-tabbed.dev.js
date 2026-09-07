@@ -916,7 +916,7 @@
         if (mergedCounts.all > 0) {
             var $allBtn = $('<button>')
                 .attr('type', 'button')
-                .addClass('pp-filter-btn active')
+                .addClass('pp-filter-btn')
                 .attr('data-filter', 'all')
                 .append(document.createTextNode(ppPermissions.filterAll + ' '))
                 .append($('<span>').addClass('pp-filter-count').text(mergedCounts.all));
@@ -1002,6 +1002,25 @@
                 
                 $pillsContainer.append($loginStateBtn);
             }
+        }
+
+        // Restore this content area's filter after rebuilding its buttons.
+        var activeFilter = $contentArea.data('active-filter') || 'all';
+        var $activeBtn = $pillsContainer.find('.pp-filter-btn').filter(function() {
+            return $(this).attr('data-filter') === activeFilter;
+        });
+
+        // A permission change or removal can make the previous filter unavailable.
+        if (!$activeBtn.length) {
+            $activeBtn = $pillsContainer.find('.pp-filter-btn[data-filter="all"]');
+        }
+
+        if ($activeBtn.length) {
+            $activeBtn.trigger('click');
+        } else {
+            $contentArea.data('active-filter', 'all');
+            $contentArea.data('active-filter-type', 'permission');
+            $contentArea.find('.pp-no-filter-results').remove();
         }
     }
 
