@@ -50,6 +50,169 @@
         return /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(String(value || '')) ? value : fallback;
     }
 
+    var allowedInlineTags = {
+        a: true,
+        abbr: true,
+        acronym: true,
+        b: true,
+        br: true,
+        cite: true,
+        code: true,
+        del: true,
+        em: true,
+        i: true,
+        mark: true,
+        small: true,
+        span: true,
+        strong: true,
+        sub: true,
+        sup: true,
+        u: true
+    };
+
+    var allowedBlockTags = {
+        blockquote: true,
+        div: true,
+        li: true,
+        ol: true,
+        p: true,
+        pre: true,
+        ul: true
+    };
+
+    var blockedContentTags = {
+        button: true,
+        embed: true,
+        form: true,
+        iframe: true,
+        input: true,
+        math: true,
+        object: true,
+        option: true,
+        script: true,
+        select: true,
+        style: true,
+        svg: true,
+        textarea: true
+    };
+
+    function isAllowedTag(tagName, inlineOnly) {
+        return !!allowedInlineTags[tagName] || (!inlineOnly && !!allowedBlockTags[tagName]);
+    }
+
+    function getSafeHref(value) {
+        var href = String(value || '');
+        var normalized = href.replace(/[\u0000-\u001F\u007F\s]+/g, '');
+        var link;
+
+        if (!normalized) {
+            return '';
+        }
+
+        if (/^(?:data|javascript|vbscript):/i.test(normalized)) {
+            return '';
+        }
+
+        link = document.createElement('a');
+        link.href = href;
+
+        return /^(?:http:|https:|mailto:|tel:)$/i.test(link.protocol) ? href : '';
+    }
+
+    function copySafeAttributes(source, target, tagName) {
+        var href;
+        var rel;
+        var targetValue;
+        var title;
+
+        if ('a' === tagName) {
+            href = getSafeHref(source.getAttribute('href'));
+
+            if (href) {
+                target.setAttribute('href', href);
+            }
+
+            targetValue = String(source.getAttribute('target') || '');
+
+            if (/^_(?:blank|parent|self|top)$/.test(targetValue)) {
+                target.setAttribute('target', targetValue);
+            }
+
+            rel = String(source.getAttribute('rel') || '').replace(/[^\w\s-]/g, '').trim();
+
+            if ('_blank' === targetValue) {
+                rel = (rel + ' noopener noreferrer').trim();
+            }
+
+            if (rel) {
+                target.setAttribute('rel', rel);
+            }
+        }
+
+        if ('a' === tagName || 'abbr' === tagName || 'acronym' === tagName) {
+            title = source.getAttribute('title');
+
+            if (title) {
+                target.setAttribute('title', title);
+            }
+        }
+    }
+
+    function appendSanitizedNodes(source, target, inlineOnly) {
+        Array.prototype.forEach.call(source.childNodes, function (child) {
+            var cleanElement;
+            var tagName;
+
+            if (3 === child.nodeType) {
+                target.appendChild(document.createTextNode(child.nodeValue || ''));
+                return;
+            }
+
+            if (1 !== child.nodeType) {
+                return;
+            }
+
+            tagName = child.nodeName.toLowerCase();
+
+            if (blockedContentTags[tagName]) {
+                return;
+            }
+
+            if (!isAllowedTag(tagName, inlineOnly)) {
+                appendSanitizedNodes(child, target, inlineOnly);
+                return;
+            }
+
+            cleanElement = document.createElement(tagName);
+            copySafeAttributes(child, cleanElement, tagName);
+            appendSanitizedNodes(child, cleanElement, inlineOnly);
+            target.appendChild(cleanElement);
+        });
+    }
+
+    function sanitizeHtmlFragment(value, inlineOnly) {
+        var fragment = document.createDocumentFragment();
+        var parsed;
+
+        if (!window.DOMParser) {
+            fragment.appendChild(document.createTextNode(String(value || '')));
+            return fragment;
+        }
+
+        parsed = new window.DOMParser().parseFromString(String(value || ''), 'text/html');
+        appendSanitizedNodes(parsed.body || parsed, fragment, !!inlineOnly);
+
+        return fragment;
+    }
+
+    function replaceWithSanitizedHtml(element, value, inlineOnly) {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+
+        element.appendChild(sanitizeHtmlFragment(value, inlineOnly));
+    }
+
     function applyNoticeStyle(content, noticeStyle) {
         if (!content) {
             return;
@@ -104,14 +267,11 @@
         // Teaser Text preserves formatting (bold/italic/etc.) on the front end, so the
         // preview renders the payload as HTML to match, not as escaped plain text.
         if (title && typeof payload.title === 'string') {
-            title.innerHTML = payload.title;
+            replaceWithSanitizedHtml(title, payload.title, true);
         }
 
         if (content && typeof payload.content === 'string') {
-            content.innerHTML = '';
-            var paragraph = document.createElement('p');
-            paragraph.innerHTML = payload.content;
-            content.appendChild(paragraph);
+            replaceWithSanitizedHtml(content, payload.content, false);
         }
 
         applyNoticeStyle(content, payload.noticeStyle);
