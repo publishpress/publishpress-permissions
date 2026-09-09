@@ -15,14 +15,26 @@ class Profile
         ];
 
         $args = array_merge($defaults, $args);
-        $is_administrator = current_user_can('pp_administer_content') && current_user_can('list_users');
+        $can_edit_permissions = (current_user_can('pp_administer_content') && current_user_can('list_users'))
+            || (
+                current_user_can('pp_manage_permissions')
+                && (is_multisite() || current_user_can('edit_user', $user->ID))
+            );
 
-        $current_roles_edit_url = $is_administrator
+        $current_roles_edit_url = $can_edit_permissions
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_1")
             : '';
 
-        $edit_url = $is_administrator
+        $inherited_roles_edit_url = $can_edit_permissions
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_2")
+            : '';
+
+        $edit_url = $can_edit_permissions
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_exceptions_1")
+            : '';
+
+        $inherited_edit_url = $can_edit_permissions
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_exceptions_2")
             : '';
 
         $group_summary = $args['show_groups'] ? self::getProfileGroupsSummary($user->ID) : ['rows' => [], 'fields' => ''];
@@ -56,7 +68,7 @@ class Profile
                         'user',
                         $user->ID,
                         [
-                            'edit_url' => '',
+                            'edit_url' => $inherited_roles_edit_url,
                             'label' => esc_html__('Extra Roles', 'press-permit-core'),
                             'scope' => esc_html__('From primary role or group membership', 'press-permit-core'),
                             'join_groups' => 'groups_only',
@@ -67,7 +79,7 @@ class Profile
                         'user',
                         $user->ID,
                         [
-                            'edit_url' => '',
+                            'edit_url' => $inherited_edit_url,
                             'label' => esc_html__('Specific Permissions', 'press-permit-core'),
                             'scope' => esc_html__('From primary role or group membership', 'press-permit-core'),
                             'join_groups' => 'groups_only',
@@ -92,7 +104,7 @@ class Profile
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
                         <h2 class="section-title"><?php esc_html_e('Permissions Summary', 'press-permit-core'); ?></h2>
-                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$total_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($total_count)); ?></span>
                     </div>
                 </div>
                 <div id="pp_permissions_summary_<?php echo esc_attr((int)$user->ID); ?>" class="section-content">
@@ -105,7 +117,7 @@ class Profile
                                         <span class="pp-profile-summary-scope"><?php echo esc_html($row['scope']); ?></span>
                                     </div>
                                     <div class="pp-profile-summary-row-actions">
-                                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$row['count']; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($row['count'])); ?></span>
                                         <?php if ($row['edit_url']) : ?>
                                             <a class="button button-small pp-profile-summary-edit" href="<?php echo esc_url($row['edit_url']); ?>">
                                                 <?php esc_html_e('Edit', 'press-permit-core'); ?>
@@ -638,7 +650,7 @@ class Profile
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
                         <h2 class="section-title"><?php echo esc_html($caption); ?></h2>
-                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$badge_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($badge_count)); ?></span>
                     </div>
                     <?php if ($edit_url) : ?>
                         <a class="button button-small pp-profile-summary-edit" href="<?php echo esc_url($edit_url); ?>">
@@ -804,7 +816,7 @@ class Profile
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
                         <h2 class="section-title"><?php echo esc_html($caption); ?></h2>
-                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$badge_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($badge_count)); ?></span>
                     </div>
                     <?php if ($edit_url) : ?>
                         <a class="button button-small pp-profile-summary-edit" href="<?php echo esc_url($edit_url); ?>">
@@ -835,5 +847,15 @@ class Profile
         $scope = $join_groups ? 'inherited' : 'direct';
 
         return sprintf('%s_%s_%s', $base_id, $scope, (int)$agent_id);
+    }
+
+    private static function formatItemCount($count)
+    {
+        $count = (int)$count;
+
+        return sprintf(
+            _n('%s item', '%s items', $count, 'press-permit-core'),
+            number_format_i18n($count)
+        );
     }
 }
