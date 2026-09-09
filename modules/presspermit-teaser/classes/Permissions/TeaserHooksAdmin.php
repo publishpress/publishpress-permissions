@@ -9,6 +9,7 @@ class TeaserHooksAdmin
         add_action('presspermit_permissions_menu', [$this, 'act_permissions_menu'], 10, 2);
 
         add_action( 'wp_ajax_pp_search_posts', [$this, 'searchPosts'] );
+        add_action( 'wp_ajax_pp_get_teaser_preview_post', [$this, 'getTeaserPreviewPost'] );
         add_action( 'wp_ajax_pp_search_terms', [$this, 'searchTerms'] );
 
         if ('presspermit-posts-teaser' == presspermitPluginPage()) {
@@ -46,6 +47,7 @@ class TeaserHooksAdmin
                         'nonce' => wp_create_nonce( 'pp_search_content' ),
                         'strings' => [
                             'select_a_page' => __( 'Select a page', 'press-permit-core' ),
+                            'select_preview_content' => __( 'Search preview content', 'press-permit-core' ),
                             'select_terms' => __( 'Select terms', 'press-permit-core' )
                         ]
                     ]
@@ -98,12 +100,17 @@ class TeaserHooksAdmin
     function searchPosts()
 	{
 
+		if (!current_user_can('pp_manage_settings')) {
+			wp_send_json('Error', 403);
+		}
+
 		if (!isset($_GET['nonce']) || ! wp_verify_nonce( sanitize_key( $_GET['nonce'] ), 'pp_search_content' ) ) {
 	         wp_send_json( 'Error', 400 );
 	    }
 
         $search = (isset($_GET['search'])) ? sanitize_text_field($_GET['search']) : '';
         $post_type = (isset($_GET['post_type'])) ? sanitize_key($_GET['post_type']) : 'page';
+        $search_content = !empty($_GET['search_content']);
         
         // Validate post_type is public
         $public_post_types = get_post_types(['public' => true], 'names');
@@ -115,24 +122,85 @@ class TeaserHooksAdmin
 
         // phpcs Note: Direct query of posts table on admin query
 
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-        $results = $wpdb->get_results(
-            $wpdb->prepare(
-                'SELECT ID, post_title FROM ' . $wpdb->prefix . 'posts
-                WHERE post_type = %s AND post_status = "publish"
-                AND post_title LIKE %s
-                ORDER BY post_title LIMIT 10',
+        if ($search_content) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+            $results = $wpdb->get_results(
+                $wpdb->prepare(
+                    'SELECT ID, post_title FROM ' . $wpdb->prefix . 'posts
+                    WHERE post_type = %s AND post_status = "publish"
+                    AND (post_title LIKE %s OR post_content LIKE %s)
+                    ORDER BY post_date DESC LIMIT 10',
+                    $post_type,
+                    '%' . $wpdb->esc_like($search) . '%',
+                    '%' . $wpdb->esc_like($search) . '%'
+                )
+            );
+        } else {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+            $results = $wpdb->get_results(
+                $wpdb->prepare(
+                    'SELECT ID, post_title FROM ' . $wpdb->prefix . 'posts
+                    WHERE post_type = %s AND post_status = "publish"
+                    AND post_title LIKE %s
+                    ORDER BY post_title LIMIT 10',
 
-                $post_type,
-                '%' . $wpdb->esc_like(sanitize_text_field($search)) . '%'
-            )
-        );
+                    $post_type,
+                    '%' . $wpdb->esc_like($search) . '%'
+                )
+            );
+        }
+
+        foreach ($results as $result) {
+            $result->preview_url = get_permalink($result->ID);
+        }
 
         wp_send_json( $results );
 	}
 
+    function getTeaserPreviewPost()
+    {
+        if (!current_user_can('pp_manage_settings')) {
+            wp_send_json('Error', 403);
+        }
+
+        if (!isset($_GET['nonce']) || !wp_verify_nonce(sanitize_key($_GET['nonce']), 'pp_search_content')) {
+            wp_send_json('Error', 400);
+        }
+
+        $post_id = isset($_GET['post_id']) ? (int) $_GET['post_id'] : 0;
+        $post_type = isset($_GET['post_type']) ? sanitize_key($_GET['post_type']) : 'post';
+        $post = $post_id ? get_post($post_id) : null;
+
+        if (!$post || 'publish' !== $post->post_status || $post->post_type !== $post_type) {
+            wp_send_json('Error', 404);
+        }
+
+        if (!class_exists('PublishPress\\Permissions\\Teaser\\ReadMoreHandler')) {
+            require_once(PRESSPERMIT_TEASER_CLASSPATH . '/ReadMoreHandler.php');
+        }
+
+        $post_content = wp_strip_all_tags(strip_shortcodes($post->post_content));
+        $post_excerpt = $post->post_excerpt
+            ? $post->post_excerpt
+            : wp_trim_words($post_content, 55, '&hellip;');
+        $pre_more = \PublishPress\Permissions\Teaser\ReadMoreHandler::extractPreMoreContent($post);
+
+        wp_send_json([
+            'ID' => $post->ID,
+            'post_title' => get_the_title($post),
+            'preview_url' => get_permalink($post),
+            'excerpt' => wpautop($post_excerpt),
+            'pre_more' => (false !== $pre_more) ? wpautop($pre_more) : '',
+            'x_chars' => wpautop(wp_html_excerpt($post_content, 250, '&hellip;')),
+        ]);
+    }
+
     function searchTerms()
 	{
+		if (!current_user_can('pp_manage_settings')) {
+			wp_send_json('Error', 403);
+		}
+
 		if (!isset($_GET['nonce']) || ! wp_verify_nonce( sanitize_key( $_GET['nonce'] ), 'pp_search_content' ) ) {
 	         wp_send_json( 'Error', 400 );
         }

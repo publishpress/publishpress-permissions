@@ -176,24 +176,29 @@ class TeaserHooks
         $this->theme_preview_title_filtered = true;
 
         $post_type = $this->getThemeTeaserPreviewPostType();
-        $type_obj = get_post_type_object($post_type);
-        $singular_label = $type_obj ? $type_obj->labels->singular_name : __('Post', 'press-permit-core');
-        $sample_title = sprintf(
-            /* translators: %s is the singular post type label, such as Post or Page. */
-            __('A Sample %s', 'press-permit-core'),
-            $singular_label
-        );
+        $preview_post = get_post($post_id);
+        $preview_title = $preview_post ? $preview_post->post_title : '';
+
+        if ('' === $preview_title) {
+            $type_obj = get_post_type_object($post_type);
+            $singular_label = $type_obj ? $type_obj->labels->singular_name : __('Post', 'press-permit-core');
+            $preview_title = sprintf(
+                /* translators: %s is the singular post type label, such as Post or Page. */
+                __('A Sample %s', 'press-permit-core'),
+                $singular_label
+            );
+        }
 
         // Prepend/append title text only applies to the "Teaser Text" type on the front end.
         if ('1' !== $this->getThemeTeaserPreviewTeaserType()) {
-            return $sample_title;
+            return $preview_title;
         }
 
         // Not stripped: the front end concatenates these directly into post_title, formatting included.
         $prefix = wp_unslash((string) presspermit()->getTypeOption('tease_prepend_name_anon', $post_type));
         $suffix = wp_unslash((string) presspermit()->getTypeOption('tease_append_name_anon', $post_type));
 
-        return implode(' ', array_filter([$prefix, $sample_title, $suffix]));
+        return implode(' ', array_filter([$prefix, $preview_title, $suffix]));
     }
 
     private function getThemeTeaserPreviewNoticeStyle($post_type)
@@ -307,11 +312,31 @@ class TeaserHooks
             ];
             $message = wp_unslash((string) presspermit()->getTypeOption($option_map[$teaser_type], $post_type));
             $message = ('' !== $message) ? $message : $default_message;
+            $preview_content = '';
+
+            if (in_array($teaser_type, ['read_more', 'more'], true)) {
+                if (!class_exists('PublishPress\\Permissions\\Teaser\\ReadMoreHandler')) {
+                    require_once(PRESSPERMIT_TEASER_CLASSPATH . '/ReadMoreHandler.php');
+                }
+
+                $pre_more_content = \PublishPress\Permissions\Teaser\ReadMoreHandler::extractPreMoreContent($post);
+                $preview_content = (false !== $pre_more_content) ? wpautop($pre_more_content) : '';
+            } elseif ('excerpt' === $teaser_type) {
+                $preview_content = $post->post_excerpt
+                    ? wpautop($post->post_excerpt)
+                    : wpautop(wp_trim_words(wp_strip_all_tags(strip_shortcodes($post->post_content)), 55, '&hellip;'));
+            } elseif ('x_chars' === $teaser_type) {
+                $preview_content = wpautop(wp_html_excerpt(
+                    wp_strip_all_tags(strip_shortcodes($post->post_content)),
+                    250,
+                    '&hellip;'
+                ));
+            }
 
             return sprintf(
                 '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
                 $style_attr,
-                wpautop($message)
+                $preview_content . wpautop($message)
             );
         }
 

@@ -82,6 +82,41 @@ jQuery(document).ready(function ($) {
             },
         }
     } );
+
+    $('.pp-teaser-preview-post-select').select2({
+        placeholder: presspermitTeaser.strings.select_preview_content || presspermitTeaser.strings.select_a_page,
+        width: '260px',
+        ajax: {
+            url: presspermitTeaser.url,
+            dataType: 'json',
+            method: 'get',
+            delay: 250,
+            data: function(params) {
+                return {
+                    search: params.term,
+                    action: 'pp_search_posts',
+                    post_type: $(this).attr('data-post-type') || 'post',
+                    search_content: 1,
+                    nonce: presspermitTeaser.nonce
+                };
+            },
+            processResults: function(data) {
+                var options = [];
+
+                if (data) {
+                    $.each(data, function(index, item) {
+                        options.push({
+                            id: item.ID,
+                            text: item.post_title,
+                            preview_url: item.preview_url
+                        });
+                    });
+                }
+
+                return { results: options };
+            }
+        }
+    });
     
     // Handle post type selector change
     $(document).on('change', '.teaser-redirect-post-type', function() {
@@ -296,7 +331,7 @@ jQuery(document).ready(function ($) {
     function updateExternalPreviewLink($sitePreview, teaserType) {
         var $link = $sitePreview.find('.pp-teaser-preview-external-link');
         var defaultPreviewUrl = String($link.data('default-preview-url') || '');
-        var teaserPreviewUrl = String($link.data('teaser-preview-url') || '');
+        var teaserPreviewUrl = getSelectedPreviewUrl($sitePreview, teaserType);
         var previousObjectUrl = $link.data('preview-object-url');
 
         if (!$link.length) {
@@ -371,6 +406,113 @@ jQuery(document).ready(function ($) {
         $link
             .attr('href', objectUrl)
             .data('preview-object-url', objectUrl);
+    }
+
+    function getSelectedPreviewOption($sitePreview) {
+        var $select = $sitePreview.find('.pp-teaser-preview-post-select');
+
+        return $select.length ? $select.find('option:selected') : $();
+    }
+
+    function getSelectedPreviewId($sitePreview) {
+        return String($sitePreview.find('.pp-teaser-preview-post-select').val() || '');
+    }
+
+    function getSelectedPreviewSelect2Data($sitePreview) {
+        var $select = $sitePreview.find('.pp-teaser-preview-post-select');
+        var selectData = $select.length ? $select.select2('data') : [];
+
+        return selectData && selectData.length ? selectData[0] : null;
+    }
+
+    function getPreviewPostCache($sitePreview) {
+        var cache = $sitePreview.data('preview-post-cache');
+
+        if (!cache) {
+            cache = {};
+            $sitePreview.data('preview-post-cache', cache);
+        }
+
+        return cache;
+    }
+
+    function addTeaserPreviewArgs(url, $sitePreview, teaserType) {
+        var separator = url.indexOf('?') === -1 ? '?' : '&';
+        var postType = String($sitePreview.data('post-type') || 'post');
+
+        return url + separator + $.param({
+            pp_permissions_teaser_preview: 'teaser',
+            pp_permissions_teaser_post_type: postType,
+            pp_permissions_teaser_type: teaserType
+        });
+    }
+
+    function getSelectedPreviewUrl($sitePreview, teaserType) {
+        var selectedId = getSelectedPreviewId($sitePreview);
+        var $option = getSelectedPreviewOption($sitePreview);
+        var cache = getPreviewPostCache($sitePreview);
+        var select2Data = getSelectedPreviewSelect2Data($sitePreview);
+        var previewUrl = selectedId && cache[selectedId] ? cache[selectedId].previewUrl : '';
+
+        if (!previewUrl) {
+            previewUrl = String($option.data('preview-url') || (select2Data && select2Data.preview_url) || '');
+        }
+
+        return previewUrl
+            ? addTeaserPreviewArgs(previewUrl, $sitePreview, teaserType)
+            : String($sitePreview.find('.pp-teaser-preview-external-link').data('teaser-preview-url') || '');
+    }
+
+    function getSelectedPreviewData($sitePreview, key) {
+        var selectedId = getSelectedPreviewId($sitePreview);
+        var cache = getPreviewPostCache($sitePreview);
+        var select2Data;
+
+        if (selectedId && cache[selectedId] && typeof cache[selectedId][key] !== 'undefined') {
+            return String(cache[selectedId][key] || '');
+        }
+
+        if ('title' === key) {
+            select2Data = getSelectedPreviewSelect2Data($sitePreview);
+
+            return String((select2Data && select2Data.text) || getSelectedPreviewOption($sitePreview).text() || '');
+        }
+
+        return '';
+    }
+
+    function loadSelectedPreviewPostData($sitePreview, $container) {
+        var selectedId = getSelectedPreviewId($sitePreview);
+        var cache = getPreviewPostCache($sitePreview);
+
+        if (!selectedId || cache[selectedId] || $sitePreview.data('preview-post-loading') === selectedId) {
+            return;
+        }
+
+        $sitePreview.data('preview-post-loading', selectedId);
+
+        $.getJSON(presspermitTeaser.url, {
+            action: 'pp_get_teaser_preview_post',
+            post_id: selectedId,
+            post_type: String($sitePreview.data('post-type') || 'post'),
+            nonce: presspermitTeaser.nonce
+        }).done(function(data) {
+            if (!data || !data.ID) {
+                return;
+            }
+
+            cache[String(data.ID)] = {
+                title: data.post_title || '',
+                previewUrl: data.preview_url || '',
+                excerpt: data.excerpt || '',
+                preMore: data.pre_more || '',
+                xChars: data.x_chars || ''
+            };
+
+            updateTeaserPreviewText($container);
+        }).always(function() {
+            $sitePreview.removeData('preview-post-loading');
+        });
     }
 
     function postThemeTeaserPayload($sitePreview) {
@@ -449,7 +591,7 @@ jQuery(document).ready(function ($) {
         var $frame = $sitePreview.find('.pp-teaser-preview-theme-frame');
         var previewMode = teaserType === '0' ? 'default' : 'teaser';
         var previewUrl = previewMode === 'teaser'
-            ? $frame.data('teaser-src')
+            ? getSelectedPreviewUrl($sitePreview, teaserType)
             : $frame.data('default-src');
 
         if (!$frame.length || !previewUrl) {
@@ -458,7 +600,7 @@ jQuery(document).ready(function ($) {
 
         updateTeaserPreviewViewport($sitePreview);
 
-        if ($frame.data('preview-mode') === previewMode && $frame.attr('src')) {
+        if ($frame.data('preview-mode') === previewMode && $frame.data('preview-url') === previewUrl && $frame.attr('src')) {
             if (previewMode === 'teaser') {
                 postThemeTeaserPayload($sitePreview);
             }
@@ -467,6 +609,7 @@ jQuery(document).ready(function ($) {
 
         $frame
             .data('preview-mode', previewMode)
+            .data('preview-url', previewUrl)
             .removeClass('is-loaded')
             .attr('aria-busy', 'true');
         $sitePreview.find('.pp-teaser-preview-theme-loading').show();
@@ -655,7 +798,11 @@ jQuery(document).ready(function ($) {
 
         var $article = $sitePreview.find('.pp-teaser-preview-article');
         var suffix = '_anon';
-        var sampleTitle = escapePreviewAttribute(String($sitePreview.data('sample-title') || ''));
+        var sampleTitle = escapePreviewAttribute(
+            getSelectedPreviewData($sitePreview, 'title') || String($sitePreview.data('sample-title') || '')
+        );
+
+        loadSelectedPreviewPostData($sitePreview, $container);
 
         // These mock-article elements (title/image/body/notice, and the redirect mockup) are only
         // ever used by the Blob fallback in updateExternalPreviewLink() now — every teaser type
@@ -700,6 +847,14 @@ jQuery(document).ready(function ($) {
             // Prepend/append and the notice-style box don't apply to redirects on the front end;
             // this message (with the resolved target link) is pre-rendered server-side.
             contentHtml = String($sitePreview.data('redirect-message') || '');
+        } else if (teaserType === 'read_more') {
+            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), messageText].filter(Boolean).join(' ');
+        } else if (teaserType === 'more') {
+            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), messageText].filter(Boolean).join(' ');
+        } else if (teaserType === 'excerpt') {
+            contentHtml = [getSelectedPreviewData($sitePreview, 'excerpt'), messageText].filter(Boolean).join(' ');
+        } else if (teaserType === 'x_chars') {
+            contentHtml = [getSelectedPreviewData($sitePreview, 'xChars'), messageText].filter(Boolean).join(' ');
         } else {
             // read_more / excerpt / x_chars / more: not escaped, since these notice messages
             // preserve their formatting on the front end too (see PostsTeaser::wrapTeaserNotice()).
@@ -719,6 +874,15 @@ jQuery(document).ready(function ($) {
         loadThemePreview($sitePreview, teaserType);
         updateExternalPreviewLink($sitePreview, teaserType);
     }
+
+    $(document).on('change', '.pp-teaser-preview-post-select', function() {
+        var $sitePreview = $(this).closest('.pp-teaser-site-preview');
+        var $container = getTeaserSettingsContainer($sitePreview);
+
+        if ($container.length) {
+            updateTeaserPreviewText($container);
+        }
+    });
 
     // Function to update preview text based on teaser type
     function updateTeaserPreviewText($container) {
@@ -1355,63 +1519,4 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // PRO Feature Handling
-    // Prevent selecting disabled PRO options
-    $(document).on('change', 'select.pp-teaser-type-select', function() {
-        var $select = $(this);
-        var $selected = $select.find('option:selected');
-        
-        if ($selected.is(':disabled')) {
-            // Revert to previous valid selection
-            var $firstEnabled = $select.find('option:not(:disabled)').first();
-            $select.val($firstEnabled.val());
-            
-            // Show upgrade notice
-            alert('This feature is only available in PublishPress Permissions PRO.\n\nUpgrade now to unlock advanced teaser types including Read More links, excerpts, and redirects.');
-        }
-    });
-
-    // Prevent interaction with disabled post type options
-    $(document).on('change', '#pp_current_post_type', function() {
-        var $select = $(this);
-        var $selected = $select.find('option:selected');
-        
-        if ($selected.is(':disabled')) {
-            // Revert to first enabled option
-            var $firstEnabled = $select.find('option:not(:disabled)').first();
-            $select.val($firstEnabled.val()).trigger('change');
-            
-            // Show upgrade notice
-            alert('This post type is only available in PublishPress Permissions PRO.\n\nUpgrade now to apply teasers to Pages, WooCommerce Products, and all custom post types.');
-        }
-    });
-
-    // Handle disabled radio buttons for user application
-    $(document).on('click', 'input[type="radio"][name^="tease_logged_only"]:disabled', function(e) {
-        e.preventDefault();
-        alert('User-specific targeting is only available in PublishPress Permissions PRO.\n\nUpgrade now to show different teaser messages to logged-in vs anonymous users.');
-        return false;
-    });
-
-    // PRO badge click handlers
-    $(document).on('click', '.pp-pro-badge', function(e) {
-        e.stopPropagation();
-        var upgradeUrl = 'https://publishpress.com/links/permissions-banner';
-        if (confirm('This feature is only available in PublishPress Permissions PRO.\n\nWould you like to learn more about upgrading?')) {
-            window.open(upgradeUrl, '_blank');
-        }
-    });
-
-    // Style disabled options
-    $('select option:disabled').css({
-        'color': '#999',
-        'font-style': 'italic'
-    });
-
-    $('input[type="radio"]:disabled').each(function() {
-        $(this).closest('label').css({
-            'opacity': '0.5',
-            'cursor': 'not-allowed'
-        });
-    });
 });

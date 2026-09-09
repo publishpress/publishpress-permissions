@@ -558,23 +558,23 @@ class TeaserProgressiveUI {
             '404',
             home_url('/')
         );
-        $sample_post_ids = get_posts([
+        $preview_posts = get_posts([
             'post_type' => $object_type,
             'post_status' => 'publish',
-            'posts_per_page' => 1,
-            'fields' => 'ids',
+            'posts_per_page' => 10,
             'orderby' => 'date',
             'order' => 'DESC',
             'no_found_rows' => true,
         ]);
-        $theme_teaser_base_url = $sample_post_ids ? get_permalink(reset($sample_post_ids)) : home_url('/');
+        $selected_preview_post = $preview_posts ? reset($preview_posts) : null;
+        $theme_teaser_base_url = $selected_preview_post ? get_permalink($selected_preview_post) : home_url('/');
         $theme_teaser_args = [
             'pp_permissions_teaser_preview' => 'teaser',
             'pp_permissions_teaser_post_type' => $object_type,
             'pp_permissions_teaser_type' => (is_bool($teaser_setting) || is_numeric($teaser_setting)) ? (string) intval($teaser_setting) : $teaser_setting,
         ];
 
-        if (!$sample_post_ids) {
+        if (!$selected_preview_post) {
             $theme_teaser_args['pp_permissions_teaser_fallback'] = '404';
         }
 
@@ -615,6 +615,23 @@ class TeaserProgressiveUI {
                     <div class="pp-teaser-preview-browser-bar">
                         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
                         <strong><?php esc_html_e('Site Preview', 'press-permit-core'); ?></strong>
+                        <?php if ($preview_posts) : ?>
+                            <label class="pp-teaser-preview-post-select-label">
+                                <span class="screen-reader-text"><?php esc_html_e('Preview content', 'press-permit-core'); ?></span>
+                                <select class="pp-teaser-preview-post-select" data-post-type="<?php echo esc_attr($object_type); ?>" aria-label="<?php esc_attr_e('Preview content', 'press-permit-core'); ?>">
+                                    <?php foreach ($preview_posts as $preview_post) :
+                                        $preview_post_title = get_the_title($preview_post);
+                                        ?>
+                                        <option
+                                            value="<?php echo esc_attr($preview_post->ID); ?>"
+                                            data-preview-url="<?php echo esc_url(get_permalink($preview_post)); ?>"
+                                        >
+                                            <?php echo esc_html($preview_post_title); ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </label>
+                        <?php endif; ?>
                         <div class="pp-teaser-preview-device-toggle" role="group" aria-label="<?php esc_attr_e('Preview device', 'press-permit-core'); ?>">
                             <button type="button" class="pp-teaser-preview-device-btn<?php echo ('desktop' === $device_mode) ? ' active' : ''; ?>" data-device="desktop" aria-pressed="<?php echo ('desktop' === $device_mode) ? 'true' : 'false'; ?>" title="<?php esc_attr_e('Desktop', 'press-permit-core'); ?>">
                                 <span class="dashicons dashicons-desktop" aria-hidden="true"></span>
