@@ -55,7 +55,6 @@ class ContentVisibilityAdmin
     {
         $new = [
             'content_visibility' => esc_html__('Content Visibility', 'press-permit-core'),
-            'legacy_compatibility' => esc_html__('Legacy Compatibility', 'press-permit-core'),
         ];
 
         $key = 'shortcodes';
@@ -76,7 +75,6 @@ class ContentVisibilityAdmin
     {
         $new = [
             'content_visibility' => ['no_option'],
-            'legacy_compatibility' => ['no_option'],
         ];
 
         $key = 'shortcodes';
@@ -152,7 +150,7 @@ class ContentVisibilityAdmin
     }
 
     /**
-     * Returns the documented native and compatibility shortcode examples.
+     * Returns the documented shortcode examples.
      *
      * @return array
      */
@@ -196,26 +194,6 @@ class ContentVisibilityAdmin
                     [
                         'description' => __('Use hide="yes" to invert the result of the configured conditions.', 'press-permit-core'),
                         'shortcode' => '[pp_restrict logged="in" hide="yes"]Logged-out visitors only.[/pp_restrict]',
-                    ],
-                ],
-            ],
-            'legacy_compatibility' => [
-                'description' => __(
-                    'These migration aliases are available when another active plugin has not already registered the same shortcode. Legacy conditions use OR matching.',
-                    'press-permit-core'
-                ),
-                'examples' => [
-                    [
-                        'description' => __('Restrict legacy content by login status.', 'press-permit-core'),
-                        'shortcode' => '[eyesonly logged="in"]Members-only content.[/eyesonly]',
-                    ],
-                    [
-                        'description' => __('Restrict legacy content by role or capability.', 'press-permit-core'),
-                        'shortcode' => '[eyesonlier level="editor"]Editors only.[/eyesonlier]',
-                    ],
-                    [
-                        'description' => __('Restrict legacy content by PublishPress Permission Group.', 'press-permit-core'),
-                        'shortcode' => '[eyesonliest pp_group="12"]Group 12 members only.[/eyesonliest]',
                     ],
                 ],
             ],
