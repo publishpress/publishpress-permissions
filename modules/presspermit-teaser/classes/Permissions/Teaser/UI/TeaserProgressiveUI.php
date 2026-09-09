@@ -290,7 +290,6 @@ class TeaserProgressiveUI {
                 <tr>
                     <th>
                         <?php esc_html_e('Post Type', 'press-permit-core'); ?>
-                        <?php $this->renderPostTypeSelectorDescription(); ?>
                     </th>
                     <td>
                         <?php $this->renderPostTypeSelectorControl('pp_current_post_type_' . $object_type, false); ?>
