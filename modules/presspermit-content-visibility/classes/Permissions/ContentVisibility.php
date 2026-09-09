@@ -13,18 +13,6 @@ class ContentVisibility
 {
     const SHORTCODE = 'pp_restrict';
 
-    /**
-     * Legacy shortcode names are registered only when another plugin has not
-     * already claimed them.
-     *
-     * @var string[]
-     */
-    private $legacy_shortcodes = [
-        'eyesonly',
-        'eyesonlier',
-        'eyesonliest',
-    ];
-
     public function __construct()
     {
         add_action('init', [$this, 'registerShortcodes'], 20);
@@ -32,17 +20,11 @@ class ContentVisibility
     }
 
     /**
-     * Registers the native shortcode and non-conflicting migration aliases.
+     * Registers the native shortcode.
      */
     public function registerShortcodes()
     {
         add_shortcode(self::SHORTCODE, [$this, 'renderShortcode']);
-
-        foreach ($this->legacy_shortcodes as $shortcode) {
-            if (!shortcode_exists($shortcode)) {
-                add_shortcode($shortcode, [$this, 'renderLegacyShortcode']);
-            }
-        }
     }
 
     /**
@@ -112,65 +94,6 @@ class ContentVisibility
         }
 
         return $allowed ? do_shortcode($content) : '';
-    }
-
-    /**
-     * Preserves the Eyes Only shortcode contract for existing content.
-     *
-     * Legacy conditions use OR matching, matching the original plugin. Nested
-     * shortcodes are evaluated only after access has been granted.
-     *
-     * @param array|string $atts    Shortcode attributes.
-     * @param string|null  $content Enclosed content.
-     * @return string
-     */
-    public function renderLegacyShortcode($atts, $content = null)
-    {
-        if (null === $content) {
-            return '';
-        }
-
-        $this->markResponseAsDynamic();
-
-        $raw_atts = (array) $atts;
-        $atts = shortcode_atts(
-            [
-                'username' => '',
-                'level' => '',
-                'role' => '',
-                'logged' => '',
-                'hide' => '',
-                'pp_group' => '',
-            ],
-            $raw_atts
-        );
-
-        $matched = in_array(true, $this->getLegacyConditions($atts), true);
-        $filter_atts = $raw_atts;
-
-        foreach ($filter_atts as $key => $value) {
-            if (!in_array($key, ['logged', 'hide'], true)) {
-                $filter_atts[$key] = $this->splitList($value);
-            }
-        }
-
-        if (!$matched) {
-            // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Legacy Eyes Only compatibility hook.
-            $matched = (bool) apply_filters(
-                'eo_shortcode_matched',
-                $matched,
-                $filter_atts,
-                $content
-            );
-            // phpcs:enable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
-        }
-
-        // The legacy plugin inverted on any non-empty hide value.
-        if (!empty($atts['hide'])) {
-            $matched = !$matched;
-        }
-
-        return $matched ? do_shortcode($content) : '';
     }
 
     /**
@@ -261,79 +184,6 @@ class ContentVisibility
     }
 
     /**
-     * Builds legacy OR-condition results.
-     *
-     * @param array $atts Normalized shortcode attributes.
-     * @return bool[]
-     */
-    private function getLegacyConditions($atts)
-    {
-        $conditions = [];
-        $logged = strtolower(trim((string) $atts['logged']));
-
-        if ($logged) {
-            $conditions[] = ('in' === $logged)
-                ? is_user_logged_in()
-                : (('out' === $logged) ? !is_user_logged_in() : false);
-        }
-
-        $usernames = $this->splitList($atts['username']);
-        if ($usernames) {
-            $conditions[] = in_array(wp_get_current_user()->user_login, $usernames, true);
-        }
-
-        $levels = $this->splitList($atts['level'] ?: $atts['role']);
-        if ($levels) {
-            $conditions[] = $this->currentUserMatchesAnyLegacyLevel($levels);
-        }
-
-        $group_ids = array_values(
-            array_filter(array_map('absint', $this->splitList($atts['pp_group'])))
-        );
-        if ($group_ids) {
-            $conditions[] = $this->currentUserInAnyPermissionGroup($group_ids);
-        }
-
-        return $conditions;
-    }
-
-    /**
-     * Tests roles and capabilities using the legacy plugin's matching rules.
-     *
-     * @param string[] $levels Roles or capabilities.
-     * @return bool
-     */
-    private function currentUserMatchesAnyLegacyLevel($levels)
-    {
-        $user = wp_get_current_user();
-        $wp_roles = wp_roles();
-        $options = (array) get_option('ss_eyes_only_options', []);
-        $strict_roles = !empty($options['ss_eyes_only_strict_role_matching']);
-
-        foreach ($levels as $level) {
-            $level = is_numeric($level) ? 'level_' . absint($level) : sanitize_key($level);
-
-            if (!$level) {
-                continue;
-            }
-
-            if (
-                $strict_roles
-                && isset($wp_roles->role_names[$level])
-                && in_array($level, (array) $user->roles, true)
-            ) {
-                return true;
-            }
-
-            if ((!$strict_roles || !isset($wp_roles->role_names[$level])) && current_user_can($level)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * @param string[] $capabilities Capability names.
      * @return bool
      */
@@ -370,15 +220,7 @@ class ContentVisibility
      */
     private function containsVisibilityShortcode($content)
     {
-        $shortcodes = array_merge([self::SHORTCODE], $this->legacy_shortcodes);
-
-        foreach ($shortcodes as $shortcode) {
-            if (has_shortcode($content, $shortcode)) {
-                return true;
-            }
-        }
-
-        return false;
+        return has_shortcode($content, self::SHORTCODE);
     }
 
     /**
