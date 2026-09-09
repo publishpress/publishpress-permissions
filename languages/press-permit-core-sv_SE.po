@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-04 20:36+0000\n"
+"PO-Revision-Date: 2026-09-09 14:54+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -400,8 +400,8 @@ msgstr "Innehållssynlighet"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:90
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:91
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 msgid "Teaser"
 msgstr "Förhandsvisning"
 
@@ -1211,8 +1211,6 @@ msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
 msgstr "Modulen %1$s dupliceras aktiverad (%2$s i mappen %3$s)."
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:183
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:138
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:180
 msgid "Dismiss"
 msgstr "Avvisa"
 
@@ -1224,14 +1222,13 @@ msgstr "Anpassad Grupp"
 
 #: classes/PublishPress/Permissions/Groups.php:55
 #: classes/PublishPress/Permissions/UI/Groups.php:261
-#: classes/PublishPress/PermissionsHooksAdmin.php:378
+#: classes/PublishPress/PermissionsHooksAdmin.php:373
 msgid "Custom Groups"
 msgstr "Anpassade Grupper"
 
 #: classes/PublishPress/Permissions/Groups.php:56
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:41
-#: classes/PublishPress/Permissions/UI/Welcome.php:90
 msgid "Groups"
 msgstr "Grupper"
 
@@ -1297,7 +1294,6 @@ msgid "(login timed out)"
 msgstr "(inloggningstiden har gått ut)"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:227
 msgid "View"
 msgstr "Visa"
 
@@ -1453,7 +1449,7 @@ msgid "All Statuses"
 msgstr "Alla statusar"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1892
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1654,7 +1650,7 @@ msgstr "Lägg till Specifika Behörigheter"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1388
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1386
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Ta bort"
@@ -1700,7 +1696,7 @@ msgid "No items selected!"
 msgstr "Inga objekt valda!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1193
 msgid "(no parent)"
 msgstr "(ingen förälder)"
 
@@ -1862,7 +1858,7 @@ msgstr "Välj %s"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1035, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1033, fuzzy
 msgid "Status"
 msgstr "Status"
 
@@ -1889,8 +1885,8 @@ msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Extra roller %1$s(för denna användare)%2$s"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:40
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:60
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:52
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
 msgid "Extra Roles"
 msgstr "Extra roller"
 
@@ -1916,19 +1912,8 @@ msgstr "Avaktiverad typ"
 msgid "%s Roles"
 msgstr "%s roller"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:760
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1017
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1664
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:95
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:108
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:641
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:807
-msgid "item(s)"
-msgstr "objekt"
-
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:739
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1507
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1505
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:611
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:823
 msgid "Apply"
@@ -1957,57 +1942,49 @@ msgstr "%1$s (%2$s: %3$s)"
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
-msgid "item"
-msgstr "artikel"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
-msgid "items"
-msgstr "artiklar"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1044
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1083
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:88
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grupp"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1071
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1069
 msgid "unpublished"
 msgstr "opublicerad"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1078
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1076
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:529
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:695
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1125
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1123
 #, php-format
 msgid "this %1$s"
 msgstr "denna %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "under-%1$s av denna %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1136
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1134
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "denna %1$s och dess under-%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
 "capabilities."
 msgstr "%1$s åtkomst för %2$s är AKTIVERAD inom %3$s, oavsett rollens kapabiliteter."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1151
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -2016,7 +1993,7 @@ msgstr ""
 "%1$s åtkomst för %2$s är BLOCKERAD inom %3$s, om den inte aktiveras av en "
 "annan behörighet."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1161
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1159
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -2025,19 +2002,19 @@ msgstr ""
 "All rollbaserad %1$s åtkomst för %2$s är BEGRÄNSAD. Den gäller endast inom "
 "%3$s, tillsammans med andra specificerade %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1171
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s åtkomst för %2$s är AKTIVERAD, oavsett rollkapabiliteter."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1178
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1176
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "%1$s åtkomst för %2$s är BLOCKERAD, om den inte aktiveras av en annan "
 "Behörighet."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1185
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1183
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -2046,121 +2023,121 @@ msgstr ""
 "All rollbaserad %1$s åtkomst för %2$s är BEGRÄNSAD. Den gäller endast %3$s, "
 "tillsammans med andra specificerade %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1230
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1333
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1331
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Tilldelad för under-%s endast."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1238
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1341
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1339
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Tilldelad för %s och under-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1365
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1363
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Denna behörighet är redundant på grund av en motsvarande begränsning."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1372
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
 #, php-format
 msgid "Edit %s"
 msgstr "Redigera %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1392
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Tilldela för vald och under-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1396
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1394
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Tilldela för endast vald %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1400
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1398
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Tilldela för endast under-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1403
 msgid "Assign for selected and sub-terms"
 msgstr "Tilldela för vald och under-termer"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
 msgid "Assign for selected term only"
 msgstr "Tilldela för endast vald term"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1413
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1411
 msgid "Assign for sub-terms only"
 msgstr "Tilldela för endast under-termer"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
 msgid "Convert to \"Enabled\""
 msgstr "Konvertera till \"Aktiverad\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1425
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 msgid "Convert to \"Blocked\""
 msgstr "Konvertera till \"Blockerad\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
 msgid "Convert to \"Limit to\""
 msgstr "Konvertera till \"Begränsa till\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1481
 #, php-format
 msgid "Mirror to %s"
 msgstr "Spegel till %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1485
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Spegel till %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1535
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1533
 msgid "= Enabled"
 msgstr "= Aktiverad"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1542
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1540
 msgid "= Blocked"
 msgstr "= Blockerad"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1549
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1547
 msgid "= Limitation"
 msgstr "= Begränsning"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1563
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1561
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s och under-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1569
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
 #, php-format
 msgid "= sub-%s only"
 msgstr "= endast under-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1585
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1609
 msgid "Note:"
 msgstr "Notera:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1589
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1613
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Under-%1$s behörigheter listas inte separat."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1593
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1617
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
 msgid "Show All"
 msgstr "Visa alla"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1625
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1600
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1623
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Dölj auto-tilldelade Sub-%s behörigheter"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1637
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1635
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2170,21 +2147,21 @@ msgstr ""
 "förhindra att under-sidans behörigheter tillämpas korrekt när en ny "
 "under-sida skapas."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sFixera Sub-%2$s behörigheter%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1664
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1662
 #, php-format
 msgid "%s Permissions"
 msgstr "%s Behörigheter"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1689
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1687
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Gruppbegränsningar är inte tillgängliga på grund av en konstantdefinition"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1706
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1704
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
@@ -2192,35 +2169,43 @@ msgstr ""
 "Behörigheter för att aktivera åtkomst är inte tillgängliga på grund av en "
 "konstantdefinition"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1770
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1768
 msgid "Group Members"
 msgstr "Gruppmedlemmar"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1819
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1817
 msgid "Copy Roles and Permissions from:"
 msgstr "Kopiera roller och behörigheter från:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1842
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
 msgid "Copy Roles and Permissions"
 msgstr "Kopiera roller och behörigheter"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1859
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:857
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] "%s objekt"
+msgstr[1] "%s objekt"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1867
 msgid "Limit to:"
 msgstr "Begränsa till:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1862
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1870
 msgid "Blocked:"
 msgstr "Blockerad:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1866
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1874
 msgid "Enabled:"
 msgstr "Aktiverad:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1885
 msgid "Direct-assigned"
 msgstr "Direkt-tilldelad"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1890
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2336,9 +2321,9 @@ msgid "Add New Permission Group"
 msgstr "Lägg till ny behörighetsgrupp"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:111
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:811
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:123
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
 msgid "Edit"
 msgstr "Redigera"
 
@@ -2360,11 +2345,6 @@ msgstr "Redigera rollanvändning"
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:357
 msgid "Settings"
 msgstr "Inställningar"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:364
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:365
-msgid "Welcome"
-msgstr "Välkommen"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
 msgid "(Default access)"
@@ -2406,7 +2386,6 @@ msgstr "Avblockerad"
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
-#: classes/PublishPress/Permissions/UI/Welcome.php:85
 msgid "Roles"
 msgstr "Roller"
 
@@ -2751,54 +2730,54 @@ msgstr "Välj som Förälder"
 msgid "Assign Terms"
 msgstr "Tilldela Villkor"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:41
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:51
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:53
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:63
 msgid "Assigned directly"
 msgstr "Tilldelad direkt"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:50
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:71
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:62
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:83
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
 msgid "Specific Permissions"
 msgstr "Specifika Behörigheter"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:61
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:73
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:84
 msgid "From primary role or group membership"
 msgstr "Från primär roll eller gruppmedlemskap"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:94
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:106
 msgid "Permissions Summary"
 msgstr "Behörighetsöversikt"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:168
 #, php-format
 msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
 msgstr "Extra Roller %1$s(från primär roll eller gruppmedlemskap)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:167
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:179
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Specifika Behörigheter (från primär roll eller gruppmedlemskap)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:253
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:428
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:265
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:440
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:174
 msgid "Permission Groups"
 msgstr "Behörighetsgrupper"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:281
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:460
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:293
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:330
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:472
 msgid "This user is not a member of any custom Permission Groups."
 msgstr "Denna användare är inte medlem i några anpassade Behörighetsgrupper."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:285
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:464
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:297
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:476
 msgid "Edit this user's group membership"
 msgstr "Redigera denna användares gruppmedlemskap"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:294
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:473
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:306
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:485
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2806,33 +2785,33 @@ msgstr ""
 "Observera: BuddyPress-grupper och andra externt definierade grupper listas "
 "inte här, även om de modifierar behörigheter"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:314
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:326
 msgid "Group membership"
 msgstr "Gruppmedlemskap"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:538
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:704
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:550
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:716
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, mer..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:546
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:557
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:712
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:723
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:558
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:724
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:735
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "redigera användarbehörigheter"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:602
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:614
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:669
 msgid "No specific permissions currently apply."
 msgstr "Inga specifika behörigheter gäller för närvarande."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:768
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:780
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:835
 msgid "No extra roles currently apply."
 msgstr "Inga extra roller gäller för närvarande."
 
@@ -3216,7 +3195,6 @@ msgid "Purchase"
 msgstr "Köp"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:157
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:210
 msgid "Hide"
 msgstr "Dölj"
 
@@ -3251,7 +3229,7 @@ msgstr "Om du behöver hjälp eller har en ny funktionsförfrågan, låt oss vet
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
 #: includes/CoreAdmin.php:128
 #: includes/CoreAdmin.php:129
-#: includes/CoreAdmin.php:258
+#: includes/CoreAdmin.php:257
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -3825,7 +3803,7 @@ msgid "If group editing is allowed, can also modify group membership."
 msgstr "Om gruppredigering är tillåten kan även gruppmedlemskapet modifieras."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
-#: classes/PublishPress/PermissionsHooksAdmin.php:373
+#: classes/PublishPress/PermissionsHooksAdmin.php:368
 msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
 msgstr ""
 "Tilldela extra roller eller behörigheter på skärmen för redigering av "
@@ -3842,7 +3820,7 @@ msgstr ""
 "termer."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
-#: classes/PublishPress/PermissionsHooksAdmin.php:365
+#: classes/PublishPress/PermissionsHooksAdmin.php:360
 msgid "Set Revision Permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Ställ in revisionsbehörigheter för specifika inlägg, kategorier eller "
@@ -4385,7 +4363,7 @@ msgstr "Filåtkomstnyckel med begärd regenerering"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:243
+#: includes/CoreAdmin.php:242
 msgid "Pro Feature"
 msgstr "Pro-funktion"
 
@@ -4407,8 +4385,8 @@ msgstr "Uppgradera till Pro för att låsa upp avancerade filskyddsfunktioner"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:255
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:950
+#: includes/CoreAdmin.php:254
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:967
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Lär dig mer"
@@ -4797,367 +4775,43 @@ msgstr "Roller tilldelade till användaren eller en av deras grupper"
 msgid "Edit User"
 msgstr "Redigera användare"
 
-#: classes/PublishPress/Permissions/UI/Welcome.php:86
-msgid "What a person can do everywhere on the site. Roles come from WordPress."
-msgstr ""
-"Vad en person kan göra överallt på webbplatsen. Roller kommer från "
-"WordPress."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:91
-msgid ""
-"A bundle of people you give the same access to. Easier than editing every "
-"user."
-msgstr ""
-"Ett paket med personer som du ger samma åtkomst till. Enklare än att "
-"redigera varje användare."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:95
-msgid "Exceptions"
-msgstr "Undantag"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:96
-msgid "An override for one post, page or category. An exception beats the role."
-msgstr ""
-"En överskrivning för ett inlägg, en sida eller en kategori. Ett undantag "
-"slår rollen."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:109
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:250
-msgid "Choose the content you want to control"
-msgstr "Välj det innehåll du vill kontrollera"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:110
-msgid ""
-"Permissions only filters the post types and taxonomies you switch on. "
-"Everything else behaves like standard WordPress."
-msgstr ""
-"Behörigheter filtrerar endast de inläggstyper och taxonomier som du slår "
-"på. Allt annat beter sig som standard WordPress."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:112
-msgid "The General tab of the Permissions settings screen"
-msgstr "Allmän flik på skärmen för behörighetsinställningar"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:114
-msgid "Open Permissions, then Settings."
-msgstr "Öppna Behörigheter, sedan Inställningar."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:115
-msgid "On the General tab, find Post Types and Taxonomies."
-msgstr "På fliken Allmänt, hitta Post Typer och Taxonomies."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:116
-msgid "Tick the post types and taxonomies you want to manage."
-msgstr "Kryssa för de post typer och taxonomies som du vill hantera."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:118
-msgid "Open Settings"
-msgstr "Öppna Inställningar"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:123
-msgid "Create a Permission Group"
-msgstr "Skapa en Behörighetsgrupp"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:124
-msgid ""
-"A Permission Group lets you give the same access to several users at once. "
-"Start with a clear name and description."
-msgstr ""
-"En Behörighetsgrupp låter dig ge samma åtkomst till flera användare "
-"samtidigt. Börja med ett tydligt namn och beskrivning."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:126
-msgid "The Permissions User Groups screen"
-msgstr "Skärmen för Behörighetsanvändargrupper"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:128
-msgid "Open Permissions to reach User Groups."
-msgstr "Öppna Behörigheter för att nå Användargrupper."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:129
-msgid "Click Add New Group."
-msgstr "Klicka på Lägg till ny grupp."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:130
-msgid "Name and describe the group on the next screen, then create it."
-msgstr "Namnge och beskriv gruppen på nästa skärm, och skapa den sedan."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:132
-msgid "Open Permissions"
-msgstr "Öppna Behörigheter"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:137
-msgid "Add members and fine-tune access"
-msgstr "Lägg till medlemmar och finjustera åtkomst"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:138
-msgid ""
-"Add users to your Permission Group, set specific access for a post type, "
-"and use a post or page Permissions panel when one item needs an override."
-msgstr ""
-"Lägg till användare i din Behörighetsgrupp, ställ in specifik åtkomst för "
-"en post typ, och använd en post eller sida Behörigheterpanel när en post "
-"behöver en överstyrning."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:140
-msgid "Group members, specific permissions, and the post Permissions panel"
-msgstr "Gruppmedlemmar, specifika behörigheter och postens Behörigheterpanel"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:142
-msgid "Add users in the Group Members box."
-msgstr "Lägg till användare i rutan Gruppmedlemmar."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:143
-msgid "Add Specific Permissions for a post type."
-msgstr "Lägg till Specifika Behörigheter för en post typ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:144
-msgid "Use the post/page Permissions panel for a one-off override."
-msgstr "Använd post/sida Behörigheterpanelen för en engångsöverstyrning."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:146
-msgid "Open a page to try it"
-msgstr "Öppna en sida för att prova det"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:157
-msgid "Editing permissions per post type"
-msgstr "Redigera behörigheter per post typ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:158
-msgid "Media and file access control"
-msgstr "Media och filåtkomstkontroll"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:159
-msgid "Membership plugin integrations"
-msgstr "Medlemskapsplugin-integrationer"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:160
-msgid "Custom post status permissions"
-msgstr "Behörigheter för anpassade inläggsstatusar"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:161
-msgid "Sync user posts"
-msgstr "Synkronisera användarinlägg"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:162
-msgid "Priority support"
-msgstr "Prioriterad support"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:261
-#. translators: %1$s: current step number, %2$s: total number of steps
-#, php-format
-msgid "Step %1$s of %2$s"
-msgstr "Steg %1$s av %2$s"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:274
-msgid "Skip"
-msgstr "Hoppa över"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:287
-msgid "Back"
-msgstr "Tillbaka"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:295
-msgid "Next"
-msgstr "Nästa"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:342
-msgid "This guide does not change any setting on your site."
-msgstr "Denna guide ändrar inga inställningar på din webbplats."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:353
-msgid "Welcome to PublishPress Permissions"
-msgstr "Välkommen till PublishPress Permissions"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:356
-msgid ""
-"Control who can read and edit posts, pages, categories, media, and other "
-"content across your WordPress site."
-msgstr ""
-"Kontrollera vem som kan läsa och redigera inlägg, sidor, kategorier, media "
-"och annat innehåll på din WordPress-webbplats."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:360
-msgid ""
-"Six short screens show you where everything lives. Nothing changes on your "
-"site while you read."
-msgstr ""
-"Sex korta skärmar visar dig var allt finns. Inga förändringar görs på din "
-"webbplats medan du läser."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:365
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:124
-msgid "Start the tour"
-msgstr "Börja rundturen"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:369
-msgid "Skip, take me to Settings"
-msgstr "Hoppa över, ta mig till Inställningar"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:384
-msgid "Three ideas to know"
-msgstr "Tre saker att känna till"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:385
-msgid "Get these right and the rest of the plugin makes sense."
-msgstr "Få dessa rätt och resten av pluginet ger mening."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:398
-msgid ""
-"Rule of thumb: roles say what a person can do everywhere. Exceptions "
-"override that for one post or one category."
-msgstr ""
-"Tummeregel: roller säger vad en person kan göra överallt. Undantag "
-"åsidosätter detta för ett inlägg eller en kategori."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:424
-msgid "opens in a new tab, this guide stays here"
-msgstr "öppnas i en ny flik, denna guide stannar här"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:437
-msgid "That is the whole plugin"
-msgstr "Det är hela pluginet"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:438
-msgid "Nothing on your site changed. Here is what to do next:"
-msgstr "Ingenting på din webbplats har ändrats. Här är vad du ska göra härnäst:"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:440
-msgid "What to do next"
-msgstr "Vad ska du göra härnäst"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:442
-msgid "Choose the content you want to control."
-msgstr "Välj det innehåll du vill kontrollera."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:443
-msgid "Create your first permission group."
-msgstr "Skapa din första behörighetsgrupp."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:444
-msgid "Set permissions on one post or page."
-msgstr "Ställ in behörigheter på ett inlägg eller en sida."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:446
-msgid "Each link opens in a new tab so you can return to this guide."
-msgstr "Varje länk öppnas i en ny flik så att du kan återvända till den här guiden."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:450
-msgid "Go to Permissions"
-msgstr "Gå till behörigheter"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:454
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:234
-msgid "Replay the guide"
-msgstr "Spela upp guiden"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:462
-msgid "If you need more control"
-msgstr "Om du behöver mer kontroll"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:472
-msgid "See Pro features"
-msgstr "Se Pro-funktioner"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:123
-msgid "Continue the tour"
-msgstr "Fortsätt rundturen"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:129
-msgid "Permissions is active. Want a two minute tour?"
-msgstr "Behörigheter är aktiverade. Vill du ha en två minuters rundtur?"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:130
-msgid ""
-"We will show you where to control who reads and edits your content. Nothing "
-"gets changed."
-msgstr ""
-"Vi visar dig var du kan kontrollera vem som läser och redigerar ditt "
-"innehåll. Inget ändras."
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:178
-msgid "Permissions is set up"
-msgstr "Behörigheter är inställda"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:192
-msgid "Finish setting up Permissions"
-msgstr "Avsluta inställningen av behörigheter"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:198
-#. translators: %1$s: number of completed tasks, %2$s: total number of tasks
-#, php-format
-msgid "%1$s of %2$s"
-msgstr "%1$s av %2$s"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:224
-msgid "Do it"
-msgstr "Gör det"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:254
-#. translators: %s: number of enabled post types
-#, php-format
-msgid "%s type on"
-msgid_plural "%s types on"
-msgstr[0] "%s typ på"
-msgstr[1] "%s typer på"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:261
-msgid "Create your first permission group"
-msgstr "Skapa din första behörighetsgrupp"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:265
-#. translators: %s: number of groups
-#, php-format
-msgid "%s group"
-msgid_plural "%s groups"
-msgstr[0] "%s grupp"
-msgstr[1] "%s grupper"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:272
-msgid "Open a post or page and use its Permissions panel"
-msgstr "Öppna ett inlägg eller en sida och använd dess panel för behörigheter"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:274
-msgid "done"
-msgstr "klar"
-
-#: classes/PublishPress/PermissionsHooksAdmin.php:354
+#: classes/PublishPress/PermissionsHooksAdmin.php:349
 msgid "Set Viewing permissions for specific Posts, Categories or Terms."
 msgstr "Ställ in visningsbehörigheter för specifika inlägg, kategorier eller termer."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:358
+#: classes/PublishPress/PermissionsHooksAdmin.php:353
 msgid "Set Editing permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Ställ in redigeringsbehörigheter för specifika inlägg, kategorier eller "
 "termer."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:359
+#: classes/PublishPress/PermissionsHooksAdmin.php:354
 msgid "Set \"Set as Parent\" permissions for specific Pages."
 msgstr "Ställ in \"Ställ in som förälder\" behörigheter för specifika sidor."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:360
+#: classes/PublishPress/PermissionsHooksAdmin.php:355
 msgid "Set Assign Term permissions."
 msgstr "Ställ in behörigheter för att tilldela termer."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:361
+#: classes/PublishPress/PermissionsHooksAdmin.php:356
 msgid "Set \"Manage This Term\" permissions for specific terms."
 msgstr "Ställ in \"Hantera den här termen\" behörigheter för specifika termer."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:362
+#: classes/PublishPress/PermissionsHooksAdmin.php:357
 msgid "Set \"Set as Parent\" permissions for specific Categories or Terms."
 msgstr ""
 "Ställ in \"Ställ in som förälder\" behörigheter för specifika kategorier "
 "eller termer."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:366
+#: classes/PublishPress/PermissionsHooksAdmin.php:361
 msgid "Set Copy Permissions for specific Posts."
 msgstr "Ställ in kopieringsbehörigheter för specifika inlägg."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:371
+#: classes/PublishPress/PermissionsHooksAdmin.php:366
 msgid "Permissions & Access"
 msgstr "Behörigheter & Åtkomst"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:372
+#: classes/PublishPress/PermissionsHooksAdmin.php:367
 msgid ""
 "Full editing access for all post types. Also gives the ability to edit "
 "Permissions for user roles."
@@ -5165,23 +4819,23 @@ msgstr ""
 "Fullständig redigeringsåtkomst för alla inläggstyper. Ger också möjlighet "
 "att redigera behörigheter för användarroller."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:374
+#: classes/PublishPress/PermissionsHooksAdmin.php:369
 msgid "Access to the Settings screen."
 msgstr "Åtkomst till inställningsskärmen."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:375
+#: classes/PublishPress/PermissionsHooksAdmin.php:370
 msgid "Access to the Teaser screen."
 msgstr "Åtkomst till teaser-skärmen."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:376
+#: classes/PublishPress/PermissionsHooksAdmin.php:371
 msgid "All Enabled and Blocked Permissions are ignored for this role."
 msgstr "Alla aktiverade och blockerade behörigheter ignoreras för denna roll."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:379
+#: classes/PublishPress/PermissionsHooksAdmin.php:374
 msgid "Create Custom Groups."
 msgstr "Skapa anpassade grupper."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:380
+#: classes/PublishPress/PermissionsHooksAdmin.php:375
 msgid ""
 "View Custom Groups on the Permissions screen. Also allows access to the "
 "editing screen for Custom Groups."
@@ -5189,31 +4843,31 @@ msgstr ""
 "Visa anpassade grupper på behörighetsskärmen. Ger också åtkomst till "
 "redigeringsskärmen för anpassade grupper."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:381
+#: classes/PublishPress/PermissionsHooksAdmin.php:376
 msgid "Delete Custom Groups."
 msgstr "Ta bort anpassade grupper."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:382
+#: classes/PublishPress/PermissionsHooksAdmin.php:377
 msgid "Manage members in Custom Groups."
 msgstr "Hantera medlemmar i anpassade grupper."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:384
+#: classes/PublishPress/PermissionsHooksAdmin.php:379
 msgid "Set Permissions in Post or Term Editing Screen"
 msgstr "Ställ in behörigheter i inläggs- eller termredigeringsskärmen"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:477
+#: classes/PublishPress/PermissionsHooksAdmin.php:472
 msgid "Subscribers"
 msgstr "Prenumeranter"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:478
+#: classes/PublishPress/PermissionsHooksAdmin.php:473
 msgid "Contributors"
 msgstr "Bidragsgivare"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:479
+#: classes/PublishPress/PermissionsHooksAdmin.php:474
 msgid "Authors"
 msgstr "Författare"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:480
+#: classes/PublishPress/PermissionsHooksAdmin.php:475
 msgid "Editors"
 msgstr "Redaktörer"
 
@@ -5230,7 +4884,7 @@ msgstr ""
 msgid "Promo file not found."
 msgstr "Promo-fil hittades inte."
 
-#: includes/CoreAdmin.php:249
+#: includes/CoreAdmin.php:248
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Uppgradera till Pro för att låsa upp sömlös integration."
 
@@ -5889,11 +5543,7 @@ msgstr "Revisor"
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:58
-msgid "Legacy Compatibility"
-msgstr "Legacy-kompatibilitet"
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:163
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:161
 msgid ""
 "Use the pp_restrict shortcode to show or hide enclosed content based on the "
 "current visitor."
@@ -5901,75 +5551,55 @@ msgstr ""
 "Använd pp_restrict-shortcode för att visa eller dölja innesluten innehåll "
 "baserat på den aktuella besökaren."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:169
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:167
 msgid "Show content only to logged-in visitors."
 msgstr "Visa innehåll endast för inloggade besökare."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:173
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:171
 msgid "Show content only to logged-out visitors."
 msgstr "Visa innehåll endast för utloggade besökare."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:177
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:175
 msgid "Allow visitors with any listed WordPress role."
 msgstr "Tillåt besökare med vilken som helst av de listade WordPress-rollerna."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:181
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:179
 msgid "Allow visitors with any listed WordPress capability."
 msgstr "Tillåt besökare med vilken som helst av de listade WordPress-möjligheterna."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:185
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:183
 msgid "Allow visitors with any listed WordPress username."
 msgstr "Tillåt besökare med vilket som helst av de listade WordPress-användarnamnen."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:189
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:187
 msgid "Allow members of any listed PublishPress Permission Group."
 msgstr ""
 "Tillåt medlemmar av vilken som helst av de listade "
 "PublishPress-rättighetsgrupperna."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:193
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:191
 msgid "Use relation=\"any\" when any populated condition may grant access."
 msgstr ""
 "Använd relation=\"any\" när vilken som helst av de ifyllda villkoren kan ge "
 "åtkomst."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:197
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:195
 msgid "Use hide=\"yes\" to invert the result of the configured conditions."
 msgstr ""
 "Använd hide=\"yes\" för att invertera resultatet av de konfigurerade "
 "villkoren."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:203
-msgid ""
-"These migration aliases are available when another active plugin has not "
-"already registered the same shortcode. Legacy conditions use OR matching."
-msgstr ""
-"Dessa migrationsalias är tillgängliga när en annan aktiv plugin inte redan "
-"har registrerat samma shortcode. Legacy-villkor använder OR-matchning."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:209
-msgid "Restrict legacy content by login status."
-msgstr "Begränsa legacy-innehåll efter inloggningsstatus."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:213
-msgid "Restrict legacy content by role or capability."
-msgstr "Begränsa legacy-innehåll efter roll eller kapabilitet."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:217
-msgid "Restrict legacy content by PublishPress Permission Group."
-msgstr "Begränsa legacy-innehåll efter PublishPress-rättighetsgrupp."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:238
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:216
 msgid "Shortcode example"
 msgstr "Shortcode-exempel"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:244
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:245
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:250
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:222
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:223
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:228
 msgid "Copy shortcode"
 msgstr "Kopiera shortcode"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:246
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:224
 msgid "Copied!"
 msgstr "Kopierad!"
 
@@ -5979,10 +5609,10 @@ msgstr "Kopierad!"
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:668
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:514
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1189
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1243
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1297
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:279
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:284
 msgid "You do not have permission to view the full content."
 msgstr "Du har inte behörighet att visa hela innehållet."
 
@@ -6076,7 +5706,7 @@ msgid "This feature is available in PublishPress Permissions PRO"
 msgstr "Denna funktion är tillgänglig i PublishPress Permissions PRO"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:947
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
 msgid "Upgrade to PRO"
 msgstr "Uppgradera till PRO"
@@ -6283,14 +5913,14 @@ msgid "Both"
 msgstr "Båda"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:723
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:832
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:740
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
 msgid "Not Logged In Users"
 msgstr "Ej inloggade användare"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:422
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:726
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:852
 msgid "Logged In Users"
 msgstr "Inloggade användare"
 
@@ -6323,7 +5953,7 @@ msgid "Hide for Custom Visibility"
 msgstr "Dölj för anpassad synlighet"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:461
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:642
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
 msgid "Featured Image"
 msgstr "Utvald bild"
 
@@ -6365,19 +5995,19 @@ msgid "Use Custom Teaser Message Style"
 msgstr "Använd anpassad teaser meddelandestil"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:551
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:287
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Besökare utan åtkomst omdirigeras till: %s"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:295
 msgid "Visitors without access are redirected away from this page."
 msgstr "Besökare utan åtkomst omdirigeras bort från denna sida."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:183
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:187
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
@@ -6403,43 +6033,48 @@ msgstr "Teaserförhandsvisning"
 msgid "Site Preview"
 msgstr "Förhandsvisning av webbplatsen"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:618
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:620
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:621
+msgid "Preview content"
+msgstr "Förhandsgranska innehåll"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid "Preview device"
 msgstr "Förhandsvisningsenhet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:619
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:636
 msgid "Desktop"
 msgstr "Skrivbord"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:622
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
 msgid "Mobile"
 msgstr "Mobil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:631
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:648
 msgid "Open full preview in a new tab"
 msgstr "Öppna fullständig förhandsvisning i en ny flik"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
 msgid "Open full preview"
 msgstr "Öppna fullständig förhandsvisning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:649
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 msgid "Loading the preview from your active theme…"
 msgstr "Laddar förhandsvisningen från ditt aktiva tema…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
 msgid "Teaser preview from the active theme"
 msgstr "Teaserförhandsvisning från det aktiva temat"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:684
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Temaförhandsvisningen kunde inte visas i denna ruta."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:691
 msgid "Visitor redirected"
 msgstr "Besökare omdirigerad"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:692
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6447,11 +6082,11 @@ msgstr ""
 "Det begränsade innehållet visas inte. Besökaren skickas till den "
 "konfigurerade destinationen."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:712
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:729
 msgid "Teaser Message"
 msgstr "Teaser meddelande"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:713
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:730
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6459,58 +6094,58 @@ msgstr ""
 "Ersätt inläggets innehåll helt med anpassat innehåll för användare som inte "
 "har tillgång."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:732
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:772
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
 msgid "This field is required."
 msgstr "Detta fält är obligatoriskt."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:734
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:774
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:751
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:791
 msgid "Replace Post Content With:"
 msgstr "Ersätt inläggsinnehåll med:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:760
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:800
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Infoga ett inloggningsformulär genom att använda %s[login_form]%s kortkod."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
 msgid "Teaser Text Configuration"
 msgstr "Konfiguration av teasertext"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:822
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:839
 msgid "Configure custom teaser text for this post type."
 msgstr "Konfigurera anpassad teasertext för denna inläggstyp."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:878
 msgid "post title"
 msgstr "inläggstitel"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:862
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:879
 msgid "post content"
 msgstr "innehåll i inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:886
 #, php-format
 msgid "Before %s"
 msgstr "Före %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:887
 #, php-format
 msgid "After %s"
 msgstr "Efter %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:943
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:969
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:986
 msgid "Redirect Settings"
 msgstr "Omdirigeringsinställningar"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:943
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect functionality is available in PRO"
 msgstr "Omdirigeringsfunktionalitet är tillgänglig i PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:944
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:961
 msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
@@ -6518,43 +6153,43 @@ msgstr ""
 "Omdirigera automatiskt användare till en inloggningssida eller anpassad "
 "sida när de försöker få tillgång till begränsat innehåll."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:980
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:997
 msgid "Redirection"
 msgstr "Omdirigering"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:981
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:998
 msgid "Target Post Type"
 msgstr "Mål för inläggstyp"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:982
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:999
 msgid "Select Post"
 msgstr "Välj inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1035
 msgid "Not Logged In:"
 msgstr "Inte inloggad:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1026
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1121
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1138
 msgid "No redirect"
 msgstr "Ingen omdirigering"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1122
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
 msgid "Redirect to WordPress login"
 msgstr "Omdirigera till WordPress-inloggning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1123
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1140
 msgid "Redirect to a custom post"
 msgstr "Omdirigera till ett anpassat inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1081
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
 msgid "This is a custom login page"
 msgstr "Detta är en anpassad inloggningssida"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1081
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6562,17 +6197,17 @@ msgstr ""
 "Efter att användaren har loggat in kommer de att omdirigeras tillbaka till "
 "det ursprungliga inlägget som de tittade på."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1113
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
 msgid "Logged in Users:"
 msgstr "Inloggade användare:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1223
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1277
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1331
 msgid "Message for Blocked Users"
 msgstr "Meddelande för blockerade användare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1207
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6580,7 +6215,7 @@ msgstr ""
 "Anpassa meddelandet som visas för användare som är blockerade från att se "
 "hela innehållet när de använder teaser-typen \"Läs mer\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for all blocked users."
@@ -6588,7 +6223,7 @@ msgstr ""
 "Detta meddelande kommer att visas i en stiliserad meddelanderuta ovanför "
 "teaserinnehållet för alla blockerade användare."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1278
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6596,7 +6231,7 @@ msgstr ""
 "Anpassa meddelandemeddelandet som visas för alla blockerade användare när "
 "man använder teaser-typen \"Utdrag\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1284
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1301
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for all blocked users."
@@ -6604,7 +6239,7 @@ msgstr ""
 "Detta meddelande kommer att visas i en stiliserad meddelanderuta nedanför "
 "teaserinnehållet för utdrag för alla blockerade användare."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1315
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1332
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6612,7 +6247,7 @@ msgstr ""
 "Anpassa meddelandet som visas för alla blockerade användare när du använder "
 "teaser-typen \"Första X tecken\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1338
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1355
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for all blocked users."
@@ -6620,64 +6255,64 @@ msgstr ""
 "Detta meddelande kommer att visas i en stiliserad meddelanderuta nedanför "
 "det avkortade innehållsteasern för alla blockerade användare."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1385
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1402
 msgid "Teaser Message Style Customization"
 msgstr "Anpassning av teaser-meddelandestil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1386
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1403
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Anpassa utseendet på teaser-meddelandet som visas för blockerade användare."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1411
 msgid "Background Color"
 msgstr "Bakgrundsfärg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1406
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1423
 msgid "Text Color"
 msgstr "Textfärg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1418
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
 msgid "Border Color"
 msgstr "Kantfärg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1430
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1441
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1447
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
 msgid "Border Position"
 msgstr "Kantposition"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1434
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1451
 msgid "Left"
 msgstr "Vänster"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1452
 msgid "Right"
 msgstr "Höger"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1453
 msgid "Top"
 msgstr "Topp"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1437
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1454
 msgid "Bottom"
 msgstr "Botten"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1438
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1455
 msgid "All Sides"
 msgstr "Alla sidor"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1475
 msgid "Border Width (px)"
 msgstr "Kantbredd (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1471
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1488
 msgid "Border Radius (px)"
 msgstr "Kantradie (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1501
 msgid "Font Size (px)"
 msgstr "Teckenstorlek (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1497
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1514
 msgid "Padding (px)"
 msgstr "Marginal (px)"
 
@@ -6698,15 +6333,19 @@ msgstr "Detta är en PRO-funktion"
 msgid "%s is available in PRO"
 msgstr "%s finns tillgängligt i PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:180
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:184
 msgid "Post"
 msgstr "Inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:48
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
 msgid "Select a page"
 msgstr "Välj en sida"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:50
+msgid "Search preview content"
+msgstr "Sök förhandsgranska innehåll"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:51
 msgid "Select terms"
 msgstr "Välj villkor"
 

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-04 20:30+0000\n"
+"PO-Revision-Date: 2026-09-09 14:53+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: yor\n"
@@ -394,8 +394,8 @@ msgstr "Ihan Akoko"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:90
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:91
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 msgid "Teaser"
 msgstr "Ìfihàn"
 
@@ -1197,8 +1197,6 @@ msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
 msgstr "Modulu %1$s ti a tunṣe ti ṣiṣẹ (%2$s ninu folda %3$s)."
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:183
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:138
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:180
 msgid "Dismiss"
 msgstr "Kó"
 
@@ -1210,14 +1208,13 @@ msgstr "Ẹgbẹ Aṣ Customized"
 
 #: classes/PublishPress/Permissions/Groups.php:55
 #: classes/PublishPress/Permissions/UI/Groups.php:261
-#: classes/PublishPress/PermissionsHooksAdmin.php:378
+#: classes/PublishPress/PermissionsHooksAdmin.php:373
 msgid "Custom Groups"
 msgstr "Awọn Ẹgbẹ Aṣ Customized"
 
 #: classes/PublishPress/Permissions/Groups.php:56
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:41
-#: classes/PublishPress/Permissions/UI/Welcome.php:90
 msgid "Groups"
 msgstr "Awọn Ẹgbẹ"
 
@@ -1283,7 +1280,6 @@ msgid "(login timed out)"
 msgstr "(iṣaaju ikọkọ ti pari)"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:227
 msgid "View"
 msgstr "Wo"
 
@@ -1435,7 +1431,7 @@ msgid "All Statuses"
 msgstr "Gbogbo Awọn ipo"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1892
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1636,7 +1632,7 @@ msgstr "Fi Awọn igbanilaaye pato kun"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1388
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1386
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Yọ"
@@ -1680,7 +1676,7 @@ msgid "No items selected!"
 msgstr "Ko si awọn nkan ti a yan!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1193
 msgid "(no parent)"
 msgstr "(ko si baba)"
 
@@ -1835,7 +1831,7 @@ msgstr "Yan %s"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1035
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1033
 msgid "Status"
 msgstr "Ipo"
 
@@ -1862,8 +1858,8 @@ msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Awọn Role afikun %1$s(fun olumulo yii)%2$s"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:40
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:60
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:52
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
 msgid "Extra Roles"
 msgstr "Awọn Role afikun"
 
@@ -1889,19 +1885,8 @@ msgstr "Iru ti a ti pa"
 msgid "%s Roles"
 msgstr "%s Awọn Role"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:760
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1017
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1664
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:95
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:108
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:641
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:807
-msgid "item(s)"
-msgstr "nkan(s)"
-
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:739
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1507
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1505
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:611
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:823
 msgid "Apply"
@@ -1930,57 +1915,49 @@ msgstr "%1$s (%2$s: %3$s)"
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
-msgid "item"
-msgstr "nkan"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
-msgid "items"
-msgstr "nkan"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1044
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1083
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:88
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1071
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1069
 msgid "unpublished"
 msgstr "ti a kò tẹ̀jáde"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1078
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1076
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:529
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:695
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1125
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1123
 #, php-format
 msgid "this %1$s"
 msgstr "eyi %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "sub-%1$s ti eyi %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1136
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1134
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "eyi %1$s àti sub-%2$s rẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
 "capabilities."
 msgstr "%1$s iraye si %2$s ti wa ni ṢIṢE laarin %3$s, laibikita awọn agbara ipa."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1151
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -1989,7 +1966,7 @@ msgstr ""
 "%1$s iraye si %2$s ti wa ni DENA laarin %3$s, ayafi ti a mu ṣiṣẹ nipasẹ Aṣẹ "
 "miiran."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1161
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1159
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -1998,19 +1975,19 @@ msgstr ""
 "Iṣẹ-ṣiṣe %1$s ti o da lori ipa fun %2$s jẹ IYỌRỌ. O ṣiṣẹ nikan laarin %3$s, "
 "pẹlu awọn %4$s miiran ti a sọ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1171
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s iraye si fun %2$s ti wa ni ṢÍṢÉ, laibikita awọn agbara ipa."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1178
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1176
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "%1$s iraye si fun %2$s ti wa ni DÍMÚ, ayafi ti a ba mu ṣiṣẹ́ nípa Àṣẹ "
 "mìíràn."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1185
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1183
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -2019,121 +1996,121 @@ msgstr ""
 "Iṣẹ-ṣiṣe %1$s ti o da lori ipa fun %2$s jẹ IYỌRỌ. O ṣiṣẹ nikan fun %3$s, "
 "pẹlu awọn %4$s miiran ti a sọ."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1230
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1333
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1331
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Ti yan fun sub-%s nikan."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1238
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1341
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1339
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Ti yan fun %s àti sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1365
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1363
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Iwe-aṣẹ yii jẹ alaimuṣinṣin nitori ihamọ ti o baamu."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1372
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
 #, php-format
 msgid "Edit %s"
 msgstr "Ṣatunkọ %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1392
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Yàn fun ti a yan ati sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1396
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1394
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Yàn fun ti a yan %s nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1400
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1398
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Yàn fun sub-%s nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1403
 msgid "Assign for selected and sub-terms"
 msgstr "Yàn fun ti a yan ati sub-ọrọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
 msgid "Assign for selected term only"
 msgstr "Yàn fun ọrọ ti a yan nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1413
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1411
 msgid "Assign for sub-terms only"
 msgstr "Yàn fun sub-ọrọ nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
 msgid "Convert to \"Enabled\""
 msgstr "Yipada si \"Ti mu ṣiṣẹ\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1425
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 msgid "Convert to \"Blocked\""
 msgstr "Yipada si \"Ti dani\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
 msgid "Convert to \"Limit to\""
 msgstr "Yipada si \"Ihamọ si\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1481
 #, php-format
 msgid "Mirror to %s"
 msgstr "Mirọ si %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1485
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Mirọ si %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1535
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1533
 msgid "= Enabled"
 msgstr "= Ti mu ṣiṣẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1542
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1540
 msgid "= Blocked"
 msgstr "= Ti dani"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1549
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1547
 msgid "= Limitation"
 msgstr "= Ihamọ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1563
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1561
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s ati sub-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1569
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
 #, php-format
 msgid "= sub-%s only"
 msgstr "= sub-%s nikan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1585
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1609
 msgid "Note:"
 msgstr "Ak note:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1589
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1613
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Iwe-aṣẹ Sub-%1$s ko ti wa ni atokọ ni oriṣiriṣi."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1593
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1617
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
 msgid "Show All"
 msgstr "Fihan Gbogbo"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1625
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1600
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1623
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Pa Sub-%s Aṣẹ ti a fiwe si laifọwọyi"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1637
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1635
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2142,55 +2119,62 @@ msgstr ""
 "Awọn afikun miiran (tabi ifagile ti Aṣẹ PublishPress) le ṣe idiwọ fun awọn "
 "aṣẹ sub-page lati jẹ ti a lo ni deede nigbati a ṣẹda sub-page tuntun."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sṢatunṣe Sub-%2$s Aṣẹ%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1664
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1662
 #, php-format
 msgid "%s Permissions"
 msgstr "%s Àṣẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1689
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1687
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Awọn ihamọ ẹgbẹ ko wa nitori itumọ iduroṣinṣin kan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1706
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1704
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "Awọn aṣẹ lati mu iraye si ṣiṣẹ ko si nitori itumọ aimi kan"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1770
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1768
 msgid "Group Members"
 msgstr "Awọn ọmọ ẹgbẹ Ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1819
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1817
 msgid "Copy Roles and Permissions from:"
 msgstr "Daakọ Awọn ipa ati Awọn aṣẹ lati:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1842
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
 msgid "Copy Roles and Permissions"
 msgstr "Daakọ Awọn ipa ati Awọn aṣẹ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1859
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:857
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] "%s nkan"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1867
 msgid "Limit to:"
 msgstr "Dín si:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1862
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1870
 msgid "Blocked:"
 msgstr "Dena:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1866
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1874
 msgid "Enabled:"
 msgstr "Mu ṣiṣẹ:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1885
 msgid "Direct-assigned"
 msgstr "Ti a fiwe si taara"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1890
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2306,9 +2290,9 @@ msgid "Add New Permission Group"
 msgstr "Fi Ẹgbẹ Iwe-aṣẹ Tuntun Kun"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:111
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:811
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:123
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
 msgid "Edit"
 msgstr "Ṣatunkọ"
 
@@ -2330,11 +2314,6 @@ msgstr "Ṣatunkọ Iṣe Iṣẹ"
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:357
 msgid "Settings"
 msgstr "Awọn Eto"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:364
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:365
-msgid "Welcome"
-msgstr "Kaabọ"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
 msgid "(Default access)"
@@ -2376,7 +2355,6 @@ msgstr "Ti ko diwọle"
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
-#: classes/PublishPress/Permissions/UI/Welcome.php:85
 msgid "Roles"
 msgstr "Iṣẹ"
 
@@ -2714,54 +2692,54 @@ msgstr "Yan gẹgẹ bi Baba"
 msgid "Assign Terms"
 msgstr "Yàn Awọn Ọrọ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:41
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:51
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:53
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:63
 msgid "Assigned directly"
 msgstr "Ti a funni taara"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:50
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:71
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:62
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:83
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
 msgid "Specific Permissions"
 msgstr "Ẹ̀tọ́ Pataki"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:61
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:73
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:84
 msgid "From primary role or group membership"
 msgstr "Lati ipa akọkọ tabi ìjọpọ ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:94
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:106
 msgid "Permissions Summary"
 msgstr "Akopọ Awọn Aṣẹ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:168
 #, php-format
 msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
 msgstr "Ipa afikun %1$s(lati ipa akọkọ tabi ẹgbẹ membership)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:167
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:179
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Ẹtọ Pataki (lati ipa akọkọ tabi ẹgbẹ membership)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:253
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:428
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:265
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:440
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:174
 msgid "Permission Groups"
 msgstr "Ẹgbẹ Ẹtọ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:281
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:460
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:293
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:330
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:472
 msgid "This user is not a member of any custom Permission Groups."
 msgstr "Olumulo yii kii ṣe ọmọ ẹgbẹ eyikeyi Ẹgbẹ Ẹtọ aṣa."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:285
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:464
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:297
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:476
 msgid "Edit this user's group membership"
 msgstr "Ṣatunkọ membership ẹgbẹ olumulo yii"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:294
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:473
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:306
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:485
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2769,33 +2747,33 @@ msgstr ""
 "Akiyesi: Awọn ẹgbẹ BuddyPress ati awọn ẹgbẹ ti a ṣalaye ni ita ko si nibi, "
 "paapaa ti wọn ba yi awọn ẹtọ pada"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:314
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:326
 msgid "Group membership"
 msgstr "Ìjọpọ Ẹgbẹ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:538
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:704
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:550
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:716
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, siwaju..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:546
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:557
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:712
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:723
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:558
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:724
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:735
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "ṣatunkọ awọn ẹtọ olumulo"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:602
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:614
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:669
 msgid "No specific permissions currently apply."
 msgstr "Ko si awọn aṣẹ pato ti o wulo lọwọlọwọ."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:768
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:780
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:835
 msgid "No extra roles currently apply."
 msgstr "Ko si awọn ipa afikun ti o wulo lọwọlọwọ."
 
@@ -3172,7 +3150,6 @@ msgid "Purchase"
 msgstr "Ra"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:157
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:210
 msgid "Hide"
 msgstr "Tọju"
 
@@ -3207,7 +3184,7 @@ msgstr "Ti o ba nilo iranlọwọ tabi ti o ba ni ibeere ẹya tuntun, jẹ ki a
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
 #: includes/CoreAdmin.php:128
 #: includes/CoreAdmin.php:129
-#: includes/CoreAdmin.php:258
+#: includes/CoreAdmin.php:257
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -3770,7 +3747,7 @@ msgid "If group editing is allowed, can also modify group membership."
 msgstr "Ti a ba gba ṣiṣatunkọ ẹgbẹ laaye, tun le yipada ọmọ ẹgbẹ ẹgbẹ."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
-#: classes/PublishPress/PermissionsHooksAdmin.php:373
+#: classes/PublishPress/PermissionsHooksAdmin.php:368
 msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
 msgstr "Yan Awọn ipa tabi Awọn ẹtọ afikun lori iboju Ṣatunkọ Awọn ẹtọ."
 
@@ -3783,7 +3760,7 @@ msgid "Set Editing Permissions for specific Posts, Categories or Terms."
 msgstr "Ṣeto Awọn ẹtọ Ṣiṣatunkọ fun Awọn Ifiweranṣẹ, Awọn ẹka tabi Awọn ọrọ pato."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
-#: classes/PublishPress/PermissionsHooksAdmin.php:365
+#: classes/PublishPress/PermissionsHooksAdmin.php:360
 msgid "Set Revision Permissions for specific Posts, Categories or Terms."
 msgstr "Ṣeto Awọn ẹtọ Atunṣe fun Awọn Ifiweranṣẹ, Awọn ẹka tabi Awọn ọrọ pato."
 
@@ -4325,7 +4302,7 @@ msgstr "Bọtini Iraye Faili pẹlu atunṣe ni ibeere"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:243
+#: includes/CoreAdmin.php:242
 msgid "Pro Feature"
 msgstr "Iṣẹ Pro"
 
@@ -4347,8 +4324,8 @@ msgstr "Ṣe imudojuiwọn si Pro lati ṣii awọn agbara aabo faili to ti ni i
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:255
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:950
+#: includes/CoreAdmin.php:254
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:967
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Kọ ẹkọ siwaju"
@@ -4733,361 +4710,39 @@ msgstr "Ipo ti a ṣe atunto si olumulo tabi ọkan ninu awọn ẹgbẹ wọn"
 msgid "Edit User"
 msgstr "Ṣatunkọ Olumulo"
 
-#: classes/PublishPress/Permissions/UI/Welcome.php:86
-msgid "What a person can do everywhere on the site. Roles come from WordPress."
-msgstr "Ohun ti eniyan le ṣe nibikibi lori aaye naa. Awọn ipa wa lati WordPress."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:91
-msgid ""
-"A bundle of people you give the same access to. Easier than editing every "
-"user."
-msgstr ""
-"Ipo ẹgbẹ ti awọn eniyan ti o funni ni iraye si kanna. Rọrun ju ṣiṣatunkọ "
-"gbogbo olumulo lọ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:95
-msgid "Exceptions"
-msgstr "Awọn Aiyede"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:96
-msgid "An override for one post, page or category. An exception beats the role."
-msgstr "Igbesẹ fun ifiweranṣẹ kan, oju-iwe kan tabi ẹka kan. Aiyede kan kọja ipa."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:109
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:250
-msgid "Choose the content you want to control"
-msgstr "Yan akoonu ti o fẹ lati ṣakoso"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:110
-msgid ""
-"Permissions only filters the post types and taxonomies you switch on. "
-"Everything else behaves like standard WordPress."
-msgstr ""
-"Awọn Aṣẹ nikan n lọọna awọn iru ifiweranṣẹ ati taxonomies ti o tan-an. "
-"Gbogbo nkan miiran n ṣiṣẹ bi WordPress boṣewa."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:112
-msgid "The General tab of the Permissions settings screen"
-msgstr "Taabu Gbogbogbo ti iboju eto Awọn Aṣẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:114
-msgid "Open Permissions, then Settings."
-msgstr "Ṣii Awọn Igbanilaaye, lẹhinna Eto."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:115
-msgid "On the General tab, find Post Types and Taxonomies."
-msgstr "Ni taabu Gbogbogbo, wa Awọn Iru Ifiweranṣẹ ati Taxonomies."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:116
-msgid "Tick the post types and taxonomies you want to manage."
-msgstr "Ṣayẹwo awọn iru ifiweranṣẹ ati taxonomies ti o fẹ lati ṣakoso."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:118
-msgid "Open Settings"
-msgstr "Ṣii Eto"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:123
-msgid "Create a Permission Group"
-msgstr "Ṣẹda Ẹgbẹ Igbanilaaye"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:124
-msgid ""
-"A Permission Group lets you give the same access to several users at once. "
-"Start with a clear name and description."
-msgstr ""
-"Ẹgbẹ Igbanilaaye kan jẹ ki o fun awọn olumulo pupọ ni iraye si kanna ni "
-"akoko kan. Bẹrẹ pẹlu orukọ ti o mọ ati apejuwe."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:126
-msgid "The Permissions User Groups screen"
-msgstr "Ibuwolu Ọmọ ẹgbẹ Awọn Igbanilaaye"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:128
-msgid "Open Permissions to reach User Groups."
-msgstr "Ṣii Awọn Igbanilaaye lati de ọdọ Awọn Ẹgbẹ Olumulo."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:129
-msgid "Click Add New Group."
-msgstr "Tẹ Add New Group."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:130
-msgid "Name and describe the group on the next screen, then create it."
-msgstr "Orukọ ati ṣapejuwe ẹgbẹ naa lori iboju ti n bọ, lẹhinna ṣẹda rẹ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:132
-msgid "Open Permissions"
-msgstr "Ṣii Awọn Igbanilaaye"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:137
-msgid "Add members and fine-tune access"
-msgstr "Fi awọn ọmọ ẹgbẹ kun ati tun iṣẹ iraye si ṣe"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:138
-msgid ""
-"Add users to your Permission Group, set specific access for a post type, "
-"and use a post or page Permissions panel when one item needs an override."
-msgstr ""
-"Fi awọn olumulo kun si Ẹgbẹ Igbanilaaye rẹ, ṣeto iraye si pataki fun iru "
-"ifiweranṣẹ kan, ki o lo panẹli Awọn Igbanilaaye ifiweranṣẹ tabi oju-iwe "
-"nigbati nkan kan ba nilo lati ṣẹgun."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:140
-msgid "Group members, specific permissions, and the post Permissions panel"
-msgstr ""
-"Awọn ọmọ ẹgbẹ ẹgbẹ, awọn igbanilaaye kan, ati panẹli Awọn Igbanilaaye "
-"ifiweranṣẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:142
-msgid "Add users in the Group Members box."
-msgstr "Fi awọn olumulo kun ni apoti Awọn ọmọ ẹgbẹ Ẹgbẹ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:143
-msgid "Add Specific Permissions for a post type."
-msgstr "Fi Awọn Igbanilaaye Pataki kun fun iru ifiweranṣẹ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:144
-msgid "Use the post/page Permissions panel for a one-off override."
-msgstr "Lo panẹli Awọn Igbanilaaye ifiweranṣẹ/oju-iwe fun iyipada igba kan."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:146
-msgid "Open a page to try it"
-msgstr "Ṣii oju-iwe kan lati ṣe idanwo rẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:157
-msgid "Editing permissions per post type"
-msgstr "Ṣatunkọ awọn igbanilaaye fun iru ifiweranṣẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:158
-msgid "Media and file access control"
-msgstr "Iṣakoso iraye si media ati faili"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:159
-msgid "Membership plugin integrations"
-msgstr "Iṣọpọ awọn afikun ọmọ ẹgbẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:160
-msgid "Custom post status permissions"
-msgstr "Àṣẹ ipo ìkọ́wé aṣa"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:161
-msgid "Sync user posts"
-msgstr "Tẹ̀síwájú àwọn ìkọ́wé olumulo"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:162
-msgid "Priority support"
-msgstr "Ìtọ́jú àṣẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:261
-#. translators: %1$s: current step number, %2$s: total number of steps
-#, php-format
-msgid "Step %1$s of %2$s"
-msgstr "Igbese %1$s ti %2$s"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:274
-msgid "Skip"
-msgstr "Gbe kọja"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:287
-msgid "Back"
-msgstr "Pada"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:295
-msgid "Next"
-msgstr "Tẹ̀síwájú"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:342
-msgid "This guide does not change any setting on your site."
-msgstr "Ìtòsọna yìí kò yí ẹ̀tọ́ kankan pada lori aaye rẹ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:353
-msgid "Welcome to PublishPress Permissions"
-msgstr "Kaabo si Àṣẹ PublishPress"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:356
-msgid ""
-"Control who can read and edit posts, pages, categories, media, and other "
-"content across your WordPress site."
-msgstr ""
-"Ṣakoso ẹni tí ó le ka àti ṣe àtúnṣe àwọn ìkọ́wé, àwọn ojúewé, àwọn ẹka, "
-"àwọn média, àti àwọn akoonu míì ní gbogbo aaye WordPress rẹ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:360
-msgid ""
-"Six short screens show you where everything lives. Nothing changes on your "
-"site while you read."
-msgstr ""
-"Mẹ́fà àpapọ̀ kékèké yóò fi hàn ọ níbi tí gbogbo nkan ti wa. Kò sí nkan tó "
-"yí pada lori aaye rẹ nígbà tí o bá ń ka."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:365
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:124
-msgid "Start the tour"
-msgstr "Bẹrẹ ìrìnàjò náà"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:369
-msgid "Skip, take me to Settings"
-msgstr "Gbe kọja, mu mi lọ sí Àwọn Eto"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:384
-msgid "Three ideas to know"
-msgstr "Ẹ̀rọ mẹ́ta láti mọ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:385
-msgid "Get these right and the rest of the plugin makes sense."
-msgstr "Gba àwọn yìí tọ́, kí àwọn míì ti afikun náà lè ni itumọ̀."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:398
-msgid ""
-"Rule of thumb: roles say what a person can do everywhere. Exceptions "
-"override that for one post or one category."
-msgstr ""
-"Ìlànà ọwọ́: àwọn ipa sọ ohun tí ènìyàn le ṣe ní gbogbo ibi. Àwọn àyípadà "
-"yìí yóò gba ìkan ṣoṣo tabi ẹka kan."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:424
-msgid "opens in a new tab, this guide stays here"
-msgstr "n ṣí ni taabu tuntun, ìtòsọna yìí wà nibi"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:437
-msgid "That is the whole plugin"
-msgstr "Ẹ̀yà afikun yìí ni gbogbo rẹ"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:438
-msgid "Nothing on your site changed. Here is what to do next:"
-msgstr ""
-"Kò sí nkan kankan tí yí padà lori aaye rẹ. Eyi ni ohun tí o yẹ kí o ṣe "
-"lẹ́yìn:"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:440
-msgid "What to do next"
-msgstr "Kini lati ṣe nigbamii"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:442
-msgid "Choose the content you want to control."
-msgstr "Yan akoonu ti o fẹ lati ṣakoso."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:443
-msgid "Create your first permission group."
-msgstr "Ṣẹda ẹgbẹ igbanilaaye rẹ akọkọ."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:444
-msgid "Set permissions on one post or page."
-msgstr "Ṣeto awọn igbanilaaye lori ifiweranṣẹ kan tabi oju-iwe kan."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:446
-msgid "Each link opens in a new tab so you can return to this guide."
-msgstr "Gbogbo ọna asopọ ṣiṣi ni taabu tuntun ki o le pada si itọsọna yii."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:450
-msgid "Go to Permissions"
-msgstr "Lọ si Awọn igbanilaaye"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:454
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:234
-msgid "Replay the guide"
-msgstr "Tun ṣe itọsọna naa"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:462
-msgid "If you need more control"
-msgstr "Ti o ba nilo iṣakoso diẹ sii"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:472
-msgid "See Pro features"
-msgstr "Wo Awọn ẹya Pro"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:123
-msgid "Continue the tour"
-msgstr "Tesiwaju irin-ajo naa"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:129
-msgid "Permissions is active. Want a two minute tour?"
-msgstr "Awọn igbanilaaye ti wa ni ṣiṣẹ. Ṣe o fẹ irin-ajo iṣẹju meji?"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:130
-msgid ""
-"We will show you where to control who reads and edits your content. Nothing "
-"gets changed."
-msgstr ""
-"A yoo fihan ọ ibiti o ti le ṣakoso tani o ka ati ṣe atunṣe akoonu rẹ. Ko si "
-"ohun ti a ṣe iyipada."
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:178
-msgid "Permissions is set up"
-msgstr "Awọn igbanilaaye ti ṣeto"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:192
-msgid "Finish setting up Permissions"
-msgstr "Pari ṣeto Awọn igbanilaaye"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:198
-#. translators: %1$s: number of completed tasks, %2$s: total number of tasks
-#, php-format
-msgid "%1$s of %2$s"
-msgstr "%1$s ti %2$s"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:224
-msgid "Do it"
-msgstr "Ṣe e"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:254
-#. translators: %s: number of enabled post types
-#, php-format
-msgid "%s type on"
-msgid_plural "%s types on"
-msgstr[0] "%s iru lori"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:261
-msgid "Create your first permission group"
-msgstr "Ṣẹda ẹgbẹ igbanilaaye rẹ akọkọ"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:265
-#. translators: %s: number of groups
-#, php-format
-msgid "%s group"
-msgid_plural "%s groups"
-msgstr[0] "%s ẹgbẹ"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:272
-msgid "Open a post or page and use its Permissions panel"
-msgstr "Ṣii ifiweranṣẹ kan tabi oju-iwe kan ki o lo panẹli Awọn igbanilaaye rẹ"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:274
-msgid "done"
-msgstr "ṣe"
-
-#: classes/PublishPress/PermissionsHooksAdmin.php:354
+#: classes/PublishPress/PermissionsHooksAdmin.php:349
 msgid "Set Viewing permissions for specific Posts, Categories or Terms."
 msgstr "Ṣeto awọn ẹtọ wiwo fun awọn ifiweranṣẹ, awọn ẹka tabi awọn ọrọ pato."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:358
+#: classes/PublishPress/PermissionsHooksAdmin.php:353
 msgid "Set Editing permissions for specific Posts, Categories or Terms."
 msgstr "Ṣeto awọn ẹtọ ṣiṣatunkọ fun awọn ifiweranṣẹ, awọn ẹka tabi awọn ọrọ pato."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:359
+#: classes/PublishPress/PermissionsHooksAdmin.php:354
 msgid "Set \"Set as Parent\" permissions for specific Pages."
 msgstr "Ṣeto awọn ẹtọ \"Ṣeto gẹgẹbi Ọmọ\" fun awọn oju-iwe pato."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:360
+#: classes/PublishPress/PermissionsHooksAdmin.php:355
 msgid "Set Assign Term permissions."
 msgstr "Ṣeto awọn ẹtọ atunto ọrọ."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:361
+#: classes/PublishPress/PermissionsHooksAdmin.php:356
 msgid "Set \"Manage This Term\" permissions for specific terms."
 msgstr "Ṣeto awọn ẹ̀tọ́ \"Ṣakoso Àkókò Yìí\" fún àwọn àkókò pàtó."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:362
+#: classes/PublishPress/PermissionsHooksAdmin.php:357
 msgid "Set \"Set as Parent\" permissions for specific Categories or Terms."
 msgstr "Ṣeto awọn ẹtọ \"Ṣeto gẹgẹbi Ọmọ\" fun awọn ẹka tabi awọn ọrọ pato."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:366
+#: classes/PublishPress/PermissionsHooksAdmin.php:361
 msgid "Set Copy Permissions for specific Posts."
 msgstr "Ṣeto Iwọle Ikọwe fun awọn Ifiweranṣẹ pato."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:371
+#: classes/PublishPress/PermissionsHooksAdmin.php:366
 msgid "Permissions & Access"
 msgstr "Iwọle & Iraye"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:372
+#: classes/PublishPress/PermissionsHooksAdmin.php:367
 msgid ""
 "Full editing access for all post types. Also gives the ability to edit "
 "Permissions for user roles."
@@ -5095,23 +4750,23 @@ msgstr ""
 "Ibi iraye kikun fun gbogbo awọn iru ifiweranṣẹ. Tun funni ni agbara lati "
 "ṣatunkọ Awọn aṣẹ fun awọn ipa olumulo."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:374
+#: classes/PublishPress/PermissionsHooksAdmin.php:369
 msgid "Access to the Settings screen."
 msgstr "Iwọle si iboju Eto."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:375
+#: classes/PublishPress/PermissionsHooksAdmin.php:370
 msgid "Access to the Teaser screen."
 msgstr "Iwọle si iboju Teaser."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:376
+#: classes/PublishPress/PermissionsHooksAdmin.php:371
 msgid "All Enabled and Blocked Permissions are ignored for this role."
 msgstr "Gbogbo awọn ẹtọ ti a mu ṣiṣẹ ati ti a dènà ni a kọja fun ipa yii."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:379
+#: classes/PublishPress/PermissionsHooksAdmin.php:374
 msgid "Create Custom Groups."
 msgstr "Ṣẹda Awọn ẹgbẹ Aṣ customized."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:380
+#: classes/PublishPress/PermissionsHooksAdmin.php:375
 msgid ""
 "View Custom Groups on the Permissions screen. Also allows access to the "
 "editing screen for Custom Groups."
@@ -5119,31 +4774,31 @@ msgstr ""
 "Wo Awọn ẹgbẹ Aṣ customized lori iboju Awọn aṣẹ. Tun gba iraye si iboju "
 "iṣatunkọ fun Awọn ẹgbẹ Aṣ customized."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:381
+#: classes/PublishPress/PermissionsHooksAdmin.php:376
 msgid "Delete Custom Groups."
 msgstr "Pa Awọn ẹgbẹ Aṣ customized."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:382
+#: classes/PublishPress/PermissionsHooksAdmin.php:377
 msgid "Manage members in Custom Groups."
 msgstr "Ṣakoso awọn ọmọ ẹgbẹ ninu Awọn ẹgbẹ Aṣ customized."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:384
+#: classes/PublishPress/PermissionsHooksAdmin.php:379
 msgid "Set Permissions in Post or Term Editing Screen"
 msgstr "Ṣeto Awọn Ẹ̀tọ́ ní Iboju Iṣatunkọ Ifiweranṣẹ tàbí Àkókò"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:477
+#: classes/PublishPress/PermissionsHooksAdmin.php:472
 msgid "Subscribers"
 msgstr "Awọn alabapin"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:478
+#: classes/PublishPress/PermissionsHooksAdmin.php:473
 msgid "Contributors"
 msgstr "Awọn oluranlowo"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:479
+#: classes/PublishPress/PermissionsHooksAdmin.php:474
 msgid "Authors"
 msgstr "Awọn onkọwe"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:480
+#: classes/PublishPress/PermissionsHooksAdmin.php:475
 msgid "Editors"
 msgstr "Awọn olootu"
 
@@ -5160,7 +4815,7 @@ msgstr ""
 msgid "Promo file not found."
 msgstr "Faili igbega ko ri."
 
-#: includes/CoreAdmin.php:249
+#: includes/CoreAdmin.php:248
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Ṣe atunṣe si Pro lati ṣii iṣọpọ ti ko ni idalọwọduro."
 
@@ -5812,11 +5467,7 @@ msgstr "Olùṣàkóso"
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:58
-msgid "Legacy Compatibility"
-msgstr "Ibamu Itan"
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:163
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:161
 msgid ""
 "Use the pp_restrict shortcode to show or hide enclosed content based on the "
 "current visitor."
@@ -5824,69 +5475,49 @@ msgstr ""
 "Lo shortcode pp_restrict lati fihan tabi pa akoonu ti a fi sinu da lori "
 "alejo lọwọlọwọ."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:169
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:167
 msgid "Show content only to logged-in visitors."
 msgstr "Fihan akoonu nikan si awọn alejo ti o forukọsilẹ."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:173
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:171
 msgid "Show content only to logged-out visitors."
 msgstr "Fihan akoonu nikan si awọn alejo ti o ti jade."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:177
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:175
 msgid "Allow visitors with any listed WordPress role."
 msgstr "Gba awọn alejo pẹlu eyikeyi ipa WordPress ti a ṣe akojọ."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:181
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:179
 msgid "Allow visitors with any listed WordPress capability."
 msgstr "Gba awọn alejo pẹlu eyikeyi agbara WordPress ti a ṣe akojọ."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:185
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:183
 msgid "Allow visitors with any listed WordPress username."
 msgstr "Gba awọn alejo pẹlu eyikeyi orukọ olumulo WordPress ti a ṣe akojọ."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:189
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:187
 msgid "Allow members of any listed PublishPress Permission Group."
 msgstr "Gba awọn ọmọ ẹgbẹ ti eyikeyi Ẹgbẹ Aṣẹ PublishPress ti a ṣe akojọ."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:193
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:191
 msgid "Use relation=\"any\" when any populated condition may grant access."
 msgstr "Lo ibasepọ=\"ẹnikẹni\" nigbati eyikeyi ipo ti a ti kun le funni ni iraye si."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:197
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:195
 msgid "Use hide=\"yes\" to invert the result of the configured conditions."
 msgstr "Lo hide=\"bẹẹni\" lati yi abajade awọn ipo ti a ti ṣeto."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:203
-msgid ""
-"These migration aliases are available when another active plugin has not "
-"already registered the same shortcode. Legacy conditions use OR matching."
-msgstr ""
-"Awọn orukọ iyipada gbigbe wọnyi wa nigbati afikun miiran ti o n ṣiṣẹ ko ti "
-"forukọsilẹ shortcode kanna tẹlẹ. Awọn ipo itan lo isopọ OR."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:209
-msgid "Restrict legacy content by login status."
-msgstr "Dena akoonu itan ni ipo wiwọle."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:213
-msgid "Restrict legacy content by role or capability."
-msgstr "Dena akoonu itan ni ipa tabi agbara."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:217
-msgid "Restrict legacy content by PublishPress Permission Group."
-msgstr "Dena akoonu itan nipasẹ Ẹgbẹ Aṣẹ PublishPress."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:238
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:216
 msgid "Shortcode example"
 msgstr "Apeere shortcode"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:244
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:245
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:250
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:222
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:223
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:228
 msgid "Copy shortcode"
 msgstr "Daakọ shortcode"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:246
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:224
 msgid "Copied!"
 msgstr "Ti daakọ!"
 
@@ -5896,10 +5527,10 @@ msgstr "Ti daakọ!"
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:668
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:514
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1189
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1243
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1297
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:279
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:284
 msgid "You do not have permission to view the full content."
 msgstr "Iwọ ko ni aṣẹ lati wo akoonu kikun."
 
@@ -5993,7 +5624,7 @@ msgid "This feature is available in PublishPress Permissions PRO"
 msgstr "Eyi jẹ ẹya ti o wa ni PublishPress Permissions PRO"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:947
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
 msgid "Upgrade to PRO"
 msgstr "Gba PRO"
@@ -6196,14 +5827,14 @@ msgid "Both"
 msgstr "Meji"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:723
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:832
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:740
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
 msgid "Not Logged In Users"
 msgstr "Awọn olumulo Ti ko Wọle"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:422
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:726
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:852
 msgid "Logged In Users"
 msgstr "Awọn olumulo Ti Wọle"
 
@@ -6236,7 +5867,7 @@ msgid "Hide for Custom Visibility"
 msgstr "Tẹ fun Wiwo Aṣ customized"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:461
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:642
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
 msgid "Featured Image"
 msgstr "Aworan Ifihan"
 
@@ -6278,19 +5909,19 @@ msgid "Use Custom Teaser Message Style"
 msgstr "Lo Iru Ifiranṣẹ Teaser Aṣ customized"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:551
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:287
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Awọn alejo ti ko ni iraye si ni a ṣe itọsọna si: %s"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:295
 msgid "Visitors without access are redirected away from this page."
 msgstr "Awọn alejo ti ko ni iraye si ni a ṣe itọsọna kuro ni oju-iwe yii."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:183
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:187
 #. translators: %s is the singular post type label, such as Post or Page.
 #, fuzzy, php-format
 msgid "A Sample %s"
@@ -6316,53 +5947,58 @@ msgstr "Afihan Teaser"
 msgid "Site Preview"
 msgstr "Afihan Aaye"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:618
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:620
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:621
+msgid "Preview content"
+msgstr "Akopọ akoonu"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid "Preview device"
 msgstr "Ẹrọ Afihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:619
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:636
 msgid "Desktop"
 msgstr "Kọnputa"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:622
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
 msgid "Mobile"
 msgstr "Mobilẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:631
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:648
 msgid "Open full preview in a new tab"
 msgstr "Ṣii afihan kikun ninu taabu tuntun"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
 msgid "Open full preview"
 msgstr "Ṣii afihan kikun"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:649
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 msgid "Loading the preview from your active theme…"
 msgstr "Nṣiṣẹ afihan lati inu akori rẹ ti n ṣiṣẹ…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
 msgid "Teaser preview from the active theme"
 msgstr "Afihan teaser lati inu akori ti n ṣiṣẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:684
 msgid "The theme preview could not be displayed in this frame."
 msgstr "A ko le fi afihan akori han ninu fọọmu yii."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:691
 msgid "Visitor redirected"
 msgstr "Alejo ti yipada"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:692
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "A ko fi akoonu ti a ti ni ihamọ han. Alejo naa ni a rán si ibi ti a ti ṣeto."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:712
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:729
 msgid "Teaser Message"
 msgstr "Ifiranṣẹ Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:713
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:730
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6370,58 +6006,58 @@ msgstr ""
 "Rọpo akoonu ifiweranṣẹ patapata pẹlu akoonu aṣa fun awọn olumulo ti ko ni "
 "iraye si."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:732
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:772
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
 msgid "This field is required."
 msgstr "Àwọn ààyè yìí jẹ́ dandan."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:734
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:774
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:751
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:791
 msgid "Replace Post Content With:"
 msgstr "Rọ́pò Akọ́kọ́ Ìpolówó Pẹ̀lú:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:760
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:800
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Fọwọ́lé fọọ́mù ìbẹ̀rẹ̀ pẹ̀lú %s[login_form]%s shortcode."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
 msgid "Teaser Text Configuration"
 msgstr "Ìtọ́sọ́nà Ọ̀rọ̀ Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:822
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:839
 msgid "Configure custom teaser text for this post type."
 msgstr "Ṣètò ọrọ̀ teaser àdáni fún irú ìpolówó yìí."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:878
 msgid "post title"
 msgstr "akọ́le ìpolówó"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:862
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:879
 msgid "post content"
 msgstr "akoonu ìpolówó"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:886
 #, php-format
 msgid "Before %s"
 msgstr "Kii ṣe %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:887
 #, php-format
 msgid "After %s"
 msgstr "Lẹhin %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:943
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:969
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:986
 msgid "Redirect Settings"
 msgstr "Àtúnṣe Ìtọ́sọ́nà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:943
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect functionality is available in PRO"
 msgstr "Àmúyẹ àtúnṣe wa ní PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:944
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:961
 msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
@@ -6429,43 +6065,43 @@ msgstr ""
 "Yiyipada laifọwọyi awọn olumulo si oju-iwe wiwọle tabi oju-iwe aṣa nigbati "
 "wọn ba n gbiyanju lati wọle si akoonu ti a fi ẹsun pa."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:980
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:997
 msgid "Redirection"
 msgstr "Ìtúnṣe"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:981
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:998
 msgid "Target Post Type"
 msgstr "Irú Ìpolówó Tí a Fojú Sọ́"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:982
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:999
 msgid "Select Post"
 msgstr "Yàn Ìpolówó"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1035
 msgid "Not Logged In:"
 msgstr "Kò Wà Ní Ìforúkọsílẹ̀:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1026
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1121
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1138
 msgid "No redirect"
 msgstr "Kò sí àtúnṣe"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1122
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
 msgid "Redirect to WordPress login"
 msgstr "Rọ́pò sí ìbẹ̀rẹ̀ WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1123
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1140
 msgid "Redirect to a custom post"
 msgstr "Rọ́pò sí ìpolówó àdáni"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1081
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
 msgid "This is a custom login page"
 msgstr "Eyi jẹ oju-iwe wiwọle ti aṣa"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1081
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6473,17 +6109,17 @@ msgstr ""
 "Lẹhin ti olumulo ba wọle, wọn yoo tun pada si ifiweranṣẹ atilẹba ti wọn n "
 "wo."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1113
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
 msgid "Logged in Users:"
 msgstr "Àwọn Olumulo Tí Wọlé:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1223
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1277
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1331
 msgid "Message for Blocked Users"
 msgstr "IMessage fún Àwọn Olumulo Tí a Dènà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1207
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6491,7 +6127,7 @@ msgstr ""
 "Ṣe aṣa ifiranṣẹ ti a fihan si awọn olumulo ti a ti dina lati wo akoonu "
 "kikun nigbati o ba nlo iru teaser \"Ka Siwaju\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for all blocked users."
@@ -6499,7 +6135,7 @@ msgstr ""
 "Ihu ifiranṣẹ yii yoo han ninu apoti akiyesi ti a ṣe apẹrẹ loke akoonu "
 "teaser fun gbogbo awọn olumulo ti a ti dina."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1278
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6507,7 +6143,7 @@ msgstr ""
 "Ṣe aṣa ifiranṣẹ akiyesi ti a fihan si gbogbo awọn olumulo ti a ti dina "
 "nigba ti a ba nlo iru teaser \"Akopọ\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1284
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1301
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for all blocked users."
@@ -6515,7 +6151,7 @@ msgstr ""
 "Ihu ifiranṣẹ yii yoo han ninu apoti akiyesi ti a ṣe apẹrẹ ni isalẹ akoonu "
 "teaser akopọ fun gbogbo awọn olumulo ti a ti dina."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1315
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1332
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6523,7 +6159,7 @@ msgstr ""
 "Ṣe àtúnṣe ìkìlọ̀ ìfiranṣẹ́ tí a ń fi hàn fún gbogbo àwọn ọmọ ẹgbẹ́ tí a ti "
 "dènà nígbà tí a bá nlo irú \"Àkọ́kọ́ X Àkóónú\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1338
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1355
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for all blocked users."
@@ -6531,64 +6167,64 @@ msgstr ""
 "Ìfiranṣẹ́ yìí yóò hàn nínú àpótí ìkìlọ̀ tí a ṣe àtúnṣe ní isalẹ akoonu tí a "
 "ti dín kù fún gbogbo àwọn ọmọ ẹgbẹ́ tí a ti dènà."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1385
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1402
 msgid "Teaser Message Style Customization"
 msgstr "Ìtúnṣe Àṣà Ifiranṣẹ Afọ́wọ́kọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1386
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1403
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Ṣẹda irisi ifiranṣẹ afọwọkọ ti a fihan si awọn olumulo ti a dènà."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1411
 msgid "Background Color"
 msgstr "Àwọ̀ Abẹ́lẹ̀"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1406
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1423
 msgid "Text Color"
 msgstr "Àwọ̀ Téèksìtì"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1418
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
 msgid "Border Color"
 msgstr "Àwọ̀ Ààfin"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1430
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1441
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1447
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
 msgid "Border Position"
 msgstr "Ipò Ààfin"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1434
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1451
 msgid "Left"
 msgstr "Ọ̀tún"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1452
 msgid "Right"
 msgstr "Ósì"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1453
 msgid "Top"
 msgstr "Òkè"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1437
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1454
 msgid "Bottom"
 msgstr "Isalẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1438
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1455
 msgid "All Sides"
 msgstr "Gbogbo Awọn ẹgbẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1475
 msgid "Border Width (px)"
 msgstr "Iwọn Ààfin (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1471
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1488
 msgid "Border Radius (px)"
 msgstr "Ràdíọsì Ààfin (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1501
 msgid "Font Size (px)"
 msgstr "Iwọn Fonti (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1497
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1514
 msgid "Padding (px)"
 msgstr "Pàdìn (px)"
 
@@ -6609,15 +6245,19 @@ msgstr "Eyi jẹ ẹya PRO"
 msgid "%s is available in PRO"
 msgstr "%s wa ninu PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:180, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:184, fuzzy
 msgid "Post"
 msgstr "Post"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:48
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
 msgid "Select a page"
 msgstr "Yan oju-iwe kan"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:50
+msgid "Search preview content"
+msgstr "Wa akopọ akoonu"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:51
 msgid "Select terms"
 msgstr "Yan awọn ofin"
 

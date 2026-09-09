@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-04 20:44+0000\n"
+"PO-Revision-Date: 2026-09-09 14:54+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -398,8 +398,8 @@ msgstr "Vidljivost sadržaja"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:90
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:91, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93, fuzzy
 msgid "Teaser"
 msgstr "Teaser"
 
@@ -1221,8 +1221,6 @@ msgid "Duplicate %1$s module activated (%2$s in folder %3$s)."
 msgstr "Duplicirani modul %1$s aktiviran (%2$s u mapi %3$s)."
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:183
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:138
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:180
 msgid "Dismiss"
 msgstr "Odbaci"
 
@@ -1234,14 +1232,13 @@ msgstr "Prilagođena grupa"
 
 #: classes/PublishPress/Permissions/Groups.php:55
 #: classes/PublishPress/Permissions/UI/Groups.php:261
-#: classes/PublishPress/PermissionsHooksAdmin.php:378
+#: classes/PublishPress/PermissionsHooksAdmin.php:373
 msgid "Custom Groups"
 msgstr "Prilagođene grupe"
 
 #: classes/PublishPress/Permissions/Groups.php:56
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:109
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:41
-#: classes/PublishPress/Permissions/UI/Welcome.php:90
 msgid "Groups"
 msgstr "Grupe"
 
@@ -1307,7 +1304,6 @@ msgid "(login timed out)"
 msgstr "(vrijeme prijave istekao)"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:68
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:227
 msgid "View"
 msgstr "Pogledaj"
 
@@ -1461,7 +1457,7 @@ msgid "All Statuses"
 msgstr "Svi statusi"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1884
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1892
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1662,7 +1658,7 @@ msgstr "Dodaj specifične dozvole"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1388
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1386
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Ukloni"
@@ -1708,7 +1704,7 @@ msgid "No items selected!"
 msgstr "Nema odabranih stavki!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1193
 msgid "(no parent)"
 msgstr "(nema roditelja)"
 
@@ -1870,7 +1866,7 @@ msgstr "Odaberite %s"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1035, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1033, fuzzy
 msgid "Status"
 msgstr "Status"
 
@@ -1897,8 +1893,8 @@ msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Dodatne uloge %1$s(za ovog korisnika)%2$s"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:40
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:60
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:52
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
 msgid "Extra Roles"
 msgstr "Dodatne uloge"
 
@@ -1924,19 +1920,8 @@ msgstr "Onemogućena vrsta"
 msgid "%s Roles"
 msgstr "%s uloga"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:760
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1017
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1664
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:95
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:108
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:641
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:807
-msgid "item(s)"
-msgstr "stavka/e"
-
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:739
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1507
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1505
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:611
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:823
 msgid "Apply"
@@ -1965,50 +1950,42 @@ msgstr "%1$s (%2$s: %3$s)"
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
-msgid "item"
-msgstr "stavka"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:990
-msgid "items"
-msgstr "stavke"
-
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1044
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1083
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:88
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grupa"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1071
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1069
 msgid "unpublished"
 msgstr "neobjavljeno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1078
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1076
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:529
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:695
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1125
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1123
 #, php-format
 msgid "this %1$s"
 msgstr "ova %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1130
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "pod-%1$s ove %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1136
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1134
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "ova %1$s i njezine pod-%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
@@ -2017,7 +1994,7 @@ msgstr ""
 "%1$s pristup za %2$s je OMOGUĆEN unutar %3$s, bez obzira na mogućnosti "
 "uloga."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1153
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1151
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -2026,7 +2003,7 @@ msgstr ""
 "%1$s pristup za %2$s je BLOKIRAN unutar %3$s, osim ako nije omogućen drugom "
 "dozvolom."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1161
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1159
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -2035,17 +2012,17 @@ msgstr ""
 "Svaki pristup %1$s temeljen na ulozi za %2$s je OGRANIČEN. Primjenjuje se "
 "samo unutar %3$s, zajedno s drugim navedenim %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1171
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s pristup za %2$s je OMOGUĆEN, bez obzira na mogućnosti uloga."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1178
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1176
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr "%1$s pristup za %2$s je BLOKIRAN, osim ako nije omogućen drugom dozvolom."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1185
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1183
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -2054,121 +2031,121 @@ msgstr ""
 "Svaki pristup %1$s temeljen na ulozi za %2$s je OGRANIČEN. Primjenjuje se "
 "samo na %3$s, zajedno s drugim navedenim %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1230
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1333
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1331
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Dodijeljeno samo za pod-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1238
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1341
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1339
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Dodijeljeno za %s i pod-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1365
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1363
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Ova dozvola je suvišna zbog odgovarajuće ograničenja."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1372
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
 #, php-format
 msgid "Edit %s"
 msgstr "Uredi %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1392
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Dodijeli za odabrano i pod-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1396
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1394
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Dodijeli samo za odabrani %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1400
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1398
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Dodijeli samo za pod-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1403
 msgid "Assign for selected and sub-terms"
 msgstr "Dodijeli za odabrane i pod-uvjete"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
 msgid "Assign for selected term only"
 msgstr "Dodijeli samo za odabrani uvjet"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1413
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1411
 msgid "Assign for sub-terms only"
 msgstr "Dodijeli samo za pod-uvjete"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
 msgid "Convert to \"Enabled\""
 msgstr "Pretvori u \"Omogućeno\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1425
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 msgid "Convert to \"Blocked\""
 msgstr "Pretvori u \"Blokirano\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
 msgid "Convert to \"Limit to\""
 msgstr "Pretvori u \"Ograniči na\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1483
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1481
 #, php-format
 msgid "Mirror to %s"
 msgstr "Ogledaj na %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1487
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1485
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Ogledaj na %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1535
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1533
 msgid "= Enabled"
 msgstr "= Omogućeno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1542
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1540
 msgid "= Blocked"
 msgstr "= Blokirano"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1549
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1547
 msgid "= Limitation"
 msgstr "= Ograničenje"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1563
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1561
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s i pod-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1569
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
 #, php-format
 msgid "= sub-%s only"
 msgstr "= samo pod-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1585
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1609
 msgid "Note:"
 msgstr "Napomena:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1589
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1613
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Pod-%1$s dozvole nisu posebno navedene."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1593
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1617
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
 msgid "Show All"
 msgstr "Prikaži sve"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1602
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1625
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1600
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1623
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Sakrij automatski dodijeljene Sub-%s dozvole"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1637
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1635
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2178,55 +2155,64 @@ msgstr ""
 "pravilno primjenjivanje dopuštenja pod-stranica kada se nova pod-stranica "
 "kreira."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1641
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sIspravi Sub-%2$s dozvole%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1664
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1662
 #, php-format
 msgid "%s Permissions"
 msgstr "%s dozvole"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1689
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1687
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Ograničenja grupa nisu dostupna zbog definicije konstante"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1706
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1704
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "Dozvole za omogućavanje pristupa nisu dostupne zbog definicije konstante"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1770
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1768
 msgid "Group Members"
 msgstr "Članovi grupe"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1819
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1817
 msgid "Copy Roles and Permissions from:"
 msgstr "Kopiraj uloge i dozvole iz:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1842
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
 msgid "Copy Roles and Permissions"
 msgstr "Kopiraj uloge i dozvole"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1859
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:857
+#, php-format
+msgid "%s item"
+msgid_plural "%s items"
+msgstr[0] "%s stavka"
+msgstr[1] "%s stavke"
+msgstr[2] "%s stavki"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1867
 msgid "Limit to:"
 msgstr "Ograniči na:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1862
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1870
 msgid "Blocked:"
 msgstr "Blokirano:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1866
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1874
 msgid "Enabled:"
 msgstr "Omogućeno:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1877
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1885
 msgid "Direct-assigned"
 msgstr "Direktno dodijeljeno"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1890
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2342,9 +2328,9 @@ msgid "Add New Permission Group"
 msgstr "Dodaj novu grupu dozvola"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:111
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:811
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:123
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
 msgid "Edit"
 msgstr "Uredi"
 
@@ -2366,11 +2352,6 @@ msgstr "Uredi korištenje uloge"
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:357
 msgid "Settings"
 msgstr "Postavke"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:364
-#: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:365
-msgid "Welcome"
-msgstr "Dobrodošli"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:15
 msgid "(Default access)"
@@ -2412,7 +2393,6 @@ msgstr "Otvoreno"
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:555
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:114
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:42
-#: classes/PublishPress/Permissions/UI/Welcome.php:85
 msgid "Roles"
 msgstr "Uloge"
 
@@ -2753,54 +2733,54 @@ msgstr "Odaberi kao roditelja"
 msgid "Assign Terms"
 msgstr "Dodijeli uvjete"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:41
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:51
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:53
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:63
 msgid "Assigned directly"
 msgstr "Dodijeljeno izravno"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:50
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:71
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:62
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:83
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:127
 msgid "Specific Permissions"
 msgstr "Specifične dozvole"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:61
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:73
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:84
 msgid "From primary role or group membership"
 msgstr "Iz primarne uloge ili članstva u grupi"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:94
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:106
 msgid "Permissions Summary"
 msgstr "Sažetak dopuštenja"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:156
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:168
 #, php-format
 msgid "Extra Roles %1$s(from primary role or group membership)%2$s"
 msgstr "Dodatne uloge %1$s(iz primarne uloge ili članstva u grupi)%2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:167
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:179
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Specifične dozvole (iz primarne uloge ili članstva u grupi)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:253
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:428
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:265
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:440
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:174
 msgid "Permission Groups"
 msgstr "Grupne dozvole"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:281
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:318
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:460
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:293
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:330
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:472
 msgid "This user is not a member of any custom Permission Groups."
 msgstr "Ovaj korisnik nije član nijedne prilagođene grupne dozvole."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:285
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:464
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:297
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:476
 msgid "Edit this user's group membership"
 msgstr "Uredi članstvo ovog korisnika u grupi"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:294
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:473
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:306
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:485
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2808,33 +2788,33 @@ msgstr ""
 "Napomena: BuddyPress grupe i druge vanjski definirane grupe nisu ovdje "
 "navedene, čak i ako modificiraju dozvole"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:314
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:326
 msgid "Group membership"
 msgstr "Članstvo u grupi"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:538
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:704
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:550
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:716
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, više..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:546
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:557
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:712
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:723
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:558
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:724
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:735
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "uredi dozvole korisnika"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:602
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:614
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:669
 msgid "No specific permissions currently apply."
 msgstr "Trenutno ne primjenjuju se specifična dopuštenja."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:768
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:780
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:835
 msgid "No extra roles currently apply."
 msgstr "Trenutno se ne primjenjuju dodatne uloge."
 
@@ -3220,7 +3200,6 @@ msgid "Purchase"
 msgstr "Kupite"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:157
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:210
 msgid "Hide"
 msgstr "Sakrij"
 
@@ -3255,7 +3234,7 @@ msgstr "Ako trebate pomoć ili imate zahtjev za novu značajku, javite nam."
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:239
 #: includes/CoreAdmin.php:128
 #: includes/CoreAdmin.php:129
-#: includes/CoreAdmin.php:258
+#: includes/CoreAdmin.php:257
 #: includes/promo/posts-teaser-promo.php:22
 #: includes/promo/statuses-promo.php:23
 #: includes/promo/sync-promo.php:22
@@ -3827,7 +3806,7 @@ msgstr ""
 "grupi."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:287
-#: classes/PublishPress/PermissionsHooksAdmin.php:373
+#: classes/PublishPress/PermissionsHooksAdmin.php:368
 msgid "Assign Extra Roles or Permissions on the Edit Permissions screen."
 msgstr "Dodijelite dodatne uloge ili dozvole na ekranu za uređivanje dozvola."
 
@@ -3842,7 +3821,7 @@ msgstr ""
 "pojmove."
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:294
-#: classes/PublishPress/PermissionsHooksAdmin.php:365
+#: classes/PublishPress/PermissionsHooksAdmin.php:360
 msgid "Set Revision Permissions for specific Posts, Categories or Terms."
 msgstr "Postavite dozvole za reviziju za specifične postove, kategorije ili pojmove."
 
@@ -4389,7 +4368,7 @@ msgstr "Ključ za pristup datotekama s regeneracijom na zahtjev"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:130
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:170
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:210
-#: includes/CoreAdmin.php:243
+#: includes/CoreAdmin.php:242
 msgid "Pro Feature"
 msgstr "Pro značajka"
 
@@ -4413,8 +4392,8 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:181
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
-#: includes/CoreAdmin.php:255
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:950
+#: includes/CoreAdmin.php:254
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:967
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Saznajte više"
@@ -4803,371 +4782,45 @@ msgstr "Uloge dodijeljene korisniku ili jednoj od njihovih grupa"
 msgid "Edit User"
 msgstr "Uredi korisnika"
 
-#: classes/PublishPress/Permissions/UI/Welcome.php:86
-msgid "What a person can do everywhere on the site. Roles come from WordPress."
-msgstr "Što osoba može raditi svugdje na stranici. Uloge dolaze iz WordPressa."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:91
-msgid ""
-"A bundle of people you give the same access to. Easier than editing every "
-"user."
-msgstr ""
-"Skupina ljudi kojima dajete iste pristupe. Lakše nego uređivati svakog "
-"korisnika."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:95
-msgid "Exceptions"
-msgstr "Izuzeci"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:96
-msgid "An override for one post, page or category. An exception beats the role."
-msgstr ""
-"Pravo nadjačavanje za jednu objavu, stranicu ili kategoriju. Izuzetak "
-"nadmašuje ulogu."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:109
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:250
-msgid "Choose the content you want to control"
-msgstr "Odaberite sadržaj koji želite kontrolirati"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:110
-msgid ""
-"Permissions only filters the post types and taxonomies you switch on. "
-"Everything else behaves like standard WordPress."
-msgstr ""
-"Dopuštenja samo filtriraju tipove objava i taksonomije koje uključite. Sve "
-"ostalo ponaša se kao standardni WordPress."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:112
-msgid "The General tab of the Permissions settings screen"
-msgstr "Opća kartica ekrana postavki dopuštenja"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:114
-msgid "Open Permissions, then Settings."
-msgstr "Otvorite Dozvole, zatim Postavke."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:115
-msgid "On the General tab, find Post Types and Taxonomies."
-msgstr "Na kartici Opće, pronađite Post Type i Taxonomies."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:116
-msgid "Tick the post types and taxonomies you want to manage."
-msgstr "Označite post type i taxonomies koje želite upravljati."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:118
-msgid "Open Settings"
-msgstr "Otvorite Postavke"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:123
-msgid "Create a Permission Group"
-msgstr "Kreirajte Grupu Dozvola"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:124
-msgid ""
-"A Permission Group lets you give the same access to several users at once. "
-"Start with a clear name and description."
-msgstr ""
-"Grupa Dozvola vam omogućuje da odjednom date isti pristup nekoliko "
-"korisnika. Započnite s jasnim imenom i opisom."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:126
-msgid "The Permissions User Groups screen"
-msgstr "Ekran Korisničkih Grupa Dozvola"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:128
-msgid "Open Permissions to reach User Groups."
-msgstr "Otvorite Dozvole da dođete do Korisničkih Grupa."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:129
-msgid "Click Add New Group."
-msgstr "Kliknite Dodaj Novu Grupu."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:130
-msgid "Name and describe the group on the next screen, then create it."
-msgstr "Imenujte i opišite grupu na sljedećem ekranu, zatim je kreirajte."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:132
-msgid "Open Permissions"
-msgstr "Otvorite Dozvole"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:137
-msgid "Add members and fine-tune access"
-msgstr "Dodajte članove i precizirajte pristup"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:138
-msgid ""
-"Add users to your Permission Group, set specific access for a post type, "
-"and use a post or page Permissions panel when one item needs an override."
-msgstr ""
-"Dodajte korisnike u svoju Grupu Dozvola, postavite specifičan pristup za "
-"post type, i koristite panel Dozvola za post ili stranicu kada jedan "
-"element treba preglasiti."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:140
-msgid "Group members, specific permissions, and the post Permissions panel"
-msgstr "Članovi grupe, specifične dozvole, i panel Dozvola za post"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:142
-msgid "Add users in the Group Members box."
-msgstr "Dodajte korisnike u okviru Članovi Grupe."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:143
-msgid "Add Specific Permissions for a post type."
-msgstr "Dodajte Specifične Dozvole za post type."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:144
-msgid "Use the post/page Permissions panel for a one-off override."
-msgstr "Koristite panel Dozvola za post/stranicu za jednokratno preglasavanje."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:146
-msgid "Open a page to try it"
-msgstr "Otvorite stranicu da to isprobate"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:157
-msgid "Editing permissions per post type"
-msgstr "Uređivanje dozvola po post type"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:158
-msgid "Media and file access control"
-msgstr "Kontrola pristupa medijima i datotekama"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:159
-msgid "Membership plugin integrations"
-msgstr "Integracije dodatka za članstvo"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:160
-msgid "Custom post status permissions"
-msgstr "Dozvole za prilagođeni status objave"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:161
-msgid "Sync user posts"
-msgstr "Sinkroniziraj korisničke objave"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:162
-msgid "Priority support"
-msgstr "Prioritetna podrška"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:261
-#. translators: %1$s: current step number, %2$s: total number of steps
-#, php-format
-msgid "Step %1$s of %2$s"
-msgstr "Korak %1$s od %2$s"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:274
-msgid "Skip"
-msgstr "Preskoči"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:287
-msgid "Back"
-msgstr "Natrag"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:295
-msgid "Next"
-msgstr "Sljedeće"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:342
-msgid "This guide does not change any setting on your site."
-msgstr "Ovaj vodič ne mijenja nikakvu postavku na vašoj stranici."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:353
-msgid "Welcome to PublishPress Permissions"
-msgstr "Dobrodošli u PublishPress Permissions"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:356
-msgid ""
-"Control who can read and edit posts, pages, categories, media, and other "
-"content across your WordPress site."
-msgstr ""
-"Kontrolirajte tko može čitati i uređivati objave, stranice, kategorije, "
-"medije i drugi sadržaj na vašem WordPress sajtu."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:360
-msgid ""
-"Six short screens show you where everything lives. Nothing changes on your "
-"site while you read."
-msgstr ""
-"Šest kratkih zaslona pokazuje vam gdje se sve nalazi. Ništa se ne mijenja "
-"na vašoj stranici dok čitate."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:365
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:124
-msgid "Start the tour"
-msgstr "Započnite obilazak"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:369
-msgid "Skip, take me to Settings"
-msgstr "Preskoči, odvedi me na Postavke"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:384
-msgid "Three ideas to know"
-msgstr "Tri ideje koje trebate znati"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:385
-msgid "Get these right and the rest of the plugin makes sense."
-msgstr "Ako ovo ispravite, ostatak dodatka će imati smisla."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:398
-msgid ""
-"Rule of thumb: roles say what a person can do everywhere. Exceptions "
-"override that for one post or one category."
-msgstr ""
-"Zlatno pravilo: uloge govore što osoba može raditi svugdje. Iznimke to "
-"poništavaju za jednu objavu ili jednu kategoriju."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:424
-msgid "opens in a new tab, this guide stays here"
-msgstr "otvara se u novoj kartici, ovaj vodič ostaje ovdje"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:437
-msgid "That is the whole plugin"
-msgstr "To je cijeli dodatak"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:438
-msgid "Nothing on your site changed. Here is what to do next:"
-msgstr "Na vašoj stranici nije se ništa promijenilo. Evo što učiniti sljedeće:"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:440
-msgid "What to do next"
-msgstr "Što učiniti sljedeće"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:442
-msgid "Choose the content you want to control."
-msgstr "Odaberite sadržaj koji želite kontrolirati."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:443
-msgid "Create your first permission group."
-msgstr "Stvorite svoju prvu grupu dopuštenja."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:444
-msgid "Set permissions on one post or page."
-msgstr "Postavite dopuštenja na jedan post ili stranicu."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:446
-msgid "Each link opens in a new tab so you can return to this guide."
-msgstr ""
-"Svaka poveznica se otvara u novoj kartici tako da se možete vratiti na ovaj "
-"vodič."
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:450
-msgid "Go to Permissions"
-msgstr "Idite na Dopuštenja"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:454
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:234
-msgid "Replay the guide"
-msgstr "Ponovno pregledajte vodič"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:462
-msgid "If you need more control"
-msgstr "Ako trebate više kontrole"
-
-#: classes/PublishPress/Permissions/UI/Welcome.php:472
-msgid "See Pro features"
-msgstr "Pogledajte Pro značajke"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:123
-msgid "Continue the tour"
-msgstr "Nastavite obilazak"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:129
-msgid "Permissions is active. Want a two minute tour?"
-msgstr "Dopuštenja su aktivna. Želite dvominutni obilazak?"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:130
-msgid ""
-"We will show you where to control who reads and edits your content. Nothing "
-"gets changed."
-msgstr ""
-"Pokažemo vam gdje kontrolirati tko čita i uređuje vaš sadržaj. Ništa se ne "
-"mijenja."
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:178
-msgid "Permissions is set up"
-msgstr "Dopuštenja su postavljena"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:192
-msgid "Finish setting up Permissions"
-msgstr "Dovršite postavljanje Dopuštenja"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:198
-#. translators: %1$s: number of completed tasks, %2$s: total number of tasks
-#, php-format
-msgid "%1$s of %2$s"
-msgstr "%1$s od %2$s"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:224
-msgid "Do it"
-msgstr "Učinite to"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:254
-#. translators: %s: number of enabled post types
-#, php-format
-msgid "%s type on"
-msgid_plural "%s types on"
-msgstr[0] "%s tip na"
-msgstr[1] "%s tipa na"
-msgstr[2] "%s tipova na"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:261
-msgid "Create your first permission group"
-msgstr "Stvorite svoju prvu grupu dopuštenja"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:265
-#. translators: %s: number of groups
-#, php-format
-msgid "%s group"
-msgid_plural "%s groups"
-msgstr[0] "%s grupa"
-msgstr[1] "%s grupe"
-msgstr[2] "%s grupa"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:272
-msgid "Open a post or page and use its Permissions panel"
-msgstr "Otvorite post ili stranicu i koristite njegov panel Dopuštenja"
-
-#: classes/PublishPress/Permissions/UI/WelcomeOnboarding.php:274
-msgid "done"
-msgstr "gotovo"
-
-#: classes/PublishPress/PermissionsHooksAdmin.php:354
+#: classes/PublishPress/PermissionsHooksAdmin.php:349
 msgid "Set Viewing permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Postavi dozvole za pregled specifičnih Objavljivanja, Kategorija ili "
 "Pojmova."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:358
+#: classes/PublishPress/PermissionsHooksAdmin.php:353
 msgid "Set Editing permissions for specific Posts, Categories or Terms."
 msgstr ""
 "Postavi dozvole za uređivanje specifičnih Objavljivanja, Kategorija ili "
 "Pojmova."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:359
+#: classes/PublishPress/PermissionsHooksAdmin.php:354
 msgid "Set \"Set as Parent\" permissions for specific Pages."
 msgstr "Postavi dozvole \"Postavi kao roditelja\" za specifične Stranice."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:360
+#: classes/PublishPress/PermissionsHooksAdmin.php:355
 msgid "Set Assign Term permissions."
 msgstr "Postavi dozvole za dodjelu Pojmova."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:361
+#: classes/PublishPress/PermissionsHooksAdmin.php:356
 msgid "Set \"Manage This Term\" permissions for specific terms."
 msgstr "Postavite \"Upravljanje ovim pojmom\" dozvole za specifične pojmove."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:362
+#: classes/PublishPress/PermissionsHooksAdmin.php:357
 msgid "Set \"Set as Parent\" permissions for specific Categories or Terms."
 msgstr ""
 "Postavi dozvole \"Postavi kao roditelja\" za specifične Kategorije ili "
 "Pojmove."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:366
+#: classes/PublishPress/PermissionsHooksAdmin.php:361
 msgid "Set Copy Permissions for specific Posts."
 msgstr "Postavite dopuštenja za kopiranje za određene postove."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:371
+#: classes/PublishPress/PermissionsHooksAdmin.php:366
 msgid "Permissions & Access"
 msgstr "Dopuštenja & Pristup"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:372
+#: classes/PublishPress/PermissionsHooksAdmin.php:367
 msgid ""
 "Full editing access for all post types. Also gives the ability to edit "
 "Permissions for user roles."
@@ -5175,23 +4828,23 @@ msgstr ""
 "Puni pristup uređivanju za sve vrste objava. Također omogućuje uređivanje "
 "dozvola za korisničke uloge."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:374
+#: classes/PublishPress/PermissionsHooksAdmin.php:369
 msgid "Access to the Settings screen."
 msgstr "Pristup ekranu Postavki."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:375
+#: classes/PublishPress/PermissionsHooksAdmin.php:370
 msgid "Access to the Teaser screen."
 msgstr "Pristup ekranu Najava."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:376
+#: classes/PublishPress/PermissionsHooksAdmin.php:371
 msgid "All Enabled and Blocked Permissions are ignored for this role."
 msgstr "Sve omogućene i blokirane dozvole se zanemaruju za ovu ulogu."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:379
+#: classes/PublishPress/PermissionsHooksAdmin.php:374
 msgid "Create Custom Groups."
 msgstr "Kreiraj prilagođene grupe."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:380
+#: classes/PublishPress/PermissionsHooksAdmin.php:375
 msgid ""
 "View Custom Groups on the Permissions screen. Also allows access to the "
 "editing screen for Custom Groups."
@@ -5199,31 +4852,31 @@ msgstr ""
 "Pogledajte prilagođene grupe na ekranu za dozvole. Također omogućava "
 "pristup ekranu za uređivanje prilagođenih grupa."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:381
+#: classes/PublishPress/PermissionsHooksAdmin.php:376
 msgid "Delete Custom Groups."
 msgstr "Izbriši prilagođene grupe."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:382
+#: classes/PublishPress/PermissionsHooksAdmin.php:377
 msgid "Manage members in Custom Groups."
 msgstr "Upravljaj članovima u prilagođenim grupama."
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:384
+#: classes/PublishPress/PermissionsHooksAdmin.php:379
 msgid "Set Permissions in Post or Term Editing Screen"
 msgstr "Postavite dozvole na ekranu za uređivanje objava ili pojmova"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:477
+#: classes/PublishPress/PermissionsHooksAdmin.php:472
 msgid "Subscribers"
 msgstr "Pretplatnici"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:478
+#: classes/PublishPress/PermissionsHooksAdmin.php:473
 msgid "Contributors"
 msgstr "Suradnici"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:479
+#: classes/PublishPress/PermissionsHooksAdmin.php:474
 msgid "Authors"
 msgstr "Autori"
 
-#: classes/PublishPress/PermissionsHooksAdmin.php:480
+#: classes/PublishPress/PermissionsHooksAdmin.php:475
 msgid "Editors"
 msgstr "Urednici"
 
@@ -5240,7 +4893,7 @@ msgstr ""
 msgid "Promo file not found."
 msgstr "Promo datoteka nije pronađena."
 
-#: includes/CoreAdmin.php:249
+#: includes/CoreAdmin.php:248
 msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Nadogradite na Pro kako biste otključali besprijekornu integraciju."
 
@@ -5895,11 +5548,7 @@ msgstr "Revizor"
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:58
-msgid "Legacy Compatibility"
-msgstr "Kompatibilnost s naslijeđem"
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:163
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:161
 msgid ""
 "Use the pp_restrict shortcode to show or hide enclosed content based on the "
 "current visitor."
@@ -5907,71 +5556,51 @@ msgstr ""
 "Koristite shortcode pp_restrict za prikazivanje ili skrivanje sadržaja na "
 "temelju trenutnog posjetitelja."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:169
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:167
 msgid "Show content only to logged-in visitors."
 msgstr "Prikaži sadržaj samo prijavljenim posjetiteljima."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:173
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:171
 msgid "Show content only to logged-out visitors."
 msgstr "Prikaži sadržaj samo odjavljenim posjetiteljima."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:177
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:175
 msgid "Allow visitors with any listed WordPress role."
 msgstr "Dopusti posjetiteljima s bilo kojom navedenom WordPress ulogom."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:181
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:179
 msgid "Allow visitors with any listed WordPress capability."
 msgstr "Dopusti posjetiteljima s bilo kojom navedenom WordPress sposobnošću."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:185
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:183
 msgid "Allow visitors with any listed WordPress username."
 msgstr "Dopusti posjetiteljima s bilo kojim navedenim WordPress korisničkim imenom."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:189
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:187
 msgid "Allow members of any listed PublishPress Permission Group."
 msgstr "Dopusti članovima bilo koje navedene PublishPress grupe dozvola."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:193
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:191
 msgid "Use relation=\"any\" when any populated condition may grant access."
 msgstr ""
 "Koristite relation=\"any\" kada bilo koji ispunjeni uvjet može omogućiti "
 "pristup."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:197
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:195
 msgid "Use hide=\"yes\" to invert the result of the configured conditions."
 msgstr "Koristite hide=\"yes\" za preokret rezultata konfiguriranih uvjeta."
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:203
-msgid ""
-"These migration aliases are available when another active plugin has not "
-"already registered the same shortcode. Legacy conditions use OR matching."
-msgstr ""
-"Ove migracijske oznake dostupne su kada drugi aktivni dodatak nije već "
-"registrirao isti shortcode. Uvjeti naslijeđa koriste OR usklađivanje."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:209
-msgid "Restrict legacy content by login status."
-msgstr "Ograničite sadržaj naslijeđa prema statusu prijave."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:213
-msgid "Restrict legacy content by role or capability."
-msgstr "Ograničite sadržaj naslijeđa prema ulozi ili sposobnosti."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:217
-msgid "Restrict legacy content by PublishPress Permission Group."
-msgstr "Ograničite sadržaj naslijeđa prema PublishPress grupi dozvola."
-
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:238
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:216
 msgid "Shortcode example"
 msgstr "Primjer shortcoda"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:244
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:245
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:250
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:222
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:223
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:228
 msgid "Copy shortcode"
 msgstr "Kopiraj shortcode"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:246
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:224
 msgid "Copied!"
 msgstr "Kopirano!"
 
@@ -5981,10 +5610,10 @@ msgstr "Kopirano!"
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:668
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:514
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1189
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1243
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1297
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:279
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:284
 msgid "You do not have permission to view the full content."
 msgstr "Nemate dozvolu za pregled cijelog sadržaja."
 
@@ -6078,7 +5707,7 @@ msgid "This feature is available in PublishPress Permissions PRO"
 msgstr "Ova značajka je dostupna u PublishPress Permissions PRO"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:947
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
 msgid "Upgrade to PRO"
 msgstr "Nadogradite na PRO"
@@ -6281,14 +5910,14 @@ msgid "Both"
 msgstr "Oboje"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:723
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:832
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:740
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
 msgid "Not Logged In Users"
 msgstr "Korisnici koji nisu prijavljeni"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:422
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:726
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:852
 msgid "Logged In Users"
 msgstr "Prijavljeni korisnici"
 
@@ -6321,7 +5950,7 @@ msgid "Hide for Custom Visibility"
 msgstr "Sakrij za prilagođenu vidljivost"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:461
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:642
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
 msgid "Featured Image"
 msgstr "Istaknuta slika"
 
@@ -6363,19 +5992,19 @@ msgid "Use Custom Teaser Message Style"
 msgstr "Koristi prilagođeni stil poruke teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:551
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:287
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Posjetitelji bez pristupa preusmjereni su na: %s"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:295
 msgid "Visitors without access are redirected away from this page."
 msgstr "Posjetitelji bez pristupa preusmjereni su s ove stranice."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:183
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:187
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
@@ -6401,43 +6030,48 @@ msgstr "Teaser pregled"
 msgid "Site Preview"
 msgstr "Pregled stranice"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:618
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:620
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:621
+msgid "Preview content"
+msgstr "Pregled sadržaja"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid "Preview device"
 msgstr "Pregled uređaja"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:619
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:636
 msgid "Desktop"
 msgstr "Računalo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:622
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
 msgid "Mobile"
 msgstr "Mobilni"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:631
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:648
 msgid "Open full preview in a new tab"
 msgstr "Otvorite puni pregled u novoj kartici"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
 msgid "Open full preview"
 msgstr "Otvorite puni pregled"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:649
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 msgid "Loading the preview from your active theme…"
 msgstr "Učitavanje pregleda iz vašeg aktivnog teme…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
 msgid "Teaser preview from the active theme"
 msgstr "Teaser pregled iz aktivne teme"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:684
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Pregled teme se ne može prikazati u ovom okviru."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:691
 msgid "Visitor redirected"
 msgstr "Posjetitelj preusmjeren"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:692
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6445,11 +6079,11 @@ msgstr ""
 "Ograničeni sadržaj se ne prikazuje. Posjetitelj je poslan na konfiguriranu "
 "odredišnu stranicu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:712
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:729
 msgid "Teaser Message"
 msgstr "Teaser poruka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:713
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:730
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6457,58 +6091,58 @@ msgstr ""
 "Potpuno zamijenite sadržaj objave prilagođenim sadržajem za korisnike koji "
 "nemaju pristup."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:732
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:772
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
 msgid "This field is required."
 msgstr "Ovo polje je obavezno."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:734
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:774
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:751
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:791
 msgid "Replace Post Content With:"
 msgstr "Zamijeni sadržaj objave s:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:760
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:800
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Umetnite obrazac za prijavu pomoću %s[login_form]%s kratkog koda."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
 msgid "Teaser Text Configuration"
 msgstr "Konfiguracija teaser teksta"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:822
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:839
 msgid "Configure custom teaser text for this post type."
 msgstr "Konfigurirajte vlastiti teaser tekst za ovu vrstu objave."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:878
 msgid "post title"
 msgstr "naslov objave"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:862
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:879
 msgid "post content"
 msgstr "sadržaj objave"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:886
 #, php-format
 msgid "Before %s"
 msgstr "Prije %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:887
 #, php-format
 msgid "After %s"
 msgstr "Nakon %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:943
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:969
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:986
 msgid "Redirect Settings"
 msgstr "Postavke preusmjeravanja"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:943
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect functionality is available in PRO"
 msgstr "Funkcionalnost preusmjeravanja dostupna je u PRO verziji"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:944
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:961
 msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
@@ -6516,43 +6150,43 @@ msgstr ""
 "Automatski preusmjerite korisnike na stranicu za prijavu ili prilagođenu "
 "stranicu kada pokušaju pristupiti ograničenom sadržaju."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:980
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:997
 msgid "Redirection"
 msgstr "Preusmjeravanje"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:981
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:998
 msgid "Target Post Type"
 msgstr "Ciljna vrsta objave"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:982
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:999
 msgid "Select Post"
 msgstr "Odaberite objavu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1035
 msgid "Not Logged In:"
 msgstr "Niste prijavljeni:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1026
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1121
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1138
 msgid "No redirect"
 msgstr "Bez preusmjeravanja"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1122
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
 msgid "Redirect to WordPress login"
 msgstr "Preusmjeri na WordPress prijavu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1123
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1140
 msgid "Redirect to a custom post"
 msgstr "Preusmjeri na prilagođenu objavu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1081
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
 msgid "This is a custom login page"
 msgstr "Ovo je prilagođena stranica za prijavu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1081
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6560,17 +6194,17 @@ msgstr ""
 "Nakon što se korisnik prijavi, bit će preusmjeren natrag na izvorni post "
 "koji je pregledavao."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1113
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
 msgid "Logged in Users:"
 msgstr "Prijavljeni korisnici:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1223
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1277
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1331
 msgid "Message for Blocked Users"
 msgstr "Poruka za blokirane korisnike"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1207
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6578,7 +6212,7 @@ msgstr ""
 "Prilagodite poruku prikazanu korisnicima koji su blokirani od gledanja "
 "cijelog sadržaja kada koriste vrstu najave \"Pročitaj više\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for all blocked users."
@@ -6586,7 +6220,7 @@ msgstr ""
 "Ova poruka će se prikazati u stiliziranom obavijesnom okviru iznad teaser "
 "sadržaja za sve blokirane korisnike."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1278
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6594,7 +6228,7 @@ msgstr ""
 "Prilagodite poruku obavijesti koja se prikazuje svim blokiranim korisnicima "
 "kada koriste tip teaser \"Izvadak\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1284
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1301
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for all blocked users."
@@ -6602,7 +6236,7 @@ msgstr ""
 "Ova poruka će se prikazati u stiliziranom obavijesnom okviru ispod sadržaja "
 "izvatka za sve blokirane korisnike."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1315
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1332
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6610,7 +6244,7 @@ msgstr ""
 "Prilagodite poruku obavijesti koja se prikazuje svim blokiranim korisnicima "
 "kada koriste tip teaser \"Prvih X znakova\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1338
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1355
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for all blocked users."
@@ -6618,64 +6252,64 @@ msgstr ""
 "Ova poruka će biti prikazana u stiliziranoj kutiji obavijesti ispod "
 "skraćenog sadržaja za sve blokirane korisnike."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1385
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1402
 msgid "Teaser Message Style Customization"
 msgstr "Prilagodba stila poruke teasera"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1386
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1403
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Prilagodite izgled poruke teasera koja se prikazuje blokiranim korisnicima."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1411
 msgid "Background Color"
 msgstr "Boja pozadine"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1406
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1423
 msgid "Text Color"
 msgstr "Boja teksta"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1418
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
 msgid "Border Color"
 msgstr "Boja obruba"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1430
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1441
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1447
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
 msgid "Border Position"
 msgstr "Položaj obruba"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1434
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1451
 msgid "Left"
 msgstr "Lijevo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1452
 msgid "Right"
 msgstr "Desno"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1453
 msgid "Top"
 msgstr "Gore"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1437
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1454
 msgid "Bottom"
 msgstr "Donji"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1438
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1455
 msgid "All Sides"
 msgstr "Sve strane"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1475
 msgid "Border Width (px)"
 msgstr "Širina obruba (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1471
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1488
 msgid "Border Radius (px)"
 msgstr "Radian obruba (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1501
 msgid "Font Size (px)"
 msgstr "Veličina fonta (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1497
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1514
 msgid "Padding (px)"
 msgstr "Ispuna (px)"
 
@@ -6696,15 +6330,19 @@ msgstr "Ovo je PRO značajka"
 msgid "%s is available in PRO"
 msgstr "%s je dostupan u PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:180
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:184
 msgid "Post"
 msgstr "Objava"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:48
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
 msgid "Select a page"
 msgstr "Odaberite stranicu"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:49
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:50
+msgid "Search preview content"
+msgstr "Pretraži sadržaj pregleda"
+
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:51
 msgid "Select terms"
 msgstr "Odaberite uvjete"
 
