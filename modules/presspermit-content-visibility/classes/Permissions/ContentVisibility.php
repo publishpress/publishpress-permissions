@@ -93,7 +93,7 @@ class ContentVisibility
             $allowed = !$allowed;
         }
 
-        return $allowed ? do_shortcode($content) : '';
+        return $allowed ? $this->renderAllowedContent($content) : '';
     }
 
     /**
@@ -221,6 +221,25 @@ class ContentVisibility
     private function containsVisibilityShortcode($content)
     {
         return has_shortcode($content, self::SHORTCODE);
+    }
+
+    /**
+     * @param string $content Enclosed shortcode content.
+     * @return string
+     */
+    private function renderAllowedContent($content)
+    {
+        $content = trim((string) $content);
+
+        if ('' === $content) {
+            return '';
+        }
+
+        if (function_exists('has_blocks') && has_blocks($content)) {
+            return do_shortcode(do_blocks($content));
+        }
+
+        return do_shortcode(shortcode_unautop(wpautop($content)));
     }
 
     /**
