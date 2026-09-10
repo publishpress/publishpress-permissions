@@ -160,8 +160,8 @@ class CapabilityFilters
 
         $meta_caps = $this->meta_caps;
 
-        // Google Analytics for WordPress by MonsterInsights
-        if (isset($args[3]) && is_string($args[3]) && (false !== strpos($args[3], 'monsterinsights'))) {
+        // Prevent conflict with non-standard edit_post_meta checks. Allow these checks to be handled by WP core based on role capabilities.
+        if (isset($args[3]) && is_string($args[3]) && in_array($args[3], ['monsterinsights', '_acf_changed', '_searchwp_excluded'])) {
             if (!apply_filters('presspermit_force_postmeta_filtering', false, $args)) {
                 unset($meta_caps['edit_post_meta']);
                 unset($meta_caps['delete_post_meta']);
