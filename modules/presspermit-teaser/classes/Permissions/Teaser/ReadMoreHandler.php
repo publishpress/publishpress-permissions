@@ -175,7 +175,7 @@ class ReadMoreHandler
             }
             
             $info_message = sprintf(
-                '<p class="pp-teaser-login-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">%s</p>',
+                '<p class="pp-teaser-login-notice" style="box-sizing: border-box; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">%s</p>',
                 esc_html($notice_text)
             );
             

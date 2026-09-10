@@ -828,7 +828,7 @@ class PostsTeaser
         
         // If not set to 'custom', return simple default notice
         if ($style_mode !== 'custom') {
-            return '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $message . '</div>';
+            return '<div class="pp-teaser-notice" style="box-sizing: border-box; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $message . '</div>';
         }
         
         // Get custom style settings with defaults (per-post-type)
@@ -856,7 +856,7 @@ class PostsTeaser
         
         // Build complete inline style
         $inline_style = sprintf(
-            'padding: %spx; background: %s; color: %s; %s margin: 15px 0; font-size: %spx; line-height: 1.6; border-radius: %spx;',
+            'box-sizing: border-box; max-width: 100%%; overflow-wrap: anywhere; word-break: break-word; padding: %spx; background: %s; color: %s; %s margin: 15px 0; font-size: %spx; line-height: 1.6; border-radius: %spx;',
             esc_attr($padding),
             esc_attr($bg_color),
             esc_attr($text_color),
