@@ -176,7 +176,7 @@ class ReadMoreHandler
             
             $info_message = sprintf(
                 '<p class="pp-teaser-login-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">%s</p>',
-                esc_html($notice_text)
+                PostsTeaser::renderTeaserMessage($notice_text)
             );
             
             $info_message = apply_filters('presspermit_read_more_login_notice', $info_message, $post);

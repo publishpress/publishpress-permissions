@@ -436,6 +436,8 @@ class PostsTeaser
                 } else {
                     $msg = str_replace('[login_form]', '', $msg);
                 }
+
+                $msg = self::renderTeaserMessage($msg);
             }
 
             // Apply styled notice wrapper for content replacement on frontend (not in admin or feeds)
@@ -822,6 +824,7 @@ class PostsTeaser
     private static function wrapTeaserNotice($message, $post_type = '')
     {
         $pp = presspermit();
+        $message = self::renderTeaserMessage($message);
         
         // Check if custom styling mode is enabled for this post type
         $style_mode = $pp->getTypeOption('teaser_notice_style_mode', $post_type);
@@ -866,5 +869,10 @@ class PostsTeaser
         );
         
         return '<div class="pp-teaser-notice" style="' . $inline_style . '">' . $message . '</div>';
+    }
+
+    public static function renderTeaserMessage($message)
+    {
+        return do_shortcode(shortcode_unautop((string) $message));
     }
 }
