@@ -1404,8 +1404,30 @@ jQuery(document).ready(function ($) {
         };
     }
 
+    function syncTeaserMirrorFields() {
+        $('.pp-teaser-mirror-field').each(function() {
+            var $mirror = $(this);
+            var sourceId = String($mirror.data('source') || '');
+            var value = '';
+
+            if (!sourceId) {
+                return;
+            }
+
+            if (typeof tinymce !== 'undefined' && tinymce.get(sourceId) && !tinymce.get(sourceId).isHidden()) {
+                value = tinymce.get(sourceId).getContent();
+            } else {
+                value = $('#' + sourceId).val() || '';
+            }
+
+            $mirror.val(value);
+        });
+    }
+
     // Form validation before submission
     $('#pp_settings_form').on('submit', function(e) {
+        syncTeaserMirrorFields();
+
         // Only run validation if we're on the teaser settings tab
         var $teaserSettingsSection = $('#ppp-tab-teaser-settings');
         if (!$teaserSettingsSection.is(':visible')) {

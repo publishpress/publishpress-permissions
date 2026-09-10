@@ -382,7 +382,6 @@ class TeaserProgressiveUI {
             $hide_links_val = !empty($this->hide_links[$object_type]) ? $this->hide_links[$object_type] : 0;
             $hide_private_val = isset($this->hide_private[$object_type]) ? $this->hide_private[$object_type] : '0';
             $name_logged = "tease_logged_only[$object_type]";
-            $logged_val = !empty($this->logged_only[$object_type]) ? $this->logged_only[$object_type] : '0';
             $hide_thumbnail_val = !empty($this->hide_thumbnail[$object_type]) ? $this->hide_thumbnail[$object_type] : 0;
             $disable_comments_val = isset($this->disable_comments[$object_type])
                 ? $this->disable_comments[$object_type]
@@ -393,6 +392,7 @@ class TeaserProgressiveUI {
                 <tr>
                     <th style="width: 30%;"><?php esc_html_e('Teaser Application', 'press-permit-core'); ?></th>
                     <td>
+                        <input type="hidden" name="<?php echo esc_attr($name_logged); ?>" value="0" />
                         <label style="margin-right: 20px;">
                             <input type="radio" name="tease_direct_access_only[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($direct_only_val, 0); ?>>
                             <?php esc_html_e("List and Single view", 'press-permit-core'); ?>
@@ -400,26 +400,6 @@ class TeaserProgressiveUI {
                         <label>
                             <input type="radio" name="tease_direct_access_only[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($direct_only_val, 1); ?>>
                             <?php esc_html_e("Single view only", 'press-permit-core'); ?>
-                        </label>
-                    </td>
-                </tr>
-
-                <!-- User Application Section -->
-                <tr>
-                    <th style="width: 30%;"><?php esc_html_e('User Application', 'press-permit-core'); ?></th>
-                    <td>
-                        <?php $user_apps_available = $this->isFeatureAvailable('user_application'); ?>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="0"<?php checked($logged_val == '0' || empty($logged_val), true); ?> <?php echo !$user_apps_available ? 'disabled' : ''; ?>>
-                            <?php esc_html_e('Both', 'press-permit-core'); ?>
-                        </label>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="anon"<?php checked($logged_val, 'anon'); ?> <?php echo !$user_apps_available ? 'disabled' : ''; ?>>
-                            <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
-                        </label>
-                        <label>
-                            <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="1"<?php checked($logged_val, '1'); ?> <?php echo !$user_apps_available ? 'disabled' : ''; ?>>
-                            <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
                         </label>
                     </td>
                 </tr>
@@ -718,8 +698,7 @@ class TeaserProgressiveUI {
 
     private function renderTeaserContentCard($object_type) {
         // Get Teaser Text mode content (HTML content from editors) - remove slashes added by WordPress
-        $teaser_text_anon = wp_unslash($this->pp->getTypeOption('tease_replace_content_anon', $object_type) ?: '');
-        $teaser_text_logged = wp_unslash($this->pp->getTypeOption('tease_replace_content', $object_type) ?: '');
+        $teaser_text_anon = $this->getSharedTeaserTextOption('tease_replace_content_anon', 'tease_replace_content', $object_type);
         ?>
         <div class="teaser-message-section" style="margin-top: 20px;">
             <table class="widefat">
@@ -734,93 +713,42 @@ class TeaserProgressiveUI {
             </table>
 
             <div class="pp-teaser-text-container">
-                <!-- Tabs for Not Logged In / Logged In -->
-                <div class="pp-teaser-text-tabs">
-                    <button type="button" class="pp-teaser-text-tab active" data-tab="anon-content">
-                        <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                    <button type="button" class="pp-teaser-text-tab" data-tab="logged-content">
-                        <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                </div>
+                <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
+                    <h4 style="margin-bottom: 10px; font-weight: 600;">
+                        <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
+                        <span class="pp-required-indicator" style="color: red;">*</span>
+                    </h4>
+                    <div>
+                        <?php
+                        $option_basename_anon = "tease_replace_content_anon";
+                        $id_anon = $object_type . '_' . $option_basename_anon;
+                        $name_anon = "{$option_basename_anon}[{$object_type}]";
+                        $name_logged = "tease_replace_content[{$object_type}]";
 
-                <!-- Tab Content: Not Logged In -->
-                <div class="pp-teaser-text-content active" data-tab-content="anon-content">
-                    <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
-                        <h4 style="margin-bottom: 10px; font-weight: 600;">
-                            <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
-                            <span class="pp-required-indicator" style="color: red;">*</span>
-                        </h4>
-                        <div>
+                        $editor_settings_anon = [
+                            'textarea_name' => $name_anon,
+                            'textarea_rows' => 5,
+                            'media_buttons' => false,
+                            'teeny' => true,
+                            'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
+                            'tinymce' => [
+                                'toolbar1' => 'bold,italic,underline,strikethrough,link,unlink,bullist,numlist,blockquote,undo,redo',
+                                'toolbar2' => '',
+                                'toolbar3' => '',
+                            ]
+                        ];
+                        wp_editor($teaser_text_anon, $id_anon, $editor_settings_anon);
+                        ?>
+                        <input type="hidden" class="pp-teaser-mirror-field" name="<?php echo esc_attr($name_logged); ?>" data-source="<?php echo esc_attr($id_anon); ?>" value="<?php echo esc_attr($teaser_text_anon); ?>" />
+                        <p class="pp-add-login-form">
                             <?php
-                            $option_basename_anon = "tease_replace_content_anon";
-                            $id_anon = $object_type . '_' . $option_basename_anon;
-                            $name_anon = "{$option_basename_anon}[{$object_type}]";
-
-                            $editor_settings_anon = [
-                                'textarea_name' => $name_anon,
-                                'textarea_rows' => 5,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,strikethrough,link,unlink,bullist,numlist,blockquote,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($teaser_text_anon, $id_anon, $editor_settings_anon);
+                            printf(
+                                esc_html__('Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core'),
+                                '<a href="#">',
+                                '</a>'
+                            );
                             ?>
-                            <p class="pp-add-login-form">
-                                <?php
-                                printf(
-                                    esc_html__('Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core'),
-                                    '<a href="#">',
-                                    '</a>'
-                                );
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Content: Logged In -->
-                <div class="pp-teaser-text-content" data-tab-content="logged-content" style="display:none;">
-                    <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
-                        <h4 style="margin-bottom: 10px; font-weight: 600;">
-                            <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
-                            <span class="pp-required-indicator" style="color: red;">*</span>
-                        </h4>
-                        <div>
-                            <?php
-                            $option_basename_logged = "tease_replace_content";
-                            $id_logged = $object_type . '_' . $option_basename_logged;
-                            $name_logged = "{$option_basename_logged}[{$object_type}]";
-
-                            $editor_settings_logged = [
-                                'textarea_name' => $name_logged,
-                                'textarea_rows' => 5,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,strikethrough,link,unlink,bullist,numlist,blockquote,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($teaser_text_logged, $id_logged, $editor_settings_logged);
-                            ?>
-                            <p class="pp-add-login-form">
-                                <?php
-                                printf(
-                                    esc_html__('Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core'),
-                                    '<a href="#">',
-                                    '</a>'
-                                );
-                                ?>
-                            </p>
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -843,24 +771,8 @@ class TeaserProgressiveUI {
             </table>
 
             <div class="pp-teaser-text-container">
-                <!-- Tabs for Logged In Users / Not Logged In Users -->
-                <div class="pp-teaser-text-tabs">
-                    <button type="button" class="pp-teaser-text-tab active" data-tab="anon">
-                        <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                    <button type="button" class="pp-teaser-text-tab" data-tab="logged">
-                        <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                </div>
-
-                <!-- Tab Contents -->
-                <div class="pp-teaser-text-content active" data-tab-content="anon">
-                    <?php $this->renderTeaserTextFields($object_type, '_anon'); ?>
-                </div>
-
-                <div class="pp-teaser-text-content" data-tab-content="logged" style="display:none;">
-                    <?php $this->renderTeaserTextFields($object_type, ''); ?>
-                </div>
+                <?php $this->renderTeaserTextFields($object_type, '_anon'); ?>
+                <?php $this->renderTeaserTextMirrorFields($object_type); ?>
             </div>
         </div>
         <?php
@@ -893,6 +805,10 @@ class TeaserProgressiveUI {
 
                     // Get per-post-type value
                     $opt_val = $this->pp->getTypeOption($option_basename, $object_type);
+
+                    if ('' === (string) $opt_val && '_anon' === $suffix) {
+                        $opt_val = $this->pp->getTypeOption("tease_{$action}_{$item}", $object_type);
+                    }
 
                     // Remove slashes that WordPress adds automatically
                     if ($opt_val) {
@@ -950,6 +866,38 @@ class TeaserProgressiveUI {
             </div>
             <?php
         }
+    }
+
+    private function renderTeaserTextMirrorFields($object_type) {
+        $item_actions = [
+            'content' => ['prepend', 'append'],
+            'name' => ['prepend', 'append'],
+        ];
+
+        foreach ($item_actions as $item => $actions) {
+            foreach ($actions as $action) {
+                $source_id = $object_type . "_tease_{$action}_{$item}_anon";
+                $name = "tease_{$action}_{$item}[{$object_type}]";
+                $value = $this->getSharedTeaserTextOption(
+                    "tease_{$action}_{$item}_anon",
+                    "tease_{$action}_{$item}",
+                    $object_type
+                );
+                ?>
+                <input type="hidden" class="pp-teaser-mirror-field" name="<?php echo esc_attr($name); ?>" data-source="<?php echo esc_attr($source_id); ?>" value="<?php echo esc_attr($value); ?>" />
+                <?php
+            }
+        }
+    }
+
+    private function getSharedTeaserTextOption($anonymous_option, $logged_option, $object_type) {
+        $value = wp_unslash((string) $this->pp->getTypeOption($anonymous_option, $object_type));
+
+        if ('' === $value) {
+            $value = wp_unslash((string) $this->pp->getTypeOption($logged_option, $object_type));
+        }
+
+        return $value;
     }
 
     private function renderRedirectSection($object_type = '') {

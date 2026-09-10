@@ -350,6 +350,10 @@ class PostsTeaser
         $option_basename = "tease_{$teaser_operation}_{$variable}{$anon}";
         $msg = presspermit()->getTypeOption($option_basename, $object_type);
 
+        if (!$msg && !$anon) {
+            $msg = presspermit()->getTypeOption("{$option_basename}_anon", $object_type);
+        }
+
         // Remove slashes that WordPress adds automatically to option values
         if ($msg) {
             $msg = wp_unslash($msg);
