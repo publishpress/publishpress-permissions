@@ -191,7 +191,6 @@ class Profile
             'selected_only' => false,
             'hide_checkboxes' => false,
             'force_display' => false,
-            'edit_membership_link' => false,
             'include_role_metagroups' => false,
         ];
 
@@ -286,36 +285,28 @@ class Profile
             ob_start();
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $agent_type, $stored_groups, $agent_ui_args);
 
-            if ($edit_membership_link || (!$all_groups && $force_display)) :
+            $note = (defined('BP_VERSION'))
+                ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
+                : '';
+
+            $note = apply_filters(
+                'presspermit_user_profile_groups_note',
+                $note,
+                $user_id,
+                $agent_ui_args
+            );
+
+            if ((!$all_groups && $force_display) || $note) :
                 ?>
                 <p>
                     <?php if (!$all_groups && $force_display) :
                         esc_html_e('This user is not a member of any custom Permission Groups.', 'press-permit-core');
-                        ?>&nbsp;&bull;&nbsp;
+                        ?>
                     <?php endif; ?>
 
-                    <?php $title = esc_attr(__("Edit this user's group membership", 'press-permit-core')); ?>
-                    <a href='user-edit.php?user_id=<?php echo esc_attr($user_id); ?>#userprofile_groupsdiv_pp'
-                       title='<?php echo esc_attr($title); ?>'>
-                        <?php esc_html_e('add / edit membership'); ?>
-                    </a>
-                    &nbsp;&nbsp;
-                    <span class="pp-subtext">
-                    <?php
-                    $note = (defined('BP_VERSION'))
-                        ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
-                        : '';
-
-                    $note = apply_filters(
-                        'presspermit_user_profile_groups_note',
-                        $note,
-                        $user_id,
-                        $agent_ui_args
-                    );
-
-                    echo esc_html($note);
-                    ?>
-                </span>
+                    <?php if ($note) : ?>
+                        <span class="pp-subtext"><?php echo esc_html($note); ?></span>
+                    <?php endif; ?>
                 </p>
             <?php
             endif;
@@ -354,7 +345,6 @@ class Profile
             'selected_only' => false,
             'hide_checkboxes' => false,
             'force_display' => false,
-            'edit_membership_link' => false,
             'include_role_metagroups' => false,
         ];
 
@@ -460,41 +450,34 @@ class Profile
                 'locked_ids' => $locked_ids,
                 'show_subset_caption' => false,
                 'hide_checkboxes' => $hide_checkboxes,
+                'link_captions' => true,
                 'single_select' => $single_select
             ];
 
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $css_id, $stored_groups, $args);
             
-            if ($edit_membership_link || (!$all_groups && $force_display)) :
+            $note = (defined('BP_VERSION'))
+                ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
+                : '';
+
+            $note = apply_filters(
+                'presspermit_user_profile_groups_note',
+                $note,
+                $user_id,
+                $args
+            );
+
+            if ((!$all_groups && $force_display) || $note) :
                 ?>
                 <p>
                     <?php if (!$all_groups && $force_display) :
                         esc_html_e('This user is not a member of any custom Permission Groups.', 'press-permit-core');
-                        ?>&nbsp;&bull;&nbsp;
+                        ?>
                     <?php endif; ?>
 
-                    <?php $title = esc_attr(__("Edit this user's group membership", 'press-permit-core')); ?>
-                    <a href='user-edit.php?user_id=<?php echo esc_attr($user_id); ?>#userprofile_groupsdiv_pp'
-                       title='<?php echo esc_attr($title); ?>'>
-                        <?php esc_html_e('add / edit membership'); ?>
-                    </a>
-                    &nbsp;&nbsp;
-                    <span class="pp-subtext">
-                    <?php
-                    $note = (defined('BP_VERSION'))
-                        ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
-                        : '';
-
-                    $note = apply_filters(
-                        'presspermit_user_profile_groups_note',
-                        $note,
-                        $user_id,
-                        $args
-                    );
-
-                    echo esc_html($note);
-                    ?>
-                </span>
+                    <?php if ($note) : ?>
+                        <span class="pp-subtext"><?php echo esc_html($note); ?></span>
+                    <?php endif; ?>
                 </p>
             <?php
             endif;

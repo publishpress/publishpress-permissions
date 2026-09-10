@@ -20,6 +20,7 @@ class AgentPermissionsUI
             'alreadyRole' => esc_html__('Role already selected!', 'press-permit-core'),
             'noAction' => esc_html__('No Action selected!', 'press-permit-core'),
             'submissionMsg' => esc_html__('Saving Roles...', 'press-permit-core'),
+            'groupsSubmissionMsg' => esc_html__('Saving Group Membership...', 'press-permit-core'),
             'reloadRequired' => esc_html__('Reload form for further changes to this role', 'press-permit-core'),
             'showGroups' => esc_html__('Show Groups', 'press-permit-core'),
             'hideGroups' => esc_html__('Hide Groups', 'press-permit-core'),
