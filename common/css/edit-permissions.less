@@ -1092,6 +1092,74 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   }
 }
 
+.pp-profile-groups-summary {
+  .pp_agents_wrapper,
+  .pp_agents_ui_wrapper {
+    margin: 0;
+  }
+
+  .pp_agents_ui_wrapper > div {
+    margin: 0;
+  }
+
+  .pp-list_horiz,
+  .pp-agents-list li:empty,
+  .pp_agents_ui_wrapper > div[style] {
+    display: none;
+  }
+
+  .pp-agents_emsized {
+    clear: none;
+  }
+
+  .pp-agents-list,
+  .pp-agents_emsized ul,
+  .pp-agents-list_auto {
+    clear: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0 0 12px;
+    padding: 0;
+    width: 100%;
+  }
+
+  .pp-agents-list li,
+  .pp-agents_emsized ul li,
+  .pp-agents-list_auto li {
+    align-items: center;
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    display: inline-flex;
+    float: none;
+    gap: 6px;
+    line-height: 1.4;
+    margin: 0;
+    min-height: 30px;
+    padding: 4px 8px;
+    width: auto;
+  }
+
+  .pp-agents-list input[type="checkbox"] {
+    margin: 0;
+  }
+
+  .pp-agents-list label,
+  .pp-agents-list a {
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .pp-agents-list a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .pp-agent-profile {
     .pp-user-avatar-cell {
         width: 100px;
