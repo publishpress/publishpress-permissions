@@ -556,15 +556,11 @@ jQuery(document).ready(function ($) {
         }
 
         var scale = containerWidth / deviceSize.width;
-        // Fixed, not derived from deviceHeight * scale: that would depend on
-        // containerWidth at the moment of measurement, which differs between
-        // the first (pre-layout-settled) read and later reads - causing the
-        // panel to visibly jump in height once the page fully loads. Mobile
-        // gets +200px (see also the matching [data-device="mobile"] CSS rule,
-        // which is what actually applies on first paint since data-device is
-        // rendered server-side from the saved cookie).
+        // Keep the visible viewport stable, but size the inner wrapper to the
+        // scaled iframe height so the preview can scroll to the bottom.
         var baseViewportHeight = window.innerWidth <= 782 ? 430 : 450;
-        var sizerHeight = device === 'mobile' ? baseViewportHeight + 200 : baseViewportHeight;
+        var viewportHeight = device === 'mobile' ? baseViewportHeight + 200 : baseViewportHeight;
+        var sizerHeight = Math.max(viewportHeight, Math.ceil(deviceSize.height * scale));
         var sizerWidth = Math.round(deviceSize.width * scale);
 
         $frame.css({
@@ -578,7 +574,7 @@ jQuery(document).ready(function ($) {
             height: sizerHeight + 'px'
         });
 
-        $viewport.css('height', sizerHeight + 'px');
+        $viewport.css('height', viewportHeight + 'px');
     }
 
     function resizeAllVisibleTeaserPreviews() {
