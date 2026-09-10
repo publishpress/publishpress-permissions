@@ -1399,7 +1399,7 @@ class TeaserProgressiveUI {
                 <thead>
                     <tr>
                         <th>
-                            <strong><?php esc_html_e('Teaser Message Style Customization', 'press-permit-core'); ?></strong>
+                            <strong><?php esc_html_e('Customize the Message for Blocked Users', 'press-permit-core'); ?></strong>
                             <?php $this->generateTooltip(esc_html__('Customize the appearance of teaser message displayed to blocked users.', 'press-permit-core')); ?>
                         </th>
                     </tr>

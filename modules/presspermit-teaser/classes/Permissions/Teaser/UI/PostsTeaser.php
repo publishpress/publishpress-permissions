@@ -36,7 +36,7 @@ class PostsTeaser
         $new = [
             'teaser_type' => esc_html__('Teaser Type', 'press-permit-core'),
             'coverage' => esc_html__('Coverage', 'press-permit-core'),
-            'teaser_text' => esc_html__('Teaser Text', 'press-permit-core'),
+            'teaser_text' => esc_html__('No Teaser Test', 'press-permit-core'),
             'read_more_notice' => esc_html__('Read More Notice', 'press-permit-core'),
             'redirect' => esc_html__('Redirect', 'press-permit-core'),
             'options' => esc_html__('Options', 'press-permit-core'),
