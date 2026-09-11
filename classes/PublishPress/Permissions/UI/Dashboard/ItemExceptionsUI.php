@@ -108,7 +108,7 @@ class ItemExceptionsUI
                     : $gtype_obj->labels->name;
 
                 $class = ($default_agent_type == $agent_type) ? $class_selected : $class_unselected;
-                echo "<li class='" . esc_attr($class) . "'><a href='javascript:void(0)' class='" . esc_attr("{$op}-{$for_item_type}-{$agent_type}") . "'>" . esc_html($label) . '</a></li>';
+                echo "<li class='" . esc_attr($class) . "'><a href='#' class='" . esc_attr("{$op}-{$for_item_type}-{$agent_type}") . "'>" . esc_html($label) . '</a></li>';
             }
 
             echo '</ul></div>';

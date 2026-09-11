@@ -82,6 +82,41 @@ jQuery(document).ready(function ($) {
             },
         }
     } );
+
+    $('.pp-teaser-preview-post-select').select2({
+        placeholder: presspermitTeaser.strings.select_preview_content || presspermitTeaser.strings.select_a_page,
+        width: '260px',
+        ajax: {
+            url: presspermitTeaser.url,
+            dataType: 'json',
+            method: 'get',
+            delay: 250,
+            data: function(params) {
+                return {
+                    search: params.term,
+                    action: 'pp_search_posts',
+                    post_type: $(this).attr('data-post-type') || 'post',
+                    search_content: 1,
+                    nonce: presspermitTeaser.nonce
+                };
+            },
+            processResults: function(data) {
+                var options = [];
+
+                if (data) {
+                    $.each(data, function(index, item) {
+                        options.push({
+                            id: item.ID,
+                            text: item.post_title,
+                            preview_url: item.preview_url
+                        });
+                    });
+                }
+
+                return { results: options };
+            }
+        }
+    });
     
     // Handle post type selector change
     $(document).on('change', '.teaser-redirect-post-type', function() {
@@ -236,21 +271,36 @@ jQuery(document).ready(function ($) {
     // Handle redirect dropdown change in the separate redirect section
     function updateRedirectTargetColumnsVisibility($section) {
         var $redirectModes = $section.find('select.teaser-redirect-mode');
-        var allNoRedirect = $redirectModes.length && $redirectModes.filter(function () {
+        var hasSelectRedirect = $redirectModes.filter(function () {
             return $(this).val() === '(select)';
-        }).length === 0;
+        }).length > 0;
+        var hasUrlRedirect = $redirectModes.filter(function () {
+            return $(this).val() === '(url)';
+        }).length > 0;
 
         $section.find('th').filter(function () {
             return !!$(this).data('title');
         }).each(function () {
             var $th = $(this);
             var titleText = $th.data('title');
-            $th.text(allNoRedirect ? '' : titleText);
+            var column = $th.data('column');
+
+            if ('post-type' === column && !hasSelectRedirect) {
+                titleText = '';
+            } else if ('target' === column && hasUrlRedirect && !hasSelectRedirect) {
+                titleText = $th.data('url-title') || titleText;
+            }
+
+            $th.text((hasSelectRedirect || hasUrlRedirect) ? titleText : '');
         });
     }
 
     $('.teaser-redirect-section select.teaser-redirect-mode').on('change', function() {
-        $(this).parent('td').siblings('td').find('div.pp-select-dynamic-wrapper').toggle($(this).val() == '(select)');
+        var mode = $(this).val();
+        var $cells = $(this).parent('td').siblings('td');
+
+        $cells.find('div.pp-select-dynamic-wrapper').toggle(mode == '(select)');
+        $cells.find('div.pp-custom-url-wrapper').toggle(mode == '(url)');
         updateRedirectTargetColumnsVisibility($(this).closest('.teaser-redirect-section'));
     });
 
@@ -263,59 +313,735 @@ jQuery(document).ready(function ($) {
     // Progressive Disclosure UI - Teaser Settings
     // ========================================================================
 
-    // Function to update preview text based on teaser type and active tab
+    function getTeaserSitePreview($container) {
+        var postType = String($container.data('post-type') || '');
+
+        return $('.pp-teaser-site-preview').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        }).first();
+    }
+
+    function getTeaserSettingsContainer($element) {
+        var $postTypeContainer = $element.closest('[data-post-type]');
+        var postType = String($postTypeContainer.data('post-type') || '');
+
+        return $('.pp-teaser-settings-container').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        }).first();
+    }
+
+    function getTeaserNoticePreviews($container) {
+        return $container.find('.pp-teaser-notice-preview')
+            .add(getTeaserSitePreview($container).find('.pp-teaser-notice-preview'));
+    }
+
+    function escapePreviewAttribute(value) {
+        return String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/"/g, '&quot;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;');
+    }
+
+    function updateExternalPreviewLink($sitePreview, teaserType) {
+        var $link = $sitePreview.find('.pp-teaser-preview-external-link');
+        var defaultPreviewUrl = String($link.data('default-preview-url') || '');
+        var teaserPreviewUrl = getSelectedPreviewUrl($sitePreview, teaserType);
+        var previousObjectUrl = $link.data('preview-object-url');
+
+        if (!$link.length) {
+            return;
+        }
+
+        if (previousObjectUrl && window.URL && window.URL.revokeObjectURL) {
+            window.URL.revokeObjectURL(previousObjectUrl);
+            $link.removeData('preview-object-url');
+        }
+
+        if (teaserType === '0') {
+            $link.attr('href', defaultPreviewUrl);
+            return;
+        }
+
+        if (teaserPreviewUrl) {
+            var teaserPayload = $sitePreview.data('theme-teaser-payload') || {};
+
+            $link.attr(
+                'href',
+                teaserPreviewUrl + '#pp_permissions_teaser=' + encodeURIComponent(JSON.stringify(teaserPayload))
+            );
+            return;
+        }
+
+        // Fallback only: PHP always renders a teaser-preview-url, so this Blob mockup shouldn't
+        // normally be reached.
+        if (!window.Blob || !window.URL || !window.URL.createObjectURL) {
+            $link.attr('href', defaultPreviewUrl);
+            return;
+        }
+
+        var activeStateSelector = teaserType === 'redirect'
+            ? '.pp-teaser-preview-redirect-response'
+            : '.pp-teaser-preview-content';
+        var $article = $sitePreview.find('.pp-teaser-preview-article').clone();
+
+        $article
+            .removeAttr('aria-live')
+            .find('.pp-teaser-preview-state')
+            .not(activeStateSelector)
+            .remove();
+
+        $article.find(activeStateSelector).css(
+            'display',
+            teaserType === 'redirect' ? 'flex' : 'block'
+        );
+        $article.find('[aria-live]').removeAttr('aria-live');
+
+        var stylesheetUrl = String($sitePreview.data('preview-stylesheet-url') || '');
+        var documentTitle = String($sitePreview.data('preview-document-title') || '');
+        var previewDocument = '<!doctype html>'
+            + '<html><head><meta charset="utf-8">'
+            + '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            + '<title>' + escapePreviewAttribute(documentTitle) + '</title>'
+            + '<link rel="stylesheet" href="' + escapePreviewAttribute(stylesheetUrl) + '">'
+            + '<style>'
+            + 'html,body{margin:0;min-height:100%;}'
+            + 'body{box-sizing:border-box;padding:32px;background:#f0f0f1;}'
+            + '.pp-teaser-preview-article{box-sizing:border-box;width:100%;min-height:0;'
+            + 'max-width:none;margin:0 auto;border:1px solid #c3c4c7;'
+            + 'box-shadow:0 5px 18px rgba(0,0,0,.08);}'
+            + '@media(max-width:782px){body{padding:16px;}}'
+            + '</style></head><body>'
+            + $article.prop('outerHTML')
+            + '</body></html>';
+        var objectUrl = window.URL.createObjectURL(
+            new window.Blob([previewDocument], { type: 'text/html' })
+        );
+
+        $link
+            .attr('href', objectUrl)
+            .data('preview-object-url', objectUrl);
+    }
+
+    function getSelectedPreviewOption($sitePreview) {
+        var $select = $sitePreview.find('.pp-teaser-preview-post-select');
+
+        return $select.length ? $select.find('option:selected') : $();
+    }
+
+    function getSelectedPreviewId($sitePreview) {
+        return String($sitePreview.find('.pp-teaser-preview-post-select').val() || '');
+    }
+
+    function getSelectedPreviewSelect2Data($sitePreview) {
+        var $select = $sitePreview.find('.pp-teaser-preview-post-select');
+        var selectData = $select.length ? $select.select2('data') : [];
+
+        return selectData && selectData.length ? selectData[0] : null;
+    }
+
+    function getPreviewPostCache($sitePreview) {
+        var cache = $sitePreview.data('preview-post-cache');
+
+        if (!cache) {
+            cache = {};
+            $sitePreview.data('preview-post-cache', cache);
+        }
+
+        return cache;
+    }
+
+    function addTeaserPreviewArgs(url, $sitePreview, teaserType) {
+        var separator = url.indexOf('?') === -1 ? '?' : '&';
+        var postType = String($sitePreview.data('post-type') || 'post');
+
+        return url + separator + $.param({
+            pp_permissions_teaser_preview: 'teaser',
+            pp_permissions_teaser_post_type: postType,
+            pp_permissions_teaser_type: teaserType
+        });
+    }
+
+    function getSelectedPreviewUrl($sitePreview, teaserType) {
+        var selectedId = getSelectedPreviewId($sitePreview);
+        var $option = getSelectedPreviewOption($sitePreview);
+        var cache = getPreviewPostCache($sitePreview);
+        var select2Data = getSelectedPreviewSelect2Data($sitePreview);
+        var previewUrl = selectedId && cache[selectedId] ? cache[selectedId].previewUrl : '';
+
+        if (!previewUrl) {
+            previewUrl = String($option.data('preview-url') || (select2Data && select2Data.preview_url) || '');
+        }
+
+        return previewUrl
+            ? addTeaserPreviewArgs(previewUrl, $sitePreview, teaserType)
+            : String($sitePreview.find('.pp-teaser-preview-external-link').data('teaser-preview-url') || '');
+    }
+
+    function getSelectedPreviewData($sitePreview, key) {
+        var selectedId = getSelectedPreviewId($sitePreview);
+        var cache = getPreviewPostCache($sitePreview);
+        var select2Data;
+
+        if (selectedId && cache[selectedId] && typeof cache[selectedId][key] !== 'undefined') {
+            return String(cache[selectedId][key] || '');
+        }
+
+        if ('title' === key) {
+            select2Data = getSelectedPreviewSelect2Data($sitePreview);
+
+            return String((select2Data && select2Data.text) || getSelectedPreviewOption($sitePreview).text() || '');
+        }
+
+        return '';
+    }
+
+    function loadSelectedPreviewPostData($sitePreview, $container) {
+        var selectedId = getSelectedPreviewId($sitePreview);
+        var cache = getPreviewPostCache($sitePreview);
+
+        if (!selectedId || cache[selectedId] || $sitePreview.data('preview-post-loading') === selectedId) {
+            return;
+        }
+
+        $sitePreview.data('preview-post-loading', selectedId);
+
+        $.getJSON(presspermitTeaser.url, {
+            action: 'pp_get_teaser_preview_post',
+            post_id: selectedId,
+            post_type: String($sitePreview.data('post-type') || 'post'),
+            nonce: presspermitTeaser.nonce
+        }).done(function(data) {
+            if (!data || !data.ID) {
+                return;
+            }
+
+            cache[String(data.ID)] = {
+                title: data.post_title || '',
+                previewUrl: data.preview_url || '',
+                excerpt: data.excerpt || '',
+                preMore: data.pre_more || '',
+                xChars: data.x_chars || ''
+            };
+
+            updateTeaserPreviewText($container);
+        }).always(function() {
+            $sitePreview.removeData('preview-post-loading');
+        });
+    }
+
+    function postThemeTeaserPayload($sitePreview) {
+        var $frame = $sitePreview.find('.pp-teaser-preview-theme-frame');
+        var frame = $frame.get(0);
+        var payload = $sitePreview.data('theme-teaser-payload');
+
+        if (!frame || !frame.contentWindow || !payload) {
+            return;
+        }
+
+        frame.contentWindow.postMessage(
+            {
+                action: 'pp_permissions_teaser_preview_update',
+                payload: payload
+            },
+            window.location.origin
+        );
+    }
+
+    var TEASER_PREVIEW_DEVICES = {
+        desktop: { width: 1920, height: 1080 },
+        mobile: { width: 480, height: 960 }
+    };
+
+    function updateTeaserPreviewViewport($sitePreview) {
+        var $viewport = $sitePreview.find('.pp-teaser-preview-viewport');
+        var $sizer = $viewport.find('.pp-teaser-preview-frame-sizer');
+        var $frame = $viewport.find('.pp-teaser-preview-theme-frame');
+
+        if (!$viewport.length || !$sizer.length || !$frame.length) {
+            return;
+        }
+
+        var device = $viewport.data('device') || 'desktop';
+        var deviceSize = TEASER_PREVIEW_DEVICES[device] || TEASER_PREVIEW_DEVICES.desktop;
+        var containerWidth = $viewport.width();
+
+        if (!containerWidth) {
+            return;
+        }
+
+        var scale = containerWidth / deviceSize.width;
+        // Fixed, not derived from deviceHeight * scale: that would depend on
+        // containerWidth at the moment of measurement, which differs between
+        // the first (pre-layout-settled) read and later reads - causing the
+        // panel to visibly jump in height once the page fully loads. Mobile
+        // gets +200px (see also the matching [data-device="mobile"] CSS rule,
+        // which is what actually applies on first paint since data-device is
+        // rendered server-side from the saved cookie). This is the visible
+        // "window" height - not the full page height, see sizerHeight below.
+        var baseViewportHeight = window.innerWidth <= 782 ? 430 : 450;
+        var viewportHeight = device === 'mobile' ? baseViewportHeight + 200 : baseViewportHeight;
+        var sizerWidth = Math.round(deviceSize.width * scale);
+        // The iframe reports its real rendered height once loaded (see
+        // reportContentHeight() in theme-teaser-preview.dev.js). A page taller than the
+        // assumed device height would otherwise need its own internal scrollbar in addition
+        // to this panel's - two scrollbars for one page. Falling back to deviceSize.height
+        // until that report arrives (or for cross-origin/unreported edge cases).
+        var frameHeight = Math.max(deviceSize.height, $frame.data('content-height') || 0);
+        // The sizer must be sized to the FULL scaled page (not clamped to
+        // viewportHeight), or its own overflow:hidden would permanently clip
+        // anything below the visible window with no way to scroll to it.
+        // The viewport's fixed height + overflow-y:auto is what turns that
+        // into a scrollable window instead of just a taller panel.
+        var sizerHeight = Math.round(frameHeight * scale);
+
+        $frame.css({
+            width: deviceSize.width + 'px',
+            height: frameHeight + 'px',
+            transform: 'scale(' + scale + ')'
+        });
+
+        $sizer.css({
+            width: sizerWidth + 'px',
+            height: sizerHeight + 'px'
+        });
+
+        $viewport.css('height', viewportHeight + 'px');
+    }
+
+    function resizeAllVisibleTeaserPreviews() {
+        $('.pp-teaser-site-preview:visible').each(function() {
+            updateTeaserPreviewViewport($(this));
+        });
+    }
+
+    function loadThemePreview($sitePreview, teaserType) {
+        var $frame = $sitePreview.find('.pp-teaser-preview-theme-frame');
+        var previewMode = teaserType === '0' ? 'default' : 'teaser';
+        var previewUrl = previewMode === 'teaser'
+            ? getSelectedPreviewUrl($sitePreview, teaserType)
+            : $frame.data('default-src');
+
+        if (!$frame.length || !previewUrl) {
+            return;
+        }
+
+        updateTeaserPreviewViewport($sitePreview);
+
+        if ($frame.data('preview-mode') === previewMode && $frame.data('preview-url') === previewUrl && $frame.attr('src')) {
+            if (previewMode === 'teaser') {
+                postThemeTeaserPayload($sitePreview);
+            }
+            return;
+        }
+
+        $frame
+            .data('preview-mode', previewMode)
+            .data('preview-url', previewUrl)
+            .removeClass('is-loaded')
+            .attr('aria-busy', 'true');
+        $sitePreview.find('.pp-teaser-preview-theme-loading').show();
+        $sitePreview.find('.pp-teaser-preview-theme-error').prop('hidden', true);
+
+        $frame
+            .off('.ppThemePreview')
+            .one('load.ppThemePreview', function() {
+                $(this)
+                    .attr('aria-busy', 'false')
+                    .addClass('is-loaded');
+                $sitePreview.find('.pp-teaser-preview-theme-loading').hide();
+                updateTeaserPreviewViewport($sitePreview);
+
+                if (previewMode === 'teaser') {
+                    postThemeTeaserPayload($sitePreview);
+                }
+            })
+            .one('error.ppThemePreview', function() {
+                $(this).attr('aria-busy', 'false');
+                $sitePreview.find('.pp-teaser-preview-theme-loading').hide();
+                $sitePreview.find('.pp-teaser-preview-theme-error').prop('hidden', false);
+            })
+            .attr('src', previewUrl);
+    }
+
+    var TEASER_PREVIEW_DEVICE_COOKIE = 'pp_teaser_preview_device';
+
+    // A cookie (not localStorage) is used here specifically because PHP reads
+    // it too (see TeaserProgressiveUI::getTeaserPreviewDeviceMode()) to render
+    // the right mode server-side - localStorage isn't sent with the request,
+    // so the server would have no way to know the saved choice and the page
+    // would always start in desktop mode before JS could correct it.
+    function getSavedTeaserPreviewDevice() {
+        var match = document.cookie.match(/(?:^|; )pp_teaser_preview_device=(desktop|mobile)(?:;|$)/);
+
+        return match ? match[1] : 'desktop';
+    }
+
+    function saveTeaserPreviewDevice(device) {
+        try {
+            document.cookie = TEASER_PREVIEW_DEVICE_COOKIE + '=' + device
+                + '; path=/; max-age=31536000; SameSite=Lax';
+        } catch (e) {
+            // Ignore - cookies disabled.
+        }
+    }
+
+    function applyTeaserPreviewDevice($sitePreview, device) {
+        var isDesktop = device === 'desktop';
+
+        $sitePreview.find('.pp-teaser-preview-device-btn')
+            .removeClass('active')
+            .attr('aria-pressed', 'false')
+            .filter('[data-device="' + device + '"]')
+            .addClass('active')
+            .attr('aria-pressed', 'true');
+
+        $sitePreview.find('.pp-teaser-preview-viewport')
+            .attr('data-device', device)
+            .data('device', device);
+        $sitePreview.closest('.pp-teaser-preview-container')
+            .toggleClass('is-desktop-expanded', isDesktop);
+        $sitePreview.closest('.pp-teaser-settings-layout')
+            .toggleClass('is-desktop-expanded', isDesktop);
+    }
+
+    $(document).on('click', '.pp-teaser-preview-device-btn', function() {
+        var $btn = $(this);
+        var $sitePreview = $btn.closest('.pp-teaser-site-preview');
+        var device = $btn.data('device') || 'desktop';
+
+        applyTeaserPreviewDevice($sitePreview, device);
+        saveTeaserPreviewDevice(device);
+
+        window.setTimeout(function() {
+            updateTeaserPreviewViewport($sitePreview);
+        }, 0);
+    });
+
+    var teaserPreviewResizeTimer = null;
+    $(window).on('resize.ppTeaserPreviewViewport', function() {
+        window.clearTimeout(teaserPreviewResizeTimer);
+        teaserPreviewResizeTimer = window.setTimeout(resizeAllVisibleTeaserPreviews, 150);
+    });
+
+    $(window).on('message.ppPermissionsTeaserPreview', function(event) {
+        var originalEvent = event.originalEvent;
+        var action = originalEvent && originalEvent.data && originalEvent.data.action;
+
+        if (!originalEvent || originalEvent.origin !== window.location.origin || !action) {
+            return;
+        }
+
+        if (action !== 'pp_permissions_teaser_preview_ready' && action !== 'pp_permissions_teaser_preview_resized') {
+            return;
+        }
+
+        $('.pp-teaser-site-preview').each(function() {
+            var $sitePreview = $(this);
+            var $frame = $sitePreview.find('.pp-teaser-preview-theme-frame');
+            var frame = $frame.get(0);
+
+            if (frame && frame.contentWindow === originalEvent.source) {
+                if (action === 'pp_permissions_teaser_preview_ready') {
+                    postThemeTeaserPayload($sitePreview);
+                } else {
+                    $frame.data('content-height', originalEvent.data.height || 0);
+                    updateTeaserPreviewViewport($sitePreview);
+                }
+                return false;
+            }
+        });
+    });
+
+    function getEditorHtml($container, optionName) {
+        var postType = String($container.data('post-type') || '');
+        var editorId = postType + '_' + optionName;
+        var editorElement = document.getElementById(editorId);
+
+        if (!editorElement) {
+            return '';
+        }
+
+        if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+            return tinymce.get(editorId).getContent();
+        }
+
+        return String($(editorElement).val() || '');
+    }
+
+    function getTeaserStyleNumber($container, optionName, fallback, minimum, maximum) {
+        var value = parseInt($container.find('[name*="' + optionName + '"]').val(), 10);
+
+        if (isNaN(value)) {
+            value = fallback;
+        }
+
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    function getTeaserStyleColor($container, optionName, fallback) {
+        var value = String($container.find('[name*="' + optionName + '"]').val() || '');
+
+        return /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(value) ? value : fallback;
+    }
+
+    function getTeaserNumberOption($container, optionName, fallback, minimum, maximum) {
+        var value = parseInt($container.find('input[name^="' + optionName + '"]').val(), 10);
+
+        if (isNaN(value)) {
+            value = fallback;
+        }
+
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    function getPreviewTextFromHtml(html) {
+        var element = document.createElement('div');
+
+        element.innerHTML = String(html || '');
+
+        return element.textContent || element.innerText || '';
+    }
+
+    function formatPreviewExcerpt($container, excerptHtml) {
+        var excerptText = getPreviewTextFromHtml(excerptHtml).trim();
+        var maxChars;
+
+        if (!excerptText) {
+            return '';
+        }
+
+        maxChars = getTeaserNumberOption($container, 'excerpt_num_chars', 50, 10, 1000);
+
+        if (maxChars && excerptText.length > maxChars) {
+            excerptText = excerptText.substring(0, maxChars) + '...';
+        }
+
+        return '<p>' + escapePreviewAttribute(excerptText) + '</p>';
+    }
+
+    function formatPreviewXChars($container, contentHtml) {
+        var contentText = getPreviewTextFromHtml(contentHtml).trim();
+        var maxChars;
+
+        if (!contentText) {
+            return '';
+        }
+
+        maxChars = getTeaserNumberOption($container, 'x_chars_num_chars', 50, 10, 1000);
+
+        if (maxChars && contentText.length > maxChars) {
+            contentText = contentText.substring(0, maxChars) + '...';
+        }
+
+        return '<p>' + escapePreviewAttribute(contentText) + '</p>';
+    }
+
+    function formatPreviewTextBlock(html) {
+        var text = getPreviewTextFromHtml(html).trim();
+
+        return text ? '<p>' + escapePreviewAttribute(text) + '</p>' : '';
+    }
+
+    function getTeaserNoticeStyle($container) {
+        var useCustomStyle = String(
+            $container.find('.pp-teaser-notice-style-select').val() || 'default'
+        ) === 'custom';
+        var borderPosition = useCustomStyle
+            ? String($container.find('[name*="teaser_notice_border_position"]:checked').val() || 'left')
+            : 'left';
+
+        if (['left', 'right', 'top', 'bottom', 'all'].indexOf(borderPosition) === -1) {
+            borderPosition = 'left';
+        }
+
+        return {
+            backgroundColor: useCustomStyle
+                ? getTeaserStyleColor($container, 'teaser_notice_bg_color', '#f0f6fc')
+                : '#f0f6fc',
+            textColor: useCustomStyle
+                ? getTeaserStyleColor($container, 'teaser_notice_text_color', '#1d2327')
+                : '#1d2327',
+            borderColor: useCustomStyle
+                ? getTeaserStyleColor($container, 'teaser_notice_border_color', '#0073aa')
+                : '#0073aa',
+            borderWidth: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_border_width', 4, 0, 20)
+                : 4,
+            borderPosition: borderPosition,
+            padding: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_padding', 15, 0, 50)
+                : 15,
+            borderRadius: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_border_radius', 0, 0, 50)
+                : 0,
+            fontSize: useCustomStyle
+                ? getTeaserStyleNumber($container, 'teaser_notice_font_size', 14, 10, 30)
+                : 14
+        };
+    }
+
+    function updateTeaserSitePreview($container, teaserType, messageText) {
+        var $sitePreview = getTeaserSitePreview($container);
+
+        if (!$sitePreview.length) {
+            return;
+        }
+
+        teaserType = String(teaserType);
+
+        var $article = $sitePreview.find('.pp-teaser-preview-article');
+        var suffix = '_anon';
+        var sampleTitle = escapePreviewAttribute(
+            getSelectedPreviewData($sitePreview, 'title') || String($sitePreview.data('sample-title') || '')
+        );
+
+        loadSelectedPreviewPostData($sitePreview, $container);
+
+        // These mock-article elements (title/image/body/notice, and the redirect mockup) are only
+        // ever used by the Blob fallback in updateExternalPreviewLink() now — every teaser type
+        // below renders through the real theme iframe instead, so keep them hidden here.
+        $sitePreview.find('.pp-teaser-preview-image, .pp-teaser-preview-title, .pp-teaser-notice-preview').hide();
+
+        if (teaserType === '0') {
+            $sitePreview.find('.pp-teaser-preview-default-response').show();
+            loadThemePreview($sitePreview, teaserType);
+
+            $article.attr('data-preview-state', 'default');
+            $sitePreview.addClass('is-ready');
+            updateExternalPreviewLink($sitePreview, teaserType);
+            return;
+        }
+
+        var titleHtml = sampleTitle;
+        var contentHtml = '';
+        // "Featured Image" / "Comments Area" are global settings on the Options tab now (see
+        // issue #2518), not per-post-type fields inside $container - read them from the page.
+        var hideThumbnail = String(
+            $('input[name="teaser_opt_hide_thumbnail"]:checked').val() || '0'
+        ) === '1';
+        var disableComments = $('input[name="teaser_opt_disable_comments"][type="checkbox"]').is(':checked');
+
+        if (teaserType === '1') {
+            // "Teaser Text" preserves bold/italic/etc. on the front end, so the payload sent to the
+            // preview iframe carries raw HTML here instead of the escaped plain text used below.
+            var titlePrefixHtml = getEditorHtml($container, 'tease_prepend_name' + suffix);
+            var titleSuffixHtml = getEditorHtml($container, 'tease_append_name' + suffix);
+            var contentPrefixHtml = getEditorHtml($container, 'tease_prepend_content' + suffix);
+            var contentSuffixHtml = getEditorHtml($container, 'tease_append_content' + suffix);
+            var teaserContent = getEditorHtml($container, 'tease_replace_content' + suffix);
+
+            if (!teaserContent) {
+                teaserContent = messageText;
+            }
+
+            titleHtml = [titlePrefixHtml, sampleTitle, titleSuffixHtml].filter(Boolean).join(' ');
+            contentHtml = [contentPrefixHtml, teaserContent, contentSuffixHtml].filter(Boolean).join(' ');
+        } else if (teaserType === 'redirect') {
+            // Prepend/append and the notice-style box don't apply to redirects on the front end;
+            // this message (with the resolved target link) is pre-rendered server-side.
+            contentHtml = String($sitePreview.data('redirect-message') || '');
+        } else if (teaserType === 'read_more') {
+            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+        } else if (teaserType === 'more') {
+            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+        } else if (teaserType === 'excerpt') {
+            contentHtml = [formatPreviewExcerpt($container, getSelectedPreviewData($sitePreview, 'excerpt')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+        } else if (teaserType === 'x_chars') {
+            contentHtml = [formatPreviewXChars($container, getSelectedPreviewData($sitePreview, 'xChars')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+        } else {
+            // read_more / excerpt / x_chars / more: not escaped, since these notice messages
+            // preserve their formatting on the front end too (see PostsTeaser::wrapTeaserNotice()).
+            contentHtml = messageText;
+        }
+
+        $sitePreview.data('theme-teaser-payload', {
+            title: titleHtml,
+            content: contentHtml,
+            hideThumbnail: hideThumbnail,
+            disableComments: disableComments,
+            noticeStyle: getTeaserNoticeStyle($container)
+        });
+        $sitePreview.find('.pp-teaser-preview-default-response').show();
+        $article.attr('data-preview-state', 'theme-teaser');
+        $sitePreview.addClass('is-ready');
+        loadThemePreview($sitePreview, teaserType);
+        updateExternalPreviewLink($sitePreview, teaserType);
+    }
+
+    $(document).on('change', '.pp-teaser-preview-post-select', function() {
+        var $sitePreview = $(this).closest('.pp-teaser-site-preview');
+        var $container = getTeaserSettingsContainer($sitePreview);
+
+        if ($container.length) {
+            updateTeaserPreviewText($container);
+        }
+    });
+
+    // Function to update preview text based on teaser type
     function updateTeaserPreviewText($container) {
         var teaserType = $container.find('.pp-teaser-type-select').val();
-        var $preview = $container.find('.pp-teaser-notice-preview');
+        var $preview = getTeaserNoticePreviews($container);
         
         if (!$preview.length) {
             return; // No preview element found
         }
         
         var messageText = '';
-        
+        // All teaser message types below preserve formatting (bold/italic/etc.) on the front end
+        // now, so the preview renders them as HTML rather than escaped plain text.
+        var isHtmlMessage = true;
+
         if (teaserType == '1') {
-            // Teaser Text mode - check which tab is active
-            var activeTab = $container.find('.pp-teaser-text-tabs .active').data('tab');
-            if (activeTab == 'anon-content') {
-                messageText = $preview.data('teaser-text-anon') || '';
-            } else {
-                messageText = $preview.data('teaser-text-logged') || '';
+            messageText = getEditorHtml($container, 'tease_replace_content_anon');
+
+            if (!messageText) {
+                messageText = $preview.first().data('teaser-text-anon') || '';
             }
         } else if (teaserType == 'read_more') {
-            messageText = $preview.data('read-more-msg');
+            messageText = $preview.first().data('read-more-msg');
         } else if (teaserType == 'excerpt') {
-            messageText = $preview.data('excerpt-msg');
+            messageText = $preview.first().data('excerpt-msg');
         } else if (teaserType == 'x_chars' || teaserType == 'more') {
-            messageText = $preview.data('x-chars-msg');
+            messageText = $preview.first().data('x-chars-msg');
         }
-        
-        // Fallback to default if empty
+
+        // Fallback to default if empty (a fixed plain-text string, not user-entered HTML)
         if (!messageText) {
-            messageText = 'To read the full content, please log in to this site.';
+            messageText = $preview.first().data('teaser-text-default')
+                || 'You do not have permission to view the full content.';
+            isHtmlMessage = false;
         }
-        
-        $preview.text(messageText);
+
+        if (isHtmlMessage) {
+            $preview.html(messageText);
+        } else {
+            $preview.text(messageText);
+        }
+
+        updateTeaserSitePreview($container, teaserType, messageText);
     }
 
     // Function to update teaser settings visibility based on selected type
     function updateTeaserSettings(selectedType, $container) {
-        // Show/hide number input based on type
+        // Show/hide number input based on type. Not animated: these two inline fields sit
+        // side by side, so fading one in while the other fades out made both briefly visible
+        // at once (a layout glitch), instead of a clean swap.
         if (selectedType == 'x_chars') {
-            $container.find('.pp-num-chars-setting').fadeIn(300);
-            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+            $container.find('.pp-num-chars-setting').show();
+            $container.find('.pp-excerpt-chars-setting').hide();
         } else if (selectedType == 'excerpt') {
-            $container.find('.pp-excerpt-chars-setting').fadeIn(300);
-            $container.find('.pp-num-chars-setting').fadeOut(300);
+            $container.find('.pp-excerpt-chars-setting').show();
+            $container.find('.pp-num-chars-setting').hide();
         } else {
-            $container.find('.pp-num-chars-setting').fadeOut(300);
-            $container.find('.pp-excerpt-chars-setting').fadeOut(300);
+            $container.find('.pp-num-chars-setting').hide();
+            $container.find('.pp-excerpt-chars-setting').hide();
         }
 
         // Show/hide Teaser Notice Style field based on teaser type
         // Hide for redirect and no teaser, show for all other types
         var $teaserNoticeStyleRow = $container.find('select[name^="teaser_notice_style_mode"]').closest('tr');
-        var $teaserNoticeStyleCard = $container.find('.pp-teaser-notice-style-settings')
+        var $teaserNoticeStyleCard = $container.find('.pp-teaser-notice-style-settings');
         if (selectedType == '0' || selectedType == 'redirect') {
             $teaserNoticeStyleCard.hide();
             $teaserNoticeStyleRow.hide();
@@ -388,23 +1114,29 @@ jQuery(document).ready(function ($) {
     }
 
     // Post type selector - switch between different post type settings
-    $('#pp_current_post_type').on('change', function() {
+    $(document).on('change', '.pp-current-post-type', function() {
         var selectedType = $(this).val();
         
         // Save selected post type to hidden field for persistence
         $('#selected_post_type').val(selectedType);
+        $('.pp-current-post-type').val(selectedType);
         
         // Hide all containers
         $('.pp-teaser-settings-container').removeClass('active').hide();
-        
+        $('.pp-teaser-preview-container').removeClass('active').hide();
+
         // Show selected container with animation
         var $selectedContainer = $('.pp-teaser-settings-container[data-post-type="' + selectedType + '"]');
         $selectedContainer.addClass('active pp-fade-in').show();
+        $('.pp-teaser-preview-container[data-post-type="' + selectedType + '"]')
+            .addClass('active pp-fade-in')
+            .show();
 
         // Check the teaser type of the selected post type and show/hide sections
         var teaserType = $selectedContainer.find('.pp-teaser-type-select').val();
 
         updateTeaserSettings(teaserType, $selectedContainer);
+        window.setTimeout(resizeAllVisibleTeaserPreviews, 0);
     });
 
     // Teaser type select dropdown - show/hide conditional settings
@@ -416,20 +1148,42 @@ jQuery(document).ready(function ($) {
         updateTeaserSettings(selectedType, $container);
     });
 
-    // Teaser text tabs - switch between logged in and not logged in
+    $(document).on(
+        'input change',
+        'input[name^="x_chars_num_chars"], input[name^="excerpt_num_chars"]',
+        function() {
+            var $container = getTeaserSettingsContainer($(this));
+
+            updateTeaserPreviewText($container);
+        }
+    );
+
+    // "Featured Image" / "Comments Area" (teaser_opt_hide_thumbnail / teaser_opt_disable_comments)
+    // are global now (issue #2518), so a change refreshes every post type's preview, not just
+    // whichever one happens to be showing.
+    $(document).on(
+        'input change',
+        'input[name="teaser_opt_hide_thumbnail"], input[name="teaser_opt_disable_comments"]',
+        function() {
+            $('.pp-teaser-settings-container').each(function() {
+                updateTeaserPreviewText($(this));
+            });
+        }
+    );
+
+    // Teaser text tabs - switch between "Not Logged In Users" / "Logged In Users" sub-tabs
+    // inside the Teaser Message and Teaser Text Configuration cards.
     $(document).on('click', '.pp-teaser-text-tab', function() {
         var tab = $(this).data('tab');
-        var $container = $(this).closest('.pp-teaser-text-card, .pp-teaser-notice-style-settings');
-        
-        // Update tab active state
-        $container.find('.pp-teaser-text-tab').removeClass('active');
+        var $card = $(this).closest('.pp-teaser-text-card, .pp-teaser-notice-style-settings');
+
+        $card.find('.pp-teaser-text-tab').removeClass('active');
         $(this).addClass('active');
-        
-        // Show corresponding content
-        $container.find('.pp-teaser-text-content').removeClass('active').hide();
-        $container.find('.pp-teaser-text-content[data-tab-content="' + tab + '"]')
+
+        $card.find('.pp-teaser-text-content').removeClass('active').hide();
+        $card.find('.pp-teaser-text-content[data-tab-content="' + tab + '"]')
             .addClass('active')
-            .fadeIn(200);
+            .show();
     });
 
     // Initialize visibility on page load for progressive disclosure UI
@@ -441,114 +1195,53 @@ jQuery(document).ready(function ($) {
         if (savedPostType && $('.pp-teaser-settings-container[data-post-type="' + savedPostType + '"]').length) {
             // Restore previously selected post type
             $container = $('.pp-teaser-settings-container[data-post-type="' + savedPostType + '"]');
-            $('#pp_current_post_type').val(savedPostType);
+            $('.pp-current-post-type').val(savedPostType);
         } else {
             // Show first post type by default
             $container = $('.pp-teaser-settings-container').first();
             if ($container.length) {
                 // Try to find the first enabled option in the post type selector
-                var $firstEnabledOption = $('#pp_current_post_type option:not(:disabled)').first();
+                var $firstEnabledOption = $('.pp-current-post-type').first().find('option:not(:disabled)').first();
                 var firstPostType = $firstEnabledOption.length ? $firstEnabledOption.val() : $container.data('post-type');
-                $('#pp_current_post_type').val(firstPostType);
+                $('.pp-current-post-type').val(firstPostType);
                 $('#selected_post_type').val(firstPostType);
             }
         }
 
         if ($container && $container.length) {
             $container.addClass('active').show();
+            var activePostType = String($container.data('post-type') || '');
 
-            // Check the post type's teaser setting and show/hide elements accordingly
+            $('.pp-teaser-preview-container').removeClass('active').hide();
+            $('.pp-teaser-preview-container').filter(function() {
+                return String($(this).data('post-type') || '') === activePostType;
+            }).addClass('active').show();
+
             var selectedType = $container.find('.pp-teaser-type-select').val();
-            
-            // Show/hide number input based on type
-            if (selectedType == 'x_chars') {
-                $container.find('.pp-num-chars-setting').show();
-                $container.find('.pp-excerpt-chars-setting').hide();
-            } else if (selectedType == 'excerpt') {
-                $container.find('.pp-excerpt-chars-setting').show();
-                $container.find('.pp-num-chars-setting').hide();
-            } else {
-                $container.find('.pp-num-chars-setting').hide();
-                $container.find('.pp-excerpt-chars-setting').hide();
-            }
 
-            // Show/hide Teaser Notice Style field based on teaser type
-            // Hide for redirect and no teaser, show for all other types
-            var $teaserNoticeStyleRow = $container.find('select[name^="teaser_notice_style_mode"]').closest('tr');
-            var $teaserNoticeStyleCard = $container.find('.pp-teaser-notice-style-settings')
-            if (selectedType == '0' || selectedType == 'redirect') {
-                $teaserNoticeStyleCard.hide();
-                $teaserNoticeStyleRow.hide();
-            } else {
-                $teaserNoticeStyleRow.show();
-                var $teaserNoticeStyleValue = $teaserNoticeStyleRow.find('select[name^="teaser_notice_style_mode"]').val();
-                if ($teaserNoticeStyleValue === 'custom') {
-                    $teaserNoticeStyleCard.show();
-                } else {
-                    $teaserNoticeStyleCard.hide();
-                }
-            }
-
-            // Hide all notice cards first for smooth transition
-            var $noticeCards = $container.find('.pp-read-more-notice-card, .pp-excerpt-notice-card, .pp-x-chars-notice-card');
-            
-            if (selectedType == '0') {
-                // No Teaser: hide everything
-                $container.find('.pp-teaser-application-fields').hide();
-                $container.find('.pp-teaser-text-card').hide();
-                $container.find('.pp-teaser-redirect-settings').hide();
-                $noticeCards.hide();
-            } else if (selectedType == 'redirect') {
-                // Redirect: show only redirect settings and application fields
-                $container.find('.pp-teaser-application-fields').show();
-                $container.find('.pp-teaser-text-card').hide();
-                $container.find('.pp-teaser-redirect-settings').show();
-                $noticeCards.hide();
-            } else if (selectedType == '1') {
-                // Teaser Text: show teaser text card and application fields, hide redirect
-                $container.find('.pp-teaser-application-fields').show();
-                $container.find('.pp-teaser-text-card').show();
-                $container.find('.pp-teaser-redirect-settings').hide();
-                $noticeCards.hide();
-            } else if (selectedType == 'read_more') {
-                // Read More: show read more notice and application fields
-                $container.find('.pp-teaser-application-fields').show();
-                $container.find('.pp-teaser-text-card').hide();
-                $container.find('.pp-teaser-redirect-settings').hide();
-                // Hide other notice cards first, then show read more notice
-                $noticeCards.not('.pp-read-more-notice-card').hide();
-                $container.find('.pp-read-more-notice-card').show();
-            } else if (selectedType == 'excerpt') {
-                // Excerpt: show excerpt notice and application fields
-                $container.find('.pp-teaser-application-fields').show();
-                $container.find('.pp-teaser-text-card').hide();
-                $container.find('.pp-teaser-redirect-settings').hide();
-                // Hide other notice cards first, then show excerpt notice
-                $noticeCards.not('.pp-excerpt-notice-card').hide();
-                $container.find('.pp-excerpt-notice-card').show();
-            } else if (selectedType == 'x_chars' || selectedType == 'more') {
-                // X Chars or More: show x chars notice and application fields
-                $container.find('.pp-teaser-application-fields').show();
-                $container.find('.pp-teaser-text-card').hide();
-                $container.find('.pp-teaser-redirect-settings').hide();
-                // Hide other notice cards first, then show x chars notice
-                $noticeCards.not('.pp-x-chars-notice-card').hide();
-                $container.find('.pp-x-chars-notice-card').show();
-            } else {
-                // Other teaser types: show application fields only
-                $container.find('.pp-teaser-application-fields').show();
-                $container.find('.pp-teaser-text-card').hide();
-                $container.find('.pp-teaser-redirect-settings').hide();
-                $noticeCards.hide();
-            }
-            
-            // Update preview text based on current teaser type
-            updateTeaserPreviewText($container);
+            updateTeaserSettings(selectedType, $container);
+            window.setTimeout(resizeAllVisibleTeaserPreviews, 0);
         }
     }
 
+    // Restore the last-chosen Desktop/Mobile preview mode (applies to every
+    // post type's panel, not just the one currently shown) before the rest of
+    // init runs, so sizing is computed against the right mode from the start.
+    var savedTeaserPreviewDevice = getSavedTeaserPreviewDevice();
+    $('.pp-teaser-site-preview').each(function() {
+        applyTeaserPreviewDevice($(this), savedTeaserPreviewDevice);
+    });
+
     // Run progressive UI initialization
     initializeProgressiveUIVisibility();
+
+    // The initial size/scale is computed as soon as the DOM is ready, using
+    // whatever width the panel has at that instant - before web fonts, the WP
+    // admin menu's responsive JS, notices, etc. finish settling the page's
+    // final layout. Recompute once more after everything (not just the DOM)
+    // has fully loaded, so a hard refresh ends up the same size as after any
+    // later interaction instead of looking different until you touch something.
+    $(window).on('load.ppTeaserPreviewViewport', resizeAllVisibleTeaserPreviews);
 
     // Redirect settings handlers for progressive UI
     $('#teaser_redirect_anon').on('change', function() {
@@ -571,67 +1264,71 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // Login form shortcode insertion for progressive UI
     $('.pp-add-login-form a').on('click', function(e) {
         e.preventDefault();
-        
-        // Find the editor - works for both table-based (td) and div-based layouts
+
         var $container = $(this).closest('td, div');
         var editorId = $container.find('.wp-editor-area').attr('id');
-        
+
         if (editorId) {
-            // Check if TinyMCE is active for this editor
             if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
                 var editor = tinymce.get(editorId);
                 var content = editor.getContent();
-                
+
                 if (content.indexOf('[login_form]') === -1) {
                     editor.setContent(content + '[login_form]');
+                    // setContent() doesn't fire 'change'/'keyup' itself, which is what the
+                    // live preview listens for (see bindTinyMCEEditor()) - fire it manually
+                    // so inserting the placeholder refreshes the preview.
+                    editor.fire('change');
                 }
             } else {
-                // Fallback to textarea (when in Text/HTML mode)
                 var $textarea = $('#' + editorId);
+
                 if ($textarea.length && $textarea.val().indexOf('[login_form]') === -1) {
                     $textarea.val($textarea.val() + '[login_form]');
+                    // Same reasoning as above, for the plain-textarea fallback (no TinyMCE).
+                    $textarea.trigger('input');
                 }
             }
         }
+
         return false;
     });
 
     // Teaser Notice Style Mode Toggle
-    function toggleTeaserNoticeStyleSettings() {
-        // Check if any visible teaser notice style select has 'custom' selected
-        var hasCustomMode = false;
-        $('.pp-teaser-notice-style-select:visible').each(function() {
-            if ($(this).val() === 'custom') {
-                hasCustomMode = true;
-                return false; // break the loop
-            }
-        });
-        
-        if (hasCustomMode) {
-            $('.pp-teaser-notice-style-settings').slideDown(300, function() {
+    function toggleTeaserNoticeStyleSettings($select) {
+        var $settingsContainer = $select.closest('.pp-teaser-settings-container');
+        var $styleSettings = $settingsContainer.find('.pp-teaser-notice-style-settings');
+
+        if ($select.val() === 'custom') {
+            $styleSettings.slideDown(300, function() {
                 // Scroll to the customization section after it's fully visible
                 $('html, body').animate({
-                    scrollTop: $('.pp-teaser-notice-style-settings').offset().top - 100
+                    scrollTop: $styleSettings.offset().top - 100
                 }, 500);
             });
         } else {
-            $('.pp-teaser-notice-style-settings').slideUp(300);
+            $styleSettings.slideUp(300);
         }
     }
 
     // Handle change event for any teaser notice style select
     $(document).on('change', '.pp-teaser-notice-style-select', function() {
-        toggleTeaserNoticeStyleSettings();
+        toggleTeaserNoticeStyleSettings($(this));
+    });
+
+    $(document).on('pp_teaser_notice_style_updated', function(event, $container) {
+        if ($container && $container.length) {
+            updateTeaserPreviewText($container);
+        }
     });
 
     // Monitor TinyMCE editor changes for teaser text
     $(document).on('input keyup', 'textarea[id*="tease_replace_content"]', function() {
         var editorId = $(this).attr('id');
-        var $container = $(this).closest('.pp-teaser-settings-container');
-        var $preview = $container.find('.pp-teaser-notice-preview');
+        var $container = getTeaserSettingsContainer($(this));
+        var $preview = getTeaserNoticePreviews($container);
         var value = '';
         
         // Try to get content from TinyMCE if active
@@ -646,14 +1343,23 @@ jQuery(document).ready(function ($) {
         tempDiv.innerHTML = value;
         value = tempDiv.textContent || tempDiv.innerText || '';
 
-        if (editorId.indexOf('tease_replace_content_anon') > -1) {
-            $preview.data('teaser-text-anon', value);
-        } else if (editorId.indexOf('tease_replace_content') > -1 && editorId.indexOf('_anon') === -1) {
-            $preview.data('teaser-text-logged', value);
-        }
+        $preview
+            .data('teaser-text-anon', value)
+            .data('teaser-text-logged', value);
         
         updateTeaserPreviewText($container);
     });
+
+    // Monitor title and content prefix/suffix editors used by the full preview
+    $(document).on(
+        'input keyup',
+        'textarea[id*="tease_prepend_"], textarea[id*="tease_append_"]',
+        function() {
+            var $container = getTeaserSettingsContainer($(this));
+
+            updateTeaserPreviewText($container);
+        }
+    );
 
     // Monitor textarea changes for notice message editors
     $(document).on('input keyup', 'textarea[id*="read_more_login_notice"], textarea[id*="excerpt_login_notice"], textarea[id*="x_chars_login_notice"]', function() {
@@ -661,18 +1367,13 @@ jQuery(document).ready(function ($) {
         var $container = $(this).closest('.pp-teaser-settings-container');
         var $preview = $container.find('.pp-teaser-notice-preview');
         var value = '';
-        
-        // Try to get content from TinyMCE if active
+
+        // Not stripped: these notice messages preserve their formatting on the front end too.
         if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
-            value = tinymce.get(editorId).getContent({format: 'text'});
+            value = tinymce.get(editorId).getContent();
         } else {
             value = $(this).val();
         }
-        
-        // Strip HTML tags for preview
-        var tempDiv = document.createElement('div');
-        tempDiv.innerHTML = value;
-        value = tempDiv.textContent || tempDiv.innerText || '';
 
         if (editorId.indexOf('read_more_login_notice') > -1) {
             $preview.data('read-more-msg', value);
@@ -691,15 +1392,21 @@ jQuery(document).ready(function ($) {
         if (editor.id.indexOf('tease_replace_content') > -1) {
             editor.on('keyup change', function() {
                 var value = editor.getContent({format: 'text'});
-                var $container = $('#' + editor.id).closest('.pp-teaser-settings-container');
-                var $preview = $container.find('.pp-teaser-notice-preview');
+                var $container = getTeaserSettingsContainer($('#' + editor.id));
+                var $preview = getTeaserNoticePreviews($container);
                 
-                if (editor.id.indexOf('tease_replace_content_anon') > -1) {
-                    $preview.data('teaser-text-anon', value);
-                } else if (editor.id.indexOf('tease_replace_content') > -1 && editor.id.indexOf('_anon') === -1) {
-                    $preview.data('teaser-text-logged', value);
-                }
+                $preview
+                    .data('teaser-text-anon', value)
+                    .data('teaser-text-logged', value);
                 
+                updateTeaserPreviewText($container);
+            });
+        }
+
+        if (editor.id.indexOf('tease_prepend_') > -1 || editor.id.indexOf('tease_append_') > -1) {
+            editor.on('keyup change', function() {
+                var $container = getTeaserSettingsContainer($(document.getElementById(editor.id)));
+
                 updateTeaserPreviewText($container);
             });
         }
@@ -709,15 +1416,11 @@ jQuery(document).ready(function ($) {
             editor.id.indexOf('excerpt_login_notice') > -1 || 
             editor.id.indexOf('x_chars_login_notice') > -1) {
             editor.on('keyup change', function() {
-                var value = editor.getContent({format: 'text'});
+                // Not stripped: these notice messages preserve their formatting on the front end too.
+                var value = editor.getContent();
                 var $container = $('#' + editor.id).closest('.pp-teaser-settings-container');
                 var $preview = $container.find('.pp-teaser-notice-preview');
-                
-                // Strip HTML tags for preview
-                var tempDiv = document.createElement('div');
-                tempDiv.innerHTML = value;
-                value = tempDiv.textContent || tempDiv.innerText || '';
-                
+
                 if (editor.id.indexOf('read_more_login_notice') > -1) {
                     $preview.data('read-more-msg', value);
                 } else if (editor.id.indexOf('excerpt_login_notice') > -1) {
@@ -729,20 +1432,20 @@ jQuery(document).ready(function ($) {
                 updateTeaserPreviewText($container);
             });
         }
-        
+
         // Handle error removal for required fields
         var $editorArea = $('#' + editor.id);
         var $requiredField = $editorArea.closest('.pp-required-field');
-        
+
         if ($requiredField.length) {
             editor.on('keyup change input', function() {
                 var content = editor.getContent();
-                
+
                 // Check if content is not empty (after stripping HTML tags)
                 var tempDiv = document.createElement('div');
                 tempDiv.innerHTML = content;
                 var textContent = (tempDiv.textContent || tempDiv.innerText || '').trim();
-                
+
                 if (textContent) {
                     $('#wp-' + editor.id + '-wrap').removeClass('pp-editor-error');
                     $requiredField.find('.error-msg').remove();
@@ -750,6 +1453,29 @@ jQuery(document).ready(function ($) {
             });
         }
     }
+
+    function syncSharedAudienceFields() {
+        $('.pp-sync-editor-value').each(function() {
+            var $field = $(this);
+            var editorId = String($field.data('source-editor') || '');
+            var editorElement = document.getElementById(editorId);
+            var value = '';
+
+            if (!editorId || !editorElement) {
+                return;
+            }
+
+            if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+                value = tinymce.get(editorId).getContent();
+            } else {
+                value = $(editorElement).val();
+            }
+
+            $field.val(value);
+        });
+    }
+
+    $('#pp_settings_form').on('submit', syncSharedAudienceFields);
 
     // Bind to existing TinyMCE editors on page load
     if (typeof tinymce !== 'undefined') {
@@ -764,16 +1490,6 @@ jQuery(document).ready(function ($) {
         });
     }
 
-    // Monitor tab switches in teaser text section
-    $(document).on('click', '.pp-teaser-text-tabs .pp-teaser-text-tab', function() {
-        var $container = $(this).closest('.pp-teaser-settings-container');
-
-        // Small delay to allow tab content to switch
-        setTimeout(function() {
-            updateTeaserPreviewText($container);
-        }, 50);
-    });
-    
     // Function to validate a required field
     function validateRequiredField($requiredField, postType) {
         var $editorArea = $requiredField.find('.wp-editor-area');
@@ -781,14 +1497,14 @@ jQuery(document).ready(function ($) {
         if ($editorArea.length) {
             var editorId = $editorArea.attr('id');
             var content = '';
-            
+
             // Get content from TinyMCE if active
             if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
                 content = tinymce.get(editorId).getContent();
             } else {
                 content = $editorArea.val();
             }
-            
+
             // Check if content is empty (after stripping HTML tags)
             var tempDiv = document.createElement('div');
             tempDiv.innerHTML = content;
@@ -818,12 +1534,12 @@ jQuery(document).ready(function ($) {
                 };
             }
         }
-        
+
         return {
             hasError: false
         };
     }
-    
+
     // Form validation before submission
     $('#pp_settings_form').on('submit', function(e) {
         // Only run validation if we're on the teaser settings tab
@@ -846,7 +1562,7 @@ jQuery(document).ready(function ($) {
                 $container.find('.pp-teaser-text-content').each(function() {
                     var $tabContent = $(this);
                     var $requiredFields = $tabContent.find('.pp-required-field[data-field-action="replace"][data-field-item="content"]');
-                    
+
                     $requiredFields.each(function() {
                         var validationResult = validateRequiredField($(this), postType);
                         if (validationResult.hasError) {
@@ -856,7 +1572,7 @@ jQuery(document).ready(function ($) {
                 });
             }
         });
-        
+
         // Display errors and prevent submission
         if (errors.length > 0) {
             e.preventDefault();
@@ -866,34 +1582,34 @@ jQuery(document).ready(function ($) {
             if (firstError) {
                 // Switch to the post type with error if needed
                 var $targetContainer = $('.pp-teaser-settings-container[data-post-type="' + firstError.postType + '"]');
-                
+
                 if (!$targetContainer.hasClass('active')) {
                     // Update post type selector
-                    $('#pp_current_post_type').val(firstError.postType);
-                    
+                    $('.pp-current-post-type').val(firstError.postType);
+
                     // Hide all containers
                     $('.pp-teaser-settings-container').removeClass('active').hide();
-                    
+
                     // Show target container
                     $targetContainer.addClass('active pp-fade-in').show();
                 }
-                
+
                 // Switch to the tab with error if needed
                 var $teaserTextCard = $targetContainer.find('.pp-teaser-text-card .teaser-message-section');
                 var $targetTab = $teaserTextCard.find('.pp-teaser-text-tab[data-tab="' + firstError.tabContent + '"]');
-                
+
                 if ($targetTab.length && !$targetTab.hasClass('active')) {
                     // Update tab active state
                     $teaserTextCard.find('.pp-teaser-text-tab').removeClass('active');
                     $targetTab.addClass('active');
-                    
+
                     // Show corresponding content
                     $teaserTextCard.find('.pp-teaser-text-content').removeClass('active').hide();
                     $teaserTextCard.find('.pp-teaser-text-content[data-tab-content="' + firstError.tabContent + '"]')
                         .addClass('active')
-                        .fadeIn(200);
+                        .show();
                 }
-                
+
                 // Scroll to first error with animation
                 setTimeout(function() {
                     var $errorElement = $('#wp-' + firstError.editorId + '-wrap');
@@ -901,7 +1617,7 @@ jQuery(document).ready(function ($) {
                         $('html, body').animate({
                             scrollTop: $errorElement.offset().top - 100
                         }, 500);
-                        
+
                         // Add a subtle pulse effect to draw attention
                         $errorElement.addClass('pp-pulse-error');
                         setTimeout(function() {
@@ -910,92 +1626,33 @@ jQuery(document).ready(function ($) {
                     }
                 }, 300);
             }
-            
+
             return false;
         }
     });
-    
+
     // Handle error removal for textarea input (when in Text/HTML mode)
     $(document).on('input keyup', '.pp-required-field textarea.wp-editor-area', function() {
         var $requiredField = $(this).closest('.pp-required-field');
         var editorId = $(this).attr('id');
         var content = '';
-        
+
         // Get content from TinyMCE if active
         if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
             content = tinymce.get(editorId).getContent();
         } else {
             content = $(this).val();
         }
-        
+
         // Check if content is not empty (after stripping HTML tags)
         var tempDiv = document.createElement('div');
         tempDiv.innerHTML = content;
         var textContent = (tempDiv.textContent || tempDiv.innerText || '').trim();
-        
+
         if (textContent) {
             $('#wp-' + editorId + '-wrap').removeClass('pp-editor-error');
             $requiredField.find('.error-msg').remove();
         }
     });
 
-    // PRO Feature Handling
-    // Prevent selecting disabled PRO options
-    $(document).on('change', 'select.pp-teaser-type-select', function() {
-        var $select = $(this);
-        var $selected = $select.find('option:selected');
-        
-        if ($selected.is(':disabled')) {
-            // Revert to previous valid selection
-            var $firstEnabled = $select.find('option:not(:disabled)').first();
-            $select.val($firstEnabled.val());
-            
-            // Show upgrade notice
-            alert('This feature is only available in PublishPress Permissions PRO.\n\nUpgrade now to unlock advanced teaser types including Read More links, excerpts, and redirects.');
-        }
-    });
-
-    // Prevent interaction with disabled post type options
-    $(document).on('change', '#pp_current_post_type', function() {
-        var $select = $(this);
-        var $selected = $select.find('option:selected');
-        
-        if ($selected.is(':disabled')) {
-            // Revert to first enabled option
-            var $firstEnabled = $select.find('option:not(:disabled)').first();
-            $select.val($firstEnabled.val()).trigger('change');
-            
-            // Show upgrade notice
-            alert('This post type is only available in PublishPress Permissions PRO.\n\nUpgrade now to apply teasers to Pages, WooCommerce Products, and all custom post types.');
-        }
-    });
-
-    // Handle disabled radio buttons for user application
-    $(document).on('click', 'input[type="radio"][name^="tease_logged_only"]:disabled', function(e) {
-        e.preventDefault();
-        alert('User-specific targeting is only available in PublishPress Permissions PRO.\n\nUpgrade now to show different teaser messages to logged-in vs anonymous users.');
-        return false;
-    });
-
-    // PRO badge click handlers
-    $(document).on('click', '.pp-pro-badge', function(e) {
-        e.stopPropagation();
-        var upgradeUrl = 'https://publishpress.com/links/permissions-banner';
-        if (confirm('This feature is only available in PublishPress Permissions PRO.\n\nWould you like to learn more about upgrading?')) {
-            window.open(upgradeUrl, '_blank');
-        }
-    });
-
-    // Style disabled options
-    $('select option:disabled').css({
-        'color': '#999',
-        'font-style': 'italic'
-    });
-
-    $('input[type="radio"]:disabled').each(function() {
-        $(this).closest('label').css({
-            'opacity': '0.5',
-            'cursor': 'not-allowed'
-        });
-    });
 });

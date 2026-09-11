@@ -317,87 +317,13 @@ class SettingsTabCore
         <?php
         } // end foreach scope
         
-        // Add JavaScript for expand/collapse functionality
+        presspermit_enqueue_admin_script();
         ?>
-        <script type="text/javascript">
-        jQuery(document).ready(function($) {
-            // Handle chevron click to toggle content
-            $('.pp-post-type-toggle').on('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                var postType = $(this).data('post-type');
-                var $content = $('.filter_post_type_content[data-post-type="' + postType + '"]');
-                var $chevron = $(this);
-                var $summary = $('.pp-post-type-summary[data-post-type="' + postType + '"]');
-                
-                // Toggle content visibility
-                $content.slideToggle(300, function() {
-                    // After animation completes, toggle summary visibility
-                    if ($content.is(':visible')) {
-                        $summary.fadeOut(200);
-                    } else {
-                        $summary.fadeIn(200);
-                    }
-                });
-                
-                // Rotate chevron
-                if ($chevron.css('transform') === 'none' || $chevron.css('transform') === 'matrix(1, 0, 0, 1, 0, 0)') {
-                    $chevron.css('transform', 'rotate(180deg)');
-                } else {
-                    $chevron.css('transform', 'rotate(0deg)');
-                }
-            });
-            
-            // Also allow clicking on the label area (but not the checkbox itself)
-            $('.agp-vtight_input label').on('click', function(e) {
-                // Only trigger if we clicked on the label text, not the checkbox
-                if (e.target.tagName !== 'INPUT') {
-                    var $toggle = $(this).siblings('.pp-post-type-toggle');
-                    if ($toggle.length) {
-                        $toggle.trigger('click');
-                    }
-                }
-            });
-            
-            // Update summary text when checkboxes change
-            $('input[id^="pp_enable_metabox_"], input[id^="pp_include_permission_screen_"]').on('change', function() {
-                var optionId = $(this).attr('id');
-                var postType = '';
-                
-                // Extract post type from option ID
-                if (optionId.indexOf('pp_enable_metabox_') === 0) {
-                    postType = optionId.replace('pp_enable_metabox_', '');
-                } else if (optionId.indexOf('pp_include_permission_screen_') === 0) {
-                    postType = optionId.replace('pp_include_permission_screen_', '');
-                }
-                
-                if (postType) {
-                    var $metaboxCheckbox = $('#pp_enable_metabox_' + postType);
-                    var $permissionCheckbox = $('#pp_include_permission_screen_' + postType);
-                    var $summary = $('.pp-post-type-summary[data-post-type="' + postType + '"]');
-                    
-                    // Build summary parts
-                    var summaryParts = [];
-                    
-                    if ($metaboxCheckbox.is(':checked')) {
-                        summaryParts.push('<?php echo esc_js(__('Metabox enabled', 'press-permit-core')); ?>');
-                    } else {
-                        summaryParts.push('<?php echo esc_js(__('Metabox disabled', 'press-permit-core')); ?>');
-                    }
-                    
-                    if ($permissionCheckbox.is(':checked')) {
-                        summaryParts.push('<?php echo esc_js(__('Permissions screen enabled', 'press-permit-core')); ?>');
-                    } else {
-                        summaryParts.push('<?php echo esc_js(__('Permissions screen disabled', 'press-permit-core')); ?>');
-                    }
-                    
-                    // Update summary text
-                    $summary.text(summaryParts.join(', '));
-                }
-            });
-        });
-        </script>
+        <span class="pp-post-types-config"
+            data-metabox-enabled="<?php echo esc_attr__('Metabox enabled', 'press-permit-core'); ?>"
+            data-metabox-disabled="<?php echo esc_attr__('Metabox disabled', 'press-permit-core'); ?>"
+            data-permissions-enabled="<?php echo esc_attr__('Permissions screen enabled', 'press-permit-core'); ?>"
+            data-permissions-disabled="<?php echo esc_attr__('Permissions screen disabled', 'press-permit-core'); ?>" hidden></span>
         <?php
     }
 

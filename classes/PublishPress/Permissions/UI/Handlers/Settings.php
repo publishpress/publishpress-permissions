@@ -168,6 +168,8 @@ class Settings
         }
 
         // =============== Module Activation ================
+        $required_modules = array_fill_keys($pp->getRequiredModules(), true);
+
         if (!$_deactivated = $pp->getOption('deactivated_modules')) {
             $_deactivated = [];
         }
@@ -192,6 +194,8 @@ class Settings
             );
         }
 
+        $deactivated = array_diff_key($deactivated, $required_modules);
+
         // remove deactivations (checked in Inactive list)
         if (!empty($_POST['presspermit_deactivated_modules'])) {
             $deactivated = array_diff_key(
@@ -199,6 +203,8 @@ class Settings
                 array_map('sanitize_key', (array) $_POST['presspermit_deactivated_modules'])
             );
         }
+
+        $deactivated = array_diff_key($deactivated, $required_modules);
 
         if ($_deactivated !== $deactivated) {
             foreach (array_diff_key($deactivated, $_deactivated) as $module_name => $module) {

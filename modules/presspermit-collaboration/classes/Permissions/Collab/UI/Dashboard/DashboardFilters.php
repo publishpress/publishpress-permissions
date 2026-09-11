@@ -28,7 +28,8 @@ class DashboardFilters
         }
 
         add_action('admin_head', [$this, 'actAdminHead']);
-        add_action('admin_print_footer_scripts', [$this, 'quickpress_workaround'], 99);
+        // Run before WordPress prints queued footer scripts at priority 20.
+        add_action('admin_print_footer_scripts', [$this, 'quickpress_workaround'], 19);
 
         add_action('presspermit_permissions_menu', [$this, 'permissions_menu'], 10, 2);
         add_action('presspermit_menu_handler', [$this, 'menu_handler']);
@@ -124,25 +125,17 @@ class DashboardFilters
 
     function quickpress_workaround()
     {  // need this for multiple qp entries by limited user
-        if (!presspermit()->isUserUnfiltered() && isset($_SERVER['HTTP_USER_AGENT'])) :
-        ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                if (typeof wp == 'undefined') {
-                    var wp = new Object();
-                    wp.media = new Object();
-                    wp.media.view = new Object();
-                    wp.media.view.settings = new Object();
-                    wp.media.view.settings.post = new Object();
-
-                    wp.media.editor = new Object();
-                    wp.media.editor.remove = new Function();
-                    wp.media.editor.add = new Function();
-                }
-                /* ]]> */
-            </script>
-        <?php
-        endif;
+        if (!presspermit()->isUserUnfiltered() && isset($_SERVER['HTTP_USER_AGENT'])) {
+            $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+            wp_enqueue_script(
+                'presspermit-quickpress-workaround',
+                PRESSPERMIT_COLLAB_URLPATH . "/common/js/quickpress{$suffix}.js",
+                [],
+                PRESSPERMIT_COLLAB_VERSION,
+                false
+            );
+            wp_print_scripts('presspermit-quickpress-workaround');
+        }
     }
 
     function optionsUI()

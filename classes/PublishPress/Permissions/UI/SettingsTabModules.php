@@ -71,6 +71,7 @@ class SettingsTabModules
                         $ext_info = $pp->admin()->getModuleInfo();
                         $pp_modules = $pp->getActiveModules();
                         $inactive = $pp->getDeactivatedModules();
+                        $required_modules = array_fill_keys($pp->getRequiredModules(), true);
                         $skipped_modules = $pp->getSkippedModules();
                         $active_module_plugin_slugs = [];
                         // Combine active and inactive modules into single array
@@ -90,6 +91,8 @@ class SettingsTabModules
                                 // Skip modules that are in the skipped list
                                 if (in_array($slug, $skipped_slugs)) continue;
 
+                                if (isset($required_modules[$plugin_info->plugin_slug])) continue;
+
                                 $active_module_plugin_slugs[] = $plugin_info->plugin_slug;
                                 $all_modules[] = [
                                     'slug' => $slug,
@@ -107,6 +110,8 @@ class SettingsTabModules
                                 
                                 // Skip modules that are in the skipped list
                                 if (in_array($slug, $skipped_slugs)) continue;
+
+                                if (isset($required_modules[$plugin_slug])) continue;
 
                                 $all_modules[] = [
                                     'slug' => $slug,

@@ -105,18 +105,8 @@ class TermsListing
 
     public function actScriptResize()
     {
-        ?>
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            jQuery(document).ready(function($) {
-                $('#col-left').css('width', '25%');
-                $('#col-right').css('width', '75%');
-                $('.column-slug').css('width', '15%');
-                $('.column-posts').css('width', '10%');
-            });
-            /* ]]> */
-        </script>
-    <?php
+        presspermit_enqueue_admin_script();
+        echo '<span class="pp-resize-term-listing" hidden></span>';
     }
 
     public function actScriptUniversalExceptions()
@@ -126,31 +116,10 @@ class TermsListing
         if (PWP::empty_REQUEST('pp_universal')) {
             return;
         }
-    ?>
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            function updateQueryStringParameterPP(uri, key, value) {
-                <?php /* https://stackoverflow.com/a/6021027 */ ?>
-                var re = new RegExp("([?|&])" + key + "=.*?(&|$)", "i");
-                separator = uri.indexOf('?') !== -1 ? "&" : "?";
-                if (uri.match(re)) {
-                    return uri.replace(re, '$1' + key + "=" + value + '$2');
-                } else {
-                    return uri + separator + key + "=" + value;
-                }
-            }
-
-            jQuery(document).ready(function($) {
-                $('#the-list tr').each(function(i, e) {
-                    $(e).find("a.row-title,span.edit a").each(function(ii, ee) {
-                        var u = $(ee).attr('href').replace('&post_type=<?php echo esc_attr($post_type); ?>', '');
-                        $(ee).attr('href', u + '&pp_universal=1');
-                    });
-                });
-            });
-            /* ]]> */
-        </script>
-    <?php
+        presspermit_enqueue_admin_script();
+        ?>
+        <span class="pp-universal-terms-config" data-post-type="<?php echo esc_attr($post_type); ?>" hidden></span>
+        <?php
     }
 
     // In "Add New Term" form, hide the "Main" option from Parent dropdown if the logged user doesn't have manage_terms cap site-wide
@@ -177,15 +146,8 @@ class TermsListing
                 return;
             }
         }
-    ?>
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            jQuery(document).ready(function($) {
-                $('#parent option[value="-1"]').remove();
-            });
-            /* ]]> */
-        </script>
-<?php
+        presspermit_enqueue_admin_script();
+        echo '<span class="pp-hide-main-term-option" hidden></span>';
     }
 
     private function logTermData()

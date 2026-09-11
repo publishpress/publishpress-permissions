@@ -14,11 +14,6 @@ class AgentPermissions
         $pp_admin = $pp->admin();
         $pp_groups = $pp->groups();
 
-        if (!PWP::empty_REQUEST('pp_fix_child_exceptions')) {
-            require_once(PRESSPERMIT_CLASSPATH . '/DB/PermissionsUpdate.php');
-            \PublishPress\Permissions\DB\PermissionsUpdate::ensureExceptionPropagation();
-        }
-
         require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
 
         if (!$agent_type = PWP::REQUEST_key('agent_type')) {
@@ -54,6 +49,17 @@ class AgentPermissions
             if (!$agent) {
                 wp_die(esc_html__('Invalid group ID.', 'press-permit-core'));
             }
+        }
+
+        if (PWP::is_POST('pp_fix_child_exceptions')) {
+            check_admin_referer('pp-fix-child-exceptions');
+
+            if (!current_user_can('pp_manage_permissions')) {
+                wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
+            }
+
+            require_once(PRESSPERMIT_CLASSPATH . '/DB/PermissionsUpdate.php');
+            \PublishPress\Permissions\DB\PermissionsUpdate::ensureExceptionPropagation();
         }
 
         if ($metagroup_type) {  // metagroups cannot have name/description manually edited
@@ -93,6 +99,9 @@ class AgentPermissions
 
                     <?php elseif (!PWP::empty_REQUEST('pp_cloned')) : ?>
                         <strong><?php esc_html_e('Roles and Permissions copied.', 'press-permit-core') ?>&nbsp;</strong>
+
+                    <?php elseif (!PWP::empty_REQUEST('pp_groups')) : ?>
+                        <strong><?php esc_html_e('Group membership updated.', 'press-permit-core') ?>&nbsp;</strong>
 
                     <?php else : ?>
                         <strong><?php esc_html_e('Group updated.', 'press-permit-core') ?>&nbsp;</strong>
@@ -360,16 +369,33 @@ class AgentPermissions
                             }
 
                             require_once(PRESSPERMIT_CLASSPATH . '/UI/Dashboard/Profile.php');
+                            ?>
+                            <form class="pp-admin pp-user-groups-form" action="<?php echo esc_url($url); ?>" method="post">
+                                <input type="hidden" name="action" value="pp_updategroups" />
+                                <input type="hidden" name="agent_id" value="<?php echo esc_attr($agent_id); ?>" />
+                                <input type="hidden" name="agent_type" value="user" />
+                                <?php if ($wp_http_referer) : ?>
+                                    <input type="hidden" name="wp_http_referer" value="<?php echo esc_url($wp_http_referer); ?>" />
+                                <?php endif; ?>
+                                <?php
                             Dashboard\Profile::displayUserGroups(
                                 $agent_id,
                                 [
                                     'initial_hide' => false,
-                                    'selected_only' => true,
+                                    'selected_only' => false,
                                     'force_display' => true,
-                                    'edit_membership_link' => true,
-                                    'hide_checkboxes' => true,
+                                    'hide_checkboxes' => false,
                                 ]
                             );
+                                submit_button(
+                                    esc_html__('Update Group Membership', 'press-permit-core'),
+                                    'primary pp-primary-button pp-button',
+                                    'submit_groups',
+                                    false
+                                );
+                                ?>
+                            </form>
+                            <?php
 
                             $role_group_caption = sprintf(
                                 esc_html__('Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s', 'press-permit-core'),

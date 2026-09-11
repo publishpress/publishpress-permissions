@@ -4,6 +4,42 @@ function presspermit() {
     return \PublishPress\Permissions::instance();
 }
 
+/**
+ * Enqueue shared admin behavior.
+ *
+ * Dynamic values are exposed by the rendering PHP as data attributes. Keeping
+ * executable code in this file makes CSP enforcement and browser debugging
+ * straightforward.
+ */
+function presspermit_enqueue_admin_script()
+{
+    $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+
+    wp_enqueue_script(
+        'presspermit-admin',
+        plugins_url("common/js/admin{$suffix}.js", __FILE__),
+        ['jquery'],
+        PRESSPERMIT_VERSION,
+        true
+    );
+}
+
+/**
+ * Enqueue shared front-end behavior.
+ */
+function presspermit_enqueue_front_script()
+{
+    $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
+
+    wp_enqueue_script(
+        'presspermit-front',
+        plugins_url("common/js/frontend{$suffix}.js", __FILE__),
+        [],
+        PRESSPERMIT_VERSION,
+        true
+    );
+}
+
 function presspermitPluginPage()
 {
     static $pp_plugin_page = null;

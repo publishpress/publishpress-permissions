@@ -5,7 +5,7 @@ namespace PublishPress\Permissions\Teaser;
  * Handles "Read More Link as Teaser" functionality
  * 
  * This class provides methods to detect and extract content before the WordPress
- * more tag (both Classic Editor <!--more--> and Gutenberg <!-- wp:more -->),
+ * more tag (Classic Editor, Gutenberg More block, or Gutenberg Read More block),
  * and generate appropriate "Read More" links with login redirect support.
  * 
  * @package PublishPress\Permissions\Teaser
@@ -13,7 +13,7 @@ namespace PublishPress\Permissions\Teaser;
 class ReadMoreHandler
 {
     /**
-     * Check if a post contains a more tag (Classic or Gutenberg)
+     * Check if a post contains a more/read-more delimiter (Classic or Gutenberg)
      * 
      * @param \WP_Post $post The post object to check
      * @return bool True if more tag exists, false otherwise
@@ -24,13 +24,18 @@ class ReadMoreHandler
             return false;
         }
 
-        // Check for Classic Editor more tag: <!--more-->
-        if (strpos($post->post_content, '<!--more-->') !== false) {
+        // Check for Classic Editor more tag: <!--more--> or <!--more Custom Text-->
+        if (preg_match('/<!--\s*more(?:\s+.*?)?\s*-->/i', $post->post_content)) {
             return true;
         }
 
         // Check for Gutenberg more block: <!-- wp:more -->
         if (strpos($post->post_content, '<!-- wp:more') !== false) {
+            return true;
+        }
+
+        // Check for Gutenberg read-more block: <!-- wp:read-more -->
+        if (strpos($post->post_content, '<!-- wp:read-more') !== false) {
             return true;
         }
 
@@ -40,7 +45,7 @@ class ReadMoreHandler
     /**
      * Extract content before the more tag
      * 
-     * Handles both Classic Editor (<!--more-->) and Gutenberg (<!-- wp:more -->) formats.
+     * Handles Classic Editor <!--more-->, Gutenberg More, and Gutenberg Read More block formats.
      * Returns content up to but not including the more tag.
      * 
      * @param \WP_Post $post The post object
@@ -55,20 +60,27 @@ class ReadMoreHandler
         $content = $post->post_content;
         $more_pos = false;
 
-        // Check for Classic Editor more tag first
-        $classic_more_pos = strpos($content, '<!--more-->');
+        // Check for Classic Editor more tag first: <!--more--> or <!--more Custom Text-->
+        $classic_more_pos = preg_match('/<!--\s*more(?:\s+.*?)?\s*-->/i', $content, $classic_matches, PREG_OFFSET_CAPTURE)
+            ? $classic_matches[0][1]
+            : false;
         
-        // Check for Gutenberg more block
-        // Pattern: <!-- wp:more --> or <!-- wp:more {"customText":"Read more"} -->
+        // Check for Gutenberg more block.
         $gutenberg_more_pos = strpos($content, '<!-- wp:more');
 
-        // Use whichever comes first (in case both exist)
-        if ($classic_more_pos !== false && $gutenberg_more_pos !== false) {
-            $more_pos = min($classic_more_pos, $gutenberg_more_pos);
-        } elseif ($classic_more_pos !== false) {
-            $more_pos = $classic_more_pos;
-        } elseif ($gutenberg_more_pos !== false) {
-            $more_pos = $gutenberg_more_pos;
+        // Check for Gutenberg read-more block.
+        $gutenberg_read_more_pos = strpos($content, '<!-- wp:read-more');
+
+        // Use whichever delimiter comes first.
+        $positions = array_filter(
+            [$classic_more_pos, $gutenberg_more_pos, $gutenberg_read_more_pos],
+            function ($position) {
+                return false !== $position;
+            }
+        );
+
+        if ($positions) {
+            $more_pos = min($positions);
         }
 
         if ($more_pos === false) {
@@ -139,6 +151,12 @@ class ReadMoreHandler
                             $permalink = $redirect_url;
                         }
                     }
+                } elseif ($redirect_mode === '(url)') {
+                    $redirect_url = esc_url_raw((string) $pp->getTypeOption('teaser_redirect_anon_url', $post_type));
+
+                    if ($redirect_url) {
+                        $permalink = $redirect_url;
+                    }
                 }
             } else {
                 // Check for logged-in user redirect settings (per-post-type)
@@ -157,6 +175,12 @@ class ReadMoreHandler
                             $permalink = $redirect_url;
                         }
                     }
+                } elseif ($redirect_mode === '(url)') {
+                    $redirect_url = esc_url_raw((string) $pp->getTypeOption('teaser_redirect_url', $post_type));
+
+                    if ($redirect_url) {
+                        $permalink = $redirect_url;
+                    }
                 }
             }
         }
@@ -166,17 +190,18 @@ class ReadMoreHandler
         $link_text = str_replace('%post_title%', get_the_title($post->ID), $link_text);
         $link_text = str_replace('%permalink%', $permalink, $link_text);
         
-        // Add informational message for non-logged-in users (only on single post pages)
+        // Add the shared informational message for blocked users on single post pages.
         $info_message = '';
-        if (!is_user_logged_in() && (is_single() || is_page())) {
+        if (is_single() || is_page()) {
             $notice_text = presspermit()->getTypeOption('read_more_login_notice', $post_type);
             if (empty($notice_text)) {
-                $notice_text = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+                $notice_text = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
             }
+            $notice_text = do_shortcode(wp_unslash($notice_text));
             
             $info_message = sprintf(
-                '<p class="pp-teaser-login-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">%s</p>',
-                esc_html($notice_text)
+                '<p class="pp-teaser-login-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; word-break: break-word; box-sizing: border-box;">%s</p>',
+                $notice_text
             );
             
             $info_message = apply_filters('presspermit_read_more_login_notice', $info_message, $post);

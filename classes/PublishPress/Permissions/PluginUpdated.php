@@ -26,6 +26,21 @@ class PluginUpdated
             // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
             $wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE 'buffer_metagroup_id_%'");
 
+            $deactivated_modules = (array) get_option('presspermit_deactivated_modules');
+            $required_modules = array_intersect_key($deactivated_modules, array_fill_keys(presspermit()->getRequiredModules(), true));
+            if ($required_modules) {
+                $deactivated_modules = array_diff_key($deactivated_modules, $required_modules);
+                update_option('presspermit_deactivated_modules', $deactivated_modules);
+            }
+
+            if (!get_option('presspermit_display_group_exceptions')) {
+                // Preserve visibility for sites that already manage Permission Groups via Specific Permissions.
+                // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+                if ($wpdb->get_var("SELECT exception_id FROM $wpdb->ppc_exceptions WHERE for_item_source = 'pp_group' LIMIT 1")) {
+                    update_option('presspermit_display_group_exceptions', 1);
+                }
+            }
+
             if (version_compare($prev_version, '2.7-beta', '>=')
             && version_compare($prev_version, '2.7-beta3', '<')
             ) {
@@ -170,6 +185,8 @@ class PluginUpdated
             $new_deactivations = array_diff($new_deactivations, $args['activate']);
         }
 
+        $new_deactivations = array_diff($new_deactivations, presspermit()->getRequiredModules());
+
         if (!is_array($deactivated)) {
             $deactivated = [];
         }
@@ -182,6 +199,8 @@ class PluginUpdated
             $deactivated, 
             array_fill_keys($new_deactivations, (object)[])
         );
+
+        $deactivated = array_diff_key($deactivated, array_fill_keys(presspermit()->getRequiredModules(), true));
         
         update_option('presspermit_deactivated_modules', $deactivated);
     }

@@ -111,43 +111,35 @@ class PostsListing
         }
 
         $post_type_object = get_post_type_object($screen->post_type);
-        ?>
-        <script type="text/javascript">
-            /* <![CDATA[ */
-            jQuery(document).ready(function ($) {
-                <?php
-                $pp = presspermit();
-                $moderation_statuses = [];
-                foreach (PWP::getPostStatuses(
-                    ['_builtin' => false, 
-                    'moderation' => true, 
-                    'post_type' => $screen->post_type
-                    ],
+        $pp = presspermit();
+        $moderation_statuses = [];
 
-                    'object'
-                    ) as $status => $status_obj 
-                ) {
-                    $set_status_cap = "set_{$status}_posts";
+        foreach (PWP::getPostStatuses(
+            [
+                '_builtin' => false,
+                'moderation' => true,
+                'post_type' => $screen->post_type,
+            ],
+            'object'
+        ) as $status => $status_obj) {
+            $set_status_cap = "set_{$status}_posts";
+            $check_cap = (!empty($post_type_object->cap->$set_status_cap))
+                ? $post_type_object->cap->$set_status_cap
+                : $post_type_object->cap->publish_posts;
 
-                    $check_cap = (!empty($post_type_object->cap->$set_status_cap)) 
-                    ? $post_type_object->cap->$set_status_cap 
-                    : $post_type_object->cap->publish_posts;
+            if ($pp->isContentAdministrator() || current_user_can($check_cap)) {
+                $moderation_statuses[$status] = $status_obj;
+            }
+        }
 
-                    if ($pp->isContentAdministrator() || current_user_can($check_cap)) {
-                        $moderation_statuses[$status] = $status_obj;
-                    }
-                }
+        if ($moderation_statuses) {
+            presspermit_enqueue_admin_script();
+        }
 
-                foreach( $moderation_statuses as $status => $status_obj ) :
-                ?>
-                if (!$('select[name="_status"] option[value="<?php echo esc_attr($status);?>"]').length) {
-                    $('<option value="<?php echo esc_attr($status);?>"><?php echo esc_html($status_obj->label);?></option>').insertBefore('select[name="_status"] option[value="pending"]');
-                }
-                <?php endforeach;?>
-            });
-            /* ]]> */
-        </script>
-        <?php
+        foreach ($moderation_statuses as $status => $status_obj) :
+            ?>
+            <span class="pp-moderation-status-config" data-status="<?php echo esc_attr($status); ?>" data-label="<?php echo esc_attr($status_obj->label); ?>" hidden></span>
+            <?php
+        endforeach;
     } // end function add_inline_edit_ui
 }
-

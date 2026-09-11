@@ -1,0 +1,139 @@
+#pp-shortcodes_table .pp-content-visibility-shortcodes-row > th {
+    width: 210px !important;
+    font-size: 16px;
+}
+
+#pp-shortcodes_table .pp-content-visibility-shortcodes-row > td {
+    padding: 18px 24px 8px;
+}
+
+.pp-content-visibility-shortcodes-intro {
+    margin: 0 0 22px;
+    color: #646970;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.pp-content-visibility-shortcode-example {
+    max-width: 920px;
+    margin: 0 0 26px;
+}
+
+.pp-content-visibility-shortcode-description {
+    margin: 0 0 9px;
+    color: #646970;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.pp-content-visibility-shortcode-control {
+    position: relative;
+}
+
+#pp_settings_form .pp-content-visibility-shortcode-field {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 52px 10px 14px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: none;
+    color: #1d2327;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#pp_settings_form .pp-content-visibility-shortcode-field:focus {
+    border-color: #655997;
+    box-shadow: 0 0 0 1px #655997;
+}
+
+.pp-content-visibility-copy-shortcode {
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+    color: #655997;
+    cursor: pointer;
+}
+
+.pp-content-visibility-copy-shortcode:hover {
+    background: #f0eef7;
+    color: #514478;
+}
+
+.pp-content-visibility-copy-shortcode:focus {
+    outline: 2px solid #655997;
+    outline-offset: 1px;
+}
+
+.pp-content-visibility-copy-shortcode .dashicons {
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+.pp-content-visibility-copy-tooltip {
+    position: absolute;
+    right: 0;
+    bottom: calc(100% + 8px);
+    z-index: 10;
+    width: max-content;
+    max-width: 150px;
+    padding: 6px 9px;
+    border-radius: 4px;
+    background: #655997;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.3;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(3px);
+    transition: opacity 150ms ease, transform 150ms ease;
+}
+
+.pp-content-visibility-copy-tooltip::after {
+    position: absolute;
+    top: 100%;
+    right: 11px;
+    border-top: 6px solid #655997;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+}
+
+.pp-content-visibility-copy-shortcode:hover .pp-content-visibility-copy-tooltip,
+.pp-content-visibility-copy-shortcode:focus .pp-content-visibility-copy-tooltip,
+.pp-content-visibility-copy-shortcode.is-copied .pp-content-visibility-copy-tooltip {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media screen and (max-width: 782px) {
+    #pp-shortcodes_table .pp-content-visibility-shortcodes-row > th,
+    #pp-shortcodes_table .pp-content-visibility-shortcodes-row > td {
+        display: block;
+        width: auto !important;
+    }
+
+    #pp-shortcodes_table .pp-content-visibility-shortcodes-row > td {
+        padding: 12px 10px 4px;
+    }
+
+    #pp_settings_form .pp-content-visibility-shortcode-field {
+        font-size: 13px;
+    }
+}
