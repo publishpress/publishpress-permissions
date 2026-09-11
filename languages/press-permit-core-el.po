@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-09 14:54+0000\n"
+"PO-Revision-Date: 2026-09-11 13:37+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -1195,9 +1195,9 @@ msgid "All users with the WordPress role of %s"
 msgstr "Όλοι οι χρήστες με τον ρόλο WordPress του %s"
 
 #: classes/PublishPress/Permissions/DB/PermissionsMeta.php:148
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:970
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:973
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:976
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:971
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:974
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:977
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
@@ -1394,8 +1394,8 @@ msgid "Enable"
 msgstr "Ενεργοποίηση"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:152
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:103
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:904
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:104
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:905
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Αποκλεισμός"
@@ -1450,7 +1450,7 @@ msgid "Nav Menus (Legacy)"
 msgstr "Μενού πλοήγησης (Κληρονομικά)"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:221
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:910
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:911
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
@@ -1475,12 +1475,12 @@ msgid "Sub-%s:"
 msgstr "Υπο-%s:"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:312
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:190
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:191
 msgid "All Statuses"
 msgstr "Όλες οι Καταστάσεις"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1892
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1893
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1497,7 +1497,8 @@ msgstr "Δεν έχει καθοριστεί χρήστης/ομάδα."
 #: classes/PublishPress/Permissions/UI/GroupNew.php:29
 #: classes/PublishPress/Permissions/UI/Groups.php:20
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:113
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:128
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
@@ -1527,105 +1528,113 @@ msgid "Roles and Permissions copied."
 msgstr "Ρόλοι και Άδειες αντιγράφηκαν."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:104
+msgid "Group membership updated."
+msgstr "Η συμμετοχή στην ομάδα ενημερώθηκε."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:107
 msgid "Group updated."
 msgstr "Η ομάδα ενημερώθηκε."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:108
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:111
 #: classes/PublishPress/Permissions/UI/GroupNew.php:50
 msgid "Back to permissions list"
 msgstr "Πίσω στη λίστα δικαιωμάτων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:137
 msgid "Edit User Permissions"
 msgstr "Επεξεργασία δικαιωμάτων χρήστη"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:137
 msgid "Add User Permissions"
 msgstr "Προσθήκη δικαιωμάτων χρήστη"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:136
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:138
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:139
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:141
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:314
 msgid "Edit Permissions"
 msgstr "Επεξεργασία δικαιωμάτων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:140
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
 #, php-format
 msgid "Edit Permissions (%s)"
 msgstr "Επεξεργασία δικαιωμάτων (%s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:149
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:152
 #, php-format
 msgid "%sEdit WordPress Role%s"
 msgstr "%sΕπεξεργασία ρόλου WordPress%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:150
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:153
 msgid "Edit role capabilities directly"
 msgstr "Επεξεργασία δυνατοτήτων ρόλου απευθείας"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:162
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:165
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:304
 msgid "Add New"
 msgstr "Προσθήκη Νέου"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:201
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:261
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:204
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:264
 msgid "Name:"
 msgstr "Όνομα:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:212, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:215, fuzzy
 msgid "Email:"
 msgstr "Email:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:225
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:228
 msgid "Primary Role:"
 msgstr "Κύριος Ρόλος:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:244
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:247
 msgid "User ID:"
 msgstr "ID Χρήστη:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:252
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
 msgid "Member since:"
 msgstr "Μέλος από:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:272
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:275
 msgid "Description:"
 msgstr "Περιγραφή:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:290
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
 msgid "Update Permissions"
 msgstr "Ενημέρωση δικαιωμάτων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:299
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:302
 msgid "View Full Profile"
 msgstr "Προβολή πλήρους προφίλ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:381
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:391
+msgid "Update Group Membership"
+msgstr "Ενημέρωση συμμετοχής στην ομάδα"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:401
 #, php-format
 msgid "Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr "Επιπλέον Ρόλοι %1$s(από τον κύριο ρόλο ή %2$sgroup membership%3$s)%4$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:425
 #, php-format
 msgid "Specific Permissions %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr "Συγκεκριμένες Άδειες %1$s(από τον κύριο ρόλο ή %2$sgroup membership%3$s)%4$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:438
 msgid "View currently stored user permissions:"
 msgstr "Προβολή των δικαιωμάτων χρήστη που είναι αποθηκευμένα αυτή τη στιγμή:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:422
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:442
 #, php-format
 msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
 msgstr "%1$sΧρήστες που έχουν ανατεθεί επιπλέον ρόλοι απευθείας%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:423
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:443
 #, php-format
 msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
 msgstr "%1$sΧρήστες που έχουν ανατεθεί συγκεκριμένα δικαιώματα απευθείας%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:424
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:444
 #, php-format
 msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
 msgstr "%1$sΧρήστες που έχουν Επιπλέον Ρόλους ή Συγκεκριμένες Άδειες άμεσα%2$s"
@@ -1653,7 +1662,7 @@ msgid "Role already selected!"
 msgstr "Ο ρόλος έχει ήδη επιλεγεί!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
 msgid "No Action selected!"
 msgstr "Δεν έχει επιλεγεί καμία ενέργεια!"
 
@@ -1662,31 +1671,35 @@ msgid "Saving Roles..."
 msgstr "Αποθήκευση Ρόλων..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Saving Group Membership..."
+msgstr "Αποθήκευση συμμετοχής στην ομάδα..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
 msgid "Reload form for further changes to this role"
 msgstr "Επαναφόρτωση της φόρμας για περαιτέρω αλλαγές σε αυτόν τον ρόλο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:603
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:25
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:604
 msgid "Show Groups"
 msgstr "Εμφάνιση Ομάδων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:25
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:26
 msgid "Hide Groups"
 msgstr "Απόκρυψη Ομάδων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:448
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
 msgid "Add Specific Permissions"
 msgstr "Προσθήκη Συγκεκριμένων Αδειών"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1386
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Αφαίρεση"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
 msgid ""
 "Review the selection below, and then click <strong>Save "
 "Permissions</strong>."
@@ -1694,45 +1707,45 @@ msgstr ""
 "Εξετάστε την επιλογή παρακάτω και, στη συνέχεια, κάντε κλικ στο "
 "<strong>Αποθήκευση Δικαιωμάτων</strong>."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
 msgid "Permission already selected!"
 msgstr "Η άδεια έχει ήδη επιλεγεί!"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
 msgid "Saving Permissions..."
 msgstr "Αποθήκευση Αδειών..."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
 msgid "Reload form for further changes to this permission"
 msgstr "Επαναφόρτωση της φόρμας για περαιτέρω αλλαγές σε αυτήν την άδεια"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:50
 msgid "Permissions mirrored. Reload form to view newly saved permissions."
 msgstr ""
 "Οι άδειες καθρεφτίστηκαν. Επαναφόρτωση της φόρμας για να δείτε τις "
 "νεοαποθηκευμένες άδειες."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:50
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:51
 msgid "Permissions converted. Reload form to view newly saved permissions."
 msgstr ""
 "Οι άδειες μετατράπηκαν. Επαναφόρτωση της φόρμας για να δείτε τις "
 "νεοαποθηκευμένες άδειες."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:51
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:52
 msgid "No Qualification selected!"
 msgstr "Δεν έχει επιλεγεί καμία Πιστοποίηση!"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
 msgid "No items selected!"
 msgstr "Δεν έχουν επιλεγεί αντικείμενα!"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1193
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1194
 msgid "(no parent)"
 msgstr "(κανένας γονέας)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:806
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:67
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:807
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1741,64 +1754,64 @@ msgstr "(κανένας γονέας)"
 msgid "(none)"
 msgstr "(κανένα)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:71
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:72
 msgid "No results found."
 msgstr "Δεν βρέθηκαν αποτελέσματα."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:96
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
 msgid "select..."
 msgstr "επιλέξτε..."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:902
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:102
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:903
 msgid "Nav Menu (Block)"
 msgstr "Μενού Πλοήγησης (Μπλοκ)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:111
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
 msgid "All Post Types"
 msgstr "Όλοι οι Τύποι Δημοσιεύσεων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:116
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:117
 msgid "n/a"
 msgstr "δ/υ"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:142
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:251
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:375
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:403
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:143
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
 msgid "Post Type"
 msgstr "Τύπος Δημοσίευσης"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:143
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:144
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
 msgid "Operation"
 msgstr "Δράση"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:144
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
 msgid "Adjustment"
 msgstr "Ρύθμιση"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:145
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:146
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
 msgid "Qualification"
 msgstr "Προσόν"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:146
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:147
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
 msgid "Statuses"
 msgstr "Καταστάσεις"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:181
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:182
 msgid "for item"
 msgstr "για το στοιχείο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:198
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:199
 msgid "Block all Pages by default"
 msgstr "Αποκλεισμός όλων των Σελίδων από προεπιλογή"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:208
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:209
 msgid ""
 "Warning: Content hidden by these Permissions will be displayed if PP is "
 "deactivated. Consider setting a private Visibility on Edit Post screen "
@@ -1808,7 +1821,7 @@ msgstr ""
 "εμφανιστεί αν η PP απενεργοποιηθεί. Σκεφτείτε να ορίσετε μια ιδιωτική "
 "Ορατότητα στη οθόνη Επεξεργασίας Ανάρτησης αντ' αυτού."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:217
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:218
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
@@ -1817,7 +1830,7 @@ msgstr ""
 "επιλογή γονέα ή ανάθεση όρου, ενεργοποιήστε τη δυνατότητα Δικαιωμάτων "
 "Επεξεργασίας."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:230
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
@@ -1825,7 +1838,7 @@ msgstr ""
 "Για να αναθέσετε δικαιώματα συγκεκριμένα για φόρουμ για bbPress, "
 "ενεργοποιήστε τη δυνατότητα Πακέτου Συμβατότητας."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:232
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:233
 #, php-format
 msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
@@ -1835,38 +1848,38 @@ msgstr ""
 "%1$sαναβαθμίστε σε Permissions Pro%2$s και ενεργοποιήστε τη δυνατότητα "
 "Πακέτου Συμβατότητας."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:695
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1079
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:87
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "Ρόλος"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
 msgid "For Statuses"
 msgstr "Για Καταστάσεις"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:272
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:273
 msgid "Standard statuses"
 msgstr "Κανονικές καταστάσεις"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:277
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:278
 msgid "Status: Private"
 msgstr "Κατάσταση: Ιδιωτική"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:283
 msgid "Add Role"
 msgstr "Προσθήκη Ρόλου"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:294
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:295
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr ""
 "Για να αναθέσετε ρόλους για τα φόρουμ bbPress, ενεργοποιήστε τη δυνατότητα "
 "Πακέτου Συμβατότητας."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:298
 #, php-format
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
@@ -1875,7 +1888,7 @@ msgstr ""
 "Για να αναθέσετε ρόλους για φόρουμ bbPress, %1$sαναβαθμίστε σε Permissions "
 "Pro%2$s και ενεργοποιήστε τη δυνατότητα Πακέτου Συμβατότητας."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:308
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:309
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
@@ -1883,134 +1896,134 @@ msgstr ""
 "Για να αναθέσετε δικαιώματα Δημοσίευσης ειδικά για τη σελίδα στο "
 "PublishPress Revision, ενεργοποιήστε τη δυνατότητα Δικαιωμάτων Επεξεργασίας."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:341
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:342
 #, php-format
 msgid "Select %s"
 msgstr "Επιλέξτε %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1033
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:697
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1034
 msgid "Status"
 msgstr "Κατάσταση"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:387
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
 msgid "Save Roles"
 msgstr "Αποθήκευση Ρόλων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:418
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
 msgid "Save Permissions"
 msgstr "Αποθήκευση Δικαιωμάτων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:451
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
 msgid "Add Extra Roles"
 msgstr "Προσθήκη Επιπλέον Ρόλων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:461
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "Αντιγραφή"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:574
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Επιπλέον Ρόλοι %1$s(για αυτόν τον χρήστη)%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:576
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:52
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
 msgid "Extra Roles"
 msgstr "Επιπλέον Ρόλοι"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:640
 msgid "Term Management"
 msgstr "Διαχείριση Όρων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:643
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:649
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:644
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:650
 msgid "objects"
 msgstr "αντικείμενα"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:644
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:645
 msgid "Direct-Assigned"
 msgstr "Άμεσα Ανατεθειμένοι"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:650
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
 msgid "Disabled Type"
 msgstr "Απενεργοποιημένος Τύπος"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
 #, php-format
 msgid "%s Roles"
 msgstr "%s Ρόλοι"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:739
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1505
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1506
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:611
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:823
 msgid "Apply"
 msgstr "Εφαρμογή"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:908
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:909
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:226
 msgid "Nav Menu (Legacy)"
 msgstr "Μενού Πλοήγησης (Παλαιά)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:921
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:922
 msgid "(from primary role or group membership)"
 msgstr "(από τον κύριο ρόλο ή την συμμετοχή στην ομάδα)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:938
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:939
 msgid "(all post types)"
 msgstr "(όλοι οι τύποι αναρτήσεων)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:966
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:967
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:967
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:968
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1043
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1083
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:88
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Ομάδα"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1069
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1070
 msgid "unpublished"
 msgstr "μη δημοσιευμένο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1076
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:524
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:690
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1124
 #, php-format
 msgid "this %1$s"
 msgstr "αυτό το %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1129
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "υπο-%1$s αυτού του %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1134
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "αυτό το %1$s και τα υπο-%2$s του"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1144
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
@@ -2019,7 +2032,7 @@ msgstr ""
 "%1$s πρόσβαση για %2$s είναι ΕΝΕΡΓΟΠΟΙΗΜΕΝΗ εντός %3$s, ανεξάρτητα από τις "
 "δυνατότητες ρόλου."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1151
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1152
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -2028,7 +2041,7 @@ msgstr ""
 "%1$s πρόσβαση για %2$s είναι ΕΜΠΟΔΙΣΜΕΝΗ εντός %3$s, εκτός αν ενεργοποιηθεί "
 "από άλλη Άδεια."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1159
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -2037,19 +2050,19 @@ msgstr ""
 "Οποιαδήποτε πρόσβαση %1$s με βάση το ρόλο για %2$s είναι ΠΕΡΙΟΡΙΣΜΕΝΗ. "
 "Ισχύει μόνο εντός %3$s, μαζί με άλλες καθορισμένες %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1170
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s πρόσβαση για %2$s είναι ΕΝΕΡΓΗ, ανεξαρτήτως ικανοτήτων ρόλου."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1176
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1177
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "%1$s πρόσβαση για %2$s είναι ΜΠΛΟΚΑΡΙΣΜΕΝΗ, εκτός αν ενεργοποιηθεί από άλλο "
 "Δικαίωμα."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1183
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1184
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -2058,121 +2071,121 @@ msgstr ""
 "Οποιαδήποτε πρόσβαση %1$s με βάση το ρόλο για %2$s είναι ΠΕΡΙΟΡΙΣΜΕΝΗ. "
 "Ισχύει μόνο για %3$s, μαζί με άλλες καθορισμένες %4$s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1331
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1332
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Ανατεθεί μόνο για υπο-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1339
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1340
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Ανατεθεί για %s και υπο-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1363
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1364
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Αυτή η Άδεια είναι περιττή λόγω μιας αντίστοιχης Περιορισμού."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1371
 #, php-format
 msgid "Edit %s"
 msgstr "Επεξεργασία %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1391
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Ανάθεση για επιλεγμένα και υπο-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1394
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1395
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Ανάθεση μόνο για επιλεγμένα %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1398
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1399
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Ανάθεση μόνο για υπο-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1403
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1404
 msgid "Assign for selected and sub-terms"
 msgstr "Ανάθεση για επιλεγμένους και υπο-όρους"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
 msgid "Assign for selected term only"
 msgstr "Ανάθεση μόνο για επιλεγμένο όρο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1411
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1412
 msgid "Assign for sub-terms only"
 msgstr "Ανάθεση μόνο για υπο-όρους"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 msgid "Convert to \"Enabled\""
 msgstr "Μετατροπή σε \"Ενεργοποιημένο\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
 msgid "Convert to \"Blocked\""
 msgstr "Μετατροπή σε \"Μπλοκαρισμένο\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1425
 msgid "Convert to \"Limit to\""
 msgstr "Μετατροπή σε \"Περιορισμός σε\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1481
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1482
 #, php-format
 msgid "Mirror to %s"
 msgstr "Καθρέφτης σε %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1485
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1486
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Καθρέφτης σε %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1533
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1534
 msgid "= Enabled"
 msgstr "= Ενεργοποιημένο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1540
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1541
 msgid "= Blocked"
 msgstr "= Μπλοκαρισμένο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1547
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1548
 msgid "= Limitation"
 msgstr "= Περιορισμός"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1561
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1562
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s και υπο-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1568
 #, php-format
 msgid "= sub-%s only"
 msgstr "= υπο-%s μόνο"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1585
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1609
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1586
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1610
 msgid "Note:"
 msgstr "Σημείωση:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Οι Άδειες υπο-%1$s δεν αναφέρονται ξεχωριστά."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1592
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1616
 msgid "Show All"
 msgstr "Εμφάνιση Όλων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1600
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1623
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1601
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1624
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Απόκρυψη αυτόματα καθορισμένων Δικαιωμάτων Υπο-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1635
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2182,21 +2195,21 @@ msgstr ""
 "εμποδίσουν την σωστή εφαρμογή των δικαιωμάτων υποσελίδας όταν δημιουργείται "
 "μια νέα υποσελίδα."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1640
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sΔιόρθωση Δικαιωμάτων Υπο-%2$s%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1662
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
 #, php-format
 msgid "%s Permissions"
 msgstr "%s Δικαιώματα"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1687
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1688
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Οι Περιορισμοί Ομάδας δεν είναι διαθέσιμοι λόγω ορισμού σταθεράς"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1704
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1705
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
@@ -2204,43 +2217,43 @@ msgstr ""
 "Τα δικαιώματα για την ενεργοποίηση πρόσβασης δεν είναι διαθέσιμα λόγω "
 "ορισμού σταθερής τιμής"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1769
 msgid "Group Members"
 msgstr "Μέλη Ομάδας"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1817
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1818
 msgid "Copy Roles and Permissions from:"
 msgstr "Αντιγραφή Ρόλων και Δικαιωμάτων από:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1841
 msgid "Copy Roles and Permissions"
 msgstr "Αντιγραφή Ρόλων και Δικαιωμάτων"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:857
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1857
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:840
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] "%s αντικείμενο"
 msgstr[1] "%s αντικείμενα"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1867
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1868
 msgid "Limit to:"
 msgstr "Περιορισμός σε:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1870
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1871
 msgid "Blocked:"
 msgstr "Αποκλεισμένα:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1874
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1875
 msgid "Enabled:"
 msgstr "Ενεργοποιημένα:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1885
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1886
 msgid "Direct-assigned"
 msgstr "Άμεσα καθορισμένα"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1899
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2357,8 +2370,8 @@ msgstr "Προσθήκη Νέας Ομάδας Δικαιωμάτων"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:318
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:123
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:640
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:806
 msgid "Edit"
 msgstr "Επεξεργασία"
 
@@ -2798,25 +2811,14 @@ msgstr "Επιπλέον Ρόλοι %1$s(από τον κύριο ρόλο ή τ
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Συγκεκριμένα Δικαιώματα (από τον κύριο ρόλο ή τη συμμετοχή σε ομάδα)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:265
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:440
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:264
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:430
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:174
 msgid "Permission Groups"
 msgstr "Ομάδες Δικαιωμάτων"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:293
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:330
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:472
-msgid "This user is not a member of any custom Permission Groups."
-msgstr "Αυτός ο χρήστης δεν είναι μέλος καμίας προσαρμοσμένης Ομάδας Δικαιωμάτων."
-
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:297
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:476
-msgid "Edit this user's group membership"
-msgstr "Επεξεργασία της συμμετοχής αυτού του χρήστη στην ομάδα"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:306
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:485
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:460
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2824,33 +2826,39 @@ msgstr ""
 "Σημείωση: Οι ομάδες BuddyPress και άλλες εξωτερικά καθορισμένες ομάδες δεν "
 "αναφέρονται εδώ, ακόμη και αν τροποποιούν τα δικαιώματα"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:326
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:303
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:321
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:474
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "Αυτός ο χρήστης δεν είναι μέλος καμίας προσαρμοσμένης Ομάδας Δικαιωμάτων."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:317
 msgid "Group membership"
 msgstr "Συμμετοχή σε ομάδα"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:550
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:716
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:533
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:699
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, περισσότερα..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:558
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:569
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:724
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:735
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:552
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:718
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "επεξεργασία δικαιωμάτων χρήστη"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:614
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:669
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:597
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:652
 msgid "No specific permissions currently apply."
 msgstr "Δεν ισχύουν αυτή τη στιγμή συγκεκριμένες άδειες."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:780
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:835
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:763
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:818
 msgid "No extra roles currently apply."
 msgstr "Δεν ισχύουν αυτή τη στιγμή επιπλέον ρόλοι."
 
@@ -3142,16 +3150,16 @@ msgstr "Ροή Εργασίας"
 msgid "edit group permissions"
 msgstr "επεξεργασία αδειών ομάδας"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:332
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:339
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:348
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:355
 msgid "ERROR"
 msgstr "ΣΦΑΛΜΑ"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:349
 msgid "Please enter a group name."
 msgstr "Παρακαλώ εισάγετε ένα όνομα ομάδας."
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:340
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:356
 msgid "This group name is already registered. Please choose another one."
 msgstr "Αυτό το όνομα ομάδας είναι ήδη καταχωρημένο. Παρακαλώ επιλέξτε ένα άλλο."
 
@@ -3301,8 +3309,8 @@ msgid "All settings were reset to defaults."
 msgstr "Όλες οι ρυθμίσεις επαναφέρθηκαν στις προεπιλεγμένες τιμές."
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:615
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:753
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:771
 msgid "Save Changes"
 msgstr "Αποθήκευση Αλλαγών"
 
@@ -4474,7 +4482,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:254
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:967
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Μάθετε Περισσότερα"
@@ -4987,7 +4995,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Αναβαθμίστε σε Pro για να ξεκλειδώσετε την απρόσκοπτη ενσωμάτωσή."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:367
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
 msgid "Posts Teaser"
 msgstr "Προεπισκόπηση Δημοσιεύσεων"
 
@@ -5712,36 +5720,36 @@ msgstr "Αντιγραφή shortcode"
 msgid "Copied!"
 msgstr "Αντιγράφηκε!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:593
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:617
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:668
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:514
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:284
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1152
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:286
 msgid "You do not have permission to view the full content."
 msgstr "Δεν έχετε άδεια να δείτε το πλήρες περιεχόμενο."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:699
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
 msgid "Content requires additional permissions."
 msgstr "Το περιεχόμενο απαιτεί επιπλέον άδειες."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:798
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
 msgid "To read the full content, please log in to this site."
 msgstr ""
 "Για να διαβάσετε το πλήρες περιεχόμενο, παρακαλώ συνδεθείτε σε αυτή την "
 "ιστοσελίδα."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
 msgid "Read More"
 msgstr "Διαβάστε περισσότερα"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:322
 msgid "Teaser Type"
 msgstr "Τύπος προεπισκόπησης"
 
@@ -5750,8 +5758,9 @@ msgid "Coverage"
 msgstr "Κάλυψη"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
-msgid "Teaser Text"
-msgstr "Κείμενο προεπισκόπησης"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
+msgid "No Teaser Text"
+msgstr "Δεν υπάρχει κείμενο teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
 msgid "Read More Notice"
@@ -5762,7 +5771,7 @@ msgid "Redirect"
 msgstr "Ανακατεύθυνση"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:405
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:572
 msgid "Options"
 msgstr "Επιλογές"
 
@@ -5789,14 +5798,32 @@ msgid "Teaser Notice Message"
 msgstr "Μήνυμα Ειδοποίησης Teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Apply teaser to list view as well as single view"
+msgstr ""
+"Εφαρμογή teaser στη λίστα προβολής καθώς και στην προβολή μεμονωμένων "
+"στοιχείων"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "Apply teaser to logged in and/or logged out users"
+msgstr "Εφαρμογή teaser σε χρήστες που είναι συνδεδεμένοι και/ή αποσυνδεδεμένοι"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+msgid "Hide navigation menu links to restricted content"
+msgstr "Απόκρυψη συνδέσμων μενού πλοήγησης σε περιορισμένο περιεχόμενο"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
+msgid "Apply teaser to private posts"
+msgstr "Εφαρμογή teaser σε ιδιωτικές αναρτήσεις"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Απόκρυψη εικόνας προεπισκόπησης όταν εφαρμόζεται η προεπισκόπηση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Disable Comments when Teaser is applied"
 msgstr "Απενεργοποίηση Σχολίων όταν εφαρμόζεται το Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5804,64 +5831,145 @@ msgstr ""
 "\"Απόκρυψη Ιδιωτικού\" ρυθμίσεις ισχύουν μόνο για προσαρμοσμένη "
 "ιδιωτικότητα (Μέλος, Premium, Προσωπικό κ.λπ.)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:140
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
 #, php-format
 msgid "%s is a PRO feature"
 msgstr "%s είναι μια PRO δυνατότητα"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:190
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:198
 #, php-format
 msgid "🔓 Unlock %s"
 msgstr "🔓 Ξεκλειδώστε το %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:194
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:202
 msgid "This feature is available in PublishPress Permissions PRO"
 msgstr "Αυτή η δυνατότητα είναι διαθέσιμη στο PublishPress Permissions PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:214
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
 msgid "Upgrade to PRO"
 msgstr "Αναβάθμιση σε PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:217
 msgid "Compare Features"
 msgstr "Σύγκριση δυνατοτήτων"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Application"
+msgstr "Εφαρμογή"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:249
+msgid "Teaser Application"
+msgstr "Εφαρμογή Teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:253
+msgid "List and Single view"
+msgstr "Λίστα και Μοναδική προβολή"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:257
+msgid "Single view only"
+msgstr "Μόνο σε προβολή ενός"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
+msgid "User Application"
+msgstr "Εφαρμογή Χρήστη"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+msgid "Both"
+msgstr "Και οι δύο"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:278
+msgid "Not Logged In Users"
+msgstr "Χρήστες που δεν έχουν συνδεθεί"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:282
+msgid "Logged In Users"
+msgstr "Χρήστες που έχουν συνδεθεί"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:295
+msgid "Navigation Menus"
+msgstr "Μενού Πλοήγησης"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:299
+msgid "Display links if user doesn't have access"
+msgstr "Εμφάνιση συνδέσμων αν ο χρήστης δεν έχει πρόσβαση"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:303
+msgid "Hide links if user doesn't have access"
+msgstr "Απόκρυψη συνδέσμων αν ο χρήστης δεν έχει πρόσβαση"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:319
+msgid "Private Posts"
+msgstr "Ιδιωτικές Αναρτήσεις"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:323
+msgid "Apply Teaser to Private Posts"
+msgstr "Εφαρμογή Teaser σε Ιδιωτικές Αναρτήσεις"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:327
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "Απόκρυψη Ιδιωτικών Αναρτήσεων αν ο χρήστης δεν έχει πρόσβαση"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:332
+msgid "Hide for Custom Visibility"
+msgstr "Απόκρυψη για Προσαρμοσμένη Ορατότητα"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Featured Image"
+msgstr "Επιλεγμένη Εικόνα"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
+msgid "Show featured image"
+msgstr "Εμφάνιση επιλεγμένης εικόνας"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:354
+msgid "Hide featured image when teaser is applied"
+msgstr "Απόκρυψη επιλεγμένης εικόνας όταν εφαρμόζεται teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:369
+msgid "Comments Area"
+msgstr "Περιοχή Σχολίων"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
+msgid "Disable the comments area when Teaser is applied"
+msgstr "Απενεργοποίηση της περιοχής σχολίων όταν εφαρμόζεται το Teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:395
 msgid "Full Content"
 msgstr "Πλήρης Περιεχόμενο"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:396
 msgid "Excerpt Only"
 msgstr "Μόνο Απόσπασμα"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:397
 msgid "Title Only"
 msgstr "Μόνο Τίτλος"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:242, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:409, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:430
 msgid "Display for readable private posts"
 msgstr "Εμφάνιση για αναγνώσιμες ιδιωτικές αναρτήσεις"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
 msgid "Display for readable non-private posts"
 msgstr "Εμφάνιση για αναγνώσιμες μη ιδιωτικές αναρτήσεις"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:309
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:476
 msgid "Feed Replacement Text"
 msgstr "Κείμενο Αντικατάστασης Ροής"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:333
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:500
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Χρησιμοποιήστε %s για το URL της ανάρτησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:370
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:537
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5869,243 +5977,160 @@ msgstr ""
 "Χρησιμοποιήστε αυτές τις ρυθμίσεις για να ελέγξετε τι βλέπουν οι χρήστες "
 "όταν δεν έχουν πρόσβαση στο περιεχόμενό σας."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:380
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:547
 msgid "All post teaser settings were updated."
 msgstr "Όλες οι ρυθμίσεις προεπισκόπησης ανάρτησης ενημερώθηκαν."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:388
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:555
 msgid "All post teaser settings were reset to defaults."
 msgstr ""
 "Όλες οι ρυθμίσεις προεπισκόπησης ανάρτησης επαναφέρθηκαν στις "
 "προεπιλεγμένες τιμές."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:399
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:566
 msgid "Teaser Settings"
 msgstr "Ρυθμίσεις Προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:56
 msgid "Select Post Type to Configure"
 msgstr "Επιλέξτε Τύπο Ανάρτησης προς Ρύθμιση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:69
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:57
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr ""
 "Επιλέξτε ποιον τύπο ανάρτησης θέλετε να ρυθμίσετε τις ρυθμίσεις "
 "προεπισκόπησης."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:112
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:100
 #, fuzzy, php-format
 msgid "%s [PRO]"
 msgstr "%s [PRO]"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:132
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:120
 #. translators: %s: "PRO" link to the upgrade page
 #, php-format
 msgid "Pages and custom post types are available in %s"
 msgstr "Οι σελίδες και οι προσαρμοσμένοι τύποι αναρτήσεων είναι διαθέσιμοι στο %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:138, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:126, fuzzy
 msgid "PRO"
 msgstr "PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "Προεπιλογή WordPress. Εμφάνιση οθόνης \"Η σελίδα δεν βρέθηκε\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
-msgid "Teaser text"
-msgstr "Κείμενο Προεπισκόπησης"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
 msgid "Use content before Read More link as teaser text"
 msgstr ""
 "Χρησιμοποιήστε το περιεχόμενο πριν από τον σύνδεσμο Διαβάστε Περισσότερα ως "
 "κείμενο προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:230
 msgid "Use Excerpt as teaser text"
 msgstr "Χρησιμοποιήστε το Απόσπασμα ως κείμενο προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr ""
 "Χρησιμοποιήστε το Απόσπασμα ή το προ του Περισσότερα ως κείμενο "
 "προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:232
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr ""
 "Χρησιμοποιήστε το Απόσπασμα, το προ του Περισσότερα ή τους Πρώτους X "
 "Χαρακτήρες ως κείμενο προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:233
 msgid "Redirect to another post"
 msgstr "Ανακατεύθυνση σε άλλη ανάρτηση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "No teaser will be applied"
 msgstr "Δεν θα εφαρμοστεί καμία προεπισκόπηση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
-msgid "Use configured teaser text to replace or supplement content"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+msgid "Do not show teaser text before the blocked-user message"
 msgstr ""
-"Χρησιμοποιήστε το κείμενο προεπισκόπησης που έχει ρυθμιστεί για να "
-"αντικαταστήσετε ή να συμπληρώσετε το περιεχόμενο"
+"Μην εμφανίζετε το κείμενο teaser πριν από το μήνυμα χρήστη που έχει "
+"αποκλειστεί"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Εμφάνιση ενός συνδέσμου \"Διαβάστε Περισσότερα\" με μια ειδοποίηση Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 msgid "Use the post excerpt as teaser content"
 msgstr "Χρησιμοποιήστε την περίληψη της ανάρτησης ως περιεχόμενο προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 msgid "Use excerpt or content before More tag"
 msgstr ""
 "Χρησιμοποιήστε την περίληψη ή το περιεχόμενο πριν από την ετικέτα "
 "Περισσότερα"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 msgid "Show the first X characters of the post content"
 msgstr "Εμφάνιση των πρώτων X χαρακτήρων του περιεχομένου της ανάρτησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Ανακατεύθυνση χρηστών σε άλλη σελίδα όταν προσπαθούν να αποκτήσουν πρόσβαση "
 "σε περιορισμένο περιεχόμενο"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
 msgid "Use first X characters of content as teaser text"
 msgstr ""
 "Χρησιμοποιήστε τους πρώτους X χαρακτήρες του περιεχομένου ως κείμενο "
 "προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
 msgid "Use excerpt or first X characters of content"
 msgstr "Χρησιμοποιήστε την περίληψη ή τους πρώτους X χαρακτήρες του περιεχομένου"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Ρυθμίσεις προεπισκόπησης για %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
 #, php-format
 msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
 msgstr ""
 "Οι σύνδεσμοι \"Διαβάστε περισσότερα\", οι περίληψεις και οι ανακατευθύνσεις "
 "είναι διαθέσιμοι στο %sPRO%s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:365
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "Show only the first"
 msgstr "Εμφάνιση μόνο των πρώτων"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:366
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:354
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:360
 msgid "Chars"
 msgstr "Χαρακτήρων"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:367
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
 msgid "characters"
 msgstr "χαρακτήρες"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "Max"
 msgstr "Μέγιστο"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:361
 msgid "characters (leave empty for full excerpt)"
 msgstr "χαρακτήρες (αφήστε κενό για πλήρη περίληψη)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
-msgid "Teaser Application"
-msgstr "Εφαρμογή Teaser"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:386
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1240
+msgid "Customize the Message for Blocked Users"
+msgstr "Προσαρμογή του μηνύματος για αποκλεισμένους χρήστες"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
-msgid "List and Single view"
-msgstr "Λίστα και Μοναδική προβολή"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:402
-msgid "Single view only"
-msgstr "Μόνο σε προβολή ενός"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:409
-msgid "User Application"
-msgstr "Εφαρμογή Χρήστη"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
-msgid "Both"
-msgstr "Και οι δύο"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:740
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-msgid "Not Logged In Users"
-msgstr "Χρήστες που δεν έχουν συνδεθεί"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:422
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:852
-msgid "Logged In Users"
-msgstr "Χρήστες που έχουν συνδεθεί"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:429
-msgid "Navigation Menus"
-msgstr "Μενού Πλοήγησης"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:433
-msgid "Display links if user doesn't have access"
-msgstr "Εμφάνιση συνδέσμων αν ο χρήστης δεν έχει πρόσβαση"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:437
-msgid "Hide links if user doesn't have access"
-msgstr "Απόκρυψη συνδέσμων αν ο χρήστης δεν έχει πρόσβαση"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
-msgid "Private Posts"
-msgstr "Ιδιωτικές Αναρτήσεις"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:446
-msgid "Apply Teaser to Private Posts"
-msgstr "Εφαρμογή Teaser σε Ιδιωτικές Αναρτήσεις"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:450
-msgid "Hide Private Posts if user doesn't have access"
-msgstr "Απόκρυψη Ιδιωτικών Αναρτήσεων αν ο χρήστης δεν έχει πρόσβαση"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:455
-msgid "Hide for Custom Visibility"
-msgstr "Απόκρυψη για Προσαρμοσμένη Ορατότητα"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:461
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
-msgid "Featured Image"
-msgstr "Επιλεγμένη Εικόνα"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:465
-msgid "Show featured image"
-msgstr "Εμφάνιση επιλεγμένης εικόνας"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:469
-msgid "Hide featured image when teaser is applied"
-msgstr "Απόκρυψη επιλεγμένης εικόνας όταν εφαρμόζεται teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
-msgid "Comments Area"
-msgstr "Περιοχή Σχολίων"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:479
-msgid "Disable the comments area when Teaser is applied"
-msgstr "Απενεργοποίηση της περιοχής σχολίων όταν εφαρμόζεται το Teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:485
-msgid "Teaser Message Style"
-msgstr "Στυλ Μηνύματος Teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
 msgid ""
 "Choose whether to use the default message style or customize the appearance "
 "of teaser messages."
@@ -6113,34 +6138,30 @@ msgstr ""
 "Επιλέξτε εάν θα χρησιμοποιήσετε το προεπιλεγμένο στυλ μηνύματος ή να "
 "προσαρμόσετε την εμφάνιση των μηνυμάτων teaser."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:497
-msgid "Use Default Teaser Message Style"
-msgstr "Χρήση Προεπιλεγμένου Στυλ Μηνύματος Teaser"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:383
+msgid "Use Default Message Style"
+msgstr "Χρήση προεπιλεγμένου στυλ μηνύματος"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
-msgid "Use Custom Teaser Message Style"
-msgstr "Χρήση Προσαρμοσμένου Στυλ Μηνύματος Teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:551
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:294
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Οι επισκέπτες χωρίς πρόσβαση ανακατευθύνονται στο: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:295
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:297
 msgid "Visitors without access are redirected away from this page."
 msgstr "Οι επισκέπτες χωρίς πρόσβαση ανακατευθύνονται μακριά από αυτή τη σελίδα."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:187
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Ένα δείγμα %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6148,60 +6169,60 @@ msgstr ""
 "Αυτό είναι ένα παράδειγμα του πλήρους περιεχομένου. Η προεπισκόπηση δείχνει "
 "τι θα δει ένας επισκέπτης χωρίς άδεια."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:480
 msgid "This is a short excerpt from the restricted content."
 msgstr "Αυτό είναι ένα σύντομο απόσπασμα από το περιορισμένο περιεχόμενο."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
 msgid "Teaser Preview"
 msgstr "Προεπισκόπηση teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Site Preview"
 msgstr "Προεπισκόπηση ιστότοπου"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:620
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:621
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Preview content"
 msgstr "Προεπισκόπηση περιεχομένου"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Preview device"
 msgstr "Συσκευή προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:636
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:524
 msgid "Desktop"
 msgstr "Επιτραπέζιος υπολογιστής"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:527
 msgid "Mobile"
 msgstr "Κινητό"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:648
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
 msgid "Open full preview in a new tab"
 msgstr "Άνοιγμα πλήρους προεπισκόπησης σε νέα καρτέλα"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
 msgid "Open full preview"
 msgstr "Άνοιγμα πλήρους προεπισκόπησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
 msgid "Loading the preview from your active theme…"
 msgstr "Φόρτωση της προεπισκόπησης από το ενεργό θέμα…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
 msgid "Teaser preview from the active theme"
 msgstr "Προεπισκόπηση teaser από το ενεργό θέμα"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:684
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Η προεπισκόπηση του θέματος δεν μπόρεσε να εμφανιστεί σε αυτό το πλαίσιο."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:691
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
 msgid "Visitor redirected"
 msgstr "Ο επισκέπτης ανακατευθύνθηκε"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:692
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6209,11 +6230,11 @@ msgstr ""
 "Το περιορισμένο περιεχόμενο δεν εμφανίζεται. Ο επισκέπτης αποστέλλεται στον "
 "καθορισμένο προορισμό."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:729
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
 msgid "Teaser Message"
 msgstr "Μήνυμα Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:730
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6221,60 +6242,59 @@ msgstr ""
 "Αντικαταστήστε το περιεχόμενο της ανάρτησης πλήρως με προσαρμοσμένο "
 "περιεχόμενο για χρήστες που δεν έχουν πρόσβαση."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:624
 msgid "This field is required."
 msgstr "Αυτό το πεδίο είναι υποχρεωτικό."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:751
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:791
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:626
 msgid "Replace Post Content With:"
 msgstr "Αντικατάσταση περιεχομένου ανάρτησης με:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:654
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Εισάγετε μια φόρμα σύνδεσης χρησιμοποιώντας το shortcode %s[login_form]%s."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
-msgid "Teaser Text Configuration"
-msgstr "Διαμόρφωση κειμένου προεπισκόπησης"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+msgid "No Teaser Text Configuration"
+msgstr "Διαμόρφωση κειμένου teaser δεν υπάρχει"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:839
-msgid "Configure custom teaser text for this post type."
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+msgid ""
+"Configure title and excerpt text for blocked users when no teaser text is "
+"shown."
 msgstr ""
-"Διαμορφώστε προσαρμοσμένο κείμενο προεπισκόπησης για αυτόν τον τύπο "
-"ανάρτησης."
+"Ρύθμιση τίτλου και κειμένου περίληψης για αποκλεισμένους χρήστες όταν δεν "
+"εμφανίζεται κανένα κείμενο teaser."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:878
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
 msgid "post title"
 msgstr "τίτλος ανάρτησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:879
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:698
 msgid "post content"
 msgstr "περιεχόμενο ανάρτησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:886
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:705
 #, php-format
 msgid "Before %s"
 msgstr "Πριν από %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:887
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:706
 #, php-format
 msgid "After %s"
 msgstr "Μετά από %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:986
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
 msgid "Redirect Settings"
 msgstr "Ρυθμίσεις ανακατεύθυνσης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
 msgid "Redirect functionality is available in PRO"
 msgstr "Η δυνατότητα ανακατεύθυνσης είναι διαθέσιμη στην έκδοση PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:961
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:783
 msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
@@ -6282,43 +6302,52 @@ msgstr ""
 "Αυτόματα ανακατευθύνετε τους χρήστες σε μια σελίδα σύνδεσης ή προσαρμοσμένη "
 "σελίδα όταν προσπαθούν να αποκτήσουν πρόσβαση σε περιορισμένο περιεχόμενο."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:997
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:819
 msgid "Redirection"
 msgstr "Ανακατεύθυνση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:998
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:820
 msgid "Target Post Type"
 msgstr "Στόχος τύπος ανάρτησης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:999
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
 msgid "Select Post"
 msgstr "Επιλέξτε ανάρτηση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1035
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+msgid "Custom URL"
+msgstr "Προσαρμοσμένος σύνδεσμος"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
 msgid "Not Logged In:"
 msgstr "Δεν είστε συνδεδεμένοι:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1138
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
 msgid "No redirect"
 msgstr "Καμία ανακατεύθυνση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "Redirect to WordPress login"
 msgstr "Ανακατεύθυνση στη σύνδεση του WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1140
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "Redirect to a custom post"
 msgstr "Ανακατεύθυνση σε μια προσαρμοσμένη ανάρτηση"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:975
+msgid "Redirect to a custom URL"
+msgstr "Ανακατεύθυνση σε έναν προσαρμοσμένο σύνδεσμο"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
 msgid "This is a custom login page"
 msgstr "Αυτή είναι μια προσαρμοσμένη σελίδα σύνδεσης"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6326,17 +6355,17 @@ msgstr ""
 "Αφού συνδεθεί ο χρήστης, θα ανακατευθυνθεί πίσω στην αρχική ανάρτηση που "
 "έβλεπε."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
 msgid "Logged in Users:"
 msgstr "Συνδεδεμένοι Χρήστες:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1223
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1277
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1331
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1061
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1115
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
 msgid "Message for Blocked Users"
 msgstr "Μήνυμα για αποκλεισμένους χρήστες"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1062
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6345,7 +6374,7 @@ msgstr ""
 "την προβολή του πλήρους περιεχομένου όταν χρησιμοποιούν τον τύπο teaser "
 "\"Διαβάστε περισσότερα\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1085
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for all blocked users."
@@ -6353,7 +6382,7 @@ msgstr ""
 "Αυτό το μήνυμα θα εμφανίζεται σε ένα στιλιζαρισμένο πλαίσιο ειδοποίησης "
 "πάνω από το περιεχόμενο teaser για όλους τους αποκλεισμένους χρήστες."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1278
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1116
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6361,7 +6390,7 @@ msgstr ""
 "Προσαρμόστε το μήνυμα ειδοποίησης που εμφανίζεται σε όλους τους "
 "αποκλεισμένους χρήστες όταν χρησιμοποιούν τον τύπο teaser \"Απόσπασμα\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1301
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for all blocked users."
@@ -6370,7 +6399,7 @@ msgstr ""
 "κάτω από το περιεχόμενο teaser απόσπασμα για όλους τους αποκλεισμένους "
 "χρήστες."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1332
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1170
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6379,7 +6408,7 @@ msgstr ""
 "μπλοκαρισμένους χρήστες όταν χρησιμοποιούν τον τύπο teaser \"Πρώτοι X "
 "Χαρακτήρες\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for all blocked users."
@@ -6388,66 +6417,62 @@ msgstr ""
 "κάτω από το κομμένο περιεχόμενο teaser για όλους τους μπλοκαρισμένους "
 "χρήστες."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1402
-msgid "Teaser Message Style Customization"
-msgstr "Προσαρμογή Στυλ Μηνύματος Teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1403
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1241
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr ""
 "Προσαρμόστε την εμφάνιση του μηνύματος teaser που εμφανίζεται σε "
 "αποκλεισμένους χρήστες."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1411
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Background Color"
 msgstr "Χρώμα Φόντου"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1423
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
 msgid "Text Color"
 msgstr "Χρώμα Κειμένου"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1273
 msgid "Border Color"
 msgstr "Χρώμα Περιγράμματος"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1447
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1296
 msgid "Border Position"
 msgstr "Θέση Περιγράμματος"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1451
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
 msgid "Left"
 msgstr "Αριστερά"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1290
 msgid "Right"
 msgstr "Δεξιά"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1453
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
 msgid "Top"
 msgstr "Επάνω"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1454
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1292
 msgid "Bottom"
 msgstr "Κάτω"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1455
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1293
 msgid "All Sides"
 msgstr "Όλες οι Πλευρές"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1475
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1313
 msgid "Border Width (px)"
 msgstr "Πλάτος Περιγράμματος (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1488
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1326
 msgid "Border Radius (px)"
 msgstr "Ακτίνα Περιγράμματος (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1501
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1339
 msgid "Font Size (px)"
 msgstr "Μέγεθος Γραμματοσειράς (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1514
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1352
 msgid "Padding (px)"
 msgstr "Γέμισμα (px)"
 
@@ -6468,7 +6493,7 @@ msgstr "Αυτή είναι μια λειτουργία PRO"
 msgid "%s is available in PRO"
 msgstr "%s είναι διαθέσιμο στο PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:184
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
 msgid "Post"
 msgstr "Δημοσίευση"
 
@@ -6520,8 +6545,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Ομάδες"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:663
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

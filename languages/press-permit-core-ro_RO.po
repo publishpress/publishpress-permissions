@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-09 14:54+0000\n"
+"PO-Revision-Date: 2026-09-11 13:37+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
@@ -1186,9 +1186,9 @@ msgid "All users with the WordPress role of %s"
 msgstr "Toți utilizatorii cu rolul WordPress de %s"
 
 #: classes/PublishPress/Permissions/DB/PermissionsMeta.php:148
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:970
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:973
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:976
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:971
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:974
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:977
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
@@ -1385,8 +1385,8 @@ msgid "Enable"
 msgstr "Activare"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:152
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:103
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:904
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:104
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:905
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "Blochează"
@@ -1441,7 +1441,7 @@ msgid "Nav Menus (Legacy)"
 msgstr "Meniuri de navigare (Legacy)"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:221
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:910
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:911
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127, fuzzy
@@ -1466,12 +1466,12 @@ msgid "Sub-%s:"
 msgstr "Sub-%s:"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:312
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:190
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:191
 msgid "All Statuses"
 msgstr "Toate statusurile"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1892
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1893
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1488,7 +1488,8 @@ msgstr "Niciun utilizator/grup specificat."
 #: classes/PublishPress/Permissions/UI/GroupNew.php:29
 #: classes/PublishPress/Permissions/UI/Groups.php:20
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:113
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:128
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
@@ -1518,109 +1519,117 @@ msgid "Roles and Permissions copied."
 msgstr "Roluri și permisiuni copiate."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:104
+msgid "Group membership updated."
+msgstr "Membri ai grupului actualizați."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:107
 msgid "Group updated."
 msgstr "Grup actualizat."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:108
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:111
 #: classes/PublishPress/Permissions/UI/GroupNew.php:50
 msgid "Back to permissions list"
 msgstr "Înapoi la lista de permisiuni"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:137
 msgid "Edit User Permissions"
 msgstr "Editează permisiunile utilizatorului"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:137
 msgid "Add User Permissions"
 msgstr "Adaugă permisiuni utilizator"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:136
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:138
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:139
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:141
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:314
 msgid "Edit Permissions"
 msgstr "Editează permisiunile"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:140
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
 #, php-format
 msgid "Edit Permissions (%s)"
 msgstr "Editează permisiunile (%s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:149
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:152
 #, php-format
 msgid "%sEdit WordPress Role%s"
 msgstr "%sEditează rolul WordPress%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:150
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:153
 msgid "Edit role capabilities directly"
 msgstr "Editează capacitățile rolului direct"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:162
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:165
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:304
 msgid "Add New"
 msgstr "Adaugă nou"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:201
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:261
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:204
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:264
 msgid "Name:"
 msgstr "Nume:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:212, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:215, fuzzy
 msgid "Email:"
 msgstr "Email:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:225
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:228
 msgid "Primary Role:"
 msgstr "Rol principal:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:244
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:247
 msgid "User ID:"
 msgstr "ID utilizator:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:252
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
 msgid "Member since:"
 msgstr "Membru din:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:272
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:275
 msgid "Description:"
 msgstr "Descriere:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:290
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
 msgid "Update Permissions"
 msgstr "Actualizează permisiunile"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:299
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:302
 msgid "View Full Profile"
 msgstr "Vezi profilul complet"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:381
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:391
+msgid "Update Group Membership"
+msgstr "Actualizează membrii grupului"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:401
 #, php-format
 msgid "Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr ""
 "Roluri suplimentare %1$s(din rolul principal sau %2$smembria "
 "grupului%3$s)%4$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:425
 #, php-format
 msgid "Specific Permissions %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr ""
 "Permisiuni specifice %1$s(din rolul principal sau %2$smembria "
 "grupului%3$s)%4$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:438
 msgid "View currently stored user permissions:"
 msgstr "Vezi permisiunile utilizatorului stocate în prezent:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:422
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:442
 #, php-format
 msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
 msgstr "%1$sUtilizatori care au roluri suplimentare atribuite direct%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:423
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:443
 #, php-format
 msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
 msgstr "%1$sUtilizatori care au permisiuni specifice atribuite direct%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:424
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:444
 #, php-format
 msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
 msgstr ""
@@ -1650,7 +1659,7 @@ msgid "Role already selected!"
 msgstr "Rolul este deja selectat!"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
 msgid "No Action selected!"
 msgstr "Nicio acțiune selectată!"
 
@@ -1659,31 +1668,35 @@ msgid "Saving Roles..."
 msgstr "Se salvează Rolurile..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Saving Group Membership..."
+msgstr "Se salvează membrii grupului..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
 msgid "Reload form for further changes to this role"
 msgstr "Reîncarcă formularul pentru alte modificări la acest rol"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:603
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:25
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:604
 msgid "Show Groups"
 msgstr "Arată grupuri"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:25
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:26
 msgid "Hide Groups"
 msgstr "Ascunde grupurile"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:448
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
 msgid "Add Specific Permissions"
 msgstr "Adaugă Permisiuni Specifice"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1386
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "Elimină"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
 msgid ""
 "Review the selection below, and then click <strong>Save "
 "Permissions</strong>."
@@ -1691,45 +1704,45 @@ msgstr ""
 "Revizuiește selecția de mai jos, apoi apasă <strong>Salvează "
 "Permisiunile</strong>."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
 msgid "Permission already selected!"
 msgstr "Permisiunea este deja selectată!"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
 msgid "Saving Permissions..."
 msgstr "Se salvează Permisiunile..."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
 msgid "Reload form for further changes to this permission"
 msgstr "Reîncarcă formularul pentru alte modificări la această permisiune"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:50
 msgid "Permissions mirrored. Reload form to view newly saved permissions."
 msgstr ""
 "Permisiuni reflectate. Reîncarcă formularul pentru a vizualiza permisiunile "
 "salvate recent."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:50
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:51
 msgid "Permissions converted. Reload form to view newly saved permissions."
 msgstr ""
 "Permisiuni convertite. Reîncarcă formularul pentru a vizualiza permisiunile "
 "salvate recent."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:51
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:52
 msgid "No Qualification selected!"
 msgstr "Nicio Calificare selectată!"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
 msgid "No items selected!"
 msgstr "Niciun element selectat!"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1193
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1194
 msgid "(no parent)"
 msgstr "(fără părinte)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:806
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:67
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:807
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1738,64 +1751,64 @@ msgstr "(fără părinte)"
 msgid "(none)"
 msgstr "(niciunul)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:71
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:72
 msgid "No results found."
 msgstr "Niciun rezultat găsit."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:96
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
 msgid "select..."
 msgstr "selectați..."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:902
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:102
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:903
 msgid "Nav Menu (Block)"
 msgstr "Meniu de navigare (Bloc)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:111
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
 msgid "All Post Types"
 msgstr "Toate tipurile de postări"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:116, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:117, fuzzy
 msgid "n/a"
 msgstr "n/a"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:142
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:251
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:375
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:403
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:143
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
 msgid "Post Type"
 msgstr "Tip postare"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:143
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:144
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
 msgid "Operation"
 msgstr "Operațiune"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:144
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
 msgid "Adjustment"
 msgstr "Ajustare"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:145
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:146
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
 msgid "Qualification"
 msgstr "Calificare"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:146
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:147
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
 msgid "Statuses"
 msgstr "Stări"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:181
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:182
 msgid "for item"
 msgstr "pentru element"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:198
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:199
 msgid "Block all Pages by default"
 msgstr "Blochează toate paginile în mod implicit"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:208
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:209
 msgid ""
 "Warning: Content hidden by these Permissions will be displayed if PP is "
 "deactivated. Consider setting a private Visibility on Edit Post screen "
@@ -1805,7 +1818,7 @@ msgstr ""
 "dezactivat. Ia în considerare setarea unei Vizibilități private pe ecranul "
 "Editare Post."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:217
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:218
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
@@ -1814,7 +1827,7 @@ msgstr ""
 "părinte sau atribuirea termenului, activează funcția Permisiunilor de "
 "Editare."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:230
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
@@ -1822,7 +1835,7 @@ msgstr ""
 "Pentru a atribui Permisiuni specifice forumului pentru bbPress, activează "
 "funcția Pachet de Compatibilitate."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:232
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:233
 #, php-format
 msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
@@ -1832,38 +1845,38 @@ msgstr ""
 "%1$sactualizează la Permissions Pro%2$s și activează funcția Pachet de "
 "Compatibilitate."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:695
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1079
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:87
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "Rol"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
 msgid "For Statuses"
 msgstr "Pentru stări"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:272
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:273
 msgid "Standard statuses"
 msgstr "Stări standard"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:277
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:278
 msgid "Status: Private"
 msgstr "Stare: Privat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:283
 msgid "Add Role"
 msgstr "Adaugă rol"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:294
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:295
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr ""
 "Pentru a atribui roluri pentru forumurile bbPress, activează funcția Pachet "
 "de Compatibilitate."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:298
 #, php-format
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
@@ -1872,7 +1885,7 @@ msgstr ""
 "Pentru a atribui roluri pentru forumurile bbPress, %1$sactualizează la "
 "Permissions Pro%2$s și activează funcția Pachet de Compatibilitate."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:308
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:309
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
@@ -1880,134 +1893,134 @@ msgstr ""
 "Pentru a atribui permisiuni specifice paginii pentru PublishPress Revision, "
 "activați funcția Permisiuni de Editare."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:341
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:342
 #, php-format
 msgid "Select %s"
 msgstr "Selectează %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1033, fuzzy
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:697
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1034, fuzzy
 msgid "Status"
 msgstr "Status"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:387
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
 msgid "Save Roles"
 msgstr "Salvează rolurile"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:418
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
 msgid "Save Permissions"
 msgstr "Salvează permisiunile"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:451
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
 msgid "Add Extra Roles"
 msgstr "Adaugă roluri suplimentare"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:461
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "Copiază"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:574
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "Roluri suplimentare %1$s(pentru acest utilizator)%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:576
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:52
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
 msgid "Extra Roles"
 msgstr "Roluri suplimentare"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:640
 msgid "Term Management"
 msgstr "Gestionarea termenilor"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:643
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:649
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:644
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:650
 msgid "objects"
 msgstr "obiecte"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:644
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:645
 msgid "Direct-Assigned"
 msgstr "Atribuit direct"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:650
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
 msgid "Disabled Type"
 msgstr "Tip dezactivat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
 #, php-format
 msgid "%s Roles"
 msgstr "%s roluri"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:739
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1505
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1506
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:611
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:823
 msgid "Apply"
 msgstr "Aplică"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:908
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:909
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:226
 msgid "Nav Menu (Legacy)"
 msgstr "Meniu de navigare (moștenit)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:921
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:922
 msgid "(from primary role or group membership)"
 msgstr "(din rolul principal sau apartenența la grup)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:938
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:939
 msgid "(all post types)"
 msgstr "(toate tipurile de postări)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:966
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:967
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:967
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:968
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1043
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1083
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:88
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "Grup"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1069
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1070
 msgid "unpublished"
 msgstr "nepublicat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1076
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:524
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:690
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1124
 #, php-format
 msgid "this %1$s"
 msgstr "acest %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1129
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "sub-%1$s al acestui %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1134
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "acest %1$s și sub-%2$s sale"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1144
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
@@ -2016,7 +2029,7 @@ msgstr ""
 "%1$s acces pentru %2$s este ACTIVAT în %3$s, indiferent de capacitățile "
 "rolului."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1151
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1152
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
@@ -2025,7 +2038,7 @@ msgstr ""
 "%1$s acces pentru %2$s este BLOCAȚ în %3$s, cu excepția cazului în care "
 "este activat de o altă Permisiune."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1159
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
@@ -2034,19 +2047,19 @@ msgstr ""
 "Orice acces bazat pe rol %1$s pentru %2$s este LIMITAT. Se aplică doar în "
 "%3$s, împreună cu alte %4$s specificate."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1170
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s acces pentru %2$s este ACTIVAT, indiferent de capacitățile rolului."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1176
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1177
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr ""
 "%1$s acces pentru %2$s este BLOCAȚ, cu excepția cazului în care este "
 "activat de o altă Permisiune."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1183
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1184
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
@@ -2055,121 +2068,121 @@ msgstr ""
 "Orice acces bazat pe rol %1$s pentru %2$s este LIMITAT. Se aplică doar la "
 "%3$s, împreună cu alte %4$s specificate."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1331
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1332
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "Atribuit doar pentru sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1339
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1340
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "Atribuit pentru %s și sub-%s."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1363
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1364
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "Această permisiune este redundantă din cauza unei limitări corespunzătoare."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1371
 #, php-format
 msgid "Edit %s"
 msgstr "Editează %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1391
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "Atribuie pentru selectat și sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1394
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1395
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "Atribuie doar pentru %s selectat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1398
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1399
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "Atribuie doar pentru sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1403
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1404
 msgid "Assign for selected and sub-terms"
 msgstr "Atribuie pentru selectate și sub-termene"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
 msgid "Assign for selected term only"
 msgstr "Atribuie doar pentru termenul selectat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1411
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1412
 msgid "Assign for sub-terms only"
 msgstr "Atribuie doar pentru sub-termene"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 msgid "Convert to \"Enabled\""
 msgstr "Conversie la \"Activat\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
 msgid "Convert to \"Blocked\""
 msgstr "Conversie la \"Blocat\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1425
 msgid "Convert to \"Limit to\""
 msgstr "Conversie la \"Limitat la\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1481
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1482
 #, php-format
 msgid "Mirror to %s"
 msgstr "Reflectă la %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1485
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1486
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "Reflectă la %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1533
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1534
 msgid "= Enabled"
 msgstr "= Activat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1540
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1541
 msgid "= Blocked"
 msgstr "= Blocat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1547
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1548
 msgid "= Limitation"
 msgstr "= Limitare"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1561
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1562
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s și sub-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1568
 #, php-format
 msgid "= sub-%s only"
 msgstr "= doar sub-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1585
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1609
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1586
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1610
 msgid "Note:"
 msgstr "Notă:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "Permisiunile Sub-%1$s nu sunt listate separat."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1592
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1616
 msgid "Show All"
 msgstr "Afișează Tot"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1600
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1623
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1601
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1624
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "Ascunde permisiunile Sub-%s atribuite automat"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1635
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
@@ -2179,21 +2192,21 @@ msgstr ""
 "aplicarea corectă a permisiunilor sub-paginilor atunci când se creează o "
 "nouă sub-pagină."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1640
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$sCorectează permisiunile Sub-%2$s%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1662
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
 #, php-format
 msgid "%s Permissions"
 msgstr "%s Permisiuni"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1687
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1688
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "Restricțiile de grup nu sunt disponibile din cauza unei definiții constante"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1704
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1705
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
@@ -2201,20 +2214,20 @@ msgstr ""
 "Permisiunile pentru a activa accesul nu sunt disponibile din cauza unei "
 "definiții constante"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1769
 msgid "Group Members"
 msgstr "Membri ai Grupului"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1817
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1818
 msgid "Copy Roles and Permissions from:"
 msgstr "Copiază Roluri și Permisiuni din:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1841
 msgid "Copy Roles and Permissions"
 msgstr "Copiază Roluri și Permisiuni"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:857
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1857
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:840
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
@@ -2222,23 +2235,23 @@ msgstr[0] "%s element"
 msgstr[1] "%s elemente"
 msgstr[2] "%s elemente"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1867
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1868
 msgid "Limit to:"
 msgstr "Limitează la:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1870
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1871
 msgid "Blocked:"
 msgstr "Blocat:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1874
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1875
 msgid "Enabled:"
 msgstr "Activat:"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1885
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1886
 msgid "Direct-assigned"
 msgstr "Atribuite direct"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1899
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2355,8 +2368,8 @@ msgstr "Adaugă grup de permisiuni nou"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:318
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:123
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:640
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:806
 msgid "Edit"
 msgstr "Editează"
 
@@ -2794,25 +2807,14 @@ msgstr "Roluri Extra %1$s(din rolul principal sau din apartenența la grup)%2$s"
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "Permisiuni Specifice (din rolul principal sau din apartenența la grup)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:265
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:440
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:264
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:430
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:174
 msgid "Permission Groups"
 msgstr "Grupuri de Permisiuni"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:293
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:330
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:472
-msgid "This user is not a member of any custom Permission Groups."
-msgstr "Acest utilizator nu este membru al niciunui Grup de Permisiuni personalizat."
-
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:297
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:476
-msgid "Edit this user's group membership"
-msgstr "Editează apartenența acestui utilizator la grup"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:306
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:485
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:460
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
@@ -2820,33 +2822,39 @@ msgstr ""
 "Notă: Grupurile BuddyPress și alte grupuri definite extern nu sunt listate "
 "aici, chiar dacă modifică permisiunile"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:326
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:303
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:321
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:474
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "Acest utilizator nu este membru al niciunui Grup de Permisiuni personalizat."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:317
 msgid "Group membership"
 msgstr "Apartenența la grup"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:550
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:716
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:533
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:699
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s, mai mult..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:558
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:569
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:724
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:735
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:552
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:718
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "editează permisiunile utilizatorului"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:614
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:669
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:597
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:652
 msgid "No specific permissions currently apply."
 msgstr "În prezent, nu se aplică permisiuni specifice."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:780
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:835
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:763
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:818
 msgid "No extra roles currently apply."
 msgstr "În prezent, nu se aplică roluri suplimentare."
 
@@ -3140,16 +3148,16 @@ msgstr "Flux de lucru"
 msgid "edit group permissions"
 msgstr "editează permisiunile grupului"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:332
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:339
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:348
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:355
 msgid "ERROR"
 msgstr "EROARE"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:349
 msgid "Please enter a group name."
 msgstr "Te rugăm să introduci un nume de grup."
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:340
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:356
 msgid "This group name is already registered. Please choose another one."
 msgstr "Acest nume de grup este deja înregistrat. Te rugăm să alegi altul."
 
@@ -3300,8 +3308,8 @@ msgid "All settings were reset to defaults."
 msgstr "Toate setările au fost resetate la valorile implicite."
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:615
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:753
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:771
 msgid "Save Changes"
 msgstr "Salvează Schimbările"
 
@@ -4457,7 +4465,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:254
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:967
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Aflați mai multe"
@@ -4965,7 +4973,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Faci upgrade la Pro pentru a debloca integrarea fără întreruperi."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:367
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
 msgid "Posts Teaser"
 msgstr "Prezentare generală a postărilor"
 
@@ -5680,34 +5688,34 @@ msgstr "Copiați shortcode-ul"
 msgid "Copied!"
 msgstr "Copiat!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:593
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:617
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:668
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:514
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:284
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1152
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:286
 msgid "You do not have permission to view the full content."
 msgstr "Nu aveți permisiunea de a vizualiza conținutul complet."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:699
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
 msgid "Content requires additional permissions."
 msgstr "Conținutul necesită permisiuni suplimentare."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:798
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
 msgid "To read the full content, please log in to this site."
 msgstr "Pentru a citi conținutul complet, vă rugăm să vă conectați la acest site."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
 msgid "Read More"
 msgstr "Citește mai mult"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:322
 msgid "Teaser Type"
 msgstr "Tip Teaser"
 
@@ -5716,8 +5724,9 @@ msgid "Coverage"
 msgstr "Acoperire"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
-msgid "Teaser Text"
-msgstr "Text Teaser"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
+msgid "No Teaser Text"
+msgstr "Fără text teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
 msgid "Read More Notice"
@@ -5728,7 +5737,7 @@ msgid "Redirect"
 msgstr "Redirectare"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:405
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:572
 msgid "Options"
 msgstr "Opțiuni"
 
@@ -5753,14 +5762,30 @@ msgid "Teaser Notice Message"
 msgstr "Mesaj de notificare teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Apply teaser to list view as well as single view"
+msgstr "Aplică teaser la vizualizarea listei, precum și la vizualizarea unică"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "Apply teaser to logged in and/or logged out users"
+msgstr "Aplică teaser utilizatorilor conectați și/sau deconectați"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+msgid "Hide navigation menu links to restricted content"
+msgstr "Ascunde linkurile din meniul de navigare către conținut restricționat"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
+msgid "Apply teaser to private posts"
+msgstr "Aplică teaser la postările private"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Ascunde imaginea prezentată când se aplică Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Disable Comments when Teaser is applied"
 msgstr "Dezactivează comentariile când se aplică teaserul"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5768,64 +5793,145 @@ msgstr ""
 "\"Ascunde Privat\" setările se aplică doar la confidențialitatea "
 "personalizată (Membru, Premium, Personal, etc.)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:140
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
 #, php-format
 msgid "%s is a PRO feature"
 msgstr "%s este o caracteristică PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:190
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:198
 #, php-format
 msgid "🔓 Unlock %s"
 msgstr "🔓 Deblochează %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:194
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:202
 msgid "This feature is available in PublishPress Permissions PRO"
 msgstr "Această caracteristică este disponibilă în PublishPress Permissions PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:214
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
 msgid "Upgrade to PRO"
 msgstr "Upgrade la PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:217
 msgid "Compare Features"
 msgstr "Compară caracteristicile"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Application"
+msgstr "Aplicație"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:249
+msgid "Teaser Application"
+msgstr "Aplicarea teaserului"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:253
+msgid "List and Single view"
+msgstr "Vizualizare Listă și Unică"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:257
+msgid "Single view only"
+msgstr "Vizualizare unică doar"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
+msgid "User Application"
+msgstr "Aplicarea utilizatorului"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+msgid "Both"
+msgstr "Ambele"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:278
+msgid "Not Logged In Users"
+msgstr "Utilizatori neautentificați"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:282
+msgid "Logged In Users"
+msgstr "Utilizatori autentificați"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:295
+msgid "Navigation Menus"
+msgstr "Meniuri de navigare"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:299
+msgid "Display links if user doesn't have access"
+msgstr "Afișați link-uri dacă utilizatorul nu are acces"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:303
+msgid "Hide links if user doesn't have access"
+msgstr "Ascundeți link-uri dacă utilizatorul nu are acces"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:319
+msgid "Private Posts"
+msgstr "Postări private"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:323
+msgid "Apply Teaser to Private Posts"
+msgstr "Aplică teaser pentru postări private"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:327
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "Ascundeți postările private dacă utilizatorul nu are acces"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:332
+msgid "Hide for Custom Visibility"
+msgstr "Ascundeți pentru vizibilitate personalizată"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Featured Image"
+msgstr "Imagine reprezentativă"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
+msgid "Show featured image"
+msgstr "Afișați imaginea prezentată"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:354
+msgid "Hide featured image when teaser is applied"
+msgstr "Ascundeți imaginea prezentată când teaser-ul este aplicat"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:369
+msgid "Comments Area"
+msgstr "Zona de comentarii"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
+msgid "Disable the comments area when Teaser is applied"
+msgstr "Dezactivează zona de comentarii când se aplică teaserul"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:395
 msgid "Full Content"
 msgstr "Conținut complet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:396
 msgid "Excerpt Only"
 msgstr "Numai extras"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:397
 msgid "Title Only"
 msgstr "Numai titlu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:242, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:409, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:430
 msgid "Display for readable private posts"
 msgstr "Afișare pentru postări private citibile"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
 msgid "Display for readable non-private posts"
 msgstr "Afișare pentru postări non-private citibile"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:309
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:476
 msgid "Feed Replacement Text"
 msgstr "Text de înlocuire pentru feed"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:333
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:500
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Folosește %s pentru URL-ul postării"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:370
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:537
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5833,225 +5939,142 @@ msgstr ""
 "Utilizează aceste setări pentru a controla ce văd utilizatorii când nu au "
 "acces la conținutul tău."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:380
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:547
 msgid "All post teaser settings were updated."
 msgstr "Toate setările teaser pentru postări au fost actualizate."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:388
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:555
 msgid "All post teaser settings were reset to defaults."
 msgstr "Toate setările teaser pentru postări au fost resetate la valorile implicite."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:399
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:566
 msgid "Teaser Settings"
 msgstr "Setări Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:56
 msgid "Select Post Type to Configure"
 msgstr "Selectează tipul de postare pe care vrei să-l configurezi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:69
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:57
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "Alege tipul de postare pentru care vrei să configurezi setările teaser."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:112
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:100
 #, fuzzy, php-format
 msgid "%s [PRO]"
 msgstr "%s [PRO]"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:132
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:120
 #. translators: %s: "PRO" link to the upgrade page
 #, php-format
 msgid "Pages and custom post types are available in %s"
 msgstr "Pagini și tipuri personalizate de postări sunt disponibile în %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:138, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:126, fuzzy
 msgid "PRO"
 msgstr "PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "Implicite WordPress. Afișează ecranul \"Pagina nu a fost găsită\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
-msgid "Teaser text"
-msgstr "Text teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
 msgid "Use content before Read More link as teaser text"
 msgstr "Folosește conținutul înainte de linkul Citește mai mult ca text teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:230
 msgid "Use Excerpt as teaser text"
 msgstr "Folosește extrasul ca text teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "Folosește extrasul sau pre-More ca text teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:232
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr "Folosește extrasul, pre-More sau Primii X caractere ca text teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:233
 msgid "Redirect to another post"
 msgstr "Redirectare către o altă postare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "No teaser will be applied"
 msgstr "Nu se va aplica niciun teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
-msgid "Use configured teaser text to replace or supplement content"
-msgstr "Foloseste textul teaser configurat pentru a înlocui sau completa conținutul"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+msgid "Do not show teaser text before the blocked-user message"
+msgstr "Nu afișa textul teaser înainte de mesajul utilizatorului blocat"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Afișează un link \"Citește mai mult\" cu o notificare teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 msgid "Use the post excerpt as teaser content"
 msgstr "Foloseste extrasul postării ca conținut teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 msgid "Use excerpt or content before More tag"
 msgstr "Foloseste extrasul sau conținutul înainte de eticheta More"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 msgid "Show the first X characters of the post content"
 msgstr "Afișează primele X caractere ale conținutului postării"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Redirectează utilizatorii către o altă pagină atunci când încearcă să "
 "acceseze conținut restricționat"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
 msgid "Use first X characters of content as teaser text"
 msgstr "Foloseste primele X caractere ale conținutului ca text teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
 msgid "Use excerpt or first X characters of content"
 msgstr "Foloseste extrasul sau primele X caractere ale conținutului"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Setări Teaser pentru %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
 #, php-format
 msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
 msgstr "Linkuri Citește mai mult, extrase și redirectări sunt disponibile în %sPRO%s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:365
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "Show only the first"
 msgstr "Afișează doar primele"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:366
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:354
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:360
 msgid "Chars"
 msgstr "Caractere"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:367
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
 msgid "characters"
 msgstr "caractere"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359, fuzzy
 msgid "Max"
 msgstr "Max"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:361
 msgid "characters (leave empty for full excerpt)"
 msgstr "caractere (lasă gol pentru extras complet)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
-msgid "Teaser Application"
-msgstr "Aplicarea teaserului"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:386
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1240
+msgid "Customize the Message for Blocked Users"
+msgstr "Personalizează mesajul pentru utilizatorii blocați"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
-msgid "List and Single view"
-msgstr "Vizualizare Listă și Unică"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:402
-msgid "Single view only"
-msgstr "Vizualizare unică doar"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:409
-msgid "User Application"
-msgstr "Aplicarea utilizatorului"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
-msgid "Both"
-msgstr "Ambele"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:740
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-msgid "Not Logged In Users"
-msgstr "Utilizatori neautentificați"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:422
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:852
-msgid "Logged In Users"
-msgstr "Utilizatori autentificați"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:429
-msgid "Navigation Menus"
-msgstr "Meniuri de navigare"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:433
-msgid "Display links if user doesn't have access"
-msgstr "Afișați link-uri dacă utilizatorul nu are acces"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:437
-msgid "Hide links if user doesn't have access"
-msgstr "Ascundeți link-uri dacă utilizatorul nu are acces"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
-msgid "Private Posts"
-msgstr "Postări private"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:446
-msgid "Apply Teaser to Private Posts"
-msgstr "Aplică teaser pentru postări private"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:450
-msgid "Hide Private Posts if user doesn't have access"
-msgstr "Ascundeți postările private dacă utilizatorul nu are acces"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:455
-msgid "Hide for Custom Visibility"
-msgstr "Ascundeți pentru vizibilitate personalizată"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:461
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
-msgid "Featured Image"
-msgstr "Imagine reprezentativă"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:465
-msgid "Show featured image"
-msgstr "Afișați imaginea prezentată"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:469
-msgid "Hide featured image when teaser is applied"
-msgstr "Ascundeți imaginea prezentată când teaser-ul este aplicat"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
-msgid "Comments Area"
-msgstr "Zona de comentarii"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:479
-msgid "Disable the comments area when Teaser is applied"
-msgstr "Dezactivează zona de comentarii când se aplică teaserul"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:485
-msgid "Teaser Message Style"
-msgstr "Stilul mesajului teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
 msgid ""
 "Choose whether to use the default message style or customize the appearance "
 "of teaser messages."
@@ -6059,34 +6082,30 @@ msgstr ""
 "Alegeți dacă doriți să folosiți stilul de mesaj implicit sau să "
 "personalizați aspectul mesajelor teaser."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:497
-msgid "Use Default Teaser Message Style"
-msgstr "Utilizați stilul implicit pentru mesajul teaser"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:383
+msgid "Use Default Message Style"
+msgstr "Folosește stilul de mesaj implicit"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
-msgid "Use Custom Teaser Message Style"
-msgstr "Utilizați stilul personalizat pentru mesajul teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:551
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:294
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Vizitatorii fără acces sunt redirecționați către: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:295
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:297
 msgid "Visitors without access are redirected away from this page."
 msgstr "Vizitatorii fără acces sunt redirecționați de pe această pagină."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:187
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Un exemplu %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6094,60 +6113,60 @@ msgstr ""
 "Acesta este un exemplu de conținut complet. Previzualizarea arată ce va "
 "vedea un vizitator fără permisiune."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:480
 msgid "This is a short excerpt from the restricted content."
 msgstr "Acesta este un scurt extras din conținutul restricționat."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
 msgid "Teaser Preview"
 msgstr "Previzualizare Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Site Preview"
 msgstr "Previzualizare Site"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:620
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:621
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Preview content"
 msgstr "Previzualizare conținut"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Preview device"
 msgstr "Dispozitiv de previzualizare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:636, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:524, fuzzy
 msgid "Desktop"
 msgstr "Desktop"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:527
 msgid "Mobile"
 msgstr "Mobil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:648
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
 msgid "Open full preview in a new tab"
 msgstr "Deschide previzualizarea completă într-o filă nouă"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
 msgid "Open full preview"
 msgstr "Deschide previzualizarea completă"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
 msgid "Loading the preview from your active theme…"
 msgstr "Se încarcă previzualizarea din tema activă…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
 msgid "Teaser preview from the active theme"
 msgstr "Previzualizare teaser din tema activă"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:684
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Previzualizarea temei nu a putut fi afișată în acest cadru."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:691
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
 msgid "Visitor redirected"
 msgstr "Vizitator redirecționat"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:692
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6155,11 +6174,11 @@ msgstr ""
 "Conținutul restricționat nu este afișat. Vizitatorul este trimis la "
 "destinația configurată."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:729
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
 msgid "Teaser Message"
 msgstr "Mesaj teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:730
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6167,60 +6186,61 @@ msgstr ""
 "Înlocuiți complet conținutul postării cu conținut personalizat pentru "
 "utilizatorii care nu au acces."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:624
 msgid "This field is required."
 msgstr "Acest câmp este obligatoriu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:751
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:791
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:626
 msgid "Replace Post Content With:"
 msgstr "Înlocuiește conținutul postării cu:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:654
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr ""
 "Inserează un formular de autentificare folosind shortcode-ul "
 "%s[login_form]%s."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
-msgid "Teaser Text Configuration"
-msgstr "Configurare Text Teaser"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+msgid "No Teaser Text Configuration"
+msgstr "Fără configurație text teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:839
-msgid "Configure custom teaser text for this post type."
-msgstr "Configurează textul teaser personalizat pentru acest tip de postare."
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+msgid ""
+"Configure title and excerpt text for blocked users when no teaser text is "
+"shown."
+msgstr ""
+"Configurează titlul și textul extras pentru utilizatorii blocați atunci "
+"când nu se afișează text teaser."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:878
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
 msgid "post title"
 msgstr "titlul postării"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:879
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:698
 msgid "post content"
 msgstr "conținutul postării"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:886
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:705
 #, php-format
 msgid "Before %s"
 msgstr "Înainte de %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:887
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:706
 #, php-format
 msgid "After %s"
 msgstr "După %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:986
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
 msgid "Redirect Settings"
 msgstr "Setări de Redirecționare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
 msgid "Redirect functionality is available in PRO"
 msgstr "Funcționalitatea de redirecționare este disponibilă în PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:961
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:783
 msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
@@ -6229,43 +6249,52 @@ msgstr ""
 "pagină personalizată atunci când încearcă să acceseze conținut "
 "restricționat."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:997
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:819
 msgid "Redirection"
 msgstr "Redirecționare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:998
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:820
 msgid "Target Post Type"
 msgstr "Tipul de Postare Țintă"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:999
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
 msgid "Select Post"
 msgstr "Selectează Postarea"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1035
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+msgid "Custom URL"
+msgstr "URL personalizat"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
 msgid "Not Logged In:"
 msgstr "Neautentificat:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1138
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
 msgid "No redirect"
 msgstr "Fără redirecționare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "Redirect to WordPress login"
 msgstr "Redirecționează către autentificarea WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1140
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "Redirect to a custom post"
 msgstr "Redirecționează către o postare personalizată"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:975
+msgid "Redirect to a custom URL"
+msgstr "Redirecționează către un URL personalizat"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
 msgid "This is a custom login page"
 msgstr "Aceasta este o pagină de conectare personalizată"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6273,17 +6302,17 @@ msgstr ""
 "După ce utilizatorul se autentifică, va fi redirecționat înapoi la postarea "
 "originală pe care o viziona."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
 msgid "Logged in Users:"
 msgstr "Utilizatori conectați:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1223
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1277
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1331
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1061
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1115
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
 msgid "Message for Blocked Users"
 msgstr "Mesaj pentru Utilizatori Blocați"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1062
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6292,7 +6321,7 @@ msgstr ""
 "vizualizarea conținutului complet atunci când folosesc tipul teaser "
 "\"Citește mai mult\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1085
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for all blocked users."
@@ -6300,7 +6329,7 @@ msgstr ""
 "Acest mesaj va fi afișat într-o cutie de notificare stilizată deasupra "
 "conținutului teaser pentru toți utilizatorii blocați."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1278
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1116
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6308,7 +6337,7 @@ msgstr ""
 "Personalizează mesajul de notificare afișat tuturor utilizatorilor blocați "
 "când folosești tipul teaser \"Extras\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1301
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for all blocked users."
@@ -6316,7 +6345,7 @@ msgstr ""
 "Acest mesaj va fi afișat într-o cutie de notificare stilizată sub "
 "conținutul teaser extras pentru toți utilizatorii blocați."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1332
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1170
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6324,7 +6353,7 @@ msgstr ""
 "Personalizați mesajul de notificare afișat tuturor utilizatorilor blocați "
 "atunci când utilizați tipul de teaser \"Primele X caractere\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for all blocked users."
@@ -6332,64 +6361,60 @@ msgstr ""
 "Acest mesaj va fi afișat într-o casetă de notificare stilizată sub teaserul "
 "de conținut trunchiat pentru toți utilizatorii blocați."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1402
-msgid "Teaser Message Style Customization"
-msgstr "Personalizarea Stilului Mesajului Teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1403
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1241
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Personalizați aspectul mesajului teaser afișat utilizatorilor blocați."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1411
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Background Color"
 msgstr "Culoare de fundal"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1423
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
 msgid "Text Color"
 msgstr "Culoare text"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1273
 msgid "Border Color"
 msgstr "Culoare bordură"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1447
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1296
 msgid "Border Position"
 msgstr "Poziția bordurii"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1451
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
 msgid "Left"
 msgstr "Stânga"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1290
 msgid "Right"
 msgstr "Dreapta"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1453
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
 msgid "Top"
 msgstr "Sus"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1454
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1292
 msgid "Bottom"
 msgstr "Fund"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1455
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1293
 msgid "All Sides"
 msgstr "Toate laturile"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1475
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1313
 msgid "Border Width (px)"
 msgstr "Lățimea bordurii (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1488
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1326
 msgid "Border Radius (px)"
 msgstr "Raza bordurii (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1501
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1339
 msgid "Font Size (px)"
 msgstr "Dimensiunea fontului (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1514
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1352
 msgid "Padding (px)"
 msgstr "Margine (px)"
 
@@ -6410,7 +6435,7 @@ msgstr "Aceasta este o caracteristică PRO"
 msgid "%s is available in PRO"
 msgstr "%s este disponibil în PRO"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:184
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
 msgid "Post"
 msgstr "Postare"
 
@@ -6462,8 +6487,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Grupuri"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:663
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

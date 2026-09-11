@@ -158,6 +158,8 @@ class TeaserHooks
 
                 return wp_login_url();
             }
+        } elseif ('(url)' === $option_val) {
+            return esc_url_raw((string) presspermit()->getTypeOption('teaser_redirect_anon_url', $post_type));
         }
 
         return '';
@@ -321,22 +323,40 @@ class TeaserHooks
 
                 $pre_more_content = \PublishPress\Permissions\Teaser\ReadMoreHandler::extractPreMoreContent($post);
                 $preview_content = (false !== $pre_more_content) ? wpautop($pre_more_content) : '';
+
+                if ('' === $preview_content && 'read_more' === $teaser_type && $post->post_excerpt) {
+                    $preview_content = wpautop($post->post_excerpt);
+                }
             } elseif ('excerpt' === $teaser_type) {
-                $preview_content = $post->post_excerpt
-                    ? wpautop($post->post_excerpt)
-                    : wpautop(wp_trim_words(wp_strip_all_tags(strip_shortcodes($post->post_content)), 55, '&hellip;'));
+                if ($post->post_excerpt) {
+                    $excerpt_text = $post->post_excerpt;
+                    $num_chars = presspermit()->getTypeOption('excerpt_num_chars', $post_type)
+                        ?: presspermit()->getTypeOption('teaser_num_chars', $post_type)
+                        ?: ((defined('PP_TEASER_NUM_CHARS')) ? PP_TEASER_NUM_CHARS : 50);
+                    $plain_excerpt = wp_strip_all_tags($excerpt_text);
+
+                    if ($num_chars && strlen($plain_excerpt) > $num_chars) {
+                        $excerpt_text = substr($plain_excerpt, 0, $num_chars) . '&hellip;';
+                    }
+
+                    $preview_content = wpautop($excerpt_text);
+                }
             } elseif ('x_chars' === $teaser_type) {
+                $num_chars = presspermit()->getTypeOption('x_chars_num_chars', $post_type)
+                    ?: presspermit()->getTypeOption('teaser_num_chars', $post_type)
+                    ?: ((defined('PP_TEASER_NUM_CHARS')) ? PP_TEASER_NUM_CHARS : 50);
                 $preview_content = wpautop(wp_html_excerpt(
                     wp_strip_all_tags(strip_shortcodes($post->post_content)),
-                    250,
+                    $num_chars,
                     '&hellip;'
                 ));
             }
 
             return sprintf(
-                '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
+                '<div id="pp-permissions-theme-teaser-content">%s<div class="pp-teaser-notice" style="%s">%s</div></div>',
+                $preview_content,
                 $style_attr,
-                $preview_content . wpautop($message)
+                wpautop($message)
             );
         }
 
@@ -352,6 +372,13 @@ class TeaserHooks
             (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
         );
         $preview_text = implode(' ', array_filter([$prefix, ('' !== $teaser_text) ? $teaser_text : $default_message, $suffix]));
+
+        if (!class_exists('PublishPress\\Permissions\\Teaser\\PostsTeaser')) {
+            require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostsTeaser.php');
+        }
+
+        $preview_text = \PublishPress\Permissions\Teaser\PostsTeaser::renderLoginFormPlaceholder($preview_text);
+        $preview_text = do_shortcode($preview_text);
 
         return sprintf(
             '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
@@ -391,6 +418,14 @@ class TeaserHooks
             'teaser_hide_thumbnail' => [],
             'teaser_disable_comments' => ['' => 1],
             'teaser_hide_custom_private_only' => false,
+
+            // Global "Options" tab settings (formerly per-post-type - see issue #2518)
+            'teaser_opt_direct_access_only' => 0,
+            'teaser_opt_logged_only' => '0',
+            'teaser_opt_hide_menu_links' => 0,
+            'teaser_opt_public_posts_only' => '0',
+            'teaser_opt_hide_thumbnail' => 0,
+            'teaser_opt_disable_comments' => 1,
             'teaser_hide_links_taxonomy' => '',
             'teaser_hide_links_term' => '',
             'teaser_hide_menu_links_type' => [],
@@ -398,6 +433,8 @@ class TeaserHooks
             'teaser_redirect_anon' => [],
             'teaser_redirect_page' => [],
             'teaser_redirect_anon_page' => [],
+            'teaser_redirect_url' => [],
+            'teaser_redirect_anon_url' => [],
             'teaser_redirect_post_type' => [],
             'teaser_redirect_anon_post_type' => [],
             'teaser_redirect_custom_login_page' => [],
@@ -636,6 +673,35 @@ class TeaserHooks
                 update_option('teaser_hide_menu_links_type', array_fill_keys($hide_links_types, 1));
             }
         }
+
+        // "Teaser Application", "User Application", "Navigation Menus", "Private Posts",
+        // "Featured Image", and "Comments Area" moved from per-post-type settings to single
+        // global settings on the Options tab (issue #2518). Seed each new global option from
+        // whichever post type was configured first in the old per-type array, so a site's
+        // existing behavior for its primary post type carries over. The old per-type options
+        // are left in the database untouched (unused going forward).
+        if (version_compare($prev_version, '4.9.0', '<')) {
+            $migrated_options = [
+                'tease_direct_access_only' => 'teaser_opt_direct_access_only',
+                'tease_logged_only' => 'teaser_opt_logged_only',
+                'teaser_hide_menu_links_type' => 'teaser_opt_hide_menu_links',
+                'tease_public_posts_only' => 'teaser_opt_public_posts_only',
+                'teaser_hide_thumbnail' => 'teaser_opt_hide_thumbnail',
+                'teaser_disable_comments' => 'teaser_opt_disable_comments',
+            ];
+
+            foreach ($migrated_options as $old_name => $new_name) {
+                if (false !== get_option("presspermit_$new_name")) {
+                    continue; // already has a value - don't clobber it
+                }
+
+                $old_value = get_option("presspermit_$old_name");
+
+                if (is_array($old_value) && $old_value) {
+                    update_option("presspermit_$new_name", reset($old_value));
+                }
+            }
+        }
     }
 
     function actMaybeRedirect()
@@ -664,6 +730,7 @@ class TeaserHooks
 
         $opt_redirect = (is_user_logged_in()) ? 'teaser_redirect' : 'teaser_redirect_anon';
         $opt_page = (is_user_logged_in()) ? 'teaser_redirect_page' : 'teaser_redirect_anon_page';
+        $opt_url = (is_user_logged_in()) ? 'teaser_redirect_url' : 'teaser_redirect_anon_url';
 
         // Ensure $wp_query->post is set and is an object before accessing post_type
         $post_type = null;
@@ -722,6 +789,8 @@ class TeaserHooks
                         $url = wp_login_url();
                     }
                 }
+            } elseif ('(url)' === $option_val) {
+                $url = esc_url_raw((string) $pp->getTypeOption($opt_url, $post_type));
             }
 
             if ($url) {

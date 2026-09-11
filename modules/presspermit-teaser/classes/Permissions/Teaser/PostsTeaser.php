@@ -365,83 +365,14 @@ class PostsTeaser
             }
 
             if ('content' == $variable) {
-                // Generate styled login form if shortcode is present
-                if (strpos($msg, '[login_form]') !== false && is_singular()) {
-                    $login_form = wp_login_form(['echo' => false]);
-                    
-                    // Wrap login form with styled container
-                    $styled_login_form = '
-                    <div class="pp-login-form-wrapper" style="max-width: 360px; margin: 20px auto; padding: 30px; background: #ffffff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                        <style>
-                            .pp-login-form-wrapper .login-username,
-                            .pp-login-form-wrapper .login-password,
-                            .pp-login-form-wrapper .login-remember,
-                            .pp-login-form-wrapper .login-submit {
-                                margin-bottom: 15px;
-                            }
-                            .pp-login-form-wrapper label {
-                                display: block;
-                                margin-bottom: 5px;
-                                font-weight: 600;
-                                color: #333;
-                                font-size: 14px;
-                            }
-                            .pp-login-form-wrapper input[type="text"],
-                            .pp-login-form-wrapper input[type="password"] {
-                                width: 100%;
-                                padding: 10px 12px;
-                                border: 1px solid #ddd;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                box-sizing: border-box;
-                                transition: border-color 0.2s;
-                            }
-                            .pp-login-form-wrapper input[type="text"]:focus,
-                            .pp-login-form-wrapper input[type="password"]:focus {
-                                outline: none;
-                                border-color: #0073aa;
-                                box-shadow: 0 0 0 1px #0073aa;
-                            }
-                            .pp-login-form-wrapper .login-remember label {
-                                display: inline;
-                                font-weight: normal;
-                                margin-left: 5px;
-                            }
-                            .pp-login-form-wrapper input[type="checkbox"] {
-                                margin: 0;
-                            }
-                            .pp-login-form-wrapper input[type="submit"] {
-                                width: 100%;
-                                padding: 12px;
-                                background: #0073aa;
-                                color: #ffffff;
-                                border: none;
-                                border-radius: 4px;
-                                font-size: 14px;
-                                font-weight: 600;
-                                cursor: pointer;
-                                transition: background 0.2s;
-                            }
-                            .pp-login-form-wrapper input[type="submit"]:hover {
-                                background: #005177;
-                            }
-                            .pp-login-form-wrapper .login-submit {
-                                margin-bottom: 0;
-                            }
-                        </style>
-                        ' . $login_form . '
-                    </div>';
-                    
-                    $msg = str_replace('[login_form]', $styled_login_form, $msg);
-                } else {
-                    $msg = str_replace('[login_form]', '', $msg);
-                }
+                $msg = self::renderLoginFormPlaceholder($msg);
             }
+
+            $msg = do_shortcode($msg);
 
             // Apply styled notice wrapper for content replacement on frontend (not in admin or feeds)
             if ('replace' == $teaser_operation && 'content' == $variable && !is_admin() && !is_feed()) {
-                // Only wrap if not already wrapped and doesn't contain HTML tags
-                if (strpos($msg, '<div class="pp-teaser-notice"') === false && wp_strip_all_tags($msg) === $msg) {
+                if (strpos($msg, '<div class="pp-teaser-notice"') !== 0) {
                     $msg = self::wrapTeaserNotice($msg, $object_type);
                 }
             }
@@ -557,7 +488,9 @@ class PostsTeaser
             
             // Wrap excerpt in paragraph block markup to prevent theme layout issues
             // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
-            if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
+            if ('' === $excerpt_text) {
+                $post->post_content = $notice_html;
+            } elseif (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
                 $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($excerpt_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
             } else {
                 $post->post_content = '<p>' . esc_html($excerpt_text) . '</p>' . $notice_html;
@@ -780,7 +713,9 @@ class PostsTeaser
 
         \PublishPress\Permissions\TeaserHooks::instance()->teased_excerpts[$post->ID] = $post->post_excerpt;
 
-        if (presspermit()->getTypeOption('teaser_hide_thumbnail', $post->post_type))
+        // "Featured Image" (teaser_opt_hide_thumbnail) is a single global setting now
+        // (see issue #2518), applying uniformly to every post type.
+        if (presspermit()->getOption('teaser_opt_hide_thumbnail'))
             add_filter('get_post_metadata', [__CLASS__, 'fltHidePostThumbnail'], 10, 3);
     }
 
@@ -813,8 +748,94 @@ class PostsTeaser
     }
 
     /**
+     * Replace the [login_form] placeholder with a styled wp_login_form(), or strip it if a
+     * login form can't be rendered here. This is a plugin-specific placeholder, not a real
+     * shortcode, so do_shortcode() alone won't touch it.
+     *
+     * @param string $msg
+     * @return string
+     */
+    public static function renderLoginFormPlaceholder($msg)
+    {
+        if (strpos($msg, '[login_form]') === false) {
+            return $msg;
+        }
+
+        if (!is_singular()) {
+            return str_replace('[login_form]', '', $msg);
+        }
+
+        $login_form = wp_login_form(['echo' => false]);
+
+        // Wrap login form with styled container
+        $styled_login_form = '
+        <div class="pp-login-form-wrapper" style="max-width: 360px; margin: 20px auto; padding: 30px; background: #ffffff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <style>
+                .pp-login-form-wrapper .login-username,
+                .pp-login-form-wrapper .login-password,
+                .pp-login-form-wrapper .login-remember,
+                .pp-login-form-wrapper .login-submit {
+                    margin-bottom: 15px;
+                }
+                .pp-login-form-wrapper label {
+                    display: block;
+                    margin-bottom: 5px;
+                    font-weight: 600;
+                    color: #333;
+                    font-size: 14px;
+                }
+                .pp-login-form-wrapper input[type="text"],
+                .pp-login-form-wrapper input[type="password"] {
+                    width: 100%;
+                    padding: 10px 12px;
+                    border: 1px solid #ddd;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    box-sizing: border-box;
+                    transition: border-color 0.2s;
+                }
+                .pp-login-form-wrapper input[type="text"]:focus,
+                .pp-login-form-wrapper input[type="password"]:focus {
+                    outline: none;
+                    border-color: #0073aa;
+                    box-shadow: 0 0 0 1px #0073aa;
+                }
+                .pp-login-form-wrapper .login-remember label {
+                    display: inline;
+                    font-weight: normal;
+                    margin-left: 5px;
+                }
+                .pp-login-form-wrapper input[type="checkbox"] {
+                    margin: 0;
+                }
+                .pp-login-form-wrapper input[type="submit"] {
+                    width: 100%;
+                    padding: 12px;
+                    background: #0073aa;
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: background 0.2s;
+                }
+                .pp-login-form-wrapper input[type="submit"]:hover {
+                    background: #005177;
+                }
+                .pp-login-form-wrapper .login-submit {
+                    margin-bottom: 0;
+                }
+            </style>
+            ' . $login_form . '
+        </div>';
+
+        return str_replace('[login_form]', $styled_login_form, $msg);
+    }
+
+    /**
      * Wrap teaser notice with customizable styles (per-post-type)
-     * 
+     *
      * @param string $message The notice message to display
      * @param string $post_type The post type for getting per-post-type style settings
      * @return string HTML wrapped notice with custom styles
@@ -822,13 +843,15 @@ class PostsTeaser
     private static function wrapTeaserNotice($message, $post_type = '')
     {
         $pp = presspermit();
+        $message = do_shortcode($message);
+        $message = self::unwrapTeaserNotice($message);
         
         // Check if custom styling mode is enabled for this post type
         $style_mode = $pp->getTypeOption('teaser_notice_style_mode', $post_type);
         
         // If not set to 'custom', return simple default notice
         if ($style_mode !== 'custom') {
-            return '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6;">' . $message . '</div>';
+            return '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; word-break: break-word; box-sizing: border-box;">' . $message . '</div>';
         }
         
         // Get custom style settings with defaults (per-post-type)
@@ -856,7 +879,7 @@ class PostsTeaser
         
         // Build complete inline style
         $inline_style = sprintf(
-            'padding: %spx; background: %s; color: %s; %s margin: 15px 0; font-size: %spx; line-height: 1.6; border-radius: %spx;',
+            'padding: %spx; background: %s; color: %s; %s margin: 15px 0; font-size: %spx; line-height: 1.6; border-radius: %spx; overflow-wrap: anywhere; word-break: break-word; box-sizing: border-box;',
             esc_attr($padding),
             esc_attr($bg_color),
             esc_attr($text_color),
@@ -866,5 +889,14 @@ class PostsTeaser
         );
         
         return '<div class="pp-teaser-notice" style="' . $inline_style . '">' . $message . '</div>';
+    }
+
+    private static function unwrapTeaserNotice($message)
+    {
+        return preg_replace(
+            '/<div\b[^>]*class=("|\')[^"\']*\bpp-teaser-notice\b[^"\']*\1[^>]*>(.*?)<\/div>/is',
+            '$2',
+            $message
+        );
     }
 }

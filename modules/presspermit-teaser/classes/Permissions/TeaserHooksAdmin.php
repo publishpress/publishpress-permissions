@@ -180,18 +180,15 @@ class TeaserHooksAdmin
         }
 
         $post_content = wp_strip_all_tags(strip_shortcodes($post->post_content));
-        $post_excerpt = $post->post_excerpt
-            ? $post->post_excerpt
-            : wp_trim_words($post_content, 55, '&hellip;');
         $pre_more = \PublishPress\Permissions\Teaser\ReadMoreHandler::extractPreMoreContent($post);
 
         wp_send_json([
             'ID' => $post->ID,
             'post_title' => get_the_title($post),
             'preview_url' => get_permalink($post),
-            'excerpt' => wpautop($post_excerpt),
+            'excerpt' => $post->post_excerpt ? wpautop($post->post_excerpt) : '',
             'pre_more' => (false !== $pre_more) ? wpautop($pre_more) : '',
-            'x_chars' => wpautop(wp_html_excerpt($post_content, 250, '&hellip;')),
+            'x_chars' => wpautop($post_content),
         ]);
     }
 

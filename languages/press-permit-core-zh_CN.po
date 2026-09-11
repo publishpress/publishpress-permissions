@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
-"PO-Revision-Date: 2026-09-09 14:54+0000\n"
+"PO-Revision-Date: 2026-09-11 13:36+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: zh_CN\n"
@@ -1010,9 +1010,9 @@ msgid "All users with the WordPress role of %s"
 msgstr "所有具有 %s 角色的用户"
 
 #: classes/PublishPress/Permissions/DB/PermissionsMeta.php:148
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:970
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:973
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:976
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:971
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:974
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:977
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
@@ -1199,8 +1199,8 @@ msgid "Enable"
 msgstr "启用"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:152
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:103
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:904
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:104
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:905
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:175
 msgid "Block"
 msgstr "阻止"
@@ -1245,7 +1245,7 @@ msgid "Nav Menus (Legacy)"
 msgstr "导航菜单（旧版）"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:221
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:910
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:911
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:169
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:228
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:127
@@ -1270,12 +1270,12 @@ msgid "Sub-%s:"
 msgstr "子-%s："
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:312
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:190
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:191
 msgid "All Statuses"
 msgstr "所有状态"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:325
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1892
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1893
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:110
 #, php-format
 msgid "%s Visibility"
@@ -1292,7 +1292,8 @@ msgstr "未指定用户/组。"
 #: classes/PublishPress/Permissions/UI/GroupNew.php:29
 #: classes/PublishPress/Permissions/UI/Groups.php:20
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:29
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:112
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:113
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:128
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:37
 #: classes/PublishPress/Permissions/UI/Handlers/Groups.php:92
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Handlers/RoleUsage.php:14
@@ -1322,105 +1323,113 @@ msgid "Roles and Permissions copied."
 msgstr "角色和权限已复制。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:104
+msgid "Group membership updated."
+msgstr "组成员资格已更新。"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:107
 msgid "Group updated."
 msgstr "组已更新。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:108
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:111
 #: classes/PublishPress/Permissions/UI/GroupNew.php:50
 msgid "Back to permissions list"
 msgstr "返回权限列表"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:137
 msgid "Edit User Permissions"
 msgstr "编辑用户权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:134
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:137
 msgid "Add User Permissions"
 msgstr "添加用户权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:136
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:138
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:139
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:141
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:314
 msgid "Edit Permissions"
 msgstr "编辑权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:140
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:143
 #, php-format
 msgid "Edit Permissions (%s)"
 msgstr "编辑权限 (%s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:149
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:152
 #, php-format
 msgid "%sEdit WordPress Role%s"
 msgstr "%s编辑 WordPress 角色%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:150
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:153
 msgid "Edit role capabilities directly"
 msgstr "直接编辑角色能力"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:162
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:165
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:304
 msgid "Add New"
 msgstr "添加新用户"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:201
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:261
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:204
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:264
 msgid "Name:"
 msgstr "姓名："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:212
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:215
 msgid "Email:"
 msgstr "电子邮件："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:225
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:228
 msgid "Primary Role:"
 msgstr "主要角色："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:244
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:247
 msgid "User ID:"
 msgstr "用户 ID："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:252
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:255
 msgid "Member since:"
 msgstr "加入时间："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:272
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:275
 msgid "Description:"
 msgstr "描述："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:290
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:293
 msgid "Update Permissions"
 msgstr "更新权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:299
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:302
 msgid "View Full Profile"
 msgstr "查看完整资料"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:381
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:391
+msgid "Update Group Membership"
+msgstr "更新组成员资格"
+
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:401
 #, php-format
 msgid "Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr "额外角色 %1$s(来自主角色或 %2$sgroup membership%3$s)%4$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:425
 #, php-format
 msgid "Specific Permissions %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr "特定权限 %1$s(来自主角色或 %2$sgroup membership%3$s)%4$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:418
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:438
 msgid "View currently stored user permissions:"
 msgstr "查看当前存储的用户权限："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:422
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:442
 #, php-format
 msgid "%1$sUsers who have Extra Roles assigned directly%2$s"
 msgstr "%1$s直接分配了额外角色的用户%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:423
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:443
 #, php-format
 msgid "%1$sUsers who have Specific Permissions assigned directly%2$s"
 msgstr "%1$s直接分配了特定权限的用户%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissions.php:424
+#: classes/PublishPress/Permissions/UI/AgentPermissions.php:444
 #, php-format
 msgid "%1$sUsers who have Extra Roles or Specific Permissions directly%2$s"
 msgstr "%1$s直接具有额外角色或特定权限的用户%2$s"
@@ -1446,7 +1455,7 @@ msgid "Role already selected!"
 msgstr "角色已经被选择！"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
 msgid "No Action selected!"
 msgstr "没有选择操作！"
 
@@ -1455,71 +1464,75 @@ msgid "Saving Roles..."
 msgstr "正在保存角色..."
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:23
+msgid "Saving Group Membership..."
+msgstr "正在保存组成员资格..."
+
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
 msgid "Reload form for further changes to this role"
 msgstr "重新加载表单以进一步更改此角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:24
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:603
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:25
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:604
 msgid "Show Groups"
 msgstr "显示组"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:25
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:26
 msgid "Hide Groups"
 msgstr "隐藏组"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:42
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:448
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:449
 msgid "Add Specific Permissions"
 msgstr "添加特定权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:43
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1386
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:410
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1387
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:91
 msgid "Remove"
 msgstr "移除"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:44
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
 msgid ""
 "Review the selection below, and then click <strong>Save "
 "Permissions</strong>."
 msgstr "请查看以下选择，然后单击 <strong>保存权限</strong>。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:45
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:46
 msgid "Permission already selected!"
 msgstr "权限已经被选择！"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:47
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
 msgid "Saving Permissions..."
 msgstr "正在保存权限..."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:48
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
 msgid "Reload form for further changes to this permission"
 msgstr "重新加载表单以进一步更改此权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:49
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:50
 msgid "Permissions mirrored. Reload form to view newly saved permissions."
 msgstr "权限已镜像。重新加载表单以查看新保存的权限。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:50
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:51
 msgid "Permissions converted. Reload form to view newly saved permissions."
 msgstr "权限已转换。重新加载表单以查看新保存的权限。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:51
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:52
 msgid "No Qualification selected!"
 msgstr "没有选择资格！"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:64
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
 msgid "No items selected!"
 msgstr "没有选择项目！"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:65
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1193
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1194
 msgid "(no parent)"
 msgstr "(没有父项)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:66
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:806
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:67
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:807
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:269
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:271
 #: classes/PublishPress/Permissions/UI/ItemsMetabox.php:542
@@ -1528,473 +1541,473 @@ msgstr "(没有父项)"
 msgid "(none)"
 msgstr "（无）"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:71
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:72
 msgid "No results found."
 msgstr "未找到结果。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:96
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:97
 msgid "select..."
 msgstr "选择..."
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:101
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:902
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:102
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:903
 msgid "Nav Menu (Block)"
 msgstr "导航菜单（区块）"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:111
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:112
 msgid "All Post Types"
 msgstr "所有帖子类型"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:116
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:117
 msgid "n/a"
 msgstr "不适用"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:142
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:251
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:375
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:403
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:143
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
 msgid "Post Type"
 msgstr "帖子类型"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:143
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:144
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
 msgid "Operation"
 msgstr "操作"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:144
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:405
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:145
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
 msgid "Adjustment"
 msgstr "调整"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:145
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:406
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:146
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:407
 msgid "Qualification"
 msgstr "资格"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:146
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:147
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:37
 msgid "Statuses"
 msgstr "状态"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:181
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:182
 msgid "for item"
 msgstr "针对项目"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:198
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:199
 msgid "Block all Pages by default"
 msgstr "默认情况下阻止所有页面"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:208
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:209
 msgid ""
 "Warning: Content hidden by these Permissions will be displayed if PP is "
 "deactivated. Consider setting a private Visibility on Edit Post screen "
 "instead."
 msgstr "警告：这些权限隐藏的内容将在 PP 被停用时显示。考虑在编辑文章屏幕上设置私有可见性。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:217
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:218
 msgid ""
 "To assign page-specific Permissions for editing, parent selection or term "
 "assignment, enable the Editing Permissions feature."
 msgstr "要为编辑、父级选择或术语分配分配页面特定权限，请启用编辑权限功能。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:230
 msgid ""
 "To assign forum-specific Permissions for bbPress, activate the "
 "Compatibility Pack feature."
 msgstr "要为 bbPress 分配论坛特定权限，请激活兼容性包功能。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:232
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:233
 #, php-format
 msgid ""
 "To assign forum-specific Permissions for bbPress, %1$supgrade to "
 "Permissions Pro%2$s and enable the Compatibility Pack feature."
 msgstr "要为 bbPress 分配论坛特定权限，%1$s升级到 Permissions Pro%2$s 并启用兼容性包功能。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:695
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1079
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:87
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:50
 msgid "Role"
 msgstr "角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:253
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
 msgid "For Statuses"
 msgstr "对于状态"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:272
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:273
 msgid "Standard statuses"
 msgstr "标准状态"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:277
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:278
 msgid "Status: Private"
 msgstr "状态：私密"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:283
 msgid "Add Role"
 msgstr "添加角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:294
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:295
 msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr "要为 bbPress 论坛分配角色，请激活兼容性包功能。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:297
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:298
 #, php-format
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
 "enable the Compatibility Pack feature."
 msgstr "要为 bbPress 论坛分配角色，%1$s升级到 Permissions Pro%2$s 并启用兼容性包功能。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:308
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:309
 msgid ""
 "To assign page-specific PublishPress Revision permissions, enable the "
 "Editing Permissions feature."
 msgstr "要分配页面特定的 PublishPress 修订权限，请启用编辑权限功能。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:341
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:342
 #, php-format
 msgid "Select %s"
 msgstr "选择 %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:377
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:408
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:696
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1033
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:378
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:409
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:697
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1034
 msgid "Status"
 msgstr "状态"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:387
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:388
 msgid "Save Roles"
 msgstr "保存角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:418
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:419
 msgid "Save Permissions"
 msgstr "保存权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:451
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:452
 msgid "Add Extra Roles"
 msgstr "添加额外角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:461
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:462
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:15
 msgid "Copy"
 msgstr "复制"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:574
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
 #, php-format
 msgid "Extra Roles %1$s(for this user)%2$s"
 msgstr "额外角色 %1$s（针对该用户）%2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:575
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:576
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:52
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:72
 msgid "Extra Roles"
 msgstr "额外角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:640
 msgid "Term Management"
 msgstr "术语管理"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:643
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:649
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:644
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:650
 msgid "objects"
 msgstr "对象"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:644
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:645
 msgid "Direct-Assigned"
 msgstr "直接分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:650
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:651
 msgid "Disabled Type"
 msgstr "禁用类型"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:678
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:679
 #, php-format
 msgid "%s Roles"
 msgstr "%s 角色"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:739
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1505
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:740
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1506
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:611
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:823
 msgid "Apply"
 msgstr "应用"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:908
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:909
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:226
 msgid "Nav Menu (Legacy)"
 msgstr "导航菜单（旧版）"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:921
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:922
 msgid "(from primary role or group membership)"
 msgstr "(来自主要角色或组成员资格)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:938
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:939
 msgid "(all post types)"
 msgstr "(所有帖子类型)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:966
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:967
 #, fuzzy, php-format
 msgid "%1$s (%2$s: %3$s)"
 msgstr "%1$s (%2$s: %3$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:967
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:968
 #, fuzzy, php-format
 msgid "%1$s %2$s %3$s"
 msgstr "%1$s %2$s %3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1042
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1043
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1083
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:88
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:51
 msgid "Group"
 msgstr "组"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1069
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1070
 msgid "unpublished"
 msgstr "未发布"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1076
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1077
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:107
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:524
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:690
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:76
 #, fuzzy, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1124
 #, php-format
 msgid "this %1$s"
 msgstr "这个 %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1128
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1129
 #, php-format
 msgid "sub-%1$s of this %2$s"
 msgstr "这个 %2$s 的子 %1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1134
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1135
 #, php-format
 msgid "this %1$s and its sub-%2$s"
 msgstr "这个 %1$s 和它的子 %2$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1143
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1144
 #, php-format
 msgid ""
 "%1$s access for %2$s is ENABLED within %3$s, regardless of role "
 "capabilities."
 msgstr "%1$s 在 %3$s 中对 %2$s 的访问已启用，无论角色能力如何。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1151
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1152
 #, php-format
 msgid ""
 "%1$s access for %2$s is BLOCKED within %3$s, unless enabled by another "
 "Permission."
 msgstr "%1$s 在 %3$s 中对 %2$s 的访问已被阻止，除非通过其他权限启用。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1159
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1160
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies only within "
 "%3$s, along with other specified %4$s."
 msgstr "任何基于角色的 %1$s 访问 %2$s 是有限的。它仅适用于 %3$s，以及其他指定的 %4$s。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1169
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1170
 #, php-format
 msgid "%1$s access for %2$s is ENABLED, regardless of role capabilities."
 msgstr "%1$s 对 %2$s 的访问是启用的，不受角色权限的限制。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1176
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1177
 #, php-format
 msgid "%1$s access for %2$s is BLOCKED, unless enabled by another Permission."
 msgstr "%1$s 对 %2$s 的访问被阻止，除非通过其他权限启用。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1183
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1184
 #, php-format
 msgid ""
 "Any role-based %1$s access for %2$s is LIMITED. It applies to only %3$s, "
 "along with other specified %4$s."
 msgstr "任何基于角色的 %1$s 访问 %2$s 是有限的。它仅适用于 %3$s，以及其他指定的 %4$s。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1228
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1331
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1229
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1332
 #, php-format
 msgid "Assigned for sub-%s only."
 msgstr "仅分配给子-%s。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1236
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1339
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1237
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1340
 #, php-format
 msgid "Assigned for %s and sub-%s."
 msgstr "分配给 %s 和子-%s。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1363
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1364
 msgid "This Permission is redundant due to a corresponding Limitation."
 msgstr "由于相应的限制，此权限是多余的。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1370
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1371
 #, php-format
 msgid "Edit %s"
 msgstr "编辑 %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1390
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1391
 #, php-format
 msgid "Assign for selected and sub-%s"
 msgstr "为所选项和子-%s 分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1394
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1395
 #, php-format
 msgid "Assign for selected %s only"
 msgstr "仅为所选 %s 分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1398
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1399
 #, php-format
 msgid "Assign for sub-%s only"
 msgstr "仅为子-%s 分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1403
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1404
 msgid "Assign for selected and sub-terms"
 msgstr "为所选项和子条款分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1407
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1408
 msgid "Assign for selected term only"
 msgstr "仅为所选条款分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1411
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1412
 msgid "Assign for sub-terms only"
 msgstr "仅为子条款分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
 msgid "Convert to \"Enabled\""
 msgstr "转换为 \"启用\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1423
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
 msgid "Convert to \"Blocked\""
 msgstr "转换为 \"屏蔽\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1424
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1425
 msgid "Convert to \"Limit to\""
 msgstr "转换为 \"限制为\""
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1481
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1482
 #, php-format
 msgid "Mirror to %s"
 msgstr "镜像到 %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1485
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1486
 #, php-format
 msgid "Mirror to %s %s"
 msgstr "镜像到 %s %s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1533
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1534
 msgid "= Enabled"
 msgstr "= 启用"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1540
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1541
 msgid "= Blocked"
 msgstr "= 屏蔽"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1547
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1548
 msgid "= Limitation"
 msgstr "= 限制"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1561
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1562
 #, php-format
 msgid "= %1$s and sub-%1$s"
 msgstr "= %1$s 和子-%1$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1567
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1568
 #, php-format
 msgid "= sub-%s only"
 msgstr "= 仅子-%s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1585
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1609
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1586
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1610
 msgid "Note:"
 msgstr "注意："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1587
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1611
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1588
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1612
 #, php-format
 msgid "Sub-%1$s Permissions are not separately listed."
 msgstr "子-%1$s 权限未单独列出。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1591
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1615
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1592
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1616
 msgid "Show All"
 msgstr "显示所有"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1600
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1623
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1601
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1624
 #, php-format
 msgid "Hide auto-assigned Sub-%s Permissions"
 msgstr "隐藏自动分配的子-%s 权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1635
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1636
 msgid ""
 "Other plugins (or deactivation of PublishPress Permissions) can prevent "
 "sub-page permissions from being properly applied when a new sub-page is "
 "created."
 msgstr "其他插件（或停用 PublishPress 权限）可能会阻止在创建新子页面时正确应用子页面权限。"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1639
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1640
 #, php-format
 msgid " %1$sFix Sub-%2$s Permissions%3$s"
 msgstr " %1$s修复子-%2$s 权限%3$s"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1662
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1663
 #, php-format
 msgid "%s Permissions"
 msgstr "%s 权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1687
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1688
 msgid "Group Restrictions are not available because of a constant definition"
 msgstr "由于常量定义，组限制不可用"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1704
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1705
 msgid ""
 "Permissions to enable access are not available because of a constant "
 "definition"
 msgstr "由于常量定义，无法启用访问权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1768
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1769
 msgid "Group Members"
 msgstr "组成员"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1817
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1818
 msgid "Copy Roles and Permissions from:"
 msgstr "从以下位置复制角色和权限："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1840
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1841
 msgid "Copy Roles and Permissions"
 msgstr "复制角色和权限"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1856
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:857
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1857
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:840
 #, php-format
 msgid "%s item"
 msgid_plural "%s items"
 msgstr[0] "%s 项"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1867
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1868
 msgid "Limit to:"
 msgstr "限制为："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1870
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1871
 msgid "Blocked:"
 msgstr "已阻止："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1874
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1875
 msgid "Enabled:"
 msgstr "已启用："
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1885
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1886
 msgid "Direct-assigned"
 msgstr "直接分配"
 
-#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1898
+#: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1899
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:78
 #: classes/PublishPress/Permissions/UI/AgentRolesAjax.php:100
 msgid "Standard Statuses"
@@ -2111,8 +2124,8 @@ msgstr "添加新权限组"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/DashboardFilters.php:318
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:123
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:657
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:823
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:640
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:806
 msgid "Edit"
 msgstr "编辑"
 
@@ -2537,57 +2550,52 @@ msgstr "额外角色 %1$s（来自主要角色或组成员身份）%2$s"
 msgid "Specific Permissions (from primary role or group membership)"
 msgstr "特定权限（来自主要角色或组成员身份）"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:265
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:440
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:264
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:430
 #: modules/presspermit-collaboration/classes/Permissions/Collab/AdminFilters.php:174
 msgid "Permission Groups"
 msgstr "权限组"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:293
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:330
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:472
-msgid "This user is not a member of any custom Permission Groups."
-msgstr "该用户不是任何自定义权限组的成员。"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:297
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:476
-msgid "Edit this user's group membership"
-msgstr "编辑该用户的组成员身份"
-
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:306
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:485
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:289
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:460
 msgid ""
 "Note: BuddyPress Groups and other externally defined groups are not listed "
 "here, even if they modify permissions"
 msgstr "注意：BuddyPress 群组和其他外部定义的群组在此未列出，即使它们修改了权限。"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:326
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:303
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:321
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:474
+msgid "This user is not a member of any custom Permission Groups."
+msgstr "该用户不是任何自定义权限组的成员。"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:317
 msgid "Group membership"
 msgstr "组成员资格"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:550
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:716
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:533
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:699
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:45
 #: classes/PublishPress/Permissions/UI/GroupsListTableBase.php:89
 #, php-format
 msgid "%s, more..."
 msgstr "%s，更多..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:558
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:569
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:724
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:735
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:541
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:552
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:707
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:718
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:328
 msgid "edit user permissions"
 msgstr "编辑用户权限"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:614
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:669
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:597
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:652
 msgid "No specific permissions currently apply."
 msgstr "目前没有特定的权限适用。"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:780
-#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:835
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:763
+#: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:818
 msgid "No extra roles currently apply."
 msgstr "目前没有额外的角色适用。"
 
@@ -2861,16 +2869,16 @@ msgstr "工作流"
 msgid "edit group permissions"
 msgstr "编辑组权限"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:332
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:339
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:348
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:355
 msgid "ERROR"
 msgstr "错误"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:333
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:349
 msgid "Please enter a group name."
 msgstr "请输入组名。"
 
-#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:340
+#: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:356
 msgid "This group name is already registered. Please choose another one."
 msgstr "该组名已被注册。请选择另一个。"
 
@@ -3005,8 +3013,8 @@ msgid "All settings were reset to defaults."
 msgstr "所有设置已重置为默认值。"
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:615
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:753
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:771
 msgid "Save Changes"
 msgstr "保存更改"
 
@@ -3973,7 +3981,7 @@ msgstr "升级到专业版以解锁高级文件保护功能"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:254
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:967
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "了解更多"
@@ -4452,7 +4460,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "升级到专业版以解锁无缝集成。"
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:367
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
 msgid "Posts Teaser"
 msgstr "帖子预览"
 
@@ -5109,34 +5117,34 @@ msgstr "复制短代码"
 msgid "Copied!"
 msgstr "已复制！"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:552
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:593
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:617
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:668
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:174
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:514
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1260
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1314
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:284
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1152
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:286
 msgid "You do not have permission to view the full content."
 msgstr "您没有权限查看完整内容。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:699
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
 msgid "Content requires additional permissions."
 msgstr "内容需要额外的权限。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:798
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
 msgid "To read the full content, please log in to this site."
 msgstr "要阅读完整内容，请登录此站点。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:103
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:202
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
 msgid "Read More"
 msgstr "阅读更多"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:322
 msgid "Teaser Type"
 msgstr "预告类型"
 
@@ -5145,8 +5153,9 @@ msgid "Coverage"
 msgstr "覆盖范围"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
-msgid "Teaser Text"
-msgstr "预告文本"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
+msgid "No Teaser Text"
+msgstr "没有预览文本"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
 msgid "Read More Notice"
@@ -5157,7 +5166,7 @@ msgid "Redirect"
 msgstr "重定向"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:405
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:572
 msgid "Options"
 msgstr "选项"
 
@@ -5182,609 +5191,623 @@ msgid "Teaser Notice Message"
 msgstr "预告通知消息"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+msgid "Apply teaser to list view as well as single view"
+msgstr "将预览应用于列表视图和单个视图"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+msgid "Apply teaser to logged in and/or logged out users"
+msgstr "将预览应用于已登录和/或已注销用户"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+msgid "Hide navigation menu links to restricted content"
+msgstr "隐藏导航菜单中指向受限内容的链接"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
+msgid "Apply teaser to private posts"
+msgstr "将预览应用于私人帖子"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "应用预告时隐藏特色图片"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Disable Comments when Teaser is applied"
 msgstr "应用预告时禁用评论"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
 msgstr "“隐藏私人”设置仅适用于自定义隐私（会员、优质、工作人员等）。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:140
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
 #, php-format
 msgid "%s is a PRO feature"
 msgstr "%s 是专业版功能"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:190
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:198
 #, php-format
 msgid "🔓 Unlock %s"
 msgstr "🔓 解锁 %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:194
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:202
 msgid "This feature is available in PublishPress Permissions PRO"
 msgstr "此功能在 PublishPress Permissions PRO 中可用"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:214
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
 msgid "Upgrade to PRO"
 msgstr "升级到专业版"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:217
 msgid "Compare Features"
 msgstr "比较功能"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+msgid "Application"
+msgstr "应用程序"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:249
+msgid "Teaser Application"
+msgstr "预告应用"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:253
+msgid "List and Single view"
+msgstr "列表和单个视图"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:257
+msgid "Single view only"
+msgstr "仅单视图"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
+msgid "User Application"
+msgstr "用户应用"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+msgid "Both"
+msgstr "两者"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:278
+msgid "Not Logged In Users"
+msgstr "未登录用户"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:282
+msgid "Logged In Users"
+msgstr "已登录用户"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:295
+msgid "Navigation Menus"
+msgstr "导航菜单"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:299
+msgid "Display links if user doesn't have access"
+msgstr "如果用户没有访问权限则显示链接"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:303
+msgid "Hide links if user doesn't have access"
+msgstr "如果用户没有访问权限则隐藏链接"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:319
+msgid "Private Posts"
+msgstr "私人帖子"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:323
+msgid "Apply Teaser to Private Posts"
+msgstr "对私密帖子应用预告片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:327
+msgid "Hide Private Posts if user doesn't have access"
+msgstr "如果用户没有访问权限则隐藏私密帖子"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:332
+msgid "Hide for Custom Visibility"
+msgstr "隐藏自定义可见性"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+msgid "Featured Image"
+msgstr "特色图像"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
+msgid "Show featured image"
+msgstr "显示特色图片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:354
+msgid "Hide featured image when teaser is applied"
+msgstr "应用预告片时隐藏特色图片"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:369
+msgid "Comments Area"
+msgstr "评论区域"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
+msgid "Disable the comments area when Teaser is applied"
+msgstr "应用预告时禁用评论区域"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:395
 msgid "Full Content"
 msgstr "完整内容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:396
 msgid "Excerpt Only"
 msgstr "仅摘录"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:397
 msgid "Title Only"
 msgstr "仅标题"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:242, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:409, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:430
 msgid "Display for readable private posts"
 msgstr "显示可阅读的私人帖子"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
 msgid "Display for readable non-private posts"
 msgstr "显示可阅读的非私人帖子"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:309
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:476
 msgid "Feed Replacement Text"
 msgstr "动态替换文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:333
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:500
 #, php-format
 msgid "Use %s for post URL"
 msgstr "使用 %s 作为帖子 URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:370
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:537
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
 msgstr "使用这些设置控制用户在无法访问您的内容时看到的内容。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:380
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:547
 msgid "All post teaser settings were updated."
 msgstr "所有帖子预告设置已更新。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:388
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:555
 msgid "All post teaser settings were reset to defaults."
 msgstr "所有帖子预告设置已重置为默认。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:399
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:566
 msgid "Teaser Settings"
 msgstr "预告设置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:56
 msgid "Select Post Type to Configure"
 msgstr "选择要配置的帖子类型"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:69
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:57
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "选择要配置预告设置的帖子类型。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:112
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:100
 #, fuzzy, php-format
 msgid "%s [PRO]"
 msgstr "%s [PRO]"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:132
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:120
 #. translators: %s: "PRO" link to the upgrade page
 #, php-format
 msgid "Pages and custom post types are available in %s"
 msgstr "页面和自定义帖子类型在 %s 中可用"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:138
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:126
 msgid "PRO"
 msgstr "专业版"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "WordPress 默认。显示“页面未找到”屏幕"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
-msgid "Teaser text"
-msgstr "预告文本"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
 msgid "Use content before Read More link as teaser text"
 msgstr "将“阅读更多”链接之前的内容用作预告文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:230
 msgid "Use Excerpt as teaser text"
 msgstr "使用摘录作为预告文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "使用摘录或“更多”之前的内容作为预告文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:232
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr "使用摘录、“更多”之前的内容或前 X 个字符作为预告文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:233
 msgid "Redirect to another post"
 msgstr "重定向到另一篇帖子"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "No teaser will be applied"
 msgstr "将不应用预告"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
-msgid "Use configured teaser text to replace or supplement content"
-msgstr "使用配置的预告文本替换或补充内容"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+msgid "Do not show teaser text before the blocked-user message"
+msgstr "在被屏蔽用户消息之前不显示预览文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "显示带有预告通知的“查看更多”链接"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 msgid "Use the post excerpt as teaser content"
 msgstr "使用帖子摘录作为预告内容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 msgid "Use excerpt or content before More tag"
 msgstr "使用“更多”标签之前的摘录或内容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 msgid "Show the first X characters of the post content"
 msgstr "显示帖子内容的前 X 个字符"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr "当用户尝试访问受限内容时，将其重定向到另一个页面"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
 msgid "Use first X characters of content as teaser text"
 msgstr "使用内容的前 X 个字符作为预告文本"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
 msgid "Use excerpt or first X characters of content"
 msgstr "使用摘录或内容的前 X 个字符"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "%s 的预告设置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
 #, php-format
 msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
 msgstr "%sPRO%s 中提供阅读更多链接、摘录和重定向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:365
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "Show only the first"
 msgstr "仅显示前"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:366
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:372
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:354
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:360
 msgid "Chars"
 msgstr "个字符"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:367
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
 msgid "characters"
 msgstr "字符"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "Max"
 msgstr "最大"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:361
 msgid "characters (leave empty for full excerpt)"
 msgstr "字符（留空以获取完整摘录）"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
-msgid "Teaser Application"
-msgstr "预告应用"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:386
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1240
+msgid "Customize the Message for Blocked Users"
+msgstr "自定义被屏蔽用户的消息"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:398
-msgid "List and Single view"
-msgstr "列表和单个视图"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:402
-msgid "Single view only"
-msgstr "仅单视图"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:409
-msgid "User Application"
-msgstr "用户应用"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:414
-msgid "Both"
-msgstr "两者"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:418
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:740
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-msgid "Not Logged In Users"
-msgstr "未登录用户"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:422
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:743
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:852
-msgid "Logged In Users"
-msgstr "已登录用户"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:429
-msgid "Navigation Menus"
-msgstr "导航菜单"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:433
-msgid "Display links if user doesn't have access"
-msgstr "如果用户没有访问权限则显示链接"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:437
-msgid "Hide links if user doesn't have access"
-msgstr "如果用户没有访问权限则隐藏链接"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
-msgid "Private Posts"
-msgstr "私人帖子"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:446
-msgid "Apply Teaser to Private Posts"
-msgstr "对私密帖子应用预告片"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:450
-msgid "Hide Private Posts if user doesn't have access"
-msgstr "如果用户没有访问权限则隐藏私密帖子"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:455
-msgid "Hide for Custom Visibility"
-msgstr "隐藏自定义可见性"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:461
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
-msgid "Featured Image"
-msgstr "特色图像"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:465
-msgid "Show featured image"
-msgstr "显示特色图片"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:469
-msgid "Hide featured image when teaser is applied"
-msgstr "应用预告片时隐藏特色图片"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
-msgid "Comments Area"
-msgstr "评论区域"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:479
-msgid "Disable the comments area when Teaser is applied"
-msgstr "应用预告时禁用评论区域"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:485
-msgid "Teaser Message Style"
-msgstr "预告消息样式"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
 msgid ""
 "Choose whether to use the default message style or customize the appearance "
 "of teaser messages."
 msgstr "选择是使用默认消息样式还是自定义预告消息的外观。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:497
-msgid "Use Default Teaser Message Style"
-msgstr "使用默认预告片消息样式"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:383
+msgid "Use Default Message Style"
+msgstr "使用默认消息样式"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:500
-msgid "Use Custom Teaser Message Style"
-msgstr "使用自定义预告片消息样式"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:551
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:294
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "无法访问的访客将被重定向到：%s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:295
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:297
 msgid "Visitors without access are redirected away from this page."
 msgstr "无法访问的访客将被重定向离开此页面。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:187
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "一个示例 %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
 msgstr "这是完整内容的示例。预览显示没有权限的访客将看到的内容。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:480
 msgid "This is a short excerpt from the restricted content."
 msgstr "这是受限内容的简短摘录。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
 msgid "Teaser Preview"
 msgstr "预告预览"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Site Preview"
 msgstr "网站预览"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:620
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:621
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Preview content"
 msgstr "预览内容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Preview device"
 msgstr "预览设备"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:636
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:524
 msgid "Desktop"
 msgstr "桌面"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:527
 msgid "Mobile"
 msgstr "移动"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:648
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
 msgid "Open full preview in a new tab"
 msgstr "在新标签中打开完整预览"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
 msgid "Open full preview"
 msgstr "打开完整预览"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
 msgid "Loading the preview from your active theme…"
 msgstr "正在从您的活动主题加载预览…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
 msgid "Teaser preview from the active theme"
 msgstr "来自活动主题的预告预览"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:684
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
 msgid "The theme preview could not be displayed in this frame."
 msgstr "无法在此框架中显示主题预览。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:691
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
 msgid "Visitor redirected"
 msgstr "访客已重定向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:692
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "受限内容未显示。访客被发送到配置的目标。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:729
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
 msgid "Teaser Message"
 msgstr "预告片消息"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:730
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
 msgstr "对于没有访问权限的用户，完全用自定义内容替换帖子内容。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:749
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:624
 msgid "This field is required."
 msgstr "此字段为必填项。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:751
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:791
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:626
 msgid "Replace Post Content With:"
 msgstr "用以下内容替换帖子内容："
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:654
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "使用 %s[login_form]%s 短代码插入登录表单。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:838
-msgid "Teaser Text Configuration"
-msgstr "预告文本配置"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+msgid "No Teaser Text Configuration"
+msgstr "没有预览文本配置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:839
-msgid "Configure custom teaser text for this post type."
-msgstr "为此帖子类型配置自定义预告文本。"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+msgid ""
+"Configure title and excerpt text for blocked users when no teaser text is "
+"shown."
+msgstr "当不显示预览文本时，为被屏蔽用户配置标题和摘要文本。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:878
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
 msgid "post title"
 msgstr "帖子标题"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:879
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:698
 msgid "post content"
 msgstr "帖子内容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:886
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:705
 #, php-format
 msgid "Before %s"
 msgstr "在 %s 之前"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:887
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:706
 #, php-format
 msgid "After %s"
 msgstr "在 %s 之后"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:986
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
 msgid "Redirect Settings"
 msgstr "重定向设置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
 msgid "Redirect functionality is available in PRO"
 msgstr "重定向功能在 PRO 版本中可用"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:961
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:783
 msgid ""
 "Automatically redirect users to a login page or custom page when they try "
 "to access restricted content."
 msgstr "当用户尝试访问受限内容时，自动将其重定向到登录页面或自定义页面。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:997
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:819
 msgid "Redirection"
 msgstr "重定向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:998
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:820
 msgid "Target Post Type"
 msgstr "目标帖子类型"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:999
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
 msgid "Select Post"
 msgstr "选择帖子"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1035
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+msgid "Custom URL"
+msgstr "自定义网址"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
 msgid "Not Logged In:"
 msgstr "未登录："
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1138
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
 msgid "No redirect"
 msgstr "不重定向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "Redirect to WordPress login"
 msgstr "重定向到 WordPress 登录"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1140
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "Redirect to a custom post"
 msgstr "重定向到自定义帖子"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:975
+msgid "Redirect to a custom URL"
+msgstr "重定向到自定义网址"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
 msgid "This is a custom login page"
 msgstr "这是一个自定义登录页面"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
 msgstr "用户登录后，将被重定向回他们正在查看的原始帖子。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
 msgid "Logged in Users:"
 msgstr "已登录用户："
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1223
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1277
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1331
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1061
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1115
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
 msgid "Message for Blocked Users"
 msgstr "被阻止用户的消息"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1062
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
 msgstr "自定义在使用“阅读更多”预告类型时，向被阻止查看完整内容的用户显示的消息。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1085
 msgid ""
 "This message will be displayed in a styled notice box above the teaser "
 "content for all blocked users."
 msgstr "此消息将在所有被阻止用户的预告内容上方以样式化通知框显示。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1278
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1116
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
 msgstr "自定义在使用“摘录”预告类型时显示给所有被阻止用户的通知消息。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1301
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
 msgid ""
 "This message will be displayed in a styled notice box below the excerpt "
 "teaser content for all blocked users."
 msgstr "此消息将在所有被阻止用户的摘录预告内容下方以样式化通知框显示。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1332
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1170
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
 msgstr "自定义在使用“前 X 个字符”预览类型时显示给所有被阻止用户的通知消息。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
 msgid ""
 "This message will be displayed in a styled notice box below the truncated "
 "content teaser for all blocked users."
 msgstr "该消息将在被截断内容预览下方以样式化通知框的形式展示给所有被阻止用户。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1402
-msgid "Teaser Message Style Customization"
-msgstr "预告消息样式定制"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1403
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1241
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "自定义显示给被阻止用户的预告消息的外观。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1411
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Background Color"
 msgstr "背景颜色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1423
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
 msgid "Text Color"
 msgstr "文本颜色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1435
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1273
 msgid "Border Color"
 msgstr "边框颜色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1447
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1458
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1296
 msgid "Border Position"
 msgstr "边框位置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1451
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
 msgid "Left"
 msgstr "左侧"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1290
 msgid "Right"
 msgstr "右侧"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1453
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
 msgid "Top"
 msgstr "顶部"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1454
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1292
 msgid "Bottom"
 msgstr "底部"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1455
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1293
 msgid "All Sides"
 msgstr "所有边"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1475
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1313
 msgid "Border Width (px)"
 msgstr "边框宽度 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1488
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1326
 msgid "Border Radius (px)"
 msgstr "边框圆角 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1501
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1339
 msgid "Font Size (px)"
 msgstr "字体大小 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1514
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1352
 msgid "Padding (px)"
 msgstr "内边距 (px)"
 
@@ -5805,7 +5828,7 @@ msgstr "这是一个专业功能"
 msgid "%s is available in PRO"
 msgstr "%s 在专业版中可用"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:184
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
 msgid "Post"
 msgstr "帖子"
 
@@ -5857,8 +5880,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "组"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:544
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:663
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."
