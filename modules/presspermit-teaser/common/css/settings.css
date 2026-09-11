@@ -787,15 +787,10 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     box-shadow: none;
 }
 
-.pp-teaser-rss-options {
-    border-top: 1px solid #c3c4c7;
-}
-
-.pp-teaser-rss-options .pp-teaser-rss-table {
-    margin: 0;
-    border: 0;
-    box-shadow: none;
-}
+/* .pp-teaser-rss-table already carries the "teaser-table" class, so it gets
+   the same margin-top: 20px as every other standalone settings table (e.g.
+   "Teaser Settings for X") - matching the "Application" table above it
+   instead of sitting flush against it. */
 
 .pp-teaser-rss-description {
     margin: 0;
@@ -805,8 +800,7 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     margin-top: 0;
 }
 
-/* Two-column layout: settings on the left, preview pinned on the right so it stays
-   in view while editing without needing to scroll up/down to compare changes. */
+/* Two-column layout: settings on the left, preview on the right. */
 .pp-teaser-settings-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(410px, 510px);
@@ -818,52 +812,17 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     min-width: 0;
 }
 
-.pp-teaser-preview-container {
-    position: sticky;
-    top: 40px;
-    /* WP core gives .wp-switch-editor tab buttons position:relative;z-index:1
-       (so they sit above the textarea's top border). Without a z-index here,
-       those buttons can paint above this panel once the settings content
-       scrolls underneath it while pinned. */
-    z-index: 10;
-}
-
-/* Desktop preview mode: reflow to a single full-width column with the preview
-   on top (instead of the narrow sidebar column), so the scaled-down desktop
-   page is actually legible - and keep it sticky so it stays in view while the
-   settings below are edited, without needing to scroll back up. Mobile mode
-   stays pinned in its usual sidebar column. */
+/* Desktop preview mode needs the full page width to stay legible, so it
+   reflows to a single column with the preview after the settings (below
+   the Redirect section) instead of the narrow sidebar column. */
 .pp-teaser-settings-layout.is-desktop-expanded {
     grid-template-columns: 1fr;
-    /* Spacing below the preview comes entirely from .teaser-table's own
-       margin-top: 20px (the "Teaser Settings for ..." table directly below
-       it) - same as the gap between every other card. A grid row-gap here
-       would stack on top of that and double it. */
     gap: 0;
-}
-
-.pp-teaser-preview-container.is-desktop-expanded {
-    order: -1;
-    grid-column: auto;
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/* The section normally gets a top margin to offset it from the sidebar
-   column's top edge; in desktop mode it's the first thing in the layout, so
-   that would just be unwanted top padding above the panel. */
-.pp-teaser-preview-container.is-desktop-expanded .pp-teaser-site-preview {
-    margin-top: 0;
 }
 
 @media (max-width: 1199px) {
     .pp-teaser-settings-layout {
         display: block;
-    }
-
-    .pp-teaser-preview-container {
-        position: static;
-        top: auto;
     }
 }
 
@@ -1057,6 +1016,13 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     justify-content: center;
     width: 100%;
     height: 450px;
+    overflow-y: auto;
+    /* Without this, the CSS overflow spec forces overflow-x to also compute as
+       auto (visible can't pair with a non-visible value) - so any sub-pixel
+       rounding between the sizer's rounded width and this box's actual width
+       would show a spurious horizontal scrollbar alongside the intended
+       vertical one. */
+    overflow-x: hidden;
     background: #e2e4e7;
 }
 
@@ -1077,8 +1043,18 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     height: 100%;
     position: relative;
     flex: 0 0 auto;
+    margin: 0 auto;
     overflow: hidden;
     background: #fff;
+}
+
+#pp-permissions-theme-teaser-content,
+.pp-teaser-notice,
+.pp-teaser-login-notice {
+    box-sizing: border-box;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .pp-teaser-preview-theme-frame {

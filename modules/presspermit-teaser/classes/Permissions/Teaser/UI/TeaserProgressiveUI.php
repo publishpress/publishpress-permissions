@@ -11,26 +11,14 @@ class TeaserProgressiveUI {
     private $pp;
     private $ui;
     private $use_teaser;
-    private $logged_only;
-    private $hide_private;
-    private $direct_only;
-    private $hide_links;
     private $arr_num_chars;
-    private $hide_thumbnail;
-    private $disable_comments;
     private $blockEditorActive;
 
     public function __construct($pp, $ui, $use_teaser, $options_data, $blockEditorActive = true) {
         $this->pp = $pp;
         $this->ui = $ui;
         $this->use_teaser = $use_teaser;
-        $this->logged_only = $options_data['logged_only'];
-        $this->hide_private = $options_data['hide_private'];
-        $this->direct_only = $options_data['direct_only'];
-        $this->hide_links = $options_data['hide_links'];
         $this->arr_num_chars = $options_data['arr_num_chars'];
-        $this->hide_thumbnail = $options_data['hide_thumbnail'];
-        $this->disable_comments = $options_data['disable_comments'];
         $this->blockEditorActive = $blockEditorActive;
     }
 
@@ -207,7 +195,7 @@ class TeaserProgressiveUI {
                     <?php $this->renderTeaserContentCard($object_type); ?>
                     </div>
 
-                    <!-- Teaser Text Configuration -->
+                    <!-- No Teaser Text Configuration -->
                     <div class="pp-conditional-settings pp-teaser-text-card">
                     <?php $this->renderTeaserTextCard($object_type); ?>
                     </div>
@@ -237,7 +225,7 @@ class TeaserProgressiveUI {
         // Get available teaser types (filtered by trait - FREE has limited, PRO has all)
         $base_captions = [
             0 => esc_html__('WordPress default. Show "Page not found" screen', 'press-permit-core'),
-            1 => esc_html__("Teaser text", 'press-permit-core'),
+            1 => esc_html__("No Teaser Text", 'press-permit-core'),
             'read_more' => esc_html__("Use content before Read More link as teaser text", 'press-permit-core'),
             'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
             'more' => esc_html__("Use Excerpt or pre-More as teaser text", 'press-permit-core'),
@@ -254,7 +242,7 @@ class TeaserProgressiveUI {
 
         $descriptions = [
             0 => esc_html__("No teaser will be applied", 'press-permit-core'),
-            1 => esc_html__("Use configured teaser text to replace or supplement content", 'press-permit-core'),
+            1 => esc_html__("Do not show teaser text before the blocked-user message", 'press-permit-core'),
             'read_more' => esc_html__("Show a \"Read More\" link with a Teaser notice", 'press-permit-core'),
             'excerpt' => esc_html__("Use the post excerpt as teaser content", 'press-permit-core'),
             'more' => esc_html__("Use excerpt or content before More tag", 'press-permit-core'),
@@ -377,112 +365,10 @@ class TeaserProgressiveUI {
             </tbody>
 
             <!-- Application Fields - Hidden when No Teaser is selected -->
-            <?php
-            $direct_only_val = isset($this->direct_only[$object_type]) ? $this->direct_only[$object_type] : 0;
-            $hide_links_val = !empty($this->hide_links[$object_type]) ? $this->hide_links[$object_type] : 0;
-            $hide_private_val = isset($this->hide_private[$object_type]) ? $this->hide_private[$object_type] : '0';
-            $name_logged = "tease_logged_only[$object_type]";
-            $logged_val = !empty($this->logged_only[$object_type]) ? $this->logged_only[$object_type] : '0';
-            $hide_thumbnail_val = !empty($this->hide_thumbnail[$object_type]) ? $this->hide_thumbnail[$object_type] : 0;
-            $disable_comments_val = isset($this->disable_comments[$object_type])
-                ? $this->disable_comments[$object_type]
-                : 1;
-            ?>
             <tbody class="pp-teaser-application-fields">
-                <!-- Teaser Application Section -->
-                <tr>
-                    <th style="width: 30%;"><?php esc_html_e('Teaser Application', 'press-permit-core'); ?></th>
-                    <td>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="tease_direct_access_only[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($direct_only_val, 0); ?>>
-                            <?php esc_html_e("List and Single view", 'press-permit-core'); ?>
-                        </label>
-                        <label>
-                            <input type="radio" name="tease_direct_access_only[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($direct_only_val, 1); ?>>
-                            <?php esc_html_e("Single view only", 'press-permit-core'); ?>
-                        </label>
-                    </td>
-                </tr>
-
-                <!-- User Application Section -->
-                <tr>
-                    <th style="width: 30%;"><?php esc_html_e('User Application', 'press-permit-core'); ?></th>
-                    <td>
-                        <?php $user_apps_available = $this->isFeatureAvailable('user_application'); ?>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="0"<?php checked($logged_val == '0' || empty($logged_val), true); ?> <?php echo !$user_apps_available ? 'disabled' : ''; ?>>
-                            <?php esc_html_e('Both', 'press-permit-core'); ?>
-                        </label>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="anon"<?php checked($logged_val, 'anon'); ?> <?php echo !$user_apps_available ? 'disabled' : ''; ?>>
-                            <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
-                        </label>
-                        <label>
-                            <input type="radio" name="<?php echo esc_attr($name_logged); ?>" value="1"<?php checked($logged_val, '1'); ?> <?php echo !$user_apps_available ? 'disabled' : ''; ?>>
-                            <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
-                        </label>
-                    </td>
-                </tr>
-
-                <!-- Navigation Menus Section -->
-                <tr>
-                    <th><?php esc_html_e('Navigation Menus', 'press-permit-core'); ?></th>
-                    <td>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="teaser_hide_menu_links_type[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($hide_links_val, 0); ?>>
-                            <?php esc_html_e("Display links if user doesn't have access", 'press-permit-core'); ?>
-                        </label>
-                        <label>
-                            <input type="radio" name="teaser_hide_menu_links_type[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($hide_links_val, 1); ?>>
-                            <?php esc_html_e("Hide links if user doesn't have access", 'press-permit-core'); ?>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <th><?php esc_html_e('Private Posts', 'press-permit-core'); ?></th>
-                    <td>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="tease_public_posts_only[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($hide_private_val, '0'); ?>>
-                            <?php esc_html_e("Apply Teaser to Private Posts", 'press-permit-core'); ?>
-                        </label>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="tease_public_posts_only[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($hide_private_val, '1'); ?>>
-                            <?php esc_html_e("Hide Private Posts if user doesn't have access", 'press-permit-core'); ?>
-                        </label>
-                        <?php if ((defined('PUBLISHPRESS_STATUSES_VERSION') || class_exists('PublishPress\Statuses\Factory'))) : ?>
-                        <label>
-                            <input type="radio" name="tease_public_posts_only[<?php echo esc_attr($object_type); ?>]" value="custom"<?php checked($hide_private_val, 'custom'); ?>>
-                            <?php esc_html_e("Hide for Custom Visibility", 'press-permit-core'); ?>
-                        </label>
-                        <?php endif; ?>
-                    </td>
-                </tr>
-                <tr>
-                    <th><?php esc_html_e('Featured Image', 'press-permit-core'); ?></th>
-                    <td>
-                        <label style="margin-right: 20px;">
-                            <input type="radio" name="teaser_hide_thumbnail[<?php echo esc_attr($object_type); ?>]" value="0"<?php checked($hide_thumbnail_val, 0); ?>>
-                            <?php esc_html_e('Show featured image', 'press-permit-core'); ?>
-                        </label>
-                        <label>
-                            <input type="radio" name="teaser_hide_thumbnail[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($hide_thumbnail_val, 1); ?>>
-                            <?php esc_html_e('Hide featured image when teaser is applied', 'press-permit-core'); ?>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <th><?php esc_html_e('Comments Area', 'press-permit-core'); ?></th>
-                    <td>
-                        <label>
-                            <input type="hidden" name="teaser_disable_comments[<?php echo esc_attr($object_type); ?>]" value="0">
-                            <input type="checkbox" name="teaser_disable_comments[<?php echo esc_attr($object_type); ?>]" value="1"<?php checked($disable_comments_val, 1); ?>>
-                            <?php esc_html_e('Disable the comments area when Teaser is applied', 'press-permit-core'); ?>
-                        </label>
-                    </td>
-                </tr>
                 <tr>
                     <th>
-                        <?php esc_html_e('Teaser Message Style', 'press-permit-core'); ?>
+                        <?php esc_html_e('Customize the Message for Blocked Users', 'press-permit-core'); ?>
                         <p class="description pp-teaser-setting-description">
                             <?php esc_html_e('Choose whether to use the default message style or customize the appearance of teaser messages.', 'press-permit-core'); ?>
                         </p>
@@ -494,10 +380,10 @@ class TeaserProgressiveUI {
                         ?>
                         <select name="teaser_notice_style_mode[<?php echo esc_attr($object_type); ?>]" class="regular-text pp-teaser-notice-style-select">
                             <option value="default" <?php selected($teaser_notice_mode, 'default'); ?>>
-                                <?php esc_html_e('Use Default Teaser Message Style', 'press-permit-core'); ?>
+                                <?php esc_html_e('Use Default Message Style', 'press-permit-core'); ?>
                             </option>
                             <option value="custom" <?php selected($teaser_notice_mode, 'custom'); ?>>
-                                <?php esc_html_e('Use Custom Teaser Message Style', 'press-permit-core'); ?>
+                                <?php esc_html_e('Customize the Message for Blocked Users', 'press-permit-core'); ?>
                             </option>
                         </select>
                         <p class="description">
@@ -544,6 +430,8 @@ class TeaserProgressiveUI {
                     ? get_permalink($redirect_page_id)
                     : wp_login_url();
             }
+        } elseif ('(url)' === $redirect_option_val) {
+            $redirect_target_url = esc_url_raw((string) $this->pp->getTypeOption('teaser_redirect_anon_url', $object_type));
         }
         $redirect_message = $redirect_target_url
             ? sprintf(
@@ -718,8 +606,7 @@ class TeaserProgressiveUI {
 
     private function renderTeaserContentCard($object_type) {
         // Get Teaser Text mode content (HTML content from editors) - remove slashes added by WordPress
-        $teaser_text_anon = wp_unslash($this->pp->getTypeOption('tease_replace_content_anon', $object_type) ?: '');
-        $teaser_text_logged = wp_unslash($this->pp->getTypeOption('tease_replace_content', $object_type) ?: '');
+        $teaser_text = wp_unslash($this->getSharedAudienceOption('tease_replace_content_anon', 'tease_replace_content', $object_type) ?: '');
         ?>
         <div class="teaser-message-section" style="margin-top: 20px;">
             <table class="widefat">
@@ -734,93 +621,42 @@ class TeaserProgressiveUI {
             </table>
 
             <div class="pp-teaser-text-container">
-                <!-- Tabs for Not Logged In / Logged In -->
-                <div class="pp-teaser-text-tabs">
-                    <button type="button" class="pp-teaser-text-tab active" data-tab="anon-content">
-                        <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                    <button type="button" class="pp-teaser-text-tab" data-tab="logged-content">
-                        <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                </div>
+                <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
+                    <h4 style="margin-bottom: 10px; font-weight: 600;">
+                        <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
+                        <span class="pp-required-indicator" style="color: red;">*</span>
+                    </h4>
+                    <div>
+                        <?php
+                        $option_basename = "tease_replace_content_anon";
+                        $id = $object_type . '_' . $option_basename;
+                        $name = "{$option_basename}[{$object_type}]";
+                        $logged_name = "tease_replace_content[{$object_type}]";
 
-                <!-- Tab Content: Not Logged In -->
-                <div class="pp-teaser-text-content active" data-tab-content="anon-content">
-                    <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
-                        <h4 style="margin-bottom: 10px; font-weight: 600;">
-                            <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
-                            <span class="pp-required-indicator" style="color: red;">*</span>
-                        </h4>
-                        <div>
+                        $editor_settings = [
+                            'textarea_name' => $name,
+                            'textarea_rows' => 5,
+                            'media_buttons' => false,
+                            'teeny' => true,
+                            'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
+                            'tinymce' => [
+                                'toolbar1' => 'bold,italic,underline,strikethrough,link,unlink,bullist,numlist,blockquote,undo,redo',
+                                'toolbar2' => '',
+                                'toolbar3' => '',
+                            ]
+                        ];
+                        wp_editor($teaser_text, $id, $editor_settings);
+                        ?>
+                        <input type="hidden" class="pp-sync-editor-value" data-source-editor="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($logged_name); ?>" value="<?php echo esc_attr($teaser_text); ?>">
+                        <p class="pp-add-login-form">
                             <?php
-                            $option_basename_anon = "tease_replace_content_anon";
-                            $id_anon = $object_type . '_' . $option_basename_anon;
-                            $name_anon = "{$option_basename_anon}[{$object_type}]";
-
-                            $editor_settings_anon = [
-                                'textarea_name' => $name_anon,
-                                'textarea_rows' => 5,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,strikethrough,link,unlink,bullist,numlist,blockquote,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($teaser_text_anon, $id_anon, $editor_settings_anon);
+                            printf(
+                                esc_html__('Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core'),
+                                '<a href="#">',
+                                '</a>'
+                            );
                             ?>
-                            <p class="pp-add-login-form">
-                                <?php
-                                printf(
-                                    esc_html__('Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core'),
-                                    '<a href="#">',
-                                    '</a>'
-                                );
-                                ?>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tab Content: Logged In -->
-                <div class="pp-teaser-text-content" data-tab-content="logged-content" style="display:none;">
-                    <div class="pp-field-row pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
-                        <h4 style="margin-bottom: 10px; font-weight: 600;">
-                            <?php esc_html_e('Replace Post Content With:', 'press-permit-core'); ?>
-                            <span class="pp-required-indicator" style="color: red;">*</span>
-                        </h4>
-                        <div>
-                            <?php
-                            $option_basename_logged = "tease_replace_content";
-                            $id_logged = $object_type . '_' . $option_basename_logged;
-                            $name_logged = "{$option_basename_logged}[{$object_type}]";
-
-                            $editor_settings_logged = [
-                                'textarea_name' => $name_logged,
-                                'textarea_rows' => 5,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,strikethrough,link,unlink,bullist,numlist,blockquote,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($teaser_text_logged, $id_logged, $editor_settings_logged);
-                            ?>
-                            <p class="pp-add-login-form">
-                                <?php
-                                printf(
-                                    esc_html__('Insert a login form by using %s[login_form]%s shortcode.', 'press-permit-core'),
-                                    '<a href="#">',
-                                    '</a>'
-                                );
-                                ?>
-                            </p>
-                        </div>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -835,38 +671,21 @@ class TeaserProgressiveUI {
                 <thead>
                     <tr>
                         <th colspan="2">
-                            <strong><?php esc_html_e('Teaser Text Configuration', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Configure custom teaser text for this post type.', 'press-permit-core')) ?>
+                            <strong><?php esc_html_e('No Teaser Text Configuration', 'press-permit-core'); ?></strong>
+                            <?php $this->generateTooltip(esc_html__('Configure title and excerpt text for blocked users when no teaser text is shown.', 'press-permit-core')) ?>
                         </th>
                     </tr>
                 </thead>
             </table>
 
             <div class="pp-teaser-text-container">
-                <!-- Tabs for Logged In Users / Not Logged In Users -->
-                <div class="pp-teaser-text-tabs">
-                    <button type="button" class="pp-teaser-text-tab active" data-tab="anon">
-                        <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                    <button type="button" class="pp-teaser-text-tab" data-tab="logged">
-                        <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
-                    </button>
-                </div>
-
-                <!-- Tab Contents -->
-                <div class="pp-teaser-text-content active" data-tab-content="anon">
-                    <?php $this->renderTeaserTextFields($object_type, '_anon'); ?>
-                </div>
-
-                <div class="pp-teaser-text-content" data-tab-content="logged" style="display:none;">
-                    <?php $this->renderTeaserTextFields($object_type, ''); ?>
-                </div>
+                <?php $this->renderTeaserTextFields($object_type); ?>
             </div>
         </div>
         <?php
     }
 
-    private function renderTeaserTextFields($object_type, $suffix) {
+    private function renderTeaserTextFields($object_type) {
         // Prepare teaser text options - EXCLUDE content/replace
         $item_actions = [
             'content' => ['prepend', 'append'],
@@ -889,10 +708,11 @@ class TeaserProgressiveUI {
             ?>
             <div class="pp-teaser-text-section">
                 <?php foreach ($actions as $action) :
-                    $option_basename = "tease_{$action}_{$item}{$suffix}";
+                    $option_basename = "tease_{$action}_{$item}_anon";
+                    $logged_option_basename = "tease_{$action}_{$item}";
 
                     // Get per-post-type value
-                    $opt_val = $this->pp->getTypeOption($option_basename, $object_type);
+                    $opt_val = $this->getSharedAudienceOption($option_basename, $logged_option_basename, $object_type);
 
                     // Remove slashes that WordPress adds automatically
                     if ($opt_val) {
@@ -903,6 +723,7 @@ class TeaserProgressiveUI {
 
                     $id = $object_type . '_' . $option_basename;
                     $name = "{$option_basename}[{$object_type}]";
+                    $logged_name = "{$logged_option_basename}[{$object_type}]";
                     ?>
                     <div class="pp-field-row pp-teaser-editor-row" data-field-action="<?php echo esc_attr($action); ?>" data-field-item="<?php echo esc_attr($item); ?>">
                         <div>
@@ -944,6 +765,7 @@ class TeaserProgressiveUI {
                                     wp_editor($opt_val, $id, $editor_settings);
                                     ?>
                             <?php endif; ?>
+                            <input type="hidden" class="pp-sync-editor-value" data-source-editor="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($logged_name); ?>" value="<?php echo esc_attr($opt_val); ?>">
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -995,8 +817,8 @@ class TeaserProgressiveUI {
                     <tr>
                         <th></th>
                         <th><?php _e('Redirection', 'press-permit-core') ?></th>
-                        <th data-title="<?php _e('Target Post Type', 'press-permit-core') ?>"><?php _e('Target Post Type', 'press-permit-core') ?></th>
-                        <th data-title="<?php _e('Select Post', 'press-permit-core') ?>"><?php _e('Select Post', 'press-permit-core') ?></th>
+                        <th data-column="post-type" data-title="<?php esc_attr_e('Target Post Type', 'press-permit-core') ?>"><?php esc_html_e('Target Post Type', 'press-permit-core') ?></th>
+                        <th data-column="target" data-title="<?php esc_attr_e('Select Post', 'press-permit-core') ?>" data-url-title="<?php esc_attr_e('Custom URL', 'press-permit-core') ?>"><?php esc_html_e('Select Post', 'press-permit-core') ?></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -1019,9 +841,13 @@ class TeaserProgressiveUI {
                 $redirect_post_type_basename = "teaser_redirect_anon_post_type";
                 $redirect_post_type_name = "{$redirect_post_type_basename}[{$object_type}]";
                 $redirect_post_type = $this->pp->getTypeOption($redirect_post_type_basename, $object_type) ?: 'page';
+                $redirect_url_basename = "teaser_redirect_anon_url";
+                $redirect_url_name = "{$redirect_url_basename}[{$object_type}]";
+                $redirect_url = $this->pp->getTypeOption($redirect_url_basename, $object_type);
 
                 // Register option for saving
                 $this->ui->all_otype_options[] = $redirect_post_type_basename;
+                $this->ui->all_otype_options[] = $redirect_url_basename;
 
                 // Get available public post types
                 $public_post_types = get_post_types(['public' => true], 'objects');
@@ -1043,6 +869,7 @@ class TeaserProgressiveUI {
                             0 => esc_html__("No redirect", 'press-permit-core'),
                             '(login)' => esc_html__("Redirect to WordPress login", 'press-permit-core'),
                             '(select)' => esc_html__("Redirect to a custom post", 'press-permit-core'),
+                            '(url)' => esc_html__("Redirect to a custom URL", 'press-permit-core'),
                         ];
 
                         foreach ($captions as $teaser_option_val => $teaser_caption) {
@@ -1097,6 +924,9 @@ class TeaserProgressiveUI {
                             <input type="hidden" name="<?php echo esc_attr($custom_login_name);?>" value="0" />
                             &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php _e('This is a custom login page', 'press-permit-core');?><?php $this->generateTooltip(esc_html__('After the user logs in, they will be redirected back to the original post they were viewing.', 'press-permit-core')); ?></label>
                         </div>
+                        <div class="pp-custom-url-wrapper" style="<?php echo esc_attr(('(url)' === $redirect_mode) ? '' : 'display:none;'); ?>">
+                            <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/">
+                        </div>
                     </td>
                 </tr>
 
@@ -1119,9 +949,13 @@ class TeaserProgressiveUI {
                 $redirect_post_type_basename = "teaser_redirect_post_type";
                 $redirect_post_type_name = "{$redirect_post_type_basename}[{$object_type}]";
                 $redirect_post_type = $this->pp->getTypeOption($redirect_post_type_basename, $object_type) ?: 'page';
+                $redirect_url_basename = "teaser_redirect_url";
+                $redirect_url_name = "{$redirect_url_basename}[{$object_type}]";
+                $redirect_url = $this->pp->getTypeOption($redirect_url_basename, $object_type);
 
                 // Register option for saving
                 $this->ui->all_otype_options[] = $redirect_post_type_basename;
+                $this->ui->all_otype_options[] = $redirect_url_basename;
 
                 ?>
                 <tr>
@@ -1138,6 +972,7 @@ class TeaserProgressiveUI {
                             0 => esc_html__("No redirect", 'press-permit-core'),
                             '(login)' => esc_html__("Redirect to WordPress login", 'press-permit-core'),
                             '(select)' => esc_html__("Redirect to a custom post", 'press-permit-core'),
+                            '(url)' => esc_html__("Redirect to a custom URL", 'press-permit-core'),
                         ];
 
                         foreach ($captions as $teaser_option_val => $teaser_caption) {
@@ -1191,6 +1026,9 @@ class TeaserProgressiveUI {
                             ?>
                             <input type="hidden" name="<?php echo esc_attr($custom_login_name);?>" value="0" />
                             &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php _e('This is a custom login page', 'press-permit-core');?></label>
+                        </div>
+                        <div class="pp-custom-url-wrapper" style="<?php echo esc_attr(('(url)' === $redirect_mode) ? '' : 'display:none;'); ?>">
+                            <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/">
                         </div>
                     </td>
                 </tr>
@@ -1399,7 +1237,7 @@ class TeaserProgressiveUI {
                 <thead>
                     <tr>
                         <th>
-                            <strong><?php esc_html_e('Teaser Message Style Customization', 'press-permit-core'); ?></strong>
+                            <strong><?php esc_html_e('Customize the Message for Blocked Users', 'press-permit-core'); ?></strong>
                             <?php $this->generateTooltip(esc_html__('Customize the appearance of teaser message displayed to blocked users.', 'press-permit-core')); ?>
                         </th>
                     </tr>

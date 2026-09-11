@@ -3,6 +3,28 @@
 
     var messageAction = 'pp_permissions_teaser_preview_update';
     var readyAction = 'pp_permissions_teaser_preview_ready';
+    var resizedAction = 'pp_permissions_teaser_preview_resized';
+
+    // The parent scales this whole page down to fit the preview panel (see
+    // updateTeaserPreviewViewport() in settings.dev.js), sizing the panel to match a fixed
+    // "device" height (e.g. 1080px for desktop). A page taller than that would then need its
+    // own internal scrollbar on top of the panel's - two scrollbars for one page. Reporting
+    // the real rendered height lets the parent size the panel to the actual page instead, so
+    // only the panel scrolls.
+    function reportContentHeight() {
+        if (!window.parent || window.parent === window) {
+            return;
+        }
+
+        var height = Math.max(
+            document.documentElement ? document.documentElement.scrollHeight : 0,
+            document.body ? document.body.scrollHeight : 0
+        );
+
+        if (height) {
+            window.parent.postMessage({ action: resizedAction, height: height }, window.location.origin);
+        }
+    }
 
     function getPreviewRoot() {
         return document.querySelector('main, .site-main, #main, #primary') || document.body;
@@ -22,7 +44,6 @@
         var contentArea = root.querySelector('.entry-content, .wp-block-post-content, .page-content');
         previewContent = document.createElement('div');
         previewContent.id = 'pp-permissions-theme-teaser-content';
-        previewContent.className = 'pp-teaser-notice';
 
         if (contentArea) {
             contentArea.textContent = '';
@@ -218,6 +239,8 @@
             return;
         }
 
+        content = content.querySelector('.pp-teaser-notice') || content;
+
         noticeStyle = noticeStyle && typeof noticeStyle === 'object' ? noticeStyle : {};
 
         var backgroundColor = getColor(noticeStyle.backgroundColor, '#f0f6fc');
@@ -239,6 +262,9 @@
         content.style.fontSize = fontSize + 'px';
         content.style.lineHeight = '1.6';
         content.style.borderRadius = borderRadius + 'px';
+        content.style.overflowWrap = 'anywhere';
+        content.style.wordBreak = 'break-word';
+        content.style.boxSizing = 'border-box';
         content.style.border = '';
         content.style.borderLeft = '';
         content.style.borderRight = '';
@@ -253,6 +279,107 @@
                 borderWidth + 'px solid ' + borderColor
             );
         }
+    }
+
+    // [login_form] is this plugin's own placeholder (not a real shortcode) - on the real
+    // front end and on the initial preview page load it's swapped server-side for a styled
+    // wp_login_form(). This live preview only gets the raw edited text via postMessage, and
+    // JS has no way to call wp_login_form(), so it substitutes a static, non-functional
+    // mockup instead (disabled fields, no <form>, so a stray click here can't submit a login
+    // request from inside the preview iframe).
+    function buildLoginFormPreview() {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'pp-login-form-wrapper';
+        wrapper.style.cssText = 'max-width: 360px; margin: 20px auto; padding: 30px; background: #ffffff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);';
+
+        function field(className, labelText, type) {
+            var p = document.createElement('p');
+            p.className = className;
+
+            var label = document.createElement('label');
+            label.textContent = labelText;
+
+            var input = document.createElement('input');
+            input.type = type;
+            input.disabled = true;
+            input.className = 'input';
+
+            p.appendChild(label);
+            p.appendChild(input);
+
+            return p;
+        }
+
+        wrapper.appendChild(field('login-username', 'Username or Email Address', 'text'));
+        wrapper.appendChild(field('login-password', 'Password', 'password'));
+
+        var rememberField = document.createElement('p');
+        rememberField.className = 'login-remember';
+        var rememberLabel = document.createElement('label');
+        var rememberInput = document.createElement('input');
+        rememberInput.type = 'checkbox';
+        rememberInput.disabled = true;
+        rememberLabel.appendChild(rememberInput);
+        rememberLabel.appendChild(document.createTextNode(' Remember Me'));
+        rememberField.appendChild(rememberLabel);
+        wrapper.appendChild(rememberField);
+
+        var submitField = document.createElement('p');
+        submitField.className = 'login-submit';
+        var submitInput = document.createElement('input');
+        submitInput.type = 'submit';
+        submitInput.value = 'Log In';
+        submitInput.disabled = true;
+        submitField.appendChild(submitInput);
+        wrapper.appendChild(submitField);
+
+        var style = document.createElement('style');
+        style.textContent = '.pp-login-form-wrapper .login-username,.pp-login-form-wrapper .login-password,'
+            + '.pp-login-form-wrapper .login-remember,.pp-login-form-wrapper .login-submit{margin-bottom:15px}'
+            + '.pp-login-form-wrapper label{display:block;margin-bottom:5px;font-weight:600;color:#333;font-size:14px}'
+            + '.pp-login-form-wrapper input[type="text"],.pp-login-form-wrapper input[type="password"]{width:100%;'
+            + 'padding:10px 12px;border:1px solid #ddd;border-radius:4px;font-size:14px;box-sizing:border-box}'
+            + '.pp-login-form-wrapper .login-remember label{display:inline;font-weight:normal;margin-left:5px}'
+            + '.pp-login-form-wrapper input[type="checkbox"]{margin:0}'
+            + '.pp-login-form-wrapper input[type="submit"]{width:100%;padding:12px;background:#0073aa;color:#fff;'
+            + 'border:none;border-radius:4px;font-size:14px;font-weight:600}'
+            + '.pp-login-form-wrapper .login-submit{margin-bottom:0}';
+        wrapper.insertBefore(style, wrapper.firstChild);
+
+        return wrapper;
+    }
+
+    function replaceLoginFormPlaceholder(root) {
+        if (!root) {
+            return;
+        }
+
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+        var textNodes = [];
+        var node;
+
+        while ((node = walker.nextNode())) {
+            if (node.nodeValue.indexOf('[login_form]') !== -1) {
+                textNodes.push(node);
+            }
+        }
+
+        textNodes.forEach(function (textNode) {
+            var segments = textNode.nodeValue.split('[login_form]');
+            var fragment = document.createDocumentFragment();
+
+            segments.forEach(function (segment, index) {
+                if (segment) {
+                    fragment.appendChild(document.createTextNode(segment));
+                }
+
+                if (index < segments.length - 1) {
+                    fragment.appendChild(buildLoginFormPreview());
+                }
+            });
+
+            textNode.parentNode.replaceChild(fragment, textNode);
+        });
     }
 
     function applyPreview(payload) {
@@ -272,6 +399,7 @@
 
         if (content && typeof payload.content === 'string') {
             replaceWithSanitizedHtml(content, payload.content, false);
+            replaceLoginFormPlaceholder(content);
         }
 
         applyNoticeStyle(content, payload.noticeStyle);
@@ -285,6 +413,8 @@
         Array.prototype.forEach.call(comments, function (commentArea) {
             commentArea.style.display = payload.disableComments ? 'none' : '';
         });
+
+        reportContentHeight();
     }
 
     window.addEventListener('message', function (event) {
@@ -306,4 +436,10 @@
     if (window.parent && window.parent !== window) {
         window.parent.postMessage({ action: readyAction }, window.location.origin);
     }
+
+    reportContentHeight();
+    // Images/fonts finishing after this script runs (it's footer-enqueued, close to the load
+    // event but not guaranteed after it) can still grow the page - one more report once
+    // everything has actually settled.
+    window.addEventListener('load', reportContentHeight);
 }());

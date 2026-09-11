@@ -271,21 +271,36 @@ jQuery(document).ready(function ($) {
     // Handle redirect dropdown change in the separate redirect section
     function updateRedirectTargetColumnsVisibility($section) {
         var $redirectModes = $section.find('select.teaser-redirect-mode');
-        var allNoRedirect = $redirectModes.length && $redirectModes.filter(function () {
+        var hasSelectRedirect = $redirectModes.filter(function () {
             return $(this).val() === '(select)';
-        }).length === 0;
+        }).length > 0;
+        var hasUrlRedirect = $redirectModes.filter(function () {
+            return $(this).val() === '(url)';
+        }).length > 0;
 
         $section.find('th').filter(function () {
             return !!$(this).data('title');
         }).each(function () {
             var $th = $(this);
             var titleText = $th.data('title');
-            $th.text(allNoRedirect ? '' : titleText);
+            var column = $th.data('column');
+
+            if ('post-type' === column && !hasSelectRedirect) {
+                titleText = '';
+            } else if ('target' === column && hasUrlRedirect && !hasSelectRedirect) {
+                titleText = $th.data('url-title') || titleText;
+            }
+
+            $th.text((hasSelectRedirect || hasUrlRedirect) ? titleText : '');
         });
     }
 
     $('.teaser-redirect-section select.teaser-redirect-mode').on('change', function() {
-        $(this).parent('td').siblings('td').find('div.pp-select-dynamic-wrapper').toggle($(this).val() == '(select)');
+        var mode = $(this).val();
+        var $cells = $(this).parent('td').siblings('td');
+
+        $cells.find('div.pp-select-dynamic-wrapper').toggle(mode == '(select)');
+        $cells.find('div.pp-custom-url-wrapper').toggle(mode == '(url)');
         updateRedirectTargetColumnsVisibility($(this).closest('.teaser-redirect-section'));
     });
 
@@ -562,14 +577,27 @@ jQuery(document).ready(function ($) {
         // panel to visibly jump in height once the page fully loads. Mobile
         // gets +200px (see also the matching [data-device="mobile"] CSS rule,
         // which is what actually applies on first paint since data-device is
-        // rendered server-side from the saved cookie).
+        // rendered server-side from the saved cookie). This is the visible
+        // "window" height - not the full page height, see sizerHeight below.
         var baseViewportHeight = window.innerWidth <= 782 ? 430 : 450;
-        var sizerHeight = device === 'mobile' ? baseViewportHeight + 200 : baseViewportHeight;
+        var viewportHeight = device === 'mobile' ? baseViewportHeight + 200 : baseViewportHeight;
         var sizerWidth = Math.round(deviceSize.width * scale);
+        // The iframe reports its real rendered height once loaded (see
+        // reportContentHeight() in theme-teaser-preview.dev.js). A page taller than the
+        // assumed device height would otherwise need its own internal scrollbar in addition
+        // to this panel's - two scrollbars for one page. Falling back to deviceSize.height
+        // until that report arrives (or for cross-origin/unreported edge cases).
+        var frameHeight = Math.max(deviceSize.height, $frame.data('content-height') || 0);
+        // The sizer must be sized to the FULL scaled page (not clamped to
+        // viewportHeight), or its own overflow:hidden would permanently clip
+        // anything below the visible window with no way to scroll to it.
+        // The viewport's fixed height + overflow-y:auto is what turns that
+        // into a scrollable window instead of just a taller panel.
+        var sizerHeight = Math.round(frameHeight * scale);
 
         $frame.css({
             width: deviceSize.width + 'px',
-            height: deviceSize.height + 'px',
+            height: frameHeight + 'px',
             transform: 'scale(' + scale + ')'
         });
 
@@ -578,7 +606,7 @@ jQuery(document).ready(function ($) {
             height: sizerHeight + 'px'
         });
 
-        $viewport.css('height', sizerHeight + 'px');
+        $viewport.css('height', viewportHeight + 'px');
     }
 
     function resizeAllVisibleTeaserPreviews() {
@@ -698,20 +726,28 @@ jQuery(document).ready(function ($) {
 
     $(window).on('message.ppPermissionsTeaserPreview', function(event) {
         var originalEvent = event.originalEvent;
+        var action = originalEvent && originalEvent.data && originalEvent.data.action;
 
-        if (!originalEvent || originalEvent.origin !== window.location.origin
-            || !originalEvent.data
-            || originalEvent.data.action !== 'pp_permissions_teaser_preview_ready'
-        ) {
+        if (!originalEvent || originalEvent.origin !== window.location.origin || !action) {
+            return;
+        }
+
+        if (action !== 'pp_permissions_teaser_preview_ready' && action !== 'pp_permissions_teaser_preview_resized') {
             return;
         }
 
         $('.pp-teaser-site-preview').each(function() {
             var $sitePreview = $(this);
-            var frame = $sitePreview.find('.pp-teaser-preview-theme-frame').get(0);
+            var $frame = $sitePreview.find('.pp-teaser-preview-theme-frame');
+            var frame = $frame.get(0);
 
             if (frame && frame.contentWindow === originalEvent.source) {
-                postThemeTeaserPayload($sitePreview);
+                if (action === 'pp_permissions_teaser_preview_ready') {
+                    postThemeTeaserPayload($sitePreview);
+                } else {
+                    $frame.data('content-height', originalEvent.data.height || 0);
+                    updateTeaserPreviewViewport($sitePreview);
+                }
                 return false;
             }
         });
@@ -747,6 +783,64 @@ jQuery(document).ready(function ($) {
         var value = String($container.find('[name*="' + optionName + '"]').val() || '');
 
         return /^#(?:[0-9a-f]{3}|[0-9a-f]{6})$/i.test(value) ? value : fallback;
+    }
+
+    function getTeaserNumberOption($container, optionName, fallback, minimum, maximum) {
+        var value = parseInt($container.find('input[name^="' + optionName + '"]').val(), 10);
+
+        if (isNaN(value)) {
+            value = fallback;
+        }
+
+        return Math.max(minimum, Math.min(maximum, value));
+    }
+
+    function getPreviewTextFromHtml(html) {
+        var element = document.createElement('div');
+
+        element.innerHTML = String(html || '');
+
+        return element.textContent || element.innerText || '';
+    }
+
+    function formatPreviewExcerpt($container, excerptHtml) {
+        var excerptText = getPreviewTextFromHtml(excerptHtml).trim();
+        var maxChars;
+
+        if (!excerptText) {
+            return '';
+        }
+
+        maxChars = getTeaserNumberOption($container, 'excerpt_num_chars', 50, 10, 1000);
+
+        if (maxChars && excerptText.length > maxChars) {
+            excerptText = excerptText.substring(0, maxChars) + '...';
+        }
+
+        return '<p>' + escapePreviewAttribute(excerptText) + '</p>';
+    }
+
+    function formatPreviewXChars($container, contentHtml) {
+        var contentText = getPreviewTextFromHtml(contentHtml).trim();
+        var maxChars;
+
+        if (!contentText) {
+            return '';
+        }
+
+        maxChars = getTeaserNumberOption($container, 'x_chars_num_chars', 50, 10, 1000);
+
+        if (maxChars && contentText.length > maxChars) {
+            contentText = contentText.substring(0, maxChars) + '...';
+        }
+
+        return '<p>' + escapePreviewAttribute(contentText) + '</p>';
+    }
+
+    function formatPreviewTextBlock(html) {
+        var text = getPreviewTextFromHtml(html).trim();
+
+        return text ? '<p>' + escapePreviewAttribute(text) + '</p>' : '';
     }
 
     function getTeaserNoticeStyle($container) {
@@ -821,12 +915,12 @@ jQuery(document).ready(function ($) {
 
         var titleHtml = sampleTitle;
         var contentHtml = '';
+        // "Featured Image" / "Comments Area" are global settings on the Options tab now (see
+        // issue #2518), not per-post-type fields inside $container - read them from the page.
         var hideThumbnail = String(
-            $container.find('input[name^="teaser_hide_thumbnail"]:checked').val() || '0'
+            $('input[name="teaser_opt_hide_thumbnail"]:checked').val() || '0'
         ) === '1';
-        var disableComments = $container
-            .find('input[name^="teaser_disable_comments"][type="checkbox"]')
-            .is(':checked');
+        var disableComments = $('input[name="teaser_opt_disable_comments"][type="checkbox"]').is(':checked');
 
         if (teaserType === '1') {
             // "Teaser Text" preserves bold/italic/etc. on the front end, so the payload sent to the
@@ -848,13 +942,13 @@ jQuery(document).ready(function ($) {
             // this message (with the resolved target link) is pre-rendered server-side.
             contentHtml = String($sitePreview.data('redirect-message') || '');
         } else if (teaserType === 'read_more') {
-            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), messageText].filter(Boolean).join(' ');
+            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
         } else if (teaserType === 'more') {
-            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), messageText].filter(Boolean).join(' ');
+            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
         } else if (teaserType === 'excerpt') {
-            contentHtml = [getSelectedPreviewData($sitePreview, 'excerpt'), messageText].filter(Boolean).join(' ');
+            contentHtml = [formatPreviewExcerpt($container, getSelectedPreviewData($sitePreview, 'excerpt')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
         } else if (teaserType === 'x_chars') {
-            contentHtml = [getSelectedPreviewData($sitePreview, 'xChars'), messageText].filter(Boolean).join(' ');
+            contentHtml = [formatPreviewXChars($container, getSelectedPreviewData($sitePreview, 'xChars')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
         } else {
             // read_more / excerpt / x_chars / more: not escaped, since these notice messages
             // preserve their formatting on the front end too (see PostsTeaser::wrapTeaserNotice()).
@@ -1056,11 +1150,24 @@ jQuery(document).ready(function ($) {
 
     $(document).on(
         'input change',
-        'input[name^="teaser_hide_thumbnail"], input[name^="teaser_disable_comments"], input[name^="x_chars_num_chars"], input[name^="excerpt_num_chars"]',
+        'input[name^="x_chars_num_chars"], input[name^="excerpt_num_chars"]',
         function() {
             var $container = getTeaserSettingsContainer($(this));
 
             updateTeaserPreviewText($container);
+        }
+    );
+
+    // "Featured Image" / "Comments Area" (teaser_opt_hide_thumbnail / teaser_opt_disable_comments)
+    // are global now (issue #2518), so a change refreshes every post type's preview, not just
+    // whichever one happens to be showing.
+    $(document).on(
+        'input change',
+        'input[name="teaser_opt_hide_thumbnail"], input[name="teaser_opt_disable_comments"]',
+        function() {
+            $('.pp-teaser-settings-container').each(function() {
+                updateTeaserPreviewText($(this));
+            });
         }
     );
 
@@ -1170,12 +1277,18 @@ jQuery(document).ready(function ($) {
 
                 if (content.indexOf('[login_form]') === -1) {
                     editor.setContent(content + '[login_form]');
+                    // setContent() doesn't fire 'change'/'keyup' itself, which is what the
+                    // live preview listens for (see bindTinyMCEEditor()) - fire it manually
+                    // so inserting the placeholder refreshes the preview.
+                    editor.fire('change');
                 }
             } else {
                 var $textarea = $('#' + editorId);
 
                 if ($textarea.length && $textarea.val().indexOf('[login_form]') === -1) {
                     $textarea.val($textarea.val() + '[login_form]');
+                    // Same reasoning as above, for the plain-textarea fallback (no TinyMCE).
+                    $textarea.trigger('input');
                 }
             }
         }
@@ -1340,6 +1453,29 @@ jQuery(document).ready(function ($) {
             });
         }
     }
+
+    function syncSharedAudienceFields() {
+        $('.pp-sync-editor-value').each(function() {
+            var $field = $(this);
+            var editorId = String($field.data('source-editor') || '');
+            var editorElement = document.getElementById(editorId);
+            var value = '';
+
+            if (!editorId || !editorElement) {
+                return;
+            }
+
+            if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
+                value = tinymce.get(editorId).getContent();
+            } else {
+                value = $(editorElement).val();
+            }
+
+            $field.val(value);
+        });
+    }
+
+    $('#pp_settings_form').on('submit', syncSharedAudienceFields);
 
     // Bind to existing TinyMCE editors on page load
     if (typeof tinymce !== 'undefined') {
