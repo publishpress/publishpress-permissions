@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-11 13:36+0000\n"
+"PO-Revision-Date: 2026-09-15 06:21+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -399,7 +399,7 @@ msgstr "Innehållssynlighet"
 #: classes/PublishPress/Permissions/Admin.php:189
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 msgid "Teaser"
@@ -1748,7 +1748,8 @@ msgstr "n/a"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:220
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
 msgid "Post Type"
 msgstr "Inläggstyp"
 
@@ -3266,8 +3267,8 @@ msgid "All settings were reset to defaults."
 msgstr "Alla inställningar har återställts till standard."
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:753
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:771
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:631
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:649
 msgid "Save Changes"
 msgstr "Spara ändringar"
 
@@ -4394,8 +4395,6 @@ msgstr "Uppgradera till Pro för att låsa upp avancerade filskyddsfunktioner"
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:254
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Lär dig mer"
 
@@ -4897,7 +4896,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Uppgradera till Pro för att låsa upp sömlös integration."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
 msgid "Posts Teaser"
 msgstr "Inlägg Teaser"
 
@@ -5616,11 +5615,11 @@ msgstr "Kopierad!"
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1152
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:286
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
 msgid "You do not have permission to view the full content."
 msgstr "Du har inte behörighet att visa hela innehållet."
 
@@ -5637,78 +5636,79 @@ msgstr "För att läsa hela innehållet, vänligen logga in på denna sida."
 msgid "Read More"
 msgstr "Läs mer"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:322
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
 msgid "Teaser Type"
 msgstr "Teaser typ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
 msgid "Coverage"
 msgstr "Täckning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:43
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:47
 msgid "No Teaser Text"
 msgstr "Ingen Teaser-text"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
 msgid "Read More Notice"
 msgstr "Läs mer-meddelande"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
 msgid "Redirect"
 msgstr "Omdirigera"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:572
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:455
 msgid "Options"
 msgstr "Alternativ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:48
 msgid "Hidden Content Teaser"
 msgstr "Dolt innehåll Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
 msgid "Display mode for readable private posts"
 msgstr "Visningsläge för läsbara privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
 msgid "Display mode for readable non-private posts"
 msgstr "Visningsläge för läsbara icke-privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
 msgid "Feed Replacement Text (use %permalink% for post URL)"
 msgstr "Ersättningstext för flöde (använd %permalink% för inlägg URL)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
 msgid "Teaser Notice Message"
 msgstr "Teaser Meddelande"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Apply teaser to list view as well as single view"
 msgstr "Tillämpa teaser i listvyn såväl som i enskild vy"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Apply teaser to logged in and/or logged out users"
 msgstr "Tillämpa teaser på inloggade och/eller utloggade användare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid "Hide navigation menu links to restricted content"
 msgstr "Dölj navigationsmenylänkar till begränsat innehåll"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
 msgid "Apply teaser to private posts"
 msgstr "Tillämpa teaser på privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Dölj utvald bild när Teaser är tillämpad"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:67
 msgid "Disable Comments when Teaser is applied"
 msgstr "Inaktivera kommentarer när Teaser tillämpas"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:68
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5716,145 +5716,121 @@ msgstr ""
 "\"Dölj privat\"-inställningar gäller endast för anpassad sekretess (Medlem, "
 "Premium, Personal osv.)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
-#, php-format
-msgid "%s is a PRO feature"
-msgstr "%s är en PRO-funktion"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:198
-#, php-format
-msgid "🔓 Unlock %s"
-msgstr "🔓 Lås upp %s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:202
-msgid "This feature is available in PublishPress Permissions PRO"
-msgstr "Denna funktion är tillgänglig i PublishPress Permissions PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:214
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
-msgid "Upgrade to PRO"
-msgstr "Uppgradera till PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:217
-msgid "Compare Features"
-msgstr "Jämför funktioner"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:114
 msgid "Application"
 msgstr "Ansökan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:126
 msgid "Teaser Application"
 msgstr "Teaser Tillämpning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:253
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:130
 msgid "List and Single view"
 msgstr "Lista och enstaka vy"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:134
 msgid "Single view only"
 msgstr "Endast enskild vy"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:147
 msgid "User Application"
 msgstr "Användartillämpning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:151
 msgid "Both"
 msgstr "Båda"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:278
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:155
 msgid "Not Logged In Users"
 msgstr "Ej inloggade användare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:282
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:159
 msgid "Logged In Users"
 msgstr "Inloggade användare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:295
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:172
 msgid "Navigation Menus"
 msgstr "Navigeringsmenyer"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:299
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:176
 msgid "Display links if user doesn't have access"
 msgstr "Visa länkar om användaren inte har åtkomst"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:180
 msgid "Hide links if user doesn't have access"
 msgstr "Dölj länkar om användaren inte har åtkomst"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:319
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:196
 msgid "Private Posts"
 msgstr "Privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:323
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:200
 msgid "Apply Teaser to Private Posts"
 msgstr "Tillämpa teaser på privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:327
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:204
 msgid "Hide Private Posts if user doesn't have access"
 msgstr "Dölj privata inlägg om användaren inte har åtkomst"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:332
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
 msgid "Hide for Custom Visibility"
 msgstr "Dölj för anpassad synlighet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:346
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:223
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
 msgid "Featured Image"
 msgstr "Utvald bild"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:227
 msgid "Show featured image"
 msgstr "Visa utvald bild"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:354
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:231
 msgid "Hide featured image when teaser is applied"
 msgstr "Dölj utvald bild när teaser tillämpas"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:369
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:246
 msgid "Comments Area"
 msgstr "Kommentarområde"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:251
 msgid "Disable the comments area when Teaser is applied"
 msgstr "Inaktivera kommentarområdet när Teaser tillämpas"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:395
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:272
 msgid "Full Content"
 msgstr "Fullt innehåll"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:396
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:273
 msgid "Excerpt Only"
 msgstr "Endast utdrag"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:397
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
 msgid "Title Only"
 msgstr "Endast titel"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:409, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:286, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:430
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:307
 msgid "Display for readable private posts"
 msgstr "Visa för läsbara privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:329
 msgid "Display for readable non-private posts"
 msgstr "Visa för läsbara icke-privata inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:353
 msgid "Feed Replacement Text"
 msgstr "Ersättningstext för flödet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:500
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:377
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Använd %s för inläggs-URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:537
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:414
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5862,19 +5838,23 @@ msgstr ""
 "Använd dessa inställningar för att kontrollera vad användare ser när de "
 "inte har åtkomst till ditt innehåll."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:424
 msgid "All post teaser settings were updated."
 msgstr "Alla inställningar för förhandsvisning av inlägg har uppdaterats."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:555
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:432
 msgid "All post teaser settings were reset to defaults."
 msgstr ""
 "Alla inställningar för förhandsvisning av inlägg har återställts till "
 "standard."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:566
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:443
 msgid "Teaser Settings"
 msgstr "Inställningar för förhandsvisning"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:449
+msgid "Text Options"
+msgstr "Textalternativ"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:56
 msgid "Select Post Type to Configure"
@@ -5886,153 +5866,120 @@ msgstr ""
 "Välj vilken inläggstyp du vill konfigurera inställningar för "
 "förhandsvisning."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:100
-#, fuzzy, php-format
-msgid "%s [PRO]"
-msgstr "%s [PRO]"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:120
-#. translators: %s: "PRO" link to the upgrade page
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:213
 #, php-format
-msgid "Pages and custom post types are available in %s"
-msgstr "Sidor och anpassade inläggstyper är tillgängliga i %s"
+msgid "Text Options for %s"
+msgstr "Textalternativ för %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:126, fuzzy
-msgid "PRO"
-msgstr "PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "WordPress standard. Visa \"Sidan hittades inte\"-skärm"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
 msgid "Use content before Read More link as teaser text"
 msgstr "Använd innehåll före Läs mer-länk som förhandsvisningstext"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
 msgid "Use Excerpt as teaser text"
 msgstr "Använd utdrag som förhandsvisningstext"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "Använd utdrag eller före-Mer som förhandsvisningstext"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:232
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr "Använd utdrag, före-Mer eller Första X tecken som förhandsvisningstext"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:233
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Redirect to another post"
 msgstr "Omdirigera till ett annat inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
 msgid "No teaser will be applied"
 msgstr "Ingen teaser kommer att tillämpas"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Visa inte teaser-text före meddelandet om blockerade användare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Visa en \"Läs mer\" länk med ett Teaser-meddelande"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
 msgid "Use the post excerpt as teaser content"
 msgstr "Använd inläggsutdraget som teaserinnehåll"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
 msgid "Use excerpt or content before More tag"
 msgstr "Använd utdrag eller innehåll före \"Mer\"-taggen"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
 msgid "Show the first X characters of the post content"
 msgstr "Visa de första X tecknen av inläggsinnehållet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Omdirigera användare till en annan sida när de försöker komma åt begränsat "
 "innehåll"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
 msgid "Use first X characters of content as teaser text"
 msgstr "Använd de första X tecknen av innehållet som teasertext"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "Use excerpt or first X characters of content"
 msgstr "Använd utdrag eller de första X tecknen av innehållet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Teaserinställningar för %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
-#, php-format
-msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
-msgstr "Länkar för Läs mer, utdrag och omdirigeringar är tillgängliga i %sPRO%s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
 msgid "Show only the first"
 msgstr "Visa endast de första"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:354
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:360
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:350
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:356
 msgid "Chars"
 msgstr "Tecknen"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "characters"
 msgstr "tecknen"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355, fuzzy
 msgid "Max"
 msgstr "Max"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:361
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "characters (leave empty for full excerpt)"
 msgstr "tecken (lämna tomt för fullständigt utdrag)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:386
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1240
-msgid "Customize the Message for Blocked Users"
-msgstr "Anpassa meddelandet för blockerade användare"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
-msgid ""
-"Choose whether to use the default message style or customize the appearance "
-"of teaser messages."
-msgstr ""
-"Välj om du vill använda standardmeddelandeformatet eller anpassa utseendet "
-"på teaser-meddelanden."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:383
-msgid "Use Default Message Style"
-msgstr "Använd standardmeddelandestil"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:294
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Besökare utan åtkomst omdirigeras till: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:297
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
 msgid "Visitors without access are redirected away from this page."
 msgstr "Besökare utan åtkomst omdirigeras bort från denna sida."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Ett exempel %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:444
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6040,60 +5987,60 @@ msgstr ""
 "Detta är ett exempel på det fullständiga innehållet. Förhandsvisningen "
 "visar vad en besökare utan behörighet kommer att se istället."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:480
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
 msgid "This is a short excerpt from the restricted content."
 msgstr "Detta är ett kort utdrag från det begränsade innehållet."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
 msgid "Teaser Preview"
 msgstr "Teaserförhandsvisning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
 msgid "Site Preview"
 msgstr "Förhandsvisning av webbplatsen"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
 msgid "Preview content"
 msgstr "Förhandsgranska innehåll"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:491
 msgid "Preview device"
 msgstr "Förhandsvisningsenhet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:524
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Desktop"
 msgstr "Skrivbord"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:527
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:495
 msgid "Mobile"
 msgstr "Mobil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
 msgid "Open full preview in a new tab"
 msgstr "Öppna fullständig förhandsvisning i en ny flik"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
 msgid "Open full preview"
 msgstr "Öppna fullständig förhandsvisning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
 msgid "Loading the preview from your active theme…"
 msgstr "Laddar förhandsvisningen från ditt aktiva tema…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:530
 msgid "Teaser preview from the active theme"
 msgstr "Teaserförhandsvisning från det aktiva temat"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Temaförhandsvisningen kunde inte visas i denna ruta."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
 msgid "Visitor redirected"
 msgstr "Besökare omdirigerad"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6101,11 +6048,14 @@ msgstr ""
 "Det begränsade innehållet visas inte. Besökaren skickas till den "
 "konfigurerade destinationen."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
-msgid "Teaser Message"
-msgstr "Teaser meddelande"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+msgid "Message for Blocked Users"
+msgstr "Meddelande för blockerade användare"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6113,24 +6063,20 @@ msgstr ""
 "Ersätt inläggets innehåll helt med anpassat innehåll för användare som inte "
 "har tillgång."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:624
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:591
 msgid "This field is required."
 msgstr "Detta fält är obligatoriskt."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:626
-msgid "Replace Post Content With:"
-msgstr "Ersätt inläggsinnehåll med:"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:654
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Infoga ett inloggningsformulär genom att använda %s[login_form]%s kortkod."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
 msgid "No Teaser Text Configuration"
 msgstr "Ingen Teaser-textkonfiguration"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
 msgid ""
 "Configure title and excerpt text for blocked users when no teaser text is "
 "shown."
@@ -6138,87 +6084,74 @@ msgstr ""
 "Konfigurera titel och utdragstext för blockerade användare när ingen "
 "teaser-text visas."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "inläggstitel"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:698
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "innehåll i inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:705
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "Före %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:706
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "Efter %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "Omdirigeringsinställningar"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
-msgid "Redirect functionality is available in PRO"
-msgstr "Omdirigeringsfunktionalitet är tillgänglig i PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:783
-msgid ""
-"Automatically redirect users to a login page or custom page when they try "
-"to access restricted content."
-msgstr ""
-"Omdirigera automatiskt användare till en inloggningssida eller anpassad "
-"sida när de försöker få tillgång till begränsat innehåll."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:819
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "Omdirigering"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:820
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "Mål för inläggstyp"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "Välj inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "Anpassad URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "Inte inloggad:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "Ingen omdirigering"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "Omdirigera till WordPress-inloggning"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "Omdirigera till ett anpassat inlägg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:975
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "Omdirigera till en anpassad URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "Detta är en anpassad inloggningssida"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6226,17 +6159,11 @@ msgstr ""
 "Efter att användaren har loggat in kommer de att omdirigeras tillbaka till "
 "det ursprungliga inlägget som de tittade på."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "Inloggade användare:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1061
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1115
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
-msgid "Message for Blocked Users"
-msgstr "Meddelande för blockerade användare"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1062
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6244,15 +6171,7 @@ msgstr ""
 "Anpassa meddelandet som visas för användare som är blockerade från att se "
 "hela innehållet när de använder teaser-typen \"Läs mer\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1085
-msgid ""
-"This message will be displayed in a styled notice box above the teaser "
-"content for all blocked users."
-msgstr ""
-"Detta meddelande kommer att visas i en stiliserad meddelanderuta ovanför "
-"teaserinnehållet för alla blockerade användare."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1116
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6260,15 +6179,7 @@ msgstr ""
 "Anpassa meddelandemeddelandet som visas för alla blockerade användare när "
 "man använder teaser-typen \"Utdrag\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
-msgid ""
-"This message will be displayed in a styled notice box below the excerpt "
-"teaser content for all blocked users."
-msgstr ""
-"Detta meddelande kommer att visas i en stiliserad meddelanderuta nedanför "
-"teaserinnehållet för utdrag för alla blockerade användare."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1170
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6276,87 +6187,86 @@ msgstr ""
 "Anpassa meddelandet som visas för alla blockerade användare när du använder "
 "teaser-typen \"Första X tecken\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
-msgid ""
-"This message will be displayed in a styled notice box below the truncated "
-"content teaser for all blocked users."
-msgstr ""
-"Detta meddelande kommer att visas i en stiliserad meddelanderuta nedanför "
-"det avkortade innehållsteasern för alla blockerade användare."
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+msgid "Blocked User Message Style"
+msgstr "Blockerad användarmeddelandestil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Anpassa utseendet på teaser-meddelandet som visas för blockerade användare."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "Bakgrundsfärg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "Textfärg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "Kantfärg"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1285
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1296
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "Kantposition"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "Vänster"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1290
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "Höger"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "Topp"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "Botten"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1293
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "Alla sidor"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1313
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "Kantbredd (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1326
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "Kantradie (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1339
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "Teckenstorlek (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "Marginal (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:46
 msgid "No Teaser"
 msgstr "Ingen teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
-msgid "Configured Teaser Text"
-msgstr "Konfigurerad teaser-text"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
+msgid "Read More Link as Teaser"
+msgstr "Läs mer-länk som teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
-msgid "This is a PRO feature"
-msgstr "Detta är en PRO-funktion"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
+msgid "Excerpt as Teaser"
+msgstr "Utdrag som teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
-#, php-format
-msgid "%s is available in PRO"
-msgstr "%s finns tillgängligt i PRO"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
+msgid "Excerpt or pre-More as Teaser"
+msgstr "Utdrag eller före-mer som teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
+msgid "First X Characters as Teaser"
+msgstr "Första X tecken som teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
 msgid "Post"

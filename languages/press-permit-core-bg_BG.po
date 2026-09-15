@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-11 13:37+0000\n"
+"PO-Revision-Date: 2026-09-15 06:21+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -397,7 +397,7 @@ msgstr "Видимост на съдържанието"
 #: classes/PublishPress/Permissions/Admin.php:189
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 msgid "Teaser"
@@ -1773,7 +1773,8 @@ msgstr "н/а"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:220
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
 msgid "Post Type"
 msgstr "Тип публикация"
 
@@ -3294,8 +3295,8 @@ msgid "All settings were reset to defaults."
 msgstr "Всички настройки бяха нулирани до подразбиращите се."
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:753
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:771
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:631
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:649
 msgid "Save Changes"
 msgstr "Запази промените"
 
@@ -4459,8 +4460,6 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:254
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Научете повече"
 
@@ -4970,7 +4969,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Преминете на Pro, за да отключите безпроблемна интеграция."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
 msgid "Posts Teaser"
 msgstr "Предварителен преглед на публикации"
 
@@ -5697,11 +5696,11 @@ msgstr "Копирано!"
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1152
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:286
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
 msgid "You do not have permission to view the full content."
 msgstr "Нямате разрешение да видите пълното съдържание."
 
@@ -5718,78 +5717,79 @@ msgstr "За да прочетете пълното съдържание, мол
 msgid "Read More"
 msgstr "Прочетете още"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:322
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
 msgid "Teaser Type"
 msgstr "Тип на анонса"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
 msgid "Coverage"
 msgstr "Обхват"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:43
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:47
 msgid "No Teaser Text"
 msgstr "Няма текст за анонс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
 msgid "Read More Notice"
 msgstr "Уведомление за \"Прочетете още\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
 msgid "Redirect"
 msgstr "Пренасочване"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:572
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:455
 msgid "Options"
 msgstr "Опции"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:48
 msgid "Hidden Content Teaser"
 msgstr "Анонс на скрито съдържание"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
 msgid "Display mode for readable private posts"
 msgstr "Режим на показване за четими частни публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
 msgid "Display mode for readable non-private posts"
 msgstr "Режим на показване за четими публични публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
 msgid "Feed Replacement Text (use %permalink% for post URL)"
 msgstr "Текст за заместване на фийд (използвайте %permalink% за URL на публикацията)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
 msgid "Teaser Notice Message"
 msgstr "Сообщение за тизер"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Apply teaser to list view as well as single view"
 msgstr "Прилагане на анонса в списъчния изглед, както и в единичния изглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Apply teaser to logged in and/or logged out users"
 msgstr "Прилагане на анонса за влезли и/или излезли потребители"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid "Hide navigation menu links to restricted content"
 msgstr "Скриване на линковете в навигационното меню за ограничено съдържание"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
 msgid "Apply teaser to private posts"
 msgstr "Прилагане на анонса за частни публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Скрийте представеното изображение, когато е приложен анонс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:67
 msgid "Disable Comments when Teaser is applied"
 msgstr "Деактивиране на коментарите, когато е приложен тизер"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:68
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5797,145 +5797,121 @@ msgstr ""
 "Настройките за \"Скрий частно\" важат само за персонализирана "
 "конфиденциалност (Член, Премиум, Персонал и др.)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
-#, php-format
-msgid "%s is a PRO feature"
-msgstr "%s е функция за PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:198
-#, php-format
-msgid "🔓 Unlock %s"
-msgstr "🔓 Отключете %s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:202
-msgid "This feature is available in PublishPress Permissions PRO"
-msgstr "Тази функция е налична в PublishPress Permissions PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:214
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
-msgid "Upgrade to PRO"
-msgstr "Преминете на PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:217
-msgid "Compare Features"
-msgstr "Сравнете функции"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:114
 msgid "Application"
 msgstr "Приложение"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:126
 msgid "Teaser Application"
 msgstr "Приложение за тизер"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:253
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:130
 msgid "List and Single view"
 msgstr "Списък и единичен изглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:134
 msgid "Single view only"
 msgstr "Само единичен изглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:147
 msgid "User Application"
 msgstr "Приложение за потребител"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:151
 msgid "Both"
 msgstr "И двете"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:278
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:155
 msgid "Not Logged In Users"
 msgstr "Потребители, които не са влезли"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:282
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:159
 msgid "Logged In Users"
 msgstr "Влезли потребители"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:295
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:172
 msgid "Navigation Menus"
 msgstr "Навигационни менюта"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:299
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:176
 msgid "Display links if user doesn't have access"
 msgstr "Показване на линкове, ако потребителят няма достъп"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:180
 msgid "Hide links if user doesn't have access"
 msgstr "Скриване на линкове, ако потребителят няма достъп"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:319
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:196
 msgid "Private Posts"
 msgstr "Частни публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:323
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:200
 msgid "Apply Teaser to Private Posts"
 msgstr "Прилагане на анотация към частни публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:327
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:204
 msgid "Hide Private Posts if user doesn't have access"
 msgstr "Скриване на частни публикации, ако потребителят няма достъп"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:332
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
 msgid "Hide for Custom Visibility"
 msgstr "Скриване за персонализирана видимост"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:346
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:223
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
 msgid "Featured Image"
 msgstr "Избрано изображение"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:227
 msgid "Show featured image"
 msgstr "Показване на избрано изображение"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:354
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:231
 msgid "Hide featured image when teaser is applied"
 msgstr "Скриване на избрано изображение, когато е приложена анотация"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:369
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:246
 msgid "Comments Area"
 msgstr "Област за коментари"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:251
 msgid "Disable the comments area when Teaser is applied"
 msgstr "Деактивиране на областта за коментари, когато е приложен тизер"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:395
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:272
 msgid "Full Content"
 msgstr "Цялото съдържание"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:396
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:273
 msgid "Excerpt Only"
 msgstr "Само откъс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:397
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
 msgid "Title Only"
 msgstr "Само заглавие"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:409, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:286, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:430
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:307
 msgid "Display for readable private posts"
 msgstr "Показване на четими частни публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:329
 msgid "Display for readable non-private posts"
 msgstr "Показване на четими непублични публикации"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:353
 msgid "Feed Replacement Text"
 msgstr "Текст за замяна на фийд"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:500
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:377
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Използвайте %s за URL на публикацията"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:537
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:414
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5943,19 +5919,23 @@ msgstr ""
 "Използвайте тези настройки, за да контролирате какво виждат потребителите, "
 "когато нямат достъп до вашето съдържание."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:424
 msgid "All post teaser settings were updated."
 msgstr "Всички настройки за предварителен преглед на публикации бяха обновени."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:555
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:432
 msgid "All post teaser settings were reset to defaults."
 msgstr ""
 "Всички настройки за предварителен преглед на публикации бяха нулирани до "
 "подразбиращите се."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:566
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:443
 msgid "Teaser Settings"
 msgstr "Настройки за предварителен преглед"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:449
+msgid "Text Options"
+msgstr "Опции за текст"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:56
 msgid "Select Post Type to Configure"
@@ -5967,157 +5947,124 @@ msgstr ""
 "Изберете кой тип публикация искате да конфигурирате настройките за "
 "предварителен преглед."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:100
-#, fuzzy, php-format
-msgid "%s [PRO]"
-msgstr "%s [PRO]"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:120
-#. translators: %s: "PRO" link to the upgrade page
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:213
 #, php-format
-msgid "Pages and custom post types are available in %s"
-msgstr "Страниците и персонализираните типове публикации са налични в %s"
+msgid "Text Options for %s"
+msgstr "Опции за текст за %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:126, fuzzy
-msgid "PRO"
-msgstr "PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "Подразбиране на WordPress. Показване на екран \"Страницата не е намерена\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
 msgid "Use content before Read More link as teaser text"
 msgstr ""
 "Използвайте съдържанието преди връзката \"Прочетете повече\" като текст на "
 "предварителния преглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
 msgid "Use Excerpt as teaser text"
 msgstr "Използвайте откъс като текст на предварителния преглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "Използвайте откъс или преди \"Повече\" като текст на предварителния преглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:232
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr ""
 "Използвайте откъс, преди \"Повече\" или Първите X символа като текст на "
 "предварителния преглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:233
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Redirect to another post"
 msgstr "Пренасочване към друг пост"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
 msgid "No teaser will be applied"
 msgstr "Няма да се прилага анотация"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Не показвайте текста на анонса преди съобщението за блокирани потребители"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Показване на линк \"Прочетете повече\" с уведомление за тизер"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
 msgid "Use the post excerpt as teaser content"
 msgstr "Използвайте откъса на поста като съдържание на анотацията"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
 msgid "Use excerpt or content before More tag"
 msgstr "Използвайте откъс или съдържание преди таг \"Повече\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
 msgid "Show the first X characters of the post content"
 msgstr "Покажете първите X символа от съдържанието на поста"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Пренасочете потребителите към друга страница, когато се опитват да достъпят "
 "ограничено съдържание"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
 msgid "Use first X characters of content as teaser text"
 msgstr "Използвайте първите X символа от съдържанието като текст на анотацията"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "Use excerpt or first X characters of content"
 msgstr "Използвайте откъс или първите X символа от съдържанието"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Настройки на анотацията за %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
-#, php-format
-msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
-msgstr "Линкове \"Прочетете повече\", откъси и пренасочвания са налични в %sPRO%s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
 msgid "Show only the first"
 msgstr "Покажете само първия"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:354
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:360
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:350
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:356
 msgid "Chars"
 msgstr "Символи"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "characters"
 msgstr "символа"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
 msgid "Max"
 msgstr "Макс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:361
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "characters (leave empty for full excerpt)"
 msgstr "символа (оставете празно за пълен откъс)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:386
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1240
-msgid "Customize the Message for Blocked Users"
-msgstr "Персонализиране на съобщението за блокирани потребители"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
-msgid ""
-"Choose whether to use the default message style or customize the appearance "
-"of teaser messages."
-msgstr ""
-"Изберете дали да използвате стила на съобщение по подразбиране или да "
-"персонализирате външния вид на съобщенията с анотация."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:383
-msgid "Use Default Message Style"
-msgstr "Използвайте стил на съобщението по подразбиране"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:294
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Посетителите без достъп са пренасочени към: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:297
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
 msgid "Visitors without access are redirected away from this page."
 msgstr "Посетителите без достъп са пренасочени от тази страница."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Примерен %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:444
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6125,60 +6072,60 @@ msgstr ""
 "Това е пример за пълното съдържание. Прегледът показва какво ще види "
 "посетител без разрешение вместо това."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:480
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
 msgid "This is a short excerpt from the restricted content."
 msgstr "Това е кратък откъс от ограниченото съдържание."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
 msgid "Teaser Preview"
 msgstr "Преглед на анонса"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
 msgid "Site Preview"
 msgstr "Преглед на сайта"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
 msgid "Preview content"
 msgstr "Преглед на съдържанието"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:491
 msgid "Preview device"
 msgstr "Устройство за преглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:524
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Desktop"
 msgstr "Десктоп"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:527
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:495
 msgid "Mobile"
 msgstr "Мобилен"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
 msgid "Open full preview in a new tab"
 msgstr "Отворете пълен преглед в нов таб"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
 msgid "Open full preview"
 msgstr "Отворете пълен преглед"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
 msgid "Loading the preview from your active theme…"
 msgstr "Зареждане на прегледа от активната ви тема…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:530
 msgid "Teaser preview from the active theme"
 msgstr "Преглед на анонса от активната тема"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Прегледът на темата не можа да бъде показан в този фрейм."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
 msgid "Visitor redirected"
 msgstr "Посетителят е пренасочен"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6186,11 +6133,14 @@ msgstr ""
 "Ограниченото съдържание не се показва. Посетителят е изпратен към "
 "конфигурираната дестинация."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
-msgid "Teaser Message"
-msgstr "Съобщение с анотация"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+msgid "Message for Blocked Users"
+msgstr "Съобщение за блокирани потребители"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6198,24 +6148,20 @@ msgstr ""
 "Напълно заменете съдържанието на публикацията с персонализирано съдържание "
 "за потребители, които нямат достъп."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:624
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:591
 msgid "This field is required."
 msgstr "Това поле е задължително."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:626
-msgid "Replace Post Content With:"
-msgstr "Заменете съдържанието на публикацията с:"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:654
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Вмъкнете форма за вход, използвайки %s[login_form]%s шорткод."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
 msgid "No Teaser Text Configuration"
 msgstr "Конфигурация на текста за анонс липсва"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
 msgid ""
 "Configure title and excerpt text for blocked users when no teaser text is "
 "shown."
@@ -6223,88 +6169,74 @@ msgstr ""
 "Конфигурирайте заглавието и текста на резюмето за блокирани потребители, "
 "когато не е показан текст за анонс."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "заглавие на публикацията"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:698
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "съдържание на публикацията"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:705
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "Преди %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:706
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "След %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "Настройки за пренасочване"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
-msgid "Redirect functionality is available in PRO"
-msgstr "Функционалността за пренасочване е налична в PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:783
-msgid ""
-"Automatically redirect users to a login page or custom page when they try "
-"to access restricted content."
-msgstr ""
-"Автоматично пренасочвайте потребителите към страница за вход или "
-"персонализирана страница, когато се опитват да достъпят ограничено "
-"съдържание."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:819
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "Пренасочване"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:820
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "Целеви тип публикация"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "Изберете публикация"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "Персонализиран URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "Не влязъл в системата:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "Без пренасочване"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "Пренасочване към входа на WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "Пренасочване към персонализирана публикация"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:975
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "Пренасочване към персонализиран URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "Това е персонализирана страница за вход"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6312,17 +6244,11 @@ msgstr ""
 "След като потребителят се влезе, той ще бъде пренасочен обратно към "
 "оригиналната публикация, която е разглеждал."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "Влезли потребители:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1061
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1115
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
-msgid "Message for Blocked Users"
-msgstr "Съобщение за блокирани потребители"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1062
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6331,15 +6257,7 @@ msgstr ""
 "блокирани от разглеждането на пълното съдържание, когато използват типа "
 "\"Прочетете повече\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1085
-msgid ""
-"This message will be displayed in a styled notice box above the teaser "
-"content for all blocked users."
-msgstr ""
-"Това съобщение ще бъде показано в стилизиран уведомителен бокс над "
-"съдържанието на анонса за всички блокирани потребители."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1116
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6347,15 +6265,7 @@ msgstr ""
 "Персонализирайте съобщението за уведомление, показвано на всички блокирани "
 "потребители, когато се използва тип анонс \"Откъс\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
-msgid ""
-"This message will be displayed in a styled notice box below the excerpt "
-"teaser content for all blocked users."
-msgstr ""
-"Това съобщение ще бъде показано в стилизиран уведомителен бокс под "
-"съдържанието на откъса за всички блокирани потребители."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1170
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6363,89 +6273,88 @@ msgstr ""
 "Персонализирайте съобщението за уведомление, показвано на всички блокирани "
 "потребители при използване на типа тизер \"Първите X символа\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
-msgid ""
-"This message will be displayed in a styled notice box below the truncated "
-"content teaser for all blocked users."
-msgstr ""
-"Това съобщение ще бъде показано в стилизирано уведомление под съкратеното "
-"съдържание на тизера за всички блокирани потребители."
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+msgid "Blocked User Message Style"
+msgstr "Стил на съобщение за блокиран потребител"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr ""
 "Персонализирайте външния вид на съобщението на тизера, показвано на "
 "блокирани потребители."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "Цвят на фона"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "Цвят на текста"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "Цвят на рамката"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1285
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1296
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "Позиция на рамката"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "Ляво"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1290
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "Дясно"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "Горно"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "Долна част"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1293
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "Всички страни"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1313
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "Ширина на рамката (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1326
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "Радиус на рамката (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1339
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "Размер на шрифта (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "Отстъп (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:46
 msgid "No Teaser"
 msgstr "Няма анонс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
-msgid "Configured Teaser Text"
-msgstr "Конфигуриран текст на анонса"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
+msgid "Read More Link as Teaser"
+msgstr "Прочетете повече линк като анонс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
-msgid "This is a PRO feature"
-msgstr "Това е PRO функция"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
+msgid "Excerpt as Teaser"
+msgstr "Извадка като анонс"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
-#, php-format
-msgid "%s is available in PRO"
-msgstr "%s е наличен в PRO"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
+msgid "Excerpt or pre-More as Teaser"
+msgstr "Извадка или преди \"Повече\" като анонс"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
+msgid "First X Characters as Teaser"
+msgstr "Първите X знака като анонс"
 
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
 msgid "Post"

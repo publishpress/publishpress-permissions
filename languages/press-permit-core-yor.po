@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-11 13:36+0000\n"
+"PO-Revision-Date: 2026-09-15 06:21+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: yor\n"
@@ -393,7 +393,7 @@ msgstr "Ihan Akoko"
 #: classes/PublishPress/Permissions/Admin.php:189
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:30
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 msgid "Teaser"
@@ -1728,7 +1728,8 @@ msgstr "n/a"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:280
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:220
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
 msgid "Post Type"
 msgstr "Irú Ifiweranṣẹ"
 
@@ -3221,8 +3222,8 @@ msgid "All settings were reset to defaults."
 msgstr "Gbogbo awọn eto ti ṣe atunṣe si awọn aiyipada."
 
 #: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:753
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:771
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:631
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:649
 msgid "Save Changes"
 msgstr "Fipamọ Awọn Ayipada"
 
@@ -4333,8 +4334,6 @@ msgstr "Ṣe imudojuiwọn si Pro lati ṣii awọn agbara aabo faili to ti ni i
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:221
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:243
 #: includes/CoreAdmin.php:254
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:789
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:186
 msgid "Learn More"
 msgstr "Kọ ẹkọ siwaju"
 
@@ -4828,7 +4827,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Ṣe atunṣe si Pro lati ṣii iṣọpọ ti ko ni idalọwọduro."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:534
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
 msgid "Posts Teaser"
 msgstr "Awọn Ifiweranṣẹ Tí kọ́"
 
@@ -5534,11 +5533,11 @@ msgstr "Ti daakọ!"
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1152
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:286
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
 msgid "You do not have permission to view the full content."
 msgstr "Iwọ ko ni aṣẹ lati wo akoonu kikun."
 
@@ -5555,78 +5554,79 @@ msgstr "Láti ka gbogbo akoonu, jọwọ wọlé sí ojú-ìwé yìí."
 msgid "Read More"
 msgstr "Ka siwaju"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:37
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:322
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
 msgid "Teaser Type"
 msgstr "Iru Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:38
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
 msgid "Coverage"
 msgstr "Ibo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:43
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:47
 msgid "No Teaser Text"
 msgstr "Ko si Àkóónú Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:40
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
 msgid "Read More Notice"
 msgstr "Ka siwaju Ikilọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
 msgid "Redirect"
 msgstr "Tun tọka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:42
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:572
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:455
 msgid "Options"
 msgstr "Aṣayan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:48
 msgid "Hidden Content Teaser"
 msgstr "Teaser Akopọ Tiwon"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:54
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
 msgid "Display mode for readable private posts"
 msgstr "Ipo ifihan fun awọn ifiweranṣẹ ikọkọ ti o le ka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:55
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
 msgid "Display mode for readable non-private posts"
 msgstr "Ipo ifihan fun awọn ifiweranṣẹ ti kii ṣe ikọkọ ti o le ka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:56
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
 msgid "Feed Replacement Text (use %permalink% for post URL)"
 msgstr "Ọrọ Ipadabọ Feed (lo %permalink% fun URL ifiweranṣẹ)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
 msgid "Teaser Notice Message"
 msgstr "Ifiranṣẹ Ikilọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Apply teaser to list view as well as single view"
 msgstr "Lo teaser si àtòkọ àwòrán àti àwòrán kan ṣoṣo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Apply teaser to logged in and/or logged out users"
 msgstr "Lo teaser si awọn olumulo ti o wọlé ati/tabi ti o ti jade"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid "Hide navigation menu links to restricted content"
 msgstr "Tẹ̀jú àtẹ̀jáde àkóónú ìkànsí sí ìtàn àìlò"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
 msgid "Apply teaser to private posts"
 msgstr "Lo teaser si awọn ifiweranṣẹ aladani"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Pa aworan ifojusi mọ nigbati Teaser ba lo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:67
 msgid "Disable Comments when Teaser is applied"
 msgstr "Pa awọn asọye mọ nigbati a ba lo Ifiranṣẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:68
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5634,145 +5634,121 @@ msgstr ""
 "\"Tọju Ikọkọ\" awọn eto nikan lo kan si ikọkọ aṣa (Ọmọ ẹgbẹ, Premium, "
 "Staff, ati bẹbẹ lọ)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
-#, php-format
-msgid "%s is a PRO feature"
-msgstr "%s jẹ ẹya PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:198
-#, php-format
-msgid "🔓 Unlock %s"
-msgstr "🔓 Ṣii %s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:202
-msgid "This feature is available in PublishPress Permissions PRO"
-msgstr "Eyi jẹ ẹya ti o wa ni PublishPress Permissions PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:214
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:183
-msgid "Upgrade to PRO"
-msgstr "Gba PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:217
-msgid "Compare Features"
-msgstr "Ṣe afiwe Awọn ẹya"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:237
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:114
 msgid "Application"
 msgstr "Ìṣàkóso"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:126
 msgid "Teaser Application"
 msgstr "Lo Ifiranṣẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:253
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:130
 msgid "List and Single view"
 msgstr "Atokọ ati Iwoye Kan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:134
 msgid "Single view only"
 msgstr "Ibi wiwo kan ṣoṣo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:147
 msgid "User Application"
 msgstr "Lo olumulo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:151
 msgid "Both"
 msgstr "Meji"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:278
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:155
 msgid "Not Logged In Users"
 msgstr "Awọn olumulo Ti ko Wọle"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:282
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:159
 msgid "Logged In Users"
 msgstr "Awọn olumulo Ti Wọle"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:295
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:172
 msgid "Navigation Menus"
 msgstr "Awọn akojọ iṣakoso"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:299
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:176
 msgid "Display links if user doesn't have access"
 msgstr "Fihan awọn ọna asopọ ti olumulo ko ni iraye si"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:303
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:180
 msgid "Hide links if user doesn't have access"
 msgstr "Tẹ awọn ọna asopọ ti olumulo ko ni iraye si"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:319
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:196
 msgid "Private Posts"
 msgstr "Awọn ifiweranṣẹ Ikọkọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:323
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:200
 msgid "Apply Teaser to Private Posts"
 msgstr "Lo Teaser si Awọn ifiweranṣẹ Aladani"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:327
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:204
 msgid "Hide Private Posts if user doesn't have access"
 msgstr "Tẹ awọn ifiweranṣẹ aladani ti olumulo ko ni iraye si"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:332
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
 msgid "Hide for Custom Visibility"
 msgstr "Tẹ fun Wiwo Aṣ customized"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:346
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:223
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
 msgid "Featured Image"
 msgstr "Aworan Ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:227
 msgid "Show featured image"
 msgstr "Fihan aworan ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:354
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:231
 msgid "Hide featured image when teaser is applied"
 msgstr "Tẹ aworan ifihan nigbati a ba lo teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:369
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:246
 msgid "Comments Area"
 msgstr "Ibi asọye"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:251
 msgid "Disable the comments area when Teaser is applied"
 msgstr "Pa ibi asọye mọ nigbati a ba lo Ifiranṣẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:395
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:272
 msgid "Full Content"
 msgstr "Akopọ Kọọkan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:396
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:273
 msgid "Excerpt Only"
 msgstr "Akopọ Nikan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:397
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
 msgid "Title Only"
 msgstr "Iru Nikan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:409, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:286, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:430
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:307
 msgid "Display for readable private posts"
 msgstr "Fihan fun awọn ifiweranṣẹ ikọkọ ti a le ka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:329
 msgid "Display for readable non-private posts"
 msgstr "Fihan fun awọn ifiweranṣẹ ti kii ṣe ikọkọ ti a le ka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:353
 msgid "Feed Replacement Text"
 msgstr "Ọrọ Ipadabọ Feed"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:500
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:377
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Lo %s fun URL ifiweranṣẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:537
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:414
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5780,17 +5756,21 @@ msgstr ""
 "Lo awọn eto wọnyi lati ṣakoso ohun ti awọn olumulo n wo nigbati wọn ko ni "
 "iraye si akoonu rẹ."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:424
 msgid "All post teaser settings were updated."
 msgstr "Gbogbo awọn eto ifihan ifiweranṣẹ ti ni imudojuiwọn."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:555
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:432
 msgid "All post teaser settings were reset to defaults."
 msgstr "Gbogbo awọn eto ifihan ifiweranṣẹ ti tunto si awọn aiyipada."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:566
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:443
 msgid "Teaser Settings"
 msgstr "Awọn Eto Ifihan"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:449
+msgid "Text Options"
+msgstr "Àwọn Àṣàyàn Tẹ́kẹ̀t"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:56
 msgid "Select Post Type to Configure"
@@ -5800,153 +5780,120 @@ msgstr "Yan Iru Ifiweranṣẹ lati Ṣeto"
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "Yan iru ifiweranṣẹ wo ni o fẹ lati ṣeto awọn eto ifihan fun."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:100
-#, fuzzy, php-format
-msgid "%s [PRO]"
-msgstr "%s [PRO]"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:120
-#. translators: %s: "PRO" link to the upgrade page
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:213
 #, php-format
-msgid "Pages and custom post types are available in %s"
-msgstr "Awọn oju-iwe ati awọn iru ifiweranṣẹ aṣa wa ni %s"
+msgid "Text Options for %s"
+msgstr "Àwọn Àṣàyàn Tẹ́kẹ̀t fún %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:126, fuzzy
-msgid "PRO"
-msgstr "PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "Aiyipada WordPress. Fihan \"Oju-iwe ko ri\" iboju"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
 msgid "Use content before Read More link as teaser text"
 msgstr "Lo akoonu ṣaaju ọna asopọ Ka Siwaju gẹgẹbi ọrọ ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
 msgid "Use Excerpt as teaser text"
 msgstr "Lo Akopọ gẹgẹbi ọrọ ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "Lo Akopọ tabi ṣaaju-Siwaju gẹgẹbi ọrọ ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:232
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr "Lo Akopọ, ṣaaju-Siwaju tabi Awọn X Characters akọkọ gẹgẹbi ọrọ ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:233
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Redirect to another post"
 msgstr "Tun itọsọna si ifiweranṣẹ miiran"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
 msgid "No teaser will be applied"
 msgstr "Ko si ifihan ti yoo ṣee lo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Ma ṣe fi àkóónú teaser hàn kí àkọsílẹ-èèyàn tí a dènà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Fihan ọna asopọ \"Ka Siwaju\" pẹlu ifiranṣẹ Ikilọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
 msgid "Use the post excerpt as teaser content"
 msgstr "Lo akopọ ifiweranṣẹ gẹgẹbi akoonu ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
 msgid "Use excerpt or content before More tag"
 msgstr "Lo akopọ tabi akoonu ṣaaju aami More"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
 msgid "Show the first X characters of the post content"
 msgstr "Fi awọn akọtọ X akọkọ ti akoonu ifiweranṣẹ han"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Tun awọn olumulo si oju-iwe miiran nigbati wọn ba gbiyanju lati wọle si "
 "akoonu ti a fiwe si"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
 msgid "Use first X characters of content as teaser text"
 msgstr "Lo awọn akọtọ X akọkọ ti akoonu gẹgẹbi ọrọ ifihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "Use excerpt or first X characters of content"
 msgstr "Lo akopọ tabi awọn akọtọ X akọkọ ti akoonu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Awọn Eto Ifihan fun %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
-#, php-format
-msgid "Read More links, excerpts, and redirects are available in %sPRO%s"
-msgstr "Awọn ọna asopọ Ka Siwaju, akopọ, ati atunṣe wa ni %sPRO%s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
 msgid "Show only the first"
 msgstr "Fi akọkọ nikan han"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:354
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:360
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:350
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:356
 msgid "Chars"
 msgstr "Akọtọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "characters"
 msgstr "awọn akọtọ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355, fuzzy
 msgid "Max"
 msgstr "Max"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:361
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "characters (leave empty for full excerpt)"
 msgstr "awọn akọtọ (fi silẹ fun akopọ kikun)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:371
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:386
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1240
-msgid "Customize the Message for Blocked Users"
-msgstr "Ṣàtúnṣe Ìfẹ́ fún Àwọn Èèyàn Tí A Dènà"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:373
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:390
-msgid ""
-"Choose whether to use the default message style or customize the appearance "
-"of teaser messages."
-msgstr ""
-"Yan boya lati lo aṣa ifiranṣẹ aiyipada tabi lati ṣe aṣa han ti awọn "
-"ifiranṣẹ teaser."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:383
-msgid "Use Default Message Style"
-msgstr "Lo Àṣà Ìfẹ́ Àkọ́kọ́"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:294
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Awọn alejo ti ko ni iraye si ni a ṣe itọsọna si: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:297
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
 msgid "Visitors without access are redirected away from this page."
 msgstr "Awọn alejo ti ko ni iraye si ni a ṣe itọsọna kuro ni oju-iwe yii."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
 #. translators: %s is the singular post type label, such as Post or Page.
 #, fuzzy, php-format
 msgid "A Sample %s"
 msgstr "A Sample %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:444
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -5954,70 +5901,73 @@ msgstr ""
 "Eyi jẹ apẹẹrẹ ti akoonu kikun. A ṣe afihan ohun ti alejo kan laisi aṣẹ yoo "
 "rii dipo."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:480
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
 msgid "This is a short excerpt from the restricted content."
 msgstr "Eyi jẹ akopọ kukuru lati inu akoonu ti a ti ni ihamọ."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
 msgid "Teaser Preview"
 msgstr "Afihan Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
 msgid "Site Preview"
 msgstr "Afihan Aaye"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
 msgid "Preview content"
 msgstr "Akopọ akoonu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:491
 msgid "Preview device"
 msgstr "Ẹrọ Afihan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:524
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Desktop"
 msgstr "Kọnputa"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:527
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:495
 msgid "Mobile"
 msgstr "Mobilẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:536
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
 msgid "Open full preview in a new tab"
 msgstr "Ṣii afihan kikun ninu taabu tuntun"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
 msgid "Open full preview"
 msgstr "Ṣii afihan kikun"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:554
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
 msgid "Loading the preview from your active theme…"
 msgstr "Nṣiṣẹ afihan lati inu akori rẹ ti n ṣiṣẹ…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:530
 msgid "Teaser preview from the active theme"
 msgstr "Afihan teaser lati inu akori ti n ṣiṣẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:572
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
 msgid "The theme preview could not be displayed in this frame."
 msgstr "A ko le fi afihan akori han ninu fọọmu yii."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:579
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
 msgid "Visitor redirected"
 msgstr "Alejo ti yipada"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:580
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "A ko fi akoonu ti a ti ni ihamọ han. Alejo naa ni a rán si ibi ti a ti ṣeto."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
-msgid "Teaser Message"
-msgstr "Ifiranṣẹ Teaser"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+msgid "Message for Blocked Users"
+msgstr "IMessage fún Àwọn Olumulo Tí a Dènà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
 msgid ""
 "Replace the post content entirely with custom content for users who don't "
 "have access."
@@ -6025,24 +5975,20 @@ msgstr ""
 "Rọpo akoonu ifiweranṣẹ patapata pẹlu akoonu aṣa fun awọn olumulo ti ko ni "
 "iraye si."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:624
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:591
 msgid "This field is required."
 msgstr "Àwọn ààyè yìí jẹ́ dandan."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:626
-msgid "Replace Post Content With:"
-msgstr "Rọ́pò Akọ́kọ́ Ìpolówó Pẹ̀lú:"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:654
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:616
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Fọwọ́lé fọọ́mù ìbẹ̀rẹ̀ pẹ̀lú %s[login_form]%s shortcode."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:674
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
 msgid "No Teaser Text Configuration"
 msgstr "Ko si Àtúnṣe Àkóónú Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:675
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
 msgid ""
 "Configure title and excerpt text for blocked users when no teaser text is "
 "shown."
@@ -6050,87 +5996,74 @@ msgstr ""
 "Ṣètò akọle àti àkóónú fún awọn èèyàn tí a dènà nígbà tí a kò fi àkóónú "
 "teaser hàn."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:697
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "akọ́le ìpolówó"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:698
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "akoonu ìpolówó"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:705
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "Kii ṣe %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:706
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "Lẹhin %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "Àtúnṣe Ìtọ́sọ́nà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:782
-msgid "Redirect functionality is available in PRO"
-msgstr "Àmúyẹ àtúnṣe wa ní PRO"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:783
-msgid ""
-"Automatically redirect users to a login page or custom page when they try "
-"to access restricted content."
-msgstr ""
-"Yiyipada laifọwọyi awọn olumulo si oju-iwe wiwọle tabi oju-iwe aṣa nigbati "
-"wọn ba n gbiyanju lati wọle si akoonu ti a fi ẹsun pa."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:819
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "Ìtúnṣe"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:820
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "Irú Ìpolówó Tí a Fojú Sọ́"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "Yàn Ìpolówó"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:821
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "URL Àṣà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:861
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "Kò Wà Ní Ìforúkọsílẹ̀:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "Kò sí àtúnṣe"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "Rọ́pò sí ìbẹ̀rẹ̀ WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "Rọ́pò sí ìpolówó àdáni"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:975
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "Tẹ̀jú sí URL àṣà"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1028
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "Eyi jẹ oju-iwe wiwọle ti aṣa"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:925
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6138,17 +6071,11 @@ msgstr ""
 "Lẹhin ti olumulo ba wọle, wọn yoo tun pada si ifiweranṣẹ atilẹba ti wọn n "
 "wo."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:964
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "Àwọn Olumulo Tí Wọlé:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1061
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1115
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1169
-msgid "Message for Blocked Users"
-msgstr "IMessage fún Àwọn Olumulo Tí a Dènà"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1062
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6156,15 +6083,7 @@ msgstr ""
 "Ṣe aṣa ifiranṣẹ ti a fihan si awọn olumulo ti a ti dina lati wo akoonu "
 "kikun nigbati o ba nlo iru teaser \"Ka Siwaju\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1085
-msgid ""
-"This message will be displayed in a styled notice box above the teaser "
-"content for all blocked users."
-msgstr ""
-"Ihu ifiranṣẹ yii yoo han ninu apoti akiyesi ti a ṣe apẹrẹ loke akoonu "
-"teaser fun gbogbo awọn olumulo ti a ti dina."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1116
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6172,15 +6091,7 @@ msgstr ""
 "Ṣe aṣa ifiranṣẹ akiyesi ti a fihan si gbogbo awọn olumulo ti a ti dina "
 "nigba ti a ba nlo iru teaser \"Akopọ\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1139
-msgid ""
-"This message will be displayed in a styled notice box below the excerpt "
-"teaser content for all blocked users."
-msgstr ""
-"Ihu ifiranṣẹ yii yoo han ninu apoti akiyesi ti a ṣe apẹrẹ ni isalẹ akoonu "
-"teaser akopọ fun gbogbo awọn olumulo ti a ti dina."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1170
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6188,87 +6099,86 @@ msgstr ""
 "Ṣe àtúnṣe ìkìlọ̀ ìfiranṣẹ́ tí a ń fi hàn fún gbogbo àwọn ọmọ ẹgbẹ́ tí a ti "
 "dènà nígbà tí a bá nlo irú \"Àkọ́kọ́ X Àkóónú\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1193
-msgid ""
-"This message will be displayed in a styled notice box below the truncated "
-"content teaser for all blocked users."
-msgstr ""
-"Ìfiranṣẹ́ yìí yóò hàn nínú àpótí ìkìlọ̀ tí a ṣe àtúnṣe ní isalẹ akoonu tí a "
-"ti dín kù fún gbogbo àwọn ọmọ ẹgbẹ́ tí a ti dènà."
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+msgid "Blocked User Message Style"
+msgstr "Ìfiranṣẹ Àwọn Olùdíjọ́"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Ṣẹda irisi ifiranṣẹ afọwọkọ ti a fihan si awọn olumulo ti a dènà."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "Àwọ̀ Abẹ́lẹ̀"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "Àwọ̀ Téèksìtì"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "Àwọ̀ Ààfin"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1285
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1296
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "Ipò Ààfin"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "Ọ̀tún"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1290
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "Ósì"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1291
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "Òkè"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "Isalẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1293
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "Gbogbo Awọn ẹgbẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1313
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "Iwọn Ààfin (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1326
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "Ràdíọsì Ààfin (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1339
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "Iwọn Fonti (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "Pàdìn (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:33
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:46
 msgid "No Teaser"
 msgstr "Ko si Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:34
-msgid "Configured Teaser Text"
-msgstr "Ọrọ Teaser Ti a Ṣeto"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
+msgid "Read More Link as Teaser"
+msgstr "Ka Àwọn Línkì Tó Ń Ṣàfihàn Gẹ́gẹ́ Bí Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:133
-msgid "This is a PRO feature"
-msgstr "Eyi jẹ ẹya PRO"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
+msgid "Excerpt as Teaser"
+msgstr "Àyànfún Gẹ́gẹ́ Bí Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:176
-#, php-format
-msgid "%s is available in PRO"
-msgstr "%s wa ninu PRO"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
+msgid "Excerpt or pre-More as Teaser"
+msgstr "Àyànfún tàbí àtẹ̀jáde-More Gẹ́gẹ́ Bí Teaser"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
+msgid "First X Characters as Teaser"
+msgstr "Àkọ́kọ́ X Àmì Gẹ́gẹ́ Bí Teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186, fuzzy
 msgid "Post"
