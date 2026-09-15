@@ -368,7 +368,7 @@ class TeaserHooks
         $suffix = wp_unslash(
             (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
         );
-        $preview_text = implode(' ', array_filter([$prefix, ('' !== $teaser_text) ? $teaser_text : $default_message, $suffix]));
+        $preview_text = implode(' ', array_filter([$prefix, $teaser_text, $suffix]));
 
         if (!class_exists('PublishPress\\Permissions\\Teaser\\PostsTeaser')) {
             require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostsTeaser.php');

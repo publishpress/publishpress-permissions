@@ -1016,8 +1016,10 @@ jQuery(document).ready(function ($) {
             messageText = $preview.first().data('x-chars-msg');
         }
 
-        // Fallback to default if empty (a fixed plain-text string, not user-entered HTML)
-        if (!messageText) {
+        // Fallback to default if empty (a fixed plain-text string, not user-entered HTML).
+        // For the main replacement message, an empty editor is intentional and should preview
+        // as empty instead of substituting the default notice.
+        if (!messageText && teaserType != '1') {
             messageText = $preview.first().data('teaser-text-default')
                 || 'You do not have permission to view the full content.';
             isHtmlMessage = false;
