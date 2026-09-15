@@ -103,17 +103,17 @@ class PostFiltersFront
             }
             */
 
-            $hide_links_types = array_filter((array) $pp->getOption('teaser_hide_menu_links_type'));
+            // "Navigation Menus" (teaser_opt_hide_menu_links) is a single global setting now
+            // (see issue #2518): if set, restricted links stay hidden for every post type
+            // instead of a per-type subset.
+            $hide_menu_links = (bool) $pp->getOption('teaser_opt_hide_menu_links');
 
             foreach (array_keys($items) as $key) {
                 if (!empty($items[$key]->type) && ('post_type' == $items[$key]->type) && in_array($items[$key]->object_id, $hide_ids)) {
                     if ($_post = get_post($items[$key]->object_id)) {
                         if (in_array($_post->post_status, $tease_stati, true)) {
-                            if ($hide_links_types) {
-                                foreach (array_keys($hide_links_types) as $_type) {
-                                    if ($_post->post_type == $_type)
-                                        continue 2;
-                                }
+                            if ($hide_menu_links) {
+                                continue;
                             }
 
                             if ($hide_links_taxonomy) {
@@ -153,7 +153,7 @@ class PostFiltersFront
         if ($post_id && Teaser::instance()->isTeaser($post_id)) {
             $post = get_post($post_id);
             $post_type = $post ? $post->post_type : '';
-            if ($post_type && presspermit()->getTypeOption('teaser_hide_thumbnail', $post_type)) {
+            if ($post_type && presspermit()->getOption('teaser_opt_hide_thumbnail')) {
                 $data = ($post && (false !== strpos($post->post_mime_type, 'application/'))) ? '#' : '';  // avoid both "missing attachment" caption and blank image div
             }
         }
@@ -179,7 +179,7 @@ class PostFiltersFront
 
         $post_type = get_post_type($post_id);
 
-        return $post_type && (bool) presspermit()->getTypeOption('teaser_disable_comments', $post_type, true);
+        return $post_type && (bool) presspermit()->getOption('teaser_opt_disable_comments');
     }
 
     // Strips comments from teased posts/pages when comment display is disabled.

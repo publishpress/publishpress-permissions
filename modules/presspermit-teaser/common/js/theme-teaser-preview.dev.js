@@ -141,10 +141,22 @@
     }
 
     function copySafeAttributes(source, target, tagName) {
+        var className;
         var href;
         var rel;
         var targetValue;
         var title;
+
+        className = String(source.getAttribute('class') || '')
+            .split(/\s+/)
+            .filter(function (value) {
+                return value === 'pp-teaser-content' || value === 'pp-teaser-notice';
+            })
+            .join(' ');
+
+        if (className) {
+            target.setAttribute('class', className);
+        }
 
         if ('a' === tagName) {
             href = getSafeHref(source.getAttribute('href'));

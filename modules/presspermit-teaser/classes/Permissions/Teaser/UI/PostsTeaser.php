@@ -3,6 +3,8 @@ namespace PublishPress\Permissions\Teaser\UI;
 
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
+require_once(__DIR__ . '/TeaserUIBaseTrait.php');
+
 /**
  * PressPermit Custom Post Statuses administration panel.
  *
@@ -10,6 +12,8 @@ use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
 class PostsTeaser
 {
+    use TeaserUIBaseTrait;
+
 	var $blockEditorActive = true;
 
     function __construct() {
@@ -94,133 +98,6 @@ class PostsTeaser
 
     function getStr($code) {
         return apply_filters('presspermit_admin_get_string', '', $code);
-    }
-
-    /**
-     * Check if current version is PRO
-     * 
-     * @return bool True if PRO version is active
-     */
-    private function isProVersion() {
-        return defined('PRESSPERMIT_PRO_VERSION');
-    }
-
-    /**
-     * Check if a feature is available in current version
-     * 
-     * @param string $feature_key Feature identifier
-     * @return bool True if feature is available
-     */
-    private function isFeatureAvailable($feature_key) {
-        // Free version features
-        $free_features = [
-            'post_type_post'           => true, // Posts only
-            'teaser_type_none'         => true, // No teaser option
-            'teaser_type_configured'   => true, // Configured teaser text
-            'user_application'         => true, // Both users option
-            'teaser_text_replace_anon' => true, // Replace content for anonymous
-            'coverage_basic'           => true, // Basic coverage
-            'hide_thumbnail'           => true, // Hide featured image
-        ];
-        
-        // In PRO version, all features are available
-        if ($this->isProVersion()) {
-            return true;
-        }
-        
-        return isset($free_features[$feature_key]) && $free_features[$feature_key];
-    }
-
-    /**
-     * Render PRO badge for locked features
-     * 
-     * @param string $feature_name Display name of the feature
-     * @param string $tooltip Optional tooltip text
-     * @return string HTML for PRO badge
-     */
-    private function renderProBadge($feature_name = '', $tooltip = '') {
-        if ($this->isProVersion()) {
-            return '';
-        }
-        
-        if (empty($tooltip) && !empty($feature_name)) {
-            $tooltip = sprintf(
-                esc_attr__('%s is a PRO feature', 'press-permit-core'),
-                $feature_name
-            );
-        }
-        
-        $feature_slug = !empty($feature_name) ? sanitize_title($feature_name) : '';
-        
-        return sprintf(
-            ' <span class="pp-pro-badge" title="%s" data-feature="%s">🔒 PRO</span>',
-            esc_attr($tooltip),
-            esc_attr($feature_slug)
-        );
-    }
-
-    /**
-     * Get upgrade URL
-     * 
-     * @return string Upgrade page URL
-     */
-    private function getUpgradeUrl() {
-        return 'https://publishpress.com/links/permissions-banner';
-    }
-
-    /**
-     * Get comparison URL
-     * 
-     * @return string Feature comparison page URL
-     */
-    private function getComparisonUrl() {
-        return 'https://publishpress.com/permissions/pricing/';
-    }
-
-    /**
-     * Render upgrade modal for locked features
-     * 
-     * @param string $feature_name Feature display name
-     * @param array $benefits List of feature benefits
-     * @return string HTML for upgrade modal
-     */
-    private function renderUpgradeModal($feature_name, $benefits = []) {
-        if ($this->isProVersion()) {
-            return '';
-        }
-        
-        ob_start();
-        ?>
-        <div class="pp-upgrade-modal" data-feature="<?php echo esc_attr(sanitize_title($feature_name)); ?>" style="display:none;">
-            <div class="pp-modal-overlay"></div>
-            <div class="pp-modal-content">
-                <div class="pp-modal-header">
-                    <h2><?php echo esc_html(sprintf(__('🔓 Unlock %s', 'press-permit-core'), $feature_name)); ?></h2>
-                    <button class="pp-modal-close" type="button">×</button>
-                </div>
-                <div class="pp-modal-body">
-                    <p><?php esc_html_e('This feature is available in PublishPress Permissions PRO', 'press-permit-core'); ?></p>
-                    
-                    <?php if (!empty($benefits)) : ?>
-                    <ul class="pp-benefits-list">
-                        <?php foreach ($benefits as $benefit) : ?>
-                        <li>✓ <?php echo esc_html($benefit); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <?php endif; ?>
-                </div>
-                <div class="pp-modal-footer">
-                    <a href="<?php echo esc_url($this->getUpgradeUrl()); ?>" class="button button-primary" target="_blank">
-                        <?php esc_html_e('Upgrade to PRO', 'press-permit-core'); ?>
-                    </a>
-                    <a href="<?php echo esc_url($this->getComparisonUrl()); ?>" class="button button-secondary" target="_blank">
-                        <?php esc_html_e('Compare Features', 'press-permit-core'); ?>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <?php
-        return ob_get_clean();
     }
 
     private function renderTeaserApplicationOptions($ui, $tab, $section) {
@@ -528,7 +405,7 @@ class PostsTeaser
         ?>
         <input type="hidden" value="<?php echo esc_attr($current_tab);?>" id="current_tab" name="current_tab">
         <input type="hidden" value="<?php echo esc_attr($selected_post_type);?>" id="selected_post_type" name="selected_post_type">
-        <div class="wrap pressshack-admin-wrapper pp-conditions pp-teaser-redesign">
+        <div class="wrap pressshack-admin-wrapper">
             <header>
                 <h1 class="wp-heading-inline">
                     <?php echo esc_html(__('Posts Teaser', 'press-permit-core')); ?>
@@ -564,6 +441,12 @@ class PostsTeaser
                     <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-settings') echo ' nav-tab-active';?>">
                       <a href="#ppp-tab-teaser-settings">
                           <?php _e('Teaser Settings', 'press-permit-core') ?>
+                      </a>
+                    </li>
+
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-text-options') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-text-options">
+                          <?php _e('Text Options', 'press-permit-core') ?>
                       </a>
                     </li>
 
@@ -612,7 +495,7 @@ class PostsTeaser
             $default_options = apply_filters('presspermit_teaser_default_options', []);
             
             // Use trait method to get available post types (FREE: only 'post', PRO: all enabled)
-            $available_post_types = $pp->getEnabledPostTypes();
+            $available_post_types = $this->getAvailablePostTypes($pp);
             $opt_available = array_fill_keys($available_post_types, 0);
             $no_tease_types = \PublishPress\Permissions\Teaser::noTeaseTypes();
 
@@ -672,26 +555,9 @@ class PostsTeaser
                 $ui->all_otype_options[] = $option_name;
             }
 
-            $section = 'teaser_type';
-
-        if (!empty($ui->form_options[$tab][$section])) : ?>
-            <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
-			<p>
-            <?php
-			if (empty($displayed_teaser_caption)) {
-                if ($ui->display_hints) {
-                    SettingsAdmin::echoStr('display_teaser');
-                }
-
-                $displayed_teaser_caption = true;
-            }
-			?>
-			</p>
-
-			<?php
             $use_teaser = array_intersect_key($use_teaser, array_fill_keys($available_post_types, true));
             $use_teaser = $pp->admin()->orderTypes($use_teaser, ['item_type' => 'post']);
-            
+
             // Sort array to ensure 'post' appears first
             if (isset($use_teaser['post'])) {
                 $post_value = $use_teaser['post'];
@@ -700,20 +566,32 @@ class PostsTeaser
             }
 
             // Render new Progressive Disclosure UI
-            require_once(__DIR__ . '/TeaserUIBaseTrait.php');
             require_once(__DIR__ . '/TeaserProgressiveUI.php');
 
             $options_data = [
                 'arr_num_chars' => $arr_num_chars,
             ];
-            
+
             $progressive_ui = new TeaserProgressiveUI($pp, $ui, $use_teaser, $options_data, $this->blockEditorActive);
+
+            $section = 'teaser_type';
+
+        if (!empty($ui->form_options[$tab][$section])) : ?>
+            <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
+            <?php
             $progressive_ui->render();
             ?>
 
             </section>
         <?php
         endif; // any options accessable in this section
+
+        if (!empty($ui->form_options[$tab][$section])) : ?>
+            <section id="ppp-tab-text-options" style="display:<?php if ($current_tab === 'ppp-tab-text-options') echo 'block'; else echo 'none'; ?>;">
+                <?php $progressive_ui->renderTextOptions(); ?>
+            </section>
+        <?php
+        endif;
 
 
         $section = 'options';                                // --- OPTIONS SECTION ---

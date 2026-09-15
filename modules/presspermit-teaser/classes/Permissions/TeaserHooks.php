@@ -216,10 +216,6 @@ class TeaserHooks
             'fontSize' => 14,
         ];
 
-        if ('custom' !== presspermit()->getTypeOption('teaser_notice_style_mode', $post_type)) {
-            return $defaults;
-        }
-
         $border_width = presspermit()->getTypeOption('teaser_notice_border_width', $post_type);
         $padding = presspermit()->getTypeOption('teaser_notice_padding', $post_type);
         $border_radius = presspermit()->getTypeOption('teaser_notice_border_radius', $post_type);
