@@ -851,10 +851,17 @@ jQuery(document).ready(function ($) {
         return element.innerHTML;
     }
 
+    function unwrapContentVisibilityShortcodes(html) {
+        return String(html || '')
+            .replace(/\[pp_restrict\b[^\]]*\]([\s\S]*?)\[\/pp_restrict\]/gi, '$1')
+            .replace(/\[pp_restrict\b[^\]]*\/?\]/gi, '');
+    }
+
     function appendPreviewNotice(teaserHtml, messageText) {
         var parts = [];
 
         teaserHtml = balancePreviewHtml(teaserHtml).trim();
+        messageText = unwrapContentVisibilityShortcodes(messageText);
 
         if (teaserHtml) {
             parts.push('<div class="pp-teaser-content">' + teaserHtml + '</div>');
@@ -1009,14 +1016,17 @@ jQuery(document).ready(function ($) {
             messageText = $preview.first().data('x-chars-msg');
         }
 
-        // Fallback to default if empty (a fixed plain-text string, not user-entered HTML)
-        if (!messageText) {
+        // Fallback to default if empty (a fixed plain-text string, not user-entered HTML).
+        // For the main replacement message, an empty editor is intentional and should preview
+        // as empty instead of substituting the default notice.
+        if (!messageText && teaserType != '1') {
             messageText = $preview.first().data('teaser-text-default')
                 || 'You do not have permission to view the full content.';
             isHtmlMessage = false;
         }
 
         if (isHtmlMessage) {
+            messageText = unwrapContentVisibilityShortcodes(messageText);
             $preview.html(messageText);
         } else {
             $preview.text(messageText);

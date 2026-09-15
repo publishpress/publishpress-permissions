@@ -310,6 +310,7 @@ class TeaserHooks
             ];
             $message = wp_unslash((string) presspermit()->getTypeOption($option_map[$teaser_type], $post_type));
             $message = ('' !== $message) ? $message : $default_message;
+            $message = $this->prepareThemeTeaserPreviewText($message);
             $preview_content = '';
 
             if (in_array($teaser_type, ['read_more', 'more'], true)) {
@@ -367,20 +368,37 @@ class TeaserHooks
         $suffix = wp_unslash(
             (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
         );
-        $preview_text = implode(' ', array_filter([$prefix, ('' !== $teaser_text) ? $teaser_text : $default_message, $suffix]));
+        $preview_text = implode(' ', array_filter([$prefix, $teaser_text, $suffix]));
 
         if (!class_exists('PublishPress\\Permissions\\Teaser\\PostsTeaser')) {
             require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostsTeaser.php');
         }
 
         $preview_text = \PublishPress\Permissions\Teaser\PostsTeaser::renderLoginFormPlaceholder($preview_text);
-        $preview_text = do_shortcode($preview_text);
+        $preview_text = $this->prepareThemeTeaserPreviewText($preview_text);
 
         return sprintf(
             '<div id="pp-permissions-theme-teaser-content" class="pp-teaser-notice" style="%s">%s</div>',
             $style_attr,
             wpautop($preview_text)
         );
+    }
+
+    private function prepareThemeTeaserPreviewText($text)
+    {
+        $text = do_shortcode($text);
+
+        if (false === strpos($text, '[pp_restrict')) {
+            return $text;
+        }
+
+        $text = preg_replace(
+            '/\[pp_restrict\b[^\]]*\](.*?)\[\/pp_restrict\]/is',
+            '$1',
+            $text
+        );
+
+        return preg_replace('/\[pp_restrict\b[^\]]*\/?\]/i', '', $text);
     }
 
     function actEnqueueThemeTeaserPreviewScript()

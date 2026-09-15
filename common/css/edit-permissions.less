@@ -858,17 +858,20 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 
   .permission-section {
     border: 1px solid #dcdcde;
-    border-radius: 4px;
+    border-radius: 6px;
     box-shadow: none;
     margin-bottom: 0;
     overflow: hidden;
   }
 
   .section-header {
+    align-items: flex-start;
     background: #f6f7f7;
     border-bottom: 1px solid #dcdcde;
     cursor: default;
+    display: flex;
     gap: 12px;
+    justify-content: space-between;
     padding: 12px 16px;
 
     &:hover {
@@ -877,7 +880,7 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   }
 
   .pp-profile-summary-heading {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
@@ -886,8 +889,27 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 
   .section-title {
     color: #1d2327;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.4;
+    margin-bottom: 2px;
+  }
+
+  .pp-profile-summary-title-row {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    .section-title {
+      margin-bottom: 0;
+    }
+  }
+
+  .pp-profile-summary-description {
+    color: #646970;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
   }
 
   .badge-count {
@@ -908,7 +930,30 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 
   .pp-profile-summary-row {
     border-bottom: 1px solid #dcdcde;
+    position: relative;
     padding: 14px 16px;
+
+    &::before {
+      background: #dcdcde;
+      bottom: 0;
+      content: "";
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 3px;
+    }
+
+    &.pp-profile-summary-row-direct::before {
+      background: #2271b1;
+    }
+
+    &.pp-profile-summary-row-inherited::before {
+      background: #00a32a;
+    }
+
+    &.pp-profile-summary-row-empty {
+      background: #fbfbfc;
+    }
 
     &:nth-child(odd) {
       border-right: 1px solid #dcdcde;
@@ -1012,7 +1057,19 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   }
 
   .pp-profile-summary-row-title {
+    align-items: flex-start;
+    display: flex;
+    gap: 8px;
     min-width: 0;
+
+    .dashicons {
+      color: #646970;
+      flex: 0 0 auto;
+      font-size: 18px;
+      height: 18px;
+      margin-top: 1px;
+      width: 18px;
+    }
 
     h3 {
       color: #1d2327;
@@ -1053,13 +1110,18 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   }
 
   .pp-profile-summary-empty {
+    background: #f6f7f7;
+    border: 1px dashed #c3c4c7;
+    border-radius: 4px;
     color: #646970;
     font-size: 13px;
     line-height: 1.5;
     margin: 0;
+    padding: 8px 10px;
   }
 
-  .pp-profile-summary-edit {
+  .pp-profile-summary-edit,
+  .pp-profile-summary-manage {
     white-space: nowrap;
   }
 

@@ -227,12 +227,16 @@
         var fragment = document.createDocumentFragment();
         var parsed;
 
+        value = String(value || '')
+            .replace(/\[pp_restrict\b[^\]]*\]([\s\S]*?)\[\/pp_restrict\]/gi, '$1')
+            .replace(/\[pp_restrict\b[^\]]*\/?\]/gi, '');
+
         if (!window.DOMParser) {
-            fragment.appendChild(document.createTextNode(String(value || '')));
+            fragment.appendChild(document.createTextNode(value));
             return fragment;
         }
 
-        parsed = new window.DOMParser().parseFromString(String(value || ''), 'text/html');
+        parsed = new window.DOMParser().parseFromString(value, 'text/html');
         appendSanitizedNodes(parsed.body || parsed, fragment, !!inlineOnly);
 
         return fragment;

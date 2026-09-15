@@ -37,6 +37,10 @@ class Profile
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_exceptions_2")
             : '';
 
+        $manage_url = $can_edit_permissions
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user")
+            : '';
+
         $group_summary = $args['show_groups'] ? self::getProfileGroupsSummary($user->ID) : ['rows' => [], 'fields' => ''];
         $rows = $group_summary['rows'];
 
@@ -50,7 +54,7 @@ class Profile
                         [
                             'edit_url' => $current_roles_edit_url,
                             'label' => esc_html__('Extra Roles', 'press-permit-core'),
-                            'scope' => esc_html__('Assigned directly', 'press-permit-core'),
+                            'scope' => esc_html__('Assigned to this user', 'press-permit-core'),
                             'display_limit' => 5,
                         ]
                     ),
@@ -60,7 +64,7 @@ class Profile
                         [
                             'edit_url' => $edit_url,
                             'label' => esc_html__('Specific Permissions', 'press-permit-core'),
-                            'scope' => esc_html__('Assigned directly', 'press-permit-core'),
+                            'scope' => esc_html__('Assigned to this user', 'press-permit-core'),
                             'display_limit' => 12,
                         ]
                     ),
@@ -70,7 +74,7 @@ class Profile
                         [
                             'edit_url' => $inherited_roles_edit_url,
                             'label' => esc_html__('Extra Roles', 'press-permit-core'),
-                            'scope' => esc_html__('From primary role or group membership', 'press-permit-core'),
+                            'scope' => esc_html__('Inherited from role or groups', 'press-permit-core'),
                             'join_groups' => 'groups_only',
                             'display_limit' => 5,
                         ]
@@ -81,7 +85,7 @@ class Profile
                         [
                             'edit_url' => $inherited_edit_url,
                             'label' => esc_html__('Specific Permissions', 'press-permit-core'),
-                            'scope' => esc_html__('From primary role or group membership', 'press-permit-core'),
+                            'scope' => esc_html__('Inherited from role or groups', 'press-permit-core'),
                             'join_groups' => 'groups_only',
                             'display_limit' => 12,
                         ]
@@ -103,9 +107,21 @@ class Profile
             <div class="permission-section">
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
-                        <h2 class="section-title"><?php esc_html_e('Permissions Summary', 'press-permit-core'); ?></h2>
-                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($total_count)); ?></span>
+                        <div>
+                            <div class="pp-profile-summary-title-row">
+                                <h2 class="section-title"><?php esc_html_e('User Permissions Summary', 'press-permit-core'); ?></h2>
+                                <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($total_count)); ?></span>
+                            </div>
+                            <p class="pp-profile-summary-description">
+                                <?php esc_html_e("Review direct assignments and permissions inherited from this user's role or groups.", 'press-permit-core'); ?>
+                            </p>
+                        </div>
                     </div>
+                    <?php if ($manage_url) : ?>
+                        <a class="button button-secondary pp-profile-summary-manage" href="<?php echo esc_url($manage_url); ?>">
+                            <?php esc_html_e('Manage User Permissions', 'press-permit-core'); ?>
+                        </a>
+                    <?php endif; ?>
                 </div>
                 <div id="pp_permissions_summary_<?php echo esc_attr((int)$user->ID); ?>" class="section-content">
                     <div class="pp-profile-summary-grid">
@@ -113,8 +129,11 @@ class Profile
                             <div id="<?php echo esc_attr($row['section_id']); ?>" class="pp-profile-summary-row <?php echo esc_attr($row['class']); ?>">
                                 <div class="pp-profile-summary-row-header">
                                     <div class="pp-profile-summary-row-title">
-                                        <h3><?php echo esc_html($row['label']); ?></h3>
-                                        <span class="pp-profile-summary-scope"><?php echo esc_html($row['scope']); ?></span>
+                                        <span class="dashicons <?php echo esc_attr($row['icon']); ?>" aria-hidden="true"></span>
+                                        <div>
+                                            <h3><?php echo esc_html($row['label']); ?></h3>
+                                            <span class="pp-profile-summary-scope"><?php echo esc_html($row['scope']); ?></span>
+                                        </div>
                                     </div>
                                     <div class="pp-profile-summary-row-actions">
                                         <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($row['count'])); ?></span>
@@ -320,7 +339,8 @@ class Profile
                 'content' => $content,
                 'empty_text' => esc_html__('This user is not a member of any custom Permission Groups.', 'press-permit-core'),
                 'section_id' => ('pp_group' == $agent_type) ? 'userprofile_groupsdiv_pp' : "userprofile_groupsdiv_{$agent_type}",
-                'class' => 'pp-profile-summary-row-groups',
+                'class' => 'pp-profile-summary-row-groups ' . self::getProfileSummaryRowClass('groups', false, count($stored_groups)),
+                'icon' => 'dashicons-admin-users',
                 'allow_form_controls' => true,
             ];
         }
@@ -596,7 +616,8 @@ class Profile
             'content' => self::listAgentExceptions($agent_type, $agent_id, $list_args),
             'empty_text' => esc_html__('No specific permissions currently apply.', 'press-permit-core'),
             'section_id' => self::getProfileSectionId('pp_current_exceptions', $agent_id, $args['join_groups']),
-            'class' => '',
+            'class' => self::getProfileSummaryRowClass('permissions', $args['join_groups'], $badge_count),
+            'icon' => $args['join_groups'] ? 'dashicons-networking' : 'dashicons-lock',
             'allow_form_controls' => false,
         ];
     }
@@ -762,9 +783,21 @@ class Profile
             'content' => self::listAgentRoles($agent_type, $agent_id, $list_args),
             'empty_text' => esc_html__('No extra roles currently apply.', 'press-permit-core'),
             'section_id' => self::getProfileSectionId('pp_current_roles', $agent_id, $args['join_groups']),
-            'class' => '',
+            'class' => self::getProfileSummaryRowClass('roles', $args['join_groups'], $badge_count),
+            'icon' => $args['join_groups'] ? 'dashicons-networking' : 'dashicons-groups',
             'allow_form_controls' => false,
         ];
+    }
+
+    private static function getProfileSummaryRowClass($type, $join_groups, $count)
+    {
+        $classes = [
+            'pp-profile-summary-row-' . sanitize_html_class($type),
+            $join_groups ? 'pp-profile-summary-row-inherited' : 'pp-profile-summary-row-direct',
+            $count ? 'pp-profile-summary-row-has-items' : 'pp-profile-summary-row-empty',
+        ];
+
+        return implode(' ', $classes);
     }
 
     private static function abbreviatedRolesList($agent_type, $agent_id, $args = [])
