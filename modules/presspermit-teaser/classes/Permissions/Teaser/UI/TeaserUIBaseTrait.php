@@ -2,13 +2,13 @@
 namespace PublishPress\Permissions\Teaser\UI;
 
 /**
- * PRO trait for Teaser UI functionality
- * Overrides FREE version methods to enable all PRO features
+ * Base trait for Teaser UI functionality
+ * Defines capabilities and methods 
  */
 trait TeaserUIBaseTrait {
     
     /**
-     * Get available post types for PRO version
+     * Get available post types
      * 
      * @param object|null $pp Optional PressPermit instance
      * @return array All enabled post types
@@ -37,7 +37,7 @@ trait TeaserUIBaseTrait {
     }
     
     /**
-     * Get available teaser types for PRO version
+     * Get available teaser types
      * 
      * @return array All teaser types with captions
      */
@@ -54,7 +54,7 @@ trait TeaserUIBaseTrait {
     }
     
     /**
-     * Get available user application options for PRO version
+     * Get available user application options
      * 
      * @return array All user application options
      */
@@ -64,46 +64,5 @@ trait TeaserUIBaseTrait {
             'anon' => 'not_logged_in',
             '1' => 'logged_in'
         ];
-    }
-    
-    /**
-     * Check if a specific feature is available in PRO
-     * 
-     * @param string $feature Feature identifier
-     * @return bool Always true in PRO version
-     */
-    protected function isFeatureAvailable($feature) {
-        return true; // PRO: All features available
-    }
-    
-    /**
-     * Check if PRO version is active
-     * 
-     * @return bool Always true in PRO context
-     */
-    protected function isProVersion() {
-        return true;
-    }
-    
-    /**
-     * Render PRO badge (never shown in PRO version)
-     * 
-     * @param string $tooltip Tooltip text (unused)
-     * @return string Empty string (no badge in PRO)
-     */
-    protected function renderProBadge($tooltip = '') {
-        return ''; // PRO: Never show PRO badges
-    }
-    
-    /**
-     * Render upgrade notice (never shown in PRO version)
-     * 
-     * @param string $feature_name Feature name (unused)
-     * @param string $description Description (unused)
-     * @return void
-     */
-    protected function renderProFeatureNotice($feature_name, $description = '') {
-        // PRO: Never show upgrade notices
-        return;
     }
 }

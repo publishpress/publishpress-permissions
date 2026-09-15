@@ -234,7 +234,7 @@ class TeaserProgressiveUI {
     private function renderCombinedSettingsTable($object_type, $item_label, $teaser_setting) {
         $name = "tease_post_types[$object_type]";
         
-        // Get available teaser types (filtered by trait - FREE has limited, PRO has all)
+        // Get available teaser types
         $base_captions = [
             0 => esc_html__('WordPress default. Show "Page not found" screen', 'press-permit-core'),
             1 => esc_html__("No Teaser Text", 'press-permit-core'),
