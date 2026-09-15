@@ -635,7 +635,6 @@ class TeaserProgressiveUI {
                     <tr>
                         <th colspan="2">
                             <strong><?php esc_html_e('No Teaser Text Configuration', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Configure title and excerpt text for blocked users when no teaser text is shown.', 'press-permit-core')) ?>
                         </th>
                     </tr>
                 </thead>
