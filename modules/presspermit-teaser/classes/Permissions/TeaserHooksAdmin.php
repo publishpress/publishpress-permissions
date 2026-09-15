@@ -100,7 +100,7 @@ class TeaserHooksAdmin
     function searchPosts()
 	{
 
-		if (!current_user_can('pp_manage_settings')) {
+		if (!current_user_can('pp_manage_teaser')) {
 			wp_send_json('Error', 403);
 		}
 
@@ -159,7 +159,7 @@ class TeaserHooksAdmin
 
     function getTeaserPreviewPost()
     {
-        if (!current_user_can('pp_manage_settings')) {
+        if (!current_user_can('pp_manage_teaser')) {
             wp_send_json('Error', 403);
         }
 
@@ -194,7 +194,7 @@ class TeaserHooksAdmin
 
     function searchTerms()
 	{
-		if (!current_user_can('pp_manage_settings')) {
+		if (!current_user_can('pp_manage_teaser')) {
 			wp_send_json('Error', 403);
 		}
 

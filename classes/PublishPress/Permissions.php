@@ -354,8 +354,8 @@ class Permissions
 
         if ($ver) {
             if ($role = @get_role('administrator')) {
-                if (empty($role->capabilities['pp_manage_settings'])) {
-                    $ver = false; // repopulate roles if Administrator lacks pp_manage_settings capability
+                if (empty($role->capabilities['pp_manage_settings']) || empty($role->capabilities['pp_manage_teaser'])) {
+                    $ver = false; // repopulate roles if Administrator lacks required management capabilities
                 }
             }
         }
@@ -366,6 +366,7 @@ class Permissions
             // Always force this capability into Administrator role
             if ($role = @get_role('administrator')) {
                 $role->add_cap('pp_manage_settings');
+                $role->add_cap('pp_manage_teaser');
             }
 
             if (!get_option('ppperm_added_role_caps_4_8_2')) {
