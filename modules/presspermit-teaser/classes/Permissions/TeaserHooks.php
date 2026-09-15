@@ -394,7 +394,7 @@ class TeaserHooks
 
         $text = preg_replace(
             '/\[pp_restrict\b[^\]]*\](.*?)\[\/pp_restrict\]/is',
-            '',
+            '$1',
             $text
         );
 

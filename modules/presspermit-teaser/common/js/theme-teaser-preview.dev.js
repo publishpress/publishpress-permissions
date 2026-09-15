@@ -228,7 +228,7 @@
         var parsed;
 
         value = String(value || '')
-            .replace(/\[pp_restrict\b[^\]]*\][\s\S]*?\[\/pp_restrict\]/gi, '')
+            .replace(/\[pp_restrict\b[^\]]*\]([\s\S]*?)\[\/pp_restrict\]/gi, '$1')
             .replace(/\[pp_restrict\b[^\]]*\/?\]/gi, '');
 
         if (!window.DOMParser) {

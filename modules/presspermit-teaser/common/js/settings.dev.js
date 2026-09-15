@@ -851,9 +851,9 @@ jQuery(document).ready(function ($) {
         return element.innerHTML;
     }
 
-    function stripContentVisibilityShortcodes(html) {
+    function unwrapContentVisibilityShortcodes(html) {
         return String(html || '')
-            .replace(/\[pp_restrict\b[^\]]*\][\s\S]*?\[\/pp_restrict\]/gi, '')
+            .replace(/\[pp_restrict\b[^\]]*\]([\s\S]*?)\[\/pp_restrict\]/gi, '$1')
             .replace(/\[pp_restrict\b[^\]]*\/?\]/gi, '');
     }
 
@@ -861,7 +861,7 @@ jQuery(document).ready(function ($) {
         var parts = [];
 
         teaserHtml = balancePreviewHtml(teaserHtml).trim();
-        messageText = stripContentVisibilityShortcodes(messageText);
+        messageText = unwrapContentVisibilityShortcodes(messageText);
 
         if (teaserHtml) {
             parts.push('<div class="pp-teaser-content">' + teaserHtml + '</div>');
@@ -1024,7 +1024,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (isHtmlMessage) {
-            messageText = stripContentVisibilityShortcodes(messageText);
+            messageText = unwrapContentVisibilityShortcodes(messageText);
             $preview.html(messageText);
         } else {
             $preview.text(messageText);
