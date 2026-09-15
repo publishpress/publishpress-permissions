@@ -843,41 +843,44 @@ jQuery(document).ready(function ($) {
         return text ? '<p>' + escapePreviewAttribute(text) + '</p>' : '';
     }
 
+    function balancePreviewHtml(html) {
+        var element = document.createElement('div');
+
+        element.innerHTML = String(html || '');
+
+        return element.innerHTML;
+    }
+
+    function appendPreviewNotice(teaserHtml, messageText) {
+        var parts = [];
+
+        teaserHtml = balancePreviewHtml(teaserHtml).trim();
+
+        if (teaserHtml) {
+            parts.push('<div class="pp-teaser-content">' + teaserHtml + '</div>');
+        }
+
+        parts.push('<div class="pp-teaser-notice">' + messageText + '</div>');
+
+        return parts.join('');
+    }
+
     function getTeaserNoticeStyle($container) {
-        var useCustomStyle = String(
-            $container.find('.pp-teaser-notice-style-select').val() || 'default'
-        ) === 'custom';
-        var borderPosition = useCustomStyle
-            ? String($container.find('[name*="teaser_notice_border_position"]:checked').val() || 'left')
-            : 'left';
+        var borderPosition = String($container.find('[name*="teaser_notice_border_position"]:checked').val() || 'left');
 
         if (['left', 'right', 'top', 'bottom', 'all'].indexOf(borderPosition) === -1) {
             borderPosition = 'left';
         }
 
         return {
-            backgroundColor: useCustomStyle
-                ? getTeaserStyleColor($container, 'teaser_notice_bg_color', '#f0f6fc')
-                : '#f0f6fc',
-            textColor: useCustomStyle
-                ? getTeaserStyleColor($container, 'teaser_notice_text_color', '#1d2327')
-                : '#1d2327',
-            borderColor: useCustomStyle
-                ? getTeaserStyleColor($container, 'teaser_notice_border_color', '#0073aa')
-                : '#0073aa',
-            borderWidth: useCustomStyle
-                ? getTeaserStyleNumber($container, 'teaser_notice_border_width', 4, 0, 20)
-                : 4,
+            backgroundColor: getTeaserStyleColor($container, 'teaser_notice_bg_color', '#f0f6fc'),
+            textColor: getTeaserStyleColor($container, 'teaser_notice_text_color', '#1d2327'),
+            borderColor: getTeaserStyleColor($container, 'teaser_notice_border_color', '#0073aa'),
+            borderWidth: getTeaserStyleNumber($container, 'teaser_notice_border_width', 4, 0, 20),
             borderPosition: borderPosition,
-            padding: useCustomStyle
-                ? getTeaserStyleNumber($container, 'teaser_notice_padding', 15, 0, 50)
-                : 15,
-            borderRadius: useCustomStyle
-                ? getTeaserStyleNumber($container, 'teaser_notice_border_radius', 0, 0, 50)
-                : 0,
-            fontSize: useCustomStyle
-                ? getTeaserStyleNumber($container, 'teaser_notice_font_size', 14, 10, 30)
-                : 14
+            padding: getTeaserStyleNumber($container, 'teaser_notice_padding', 15, 0, 50),
+            borderRadius: getTeaserStyleNumber($container, 'teaser_notice_border_radius', 0, 0, 50),
+            fontSize: getTeaserStyleNumber($container, 'teaser_notice_font_size', 14, 10, 30)
         };
     }
 
@@ -942,13 +945,13 @@ jQuery(document).ready(function ($) {
             // this message (with the resolved target link) is pre-rendered server-side.
             contentHtml = String($sitePreview.data('redirect-message') || '');
         } else if (teaserType === 'read_more') {
-            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+            contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), messageText);
         } else if (teaserType === 'more') {
-            contentHtml = [getSelectedPreviewData($sitePreview, 'preMore'), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+            contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore'), messageText);
         } else if (teaserType === 'excerpt') {
-            contentHtml = [formatPreviewExcerpt($container, getSelectedPreviewData($sitePreview, 'excerpt')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+            contentHtml = appendPreviewNotice(formatPreviewExcerpt($container, getSelectedPreviewData($sitePreview, 'excerpt')), messageText);
         } else if (teaserType === 'x_chars') {
-            contentHtml = [formatPreviewXChars($container, getSelectedPreviewData($sitePreview, 'xChars')), '<div class="pp-teaser-notice">' + messageText + '</div>'].filter(Boolean).join(' ');
+            contentHtml = appendPreviewNotice(formatPreviewXChars($container, getSelectedPreviewData($sitePreview, 'xChars')), messageText);
         } else {
             // read_more / excerpt / x_chars / more: not escaped, since these notice messages
             // preserve their formatting on the front end too (see PostsTeaser::wrapTeaserNotice()).
@@ -1038,21 +1041,13 @@ jQuery(document).ready(function ($) {
             $container.find('.pp-excerpt-chars-setting').hide();
         }
 
-        // Show/hide Teaser Notice Style field based on teaser type
-        // Hide for redirect and no teaser, show for all other types
-        var $teaserNoticeStyleRow = $container.find('select[name^="teaser_notice_style_mode"]').closest('tr');
+        // Show/hide Teaser Notice Style fields based on teaser type.
+        // Hide for redirect and no teaser, show for all other types.
         var $teaserNoticeStyleCard = $container.find('.pp-teaser-notice-style-settings');
         if (selectedType == '0' || selectedType == 'redirect') {
             $teaserNoticeStyleCard.hide();
-            $teaserNoticeStyleRow.hide();
         } else {
-            $teaserNoticeStyleRow.show();
-            var $teaserNoticeStyleValue = $teaserNoticeStyleRow.find('select[name^="teaser_notice_style_mode"]').val();
-            if ($teaserNoticeStyleValue === 'custom') {
-                $teaserNoticeStyleCard.show();
-            } else {
-                $teaserNoticeStyleCard.hide();
-            }
+            $teaserNoticeStyleCard.show();
         }
 
         // Hide all notice cards first for smooth transition
@@ -1062,24 +1057,28 @@ jQuery(document).ready(function ($) {
         if (selectedType == '0') {
             // No Teaser: hide everything
             $container.find('.pp-teaser-application-fields').slideUp(300);
+            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == 'redirect') {
             // Redirect: show only redirect settings and application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideDown(300);
             $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == '1') {
-            // Teaser Text: show teaser text card and application fields, hide redirect
+            // No Teaser Text: show message card and application fields, hide redirect
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-text-card').slideDown(300);
+            $container.find('.pp-teaser-message-card').slideDown(300);
+            $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == 'read_more') {
             // Read More: show read more notice and application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             // Hide other notice cards first, then show read more notice
@@ -1088,6 +1087,7 @@ jQuery(document).ready(function ($) {
         } else if (selectedType == 'excerpt') {
             // Excerpt: show excerpt notice and application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             // Hide other notice cards first, then show excerpt notice
@@ -1096,6 +1096,7 @@ jQuery(document).ready(function ($) {
         } else if (selectedType == 'x_chars' || selectedType == 'more') {
             // X Chars or More: show x chars notice and application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             // Hide other notice cards first, then show x chars notice
@@ -1104,6 +1105,7 @@ jQuery(document).ready(function ($) {
         } else {
             // Other teaser types: show application fields only
             $container.find('.pp-teaser-application-fields').slideDown(300);
+            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
             $noticeCards.stop(true, false).fadeOut(250);
@@ -1123,11 +1125,15 @@ jQuery(document).ready(function ($) {
         
         // Hide all containers
         $('.pp-teaser-settings-container').removeClass('active').hide();
+        $('.pp-teaser-text-options-container').removeClass('active').hide();
         $('.pp-teaser-preview-container').removeClass('active').hide();
 
         // Show selected container with animation
         var $selectedContainer = $('.pp-teaser-settings-container[data-post-type="' + selectedType + '"]');
         $selectedContainer.addClass('active pp-fade-in').show();
+        $('.pp-teaser-text-options-container[data-post-type="' + selectedType + '"]')
+            .addClass('active pp-fade-in')
+            .show();
         $('.pp-teaser-preview-container[data-post-type="' + selectedType + '"]')
             .addClass('active pp-fade-in')
             .show();
@@ -1294,28 +1300,6 @@ jQuery(document).ready(function ($) {
         }
 
         return false;
-    });
-
-    // Teaser Notice Style Mode Toggle
-    function toggleTeaserNoticeStyleSettings($select) {
-        var $settingsContainer = $select.closest('.pp-teaser-settings-container');
-        var $styleSettings = $settingsContainer.find('.pp-teaser-notice-style-settings');
-
-        if ($select.val() === 'custom') {
-            $styleSettings.slideDown(300, function() {
-                // Scroll to the customization section after it's fully visible
-                $('html, body').animate({
-                    scrollTop: $styleSettings.offset().top - 100
-                }, 500);
-            });
-        } else {
-            $styleSettings.slideUp(300);
-        }
-    }
-
-    // Handle change event for any teaser notice style select
-    $(document).on('change', '.pp-teaser-notice-style-select', function() {
-        toggleTeaserNoticeStyleSettings($(this));
     });
 
     $(document).on('pp_teaser_notice_style_updated', function(event, $container) {
@@ -1523,7 +1507,6 @@ jQuery(document).ready(function ($) {
                 return {
                     hasError: true,
                     editorId: editorId,
-                    tabContent: $requiredField.closest('.pp-teaser-text-content').data('tab-content'),
                     postType: postType
                 };
             } else {
@@ -1558,17 +1541,13 @@ jQuery(document).ready(function ($) {
 
             // Only validate if teaser type is 1 (Teaser text)
             if (teaserType == '1') {
-                // Check all tabs (anon and logged) for required fields
-                $container.find('.pp-teaser-text-content').each(function() {
-                    var $tabContent = $(this);
-                    var $requiredFields = $tabContent.find('.pp-required-field[data-field-action="replace"][data-field-item="content"]');
+                var $requiredFields = $container.find('.pp-required-field[data-field-action="replace"][data-field-item="content"]');
 
-                    $requiredFields.each(function() {
-                        var validationResult = validateRequiredField($(this), postType);
-                        if (validationResult.hasError) {
-                            errors.push(validationResult);
-                        }
-                    });
+                $requiredFields.each(function() {
+                    var validationResult = validateRequiredField($(this), postType);
+                    if (validationResult.hasError) {
+                        errors.push(validationResult);
+                    }
                 });
             }
         });
@@ -1594,21 +1573,7 @@ jQuery(document).ready(function ($) {
                     $targetContainer.addClass('active pp-fade-in').show();
                 }
 
-                // Switch to the tab with error if needed
-                var $teaserTextCard = $targetContainer.find('.pp-teaser-text-card .teaser-message-section');
-                var $targetTab = $teaserTextCard.find('.pp-teaser-text-tab[data-tab="' + firstError.tabContent + '"]');
-
-                if ($targetTab.length && !$targetTab.hasClass('active')) {
-                    // Update tab active state
-                    $teaserTextCard.find('.pp-teaser-text-tab').removeClass('active');
-                    $targetTab.addClass('active');
-
-                    // Show corresponding content
-                    $teaserTextCard.find('.pp-teaser-text-content').removeClass('active').hide();
-                    $teaserTextCard.find('.pp-teaser-text-content[data-tab-content="' + firstError.tabContent + '"]')
-                        .addClass('active')
-                        .show();
-                }
+                $targetContainer.find('.pp-teaser-message-card').show();
 
                 // Scroll to first error with animation
                 setTimeout(function() {

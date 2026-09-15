@@ -467,7 +467,7 @@ class PostsTeaser
                     // Only truncate if excerpt is longer than the limit
                     if (strlen($plain_excerpt) > $num_chars) {
                         if (defined('PP_TRANSLATE_TEASER')) {
-                            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
                         }
                         
                         // Get first X characters of plain text
@@ -491,9 +491,9 @@ class PostsTeaser
             if ('' === $excerpt_text) {
                 $post->post_content = $notice_html;
             } elseif (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($excerpt_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
+                $post->post_content = self::appendTeaserNotice('<!-- wp:paragraph --><p>' . esc_html($excerpt_text) . '</p><!-- /wp:paragraph -->', $notice_html);
             } else {
-                $post->post_content = '<p>' . esc_html($excerpt_text) . '</p>' . $notice_html;
+                $post->post_content = self::appendTeaserNotice('<p>' . esc_html($excerpt_text) . '</p>', $notice_html);
             }
 
         // Read More Link as Teaser - show content before more tag with a "Read More" link
@@ -516,7 +516,7 @@ class PostsTeaser
                         'css_class' => 'pp-read-more-teaser',
                     ]);
                     
-                    $post->post_content .= $read_more_link;
+                    $post->post_content = self::appendTeaserNotice($post->post_content, $read_more_link);
                 } else {
                     // Fallback: no more tag found, use configured teaser text or excerpt
                     if (!empty($post->post_excerpt)) {
@@ -531,9 +531,9 @@ class PostsTeaser
                         
                         // Wrap excerpt in paragraph block markup to prevent theme layout issues
                         if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                            $post->post_content = '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->' . $notice_html;
+                            $post->post_content = self::appendTeaserNotice('<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->', $notice_html);
                         } else {
-                            $post->post_content = $post->post_excerpt . $notice_html;
+                            $post->post_content = self::appendTeaserNotice('<p>' . $post->post_excerpt . '</p>', $notice_html);
                         }
                     } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                         $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
@@ -555,9 +555,9 @@ class PostsTeaser
                     
                     // Wrap excerpt in paragraph block markup to prevent theme layout issues
                     if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                        $post->post_content = '<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->' . $notice_html;
+                        $post->post_content = self::appendTeaserNotice('<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->', $notice_html);
                     } else {
-                        $post->post_content = $post->post_excerpt . $notice_html;
+                        $post->post_content = self::appendTeaserNotice('<p>' . $post->post_excerpt . '</p>', $notice_html);
                     }
                 } elseif (isset($teaser_replace[$post_type]['post_content'])) {
                     $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
@@ -588,7 +588,7 @@ class PostsTeaser
             if (strlen($plain_content) > $num_chars) {
                 if (defined('PP_TRANSLATE_TEASER')) {
                     // otherwise, this is only loaded for admin
-                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
+                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
                 }
 
                 // Get first X characters of plain text
@@ -606,9 +606,9 @@ class PostsTeaser
                 
                 // Wrap in proper markup to prevent layout issues
                 if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                    $post->post_content = '<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->' . $notice_html;
+                    $post->post_content = self::appendTeaserNotice('<!-- wp:paragraph --><p>' . esc_html($teaser_text) . '</p><!-- /wp:paragraph -->', $notice_html);
                 } else {
-                    $post->post_content = '<p class="pp_x_chars_teaser">' . esc_html($teaser_text) . '</p>' . $notice_html;
+                    $post->post_content = self::appendTeaserNotice('<p class="pp_x_chars_teaser">' . esc_html($teaser_text) . '</p>', $notice_html);
                 }
                 
                 $post->post_excerpt = $teaser_text;
@@ -737,6 +737,24 @@ class PostsTeaser
         return self::wrapTeaserNotice($login_notice, $post_type);
     }
 
+    /**
+     * Keep the teaser text outside the styled blocked-user notice box.
+     *
+     * @param string $teaser_content Normal teaser content.
+     * @param string $notice_html Styled notice HTML.
+     * @return string Teaser content followed by the notice.
+     */
+    private static function appendTeaserNotice($teaser_content, $notice_html)
+    {
+        $teaser_content = trim((string) $teaser_content);
+
+        if ('' === $teaser_content) {
+            return $notice_html;
+        }
+
+        return '<div class="pp-teaser-content">' . force_balance_tags($teaser_content) . '</div>' . $notice_html;
+    }
+
     public static function fltHidePostThumbnail($thumb_id, $object_id, $meta_key)
     {
         if ('_thumbnail_id' == $meta_key) {
@@ -845,14 +863,6 @@ class PostsTeaser
         $pp = presspermit();
         $message = do_shortcode($message);
         $message = self::unwrapTeaserNotice($message);
-        
-        // Check if custom styling mode is enabled for this post type
-        $style_mode = $pp->getTypeOption('teaser_notice_style_mode', $post_type);
-        
-        // If not set to 'custom', return simple default notice
-        if ($style_mode !== 'custom') {
-            return '<div class="pp-teaser-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; word-break: break-word; box-sizing: border-box;">' . $message . '</div>';
-        }
         
         // Get custom style settings with defaults (per-post-type)
         $bg_color = $pp->getTypeOption('teaser_notice_bg_color', $post_type) ?: '#f0f6fc';

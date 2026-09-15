@@ -112,21 +112,25 @@ class PostFilters
                 $tease_types = array_intersect_key($tease_types, array_flip((array)$post_types));
             }
 
-            if ($tease_logged_only = array_intersect_key(array_diff((array)$pp->getOption('tease_logged_only'), ['0', false]), $tease_types)) {
+            // "User Application" (teaser_opt_logged_only) is a single global setting now
+            // (see issue #2518), so it either applies to all teased types or none.
+            $logged_only = (string) $pp->getOption('teaser_opt_logged_only');
+            if ('' !== $logged_only && '0' !== $logged_only) {
                 global $current_user;
 
-                foreach ($tease_logged_only as $type => $logged_only) {
-                    if (
-                        (('anon' != $logged_only) && !$current_user->ID)
-                        || (('anon' == $logged_only) && $current_user->ID)) {
-                        unset($tease_types[$type]);
-                    }
+                if ((('anon' != $logged_only) && !$current_user->ID)
+                    || (('anon' == $logged_only) && $current_user->ID)) {
+                    $tease_types = [];
                 }
             }
 
-            if (!is_single() || (!empty($args['query_vars']) && (empty($args['query_vars']['p']) && empty($args['query_vars']['name']) && empty($args['query_vars']['attachment'])))) {
-                $tease_direct_only_types = array_diff((array)$pp->getOption('tease_direct_access_only'), ['0', false]);
-                $tease_types = array_diff_key($tease_types, $tease_direct_only_types);
+            // "Teaser Application" (teaser_opt_direct_access_only) is likewise global now:
+            // when set to "Single view only", it clears the teaser for every type outside
+            // of single-post view instead of a per-type subset.
+            if ($tease_types && $pp->getOption('teaser_opt_direct_access_only')
+                && (!is_single() || (!empty($args['query_vars']) && (empty($args['query_vars']['p']) && empty($args['query_vars']['name']) && empty($args['query_vars']['attachment']))))
+            ) {
+                $tease_types = [];
             }
         }
 
@@ -156,14 +160,12 @@ class PostFilters
             }
         	*/
 
-			if ($hide_links_types = $pp->getOption('teaser_hide_menu_links_type')) {
-                if (!empty($hide_links_types[$object_type])) {
-                    return false;
-            	}
+			if ($pp->getOption('teaser_opt_hide_menu_links')) {
+                return false;
             }
 
             if ($status) {
-                if ($hide_private = $pp->getTypeOption('tease_public_posts_only', $object_type)) {
+                if ($hide_private = $pp->getOption('teaser_opt_public_posts_only')) {
                     $pvt_stati = get_post_stati(['private' => true, '_builtin' => false]);
 
                     if ($pp->getOption('teaser_hide_custom_private_only'))

@@ -526,6 +526,73 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     vertical-align: middle;
 }
 
+@media (min-width: 783px) and (max-width: 1199px) {
+    .pp-teaser-application-table,
+    .pp-teaser-rss-table {
+        table-layout: auto;
+    }
+
+    .pp-teaser-application-table colgroup,
+    .pp-teaser-rss-table colgroup {
+        display: table-column-group;
+    }
+
+    .pp-teaser-application-table colgroup col,
+    .pp-teaser-rss-table colgroup col {
+        display: table-column;
+    }
+
+    .pp-teaser-application-table tr,
+    .pp-teaser-rss-table tr {
+        display: table-row;
+    }
+
+    .pp-teaser-application-table tr th,
+    .pp-teaser-application-table tr td,
+    .pp-teaser-application-table tr th[style],
+    .pp-teaser-application-table tr td[style],
+    .pp-teaser-rss-table tr th,
+    .pp-teaser-rss-table tr td,
+    .pp-teaser-rss-table tr th[style],
+    .pp-teaser-rss-table tr td[style] {
+        display: table-cell;
+        vertical-align: top;
+        width: auto !important;
+    }
+
+    .pp-teaser-application-table tr th:first-of-type,
+    .pp-teaser-rss-table tr th:first-of-type {
+        font-size: 13px;
+        width: 210px !important;
+    }
+
+    #pp-teaser section table.pp-teaser-application-table tr td label {
+        align-items: flex-start;
+        display: inline-flex;
+        font-weight: 400;
+        gap: 5px;
+        line-height: 1.4;
+        margin: 0 24px 8px 0 !important;
+        max-width: 100%;
+    }
+
+    .pp-teaser-application-table input[type="radio"],
+    .pp-teaser-application-table input[type="checkbox"] {
+        flex: 0 0 auto;
+        margin-top: 1px;
+    }
+}
+
+@media (max-width: 782px) {
+    #pp-teaser section table.pp-teaser-application-table tr td label {
+        align-items: flex-start;
+        display: flex;
+        gap: 6px;
+        line-height: 1.4;
+        margin: 0 0 8px !important;
+    }
+}
+
 
 .pp-teaser-card h3 {
     margin: 0 0 4px 0;
@@ -550,6 +617,19 @@ tr.pp-main-row:hover td:not(.pp-expand) {
        matching the single divider the other cards get from one continuous table. */
     border-top: none;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.pp-teaser-post-type-settings-table colgroup col:first-child {
+    width: 18% !important;
+}
+
+.pp-teaser-post-type-settings-table colgroup col:last-child {
+    width: 82% !important;
+}
+
+#pp-teaser .pp-teaser-settings-main > table.pp-teaser-post-type-settings-table,
+#pp-teaser .pp-teaser-text-options-container > table.pp-teaser-post-type-settings-table {
+    margin-top: 0 !important;
 }
 
 /* Tab Styles */
@@ -591,8 +671,11 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     display: block;
 }
 
+#pp-teaser .pp-teaser-settings-main .pp-current-post-type,
+#pp-teaser .pp-teaser-text-options-container .pp-current-post-type,
 .pp-teaser-type-select {
   width: 26em;
+  max-width: 400px;
 }
 
 /* Teaser type options (radio buttons) */
@@ -670,12 +753,11 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 }
 
 .pp-teaser-editor-row {
-    align-items: flex-start;
+    align-items: center;
 }
 
 .pp-teaser-editor-row > div:first-child {
     flex-basis: 18%;
-    padding-top: 7px;
 }
 
 .pp-teaser-editor-row > div:nth-child(2) {
@@ -796,8 +878,18 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     margin: 0;
 }
 
-.pp-teaser-rss-options .wp-switch-editor {
+#pp-teaser .wp-switch-editor {
     margin-top: 0;
+}
+#pp-teaser .wp-editor-wrap,
+#pp-teaser .wp-editor-container,
+#pp-teaser .mce-tinymce,
+#pp-teaser .mce-container,
+#pp-teaser .mce-container-body,
+#pp-teaser .wp-editor-area {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100% !important;
 }
 
 /* Two-column layout: settings on the left, preview on the right. */
@@ -1177,6 +1269,7 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 
 /* Hide conditional elements by default to prevent flash */
 .pp-teaser-redirect-settings,
+.pp-teaser-message-card,
 .pp-teaser-text-card,
 .pp-read-more-notice-card,
 .pp-excerpt-notice-card,

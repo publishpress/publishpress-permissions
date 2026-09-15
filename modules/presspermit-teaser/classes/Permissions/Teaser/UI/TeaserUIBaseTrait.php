@@ -2,191 +2,108 @@
 namespace PublishPress\Permissions\Teaser\UI;
 
 /**
- * Base trait for Teaser UI functionality
- * Defines FREE version capabilities that can be overridden in PRO
+ * PRO trait for Teaser UI functionality
+ * Overrides FREE version methods to enable all PRO features
  */
 trait TeaserUIBaseTrait {
     
     /**
-     * Get available post types for current version
+     * Get available post types for PRO version
      * 
-     * FREE: Only 'post'
-     * PRO: Override to return all enabled post types
-     * 
-     * @param object|null $pp Optional PressPermit instance (not used in FREE)
-     * @return array Available post types
+     * @param object|null $pp Optional PressPermit instance
+     * @return array All enabled post types
      */
     protected function getAvailablePostTypes($pp = null) {
-        return ['post']; // FREE: Only standard posts
+        // First priority: use the PressPermit instance passed as parameter
+        if ($pp && method_exists($pp, 'getEnabledPostTypes')) {
+            return $pp->getEnabledPostTypes();
+        }
+        
+        // Second priority: use the instance property if available
+        if (isset($this->pp) && method_exists($this->pp, 'getEnabledPostTypes')) {
+            return $this->pp->getEnabledPostTypes();
+        }
+        
+        // Third priority: access via the global presspermit function
+        if (function_exists('presspermit')) {
+            $pp_instance = presspermit();
+            if (method_exists($pp_instance, 'getEnabledPostTypes')) {
+                return $pp_instance->getEnabledPostTypes();
+            }
+        }
+        
+        // Final fallback: return all public post types from WordPress
+        return get_post_types(['public' => true], 'names');
     }
     
     /**
-     * Get available teaser types
+     * Get available teaser types for PRO version
      * 
-     * FREE: 0 (no teaser), 1 (configured text)
-     * PRO: Override to add read_more, excerpt, redirect, etc.
-     * 
-     * @return array Available teaser types with captions
+     * @return array All teaser types with captions
      */
     protected function getAvailableTeaserTypes() {
         return [
             0 => esc_html__('No Teaser', 'press-permit-core'),
-            1 => esc_html__('Configured Teaser Text', 'press-permit-core'),
+            1 => esc_html__('No Teaser Text', 'press-permit-core'),
+            'read_more' => esc_html__('Read More Link as Teaser', 'press-permit-core'),
+            'excerpt' => esc_html__('Excerpt as Teaser', 'press-permit-core'),
+            'more' => esc_html__('Excerpt or pre-More as Teaser', 'press-permit-core'),
+            'x_chars' => esc_html__('First X Characters as Teaser', 'press-permit-core'),
+            'redirect' => esc_html__('Redirect to another post', 'press-permit-core'),
         ];
     }
     
     /**
-     * Get available user application options
+     * Get available user application options for PRO version
      * 
-     * FREE: Only 'both' (all users)
-     * PRO: Override to add 'anon' and 'logged' separate targeting
-     * 
-     * @return array Available user application options
+     * @return array All user application options
      */
     protected function getAvailableUserApplications() {
-        return ['0' => 'both']; // FREE: Both users only
-    }
-    
-    /**
-     * Get available teaser text user suffixes
-     * 
-     * FREE: Only '_anon' (anonymous users)
-     * PRO: Override to add '' (logged-in users)
-     * 
-     * @return array Available suffixes for teaser text fields
-     */
-    protected function getAvailableTeaserTextSuffixes() {
-        return ['_anon']; // FREE: Anonymous users only
-    }
-    
-    /**
-     * Get available teaser text actions
-     * 
-     * FREE: Only 'replace' for 'content'
-     * PRO: Override to add 'prepend', 'append' for both 'content' and 'name'
-     * 
-     * @return array Available actions keyed by item type
-     */
-    protected function getAvailableTeaserTextActions() {
         return [
-            'content' => ['replace'], // FREE: Replace content only
+            '0' => 'both',
+            'anon' => 'not_logged_in',
+            '1' => 'logged_in'
         ];
     }
     
     /**
-     * Check if teaser text tabs should be shown
+     * Check if a specific feature is available in PRO
      * 
-     * FREE: No tabs (single anonymous user option)
-     * PRO: Override to return true (show tabs for anon/logged)
-     * 
-     * @return bool True if tabs should be displayed
-     */
-    protected function shouldShowTeaserTextTabs() {
-        return false; // FREE: No tabs
-    }
-    
-    /**
-     * Check if a specific feature is available
-     * 
-     * @param string $feature Feature identifier (e.g., 'post_type_page', 'teaser_type_read_more')
-     * @return bool True if feature is available in current version
+     * @param string $feature Feature identifier
+     * @return bool Always true in PRO version
      */
     protected function isFeatureAvailable($feature) {
-        // FREE features that are always available
-        $free_features = [
-            'post_type_post'           => true, // Posts only
-            'teaser_type_none'         => true, // No teaser option
-            'teaser_type_configured'   => true, // Configured teaser text
-            'user_application'         => true, // Both users option
-            'teaser_text_replace_anon' => true, // Replace content for anonymous
-            'coverage_basic'           => true, // Basic coverage
-            'hide_thumbnail'           => true, // Hide featured image
-        ];
-
-        if ($this->isProVersion()) {
-            return true;
-        }
-        
-        return $free_features[$feature] ?? false;
+        return true; // PRO: All features available
     }
     
     /**
      * Check if PRO version is active
      * 
-     * @return bool True if PRO version constant is defined
+     * @return bool Always true in PRO context
      */
     protected function isProVersion() {
-        return defined('PRESSPERMIT_PRO_VERSION');
+        return true;
     }
     
     /**
-     * Render PRO badge for locked features
+     * Render PRO badge (never shown in PRO version)
      * 
-     * @param string $tooltip Tooltip text for the badge
-     * @return string HTML for PRO badge, empty string if PRO version
+     * @param string $tooltip Tooltip text (unused)
+     * @return string Empty string (no badge in PRO)
      */
     protected function renderProBadge($tooltip = '') {
-        if ($this->isProVersion()) {
-            return '';
-        }
-        
-        $default_tooltip = esc_attr__('This is a PRO feature', 'press-permit-core');
-        $tooltip_text = $tooltip ?: $default_tooltip;
-        
-        return sprintf(
-            ' <span class="pp-pro-badge-feature" data-toggle="tooltip" data-placement="top" title="%s">PRO<span class="tooltip-text"><span>%s</span><i></i></span></span>',
-            esc_attr($tooltip_text),
-            esc_html($tooltip_text)
-        );
+        return ''; // PRO: Never show PRO badges
     }
     
     /**
-     * Get upgrade URL
+     * Render upgrade notice (never shown in PRO version)
      * 
-     * @return string URL to upgrade page
-     */
-    protected function getUpgradeUrl() {
-        return 'https://publishpress.com/links/permissions-banner';
-    }
-    
-    /**
-     * Get feature comparison URL
-     * 
-     * @return string URL to pricing/comparison page
-     */
-    protected function getComparisonUrl() {
-        return 'https://publishpress.com/permissions/pricing/';
-    }
-    
-    /**
-     * Render upgrade notice for PRO features
-     * 
-     * @param string $feature_name Name of the feature
-     * @param string $description Feature description
+     * @param string $feature_name Feature name (unused)
+     * @param string $description Description (unused)
      * @return void
      */
     protected function renderProFeatureNotice($feature_name, $description = '') {
-        if ($this->isProVersion()) {
-            return;
-        }
-        ?>
-        <div class="pp-pro-feature-notice" style="padding: 15px; background: #f8f9fa; border-left: 4px solid #0073aa; margin-top: 20px;">
-            <h4>
-                <?php echo esc_html($feature_name); ?>
-                <?php echo wp_kses_post($this->renderProBadge(sprintf(esc_attr__('%s is available in PRO', 'press-permit-core'), $feature_name))); ?>
-            </h4>
-            <?php if ($description) : ?>
-                <p><?php echo esc_html($description); ?></p>
-            <?php endif; ?>
-            <p>
-                <a href="<?php echo esc_url($this->getUpgradeUrl()); ?>" class="button button-primary" target="_blank">
-                    <?php esc_html_e('Upgrade to PRO', 'press-permit-core'); ?>
-                </a>
-                <a href="<?php echo esc_url($this->getComparisonUrl()); ?>" class="button button-secondary" target="_blank">
-                    <?php esc_html_e('Learn More', 'press-permit-core'); ?>
-                </a>
-            </p>
-        </div>
-        <?php
+        // PRO: Never show upgrade notices
+        return;
     }
 }
