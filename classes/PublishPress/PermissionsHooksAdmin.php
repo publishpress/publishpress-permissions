@@ -73,8 +73,6 @@ class PermissionsHooksAdmin
 
     public function init()
     {
-        $this->maybeRedirectAfterActivation();
-
         if (presspermit()->isPro()) {
             require_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/pro-maint.php');
             Permissions\PressPermitMaint::adminRedirectCheck();
@@ -133,33 +131,6 @@ class PermissionsHooksAdmin
             new Permissions\UI\AgentsAjax();
             exit;
         }
-    }
-
-    private function maybeRedirectAfterActivation()
-    {
-        if (!get_option('presspermit_activation')) {
-            return;
-        }
-
-        delete_option('presspermit_activation');
-
-        if (
-            !is_admin()
-            || is_network_admin()
-            || wp_doing_ajax()
-            || !current_user_can('pp_manage_settings')
-            || PWP::is_REQUEST('activate-multi')
-            || PWP::is_REQUEST('presspermit_no_activation_redirect')
-        ) {
-            return;
-        }
-
-        if ('presspermit-settings' === presspermitPluginPage()) {
-            return;
-        }
-
-        wp_safe_redirect(admin_url('admin.php?page=presspermit-settings&presspermit_activated=1'));
-        exit;
     }
 
     public function actApplyDefaultRoleUsage() {

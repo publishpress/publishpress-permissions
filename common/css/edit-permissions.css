@@ -1394,26 +1394,23 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 }
 .pp-profile-permissions-summary .permission-section {
   border: 1px solid #dcdcde;
-  border-radius: 6px;
+  border-radius: 4px;
   box-shadow: none;
   margin-bottom: 0;
   overflow: hidden;
 }
 .pp-profile-permissions-summary .section-header {
-  align-items: flex-start;
   background: #f6f7f7;
   border-bottom: 1px solid #dcdcde;
   cursor: default;
-  display: flex;
   gap: 12px;
-  justify-content: space-between;
   padding: 12px 16px;
 }
 .pp-profile-permissions-summary .section-header:hover {
   background: #f6f7f7;
 }
 .pp-profile-permissions-summary .pp-profile-summary-heading {
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1421,15 +1418,8 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 }
 .pp-profile-permissions-summary .section-title {
   color: #1d2327;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.4;
-  margin-bottom: 2px;
-}
-.pp-profile-permissions-summary .pp-profile-summary-description {
-  color: #646970;
-  font-size: 12px;
-  line-height: 1.5;
-  margin: 0;
 }
 .pp-profile-permissions-summary .badge-count {
   background: #fff;
@@ -1446,26 +1436,7 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
 }
 .pp-profile-permissions-summary .pp-profile-summary-row {
   border-bottom: 1px solid #dcdcde;
-  position: relative;
   padding: 14px 16px;
-}
-.pp-profile-permissions-summary .pp-profile-summary-row::before {
-  background: #dcdcde;
-  bottom: 0;
-  content: "";
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 3px;
-}
-.pp-profile-permissions-summary .pp-profile-summary-row.pp-profile-summary-row-direct::before {
-  background: #2271b1;
-}
-.pp-profile-permissions-summary .pp-profile-summary-row.pp-profile-summary-row-inherited::before {
-  background: #00a32a;
-}
-.pp-profile-permissions-summary .pp-profile-summary-row.pp-profile-summary-row-empty {
-  background: #fbfbfc;
 }
 .pp-profile-permissions-summary .pp-profile-summary-row:nth-child(odd) {
   border-right: 1px solid #dcdcde;
@@ -1547,18 +1518,7 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   justify-content: space-between;
 }
 .pp-profile-permissions-summary .pp-profile-summary-row-title {
-  align-items: flex-start;
-  display: flex;
-  gap: 8px;
   min-width: 0;
-}
-.pp-profile-permissions-summary .pp-profile-summary-row-title .dashicons {
-  color: #646970;
-  flex: 0 0 auto;
-  font-size: 18px;
-  height: 18px;
-  margin-top: 1px;
-  width: 18px;
 }
 .pp-profile-permissions-summary .pp-profile-summary-row-title h3 {
   color: #1d2327;
@@ -1592,17 +1552,12 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   display: block;
 }
 .pp-profile-permissions-summary .pp-profile-summary-empty {
-  background: #f6f7f7;
-  border: 1px dashed #c3c4c7;
-  border-radius: 4px;
   color: #646970;
   font-size: 13px;
   line-height: 1.5;
   margin: 0;
-  padding: 8px 10px;
 }
-.pp-profile-permissions-summary .pp-profile-summary-edit,
-.pp-profile-permissions-summary .pp-profile-summary-manage {
+.pp-profile-permissions-summary .pp-profile-summary-edit {
   white-space: nowrap;
 }
 @media screen and (max-width: 782px) {
