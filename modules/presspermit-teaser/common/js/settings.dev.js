@@ -851,10 +851,17 @@ jQuery(document).ready(function ($) {
         return element.innerHTML;
     }
 
+    function stripContentVisibilityShortcodes(html) {
+        return String(html || '')
+            .replace(/\[pp_restrict\b[^\]]*\][\s\S]*?\[\/pp_restrict\]/gi, '')
+            .replace(/\[pp_restrict\b[^\]]*\/?\]/gi, '');
+    }
+
     function appendPreviewNotice(teaserHtml, messageText) {
         var parts = [];
 
         teaserHtml = balancePreviewHtml(teaserHtml).trim();
+        messageText = stripContentVisibilityShortcodes(messageText);
 
         if (teaserHtml) {
             parts.push('<div class="pp-teaser-content">' + teaserHtml + '</div>');
@@ -1017,6 +1024,7 @@ jQuery(document).ready(function ($) {
         }
 
         if (isHtmlMessage) {
+            messageText = stripContentVisibilityShortcodes(messageText);
             $preview.html(messageText);
         } else {
             $preview.text(messageText);
