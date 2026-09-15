@@ -352,12 +352,9 @@ class Permissions
             new Permissions\DB\DatabaseSetup($db_ver);
         }
 
-        if ($ver) {
-            if ($role = @get_role('administrator')) {
-                if (empty($role->capabilities['pp_manage_settings']) || empty($role->capabilities['pp_manage_teaser'])) {
-                    $ver = false; // repopulate roles if Administrator lacks required management capabilities
-                }
-            }
+        if ($ver && !get_option('ppperm_added_role_caps_4_8_2')) {
+            require_once(PRESSPERMIT_CLASSPATH . '/PluginUpdated.php');
+            Permissions\PluginUpdated::populateRoles();
         }
 
         if (!$ver) {
