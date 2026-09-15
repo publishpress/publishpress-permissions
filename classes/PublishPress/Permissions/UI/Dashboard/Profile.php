@@ -108,12 +108,14 @@ class Profile
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
                         <div>
-                            <h2 class="section-title"><?php esc_html_e('User Permissions Summary', 'press-permit-core'); ?></h2>
+                            <div class="pp-profile-summary-title-row">
+                                <h2 class="section-title"><?php esc_html_e('User Permissions Summary', 'press-permit-core'); ?></h2>
+                                <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($total_count)); ?></span>
+                            </div>
                             <p class="pp-profile-summary-description">
                                 <?php esc_html_e("Review direct assignments and permissions inherited from this user's role or groups.", 'press-permit-core'); ?>
                             </p>
                         </div>
-                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($total_count)); ?></span>
                     </div>
                     <?php if ($manage_url) : ?>
                         <a class="button button-secondary pp-profile-summary-manage" href="<?php echo esc_url($manage_url); ?>">
