@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
-"PO-Revision-Date: 2026-09-15 22:01+0000\n"
+"PO-Revision-Date: 2026-09-16 20:35+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: zh_TW\n"
@@ -380,8 +380,8 @@ msgstr "內容可見性"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94
 msgid "Teaser"
 msgstr "預告"
 
@@ -5128,26 +5128,24 @@ msgstr "複製 shortcode"
 msgid "Copied!"
 msgstr "已複製!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1090
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
 msgid "You do not have permission to view the full content."
 msgstr "您沒有權限查看完整內容。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
 msgid "Content requires additional permissions."
 msgstr "內容需要額外的權限。"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
-msgid "To read the full content, please log in to this site."
-msgstr "要閱讀完整內容，請登錄此網站。"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
@@ -5469,16 +5467,11 @@ msgid "characters (leave empty for full excerpt)"
 msgstr "字符（留空以獲取完整摘要）"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "無法訪問的訪客將被重定向到：%s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
-msgid "Visitors without access are redirected away from this page."
-msgstr "無法訪問的訪客將被重定向離開此頁面。"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
@@ -5553,9 +5546,9 @@ msgid ""
 msgstr "受限內容不會顯示。訪客將被導向配置的目的地。"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1005
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1056
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1107
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
 msgid "Message for Blocked Users"
 msgstr "阻止用戶的消息"
 
@@ -5575,162 +5568,168 @@ msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "使用 %s[login_form]%s 短代碼插入登錄表單。"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
-msgid "No Teaser Text Configuration"
-msgstr "無預告文本配置"
+msgid "Text Configuration"
+msgstr "文字配置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+msgid ""
+"In addition to the Teaser and the Message for Blocked Users, you can show "
+"extra text around your content."
+msgstr "除了針對被封鎖用戶的預告和消息外，您還可以在內容周圍顯示額外的文字。"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "文章標題"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "文章內容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "在 %s 之前"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "在 %s 之後"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:752
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "重定向設置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "重定向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "目標文章類型"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "選擇文章"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "自訂 URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "未登錄："
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "不重定向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "重定向到 WordPress 登錄頁面"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "重定向到自訂文章"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "重定向到自訂 URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "這是一個自訂的登錄頁面"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
 msgstr "用戶登錄後，將被重定向回他們原本查看的帖子。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "已登錄用戶："
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
 msgstr "自定義在使用 \"閱讀更多\" 預告類型時顯示給被阻止查看完整內容的用戶的消息。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
 msgstr "自訂在使用 \"摘錄\" 預告類型時顯示給所有被阻止用戶的通知消息。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
 msgstr "自訂當使用「第一個 X 個字元」預告類型時，顯示給所有被阻擋用戶的通知訊息。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1175
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
 msgid "Blocked User Message Style"
 msgstr "被封鎖用戶消息樣式"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "自訂顯示給被阻止用戶的摘要消息的外觀。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1184
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "背景顏色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "文字顏色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1208
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "邊框顏色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "邊框位置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "左側"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "右側"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "上方"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "底部"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "所有邊緣"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "邊框寬度 (像素)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "邊框圓角 (像素)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "字體大小 (像素)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1287
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "內邊距 (像素)"
 
@@ -5806,8 +5805,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "群組"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."
