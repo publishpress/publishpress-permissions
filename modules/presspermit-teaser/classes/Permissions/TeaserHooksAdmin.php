@@ -48,7 +48,8 @@ class TeaserHooksAdmin
                         'strings' => [
                             'select_a_page' => __( 'Select a page', 'press-permit-core' ),
                             'select_preview_content' => __( 'Search preview content', 'press-permit-core' ),
-                            'select_terms' => __( 'Select terms', 'press-permit-core' )
+                            'select_terms' => __( 'Select terms', 'press-permit-core' ),
+                            'default_teaser_text' => __( 'You do not have permission to view the full content.', 'press-permit-core' )
                         ]
                     ]
                 );

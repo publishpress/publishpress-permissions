@@ -843,6 +843,20 @@ jQuery(document).ready(function ($) {
         return text ? '<p>' + escapePreviewAttribute(text) + '</p>' : '';
     }
 
+    function formatPreviewContentFragment(html) {
+        html = String(html || '').trim();
+
+        if (!html) {
+            return '';
+        }
+
+        if (html.indexOf('<!-- wp:') !== -1 || /<(?:p|div|ul|ol|li|blockquote|pre|table|h[1-6])\b/i.test(html)) {
+            return html;
+        }
+
+        return '<p>' + html + '</p>';
+    }
+
     function balancePreviewHtml(html) {
         var element = document.createElement('div');
 
@@ -925,6 +939,10 @@ jQuery(document).ready(function ($) {
 
         var titleHtml = sampleTitle;
         var contentHtml = '';
+        var titlePrefixHtml = getEditorHtml($container, 'tease_prepend_name' + suffix);
+        var titleSuffixHtml = getEditorHtml($container, 'tease_append_name' + suffix);
+        var contentPrefixHtml = getEditorHtml($container, 'tease_prepend_content' + suffix);
+        var contentSuffixHtml = getEditorHtml($container, 'tease_append_content' + suffix);
         // "Featured Image" / "Comments Area" are global settings on the Options tab now (see
         // issue #2518), not per-post-type fields inside $container - read them from the page.
         var hideThumbnail = String(
@@ -935,22 +953,16 @@ jQuery(document).ready(function ($) {
         if (teaserType === '1') {
             // "Teaser Text" preserves bold/italic/etc. on the front end, so the payload sent to the
             // preview iframe carries raw HTML here instead of the escaped plain text used below.
-            var titlePrefixHtml = getEditorHtml($container, 'tease_prepend_name' + suffix);
-            var titleSuffixHtml = getEditorHtml($container, 'tease_append_name' + suffix);
-            var contentPrefixHtml = getEditorHtml($container, 'tease_prepend_content' + suffix);
-            var contentSuffixHtml = getEditorHtml($container, 'tease_append_content' + suffix);
             var teaserContent = getEditorHtml($container, 'tease_replace_content' + suffix);
 
             if (!teaserContent) {
                 teaserContent = messageText;
             }
 
-            titleHtml = [titlePrefixHtml, sampleTitle, titleSuffixHtml].filter(Boolean).join(' ');
-            contentHtml = [contentPrefixHtml, teaserContent, contentSuffixHtml].filter(Boolean).join(' ');
+            contentHtml = '<div class="pp-teaser-notice">' + teaserContent + '</div>';
         } else if (teaserType === 'redirect') {
-            // Prepend/append and the notice-style box don't apply to redirects on the front end;
-            // this message (with the resolved target link) is pre-rendered server-side.
-            contentHtml = String($sitePreview.data('redirect-message') || '');
+            // This message, with the resolved target link when configured, is pre-rendered server-side.
+            contentHtml = '<div class="pp-teaser-notice">' + String($sitePreview.data('redirect-message') || messageText || '') + '</div>';
         } else if (teaserType === 'read_more') {
             contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), messageText);
         } else if (teaserType === 'more') {
@@ -964,6 +976,13 @@ jQuery(document).ready(function ($) {
             // preserve their formatting on the front end too (see PostsTeaser::wrapTeaserNotice()).
             contentHtml = messageText;
         }
+
+        titleHtml = [titlePrefixHtml, titleHtml, titleSuffixHtml].filter(Boolean).join(' ');
+        contentHtml = [
+            formatPreviewContentFragment(contentPrefixHtml),
+            contentHtml,
+            formatPreviewContentFragment(contentSuffixHtml)
+        ].filter(Boolean).join('');
 
         $sitePreview.data('theme-teaser-payload', {
             title: titleHtml,
@@ -1010,6 +1029,8 @@ jQuery(document).ready(function ($) {
             }
         } else if (teaserType == 'read_more') {
             messageText = $preview.first().data('read-more-msg');
+        } else if (teaserType == 'redirect') {
+            messageText = $preview.first().data('read-more-msg');
         } else if (teaserType == 'excerpt') {
             messageText = $preview.first().data('excerpt-msg');
         } else if (teaserType == 'x_chars' || teaserType == 'more') {
@@ -1021,7 +1042,8 @@ jQuery(document).ready(function ($) {
         // as empty instead of substituting the default notice.
         if (!messageText && teaserType != '1') {
             messageText = $preview.first().data('teaser-text-default')
-                || 'You do not have permission to view the full content.';
+                || presspermitTeaser.strings.default_teaser_text
+                || '';
             isHtmlMessage = false;
         }
 
