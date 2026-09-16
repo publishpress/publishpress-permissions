@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-15 22:01+0000\n"
+"PO-Revision-Date: 2026-09-16 20:35+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: th\n"
@@ -386,8 +386,8 @@ msgstr "การมองเห็นเนื้อหา"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94
 msgid "Teaser"
 msgstr "ทีเซอร์"
 
@@ -5483,26 +5483,24 @@ msgstr "คัดลอก shortcode"
 msgid "Copied!"
 msgstr "คัดลอกแล้ว!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1090
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
 msgid "You do not have permission to view the full content."
 msgstr "คุณไม่มีสิทธิ์ในการดูเนื้อหาทั้งหมด."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
 msgid "Content requires additional permissions."
 msgstr "เนื้อหาต้องการสิทธิ์เพิ่มเติม."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
-msgid "To read the full content, please log in to this site."
-msgstr "เพื่ออ่านเนื้อหาทั้งหมด กรุณาลงชื่อเข้าใช้ในเว็บไซต์นี้"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
@@ -5828,16 +5826,11 @@ msgid "characters (leave empty for full excerpt)"
 msgstr "ตัวอักษร (เว้นว่างไว้สำหรับข้อความย่อทั้งหมด)"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "ผู้เยี่ยมชมที่ไม่มีสิทธิ์เข้าถึงจะถูกเปลี่ยนเส้นทางไปที่: %s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
-msgid "Visitors without access are redirected away from this page."
-msgstr "ผู้เยี่ยมชมที่ไม่มีสิทธิ์เข้าถึงจะถูกเปลี่ยนเส้นทางออกจากหน้านี้."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
@@ -5914,9 +5907,9 @@ msgid ""
 msgstr "เนื้อหาที่ถูกจำกัดจะไม่แสดง ผู้เข้าชมจะถูกส่งไปยังปลายทางที่กำหนดไว้"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1005
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1056
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1107
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
 msgid "Message for Blocked Users"
 msgstr "ข้อความสำหรับผู้ใช้ที่ถูกบล็อก"
 
@@ -5938,77 +5931,85 @@ msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "แทรกแบบฟอร์มเข้าสู่ระบบโดยใช้ %s[login_form]%s ช็อตโค้ด."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
-msgid "No Teaser Text Configuration"
-msgstr "ไม่มีการตั้งค่าข้อความทีเซอร์"
+msgid "Text Configuration"
+msgstr "การกำหนดค่าข้อความ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+msgid ""
+"In addition to the Teaser and the Message for Blocked Users, you can show "
+"extra text around your content."
+msgstr ""
+"นอกจาก Teaser และข้อความสำหรับผู้ใช้ที่ถูกบล็อกแล้ว "
+"คุณยังสามารถแสดงข้อความเพิ่มเติมรอบๆ เนื้อหาของคุณได้."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "ชื่อโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "เนื้อหาโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "ก่อน %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "หลัง %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:752
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "การตั้งค่าเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "การเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "ประเภทโพสต์เป้าหมาย"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "เลือกโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "URL ที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "ยังไม่ได้เข้าสู่ระบบ:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "ไม่มีการเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "เปลี่ยนเส้นทางไปยังการเข้าสู่ระบบของ WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "เปลี่ยนเส้นทางไปยังโพสต์ที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "เปลี่ยนเส้นทางไปยัง URL ที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "นี่คือหน้าล็อกอินที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6016,11 +6017,11 @@ msgstr ""
 "หลังจากผู้ใช้ลงชื่อเข้าใช้ "
 "พวกเขาจะถูกเปลี่ยนเส้นทางกลับไปยังโพสต์ต้นฉบับที่พวกเขากำลังดู."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "ผู้ใช้ที่ล็อกอิน:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6028,7 +6029,7 @@ msgstr ""
 "ปรับแต่งข้อความที่แสดงแก่ผู้ใช้ที่ถูกบล็อกจากการดูเนื้อหาทั้งหมดเมื่อใช้ประเ"
 "ภทตัวอย่าง \"อ่านเพิ่มเติม\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6036,7 +6037,7 @@ msgstr ""
 "ปรับแต่งข้อความแจ้งที่แสดงให้ผู้ใช้ที่ถูกบล็อกทั้งหมดเมื่อใช้ประเภททีเซอร์ "
 "\"ส่วนย่อ\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6044,64 +6045,64 @@ msgstr ""
 "ปรับแต่งข้อความแจ้งเตือนที่แสดงให้ผู้ใช้ที่ถูกบล็อกทุกคนเห็นเมื่อใช้ประเภทที"
 "เซอร์ \"ตัวอักษรแรก X ตัว\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1175
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
 msgid "Blocked User Message Style"
 msgstr "รูปแบบข้อความผู้ใช้ที่ถูกบล็อก"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "ปรับแต่งลักษณะของข้อความตัวอย่างที่แสดงให้กับผู้ใช้ที่ถูกบล็อก."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1184
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "สีพื้นหลัง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "สีข้อความ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1208
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "สีขอบ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "ตำแหน่งขอบ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "ซ้าย"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "ขวา"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "ด้านบน"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "ด้านล่าง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "ทุกด้าน"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "ความกว้างของขอบ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "ความโค้งมุมของขอบ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "ขนาดฟอนต์ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1287
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "ระยะห่างภายใน (px)"
 
@@ -6177,8 +6178,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "กลุ่ม"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-15 22:01+0000\n"
+"PO-Revision-Date: 2026-09-16 20:35+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: vi\n"
@@ -392,8 +392,8 @@ msgstr "Hiển thị Nội dung"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94, fuzzy
 msgid "Teaser"
 msgstr "Teaser"
 
@@ -5602,26 +5602,24 @@ msgstr "Sao chép shortcode"
 msgid "Copied!"
 msgstr "Đã sao chép!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1090
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
 msgid "You do not have permission to view the full content."
 msgstr "Bạn không có quyền truy cập để xem toàn bộ nội dung."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
 msgid "Content requires additional permissions."
 msgstr "Nội dung yêu cầu quyền truy cập bổ sung."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
-msgid "To read the full content, please log in to this site."
-msgstr "Để đọc toàn bộ nội dung, vui lòng đăng nhập vào trang này."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
@@ -5951,18 +5949,11 @@ msgid "characters (leave empty for full excerpt)"
 msgstr "ký tự (để trống cho đoạn trích đầy đủ)"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Khách truy cập không có quyền truy cập sẽ được chuyển hướng đến: %s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
-msgid "Visitors without access are redirected away from this page."
-msgstr ""
-"Khách truy cập không có quyền truy cập sẽ được chuyển hướng ra khỏi trang "
-"này."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
@@ -6041,9 +6032,9 @@ msgstr ""
 "đã cấu hình."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1005
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1056
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1107
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
 msgid "Message for Blocked Users"
 msgstr "Thông điệp cho người dùng bị chặn"
 
@@ -6065,77 +6056,85 @@ msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Chèn một mẫu đăng nhập bằng cách sử dụng shortcode %s[login_form]%s."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
-msgid "No Teaser Text Configuration"
-msgstr "Cấu hình Văn bản Giới thiệu Không"
+msgid "Text Configuration"
+msgstr "Cấu hình văn bản"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+msgid ""
+"In addition to the Teaser and the Message for Blocked Users, you can show "
+"extra text around your content."
+msgstr ""
+"Ngoài Teaser và Thông điệp cho Người dùng bị chặn, bạn có thể hiển thị văn "
+"bản bổ sung xung quanh nội dung của bạn."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "tiêu đề bài viết"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "nội dung bài viết"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "Trước %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "Sau %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:752
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "Cài Đặt Chuyển Hướng"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "Chuyển Hướng"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "Loại Bài Viết Mục Tiêu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "Chọn Bài Viết"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "URL Tùy chỉnh"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "Chưa Đăng Nhập:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "Không chuyển hướng"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "Chuyển hướng đến đăng nhập WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "Chuyển hướng đến một bài viết tùy chỉnh"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "Chuyển hướng đến một URL tùy chỉnh"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "Đây là trang đăng nhập tùy chỉnh"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6143,11 +6142,11 @@ msgstr ""
 "Sau khi người dùng đăng nhập, họ sẽ được chuyển hướng trở lại bài viết gốc "
 "mà họ đang xem."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "Người dùng đã đăng nhập:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
@@ -6155,7 +6154,7 @@ msgstr ""
 "Tùy chỉnh tin nhắn hiển thị cho người dùng bị chặn không thể xem nội dung "
 "đầy đủ khi sử dụng loại tin nhắn giới thiệu \"Đọc Thêm\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
@@ -6163,7 +6162,7 @@ msgstr ""
 "Tùy chỉnh thông điệp thông báo hiển thị cho tất cả người dùng bị chặn khi "
 "sử dụng loại teaser \"Đoạn trích\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
@@ -6171,64 +6170,64 @@ msgstr ""
 "Tùy chỉnh thông báo hiển thị cho tất cả người dùng bị chặn khi sử dụng loại "
 "teaser \"X ký tự đầu tiên\"."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1175
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
 msgid "Blocked User Message Style"
 msgstr "Kiểu tin nhắn người dùng bị chặn"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Tùy chỉnh giao diện của thông điệp teaser hiển thị cho người dùng bị chặn."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1184
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "Màu nền"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "Màu chữ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1208
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "Màu viền"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "Vị trí viền"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "Bên trái"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "Bên phải"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "Trên cùng"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "Dưới cùng"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "Tất cả các bên"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "Độ rộng viền (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "Bán kính viền (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "Kích thước phông chữ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1287
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "Khoảng cách đệm (px)"
 
@@ -6304,8 +6303,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Nhóm"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

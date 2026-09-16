@@ -279,7 +279,7 @@ class PostsTeaser
             $results = $this->postsTeaserPrepResults($results, $tease_otypes, $args);
         }
 
-        $teaser_replace = $teaser_prepend = $teaser_append = $excerpt_teaser = $more_teaser = $read_more_teaser = $x_chars_teaser = [];
+        $teaser_replace = $teaser_prepend = $teaser_append = $excerpt_teaser = $more_teaser = $read_more_teaser = $x_chars_teaser = $redirect_teaser = [];
 
         foreach ($tease_otypes as $type) {
             $teaser_replace[$type]['post_content'] = self::getTeaserText('replace', 'content', 'post', $type, $user);
@@ -303,6 +303,8 @@ class PostsTeaser
                 $read_more_teaser[$type] = true;
             } elseif ('x_chars' == $teaser_type) {
                 $x_chars_teaser[$type] = true;
+            } elseif ('redirect' == $teaser_type) {
+                $redirect_teaser[$type] = true;
             }
         }
 
@@ -315,6 +317,7 @@ class PostsTeaser
             'more_teaser' => $more_teaser,
             'read_more_teaser' => $read_more_teaser,
             'x_chars_teaser' => $x_chars_teaser,
+            'redirect_teaser' => $redirect_teaser,
         ];
 
         foreach (array_keys($results) as $key) {
@@ -391,6 +394,7 @@ class PostsTeaser
             'more_teaser' => [],
             'read_more_teaser' => [],
             'x_chars_teaser' => [],
+            'redirect_teaser' => [],
             'force_refresh' => false,
         ];
         $args = array_merge($defaults, (array)$args);
@@ -496,6 +500,8 @@ class PostsTeaser
                 $post->post_content = self::appendTeaserNotice('<p>' . esc_html($excerpt_text) . '</p>', $notice_html);
             }
 
+            self::applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append);
+
         // Read More Link as Teaser - show content before more tag with a "Read More" link
         } elseif (!empty($read_more_teaser[$post_type])) {
             if (ReadMoreHandler::hasMoreTag($post)) {
@@ -566,11 +572,15 @@ class PostsTeaser
                 }
             }
 
+            self::applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append);
+
         } elseif (!empty($more_teaser[$post_type]) && ($more_pos = strpos($post->post_content, '<!--more-->'))) {
             $post->post_content = substr($post->post_content, 0, $more_pos + 11);
             $post->post_excerpt = $post->post_content;
             if (is_single() || is_page() || is_attachment())
                 $post->post_content .= '<p class="pp_more_teaser">' . $teaser_replace[$post_type]['post_content'] . '</p>';
+
+            self::applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append, $more_pos);
 
             // since no custom excerpt or more tag is stored, use first X characters as teaser - but only if the total length is more than that
 
@@ -612,7 +622,15 @@ class PostsTeaser
                 }
                 
                 $post->post_excerpt = $teaser_text;
+
+                self::applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append);
             }
+
+        } elseif (!empty($redirect_teaser[$post_type])) {
+            $post->post_content = self::getReadMoreFallbackContent($post_type);
+            $post->post_excerpt = '';
+
+            self::applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append);
 
         } else {
             if (isset($teaser_replace[$post_type]['post_content'])) {
@@ -719,6 +737,52 @@ class PostsTeaser
             add_filter('get_post_metadata', [__CLASS__, 'fltHidePostThumbnail'], 10, 3);
     }
 
+    private static function applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append, $more_pos = false)
+    {
+        foreach (!empty($teaser_prepend[$post_type]) ? $teaser_prepend[$post_type] : [] as $col => $entry) {
+            if (isset($post->$col)) {
+                if ($col == 'post_content') {
+                    $entry = self::formatTeaserContentFragment($entry, $post->$col);
+                }
+
+                $post->$col = $entry . $post->$col;
+            }
+        }
+
+        foreach (!empty($teaser_append[$post_type]) ? $teaser_append[$post_type] : [] as $col => $entry) {
+            if (isset($post->$col)) {
+                if (($col == 'post_content') && !empty($more_pos)) {
+                    $entry = self::formatTeaserContentFragment($entry, $post->$col);
+
+                    $post->$col = str_replace('<!--more-->', "$entry<!--more-->", $post->$col);
+                } else {
+                    if ($col == 'post_content') {
+                        $entry = self::formatTeaserContentFragment($entry, $post->$col);
+                    }
+
+                    $post->$col .= $entry;
+                }
+            }
+        }
+    }
+
+    private static function formatTeaserContentFragment($entry, $content)
+    {
+        if ('' === trim((string) $entry)) {
+            return $entry;
+        }
+
+        if (false !== strpos($entry, '<!-- wp:')) {
+            return $entry;
+        }
+
+        if (has_blocks($content) || false !== strpos($content, '<!-- wp:')) {
+            return '<!-- wp:paragraph -->' . wpautop($entry) . '<!-- /wp:paragraph -->';
+        }
+
+        return wpautop($entry);
+    }
+
     /**
      * Get safe fallback content when a Read More teaser has no usable teaser source.
      *
@@ -730,7 +794,7 @@ class PostsTeaser
         $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
 
         if ('' === $login_notice) {
-            $login_notice = esc_html__('To read the full content, please log in to this site.', 'press-permit-core');
+            $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
         }
 
         // Not escaped: preserves formatting entered via the notice's rich-text editor.

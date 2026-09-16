@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-15 22:01+0000\n"
+"PO-Revision-Date: 2026-09-16 20:35+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: ko_KR\n"
@@ -380,8 +380,8 @@ msgstr "콘텐츠 가시성"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:92
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94
 msgid "Teaser"
 msgstr "티저"
 
@@ -5215,26 +5215,24 @@ msgstr "shortcode 복사"
 msgid "Copied!"
 msgstr "복사됨!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:483
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:526
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:550
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:601
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:988
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1090
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:989
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1040
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
 msgid "You do not have permission to view the full content."
 msgstr "전체 콘텐츠를 볼 권한이 없습니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:632
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
 msgid "Content requires additional permissions."
 msgstr "콘텐츠에 추가 권한이 필요합니다."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:733
-msgid "To read the full content, please log in to this site."
-msgstr "전체 내용을 읽으려면 이 사이트에 로그인하십시오."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
@@ -5556,16 +5554,11 @@ msgid "characters (leave empty for full excerpt)"
 msgstr "문자 (전체 요약을 원하면 비워두세요)"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:290
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "접근할 수 없는 방문자는 다음으로 리디렉션됩니다: %s"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:410
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:293
-msgid "Visitors without access are redirected away from this page."
-msgstr "접근할 수 없는 방문자는 이 페이지에서 벗어납니다."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
@@ -5640,9 +5633,9 @@ msgid ""
 msgstr "제한된 콘텐츠는 표시되지 않습니다. 방문자는 구성된 대상으로 전송됩니다."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:584
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1005
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1056
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1107
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
 msgid "Message for Blocked Users"
 msgstr "차단된 사용자에 대한 메시지"
 
@@ -5662,162 +5655,168 @@ msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "%s[login_form]%s 단축코드를 사용하여 로그인 양식을 삽입합니다."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:637
-msgid "No Teaser Text Configuration"
-msgstr "미리보기 텍스트 구성 없음"
+msgid "Text Configuration"
+msgstr "텍스트 구성"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+msgid ""
+"In addition to the Teaser and the Message for Blocked Users, you can show "
+"extra text around your content."
+msgstr "차단된 사용자에 대한 티저 및 메시지 외에도 콘텐츠 주위에 추가 텍스트를 표시할 수 있습니다."
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
 msgid "post title"
 msgstr "게시물 제목"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
 msgid "post content"
 msgstr "게시물 내용"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:667
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
 #, php-format
 msgid "Before %s"
 msgstr "%s 이전"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:668
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
 #, php-format
 msgid "After %s"
 msgstr "%s 이후"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:752
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:753
 msgid "Redirect Settings"
 msgstr "리디렉션 설정"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
 msgid "Redirection"
 msgstr "리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:764
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
 msgid "Target Post Type"
 msgstr "대상 게시물 유형"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Select Post"
 msgstr "게시물 선택"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
 msgid "Custom URL"
 msgstr "사용자 정의 URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
 msgid "Not Logged In:"
 msgstr "로그인하지 않음:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "No redirect"
 msgstr "리디렉션 없음"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to WordPress login"
 msgstr "WordPress 로그인으로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom post"
 msgstr "맞춤 게시물로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
 msgid "Redirect to a custom URL"
 msgstr "사용자 정의 URL로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:972
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:973
 msgid "This is a custom login page"
 msgstr "사용자 정의 로그인 페이지입니다"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:870
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
 msgstr "사용자가 로그인하면 그들이 보고 있던 원래 게시물로 다시 리디렉션됩니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:909
 msgid "Logged in Users:"
 msgstr "로그인한 사용자:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1006
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
 msgid ""
 "Customize the message shown to users who are blocked from viewing the full "
 "content when using the \"Read More\" teaser type."
 msgstr "\"더 읽기\" 미리보기 유형을 사용할 때 전체 콘텐츠를 볼 수 없는 사용자에게 표시되는 메시지를 사용자 정의하세요."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1057
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"Excerpt\" teaser type."
 msgstr "“발췌” 티저 유형을 사용할 때 모든 차단된 사용자에게 표시되는 알림 메시지를 사용자 정의하세요."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1108
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
 msgid ""
 "Customize the notice message shown to all blocked users when using the "
 "\"First X Characters\" teaser type."
 msgstr "차단된 모든 사용자에게 표시되는 공지 메시지를 \"첫 X 문자\" 티저 유형으로 사용자 지정합니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1175
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
 msgid "Blocked User Message Style"
 msgstr "차단된 사용자 메시지 스타일"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "차단된 사용자에게 표시되는 티저 메시지의 모양을 사용자 정의합니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1184
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1185
 msgid "Background Color"
 msgstr "배경 색상"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1197
 msgid "Text Color"
 msgstr "텍스트 색상"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1208
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1209
 msgid "Border Color"
 msgstr "테두리 색상"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1221
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1232
 msgid "Border Position"
 msgstr "테두리 위치"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
 msgid "Left"
 msgstr "왼쪽"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1225
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
 msgid "Right"
 msgstr "오른쪽"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
 msgid "Top"
 msgstr "상단"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
 msgid "Bottom"
 msgstr "하단"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
 msgid "All Sides"
 msgstr "모든 면"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1248
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1249
 msgid "Border Width (px)"
 msgstr "테두리 너비 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1262
 msgid "Border Radius (px)"
 msgstr "테두리 반경 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1275
 msgid "Font Size (px)"
 msgstr "글꼴 크기 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1287
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1288
 msgid "Padding (px)"
 msgstr "패딩 (px)"
 
@@ -5893,8 +5892,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "그룹"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:475
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:596
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

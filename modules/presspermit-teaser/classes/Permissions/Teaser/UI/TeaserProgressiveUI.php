@@ -407,7 +407,7 @@ class TeaserProgressiveUI {
                 esc_html__('Visitors without access are redirected to: %s', 'press-permit-core'),
                 '<a href="' . esc_url($redirect_target_url) . '">' . esc_html($redirect_target_url) . '</a>'
             )
-            : esc_html__('Visitors without access are redirected away from this page.', 'press-permit-core');
+            : '';
 
         $theme_404_url = add_query_arg(
             'pp_permissions_teaser_preview',
@@ -634,7 +634,8 @@ class TeaserProgressiveUI {
                 <thead>
                     <tr>
                         <th colspan="2">
-                            <strong><?php esc_html_e('No Teaser Text Configuration', 'press-permit-core'); ?></strong>
+                            <strong><?php esc_html_e('Text Configuration', 'press-permit-core'); ?></strong>
+                            <?php $this->generateTooltip(esc_html__('In addition to the Teaser and the Message for Blocked Users, you can show extra text around your content.', 'press-permit-core')) ?>
                         </th>
                     </tr>
                 </thead>
