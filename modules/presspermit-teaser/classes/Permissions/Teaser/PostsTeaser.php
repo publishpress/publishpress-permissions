@@ -471,7 +471,7 @@ class PostsTeaser
                     // Only truncate if excerpt is longer than the limit
                     if (strlen($plain_excerpt) > $num_chars) {
                         if (defined('PP_TRANSLATE_TEASER')) {
-                            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
+                            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
                         }
                         
                         // Get first X characters of plain text
@@ -598,7 +598,7 @@ class PostsTeaser
             if (strlen($plain_content) > $num_chars) {
                 if (defined('PP_TRANSLATE_TEASER')) {
                     // otherwise, this is only loaded for admin
-                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_PRO_FILE)) . '/languages');
+                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
                 }
 
                 // Get first X characters of plain text

@@ -375,7 +375,7 @@ class TeaserProgressiveUI {
                 'tease_replace_content_anon',
                 'tease_replace_content',
                 $object_type
-            ) ?: ''
+            ) ?: $default_message
         );
         // Not stripped: these notice messages preserve their formatting on the front end too
         // (see PostsTeaser::wrapTeaserNotice() usage).
@@ -574,7 +574,8 @@ class TeaserProgressiveUI {
 
     private function renderTeaserContentCard($object_type) {
         // Get Teaser Text mode content (HTML content from editors) - remove slashes added by WordPress
-        $teaser_text = wp_unslash($this->getSharedAudienceOption('tease_replace_content_anon', 'tease_replace_content', $object_type) ?: '');
+        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $teaser_text = wp_unslash($this->getSharedAudienceOption('tease_replace_content_anon', 'tease_replace_content', $object_type) ?: $default_message);
         ?>
         <div class="teaser-message-section" style="margin-top: 20px;">
             <table class="widefat">
