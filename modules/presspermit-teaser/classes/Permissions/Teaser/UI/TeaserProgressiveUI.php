@@ -634,7 +634,8 @@ class TeaserProgressiveUI {
                 <thead>
                     <tr>
                         <th colspan="2">
-                            <strong><?php esc_html_e('No Teaser Text Configuration', 'press-permit-core'); ?></strong>
+                            <strong><?php esc_html_e('Text Configuration', 'press-permit-core'); ?></strong>
+                            <?php $this->generateTooltip(esc_html__('In addition to the Teaser and the Message for Blocked Users, you can show extra text around your content.', 'press-permit-core')) ?>
                         </th>
                     </tr>
                 </thead>
