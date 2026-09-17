@@ -1505,9 +1505,9 @@ class AgentPermissionsUI
 
                             <input type="submit" name="" class="button submit-edit-item-exception" value="<?php esc_attr_e('Apply', 'press-permit-core'); ?>" />
                             <?php
-                                echo '<img class="waiting" style="display:none;" src="'
+                                echo '<img alt="" class="waiting" style="display:none;" src="'
                                     . esc_url(admin_url('images/wpspin_light.gif'))
-                                    . '" alt="" />';
+                                    . '" />';
 
                             ?>
                             <div class="mirror-confirm" style="display:none"></div>

@@ -272,7 +272,7 @@ class Admin
 
             <div class="pp-pressshack-logo">
                 <a href="//publishpress.com" target="_blank" rel="noopener noreferrer">
-                    <img src="<?php echo esc_url(plugins_url('', PRESSPERMIT_FILE)) . '/common/img/publishpress-logo.png'; ?>" />
+                    <img src="<?php echo esc_url(plugins_url('', PRESSPERMIT_FILE)) . '/common/img/publishpress-logo.png'; ?>" alt="<?php esc_attr_e('PublishPress', 'press-permit-core'); ?>" />
                 </a>
             </div>
 

@@ -69,7 +69,7 @@ ul.pro-pplinks li.spacer {
 
 <div id="pp_features" style="display:none">
 <div class="pp-logo"><a href="https://publishpress.com">
-        <img src="<?php echo esc_url($img_url); ?>pp-logo.png"/></a>
+        <img src="<?php echo esc_url($img_url); ?>pp-logo.png" alt="<?php esc_attr_e('PublishPress', 'press-permit-core'); ?>" /></a>
 
     <ul class="pp-features">
 
@@ -77,25 +77,25 @@ ul.pro-pplinks li.spacer {
             <?php esc_html_e("Customize editing permissions per-category or per-post", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=0yOEBD8VE9c&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=3"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Limit category/term assignment and page parent selection", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=QqvtxrqLPwY&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=4"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("File Access: regulate direct access to uploaded files", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=kVusrdlgSps&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=15"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Hidden Content Teaser", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=d_5r8NKjxDQ&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=9"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("bbPress: customize viewing, topic creation or reply submission permissions per-forum", $lang_id); ?></li>
@@ -104,37 +104,37 @@ ul.pro-pplinks li.spacer {
             <?php esc_html_e("Date-limited membership in Permissions Groups", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=hMOVvCy_9Ws&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=7"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Custom Post Visibility statuses, fully implemented throughout wp-admin", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=vM3Iwt3Jdak&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=6"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Custom Moderation statuses for access-controlled, multi-step publishing workflow", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=v8VyKP3rIvk&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=8"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Regulate permissions for PublishPress post statuses", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=eeZ6CBC5kQI&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=11"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Customize the moderated editing of published content with Revisionary", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=kCD6HQAjUXs&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=12"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("Grant supplemental content permissions to a BuddyPress group", $lang_id); ?>
             <a href="https://www.youtube.com/watch?v=oABIT7wki_A&list=PLyelWaWwt1HxuwrZDRBO_c70Tm8A7lfb3&index=14"
             target="_blank">
-                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png"/></a></li>
+                <img class="cme-play" src="<?php echo esc_url($img_url); ?>play.png" alt="<?php esc_attr_e('Play video', 'press-permit-core'); ?>" /></a></li>
 
         <li>
             <?php esc_html_e("WPML integration to mirror permissions to translations", $lang_id); ?>
