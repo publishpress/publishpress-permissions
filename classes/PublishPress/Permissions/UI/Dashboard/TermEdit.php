@@ -224,7 +224,7 @@ class TermEdit
         $url = esc_url_raw(
             add_query_arg(
                 '_wp_original_http_referer',
-                urlencode($referer),
+                rawurlencode($referer),
                 "term.php?taxonomy=$taxonomy&amp;tag_ID=$tag_id&amp;pp_universal=1"
             )
         );
@@ -563,7 +563,7 @@ class TermEdit
             $url = esc_url_raw(
                 add_query_arg(
                     '_wp_original_http_referer',
-                    urlencode($referer),
+                    rawurlencode($referer),
                     "term.php?taxonomy=$taxonomy&amp;tag_ID={$tag->term_id}&amp;pp_universal=1"
                 )
             );
