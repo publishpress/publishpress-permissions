@@ -601,7 +601,7 @@ class AgentPermissionsUI
                 echo '<div id="pp_current_roles_' . esc_attr($uid) . '" class="pp-current-roles-container container">';
 
                 if ($show_groups_link) : ?>
-                <a class='pp-show-groups btn btn-primary' href='#' style="display:inline-block;margin-bottom: 10px;"><?php _e('Show Groups', 'press-permit-core'); ?></a>
+                <a class='pp-show-groups btn btn-primary' href='#' style="display:inline-block;margin-bottom: 10px;"><?php esc_html_e('Show Groups', 'press-permit-core'); ?></a>
                 <?php endif;
 
                 $_class = ($read_only) ? 'pp-readonly' : '';

@@ -440,19 +440,19 @@ class PostsTeaser
                 <ul id="publishpress-permissions-teaser-tabs" class="nav-tab-wrapper">
                     <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-settings') echo ' nav-tab-active';?>">
                       <a href="#ppp-tab-teaser-settings">
-                          <?php _e('Teaser Settings', 'press-permit-core') ?>
+                          <?php esc_html_e('Teaser Settings', 'press-permit-core') ?>
                       </a>
                     </li>
 
                     <li class="nav-tab<?php if ($current_tab === 'ppp-tab-text-options') echo ' nav-tab-active';?>">
                       <a href="#ppp-tab-text-options">
-                          <?php _e('Text Options', 'press-permit-core') ?>
+                          <?php esc_html_e('Text Options', 'press-permit-core') ?>
                       </a>
                     </li>
 
                     <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
                       <a href="#ppp-tab-options">
-                          <?php _e('Options', 'press-permit-core') ?>
+                          <?php esc_html_e('Options', 'press-permit-core') ?>
                       </a>
                     </li>
                 </ul>
@@ -628,7 +628,7 @@ class PostsTeaser
         ?>
 
             <p>
-                <input type="submit" name="presspermit_submit" class="button button-primary" value="<?php _e('Save Changes', 'press-permit-core') ?>">
+                <input type="submit" name="presspermit_submit" class="button button-primary" value="<?php esc_attr_e('Save Changes', 'press-permit-core') ?>">
             </p>
         </div>
         <?php
