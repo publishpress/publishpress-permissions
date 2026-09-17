@@ -365,7 +365,7 @@ class TeaserProgressiveUI {
     }
 
     private function renderTeaserPreview($object_type, $item_label, $teaser_setting, $device_mode = 'desktop') {
-        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         $type_obj = get_post_type_object($object_type);
         $singular_label = $type_obj ? $type_obj->labels->singular_name : $item_label;
 
@@ -574,7 +574,7 @@ class TeaserProgressiveUI {
 
     private function renderTeaserContentCard($object_type) {
         // Get Teaser Text mode content (HTML content from editors) - remove slashes added by WordPress
-        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         $teaser_text = wp_unslash($this->getSharedAudienceOption('tease_replace_content_anon', 'tease_replace_content', $object_type) ?: $default_message);
         ?>
         <div class="teaser-message-section" style="margin-top: 20px;">
@@ -987,7 +987,7 @@ class TeaserProgressiveUI {
     private function renderReadMoreNoticeCard($object_type) {
         $id = 'read_more_login_notice';
         $this->ui->all_otype_options[] = $id;
-        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         $_setting = $this->pp->getTypeOption($id, $object_type);
         if (empty($_setting)) {
             $_setting = $default_message;
@@ -1038,7 +1038,7 @@ class TeaserProgressiveUI {
     private function renderExcerptNoticeCard($object_type) {
         $id = 'excerpt_login_notice';
         $this->ui->all_otype_options[] = $id;
-        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         $_setting = $this->pp->getTypeOption($id, $object_type);
         if (empty($_setting)) {
             $_setting = $default_message;
@@ -1089,7 +1089,7 @@ class TeaserProgressiveUI {
     private function renderXCharsNoticeCard($object_type) {
         $id = 'x_chars_login_notice';
         $this->ui->all_otype_options[] = $id;
-        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         $_setting = $this->pp->getTypeOption($id, $object_type);
         if (empty($_setting)) {
             $_setting = $default_message;

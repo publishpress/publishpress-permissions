@@ -279,7 +279,7 @@ class TeaserHooks
 
         $post_type = $this->getThemeTeaserPreviewPostType();
         $teaser_type = $this->getThemeTeaserPreviewTeaserType();
-        $default_message = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         $style_attr = esc_attr($this->getThemeTeaserPreviewNoticeStyleAttribute($post_type));
 
         if ('redirect' === $teaser_type) {

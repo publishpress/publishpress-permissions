@@ -195,7 +195,7 @@ class ReadMoreHandler
         if (is_single() || is_page()) {
             $notice_text = presspermit()->getTypeOption('read_more_login_notice', $post_type);
             if (empty($notice_text)) {
-                $notice_text = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+                $notice_text = esc_html__('You do not have permission to view this content.', 'press-permit-core');
             }
             $notice_text = do_shortcode(wp_unslash($notice_text));
             

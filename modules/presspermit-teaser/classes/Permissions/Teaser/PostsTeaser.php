@@ -484,7 +484,7 @@ class PostsTeaser
             // Get login notice message for excerpt teaser
             $login_notice = wp_unslash((string) presspermit()->getTypeOption('excerpt_login_notice', $post_type));
             if ('' === $login_notice) {
-                $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+                $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
             }
 
             // Not escaped: preserves formatting entered via the notice's rich-text editor.
@@ -529,7 +529,7 @@ class PostsTeaser
                         // Get login notice message
                         $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
                         if ('' === $login_notice) {
-                            $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+                            $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
                         }
 
                         // Not escaped: preserves formatting entered via the notice's rich-text editor.
@@ -553,7 +553,7 @@ class PostsTeaser
                     // Get login notice message
                     $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
                     if ('' === $login_notice) {
-                        $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+                        $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
                     }
 
                     // Not escaped: preserves formatting entered via the notice's rich-text editor.
@@ -608,7 +608,7 @@ class PostsTeaser
                 // Get login notice message for x_chars teaser
                 $login_notice = wp_unslash((string) presspermit()->getTypeOption('x_chars_login_notice', $post_type));
                 if ('' === $login_notice) {
-                    $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+                    $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
                 }
 
                 // Not escaped: preserves formatting entered via the notice's rich-text editor.
@@ -794,7 +794,7 @@ class PostsTeaser
         $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
 
         if ('' === $login_notice) {
-            $login_notice = esc_html__('You do not have permission to view the full content.', 'press-permit-core');
+            $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
         }
 
         // Not escaped: preserves formatting entered via the notice's rich-text editor.

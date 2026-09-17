@@ -1038,9 +1038,7 @@ jQuery(document).ready(function ($) {
         }
 
         // Fallback to default if empty (a fixed plain-text string, not user-entered HTML).
-        // For the main replacement message, an empty editor is intentional and should preview
-        // as empty instead of substituting the default notice.
-        if (!messageText && teaserType != '1') {
+        if (!messageText) {
             messageText = $preview.first().data('teaser-text-default')
                 || presspermitTeaser.strings.default_teaser_text
                 || '';
