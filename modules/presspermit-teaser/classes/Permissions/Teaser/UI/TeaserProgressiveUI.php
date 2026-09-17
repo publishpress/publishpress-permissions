@@ -133,11 +133,6 @@ class TeaserProgressiveUI {
                     <!-- Combined Settings Table -->
                     <?php $this->renderCombinedSettingsTable($object_type, $item_label, $teaser_setting); ?>
 
-                    <!-- Teaser Notice Style Settings (per post type) -->
-                    <div class="pp-conditional-settings pp-teaser-notice-style-settings">
-                    <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
-                    </div>
-
                     <!-- Read More Notice (shown only when read_more is selected) -->
                     <div class="pp-conditional-settings pp-read-more-notice-card">
                     <?php $this->renderReadMoreNoticeCard($object_type); ?>
@@ -156,6 +151,11 @@ class TeaserProgressiveUI {
                     <!-- No Teaser Text message (shown only when teaser type = 1) -->
                     <div class="pp-conditional-settings pp-teaser-message-card">
                     <?php $this->renderTeaserContentCard($object_type); ?>
+                    </div>
+
+                    <!-- Teaser Notice Style Settings (per post type) -->
+                    <div class="pp-conditional-settings pp-teaser-notice-style-settings">
+                    <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
                     </div>
 
                     <!-- Redirect Settings (shown only when redirect is selected) -->
