@@ -1285,10 +1285,11 @@ tr.pp-main-row:hover td:not(.pp-expand) {
 
 .pp-teaser-notice-style-fields {
     display: grid;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
-    gap: 12px 16px;
-    margin-bottom: 15px;
-    padding: 15px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    align-items: start;
+    gap: 10px 12px;
+    margin-bottom: 12px;
+    padding: 12px;
     background: #fff;
     border: 1px solid #c3c4c7;
     /* Same reasoning as .pp-teaser-text-container: the header above is a thead-only table
@@ -1303,25 +1304,112 @@ tr.pp-main-row:hover td:not(.pp-expand) {
     align-items: flex-start;
     min-width: 0;
     margin: 0;
-    gap: 0;
+    gap: 5px;
+}
+
+.pp-teaser-notice-style-fields .pp-field-row:has(.wp-picker-container) {
+    grid-column: span 4;
+}
+
+.pp-teaser-notice-style-fields .pp-field-row:not(:has(.wp-picker-container)) {
+    grid-column: span 2;
+}
+
+.pp-teaser-notice-style-fields .pp-field-row:nth-child(4) {
+    grid-column: span 4;
+}
+
+.pp-teaser-notice-style-fields .wp-picker-container {
+    max-width: 100%;
+    position: relative;
+}
+
+.pp-teaser-notice-style-fields .wp-picker-container.wp-picker-active {
+    max-width: none;
+    z-index: 20;
+}
+
+.pp-teaser-notice-style-fields .pp-field-row:has(.wp-picker-container.wp-picker-active) {
+    z-index: 20;
+}
+
+.pp-teaser-notice-style-fields .wp-picker-holder {
+    margin-top: 8px;
+    z-index: 20;
+}
+
+.pp-teaser-notice-style-fields .wp-color-result.button {
+    margin: 0;
+    min-height: 30px;
+}
+
+.pp-teaser-notice-style-fields .wp-picker-input-wrap {
+    margin-top: 6px;
+}
+
+.pp-teaser-notice-style-fields .wp-picker-input-wrap label {
+    display: inline-block;
+    margin: 0;
+}
+
+.pp-teaser-notice-style-fields .wp-picker-input-wrap .wp-color-picker {
+    width: 78px !important;
 }
 
 .pp-teaser-notice-style-fields label {
     display: block;
-    margin-bottom: 4px;
+    margin-bottom: 0;
     font-size: 12px;
+    line-height: 1.3;
     font-weight: 600;
+}
+
+.pp-teaser-notice-style-fields input.small-text {
+    width: 72px;
+    min-height: 30px;
 }
 
 @media (max-width: 1300px) {
     .pp-teaser-notice-style-fields {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(6, minmax(0, 1fr));
     }
+}
+
+.pp-teaser-settings-layout.is-desktop-expanded .pp-teaser-notice-style-fields {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+.pp-teaser-settings-layout:not(.is-desktop-expanded) .pp-teaser-notice-style-fields {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.pp-teaser-settings-layout:not(.is-desktop-expanded) .pp-teaser-notice-style-fields .pp-field-row:has(.wp-picker-container) {
+    grid-column: span 3;
+}
+
+.pp-teaser-settings-layout:not(.is-desktop-expanded) .pp-teaser-notice-style-fields .pp-field-row:has(.wp-picker-container.wp-picker-active) {
+    grid-column: span 4;
+}
+
+.pp-teaser-settings-layout:not(.is-desktop-expanded) .pp-teaser-notice-style-fields .pp-field-row:nth-child(4) {
+    grid-column: span 3;
 }
 
 @media (max-width: 700px) {
     .pp-teaser-notice-style-fields {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .pp-teaser-notice-style-fields .pp-field-row:has(.wp-picker-container) {
+        grid-column: span 2;
+    }
+
+    .pp-teaser-settings-layout:not(.is-desktop-expanded) .pp-teaser-notice-style-fields .pp-field-row:has(.wp-picker-container.wp-picker-active) {
+        grid-column: span 2;
+    }
+
+    .pp-teaser-notice-style-fields .pp-field-row:nth-child(4) {
+        grid-column: span 2;
     }
 }
 
