@@ -154,8 +154,8 @@ class AgentsDynamicUI
                 <td>
                     <h4>
                         <?php esc_html_e('Search Results:', 'press-permit-core'); ?>
-                        <img class="waiting" style="display:none;float:right"
-                             src="<?php echo esc_url(admin_url('images/wpspin_light.gif')) ?>" alt=""/>
+                        <img alt="" class="waiting" style="display:none;float:right"
+                             src="<?php echo esc_url(admin_url('images/wpspin_light.gif')) ?>" />
                     </h4>
 
                     <select id="agent_results_<?php echo esc_attr($id_suffix); ?>" class="pp_agent_results" <?php
@@ -426,8 +426,8 @@ class AgentsDynamicUI
                 <td style="display: none;">
                     <h4>
                         <?php esc_html_e('Search Results:', 'press-permit-core'); ?>
-                        <img class="waiting" style="display:none;float:right"
-                            src="<?php echo esc_url(admin_url('images/wpspin_light.gif')) ?>" alt="" />
+                        <img alt="" class="waiting" style="display:none;float:right"
+                            src="<?php echo esc_url(admin_url('images/wpspin_light.gif')) ?>" />
                     </h4>
 
                     <select id="agent_results_<?php echo esc_attr($id_suffix); ?>" class="pp_agent_results" <?php

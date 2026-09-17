@@ -12,8 +12,8 @@
                 <div id="pp-permissions-menu-wrapper" class="postbox" style="box-shadow: none; background: none;">
                     <div class="pp-permissions-menus-promo">
                         <div class="pp-permissions-menus-promo-inner">
-                            <img src="<?php echo esc_url(PRESSPERMIT_URLPATH . '/includes/promo/permissions-visibility-statuses-desktop.jpg');?>" class="pp-permissions-desktop" />
-                            <img src="<?php echo esc_url(PRESSPERMIT_URLPATH . '/includes/promo/permissions-visibility-statuses-mobile.jpg');?>" class="pp-permissions-mobile" />
+                            <img src="<?php echo esc_url(PRESSPERMIT_URLPATH . '/includes/promo/permissions-visibility-statuses-desktop.jpg');?>" class="pp-permissions-desktop" alt="<?php esc_attr_e('Post Visibility Statuses preview', 'press-permit-core'); ?>" />
+                            <img src="<?php echo esc_url(PRESSPERMIT_URLPATH . '/includes/promo/permissions-visibility-statuses-mobile.jpg');?>" class="pp-permissions-mobile" alt="<?php esc_attr_e('Post Visibility Statuses preview', 'press-permit-core'); ?>" />
                             <div class="pp-permissions-menus-promo-content">
                                 <p>
                                     <?php esc_html_e('Control access to post visibility statuses. This workflow feature is available in PublishPress Permissions Pro.', 'press-permit-core'); ?>
