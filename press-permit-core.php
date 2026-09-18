@@ -4,7 +4,7 @@
  * Plugin Name: PublishPress Permissions Free
  * Plugin URI:  https://publishpress.com/presspermit
  * Description: PublishPress Permissions allows you to enable or deny access to posts, pages, categories, tags and more.
- * Version: 4.8.4
+ * Version: 4.9.0
  * Author: PublishPress
  * Author URI:  https://publishpress.com/
  * Text Domain: press-permit-core
@@ -209,7 +209,7 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
             return;
         }
 
-        define('PRESSPERMIT_VERSION', '4.8.4');
+        define('PRESSPERMIT_VERSION', '4.9.0');
 
         if (!defined('PRESSPERMIT_READ_PUBLIC_CAP')) {
             define('PRESSPERMIT_READ_PUBLIC_CAP', 'read');
@@ -257,6 +257,17 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
 
         presspermit();
     }
+
+    function presspermit_load_textdomain()
+    {
+        load_plugin_textdomain(
+            'press-permit-core',
+            false,
+            dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages'
+        );
+    }
+
+    add_action('init', 'presspermit_load_textdomain', 0);
 
     // negative priority to precede any default WP action handlers
     if ($presspermit_loaded_by_pro) {

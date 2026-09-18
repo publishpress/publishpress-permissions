@@ -16,7 +16,14 @@ class Agents
 
     public function agentsUI($agent_type, $all_agents, $id_suffix = '', $item_assignments = [], $args = [])
     {
-        $defaults = ['role_name' => '', 'ajax_selection' => false, 'width' => '', 'hide_checkboxes' => false, 'single_select' => false];
+        $defaults = [
+            'role_name' => '',
+            'ajax_selection' => false,
+            'width' => '',
+            'hide_checkboxes' => false,
+            'single_select' => false,
+            'current_only' => false
+        ];
         $args = array_merge($defaults, $args);
         foreach (array_keys($defaults) as $var) {
             $$var = $args[$var];
@@ -24,20 +31,10 @@ class Agents
 
         if ($single_select) {
             $ajax_selection = false;
-            ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('ul.pp-agents-list input[type=checkbox]').on('click', function() {
-                        $('ul.pp-agents-list input[type=checkbox]').not(this).prop('checked', false);
-                    });
-                });
-                /* ]]> */
-            </script>
-            <?php
+            presspermit_enqueue_admin_script();
         }
 
-        echo '<div class="pp_agents_wrapper">';
+        echo '<div class="pp_agents_wrapper' . ($single_select ? ' pp-single-select' : '') . '">';
 
         if ($ajax_selection) {
             $agents_ajax = $this->agentsDynamicUI();
@@ -59,7 +56,9 @@ class Agents
                 AgentsChecklist::display('current', $agent_type, $all_agents, $id_suffix, $item_assignments, $args);
             }
 
-            AgentsChecklist::display('eligible', $agent_type, $all_agents, $id_suffix, $item_assignments, $args);
+            if (!$current_only) {
+                AgentsChecklist::display('eligible', $agent_type, $all_agents, $id_suffix, $item_assignments, $args);
+            }
 
             echo '<div style="clear:both; height:1px; margin:0">&nbsp;</div>';
 

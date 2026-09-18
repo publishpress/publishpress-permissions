@@ -783,6 +783,10 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         if (preg_match('/quick-search-(posttype|taxonomy)-([a-zA-Z_-]*\b)/', $type, $matches)) {
             if ('posttype' == $matches[1] && $type_obj = get_post_type_object($matches[2])) {
+                if (!presspermit()->admin()->canSetAnyPostPermissions($matches[2])) {
+                    wp_die(-1);
+                }
+
                 $args['hierarchical'] = $type_obj->hierarchical;
 
                 $status = ('attachment' == $matches[2]) ? 'inherit' : '';
@@ -816,6 +820,10 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], [get_post($var_by_ref)]), 0, (object)$args);
                 }
             } elseif ('taxonomy' == $matches[1]) {
+                if (!presspermit()->admin()->canSetAnyTermPermissions('', $matches[2])) {
+                    wp_die(-1);
+                }
+
                 $terms = get_terms($matches[2], [
                     'name__like' => $query,
                     'hide_empty' => false,

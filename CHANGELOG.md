@@ -1,7 +1,24 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.9.0] - 9 Sept, 2026
+
+- Added: Optional Content Visibility functionality through a dedicated module. #2447
+- Changed: Improved the Permissions interface with a new design for user-specific permissions. #2497
+- Changed: Improved the Teaser settings experience with a live preview. #2496
+- Changed: Improved the onboarding experience with a new welcome screen. #2485
+- Changed: Permission Groups are now disabled by default to provide a simpler initial configuration. #2473
+- Changed: Editing Permissions remains active in the background while being hidden from the Features tab. #2486
+- Fixed: Improved the default “Block All Pages” control to provide more predictable page access restrictions. #2487
+- Fixed: Improved security advisory handling to ensure it works correctly with the Pro version. #2499
+- Fixed: Improved Content Security Policy (CSP) compliance to prevent security-related browser restrictions. #2498
+- Fixed: Hardened draft advisory code paths for improved security and reliability. #2483
+- Fixed: Corrected the term checklist hierarchy when Assign Terms restrictions are applied to non-top-level terms. #2451
+- Fixed: Improved multisite uninstall handling by processing site IDs efficiently instead of loading them all at once. #2458
+- Removed: The presspermit-collaboration module is no longer listed among deactivated modules. #2472
+
 [4.8.4] - 1 Sept, 2026
+
 - Fixed: Resolved a security issue involving insecure direct object references (IDOR) in REST API comment read permissions. #2481
 
 [4.8.3] - 24 Aug, 2026

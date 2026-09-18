@@ -180,19 +180,10 @@ class ErrorNotice
                 echo "<div id='message' class='error fade' style='" . esc_attr($style) . "' class='" . esc_attr($class) . "' >" . esc_html($msg->body) . '</div>';
             else :?>
                 <div class='updated <?php echo esc_attr($class);?> pp_dashboard_message'><p><span class="pp-notice"><?php echo esc_html($msg->body) ?></span>&nbsp;
-                <a href="javascript:void(0);" class="presspermit-dismiss-notice" style="float:right" id="<?php echo esc_attr($msg_id);?>"><?php esc_html_e("Dismiss", 'press-permit-core') ?></a>
+                <a href="#" class="presspermit-dismiss-notice" style="float:right" id="<?php echo esc_attr($msg_id);?>" data-nonce="<?php echo esc_attr(wp_create_nonce('pp-dismiss-msg')); ?>"><?php esc_html_e("Dismiss", 'press-permit-core') ?></a>
                 </p></div>
         <?php endif;
         }
-		?>
-		<script type="text/javascript">
-            jQuery(document).ready( function($) {
-                $('a.presspermit-dismiss-notice').on('click', function(e) {
-                    $(this).closest('div').slideUp();
-                    jQuery.post(ajaxurl, {action:"pp_dismiss_msg", msg_id:$(this).attr('id'), cookie: encodeURIComponent(document.cookie)});
-                });
-            });
-		</script>
-		<?php
+		presspermit_enqueue_admin_script();
     }
 }

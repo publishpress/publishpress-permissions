@@ -6,6 +6,7 @@ class HintsPro
 {
     public static function proPromo()
     {
+        presspermit_enqueue_admin_script();
     ?>
 <div style="margin-top:5px">
 <a href="#pp-pro-info"><?php esc_html_e('Show list of Permissions Pro features and screencasts', 'press-permit-core'); ?></a>
@@ -15,24 +16,6 @@ class HintsPro
 $img_url = PRESSPERMIT_URLPATH . '/common/img/';
 $lang_id = 'press-permit-core';
 ?>
-<script type="text/javascript">
-/* <![CDATA[ */
-jQuery(document).ready(function ($) {
-    $('a[href="#pp-pro-info"]').on('click', function()
-    {
-        $('#pp_features').show();
-        $('ul.pro-pplinks').show();
-        return false;
-    });
-    $('a[href="#pp-pro-hide"]').on('click', function()
-    {
-        $('#pp_features').hide();
-        $('ul.pro-pplinks').hide();
-        return false;
-    });
-});
-/* ]]> */
-</script>
 <style>
 #pp_features {
     text-align: left;

@@ -606,7 +606,8 @@ class AgentsDynamicUI
 
         if (!$this->agents_js_queue) {
             $this->agents_js_queue = [];
-            add_action('admin_print_footer_scripts', [$this, 'actAjaxSelectionScripts'], 30);
+            // WordPress prints queued footer scripts at priority 20.
+            add_action('admin_print_footer_scripts', [$this, 'actAjaxSelectionScripts'], 19);
         }
 
         $suppress_selection_js = !empty($args['suppress_selection_js']);
@@ -623,28 +624,27 @@ class AgentsDynamicUI
         if ($this->agents_js_queue) {
             $author_selection_only = false;
 
-            if (!apply_filters('presspermit_override_agent_select_js', false) && !wp_script_is('pp_agent_select', 'done')) {
-                global $wp_scripts;
+            if (!apply_filters('presspermit_override_agent_select_js', false) && !wp_script_is('presspermit-agent-select', 'done')) {
                 $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
                 wp_enqueue_script('presspermit-agent-select', PRESSPERMIT_URLPATH . "/common/js/agent-select{$suffix}.js", ['jquery', 'jquery-form'], PRESSPERMIT_VERSION, true);
-                $wp_scripts->do_item('presspermit-agent-select');
                 $author_selection_only = true;
             }
 
-        ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                <?php foreach ($this->agents_js_queue as $args) : ?>
-                    presspermitLoadAgentsJS('<?php echo esc_attr($args['id_sfx']); ?>', '<?php echo esc_attr($args['agent_type']); ?>', '<?php echo esc_attr($args['context']); ?>', '<?php echo esc_attr($args['agent_id']); ?>', '<?php echo esc_attr($args['suppress_selection_js']); ?>', <?php if ($author_selection_only) echo 'true'; else echo 'false'; ?>);
-                    
-                    <?php
-                    if (($is_post_page && ('select-author' != $args['id_sfx'])) || !$is_membership_activated) :?>
-                        presspermitLoadSelect2AgentsJS('<?php echo esc_attr($args['id_sfx']); ?>', '<?php echo esc_attr($args['agent_type']); ?>', '<?php echo esc_attr($args['context']); ?>', '<?php echo esc_attr($args['agent_id']); ?>', '<?php echo esc_attr($args['suppress_selection_js']); ?>', <?php if ($author_selection_only) echo 'true';                                                                                                                                                                                                                                                                  else echo 'false'; ?>);
-                    <?php endif;?>
-                <?php endforeach; ?>
-                /* ]]> */
-            </script>
-<?php
+            presspermit_enqueue_admin_script();
+
+            foreach ($this->agents_js_queue as $args) :
+                $load_select2 = (($is_post_page && ('select-author' != $args['id_sfx'])) || !$is_membership_activated);
+                ?>
+                <span class="pp-agent-selector-config"
+                    data-id-suffix="<?php echo esc_attr($args['id_sfx']); ?>"
+                    data-agent-type="<?php echo esc_attr($args['agent_type']); ?>"
+                    data-context="<?php echo esc_attr($args['context']); ?>"
+                    data-agent-id="<?php echo esc_attr($args['agent_id']); ?>"
+                    data-suppress-selection="<?php echo !empty($args['suppress_selection_js']) ? '1' : '0'; ?>"
+                    data-author-selection-only="<?php echo $author_selection_only ? '1' : '0'; ?>"
+                    data-load-select2="<?php echo $load_select2 ? '1' : '0'; ?>" hidden></span>
+                <?php
+            endforeach;
         }
     }
 }

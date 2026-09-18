@@ -316,15 +316,11 @@ class NavMenu
             } else {
                 $menu_name = '';
             }
+            presspermit_enqueue_admin_script();
             ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('#menu-name').attr('disabled', 'disabled').attr('name', 'menu-name-label').after('<input type="hidden" name="menu-name" value="<?php echo esc_attr($menu_name);?>" />');
-                });
-                /* ]]> */
-            </script>
-        <?php endif;
+            <span class="pp-nav-menu-name-config" data-menu-name="<?php echo esc_attr($menu_name); ?>" hidden></span>
+            <?php
+        endif;
 
         // remove html for uneditable menu items (simply hiding them leads to unexpected menu item addition behavior)
         if (!$menu_id = NavMenus::determine_selected_menu()) {
@@ -341,18 +337,12 @@ class NavMenu
         }
 
         if ($uneditable_items) :
-            ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    <?php
-                    foreach ($uneditable_items as $id) {
-                        echo "$('#menu-item-" . esc_attr($id) . "').removeClass('menu-item').addClass('menu-item-edit-inactive');";
-                    }
-                    ?>
-                });
-                /* ]]> */
-            </script>
-        <?php endif;
+            presspermit_enqueue_admin_script();
+            foreach ($uneditable_items as $id) :
+                ?>
+                <span class="pp-nav-menu-item-config" data-item-id="<?php echo (int) $id; ?>" hidden></span>
+                <?php
+            endforeach;
+        endif;
     }
 } // end class

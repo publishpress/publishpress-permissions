@@ -20,7 +20,11 @@ class PostFiltersFront
 
         add_filter('wp_get_attachment_metadata', [$this, 'fltGetAttachmentMetadata'], 10, 2);
         add_filter('wp_get_attachment_url', [$this, 'fltGetAttachmentUrl'], 10, 2);
-        add_filter('comments_array', [$this, 'fltCommentsResults'], 99);
+        add_filter('comments_array', [$this, 'fltCommentsResults'], 99, 2);
+        add_filter('comments_open', [$this, 'fltCommentsOpen'], 99, 2);
+        add_filter('pings_open', [$this, 'fltCommentsOpen'], 99, 2);
+        add_filter('get_comments_number', [$this, 'fltCommentsNumber'], 99, 2);
+        add_filter('comments_template', [$this, 'fltCommentsTemplate'], 99);
 
         add_action('presspermit_teaser_restore_post_parent', [$this, 'actRestorePostParent'], 10, 2);
         
@@ -99,17 +103,17 @@ class PostFiltersFront
             }
             */
 
-            $hide_links_types = array_filter((array) $pp->getOption('teaser_hide_menu_links_type'));
+            // "Navigation Menus" (teaser_opt_hide_menu_links) is a single global setting now
+            // (see issue #2518): if set, restricted links stay hidden for every post type
+            // instead of a per-type subset.
+            $hide_menu_links = (bool) $pp->getOption('teaser_opt_hide_menu_links');
 
             foreach (array_keys($items) as $key) {
                 if (!empty($items[$key]->type) && ('post_type' == $items[$key]->type) && in_array($items[$key]->object_id, $hide_ids)) {
                     if ($_post = get_post($items[$key]->object_id)) {
                         if (in_array($_post->post_status, $tease_stati, true)) {
-                            if ($hide_links_types) {
-                                foreach (array_keys($hide_links_types) as $_type) {
-                                    if ($_post->post_type == $_type)
-                                        continue 2;
-                                }
+                            if ($hide_menu_links) {
+                                continue;
                             }
 
                             if ($hide_links_taxonomy) {
@@ -149,7 +153,7 @@ class PostFiltersFront
         if ($post_id && Teaser::instance()->isTeaser($post_id)) {
             $post = get_post($post_id);
             $post_type = $post ? $post->post_type : '';
-            if ($post_type && presspermit()->getTypeOption('teaser_hide_thumbnail', $post_type)) {
+            if ($post_type && presspermit()->getOption('teaser_opt_hide_thumbnail')) {
                 $data = ($post && (false !== strpos($post->post_mime_type, 'application/'))) ? '#' : '';  // avoid both "missing attachment" caption and blank image div
             }
         }
@@ -167,21 +171,51 @@ class PostFiltersFront
         return $data;
     }
 
-    // Strips comments from teased posts/pages
-    public function fltCommentsResults($results)
+    private function shouldDisableComments($post_id)
     {
-        if (!$results) {
-            return $results;
+        if (!$post_id || !Teaser::instance()->isTeaser($post_id)) {
+            return false;
         }
-        
-        if ($teased_posts = Teaser::instance()->getTeasedPosts()) {
-            foreach ($results as $key => $row) {
-                if (isset($row->comment_post_ID) && isset($teased_posts[$row->comment_post_ID])) {
-                    unset($results[$key]);
-                }
+
+        $post_type = get_post_type($post_id);
+
+        return $post_type && (bool) presspermit()->getOption('teaser_opt_disable_comments');
+    }
+
+    // Strips comments from teased posts/pages when comment display is disabled.
+    public function fltCommentsResults($results, $post_id = 0)
+    {
+        if ($post_id && $this->shouldDisableComments($post_id)) {
+            return [];
+        }
+
+        foreach ((array) $results as $key => $row) {
+            if (isset($row->comment_post_ID) && $this->shouldDisableComments($row->comment_post_ID)) {
+                unset($results[$key]);
             }
         }
 
         return $results;
+    }
+
+    public function fltCommentsOpen($is_open, $post_id)
+    {
+        return $this->shouldDisableComments($post_id) ? false : $is_open;
+    }
+
+    public function fltCommentsNumber($number, $post_id)
+    {
+        return $this->shouldDisableComments($post_id) ? 0 : $number;
+    }
+
+    public function fltCommentsTemplate($template)
+    {
+        global $post;
+
+        $post_id = ($post instanceof \WP_Post) ? $post->ID : get_queried_object_id();
+
+        return $this->shouldDisableComments($post_id)
+            ? PRESSPERMIT_TEASER_CLASSPATH . '/empty-comments.php'
+            : $template;
     }
 }

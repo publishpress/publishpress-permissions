@@ -3,6 +3,8 @@ namespace PublishPress\Permissions\Teaser\UI;
 
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
+require_once(__DIR__ . '/TeaserUIBaseTrait.php');
+
 /**
  * PressPermit Custom Post Statuses administration panel.
  *
@@ -10,6 +12,8 @@ use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
 class PostsTeaser
 {
+    use TeaserUIBaseTrait;
+
 	var $blockEditorActive = true;
 
     function __construct() {
@@ -36,8 +40,7 @@ class PostsTeaser
         $new = [
             'teaser_type' => esc_html__('Teaser Type', 'press-permit-core'),
             'coverage' => esc_html__('Coverage', 'press-permit-core'),
-            'teaser_text' => esc_html__('Teaser Text', 'press-permit-core'),
-            'read_more_notice' => esc_html__('Read More Notice', 'press-permit-core'),
+            'teaser_text' => esc_html__('No Teaser Text', 'press-permit-core'),
             'redirect' => esc_html__('Redirect', 'press-permit-core'),
             'options' => esc_html__('Options', 'press-permit-core'),
 
@@ -54,8 +57,12 @@ class PostsTeaser
             'rss_private_feed_mode' => esc_html__('Display mode for readable private posts', 'press-permit-core'),
             'rss_nonprivate_feed_mode' => esc_html__('Display mode for readable non-private posts', 'press-permit-core'),
             'feed_teaser' => esc_html__('Feed Replacement Text (use %permalink% for post URL)', 'press-permit-core'),
-            'read_more_login_notice' => esc_html__('Login Notice Message', 'press-permit-core'),
-            'teaser_hide_thumbnail' => esc_html__('Hide Featured Image when Teaser is applied', 'press-permit-core'),
+            'teaser_opt_direct_access_only' => esc_html__('Apply teaser to list view as well as single view', 'press-permit-core'),
+            'teaser_opt_logged_only' => esc_html__('Apply teaser to logged in and/or logged out users', 'press-permit-core'),
+            'teaser_opt_hide_menu_links' => esc_html__('Hide navigation menu links to restricted content', 'press-permit-core'),
+            'teaser_opt_public_posts_only' => esc_html__('Apply teaser to private posts', 'press-permit-core'),
+            'teaser_opt_hide_thumbnail' => esc_html__('Hide Featured Image when Teaser is applied', 'press-permit-core'),
+            'teaser_opt_disable_comments' => esc_html__('Disable Comments when Teaser is applied', 'press-permit-core'),
             'teaser_hide_custom_private_only' => esc_html__('"Hide Private" settings only apply to custom privacy (Member, Premium, Staff, etc.)', 'press-permit-core'),
         ];
 
@@ -65,17 +72,20 @@ class PostsTeaser
     function optionSections($sections)
     {
         $new = [
-            'teaser_type' => ['use_teaser', 'tease_logged_only'],
-            'coverage' => ['teaser_hide_custom_private_only', 'tease_public_posts_only', 'tease_direct_access_only', 'teaser_hide_thumbnail'],
+            'teaser_type' => ['use_teaser'],
+            'coverage' => ['teaser_hide_custom_private_only'],
             'menu' => [''],
             'redirect' => ['teaser_redirect_anon', 'teaser_redirect_anon_page', 'teaser_redirect', 'teaser_redirect_page', 'teaser_redirect_custom_login_page_anon', 'teaser_redirect_custom_login_page'],
-            'teaser_text' => ['tease_replace_content', 'tease_replace_content_anon', 'tease_prepend_content', 'tease_prepend_content_anon',
+            'teaser_text' => ['tease_replace_content', 'tease_prepend_content', 'tease_prepend_content_anon',
                               'tease_append_content', 'tease_append_content_anon', 'tease_prepend_name', 'tease_prepend_name_anon',
                               'tease_append_name', 'tease_append_name_anon', 'tease_replace_excerpt', 'tease_replace_excerpt_anon',
                               'tease_prepend_excerpt', 'tease_prepend_excerpt_anon', 'tease_append_excerpt', 'tease_append_excerpt_anon'],
-            'read_more_notice' => ['read_more_login_notice'],
             'hidden_content_teaser' => ['teaser_hide_custom_private_only'],
-            'options' => ['rss_private_feed_mode', 'rss_nonprivate_feed_mode', 'feed_teaser'],
+            'options' => [
+                'teaser_opt_direct_access_only', 'teaser_opt_logged_only', 'teaser_opt_hide_menu_links',
+                'teaser_opt_public_posts_only', 'teaser_opt_hide_thumbnail', 'teaser_opt_disable_comments',
+                'rss_private_feed_mode', 'rss_nonprivate_feed_mode', 'feed_teaser',
+            ],
         ];
 
         $key = 'teaser';
@@ -87,131 +97,292 @@ class PostsTeaser
         return apply_filters('presspermit_admin_get_string', '', $code);
     }
 
-    /**
-     * Check if current version is PRO
-     * 
-     * @return bool True if PRO version is active
-     */
-    private function isProVersion() {
-        return defined('PRESSPERMIT_PRO_VERSION');
-    }
-
-    /**
-     * Check if a feature is available in current version
-     * 
-     * @param string $feature_key Feature identifier
-     * @return bool True if feature is available
-     */
-    private function isFeatureAvailable($feature_key) {
-        // Free version features
-        $free_features = [
-            'post_type_post'           => true, // Posts only
-            'teaser_type_none'         => true, // No teaser option
-            'teaser_type_configured'   => true, // Configured teaser text
-            'user_application'         => true, // Both users option
-            'teaser_text_replace_anon' => true, // Replace content for anonymous
-            'coverage_basic'           => true, // Basic coverage
-            'hide_thumbnail'           => true, // Hide featured image
-        ];
-        
-        // In PRO version, all features are available
-        if ($this->isProVersion()) {
-            return true;
-        }
-        
-        return isset($free_features[$feature_key]) && $free_features[$feature_key];
-    }
-
-    /**
-     * Render PRO badge for locked features
-     * 
-     * @param string $feature_name Display name of the feature
-     * @param string $tooltip Optional tooltip text
-     * @return string HTML for PRO badge
-     */
-    private function renderProBadge($feature_name = '', $tooltip = '') {
-        if ($this->isProVersion()) {
-            return '';
-        }
-        
-        if (empty($tooltip) && !empty($feature_name)) {
-            $tooltip = sprintf(
-                esc_attr__('%s is a PRO feature', 'press-permit-core'),
-                $feature_name
-            );
-        }
-        
-        $feature_slug = !empty($feature_name) ? sanitize_title($feature_name) : '';
-        
-        return sprintf(
-            ' <span class="pp-pro-badge" title="%s" data-feature="%s">🔒 PRO</span>',
-            esc_attr($tooltip),
-            esc_attr($feature_slug)
-        );
-    }
-
-    /**
-     * Get upgrade URL
-     * 
-     * @return string Upgrade page URL
-     */
-    private function getUpgradeUrl() {
-        return 'https://publishpress.com/links/permissions-banner';
-    }
-
-    /**
-     * Get comparison URL
-     * 
-     * @return string Feature comparison page URL
-     */
-    private function getComparisonUrl() {
-        return 'https://publishpress.com/permissions/pricing/';
-    }
-
-    /**
-     * Render upgrade modal for locked features
-     * 
-     * @param string $feature_name Feature display name
-     * @param array $benefits List of feature benefits
-     * @return string HTML for upgrade modal
-     */
-    private function renderUpgradeModal($feature_name, $benefits = []) {
-        if ($this->isProVersion()) {
-            return '';
-        }
-        
-        ob_start();
+    private function renderTeaserApplicationOptions($ui, $tab, $section) {
         ?>
-        <div class="pp-upgrade-modal" data-feature="<?php echo esc_attr(sanitize_title($feature_name)); ?>" style="display:none;">
-            <div class="pp-modal-overlay"></div>
-            <div class="pp-modal-content">
-                <div class="pp-modal-header">
-                    <h2><?php echo esc_html(sprintf(__('🔓 Unlock %s', 'press-permit-core'), $feature_name)); ?></h2>
-                    <button class="pp-modal-close" type="button">×</button>
-                </div>
-                <div class="pp-modal-body">
-                    <p><?php esc_html_e('This feature is available in PublishPress Permissions PRO', 'press-permit-core'); ?></p>
-                    
-                    <?php if (!empty($benefits)) : ?>
-                    <ul class="pp-benefits-list">
-                        <?php foreach ($benefits as $benefit) : ?>
-                        <li>✓ <?php echo esc_html($benefit); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-                    <?php endif; ?>
-                </div>
-                <div class="pp-modal-footer">
-                    <a href="<?php echo esc_url($this->getUpgradeUrl()); ?>" class="button button-primary" target="_blank">
-                        <?php esc_html_e('Upgrade to PRO', 'press-permit-core'); ?>
-                    </a>
-                    <a href="<?php echo esc_url($this->getComparisonUrl()); ?>" class="button button-secondary" target="_blank">
-                        <?php esc_html_e('Compare Features', 'press-permit-core'); ?>
-                    </a>
-                </div>
-            </div>
+        <div class="pp-teaser-application-options">
+            <table class="widefat fixed striped teaser-table pp-teaser-application-table">
+                <colgroup>
+                    <col style="width: 25%;">
+                    <col style="width: 75%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('Application', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                if (in_array('teaser_opt_direct_access_only', $ui->form_options[$tab][$section], true)) :
+                    $id = 'teaser_opt_direct_access_only';
+                    $ui->all_options[] = $id;
+                    $val = (int) $ui->getOption($id);
+                    ?>
+                    <tr>
+                        <th><?php esc_html_e('Teaser Application', 'press-permit-core'); ?></th>
+                        <td>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="0"<?php checked($val, 0); ?>>
+                                <?php esc_html_e('List and Single view', 'press-permit-core'); ?>
+                            </label>
+                            <label>
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="1"<?php checked($val, 1); ?>>
+                                <?php esc_html_e('Single view only', 'press-permit-core'); ?>
+                            </label>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('teaser_opt_logged_only', $ui->form_options[$tab][$section], true)) :
+                    $id = 'teaser_opt_logged_only';
+                    $ui->all_options[] = $id;
+                    $val = (string) $ui->getOption($id);
+                    ?>
+                    <tr>
+                        <th><?php esc_html_e('User Application', 'press-permit-core'); ?></th>
+                        <td>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="0"<?php checked($val === '0' || '' === $val, true); ?>>
+                                <?php esc_html_e('Both', 'press-permit-core'); ?>
+                            </label>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="anon"<?php checked($val, 'anon'); ?>>
+                                <?php esc_html_e('Not Logged In Users', 'press-permit-core'); ?>
+                            </label>
+                            <label>
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="1"<?php checked($val, '1'); ?>>
+                                <?php esc_html_e('Logged In Users', 'press-permit-core'); ?>
+                            </label>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('teaser_opt_hide_menu_links', $ui->form_options[$tab][$section], true)) :
+                    $id = 'teaser_opt_hide_menu_links';
+                    $ui->all_options[] = $id;
+                    $val = (int) $ui->getOption($id);
+                    ?>
+                    <tr>
+                        <th><?php esc_html_e('Navigation Menus', 'press-permit-core'); ?></th>
+                        <td>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="0"<?php checked($val, 0); ?>>
+                                <?php esc_html_e("Display links if user doesn't have access", 'press-permit-core'); ?>
+                            </label>
+                            <label>
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="1"<?php checked($val, 1); ?>>
+                                <?php esc_html_e("Hide links if user doesn't have access", 'press-permit-core'); ?>
+                            </label>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('teaser_opt_public_posts_only', $ui->form_options[$tab][$section], true)) :
+                    $id = 'teaser_opt_public_posts_only';
+                    $ui->all_options[] = $id;
+                    $val = (string) $ui->getOption($id);
+                    if ('' === $val) {
+                        $val = '0';
+                    }
+                    ?>
+                    <tr>
+                        <th><?php esc_html_e('Private Posts', 'press-permit-core'); ?></th>
+                        <td>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="0"<?php checked($val, '0'); ?>>
+                                <?php esc_html_e('Apply Teaser to Private Posts', 'press-permit-core'); ?>
+                            </label>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="1"<?php checked($val, '1'); ?>>
+                                <?php esc_html_e("Hide Private Posts if user doesn't have access", 'press-permit-core'); ?>
+                            </label>
+                            <?php if (defined('PUBLISHPRESS_STATUSES_VERSION') || class_exists('PublishPress\Statuses\Factory')) : ?>
+                            <label>
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="custom"<?php checked($val, 'custom'); ?>>
+                                <?php esc_html_e('Hide for Custom Visibility', 'press-permit-core'); ?>
+                            </label>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('teaser_opt_hide_thumbnail', $ui->form_options[$tab][$section], true)) :
+                    $id = 'teaser_opt_hide_thumbnail';
+                    $ui->all_options[] = $id;
+                    $val = (int) $ui->getOption($id);
+                    ?>
+                    <tr>
+                        <th><?php esc_html_e('Featured Image', 'press-permit-core'); ?></th>
+                        <td>
+                            <label style="margin-right: 20px;">
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="0"<?php checked($val, 0); ?>>
+                                <?php esc_html_e('Show featured image', 'press-permit-core'); ?>
+                            </label>
+                            <label>
+                                <input type="radio" name="<?php echo esc_attr($id); ?>" value="1"<?php checked($val, 1); ?>>
+                                <?php esc_html_e('Hide featured image when teaser is applied', 'press-permit-core'); ?>
+                            </label>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('teaser_opt_disable_comments', $ui->form_options[$tab][$section], true)) :
+                    $id = 'teaser_opt_disable_comments';
+                    $ui->all_options[] = $id;
+                    $default_val = 1;
+                    $stored_val = $ui->getOption($id);
+                    $val = ('' === $stored_val || false === $stored_val) ? $default_val : (int) $stored_val;
+                    ?>
+                    <tr>
+                        <th><?php esc_html_e('Comments Area', 'press-permit-core'); ?></th>
+                        <td>
+                            <label>
+                                <input type="hidden" name="<?php echo esc_attr($id); ?>" value="0">
+                                <input type="checkbox" name="<?php echo esc_attr($id); ?>" value="1"<?php checked($val, 1); ?>>
+                                <?php esc_html_e('Disable the comments area when Teaser is applied', 'press-permit-core'); ?>
+                            </label>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                </tbody>
+            </table>
         </div>
         <?php
-        return ob_get_clean();
+    }
+
+    private function renderRssOptions($ui, $tab, $section) {
+        $rss_hint = '';
+
+        if ($ui->display_hints) {
+            ob_start();
+            SettingsAdmin::echoStr('teaser_block_all_rss');
+            $rss_hint = trim(ob_get_clean());
+        }
+
+        $captions = [
+            'full_content' => esc_html__('Full Content', 'press-permit-core'),
+            'excerpt_only' => esc_html__('Excerpt Only', 'press-permit-core'),
+            'title_only' => esc_html__('Title Only', 'press-permit-core'),
+        ];
+        ?>
+        <div class="pp-teaser-rss-options">
+            <table class="widefat fixed striped teaser-table pp-teaser-rss-table">
+                <colgroup>
+                    <col style="width: 25%;">
+                    <col style="width: 75%;">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th colspan="2">
+                            <strong><?php esc_html_e('RSS', 'press-permit-core'); ?></strong>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php if ($rss_hint) : ?>
+                    <tr class="pp-teaser-rss-description-row">
+                        <td colspan="2">
+                            <p class="description pp-teaser-rss-description">
+                                <?php echo wp_kses_post($rss_hint); ?>
+                            </p>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('rss_private_feed_mode', $ui->form_options[$tab][$section], true)) :
+                    $ui->all_options[] = 'rss_private_feed_mode';
+                    ?>
+                    <tr>
+                        <th>
+                            <?php esc_html_e('Display for readable private posts', 'press-permit-core'); ?>
+                        </th>
+                        <td>
+                            <select name="rss_private_feed_mode" id="rss_private_feed_mode" autocomplete="off">
+                                <?php
+                                foreach ($captions as $key => $caption) :
+                                    ?>
+                                    <option value="<?php echo esc_attr($key); ?>"<?php selected($ui->getOption('rss_private_feed_mode'), $key); ?>>
+                                        <?php echo esc_html($caption); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('rss_nonprivate_feed_mode', $ui->form_options[$tab][$section], true)) :
+                    $ui->all_options[] = 'rss_nonprivate_feed_mode';
+                    ?>
+                    <tr>
+                        <th>
+                            <?php esc_html_e('Display for readable non-private posts', 'press-permit-core'); ?>
+                        </th>
+                        <td>
+                            <select name="rss_nonprivate_feed_mode" id="rss_nonprivate_feed_mode" autocomplete="off">
+                                <?php
+                                foreach ($captions as $key => $caption) :
+                                    ?>
+                                    <option value="<?php echo esc_attr($key); ?>"<?php selected($ui->getOption('rss_nonprivate_feed_mode'), $key); ?>>
+                                        <?php echo esc_html($caption); ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+
+                <?php
+                if (in_array('feed_teaser', $ui->form_options[$tab][$section], true)) :
+                    $id = 'feed_teaser';
+                    $ui->all_options[] = $id;
+                    $val = htmlspecialchars($ui->getOption($id));
+                    ?>
+                    <tr>
+                        <th>
+                            <?php esc_html_e('Feed Replacement Text', 'press-permit-core'); ?>
+                        </th>
+                        <td>
+                            <?php
+                            // phpcs Note: This option cannot currently be escaped because it supports embedded html
+                            $editor_settings = [
+                                'textarea_name' => $id,
+                                'textarea_rows' => 6,
+                                'media_buttons' => false,
+                                'teeny' => true,
+                                'quicktags' => ['buttons' => 'strong,em,link'],
+                                'tinymce' => [
+                                    'toolbar1' => 'bold,italic,link,unlink,undo,redo',
+                                    'toolbar2' => '',
+                                    'toolbar3' => '',
+                                ],
+                            ];
+
+                            $editor_value = html_entity_decode($val, ENT_QUOTES, 'UTF-8');
+                            wp_editor($editor_value, $id, $editor_settings);
+                            ?>
+                            <p class="description">
+                                <?php
+                                printf(
+                                    esc_html__('Use %s for post URL', 'press-permit-core'),
+                                    '<code>%permalink%</code>'
+                                );
+                                ?>
+                            </p>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+        <?php
     }
 
     private function display() {
@@ -231,11 +402,14 @@ class PostsTeaser
         ?>
         <input type="hidden" value="<?php echo esc_attr($current_tab);?>" id="current_tab" name="current_tab">
         <input type="hidden" value="<?php echo esc_attr($selected_post_type);?>" id="selected_post_type" name="selected_post_type">
-        <div class="wrap pressshack-admin-wrapper pp-conditions pp-teaser-redesign">
+        <div class="wrap pressshack-admin-wrapper">
             <header>
                 <h1 class="wp-heading-inline">
                     <?php echo esc_html(__('Posts Teaser', 'press-permit-core')); ?>
                 </h1>
+                <p class="description">
+                    <?php esc_html_e("Use these settings to control what users see when they don't have access to your content.", 'press-permit-core'); ?>
+                </p>
             </header>
 
 			<?php
@@ -259,19 +433,28 @@ class PostsTeaser
 			endif;
 			?>
 
-            <ul id="publishpress-permissions-teaser-tabs" class="nav-tab-wrapper">
-                <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-settings') echo ' nav-tab-active';?>">
-                  <a href="#ppp-tab-teaser-settings">
-                      <?php _e('Teaser Settings', 'press-permit-core') ?>
-                  </a>
-                </li>
+            <div class="pp-teaser-tabs-header">
+                <ul id="publishpress-permissions-teaser-tabs" class="nav-tab-wrapper">
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-teaser-settings') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-teaser-settings">
+                          <?php _e('Teaser Settings', 'press-permit-core') ?>
+                      </a>
+                    </li>
 
-                <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
-                  <a href="#ppp-tab-options">
-                      <?php _e('Options', 'press-permit-core') ?>
-                  </a>
-                </li>
-            </ul>
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-text-options') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-text-options">
+                          <?php _e('Text Options', 'press-permit-core') ?>
+                      </a>
+                    </li>
+
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-options">
+                          <?php _e('Options', 'press-permit-core') ?>
+                      </a>
+                    </li>
+                </ul>
+                <?php $this->renderTopSaveButton(); ?>
+            </div>
 
             <div id="pp-teaser">
 
@@ -309,7 +492,7 @@ class PostsTeaser
             $default_options = apply_filters('presspermit_teaser_default_options', []);
             
             // Use trait method to get available post types (FREE: only 'post', PRO: all enabled)
-            $available_post_types = $pp->getEnabledPostTypes();
+            $available_post_types = $this->getAvailablePostTypes($pp);
             $opt_available = array_fill_keys($available_post_types, 0);
             $no_tease_types = \PublishPress\Permissions\Teaser::noTeaseTypes();
 
@@ -320,38 +503,20 @@ class PostsTeaser
             $use_teaser = array_intersect_key($use_teaser, array_fill_keys($available_post_types, true));
             $use_teaser = $pp->admin()->orderTypes($use_teaser, ['item_type' => 'post']);
 
+            $any_teased_types = array_filter($use_teaser);
+
             $option_num_chars = 'teaser_num_chars';
             $ui->all_otype_options[] = $option_num_chars;
             $arr_num_chars = $ui->getOptionArray($option_num_chars);
 
-            $option_logged_only = 'tease_logged_only';
-            $ui->all_otype_options[] = $option_logged_only;
-            $opt_vals = $ui->getOptionArray($option_logged_only);
-            $logged_only = array_diff_key(array_merge($opt_available, $default_options[$option_logged_only] ?? [], $opt_vals), $no_tease_types);
-
-            $option_hide_private = 'tease_public_posts_only';
-            $ui->all_otype_options[] = $option_hide_private;
-            $opt_vals = $ui->getOptionArray($option_hide_private);
-            $hide_private = array_diff_key(array_merge($opt_available, $default_options[$option_hide_private] ?? [], $opt_vals), $no_tease_types);
-            $hide_private = array_intersect_key($hide_private, array_fill_keys($available_post_types, true));
-
-            $option_direct_only = 'tease_direct_access_only';
-            $ui->all_otype_options[] = $option_direct_only;
-            $opt_vals = $ui->getOptionArray($option_direct_only);
-            $direct_only = array_diff_key(array_merge($opt_available, $default_options[$option_direct_only] ?? [], $opt_vals), $no_tease_types);
-
-            $option_hide_links = 'teaser_hide_menu_links_type';
-            $ui->all_otype_options[] = $option_hide_links;
-            $opt_vals = $ui->getOptionArray($option_hide_links);
-
-            $defaults = (isset($default_options[$option_hide_links])) ? (array) $default_options[$option_hide_links] : [];
-            $hide_links = array_diff_key(array_merge($opt_available, $defaults, $opt_vals), $no_tease_types);
-            $hide_links = array_intersect_key($hide_links, array_fill_keys($available_post_types, true));
-
-            $option_hide_thumbnail = 'teaser_hide_thumbnail';
-            $ui->all_otype_options[] = $option_hide_thumbnail;
-            $opt_vals = $ui->getOptionArray($option_hide_thumbnail);
-            $hide_thumbnail = array_diff_key(array_merge($opt_available, $default_options[$option_hide_thumbnail] ?? [], $opt_vals), $no_tease_types);
+            // Note: "Teaser Application", "User Application", "Navigation Menus", "Private
+            // Posts", "Featured Image", and "Comments Area" used to be registered here as
+            // per-post-type options (tease_logged_only, tease_public_posts_only,
+            // tease_direct_access_only, teaser_hide_menu_links_type, teaser_hide_thumbnail,
+            // teaser_disable_comments). They're now global settings on the Options tab - see
+            // renderTeaserApplicationOptions() and the teaser_opt_* options (issue #2518). The
+            // old per-type options are intentionally left alone in the database (read once by
+            // TeaserHooks::pluginUpdated() to seed the new globals on upgrade).
 
             // Register teaser text options as per-post-type
             $teaser_text_options = [
@@ -362,7 +527,6 @@ class PostsTeaser
                 'tease_append_content',
                 'tease_prepend_name_anon',
                 'tease_append_name_anon',
-                'tease_replace_content_anon',
                 'tease_prepend_content_anon',
                 'tease_append_content_anon',
             ];
@@ -377,6 +541,8 @@ class PostsTeaser
                 'teaser_redirect_anon',
                 'teaser_redirect_page',
                 'teaser_redirect_anon_page',
+                'teaser_redirect_url',
+                'teaser_redirect_anon_url',
                 'teaser_redirect_custom_login_page',
                 'teaser_redirect_custom_login_page_anon',
             ];
@@ -385,26 +551,9 @@ class PostsTeaser
                 $ui->all_otype_options[] = $option_name;
             }
 
-            $section = 'teaser_type';
-
-        if (!empty($ui->form_options[$tab][$section])) : ?>
-            <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
-			<p>
-            <?php
-			if (empty($displayed_teaser_caption)) {
-                if ($ui->display_hints) {
-                    SettingsAdmin::echoStr('display_teaser');
-                }
-
-                $displayed_teaser_caption = true;
-            }
-			?>
-			</p>
-
-			<?php
             $use_teaser = array_intersect_key($use_teaser, array_fill_keys($available_post_types, true));
             $use_teaser = $pp->admin()->orderTypes($use_teaser, ['item_type' => 'post']);
-            
+
             // Sort array to ensure 'post' appears first
             if (isset($use_teaser['post'])) {
                 $post_value = $use_teaser['post'];
@@ -412,22 +561,20 @@ class PostsTeaser
                 $use_teaser = array_merge(['post' => $post_value], $use_teaser);
             }
 
-            $any_teased_types = array_filter($use_teaser);
-
             // Render new Progressive Disclosure UI
-            require_once(__DIR__ . '/TeaserUIBaseTrait.php');
             require_once(__DIR__ . '/TeaserProgressiveUI.php');
 
             $options_data = [
-                'logged_only' => $logged_only,
-                'hide_private' => $hide_private,
-                'direct_only' => $direct_only,
-                'hide_links' => $hide_links,
                 'arr_num_chars' => $arr_num_chars,
-                'hide_thumbnail' => $hide_thumbnail
             ];
-            
+
             $progressive_ui = new TeaserProgressiveUI($pp, $ui, $use_teaser, $options_data, $this->blockEditorActive);
+
+            $section = 'teaser_type';
+
+        if (!empty($ui->form_options[$tab][$section])) : ?>
+            <section id="ppp-tab-teaser-settings" style="display:<?php if ($current_tab === 'ppp-tab-teaser-settings') echo 'block'; else echo 'none'; ?>;">
+            <?php
             $progressive_ui->render();
             ?>
 
@@ -435,131 +582,36 @@ class PostsTeaser
         <?php
         endif; // any options accessable in this section
 
+        if (!empty($ui->form_options[$tab][$section])) : ?>
+            <section id="ppp-tab-text-options" style="display:<?php if ($current_tab === 'ppp-tab-text-options') echo 'block'; else echo 'none'; ?>;">
+                <?php $progressive_ui->renderTextOptions(); ?>
+            </section>
+        <?php
+        endif;
+
 
         $section = 'options';                                // --- OPTIONS SECTION ---
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-options" style="display:<?php if ($current_tab === 'ppp-tab-options') echo 'block'; else echo 'none'; ?>;">
-            
+
             <?php
-            $style = ($any_teased_types) ? "display:none" : '';
+            $style = (!empty($any_teased_types)) ? "display:none" : '';
             ?>
             <p class="pp-teaser-settings-na" style="<?php echo esc_attr($style);?>">
             <?php
             SettingsAdmin::echoStr('teaser_settings_not_applicable');
-			?>
+            ?>
             </p>
 
             <?php
-            $style = (!$any_teased_types) ? "display:none" : '';
+            $style = (empty($any_teased_types)) ? "display:none" : '';
             ?>
 
             <div class="pp-teaser-options" style="<?php echo esc_attr($style);?>">
-            <h2 class="title">
-				<?php esc_html_e( 'RSS', 'press-permit-core' ); ?>
-			</h2>
-			<p>
-				<?php
-				if ( $ui->display_hints ) {
-					SettingsAdmin::echoStr( 'teaser_block_all_rss' );
-				}
-				?>
-			</p>
-			<table class="form-table">
-
-				<?php
-				// Display for readable private posts
-				if ( in_array( 'rss_private_feed_mode', $ui->form_options[$tab][$section], true ) ) :
-					$ui->all_options[] = 'rss_private_feed_mode';
-					?>
-					<tr>
-						<th>
-							<?php
-							esc_html_e( 'Display for readable private posts:', 'press-permit-core' );
-		                    ?>
-						</th>
-						<td>
-							<?php
-							echo '<select name="rss_private_feed_mode" id="rss_private_feed_mode" autocomplete="off">';
-							$captions = ['full_content' => esc_html__("Full Content", 'press-permit-core'), 'excerpt_only' => esc_html__("Excerpt Only", 'press-permit-core'), 'title_only' => esc_html__("Title Only", 'press-permit-core')];
-							foreach ($captions as $key => $value) {
-								$selected = ($ui->getOption('rss_private_feed_mode') == $key) ? ' selected ' : '';
-								echo "\n\t<option value='" . esc_attr($key) . "' " . esc_attr($selected) . ">" . esc_html($captions[$key]) . "</option>";
-							}
-							echo '</select>';
-							?>
-						</td>
-					</tr>
-					<?php
-				endif;
-
-				// Display for readable non-private posts
-				if ( in_array( 'rss_nonprivate_feed_mode', $ui->form_options[$tab][$section], true ) ) :
-					$ui->all_options[] = 'rss_nonprivate_feed_mode';
-					?>
-					<tr>
-						<th>
-							<?php
-							esc_html_e( 'Display for readable non-private posts:', 'press-permit-core' );
-		                    ?>
-						</th>
-						<td>
-							<?php
-							echo '<select name="rss_nonprivate_feed_mode" id="rss_nonprivate_feed_mode" autocomplete="off">';
-	                        $captions = ['full_content' => esc_html__("Full Content", 'press-permit-core'), 'excerpt_only' => esc_html__("Excerpt Only", 'press-permit-core'), 'title_only' => esc_html__("Title Only", 'press-permit-core')];
-	                        foreach ($captions as $key => $value) {
-	                            $selected = ($ui->getOption('rss_nonprivate_feed_mode') == $key) ? ' selected ' : '';
-	                            echo "\n\t<option value='" . esc_attr($key) . "' " . esc_attr($selected) . ">" . esc_html($captions[$key]) . "</option>";
-	                        }
-	                        echo '</select>';
-							?>
-						</td>
-					</tr>
-					<?php
-				endif;
-
-				// Feed Replacement Text
-				if ( in_array( 'feed_teaser', $ui->form_options[$tab][$section], true ) ) :
-					$id = 'feed_teaser';
-					$ui->all_options[] = $id;
-					$val = htmlspecialchars($ui->getOption($id));
-					?>
-					<tr>
-						<th>
-							<?php
-							esc_html_e( 'Feed Replacement Text:', 'press-permit-core' );
-							?>
-						</th>
-						<td>
-							<?php
-                            // phpcs Note: This option cannot currently be escaped because it supports embedded html
-                            $editor_settings = [
-                                'textarea_name' => $id,
-                                'textarea_rows' => 6,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,link,unlink,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            
-                            // Decode HTML entities for the editor
-                            $editor_value = html_entity_decode($val, ENT_QUOTES, 'UTF-8');
-                            wp_editor($editor_value, $id, $editor_settings);
-							?>
-							<p class="description">
-								<?php printf(
-									esc_html__( 'Use %s for post URL', 'press-permit-core' ),
-									'<code>%permalink%</code>'
-								); ?>
-							</p>
-						</td>
-					</tr>
-				<?php endif; ?>
-			</table>
-            
+            <?php
+            $this->renderTeaserApplicationOptions($ui, $tab, $section);
+            $this->renderRssOptions($ui, $tab, $section);
+            ?>
             </div>
             </section>
         <?php
@@ -584,5 +636,15 @@ class PostsTeaser
     <?php
 
     }
-}
 
+    private function renderTopSaveButton()
+    {
+        ?>
+        <div class="pp-teaser-top-actions">
+            <button type="submit" name="presspermit_submit" value="1" class="button button-primary pp-teaser-top-save">
+                <?php esc_html_e('Save Changes', 'press-permit-core'); ?>
+            </button>
+        </div>
+        <?php
+    }
+}

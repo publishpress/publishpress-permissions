@@ -93,7 +93,7 @@ class RoleUsage
                 ?>
                 <p class="submit" style="border:none;float:left">
                     <input type="submit" name="pp_role_usage_defaults" value="<?php esc_attr_e('Revert to Defaults', 'press-permit-core') ?>"
-                        onclick="<?php echo "javascript:if (confirm('" . esc_attr($msg) . "')) {return true;} else {return false;}"; ?>"/>
+                        class="pp-confirm-submit" data-confirm="<?php echo esc_attr($msg); ?>"/>
                 </p>
                 <br style="clear:both"/>
             </form>

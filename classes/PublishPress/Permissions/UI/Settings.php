@@ -8,8 +8,6 @@ class Settings
     {
         // called by Dashboard\DashboardFilters::actMenuHandler
 
-        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-
         add_action('admin_footer', [$this, 'markActiveSubmenu'], 20);
 
         require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsAdmin.php');
@@ -247,15 +245,8 @@ class Settings
 
     function markActiveSubmenu() {
         if (('presspermit-settings' == presspermitPluginPage()) && PWP::is_REQUEST('pp_tab', 'sync_posts')) :
-        ?>
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('#adminmenu li.toplevel_page_presspermit-groups ul.wp-submenu li').removeClass('current');
-                    $('#adminmenu li.toplevel_page_presspermit-groups ul.wp-submenu li a[href="admin.php?page=presspermit-sync"]').parent().addClass('current');
-                });
-                /* ]]> */
-            </script>
-        <?php endif;
+            presspermit_enqueue_admin_script();
+            echo '<span class="pp-sync-submenu-config" hidden></span>';
+        endif;
     }
 }

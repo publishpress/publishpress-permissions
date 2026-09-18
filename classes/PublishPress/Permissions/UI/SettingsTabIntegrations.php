@@ -154,50 +154,7 @@ class SettingsTabIntegrations
                     </div>
                 </td>
             </tr>
-            <script type="text/javascript">
-                jQuery(function ($) {
-                    // Category filtering
-                    $(".pp-category-label").on("click", function () {
-                        $(".pp-category-label").removeClass("active");
-                        $(this).addClass("active");
-                        const category = $(this).data("category");
-                        $(".pp-integration-card").each(function () {
-                            const categories = ($(this).data("categories") || "all")
-                                .toString()
-                                .split(",");
-                            if (category === "all" || categories.includes(category)) {
-                                $(this).removeClass("pp-hidden");
-                            } else {
-                                $(this).addClass("pp-hidden");
-                            }
-                        });
-                    });
-
-                    // Disabled checkbox upgrade message
-                    $('#pp-integrations .pp-integration-card.pp-disabled input[type="checkbox"]').on(
-                        "click",
-                        function (e) {
-                            e.preventDefault();
-                            const card = $(this).closest(".pp-integration-card");
-                            card
-                                .find(".pp-upgrade-overlay")
-                                .css("opacity", "1")
-                                .delay(3000)
-                                .animate({ opacity: "0" }, 500);
-                            if (!card.find(".pp-temp-message").length) {
-                                $(
-                                    '<div class="pp-temp-message" style="position:absolute;top:10px;right:10px;background:#ff5722;color:white;padding:5px 10px;border-radius:3px;font-size:12px;z-index:999;">Pro Feature</div>'
-                                )
-                                    .appendTo(card)
-                                    .delay(2000)
-                                    .fadeOut(500, function () {
-                                        $(this).remove();
-                                    });
-                            }
-                        }
-                    );
-                });
-            </script>
+            <?php presspermit_enqueue_admin_script(); ?>
         <?php endif;
     }
 

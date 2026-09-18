@@ -242,6 +242,7 @@ class Permissions
         $this->default_options = [
             'enabled_taxonomies' => ['category' => true, 'post_tag' => true],
             'enabled_post_types' => array_fill_keys(['post', 'page'], true),
+            'display_group_exceptions' => 0,
             'define_media_post_caps' => 0,
             'define_create_posts_cap' => 0,
             'strip_private_caption' => 1,
@@ -351,12 +352,9 @@ class Permissions
             new Permissions\DB\DatabaseSetup($db_ver);
         }
 
-        if ($ver) {
-            if ($role = @get_role('administrator')) {
-                if (empty($role->capabilities['pp_manage_settings'])) {
-                    $ver = false; // repopulate roles if Administrator lacks pp_manage_settings capability
-                }
-            }
+        if ($ver && !get_option('ppperm_added_role_caps_4_8_2')) {
+            require_once(PRESSPERMIT_CLASSPATH . '/PluginUpdated.php');
+            Permissions\PluginUpdated::populateRoles();
         }
 
         if (!$ver) {
@@ -365,6 +363,7 @@ class Permissions
             // Always force this capability into Administrator role
             if ($role = @get_role('administrator')) {
                 $role->add_cap('pp_manage_settings');
+                $role->add_cap('pp_manage_teaser');
             }
 
             if (!get_option('ppperm_added_role_caps_4_8_2')) {
@@ -383,6 +382,7 @@ class Permissions
     public function loadModules()
     {
         $inactive_modules = (array) $this->getOption('deactivated_modules');
+        $inactive_modules = array_diff_key($inactive_modules, array_fill_keys($this->getRequiredModules(), true));
 
         $dir = PRESSPERMIT_ABSPATH . '/modules/';
 
@@ -403,6 +403,7 @@ class Permissions
             'presspermit-circles',
             'presspermit-collaboration',
             'presspermit-compatibility',
+            'presspermit-content-visibility',
             'presspermit-file-access',
             'presspermit-membership',
             'presspermit-sync',
@@ -419,6 +420,11 @@ class Permissions
         return $modules;
     }
 
+    public function getRequiredModules()
+    {
+        return ['presspermit-collaboration'];
+    }
+
     public function moduleExists($slug)
     {
         return in_array($slug, $this->getAvailableModules());
@@ -427,6 +433,7 @@ class Permissions
     public function getDeactivatedModules()
     {
         $modules = (array) $this->getOption('deactivated_modules');
+        $modules = array_diff_key($modules, array_fill_keys($this->getRequiredModules(), true));
         return array_intersect_key($modules, array_fill_keys($this->getAvailableModules(), true));
     }
 

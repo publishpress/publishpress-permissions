@@ -94,7 +94,9 @@ class Teaser
     {
         $pp = presspermit();
 
-        if (!$pp->getTypeOption('tease_public_posts_only', $post_type))
+        // "Private Posts" (teaser_opt_public_posts_only) is a single global setting now
+        // (see issue #2518), applying uniformly to every post type.
+        if (!$pp->getOption('teaser_opt_public_posts_only'))
             return [];
 
         $hide_stati = get_post_stati(['private' => true]);

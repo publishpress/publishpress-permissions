@@ -1,0 +1,23 @@
+(function () {
+    'use strict';
+
+    function hideEmptyNavigationMenus() {
+        var config = document.querySelector('.pp-hide-empty-menu-config');
+
+        if (!config) {
+            return;
+        }
+
+        document.querySelectorAll('ul.nav-menu').forEach(function (menu) {
+            if (menu.querySelectorAll('li').length === 0) {
+                menu.style.display = 'none';
+
+                if (config.dataset.hideParentDiv === '1' && menu.parentElement.nodeName === 'DIV') {
+                    menu.parentElement.style.display = 'none';
+                }
+            }
+        });
+    }
+
+    hideEmptyNavigationMenus();
+}());
