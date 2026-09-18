@@ -115,7 +115,7 @@ class SettingsTabAdvanced
             'dynamic_wp_roles'                       => esc_html__('Detect Dynamically Mapped WP Roles', 'press-permit-core'),
             'non_admins_set_read_exceptions'         => esc_html__('Non-Administrators can set Reading Permissions for their editable posts', 'press-permit-core'),
             'users_bulk_groups'                      => esc_html__('Bulk Add / Remove Groups on Users Screen', 'press-permit-core'),
-            'list_all_constants'                     => esc_html__('Display all available constant definitions'),
+            'list_all_constants'                     => esc_html__('Display all available constant definitions', 'press-permit-core'),
             'non_admins_set_edit_exceptions'         => esc_html__('Non-Administrators can set Editing Permissions for their editable posts', 'press-permit-core'),
             'publish_exceptions'                     => esc_html__('Assign Publish Permissions separate from Edit Permissions', 'press-permit-core'),
             'limit_user_edit_enabled'                => esc_html__('Limit user editing capabilities by role level', 'press-permit-core'),

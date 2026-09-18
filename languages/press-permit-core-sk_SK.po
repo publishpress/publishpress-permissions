@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-17 10:23+0000\n"
+"PO-Revision-Date: 2026-09-18 15:15+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: sk_SK\n"
@@ -396,8 +396,8 @@ msgstr "Viditeľnosť obsahu"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:95
 msgid "Teaser"
 msgstr "Upútavka"
 
@@ -1178,8 +1178,8 @@ msgstr "Všetci používatelia s rolou WordPress %s"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:971
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:974
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:977
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:161
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:171
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
 #, fuzzy, php-format
@@ -1761,8 +1761,8 @@ msgstr "nie je k dispozícii"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:276
 msgid "Post Type"
 msgstr "Typ príspevku"
 
@@ -2708,47 +2708,68 @@ msgstr "Ste si istí, že chcete odstrániť vybraného používateľa(-ov) z v�
 msgid "Remove the custom permisisons for \"%s\"?"
 msgstr "Odstrániť vlastné oprávnenia pre \"%s\"?"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:155
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:514
-#: classes/PublishPress/Permissions/UI/Settings.php:102
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:95
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:58
+msgid "No items found"
+msgstr "Nenašli sa žiadne položky"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:96
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:59
+#, php-format
+msgid "No %s items found"
+msgstr "Nenašli sa žiadne %s položky"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:97
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:60
+msgid "Search users..."
+msgstr "Hľadať používateľov..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:98
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:61
+msgid "You have unsaved changes."
+msgstr "Máte neuložené zmeny."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:159
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:518
+#: classes/PublishPress/Permissions/UI/Settings.php:100
 msgid "Permissions Settings"
 msgstr "Nastavenia oprávnení"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:181
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:279
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:185
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:283
 #, php-format
 msgid "Permissions: %s"
 msgstr "Oprávnenia: %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:202
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:206
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "Oprávnenia: Vyberte tento %s ako rodiča"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:210
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:214
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "Oprávnenia: Priraďte termíny k tomuto %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:218
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "Oprávnenia: %s tento %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:268
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:538
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:272
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:542
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "povoliť vlastné oprávnenia pre %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:322
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
 msgid "Select as Parent"
 msgstr "Vybrať ako rodiča"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:327
 msgid "Assign Terms"
 msgstr "Priradiť podmienky"
 
@@ -2844,27 +2865,27 @@ msgstr "Momentálne neplatia žiadne konkrétne oprávnenia."
 msgid "No extra roles currently apply."
 msgstr "Momentálne neplatia žiadne extra roly."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:154
 #, php-format
 msgid "Assign to %s"
 msgstr "Priradiť k %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:153
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 msgid "Assign (All Types)"
 msgstr "Priradiť (všetky typy)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:166
 #, php-format
 msgid "%s (All Types)"
 msgstr "%s (Všetky typy)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:274
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "Oprávnenia: %1$s v %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:288
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:361
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:292
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:365
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type. You can "
@@ -2875,33 +2896,33 @@ msgstr ""
 "tiež %2$sdefinovať univerzálne %3$s oprávnenia, ktoré sa vzťahujú na všetky "
 "súvisiace typy príspevkov%4$s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:317
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:321
 #, php-format
 msgid "Permissions: Assign this %2$s to %3$s"
 msgstr "Oprávnenia: Priradiť toto %2$s k %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:327
 #, php-format
 msgid "Permissions: Assign this %2$s for All Post Types"
 msgstr "Oprávnenia: Priradiť toto %2$s pre všetky typy príspevkov"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:330
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:343
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:334
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:347
 #, php-format
 msgid "Permissions: %1$s %2$s in this %3$s"
 msgstr "Oprávnenia: %1$s %2$s v tomto %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:336
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:340
 #, php-format
 msgid "Permissions: %1$s all content in this %2$s for All Post Types"
 msgstr "Oprávnenia: %1$s všetok obsah v tomto %2$s pre všetky typy príspevkov"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:349
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:353
 #, php-format
 msgid "Permissions: %1$s this %2$s"
 msgstr "Oprávnenia: %1$s toto %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:572
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:576
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
@@ -3281,25 +3302,25 @@ msgstr "Podrobná dokumentácia je tiež k dispozícii na webovej stránke plugi
 msgid "View Knowledge Base"
 msgstr "Zobraziť znalostnú základňu"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:171
+#: classes/PublishPress/Permissions/UI/Settings.php:169
 msgid "All settings were updated."
 msgstr "Všetky nastavenia boli aktualizované."
 
-#: classes/PublishPress/Permissions/UI/Settings.php:179
+#: classes/PublishPress/Permissions/UI/Settings.php:177
 msgid "All settings were reset to defaults."
 msgstr "Všetky nastavenia boli resetované na predvolené hodnoty."
 
-#: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:631
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:649
+#: classes/PublishPress/Permissions/UI/Settings.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:627
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:645
 msgid "Save Changes"
 msgstr "Uložiť zmeny"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:223
+#: classes/PublishPress/Permissions/UI/Settings.php:221
 msgid "Upgrade to Permissions Pro"
 msgstr "Upgradovať na Permissions Pro"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:224
+#: classes/PublishPress/Permissions/UI/Settings.php:222
 msgid "Need Permissions Support?"
 msgstr "Potrebujete podporu k oprávneniam?"
 
@@ -4121,6 +4142,10 @@ msgstr ""
 msgid "Bulk Add / Remove Groups on Users Screen"
 msgstr "Hromadne pridať / odstrániť skupiny na obrazovke používateľov"
 
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Display all available constant definitions"
+msgstr "Zobraziť všetky dostupné definície konštánt"
+
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
 msgid "Non-Administrators can set Editing Permissions for their editable posts"
 msgstr ""
@@ -4929,7 +4954,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Prejdite na Pro, aby ste odomkli bezproblémovú integráciu."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:408
 msgid "Posts Teaser"
 msgstr "Ukážka príspevkov"
 
@@ -5020,6 +5045,18 @@ msgstr ""
 "Kľúč na presspermit.com sa zdá byť aktívny. <a href=\"%s\" "
 "target=\"_blank\">Kontaktujte nás</a> pre pomoc pri migrácii vášho účtu na "
 "publishpress.com."
+
+#: includes/SettingsTabInstall.php:160
+#, php-format
+msgid "Original presspermit.com support key hash: <strong>%s</strong> (expires %s)"
+msgstr ""
+"Pôvodný hash podporného kľúča presspermit.com: <strong>%s</strong> "
+"(platnosť vyprší %s)"
+
+#: includes/SettingsTabInstall.php:162
+#, php-format
+msgid "Original presspermit.com support key hash: <strong>%s</strong>"
+msgstr "Pôvodný hash podporného kľúča presspermit.com: <strong>%s</strong>"
 
 #: includes/SettingsTabInstall.php:207
 #: includes/SettingsTabInstall.php:217
@@ -5636,33 +5673,17 @@ msgstr "Kopírovať shortcode"
 msgid "Copied!"
 msgstr "Skopírované!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:577
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:990
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1041
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1092
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
-msgid "You do not have permission to view this content."
-msgstr "Nemáte povolenie na zobrazenie tohto obsahu."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
 msgid "Content requires additional permissions."
 msgstr "Obsah vyžaduje ďalšie povolenia."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:222
 msgid "Read More"
 msgstr "Čítať viac"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:319
 msgid "Teaser Type"
 msgstr "Typ teaseru"
 
@@ -5671,69 +5692,61 @@ msgid "Coverage"
 msgstr "Pokrytie"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:43
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:47
 msgid "No Teaser Text"
 msgstr "Žiadny text teaseru"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
-msgid "Read More Notice"
-msgstr "Oznámenie o čítaní viac"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
 msgid "Redirect"
 msgstr "Presmerovať"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:455
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
 msgid "Options"
 msgstr "Možnosti"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:48
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:47
 msgid "Hidden Content Teaser"
 msgstr "Teaser skrytého obsahu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
 msgid "Display mode for readable private posts"
 msgstr "Režim zobrazenia pre čitateľné súkromné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
 msgid "Display mode for readable non-private posts"
 msgstr "Režim zobrazenia pre čitateľné verejné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
 msgid "Feed Replacement Text (use %permalink% for post URL)"
 msgstr "Text na nahradenie kanála (použite %permalink% pre URL príspevku)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
-msgid "Teaser Notice Message"
-msgstr "Oznam o Teaser"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
 msgid "Apply teaser to list view as well as single view"
 msgstr "Použiť teaser aj na zobrazenie zoznamu, ako aj na jednotlivé zobrazenie"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
 msgid "Apply teaser to logged in and/or logged out users"
 msgstr "Použiť teaser pre prihlásených a/alebo odhlásených používateľov"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Hide navigation menu links to restricted content"
 msgstr "Skryť odkazy na navigačné menu pre obmedzený obsah"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Apply teaser to private posts"
 msgstr "Použiť teaser pre súkromné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Skryť zobrazený obrázok, keď je použitý teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:67
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
 msgid "Disable Comments when Teaser is applied"
 msgstr "Zakázať komentáre, keď je použitý Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5741,121 +5754,121 @@ msgstr ""
 "\"Skryť súkromné\" nastavenia sa vzťahujú iba na vlastné súkromie (Člen, "
 "Prémiový, Zamestnanec, atď.)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:114
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:111
 msgid "Application"
 msgstr "Aplikácia"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:126
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:123
 msgid "Teaser Application"
 msgstr "Aplikácia Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:127
 msgid "List and Single view"
 msgstr "Zoznam a jednotlivý pohľad"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:134
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:131
 msgid "Single view only"
 msgstr "Iba jedno zobrazenie"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:147
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:144
 msgid "User Application"
 msgstr "Aplikácia používateľa"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:151
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
 msgid "Both"
 msgstr "Obe"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:155
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:152
 msgid "Not Logged In Users"
 msgstr "Neprihlásení používatelia"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:159
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:156
 msgid "Logged In Users"
 msgstr "Prihlásení používatelia"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:172
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:169
 msgid "Navigation Menus"
 msgstr "Navigačné menu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:173
 msgid "Display links if user doesn't have access"
 msgstr "Zobraziť odkazy, ak používateľ nemá prístup"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:180
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:177
 msgid "Hide links if user doesn't have access"
 msgstr "Skryť odkazy, ak používateľ nemá prístup"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
 msgid "Private Posts"
 msgstr "Súkromné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:197
 msgid "Apply Teaser to Private Posts"
 msgstr "Použiť teaser na súkromné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:204
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:201
 msgid "Hide Private Posts if user doesn't have access"
 msgstr "Skryť súkromné príspevky, ak používateľ nemá prístup"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
 msgid "Hide for Custom Visibility"
 msgstr "Skryť pre vlastnú viditeľnosť"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:223
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:220
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
 msgid "Featured Image"
 msgstr "Hlavný obrázok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:224
 msgid "Show featured image"
 msgstr "Zobraziť zvýraznený obrázok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:228
 msgid "Hide featured image when teaser is applied"
 msgstr "Skryť zvýraznený obrázok, keď je aplikovaný teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:243
 msgid "Comments Area"
 msgstr "Oblasť komentárov"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:251
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:248
 msgid "Disable the comments area when Teaser is applied"
 msgstr "Zakázať oblasť komentárov, keď je použitý Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:272
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:269
 msgid "Full Content"
 msgstr "Celý obsah"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
 msgid "Excerpt Only"
 msgstr "Iba úryvok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
 msgid "Title Only"
 msgstr "Iba názov"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:286, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:283, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:307
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:304
 msgid "Display for readable private posts"
 msgstr "Zobraziť pre čitateľné súkromné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:329
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:326
 msgid "Display for readable non-private posts"
 msgstr "Zobraziť pre čitateľné verejné príspevky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
 msgid "Feed Replacement Text"
 msgstr "Text na nahradenie kanála"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:377
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Použite %s pre URL príspevku"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:414
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5863,19 +5876,19 @@ msgstr ""
 "Použite tieto nastavenia na kontrolu toho, čo vidia používatelia, keď "
 "nemajú prístup k vášmu obsahu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:424
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:421
 msgid "All post teaser settings were updated."
 msgstr "Všetky nastavenia náhľadov príspevkov boli aktualizované."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:432
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:429
 msgid "All post teaser settings were reset to defaults."
 msgstr "Všetky nastavenia náhľadov príspevkov boli resetované na predvolené hodnoty."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:440
 msgid "Teaser Settings"
 msgstr "Nastavenia náhľadov"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:446
 msgid "Text Options"
 msgstr "Možnosti textu"
 
@@ -5887,115 +5900,115 @@ msgstr "Vyberte typ príspevku na konfiguráciu"
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "Vyberte, pre ktorý typ príspevku chcete nakonfigurovať nastavenia náhľadov."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:213
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:193
 #, php-format
 msgid "Text Options for %s"
 msgstr "Možnosti textu pre %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:223
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "Predvolené nastavenie WordPress. Zobraziť obrazovku \"Stránka sa nenašla\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:225
 msgid "Use content before Read More link as teaser text"
 msgstr "Použite obsah pred odkazom Prečítať viac ako text náhľadu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:226
 msgid "Use Excerpt as teaser text"
 msgstr "Použite úryvok ako text náhľadu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "Použite úryvok alebo text pred Viac ako text náhľadu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr "Použite úryvok, text pred Viac alebo prvé X znakov ako text náhľadu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Redirect to another post"
 msgstr "Presmerovať na iný príspevok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
 msgid "No teaser will be applied"
 msgstr "Nebude použitý žiadny teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Nehádzať text teaseru pred správu o zablokovanom používateľovi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Zobraziť odkaz \"Čítať viac\" s oznamom Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
 msgid "Use the post excerpt as teaser content"
 msgstr "Použiť úryvok príspevku ako teaser obsah"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "Use excerpt or content before More tag"
 msgstr "Použiť úryvok alebo obsah pred značkou Viac"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
 msgid "Show the first X characters of the post content"
 msgstr "Zobraziť prvých X znakov obsahu príspevku"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Presmerovať používateľov na inú stránku, keď sa pokúsia získať prístup k "
 "obmedzenému obsahu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 msgid "Use first X characters of content as teaser text"
 msgstr "Použiť prvých X znakov obsahu ako teaser text"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 msgid "Use excerpt or first X characters of content"
 msgstr "Použiť úryvok alebo prvých X znakov obsahu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Nastavenia teaser pre %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:333
 msgid "Show only the first"
 msgstr "Zobraziť iba prvý"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:350
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:356
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Chars"
 msgstr "Znak"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
 msgid "characters"
 msgstr "znaky"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:339, fuzzy
 msgid "Max"
 msgstr "Max"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:341
 msgid "characters (leave empty for full excerpt)"
 msgstr "znaky (nechajte prázdne pre plný úryvok)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:382
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:401
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Návštevníci bez prístupu sú presmerovaní na: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:416
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:299
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Ukážkový %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:444
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:419
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6003,60 +6016,60 @@ msgstr ""
 "Toto je príklad celého obsahu. Náhľad ukazuje, čo uvidí návštevník bez "
 "povolenia."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:423
 msgid "This is a short excerpt from the restricted content."
 msgstr "Toto je krátky úryvok z obmedzeného obsahu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 msgid "Teaser Preview"
 msgstr "Náhľad Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
 msgid "Site Preview"
 msgstr "Náhľad stránok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:451
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
 msgid "Preview content"
 msgstr "Náhľad obsahu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:491
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:466
 msgid "Preview device"
 msgstr "Náhľad zariadenia"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467, fuzzy
 msgid "Desktop"
 msgstr "Desktop"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:495
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:470
 msgid "Mobile"
 msgstr "Mobil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:479
 msgid "Open full preview in a new tab"
 msgstr "Otvorenie celého náhľadu v novom okne"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:483
 msgid "Open full preview"
 msgstr "Otvorenie celého náhľadu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:497
 msgid "Loading the preview from your active theme…"
 msgstr "Načítava sa náhľad z vášho aktívneho témy…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:530
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Teaser preview from the active theme"
 msgstr "Náhľad teaser z aktívneho témy"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Náhľad témy sa nemohol zobraziť v tomto ráme."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
 msgid "Visitor redirected"
 msgstr "Návštevník bol presmerovaný"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6064,35 +6077,33 @@ msgstr ""
 "Obmedzený obsah sa nezobrazuje. Návštevník je presmerovaný na "
 "nakonfigurovaný cieľ."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:555
 msgid "Message for Blocked Users"
 msgstr "Správa pre zablokovaných používateľov"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:586
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:556
 msgid ""
-"Replace the post content entirely with custom content for users who don't "
-"have access."
+"This message is shown to users who are blocked from viewing the full "
+"content. It is shared across all teaser types."
 msgstr ""
-"Celkom nahradiť obsah príspevku vlastným obsahom pre používateľov, ktorí "
-"nemajú prístup."
+"Táto správa sa zobrazuje používateľom, ktorí sú zablokovaní v zobrazení "
+"celého obsahu. Je zdieľaná medzi všetkými typmi teaserov."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:53
 msgid "This field is required."
 msgstr "Toto pole je povinné."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "Vložte prihlasovací formulár pomocou %s[login_form]%s skrátenej značky."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:608
 msgid "Text Configuration"
 msgstr "Konfigurácia textu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:609
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
@@ -6100,74 +6111,74 @@ msgstr ""
 "Okrem Teaseru a Správy pre zablokovaných používateľov môžete zobraziť ďalší "
 "text okolo vášho obsahu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:631
 msgid "post title"
 msgstr "názov príspevku"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:662
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:632
 msgid "post content"
 msgstr "obsah príspevku"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
 #, php-format
 msgid "Before %s"
 msgstr "Pred %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:670
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:640
 #, php-format
 msgid "After %s"
 msgstr "Po %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:724
 msgid "Redirect Settings"
 msgstr "Nastavenia presmerovania"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:735
 msgid "Redirection"
 msgstr "Presmerovanie"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:736
 msgid "Target Post Type"
 msgstr "Cieľový typ príspevku"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:767
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:737
 msgid "Select Post"
 msgstr "Vybrať príspevok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:767
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:737
 msgid "Custom URL"
 msgstr "Vlastná URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
 msgid "Not Logged In:"
 msgstr "Nie je prihlásený:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:785
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:888
 msgid "No redirect"
 msgstr "Žiadne presmerovanie"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:889
 msgid "Redirect to WordPress login"
 msgstr "Presmerovať na prihlasovanie WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:787
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:890
 msgid "Redirect to a custom post"
 msgstr "Presmerovať na vlastný príspevok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:818
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:921
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:788
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:891
 msgid "Redirect to a custom URL"
 msgstr "Prejsť na vlastnú URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:944
 msgid "This is a custom login page"
 msgstr "Toto je vlastná prihlasovacia stránka"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6175,92 +6186,68 @@ msgstr ""
 "Po prihlásení sa používateľ vráti späť na pôvodný príspevok, ktorý si "
 "prezeral."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:880
 msgid "Logged in Users:"
 msgstr "Prihlásení používatelia:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1008
-msgid ""
-"Customize the message shown to users who are blocked from viewing the full "
-"content when using the \"Read More\" teaser type."
-msgstr ""
-"Prispôsobte správu zobrazenú používateľom, ktorí sú zablokovaní pri "
-"prezeraní celého obsahu, keď používajú typ teaser \"Prečítať viac\"."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1059
-msgid ""
-"Customize the notice message shown to all blocked users when using the "
-"\"Excerpt\" teaser type."
-msgstr ""
-"Prispôsobte správu oznámenia, ktorá sa zobrazuje všetkým zablokovaným "
-"používateľom pri použití typu teaser \"Úryvok\"."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1110
-msgid ""
-"Customize the notice message shown to all blocked users when using the "
-"\"First X Characters\" teaser type."
-msgstr ""
-"Prispôsobte oznámenie zobrazené všetkým zablokovaným používateľom pri "
-"použití typu teaser \"Prvé X znakov\"."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:994
 msgid "Blocked User Message Style"
 msgstr "Štýl správy zablokovaného používateľa"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1178
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:995
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "Prispôsobte vzhľad správy teaseru zobrazeného zablokovaným používateľom."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1186
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1003
 msgid "Background Color"
 msgstr "Farba pozadia"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1198
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1015
 msgid "Text Color"
 msgstr "Farba textu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1210
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
 msgid "Border Color"
 msgstr "Farba okraja"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1222
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1233
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1050
 msgid "Border Position"
 msgstr "Pozícia okraja"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
 msgid "Left"
 msgstr "Vľavo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
 msgid "Right"
 msgstr "Vpravo"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
 msgid "Top"
 msgstr "Hore"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Bottom"
 msgstr "Spodok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1047
 msgid "All Sides"
 msgstr "Všetky strany"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1250
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
 msgid "Border Width (px)"
 msgstr "Šírka okraja (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1080
 msgid "Border Radius (px)"
 msgstr "Polomer okraja (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1276
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
 msgid "Font Size (px)"
 msgstr "Veľkosť písma (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1106
 msgid "Padding (px)"
 msgstr "Vnútorné okraje (px)"
 
@@ -6284,7 +6271,7 @@ msgstr "Úryvok alebo pred-More ako teaser"
 msgid "First X Characters as Teaser"
 msgstr "Prvých X znakov ako teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:296
 msgid "Post"
 msgstr "Príspevok"
 
@@ -6337,7 +6324,7 @@ msgid "Groups"
 msgstr "Skupiny"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

@@ -254,9 +254,7 @@
                         }
                     } else {
                         // Choose appropriate message based on item type
-                        var warningMessage = (typeof ppPermissions !== 'undefined' && ppPermissions.bulkActionNotAvailableNonUsers) 
-                            ? ppPermissions.bulkActionNotAvailableNonUsers 
-                            : "Editing can't be granted to non-users.";
+                        var warningMessage = ppPermissions.bulkActionNotAvailableNonUsers;
                         
                         // Create warning element
                         var $warning = $('<div>')
@@ -448,7 +446,12 @@
         var $noResults = $list.find('.pp-no-search-results');
         if (searchQuery.length > 0 && visibleCount === 0) {
             if ($noResults.length === 0) {
-                $list.append('<div class="pp-no-search-results"><span class="dashicons dashicons-search"></span><p>No items found</p></div>');
+                    $list.append(
+                        $('<div>')
+                            .addClass('pp-no-search-results')
+                            .append($('<span>').addClass('dashicons dashicons-search'))
+                            .append($('<p>').text(ppPermissions.noItemsFound))
+                    );
             } else {
                 $noResults.show();
             }
@@ -552,7 +555,7 @@
                 return;
             }
 
-            var placeholderText = $select.data('placeholder') || 'Search users...';
+            var placeholderText = $select.data('placeholder') || ppPermissions.searchUsers;
             
             $select.select2({
                 placeholder: placeholderText,
@@ -789,7 +792,7 @@
 
         // For classic editor - warn about unsaved changes
         window.onbeforeunload = function() {
-            return 'You have unsaved changes.';
+            return ppPermissions.unsavedChanges;
         };
     }
 
@@ -1143,7 +1146,7 @@
                                 fontSize: '14px',
                                 fontWeight: 500
                             })
-                            .text('No ' + filterLabel.toLowerCase() + ' items found')
+                            .text(ppPermissions.noFilterResults.replace('%s', filterLabel.toLowerCase()))
                     );
                 
                 $contentArea.find('.pp-permission-list, .pp-permission-card-body').append($noResults);
@@ -1346,4 +1349,3 @@
     }
 
 })(jQuery);
-

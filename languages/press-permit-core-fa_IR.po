@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-17 10:23+0000\n"
+"PO-Revision-Date: 2026-09-18 15:14+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: fa_IR\n"
@@ -384,8 +384,8 @@ msgstr "نمایش محتوا"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:95
 msgid "Teaser"
 msgstr "پیش‌نمایش"
 
@@ -1143,8 +1143,8 @@ msgstr "تمام کاربرانی که نقش وردپرس %s را دارند"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:971
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:974
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:977
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:161
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:171
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
 #, fuzzy, php-format
@@ -1716,8 +1716,8 @@ msgstr "بدون"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:276
 msgid "Post Type"
 msgstr "نوع پست"
 
@@ -2659,47 +2659,68 @@ msgstr "آیا مطمئن هستید که می‌خواهید کاربر(ان) �
 msgid "Remove the custom permisisons for \"%s\"?"
 msgstr "آیا می‌خواهید مجوزهای سفارشی را برای \"%s\" حذف کنید؟"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:155
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:514
-#: classes/PublishPress/Permissions/UI/Settings.php:102
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:95
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:58
+msgid "No items found"
+msgstr "هیچ موردی پیدا نشد"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:96
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:59
+#, php-format
+msgid "No %s items found"
+msgstr "هیچ %s موردی پیدا نشد"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:97
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:60
+msgid "Search users..."
+msgstr "جستجوی کاربران..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:98
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:61
+msgid "You have unsaved changes."
+msgstr "شما تغییرات ذخیره‌نشده دارید."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:159
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:518
+#: classes/PublishPress/Permissions/UI/Settings.php:100
 msgid "Permissions Settings"
 msgstr "تنظیمات مجوزها"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:181
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:279
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:185
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:283
 #, php-format
 msgid "Permissions: %s"
 msgstr "مجوزها: %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:202
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:206
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "مجوزها: این %s را به عنوان والد انتخاب کنید"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:210
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:214
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "مجوزها: این %s را به این %s اختصاص دهید"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:218
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "مجوزها: %s این %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:268
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:538
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:272
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:542
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "فعال‌سازی مجوزهای سفارشی برای %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:322
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
 msgid "Select as Parent"
 msgstr "انتخاب به عنوان والد"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:327
 msgid "Assign Terms"
 msgstr "انتساب شرایط"
 
@@ -2795,27 +2816,27 @@ msgstr "در حال حاضر هیچ مجوز خاصی اعمال نمی‌شود
 msgid "No extra roles currently apply."
 msgstr "در حال حاضر هیچ نقش اضافی اعمال نمی‌شود."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:154
 #, php-format
 msgid "Assign to %s"
 msgstr "انتساب به %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:153
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 msgid "Assign (All Types)"
 msgstr "انتساب (همه نوع‌ها)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:166
 #, php-format
 msgid "%s (All Types)"
 msgstr "%s (همه نوع‌ها)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:274
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "مجوزها: %1$s در %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:288
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:361
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:292
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:365
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type. You can "
@@ -2826,33 +2847,33 @@ msgstr ""
 "شما همچنین می‌توانید %2$sمجوزهای جهانی %3$s را تعریف کنید که به تمام "
 "نوع‌های پست مرتبط اعمال می‌شوند%4$s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:317
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:321
 #, php-format
 msgid "Permissions: Assign this %2$s to %3$s"
 msgstr "مجوزها: انتساب این %2$s به %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:327
 #, php-format
 msgid "Permissions: Assign this %2$s for All Post Types"
 msgstr "مجوزها: انتساب این %2$s برای همه نوع پست‌ها"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:330
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:343
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:334
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:347
 #, php-format
 msgid "Permissions: %1$s %2$s in this %3$s"
 msgstr "مجوزها: %1$s %2$s در این %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:336
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:340
 #, php-format
 msgid "Permissions: %1$s all content in this %2$s for All Post Types"
 msgstr "مجوزها: %1$s تمام محتوا در این %2$s برای همه نوع پست‌ها"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:349
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:353
 #, php-format
 msgid "Permissions: %1$s this %2$s"
 msgstr "مجوزها: %1$s این %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:572
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:576
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
@@ -3224,25 +3245,25 @@ msgstr "مستندات دقیق نیز در وب‌سایت پلاگین موج�
 msgid "View Knowledge Base"
 msgstr "مشاهده پایگاه دانش"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:171
+#: classes/PublishPress/Permissions/UI/Settings.php:169
 msgid "All settings were updated."
 msgstr "تمام تنظیمات به‌روزرسانی شدند."
 
-#: classes/PublishPress/Permissions/UI/Settings.php:179
+#: classes/PublishPress/Permissions/UI/Settings.php:177
 msgid "All settings were reset to defaults."
 msgstr "تمام تنظیمات به پیش‌فرض‌ها بازنشانی شدند."
 
-#: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:631
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:649
+#: classes/PublishPress/Permissions/UI/Settings.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:627
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:645
 msgid "Save Changes"
 msgstr "ذخیره تغییرات"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:223
+#: classes/PublishPress/Permissions/UI/Settings.php:221
 msgid "Upgrade to Permissions Pro"
 msgstr "به Permissions Pro ارتقاء دهید"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:224
+#: classes/PublishPress/Permissions/UI/Settings.php:222
 msgid "Need Permissions Support?"
 msgstr "به پشتیبانی Permissions نیاز دارید؟"
 
@@ -4035,6 +4056,10 @@ msgstr ""
 msgid "Bulk Add / Remove Groups on Users Screen"
 msgstr "افزودن / حذف گروه‌ها به‌صورت گروهی در صفحه کاربران"
 
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Display all available constant definitions"
+msgstr "نمایش تمام تعاریف ثابت موجود"
+
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
 msgid "Non-Administrators can set Editing Permissions for their editable posts"
 msgstr ""
@@ -4823,7 +4848,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "به نسخه Pro ارتقا دهید تا یکپارچگی بدون درز را باز کنید."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:408
 msgid "Posts Teaser"
 msgstr "پیش‌نمایش پست‌ها"
 
@@ -4914,6 +4939,16 @@ msgstr ""
 "به نظر می‌رسد یک کلید presspermit.com فعال باشد. <a href=\"%s\" "
 "target=\"_blank\">با ما تماس بگیرید</a> برای کمک در انتقال حساب شما به "
 "publishpress.com."
+
+#: includes/SettingsTabInstall.php:160
+#, php-format
+msgid "Original presspermit.com support key hash: <strong>%s</strong> (expires %s)"
+msgstr "هش کلید پشتیبانی اصلی presspermit.com: <strong>%s</strong> (منقضی می‌شود %s)"
+
+#: includes/SettingsTabInstall.php:162
+#, php-format
+msgid "Original presspermit.com support key hash: <strong>%s</strong>"
+msgstr "هش کلید پشتیبانی اصلی presspermit.com: <strong>%s</strong>"
 
 #: includes/SettingsTabInstall.php:207
 #: includes/SettingsTabInstall.php:217
@@ -5524,33 +5559,17 @@ msgstr "کپی کردن shortcode"
 msgid "Copied!"
 msgstr "کپی شد!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:577
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:990
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1041
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1092
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
-msgid "You do not have permission to view this content."
-msgstr "شما اجازه مشاهده این محتوا را ندارید."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
 msgid "Content requires additional permissions."
 msgstr "محتوا نیاز به مجوزهای اضافی دارد."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:222
 msgid "Read More"
 msgstr "بیشتر بخوانید"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:319
 msgid "Teaser Type"
 msgstr "نوع پیش‌نمایش"
 
@@ -5559,69 +5578,61 @@ msgid "Coverage"
 msgstr "پوشش"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:43
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:47
 msgid "No Teaser Text"
 msgstr "متن پیش‌نمایش ندارد"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
-msgid "Read More Notice"
-msgstr "پیام اطلاع‌رسانی بیشتر بخوانید"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
 msgid "Redirect"
 msgstr "انتقال"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:455
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452
 msgid "Options"
 msgstr "گزینه‌ها"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:48
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:47
 msgid "Hidden Content Teaser"
 msgstr "پیش‌نمایش محتوای مخفی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
 msgid "Display mode for readable private posts"
 msgstr "حالت نمایش برای پست‌های خصوصی قابل خواندن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
 msgid "Display mode for readable non-private posts"
 msgstr "حالت نمایش برای پست‌های غیرخصوصی قابل خواندن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
 msgid "Feed Replacement Text (use %permalink% for post URL)"
 msgstr "متن جایگزین فید (برای URL پست از %permalink% استفاده کنید)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
-msgid "Teaser Notice Message"
-msgstr "پیام اطلاع‌رسانی تیزر"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
 msgid "Apply teaser to list view as well as single view"
 msgstr "اعمال پیش‌نمایش به نمای لیست و نمای تکی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
 msgid "Apply teaser to logged in and/or logged out users"
 msgstr "اعمال پیش‌نمایش به کاربران وارد شده و/یا خارج شده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Hide navigation menu links to restricted content"
 msgstr "مخفی کردن لینک‌های منوی ناوبری به محتوای محدود شده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Apply teaser to private posts"
 msgstr "اعمال پیش‌نمایش به پست‌های خصوصی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "پنهان کردن تصویر ویژه زمانی که پیش‌نمایش اعمال می‌شود"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:67
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
 msgid "Disable Comments when Teaser is applied"
 msgstr "غیرفعال کردن نظرات زمانی که تیزر اعمال می‌شود"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5629,121 +5640,121 @@ msgstr ""
 "\"مخفی کردن خصوصی\" تنها به حریم خصوصی سفارشی (عضو، پریمیوم، کارکنان و "
 "غیره) اعمال می‌شود."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:114
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:111
 msgid "Application"
 msgstr "برنامه"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:126
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:123
 msgid "Teaser Application"
 msgstr "کاربرد تیزر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:127
 msgid "List and Single view"
 msgstr "نمایش فهرست و تک"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:134
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:131
 msgid "Single view only"
 msgstr "فقط نمای تک"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:147
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:144
 msgid "User Application"
 msgstr "کاربرد کاربر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:151
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
 msgid "Both"
 msgstr "هر دو"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:155
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:152
 msgid "Not Logged In Users"
 msgstr "کاربران وارد نشده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:159
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:156
 msgid "Logged In Users"
 msgstr "کاربران وارد شده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:172
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:169
 msgid "Navigation Menus"
 msgstr "منوهای ناوبری"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:173
 msgid "Display links if user doesn't have access"
 msgstr "نمایش لینک‌ها اگر کاربر دسترسی ندارد"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:180
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:177
 msgid "Hide links if user doesn't have access"
 msgstr "پنهان کردن لینک‌ها اگر کاربر دسترسی ندارد"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
 msgid "Private Posts"
 msgstr "پست‌های خصوصی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:197
 msgid "Apply Teaser to Private Posts"
 msgstr "اعمال پیش‌نمایش بر روی پست‌های خصوصی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:204
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:201
 msgid "Hide Private Posts if user doesn't have access"
 msgstr "پنهان کردن پست‌های خصوصی اگر کاربر دسترسی ندارد"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
 msgid "Hide for Custom Visibility"
 msgstr "پنهان کردن برای دیدگاه سفارشی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:223
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:220
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
 msgid "Featured Image"
 msgstr "تصویر برجسته"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:224
 msgid "Show featured image"
 msgstr "نمایش تصویر ویژه"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:228
 msgid "Hide featured image when teaser is applied"
 msgstr "پنهان کردن تصویر ویژه زمانی که پیش‌نمایش اعمال می‌شود"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:243
 msgid "Comments Area"
 msgstr "منطقه نظرات"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:251
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:248
 msgid "Disable the comments area when Teaser is applied"
 msgstr "غیرفعال کردن منطقه نظرات زمانی که تیزر اعمال می‌شود"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:272
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:269
 msgid "Full Content"
 msgstr "محتوای کامل"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
 msgid "Excerpt Only"
 msgstr "فقط خلاصه"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
 msgid "Title Only"
 msgstr "فقط عنوان"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:286, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:283, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:307
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:304
 msgid "Display for readable private posts"
 msgstr "نمایش برای پست‌های خصوصی قابل خواندن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:329
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:326
 msgid "Display for readable non-private posts"
 msgstr "نمایش برای پست‌های غیرخصوصی قابل خواندن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
 msgid "Feed Replacement Text"
 msgstr "متن جایگزین فید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:377
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
 #, php-format
 msgid "Use %s for post URL"
 msgstr "از %s برای URL پست استفاده کنید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:414
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -5751,19 +5762,19 @@ msgstr ""
 "از این تنظیمات برای کنترل آنچه کاربران می‌بینند زمانی که به محتوای شما "
 "دسترسی ندارند استفاده کنید."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:424
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:421
 msgid "All post teaser settings were updated."
 msgstr "تنظیمات پیش‌نمایش تمام پست‌ها به‌روزرسانی شد."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:432
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:429
 msgid "All post teaser settings were reset to defaults."
 msgstr "تنظیمات پیش‌نمایش تمام پست‌ها به حالت پیش‌فرض بازنشانی شد."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:440
 msgid "Teaser Settings"
 msgstr "تنظیمات پیش‌نمایش"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:446
 msgid "Text Options"
 msgstr "گزینه‌های متن"
 
@@ -5777,117 +5788,117 @@ msgstr ""
 "انتخاب کنید که کدام نوع پست را می‌خواهید برای تنظیمات پیش‌نمایش پیکربندی "
 "کنید."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:213
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:193
 #, php-format
 msgid "Text Options for %s"
 msgstr "گزینه‌های متن برای %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:223
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "پیش‌فرض وردپرس. نمایش صفحه \"صفحه پیدا نشد\""
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:225
 msgid "Use content before Read More link as teaser text"
 msgstr "از محتوای قبل از لینک \"بیشتر بخوانید\" به‌عنوان متن پیش‌نمایش استفاده کنید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:226
 msgid "Use Excerpt as teaser text"
 msgstr "از خلاصه به‌عنوان متن پیش‌نمایش استفاده کنید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "از خلاصه یا پیش از \"بیشتر\" به‌عنوان متن پیش‌نمایش استفاده کنید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr ""
 "از خلاصه، پیش از \"بیشتر\" یا اولین X کاراکتر به‌عنوان متن پیش‌نمایش "
 "استفاده کنید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Redirect to another post"
 msgstr "هدایت به پست دیگر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
 msgid "No teaser will be applied"
 msgstr "هیچ پیش‌نمایشی اعمال نخواهد شد"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "متن پیش‌نمایش را قبل از پیام کاربر مسدود شده نمایش ندهید"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "نمایش لینک \"بیشتر بخوانید\" همراه با پیام تیزر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
 msgid "Use the post excerpt as teaser content"
 msgstr "استفاده از گزیده پست به عنوان محتوای پیش‌نمایش"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "Use excerpt or content before More tag"
 msgstr "استفاده از گزیده یا محتوا قبل از تگ بیشتر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
 msgid "Show the first X characters of the post content"
 msgstr "نمایش اولین X کاراکتر از محتوای پست"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "هدایت کاربران به صفحه دیگر زمانی که سعی می‌کنند به محتویات محدود دسترسی "
 "پیدا کنند"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 msgid "Use first X characters of content as teaser text"
 msgstr "استفاده از اولین X کاراکتر از محتوا به عنوان متن پیش‌نمایش"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 msgid "Use excerpt or first X characters of content"
 msgstr "استفاده از گزیده یا اولین X کاراکتر از محتوا"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "تنظیمات پیش‌نمایش برای %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:333
 msgid "Show only the first"
 msgstr "فقط اولین را نشان بده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:350
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:356
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Chars"
 msgstr "کاراکتر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
 msgid "characters"
 msgstr "کاراکترها"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:339
 msgid "Max"
 msgstr "حداکثر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:341
 msgid "characters (leave empty for full excerpt)"
 msgstr "کاراکتر (برای گزیده کامل خالی بگذارید)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:382
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:401
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "بازدیدکنندگان بدون دسترسی به: %s هدایت می‌شوند"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:416
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:299
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "یک نمونه %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:444
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:419
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -5895,60 +5906,60 @@ msgstr ""
 "این یک مثال از محتوای کامل است. پیش‌نمایش نشان می‌دهد که یک بازدیدکننده "
 "بدون اجازه چه چیزی را مشاهده خواهد کرد."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:423
 msgid "This is a short excerpt from the restricted content."
 msgstr "این یک بخش کوتاه از محتوای محدود شده است."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 msgid "Teaser Preview"
 msgstr "پیش‌نمایش تیزر"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
 msgid "Site Preview"
 msgstr "پیش‌نمایش سایت"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:451
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
 msgid "Preview content"
 msgstr "پیش‌نمایش محتوا"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:491
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:466
 msgid "Preview device"
 msgstr "دستگاه پیش‌نمایش"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
 msgid "Desktop"
 msgstr "رایانه رومیزی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:495
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:470
 msgid "Mobile"
 msgstr "موبایل"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:479
 msgid "Open full preview in a new tab"
 msgstr "پیش‌نمایش کامل را در یک برگه جدید باز کن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:483
 msgid "Open full preview"
 msgstr "پیش‌نمایش کامل را باز کن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:497
 msgid "Loading the preview from your active theme…"
 msgstr "در حال بارگذاری پیش‌نمایش از قالب فعال شما…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:530
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Teaser preview from the active theme"
 msgstr "پیش‌نمایش تیزر از قالب فعال"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
 msgid "The theme preview could not be displayed in this frame."
 msgstr "پیش‌نمایش قالب نمی‌تواند در این قاب نمایش داده شود."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
 msgid "Visitor redirected"
 msgstr "بازدیدکننده به سمت دیگر هدایت شد"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -5956,35 +5967,33 @@ msgstr ""
 "محتوای محدود شده نمایش داده نمی‌شود. بازدیدکننده به مقصد تنظیم شده ارسال "
 "می‌شود."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:555
 msgid "Message for Blocked Users"
 msgstr "پیام برای کاربران مسدود شده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:586
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:556
 msgid ""
-"Replace the post content entirely with custom content for users who don't "
-"have access."
+"This message is shown to users who are blocked from viewing the full "
+"content. It is shared across all teaser types."
 msgstr ""
-"محتوای پست را به طور کامل با محتوای سفارشی برای کاربرانی که به آن دسترسی "
-"ندارند، جایگزین کنید."
+"این پیام برای کاربرانی که از مشاهده محتوای کامل مسدود شده‌اند، نمایش داده "
+"می‌شود. این پیام در تمام نوع‌های پیش‌نمایش به اشتراک گذاشته می‌شود."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:53
 msgid "This field is required."
 msgstr "این فیلد الزامی است."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "برای درج فرم ورود از کد کوتاه %s[login_form]%s استفاده کنید."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:608
 msgid "Text Configuration"
 msgstr "تنظیمات متن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:609
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
@@ -5992,165 +6001,141 @@ msgstr ""
 "علاوه بر متن معرفی و پیام برای کاربران مسدود شده، می‌توانید متن اضافی در "
 "اطراف محتوای خود نمایش دهید."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:631
 msgid "post title"
 msgstr "عنوان پست"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:662
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:632
 msgid "post content"
 msgstr "محتوای پست"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
 #, php-format
 msgid "Before %s"
 msgstr "قبل از %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:670
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:640
 #, php-format
 msgid "After %s"
 msgstr "بعد از %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:724
 msgid "Redirect Settings"
 msgstr "تنظیمات انتقال"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:735
 msgid "Redirection"
 msgstr "انتقال"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:736
 msgid "Target Post Type"
 msgstr "نوع پست هدف"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:767
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:737
 msgid "Select Post"
 msgstr "انتخاب پست"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:767
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:737
 msgid "Custom URL"
 msgstr "آدرس وب‌سایت سفارشی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
 msgid "Not Logged In:"
 msgstr "وارد نشده:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:785
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:888
 msgid "No redirect"
 msgstr "بدون انتقال"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:889
 msgid "Redirect to WordPress login"
 msgstr "انتقال به ورود وردپرس"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:787
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:890
 msgid "Redirect to a custom post"
 msgstr "انتقال به یک پست سفارشی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:818
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:921
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:788
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:891
 msgid "Redirect to a custom URL"
 msgstr "هدایت به یک آدرس وب‌سایت سفارشی"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:944
 msgid "This is a custom login page"
 msgstr "این یک صفحه ورود سفارشی است"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
 msgstr "پس از ورود کاربر، آنها به پست اصلی که در حال مشاهده بودند، هدایت خواهند شد."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:880
 msgid "Logged in Users:"
 msgstr "کاربران وارد شده:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1008
-msgid ""
-"Customize the message shown to users who are blocked from viewing the full "
-"content when using the \"Read More\" teaser type."
-msgstr ""
-"پیام نشان داده شده به کاربرانی که از مشاهده محتوای کامل مسدود شده‌اند را "
-"هنگام استفاده از نوع تیزر \"بیشتر بخوانید\" سفارشی کنید."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1059
-msgid ""
-"Customize the notice message shown to all blocked users when using the "
-"\"Excerpt\" teaser type."
-msgstr ""
-"پیام اطلاع‌رسانی را که به تمام کاربران مسدود شده هنگام استفاده از نوع تیزر "
-"\"بخش\" نشان داده می‌شود، سفارشی کنید."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1110
-msgid ""
-"Customize the notice message shown to all blocked users when using the "
-"\"First X Characters\" teaser type."
-msgstr ""
-"پیام اطلاع‌رسانی را که به تمام کاربران مسدود شده نمایش داده می‌شود، هنگام "
-"استفاده از نوع پیش‌نمایش \"اولین X کاراکترها\" سفارشی‌سازی کنید."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:994
 msgid "Blocked User Message Style"
 msgstr "سبک پیام کاربر مسدود شده"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1178
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:995
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "ظاهر پیام تیزر نمایش داده شده به کاربران مسدود شده را سفارشی کنید."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1186
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1003
 msgid "Background Color"
 msgstr "رنگ پس‌زمینه"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1198
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1015
 msgid "Text Color"
 msgstr "رنگ متن"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1210
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
 msgid "Border Color"
 msgstr "رنگ حاشیه"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1222
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1233
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1050
 msgid "Border Position"
 msgstr "موقعیت حاشیه"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
 msgid "Left"
 msgstr "چپ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
 msgid "Right"
 msgstr "راست"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
 msgid "Top"
 msgstr "بالا"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Bottom"
 msgstr "پایین"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1047
 msgid "All Sides"
 msgstr "همه طرف‌ها"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1250
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
 msgid "Border Width (px)"
 msgstr "عرض حاشیه (پیکسل)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1080
 msgid "Border Radius (px)"
 msgstr "شعاع حاشیه (پیکسل)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1276
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
 msgid "Font Size (px)"
 msgstr "اندازه فونت (پیکسل)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1106
 msgid "Padding (px)"
 msgstr "فاصله داخلی (پیکسل)"
 
@@ -6174,7 +6159,7 @@ msgstr "خلاصه یا پیش از \"بیشتر\" به عنوان تیزر"
 msgid "First X Characters as Teaser"
 msgstr "اولین X کاراکتر به عنوان تیزر"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:296
 msgid "Post"
 msgstr "پست"
 
@@ -6227,7 +6212,7 @@ msgid "Groups"
 msgstr "گروه‌ها"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

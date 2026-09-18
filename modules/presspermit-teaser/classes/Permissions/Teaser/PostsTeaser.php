@@ -358,6 +358,10 @@ class PostsTeaser
             $msg = wp_unslash($msg);
         }
 
+        if ($msg && \PublishPress\Permissions\TeaserHooks::isDefaultTeaserText($msg)) {
+            $msg = \PublishPress\Permissions\TeaserHooks::getDefaultTeaserText();
+        }
+
         if ($msg) {
             if (defined('PP_TRANSLATE_TEASER')) {
                 // otherwise, this is only loaded for admin
@@ -470,10 +474,6 @@ class PostsTeaser
                     
                     // Only truncate if excerpt is longer than the limit
                     if (strlen($plain_excerpt) > $num_chars) {
-                        if (defined('PP_TRANSLATE_TEASER')) {
-                            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-                        }
-                        
                         // Get first X characters of plain text
                         $plain_excerpt = substr($plain_excerpt, 0, $num_chars);
                         $excerpt_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $plain_excerpt);
@@ -482,10 +482,7 @@ class PostsTeaser
             }
             
             // Get login notice message for excerpt teaser
-            $login_notice = wp_unslash((string) presspermit()->getTypeOption('excerpt_login_notice', $post_type));
-            if ('' === $login_notice) {
-                $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-            }
+            $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
 
             // Not escaped: preserves formatting entered via the notice's rich-text editor.
             $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
@@ -527,10 +524,7 @@ class PostsTeaser
                     // Fallback: no more tag found, use configured teaser text or excerpt
                     if (!empty($post->post_excerpt)) {
                         // Get login notice message
-                        $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
-                        if ('' === $login_notice) {
-                            $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-                        }
+                        $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
 
                         // Not escaped: preserves formatting entered via the notice's rich-text editor.
                         $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
@@ -551,10 +545,7 @@ class PostsTeaser
                 // Fallback: no more tag found, use excerpt or configured teaser text
                 if (!empty($post->post_excerpt)) {
                     // Get login notice message
-                    $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
-                    if ('' === $login_notice) {
-                        $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-                    }
+                    $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
 
                     // Not escaped: preserves formatting entered via the notice's rich-text editor.
                     $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
@@ -596,20 +587,12 @@ class PostsTeaser
 
             // Only apply X chars teaser if content is longer than the limit
             if (strlen($plain_content) > $num_chars) {
-                if (defined('PP_TRANSLATE_TEASER')) {
-                    // otherwise, this is only loaded for admin
-                    @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-                }
-
                 // Get first X characters of plain text
                 $teaser_text = substr($plain_content, 0, $num_chars);
                 $teaser_text = sprintf(_x('%s...', 'teaser suffix', 'press-permit-core'), $teaser_text);
                 
                 // Get login notice message for x_chars teaser
-                $login_notice = wp_unslash((string) presspermit()->getTypeOption('x_chars_login_notice', $post_type));
-                if ('' === $login_notice) {
-                    $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-                }
+                $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
 
                 // Not escaped: preserves formatting entered via the notice's rich-text editor.
                 $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
@@ -791,11 +774,7 @@ class PostsTeaser
      */
     private static function getReadMoreFallbackContent($post_type)
     {
-        $login_notice = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
-
-        if ('' === $login_notice) {
-            $login_notice = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-        }
+        $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
 
         // Not escaped: preserves formatting entered via the notice's rich-text editor.
         return self::wrapTeaserNotice($login_notice, $post_type);

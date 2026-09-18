@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-09-15T21:35:02+00:00\n"
-"PO-Revision-Date: 2026-09-17 10:22+0000\n"
+"PO-Revision-Date: 2026-09-18 15:14+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: fr_FR\n"
@@ -400,8 +400,8 @@ msgstr "Visibilité du contenu"
 #: includes/CoreAdmin.php:67
 #: includes/CoreAdmin.php:68
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:34
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:93
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:94
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:95
 msgid "Teaser"
 msgstr "Présentation"
 
@@ -1217,8 +1217,8 @@ msgstr "Tous les utilisateurs/utilisatrices ayant le rôle WordPress de %s"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:971
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:974
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:977
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:167
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:161
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:171
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:47
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/DashboardWidgetsFilters.php:49
 #, fuzzy, php-format
@@ -1818,8 +1818,8 @@ msgstr "n/d"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:252
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:376
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:404
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:220
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:276
 msgid "Post Type"
 msgstr "Type de publication"
 
@@ -2777,47 +2777,68 @@ msgstr ""
 msgid "Remove the custom permisisons for \"%s\"?"
 msgstr "Retirer les droits personnalisés pour « %s » ?"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:155
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:514
-#: classes/PublishPress/Permissions/UI/Settings.php:102
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:95
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:58
+msgid "No items found"
+msgstr "Aucun élément trouvé"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:96
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:59
+#, php-format
+msgid "No %s items found"
+msgstr "Aucun élément %s trouvé"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:97
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:60
+msgid "Search users..."
+msgstr "Rechercher des utilisateurs..."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:98
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:61
+msgid "You have unsaved changes."
+msgstr "Vous avez des modifications non enregistrées."
+
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:159
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:518
+#: classes/PublishPress/Permissions/UI/Settings.php:100
 msgid "Permissions Settings"
 msgstr "Réglages des permissions"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:181
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:279
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:185
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:283
 #, php-format
 msgid "Permissions: %s"
 msgstr "Droits : %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:202
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:206
 #, php-format
 msgid "Permissions: Select this %s as Parent"
 msgstr "Droits : Sélectionner cette %s comme parent"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:210
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:214
 #, php-format
 msgid "Permissions: Assign Terms to this %s"
 msgstr "Droits : assigner des termes a cette %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:218
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:222
 #, php-format
 msgid "Permissions: %s this %s"
 msgstr "Droits : %s cette %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:268
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:538
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:272
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:542
 #, php-format
 msgid "enable custom permissions for %s"
 msgstr "activer les droits avancés pour %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:318
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:322
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:32
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:33
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/AjaxUI.php:34
 msgid "Select as Parent"
 msgstr "Sélectionner comme parent"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:327
 msgid "Assign Terms"
 msgstr "Assigner les termes"
 
@@ -2917,27 +2938,27 @@ msgstr "Aucune permission spécifique ne s'applique actuellement."
 msgid "No extra roles currently apply."
 msgstr "Aucun rôle supplémentaire ne s'applique actuellement."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:150
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:154
 #, php-format
 msgid "Assign to %s"
 msgstr "Assigner à %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:153
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:157
 msgid "Assign (All Types)"
 msgstr "Assigner (Tous les types)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:162
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:166
 #, php-format
 msgid "%s (All Types)"
 msgstr "%s (Tous les types)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:274
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:278
 #, php-format
 msgid "Permissions: %1$s in %2$s"
 msgstr "Droits : %1$s dans %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:288
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:361
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:292
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:365
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type. You can "
@@ -2948,35 +2969,35 @@ msgstr ""
 "Vous pouvez également %2$sdéfinir des droits universels %3$s qui "
 "s’appliquent à tous les types de publication associés%4$s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:317
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:321
 #, php-format
 msgid "Permissions: Assign this %2$s to %3$s"
 msgstr "Droits : assigner ce %2$s à %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:323
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:327
 #, php-format
 msgid "Permissions: Assign this %2$s for All Post Types"
 msgstr "Droits : assigner ce %2$s pour tous les types de publication"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:330
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:343
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:334
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:347
 #, php-format
 msgid "Permissions: %1$s %2$s in this %3$s"
 msgstr "Droits : %1$s %2$s cette %3$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:336
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:340
 #, php-format
 msgid "Permissions: %1$s all content in this %2$s for All Post Types"
 msgstr ""
 "Droits : %1$s tout le contenu de cette %2$s pour tous les types de "
 "publication"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:349
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:353
 #, php-format
 msgid "Permissions: %1$s this %2$s"
 msgstr "Droits : %1$s cette %2$s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:572
+#: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:576
 #, php-format
 msgid ""
 "Displayed permissions are those assigned for the \"%1$s\" type.%2$sYou can "
@@ -3363,25 +3384,25 @@ msgstr ""
 msgid "View Knowledge Base"
 msgstr "Voir la base de connaissances"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:171
+#: classes/PublishPress/Permissions/UI/Settings.php:169
 msgid "All settings were updated."
 msgstr "Tous les réglages ont été mis à jour."
 
-#: classes/PublishPress/Permissions/UI/Settings.php:179
+#: classes/PublishPress/Permissions/UI/Settings.php:177
 msgid "All settings were reset to defaults."
 msgstr "Tous les réglages ont été réinitialisés à la valeur par défaut."
 
-#: classes/PublishPress/Permissions/UI/Settings.php:202
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:631
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:649
+#: classes/PublishPress/Permissions/UI/Settings.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:627
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:645
 msgid "Save Changes"
 msgstr "Enregistrer les modifications"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:223
+#: classes/PublishPress/Permissions/UI/Settings.php:221
 msgid "Upgrade to Permissions Pro"
 msgstr "Mettre à niveau vers Permissions Pro"
 
-#: classes/PublishPress/Permissions/UI/Settings.php:224
+#: classes/PublishPress/Permissions/UI/Settings.php:222
 msgid "Need Permissions Support?"
 msgstr "Besoin du support de Permissions ?"
 
@@ -4263,6 +4284,10 @@ msgstr ""
 "Action groupée de ajouter/retirer les groupes sur l’écran des "
 "utilisateurs/utilisatrices"
 
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:118
+msgid "Display all available constant definitions"
+msgstr "Afficher toutes les définitions de constantes disponibles"
+
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:119
 msgid "Non-Administrators can set Editing Permissions for their editable posts"
 msgstr ""
@@ -5101,7 +5126,7 @@ msgid "Upgrade to Pro to unlock seamless integration."
 msgstr "Passer à la version Pro pour débloquer une intégration parfaite."
 
 #: includes/promo/posts-teaser-promo.php:4
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:408
 msgid "Posts Teaser"
 msgstr "Présentation des publications"
 
@@ -5194,6 +5219,18 @@ msgstr ""
 "Une clé presspermit.com semble être active. <a href=\"%s\" "
 "target=\"_blank\">Contactez-nous</a> pour obtenir de l’aide dans la "
 "migration de votre compte vers publishpress.com."
+
+#: includes/SettingsTabInstall.php:160
+#, php-format
+msgid "Original presspermit.com support key hash: <strong>%s</strong> (expires %s)"
+msgstr ""
+"Hash de la clé de support originale presspermit.com : <strong>%s</strong> "
+"(expire %s)"
+
+#: includes/SettingsTabInstall.php:162
+#, php-format
+msgid "Original presspermit.com support key hash: <strong>%s</strong>"
+msgstr "Hash de la clé de support originale presspermit.com : <strong>%s</strong>"
 
 #: includes/SettingsTabInstall.php:207
 #: includes/SettingsTabInstall.php:217
@@ -5837,33 +5874,17 @@ msgstr "Copier le shortcode"
 msgid "Copied!"
 msgstr "Copié !"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:487
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:532
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:556
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:611
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:797
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:198
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:368
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:577
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:990
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1041
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1092
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:282
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:52
-msgid "You do not have permission to view this content."
-msgstr "Vous n'avez pas la permission de voir ce contenu."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:650
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
 msgid "Content requires additional permissions."
 msgstr "Pour accéder à ce contenu, sont obligatoires des droits supplémentaires."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:115
-#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/ReadMoreHandler.php:222
 msgid "Read More"
 msgstr "Lire la suite"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:41
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:319
 msgid "Teaser Type"
 msgstr "Type de présentation"
 
@@ -5872,71 +5893,63 @@ msgid "Coverage"
 msgstr "Couverture"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:43
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:47
 msgid "No Teaser Text"
 msgstr "Pas de texte teaser"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:44
-msgid "Read More Notice"
-msgstr "Notification « Lire la suite »"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
 msgid "Redirect"
 msgstr "Rediriger"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:455, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:45
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:452, fuzzy
 msgid "Options"
 msgstr "Options"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:48
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:47
 msgid "Hidden Content Teaser"
 msgstr "Présentation du contenu masqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:57
 msgid "Display mode for readable private posts"
 msgstr "Mode d’affichage pour les publications privées lisibles"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:58
 msgid "Display mode for readable non-private posts"
 msgstr "Mode d’affichage pour les publications non privées lisibles"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:59
 msgid "Feed Replacement Text (use %permalink% for post URL)"
 msgstr ""
 "Texte de remplacement du flux (utiliser %permalink% pour l’URL de la "
 "publication)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
-msgid "Teaser Notice Message"
-msgstr "Message d'avis d'aperçu"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:60
 msgid "Apply teaser to list view as well as single view"
 msgstr "Appliquer l'aperçu à la vue liste ainsi qu'à la vue unique"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:61
 msgid "Apply teaser to logged in and/or logged out users"
 msgstr "Appliquer l'aperçu aux utilisateurs connectés et/ou déconnectés"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:62
 msgid "Hide navigation menu links to restricted content"
 msgstr "Masquer les liens du menu de navigation vers le contenu restreint"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:63
 msgid "Apply teaser to private posts"
 msgstr "Appliquer l'aperçu aux publications privées"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:64
 msgid "Hide Featured Image when Teaser is applied"
 msgstr "Masquer l’image mise en avant lorsque la présentation est appliquée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:67
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:65
 msgid "Disable Comments when Teaser is applied"
 msgstr "Désactiver les commentaires lorsque l'aperçu est appliqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:68
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:66
 msgid ""
 "\"Hide Private\" settings only apply to custom privacy (Member, Premium, "
 "Staff, etc.)"
@@ -5944,123 +5957,123 @@ msgstr ""
 "Les réglages « Masquer les privées » s’appliquent uniquement aux réglages "
 "de confidentialité personnalisés (membres, premium, personnel, etc.)."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:114, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:111, fuzzy
 msgid "Application"
 msgstr "Application"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:126
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:123
 msgid "Teaser Application"
 msgstr "Application d'aperçu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:127
 msgid "List and Single view"
 msgstr "Vue liste et vue simple"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:134
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:131
 msgid "Single view only"
 msgstr "Uniquement la vue simple"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:147
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:144
 msgid "User Application"
 msgstr "Application utilisateur"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:151
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:148
 msgid "Both"
 msgstr "Les deux"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:155
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:152
 msgid "Not Logged In Users"
 msgstr "Utilisateurs/utilisatrices déconnectés"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:159
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:156
 msgid "Logged In Users"
 msgstr "Utilisateurs/utilisatrices connectés"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:172
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:169
 msgid "Navigation Menus"
 msgstr "Menus de navigation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:176
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:173
 msgid "Display links if user doesn't have access"
 msgstr "Afficher les liens si l’utilisateur/utilisatrice n’y a pas accès"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:180
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:177
 msgid "Hide links if user doesn't have access"
 msgstr "Masquer les liens si l’utilisateur/utilisatrice n’y a pas accès"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:196
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:193
 msgid "Private Posts"
 msgstr "Publications privées"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:200
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:197
 msgid "Apply Teaser to Private Posts"
 msgstr "Appliquer la présentation aux publications privées"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:204
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:201
 msgid "Hide Private Posts if user doesn't have access"
 msgstr ""
 "Masquer les publications privées si l’utilisateur/utilisatrice n’y a pas "
 "accès"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:209
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:206
 msgid "Hide for Custom Visibility"
 msgstr "Masquer pour la visibilité personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:223
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:220
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
 msgid "Featured Image"
 msgstr "Image mise en avant"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:224
 msgid "Show featured image"
 msgstr "Afficher l’image mise en avant"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:231
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:228
 msgid "Hide featured image when teaser is applied"
 msgstr "Masquer l’image mise en avant lorsque la présentation est appliquée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:243
 msgid "Comments Area"
 msgstr "Zone des commentaires"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:251
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:248
 msgid "Disable the comments area when Teaser is applied"
 msgstr "Désactiver la zone des commentaires lorsque le teaser est appliqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:272
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:269
 msgid "Full Content"
 msgstr "Contenu complet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:273
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:270
 msgid "Excerpt Only"
 msgstr "Extrait uniquement"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:274
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:271
 msgid "Title Only"
 msgstr "Uniquement le titre"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:286, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:283, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:307
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:304
 msgid "Display for readable private posts"
 msgstr "Afficher pour les publications privées lisibles"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:329
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:326
 msgid "Display for readable non-private posts"
 msgstr "Afficher pour les publications non privées lisibles"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:350
 msgid "Feed Replacement Text"
 msgstr "Texte de remplacement du flux"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:377
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:374
 #, php-format
 msgid "Use %s for post URL"
 msgstr "Utiliser %s comme URL de publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:414
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:411
 msgid ""
 "Use these settings to control what users see when they don't have access to "
 "your content."
@@ -6068,21 +6081,21 @@ msgstr ""
 "Utilisez ces paramètres pour contrôler ce que les utilisateurs voient "
 "lorsqu'ils n'ont pas accès à votre contenu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:424
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:421
 msgid "All post teaser settings were updated."
 msgstr "Tous les réglages de la présentation des publications ont été mis à jour."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:432
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:429
 msgid "All post teaser settings were reset to defaults."
 msgstr ""
 "Tous les réglages de la présentation des publications ont été réinitialisés "
 "aux valeurs par défaut."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:440
 msgid "Teaser Settings"
 msgstr "Réglages de la présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:449
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:446
 msgid "Text Options"
 msgstr "Options de Texte"
 
@@ -6096,119 +6109,119 @@ msgstr ""
 "Choisir le type de publication pour lequel vous souhaitez configurer les "
 "réglages de la présentation."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:213
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:193
 #, php-format
 msgid "Text Options for %s"
 msgstr "Options de Texte pour %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:239
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:223
 msgid "WordPress default. Show \"Page not found\" screen"
 msgstr "Par défaut WordPress. Afficher l’écran « Page non trouvée »"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:225
 msgid "Use content before Read More link as teaser text"
 msgstr ""
 "Utiliser le contenu avant le lien « Lire la suite » comme texte de "
 "présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:226
 msgid "Use Excerpt as teaser text"
 msgstr "Utiliser l’extrait comme texte de présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:227
 msgid "Use Excerpt or pre-More as teaser text"
 msgstr "Utiliser « Extrait » ou « Pré-Plus » comme texte de présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:228
 msgid "Use Excerpt, pre-More or First X Characters as teaser text"
 msgstr ""
 "Utiliser « Extrait », « Pré-Plus » ou « X premiers caractères » comme texte "
 "de présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:229
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Redirect to another post"
 msgstr "Rediriger vers une autre publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:256
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:240
 msgid "No teaser will be applied"
 msgstr "Aucune présentation ne sera appliquée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:257
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Ne pas afficher le texte du teaser avant le message de l'utilisateur bloqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:258
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
 msgid "Show a \"Read More\" link with a Teaser notice"
 msgstr "Afficher un lien \"Lire la suite\" avec un avis de Teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:259
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
 msgid "Use the post excerpt as teaser content"
 msgstr "Utiliser l’extrait de publication comme texte de présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:260
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
 msgid "Use excerpt or content before More tag"
 msgstr "Utiliser l’extrait ou le contenu avant la balise « Plus »"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:261
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
 msgid "Show the first X characters of the post content"
 msgstr "Afficher les X premiers caractères du contenu de la publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:262
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Rediriger les utilisateurs/utilisatrices vers une autre page lorsqu’ils "
 "tentent d’accéder à un contenu restreint"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 msgid "Use first X characters of content as teaser text"
 msgstr "Utiliser les X premiers caractères du contenu comme texte de présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 msgid "Use excerpt or first X characters of content"
 msgstr "Utiliser l’extrait ou les X premiers caractères du contenu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:285
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Réglages de la présentation pour %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:349
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:333
 msgid "Show only the first"
 msgstr "Afficher uniquement le premier"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:350
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:356
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Chars"
 msgstr "Caractères"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:335
 msgid "characters"
 msgstr "caractères"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:355, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:339, fuzzy
 msgid "Max"
 msgstr "Max"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:341
 msgid "characters (leave empty for full excerpt)"
 msgstr "caractères (laisser vide pour le extrait complet)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:407
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:292
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:382
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:401
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Les visiteurs sans accès sont redirigés vers : %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:441
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:189
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:416
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:299
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Un exemple de %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:444
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:419
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6216,60 +6229,60 @@ msgstr ""
 "Ceci est un exemple du contenu complet. L'aperçu montre ce qu'un visiteur "
 "sans permission verra à la place."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:423
 msgid "This is a short excerpt from the restricted content."
 msgstr "Ceci est un court extrait du contenu restreint."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 msgid "Teaser Preview"
 msgstr "Aperçu de l'accroche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:473
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:448
 msgid "Site Preview"
 msgstr "Aperçu du site"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:476
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:451
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:452
 msgid "Preview content"
 msgstr "Aperçu du contenu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:491
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:466
 msgid "Preview device"
 msgstr "Aperçu du dispositif"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:467
 msgid "Desktop"
 msgstr "Bureau"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:495, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:470, fuzzy
 msgid "Mobile"
 msgstr "Mobile"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:504
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:479
 msgid "Open full preview in a new tab"
 msgstr "Ouvrir l'aperçu complet dans un nouvel onglet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:508
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:483
 msgid "Open full preview"
 msgstr "Ouvrir l'aperçu complet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:497
 msgid "Loading the preview from your active theme…"
 msgstr "Chargement de l'aperçu depuis votre thème actif…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:530
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Teaser preview from the active theme"
 msgstr "Aperçu teaser du thème actif"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:540
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:515
 msgid "The theme preview could not be displayed in this frame."
 msgstr "L'aperçu du thème n'a pas pu être affiché dans ce cadre."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:547
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:522
 msgid "Visitor redirected"
 msgstr "Visiteur redirigé"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6277,37 +6290,35 @@ msgstr ""
 "Le contenu restreint n'est pas affiché. Le visiteur est envoyé à la "
 "destination configurée."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1007
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1109
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:555
 msgid "Message for Blocked Users"
 msgstr "Message pour les utilisateurs/utilisatrices bloqués"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:586
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:556
 msgid ""
-"Replace the post content entirely with custom content for users who don't "
-"have access."
+"This message is shown to users who are blocked from viewing the full "
+"content. It is shared across all teaser types."
 msgstr ""
-"Remplacer le contenu de la publication avec du contenu personnalisé pour "
-"les utilisateurs/utilisatrices qui n’y ont pas accès."
+"Ce message est affiché aux utilisateurs qui sont bloqués pour voir le "
+"contenu complet. Il est partagé entre tous les types d'aperçus."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:562
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:53
 msgid "This field is required."
 msgstr "Ce champ est obligatoire."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:617
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:585
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr ""
 "Inserer un formulaire de connexion en utilisant le code court "
 "%s[login_form]%s."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:638
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:608
 msgid "Text Configuration"
 msgstr "Configuration du texte"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:609
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
@@ -6315,74 +6326,74 @@ msgstr ""
 "En plus du Teaser et du Message pour les utilisateurs bloqués, vous pouvez "
 "afficher du texte supplémentaire autour de votre contenu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:661
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:631
 msgid "post title"
 msgstr "titre de la publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:662
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:632
 msgid "post content"
 msgstr "contenu de la publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:669
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:639
 #, php-format
 msgid "Before %s"
 msgstr "Avant %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:670
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:640
 #, php-format
 msgid "After %s"
 msgstr "Après %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:754
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:724
 msgid "Redirect Settings"
 msgstr "Réglages de redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:765, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:735, fuzzy
 msgid "Redirection"
 msgstr "Redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:766
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:736
 msgid "Target Post Type"
 msgstr "Type de publication cible"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:767
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:737
 msgid "Select Post"
 msgstr "Sélectionner publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:767
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:737
 msgid "Custom URL"
 msgstr "URL Personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:777
 msgid "Not Logged In:"
 msgstr "Déconnecté :"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:815
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:785
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:888
 msgid "No redirect"
 msgstr "Aucune redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:816
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:786
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:889
 msgid "Redirect to WordPress login"
 msgstr "Rediriger vers la connexion de WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:817
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:920
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:787
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:890
 msgid "Redirect to a custom post"
 msgstr "Rediriger vers une publication personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:818
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:921
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:788
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:891
 msgid "Redirect to a custom URL"
 msgstr "Rediriger vers une URL personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:944
 msgid "This is a custom login page"
 msgstr "Ceci est une page de connexion personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:871
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:841
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6390,95 +6401,70 @@ msgstr ""
 "Une fois connecté, l’utilisateur sera redirigé vers la publication qu’il "
 "était en train de consulter."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:880
 msgid "Logged in Users:"
 msgstr "Utilisateurs/utilisatrices connectés :"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1008
-msgid ""
-"Customize the message shown to users who are blocked from viewing the full "
-"content when using the \"Read More\" teaser type."
-msgstr ""
-"Personnaliser le message affiché aux utilisateurs/utilisatrices qui ne "
-"peuvent pas voir le contenu complet lorsque l’on utilise le type de "
-"présentation « Lire la suite »."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1059
-msgid ""
-"Customize the notice message shown to all blocked users when using the "
-"\"Excerpt\" teaser type."
-msgstr ""
-"Personnalisez le message d'avis affiché à tous les utilisateurs bloqués "
-"lors de l'utilisation du type d'aperçu \"Extrait\"."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1110
-msgid ""
-"Customize the notice message shown to all blocked users when using the "
-"\"First X Characters\" teaser type."
-msgstr ""
-"Personnalisez le message d'avis affiché à tous les utilisateurs bloqués "
-"lors de l'utilisation du type d'aperçu \"Premiers X Caractères\"."
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1177
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:994
 msgid "Blocked User Message Style"
 msgstr "Style du Message Utilisateur Bloqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1178
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:995
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr ""
 "Personnaliser l’apparence du message de la presentation affiché aux "
 "utilisateurs/utilisatrices bloqués."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1186
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1003
 msgid "Background Color"
 msgstr "Couleur de Fond"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1198
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1015
 msgid "Text Color"
 msgstr "Couleur du Texte"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1210
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
 msgid "Border Color"
 msgstr "Couleur de la Bordure"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1222
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1233
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1050
 msgid "Border Position"
 msgstr "Position de la Bordure"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1226
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1043
 msgid "Left"
 msgstr "À gauche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1227
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1044
 msgid "Right"
 msgstr "À droite"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1228
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1045
 msgid "Top"
 msgstr "En haut"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1229
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Bottom"
 msgstr "En bas"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1230
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1047
 msgid "All Sides"
 msgstr "Tous les côtés"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1250
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
 msgid "Border Width (px)"
 msgstr "Largeur de la bordure (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1080
 msgid "Border Radius (px)"
 msgstr "Rayon de la bordure (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1276
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1093
 msgid "Font Size (px)"
 msgstr "Taille de la police (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1289
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1106
 msgid "Padding (px)"
 msgstr "Marge intérieure (px)"
 
@@ -6502,7 +6488,7 @@ msgstr "Extrait ou pré-More comme teaser"
 msgid "First X Characters as Teaser"
 msgstr "Premiers X caractères comme teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:186
+#: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:296
 msgid "Post"
 msgstr "Publication"
 
@@ -6555,7 +6541,7 @@ msgid "Groups"
 msgstr "Groupes"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:606
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
 #, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

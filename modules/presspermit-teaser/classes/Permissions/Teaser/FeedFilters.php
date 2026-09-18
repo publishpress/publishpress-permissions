@@ -98,9 +98,6 @@ class FeedFilters
             default:
                 if ($msg = $pp->getOption('feed_teaser')) {
                     if (defined('PP_TRANSLATE_TEASER')) {
-                        // otherwise, this is only loaded for admin
-                        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-                        
                         $msg = translate($msg, 'press-permit-core');
 
                         if (!empty($msg) && !is_null($msg) && is_string($msg))

@@ -3,6 +3,8 @@ namespace PublishPress\Permissions;
 
 class TeaserHooks
 {
+    public const DEFAULT_TEASER_TEXT = 'You do not have permission to view this content.';
+
     private static $instance = null;
     public $teaser_disabled = false; // kill switch to support universal teaser disable by API
     private $excerpt_post = false;
@@ -16,6 +18,114 @@ class TeaserHooks
         }
 
         return self::$instance;
+    }
+
+    public static function getDefaultTeaserText()
+    {
+        return __(self::DEFAULT_TEASER_TEXT, 'press-permit-core');
+    }
+
+    public static function isDefaultTeaserText($value)
+    {
+        $normalized_value = self::normalizeTeaserTextForComparison($value);
+
+        if ('' === $normalized_value) {
+            return false;
+        }
+
+        foreach ([self::DEFAULT_TEASER_TEXT, self::getDefaultTeaserText()] as $default_text) {
+            if ($normalized_value === self::normalizeTeaserTextForComparison($default_text)) {
+                return true;
+            }
+        }
+
+        foreach (self::getInstalledDefaultTeaserTextTranslations() as $default_text) {
+            if ($normalized_value === self::normalizeTeaserTextForComparison($default_text)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function getTeaserOptionOrDefault($option_basename, $object_type)
+    {
+        if (in_array($option_basename, self::getBlockedMessageOptionNames(), true)) {
+            return self::getBlockedMessageOptionOrDefault($object_type);
+        }
+
+        $value = wp_unslash((string) presspermit()->getTypeOption($option_basename, $object_type));
+
+        return ('' === $value || self::isDefaultTeaserText($value)) ? self::getDefaultTeaserText() : $value;
+    }
+
+    private static function getBlockedMessageOptionOrDefault($object_type)
+    {
+        $value = self::getRawTypeOption('tease_replace_content', $object_type, $has_canonical_value);
+
+        return (!$has_canonical_value || '' === $value || self::isDefaultTeaserText($value))
+            ? self::getDefaultTeaserText()
+            : $value;
+    }
+
+    private static function getBlockedMessageOptionNames()
+    {
+        return ['tease_replace_content'];
+    }
+
+    private static function getRawTypeOption($option_basename, $object_type, &$has_value)
+    {
+        $has_value = false;
+        $options = presspermit()->getOption($option_basename);
+
+        if (is_array($options) && array_key_exists($object_type, $options)) {
+            $has_value = true;
+
+            return wp_unslash((string) $options[$object_type]);
+        }
+
+        return '';
+    }
+
+    private static function normalizeTeaserTextForComparison($value)
+    {
+        return trim(wp_strip_all_tags(wp_unslash((string) $value)));
+    }
+
+    private static function getInstalledDefaultTeaserTextTranslations()
+    {
+        static $translations = null;
+
+        if (null !== $translations) {
+            return $translations;
+        }
+
+        $translations = [];
+
+        foreach (glob(PRESSPERMIT_ABSPATH . '/languages/press-permit-core-*.po') ?: [] as $po_file) {
+            $contents = file_get_contents($po_file);
+
+            if (false === $contents) {
+                continue;
+            }
+
+            if (preg_match('/msgid "' . preg_quote(addcslashes(self::DEFAULT_TEASER_TEXT, '"\\'), '/') . '"\s+msgstr "([^"]*)"/', $contents, $matches)) {
+                $translations[] = stripcslashes($matches[1]);
+            }
+        }
+
+        return array_unique(array_filter($translations, 'strlen'));
+    }
+
+    private function normalizeDefaultTeaserTextOption($value)
+    {
+        if (is_array($value)) {
+            return array_map([$this, 'normalizeDefaultTeaserTextOption'], $value);
+        }
+
+        $value = (string) $value;
+
+        return self::isDefaultTeaserText($value) ? '' : $value;
     }
 
     function __construct() 
@@ -279,13 +389,12 @@ class TeaserHooks
 
         $post_type = $this->getThemeTeaserPreviewPostType();
         $teaser_type = $this->getThemeTeaserPreviewTeaserType();
-        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
+        $default_message = esc_html(self::getDefaultTeaserText());
         $style_attr = esc_attr($this->getThemeTeaserPreviewNoticeStyleAttribute($post_type));
 
         if ('redirect' === $teaser_type) {
             $target_url = $this->getThemeTeaserPreviewRedirectTarget($post_type);
-            $fallback_message = wp_unslash((string) presspermit()->getTypeOption('read_more_login_notice', $post_type));
-            $fallback_message = ('' !== $fallback_message) ? $fallback_message : $default_message;
+            $fallback_message = self::getTeaserOptionOrDefault('tease_replace_content', $post_type);
             $message = $target_url
                 ? sprintf(
                     /* translators: %s is a link to the URL visitors without access are redirected to. */
@@ -319,14 +428,7 @@ class TeaserHooks
         if (in_array($teaser_type, ['read_more', 'excerpt', 'x_chars', 'more'], true)) {
             // Not escaped: these notice messages preserve their formatting on the front end
             // (see PostsTeaser::wrapTeaserNotice() usage).
-            $option_map = [
-                'read_more' => 'read_more_login_notice',
-                'excerpt' => 'excerpt_login_notice',
-                'x_chars' => 'x_chars_login_notice',
-                'more' => 'x_chars_login_notice',
-            ];
-            $message = wp_unslash((string) presspermit()->getTypeOption($option_map[$teaser_type], $post_type));
-            $message = ('' !== $message) ? $message : $default_message;
+            $message = self::getTeaserOptionOrDefault('tease_replace_content', $post_type);
             $message = $this->prepareThemeTeaserPreviewText($message);
             $preview_content = '';
 
@@ -388,9 +490,7 @@ class TeaserHooks
 
         // "Teaser Text": not stripped, since the replace/prepend/append fields preserve their
         // formatting on the front end (see PostsTeaser::getTeaserText()).
-        $teaser_text = wp_unslash(
-            (string) presspermit()->getTypeOption('tease_replace_content_anon', $post_type)
-        );
+        $teaser_text = self::getTeaserOptionOrDefault('tease_replace_content', $post_type);
         $prefix = wp_unslash(
             (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
         );
@@ -501,10 +601,6 @@ class TeaserHooks
             'teaser_redirect_anon_post_type' => [],
             'teaser_redirect_custom_login_page' => [],
             'teaser_redirect_custom_login_page_anon' => [],
-            'read_more_login_notice' => [],
-            'excerpt_login_notice' => [],
-            'x_chars_login_notice' => [],
-
             // object type options (support separate array element for each object type, and possible a nullstring element as default)
             'tease_post_types' => [],
             'teaser_num_chars' => [], // Legacy field - kept for backward compatibility
@@ -514,7 +610,6 @@ class TeaserHooks
             'tease_public_posts_only' => [],
             'tease_direct_access_only' => [],
             'tease_replace_content' => [],
-            'tease_replace_content_anon' => [],
             'tease_prepend_content' => [],
             'tease_prepend_content_anon' => [],
             'tease_append_content' => [],
@@ -897,9 +992,9 @@ class TeaserHooks
     function flt_custom_sanitize_setting($is_custom_sanitized, $option_basename, $default_prefix, $args) {
         if (in_array(
             $option_basename, 
-            ['feed_teaser', 'tease_replace_content_anon', 'tease_prepend_name_anon', 'tease_append_name_anon', 'tease_replace_content_anon', 'tease_prepend_content_anon', 'tease_append_content_anon', 
-            'tease_replace_excerpt_anon', 'tease_prepend_excerpt_anon', 'tease_append_excerpt_anon', 'tease_replace_content', 'tease_prepend_name', 'tease_append_name', 'tease_replace_content', 
-            'tease_prepend_content', 'tease_append_content', 'tease_replace_excerpt', 'tease_prepend_excerpt', 'tease_append_excerpt', 'read_more_login_notice', 'excerpt_login_notice', 'x_chars_login_notice']
+            ['feed_teaser', 'tease_prepend_name_anon', 'tease_append_name_anon', 'tease_prepend_content_anon', 'tease_append_content_anon', 
+            'tease_replace_excerpt_anon', 'tease_prepend_excerpt_anon', 'tease_append_excerpt_anon', 'tease_replace_content', 'tease_prepend_name', 'tease_append_name',
+            'tease_prepend_content', 'tease_append_content', 'tease_replace_excerpt', 'tease_prepend_excerpt', 'tease_append_excerpt']
         )) {
             // phpcs Note: this is triggered by our filter application, so additional nonce verification is unnecessary
 
@@ -909,7 +1004,9 @@ class TeaserHooks
             if (isset($_POST[$option_basename])) {
                 presspermit()->updateOption(
                     $default_prefix . $option_basename,
-                    preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $_POST[$option_basename]),    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                    $this->normalizeDefaultTeaserTextOption(
+                        preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $_POST[$option_basename])    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                    ),
                     $args
                 );
             }

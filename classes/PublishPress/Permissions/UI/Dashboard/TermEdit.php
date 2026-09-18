@@ -55,6 +55,10 @@ class TermEdit
 	                'alertSelectItem'                => esc_html__('Please select at least one item.', 'press-permit-core'),
 	                'confirmBulkRemove'              => esc_html__('Are you sure you want to remove the selected user(s) from exceptions?', 'press-permit-core'),
 	                'confirmDeleteItem'              => esc_html__('Remove the custom permisisons for "%s"?', 'press-permit-core'),
+	                'noItemsFound'                   => esc_html__('No items found', 'press-permit-core'),
+	                'noFilterResults'                => esc_html__('No %s items found', 'press-permit-core'),
+	                'searchUsers'                    => esc_html__('Search users...', 'press-permit-core'),
+	                'unsavedChanges'                 => esc_html__('You have unsaved changes.', 'press-permit-core'),
 	            ]);
 	        }
 	
