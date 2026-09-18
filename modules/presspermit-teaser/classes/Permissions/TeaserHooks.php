@@ -22,7 +22,7 @@ class TeaserHooks
 
     public static function getDefaultTeaserText()
     {
-        return __(self::DEFAULT_TEASER_TEXT, 'press-permit-core');
+        return __('You do not have permission to view this content.', 'press-permit-core');
     }
 
     public static function isDefaultTeaserText($value)
