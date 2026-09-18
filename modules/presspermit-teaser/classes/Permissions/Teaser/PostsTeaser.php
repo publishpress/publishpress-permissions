@@ -349,9 +349,14 @@ class PostsTeaser
 
         $anon = ($user->ID == 0) ? '_anon' : '';
         
-        // Get per-post-type teaser text
-        $option_basename = "tease_{$teaser_operation}_{$variable}{$anon}";
-        $msg = presspermit()->getTypeOption($option_basename, $object_type);
+        // The blocked content message is centralized in tease_replace_content for all users.
+        if ('replace' === $teaser_operation && 'content' === $variable) {
+            $msg = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $object_type);
+        } else {
+            // Get per-post-type teaser text
+            $option_basename = "tease_{$teaser_operation}_{$variable}{$anon}";
+            $msg = presspermit()->getTypeOption($option_basename, $object_type);
+        }
 
         // Remove slashes that WordPress adds automatically to option values
         if ($msg) {
