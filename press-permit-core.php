@@ -258,6 +258,17 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
         presspermit();
     }
 
+    function presspermit_load_textdomain()
+    {
+        load_plugin_textdomain(
+            'press-permit-core',
+            false,
+            dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages'
+        );
+    }
+
+    add_action('init', 'presspermit_load_textdomain', 0);
+
     // negative priority to precede any default WP action handlers
     if ($presspermit_loaded_by_pro) {
         presspermit_load();    // Pro support

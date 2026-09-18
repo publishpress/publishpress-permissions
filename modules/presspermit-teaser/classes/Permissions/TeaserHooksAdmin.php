@@ -49,7 +49,8 @@ class TeaserHooksAdmin
                             'select_a_page' => __( 'Select a page', 'press-permit-core' ),
                             'select_preview_content' => __( 'Search preview content', 'press-permit-core' ),
                             'select_terms' => __( 'Select terms', 'press-permit-core' ),
-                            'default_teaser_text' => __( 'You do not have permission to view this content.', 'press-permit-core' )
+                            'default_teaser_text' => TeaserHooks::getDefaultTeaserText(),
+                            'field_required' => __( 'This field is required.', 'press-permit-core' ),
                         ]
                     ]
                 );

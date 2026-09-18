@@ -8,8 +8,6 @@ class Settings
     {
         // called by Dashboard\DashboardFilters::actMenuHandler
 
-        @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-
         add_action('admin_footer', [$this, 'markActiveSubmenu'], 20);
 
         require_once(PRESSPERMIT_CLASSPATH . '/UI/SettingsAdmin.php');

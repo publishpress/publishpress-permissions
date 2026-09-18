@@ -953,7 +953,7 @@ jQuery(document).ready(function ($) {
         if (teaserType === '1') {
             // "Teaser Text" preserves bold/italic/etc. on the front end, so the payload sent to the
             // preview iframe carries raw HTML here instead of the escaped plain text used below.
-            var teaserContent = getEditorHtml($container, 'tease_replace_content' + suffix);
+            var teaserContent = getEditorHtml($container, 'tease_replace_content');
 
             if (!teaserContent) {
                 teaserContent = messageText;
@@ -1021,20 +1021,12 @@ jQuery(document).ready(function ($) {
         // now, so the preview renders them as HTML rather than escaped plain text.
         var isHtmlMessage = true;
 
-        if (teaserType == '1') {
-            messageText = getEditorHtml($container, 'tease_replace_content_anon');
+        if (teaserType != '0') {
+            messageText = getEditorHtml($container, 'tease_replace_content');
 
             if (!messageText) {
-                messageText = $preview.first().data('teaser-text-anon') || '';
+                messageText = $preview.first().data('blocked-message') || '';
             }
-        } else if (teaserType == 'read_more') {
-            messageText = $preview.first().data('read-more-msg');
-        } else if (teaserType == 'redirect') {
-            messageText = $preview.first().data('read-more-msg');
-        } else if (teaserType == 'excerpt') {
-            messageText = $preview.first().data('excerpt-msg');
-        } else if (teaserType == 'x_chars' || teaserType == 'more') {
-            messageText = $preview.first().data('x-chars-msg');
         }
 
         // Fallback to default if empty (a fixed plain-text string, not user-entered HTML).
@@ -1080,65 +1072,42 @@ jQuery(document).ready(function ($) {
             $teaserNoticeStyleCard.show();
         }
 
-        // Hide all notice cards first for smooth transition
-        var $noticeCards = $container.find('.pp-read-more-notice-card, .pp-excerpt-notice-card, .pp-x-chars-notice-card');
-        
         // Show/hide sections based on teaser type
         if (selectedType == '0') {
             // No Teaser: hide everything
             $container.find('.pp-teaser-application-fields').slideUp(300);
-            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == 'redirect') {
             // Redirect: show only redirect settings and application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideDown(300);
-            $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == '1') {
-            // No Teaser Text: show message card and application fields, hide redirect
+            // No Teaser Text: show application fields, hide redirect.
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-message-card').slideDown(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            $noticeCards.stop(true, false).fadeOut(250);
         } else if (selectedType == 'read_more') {
-            // Read More: show read more notice and application fields
+            // Read More: show application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            // Hide other notice cards first, then show read more notice
-            $noticeCards.not('.pp-read-more-notice-card').stop(true, false).fadeOut(250);
-            $container.find('.pp-read-more-notice-card').stop(true, false).delay(250).fadeIn(300);
         } else if (selectedType == 'excerpt') {
-            // Excerpt: show excerpt notice and application fields
+            // Excerpt: show application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            // Hide other notice cards first, then show excerpt notice
-            $noticeCards.not('.pp-excerpt-notice-card').stop(true, false).fadeOut(250);
-            $container.find('.pp-excerpt-notice-card').stop(true, false).delay(250).fadeIn(300);
         } else if (selectedType == 'x_chars' || selectedType == 'more') {
-            // X Chars or More: show x chars notice and application fields
+            // X Chars or More: show application fields
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            // Hide other notice cards first, then show x chars notice
-            $noticeCards.not('.pp-x-chars-notice-card').stop(true, false).fadeOut(250);
-            $container.find('.pp-x-chars-notice-card').stop(true, false).delay(250).fadeIn(300);
         } else {
             // Other teaser types: show application fields only
             $container.find('.pp-teaser-application-fields').slideDown(300);
-            $container.find('.pp-teaser-message-card').slideUp(300);
             $container.find('.pp-teaser-text-card').slideUp(300);
             $container.find('.pp-teaser-redirect-settings').slideUp(300);
-            $noticeCards.stop(true, false).fadeOut(250);
         }
         
         // Update preview text based on new teaser type
@@ -1338,32 +1307,6 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    // Monitor TinyMCE editor changes for teaser text
-    $(document).on('input keyup', 'textarea[id*="tease_replace_content"]', function() {
-        var editorId = $(this).attr('id');
-        var $container = getTeaserSettingsContainer($(this));
-        var $preview = getTeaserNoticePreviews($container);
-        var value = '';
-        
-        // Try to get content from TinyMCE if active
-        if (typeof tinymce !== 'undefined' && tinymce.get(editorId) && !tinymce.get(editorId).isHidden()) {
-            value = tinymce.get(editorId).getContent({format: 'text'});
-        } else {
-            value = $(this).val();
-        }
-        
-        // Strip HTML tags for preview
-        var tempDiv = document.createElement('div');
-        tempDiv.innerHTML = value;
-        value = tempDiv.textContent || tempDiv.innerText || '';
-
-        $preview
-            .data('teaser-text-anon', value)
-            .data('teaser-text-logged', value);
-        
-        updateTeaserPreviewText($container);
-    });
-
     // Monitor title and content prefix/suffix editors used by the full preview
     $(document).on(
         'input keyup',
@@ -1376,10 +1319,10 @@ jQuery(document).ready(function ($) {
     );
 
     // Monitor textarea changes for notice message editors
-    $(document).on('input keyup', 'textarea[id*="read_more_login_notice"], textarea[id*="excerpt_login_notice"], textarea[id*="x_chars_login_notice"]', function() {
+    $(document).on('input keyup', 'textarea[id*="tease_replace_content"]', function() {
         var editorId = $(this).attr('id');
-        var $container = $(this).closest('.pp-teaser-settings-container');
-        var $preview = $container.find('.pp-teaser-notice-preview');
+        var $container = getTeaserSettingsContainer($(this));
+        var $preview = getTeaserNoticePreviews($container);
         var value = '';
 
         // Not stripped: these notice messages preserve their formatting on the front end too.
@@ -1389,34 +1332,13 @@ jQuery(document).ready(function ($) {
             value = $(this).val();
         }
 
-        if (editorId.indexOf('read_more_login_notice') > -1) {
-            $preview.data('read-more-msg', value);
-        } else if (editorId.indexOf('excerpt_login_notice') > -1) {
-            $preview.data('excerpt-msg', value);
-        } else if (editorId.indexOf('x_chars_login_notice') > -1) {
-            $preview.data('x-chars-msg', value);
-        }
+        $preview.data('blocked-message', value);
         
         updateTeaserPreviewText($container);
     });
 
     // Function to bind all TinyMCE editor events (preview updates and error removal)
     function bindTinyMCEEditor(editor) {
-        // Handle preview text updates for teaser content editors
-        if (editor.id.indexOf('tease_replace_content') > -1) {
-            editor.on('keyup change', function() {
-                var value = editor.getContent({format: 'text'});
-                var $container = getTeaserSettingsContainer($('#' + editor.id));
-                var $preview = getTeaserNoticePreviews($container);
-                
-                $preview
-                    .data('teaser-text-anon', value)
-                    .data('teaser-text-logged', value);
-                
-                updateTeaserPreviewText($container);
-            });
-        }
-
         if (editor.id.indexOf('tease_prepend_') > -1 || editor.id.indexOf('tease_append_') > -1) {
             editor.on('keyup change', function() {
                 var $container = getTeaserSettingsContainer($(document.getElementById(editor.id)));
@@ -1426,22 +1348,14 @@ jQuery(document).ready(function ($) {
         }
         
         // Handle preview text updates for message editors
-        if (editor.id.indexOf('read_more_login_notice') > -1 || 
-            editor.id.indexOf('excerpt_login_notice') > -1 || 
-            editor.id.indexOf('x_chars_login_notice') > -1) {
+        if (editor.id.indexOf('tease_replace_content') > -1) {
             editor.on('keyup change', function() {
                 // Not stripped: these notice messages preserve their formatting on the front end too.
                 var value = editor.getContent();
-                var $container = $('#' + editor.id).closest('.pp-teaser-settings-container');
-                var $preview = $container.find('.pp-teaser-notice-preview');
+                var $container = getTeaserSettingsContainer($('#' + editor.id));
+                var $preview = getTeaserNoticePreviews($container);
 
-                if (editor.id.indexOf('read_more_login_notice') > -1) {
-                    $preview.data('read-more-msg', value);
-                } else if (editor.id.indexOf('excerpt_login_notice') > -1) {
-                    $preview.data('excerpt-msg', value);
-                } else if (editor.id.indexOf('x_chars_login_notice') > -1) {
-                    $preview.data('x-chars-msg', value);
-                }
+                $preview.data('blocked-message', value);
                 
                 updateTeaserPreviewText($container);
             });
@@ -1530,7 +1444,7 @@ jQuery(document).ready(function ($) {
 
                 // Add error message if not already present
                 if (!$requiredField.find('.error-msg').length) {
-                    var errorMsg = $requiredField.data('error-message') || 'This field is required';
+                    var errorMsg = $requiredField.data('error-message') || presspermitTeaser.strings.field_required;
                     $requiredField.find('.wp-editor-wrap').after('<div class="error-msg" style="color: #dc3232; margin-top: 5px;">' + errorMsg + '</div>');
                 }
 
@@ -1552,79 +1466,6 @@ jQuery(document).ready(function ($) {
             hasError: false
         };
     }
-
-    // Form validation before submission
-    $('#pp_settings_form').on('submit', function(e) {
-        // Only run validation if we're on the teaser settings tab
-        var $teaserSettingsSection = $('#ppp-tab-teaser-settings');
-        if (!$teaserSettingsSection.is(':visible')) {
-            return; // Not on teaser settings tab, allow form submission
-        }
-
-        var errors = [];
-
-        // Check each teaser settings container (not just visible ones)
-        $('.pp-teaser-settings-container').each(function() {
-            var $container = $(this);
-            var postType = $container.data('post-type');
-            var teaserType = $container.find('.pp-teaser-type-select').val();
-
-            // Only validate if teaser type is 1 (Teaser text)
-            if (teaserType == '1') {
-                var $requiredFields = $container.find('.pp-required-field[data-field-action="replace"][data-field-item="content"]');
-
-                $requiredFields.each(function() {
-                    var validationResult = validateRequiredField($(this), postType);
-                    if (validationResult.hasError) {
-                        errors.push(validationResult);
-                    }
-                });
-            }
-        });
-
-        // Display errors and prevent submission
-        if (errors.length > 0) {
-            e.preventDefault();
-
-            // Get first error
-            var firstError = errors[0];
-            if (firstError) {
-                // Switch to the post type with error if needed
-                var $targetContainer = $('.pp-teaser-settings-container[data-post-type="' + firstError.postType + '"]');
-
-                if (!$targetContainer.hasClass('active')) {
-                    // Update post type selector
-                    $('.pp-current-post-type').val(firstError.postType);
-
-                    // Hide all containers
-                    $('.pp-teaser-settings-container').removeClass('active').hide();
-
-                    // Show target container
-                    $targetContainer.addClass('active pp-fade-in').show();
-                }
-
-                $targetContainer.find('.pp-teaser-message-card').show();
-
-                // Scroll to first error with animation
-                setTimeout(function() {
-                    var $errorElement = $('#wp-' + firstError.editorId + '-wrap');
-                    if ($errorElement.length) {
-                        $('html, body').animate({
-                            scrollTop: $errorElement.offset().top - 100
-                        }, 500);
-
-                        // Add a subtle pulse effect to draw attention
-                        $errorElement.addClass('pp-pulse-error');
-                        setTimeout(function() {
-                            $errorElement.removeClass('pp-pulse-error');
-                        }, 2000);
-                    }
-                }, 300);
-            }
-
-            return false;
-        }
-    });
 
     // Handle error removal for textarea input (when in Text/HTML mode)
     $(document).on('input keyup', '.pp-required-field textarea.wp-editor-area', function() {

@@ -41,7 +41,6 @@ class PostsTeaser
             'teaser_type' => esc_html__('Teaser Type', 'press-permit-core'),
             'coverage' => esc_html__('Coverage', 'press-permit-core'),
             'teaser_text' => esc_html__('No Teaser Text', 'press-permit-core'),
-            'read_more_notice' => esc_html__('Read More Notice', 'press-permit-core'),
             'redirect' => esc_html__('Redirect', 'press-permit-core'),
             'options' => esc_html__('Options', 'press-permit-core'),
 
@@ -58,7 +57,6 @@ class PostsTeaser
             'rss_private_feed_mode' => esc_html__('Display mode for readable private posts', 'press-permit-core'),
             'rss_nonprivate_feed_mode' => esc_html__('Display mode for readable non-private posts', 'press-permit-core'),
             'feed_teaser' => esc_html__('Feed Replacement Text (use %permalink% for post URL)', 'press-permit-core'),
-            'read_more_login_notice' => esc_html__('Teaser Notice Message', 'press-permit-core'),
             'teaser_opt_direct_access_only' => esc_html__('Apply teaser to list view as well as single view', 'press-permit-core'),
             'teaser_opt_logged_only' => esc_html__('Apply teaser to logged in and/or logged out users', 'press-permit-core'),
             'teaser_opt_hide_menu_links' => esc_html__('Hide navigation menu links to restricted content', 'press-permit-core'),
@@ -78,11 +76,10 @@ class PostsTeaser
             'coverage' => ['teaser_hide_custom_private_only'],
             'menu' => [''],
             'redirect' => ['teaser_redirect_anon', 'teaser_redirect_anon_page', 'teaser_redirect', 'teaser_redirect_page', 'teaser_redirect_custom_login_page_anon', 'teaser_redirect_custom_login_page'],
-            'teaser_text' => ['tease_replace_content', 'tease_replace_content_anon', 'tease_prepend_content', 'tease_prepend_content_anon',
+            'teaser_text' => ['tease_replace_content', 'tease_prepend_content', 'tease_prepend_content_anon',
                               'tease_append_content', 'tease_append_content_anon', 'tease_prepend_name', 'tease_prepend_name_anon',
                               'tease_append_name', 'tease_append_name_anon', 'tease_replace_excerpt', 'tease_replace_excerpt_anon',
                               'tease_prepend_excerpt', 'tease_prepend_excerpt_anon', 'tease_append_excerpt', 'tease_append_excerpt_anon'],
-            'read_more_notice' => ['read_more_login_notice'],
             'hidden_content_teaser' => ['teaser_hide_custom_private_only'],
             'options' => [
                 'teaser_opt_direct_access_only', 'teaser_opt_logged_only', 'teaser_opt_hide_menu_links',
@@ -530,7 +527,6 @@ class PostsTeaser
                 'tease_append_content',
                 'tease_prepend_name_anon',
                 'tease_append_name_anon',
-                'tease_replace_content_anon',
                 'tease_prepend_content_anon',
                 'tease_append_content_anon',
             ];

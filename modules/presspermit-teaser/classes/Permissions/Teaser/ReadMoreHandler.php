@@ -189,22 +189,17 @@ class ReadMoreHandler
         $link_text = $options['link_text'];
         $link_text = str_replace('%post_title%', get_the_title($post->ID), $link_text);
         $link_text = str_replace('%permalink%', $permalink, $link_text);
-        
-        // Add the shared informational message for blocked users on single post pages.
+
         $info_message = '';
         if (is_single() || is_page()) {
-            $notice_text = presspermit()->getTypeOption('read_more_login_notice', $post_type);
-            if (empty($notice_text)) {
-                $notice_text = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-            }
-            $notice_text = do_shortcode(wp_unslash($notice_text));
+            $notice_text = do_shortcode(\PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type));
             
             $info_message = sprintf(
                 '<p class="pp-teaser-login-notice" style="padding: 15px; background: #f0f6fc; border-left: 4px solid #0073aa; margin: 15px 0; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; word-break: break-word; box-sizing: border-box;">%s</p>',
                 $notice_text
             );
             
-            $info_message = apply_filters('presspermit_read_more_login_notice', $info_message, $post);
+            $info_message = apply_filters('presspermit_teaser_blocked_message', $info_message, $post);
         }
         
         $link_html = sprintf('%s', $info_message);

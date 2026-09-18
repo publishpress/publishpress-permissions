@@ -97,11 +97,11 @@ class TeaserProgressiveUI {
     private function getSharedAudienceOption($anonymous_option, $logged_option, $object_type) {
         $value = $this->pp->getTypeOption($anonymous_option, $object_type);
 
-        if (false === $value || '' === $value) {
+        if (!is_scalar($value) || '' === (string) $value) {
             $value = $this->pp->getTypeOption($logged_option, $object_type);
         }
 
-        return $value;
+        return is_scalar($value) ? (string) $value : '';
     }
 
     private function getTeaserPreviewDeviceMode() {
@@ -132,26 +132,6 @@ class TeaserProgressiveUI {
                 <div class="pp-teaser-settings-main">
                     <!-- Combined Settings Table -->
                     <?php $this->renderCombinedSettingsTable($object_type, $item_label, $teaser_setting); ?>
-
-                    <!-- Read More Notice (shown only when read_more is selected) -->
-                    <div class="pp-conditional-settings pp-read-more-notice-card">
-                    <?php $this->renderReadMoreNoticeCard($object_type); ?>
-                    </div>
-
-                    <!-- Excerpt Notice (shown only when excerpt is selected) -->
-                    <div class="pp-conditional-settings pp-excerpt-notice-card">
-                    <?php $this->renderExcerptNoticeCard($object_type); ?>
-                    </div>
-
-                    <!-- X Chars Notice (shown only when x_chars is selected) -->
-                    <div class="pp-conditional-settings pp-x-chars-notice-card">
-                    <?php $this->renderXCharsNoticeCard($object_type); ?>
-                    </div>
-
-                    <!-- No Teaser Text message (shown only when teaser type = 1) -->
-                    <div class="pp-conditional-settings pp-teaser-message-card">
-                    <?php $this->renderTeaserContentCard($object_type); ?>
-                    </div>
 
                     <!-- Teaser Notice Style Settings (per post type) -->
                     <div class="pp-conditional-settings pp-teaser-notice-style-settings">
@@ -229,6 +209,10 @@ class TeaserProgressiveUI {
             <?php $this->renderTeaserTextCard($object_type); ?>
         </div>
         <?php
+    }
+
+    private function getBlockedMessage($object_type) {
+        return \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $object_type);
     }
 
     private function renderCombinedSettingsTable($object_type, $item_label, $teaser_setting) {
@@ -365,23 +349,14 @@ class TeaserProgressiveUI {
     }
 
     private function renderTeaserPreview($object_type, $item_label, $teaser_setting, $device_mode = 'desktop') {
-        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
+        $default_message = esc_html(\PublishPress\Permissions\TeaserHooks::getDefaultTeaserText());
         $type_obj = get_post_type_object($object_type);
         $singular_label = $type_obj ? $type_obj->labels->singular_name : $item_label;
 
         // Not stripped: "Teaser Text" content preserves its formatting on the front end (see PostsTeaser::getTeaserText()).
-        $teaser_text = wp_unslash(
-            $this->getSharedAudienceOption(
-                'tease_replace_content_anon',
-                'tease_replace_content',
-                $object_type
-            ) ?: $default_message
-        );
+        $blocked_message = $this->getBlockedMessage($object_type);
         // Not stripped: these notice messages preserve their formatting on the front end too
         // (see PostsTeaser::wrapTeaserNotice() usage).
-        $read_more_msg = wp_unslash($this->pp->getTypeOption('read_more_login_notice', $object_type) ?: $default_message);
-        $excerpt_msg = wp_unslash($this->pp->getTypeOption('excerpt_login_notice', $object_type) ?: $default_message);
-        $x_chars_msg = wp_unslash($this->pp->getTypeOption('x_chars_login_notice', $object_type) ?: $default_message);
 
         // Mirrors TeaserHooks::actMaybeRedirect()'s "Not Logged In" branch, matching what a
         // blocked visitor previewing this page would actually experience.
@@ -555,11 +530,7 @@ class TeaserProgressiveUI {
                                 id="pp-teaser-site-notice-preview-<?php echo esc_attr($object_type); ?>"
                                 class="pp-teaser-notice-preview"
                                 data-teaser-text-default="<?php echo esc_attr($default_message); ?>"
-                                data-teaser-text-anon="<?php echo esc_attr($teaser_text); ?>"
-                                data-teaser-text-logged="<?php echo esc_attr($teaser_text); ?>"
-                                data-read-more-msg="<?php echo esc_attr($read_more_msg); ?>"
-                                data-excerpt-msg="<?php echo esc_attr($excerpt_msg); ?>"
-                                data-x-chars-msg="<?php echo esc_attr($x_chars_msg); ?>"
+                                data-blocked-message="<?php echo esc_attr($blocked_message); ?>"
                                 data-current-teaser-type="<?php echo esc_attr($teaser_setting); ?>"
                             >
                                 <?php echo esc_html($default_message); ?>
@@ -572,10 +543,9 @@ class TeaserProgressiveUI {
         <?php
     }
 
-    private function renderTeaserContentCard($object_type) {
+    private function renderBlockedMessageCard($object_type) {
         // Get Teaser Text mode content (HTML content from editors) - remove slashes added by WordPress
-        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-        $teaser_text = wp_unslash($this->getSharedAudienceOption('tease_replace_content_anon', 'tease_replace_content', $object_type) ?: $default_message);
+        $blocked_message = $this->getBlockedMessage($object_type);
         ?>
         <div class="teaser-message-section" style="margin-top: 20px;">
             <table class="widefat">
@@ -583,7 +553,7 @@ class TeaserProgressiveUI {
                     <tr>
                         <th>
                             <strong><?php esc_html_e('Message for Blocked Users', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Replace the post content entirely with custom content for users who don\'t have access.', 'press-permit-core')) ?>
+                            <?php $this->generateTooltip(esc_html__('This message is shown to users who are blocked from viewing the full content. It is shared across all teaser types.', 'press-permit-core')) ?>
                         </th>
                     </tr>
                 </thead>
@@ -591,10 +561,9 @@ class TeaserProgressiveUI {
                     <tr>
                         <td class="pp-required-field" data-field-action="replace" data-field-item="content" data-error-message="<?php echo esc_attr(esc_html__('This field is required.', 'press-permit-core')); ?>">
                         <?php
-                        $option_basename = "tease_replace_content_anon";
+                        $option_basename = "tease_replace_content";
                         $id = $object_type . '_' . $option_basename;
                         $name = "{$option_basename}[{$object_type}]";
-                        $logged_name = "tease_replace_content[{$object_type}]";
 
                         $editor_settings = [
                             'textarea_name' => $name,
@@ -608,9 +577,8 @@ class TeaserProgressiveUI {
                                 'toolbar3' => '',
                             ]
                         ];
-                        wp_editor($teaser_text, $id, $editor_settings);
+                        wp_editor($blocked_message, $id, $editor_settings);
                         ?>
-                        <input type="hidden" class="pp-sync-editor-value" data-source-editor="<?php echo esc_attr($id); ?>" name="<?php echo esc_attr($logged_name); ?>" value="<?php echo esc_attr($teaser_text); ?>">
                         <p class="pp-add-login-form">
                             <?php
                             printf(
@@ -630,6 +598,8 @@ class TeaserProgressiveUI {
 
     private function renderTeaserTextCard($object_type) {
         ?>
+        <?php $this->renderBlockedMessageCard($object_type); ?>
+
         <div class="teaser-table">
             <table class="widefat">
                 <thead>
@@ -978,159 +948,6 @@ class TeaserProgressiveUI {
                         </div>
                     </td>
                 </tr>
-                </tbody>
-            </table>
-        </div>
-        <?php
-    }
-
-    private function renderReadMoreNoticeCard($object_type) {
-        $id = 'read_more_login_notice';
-        $this->ui->all_otype_options[] = $id;
-        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-        $_setting = $this->pp->getTypeOption($id, $object_type);
-        if (empty($_setting)) {
-            $_setting = $default_message;
-        }
-        
-        // Remove slashes that WordPress adds automatically
-        $_setting = wp_unslash($_setting);
-        
-        $editor_id = $object_type . '_' . $id;
-        $editor_name = $id . '[' . $object_type . ']';
-        ?>
-        <div class="pp-read-more-notice-section" style="margin-top: 20px;">
-            <table class="widefat">
-                <thead>
-                    <tr>
-                        <th>
-                            <strong><?php esc_html_e('Message for Blocked Users', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Customize the message shown to users who are blocked from viewing the full content when using the "Read More" teaser type.', 'press-permit-core')) ?>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <?php
-                            $editor_settings = [
-                                'textarea_name' => $editor_name,
-                                'textarea_rows' => 5,
-                                'media_buttons' => false,
-                                'teeny'         => true,
-                                'quicktags'     => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,link,unlink,bullist,numlist,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($_setting, $editor_id, $editor_settings);
-                            ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <?php
-    }
-
-    private function renderExcerptNoticeCard($object_type) {
-        $id = 'excerpt_login_notice';
-        $this->ui->all_otype_options[] = $id;
-        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-        $_setting = $this->pp->getTypeOption($id, $object_type);
-        if (empty($_setting)) {
-            $_setting = $default_message;
-        }
-        
-        // Remove slashes that WordPress adds automatically
-        $_setting = wp_unslash($_setting);
-        
-        $editor_id = $object_type . '_' . $id;
-        $editor_name = $id . '[' . $object_type . ']';
-        ?>
-        <div class="pp-excerpt-notice-section" style="margin-top: 20px;">
-            <table class="widefat">
-                <thead>
-                    <tr>
-                        <th>
-                            <strong><?php esc_html_e('Message for Blocked Users', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Customize the notice message shown to all blocked users when using the "Excerpt" teaser type.', 'press-permit-core')) ?>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <?php
-                            $editor_settings = [
-                                'textarea_name' => $editor_name,
-                                'textarea_rows' => 6,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,link,unlink,bullist,numlist,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($_setting, $editor_id, $editor_settings);
-                            ?>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <?php
-    }
-
-    private function renderXCharsNoticeCard($object_type) {
-        $id = 'x_chars_login_notice';
-        $this->ui->all_otype_options[] = $id;
-        $default_message = esc_html__('You do not have permission to view this content.', 'press-permit-core');
-        $_setting = $this->pp->getTypeOption($id, $object_type);
-        if (empty($_setting)) {
-            $_setting = $default_message;
-        }
-        
-        // Remove slashes that WordPress adds automatically
-        $_setting = wp_unslash($_setting);
-        
-        $editor_id = $object_type . '_' . $id;
-        $editor_name = $id . '[' . $object_type . ']';
-        ?>
-        <div class="pp-x-chars-notice-section" style="margin-top: 20px;">
-            <table class="widefat">
-                <thead>
-                    <tr>
-                        <th>
-                            <strong><?php esc_html_e('Message for Blocked Users', 'press-permit-core'); ?></strong>
-                            <?php $this->generateTooltip(esc_html__('Customize the notice message shown to all blocked users when using the "First X Characters" teaser type.', 'press-permit-core')) ?>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <?php
-                            $editor_settings = [
-                                'textarea_name' => $editor_name,
-                                'textarea_rows' => 6,
-                                'media_buttons' => false,
-                                'teeny' => true,
-                                'quicktags' => ['buttons' => 'strong,em,link,ul,ol,li'],
-                                'tinymce' => [
-                                    'toolbar1' => 'bold,italic,underline,link,unlink,bullist,numlist,undo,redo',
-                                    'toolbar2' => '',
-                                    'toolbar3' => '',
-                                ]
-                            ];
-                            wp_editor($_setting, $editor_id, $editor_settings);
-                            ?>
-                        </td>
-                    </tr>
                 </tbody>
             </table>
         </div>
