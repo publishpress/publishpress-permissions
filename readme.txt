@@ -1,4 +1,4 @@
-=== PublishPress Permissions: Control User Access for Posts, Pages, Categories, Tags ===
+=== PublishPress Permissions: Access Control, Content Permissions, User Access ===
 
 Contributors: publishpress, kevinB, stevejburge, andergmartins
 Tags: permissions, content permissions, access control, user access, restrict
