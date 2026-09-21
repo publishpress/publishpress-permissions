@@ -146,7 +146,7 @@ class ReadMoreHandler
                         
                         // If it's a custom login page, add return URL
                         if ($pp->getTypeOption('teaser_redirect_custom_login_page_anon', $post_type)) {
-                            $permalink = add_query_arg('redirect_to', urlencode($permalink), $redirect_url);
+                            $permalink = add_query_arg('redirect_to', rawurlencode($permalink), $redirect_url);
                         } else {
                             $permalink = $redirect_url;
                         }
@@ -170,7 +170,7 @@ class ReadMoreHandler
                         $redirect_url = get_permalink($redirect_page_id);
                         
                         if ($pp->getTypeOption('teaser_redirect_custom_login_page', $post_type)) {
-                            $permalink = add_query_arg('redirect_to', urlencode(get_permalink($post->ID)), $redirect_url);
+                            $permalink = add_query_arg('redirect_to', rawurlencode(get_permalink($post->ID)), $redirect_url);
                         } else {
                             $permalink = $redirect_url;
                         }

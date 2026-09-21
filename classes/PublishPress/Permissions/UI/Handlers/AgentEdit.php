@@ -149,9 +149,9 @@ class AgentEdit
                 $arr = explode('/', esc_url_raw($wp_http_referer));
                 if ($arr && !defined('PP_LEGACY_HTTP_REDIRECT')) {
                     $wp_http_referer = esc_url_raw(array_pop($arr));
-                    $redirect = add_query_arg('wp_http_referer', urlencode($wp_http_referer), $redirect);
+                    $redirect = add_query_arg('wp_http_referer', rawurlencode($wp_http_referer), $redirect);
                 } else {
-                    $redirect = add_query_arg('wp_http_referer', urlencode(esc_url_raw($wp_http_referer)), $redirect);
+                    $redirect = add_query_arg('wp_http_referer', rawurlencode(esc_url_raw($wp_http_referer)), $redirect);
                 }
             }
 
