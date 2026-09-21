@@ -1,7 +1,7 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.9.0] - 9 Sept, 2026
+[4.9.0] - 21 Sept, 2026
 
 - Added: Optional Content Visibility functionality through a dedicated module. #2447
 - Changed: Improved the Permissions interface with a new design for user-specific permissions. #2497

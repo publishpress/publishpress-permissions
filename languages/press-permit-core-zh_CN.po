@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-10T15:13:55+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: zh_CN\n"
@@ -34,6 +34,8 @@ msgid ""
 msgstr "PublishPress 权限允许您启用或拒绝对帖子、页面、类别、标签等的访问。"
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -2773,8 +2775,8 @@ msgstr "名称"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "描述"
 
@@ -2964,6 +2966,19 @@ msgstr "要自定义发布工作流程，请%1$s安装 PublishPress 状态%2$s�
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "显示权限专业版功能和屏幕录像列表"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "播放视频"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -3834,25 +3849,25 @@ msgstr "相等或较低的角色级别"
 msgid "lower role levels"
 msgstr "较低的角色级别"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "要控制如何应用额外角色，请参见 %1$s角色使用%2$s。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "定义的常量"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "设置"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "可用常量"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -3872,13 +3887,13 @@ msgstr ""
 "要强制全网一个或多个设置的值，<strong>复制</strong>以下代码到您主题的<strong>functions.php</"
 "strong>文件中（或其他始终执行而不自动更新的文件），并根据需要修改："
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
 msgstr "此表单中的所有设置（包括未显示标签上的设置）将重置为默认值。您确定吗？"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "恢复为默认值"
@@ -4498,6 +4513,11 @@ msgstr "升级到专业版以解锁无缝集成。"
 msgid "Posts Teaser"
 msgstr "帖子预览"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "帖子预览"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -4508,11 +4528,21 @@ msgstr "显示受保护内容的预告消息或登录提示。此功能在 Publi
 msgid "Post Statuses for Editorial Workflow"
 msgstr "编辑工作流的帖子状态"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "帖子状态预览"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
 "in PublishPress Permissions Pro."
 msgstr "控制对自定义帖子状态的访问。此工作流功能在 PublishPress Permissions 专业版中可用。"
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "用户帖子预览"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -4523,6 +4553,11 @@ msgstr "自动为每个用户生成个人页面。此功能在 PublishPress Perm
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "帖子可见性状态"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "帖子可见性状态预览"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5161,7 +5196,7 @@ msgstr "复制短代码"
 msgid "Copied!"
 msgstr "已复制！"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "内容需要额外的权限。"
 
@@ -5799,8 +5834,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "组"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

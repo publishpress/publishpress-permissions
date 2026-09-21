@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:29+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -36,6 +36,8 @@ msgstr ""
 "публикации, страници, категории, тагове и още."
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -3038,8 +3040,8 @@ msgstr "Име"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "Описание"
 
@@ -3247,6 +3249,19 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "Покажи списък с функции и видеозаписи на Permissions Pro"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "Възпроизвеждане на видео"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -4298,27 +4313,27 @@ msgstr "равни или по-ниски нива на роли"
 msgid "lower role levels"
 msgstr "по-ниски нива на роли"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr ""
 "За да контролирате как се прилагат Допълнителни роли, вижте %1$sИзползване "
 "на роли%2$s."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "Определена константа"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "Настройка"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "Налична константа"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4344,7 +4359,7 @@ msgstr ""
 "винаги се изпълнява и не се актуализира автоматично) и модифицирайте по "
 "желание:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4352,7 +4367,7 @@ msgstr ""
 "Всички настройки в тази форма (включително тези на неизобразените раздели) "
 "ще бъдат нулирани на СТАНДАРТИ. Сигурни ли сте?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "Възстановяване на подразбирания"
@@ -5010,6 +5025,11 @@ msgstr "Преминете на Pro, за да отключите безпроб
 msgid "Posts Teaser"
 msgstr "Предварителен преглед на публикации"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "Предварителен преглед на тизери за публикации"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -5022,6 +5042,11 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "Статуси на публикации за редакционен работен процес"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "Предварителен преглед на статуси на публикации"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
@@ -5029,6 +5054,11 @@ msgid ""
 msgstr ""
 "Контрол на достъпа до персонализирани статуси на публикации. Тази функция "
 "за работен процес е налична в PublishPress Permissions Pro."
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "Предварителен преглед на публикации на потребители"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -5041,6 +5071,11 @@ msgstr ""
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "Статуси на видимост на публикации"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "Предварителен преглед на статуси на видимост на публикации"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5740,7 +5775,7 @@ msgstr "Копирайте shortcode"
 msgid "Copied!"
 msgstr "Копирано!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "Съдържанието изисква допълнителни разрешения."
 
@@ -6404,8 +6439,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Групи"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

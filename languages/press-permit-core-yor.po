@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: yor\n"
@@ -36,6 +36,8 @@ msgstr ""
 "awọn oju-iwe, awọn ẹka, awọn afi ati diẹ sii."
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -2969,8 +2971,8 @@ msgstr "Orukọ"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "Apejuwe"
 
@@ -3174,6 +3176,19 @@ msgstr "Lati ṣe àtúnṣe iṣẹ́ ìtẹ̀jáde, %1$sfi sori ẹrọ Publis
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "Fihan atokọ awọn ẹya Permisions Pro ati awọn screencasts"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "Ṣe ere fidio"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -4175,25 +4190,25 @@ msgstr "iyato tabi awọn ipele ipa kekere"
 msgid "lower role levels"
 msgstr "awọn ipele ipa kekere"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "Lati ṣakoso bi Awọn Ipa afikun ṣe n ṣiṣẹ, wo %1$sIlo Ipa%2$s."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "Iwọn to wa"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "Iṣeto"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "Iwọn to wa"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4219,7 +4234,7 @@ msgstr ""
 "nigbagbogbo ati ti ko ni imudojuiwọn laifọwọyi) ki o si ṣe atunṣe gẹgẹ bi a "
 "ṣe fẹ:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4227,7 +4242,7 @@ msgstr ""
 "Gbogbo awọn eto ni fọọmu yii (pẹlu awọn ti o wa lori awọn taabu ti a ko "
 "fihan) yoo tunṣe si DEFAULTS. Ṣe o da ọ loju?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "Pada si awọn aiyipada"
@@ -4868,6 +4883,11 @@ msgstr "Ṣe atunṣe si Pro lati ṣii iṣọpọ ti ko ni idalọwọduro."
 msgid "Posts Teaser"
 msgstr "Awọn Ifiweranṣẹ Tí kọ́"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "Akopọ ifihan ifiṣura"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -4880,6 +4900,11 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "Ipo Awọn Ifiweranṣẹ fún Ilana Ẹrọ Iwe"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "Akopọ ipo ifiṣura"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
@@ -4887,6 +4912,11 @@ msgid ""
 msgstr ""
 "Ṣakoso iraye si awọn ipo ifiweranṣẹ aṣa. Ẹya iṣẹ yii wa ni PublishPress "
 "Permissions Pro."
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "Akopọ Awọn ifiṣura olumulo"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -4899,6 +4929,11 @@ msgstr ""
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "Ipo Ifarahan Awọn Ifiweranṣẹ"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "Akopọ ipo wiwo ifiṣura"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5579,7 +5614,7 @@ msgstr "Daakọ shortcode"
 msgid "Copied!"
 msgstr "Ti daakọ!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "Akopọ nilo awọn igbanilaaye afikun."
 
@@ -6231,8 +6266,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Awọn Ẹgbẹ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

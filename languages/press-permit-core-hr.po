@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:29+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 ">= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2);\n"
@@ -38,6 +38,8 @@ msgstr ""
 "pristupa postovima, stranicama, kategorijama, oznakama i više."
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -3013,8 +3015,8 @@ msgstr "Ime"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "Opis"
 
@@ -3224,6 +3226,19 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "Prikaži popis značajki Permissions Pro i screencastova"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "Reproduciraj video"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -4240,27 +4255,27 @@ msgstr "jednake ili niže razine uloga"
 msgid "lower role levels"
 msgstr "niže razine uloga"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr ""
 "Da biste kontrolirali kako se Dodatne Uloge primjenjuju, pogledajte "
 "%1$sKorištenje Uloga%2$s."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "Definirana Konstanta"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "Postavka"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "Dostupna Konstanta"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4286,7 +4301,7 @@ msgstr ""
 "koja se uvijek izvršava i koja se ne ažurira automatski) i izmijenite prema "
 "želji:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4294,7 +4309,7 @@ msgstr ""
 "Sve postavke u ovom obrascu (uključujući one na neprikazanim karticama) bit "
 "će resetirane na ZADANE. Jeste li sigurni?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "Vrati na zadane postavke"
@@ -4946,6 +4961,11 @@ msgstr "Nadogradite na Pro kako biste otključali besprijekornu integraciju."
 msgid "Posts Teaser"
 msgstr "Izdanje Teaser"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "Pregled najava objava"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -4958,6 +4978,11 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "Statusi Izdanja za Urednički Radni Tok"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "Pregled statusa objava"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
@@ -4965,6 +4990,11 @@ msgid ""
 msgstr ""
 "Kontrolirajte pristup prilagođenim statusima objava. Ova značajka radnog "
 "toka dostupna je u PublishPress Permissions Pro."
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "Pregled korisničkih objava"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -4977,6 +5007,11 @@ msgstr ""
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "Statusi Vidljivosti Izdanja"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "Pregled statusa vidljivosti objava"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5660,7 +5695,7 @@ msgstr "Kopiraj shortcode"
 msgid "Copied!"
 msgstr "Kopirano!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "Sadržaj zahtijeva dodatne dozvole."
 
@@ -6314,8 +6349,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Grupe"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -36,6 +36,8 @@ msgstr ""
 "inlägg, sidor, kategorier, taggar och mer."
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -3010,8 +3012,8 @@ msgstr "Namn"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "Beskrivning"
 
@@ -3219,6 +3221,19 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "Visa lista över Funktioner för Permissions Pro och skärminspelningar"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "Spela video"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -4240,25 +4255,25 @@ msgstr "lika eller lägre rollnivåer"
 msgid "lower role levels"
 msgstr "lägre rollnivåer"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "För att kontrollera hur Extra Roller tillämpas, se %1$sRollanvändning%2$s."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "Definierad konstant"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "Inställning"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "Tillgänglig konstant"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4282,7 +4297,7 @@ msgstr ""
 "<strong>functions.php</strong>-fil (eller någon annan fil som alltid körs "
 "och inte automatiskt uppdateras) och modifiera som önskat:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4290,7 +4305,7 @@ msgstr ""
 "Alla inställningar i denna form (inklusive de på icke-visade flikar) kommer "
 "att återställas till STANDARDINSTÄLLNINGAR. Är du säker?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "Återställ till standardinställningar"
@@ -4937,6 +4952,11 @@ msgstr "Uppgradera till Pro för att låsa upp sömlös integration."
 msgid "Posts Teaser"
 msgstr "Inlägg Teaser"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "Förhandsgranskning av inläggsteaser"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -4949,6 +4969,11 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "Inläggsstatusar för redaktionellt arbetsflöde"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "Förhandsgranskning av inläggsstatusar"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
@@ -4956,6 +4981,11 @@ msgid ""
 msgstr ""
 "Kontrollera åtkomst till anpassade inläggsstatusar. Denna "
 "arbetsflödesfunktion finns i PublishPress Permissions Pro."
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "Förhandsgranskning av användarinlägg"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -4968,6 +4998,11 @@ msgstr ""
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "Inläggssynlighetsstatusar"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "Förhandsgranskning av inläggets synlighetsstatusar"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5657,7 +5692,7 @@ msgstr "Kopiera shortcode"
 msgid "Copied!"
 msgstr "Kopierad!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "Innehållet kräver ytterligare behörigheter."
 
@@ -6315,8 +6350,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Grupper"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

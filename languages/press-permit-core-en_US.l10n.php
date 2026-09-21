@@ -1,2 +1,2 @@
 <?php
-return ['domain'=>'press-permit-core','plural-forms'=>NULL,'language'=>'','project-id-version'=>'PublishPress Permissions Free 4.9.0','pot-creation-date'=>'2026-09-18T15:13:38+00:00','po-revision-date'=>'YEAR-MO-DA HO:MI+ZONE','x-generator'=>'WP-CLI 2.12.0','messages'=>[]];
+return ['domain'=>'press-permit-core','plural-forms'=>NULL,'language'=>'','project-id-version'=>'PublishPress Permissions Free 4.9.0','pot-creation-date'=>'2026-09-18T16:16:27+00:00','po-revision-date'=>'YEAR-MO-DA HO:MI+ZONE','x-generator'=>'WP-CLI 2.12.0','messages'=>[]];

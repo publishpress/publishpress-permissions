@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:29+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -36,6 +36,8 @@ msgstr ""
 "πρόσβαση σε δημοσιεύσεις, σελίδες, κατηγορίες, ετικέτες και άλλα."
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "ΔημοσίευσηPress"
@@ -3051,8 +3053,8 @@ msgstr "Όνομα"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "Περιγραφή"
 
@@ -3260,6 +3262,19 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "Εμφάνιση λίστας χαρακτηριστικών και βίντεο του Permissions Pro"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "Αναπαραγωγή βίντεο"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -4317,27 +4332,27 @@ msgstr "ισότιμα ή χαμηλότερα επίπεδα ρόλων"
 msgid "lower role levels"
 msgstr "χαμηλότερα επίπεδα ρόλων"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr ""
 "Για να ελέγξετε πώς εφαρμόζονται οι Πρόσθετοι Ρόλοι, δείτε %1$sΧρήση "
 "Ρόλων%2$s."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "Ορισμένη Σταθερά"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "Ρύθμιση"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "Διαθέσιμη Σταθερά"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4363,7 +4378,7 @@ msgstr ""
 "εκτελείται πάντα και δεν ενημερώνεται αυτόματα) και τροποποιήστε όπως "
 "επιθυμείτε:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4371,7 +4386,7 @@ msgstr ""
 "Όλες οι ρυθμίσεις σε αυτή τη φόρμα (συμπεριλαμβανομένων αυτών σε μη "
 "εμφανιζόμενες καρτέλες) θα επαναρυθμιστούν σε ΠΡΟΕΠΙΛΟΓΕΣ. Είστε σίγουροι;"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "Επαναφορά στις Προεπιλογές"
@@ -5035,6 +5050,11 @@ msgstr "Αναβαθμίστε σε Pro για να ξεκλειδώσετε τ�
 msgid "Posts Teaser"
 msgstr "Προεπισκόπηση Δημοσιεύσεων"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "Προεπισκόπηση teaser δημοσιεύσεων"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -5047,6 +5067,11 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "Καταστάσεις Δημοσιεύσεων για Εκδοτική Ροή Εργασίας"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "Προεπισκόπηση καταστάσεων δημοσιεύσεων"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
@@ -5054,6 +5079,11 @@ msgid ""
 msgstr ""
 "Ελέγξτε την πρόσβαση σε προσαρμοσμένες καταστάσεις δημοσιεύσεων. Αυτή η "
 "δυνατότητα ροής εργασίας είναι διαθέσιμη στο PublishPress Permissions Pro."
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "Προεπισκόπηση δημοσιεύσεων χρηστών"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -5066,6 +5096,11 @@ msgstr ""
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "Καταστάσεις Ορατότητας Δημοσιεύσεων"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "Προεπισκόπηση καταστάσεων ορατότητας δημοσιεύσεων"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5768,7 +5803,7 @@ msgstr "Αντιγραφή shortcode"
 msgid "Copied!"
 msgstr "Αντιγράφηκε!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "Το περιεχόμενο απαιτεί επιπλέον άδειες."
 
@@ -6445,8 +6480,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "Ομάδες"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."

@@ -10,7 +10,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "POT-Creation-Date: 2026-04-22T11:57:22+00:00\n"
-"PO-Revision-Date: 2026-09-18 16:18+0000\n"
+"PO-Revision-Date: 2026-09-21 13:28+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: fa_IR\n"
@@ -36,6 +36,8 @@ msgstr ""
 "پست‌ها، صفحات، دسته‌ها، برچسب‌ها و موارد دیگر را فعال یا غیرفعال کنید."
 
 #: press-permit-core.php:8
+#: classes/PublishPress/Permissions/Admin.php:275
+#: classes/PublishPress/Permissions/UI/HintsPro.php:72
 #. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
@@ -2969,8 +2971,8 @@ msgstr "نام"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:103
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:173
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:664
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:717
 msgid "Description"
 msgstr "توضیحات"
 
@@ -3173,6 +3175,19 @@ msgstr "برای سفارشی‌سازی جریان کار انتشار، %1$sن
 #: classes/PublishPress/Permissions/UI/HintsPro.php:12
 msgid "Show list of Permissions Pro features and screencasts"
 msgstr "نمایش لیست ویژگی‌های Permissions Pro و ویدئوهای آموزشی"
+
+#: classes/PublishPress/Permissions/UI/HintsPro.php:80
+#: classes/PublishPress/Permissions/UI/HintsPro.php:86
+#: classes/PublishPress/Permissions/UI/HintsPro.php:92
+#: classes/PublishPress/Permissions/UI/HintsPro.php:98
+#: classes/PublishPress/Permissions/UI/HintsPro.php:107
+#: classes/PublishPress/Permissions/UI/HintsPro.php:113
+#: classes/PublishPress/Permissions/UI/HintsPro.php:119
+#: classes/PublishPress/Permissions/UI/HintsPro.php:125
+#: classes/PublishPress/Permissions/UI/HintsPro.php:131
+#: classes/PublishPress/Permissions/UI/HintsPro.php:137
+msgid "Play video"
+msgstr "پخش ویدیو"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:149
 msgid "Knowledge Base"
@@ -4164,25 +4179,25 @@ msgstr "سطوح نقش برابر یا پایین‌تر"
 msgid "lower role levels"
 msgstr "سطوح نقش پایین‌تر"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:559
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:560
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "برای کنترل نحوه اعمال نقش‌های اضافی، به %1$sاستفاده از نقش%2$s مراجعه کنید."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:661
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
 msgid "Defined Constant"
 msgstr "ثابت تعریف شده"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:662
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:663
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:716
 msgid "Setting"
 msgstr "تنظیمات"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:714
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:715
 msgid "Available Constant"
 msgstr "ثابت در دسترس"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:792
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:793
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4204,7 +4219,7 @@ msgstr ""
 "فایل <strong>functions.php</strong> تم خود کپی کنید (یا هر فایل دیگری که "
 "همیشه اجرا می‌شود و به‌روز نمی‌شود) و طبق دلخواه تغییر دهید:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:848
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:847
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4212,7 +4227,7 @@ msgstr ""
 "تمام تنظیمات در این فرم (شامل آنهایی که در تب‌های نمایش داده نشده‌اند) به "
 "تنظیمات پیش‌فرض بازنشانی خواهند شد. آیا مطمئن هستید؟"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:851
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:850
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:95
 msgid "Revert to Defaults"
 msgstr "بازگشت به تنظیمات پیش‌فرض"
@@ -4852,6 +4867,11 @@ msgstr "به نسخه Pro ارتقا دهید تا یکپارچگی بدون د�
 msgid "Posts Teaser"
 msgstr "پیش‌نمایش پست‌ها"
 
+#: includes/promo/posts-teaser-promo.php:14
+#: includes/promo/posts-teaser-promo.php:15
+msgid "Posts Teaser preview"
+msgstr "پیش‌نمایش تیزر پست‌ها"
+
 #: includes/promo/posts-teaser-promo.php:18
 msgid ""
 "Show a teaser message or login prompt for protected content. Available in "
@@ -4864,6 +4884,11 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "وضعیت‌های پست برای جریان کار ویرایشی"
 
+#: includes/promo/statuses-promo.php:15
+#: includes/promo/statuses-promo.php:16
+msgid "Post Statuses preview"
+msgstr "پیش‌نمایش وضعیت‌های پست"
+
 #: includes/promo/statuses-promo.php:19
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
@@ -4871,6 +4896,11 @@ msgid ""
 msgstr ""
 "دسترسی به وضعیت‌های پست سفارشی را کنترل کنید. این ویژگی گردش کار در "
 "PublishPress Permissions Pro موجود است."
+
+#: includes/promo/sync-promo.php:14
+#: includes/promo/sync-promo.php:15
+msgid "User Posts preview"
+msgstr "پیش‌نمایش پست‌های کاربر"
 
 #: includes/promo/sync-promo.php:18
 msgid ""
@@ -4883,6 +4913,11 @@ msgstr ""
 #: includes/promo/visibility-statuses-promo.php:5
 msgid "Post Visibility Statuses"
 msgstr "وضعیت‌های نمایش پست"
+
+#: includes/promo/visibility-statuses-promo.php:15
+#: includes/promo/visibility-statuses-promo.php:16
+msgid "Post Visibility Statuses preview"
+msgstr "پیش‌نمایش وضعیت‌های قابل مشاهده پست"
 
 #: includes/promo/visibility-statuses-promo.php:19
 msgid ""
@@ -5559,7 +5594,7 @@ msgstr "کپی کردن shortcode"
 msgid "Copied!"
 msgstr "کپی شد!"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:633
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:638
 msgid "Content requires additional permissions."
 msgstr "محتوا نیاز به مجوزهای اضافی دارد."
 
@@ -6215,8 +6250,8 @@ msgctxt "groups per page (screen options)"
 msgid "Groups"
 msgstr "گروه‌ها"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:479
-#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:592
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:484
+#: modules/presspermit-teaser/classes/Permissions/Teaser/PostsTeaser.php:597
 #, fuzzy, php-format
 msgctxt "teaser suffix"
 msgid "%s..."
