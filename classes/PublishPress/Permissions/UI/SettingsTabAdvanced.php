@@ -506,8 +506,9 @@ class SettingsTabAdvanced
 
                         $captions = ['1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
                         foreach ($captions as $key => $value) {
-                            $selected = ($option_val == $key) ? 'selected="selected"' : '';
-                            echo "\n\t<option value='" . esc_attr($key) . "' " . $selected . ">" . esc_html($captions[$key]) . "</option>";
+                            ?>
+                            <option value="<?php echo esc_attr($key); ?>" <?php selected($option_val, $key); ?>><?php echo esc_html($value); ?></option>
+                            <?php
                         }
                         ?>
                         </select>
@@ -789,9 +790,8 @@ class SettingsTabAdvanced
 
                     <div id="pp_modify_default_settings" class="pp-settings-code">
                         <?php
-                        $msg = esc_html__("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
-                        $msg = str_replace(['&lt;strong&gt;', '&lt;/strong&gt;'], '', $msg);
-                        _e($msg);
+                        $msg = __("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
+                        echo esc_html(wp_strip_all_tags($msg));
                         ?>
                         <textarea rows='10' cols='150' readonly='readonly'>
     // Use this filter if you want to change the default, but still allow manual setting
@@ -810,9 +810,8 @@ class SettingsTabAdvanced
 
                     <div id="pp_force_settings" class="pp-settings-code">
                         <?php
-                        $msg  = esc_html__("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
-                        $msg = str_replace(['&lt;strong&gt;', '&lt;/strong&gt;'], '', $msg);
-                        _e($msg);
+                        $msg  = __("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
+                        echo esc_html(wp_strip_all_tags($msg));
                         ?>
                         <textarea rows='13' cols='150' readonly='readonly'>
     // Use this filter if you want to force an option, blocking/disregarding manual setting

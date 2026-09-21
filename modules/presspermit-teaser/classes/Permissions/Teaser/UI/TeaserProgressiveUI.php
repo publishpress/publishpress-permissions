@@ -721,7 +721,7 @@ class TeaserProgressiveUI {
                 <thead>
                     <tr>
                         <th colspan="4">
-                            <strong><?php _e('Redirect Settings', 'press-permit-core');?></strong>
+                            <strong><?php esc_html_e('Redirect Settings', 'press-permit-core');?></strong>
                             <?php if ($this->ui->display_hints) : 
                                 $tooltip_text = \PublishPress\Permissions\UI\SettingsAdmin::getStr('teaser_redirect_page');
                                 if ($tooltip_text) {
@@ -732,7 +732,7 @@ class TeaserProgressiveUI {
                     </tr>
                     <tr>
                         <th></th>
-                        <th><?php _e('Redirection', 'press-permit-core') ?></th>
+                        <th><?php esc_html_e('Redirection', 'press-permit-core') ?></th>
                         <th data-column="post-type" data-title="<?php esc_attr_e('Target Post Type', 'press-permit-core') ?>"><?php esc_html_e('Target Post Type', 'press-permit-core') ?></th>
                         <th data-column="target" data-title="<?php esc_attr_e('Select Post', 'press-permit-core') ?>" data-url-title="<?php esc_attr_e('Custom URL', 'press-permit-core') ?>"><?php esc_html_e('Select Post', 'press-permit-core') ?></th>
                     </tr>
@@ -838,7 +838,7 @@ class TeaserProgressiveUI {
                             $custom_login_val = $this->pp->getTypeOption($custom_login_basename, $object_type);
                             ?>
                             <input type="hidden" name="<?php echo esc_attr($custom_login_name);?>" value="0" />
-                            &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php _e('This is a custom login page', 'press-permit-core');?><?php $this->generateTooltip(esc_html__('After the user logs in, they will be redirected back to the original post they were viewing.', 'press-permit-core')); ?></label>
+                            &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php esc_html_e('This is a custom login page', 'press-permit-core');?><?php $this->generateTooltip(esc_html__('After the user logs in, they will be redirected back to the original post they were viewing.', 'press-permit-core')); ?></label>
                         </div>
                         <div class="pp-custom-url-wrapper" style="<?php echo esc_attr(('(url)' === $redirect_mode) ? '' : 'display:none;'); ?>">
                             <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/">
@@ -941,7 +941,7 @@ class TeaserProgressiveUI {
                             $custom_login_val = $this->pp->getTypeOption($custom_login_basename, $object_type);
                             ?>
                             <input type="hidden" name="<?php echo esc_attr($custom_login_name);?>" value="0" />
-                            &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php _e('This is a custom login page', 'press-permit-core');?></label>
+                            &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php esc_html_e('This is a custom login page', 'press-permit-core');?></label>
                         </div>
                         <div class="pp-custom-url-wrapper" style="<?php echo esc_attr(('(url)' === $redirect_mode) ? '' : 'display:none;'); ?>">
                             <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/">
