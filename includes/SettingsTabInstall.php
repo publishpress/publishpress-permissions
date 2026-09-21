@@ -157,9 +157,9 @@ class SettingsTabInstall
                                 <li>
                                     <?php
                                     if ($expire_date)
-                                        echo esc_html(sprintf(__("Original presspermit.com support key hash: <strong>%s</strong> (expires %s)"), esc_html($key_string), esc_html($expire_date)));
+                                        echo esc_html(sprintf(__("Original presspermit.com support key hash: <strong>%s</strong> (expires %s)", 'press-permit-core'), esc_html($key_string), esc_html($expire_date)));
                                     else
-                                        echo esc_html(sprintf(__("Original presspermit.com support key hash: <strong>%s</strong>"), esc_html($key_string), esc_html($expire_date)));
+                                        echo esc_html(sprintf(__("Original presspermit.com support key hash: <strong>%s</strong>", 'press-permit-core'), esc_html($key_string), esc_html($expire_date)));
                                     ?>
                                 </li>
                             <?php endif; ?>

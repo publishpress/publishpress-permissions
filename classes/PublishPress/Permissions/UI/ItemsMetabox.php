@@ -208,8 +208,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     <input type="search" class="pp-quick-search input-with-default-title"
                         title="<?php esc_attr_e('Search'); ?>" value="<?php echo esc_attr($searched); ?>"
                         name="quick-search-posttype-<?php echo esc_attr($post_type_name); ?>" placeholder="Search" />
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
                     <?php submit_button(esc_html__('Search'), 'quick-search-submit button-secondary hide-if-js', 'submit', false, ['id' => 'submit-quick-search-posttype-' . $post_type_name]); ?>
                 </p>
 
@@ -324,8 +324,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 </span>
 
                 <span class="add-to-menu">
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception"
                         value="<?php
@@ -484,8 +484,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 </span>
 
                 <span class="add-to-menu">
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception submit-add-<?php
                     echo esc_attr($post_type_name);
@@ -701,8 +701,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                         title="<?php esc_attr_e('Search'); ?>" value="<?php echo esc_attr($searched); ?>"
                         name="quick-search-taxonomy-<?php echo esc_attr($taxonomy_name); ?>" placeholder="Search" />
 
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <?php submit_button(
                         esc_html__('Search'),
@@ -738,8 +738,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 </span>
 
                 <span class="add-to-menu">
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception"
                         value="<?php esc_attr_e('Add Selected Permissions', 'press-permit-core'); ?>" name="add-taxonomy-menu-item"

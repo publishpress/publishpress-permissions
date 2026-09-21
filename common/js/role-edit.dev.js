@@ -37,6 +37,10 @@ jQuery(document).ready(function ($) {
         $(this).val(ppCred.submissionMsg).addClass('is-busy');
     });
 
+    $(".pp-user-groups-form input.button-primary").on('click', function () {
+        $(this).val(ppCred.groupsSubmissionMsg).addClass('is-busy');
+    });
+
     $('#agent-profile #submit').on('click', function (e) {
         // no need to submit selection inputs
         $('#pp_review_roles').hide();

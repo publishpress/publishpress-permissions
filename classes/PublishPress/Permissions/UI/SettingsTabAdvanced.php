@@ -115,7 +115,7 @@ class SettingsTabAdvanced
             'dynamic_wp_roles'                       => esc_html__('Detect Dynamically Mapped WP Roles', 'press-permit-core'),
             'non_admins_set_read_exceptions'         => esc_html__('Non-Administrators can set Reading Permissions for their editable posts', 'press-permit-core'),
             'users_bulk_groups'                      => esc_html__('Bulk Add / Remove Groups on Users Screen', 'press-permit-core'),
-            'list_all_constants'                     => esc_html__('Display all available constant definitions'),
+            'list_all_constants'                     => esc_html__('Display all available constant definitions', 'press-permit-core'),
             'non_admins_set_edit_exceptions'         => esc_html__('Non-Administrators can set Editing Permissions for their editable posts', 'press-permit-core'),
             'publish_exceptions'                     => esc_html__('Assign Publish Permissions separate from Edit Permissions', 'press-permit-core'),
             'limit_user_edit_enabled'                => esc_html__('Limit user editing capabilities by role level', 'press-permit-core'),
@@ -506,8 +506,9 @@ class SettingsTabAdvanced
 
                         $captions = ['1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
                         foreach ($captions as $key => $value) {
-                            $selected = ($option_val == $key) ? 'selected="selected"' : '';
-                            echo "\n\t<option value='" . esc_attr($key) . "' " . $selected . ">" . esc_html($captions[$key]) . "</option>";
+                            ?>
+                            <option value="<?php echo esc_attr($key); ?>" <?php selected($option_val, $key); ?>><?php echo esc_html($value); ?></option>
+                            <?php
                         }
                         ?>
                         </select>
@@ -789,9 +790,8 @@ class SettingsTabAdvanced
 
                     <div id="pp_modify_default_settings" class="pp-settings-code">
                         <?php
-                        $msg = esc_html__("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
-                        $msg = str_replace(['&lt;strong&gt;', '&lt;/strong&gt;'], '', $msg);
-                        _e($msg);
+                        $msg = __("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
+                        echo esc_html(wp_strip_all_tags($msg));
                         ?>
                         <textarea rows='10' cols='150' readonly='readonly'>
     // Use this filter if you want to change the default, but still allow manual setting
@@ -810,9 +810,8 @@ class SettingsTabAdvanced
 
                     <div id="pp_force_settings" class="pp-settings-code">
                         <?php
-                        $msg  = esc_html__("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
-                        $msg = str_replace(['&lt;strong&gt;', '&lt;/strong&gt;'], '', $msg);
-                        _e($msg);
+                        $msg  = __("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
+                        echo esc_html(wp_strip_all_tags($msg));
                         ?>
                         <textarea rows='13' cols='150' readonly='readonly'>
     // Use this filter if you want to force an option, blocking/disregarding manual setting

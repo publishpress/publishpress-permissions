@@ -241,6 +241,7 @@ class PluginUpdated
         }
 
         update_option('ppperm_added_role_caps_10beta', true);
+        update_option('ppperm_added_role_caps_4_8_2', true);
 
         if (is_super_admin() || current_user_can('administrator')) {
             global $current_user;

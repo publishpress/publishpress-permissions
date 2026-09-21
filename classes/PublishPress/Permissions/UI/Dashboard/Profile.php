@@ -15,14 +15,30 @@ class Profile
         ];
 
         $args = array_merge($defaults, $args);
-        $is_administrator = current_user_can('pp_administer_content') && current_user_can('list_users');
+        $can_edit_permissions = (current_user_can('pp_administer_content') && current_user_can('list_users'))
+            || (
+                current_user_can('pp_manage_permissions')
+                && (is_multisite() || current_user_can('edit_user', $user->ID))
+            );
 
-        $current_roles_edit_url = $is_administrator
+        $current_roles_edit_url = $can_edit_permissions
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_1")
             : '';
 
-        $edit_url = $is_administrator
+        $inherited_roles_edit_url = $can_edit_permissions
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_2")
+            : '';
+
+        $edit_url = $can_edit_permissions
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_exceptions_1")
+            : '';
+
+        $inherited_edit_url = $can_edit_permissions
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_exceptions_2")
+            : '';
+
+        $manage_url = $can_edit_permissions
+            ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user")
             : '';
 
         $group_summary = $args['show_groups'] ? self::getProfileGroupsSummary($user->ID) : ['rows' => [], 'fields' => ''];
@@ -38,7 +54,7 @@ class Profile
                         [
                             'edit_url' => $current_roles_edit_url,
                             'label' => esc_html__('Extra Roles', 'press-permit-core'),
-                            'scope' => esc_html__('Assigned directly', 'press-permit-core'),
+                            'scope' => esc_html__('Assigned to this user', 'press-permit-core'),
                             'display_limit' => 5,
                         ]
                     ),
@@ -48,7 +64,7 @@ class Profile
                         [
                             'edit_url' => $edit_url,
                             'label' => esc_html__('Specific Permissions', 'press-permit-core'),
-                            'scope' => esc_html__('Assigned directly', 'press-permit-core'),
+                            'scope' => esc_html__('Assigned to this user', 'press-permit-core'),
                             'display_limit' => 12,
                         ]
                     ),
@@ -56,9 +72,9 @@ class Profile
                         'user',
                         $user->ID,
                         [
-                            'edit_url' => '',
+                            'edit_url' => $inherited_roles_edit_url,
                             'label' => esc_html__('Extra Roles', 'press-permit-core'),
-                            'scope' => esc_html__('From primary role or group membership', 'press-permit-core'),
+                            'scope' => esc_html__('Inherited from role or groups', 'press-permit-core'),
                             'join_groups' => 'groups_only',
                             'display_limit' => 5,
                         ]
@@ -67,9 +83,9 @@ class Profile
                         'user',
                         $user->ID,
                         [
-                            'edit_url' => '',
+                            'edit_url' => $inherited_edit_url,
                             'label' => esc_html__('Specific Permissions', 'press-permit-core'),
-                            'scope' => esc_html__('From primary role or group membership', 'press-permit-core'),
+                            'scope' => esc_html__('Inherited from role or groups', 'press-permit-core'),
                             'join_groups' => 'groups_only',
                             'display_limit' => 12,
                         ]
@@ -91,9 +107,21 @@ class Profile
             <div class="permission-section">
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
-                        <h2 class="section-title"><?php esc_html_e('Permissions Summary', 'press-permit-core'); ?></h2>
-                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$total_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                        <div>
+                            <div class="pp-profile-summary-title-row">
+                                <h2 class="section-title"><?php esc_html_e('User Permissions Summary', 'press-permit-core'); ?></h2>
+                                <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($total_count)); ?></span>
+                            </div>
+                            <p class="pp-profile-summary-description">
+                                <?php esc_html_e("Review direct assignments and permissions inherited from this user's role or groups.", 'press-permit-core'); ?>
+                            </p>
+                        </div>
                     </div>
+                    <?php if ($manage_url) : ?>
+                        <a class="button button-secondary pp-profile-summary-manage" href="<?php echo esc_url($manage_url); ?>">
+                            <?php esc_html_e('Manage User Permissions', 'press-permit-core'); ?>
+                        </a>
+                    <?php endif; ?>
                 </div>
                 <div id="pp_permissions_summary_<?php echo esc_attr((int)$user->ID); ?>" class="section-content">
                     <div class="pp-profile-summary-grid">
@@ -101,11 +129,14 @@ class Profile
                             <div id="<?php echo esc_attr($row['section_id']); ?>" class="pp-profile-summary-row <?php echo esc_attr($row['class']); ?>">
                                 <div class="pp-profile-summary-row-header">
                                     <div class="pp-profile-summary-row-title">
-                                        <h3><?php echo esc_html($row['label']); ?></h3>
-                                        <span class="pp-profile-summary-scope"><?php echo esc_html($row['scope']); ?></span>
+                                        <span class="dashicons <?php echo esc_attr($row['icon']); ?>" aria-hidden="true"></span>
+                                        <div>
+                                            <h3><?php echo esc_html($row['label']); ?></h3>
+                                            <span class="pp-profile-summary-scope"><?php echo esc_html($row['scope']); ?></span>
+                                        </div>
                                     </div>
                                     <div class="pp-profile-summary-row-actions">
-                                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$row['count']; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($row['count'])); ?></span>
                                         <?php if ($row['edit_url']) : ?>
                                             <a class="button button-small pp-profile-summary-edit" href="<?php echo esc_url($row['edit_url']); ?>">
                                                 <?php esc_html_e('Edit', 'press-permit-core'); ?>
@@ -179,7 +210,6 @@ class Profile
             'selected_only' => false,
             'hide_checkboxes' => false,
             'force_display' => false,
-            'edit_membership_link' => false,
             'include_role_metagroups' => false,
         ];
 
@@ -274,36 +304,28 @@ class Profile
             ob_start();
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $agent_type, $stored_groups, $agent_ui_args);
 
-            if ($edit_membership_link || (!$all_groups && $force_display)) :
+            $note = (defined('BP_VERSION'))
+                ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
+                : '';
+
+            $note = apply_filters(
+                'presspermit_user_profile_groups_note',
+                $note,
+                $user_id,
+                $agent_ui_args
+            );
+
+            if ((!$all_groups && $force_display) || $note) :
                 ?>
                 <p>
                     <?php if (!$all_groups && $force_display) :
                         esc_html_e('This user is not a member of any custom Permission Groups.', 'press-permit-core');
-                        ?>&nbsp;&bull;&nbsp;
+                        ?>
                     <?php endif; ?>
 
-                    <?php $title = esc_attr(__("Edit this user's group membership", 'press-permit-core')); ?>
-                    <a href='user-edit.php?user_id=<?php echo esc_attr($user_id); ?>#userprofile_groupsdiv_pp'
-                       title='<?php echo esc_attr($title); ?>'>
-                        <?php esc_html_e('add / edit membership'); ?>
-                    </a>
-                    &nbsp;&nbsp;
-                    <span class="pp-subtext">
-                    <?php
-                    $note = (defined('BP_VERSION'))
-                        ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
-                        : '';
-
-                    $note = apply_filters(
-                        'presspermit_user_profile_groups_note',
-                        $note,
-                        $user_id,
-                        $agent_ui_args
-                    );
-
-                    echo esc_html($note);
-                    ?>
-                </span>
+                    <?php if ($note) : ?>
+                        <span class="pp-subtext"><?php echo esc_html($note); ?></span>
+                    <?php endif; ?>
                 </p>
             <?php
             endif;
@@ -317,7 +339,8 @@ class Profile
                 'content' => $content,
                 'empty_text' => esc_html__('This user is not a member of any custom Permission Groups.', 'press-permit-core'),
                 'section_id' => ('pp_group' == $agent_type) ? 'userprofile_groupsdiv_pp' : "userprofile_groupsdiv_{$agent_type}",
-                'class' => 'pp-profile-summary-row-groups',
+                'class' => 'pp-profile-summary-row-groups ' . self::getProfileSummaryRowClass('groups', false, count($stored_groups)),
+                'icon' => 'dashicons-admin-users',
                 'allow_form_controls' => true,
             ];
         }
@@ -342,7 +365,6 @@ class Profile
             'selected_only' => false,
             'hide_checkboxes' => false,
             'force_display' => false,
-            'edit_membership_link' => false,
             'include_role_metagroups' => false,
         ];
 
@@ -448,41 +470,34 @@ class Profile
                 'locked_ids' => $locked_ids,
                 'show_subset_caption' => false,
                 'hide_checkboxes' => $hide_checkboxes,
+                'link_captions' => true,
                 'single_select' => $single_select
             ];
 
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $css_id, $stored_groups, $args);
             
-            if ($edit_membership_link || (!$all_groups && $force_display)) :
+            $note = (defined('BP_VERSION'))
+                ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
+                : '';
+
+            $note = apply_filters(
+                'presspermit_user_profile_groups_note',
+                $note,
+                $user_id,
+                $args
+            );
+
+            if ((!$all_groups && $force_display) || $note) :
                 ?>
                 <p>
                     <?php if (!$all_groups && $force_display) :
                         esc_html_e('This user is not a member of any custom Permission Groups.', 'press-permit-core');
-                        ?>&nbsp;&bull;&nbsp;
+                        ?>
                     <?php endif; ?>
 
-                    <?php $title = esc_attr(__("Edit this user's group membership", 'press-permit-core')); ?>
-                    <a href='user-edit.php?user_id=<?php echo esc_attr($user_id); ?>#userprofile_groupsdiv_pp'
-                       title='<?php echo esc_attr($title); ?>'>
-                        <?php esc_html_e('add / edit membership'); ?>
-                    </a>
-                    &nbsp;&nbsp;
-                    <span class="pp-subtext">
-                    <?php
-                    $note = (defined('BP_VERSION'))
-                        ? __('Note: BuddyPress Groups and other externally defined groups are not listed here, even if they modify permissions', 'press-permit-core')
-                        : '';
-
-                    $note = apply_filters(
-                        'presspermit_user_profile_groups_note',
-                        $note,
-                        $user_id,
-                        $args
-                    );
-
-                    echo esc_html($note);
-                    ?>
-                </span>
+                    <?php if ($note) : ?>
+                        <span class="pp-subtext"><?php echo esc_html($note); ?></span>
+                    <?php endif; ?>
                 </p>
             <?php
             endif;
@@ -601,7 +616,8 @@ class Profile
             'content' => self::listAgentExceptions($agent_type, $agent_id, $list_args),
             'empty_text' => esc_html__('No specific permissions currently apply.', 'press-permit-core'),
             'section_id' => self::getProfileSectionId('pp_current_exceptions', $agent_id, $args['join_groups']),
-            'class' => '',
+            'class' => self::getProfileSummaryRowClass('permissions', $args['join_groups'], $badge_count),
+            'icon' => $args['join_groups'] ? 'dashicons-networking' : 'dashicons-lock',
             'allow_form_controls' => false,
         ];
     }
@@ -638,7 +654,7 @@ class Profile
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
                         <h2 class="section-title"><?php echo esc_html($caption); ?></h2>
-                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$badge_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($badge_count)); ?></span>
                     </div>
                     <?php if ($edit_url) : ?>
                         <a class="button button-small pp-profile-summary-edit" href="<?php echo esc_url($edit_url); ?>">
@@ -767,9 +783,21 @@ class Profile
             'content' => self::listAgentRoles($agent_type, $agent_id, $list_args),
             'empty_text' => esc_html__('No extra roles currently apply.', 'press-permit-core'),
             'section_id' => self::getProfileSectionId('pp_current_roles', $agent_id, $args['join_groups']),
-            'class' => '',
+            'class' => self::getProfileSummaryRowClass('roles', $args['join_groups'], $badge_count),
+            'icon' => $args['join_groups'] ? 'dashicons-networking' : 'dashicons-groups',
             'allow_form_controls' => false,
         ];
+    }
+
+    private static function getProfileSummaryRowClass($type, $join_groups, $count)
+    {
+        $classes = [
+            'pp-profile-summary-row-' . sanitize_html_class($type),
+            $join_groups ? 'pp-profile-summary-row-inherited' : 'pp-profile-summary-row-direct',
+            $count ? 'pp-profile-summary-row-has-items' : 'pp-profile-summary-row-empty',
+        ];
+
+        return implode(' ', $classes);
     }
 
     private static function abbreviatedRolesList($agent_type, $agent_id, $args = [])
@@ -804,7 +832,7 @@ class Profile
                 <div class="section-header">
                     <div class="pp-profile-summary-heading">
                         <h2 class="section-title"><?php echo esc_html($caption); ?></h2>
-                        <span class="badge badge-count"><span class="count-num"><?php echo (int)$badge_count; ?></span> <?php esc_html_e('item(s)', 'press-permit-core'); ?></span>
+                        <span class="badge badge-count"><?php echo esc_html(self::formatItemCount($badge_count)); ?></span>
                     </div>
                     <?php if ($edit_url) : ?>
                         <a class="button button-small pp-profile-summary-edit" href="<?php echo esc_url($edit_url); ?>">
@@ -835,5 +863,15 @@ class Profile
         $scope = $join_groups ? 'inherited' : 'direct';
 
         return sprintf('%s_%s_%s', $base_id, $scope, (int)$agent_id);
+    }
+
+    private static function formatItemCount($count)
+    {
+        $count = (int)$count;
+
+        return sprintf(
+            _n('%s item', '%s items', $count, 'press-permit-core'),
+            number_format_i18n($count)
+        );
     }
 }

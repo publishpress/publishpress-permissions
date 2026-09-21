@@ -1,11 +1,11 @@
 === PublishPress Permissions: Control User Access for Posts, Pages, Categories, Tags ===
 
 Contributors: publishpress, kevinB, stevejburge, andergmartins
-Tags: permissions, access, restrict, privacy, capabilities
+Tags: permissions, content permissions, access control, user access, restrict
 Requires at least: 5.5
 Tested up to: 7.1
 Requires PHP: 7.2.5
-Stable tag: 4.8.4
+Stable tag: 4.9.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

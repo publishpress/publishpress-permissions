@@ -462,8 +462,6 @@ class PermissionsHooks
         do_action('presspermit_pre_init');
 
         if (is_admin()) {
-            @load_plugin_textdomain('press-permit-core', false, dirname(plugin_basename(PRESSPERMIT_FILE)) . '/languages');
-
             $this->admin_hooks->init();
         }
     }

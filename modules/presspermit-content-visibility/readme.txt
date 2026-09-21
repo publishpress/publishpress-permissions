@@ -35,10 +35,6 @@ Set `hide="yes"` to invert a rule:
 
 `[pp_restrict logged="out" hide="yes"]Hidden from logged-out visitors.[/pp_restrict]`
 
-For migration, the module also handles `[eyesonly]`, `[eyesonlier]`, and
-`[eyesonliest]` when another active plugin has not already registered those
-shortcodes. Legacy conditions retain their original OR behavior.
-
 Nested shortcodes are processed only after the visitor is authorized to see
 the enclosed content.
 
@@ -69,5 +65,4 @@ specific cache and CDN configuration.
 == Changelog ==
 
 = 0.1.0 =
-* Add the Content Visibility module, shortcode reference screen, and legacy
-  Eyes Only shortcode migration.
+* Add the Content Visibility module and shortcode reference screen.

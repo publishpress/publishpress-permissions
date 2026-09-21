@@ -105,6 +105,22 @@ class AgentEdit
 
                 break;
 
+            case 'pp_updategroups':
+                $agent_id = PWP::REQUEST_int('agent_id');
+                check_admin_referer('pp-user-profile-groups', '_pp_permissions_nonce');
+
+                if ('user' != $agent_type || !current_user_can('edit_users')) {
+                    wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
+                }
+
+                require_once(PRESSPERMIT_CLASSPATH . '/UserGroupsUpdate.php');
+                \PublishPress\Permissions\UserGroupsUpdate::addUserGroups($agent_id);
+                \PublishPress\Permissions\UserGroupsUpdate::removeUserGroups($agent_id);
+
+                $redirect = "$url?page=presspermit-edit-permissions&agent_id=$agent_id&agent_type=user&updated=1&pp_groups=1";
+
+                break;
+
             case 'creategroup':
                 check_admin_referer('pp-create-group', '_wpnonce_pp-create-group');
 
@@ -133,9 +149,9 @@ class AgentEdit
                 $arr = explode('/', esc_url_raw($wp_http_referer));
                 if ($arr && !defined('PP_LEGACY_HTTP_REDIRECT')) {
                     $wp_http_referer = esc_url_raw(array_pop($arr));
-                    $redirect = add_query_arg('wp_http_referer', urlencode($wp_http_referer), $redirect);
+                    $redirect = add_query_arg('wp_http_referer', rawurlencode($wp_http_referer), $redirect);
                 } else {
-                    $redirect = add_query_arg('wp_http_referer', urlencode(esc_url_raw($wp_http_referer)), $redirect);
+                    $redirect = add_query_arg('wp_http_referer', rawurlencode(esc_url_raw($wp_http_referer)), $redirect);
                 }
             }
 
