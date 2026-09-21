@@ -17,19 +17,25 @@ jQuery(document).ready(function($) {
             return; // Exit if no active container
         }
         
-        // Get the preview element within the active container
-        var $preview = $activeContainer.find('.pp-teaser-notice-preview');
+        var postType = String($activeContainer.data('post-type') || '');
+        var $sitePreview = $('.pp-teaser-site-preview').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        }).first();
+
+        // Update both the full preview and the focused style preview.
+        var $preview = $activeContainer.find('.pp-teaser-notice-preview')
+            .add($sitePreview.find('.pp-teaser-notice-preview'));
         
         if (!$preview.length) {
             return; // Exit if preview element doesn't exist
         }
         
-        // Get values from inputs within the active container
+        // Default styles match the front-end output in PostsTeaser::wrapTeaserNotice().
         var bgColor = $activeContainer.find('[name*="teaser_notice_bg_color"]').val() || '#f0f6fc';
         var textColor = $activeContainer.find('[name*="teaser_notice_text_color"]').val() || '#1d2327';
         var borderColor = $activeContainer.find('[name*="teaser_notice_border_color"]').val() || '#0073aa';
         var borderWidth = $activeContainer.find('[name*="teaser_notice_border_width"]').val() || '4';
-        var borderPosition = $activeContainer.find('[name*="teaser_notice_border_position"]').val() || 'left';
+        var borderPosition = $activeContainer.find('[name*="teaser_notice_border_position"]:checked').val() || 'left';
         var padding = $activeContainer.find('[name*="teaser_notice_padding"]').val() || '15';
         var borderRadius = $activeContainer.find('[name*="teaser_notice_border_radius"]').val() || '0';
         var fontSize = $activeContainer.find('[name*="teaser_notice_font_size"]').val() || '14';
@@ -65,6 +71,8 @@ jQuery(document).ready(function($) {
             // Set specific border
             $preview.css('border-' + borderPosition, borderWidth + 'px solid ' + borderColor);
         }
+
+        $(document).trigger('pp_teaser_notice_style_updated', [$activeContainer]);
     }
 
     // Initialize color pickers after DOM is ready
@@ -94,7 +102,7 @@ jQuery(document).ready(function($) {
     });
 
     // Update preview when post type is changed
-    $(document).on('change', '#pp_current_post_type', function() {
+    $(document).on('change', '.pp-current-post-type', function() {
         setTimeout(updateTeaserNoticePreview, 100);
     });
 

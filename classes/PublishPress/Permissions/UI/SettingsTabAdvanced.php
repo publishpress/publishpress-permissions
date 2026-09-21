@@ -70,6 +70,7 @@ class SettingsTabAdvanced
             'list_others_uneditable_posts'           => esc_html__('List other user\'s uneditable posts', 'press-permit-core'),
             'lock_top_pages'                         => esc_html__('Pages can be set or removed from Top Level by: ', 'press-permit-core'),
             'create_tag_require_edit_cap'            => esc_html__('Tag creation requires Tag edit capability', 'press-permit-core'),
+            'display_group_exceptions'               => esc_html__('Permission Groups in Edit Permissions', 'press-permit-core'),
         ];
 
         // Settings that are displayed if already set to a non-default value, or if "Display all" is enabled
@@ -114,7 +115,7 @@ class SettingsTabAdvanced
             'dynamic_wp_roles'                       => esc_html__('Detect Dynamically Mapped WP Roles', 'press-permit-core'),
             'non_admins_set_read_exceptions'         => esc_html__('Non-Administrators can set Reading Permissions for their editable posts', 'press-permit-core'),
             'users_bulk_groups'                      => esc_html__('Bulk Add / Remove Groups on Users Screen', 'press-permit-core'),
-            'list_all_constants'                     => esc_html__('Display all available constant definitions'),
+            'list_all_constants'                     => esc_html__('Display all available constant definitions', 'press-permit-core'),
             'non_admins_set_edit_exceptions'         => esc_html__('Non-Administrators can set Editing Permissions for their editable posts', 'press-permit-core'),
             'publish_exceptions'                     => esc_html__('Assign Publish Permissions separate from Edit Permissions', 'press-permit-core'),
             'limit_user_edit_enabled'                => esc_html__('Limit user editing capabilities by role level', 'press-permit-core'),
@@ -165,7 +166,7 @@ class SettingsTabAdvanced
             $additional = [
                 'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap', 'use_tabbed_metabox'],
                 'permissions'         => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
-                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_enabled', 'limit_user_edit_by_level', 'user_permissions'],
+                'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'display_group_exceptions', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_enabled', 'limit_user_edit_by_level', 'user_permissions'],
                 'front_end'           => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
                 'role_integration'    => ['pattern_roles_include_generic_rolecaps', 'dynamic_wp_roles'],
                 'nav_menu_management' => ['admin_nav_menu_partial_editing', 'admin_nav_menu_lock_custom'],
@@ -267,7 +268,7 @@ class SettingsTabAdvanced
                     ?>
 
                     <?php if ($caution_option_names) :?>
-                        <div class="pp-advanced-caution" style="display:none">
+                        <div class="pp-advanced-caution" data-options-enabled="<?php echo $this->enabled ? '1' : '0'; ?>" style="display:none">
                         <span class="pp-caution">
                         <?php
                         if ($this->enabled) {
@@ -287,19 +288,7 @@ class SettingsTabAdvanced
                         </ul>
                         </div>
 
-                        <script type="text/javascript">
-                            /* <![CDATA[ */
-                            jQuery(document).ready(function ($) {
-                                $('input#advanced_options').on('click', function() {
-                                    <?php if ($this->enabled) :?>
-                                        $(this).closest('td').find('div.pp-advanced-caution').slideToggle($(this).prop('checked'));
-                                    <?php else:?>
-                                        $(this).closest('td').find('div.pp-advanced-caution').slideToggle(!$(this).prop('checked'));
-                                    <?php endif;?>
-                                });
-                            });
-                            /* ]]> */
-                        </script>
+                        <?php presspermit_enqueue_admin_script(); ?>
 
                     <?php endif;?>
 
@@ -476,6 +465,7 @@ class SettingsTabAdvanced
                     $hint = SettingsAdmin::getStr('display_user_profile_roles');
                     $ui->optionCheckbox('display_user_profile_groups', $tab, $section);
                     $ui->optionCheckbox('display_user_profile_roles', $tab, $section, $hint);
+                    $ui->optionCheckbox('display_group_exceptions', $tab, $section, true);
 
                     $ui->optionCheckbox('user_search_by_role', $tab, $section, true);
 
@@ -516,8 +506,9 @@ class SettingsTabAdvanced
 
                         $captions = ['1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
                         foreach ($captions as $key => $value) {
-                            $selected = ($option_val == $key) ? 'selected="selected"' : '';
-                            echo "\n\t<option value='" . esc_attr($key) . "' " . $selected . ">" . esc_html($captions[$key]) . "</option>";
+                            ?>
+                            <option value="<?php echo esc_attr($key); ?>" <?php selected($option_val, $key); ?>><?php echo esc_html($value); ?></option>
+                            <?php
                         }
                         ?>
                         </select>
@@ -529,15 +520,7 @@ class SettingsTabAdvanced
                         </div>
                         </div>
 
-                        <script type="text/javascript">
-                        /* <![CDATA[ */
-                        jQuery(document).ready(function($) {
-                            $('#limit_user_edit_enabled').on('change', function() {
-                                $('#pp_limit_user_edit_by_level_wrap').toggle( $(this).is(':checked') );
-                            });
-                        });
-                        /* ]]> */
-                        </script>
+                        <?php presspermit_enqueue_admin_script(); ?>
                     <?php endif;?>
 
                     <?php
@@ -795,15 +778,7 @@ class SettingsTabAdvanced
                 </td>
             </tr>
 
-            <script type="text/javascript">
-                /* <![CDATA[ */
-                jQuery(document).ready(function ($) {
-                    $('input#list_all_constants').on('click', function() {
-                        $('#pp_available_constants').toggle($(this).prop('checked'));
-                    });
-                });
-                /* ]]> */
-            </script>
+            <?php presspermit_enqueue_admin_script(); ?>
         <?php endif;
 
         if (is_multisite()) {
@@ -815,9 +790,8 @@ class SettingsTabAdvanced
 
                     <div id="pp_modify_default_settings" class="pp-settings-code">
                         <?php
-                        $msg = esc_html__("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
-                        $msg = str_replace(['&lt;strong&gt;', '&lt;/strong&gt;'], '', $msg);
-                        _e($msg);
+                        $msg = __("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
+                        echo esc_html(wp_strip_all_tags($msg));
                         ?>
                         <textarea rows='10' cols='150' readonly='readonly'>
     // Use this filter if you want to change the default, but still allow manual setting
@@ -836,9 +810,8 @@ class SettingsTabAdvanced
 
                     <div id="pp_force_settings" class="pp-settings-code">
                         <?php
-                        $msg  = esc_html__("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
-                        $msg = str_replace(['&lt;strong&gt;', '&lt;/strong&gt;'], '', $msg);
-                        _e($msg);
+                        $msg  = __("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
+                        echo esc_html(wp_strip_all_tags($msg));
                         ?>
                         <textarea rows='13' cols='150' readonly='readonly'>
     // Use this filter if you want to force an option, blocking/disregarding manual setting
@@ -875,7 +848,7 @@ class SettingsTabAdvanced
                 ?>
                 <p class="submit pp-submit-alternate" style="border:none;float:right">
                     <input type="submit" name="presspermit_defaults" value="<?php esc_attr_e('Revert to Defaults', 'press-permit-core') ?>"
-                        onclick="<?php echo "javascript:if (confirm('" . esc_attr($msg) . "')) {return true;} else {return false;}"; ?>" />
+                        class="pp-confirm-submit" data-confirm="<?php echo esc_attr($msg); ?>" />
                 </p>
 
             </td>

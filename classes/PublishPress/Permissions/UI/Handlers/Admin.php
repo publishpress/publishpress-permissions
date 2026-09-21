@@ -11,7 +11,7 @@ class Admin
             $pp_plugin_page = presspermitPluginPage();
 
             if (('presspermit-edit-permissions' == $pp_plugin_page)
-                || PWP::is_POST('action', ['pp_updateroles', 'pp_updateexceptions', 'pp_updateclone'])
+                || PWP::is_POST('action', ['pp_updateroles', 'pp_updateexceptions', 'pp_updateclone', 'pp_updategroups'])
                 || ((PWP::is_REQUEST('_wp_http_referer') && strpos(esc_url_raw(PWP::REQUEST_url('_wp_http_referer')), 'presspermit-edit-permissions'))
                 || ('presspermit-group-new' == $pp_plugin_page)
             )) {

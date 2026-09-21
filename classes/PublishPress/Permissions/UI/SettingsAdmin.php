@@ -86,6 +86,9 @@ class SettingsAdmin
         case 'display_user_profile_roles' :
         return __('Note: Groups and Roles are always displayed on the Edit User screen.', 'press-permit-core');
 
+        case 'display_group_exceptions' :
+        return __('Show Permission Groups as a Specific Permissions content type on the Edit Permissions screen.', 'press-permit-core');
+
 
         // Advanced
         case 'anonymous_unfiltered' :

@@ -208,8 +208,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     <input type="search" class="pp-quick-search input-with-default-title"
                         title="<?php esc_attr_e('Search'); ?>" value="<?php echo esc_attr($searched); ?>"
                         name="quick-search-posttype-<?php echo esc_attr($post_type_name); ?>" placeholder="Search" />
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
                     <?php submit_button(esc_html__('Search'), 'quick-search-submit button-secondary hide-if-js', 'submit', false, ['id' => 'submit-quick-search-posttype-' . $post_type_name]); ?>
                 </p>
 
@@ -324,8 +324,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 </span>
 
                 <span class="add-to-menu">
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception"
                         value="<?php
@@ -484,8 +484,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 </span>
 
                 <span class="add-to-menu">
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception submit-add-<?php
                     echo esc_attr($post_type_name);
@@ -701,8 +701,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                         title="<?php esc_attr_e('Search'); ?>" value="<?php echo esc_attr($searched); ?>"
                         name="quick-search-taxonomy-<?php echo esc_attr($taxonomy_name); ?>" placeholder="Search" />
 
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <?php submit_button(
                         esc_html__('Search'),
@@ -738,8 +738,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 </span>
 
                 <span class="add-to-menu">
-                    <img class="waiting" style="display:none"
-                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" alt=""/>
+                    <img alt="" class="waiting" style="display:none"
+                        src="<?php echo esc_url(admin_url('images/wpspin_light.gif')); ?>" />
 
                     <input type="submit" <?php disabled($nav_menu_selected_id, 0); ?> class="button-secondary submit-add-item-exception"
                         value="<?php esc_attr_e('Add Selected Permissions', 'press-permit-core'); ?>" name="add-taxonomy-menu-item"
@@ -783,6 +783,10 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         if (preg_match('/quick-search-(posttype|taxonomy)-([a-zA-Z_-]*\b)/', $type, $matches)) {
             if ('posttype' == $matches[1] && $type_obj = get_post_type_object($matches[2])) {
+                if (!presspermit()->admin()->canSetAnyPostPermissions($matches[2])) {
+                    wp_die(-1);
+                }
+
                 $args['hierarchical'] = $type_obj->hierarchical;
 
                 $status = ('attachment' == $matches[2]) ? 'inherit' : '';
@@ -816,6 +820,10 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], [get_post($var_by_ref)]), 0, (object)$args);
                 }
             } elseif ('taxonomy' == $matches[1]) {
+                if (!presspermit()->admin()->canSetAnyTermPermissions('', $matches[2])) {
+                    wp_die(-1);
+                }
+
                 $terms = get_terms($matches[2], [
                     'name__like' => $query,
                     'hide_empty' => false,
