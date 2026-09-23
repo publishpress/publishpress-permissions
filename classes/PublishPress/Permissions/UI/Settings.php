@@ -124,7 +124,8 @@ class Settings
             $default_tab = apply_filters('presspermit_options_default_tab', $default_tab);
 
             // todo: prevent line breaks in these links
-            echo "<ul class='nav-tab-wrapper' style='margin-bottom:-0.1em;border-bottom:unset;'>";
+            echo "<nav aria-label='" . esc_attr__('Settings sections', 'press-permit-core') . "'>";
+            echo "<ul class='nav-tab-wrapper' style='margin-bottom:-0.1em;border-bottom:unset;' role='tablist'>";
 
             foreach ($ui->tab_captions as $tab => $caption) {
                 if (!empty($ui->form_options[$tab])) {
@@ -147,7 +148,10 @@ class Settings
                         );
                     }
 
-                    echo "<li class='" . esc_attr($class) . "'><a href='#pp-" . esc_attr($tab) . "'>"
+                    $tab_dom_id = 'pp-settings-tab-' . sanitize_key($tab);
+                    $tab_is_active = $default_tab == $tab;
+
+                    echo "<li class='" . esc_attr($class) . "' role='presentation'><a id='" . esc_attr($tab_dom_id) . "' href='#pp-" . esc_attr($tab) . "' role='tab' aria-controls='pp-" . esc_attr($tab) . "' aria-selected='" . ($tab_is_active ? 'true' : 'false') . "' tabindex='" . ($tab_is_active ? '0' : '-1') . "'>"
                         . esc_html($ui->tab_captions[$tab]) . wp_kses_post($badge_html) . '</a>';
                         
                     if (('integrations' == $tab) && !empty($ui->available_integrations)) :?>
@@ -158,13 +162,14 @@ class Settings
                 }
             }
             echo '</ul>';
+            echo '</nav>';
             echo '<div class="pp-group-wrapper" style="display: flex;width: 100%;flex-wrap: wrap;">';
             echo '<div class="pp-options-wrapper" style="flex-basis: calc(99% - 270px);">';
             $table_class = 'form-table pp-form-table pp-options-table';
 
             if (PWP::is_REQUEST('presspermit_submit') || PWP::is_REQUEST('presspermit_submit_redirect')) :
             ?>
-                <div id="message" class="updated">
+                <div id="message" class="updated" role="status" aria-live="polite">
                     <p>
                         <strong><?php esc_html_e('All settings were updated.', 'press-permit-core'); ?>&nbsp;</strong>
                     </p>
@@ -172,7 +177,7 @@ class Settings
             <?php
             elseif (PWP::is_REQUEST('presspermit_defaults')) :
             ?>
-                <div id="message" class="updated">
+                <div id="message" class="updated" role="status" aria-live="polite">
                     <p>
                         <strong><?php esc_html_e('All settings were reset to defaults.', 'press-permit-core'); ?>&nbsp;</strong>
                     </p>
@@ -182,7 +187,9 @@ class Settings
 
             foreach (array_keys($ui->tab_captions) as $tab) {
                 $display = ($default_tab == $tab) ? '' : 'display:none';
-                echo "<div id='pp-" . esc_attr($tab) . "' style='clear:both;margin:0;" . esc_attr($display) . "' class='pp-options'>";
+                $tab_dom_id = 'pp-settings-tab-' . sanitize_key($tab);
+                $tab_is_active = $default_tab == $tab;
+                echo "<div id='pp-" . esc_attr($tab) . "' style='clear:both;margin:0;" . esc_attr($display) . "' class='pp-options' role='tabpanel' aria-labelledby='" . esc_attr($tab_dom_id) . "' aria-hidden='" . ($tab_is_active ? 'false' : 'true') . "'>";
 
                 do_action("presspermit_" . esc_attr($tab) . "_options_pre_ui");
 
