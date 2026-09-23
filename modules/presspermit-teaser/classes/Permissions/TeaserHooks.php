@@ -998,15 +998,17 @@ class TeaserHooks
         )) {
             // phpcs Note: this is triggered by our filter application, so additional nonce verification is unnecessary
 
-            // phpcs Note: These teaser options cannot currently be sanitized because they support embedded html tags
-
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
             if (isset($_POST[$option_basename])) {
+                // Preserve safe rich-text markup while removing scriptable elements and attributes.
+                $teaser_text = map_deep(
+                    wp_unslash($_POST[$option_basename]), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                    'wp_kses_post'
+                );
+
                 presspermit()->updateOption(
                     $default_prefix . $option_basename,
-                    $this->normalizeDefaultTeaserTextOption(
-                        preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $_POST[$option_basename])    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-                    ),
+                    $this->normalizeDefaultTeaserTextOption($teaser_text),
                     $args
                 );
             }
