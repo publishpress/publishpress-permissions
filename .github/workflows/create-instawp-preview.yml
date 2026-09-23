@@ -171,23 +171,26 @@ jobs:
         run: |
           cp "$GITHUB_WORKSPACE/.env.example" "$GITHUB_WORKSPACE/.env"
 
-      - name: Fix permissions
-        run: |
-          chmod +x "$GITHUB_WORKSPACE/dev-workspace/run"
-          chmod +x "$GITHUB_WORKSPACE/dev-workspace/scripts/"*.sh
+      - name: Composer validation
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          php_extensions: zip mysqli
+          command: validate
 
-      - name: Prepare Composer
-        run: |
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer validate
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer install
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          php_extensions: zip mysqli
 
       - name: Run lint check
         run: |
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer check:lint
+          bash "$GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh" composer lint:php
 
       - name: Build plugin package
         run: |
-          "$GITHUB_WORKSPACE/dev-workspace/run" composer build
+          bash "$GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh" composer build
 
       - name: Verify build output
         run: |
