@@ -48,10 +48,24 @@ if (get_option('presspermit_delete_settings_on_uninstall')) {
                 }
 
                 if (!empty($wpdb->options)) {
-                    @$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE '%presspermit%'");
-                    @$wpdb->query("DELETE FROM $wpdb->options WHERE option_name LIKE 'ppperm_%'");
+                    $presspermit_prefix = $wpdb->esc_like('presspermit_') . '%';
+                    $ppperm_prefix = $wpdb->esc_like('ppperm_') . '%';
+
+                    @$wpdb->query(
+                        $wpdb->prepare(
+                            "DELETE FROM $wpdb->options WHERE option_name LIKE %s",
+                            $presspermit_prefix
+                        )
+                    );
+                    @$wpdb->query(
+                        $wpdb->prepare(
+                            "DELETE FROM $wpdb->options WHERE option_name LIKE %s",
+                            $ppperm_prefix
+                        )
+                    );
                 }
 
+                delete_option('presspermitpro_version');
                 delete_option('ppcc_version');
                 delete_option('ppce_version');
                 delete_option('ppi_version');
