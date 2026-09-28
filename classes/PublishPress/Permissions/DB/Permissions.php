@@ -363,6 +363,10 @@ class Permissions
         $additional_ids = $user->getExceptionPosts($operation, 'additional', $post_type);
 
         if ($include_ids = $user->getExceptionPosts($operation, 'include', $post_type)) {
+            if (in_array(0, $include_ids, true) || in_array('0', $include_ids, true)) {
+                return '';
+            }
+
             if ($additional_ids)
                 $include_ids = array_unique(array_merge($include_ids, $additional_ids));
 
