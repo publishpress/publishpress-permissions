@@ -275,8 +275,10 @@ class TeaserHooks
         return '';
     }
 
-    function fltThemeTeaserPreviewTitle($title, $post_id)
+    function fltThemeTeaserPreviewTitle($title, $post_id = 0)
     {
+        $post_id = $post_id ? (int) $post_id : (int) get_the_ID();
+
         if ($this->theme_preview_title_filtered
             || !$this->isThemeTeaserPreviewMainPost($post_id)
             || !in_the_loop()
