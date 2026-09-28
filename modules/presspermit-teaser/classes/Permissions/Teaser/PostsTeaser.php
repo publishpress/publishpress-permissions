@@ -361,6 +361,7 @@ class PostsTeaser
         // Remove slashes that WordPress adds automatically to option values
         if ($msg) {
             $msg = wp_unslash($msg);
+            $msg = \PublishPress\Permissions\TeaserHooks::sanitizeTeaserRichText($msg);
         }
 
         if ($msg && \PublishPress\Permissions\TeaserHooks::isDefaultTeaserText($msg)) {
