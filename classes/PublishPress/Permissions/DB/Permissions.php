@@ -445,9 +445,13 @@ class Permissions
                 // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                 foreach (['include' => 'IN', 'exclude' => 'NOT IN'] as $mod => $logic) {
                     if ($ids = $user->getExceptionPosts($required_operation, $mod, $exc_post_type)) {
+                        if (('include' == $mod) && (in_array(0, $ids, true) || in_array('0', $ids, true))) {
+                            break;
+                        }
+
                         if (!defined('PP_RESTRICTION_PRIORITY') && !empty($additional_ids['']) && !defined('PP_LEGACY_POST_BLOCKAGE')) {
                         	$ids = array_diff($ids, $additional_ids['']);
-                    	}
+                        }
                         
                         $_args = array_merge($args, compact('mod', 'ids', 'src_table', 'logic'));
 
