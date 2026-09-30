@@ -1,0 +1,41 @@
+.ppw-permissions-hero-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: #f3f0fa;
+    color: #655997;
+}
+
+.ppw-permissions-hero-badge .dashicons {
+    width: 72px;
+    height: 72px;
+    font-size: 72px;
+}
+
+.ppw-permissions-hero-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 7px;
+    height: 32px;
+    margin-top: 10px;
+}
+
+.ppw-permissions-hero-bars span {
+    width: 8px;
+    border-radius: 4px;
+    background: currentColor;
+}
+
+.ppw-permissions-hero-bars span:nth-child(1) { height: 14px; }
+.ppw-permissions-hero-bars span:nth-child(2) { height: 28px; }
+.ppw-permissions-hero-bars span:nth-child(3) { height: 20px; }
+
+.ppw-body .ppw-figure-concept-roles,
+.ppw-body .ppw-figure-concept-groups,
+.ppw-body .ppw-figure-concept-exceptions {
+    background: #faf9fd;
+}

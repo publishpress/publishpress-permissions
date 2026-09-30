@@ -1,0 +1,62 @@
+{
+  "name": "publishpress/publishpress-welcome",
+  "description": "Reusable, configurable welcome and onboarding experiences for PublishPress WordPress plugins.",
+  "type": "library",
+  "version": "1.0.0.1",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "PublishPress",
+      "email": "help@publishpress.com",
+      "homepage": "https://publishpress.com/",
+      "role": "Developer"
+    }
+  ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=7.2.5"
+  },
+  "require-dev": {
+    "publishpress/version-loader-generator": "^1.3.1",
+    "overtrue/phplint": "^9.5"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "autoload": {
+    "files": [
+      "src/include.php"
+    ]
+  },
+  "scripts": {
+    "generate-files": "vendor/bin/version-loader-generator",
+    "post-install-cmd": [
+      "@generate-files"
+    ],
+    "post-update-cmd": [
+      "@generate-files"
+    ],
+    "check:lint": "phplint --no-cache src tests",
+    "test:unit": "php tests/run.php",
+    "test:integration": "php tests/integration/version-loader.php",
+    "test": [
+      "@check:lint",
+      "@test:unit",
+      "@test:integration"
+    ]
+  },
+  "extra": {
+    "generator": {
+      "lib-class-test": "class_exists('PublishPress\\Welcome\\WelcomeController')",
+      "src-dir": "src",
+      "namespace": "PublishPress\\Welcome",
+      "action-register-priority": "-200",
+      "action-initialize-priority": "-190",
+      "generate-test-file": false
+    }
+  }
+}
