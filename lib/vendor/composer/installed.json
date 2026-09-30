@@ -235,6 +235,89 @@
             "install-path": "../publishpress/psr-container"
         },
         {
+            "name": "publishpress/publishpress-welcome",
+            "version": "dev-codex/welcome-library",
+            "version_normalized": "dev-codex/welcome-library",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:publishpress/library-publishpress-welcome.git",
+                "reference": "541282d574d2435882815e576505515d2b0bc210"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/publishpress/library-publishpress-welcome/zipball/541282d574d2435882815e576505515d2b0bc210",
+                "reference": "541282d574d2435882815e576505515d2b0bc210",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "overtrue/phplint": "^9.5",
+                "publishpress/version-loader-generator": "^1.3.1"
+            },
+            "time": "2026-09-30T23:40:08+00:00",
+            "type": "library",
+            "extra": {
+                "generator": {
+                    "lib-class-test": "class_exists('PublishPress\\Welcome\\WelcomeController')",
+                    "src-dir": "src",
+                    "namespace": "PublishPress\\Welcome",
+                    "action-register-priority": "-200",
+                    "action-initialize-priority": "-190",
+                    "generate-test-file": false
+                }
+            },
+            "installation-source": "dist",
+            "autoload": {
+                "files": [
+                    "src/include.php"
+                ]
+            },
+            "scripts": {
+                "generate-files": [
+                    "vendor/bin/version-loader-generator"
+                ],
+                "post-install-cmd": [
+                    "@generate-files"
+                ],
+                "post-update-cmd": [
+                    "@generate-files"
+                ],
+                "check:lint": [
+                    "phplint --no-cache src tests"
+                ],
+                "test:unit": [
+                    "php tests/run.php"
+                ],
+                "test:integration": [
+                    "php tests/integration/version-loader.php"
+                ],
+                "test": [
+                    "@check:lint",
+                    "@test:unit",
+                    "@test:integration"
+                ]
+            },
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "PublishPress",
+                    "email": "help@publishpress.com",
+                    "homepage": "https://publishpress.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Reusable, configurable welcome and onboarding experiences for PublishPress WordPress plugins.",
+            "support": {
+                "source": "https://github.com/publishpress/library-publishpress-welcome/tree/codex/welcome-library",
+                "issues": "https://github.com/publishpress/library-publishpress-welcome/issues"
+            },
+            "install-path": "../publishpress/publishpress-welcome"
+        },
+        {
             "name": "publishpress/wordpress-reviews",
             "version": "1.2.2",
             "version_normalized": "1.2.2.0",
