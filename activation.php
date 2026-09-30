@@ -9,6 +9,14 @@ if ( ! $ver = get_option('presspermitpro_version') ) {
 }
 
 $db_ver = (is_array($ver) && isset( $ver['db_version'] ) ) ? $ver['db_version'] : '';
+
+// Enroll only genuine first installations. Existing sites can still open the
+// welcome page manually, but are never redirected or shown onboarding notices.
+if (empty($ver)) {
+    update_option('presspermit_welcome_enrolled', 1, false);
+    update_option('presspermit_welcome_redirect_pending', 1, false);
+}
+
 require_once(__DIR__ . '/classes/PublishPress/Permissions/DB/DatabaseSetup.php');
 new \PublishPress\Permissions\DB\DatabaseSetup($db_ver);
 

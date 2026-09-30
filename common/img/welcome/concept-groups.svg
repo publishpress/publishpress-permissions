@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 64" width="200" height="64" role="img" aria-label="People grouped together and granted access once">
+  <style>
+    .pp-group-person { animation: pp-group-person 5.8s cubic-bezier(.45, 0, .2, 1) infinite; transform-box: fill-box; transform-origin: center; }
+    .pp-group-person-2 { animation-delay: .3s; }
+    .pp-group-person-3 { animation-delay: .6s; }
+    .pp-group-glow { animation: pp-group-glow 5.8s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+    .pp-group-signal { animation: pp-group-signal 5.8s cubic-bezier(.45, 0, .2, 1) infinite; transform-box: fill-box; transform-origin: center; }
+    .pp-group-access { animation: pp-group-access 5.8s cubic-bezier(.45, 0, .2, 1) infinite; transform-box: fill-box; transform-origin: left center; }
+    @keyframes pp-group-person {
+      0%, 14%, 80%, 100% { opacity: .82; transform: translateY(0); }
+      23%, 34% { opacity: 1; transform: translateY(-2px); }
+      43% { opacity: .82; transform: translateY(0); }
+    }
+    @keyframes pp-group-glow {
+      0%, 18%, 78%, 100% { opacity: 0; transform: scale(.96); }
+      30%, 48% { opacity: .55; transform: scale(1.02); }
+      62% { opacity: 0; transform: scale(1.06); }
+    }
+    @keyframes pp-group-signal {
+      0%, 28%, 78%, 100% { opacity: 0; transform: translateX(0) scale(.55); }
+      36% { opacity: 1; transform: translateX(6px) scale(1); }
+      58% { opacity: 1; transform: translateX(29px) scale(1); }
+      66% { opacity: 0; transform: translateX(35px) scale(.55); }
+    }
+    @keyframes pp-group-access {
+      0%, 37%, 82%, 100% { opacity: .2; transform: scaleX(.18); }
+      53%, 72% { opacity: 1; transform: scaleX(1); }
+    }
+    @media (prefers-reduced-motion: reduce) { .pp-group-person, .pp-group-glow, .pp-group-signal, .pp-group-access { animation: none; } }
+  </style>
+  <rect x="6" y="10" width="74" height="44" rx="7" fill="#f6f5f9" stroke="#655997" stroke-width="2" />
+  <rect class="pp-group-glow" x="6" y="10" width="74" height="44" rx="7" fill="none" stroke="#655997" stroke-width="3" />
+  <g fill="#655997">
+    <circle class="pp-group-person pp-group-person-1" cx="22" cy="32" r="7" />
+    <circle class="pp-group-person pp-group-person-2" cx="43" cy="32" r="7" />
+    <circle class="pp-group-person pp-group-person-3" cx="64" cy="32" r="7" />
+  </g>
+  <path d="M82 32h19" fill="none" stroke="#655997" stroke-width="2.5" stroke-linecap="round" opacity=".34" />
+  <path d="M97 25l14 7-14 7z" fill="#655997" opacity=".72" />
+  <circle class="pp-group-signal" cx="83" cy="32" r="3" fill="#655997" />
+  <rect x="116" y="6" width="78" height="52" rx="6" fill="#fff" stroke="#dcdcde" stroke-width="2" />
+  <g fill="#f0f0f1">
+    <rect x="126" y="14" width="58" height="8" rx="4" />
+    <rect x="126" y="42" width="58" height="8" rx="4" />
+  </g>
+  <rect class="pp-group-access" x="126" y="28" width="58" height="8" rx="4" fill="#655997" />
+</svg>
