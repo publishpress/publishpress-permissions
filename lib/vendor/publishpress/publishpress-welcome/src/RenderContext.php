@@ -23,6 +23,11 @@ class RenderContext
         return $this->controller->stepUrl($step);
     }
 
+    public function stepCount()
+    {
+        return $this->controller->stepCount();
+    }
+
     public function figure(array $asset, $alt = '', $pinCount = 0, $slug = '')
     {
         $url = isset($asset['url']) ? $asset['url'] : '';

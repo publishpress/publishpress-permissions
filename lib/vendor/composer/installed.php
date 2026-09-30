@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '7a3221bb5d32c7a0565249000f455ac506e772ec',
+        'reference' => '864be64a85570dda40d8c30e84396c6412467e26',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '7a3221bb5d32c7a0565249000f455ac506e772ec',
+            'reference' => '864be64a85570dda40d8c30e84396c6412467e26',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -49,7 +49,7 @@
         'publishpress/publishpress-welcome' => array(
             'pretty_version' => 'dev-codex/welcome-library',
             'version' => 'dev-codex/welcome-library',
-            'reference' => '2bd9d7a9ef1bfaee8f1cfb2244176471ac708f6e',
+            'reference' => '541282d574d2435882815e576505515d2b0bc210',
             'type' => 'library',
             'install_path' => __DIR__ . '/../publishpress/publishpress-welcome',
             'aliases' => array(),
