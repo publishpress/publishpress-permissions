@@ -1014,9 +1014,11 @@ class TeaserHooks
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
             if (isset($_POST[$option_basename])) {
                 // Preserve safe rich-text markup while removing scriptable elements and attributes.
-                $teaser_text = map_deep(
-                    wp_unslash($_POST[$option_basename]), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-                    [__CLASS__, 'sanitizeTeaserRichText']
+                $teaser_text = wp_slash(
+                    map_deep(
+                        wp_unslash($_POST[$option_basename]), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                        [__CLASS__, 'sanitizeTeaserRichText']
+                    )
                 );
 
                 presspermit()->updateOption(
