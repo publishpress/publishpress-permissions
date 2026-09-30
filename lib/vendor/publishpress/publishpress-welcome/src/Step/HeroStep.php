@@ -24,6 +24,7 @@ class HeroStep implements StepInterface
     public function render(RenderContext $context)
     {
         $action = isset($this->data['action']) ? $this->data['action'] : [];
+        $showPrimaryAction = ! empty($action) || $context->stepCount() > 1;
         ?>
         <div class="ppw-hero">
             <div class="ppw-hero-text">
@@ -35,9 +36,11 @@ class HeroStep implements StepInterface
                     <p><?php echo esc_html($this->data['body']); ?></p>
                 <?php endif; ?>
                 <div class="ppw-hero-actions">
-                    <a class="button button-primary button-hero" href="<?php echo esc_url(isset($action['url']) ? $action['url'] : $context->stepUrl(2)); ?>">
-                        <?php echo esc_html(isset($action['label']) ? $action['label'] : $context->config()->label('start')); ?>
-                    </a>
+                    <?php if ($showPrimaryAction) : ?>
+                        <a class="button button-primary button-hero" href="<?php echo esc_url(isset($action['url']) ? $action['url'] : $context->stepUrl(2)); ?>">
+                            <?php echo esc_html(isset($action['label']) ? $action['label'] : $context->config()->label('start')); ?>
+                        </a>
+                    <?php endif; ?>
                     <?php if (! empty($this->data['secondary_action'])) : ?>
                         <a class="ppw-text-link" href="<?php echo esc_url($this->data['secondary_action']['url']); ?>">
                             <?php echo esc_html($this->data['secondary_action']['label']); ?>

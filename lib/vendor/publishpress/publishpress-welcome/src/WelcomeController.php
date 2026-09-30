@@ -176,6 +176,11 @@ class WelcomeController
         );
     }
 
+    public function stepCount()
+    {
+        return count($this->steps);
+    }
+
     public function maybeRedirectAfterActivation()
     {
         if (! $this->isEnrolled() || ! get_option($this->config->get('redirect_option'))) {
@@ -184,7 +189,11 @@ class WelcomeController
 
         $requestAction = isset($_REQUEST['action']) ? sanitize_key(wp_unslash($_REQUEST['action'])) : '';
 
-        if (wp_doing_ajax() || is_network_admin() || 'activate-multi' === $requestAction) {
+        if (wp_doing_ajax()) {
+            return;
+        }
+
+        if (is_network_admin() || 'activate-multi' === $requestAction) {
             delete_option($this->config->get('redirect_option'));
             return;
         }
