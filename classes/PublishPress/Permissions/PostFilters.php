@@ -172,8 +172,11 @@ class PostFilters
         	}
         }
 
+        $rest_attachment_filtering = is_object($_wp_query)
+            && !empty($_wp_query->query_vars['presspermit_rest_attachment_query']);
+
         // Gallery block in Gutenberg editor: error loading Image Size dropdown options
-        if (defined('REST_REQUEST') && empty($rest_getpages_filtering)
+        if (defined('REST_REQUEST') && empty($rest_getpages_filtering) && !$rest_attachment_filtering
         && empty($_POST) && (!isset($_SERVER['REQUEST_METHOD']) || ('GET' == $_SERVER['REQUEST_METHOD']))  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
         && !PWP::empty_REQUEST('context') && ('edit' == PWP::REQUEST_key('context'))
         ) {
@@ -300,6 +303,11 @@ class PostFilters
         }
 
         $args['post_types'] = $post_types;
+
+        if ($rest_attachment_filtering) {
+            $args['required_operation'] = 'read';
+            $args['force_types'] = true;
+        }
 
         if (empty($args['required_operation']) && isset($_wp_query->query_vars['required_operation'])) {
             $args['required_operation'] = $_wp_query->query_vars['required_operation'];
