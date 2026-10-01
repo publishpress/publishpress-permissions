@@ -116,6 +116,7 @@ class TeaserHooks
         $translations = [];
 
         foreach (glob(PRESSPERMIT_ABSPATH . '/languages/press-permit-core-*.po') ?: [] as $po_file) {
+            // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reading local plugin translation files, not remote data.
             $contents = file_get_contents($po_file);
 
             if (false === $contents) {

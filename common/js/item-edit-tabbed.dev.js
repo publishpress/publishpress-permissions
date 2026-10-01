@@ -1101,7 +1101,7 @@
         }
 
         if ($activeBtn.length) {
-            $activeBtn.trigger('click');
+            applyPermissionFilter($activeBtn);
         } else {
             $contentArea.data('active-filter', 'all');
             $contentArea.data('active-filter-type', 'permission');
@@ -1113,7 +1113,10 @@
      * Handle filter button clicks
      */
     $(document).on('click', '.pp-filter-btn', function() {
-        var $btn = $(this);
+        applyPermissionFilter($(this));
+    });
+
+    function applyPermissionFilter($btn) {
         var filter = $btn.attr('data-filter');
         var filterType = $btn.attr('data-filter-type'); // 'agent-type' or undefined
         var $filterContainer = $btn.closest('.pp-permission-filters');
@@ -1238,7 +1241,7 @@
         } else {
             $noResults.remove();
         }
-    });
+    }
 
     /**
      * Initialize filters when agent content becomes visible
