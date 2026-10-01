@@ -311,6 +311,7 @@ class AdminFilters
 
         // Always preserve the current user so they never vanish from their own list view.
         $query_obj->query_where .= $wpdb->prepare(
+            // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users -- Required for filtering the core Users list query by role visibility.
             " AND ({$wpdb->users}.ID = %d OR {$wpdb->users}.ID NOT IN ("
             . "SELECT user_id FROM {$wpdb->usermeta} "
             . "WHERE meta_key = %s AND meta_value REGEXP %s))",

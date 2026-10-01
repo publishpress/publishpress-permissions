@@ -103,7 +103,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
             'orderby' => 'title',
             'posts_per_page' => $per_page,
             'post_type' => $post_type_name,
-            'suppress_filters' => true,         // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFiltersTrue
+            'suppress_filters' => true,         // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.SuppressFilters_suppress_filters -- Intentional default; disabled below for integrations that need filters.
             'update_post_term_cache' => false,
             'update_post_meta_cache' => false,
         ];
