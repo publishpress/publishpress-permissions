@@ -54,7 +54,9 @@ class TeaserHooks
             return self::getBlockedMessageOptionOrDefault($object_type);
         }
 
-        $value = wp_unslash((string) presspermit()->getTypeOption($option_basename, $object_type));
+        $value = self::sanitizeTeaserRichText(
+            wp_unslash((string) presspermit()->getTypeOption($option_basename, $object_type))
+        );
 
         return ('' === $value || self::isDefaultTeaserText($value)) ? self::getDefaultTeaserText() : $value;
     }
@@ -81,10 +83,21 @@ class TeaserHooks
         if (is_array($options) && array_key_exists($object_type, $options)) {
             $has_value = true;
 
-            return wp_unslash((string) $options[$object_type]);
+            return self::sanitizeTeaserRichText(
+                wp_unslash((string) $options[$object_type])
+            );
         }
 
         return '';
+    }
+
+    public static function sanitizeTeaserRichText($value)
+    {
+        if (is_array($value)) {
+            return array_map([__CLASS__, 'sanitizeTeaserRichText'], $value);
+        }
+
+        return wp_kses_post((string) $value);
     }
 
     private static function normalizeTeaserTextForComparison($value)
@@ -405,12 +418,12 @@ class TeaserHooks
                 )
                 : $fallback_message;
 
-            $prefix = wp_unslash(
+            $prefix = self::sanitizeTeaserRichText(wp_unslash(
                 (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
-            );
-            $suffix = wp_unslash(
+            ));
+            $suffix = self::sanitizeTeaserRichText(wp_unslash(
                 (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
-            );
+            ));
             $preview_content = implode('', array_filter([
                 $this->formatThemeTeaserPreviewContentFragment($prefix),
                 sprintf(
@@ -470,12 +483,12 @@ class TeaserHooks
                 ));
             }
 
-            $prefix = wp_unslash(
+            $prefix = self::sanitizeTeaserRichText(wp_unslash(
                 (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
-            );
-            $suffix = wp_unslash(
+            ));
+            $suffix = self::sanitizeTeaserRichText(wp_unslash(
                 (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
-            );
+            ));
             $preview_content = implode('', array_filter([
                 $this->formatThemeTeaserPreviewContentFragment($prefix),
                 $preview_content,
@@ -493,12 +506,12 @@ class TeaserHooks
         // "Teaser Text": not stripped, since the replace/prepend/append fields preserve their
         // formatting on the front end (see PostsTeaser::getTeaserText()).
         $teaser_text = self::getTeaserOptionOrDefault('tease_replace_content', $post_type);
-        $prefix = wp_unslash(
+        $prefix = self::sanitizeTeaserRichText(wp_unslash(
             (string) presspermit()->getTypeOption('tease_prepend_content_anon', $post_type)
-        );
-        $suffix = wp_unslash(
+        ));
+        $suffix = self::sanitizeTeaserRichText(wp_unslash(
             (string) presspermit()->getTypeOption('tease_append_content_anon', $post_type)
-        );
+        ));
         if (!class_exists('PublishPress\\Permissions\\Teaser\\PostsTeaser')) {
             require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostsTeaser.php');
         }
@@ -1000,15 +1013,19 @@ class TeaserHooks
         )) {
             // phpcs Note: this is triggered by our filter application, so additional nonce verification is unnecessary
 
-            // phpcs Note: These teaser options cannot currently be sanitized because they support embedded html tags
-
             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
             if (isset($_POST[$option_basename])) {
+                // Preserve safe rich-text markup while removing scriptable elements and attributes.
+                $teaser_text = wp_slash(
+                    map_deep(
+                        wp_unslash($_POST[$option_basename]), // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                        [__CLASS__, 'sanitizeTeaserRichText']
+                    )
+                );
+
                 presspermit()->updateOption(
                     $default_prefix . $option_basename,
-                    $this->normalizeDefaultTeaserTextOption(
-                        preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $_POST[$option_basename])    // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-                    ),
+                    $this->normalizeDefaultTeaserTextOption($teaser_text),
                     $args
                 );
             }
