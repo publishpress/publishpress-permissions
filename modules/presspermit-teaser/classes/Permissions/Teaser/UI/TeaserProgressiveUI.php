@@ -106,6 +106,7 @@ class TeaserProgressiveUI {
 
     private function getTeaserPreviewDeviceMode() {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display preference only, not saved/processed
+        // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.cache_constraints___COOKIE -- Admin UI preview preference only; not used for cached front-end output.
         $device = isset($_COOKIE['pp_teaser_preview_device']) ? sanitize_key($_COOKIE['pp_teaser_preview_device']) : 'desktop';
 
         return ('mobile' === $device) ? 'mobile' : 'desktop';

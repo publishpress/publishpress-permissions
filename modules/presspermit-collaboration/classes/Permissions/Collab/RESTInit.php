@@ -49,7 +49,7 @@ class RESTInit
         }
 
         foreach(get_object_taxonomies($post->post_type, 'objects') as $tx) {
-            $this->post_terms[$tx->rest_base] = wp_get_object_terms($post->ID, $tx->name, ['fields' => 'ids']);
+            $this->post_terms[$post->ID][$tx->rest_base] = wp_get_object_terms($post->ID, $tx->name, ['fields' => 'ids']);
         }
     }
 
@@ -134,7 +134,8 @@ class RESTInit
             $args['post_status'] = $post_statuses;
 
             if (defined('PP_PAGE_PARENT_NOPAGING')) {
-            	$args['nopaging'] = 1;
+				// phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging -- Opt-in legacy constant for complete page parent trees.
+				$args['nopaging'] = 1;
 			}
 
             $args['orderby'] = presspermit()->getOption('page_parent_order') ? 'post_title' : 'menu_order';
