@@ -1,6 +1,20 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.9.1] - 5 Oct, 2026
+
+- Changed: Permissions settings navigation is now more accessible, improving keyboard navigation and usability. #2494
+- Changed: The Permissions dashboard has been improved for accessibility, including clearer navigation and interaction. #2493
+- Changed: The plugin title shown in the WordPress Plugin Directory has been corrected. #2568
+- Fixed: REST API media queries now use memory more efficiently, reducing memory usage when working with large media libraries. #2577
+- Fixed: Teaser rich-text settings are now properly sanitized for improved security. #2569
+- Fixed: Protected terms are now retained correctly when content is updated through the REST API. #2571
+- Fixed: Update refresh requests now properly verify the required security nonce. #2572
+- Fixed: Uninstall cleanup is now properly scoped to prevent unrelated options from being removed. #2570
+- Fixed: Nonce field HTML used by security controls is now restricted to an allowed set of markup. #2567
+- Fixed: ACF compatibility issues that could prevent some Permissions assignments from being saved when updating posts have been resolved. #2537
+- Fixed: Teaser preview title filters now receive and handle their arguments correctly. #2574
+
 [4.9.0] - 21 Sept, 2026
 
 - Added: Optional Content Visibility functionality through a dedicated module. #2447
