@@ -49,7 +49,7 @@ class RESTInit
         }
 
         foreach(get_object_taxonomies($post->post_type, 'objects') as $tx) {
-            $this->post_terms[$tx->rest_base] = wp_get_object_terms($post->ID, $tx->name, ['fields' => 'ids']);
+            $this->post_terms[$post->ID][$tx->rest_base] = wp_get_object_terms($post->ID, $tx->name, ['fields' => 'ids']);
         }
     }
 
