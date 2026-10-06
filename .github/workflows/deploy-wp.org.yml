@@ -44,23 +44,26 @@ jobs:
         run: |
           cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
 
-      - name: Fix permissions
-        run: |
-          chmod +x $GITHUB_WORKSPACE/dev-workspace/run
-          chmod +x $GITHUB_WORKSPACE/dev-workspace/scripts/*.sh
+      - name: Composer validation
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          php_extensions: zip mysqli
+          command: validate
 
-      - name: Prepare composer
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer validate
-          $GITHUB_WORKSPACE/dev-workspace/run composer install
+      - name: Composer install
+        uses: php-actions/composer@v6
+        with:
+          php_version: "8.4"
+          php_extensions: zip mysqli
 
       - name: Show version of tools inside the dev-workspace
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer info:versions
+          bash $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer info:versions
 
       - name: Build the package using ./dev-workspace
         run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer build
+          bash $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer build
 
       - name: WordPress.org plugin deploy
         uses: 10up/action-wordpress-plugin-deploy@stable
@@ -73,7 +76,7 @@ jobs:
       - name: Get the plugin version number
         id: get-version
         run: |
-          VERSION=$($GITHUB_WORKSPACE/dev-workspace/run pversion | tail -n 1 | tr -d '\n\r' | xargs)
+          VERSION=$(bash $GITHUB_WORKSPACE/vendor/publishpress/dev-workspace/scripts/run.sh composer get:version | tail -n 1 | tr -d '\n\r' | xargs)
           echo "version=${VERSION}" >> $GITHUB_OUTPUT
 
       - name: Upload release asset
