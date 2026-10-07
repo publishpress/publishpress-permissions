@@ -81,9 +81,12 @@ class PostSaveHierarchical
 
             if ($include_ids = $user->getExceptionPosts($required_operation, 'include', $post_type)) {
                 $exclude_ids = false;
-                $include_ids = array_merge($include_ids, $additional_ids);
-                if (!in_array($parent_id, $include_ids))
-                    $revert = true;
+
+                if (!in_array(0, $include_ids, true) && !in_array('0', $include_ids, true)) {
+                    $include_ids = array_merge($include_ids, $additional_ids);
+                    if (!in_array($parent_id, $include_ids))
+                        $revert = true;
+                }
 
             } elseif ($exclude_ids = array_diff($user->getExceptionPosts($required_operation, 'exclude', $post_type), $additional_ids)) {
                 $exclude_ids []= $post_id;
@@ -198,11 +201,13 @@ class PostSaveHierarchical
         $valid_parents = array_diff($valid_parents, $descendants, (array)$post_id);
         $allowed_parents = $valid_parents;
 
+        $universal_include = $include_ids && (in_array(0, (array) $include_ids, true) || in_array('0', (array) $include_ids, true));
+
         if (!count($valid_parents)) {
             // No existing posts qualify as parent, regardless of permissions
             $parent_id = 0;
         } else {
-            if ($include_ids) {
+            if ($include_ids && !$universal_include) {
                 $allowed_parents = array_intersect($allowed_parents, (array) $include_ids);
             } elseif ($exclude_ids) {
                 $allowed_parents = array_diff($allowed_parents, $exclude_ids);
