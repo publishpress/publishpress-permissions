@@ -84,8 +84,9 @@ class UsersListTable extends \WP_List_Table
     public function column_cb($item)
     {
         return sprintf(
-            '<input type="checkbox" name="users[]" value="%s" />',
-            esc_attr($item->ID)
+            '<label class="screen-reader-text" for="pp_user_cb_%1$s">%2$s</label><input type="checkbox" name="users[]" id="pp_user_cb_%1$s" value="%1$s" />',
+            esc_attr($item->ID),
+            esc_html(sprintf(__('Select %s', 'press-permit-core'), $item->user_login))
         );
     }
 

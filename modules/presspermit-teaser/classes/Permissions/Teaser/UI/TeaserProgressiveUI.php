@@ -76,7 +76,7 @@ class TeaserProgressiveUI {
         $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $first_post_type;
         ?>
         <div class="pp-field-group">
-            <select id="<?php echo esc_attr($select_id); ?>" class="regular-text pp-current-post-type">
+            <select id="<?php echo esc_attr($select_id); ?>" class="regular-text pp-current-post-type" aria-label="<?php esc_attr_e('Select Post Type to Configure', 'press-permit-core'); ?>">
                 <?php foreach ($this->use_teaser as $object_type => $teaser_setting) :
                     $type_obj = get_post_type_object($object_type);
                     $item_label = $type_obj ? $type_obj->labels->name : $object_type;
@@ -319,7 +319,7 @@ class TeaserProgressiveUI {
                         <?php esc_html_e('Teaser Type', 'press-permit-core'); ?>
                     </th>
                     <td>
-                        <select name="<?php echo esc_attr($name); ?>" class="regular-text pp-teaser-type-select">
+                        <select name="<?php echo esc_attr($name); ?>" class="regular-text pp-teaser-type-select" aria-label="<?php esc_attr_e('Teaser Type', 'press-permit-core'); ?>">
                             <?php foreach ($captions as $teaser_option_val => $teaser_caption) :
                                 $selected = ($teaser_setting === $teaser_option_val) ? ' selected' : '';
                             ?>
@@ -331,13 +331,13 @@ class TeaserProgressiveUI {
 
                         <span class="pp-num-chars-setting" style="<?php echo esc_attr($num_style); ?>; margin-left: 10px;">
                             <span><?php esc_html_e('Show only the first', 'press-permit-core'); ?></span>
-                            <input type="number" id="<?php echo esc_attr($id_x_chars); ?>" name="<?php echo esc_attr($name_x_chars); ?>" value="<?php echo esc_attr($x_chars_value); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
+                            <input type="number" id="<?php echo esc_attr($id_x_chars); ?>" name="<?php echo esc_attr($name_x_chars); ?>" aria-label="<?php esc_attr_e('Number of characters to show', 'press-permit-core'); ?>" value="<?php echo esc_attr($x_chars_value); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
                             <span><?php esc_html_e('characters', 'press-permit-core'); ?></span>
                         </span>
                         
                         <span class="pp-excerpt-chars-setting" style="<?php echo esc_attr($excerpt_num_style); ?>; margin-left: 10px;">
                             <span><?php esc_html_e('Max', 'press-permit-core'); ?></span>
-                            <input type="number" id="<?php echo esc_attr($id_excerpt); ?>" name="<?php echo esc_attr($name_excerpt); ?>" value="<?php echo esc_attr($excerpt_value); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
+                            <input type="number" id="<?php echo esc_attr($id_excerpt); ?>" name="<?php echo esc_attr($name_excerpt); ?>" aria-label="<?php esc_attr_e('Maximum excerpt characters', 'press-permit-core'); ?>" value="<?php echo esc_attr($excerpt_value); ?>" min="10" max="1000" class="small-text" placeholder="<?php esc_attr_e('Chars', 'press-permit-core'); ?>">
                             <span><?php esc_html_e('characters (leave empty for full excerpt)', 'press-permit-core'); ?></span>
                         </span>
                     </td>
@@ -806,6 +806,7 @@ class TeaserProgressiveUI {
                                     name="<?php echo esc_attr($redirect_post_type_name); ?>"
                                     id="<?php echo esc_attr($redirect_post_type_basename . '_' . $object_type); ?>"
                                     data-target-select="<?php echo esc_attr($id_slug); ?>"
+                                    aria-label="<?php esc_attr_e('Redirect post type', 'press-permit-core'); ?>"
                                     style="width: 100%;">
                                 <?php foreach ($public_post_types as $post_type_key => $post_type_obj) : ?>
                                     <option value="<?php echo esc_attr($post_type_key); ?>" <?php selected($redirect_post_type, $post_type_key); ?>>
@@ -825,6 +826,7 @@ class TeaserProgressiveUI {
                                     name="<?php echo esc_attr($name_slug); ?>"
                                     id="<?php echo esc_attr($id_slug); ?>"
                                     data-post-type="<?php echo esc_attr($redirect_post_type); ?>"
+                                    aria-label="<?php esc_attr_e('Redirect page', 'press-permit-core'); ?>"
                             >
                                 <?php if( isset( $redirect_page_id ) && ! empty( $redirect_page_id ) && is_numeric($redirect_page_id) ) : ?>
                                     <option value="<?php echo (int) $redirect_page_id ?>" selected="selected"><?php echo esc_html(get_the_title( (int) $redirect_page_id ))?></option>
@@ -841,7 +843,7 @@ class TeaserProgressiveUI {
                             &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php esc_html_e('This is a custom login page', 'press-permit-core');?><?php $this->generateTooltip(esc_html__('After the user logs in, they will be redirected back to the original post they were viewing.', 'press-permit-core')); ?></label>
                         </div>
                         <div class="pp-custom-url-wrapper" style="<?php echo esc_attr(('(url)' === $redirect_mode) ? '' : 'display:none;'); ?>">
-                            <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/">
+                            <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/" aria-label="<?php esc_attr_e('Redirect URL', 'press-permit-core'); ?>">
                         </div>
                     </td>
                 </tr>
@@ -909,6 +911,7 @@ class TeaserProgressiveUI {
                                     name="<?php echo esc_attr($redirect_post_type_name); ?>"
                                     id="<?php echo esc_attr($redirect_post_type_basename . '_' . $object_type); ?>"
                                     data-target-select="<?php echo esc_attr($id_slug); ?>"
+                                    aria-label="<?php esc_attr_e('Redirect post type', 'press-permit-core'); ?>"
                                     style="width: 100%;">
                                 <?php foreach ($public_post_types as $post_type_key => $post_type_obj) : ?>
                                     <option value="<?php echo esc_attr($post_type_key); ?>" <?php selected($redirect_post_type, $post_type_key); ?>>
@@ -928,6 +931,7 @@ class TeaserProgressiveUI {
                                     name="<?php echo esc_attr($name_slug); ?>"
                                     id="<?php echo esc_attr($id_slug); ?>"
                                     data-post-type="<?php echo esc_attr($redirect_post_type); ?>"
+                                    aria-label="<?php esc_attr_e('Redirect page', 'press-permit-core'); ?>"
                             >
                                 <?php if( isset( $redirect_page_id ) && ! empty( $redirect_page_id ) && is_numeric($redirect_page_id) ) : ?>
                                     <option value="<?php echo (int) $redirect_page_id ?>" selected="selected"><?php echo esc_html(get_the_title( (int) $redirect_page_id ))?></option>
@@ -944,7 +948,7 @@ class TeaserProgressiveUI {
                             &nbsp;<label style="white-space:nowrap"><input type="checkbox" name="<?php echo esc_attr($custom_login_name);?>" value="1" <?php if ($custom_login_val) echo 'checked';?> /><?php esc_html_e('This is a custom login page', 'press-permit-core');?></label>
                         </div>
                         <div class="pp-custom-url-wrapper" style="<?php echo esc_attr(('(url)' === $redirect_mode) ? '' : 'display:none;'); ?>">
-                            <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/">
+                            <input type="url" name="<?php echo esc_attr($redirect_url_name); ?>" value="<?php echo esc_attr($redirect_url); ?>" class="regular-text" placeholder="https://example.com/" aria-label="<?php esc_attr_e('Redirect URL', 'press-permit-core'); ?>">
                         </div>
                     </td>
                 </tr>

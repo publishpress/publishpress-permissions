@@ -57,7 +57,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
         $output .= $indent . "<li{$hide}{$custom_class}>";
 
-        $output .= '<input type="checkbox" class="menu-item-checkbox" value="' . esc_attr($item->object_id) . '" /> ';
+        $output .= '<input type="checkbox" class="menu-item-checkbox" value="' . esc_attr($item->object_id) . '" aria-label="' . esc_attr($item->title) . '" /> ';
 
         $output .= ($depth || (!empty($args->hierarchical) && (1 == $default_depth_display))) ? "<span> &ndash; </span>" : '';
 

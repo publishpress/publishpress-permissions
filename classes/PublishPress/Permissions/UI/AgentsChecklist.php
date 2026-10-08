@@ -151,7 +151,7 @@ class AgentsChecklist
             if ($hide_checkboxes)
                 echo '&bull; ';
             else
-                echo "<input type='checkbox' name='" . esc_attr($name_attrib) . "[]'" . esc_attr($disabled) . esc_attr($checked) . " value='" . esc_attr($id) . "' id='r" . esc_attr("{$exec_count}_{$id}") . "' />";
+                echo "<input type='checkbox' name='" . esc_attr($name_attrib) . "[]'" . esc_attr($disabled) . esc_attr($checked) . " value='" . esc_attr($id) . "' id='r" . esc_attr("{$exec_count}_{$id}") . "' aria-label='" . esc_attr($captions[$id]) . "' />";
 
             $can_edit_group = $edit_link_base && presspermit()->groups()->userCan('pp_edit_groups', $id, $agent_type);
 

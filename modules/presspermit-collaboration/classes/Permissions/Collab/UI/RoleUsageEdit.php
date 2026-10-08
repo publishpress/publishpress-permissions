@@ -89,7 +89,7 @@ class RoleUsageEdit {
 
                 <table class="form-table">
                     <tr class="form-field">
-                        <th><label for="role_usage_label"><?php esc_html_e('Usage', 'press-permit-core') ?></label></th>
+                        <th><label for="pp_role_usage"><?php esc_html_e('Usage', 'press-permit-core') ?></label></th>
                         <td>
                             <div id='pp_role_usage_limitations'>
                                 <div>

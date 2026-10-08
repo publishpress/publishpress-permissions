@@ -301,7 +301,7 @@ class PostsTeaser
                     ?>
                     <tr>
                         <th>
-                            <?php esc_html_e('Display for readable private posts', 'press-permit-core'); ?>
+                            <label for="rss_private_feed_mode"><?php esc_html_e('Display for readable private posts', 'press-permit-core'); ?></label>
                         </th>
                         <td>
                             <select name="rss_private_feed_mode" id="rss_private_feed_mode" autocomplete="off">
@@ -323,7 +323,7 @@ class PostsTeaser
                     ?>
                     <tr>
                         <th>
-                            <?php esc_html_e('Display for readable non-private posts', 'press-permit-core'); ?>
+                            <label for="rss_nonprivate_feed_mode"><?php esc_html_e('Display for readable non-private posts', 'press-permit-core'); ?></label>
                         </th>
                         <td>
                             <select name="rss_nonprivate_feed_mode" id="rss_nonprivate_feed_mode" autocomplete="off">
