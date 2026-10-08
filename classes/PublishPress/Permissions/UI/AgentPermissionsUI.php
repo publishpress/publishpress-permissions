@@ -65,6 +65,7 @@ class AgentPermissionsUI
         $vars['noItems'] = esc_html__('No items selected!', 'press-permit-core');
         $vars['noParent'] = esc_html__('(no parent)', 'press-permit-core');
         $vars['none'] = esc_html__('(none)', 'press-permit-core');
+        $vars['ajaxError'] = esc_html__('An error occurred. Please reload the page and try again.', 'press-permit-core');
 
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 
@@ -1510,7 +1511,7 @@ class AgentPermissionsUI
                                     . '" />';
 
                             ?>
-                            <div class="mirror-confirm" style="display:none"></div>
+                            <div class="mirror-confirm" role="status" aria-live="polite" style="display:none"></div>
                         <?php
 
                                 echo '</div>';  // pp-exception-bulk-edit

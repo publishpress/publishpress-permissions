@@ -905,9 +905,6 @@ ul.pp-list_horiz {
     &:hover {
       outline: none;
     }
-    &:focus {
-      outline: none;
-    }
     &:active {
       outline: none;
     }
@@ -928,9 +925,10 @@ ul.pp-list_horiz {
       }
       &:focus {
         text-decoration: none;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        box-shadow: none;
+        -webkit-box-shadow: 0 0 0 2px #2271b1;
+        -moz-box-shadow: 0 0 0 2px #2271b1;
+        box-shadow: 0 0 0 2px #2271b1;
+        outline: 2px solid transparent;
         color: @color_17;
       }
       &:active {

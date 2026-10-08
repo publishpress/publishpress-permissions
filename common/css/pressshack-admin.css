@@ -298,7 +298,6 @@
   margin: 0;
 }
 #pp-permissions-wrapper ul.pp-list_horiz li:hover,
-#pp-permissions-wrapper ul.pp-list_horiz li:focus,
 #pp-permissions-wrapper ul.pp-list_horiz li:active {
   outline: none;
 }
@@ -319,6 +318,12 @@
   -moz-box-shadow: none;
   box-shadow: none;
   color: #222;
+}
+#pp-permissions-wrapper ul.pp-list_horiz li.agp-agent a:focus {
+  -webkit-box-shadow: 0 0 0 2px #2271b1;
+  -moz-box-shadow: 0 0 0 2px #2271b1;
+  box-shadow: 0 0 0 2px #2271b1;
+  outline: 2px solid transparent;
 }
 #pp-permissions-wrapper ul.pp-list_horiz li.agp-selected_agent {
   border: 1px solid #ccc;
