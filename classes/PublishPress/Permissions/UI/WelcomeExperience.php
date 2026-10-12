@@ -34,10 +34,39 @@ class WelcomeExperience
                 'menu_title' => __('Welcome', 'press-permit-core'),
                 'capability' => 'pp_manage_settings',
                 'accent_color' => '#655997',
+                'mode' => $this->displayMode(),
+                'allow_mode_override' => defined('WP_DEBUG') && WP_DEBUG,
+                'brand_name' => __('Permissions', 'press-permit-core'),
+                'logo' => [
+                    'url' => $this->urlPath() . '/common/img/publishpress-logo.png',
+                    'alt' => 'PublishPress',
+                    'show_name' => true,
+                ],
+                // Optional, skippable email step from the shared library. Override or disable it with the
+                // "publishpress_welcome_presspermit_email_capture" filter. Delivery uses the shared connector endpoint once deployed.
+                'email_capture' => [
+                    'consent_statement' => 'permissions-email-v1',
+                    'privacy_url' => 'https://publishpress.com/privacy-policy/',
+                    'copy' => [
+                        'lede' => __('Tell us how you use WordPress and we will send Permissions tips and offers that fit. This is optional, and everything works if you skip it.', 'press-permit-core'),
+                        'consent_label' => __('Yes, send me tips, product news and offers tailored to how I use PublishPress Permissions. I can unsubscribe at any time.', 'press-permit-core'),
+                    ],
+                ],
+                // Sample release highlights, shown once per version after an update. Replace with real release notes.
+                'whats_new' => [
+                    'version' => PRESSPERMIT_VERSION,
+                    'title' => sprintf(__('What is new in Permissions %s', 'press-permit-core'), PRESSPERMIT_VERSION),
+                    'items' => [
+                        ['title' => __('Guided tour', 'press-permit-core'), 'body' => __('A short walkthrough of roles, groups and exceptions.', 'press-permit-core')],
+                        ['title' => __('Setup checklist', 'press-permit-core'), 'body' => __('See at a glance what is left to configure.', 'press-permit-core')],
+                    ],
+                    'url' => 'https://publishpress.com/blog/',
+                ],
+                'notice_icon_url' => $this->urlPath() . '/common/img/publishpress-logo-icon.png',
                 'styles' => [
                     [
                         'handle' => 'presspermit-welcome',
-                        'url' => PRESSPERMIT_URLPATH . '/common/css/welcome-permissions.css',
+                        'url' => $this->urlPath() . '/common/css/welcome-permissions.css',
                         'version' => PRESSPERMIT_VERSION,
                     ],
                 ],
@@ -47,6 +76,7 @@ class WelcomeExperience
                 'notice_title' => __('Permissions is active. Want a two minute tour?', 'press-permit-core'),
                 'notice_body' => __('We will show you where to control who reads and edits your content. Nothing gets changed.', 'press-permit-core'),
                 'checklist_pages' => ['presspermit-groups'],
+                'notice_pages' => ['presspermit-groups', 'presspermit-settings'],
                 'checklist_title' => __('Finish setting up Permissions', 'press-permit-core'),
                 'checklist_complete_title' => __('Permissions is set up', 'press-permit-core'),
                 'exit_url' => admin_url('admin.php?page=presspermit-settings'),
@@ -71,6 +101,18 @@ class WelcomeExperience
         $this->controller->register();
     }
 
+    /**
+     * "fullscreen" covers the admin chrome like a setup wizard; "screen" keeps the guide inside it.
+     *
+     * @return string
+     */
+    private function displayMode()
+    {
+        $mode = apply_filters('presspermit_welcome_mode', 'fullscreen');
+
+        return in_array($mode, ['screen', 'fullscreen'], true) ? $mode : 'fullscreen';
+    }
+
     private function steps()
     {
         $openInNewTab = __('opens in a new tab, this guide stays here', 'press-permit-core');
@@ -79,9 +121,14 @@ class WelcomeExperience
             new HeroStep(
                 'welcome',
                 [
+                    'eyebrow' => __('Takes about two minutes', 'press-permit-core'),
                     'title' => __('Welcome to PublishPress Permissions', 'press-permit-core'),
                     'lede' => __('Control who can read and edit posts, pages, categories, media, and other content across your WordPress site.', 'press-permit-core'),
-                    'body' => __('Six short screens show you where everything lives. Nothing changes on your site while you read.', 'press-permit-core'),
+                    'highlights' => [
+                        __('Roles, groups and exceptions', 'press-permit-core'),
+                        __('Per-post access control', 'press-permit-core'),
+                        __('Nothing changes while you read', 'press-permit-core'),
+                    ],
                     'art_callback' => [$this, 'renderHeroArt'],
                     'secondary_action' => [
                         'label' => __('Skip, take me to Settings', 'press-permit-core'),
@@ -258,19 +305,45 @@ class WelcomeExperience
 
     public function renderHeroArt(RenderContext $context)
     {
+        $rows = [
+            ['label' => __('Editors', 'press-permit-core'), 'access' => 'on'],
+            ['label' => __('Contributors', 'press-permit-core'), 'access' => 'on'],
+            ['label' => __('Guests', 'press-permit-core'), 'access' => 'off'],
+        ];
         ?>
-        <div class="ppw-permissions-hero-badge">
-            <span class="dashicons dashicons-unlock"></span>
-            <span class="ppw-permissions-hero-bars"><span></span><span></span><span></span></span>
+        <div class="ppw-permissions-art">
+            <div class="ppw-permissions-card">
+                <div class="ppw-permissions-card-head">
+                    <span class="ppw-permissions-lock dashicons dashicons-lock"></span>
+                    <span class="ppw-permissions-card-title">
+                        <strong><?php esc_html_e('Members area', 'press-permit-core'); ?></strong>
+                        <span><?php esc_html_e('Who can read this page', 'press-permit-core'); ?></span>
+                    </span>
+                </div>
+                <?php foreach ($rows as $row) : ?>
+                    <div class="ppw-permissions-row">
+                        <span class="ppw-permissions-avatar"></span>
+                        <span class="ppw-permissions-name"><?php echo esc_html($row['label']); ?></span>
+                        <span class="ppw-permissions-switch is-<?php echo esc_attr($row['access']); ?>"></span>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="ppw-permissions-chip ppw-permissions-chip-top"><?php esc_html_e('Exception', 'press-permit-core'); ?></div>
+            <div class="ppw-permissions-chip ppw-permissions-chip-bottom"><?php esc_html_e('Group', 'press-permit-core'); ?></div>
         </div>
         <?php
+    }
+
+    private function urlPath()
+    {
+        return defined('PRESSPERMIT_URLPATH') ? PRESSPERMIT_URLPATH : plugins_url('', PRESSPERMIT_FILE);
     }
 
     private function asset($file)
     {
         return [
             'path' => PRESSPERMIT_ABSPATH . '/common/img/welcome/' . $file,
-            'url' => PRESSPERMIT_URLPATH . '/common/img/welcome/' . $file,
+            'url' => $this->urlPath() . '/common/img/welcome/' . $file,
         ];
     }
 
