@@ -18,6 +18,16 @@ class RenderContext
         return $this->config;
     }
 
+    public function mode()
+    {
+        return $this->controller->mode();
+    }
+
+    public function emailCapture()
+    {
+        return $this->controller->emailCaptureState();
+    }
+
     public function stepUrl($step)
     {
         return $this->controller->stepUrl($step);

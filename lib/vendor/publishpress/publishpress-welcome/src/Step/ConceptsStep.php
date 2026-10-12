@@ -24,13 +24,15 @@ class ConceptsStep implements StepInterface
     public function render(RenderContext $context)
     {
         ?>
-        <h1><?php echo esc_html($this->data['title']); ?></h1>
-        <?php if (! empty($this->data['lede'])) : ?><p class="ppw-lede"><?php echo esc_html($this->data['lede']); ?></p><?php endif; ?>
+        <div class="ppw-heading">
+            <h1><?php echo esc_html($this->data['title']); ?></h1>
+            <?php if (! empty($this->data['lede'])) : ?><p class="ppw-lede"><?php echo esc_html($this->data['lede']); ?></p><?php endif; ?>
+        </div>
         <div class="ppw-concepts">
-            <?php foreach ((array) $this->data['concepts'] as $concept) : ?>
+            <?php foreach ((array) $this->data['concepts'] as $index => $concept) : ?>
                 <div class="ppw-concept">
                     <?php $context->figure(isset($concept['asset']) ? $concept['asset'] : [], $concept['name'], 0, isset($concept['slug']) ? $concept['slug'] : ''); ?>
-                    <h2><?php echo esc_html($concept['name']); ?></h2>
+                    <h2><span class="ppw-concept-number"><?php echo esc_html(number_format_i18n($index + 1)); ?></span><?php echo esc_html($concept['name']); ?></h2>
                     <p><?php echo esc_html($concept['body']); ?></p>
                 </div>
             <?php endforeach; ?>
