@@ -362,38 +362,12 @@ class REST
             require_once(PRESSPERMIT_CLASSPATH . '/PostFilters.php');
         }
 
-        global $wpdb;
+        PostFilters::instance();
 
-        $join = PostFilters::instance()->fltPostsJoin('', ['context' => 'rest_attachment_query']);
-        $where = PostFilters::instance()->getPostsWhere(
-            [
-                'post_types' => ['attachment'],
-                'required_operation' => 'read',
-                'force_types' => true,
-                'src_table' => $wpdb->posts,
-                'join' => $join,
-            ]
-        );
-
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery,WordPress.DB.DirectDatabaseQuery.NoCaching
-        $readable_ids = $wpdb->get_col(
-            "SELECT {$wpdb->posts}.ID FROM {$wpdb->posts} $join WHERE {$wpdb->posts}.post_type = 'attachment' $where" // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-        );
-
-        $args['post__in'] = $readable_ids ? array_map('intval', $readable_ids) : [0];
-
-        if (!empty($args['post_parent__in'])) {
-            $args['post_parent__in'] = array_values(
-                array_intersect(
-                    array_map('intval', (array) $args['post_parent__in']),
-                    array_map('intval', wp_list_pluck((array) get_posts(['post_type' => 'attachment', 'post__in' => $args['post__in'], 'posts_per_page' => -1]), 'post_parent'))
-                )
-            );
-
-            if (!$args['post_parent__in']) {
-                $args['post_parent__in'] = [0];
-            }
-        }
+        // Apply the existing permission clauses to the paginated REST query instead of
+        // materializing every readable attachment ID into post__in.
+        $args['required_operation'] = 'read';
+        $args['presspermit_rest_attachment_query'] = true;
 
         return $args;
     }

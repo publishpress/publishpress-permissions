@@ -1639,7 +1639,17 @@ class AgentPermissionsUI
                                         sprintf(
                                             esc_html__(' %1$sFix Sub-%2$s Permissions%3$s', 'press-permit-core'),
 	                                        '<form action="' . esc_url($fix_child_url) . '" method="post" style="display:inline">'
-	                                            . wp_nonce_field('pp-fix-child-exceptions', '_wpnonce', true, false)
+	                                            . wp_kses(
+	                                                wp_nonce_field('pp-fix-child-exceptions', '_wpnonce', true, false),
+	                                                [
+	                                                    'input' => [
+	                                                        'type'  => true,
+	                                                        'id'    => true,
+	                                                        'name'  => true,
+	                                                        'value' => true,
+	                                                    ],
+	                                                ]
+	                                            )
 	                                            . '<input type="hidden" name="pp_fix_child_exceptions" value="1" />'
 	                                            . '<button type="submit" class="btn btn-link" style="padding-right:4px;background:none;border:0">',
                                             esc_html($via_type_obj->labels->singular_name),

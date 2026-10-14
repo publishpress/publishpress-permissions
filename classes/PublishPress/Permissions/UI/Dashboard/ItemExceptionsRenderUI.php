@@ -176,7 +176,7 @@ class ItemExceptionsRenderUI
         <tr>
             <td class='pp-exc-agent'><input type='hidden' value='<?php echo esc_attr($agent_id); ?>' />
                 <a href='<?php echo esc_url("{$this->base_url}$agent_id"); ?>' title='<?php echo esc_attr($title); ?>'
-                    target='_blank'><?php echo esc_html($_name); ?></a>
+                    target='_blank' rel='noopener noreferrer'><?php echo esc_html($_name); ?></a>
             </td>
             <?php
             foreach ($assignment_modes as $assign_for) {
@@ -217,9 +217,17 @@ class ItemExceptionsRenderUI
                 }
 
                 $for_type = ($for_item_type) ? $for_item_type : '(all)';
+                $assignment_label = ('children' == $assign_for)
+                    ? __('Sub-items', 'press-permit-core')
+                    : __('This item', 'press-permit-core');
+                $select_aria_label = sprintf(
+                    __('%1$s permission for %2$s', 'press-permit-core'),
+                    $assignment_label,
+                    $_name
+                );
             ?>
                 <td class="<?php echo ('children' == $assign_for) ? 'pp-exc-children' : 'pp-exc-item'; ?>">
-                    <select name='pp_exceptions<?php echo esc_attr("[$for_type][$op][$agent_type][$assign_for][$agent_id]") . "' class='" . esc_attr($this->opt_class[$current_val]) . "'"; ?><?php echo esc_attr($disabled); ?> autocomplete="off">
+                    <select name='pp_exceptions<?php echo esc_attr("[$for_type][$op][$agent_type][$assign_for][$agent_id]") . "' class='" . esc_attr($this->opt_class[$current_val]) . "'"; ?><?php echo esc_attr($disabled); ?> aria-label="<?php echo esc_attr($select_aria_label); ?>" autocomplete="off">
                     <?php
                     foreach ($this->options[$option_set] as $val => $lbl) :
                         if (('wp_role' == $agent_type)
