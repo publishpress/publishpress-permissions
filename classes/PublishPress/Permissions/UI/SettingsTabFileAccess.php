@@ -315,7 +315,7 @@ class SettingsTabFileAccess
         $badge_configs = [
             'pro' => [
                 'text' => 'PRO',
-                'bg_color' => '#8B5CF6',
+                'bg_color' => '#7C3AED',
                 'class' => 'pp-pro-badge'
             ],
             'new' => [
