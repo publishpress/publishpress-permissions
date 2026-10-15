@@ -533,6 +533,10 @@ class AgentsDynamicUI
                 [
                     'omit_admins' => !empty($allow_administrator_members) ? '0' : '1', 
                     'metagroups' => 1,
+                    'searching' => esc_html__('Searching…', 'press-permit-core'),
+                    'oneResultFound' => esc_html__('1 result found.', 'press-permit-core'),
+                    /* translators: %d: number of search results */
+                    'resultsFound' => esc_html__('%d results found.', 'press-permit-core'),
                     'placeholder' => [
                         'pp_group' => esc_html__('Search for a group', 'press-permit-core'),
                         'user' => esc_html__('Search for a user', 'press-permit-core'),
@@ -587,6 +591,10 @@ class AgentsDynamicUI
                 }
             }
 
+            $_args['searching'] = esc_html__('Searching…', 'press-permit-core');
+            $_args['oneResultFound'] = esc_html__('1 result found.', 'press-permit-core');
+            /* translators: %d: number of search results */
+            $_args['resultsFound'] = esc_html__('%d results found.', 'press-permit-core');
             $_args['placeholder'] = [
                 'pp_group'      => esc_html__('Search for a group', 'press-permit-core'),
                 'user'          => esc_html__('Search for a user', 'press-permit-core'),
