@@ -43,12 +43,12 @@ class SettingsTabEditing
     function optionCaptions($captions)
     {
         $opt = [
-            'admin_others_attached_files'            => esc_html__("List other users' files if attached to a editable post", 'press-permit-core'),
-            'admin_others_attached_to_readable'      => esc_html__("List other users' files if attached to a viewable post", 'press-permit-core'),
-            'admin_others_unattached_files'          => esc_html__("List other users' unattached files by default", 'press-permit-core'),
-            'edit_others_attached_files'             => esc_html__("Edit other users' files if attached to an editable post", 'press-permit-core'),
-            'attachment_edit_requires_parent_access' => esc_html__('Prevent editing files if attached to a non-editable post', 'press-permit-core'),
-            'own_attachments_always_editable'        => esc_html__('Users can always edit their own files', 'press-permit-core'),
+            'admin_others_attached_files'            => esc_html__('Show media used in posts they can edit', 'press-permit-core'),
+            'admin_others_attached_to_readable'      => esc_html__('Show media used in posts they can view', 'press-permit-core'),
+            'admin_others_unattached_files'          => esc_html__('Show all media', 'press-permit-core'),
+            'edit_others_attached_files'             => esc_html__('Allow editing media used in posts they can edit', 'press-permit-core'),
+            'attachment_edit_requires_parent_access' => esc_html__("Only allow editing other users' media if it's used in a post they can edit", 'press-permit-core'),
+            'own_attachments_always_editable'        => esc_html__('Users can always edit their own uploads', 'press-permit-core'),
             'list_others_uneditable_posts'           => esc_html__('List other user\'s uneditable posts', 'press-permit-core'),
         ];
 
@@ -175,7 +175,7 @@ class SettingsTabEditing
         if (!empty($ui->form_options[$tab][$section])) :
         ?>
             <tr>
-                <th scope="row"><?php echo esc_html__('List Files', 'press-permit-core'); ?></th>
+                <th scope="row"><?php echo esc_html__("Viewing Other Users' Media", 'press-permit-core'); ?></th>
                 <td>
                     <?php
 
@@ -186,7 +186,7 @@ class SettingsTabEditing
                             </span></div><br />
                     <?php else : ?>
                         <div><span style="font-weight:bold">
-                                <?php esc_html_e('The following settings apply to users who are able to access the Media Library. Normally this requires the upload_files or edit_files capability.', 'press-permit-core'); ?>
+                                <?php esc_html_e('These settings apply to users who can open the Media Library.', 'press-permit-core'); ?>
                             </span></div><br />
                     <?php endif;
 
@@ -199,7 +199,7 @@ class SettingsTabEditing
                 </td>
             </tr>
             <tr>
-                <th scope="row"><?php echo esc_html__('Edit Files', 'press-permit-core'); ?></th>
+                <th scope="row"><?php echo esc_html__("Editing Other Users' Media", 'press-permit-core'); ?></th>
                 <td>
                     <?php
                     $ret = $ui->optionCheckbox('edit_others_attached_files', $tab, $section, true, '');
