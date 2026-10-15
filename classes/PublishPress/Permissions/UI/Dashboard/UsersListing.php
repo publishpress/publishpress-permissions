@@ -66,7 +66,7 @@ class UsersListing
         }
         ?>
 
-        <label class="screen-reader-text" for="pp-add-group"><?php esc_html_e('Permissions&hellip;', 'press-permit-core') ?></label>
+        <label class="screen-reader-text" for="pp-bulk-group<?php echo esc_attr($sfx); ?>"><?php esc_html_e('Permissions&hellip;', 'press-permit-core') ?></label>
         <select name="pp-bulk-group<?php echo esc_attr($sfx); ?>" id="pp-bulk-group<?php echo esc_attr($sfx); ?>" class="pp-bulk-groups"
                 style="display:inline-block; float:none;" autocomplete="off">
             <option value=''><?php esc_html_e('Permissions&hellip;', 'press-permit-core') ?></option>
