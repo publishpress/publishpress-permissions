@@ -46,8 +46,7 @@ class SettingsTabEditing
             'admin_others_attached_files'            => esc_html__('Show media used in posts they can edit', 'press-permit-core'),
             'admin_others_attached_to_readable'      => esc_html__('Show media used in posts they can view', 'press-permit-core'),
             'admin_others_unattached_files'          => esc_html__('Show all media', 'press-permit-core'),
-            'edit_others_attached_files'             => esc_html__('Allow editing media used in posts they can edit', 'press-permit-core'),
-            'attachment_edit_requires_parent_access' => esc_html__("Only allow editing other users' media if it's used in a post they can edit", 'press-permit-core'),
+            'edit_others_media'                      => esc_html__("Who can edit other users' media?", 'press-permit-core'),
             'own_attachments_always_editable'        => esc_html__('Users can always edit their own uploads', 'press-permit-core'),
             'list_others_uneditable_posts'           => esc_html__('List other user\'s uneditable posts', 'press-permit-core'),
         ];
@@ -67,7 +66,7 @@ class SettingsTabEditing
 
         // Media Library tab
         $new_media_library = [
-            'media_library'       => ['admin_others_attached_files', 'admin_others_attached_to_readable', 'admin_others_unattached_files', 'edit_others_attached_files', 'attachment_edit_requires_parent_access', 'own_attachments_always_editable'],
+            'media_library'       => ['admin_others_attached_files', 'admin_others_attached_to_readable', 'admin_others_unattached_files', 'edit_others_media', 'own_attachments_always_editable'],
         ];
 
         $sections['editing'] = (isset($sections['editing'])) ? array_merge($sections['editing'], $new_editing) : $new_editing;
@@ -202,9 +201,42 @@ class SettingsTabEditing
                 <th scope="row"><?php echo esc_html__("Editing Other Users' Media", 'press-permit-core'); ?></th>
                 <td>
                     <?php
-                    $ret = $ui->optionCheckbox('edit_others_attached_files', $tab, $section, true, '');
+                    if (in_array('edit_others_media', $ui->form_options[$tab][$section], true)) {
+                        $id = 'edit_others_media';
+                        $ui->all_options[] = $id;
+                        $current_setting = strval($ui->getOption($id));
 
-                    $ret = $ui->optionCheckbox('attachment_edit_requires_parent_access', $tab, $section, true, '');
+                        echo '<div style="margin-bottom: 5px">';
+                        echo esc_html($ui->option_captions[$id]);
+                        echo '</div>';
+
+                        $captions = [
+                            'role'   => esc_html__('Anyone whose role allows editing media (WordPress default)', 'press-permit-core'),
+                            'parent' => esc_html__('Only if the file is used in a post they can edit', 'press-permit-core'),
+                            'none'   => esc_html__('No one, except Administrators', 'press-permit-core'),
+                        ];
+
+                        if (!isset($captions[$current_setting])) {
+                            $current_setting = 'none';  // unrecognized values are enforced as 'none'
+                        }
+
+                        foreach ($captions as $key => $value) {
+                            echo "<div style='margin: 0 0 0.5em 2em;'><label for='" . esc_attr("{$id}_{$key}") . "'>";
+                            $checked = ($current_setting === $key) ? ' checked ' : '';
+
+                            echo "<input name='" . esc_attr($id) . "' type='radio' id='" . esc_attr("{$id}_{$key}") . "' value='" . esc_attr($key) . "' " . esc_attr($checked) . " autocomplete='off' /> ";
+                            echo esc_html($value);
+                            echo '</label></div>';
+                        }
+
+                        if ($ui->display_hints) {
+                            echo '<div class="pp-subtext">';
+                            SettingsAdmin::echoStr($id);
+                            echo '</div>';
+                        }
+
+                        echo '<br />';
+                    }
 
                     $ret = $ui->optionCheckbox('own_attachments_always_editable', $tab, $section, true, '');
                     ?>

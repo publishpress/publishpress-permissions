@@ -40,7 +40,7 @@ class MediaQuery
         if ((!$has_cap_check || ('read' == $required_operation)) && !$comment_query) {
             $admin_others_attached = $pp->getOption('admin_others_attached_files');
         } else {
-            if ($admin_others_attached = $pp->getOption('edit_others_attached_files')) {
+            if ($admin_others_attached = ('parent' == $pp->getOption('edit_others_media'))) {
                 if ($comment_query && ('read' != $required_operation))
                     $admin_others_attached = !empty($current_user->allcaps['edit_others_files']);
             }
