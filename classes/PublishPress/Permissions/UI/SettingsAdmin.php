@@ -155,14 +155,11 @@ class SettingsAdmin
         case 'admin_others_attached_files' :
         return __("Users see other people's files if those files are in a post they're allowed to edit.", 'press-permit-core');
 
-        case 'edit_others_attached_files' :
-        return __("Users can edit other people's files if those files are in a post they're allowed to edit.", 'press-permit-core');
+        case 'edit_others_media' :
+        return __("The last two choices only limit files used in a post. Other people's unused files still follow the user's role and the \"Show all media\" setting.", 'press-permit-core');
 
         case 'admin_others_unattached_files' :
         return __('Users see every file in the Media Library. If unchecked, they only see their own uploads, plus anything allowed below.', 'press-permit-core');
-
-        case 'attachment_edit_requires_parent_access':
-        return __("Other people's files that aren't in a post the user can edit are read-only.", 'press-permit-core');
 
         case 'own_attachments_always_editable' :
         return __('Users can edit files they uploaded. This overrides every restriction above.', 'press-permit-core');

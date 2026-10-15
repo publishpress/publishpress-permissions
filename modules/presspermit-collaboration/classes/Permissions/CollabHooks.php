@@ -164,6 +164,17 @@ class CollabHooks
         add_filter('presspermit_pattern_roles', [$this, 'fltPatternRoles']);
     }
 
+    // Map the legacy edit_others_attached_files / attachment_edit_requires_parent_access pair to an edit_others_media value.
+    // edit_others_attached_files was only applied when attachment_edit_requires_parent_access was enabled.
+    public static function legacyEditOthersMedia()
+    {
+        if (!get_option('presspermit_attachment_edit_requires_parent_access', 1)) {
+            return 'role';
+        }
+
+        return (get_option('presspermit_edit_others_attached_files', 0)) ? 'parent' : 'none';
+    }
+
     function fltDefaultOptions($def)
     {
         $new = [
@@ -172,8 +183,7 @@ class CollabHooks
             'admin_others_attached_files' => 0,
             'admin_others_attached_to_readable' => 0,
             'admin_others_unattached_files' => 0,
-            'edit_others_attached_files' => 0,
-            'attachment_edit_requires_parent_access' => 1,
+            'edit_others_media' => self::legacyEditOthersMedia(),  // 'role', 'parent' or 'none'
             'own_attachments_always_editable' => 1,
             'admin_nav_menu_filter_items' => 1,
             'admin_nav_menu_partial_editing' => 0,

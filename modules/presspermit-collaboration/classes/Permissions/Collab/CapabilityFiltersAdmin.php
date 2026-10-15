@@ -83,7 +83,7 @@ class CapabilityFiltersAdmin
 
         return (
             (empty($args['pp_context']) || 'count_attachments' != $args['pp_context'])
-            && (presspermit()->getOption('attachment_edit_requires_parent_access'))
+            && ('role' != presspermit()->getOption('edit_others_media'))
         );
     }
 

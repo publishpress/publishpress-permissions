@@ -22,7 +22,7 @@ class MediaQuery
 
         $_args = (array)$args;
 
-        if ($do_parent_subquery = !isset($args['query_contexts']) || !in_array('comments', (array)$args['query_contexts'], true)) {  // comment queries don't append parent subquery, but do enforce edit_others_attached_files setting if PPCE is active
+        if ($do_parent_subquery = !isset($args['query_contexts']) || !in_array('comments', (array)$args['query_contexts'], true)) {  // comment queries don't append parent subquery, but do enforce edit_others_media setting if PPCE is active
             // generate a subquery based on user's permissions to the post attachments are tied to
             $_post_types = array_diff(get_post_types(['public' => true, 'show_ui' => true], 'names', 'or'), ['attachment']);
             $public_types_csv = implode("','", array_map('sanitize_key', $_post_types));

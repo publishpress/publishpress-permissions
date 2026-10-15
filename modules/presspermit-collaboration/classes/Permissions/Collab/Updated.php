@@ -11,6 +11,11 @@ class Updated
                 break;  // no need to run through version comparisons if no previous version
             }
 
+            // Not version-gated: convert legacy media editing options whenever the new option has not been stored yet
+            if (null === get_option('presspermit_edit_others_media', null)) {
+                update_option('presspermit_edit_others_media', \PublishPress\Permissions\CollabHooks::legacyEditOthersMedia());
+            }
+
             if (version_compare($prev_pp_version, '3.8-beta4', '<')) {
                 if (null === get_option('presspermit_list_others_uneditable_posts', null)) {
                     // If a previous version was installed, default to requiring list_others_posts capability
