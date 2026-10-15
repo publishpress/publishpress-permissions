@@ -368,35 +368,6 @@ class AgentPermissions
                                 }
                             }
 
-                            require_once(PRESSPERMIT_CLASSPATH . '/UI/Dashboard/Profile.php');
-                            ?>
-                            <form class="pp-admin pp-user-groups-form" action="<?php echo esc_url($url); ?>" method="post">
-                                <input type="hidden" name="action" value="pp_updategroups" />
-                                <input type="hidden" name="agent_id" value="<?php echo esc_attr($agent_id); ?>" />
-                                <input type="hidden" name="agent_type" value="user" />
-                                <?php if ($wp_http_referer) : ?>
-                                    <input type="hidden" name="wp_http_referer" value="<?php echo esc_url($wp_http_referer); ?>" />
-                                <?php endif; ?>
-                                <?php
-                            Dashboard\Profile::displayUserGroups(
-                                $agent_id,
-                                [
-                                    'initial_hide' => false,
-                                    'selected_only' => false,
-                                    'force_display' => true,
-                                    'hide_checkboxes' => false,
-                                ]
-                            );
-                                submit_button(
-                                    esc_html__('Update Group Membership', 'press-permit-core'),
-                                    'primary pp-primary-button pp-button',
-                                    'submit_groups',
-                                    false
-                                );
-                                ?>
-                            </form>
-                            <?php
-
                             $role_group_caption = sprintf(
                                 esc_html__('Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s', 'press-permit-core'),
                                 '',
