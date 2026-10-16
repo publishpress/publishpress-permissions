@@ -27,7 +27,7 @@ class WelcomeExperience
 
         $config = new ExperienceConfig(
             [
-                'id' => 'presspermit',
+                'id' => 'permissions',
                 'page_slug' => 'presspermit-welcome',
                 'parent_slug' => 'presspermit-groups',
                 'page_title' => __('Welcome to PublishPress Permissions', 'press-permit-core'),
