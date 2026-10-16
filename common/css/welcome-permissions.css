@@ -1,0 +1,136 @@
+/* Permissions artwork for the shared PublishPress Welcome library. */
+
+.ppw-permissions-art {
+    position: relative;
+    width: min(100%, 360px);
+    padding: 28px 0;
+}
+
+.ppw-permissions-card {
+    padding: 22px;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 24px 48px -16px rgba(79, 70, 117, .38), 0 2px 6px rgba(15, 23, 42, .06);
+}
+
+.ppw-permissions-card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eceef5;
+}
+
+.ppw-permissions-lock.dashicons {
+    display: inline-flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, #7a6cb0, #655997);
+    color: #fff;
+    font-size: 24px;
+}
+
+.ppw-permissions-card-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ppw-permissions-card-title strong {
+    color: #0f172a;
+    font-size: 15px;
+}
+
+.ppw-permissions-card-title span {
+    color: #64748b;
+    font-size: 12.5px;
+}
+
+.ppw-permissions-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-bottom: 1px solid #f1f2f7;
+}
+
+.ppw-permissions-row:last-child {
+    padding-bottom: 2px;
+    border-bottom: 0;
+}
+
+.ppw-permissions-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #e3dff2, #c9c1e4);
+}
+
+.ppw-permissions-name {
+    flex: 1;
+    color: #1e293b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ppw-permissions-switch {
+    position: relative;
+    width: 38px;
+    height: 22px;
+    border-radius: 999px;
+    background: #d5d9e4;
+}
+
+.ppw-permissions-switch::after {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(15, 23, 42, .25);
+    content: '';
+}
+
+.ppw-permissions-switch.is-on {
+    background: #655997;
+}
+
+.ppw-permissions-switch.is-on::after {
+    left: 19px;
+}
+
+.ppw-permissions-chip {
+    position: absolute;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 10px 24px -8px rgba(79, 70, 117, .45);
+    color: #4e4575;
+    font-size: 12.5px;
+    font-weight: 700;
+}
+
+.ppw-permissions-chip-top {
+    top: 0;
+    right: -14px;
+}
+
+.ppw-permissions-chip-bottom {
+    bottom: 0;
+    left: -14px;
+}
+
+.ppw-body .ppw-figure-concept-roles,
+.ppw-body .ppw-figure-concept-groups,
+.ppw-body .ppw-figure-concept-exceptions {
+    border: 0;
+    border-radius: 12px;
+    background: #faf9fd;
+    box-shadow: none;
+}
