@@ -709,7 +709,7 @@ body.ppw-is-fullscreen #wpfooter {
 
 .ppw-concepts {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
     gap: 24px;
 }
 
@@ -1325,6 +1325,9 @@ body.ppw-is-fullscreen #wpfooter {
 /* ------------------------------------------------------------- checklist */
 
 .ppw-checklist {
+    clear: both;
+    min-width: 0;
+    max-width: 100%;
     margin: 20px 0 8px;
     margin-inline-end: 20px;
     overflow: hidden;
@@ -1337,6 +1340,7 @@ body.ppw-is-fullscreen #wpfooter {
 .ppw-checklist-head {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 18px;
     padding: 18px 22px;
 }
@@ -1369,6 +1373,7 @@ body.ppw-is-fullscreen #wpfooter {
 .ppw-checklist-title {
     display: flex;
     flex: 1;
+    min-width: min(100%, 180px);
     flex-direction: column;
     gap: 10px;
 }
@@ -1397,6 +1402,7 @@ body.ppw-is-fullscreen #wpfooter {
 .ppw-tasks li {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 16px;
     margin: 0;
     padding: 14px 22px;
@@ -1426,6 +1432,8 @@ body.ppw-is-fullscreen #wpfooter {
 .ppw-task-copy {
     display: flex;
     flex: 1;
+    min-width: min(100%, 160px);
+    overflow-wrap: anywhere;
     flex-direction: column;
     gap: 2px;
 }
@@ -1455,7 +1463,45 @@ body.ppw-is-fullscreen #wpfooter {
 
 /* ------------------------------------------------------------ responsive */
 
+.ppw-concept-art {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+    margin-bottom: 20px;
+}
+
+.ppw-capture-layout.has-art {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 40px;
+}
+
+.ppw-capture-layout.has-art .ppw-heading {
+    text-align: start;
+    margin-bottom: 24px;
+}
+
+.ppw-capture-content,
+.ppw-capture-art {
+    min-width: 0;
+}
+
+.ppw-capture-art img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
 @media (max-width: 960px) {
+    .ppw-capture-layout.has-art {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .ppw-capture-art {
+        display: none;
+    }
     .ppw-hero.has-art,
     .ppw-lesson {
         grid-template-columns: minmax(0, 1fr);
@@ -1484,7 +1530,18 @@ body.ppw-is-fullscreen #wpfooter {
     }
 
     .ppw-topbar {
-        grid-template-columns: 1fr auto;
+        grid-template-columns: minmax(0, 1fr) auto auto;
+        gap: 10px;
+    }
+
+    .ppw-brand-logo {
+        max-width: 110px;
+        height: auto;
+        max-height: 28px;
+    }
+
+    .ppw-brand-name {
+        font-size: 12px;
     }
 
     .ppw-steps {

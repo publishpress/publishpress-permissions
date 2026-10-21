@@ -2,7 +2,7 @@
   "name": "publishpress/publishpress-welcome",
   "description": "Reusable, configurable welcome and onboarding experiences for PublishPress WordPress plugins.",
   "type": "library",
-  "version": "1.0.0.1",
+  "version": "0.1.0",
   "license": "GPL-3.0-or-later",
   "authors": [
     {
@@ -48,6 +48,8 @@
       "@test:unit",
       "@test:integration"
     ],
+    "build": "bash bin/build.sh",
+    "check:release": "php bin/check-release.php",
     "make:pot": "bash bin/make-pot.sh"
   },
   "extra": {

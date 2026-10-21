@@ -42,10 +42,13 @@ class EmailCaptureStep implements StepInterface
         $copy = $this->settings['copy'];
         $state = $context->emailCapture();
         $recipient = isset($this->settings['recipient_name']) ? $this->settings['recipient_name'] : '';
+        $hasArt = ! empty($this->settings['asset']);
         ?>
+        <div class="ppw-capture-layout<?php echo $hasArt ? ' has-art' : ''; ?>">
+        <div class="ppw-capture-content">
         <div class="ppw-heading">
             <h1><?php echo esc_html($copy['title']); ?></h1>
-            <p class="ppw-lede"><?php echo esc_html($copy['lede']); ?></p>
+            <?php if ($copy['lede']) : ?><p class="ppw-lede"><?php echo esc_html($copy['lede']); ?></p><?php endif; ?>
         </div>
 
         <form class="ppw-capture" method="post" action="<?php echo esc_url($state['action_url']); ?>">
@@ -86,7 +89,7 @@ class EmailCaptureStep implements StepInterface
                 <?php endif; ?>
             </p>
 
-            <p class="ppw-disclosure"><?php echo esc_html($copy['confirmation_note']); ?></p>
+            <?php if ($copy['confirmation_note']) : ?><p class="ppw-disclosure"><?php echo esc_html($copy['confirmation_note']); ?></p><?php endif; ?>
 
             <div class="ppw-capture-actions">
                 <button type="submit" class="ppw-btn ppw-btn-primary ppw-btn-lg" name="ppw_email_action" value="subscribe">
@@ -97,6 +100,14 @@ class EmailCaptureStep implements StepInterface
                 </button>
             </div>
         </form>
+        <?php if (isset($this->settings['after_form_callback']) && is_callable($this->settings['after_form_callback'])) : ?>
+            <?php call_user_func($this->settings['after_form_callback'], $context); ?>
+        <?php endif; ?>
+        </div>
+        <?php if ($hasArt) : ?>
+            <div class="ppw-capture-art" aria-hidden="true"><?php $context->figure((array) $this->settings['asset']); ?></div>
+        <?php endif; ?>
+        </div>
         <?php
     }
 }

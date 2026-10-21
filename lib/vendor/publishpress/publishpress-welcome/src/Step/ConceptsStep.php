@@ -31,7 +31,11 @@ class ConceptsStep implements StepInterface
         <div class="ppw-concepts">
             <?php foreach ((array) $this->data['concepts'] as $index => $concept) : ?>
                 <div class="ppw-concept">
-                    <?php $context->figure(isset($concept['asset']) ? $concept['asset'] : [], $concept['name'], 0, isset($concept['slug']) ? $concept['slug'] : ''); ?>
+                    <?php if (isset($concept['art_callback']) && is_callable($concept['art_callback'])) : ?>
+                        <div class="ppw-concept-art" aria-hidden="true"><?php call_user_func($concept['art_callback'], $context); ?></div>
+                    <?php else : ?>
+                        <?php $context->figure(isset($concept['asset']) ? $concept['asset'] : [], $concept['name'], 0, isset($concept['slug']) ? $concept['slug'] : ''); ?>
+                    <?php endif; ?>
                     <h2><span class="ppw-concept-number"><?php echo esc_html(number_format_i18n($index + 1)); ?></span><?php echo esc_html($concept['name']); ?></h2>
                     <p><?php echo esc_html($concept['body']); ?></p>
                 </div>

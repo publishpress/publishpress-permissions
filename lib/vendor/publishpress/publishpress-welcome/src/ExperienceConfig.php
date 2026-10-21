@@ -138,6 +138,8 @@ class ExperienceConfig
             'handler' => null,
             'endpoint' => EmailSubscriber::DEFAULT_ENDPOINT,
             'consent_statement' => 'welcome-email-v1',
+            // Render the consent checkbox ticked. Off by default; the user still has to click Subscribe to send anything.
+            'consent_prechecked' => false,
             'recipient_name' => 'PublishPress',
             'privacy_url' => '',
             'personas' => [

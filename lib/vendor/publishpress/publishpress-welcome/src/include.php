@@ -16,7 +16,7 @@ if (! function_exists('add_action')) {
     return;
 }
 
-if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0Dot1')) {
+if (! function_exists(__NAMESPACE__ . '\register0Dot1Dot0')) {
     if (! defined('PUBLISHPRESS_WELCOME_INCLUDED')) {
         define('PUBLISHPRESS_WELCOME_INCLUDED', __DIR__);
     }
@@ -33,24 +33,24 @@ if (! function_exists(__NAMESPACE__ . '\register1Dot0Dot0Dot1')) {
         add_action('plugins_loaded', [VersionLoader::class, 'initializeLatestVersion'], -190, 0);
     }
 
-    add_action('plugins_loaded', __NAMESPACE__ . '\register1Dot0Dot0Dot1', -200, 0);
+    add_action('plugins_loaded', __NAMESPACE__ . '\register0Dot1Dot0', -200, 0);
 
-    function register1Dot0Dot0Dot1()
+    function register0Dot1Dot0()
     {
         if (! class_exists('PublishPress\Welcome\WelcomeController')) {
             $loader = VersionLoader::getInstance();
-            $loader->register('1.0.0.1', __NAMESPACE__ . '\initialize1Dot0Dot0Dot1');
+            $loader->register('0.1.0', __NAMESPACE__ . '\initialize0Dot1Dot0');
         }
     }
 
-    function initialize1Dot0Dot0Dot1()
+    function initialize0Dot1Dot0()
     {
         require_once __DIR__ . '/autoload.php';
 
         if (! defined('PUBLISHPRESS_WELCOME_VERSION')) {
-            define('PUBLISHPRESS_WELCOME_VERSION', '1.0.0.1');
+            define('PUBLISHPRESS_WELCOME_VERSION', '0.1.0');
         }
 
-        do_action('publishpress_welcome_1Dot0Dot0Dot1_initialized');
+        do_action('publishpress_welcome_0Dot1Dot0_initialized');
     }
 }

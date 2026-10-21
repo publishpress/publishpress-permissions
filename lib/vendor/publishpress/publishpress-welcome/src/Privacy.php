@@ -172,7 +172,7 @@ class Privacy
         }
 
         $content = '<p class="privacy-policy-tutorial">' . esc_html__('Suggested text for the optional PublishPress welcome guide:', 'publishpress-welcome') . '</p>'
-            . '<p>' . esc_html__('If you opt in on the welcome guide, we receive your email address, your answer to "what best describes you?" and an identifier for the consent statement shown to you. PublishPress records the receive time and asks you to confirm your email before sending tips and offers. Nothing is sent unless you tick the consent box and choose Subscribe. The guide also stores your progress and your choice on this site; both are included in the personal data export and removed by the erasure tool, and you can unsubscribe at any time.', 'publishpress-welcome') . '</p>';
+            . '<p>' . esc_html__('If you opt in on the welcome guide, we receive your email address, your answer to "what best describes you?" and an identifier for the consent statement shown to you. PublishPress records the receive time and asks you to confirm your email before sending tips and offers. Nothing is sent unless you choose Subscribe with the consent box ticked. The guide also stores your progress and your choice on this site; both are included in the personal data export and removed by the erasure tool, and you can unsubscribe at any time.', 'publishpress-welcome') . '</p>';
 
         wp_add_privacy_policy_content(__('PublishPress welcome guide', 'publishpress-welcome'), $content);
     }

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12fcc56dab96f9ef369f6d9cef82a509",
+    "content-hash": "23c70fa6aa3d0741d2a70c35ded34860",
     "packages": [
         {
             "name": "publishpress/instance-protection",
@@ -233,16 +233,16 @@
         },
         {
             "name": "publishpress/publishpress-welcome",
-            "version": "dev-codex/welcome-library",
+            "version": "dev-codex/welcome-feedback",
             "source": {
                 "type": "git",
                 "url": "git@github.com:publishpress/library-publishpress-welcome.git",
-                "reference": "e4164b5139373260f0c8bedf698e013153e6a024"
+                "reference": "e0898f44a4d40a343459fb77ebc83727014e6b69"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/publishpress/library-publishpress-welcome/zipball/e4164b5139373260f0c8bedf698e013153e6a024",
-                "reference": "e4164b5139373260f0c8bedf698e013153e6a024",
+                "url": "https://api.github.com/repos/publishpress/library-publishpress-welcome/zipball/e0898f44a4d40a343459fb77ebc83727014e6b69",
+                "reference": "e0898f44a4d40a343459fb77ebc83727014e6b69",
                 "shasum": ""
             },
             "require": {
@@ -292,6 +292,12 @@
                     "@test:unit",
                     "@test:integration"
                 ],
+                "build": [
+                    "bash bin/build.sh"
+                ],
+                "check:release": [
+                    "php bin/check-release.php"
+                ],
                 "make:pot": [
                     "bash bin/make-pot.sh"
                 ]
@@ -309,10 +315,10 @@
             ],
             "description": "Reusable, configurable welcome and onboarding experiences for PublishPress WordPress plugins.",
             "support": {
-                "source": "https://github.com/publishpress/library-publishpress-welcome/tree/codex/welcome-library",
+                "source": "https://github.com/publishpress/library-publishpress-welcome/tree/codex/welcome-feedback",
                 "issues": "https://github.com/publishpress/library-publishpress-welcome/issues"
             },
-            "time": "2026-10-15T13:37:08+00:00"
+            "time": "2026-10-21T10:50:19+00:00"
         },
         {
             "name": "publishpress/wordpress-reviews",

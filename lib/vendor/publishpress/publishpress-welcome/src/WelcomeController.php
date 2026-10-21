@@ -352,7 +352,7 @@ class WelcomeController
         $values = $this->submission ? $this->submission['values'] : [
             'email' => $user->user_email,
             'persona' => SharedProfile::persona($user->ID),
-            'consent' => false,
+            'consent' => ! empty($this->emailSettings['consent_prechecked']),
         ];
 
         return [
@@ -458,6 +458,18 @@ class WelcomeController
     public function stepCount()
     {
         return count($this->steps);
+    }
+
+    /** Resolve after filters and optional steps have been applied. */
+    public function stepUrlForId($id)
+    {
+        foreach ($this->steps as $index => $step) {
+            if ($step->getId() === $id) {
+                return $this->stepUrl($index + 1);
+            }
+        }
+
+        return $this->stepUrl(1);
     }
 
     public function maybeRedirectAfterActivation()

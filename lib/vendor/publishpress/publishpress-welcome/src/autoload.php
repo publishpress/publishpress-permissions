@@ -3,7 +3,7 @@
 namespace PublishPress\Welcome;
 
 if (! defined('PUBLISHPRESS_WELCOME_VERSION')) {
-    define('PUBLISHPRESS_WELCOME_VERSION', '1.0.0.1');
+    define('PUBLISHPRESS_WELCOME_VERSION', '0.1.0');
 }
 
 if (! defined('PUBLISHPRESS_WELCOME_ROOT_FILE')) {
