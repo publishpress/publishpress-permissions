@@ -784,6 +784,7 @@ class LibWP
     }
 
     // Wrapper to prevent poEdit from adding core WordPress strings to the plugin .po
+    // phpcs:ignore PHPCompatibility.FunctionNameRestrictions.ReservedFunctionNames.MethodDoubleUnderscore -- Preserve the legacy method name for backward compatibility.
     public static function __wp($string, $unused = '')
     {
         return __($string);
