@@ -844,7 +844,7 @@ jQuery(document).ready(function ($) {
     }
 
     function formatPreviewContentFragment(html) {
-        html = String(html || '').trim();
+        html = balancePreviewHtml(html).trim();
 
         if (!html) {
             return '';

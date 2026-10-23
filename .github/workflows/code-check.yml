@@ -37,3 +37,5 @@ jobs:
         run: |
           php tests/unit/welcome-post-types.php
           php tests/unit/welcome-save.php
+      - name: Check before and after teaser content boundaries
+        run: php tests/unit/teaser-content-boundaries.php
