@@ -1043,7 +1043,7 @@ class AgentPermissionsUI
                                 echo esc_html($via_type_obj->labels->name);
                                 echo '</th>';
 
-                                echo '<th class="edit-column" style="text-align:left">' . esc_html__('Group', 'press-permit-core') . '</th>';
+                                echo '<th class="edit-column" style="text-align:left">' . esc_html__('Role or Group', 'press-permit-core') . '</th>';
 
                                 echo '</tr>';
                                 echo '</thead>';
