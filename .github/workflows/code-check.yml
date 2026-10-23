@@ -37,3 +37,5 @@ jobs:
         run: |
           php tests/unit/welcome-post-types.php
           php tests/unit/welcome-save.php
+      - name: Check Read More fallback behavior
+        run: php tests/unit/read-more-fallback.php
