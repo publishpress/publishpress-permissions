@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostSave
 {
     // Workaround to deal with WP core's checking of publish cap prior to storing categories

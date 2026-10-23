@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class FrontFilters
 {
     public function __construct() {
@@ -24,6 +26,8 @@ class FrontFilters
     {
         global $wp_registered_widgets;
 
+        // Prefix matching needs the complete sidebar map, not a single widget ID.
+        // phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- Read-only lookup preserving WordPress's sidebars_widgets filters.
         foreach ((array)wp_get_sidebars_widgets() as $sidebar => $widgets) {
             if ('wp_inactive_widgets' != $sidebar && is_array($widgets)) {
                 foreach ($widgets as $widget) {

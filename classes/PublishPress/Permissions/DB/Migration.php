@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\DB;
 
+\defined('ABSPATH') || exit;
+
 class Migration
 {
     public static function migrateOptions()

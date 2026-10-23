@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class ItemExceptionsRenderUI
 {
     public $opt_labels = [];

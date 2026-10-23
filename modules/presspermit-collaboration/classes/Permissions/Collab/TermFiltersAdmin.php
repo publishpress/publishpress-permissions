@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class TermFiltersAdmin
 {
     public static function fltGetTermsUniversalExceptions($universal, $required_operation, $taxonomy, $args)

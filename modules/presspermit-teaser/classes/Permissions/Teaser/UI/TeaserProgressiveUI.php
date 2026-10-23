@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser\UI;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Progressive Disclosure UI for Teaser Settings
  * Implements modern card-based interface with step-by-step configuration

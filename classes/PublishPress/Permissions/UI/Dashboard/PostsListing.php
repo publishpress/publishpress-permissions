@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class PostsListing
 {
     private $exceptions;

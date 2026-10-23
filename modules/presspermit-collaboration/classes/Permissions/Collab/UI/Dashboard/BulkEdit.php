@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class BulkEdit
 {
     public static function add_author_pages()
@@ -81,7 +83,8 @@ class BulkEdit
 
             $post_meta['_pp_auto_inserted'] = "{$pattern_post_id}:{$post_parent}";
 
-            $title_pattern = !empty($_REQUEST['member_page_title']) ? sanitize_text_field($_REQUEST['member_page_title']) : '';
+            // wp_insert_post() expects slashed input and removes one layer when saving the title.
+            $title_pattern = !empty($_REQUEST['member_page_title']) ? wp_slash(sanitize_text_field(wp_unslash($_REQUEST['member_page_title']))) : '';
 
             if (false === strpos($title_pattern, '[username]') && false === strpos($title_pattern, '[userid]')) {
                 $title_pattern .= ' [userid]';

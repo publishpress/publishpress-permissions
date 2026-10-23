@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 if (get_option('presspermit_delete_settings_on_uninstall')) {
     global $wpdb;
 
@@ -27,6 +29,7 @@ if (get_option('presspermit_delete_settings_on_uninstall')) {
         // paging through get_sites() in bounded batches, and lift the execution time limit where
         // the host allows it, rather than fetching every site ID and running unbounded.
         if (function_exists('set_time_limit')) {
+            // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged -- Synchronous multisite cleanup cannot resume after this plugin is removed.
             @set_time_limit(0);
         }
 

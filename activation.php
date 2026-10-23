@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 require(__DIR__ . '/db-config.php');
 
 // get last database version

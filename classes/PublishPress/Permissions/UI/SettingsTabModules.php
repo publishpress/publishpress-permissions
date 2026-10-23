@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\UI;
 
 use PublishPress\Permissions\Factory;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabModules
 {
     public function __construct()

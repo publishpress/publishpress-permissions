@@ -37,7 +37,7 @@
  *
  **/
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+defined('ABSPATH') || exit;
 
 global $wp_version;
 
@@ -260,6 +260,7 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
 
     function presspermit_load_textdomain()
     {
+        // phpcs:ignore PluginCheck.CodeAnalysis.DiscouragedFunctions.load_plugin_textdomainFound -- Register bundled translations for installations without a WordPress.org language pack.
         load_plugin_textdomain(
             'press-permit-core',
             false,

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentPermissionsUI
 {
     public static function roleAssignmentScripts()
@@ -1575,7 +1577,7 @@ class AgentPermissionsUI
                         echo '</div>';  // notes
 
                         if (!empty($via_type_obj->hierarchical) && (!empty($any_child_only) || !empty($any_both)) && !empty($_SERVER['REQUEST_URI'])) {
-                            $show_all_url = add_query_arg('show_propagated', '1', esc_url_raw($_SERVER['REQUEST_URI']));
+                            $show_all_url = add_query_arg('show_propagated', '1', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                             $_caption = $via_type_obj->labels->singular_name;
 
                             if ('term' == $via_src) {
@@ -1593,7 +1595,7 @@ class AgentPermissionsUI
                                         )
                                         . '</div>';
                                 } else {
-                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                                     echo '<div class="notes">'
                                         . sprintf(
                                             ' <a href="%s" class="btn btn-link">%s</a>',
@@ -1616,7 +1618,7 @@ class AgentPermissionsUI
                                         esc_html__('Show All', 'press-permit-core')
                                     );
                                 } else {
-                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                                     echo '<div class="notes">'
                                         . sprintf(
                                             ' <a href="%s" class="btn btn-link">%s</a>',
@@ -1626,7 +1628,7 @@ class AgentPermissionsUI
                                 }
 
                                 if (defined('WP_DEBUG') || defined('PRESSPERMIT_DEBUG')) {
-                                    $fix_child_url = remove_query_arg(['pp_fix_child_exceptions', '_wpnonce'], esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $fix_child_url = remove_query_arg(['pp_fix_child_exceptions', '_wpnonce'], esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
 
                                     if (PWP::empty_REQUEST('show_propagated')) {
                                         echo '&nbsp;&nbsp;&bull;';

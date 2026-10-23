@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class UserGroupsUpdate
 {
     public static function addUserGroups($user_id)

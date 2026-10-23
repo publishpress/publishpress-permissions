@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\DB;
 
+\defined('ABSPATH') || exit;
+
 class PermissionsMeta
 {
     public static function countExceptions($agent_type, $args = [])

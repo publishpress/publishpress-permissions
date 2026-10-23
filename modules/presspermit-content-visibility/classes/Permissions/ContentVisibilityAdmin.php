@@ -4,9 +4,7 @@ namespace PublishPress\Permissions;
 
 use PublishPress\Permissions\UI\SettingsAdmin;
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+\defined('ABSPATH') || exit;
 
 // phpcs:disable WordPress.WP.I18n.TextDomainMismatch -- Bundled module strings share the parent plugin translation catalog.
 

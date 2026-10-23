@@ -2,6 +2,8 @@
 
 namespace PublishPress;
 
+\defined('ABSPATH') || exit;
+
 /**
  *
  * @package PressPermit

@@ -30,7 +30,7 @@ You should have received a copy of the GNU General Public License
 along with this plugin.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+defined('ABSPATH') || exit;
 
 if (!defined('PRESSPERMIT_TEASER_FILE')) {
     define('PRESSPERMIT_TEASER_FILE', __FILE__);

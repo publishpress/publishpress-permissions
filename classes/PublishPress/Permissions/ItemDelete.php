@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class ItemDelete
 {
     public static function itemDeleted($item_source, $item_id)

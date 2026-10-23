@@ -1,4 +1,6 @@
 <?php
+defined('ABSPATH') || exit;
+
 function presspermit() {
     require_once(__DIR__ . '/classes/PublishPress/Permissions.php');
     return \PublishPress\Permissions::instance();

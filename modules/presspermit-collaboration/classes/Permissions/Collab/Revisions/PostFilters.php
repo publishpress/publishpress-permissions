@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Revisions;
 
+\defined('ABSPATH') || exit;
+
 class PostFilters
 {
     private $filtered_post_clauses_type = '';

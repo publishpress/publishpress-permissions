@@ -11,7 +11,13 @@
     <arg name="parallel" value="20"/>
     <arg value="ps"/>
 
-    <file>./dist/press-permit-core</file>
+    <file>.</file>
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/dist/*</exclude-pattern>
+    <exclude-pattern>/dev-workspace/*</exclude-pattern>
+    <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>
+    <exclude-pattern>/tests/*</exclude-pattern>
+    <exclude-pattern>/node_modules/*</exclude-pattern>
 
     <rule ref="PHPCompatibility"/>
     <exclude-pattern>/\.web/</exclude-pattern>

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostFilters.php');
 require_once(PRESSPERMIT_TEASER_CLASSPATH . '/PostFiltersFront.php');
 require_once(PRESSPERMIT_TEASER_CLASSPATH . '/ReadMoreHandler.php');

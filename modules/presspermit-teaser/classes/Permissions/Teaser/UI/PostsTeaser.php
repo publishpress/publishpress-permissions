@@ -3,6 +3,8 @@ namespace PublishPress\Permissions\Teaser\UI;
 
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
+\defined('ABSPATH') || exit;
+
 require_once(__DIR__ . '/TeaserUIBaseTrait.php');
 
 /**

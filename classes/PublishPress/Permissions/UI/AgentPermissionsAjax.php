@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentPermissionsAjax
 {
     public function __construct() {
@@ -46,7 +48,7 @@ class AgentPermissionsAjax
                     exit;
                 }
 
-                $input_vals = (!empty($_GET['pp_ass_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_ass_ids']))) : [];
+                $input_vals = (!empty($_GET['pp_ass_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_ass_ids'])))) : [];
 
                 if (!$input_vals) {
                     exit;
@@ -105,7 +107,7 @@ class AgentPermissionsAjax
                     exit;
                 }
 
-                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
 
                 if (!$input_vals) {
                     exit;
@@ -166,7 +168,7 @@ class AgentPermissionsAjax
                     exit;
                 }
 
-                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
 
                 if (!$input_vals) {
                     exit;
@@ -244,7 +246,7 @@ class AgentPermissionsAjax
                     $edited_input_ids = [];
                     $all_eitem_ids = [];
 
-                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
                     
                     if (!$input_vals) {
                         exit;
@@ -301,7 +303,7 @@ class AgentPermissionsAjax
                     $edited_input_ids = [];
                     $all_eitem_ids = [];
 
-                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
                     
                     if (!$input_vals) {
                         exit;
