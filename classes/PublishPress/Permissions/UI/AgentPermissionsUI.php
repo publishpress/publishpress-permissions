@@ -1227,7 +1227,8 @@ class AgentPermissionsUI
                                                 if ($assign_child_only) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-child"></i>
+                                                    <i class="dashicons dashicons-editor-indent assign-child" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name)); ?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name)); ?>
                                                     </span><i></i></span></span>
@@ -1235,7 +1236,8 @@ class AgentPermissionsUI
                                                 } elseif ($assign_both) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-both"></i>
+                                                    <i class="dashicons dashicons-networking assign-both" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name)); ?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name)); ?>
                                                     </span><i></i></span></span>
@@ -1330,7 +1332,8 @@ class AgentPermissionsUI
                                                 if ($assign_child_only) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-child"></i> 
+                                                    <i class="dashicons dashicons-editor-indent assign-child" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name));?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name));?>
                                                     </span><i></i></span></span>
@@ -1338,7 +1341,8 @@ class AgentPermissionsUI
                                                 } elseif ($assign_both) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-both"></i> 
+                                                    <i class="dashicons dashicons-networking assign-both" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name));?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name));?>
                                                     </span><i></i></span></span>
@@ -1561,13 +1565,13 @@ class AgentPermissionsUI
                                 <?php
                                 if (!empty($any_both)) {
                                     echo '<span class="role_both">'
-                                        . '<i class="dashicons dashicons-networking assign-both"></i>'
+                                        . '<i class="dashicons dashicons-networking assign-both" aria-hidden="true"></i>'
                                         . esc_html(sprintf(__('= %1$s and sub-%1$s', 'press-permit-core'), $_caption))
                                         . '</span>';
                                 }
                                 if (!empty($any_child_only)) {
                                     echo '<span>' 
-                                    . '<i class="dashicons dashicons-networking assign-child"></i>'
+                                    . '<i class="dashicons dashicons-editor-indent assign-child" aria-hidden="true"></i>'
                                     . esc_html(sprintf(__('= sub-%s only', 'press-permit-core'), $_caption)) . '</span>';
                                 }
                                 ?>
