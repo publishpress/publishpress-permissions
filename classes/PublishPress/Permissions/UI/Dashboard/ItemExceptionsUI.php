@@ -376,6 +376,13 @@ class ItemExceptionsUI
         }
 
         ?>
+        <p class="pp-permission-priority-help">
+            <?php
+            esc_html_e('How Enabled and Blocked permissions combine', 'press-permit-core');
+            require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+            \PublishPress\Permissions\UI\HintsItemExceptions::permissionPriorityTooltip();
+            ?>
+        </p>
         <div class="pp-tabbed-metabox">
             <!-- Left Sidebar with Operation Tabs -->
             <div class="pp-tabbed-sidebar">
