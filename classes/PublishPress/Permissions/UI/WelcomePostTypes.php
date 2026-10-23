@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Post type choices for the welcome guide's content step, and the validated save behind them.
  *

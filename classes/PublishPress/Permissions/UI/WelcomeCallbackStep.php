@@ -5,6 +5,8 @@ namespace PublishPress\Permissions\UI;
 use PublishPress\Welcome\Contract\StepInterface;
 use PublishPress\Welcome\RenderContext;
 
+\defined('ABSPATH') || exit;
+
 /**
  * A guide step whose markup is produced by the consuming plugin, for content the shared steps do not cover.
  * The renderer owns escaping.

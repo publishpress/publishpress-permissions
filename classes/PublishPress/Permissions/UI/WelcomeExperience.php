@@ -10,6 +10,8 @@ use PublishPress\Welcome\Step\FinishStep;
 use PublishPress\Welcome\Step\HeroStep;
 use PublishPress\Welcome\WelcomeController;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Permissions-specific content and completion rules for the shared welcome UI.
  */
@@ -20,6 +22,9 @@ class WelcomeExperience
 
     /** @var WelcomeController|null */
     private $controller;
+
+    /** @var int|null Checklist count, refreshed on each request. */
+    private $exceptionCount;
 
     public function __construct()
     {
@@ -387,6 +392,10 @@ class WelcomeExperience
 
     public function savePostTypes()
     {
+        if (! isset($_SERVER['REQUEST_METHOD']) || 'POST' !== $_SERVER['REQUEST_METHOD']) {
+            wp_die(esc_html__('Invalid request method.', 'press-permit-core'), '', ['response' => 405]);
+        }
+
         check_admin_referer(self::POST_TYPES_NONCE);
 
         if (! current_user_can('pp_manage_settings')) {
@@ -592,16 +601,23 @@ class WelcomeExperience
     {
         global $wpdb;
 
+        if (null !== $this->exceptionCount) {
+            return $this->exceptionCount;
+        }
+
         if (empty($wpdb->ppc_exceptions) || empty($wpdb->ppc_exception_items)) {
             return 0;
         }
 
-        return (int) $wpdb->get_var(
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom Permissions tables; memoized per request to avoid stale checklist state after permission changes.
+        $this->exceptionCount = (int) $wpdb->get_var(
             "SELECT COUNT(DISTINCT i.item_id) FROM $wpdb->ppc_exception_items AS i"
             . " INNER JOIN $wpdb->ppc_exceptions AS e ON e.exception_id = i.exception_id"
             . " WHERE e.for_item_source = 'post' AND e.via_item_source = 'post'"
             . ' AND i.item_id > 0'
         );
+
+        return $this->exceptionCount;
     }
 
     private function postPermissionsUrl()

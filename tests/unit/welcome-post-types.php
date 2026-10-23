@@ -5,6 +5,8 @@
  *   php tests/unit/welcome-post-types.php
  */
 
+define('ABSPATH', __DIR__ . '/../../');
+
 require_once __DIR__ . '/../../classes/PublishPress/Permissions/UI/WelcomePostTypes.php';
 
 use PublishPress\Permissions\UI\WelcomePostTypes;
@@ -84,6 +86,7 @@ $once = WelcomePostTypes::applyChoices(['post' => true], $offered, [], ['page'])
 check('idempotent', $once, WelcomePostTypes::applyChoices($once, $offered, [], ['page']));
 
 if ($failures) {
+    // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite -- Standalone CLI test output, not a filesystem write.
     fwrite(STDERR, "FAILED\n" . implode("\n", $failures) . "\n");
     exit(1);
 }
