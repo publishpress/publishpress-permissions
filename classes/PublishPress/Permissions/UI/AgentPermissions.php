@@ -375,7 +375,7 @@ class AgentPermissions
                                     <input type="hidden" name="wp_http_referer" value="<?php echo esc_url($wp_http_referer); ?>" />
                                 <?php endif; ?>
                                 <?php
-                            Dashboard\Profile::displayUserGroups(
+                            $has_editable_memberships = Dashboard\Profile::displayUserGroups(
                                 $agent_id,
                                 [
                                     'initial_hide' => false,
@@ -384,12 +384,14 @@ class AgentPermissions
                                     'hide_checkboxes' => false,
                                 ]
                             );
-                                submit_button(
-                                    esc_html__('Update Group Membership', 'press-permit-core'),
-                                    'primary pp-primary-button pp-button',
-                                    'submit_groups',
-                                    false
-                                );
+                                if ($has_editable_memberships) {
+                                    submit_button(
+                                        esc_html__('Update Group Membership', 'press-permit-core'),
+                                        'primary pp-primary-button pp-button',
+                                        'submit_groups',
+                                        false
+                                    );
+                                }
                                 ?>
                             </form>
                             <?php
