@@ -136,11 +136,6 @@ class TeaserProgressiveUI {
                     <!-- Combined Settings Table -->
                     <?php $this->renderCombinedSettingsTable($object_type, $item_label, $teaser_setting); ?>
 
-                    <!-- Teaser Notice Style Settings (per post type) -->
-                    <div class="pp-conditional-settings pp-teaser-notice-style-settings">
-                    <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
-                    </div>
-
                     <!-- Redirect Settings (shown only when redirect is selected) -->
                     <div class="pp-conditional-settings pp-teaser-redirect-settings">
                     <?php $this->renderRedirectSection($object_type); ?>
@@ -158,6 +153,26 @@ class TeaserProgressiveUI {
             </div>
         </div>
         <?php
+    }
+
+    public function renderStyleOptions() {
+        foreach ($this->use_teaser as $object_type => $teaser_setting) {
+            if (!in_array($object_type, $this->getAvailablePostTypes(), true)) {
+                continue;
+            }
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Display state only.
+            $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $this->getFirstPostType();
+            $is_current = $object_type === $current_post_type;
+            ?>
+            <div class="pp-teaser-style-options-container<?php echo $is_current ? ' active' : ''; ?>" data-post-type="<?php echo esc_attr($object_type); ?>" <?php if (!$is_current) echo 'style="display:none"'; ?>>
+                <?php $this->renderPostTypeSelector('pp_style_options_current_post_type_' . $object_type); ?>
+                <div class="pp-teaser-notice-style-settings">
+                    <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
+                    <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
+                </div>
+            </div>
+            <?php
+        }
     }
 
     public function renderTextOptions() {
