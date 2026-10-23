@@ -145,7 +145,13 @@ class AgentPermissionsUI
                 <tr>
                     <th><?php esc_html_e('Post Type', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-operation" style="display:none"><?php esc_html_e('Operation', 'press-permit-core'); ?></th>
-                    <th class="pp-select-x-mod-type" style="display:none"><?php esc_html_e('Adjustment', 'press-permit-core'); ?></th>
+                    <th class="pp-select-x-mod-type" style="display:none">
+                        <?php
+                        esc_html_e('Adjustment', 'press-permit-core');
+                        require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+                        HintsItemExceptions::permissionPriorityTooltip();
+                        ?>
+                    </th>
                     <th class="pp-select-x-via-type" style="display:none"><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-status" style="display:none"><?php esc_html_e('Statuses', 'press-permit-core'); ?></th>
                     <th class="pp-add-exception" style="display:none"></th>
