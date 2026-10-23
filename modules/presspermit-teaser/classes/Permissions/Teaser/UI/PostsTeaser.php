@@ -449,6 +449,12 @@ class PostsTeaser
                       </a>
                     </li>
 
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-message-style') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-message-style">
+                          <?php esc_html_e('Message Style', 'press-permit-core'); ?>
+                      </a>
+                    </li>
+
                     <li class="nav-tab<?php if ($current_tab === 'ppp-tab-options') echo ' nav-tab-active';?>">
                       <a href="#ppp-tab-options">
                           <?php esc_html_e('Options', 'press-permit-core') ?>
@@ -587,6 +593,9 @@ class PostsTeaser
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-text-options" style="display:<?php if ($current_tab === 'ppp-tab-text-options') echo 'block'; else echo 'none'; ?>;">
                 <?php $progressive_ui->renderTextOptions(); ?>
+            </section>
+            <section id="ppp-tab-message-style" style="display:<?php echo 'ppp-tab-message-style' === $current_tab ? 'block' : 'none'; ?>;">
+                <?php $progressive_ui->renderStyleOptions(); ?>
             </section>
         <?php
         endif;
