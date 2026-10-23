@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class RoleAdmin
 {
     public static function getTypeRoles($for_item_source, $for_item_type, $require_caps = false)

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentExceptionsAjax
 {
     public function __construct() 
@@ -25,7 +27,7 @@ class AgentExceptionsAjax
         $agent_type = PWP::GET_key('pp_agent_type');
         $agent_id = PWP::GET_int('pp_agent_id');
 
-        $for_type = isset($_GET['pp_for_type']) ? PWP::sanitizeEntry(sanitize_text_field($_GET['pp_for_type'])) : '';
+        $for_type = isset($_GET['pp_for_type']) ? PWP::sanitizeEntry(sanitize_text_field(wp_unslash($_GET['pp_for_type']))) : '';
         $operation = PWP::GET_key('pp_operation');
         $via_type = PWP::GET_key('pp_via_type');
         $mod_type = PWP::GET_key('pp_mod_type');

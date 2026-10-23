@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class ErrorNotice
 {
     private $notices = [];
@@ -41,7 +43,7 @@ class ErrorNotice
         // todo: Review which of the remaining plugin initialization error strings can be translated (some are executed very early).
         switch ($err) {
             case 'multiple_pp':
-                if (is_admin() && ('plugins.php' == $pagenow) && isset($_SERVER['REQUEST_URI']) && !strpos(urldecode(esc_url_raw($_SERVER['REQUEST_URI'])), 'deactivate')) {
+                if (is_admin() && ('plugins.php' == $pagenow) && isset($_SERVER['REQUEST_URI']) && !strpos(urldecode(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']))), 'deactivate')) {
                     $message = sprintf(
                         'Error: Multiple copies of %1$s activated. Only the copy in folder "%2$s" is functional.',
                         PRESSPERMIT_TITLE,

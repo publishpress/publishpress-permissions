@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 /**
  * AgentsDynamicUI class
  *
@@ -71,7 +73,7 @@ class AgentsDynamicUI
             <tr>
                 <td id="pp-agent-selection_<?php echo esc_attr($id_suffix); ?> " style="vertical-align:top">
                     <div class="pp-search-box-with-icon-wrapper">
-                        <input id="agent_search_text_<?php echo esc_attr($id_suffix); ?>" placeholder="<?php echo esc_attr($label_headline); ?>" type="text" size="18"/>
+                        <input id="agent_search_text_<?php echo esc_attr($id_suffix); ?>" placeholder="<?php echo esc_attr($label_headline); ?>" aria-label="<?php echo esc_attr($label_headline); ?>" type="text" size="18"/>
                         <i class="dashicons dashicons-search"></i>
                     </div>
 
@@ -106,7 +108,7 @@ class AgentsDynamicUI
                                 echo ' style="display:none;"';
                             }
                             ?>>
-                                <select id="pp_search_user_meta_key_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" autocomplete="off">
+                                <select id="pp_search_user_meta_key_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" autocomplete="off" aria-label="<?php esc_attr_e('User field', 'press-permit-core'); ?>">
                                     <option value=""><?php esc_html_e('(user field)', 'press-permit-core'); ?></option>
 
                                     <?php foreach ($fields as $field => $lbl) : ?>
@@ -114,7 +116,7 @@ class AgentsDynamicUI
                                     <?php endforeach; ?>
                                 </select>
 
-                                <input id="pp_search_user_meta_val_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" class="pp-user-meta-field" 
+                                <input id="pp_search_user_meta_val_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" class="pp-user-meta-field" aria-label="<?php esc_attr_e('User field value', 'press-permit-core'); ?>"
                                        type="text" <?php
                                 if (PWP::empty_GET("pp_search_user_meta_key_{$i}_{$id_suffix}")) {
                                     echo 'style="display:none"';
@@ -136,7 +138,7 @@ class AgentsDynamicUI
                     <?php endif; ?>
 
                     <?php if (('user' == $agent_type) && $pp->getOption('user_search_by_role')) : ?>
-                        <select id="pp_search_role_<?php echo esc_attr($id_suffix); ?>" class="pp-search-role" autocomplete="off">
+                        <select id="pp_search_role_<?php echo esc_attr($id_suffix); ?>" class="pp-search-role" autocomplete="off" aria-label="<?php esc_attr_e('WordPress role', 'press-permit-core'); ?>">
                             <option value=""><?php esc_html_e('(any WP role)', 'press-permit-core'); ?></option>
                             <?php wp_dropdown_roles(); ?>
                         </select>
@@ -158,7 +160,7 @@ class AgentsDynamicUI
                              src="<?php echo esc_url(admin_url('images/wpspin_light.gif')) ?>" />
                     </h4>
 
-                    <select id="agent_results_<?php echo esc_attr($id_suffix); ?>" class="pp_agent_results" <?php
+                    <select id="agent_results_<?php echo esc_attr($id_suffix); ?>" class="pp_agent_results" aria-label="<?php esc_attr_e('Search Results', 'press-permit-core'); ?>" <?php
                     if ($multi_select) : ?>multiple="multiple" style="height:160px;"<?php else : ?>style="display:none;"<?php endif; ?> autocomplete="off">
                     </select>
 
@@ -174,7 +176,7 @@ class AgentsDynamicUI
                         endif;?>
                         </h4>
 
-                        <select id='<?php echo esc_attr($id_suffix); ?>' name='<?php echo esc_attr($id_suffix); ?>[]' multiple='multiple'
+                        <select id='<?php echo esc_attr($id_suffix); ?>' name='<?php echo esc_attr($id_suffix); ?>[]' multiple='multiple' aria-label='<?php esc_attr_e('Current Selections', 'press-permit-core'); ?>'
                                 style='height:160px;<?php echo esc_attr($width); ?>'>
 
                             <?php
@@ -300,7 +302,7 @@ class AgentsDynamicUI
             <tr style="display: none;">
                 <td id="pp-agent-selection_<?php echo esc_attr($id_suffix); ?> " style="vertical-align:top;">
                     <div class="pp-search-box-with-icon-wrapper">
-                        <input id="agent_search_text_<?php echo esc_attr($id_suffix); ?>" placeholder="<?php echo esc_attr($label_headline); ?>" type="text" size="18" />
+                        <input id="agent_search_text_<?php echo esc_attr($id_suffix); ?>" placeholder="<?php echo esc_attr($label_headline); ?>" aria-label="<?php echo esc_attr($label_headline); ?>" type="text" size="18" />
                         <i class="dashicons dashicons-search"></i>
                     </div>
 
@@ -335,7 +337,7 @@ class AgentsDynamicUI
                                                                     echo ' style="display:none;"';
                                                                 }
                                                                 ?>>
-                                <select id="pp_search_user_meta_key_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" autocomplete="off">
+                                <select id="pp_search_user_meta_key_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" autocomplete="off" aria-label="<?php esc_attr_e('User field', 'press-permit-core'); ?>">
                                     <option value=""><?php esc_html_e('(user field)', 'press-permit-core'); ?></option>
 
                                     <?php foreach ($fields as $field => $lbl) : ?>
@@ -343,7 +345,7 @@ class AgentsDynamicUI
                                     <?php endforeach; ?>
                                 </select>
 
-                                <input id="pp_search_user_meta_val_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" class="pp-user-meta-field"
+                                <input id="pp_search_user_meta_val_<?php echo esc_attr($i); ?>_<?php echo esc_attr($id_suffix); ?>" class="pp-user-meta-field" aria-label="<?php esc_attr_e('User field value', 'press-permit-core'); ?>"
                                     type="text" <?php
                                                 if (PWP::empty_GET("pp_search_user_meta_key_{$i}_{$id_suffix}")) {
                                                     echo 'style="display:none"';
@@ -365,7 +367,7 @@ class AgentsDynamicUI
                     <?php endif; ?>
 
                     <?php if (('user' == $agent_type) && $pp->getOption('user_search_by_role')) : ?>
-                        <select id="pp_search_role_<?php echo esc_attr($id_suffix); ?>" class="pp-search-role" autocomplete="off">
+                        <select id="pp_search_role_<?php echo esc_attr($id_suffix); ?>" class="pp-search-role" autocomplete="off" aria-label="<?php esc_attr_e('WordPress role', 'press-permit-core'); ?>">
                             <option value=""><?php esc_html_e('(any WP role)', 'press-permit-core'); ?></option>
                             <?php wp_dropdown_roles(); ?>
                         </select>
@@ -380,7 +382,7 @@ class AgentsDynamicUI
             </tr>
             <tr>
                 <td style="padding-top: <?php echo $display_stored_selections ? '3em' : '0';?>;">
-                    <select <?php if ($multi_select):?>multiple="multiple"<?php endif;?> id="v2_agent_search_text_<?php echo esc_attr("{$op}:{$for_item_type}:{$agent_type}"); ?>" name="_select-<?php echo esc_attr("$op-$for_item_type-$agent_type"); ?>[]">
+                    <select <?php if ($multi_select):?>multiple="multiple"<?php endif;?> id="v2_agent_search_text_<?php echo esc_attr("{$op}:{$for_item_type}:{$agent_type}"); ?>" aria-label="<?php echo esc_attr($label_headline); ?>" name="_select-<?php echo esc_attr("$op-$for_item_type-$agent_type"); ?>[]">
                         <?php
                         // Show the option if user has current selections and not active membership feature
                         if ($display_stored_selections 
@@ -430,7 +432,7 @@ class AgentsDynamicUI
                             src="<?php echo esc_url(admin_url('images/wpspin_light.gif')) ?>" />
                     </h4>
 
-                    <select id="agent_results_<?php echo esc_attr($id_suffix); ?>" class="pp_agent_results" <?php
+                    <select id="agent_results_<?php echo esc_attr($id_suffix); ?>" class="pp_agent_results" aria-label="<?php esc_attr_e('Search Results', 'press-permit-core'); ?>" <?php
                                                                                                             if ($multi_select) : ?>multiple="multiple" style="height:160px;" <?php else : ?>style="display:none;" <?php endif; ?> autocomplete="off">
                     </select>
 
@@ -449,7 +451,7 @@ class AgentsDynamicUI
                             endif; ?>
                         </h4>
 
-                        <select id='<?php echo esc_attr($id_suffix); ?>' name='<?php echo esc_attr($id_suffix); ?>[]' multiple='multiple'
+                        <select id='<?php echo esc_attr($id_suffix); ?>' name='<?php echo esc_attr($id_suffix); ?>[]' multiple='multiple' aria-label='<?php esc_attr_e('Current Selections', 'press-permit-core'); ?>'
                             style='height:160px;<?php echo esc_attr($width); ?>'>
 
                             <?php
@@ -533,6 +535,10 @@ class AgentsDynamicUI
                 [
                     'omit_admins' => !empty($allow_administrator_members) ? '0' : '1', 
                     'metagroups' => 1,
+                    'searching' => esc_html__('Searching…', 'press-permit-core'),
+                    'oneResultFound' => esc_html__('1 result found.', 'press-permit-core'),
+                    /* translators: %d: number of search results */
+                    'resultsFound' => esc_html__('%d results found.', 'press-permit-core'),
                     'placeholder' => [
                         'pp_group' => esc_html__('Search for a group', 'press-permit-core'),
                         'user' => esc_html__('Search for a user', 'press-permit-core'),
@@ -587,6 +593,10 @@ class AgentsDynamicUI
                 }
             }
 
+            $_args['searching'] = esc_html__('Searching…', 'press-permit-core');
+            $_args['oneResultFound'] = esc_html__('1 result found.', 'press-permit-core');
+            /* translators: %d: number of search results */
+            $_args['resultsFound'] = esc_html__('%d results found.', 'press-permit-core');
             $_args['placeholder'] = [
                 'pp_group'      => esc_html__('Search for a group', 'press-permit-core'),
                 'user'          => esc_html__('Search for a user', 'press-permit-core'),
@@ -606,8 +616,8 @@ class AgentsDynamicUI
 
         if (!$this->agents_js_queue) {
             $this->agents_js_queue = [];
-            // WordPress prints queued footer scripts at priority 20.
-            add_action('admin_print_footer_scripts', [$this, 'actAjaxSelectionScripts'], 19);
+            // Must run before _wp_footer_scripts (priority 10) so admin.js enqueued here still prints.
+            add_action('admin_print_footer_scripts', [$this, 'actAjaxSelectionScripts'], 9);
         }
 
         $suppress_selection_js = !empty($args['suppress_selection_js']);

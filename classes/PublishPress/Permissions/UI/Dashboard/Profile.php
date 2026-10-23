@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
 require_once(PRESSPERMIT_CLASSPATH . '/DB/PermissionsMeta.php');
 
@@ -15,11 +17,8 @@ class Profile
         ];
 
         $args = array_merge($defaults, $args);
-        $can_edit_permissions = (current_user_can('pp_administer_content') && current_user_can('list_users'))
-            || (
-                current_user_can('pp_manage_permissions')
-                && (is_multisite() || current_user_can('edit_user', $user->ID))
-            );
+        // Match the access check of the user Edit Permissions screen (UI/AgentPermissions.php), so these links never lead to a "not permitted" page.
+        $can_edit_permissions = current_user_can('pp_administer_content') && current_user_can('list_users');
 
         $current_roles_edit_url = $can_edit_permissions
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_1")
@@ -297,7 +296,8 @@ class Profile
                 'show_subset_caption' => false,
                 'hide_checkboxes' => $hide_checkboxes,
                 'link_captions' => true,
-                'current_only' => true,
+                // List groups the user is not in yet when the current user can edit membership, so they can be added here.
+                'current_only' => empty($editable_ids),
                 'single_select' => $single_select
             ];
 

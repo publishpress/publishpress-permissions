@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TeaserHooks
 {
     public const DEFAULT_TEASER_TEXT = 'You do not have permission to view this content.';
@@ -116,6 +118,7 @@ class TeaserHooks
         $translations = [];
 
         foreach (glob(PRESSPERMIT_ABSPATH . '/languages/press-permit-core-*.po') ?: [] as $po_file) {
+            // phpcs:ignore WordPressVIPMinimum.Performance.FetchingRemoteData.FileGetContentsUnknown -- Reading local plugin translation files, not remote data.
             $contents = file_get_contents($po_file);
 
             if (false === $contents) {
@@ -173,8 +176,8 @@ class TeaserHooks
     private function getThemePreviewState()
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
-        $state = isset($_GET['pp_permissions_teaser_preview']) ? $_GET['pp_permissions_teaser_preview'] : '';
-        $state = sanitize_key(wp_unslash($state));
+        $state = isset($_GET['pp_permissions_teaser_preview']) ? wp_unslash($_GET['pp_permissions_teaser_preview']) : '';
+        $state = sanitize_key($state);
 
         return in_array($state, ['404', 'teaser'], true) ? $state : '';
     }
@@ -225,8 +228,8 @@ class TeaserHooks
     private function getThemeTeaserPreviewPostType()
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
-        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? $_GET['pp_permissions_teaser_post_type'] : '';
-        $post_type = sanitize_key(wp_unslash($post_type));
+        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? wp_unslash($_GET['pp_permissions_teaser_post_type']) : '';
+        $post_type = sanitize_key($post_type);
 
         if ($post_type && post_type_exists($post_type)) {
             return $post_type;
@@ -252,8 +255,8 @@ class TeaserHooks
     {
         $allowed = ['1', 'read_more', 'excerpt', 'x_chars', 'more', 'redirect'];
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
-        $type = isset($_GET['pp_permissions_teaser_type']) ? $_GET['pp_permissions_teaser_type'] : '1';
-        $type = sanitize_key(wp_unslash($type));
+        $type = isset($_GET['pp_permissions_teaser_type']) ? wp_unslash($_GET['pp_permissions_teaser_type']) : '1';
+        $type = sanitize_key($type);
 
         return in_array($type, $allowed, true) ? $type : '1';
     }

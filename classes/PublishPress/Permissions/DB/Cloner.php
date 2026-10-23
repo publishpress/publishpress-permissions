@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\DB;
 
+\defined('ABSPATH') || exit;
+
 class Cloner
 {
     public static function clonePermissions($agent_type, $agent_id, $source_agent)

@@ -2,6 +2,8 @@
 
 namespace PublishPress;
 
+\defined('ABSPATH') || exit;
+
 class PermissionsHooks
 {
     // object references
@@ -484,7 +486,7 @@ class PermissionsHooks
         if (
             defined('JSON_API_VERSION') && !defined('PP_FILTER_JSON_REST')
             && isset($_SERVER['REQUEST_URI'])
-            && (false !== strpos(esc_url_raw($_SERVER['REQUEST_URI']), apply_filters('json_url_prefix', 'wp-json')))
+            && (false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), apply_filters('json_url_prefix', 'wp-json')))
         ) {
             return;
         }

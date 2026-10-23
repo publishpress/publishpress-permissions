@@ -2,6 +2,8 @@
 
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 class LibArray
 {
     // derived from http://us3.php.net/manual/en/ref.array.php#80631

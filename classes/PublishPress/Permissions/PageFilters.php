@@ -4,6 +4,8 @@ namespace PublishPress\Permissions;
 
 // note: get_pages() hook is set by Hooks
 
+\defined('ABSPATH') || exit;
+
 /**
  * Replace the output from WP get_pages() with this filterable equivalent,
  * since get_pages() does not yet provide arg and query hooks

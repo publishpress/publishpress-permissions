@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class AdminFilters
 {
     private $inserting_post = false;
@@ -311,6 +313,7 @@ class AdminFilters
 
         // Always preserve the current user so they never vanish from their own list view.
         $query_obj->query_where .= $wpdb->prepare(
+            // phpcs:ignore WordPressVIPMinimum.Variables.RestrictedVariables.user_meta__wpdb__users -- Required for filtering the core Users list query by role visibility.
             " AND ({$wpdb->users}.ID = %d OR {$wpdb->users}.ID NOT IN ("
             . "SELECT user_id FROM {$wpdb->usermeta} "
             . "WHERE meta_key = %s AND meta_value REGEXP %s))",
@@ -421,7 +424,8 @@ class AdminFilters
             || !presspermit()->filteringEnabled() || ('revision' == PWP::findPostType()) || did_action('pp_disable_page_parent_filter') || ($this->inserting_post)
             || (
                 defined('ELEMENTOR_VERSION') && !empty($_REQUEST['actions'])                                     // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                && strpos($_REQUEST['actions'], '"action\":\"save_builder\",\"data\":{\"status\":\"autosave\"')  // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                // Inspect the slashed payload literally to detect Elementor autosaves; it is not stored or rendered.
+                && strpos($_REQUEST['actions'], '"action\":\"save_builder\",\"data\":{\"status\":\"autosave\"')  // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
             )
         ) {
             return $parent_id;
@@ -452,9 +456,9 @@ class AdminFilters
         if (
             !$parent_id && $orig_parent_id
             && (
-                (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field($_SERVER['SCRIPT_NAME']), 'async-upload.php'))
+                (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])), 'async-upload.php'))
                 || ('attachment' == PWP::findPostType())
-                || (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field($_SERVER['SCRIPT_NAME']), 'admin-ajax.php') && PWP::is_REQUEST('action', ['save-attachment', 'save-attachment-compat']))
+                || (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])), 'admin-ajax.php') && PWP::is_REQUEST('action', ['save-attachment', 'save-attachment-compat']))
             )
         ) {
             if (current_user_can('edit_post', $orig_parent_id)) {
@@ -483,7 +487,7 @@ class AdminFilters
 
     function fltPostStatus($status)
     {
-        if (presspermit()->isUserUnfiltered() || ('auto-draft' == $status) || (!empty($_SERVER['REQUEST_URI']) && strpos(sanitize_text_field($_SERVER['REQUEST_URI']), 'nav-menus.php'))) {
+        if (presspermit()->isUserUnfiltered() || ('auto-draft' == $status) || (!empty($_SERVER['REQUEST_URI']) && strpos(sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])), 'nav-menus.php'))) {
             return $status;
         }
 

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class NavMenus
 {
     function __construct() {
@@ -334,7 +336,7 @@ class NavMenus
                         if (isset($_POST[$col][$menu_item_id])) {
 
                             // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-                            $posted_vals[$property] = sanitize_text_field($_POST[$col][$menu_item_id]);
+                            $posted_vals[$property] = sanitize_text_field(wp_unslash($_POST[$col][$menu_item_id]));
                         }
                     }
 
@@ -342,7 +344,7 @@ class NavMenus
                         $posted_vals['classes'] = array_map('sanitize_html_class', explode(' ', $posted_vals['classes']));
 
                     // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-                    $menu_data = (!empty($_REQUEST['nav-menu-data'])) ? json_decode(stripslashes($_REQUEST['nav-menu-data'])) : [];
+                    $menu_data = (!empty($_REQUEST['nav-menu-data'])) ? json_decode(wp_unslash($_REQUEST['nav-menu-data'])) : [];
 
                     foreach($menu_data as $data_obj) {
                         if (!empty($data_obj->name) && ("menu-item-url[{$menu_item_id}]" == $data_obj->name)) {

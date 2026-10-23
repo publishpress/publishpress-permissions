@@ -341,6 +341,7 @@
                         // Create warning element
                         var $warning = $('<div>')
                             .addClass('pp-bulk-action-warning')
+                            .attr('role', 'alert')
                             .append($('<span>').addClass('dashicons dashicons-warning'))
                             .append($('<span>').addClass('pp-warning-text').text(warningMessage));
                         
@@ -437,6 +438,7 @@
                     
                     // Show empty state message
                     var $emptyState = $('<div>').addClass('pp-empty-state')
+                        .attr({ role: 'status', 'aria-live': 'polite' })
                         .append($('<span>').addClass('dashicons dashicons-info'))
                         .append($('<p>').text(emptyMessage));
 
@@ -840,7 +842,7 @@
         var $existingNotice = $select.closest('.pp-agent-type-content').find('.pp-user-added-notice');
         $existingNotice.remove();
 
-        var $notice = $('<div>').addClass('pp-user-added-notice').hide();
+        var $notice = $('<div>').addClass('pp-user-added-notice').attr({ role: 'status', 'aria-live': 'polite' }).hide();
 
         $notice
             .append($('<span>').addClass('dashicons dashicons-yes'))

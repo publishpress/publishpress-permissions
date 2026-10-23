@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class RESTInit
 {
     var $post_terms = [];
@@ -134,7 +136,8 @@ class RESTInit
             $args['post_status'] = $post_statuses;
 
             if (defined('PP_PAGE_PARENT_NOPAGING')) {
-            	$args['nopaging'] = 1;
+				// phpcs:ignore WordPressVIPMinimum.Performance.NoPaging.nopaging_nopaging -- Opt-in legacy constant for complete page parent trees.
+				$args['nopaging'] = 1;
 			}
 
             $args['orderby'] = presspermit()->getOption('page_parent_order') ? 'post_title' : 'menu_order';

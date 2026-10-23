@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class HintsItemExceptions
 {
     public static function itemHints($for_item_type)

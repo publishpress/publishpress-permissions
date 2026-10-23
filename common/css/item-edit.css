@@ -1017,7 +1017,7 @@
   box-shadow: 0 6px 20px rgba(249, 115, 22, 0.2), 0 3px 10px rgba(249, 115, 22, 0.12);
 }
 .pp-filter-count {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   padding: 2px;
   background: #e5e7eb;
@@ -1340,8 +1340,8 @@
   filter: brightness(1.05);
 }
 .pp-permission-select select:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(56, 88, 233, 0.2);
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 2px #2271b1;
 }
 .pp-permission-select select[disabled] {
   opacity: 0.6;
@@ -1789,11 +1789,11 @@
   font-weight: bold;
 }
 .pp-exceptions .pp-yes {
-  color: #090;
+  color: #007a00;
   font-weight: normal;
 }
 .pp-exceptions .pp-yes2 {
-  color: #0a0;
+  color: #008000;
   font-weight: bold;
 }
 .pp-no-exceptions {
@@ -1836,7 +1836,7 @@ select.pp-search-role {
 }
 */
 .pp-exc-notes {
-  color: #777;
+  color: #6d6d6d;
 }
 .pp-exc-notes div {
   margin-top: 0.3em;

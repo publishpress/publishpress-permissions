@@ -152,7 +152,7 @@
   color: #c00;
 }
 .pp-success {
-  color: #0b0;
+  color: #008000;
 }
 .pp-backtan {
   background-color: #858585;
@@ -216,7 +216,7 @@
   opacity: 50%;
 }
 #pp_settings_form div.pp-advanced-caution {
-  color: #777;
+  color: #6d6d6d;
   font-style: italic;
   margin-top: 5px;
   padding-top: 8px;
@@ -310,13 +310,13 @@ table.pp-options-table .pp-optionhint {
   width: 520px;
 }
 #pp-install #edd_key::-webkit-input-placeholder {
-  color: #aaa;
+  color: #767676;
 }
 #pp-install #edd_key::-moz-placeholder {
-  color: #aaa;
+  color: #767676;
 }
 #pp-install #edd_key::-ms-input-placeholder {
-  color: #aaa;
+  color: #767676;
 }
 #pp-install #activation-button {
   vertical-align: top;
@@ -447,7 +447,7 @@ table.pp-options-table .pp-optionhint {
   padding-left: 5px;
 }
 #pp-modules span.pp-ext-info {
-  color: #777;
+  color: #6d6d6d;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -498,7 +498,7 @@ table.pp-options-table .pp-optionhint {
   text-align: left;
   vertical-align: bottom;
   padding-bottom: 0;
-  color: #8b8b8b;
+  color: #6d6d6d;
   font-weight: bold;
 }
 .pp_cap_descripts td.defined {
@@ -553,9 +553,10 @@ div.pp-user-permissions-help p {
 #pp-import div.rsu-issue > h4 a:focus {
   text-decoration: none;
   color: #222;
-  box-shadow: none;
-  -moz-box-shadow: none;
-  -webkit-box-shadow: none;
+  box-shadow: 0 0 0 2px #2271b1;
+  -moz-box-shadow: 0 0 0 2px #2271b1;
+  -webkit-box-shadow: 0 0 0 2px #2271b1;
+  outline: 2px solid transparent;
 }
 #pp-import div.rsu-issue > h4 a:active {
   text-decoration: none;
@@ -1312,14 +1313,14 @@ input:disabled + .pp-slider {
   display: inline-block;
   padding: 0.25rem 0.75rem;
   background-color: #e8f5e9;
-  color: #4caf50;
+  color: #367c39;
   border-radius: 4px;
   font-size: 0.8rem;
   font-weight: 600;
 }
 .pp-integration-status.inactive {
   background-color: #ffebee;
-  color: #f44336;
+  color: #d81a0c;
 }
 .pp-integration-status.disabled {
   background-color: #d63638;
@@ -1344,7 +1345,7 @@ input:disabled + .pp-slider {
   backdrop-filter: blur(2px);
 }
 .pp-upgrade-overlay h4 {
-  color: #ff5722;
+  color: #ce3100;
   font-weight: 600;
   margin: 0 auto 10px auto;
   font-size: 16px;
@@ -2068,24 +2069,24 @@ input:disabled + .pp-slider {
 }
 .pp-file-access-settings .pp-utility-btn.attachments-utility,
 .pp-modules-settings .pp-utility-btn.attachments-utility {
-  border-color: #3b82f6;
-  color: #3b82f6;
+  border-color: #0b63f3;
+  color: #0b63f3;
 }
 .pp-file-access-settings .pp-utility-btn.attachments-utility:hover,
 .pp-modules-settings .pp-utility-btn.attachments-utility:hover {
-  background: #3b82f6 !important;
+  background: #0b63f3 !important;
   color: white !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25) !important;
 }
 .pp-file-access-settings .pp-utility-btn.nginx-integration,
 .pp-modules-settings .pp-utility-btn.nginx-integration {
-  border-color: #059669;
-  color: #059669;
+  border-color: #047d58;
+  color: #047d58;
 }
 .pp-file-access-settings .pp-utility-btn.nginx-integration:hover,
 .pp-modules-settings .pp-utility-btn.nginx-integration:hover {
-  background: #059669 !important;
+  background: #047d58 !important;
   color: white !important;
   transform: translateY(-1px) !important;
   box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25) !important;

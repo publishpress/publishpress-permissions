@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Revisionary;
 
+\defined('ABSPATH') || exit;
+
 class AdminNonAdministrator
 {
     function __construct() {

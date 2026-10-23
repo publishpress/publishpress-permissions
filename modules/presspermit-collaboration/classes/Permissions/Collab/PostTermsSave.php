@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostTermsSave
 {
     public static function getObjectTerms($object_ids, $taxonomy, $args = [])
@@ -165,7 +167,7 @@ class PostTermsSave
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                     $terms = (is_array($_POST['tax_input'][$taxonomy]))                                 // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
                     ? array_map('sanitize_key', $_POST['tax_input'][$taxonomy])                         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-                    : array_map('sanitize_key', explode(',', sanitize_text_field($_POST['tax_input'][$taxonomy])));  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                    : array_map('sanitize_key', explode(',', sanitize_text_field(wp_unslash($_POST['tax_input'][$taxonomy]))));  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
                     $term_info = self::parseTermNames($terms, $taxonomy);
                     return array_map('intval', self::fltPreObjectTerms($term_info['terms'], $taxonomy));
@@ -176,7 +178,7 @@ class PostTermsSave
                 // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
                 $terms = (is_array($_POST['tags_input']))                                                  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
                     ? array_map('sanitize_key', $_POST['tags_input'])                                      // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-                    : array_map('sanitize_key', explode(',', sanitize_text_field($_POST['tags_input'])));  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+                    : array_map('sanitize_key', explode(',', sanitize_text_field(wp_unslash($_POST['tags_input']))));  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
 
                 $term_info = self::parseTermNames($terms, $taxonomy);
                 return array_map('intval', self::fltPreObjectTerms($term_info['terms'], $taxonomy));
@@ -378,8 +380,7 @@ class PostTermsSave
                 $selected_terms = [];
 
             $user_terms = get_terms(
-                $taxonomy, 
-                ['fields' => 'ids', 'hide_empty' => false, 'required_operation' => 'assign', 'object_type' => $post_type]
+                ['taxonomy' => $taxonomy, 'fields' => 'ids', 'hide_empty' => false, 'required_operation' => 'assign', 'object_type' => $post_type]
             );
 
             $user = presspermit()->getUser();
@@ -401,8 +402,7 @@ class PostTermsSave
                     && !$user->getExceptionTerms('assign', 'additional', '', $taxonomy)
                 ) {
                     $user_edit_terms = get_terms(
-                        $taxonomy, 
-                        ['fields' => 'ids', 'hide_empty' => false, 'required_operation' => 'edit', 'object_type' => $post_type]
+                        ['taxonomy' => $taxonomy, 'fields' => 'ids', 'hide_empty' => false, 'required_operation' => 'edit', 'object_type' => $post_type]
                     );
 
                     // This should be redundant, but be sure that editing lockout on new post creation does not occur unless term exceptions are manually configured to allow it (pre-publication workflow submission)

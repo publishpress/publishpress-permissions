@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 if (!defined('PRESSPERMIT_NO_LEGACY_API') && !defined('PPC_VERSION')) {
     require_once(PRESSPERMIT_ABSPATH . '/library/api-legacy.php');
 }

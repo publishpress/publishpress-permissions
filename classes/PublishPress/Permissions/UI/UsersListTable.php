@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class UsersListTable extends \WP_List_Table
 {
     protected $_column_headers;
@@ -84,8 +86,9 @@ class UsersListTable extends \WP_List_Table
     public function column_cb($item)
     {
         return sprintf(
-            '<input type="checkbox" name="users[]" value="%s" />',
-            esc_attr($item->ID)
+            '<label class="screen-reader-text" for="pp_user_cb_%1$s">%2$s</label><input type="checkbox" name="users[]" id="pp_user_cb_%1$s" value="%1$s" />',
+            esc_attr($item->ID),
+            esc_html(sprintf(__('Select %s', 'press-permit-core'), $item->user_login))
         );
     }
 
@@ -100,9 +103,9 @@ class UsersListTable extends \WP_List_Table
     {
         $per_page = 10;
         $paged = $this->get_pagenum();
-        $search = isset($_REQUEST['s']) ? sanitize_text_field($_REQUEST['s']) : '';                          // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $orderby = isset($_REQUEST['orderby']) ? sanitize_text_field($_REQUEST['orderby']) : 'user_login';   // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        $order = isset($_REQUEST['order']) ? sanitize_text_field($_REQUEST['order']) : 'asc';                // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $search = isset($_REQUEST['s']) ? sanitize_text_field(wp_unslash($_REQUEST['s'])) : '';                          // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $orderby = isset($_REQUEST['orderby']) ? sanitize_text_field(wp_unslash($_REQUEST['orderby'])) : 'user_login';   // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+        $order = isset($_REQUEST['order']) ? sanitize_text_field(wp_unslash($_REQUEST['order'])) : 'asc';                // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 
         $args = [
             'number' => $per_page,

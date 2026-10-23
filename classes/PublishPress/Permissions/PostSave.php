@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class PostSave
 {
     public static function actSaveItem($item_source, $post_id, $post)

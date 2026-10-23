@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class CapabilityFiltersAdmin
 {
     private $in_has_cap_call = false;

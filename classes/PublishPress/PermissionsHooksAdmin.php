@@ -2,6 +2,8 @@
 
 namespace PublishPress;
 
+\defined('ABSPATH') || exit;
+
 class PermissionsHooksAdmin
 {
     private $config_updated = false;
@@ -69,6 +71,14 @@ class PermissionsHooksAdmin
         add_action('presspermit_trigger_cache_flush', [$this, 'wpeCacheFlush']);
         add_action('presspermit_activate', [$this, 'actPluginSettingsUpdated']);
         add_action('shutdown', [$this, 'actConfigUpdateFollowup']);
+
+        add_action('init', [$this, 'actRegisterWelcomeExperience'], 20);
+    }
+
+    public function actRegisterWelcomeExperience()
+    {
+        require_once(PRESSPERMIT_CLASSPATH . '/UI/WelcomeExperience.php');
+        new Permissions\UI\WelcomeExperience();
     }
 
     public function init()
@@ -502,8 +512,8 @@ class PermissionsHooksAdmin
                      'pp-edit-permissions' => 'presspermit-edit-permissions',
                  ] as $old_slug => $new_slug) {
             if (
-                strpos(esc_url_raw($_SERVER['REQUEST_URI']), "page=$old_slug")
-                && (false !== strpos(esc_url_raw($_SERVER['REQUEST_URI']), 'admin.php'))
+                strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), "page=$old_slug")
+                && (false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), 'admin.php'))
             ) {
                 global $submenu;
 
@@ -516,7 +526,7 @@ class PermissionsHooksAdmin
                     }
                 }
 
-                $arr_url = wp_parse_url(esc_url_raw($_SERVER['REQUEST_URI']));
+                $arr_url = wp_parse_url(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                 wp_redirect(admin_url('admin.php?' . str_replace("page=$old_slug", "page=$new_slug", $arr_url['query'])));
                 exit;
             }

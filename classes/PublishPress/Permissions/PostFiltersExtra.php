@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class PostFiltersExtra
 {
     // Other supported arguments, processed by downstream functions:

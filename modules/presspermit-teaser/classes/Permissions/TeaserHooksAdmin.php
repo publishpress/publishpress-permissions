@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TeaserHooksAdmin
 {
     function __construct()
@@ -110,7 +112,7 @@ class TeaserHooksAdmin
 	         wp_send_json( 'Error', 400 );
 	    }
 
-        $search = (isset($_GET['search'])) ? sanitize_text_field($_GET['search']) : '';
+        $search = (isset($_GET['search'])) ? sanitize_text_field(wp_unslash($_GET['search'])) : '';
         $post_type = (isset($_GET['post_type'])) ? sanitize_key($_GET['post_type']) : 'page';
         $search_content = !empty($_GET['search_content']);
         
@@ -204,7 +206,7 @@ class TeaserHooksAdmin
 	         wp_send_json( 'Error', 400 );
         }
         
-        $search = (isset($_GET['search'])) ? sanitize_text_field($_GET['search']) : '';
+        $search = (isset($_GET['search'])) ? sanitize_text_field(wp_unslash($_GET['search'])) : '';
 
         $results = get_terms(
             [
