@@ -152,22 +152,22 @@ class SettingsAdmin
         return __('The following settings are currently overridden by the constant PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you maintain). Media Library access will not be altered by Permissions.', 'press-permit-core');
 
         case 'admin_others_attached_to_readable' :
-        return __('Show files uploaded by others users if they are attached to a post the user is allowed to view.', 'press-permit-core');
+        return __("Users see other people's files if those files are in a post they're allowed to read.", 'press-permit-core');
 
         case 'admin_others_attached_files' :
-        return __('Show files uploaded by other users if they are attached to a post the user is allowed to edit.', 'press-permit-core');
+        return __("Users see other people's files if those files are in a post they're allowed to edit.", 'press-permit-core');
 
         case 'edit_others_attached_files' :
-        return __('Allow users to edit files uploaded by other users if they are attached to a post the user is allowed to edit.', 'press-permit-core');
+        return __("Users can edit other people's files if those files are in a post they're allowed to edit.", 'press-permit-core');
 
         case 'admin_others_unattached_files' :
-        return __('Show users all the files in the Media Library. Unchecking this box will hide media files that are uploaded by other users.', 'press-permit-core');
+        return __('Users see every file in the Media Library. If unchecked, they only see their own uploads, plus anything allowed below.', 'press-permit-core');
 
         case 'attachment_edit_requires_parent_access':
-        return __('Stop users from editing files uploaded by other users unless they are attached to a post the user is allowed to edit.', 'press-permit-core');
+        return __("Other people's files that aren't in a post the user can edit are read-only.", 'press-permit-core');
 
         case 'own_attachments_always_editable' :
-        return __('Allow users to edit files they have uploaded, regardless of other restrictions.', 'press-permit-core');
+        return __('Users can edit files they uploaded. This overrides every restriction above.', 'press-permit-core');
 
         case 'admin_nav_menu_partial_editing' :
         return __('Allow non-Administrators to rename menu items they cannot fully edit. Menu items will be locked into current positions.', 'press-permit-core');
