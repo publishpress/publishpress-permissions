@@ -333,12 +333,13 @@ class AgentEdit
         }
 
         if (!$members_only) {
+            // Group readers and name-availability checks expect the legacy slashed storage format.
             if (!empty($_REQUEST['group_name'])) {
-                $group->group_name = sanitize_text_field(wp_unslash($_REQUEST['group_name']));
+                $group->group_name = wp_slash(sanitize_text_field(wp_unslash($_REQUEST['group_name'])));
             }
 
             if (isset($_REQUEST['description']) && (!PWP::is_REQUEST('action') || ('pp_updateexceptions' != PWP::REQUEST_key('action')))) {
-                $group->group_description = sanitize_text_field(wp_unslash($_REQUEST['description']));
+                $group->group_description = wp_slash(sanitize_text_field(wp_unslash($_REQUEST['description'])));
             }
 
             $errors = new \WP_Error();
