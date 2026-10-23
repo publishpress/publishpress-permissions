@@ -474,6 +474,10 @@ class Profile
                 'single_select' => $single_select
             ];
 
+            if (!$hide_checkboxes) {
+                echo '<p class="description">' . esc_html__('Checked groups are current memberships. Check or uncheck a group, then save to update membership. A group link opens its permissions without changing membership.', 'press-permit-core') . '</p>';
+            }
+
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $css_id, $stored_groups, $args);
             
             $note = (defined('BP_VERSION'))
