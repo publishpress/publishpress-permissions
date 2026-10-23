@@ -1,5 +1,6 @@
 /*!
  * Select2 4.0.13
+ * PublishPress patch 1: native array, function, and trim checks for modern jQuery.
  * https://select2.github.io
  *
  * Released under the MIT license
@@ -3601,7 +3602,7 @@ S2.define('select2/data/ajax',[
 
     if (this._request != null) {
       // JSONP requests cannot always be aborted
-      if ($.isFunction(this._request.abort)) {
+      if (typeof this._request.abort === 'function') {
         this._request.abort();
       }
 
@@ -3626,7 +3627,7 @@ S2.define('select2/data/ajax',[
 
         if (self.options.get('debug') && window.console && console.error) {
           // Check to make sure that the response included a `results` key.
-          if (!results || !results.results || !$.isArray(results.results)) {
+          if (!results || !results.results || !Array.isArray(results.results)) {
             console.error(
               'Select2: The AJAX results did not return an array in the ' +
               '`results` key of the response.'
@@ -3685,7 +3686,7 @@ S2.define('select2/data/tags',[
 
     decorated.call(this, $element, options);
 
-    if ($.isArray(tags)) {
+    if (Array.isArray(tags)) {
       for (var t = 0; t < tags.length; t++) {
         var tag = tags[t];
         var item = this._normalizeItem(tag);
@@ -3761,7 +3762,7 @@ S2.define('select2/data/tags',[
   };
 
   Tags.prototype.createTag = function (decorated, params) {
-    var term = $.trim(params.term);
+    var term = String(params.term == null ? '' : params.term).trim();
 
     if (term === '') {
       return null;
@@ -5028,7 +5029,7 @@ S2.define('select2/defaults',[
 
     function matcher (params, data) {
       // Always return the object if there is nothing to compare
-      if ($.trim(params.term) === '') {
+      if (String(params.term == null ? '' : params.term).trim() === '') {
         return data;
       }
 
@@ -5133,7 +5134,7 @@ S2.define('select2/defaults',[
 
     var languages;
 
-    if (!$.isArray(language)) {
+    if (!Array.isArray(language)) {
       languages = [language];
     } else {
       languages = language;
@@ -5762,7 +5763,7 @@ S2.define('select2/core',[
       }
     } else if (mutations.removedNodes && mutations.removedNodes.length > 0) {
       changed = true;
-    } else if ($.isArray(mutations)) {
+    } else if (Array.isArray(mutations)) {
       $.each(mutations, function(evt, mutation) {
         if (self._isChangeMutation(evt, mutation)) {
           // We've found a change mutation.
@@ -5948,7 +5949,7 @@ S2.define('select2/core',[
 
     var newVal = args[0];
 
-    if ($.isArray(newVal)) {
+    if (Array.isArray(newVal)) {
       newVal = $.map(newVal, function (obj) {
         return obj.toString();
       });
@@ -6027,7 +6028,7 @@ S2.define('select2/compat/utils',[
   function syncCssClasses ($dest, $src, adapter) {
     var classes, replacements = [], adapted;
 
-    classes = $.trim($dest.attr('class'));
+    classes = ($dest.attr('class') || '').trim();
 
     if (classes) {
       classes = '' + classes; // for IE which returns object
@@ -6040,7 +6041,7 @@ S2.define('select2/compat/utils',[
       });
     }
 
-    classes = $.trim($src.attr('class'));
+    classes = ($src.attr('class') || '').trim();
 
     if (classes) {
       classes = '' + classes; // for IE which returns object
@@ -6081,7 +6082,7 @@ S2.define('select2/compat/containerCss',[
 
     var containerCssClass = this.options.get('containerCssClass') || '';
 
-    if ($.isFunction(containerCssClass)) {
+    if (typeof containerCssClass === 'function') {
       containerCssClass = containerCssClass(this.$element);
     }
 
@@ -6107,7 +6108,7 @@ S2.define('select2/compat/containerCss',[
 
     var containerCss = this.options.get('containerCss') || {};
 
-    if ($.isFunction(containerCss)) {
+    if (typeof containerCss === 'function') {
       containerCss = containerCss(this.$element);
     }
 
@@ -6138,7 +6139,7 @@ S2.define('select2/compat/dropdownCss',[
 
     var dropdownCssClass = this.options.get('dropdownCssClass') || '';
 
-    if ($.isFunction(dropdownCssClass)) {
+    if (typeof dropdownCssClass === 'function') {
       dropdownCssClass = dropdownCssClass(this.$element);
     }
 
@@ -6164,7 +6165,7 @@ S2.define('select2/compat/dropdownCss',[
 
     var dropdownCss = this.options.get('dropdownCss') || {};
 
-    if ($.isFunction(dropdownCss)) {
+    if (typeof dropdownCss === 'function') {
       dropdownCss = dropdownCss(this.$element);
     }
 
@@ -6211,7 +6212,7 @@ S2.define('select2/compat/initSelection',[
     this.initSelection.call(null, this.$element, function (data) {
       self._isInitialized = true;
 
-      if (!$.isArray(data)) {
+      if (!Array.isArray(data)) {
         data = [data];
       }
 
@@ -6358,7 +6359,7 @@ S2.define('select2/compat/matcher',[
     function wrappedMatcher (params, data) {
       var match = $.extend(true, {}, data);
 
-      if (params.term == null || $.trim(params.term) === '') {
+      if (params.term == null || String(params.term).trim() === '') {
         return match;
       }
 
