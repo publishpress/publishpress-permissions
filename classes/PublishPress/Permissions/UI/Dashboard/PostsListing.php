@@ -43,7 +43,7 @@ class PostsListing
 
             $join = \PublishPress\Permissions\PostFilters::instance()->fltPostsJoin('', ['context' => 'count_posts']);
             $perm_where = \PublishPress\Permissions\PostFilters::instance()->getPostsWhere(
-                ['post_types' => [$post_type], 'required_operation' => 'edit', 'join' => $join, 'context' => 'count_posts']
+                ['post_types' => [$post_type], 'required_operation' => 'edit', 'join' => $join, 'context' => 'count_posts', 'include_trash' => true]
             );
 
             $statuses_csv = implode("','", array_map('sanitize_key', array_keys($counts)));
