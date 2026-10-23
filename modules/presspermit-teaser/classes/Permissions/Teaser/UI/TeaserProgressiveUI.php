@@ -242,7 +242,7 @@ class TeaserProgressiveUI {
         $descriptions = [
             0 => esc_html__("No teaser will be applied", 'press-permit-core'),
             1 => esc_html__("Do not show teaser text before the blocked-user message", 'press-permit-core'),
-            'read_more' => esc_html__("Show a \"Read More\" link with a Teaser notice", 'press-permit-core'),
+            'read_more' => esc_html__("Show content before the Read More marker. If there is no marker or no content before it, show only the blocked-user message.", 'press-permit-core'),
             'excerpt' => esc_html__("Use the post excerpt as teaser content", 'press-permit-core'),
             'more' => esc_html__("Use excerpt or content before More tag", 'press-permit-core'),
             'x_chars' => esc_html__("Show the first X characters of the post content", 'press-permit-core'),

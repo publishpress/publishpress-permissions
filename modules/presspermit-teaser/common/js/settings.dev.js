@@ -964,7 +964,7 @@ jQuery(document).ready(function ($) {
             // This message, with the resolved target link when configured, is pre-rendered server-side.
             contentHtml = '<div class="pp-teaser-notice">' + String($sitePreview.data('redirect-message') || messageText || '') + '</div>';
         } else if (teaserType === 'read_more') {
-            contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), messageText);
+            contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore'), messageText);
         } else if (teaserType === 'more') {
             contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore'), messageText);
         } else if (teaserType === 'excerpt') {
