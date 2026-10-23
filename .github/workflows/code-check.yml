@@ -37,3 +37,5 @@ jobs:
         run: |
           php tests/unit/welcome-post-types.php
           php tests/unit/welcome-save.php
+      - name: Check nested exception post IDs
+        run: php tests/unit/exception-post-ids.php
