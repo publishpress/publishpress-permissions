@@ -7,7 +7,7 @@
     <arg name="colors"/>
     <arg name="cache"/>
     <ini name="memory_limit" value="256M"/>
-    <arg name="basepath" value="dist/press-permit-core"/>
+    <arg name="basepath" value="."/>
     <arg name="parallel" value="20"/>
     <arg value="ps"/>
 
@@ -29,6 +29,13 @@
     <rule ref="WordPress-VIP-Go"/>
     <rule ref="VariableAnalysis"/>
     <rule ref="PublishPressStandards"/>
+    <!-- Bundled modules share the parent plugin's Composer and export metadata. -->
+    <rule ref="PublishPressStandards.Composer.RequirePluginExtra">
+        <exclude-pattern>/modules/*</exclude-pattern>
+    </rule>
+    <rule ref="PublishPressStandards.Files.RequireGitAttributes">
+        <exclude-pattern>/modules/*</exclude-pattern>
+    </rule>
     <exclude-pattern>/\.web/</exclude-pattern>
     <exclude-pattern>/\.ddev/</exclude-pattern>
 </ruleset>

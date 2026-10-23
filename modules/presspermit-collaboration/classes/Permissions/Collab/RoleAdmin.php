@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class RoleAdmin
 {
     public static function hasGroupCap($has_cap, $cap_name, $group_id, $group_type)

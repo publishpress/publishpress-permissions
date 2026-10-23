@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Revisions;
 
+\defined('ABSPATH') || exit;
+
 class CapabilityFilters
 {
     function __construct()

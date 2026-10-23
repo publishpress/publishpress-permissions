@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class UsersListing
 {
     public function __construct() {
@@ -247,7 +249,7 @@ class UsersListing
                                 }
                                 
                                 if (defined('PP_USERS_UI_GROUP_FILTER_LINK') && !empty($_SERVER['REQUEST_URI'])) {
-                                    $url = add_query_arg('pp_group', $_id, esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $url = add_query_arg('pp_group', $_id, esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                                     if ($is_plain_export) {
                                         $content .= esc_html($name);
                                     } else {

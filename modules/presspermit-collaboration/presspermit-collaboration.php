@@ -20,7 +20,7 @@ along with this plugin.  If not, see <http://www.gnu.org/licenses/>.
 
 namespace PublishPress;
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+\defined('ABSPATH') || exit;
 
 if (!defined('PRESSPERMIT_COLLAB_FILE')) {
     define('PRESSPERMIT_COLLAB_FILE', __FILE__);

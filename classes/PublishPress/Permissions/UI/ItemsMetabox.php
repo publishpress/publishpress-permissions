@@ -7,6 +7,8 @@ namespace PublishPress\Permissions\UI;
  *
  */
 
+\defined('ABSPATH') || exit;
+
 require_once ABSPATH . 'wp-admin/includes/template.php';
 
 /**
@@ -188,7 +190,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     check_ajax_referer('pp-ajax');
 
                     $searched = (!empty($_REQUEST['quick-search-posttype-' . $post_type_name]))
-                    ? sanitize_text_field($_REQUEST['quick-search-posttype-' . $post_type_name])
+                    ? sanitize_text_field(wp_unslash($_REQUEST['quick-search-posttype-' . $post_type_name]))
                     : '';
 
                     if ($searched) {
@@ -197,7 +199,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
                         }
 
                         $post_status = ('attachment' == $post_type_name) ? 'inherit' : '';
-                        $search_results = query_posts(['s' => $searched, 'post_type' => $post_type_name, 'fields' => 'all', 'order' => 'DESC', 'post_status' => $post_status]);
+                        $search_query = new \WP_Query(['s' => $searched, 'post_type' => $post_type_name, 'fields' => 'all', 'order' => 'DESC', 'post_status' => $post_status]);
+                        $search_results = $search_query->posts;
 
                         remove_filter( "wp_allow_query_attachment_by_filename", "__return_true" );
                     }
@@ -532,7 +535,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
             'pad_counts' => false,
         ];
 
-        $terms = get_terms($taxonomy_name, $args);
+        $args['taxonomy'] = $taxonomy_name;
+        $terms = get_terms($args);
 
         // kevinB: add "(none)" item for include exceptions
         $none_obj = (object)[
@@ -555,7 +559,8 @@ class ItemsMetabox extends \Walker_Nav_Menu
             return;
         }
 
-        $num_pages = ceil(wp_count_terms($taxonomy_name, array_merge($args, ['number' => '', 'offset' => ''])) / $per_page);
+        // Query the count directly to retain support for WordPress versions before 5.6.
+        $num_pages = ceil(get_terms(array_merge($args, ['fields' => 'count', 'number' => '', 'offset' => ''])) / $per_page);
 
         $page_links = paginate_links([
             'base' => add_query_arg(
@@ -685,13 +690,12 @@ class ItemsMetabox extends \Walker_Nav_Menu
                     check_ajax_referer('pp-ajax');
 
                     $searched = (!empty($_REQUEST['quick-search-taxonomy-' . $taxonomy_name])) ? 
-                    sanitize_text_field($_REQUEST['quick-search-taxonomy-' . $taxonomy_name]) 
+                    sanitize_text_field(wp_unslash($_REQUEST['quick-search-taxonomy-' . $taxonomy_name]))
                     : '';
 
                     if ($searched) {
                         $search_results = get_terms(
-                            $taxonomy_name,
-                            ['name__like' => $searched, 'fields' => 'all', 'orderby' => 'count', 'order' => 'DESC', 'hierarchical' => false]
+                            ['taxonomy' => $taxonomy_name, 'name__like' => $searched, 'fields' => 'all', 'orderby' => 'count', 'order' => 'DESC', 'hierarchical' => false]
                         );
                     }
                 }
@@ -776,7 +780,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
         $args = [];
         $type = PWP::REQUEST_key('type');
 
-        $query = (!empty($_REQUEST['q'])) ? sanitize_text_field($_REQUEST['q']) : '';
+        $query = (!empty($_REQUEST['q'])) ? sanitize_text_field(wp_unslash($_REQUEST['q'])) : '';
 
         $args['walker'] = new ItemsMetabox;
         $args['is_search_result'] = true;
@@ -795,7 +799,7 @@ class ItemsMetabox extends \Walker_Nav_Menu
                 add_filter( "wp_allow_query_attachment_by_filename", "__return_true" );
 
                 // Query posts call executed on Edit Permissions screen quick search entry
-                query_posts([
+                $search_query = new \WP_Query([
                     'posts_per_page' => 999,    // phpcs:ignore WordPress.WP.PostsPerPage.posts_per_page_posts_per_page
                     'post_type' => $matches[2],
                     's' => $query,
@@ -810,21 +814,20 @@ class ItemsMetabox extends \Walker_Nav_Menu
 
                 require_once(PRESSPERMIT_CLASSPATH_COMMON . '/Ancestry.php');
 
-                if (!have_posts()) {
+                if (!$search_query->have_posts()) {
                     return;
                 }
 
-                while (have_posts()) {
-                    the_post();
-                    $var_by_ref = get_the_ID();
-                    echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], [get_post($var_by_ref)]), 0, (object)$args);
+                foreach ($search_query->posts as $search_post) {
+                    echo walk_nav_menu_tree(array_map([__CLASS__, 'setup_nav_menu_item'], [$search_post]), 0, (object)$args);
                 }
             } elseif ('taxonomy' == $matches[1]) {
                 if (!presspermit()->admin()->canSetAnyTermPermissions('', $matches[2])) {
                     wp_die(-1);
                 }
 
-                $terms = get_terms($matches[2], [
+                $terms = get_terms([
+                    'taxonomy' => $matches[2],
                     'name__like' => $query,
                     'hide_empty' => false,
                     'number' => 99,

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class REST_Workarounds
 {
     var $buffer_taxonomies = [];
@@ -46,10 +48,10 @@ class REST_Workarounds
             return;
         }
 
-        if (false === strpos(esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/wp/v2'))
+        if (false === strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), '/wp-json/wp/v2'))
             return;
 
-        $request_uri = esc_url_raw($_SERVER['REQUEST_URI']);
+        $request_uri = esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']));
 
         $pp = presspermit();
 
@@ -102,8 +104,7 @@ class REST_Workarounds
                     $taxonomy = $tx_obj->name;
 
                     $user_terms = get_terms(
-                        $taxonomy, 
-                        ['required_operation' => 'assign', 'hide_empty' => 0, 'fields' => 'ids', 'post_type' => $type_obj->name]
+                        ['taxonomy' => $taxonomy, 'required_operation' => 'assign', 'hide_empty' => 0, 'fields' => 'ids', 'post_type' => $type_obj->name]
                     );
 
                     $stored_terms = Collab::getObjectTerms($post_id, $taxonomy, ['fields' => 'ids']);

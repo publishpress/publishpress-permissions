@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
 use PublishPress\PWP;
 
+\defined('ABSPATH') || exit;
+
 class PostEdit
 {
     function __construct()

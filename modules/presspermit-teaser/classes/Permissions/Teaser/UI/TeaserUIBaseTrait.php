@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser\UI;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Base trait for Teaser UI functionality
  * Defines capabilities and methods 

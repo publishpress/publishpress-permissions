@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class Admin
 {
     // object references
@@ -219,7 +221,7 @@ class Admin
 
     public function isPluginAction()
     {
-        return (!empty($_SERVER['REQUEST_URI']) && (false !== strpos(esc_url_raw($_SERVER['REQUEST_URI']), 'plugin-install.php')))
+        return (!empty($_SERVER['REQUEST_URI']) && (false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), 'plugin-install.php')))
             || PWP::is_REQUEST('action', ['activate', 'deactivate']);
     }
 

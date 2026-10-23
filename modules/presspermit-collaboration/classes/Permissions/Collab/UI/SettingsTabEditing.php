@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\Collab\UI;
 
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabEditing
 {
     function __construct()

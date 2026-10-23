@@ -3,6 +3,8 @@
 namespace PublishPress\Permissions\UI;
 
 // Plugin admin UI function not inherently tied to WordPress Dashboard framework
+\defined('ABSPATH') || exit;
+
 class PluginPage
 {
     private static $instance = null;

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Primary query filtering functions for posts / terms listing and access validation
  *

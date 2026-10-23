@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class DashboardFilters
 {
     function __construct()

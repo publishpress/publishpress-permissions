@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class CollabHooks
 {
     function __construct() {
@@ -308,7 +310,7 @@ class CollabHooks
 
     function actPreventTrashSuffixing($wp_query)
     {
-        if (!empty($_SERVER['REQUEST_URI']) && false !== strpos(esc_url_raw($_SERVER['REQUEST_URI']), PWP::admin_rel_url('nav-menus.php')) 
+        if (!empty($_SERVER['REQUEST_URI']) && false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), PWP::admin_rel_url('nav-menus.php'))
         && PWP::is_POST('action', 'update')
         ) {
             // Workaround for Nav Menu deletion (@todo: still needed?)
@@ -331,7 +333,7 @@ class CollabHooks
         global $current_user;
 
         // Work around Divi Page Builder requiring off-type capabilities, which prevents Specific Permissions from satisfying edit_published_pages capability requirement
-        if ((is_admin() || PWP::empty_REQUEST('et_fb')) && (empty($_SERVER['REQUEST_URI']) || !strpos(esc_url_raw($_SERVER['REQUEST_URI']), 'admin-ajax.php') || !did_action('wp_ajax_et_fb_ajax_save'))) {
+        if ((is_admin() || PWP::empty_REQUEST('et_fb')) && (empty($_SERVER['REQUEST_URI']) || !strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), 'admin-ajax.php') || !did_action('wp_ajax_et_fb_ajax_save'))) {
             return $wp_sitecaps;
         }
 
@@ -451,7 +453,7 @@ class CollabHooks
             return;
         }
 
-        if (false !== strpos(esc_url_raw($_SERVER['REQUEST_URI']), '/wp-json/wp/v2')) {
+        if (false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), '/wp-json/wp/v2')) {
             require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/REST_Workarounds.php');
             new Collab\REST_Workarounds();
         }

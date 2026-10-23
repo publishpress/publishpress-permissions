@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentRolesAjax
 {
     public function __construct()
@@ -27,7 +29,7 @@ class AgentRolesAjax
             exit;
         }
 
-        $role_name = !empty($_GET['pp_role_name']) ? PWP::sanitizeEntry(sanitize_text_field($_GET['pp_role_name'])) : '';
+        $role_name = !empty($_GET['pp_role_name']) ? PWP::sanitizeEntry(sanitize_text_field(wp_unslash($_GET['pp_role_name']))) : '';
 
         $filterable_vars = ['for_item_source', 'for_item_type', 'role_name'];
         if ($force_vars = apply_filters('presspermit_ajax_role_ui_vars', [], compact($filterable_vars))) {

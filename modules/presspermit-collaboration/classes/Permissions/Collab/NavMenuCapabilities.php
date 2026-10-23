@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class NavMenuCapabilities
 {
     public static function adjustCapRequirement($reqd_caps)

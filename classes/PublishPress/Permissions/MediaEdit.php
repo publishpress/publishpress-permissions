@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class MediaEdit
 {
     public static function mapMetaCap($caps, $cap, $user_id, $args)

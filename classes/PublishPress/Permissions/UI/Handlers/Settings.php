@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Handlers;
 
+\defined('ABSPATH') || exit;
+
 class Settings
 {
     public function __construct()
@@ -56,7 +58,7 @@ class Settings
         $pp = presspermit();
 
         $reviewed_options = (!empty($_POST['all_options']))
-            ? array_map('sanitize_key', explode(',', sanitize_text_field($_POST['all_options'])))
+            ? array_map('sanitize_key', explode(',', sanitize_text_field(wp_unslash($_POST['all_options']))))
             : [];
 
         if (!$reviewed_options) {
@@ -66,7 +68,7 @@ class Settings
         $default_prefix = apply_filters('presspermit_options_apply_default_prefix', '', $args);
 
         $all_otype_options = (!empty($_POST['all_otype_options']))
-            ? array_map('sanitize_key', explode(',', sanitize_text_field($_POST['all_otype_options'])))
+            ? array_map('sanitize_key', explode(',', sanitize_text_field(wp_unslash($_POST['all_otype_options']))))
             : [];
 
         if ($all_otype_options) {
@@ -95,7 +97,7 @@ class Settings
         $pp = presspermit();
 
         $all_options = (!empty($_POST['all_options']))
-            ? array_map('sanitize_text_field', explode(',', sanitize_text_field($_POST['all_options'])))
+            ? array_map('sanitize_text_field', explode(',', sanitize_text_field(wp_unslash($_POST['all_options']))))
             : [];
 
         if (!$all_options) {
@@ -109,9 +111,9 @@ class Settings
         foreach (array_map('\PressShack\LibWP::sanitizeEntry', $all_options) as $option_basename) {
             if (!apply_filters('presspermit_custom_sanitize_setting', false, $option_basename, $default_prefix, $args)) {
                 if (isset($_POST[$option_basename]) && is_array($_POST[$option_basename])) {
-                    $pp->updateOption($default_prefix . $option_basename, array_map('sanitize_text_field', $_POST[$option_basename]), $args);
+                    $pp->updateOption($default_prefix . $option_basename, array_map('sanitize_text_field', wp_unslash($_POST[$option_basename])), $args);
                 } else {
-                    $val = (isset($_POST[$option_basename])) ? trim(sanitize_text_field($_POST[$option_basename])) : '';
+                    $val = (isset($_POST[$option_basename])) ? trim(sanitize_text_field(wp_unslash($_POST[$option_basename]))) : '';
 
                     $pp->updateOption($default_prefix . $option_basename, $val, $args);
                 }
@@ -119,7 +121,7 @@ class Settings
         }
 
         $all_otype_options = (!empty($_POST['all_otype_options']))
-            ? array_map('sanitize_text_field', explode(',', sanitize_text_field($_POST['all_otype_options'])))
+            ? array_map('sanitize_text_field', explode(',', sanitize_text_field(wp_unslash($_POST['all_otype_options']))))
             : [];
 
         if ($all_otype_options) {
@@ -135,7 +137,7 @@ class Settings
                         // Handle as array option (original behavior for enabled_post_types, enabled_taxonomies, etc.)
                         // support stored default values (to apply to any post type which does not have an explicit setting)
                         if (isset($_POST[$option_basename]) && is_array($_POST[$option_basename]) && isset($_POST[$option_basename][0])) {
-                            $_POST[$option_basename][''] = PWP::sanitizeEntry(sanitize_text_field($_POST[$option_basename][0]));
+                            $_POST[$option_basename][''] = PWP::sanitizeEntry(sanitize_text_field(wp_unslash($_POST[$option_basename][0])));
                             unset($_POST[$option_basename][0]);
                         }
 
@@ -151,7 +153,7 @@ class Settings
                         }
 
                         if (isset($_POST[$option_basename]) && is_array($_POST[$option_basename])) {
-                            $posted_val = array_map('sanitize_text_field', $_POST[$option_basename]);
+                            $posted_val = array_map('sanitize_text_field', wp_unslash($_POST[$option_basename]));
                             $value = array_merge($value, array_map('\PressShack\LibWP::sanitizeEntry', $posted_val));
                         }
 
@@ -179,7 +181,7 @@ class Settings
         // add deactivations (unchecked from Active list)
 
         $reviewed_modules = (!empty($_POST['presspermit_reviewed_modules']))
-            ? array_fill_keys(array_map('sanitize_key', explode(',', sanitize_text_field($_POST['presspermit_reviewed_modules']))), (object) [])
+            ? array_fill_keys(array_map('sanitize_key', explode(',', sanitize_text_field(wp_unslash($_POST['presspermit_reviewed_modules'])))), (object) [])
             : [];
 
         if ($reviewed_modules) {

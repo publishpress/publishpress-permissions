@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Revisionary;
 
+\defined('ABSPATH') || exit;
+
 class CapabilityFilters
 {
     function __construct()
@@ -73,7 +75,7 @@ class CapabilityFilters
             require_once(PRESSPERMIT_COLLAB_CLASSPATH . "/Revisionary/Admin{$legacy_suffix}.php");
             $admin_class = "\PublishPress\Permissions\Collab\Revisionary\Admin{$legacy_suffix}";
 
-            if (!empty($_SERVER['REQUEST_URI']) && false !== strpos( urldecode(esc_url_raw($_SERVER['REQUEST_URI'])), 'admin.php?page=rvy-revisions') ) {
+            if (!empty($_SERVER['REQUEST_URI']) && false !== strpos( urldecode(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']))), 'admin.php?page=rvy-revisions') ) {
                 $object_type = $this->postTypeFromCaps($reqd_caps);
             } else {
                 $object_type = PWP::findPostType($args[0]); // $args[0] is object id; type property will be pulled from object

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TermSave
 {
     // This handler is meant to fire whenever a term is inserted or updated.

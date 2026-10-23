@@ -3,6 +3,8 @@ namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
 use \PublishPress\Permissions\Collab\NavMenus as NavMenus;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/NavMenus.php');
 
 /**
@@ -91,7 +93,7 @@ class NavMenu
             global $wp_meta_boxes;
             unset($wp_meta_boxes['nav-menus']['side']['default']['nav-menu-theme-locations']);
 
-            if (!empty($_SERVER['REQUEST_URI']) && strpos(esc_url_raw($_SERVER['REQUEST_URI']), 'nav-menus.php?action=locations')) {
+            if (!empty($_SERVER['REQUEST_URI']) && strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), 'nav-menus.php?action=locations')) {
                 wp_die(esc_html__('You are not permitted to manage menu locations', 'press-permit-core'));
             }
         }

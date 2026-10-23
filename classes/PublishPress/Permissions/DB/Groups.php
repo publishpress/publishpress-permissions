@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\DB;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Groups class
  *

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class AdminWorkarounds
 {
     function __construct() {
@@ -289,7 +291,7 @@ class AdminWorkarounds
 
                 // block term creation if selected parent is explicity blocked
                 if ($term_parent) {
-                    $user_terms = get_terms($taxonomy, ['fields' => 'ids', 'hide_empty' => false, 'required_operation' => 'associate']);
+                    $user_terms = get_terms(['taxonomy' => $taxonomy, 'fields' => 'ids', 'hide_empty' => false, 'required_operation' => 'associate']);
                     if (!in_array($term_parent, $user_terms))
                         die(-1);
                 } else {
@@ -566,7 +568,7 @@ class AdminWorkarounds
         if (defined('DOING_AJAX')) {
             if (strpos($query, "ELECT t.name FROM") && !empty($_SERVER['HTTP_REFERER'])) {
                 if ($taxonomy = PWP::REQUEST_key('tax')) {
-                    $parsed = wp_parse_url(esc_url_raw($_SERVER['HTTP_REFERER']));
+                    $parsed = wp_parse_url(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])));
                     if (!empty($parsed['query'])) {
                         $qry_vars = [];
                         wp_parse_str($parsed['query'], $qry_vars);
