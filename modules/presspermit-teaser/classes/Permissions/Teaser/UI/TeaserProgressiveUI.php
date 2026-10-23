@@ -136,11 +136,6 @@ class TeaserProgressiveUI {
                     <!-- Combined Settings Table -->
                     <?php $this->renderCombinedSettingsTable($object_type, $item_label, $teaser_setting); ?>
 
-                    <!-- Teaser Notice Style Settings (per post type) -->
-                    <div class="pp-conditional-settings pp-teaser-notice-style-settings">
-                    <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
-                    </div>
-
                     <!-- Redirect Settings (shown only when redirect is selected) -->
                     <div class="pp-conditional-settings pp-teaser-redirect-settings">
                     <?php $this->renderRedirectSection($object_type); ?>
@@ -158,6 +153,26 @@ class TeaserProgressiveUI {
             </div>
         </div>
         <?php
+    }
+
+    public function renderStyleOptions() {
+        foreach ($this->use_teaser as $object_type => $teaser_setting) {
+            if (!in_array($object_type, $this->getAvailablePostTypes(), true)) {
+                continue;
+            }
+            // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Display state only.
+            $current_post_type = isset($_POST['selected_post_type']) ? sanitize_key($_POST['selected_post_type']) : $this->getFirstPostType();
+            $is_current = $object_type === $current_post_type;
+            ?>
+            <div class="pp-teaser-style-options-container<?php echo $is_current ? ' active' : ''; ?>" data-post-type="<?php echo esc_attr($object_type); ?>" <?php if (!$is_current) echo 'style="display:none"'; ?>>
+                <?php $this->renderPostTypeSelector('pp_style_options_current_post_type_' . $object_type); ?>
+                <div class="pp-teaser-notice-style-settings">
+                    <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
+                    <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
+                </div>
+            </div>
+            <?php
+        }
     }
 
     public function renderTextOptions() {
@@ -227,10 +242,15 @@ class TeaserProgressiveUI {
             1 => esc_html__("No Teaser Text", 'press-permit-core'),
             'read_more' => esc_html__("Use content before Read More link as teaser text", 'press-permit-core'),
             'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
-            'more' => esc_html__("Use Excerpt or pre-More as teaser text", 'press-permit-core'),
-            'x_chars' => esc_html__("Use Excerpt, pre-More or First X Characters as teaser text", 'press-permit-core'),
+            'more' => esc_html__("Legacy: Excerpt or pre-More as teaser text", 'press-permit-core'),
+            'x_chars' => esc_html__("Use first X characters of content as teaser text", 'press-permit-core'),
             'redirect' => esc_html__("Redirect to another post", 'press-permit-core')
         ];
+
+        // Retain a saved legacy mode, but offer distinct, predictable choices for new settings.
+        if ('more' !== $teaser_setting) {
+            unset($base_captions['more']);
+        }
 
         $captions = apply_filters(
             'presspermit_teaser_enable_options',
@@ -242,23 +262,12 @@ class TeaserProgressiveUI {
         $descriptions = [
             0 => esc_html__("No teaser will be applied", 'press-permit-core'),
             1 => esc_html__("Do not show teaser text before the blocked-user message", 'press-permit-core'),
-            'read_more' => esc_html__("Show a \"Read More\" link with a Teaser notice", 'press-permit-core'),
+            'read_more' => esc_html__("Show content before the Read More marker. If there is no marker or no content before it, show only the blocked-user message.", 'press-permit-core'),
             'excerpt' => esc_html__("Use the post excerpt as teaser content", 'press-permit-core'),
             'more' => esc_html__("Use excerpt or content before More tag", 'press-permit-core'),
             'x_chars' => esc_html__("Show the first X characters of the post content", 'press-permit-core'),
             'redirect' => esc_html__("Redirect users to another page when they try to access restricted content", 'press-permit-core')
         ];
-
-        if ($this->blockEditorActive) {
-            unset($captions['more']);
-            unset($descriptions['more']);
-            $captions['x_chars'] = esc_html__("Use first X characters of content as teaser text", 'press-permit-core');
-            $descriptions['x_chars'] = esc_html__("Use excerpt or first X characters of content", 'press-permit-core');
-
-            if ('more' === $teaser_setting) {
-                $teaser_setting = 'x_chars';
-            }
-        }
 
         ?>
         <table class="widefat fixed striped teaser-table pp-teaser-post-type-settings-table">

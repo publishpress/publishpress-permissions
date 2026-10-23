@@ -18,12 +18,19 @@ jQuery(document).ready(function($) {
         }
         
         var postType = String($activeContainer.data('post-type') || '');
+        var $styleContainer = $('.pp-teaser-style-options-container').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        }).first();
+        if (!$styleContainer.length) {
+            $styleContainer = $activeContainer;
+        }
         var $sitePreview = $('.pp-teaser-site-preview').filter(function() {
             return String($(this).data('post-type') || '') === postType;
         }).first();
 
         // Update both the full preview and the focused style preview.
         var $preview = $activeContainer.find('.pp-teaser-notice-preview')
+            .add($styleContainer.find('.pp-teaser-notice-preview'))
             .add($sitePreview.find('.pp-teaser-notice-preview'));
         
         if (!$preview.length) {
@@ -31,14 +38,14 @@ jQuery(document).ready(function($) {
         }
         
         // Default styles match the front-end output in PostsTeaser::wrapTeaserNotice().
-        var bgColor = $activeContainer.find('[name*="teaser_notice_bg_color"]').val() || '#f0f6fc';
-        var textColor = $activeContainer.find('[name*="teaser_notice_text_color"]').val() || '#1d2327';
-        var borderColor = $activeContainer.find('[name*="teaser_notice_border_color"]').val() || '#0073aa';
-        var borderWidth = $activeContainer.find('[name*="teaser_notice_border_width"]').val() || '4';
-        var borderPosition = $activeContainer.find('[name*="teaser_notice_border_position"]:checked').val() || 'left';
-        var padding = $activeContainer.find('[name*="teaser_notice_padding"]').val() || '15';
-        var borderRadius = $activeContainer.find('[name*="teaser_notice_border_radius"]').val() || '0';
-        var fontSize = $activeContainer.find('[name*="teaser_notice_font_size"]').val() || '14';
+        var bgColor = $styleContainer.find('[name*="teaser_notice_bg_color"]').val() || '#f0f6fc';
+        var textColor = $styleContainer.find('[name*="teaser_notice_text_color"]').val() || '#1d2327';
+        var borderColor = $styleContainer.find('[name*="teaser_notice_border_color"]').val() || '#0073aa';
+        var borderWidth = $styleContainer.find('[name*="teaser_notice_border_width"]').val() || '4';
+        var borderPosition = $styleContainer.find('[name*="teaser_notice_border_position"]:checked').val() || 'left';
+        var padding = $styleContainer.find('[name*="teaser_notice_padding"]').val() || '15';
+        var borderRadius = $styleContainer.find('[name*="teaser_notice_border_radius"]').val() || '0';
+        var fontSize = $styleContainer.find('[name*="teaser_notice_font_size"]').val() || '14';
         
         // Apply styles to preview with smooth transition
         $preview.css({

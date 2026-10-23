@@ -39,3 +39,18 @@ jobs:
           php tests/unit/welcome-save.php
       - name: Check before and after teaser content boundaries
         run: php tests/unit/teaser-content-boundaries.php
+      - name: Check Read More fallback behavior
+        run: php tests/unit/read-more-fallback.php
+
+  teaser-style-tests:
+    name: Teaser style tab regressions
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependencies
+        run: npm install --prefix "$RUNNER_TEMP/teaser-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0
+      - name: Check source and production scripts
+        run: NODE_PATH="$RUNNER_TEMP/teaser-tests/node_modules" node tests/unit/teaser-style-tab.js
