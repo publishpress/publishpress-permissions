@@ -608,8 +608,8 @@ class AgentsDynamicUI
 
         if (!$this->agents_js_queue) {
             $this->agents_js_queue = [];
-            // WordPress prints queued footer scripts at priority 20.
-            add_action('admin_print_footer_scripts', [$this, 'actAjaxSelectionScripts'], 19);
+            // Must run before _wp_footer_scripts (priority 10) so admin.js enqueued here still prints.
+            add_action('admin_print_footer_scripts', [$this, 'actAjaxSelectionScripts'], 9);
         }
 
         $suppress_selection_js = !empty($args['suppress_selection_js']);
