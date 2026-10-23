@@ -299,7 +299,8 @@ class Profile
                 'show_subset_caption' => false,
                 'hide_checkboxes' => $hide_checkboxes,
                 'link_captions' => true,
-                'current_only' => true,
+                // List groups the user is not in yet when the current user can edit membership, so they can be added here.
+                'current_only' => empty($editable_ids),
                 'single_select' => $single_select
             ];
 
