@@ -296,6 +296,7 @@ class GroupsListTable extends GroupsListTableBase
                         $actions && (!$group->metagroup_id || (('wp_role' == $group->metagroup_type)
                             && \PublishPress\Permissions\DB\Groups::isDeletedRole($group->metagroup_id)))
                     ) {
+                        echo "<label class='screen-reader-text' for='group_" . (int) $group_id . "'>" . esc_html(sprintf(__('Select %s', 'press-permit-core'), $group->group_name)) . '</label>';
                         echo "<input type='checkbox' name='groups[]' id='group_" . (int) $group_id . "' value='" . (int) $group_id . "' />";
                     }
 

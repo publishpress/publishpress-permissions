@@ -540,7 +540,7 @@ class TermEdit
     {
         if ($tx = get_taxonomy($term->taxonomy)) :
             ?>
-            <label for="pp_enable_taxonomy"><input type="checkbox" name="pp_enable_taxonomy"/>
+            <label for="pp_enable_taxonomy_cb"><input type="checkbox" name="pp_enable_taxonomy" id="pp_enable_taxonomy_cb"/>
                 <?php printf(esc_html__('enable custom permissions for %s', 'press-permit-core'), esc_html($tx->labels->name)); ?>
             </label>
         <?php

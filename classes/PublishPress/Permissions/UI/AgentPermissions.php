@@ -267,7 +267,7 @@ class AgentPermissions
                                     <?php elseif ($agent_id) : ?>
                                         <!-- Group Name Row -->
                                         <tr>
-                                            <th><label><?php echo esc_html__('Name:', 'press-permit-core'); ?></label></th>
+                                            <th><label for="group_name"><?php echo esc_html__('Name:', 'press-permit-core'); ?></label></th>
                                             <td>
                                                 <input type="text" name="group_name" id="group_name"
                                                     value="<?php echo esc_attr($agent->name); ?>"
