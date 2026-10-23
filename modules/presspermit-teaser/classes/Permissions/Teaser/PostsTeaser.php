@@ -509,66 +509,24 @@ class PostsTeaser
 
         // Read More Link as Teaser - show content before more tag with a "Read More" link
         } elseif (!empty($read_more_teaser[$post_type])) {
-            if (ReadMoreHandler::hasMoreTag($post)) {
-                // Extract content before the more tag
-                $pre_more_content = ReadMoreHandler::extractPreMoreContent($post);
-                
-                if ($pre_more_content !== false) {
-                    $post->post_content = $pre_more_content;
-                    $post->post_excerpt = wp_strip_all_tags($pre_more_content);
-                    
-                    // Get custom link text if configured
-                    $link_text = ReadMoreHandler::getReadMoreLinkText($post_type);
-                    
-                    // Generate and append the Read More link
-                    $read_more_link = ReadMoreHandler::generateReadMoreLink($post, [
-                        'link_text' => $link_text,
-                        'redirect_to_login' => true,
-                        'css_class' => 'pp-read-more-teaser',
-                    ]);
-                    
-                    $post->post_content = self::appendTeaserNotice($post->post_content, $read_more_link);
-                } else {
-                    // Fallback: no more tag found, use configured teaser text or excerpt
-                    if (!empty($post->post_excerpt)) {
-                        // Get login notice message
-                        $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
+            $pre_more_content = ReadMoreHandler::extractPreMoreContent($post);
 
-                        // Not escaped: preserves formatting entered via the notice's rich-text editor.
-                        $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
-                        
-                        // Wrap excerpt in paragraph block markup to prevent theme layout issues
-                        if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                            $post->post_content = self::appendTeaserNotice('<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->', $notice_html);
-                        } else {
-                            $post->post_content = self::appendTeaserNotice('<p>' . $post->post_excerpt . '</p>', $notice_html);
-                        }
-                    } elseif (isset($teaser_replace[$post_type]['post_content'])) {
-                        $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
-                    } else {
-                        $post->post_content = self::getReadMoreFallbackContent($post_type);
-                    }
-                }
+            if (false !== $pre_more_content && '' !== trim($pre_more_content)) {
+                $post->post_content = $pre_more_content;
+                $post->post_excerpt = wp_strip_all_tags($pre_more_content);
+
+                $link_text = ReadMoreHandler::getReadMoreLinkText($post_type);
+                $read_more_link = ReadMoreHandler::generateReadMoreLink($post, [
+                    'link_text' => $link_text,
+                    'redirect_to_login' => true,
+                    'css_class' => 'pp-read-more-teaser',
+                ]);
+
+                $post->post_content = self::appendTeaserNotice($post->post_content, $read_more_link);
             } else {
-                // Fallback: no more tag found, use excerpt or configured teaser text
-                if (!empty($post->post_excerpt)) {
-                    // Get login notice message
-                    $login_notice = \PublishPress\Permissions\TeaserHooks::getTeaserOptionOrDefault('tease_replace_content', $post_type);
-
-                    // Not escaped: preserves formatting entered via the notice's rich-text editor.
-                    $notice_html = self::wrapTeaserNotice($login_notice, $post_type);
-                    
-                    // Wrap excerpt in paragraph block markup to prevent theme layout issues
-                    if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                        $post->post_content = self::appendTeaserNotice('<!-- wp:paragraph --><p>' . $post->post_excerpt . '</p><!-- /wp:paragraph -->', $notice_html);
-                    } else {
-                        $post->post_content = self::appendTeaserNotice('<p>' . $post->post_excerpt . '</p>', $notice_html);
-                    }
-                } elseif (isset($teaser_replace[$post_type]['post_content'])) {
-                    $post->post_content = str_replace('%permalink%', get_permalink($post->ID), $teaser_replace[$post_type]['post_content']);
-                } else {
-                    $post->post_content = self::getReadMoreFallbackContent($post_type);
-                }
+                // No usable delimiter: show only the blocked-user notice, never an excerpt fallback.
+                $post->post_content = self::getReadMoreFallbackContent($post_type);
+                $post->post_excerpt = '';
             }
 
             self::applyTeaserPrependAppend($post, $post_type, $teaser_prepend, $teaser_append);

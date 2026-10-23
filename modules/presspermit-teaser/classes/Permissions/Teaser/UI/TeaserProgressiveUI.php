@@ -242,10 +242,15 @@ class TeaserProgressiveUI {
             1 => esc_html__("No Teaser Text", 'press-permit-core'),
             'read_more' => esc_html__("Use content before Read More link as teaser text", 'press-permit-core'),
             'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
-            'more' => esc_html__("Use Excerpt or pre-More as teaser text", 'press-permit-core'),
-            'x_chars' => esc_html__("Use Excerpt, pre-More or First X Characters as teaser text", 'press-permit-core'),
+            'more' => esc_html__("Legacy: Excerpt or pre-More as teaser text", 'press-permit-core'),
+            'x_chars' => esc_html__("Use first X characters of content as teaser text", 'press-permit-core'),
             'redirect' => esc_html__("Redirect to another post", 'press-permit-core')
         ];
+
+        // Retain a saved legacy mode, but offer distinct, predictable choices for new settings.
+        if ('more' !== $teaser_setting) {
+            unset($base_captions['more']);
+        }
 
         $captions = apply_filters(
             'presspermit_teaser_enable_options',
@@ -257,23 +262,12 @@ class TeaserProgressiveUI {
         $descriptions = [
             0 => esc_html__("No teaser will be applied", 'press-permit-core'),
             1 => esc_html__("Do not show teaser text before the blocked-user message", 'press-permit-core'),
-            'read_more' => esc_html__("Show a \"Read More\" link with a Teaser notice", 'press-permit-core'),
+            'read_more' => esc_html__("Show content before the Read More marker. If there is no marker or no content before it, show only the blocked-user message.", 'press-permit-core'),
             'excerpt' => esc_html__("Use the post excerpt as teaser content", 'press-permit-core'),
             'more' => esc_html__("Use excerpt or content before More tag", 'press-permit-core'),
             'x_chars' => esc_html__("Show the first X characters of the post content", 'press-permit-core'),
             'redirect' => esc_html__("Redirect users to another page when they try to access restricted content", 'press-permit-core')
         ];
-
-        if ($this->blockEditorActive) {
-            unset($captions['more']);
-            unset($descriptions['more']);
-            $captions['x_chars'] = esc_html__("Use first X characters of content as teaser text", 'press-permit-core');
-            $descriptions['x_chars'] = esc_html__("Use excerpt or first X characters of content", 'press-permit-core');
-
-            if ('more' === $teaser_setting) {
-                $teaser_setting = 'x_chars';
-            }
-        }
 
         ?>
         <table class="widefat fixed striped teaser-table pp-teaser-post-type-settings-table">
