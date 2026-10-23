@@ -25,7 +25,7 @@ class TeaserHooksAdmin
                     wp_register_style('presspermit-select2', $urlpath . '/common/libs/select2/select2.min.css', array(), '4.0.13', 'screen');
                 }
                 if (!wp_script_is('presspermit-select2', 'registered')) {
-                    wp_register_script('presspermit-select2', $urlpath . '/common/libs/select2/select2.full.min.js', ['jquery'], '4.0.13', false);
+                    wp_register_script('presspermit-select2', $urlpath . '/common/libs/select2/select2.full.min.js', ['jquery'], '4.0.13-pp.1', false);
                 }
                 wp_enqueue_style('presspermit-select2');
                 wp_enqueue_script('presspermit-select2');

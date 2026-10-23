@@ -37,3 +37,16 @@ jobs:
         run: |
           php tests/unit/welcome-post-types.php
           php tests/unit/welcome-save.php
+
+  select2-tests:
+    name: Select2 modern jQuery compatibility
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install isolated browser test dependencies
+        run: npm install --prefix "$RUNNER_TEMP/select2-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0
+      - name: Check all distributed Select2 bundles
+        run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/unit/select2-native.js
