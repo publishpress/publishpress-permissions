@@ -125,7 +125,7 @@ class SettingsTabModules
                         }
 
                         if (!empty($all_modules)): ?>
-                            <div class="pp-integrations-container">
+                            <div class="pp-integrations-container" data-pro-feature-label="<?php esc_attr_e('Pro Feature', 'press-permit-core'); ?>">
                                 <div class="pp-integrations-grid">
                                     <?php foreach ($all_modules as $module):
                                         $slug = $module['slug'];

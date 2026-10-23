@@ -621,9 +621,6 @@ ul.pp-list_horiz li {
 ul.pp-list_horiz li:hover {
   outline: none;
 }
-ul.pp-list_horiz li:focus {
-  outline: none;
-}
 ul.pp-list_horiz li:active {
   outline: none;
 }
@@ -645,9 +642,10 @@ ul.pp-list_horiz li.agp-agent a:hover {
 }
 ul.pp-list_horiz li.agp-agent a:focus {
   text-decoration: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 2px #2271b1;
+  -moz-box-shadow: 0 0 0 2px #2271b1;
+  box-shadow: 0 0 0 2px #2271b1;
+  outline: 2px solid transparent;
   color: #222;
 }
 ul.pp-list_horiz li.agp-agent a:active {
