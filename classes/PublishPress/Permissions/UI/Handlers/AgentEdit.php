@@ -266,6 +266,12 @@ class AgentEdit
                     $args['via_item_source'] = 'post';
                     $args['via_item_type'] = '';
 
+                } elseif ($via_type && $this->isStoredTaxonomy($via_type)) {
+                    // Taxonomy registered later in the request (after this handler runs), but its terms exist
+                    $args['via_item_source'] = 'term';
+                    $args['via_item_type'] = $via_type;
+                    $args['item_id'] = PWP::termidToTtid($item_id, $via_type);
+
                 } else {
                     $args['via_item_source'] = $via_type;
                     $args['via_item_type'] = '';
@@ -300,6 +306,17 @@ class AgentEdit
                 $pp->assignExceptions($agents, $agent_type, $args);
             }
         }
+    }
+
+    // True if term_taxonomy rows exist for a taxonomy that is not registered yet in this request
+    private function isStoredTaxonomy($taxonomy)
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        return (bool) $wpdb->get_var(
+            $wpdb->prepare("SELECT term_taxonomy_id FROM $wpdb->term_taxonomy WHERE taxonomy = %s LIMIT 1", $taxonomy)
+        );
     }
 
     private function addGroup($agent_type)
