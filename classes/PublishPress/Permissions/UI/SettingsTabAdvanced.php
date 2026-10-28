@@ -577,6 +577,8 @@ class SettingsTabAdvanced
             </tr>
         <?php endif; // any options accessable in this section
 
+        do_action('presspermit_advanced_options_after_role_integration_ui');
+
         $section = 'misc'; // --- MISC SECTION ---
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <tr>

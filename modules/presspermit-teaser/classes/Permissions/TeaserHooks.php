@@ -458,9 +458,6 @@ class TeaserHooks
                 $pre_more_content = \PublishPress\Permissions\Teaser\ReadMoreHandler::extractPreMoreContent($post);
                 $preview_content = (false !== $pre_more_content) ? wpautop($pre_more_content) : '';
 
-                if ('' === $preview_content && 'read_more' === $teaser_type && $post->post_excerpt) {
-                    $preview_content = wpautop($post->post_excerpt);
-                }
             } elseif ('excerpt' === $teaser_type) {
                 if ($post->post_excerpt) {
                     $excerpt_text = $post->post_excerpt;
