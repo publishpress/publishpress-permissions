@@ -85,33 +85,26 @@ class AgentPermissions
             $group_variant = 'pp_group';
         }
 
-        $groups_link = ($wp_http_referer && strpos($wp_http_referer, 'presspermit-groups'))
-            ? add_query_arg('group_variant', $group_variant, $wp_http_referer)
-            : admin_url("admin.php?page=presspermit-groups&group_variant=$group_variant"); ?>
+        ?>
 
         <?php if (PWP::is_GET('updated')) : ?>
             <div id="message" class="updated">
                 <p>
 
                     <?php if (!PWP::empty_REQUEST('pp_roles')) : ?>
-                        <strong><?php esc_html_e('Roles updated.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Roles updated.', 'press-permit-core'); ?>
 
                     <?php elseif (!PWP::empty_REQUEST('pp_exc')) : ?>
-                        <strong><?php esc_html_e('Specific Permissions updated.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Specific Permissions updated.', 'press-permit-core'); ?>
 
                     <?php elseif (!PWP::empty_REQUEST('pp_cloned')) : ?>
-                        <strong><?php esc_html_e('Roles and Permissions copied.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Roles and Permissions copied.', 'press-permit-core'); ?>
 
                     <?php elseif (!PWP::empty_REQUEST('pp_groups')) : ?>
-                        <strong><?php esc_html_e('Group membership updated.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Group membership updated.', 'press-permit-core'); ?>
 
                     <?php else : ?>
-                        <strong><?php esc_html_e('Group updated.', 'press-permit-core') ?>&nbsp;</strong>
-
-                        <?php
-                        if ($wp_http_referer) : ?>
-                            <a href="<?php echo esc_url($groups_link); ?>"><?php esc_html_e('Back to permissions list', 'press-permit-core'); ?></a>
-                        <?php endif; ?>
+                        <?php esc_html_e('Group updated.', 'press-permit-core'); ?>
 
                     <?php endif; ?>
 
@@ -375,7 +368,7 @@ class AgentPermissions
                                     <input type="hidden" name="wp_http_referer" value="<?php echo esc_url($wp_http_referer); ?>" />
                                 <?php endif; ?>
                                 <?php
-                            Dashboard\Profile::displayUserGroups(
+                            $has_editable_memberships = Dashboard\Profile::displayUserGroups(
                                 $agent_id,
                                 [
                                     'initial_hide' => false,
@@ -384,12 +377,14 @@ class AgentPermissions
                                     'hide_checkboxes' => false,
                                 ]
                             );
-                                submit_button(
-                                    esc_html__('Update Group Membership', 'press-permit-core'),
-                                    'primary pp-primary-button pp-button',
-                                    'submit_groups',
-                                    false
-                                );
+                                if ($has_editable_memberships) {
+                                    submit_button(
+                                        esc_html__('Update Group Membership', 'press-permit-core'),
+                                        'primary pp-primary-button pp-button',
+                                        'submit_groups',
+                                        false
+                                    );
+                                }
                                 ?>
                             </form>
                             <?php
