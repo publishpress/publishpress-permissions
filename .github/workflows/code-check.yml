@@ -47,6 +47,8 @@ jobs:
           php tests/unit/minimum-version-bootstrap.php 5.4
       - name: Check nested exception post IDs
         run: php tests/unit/exception-post-ids.php
+      - name: Check before and after teaser content boundaries
+        run: php tests/unit/teaser-content-boundaries.php
 
   unsupported-php-bootstrap:
     name: Reject unsupported PHP before loading dependencies

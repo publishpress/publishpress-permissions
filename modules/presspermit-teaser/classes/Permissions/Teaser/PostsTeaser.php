@@ -588,7 +588,7 @@ class PostsTeaser
                 // Wrap teaser text in paragraph block markup to prevent theme layout issues
                 // This ensures WordPress block themes don't apply unwanted alignfull or full-width styles
                 if (has_blocks($post->post_content) || strpos($post->post_content, '<!-- wp:') !== false) {
-                    $post->post_content = '<!-- wp:paragraph --><p>' . $teaser_content . '</p><!-- /wp:paragraph -->';
+                    $post->post_content = '<!-- wp:html -->' . $teaser_content . '<!-- /wp:html -->';
                 } else {
                     $post->post_content = $teaser_content;
                 }
@@ -635,9 +635,8 @@ class PostsTeaser
 
             foreach (!empty($teaser_prepend[$post_type]) ? $teaser_prepend[$post_type] : [] as $col => $entry) {
                 if (isset($post->$col)) {
-                    // Wrap prepend content in block markup if post uses blocks
-                    if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
-                        $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                    if ('post_content' === $col) {
+                        $entry = self::formatTeaserContentFragment($entry, $post->$col);
                     }
                     $post->$col = $entry . $post->$col;
                 }
@@ -646,15 +645,11 @@ class PostsTeaser
             foreach (!empty($teaser_append[$post_type]) ? $teaser_append[$post_type] : [] as $col => $entry) {
                 if (isset($post->$col)) {
                     if (($col == 'post_content') && !empty($more_pos)) {  // WP will strip off anything after the more comment
-                        // Wrap append content in block markup if post uses blocks
-                        if ($entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
-                            $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
-                        }
+                        $entry = self::formatTeaserContentFragment($entry, $post->$col);
                         $post->$col = str_replace('<!--more-->', "$entry<!--more-->", $post->$col);
                     } else {
-                        // Wrap append content in block markup if post uses blocks
-                        if ($col == 'post_content' && $entry && (has_blocks($post->$col) || strpos($post->$col, '<!-- wp:') !== false)) {
-                            $entry = '<!-- wp:paragraph --><p>' . $entry . '</p><!-- /wp:paragraph -->';
+                        if ('post_content' === $col) {
+                            $entry = self::formatTeaserContentFragment($entry, $post->$col);
                         }
                         $post->$col .= $entry;
                     }
@@ -667,9 +662,9 @@ class PostsTeaser
             $has_block_markup = has_blocks($post->post_content) || (strpos($post->post_content, '<!-- wp:') !== false);
 
             if ($has_block_markup) {
-                $post->post_content = '<!-- wp:paragraph --><p class="pp-teaser-wrapper">' . $post->post_content . '</p><!-- /wp:paragraph -->';
+                $post->post_content = '<!-- wp:html --><div class="pp-teaser-wrapper">' . $post->post_content . '</div><!-- /wp:html -->';
             } else {
-                $post->post_content = '<p class="pp-teaser-wrapper">' . $post->post_content . '</p>';
+                $post->post_content = '<div class="pp-teaser-wrapper">' . $post->post_content . '</div>';
             }
         }
 
@@ -725,8 +720,11 @@ class PostsTeaser
             return $entry;
         }
 
+        // Each before/after fragment must close before the styled blocked-user notice begins.
+        $entry = force_balance_tags($entry);
+
         if (has_blocks($content) || false !== strpos($content, '<!-- wp:')) {
-            return '<!-- wp:paragraph -->' . wpautop($entry) . '<!-- /wp:paragraph -->';
+            return '<!-- wp:html -->' . wpautop($entry) . '<!-- /wp:html -->';
         }
 
         return wpautop($entry);
