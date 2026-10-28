@@ -55,13 +55,15 @@ jobs:
           php-version: '8.2'
           coverage: none
       - name: Install isolated browser test dependencies
-        run: npm install --prefix "$RUNNER_TEMP/select2-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0 playwright@1.61.1
+        run: npm install --prefix "$RUNNER_TEMP/select2-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0 playwright@1.61.1 select2-legacy@npm:select2@4.0.13
       - name: Install Chromium
         run: node "$RUNNER_TEMP/select2-tests/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Check all distributed Select2 bundles
         run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/unit/select2-native.js
       - name: Check browser interactions and submitted form values
         run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/browser/select2-workflows.js
+      - name: Check compatibility when another plugin loads Select2 4.0 first
+        run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/browser/select2-workflows.js --preload-legacy
 
   unsupported-php-bootstrap:
     name: Reject unsupported PHP before loading dependencies

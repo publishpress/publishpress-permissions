@@ -8,6 +8,7 @@ const { execFileSync } = require('node:child_process');
 const { chromium } = require('playwright');
 const root = path.resolve(__dirname, '../..');
 const baseline = process.argv.find(arg => arg.startsWith('--baseline='))?.slice('--baseline='.length);
+const preloadLegacy = process.argv.includes('--preload-legacy');
 
 function asset(file) {
     if (baseline) {
@@ -76,6 +77,9 @@ async function fixture(browser, mode, suffix, width) {
         await page.addStyleTag({ content: asset(css) });
     }
     await page.addScriptTag({ content: fs.readFileSync(require.resolve('jquery/dist/jquery.js'), 'utf8') });
+    if (preloadLegacy) {
+        await page.addScriptTag({ content: fs.readFileSync(require.resolve('select2-legacy/dist/js/select2.full.min.js'), 'utf8') });
+    }
     await page.addScriptTag({ content: asset('common/lib/select2-4.1.0/dist/js/select2.full.min.js') });
     await page.evaluate(localized => {
         Object.assign(window, localized);
@@ -93,6 +97,9 @@ async function fixture(browser, mode, suffix, width) {
             : mode === 'legacy' ? '[id="v2_agent_search_text_read:page:user"]'
             : mode === 'permissions' ? '.pp-user-search-select2' : '#teaser_redirect_anon_page_post';
     await page.waitForFunction(selector => !!window.jQuery(selector).data('select2'), selector);
+    if (['members', 'author', 'legacy'].includes(mode)) {
+        assert.equal(await page.locator(selector).evaluate(element => window.jQuery(element).data('select2').$selection.hasClass('pp-select2-container')), true, 'Permissions styling survives either library load order');
+    }
 
     if (mode === 'members') {
         await page.locator('.select2-selection__choice__remove').click();
@@ -153,7 +160,7 @@ async function fixture(browser, mode, suffix, width) {
         assert.ok(size.height <= 35, 'the inline search must not inherit full-size WordPress textarea height');
     }
     await context.close();
-    console.log(`OK ${baseline || '4.1.0'} ${mode} ${suffix || 'production'} ${width}px`);
+    console.log(`OK ${baseline || '4.1.0'}${preloadLegacy ? ' (legacy preloaded)' : ''} ${mode} ${suffix || 'production'} ${width}px`);
 }
 
 (async () => {
