@@ -477,16 +477,20 @@
   height: 20px;
   min-height: 0;
   padding: 0;
-  /* Chrome ignores line-height on a textarea placeholder, so centre the natural line in the 20px row instead */
-  padding-top: 4px;
   border: none;
   background: transparent;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
-  line-height: normal;
+  line-height: 20px;
   box-shadow: none;
+}
+/* Select2 4.1 renders this field as a textarea (4.0 as an input). Chrome ignores line-height on a textarea placeholder, so centre the natural line in the 20px row instead. */
+.pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field {
+  padding-top: 4px;
+  padding-top: calc((20px - 1lh) / 2 + 1px);
+  line-height: normal;
 }
 .pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field::placeholder {
   color: var(--pp-gray-5);
