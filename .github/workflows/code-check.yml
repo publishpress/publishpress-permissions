@@ -44,16 +44,24 @@ jobs:
 
   select2-tests:
     name: Select2 modern jQuery compatibility
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
       - name: Install isolated browser test dependencies
-        run: npm install --prefix "$RUNNER_TEMP/select2-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0
+        run: npm install --prefix "$RUNNER_TEMP/select2-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0 playwright@1.61.1
+      - name: Install Chromium
+        run: node "$RUNNER_TEMP/select2-tests/node_modules/playwright/cli.js" install --with-deps chromium
       - name: Check all distributed Select2 bundles
         run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/unit/select2-native.js
+      - name: Check browser interactions and submitted form values
+        run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/browser/select2-workflows.js
 
   unsupported-php-bootstrap:
     name: Reject unsupported PHP before loading dependencies
