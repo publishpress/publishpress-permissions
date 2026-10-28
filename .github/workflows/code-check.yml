@@ -37,6 +37,10 @@ jobs:
         run: |
           php tests/unit/welcome-post-types.php
           php tests/unit/welcome-save.php
+      - name: Check permission-scoped Trash counts
+        run: php tests/unit/post-status-counts.php
+      - name: Check minimum-version bootstrap
+        run: |
           php tests/unit/minimum-version-bootstrap.php
           php tests/unit/minimum-version-bootstrap.php 5.4
       - name: Check nested exception post IDs
