@@ -412,7 +412,13 @@ class AgentPermissionsUI
                     <tr>
                         <th><?php esc_html_e('Post Type', 'press-permit-core'); ?></th>
                         <th><?php esc_html_e('Operation', 'press-permit-core'); ?></th>
-                        <th><?php esc_html_e('Adjustment', 'press-permit-core'); ?></th>
+                        <th>
+                            <?php
+                            esc_html_e('Adjustment', 'press-permit-core');
+                            require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+                            HintsItemExceptions::permissionPriorityTooltip();
+                            ?>
+                        </th>
                         <th><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                         <th></th>
                         <th><?php esc_html_e('Status', 'press-permit-core'); ?></th>
@@ -1553,6 +1559,11 @@ class AgentPermissionsUI
                             . '<i class="dashicons dashicons-no-alt" style="color:#ef4444;"></i>'
                             . esc_html__('= Blocked', 'press-permit-core')
                             . '</span>';
+                        }
+
+                        if (!empty($have_mod_type['additional']) && !empty($have_mod_type['exclude'])) {
+                            require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+                            HintsItemExceptions::permissionPriorityTooltip();
                         } 
                         
                         if (!empty($have_mod_type['include'])) {
