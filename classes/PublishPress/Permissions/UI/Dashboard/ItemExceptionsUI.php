@@ -375,14 +375,8 @@ class ItemExceptionsUI
             $drew_itemroles_marker = true;
         }
 
+        require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
         ?>
-        <p class="pp-permission-priority-help">
-            <?php
-            esc_html_e('How Enabled and Blocked permissions combine', 'press-permit-core');
-            require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
-            \PublishPress\Permissions\UI\HintsItemExceptions::permissionPriorityTooltip();
-            ?>
-        </p>
         <div class="pp-tabbed-metabox">
             <!-- Left Sidebar with Operation Tabs -->
             <div class="pp-tabbed-sidebar">
@@ -482,7 +476,7 @@ class ItemExceptionsUI
                              role="tabpanel"
                              aria-labelledby="<?php echo esc_attr($operation_tab_id); ?>"
                              aria-hidden="<?php echo $first ? 'false' : 'true'; ?>">
-                            <div class="pp-operation-content">
+                            <div class="pp-operation-content" data-blocked-permission-hint="<?php echo esc_attr(\PublishPress\Permissions\UI\HintsItemExceptions::blockedPermissionHint($op)); ?>">
                                 <?php
                                 // Call the new tabbed operation content method, with for_item_type
                                 // corrected per-operation (see note above).

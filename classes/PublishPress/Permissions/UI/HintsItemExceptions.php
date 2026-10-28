@@ -6,7 +6,26 @@ namespace PublishPress\Permissions\UI;
 
 class HintsItemExceptions
 {
-    public static function permissionPriorityTooltip()
+    public static function blockedPermissionHint($operation)
+    {
+        $post_operation = in_array($operation, ['read', 'edit', 'delete', 'publish'], true);
+
+        if ($post_operation && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY) {
+            $message = __('For this action, Blocked permissions take priority over Enabled permissions. If a block applies through a user, role, or group, adding more Enabled entries does not override it.', 'press-permit-core');
+        } else {
+            $message = __('A Blocked permission can be overridden by an Enabled permission for the same item. Permissions are combined across a user, their roles, and their groups; adding more Enabled entries does not increase their priority.', 'press-permit-core');
+
+            if ($post_operation) {
+                $message .= ' ' . (presspermit()->getOption('post_blockage_priority')
+                    ? __('Post-specific permissions take priority over category or term permissions.', 'press-permit-core')
+                    : __('Enabled category or term permissions can also override a post-specific block.', 'press-permit-core'));
+            }
+        }
+
+        return $message;
+    }
+
+    public static function permissionPriorityTooltip($placement = 'top')
     {
         $hint = __('Permissions are combined across a user, their roles, and their groups. Adding more Enabled entries does not increase their priority.', 'press-permit-core');
 
@@ -19,8 +38,8 @@ class HintsItemExceptions
                 : __('Enabled category or term permissions can also override a post-specific block.', 'press-permit-core'));
         }
 
-        echo '<span data-toggle="tooltip" data-placement="top">';
-        echo '<button type="button" class="button-link" style="color:inherit;" aria-label="' . esc_attr($hint) . '">';
+        echo '<span data-toggle="tooltip" data-placement="' . esc_attr($placement) . '">';
+        echo '<button type="button" class="button-link" style="color:inherit;text-decoration:none;" aria-label="' . esc_attr($hint) . '">';
         echo '<span class="dashicons dashicons-info-outline" style="font-size:18px;width:16px;height:16px;margin-left:5px;" aria-hidden="true"></span></button>';
         echo '<span class="tooltip-text" aria-hidden="true"><span>' . esc_html($hint) . '</span><i></i></span></span>';
     }

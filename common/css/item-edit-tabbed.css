@@ -1564,3 +1564,37 @@
     opacity: 1;
   }
 }
+
+/* Keep blocked dropdowns and their help within the original control width. */
+.pp-select-with-blocked-help {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 177px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+.pp-select-with-blocked-help > .pp-permission-select {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+}
+.pp-select-with-blocked-help > .pp-permission-select select {
+  min-width: 0;
+}
+.pp-select-with-blocked-help > .pp-blocked-select-help {
+  flex: 0 0 20px;
+}
+@media (max-width: 768px) {
+  .pp-select-with-blocked-help {
+    width: 100%;
+  }
+}
+
+.pp-select-with-blocked-help:has(.pp-select-label) > .pp-blocked-select-help {
+  transform: translateY(10px);
+}
+.pp-blocked-select-help > button {
+  display: flex;
+  align-items: center;
+}

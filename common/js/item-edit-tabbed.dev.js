@@ -421,7 +421,7 @@
             
             // Set permission select to empty value (tells backend to remove exception)
             // NOTE: Do NOT disable the select - disabled fields are not submitted in forms!
-            $item.find('select').val('');
+            $item.find('select').val('').trigger('change');
             
             // Add removed class and animate fadeout
             $item.addClass('pp-item-removed');
@@ -1436,3 +1436,41 @@
     }
 
 })(jQuery);
+
+// Keep the priority explanation in sync with each operation's Blocked selections.
+jQuery(function ($) {
+    function updateBlockedSelectHelp($content) {
+        $content.find('.pp-permission-select select[name^="pp_exceptions["]').each(function () {
+            // Limit-to permissions also display Blocked with an empty value.
+            var $option = $(this).find('option:selected');
+            var blocked = $(this).val() === '0' || $option.hasClass('pp-no') || $option.hasClass('pp-no2');
+            blocked = blocked && !$(this).closest('.pp-item-removed').length;
+            var $box = $(this).closest('.pp-permission-select');
+            var $wrapper = $box.parent('.pp-select-with-blocked-help');
+            var $help = $wrapper.children('.pp-blocked-select-help');
+            if (blocked && !$help.length) {
+                var hint = $content.attr('data-blocked-permission-hint');
+                if (!$wrapper.length) {
+                    $box.wrap($('<div>').addClass('pp-select-with-blocked-help'));
+                    $wrapper = $box.parent();
+                }
+                $help = $('<span>').addClass('pp-blocked-select-help')
+                    .attr({'data-toggle': 'tooltip', 'data-placement': 'left'})
+                    .append($('<button>').attr({'type': 'button', 'aria-label': hint})
+                        .addClass('button-link').css({'color': 'inherit', 'text-decoration': 'none'})
+                        .append($('<span>').addClass('dashicons dashicons-info-outline').attr('aria-hidden', 'true')))
+                    .append($('<span>').addClass('tooltip-text').attr('aria-hidden', 'true')
+                        .append($('<span>').text(hint)).append($('<i>')));
+                $wrapper.append($help);
+            }
+            $help.toggle(blocked);
+        });
+    }
+
+    $('.pp-operation-content').each(function () {
+        updateBlockedSelectHelp($(this));
+    });
+    $(document).on('change', '.pp-permission-select select', function () {
+        updateBlockedSelectHelp($(this).closest('.pp-operation-content'));
+    });
+});
