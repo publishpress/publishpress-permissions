@@ -26,10 +26,10 @@ namespace {
     define('PRESSPERMIT_TEASER_VERSION', 'test');
 
     $mode = $argv[1] ?? 'members';
-    if (!in_array($mode, ['members', 'author', 'permissions', 'teaser'], true)) {
+    if (!in_array($mode, ['members', 'author', 'legacy', 'permissions', 'teaser'], true)) {
         throw new RuntimeException('Unknown fixture');
     }
-    $pagenow = 'author' === $mode ? 'post.php' : 'admin.php';
+    $pagenow = in_array($mode, ['author', 'legacy'], true) ? 'post.php' : 'admin.php';
     $wp_scripts = (object) ['in_footer' => []];
     $scripts = $styles = $localized = $actions = [];
 
@@ -55,8 +55,8 @@ namespace {
     function presspermit_enqueue_admin_script() {}
     function wp_style_is($handle, $state) { return isset($GLOBALS['styles'][$handle]); }
     function wp_script_is($handle, $state) { return 'done' !== $state && isset($GLOBALS['scripts'][$handle]); }
-    function wp_register_style($handle, $src, $deps = [], $version = '', $media = '') { $GLOBALS['styles'][$handle] = compact('src', 'deps', 'version'); }
-    function wp_register_script($handle, $src, $deps = [], $version = '', $footer = false) { $GLOBALS['scripts'][$handle] = compact('src', 'deps', 'version', 'footer'); }
+    function wp_register_style($handle, $src, $deps = [], $version = '', $media = '') { if (!isset($GLOBALS['styles'][$handle])) $GLOBALS['styles'][$handle] = compact('src', 'deps', 'version'); }
+    function wp_register_script($handle, $src, $deps = [], $version = '', $footer = false) { if (!isset($GLOBALS['scripts'][$handle])) $GLOBALS['scripts'][$handle] = compact('src', 'deps', 'version', 'footer'); }
     function wp_enqueue_style($handle, $src = '', $deps = [], $version = '') { if ($src) wp_register_style($handle, $src, $deps, $version); }
     function wp_enqueue_script($handle, $src = '', $deps = [], $version = '', $footer = false) { if ($src) wp_register_script($handle, $src, $deps, $version, $footer); }
     function wp_localize_script($handle, $name, $values) { $GLOBALS['localized'][$name] = $values; }
@@ -77,13 +77,17 @@ namespace {
     }
 
     ob_start();
-    if (in_array($mode, ['members', 'author'], true)) {
+    if (in_array($mode, ['members', 'author', 'legacy'], true)) {
         require_once PRESSPERMIT_CLASSPATH . '/UI/AgentsDynamicUI.php';
         $ui = new \PublishPress\Permissions\UI\AgentsDynamicUI();
         $saved = (object) ['ID' => 9, 'user_login' => 'saved', 'display_name' => 'Saved User'];
-        $ui->display_select2('user', 'members' === $mode ? 'member' : 'select-author', 'members' === $mode ? [9 => $saved] : [], [
-            'agent_id' => 55, 'multi_select' => 'members' === $mode, 'display_stored_selections' => 'members' === $mode,
+        if ('legacy' === $mode) echo '<div id="pp_read_page_exceptions"><table class="pp-exc-user pp-item-exceptions-ui"><tr><td>';
+        $suffix = 'members' === $mode ? 'member' : ('legacy' === $mode ? 'read:page:user' : 'select-author');
+        $ui->display_select2('user', $suffix, 'members' === $mode ? [9 => $saved] : [], [
+            'agent_id' => 55, 'multi_select' => 'author' !== $mode, 'display_stored_selections' => 'members' === $mode,
+            'create_dropdowns' => 'legacy' === $mode, 'via_item_source' => 'post', 'via_item_type' => 'page', 'item_id' => 42,
         ]);
+        if ('legacy' === $mode) echo '</td><td class="pp-current-item-exceptions"><table><tbody></tbody></table></td></tr></table></div>';
         $ui->actAjaxSelectionScripts();
         if ('author' === $mode) echo '<select id="post_author_override" name="post_author_override"><option value="9">Saved User</option></select>';
     } elseif ('permissions' === $mode) {

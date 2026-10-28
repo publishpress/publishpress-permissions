@@ -61,6 +61,8 @@ async function fixture(browser, mode, suffix, width) {
             requests.push(Object.fromEntries(url.searchParams));
             if (url.searchParams.get('action') === 'pp_search_posts') {
                 await route.fulfill({ contentType: 'application/json', body: JSON.stringify([{ ID: 2, post_title: 'New page' }]) });
+            } else if (url.searchParams.get('pp_ajax_item') === 'get_agent_exception_ui') {
+                await route.fulfill({ contentType: 'text/html', body: '<!--ppSfx-->read|page|user<--ppSfx--><!--ppResponse--><tr data-legacy-agent="2"><td><select name="pp_exceptions[page][read][user][item][2]"><option value="2">Enabled</option></select></td></tr><--ppResponse-->' });
             } else {
                 await route.fulfill({ contentType: 'text/html', body: '<option value="9">Saved User</option><option value="2">New User</option><option value="3">Another User</option>' });
             }
@@ -84,10 +86,11 @@ async function fixture(browser, mode, suffix, width) {
         ? [`modules/presspermit-teaser/common/js/settings${suffix}.js`]
         : mode === 'permissions'
             ? [`common/js/item-edit-tabbed${suffix}.js`]
-            : [`common/js/listbox${suffix}.js`, `common/js/agent-select${suffix}.js`, `common/js/admin${suffix}.js`];
+            : [`common/js/listbox${suffix}.js`, `common/js/${mode === 'legacy' ? 'agent-exception-select' : 'agent-select'}${suffix}.js`, `common/js/admin${suffix}.js`];
     for (const script of scripts) await page.addScriptTag({ content: asset(script) });
     const selector = mode === 'members' ? '[id="v2_agent_search_text_member::user"]'
         : mode === 'author' ? '[id="v2_agent_search_text_select-author::user"]'
+            : mode === 'legacy' ? '[id="v2_agent_search_text_read:page:user"]'
             : mode === 'permissions' ? '.pp-user-search-select2' : '#teaser_redirect_anon_page_post';
     await page.waitForFunction(selector => !!window.jQuery(selector).data('select2'), selector);
 
@@ -112,6 +115,12 @@ async function fixture(browser, mode, suffix, width) {
         await waitValue(page, '#post_author_override', '2');
         assert.equal(await page.locator('#fixture').evaluate(form => new FormData(form).get('post_author_override')), '2');
         assert.ok(requests.some(req => req.pp_topic === 'select-author' && req.pp_agent_type === 'user'));
+    } else if (mode === 'legacy') {
+        await choose(page, selector, 'new', 'New User');
+        await page.locator('[data-legacy-agent="2"]').waitFor();
+        assert.deepEqual(await fieldValue(page, selector), [], 'the legacy picker clears after adding the permission row');
+        assert.ok(requests.some(req => req.pp_ajax_item === 'get_agent_exception_ui' && req.agent_ids === '2' && req.item_id === '42' && req.id_sfx === 'read:page:user'));
+        assert.equal(await page.locator('#fixture').evaluate(form => new FormData(form).get('pp_exceptions[page][read][user][item][2]')), '2');
     } else if (mode === 'permissions') {
         await choose(page, selector, 'new', 'New User');
         await page.locator('.pp-permission-list-item[data-agent-id="2"]').waitFor();
@@ -152,7 +161,7 @@ async function fixture(browser, mode, suffix, width) {
     try {
         for (const suffix of ['.dev', '']) {
             for (const width of [1280, 375]) {
-                for (const mode of ['members', 'author', 'permissions', 'teaser']) {
+                for (const mode of ['members', 'author', 'legacy', 'permissions', 'teaser']) {
                     await fixture(browser, mode, suffix, width);
                 }
             }
