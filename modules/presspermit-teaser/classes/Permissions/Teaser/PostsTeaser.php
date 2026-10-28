@@ -724,7 +724,7 @@ class PostsTeaser
         $entry = force_balance_tags($entry);
 
         if (has_blocks($content) || false !== strpos($content, '<!-- wp:')) {
-            return '<!-- wp:paragraph -->' . wpautop($entry) . '<!-- /wp:paragraph -->';
+            return '<!-- wp:html -->' . wpautop($entry) . '<!-- /wp:html -->';
         }
 
         return wpautop($entry);
