@@ -12,7 +12,7 @@ const preloadLegacy = process.argv.includes('--preload-legacy');
 
 function asset(file) {
     if (baseline) {
-        const previousPath = file.replace('select2-4.1.0/dist/', 'select2-4.0.13/');
+        const previousPath = file.replace('select2-4.1.0/', 'select2-4.0.13/');
         return execFileSync('git', ['show', `${baseline}:${previousPath}`], { cwd: root, encoding: 'utf8', maxBuffer: 5 * 1024 * 1024 });
     }
     return fs.readFileSync(path.join(root, file), 'utf8');
@@ -132,7 +132,7 @@ async function fixture(browser, mode, suffix, width) {
             const select2 = Object.values(entries).filter(item => item.src.includes('/common/lib/select2-'));
             assert.equal(select2.length, 1, `${mode} registers one Select2 asset of each type`);
             assert.equal(select2[0].version, '4.1.0');
-            assert.ok(select2[0].src.includes('/select2-4.1.0/dist/'));
+            assert.ok(select2[0].src.includes('/select2-4.1.0/'));
         }
     }
     const context = await browser.newContext({ viewport: { width, height: 900 } });
@@ -158,14 +158,14 @@ async function fixture(browser, mode, suffix, width) {
     });
     await page.goto('https://permissions.test/fixture');
     await page.addStyleTag({ content: 'body{font-family:Arial,sans-serif;font-size:13px;margin:0;padding:20px}form{max-width:900px}input,select{margin:0 1px}input[type=text]{box-sizing:border-box;min-height:30px;line-height:2;padding:0 8px;font-size:14px}.screen-reader-text{position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;overflow:hidden;white-space:nowrap}.pp-agents-selection{width:100%}.pp-agent-type-content{display:block!important}textarea{min-height:80px}' });
-    for (const css of ['common/lib/select2-4.1.0/dist/css/select2.min.css', 'common/css/presspermit.css', 'common/css/item-edit.css', 'common/css/item-edit-tabbed.css']) {
+    for (const css of ['common/lib/select2-4.1.0/css/select2.min.css', 'common/css/presspermit.css', 'common/css/item-edit.css', 'common/css/item-edit-tabbed.css']) {
         await page.addStyleTag({ content: asset(css) });
     }
     await page.addScriptTag({ content: fs.readFileSync(require.resolve('jquery/dist/jquery.js'), 'utf8') });
     if (preloadLegacy) {
         await page.addScriptTag({ content: fs.readFileSync(require.resolve('select2-legacy/dist/js/select2.full.min.js'), 'utf8') });
     }
-    await page.addScriptTag({ content: asset('common/lib/select2-4.1.0/dist/js/select2.full.min.js') });
+    await page.addScriptTag({ content: asset('common/lib/select2-4.1.0/js/select2.full.min.js') });
     await page.evaluate(localized => {
         Object.assign(window, localized);
         window.ppPermissions = new Proxy({ confirmDeleteItem: 'Remove %s?', searchUsers: 'Search users', addedToList: 'Added ' }, { get: (values, key) => values[key] || String(key) });
@@ -196,7 +196,7 @@ async function fixture(browser, mode, suffix, width) {
         assert.ok(requests.some(req => req.pp_topic === 'member' && req.pp_agent_type === 'user' && req.pp_agent_id === '55'));
         // Two handles can refer to the central library; loading it again must not replace an initialized instance.
         await page.evaluate(selector => { window.previousInstance = window.jQuery(selector).data('select2'); }, selector);
-        await page.addScriptTag({ content: asset('common/lib/select2-4.1.0/dist/js/select2.full.min.js') });
+        await page.addScriptTag({ content: asset('common/lib/select2-4.1.0/js/select2.full.min.js') });
         assert.equal(await page.evaluate(selector => window.previousInstance === window.jQuery(selector).data('select2'), selector), true);
         await page.locator('.select2-selection .select2-search__field').press('Backspace');
         await waitValue(page, '#member_csv', '');

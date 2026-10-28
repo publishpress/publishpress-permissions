@@ -7,10 +7,7 @@ const path = require('node:path');
 const { JSDOM } = require('jsdom');
 
 const bundles = [
-    'common/lib/select2-4.1.0/dist/js/select2.full.js',
-    'common/lib/select2-4.1.0/dist/js/select2.js',
-    'common/lib/select2-4.1.0/dist/js/select2.full.min.js',
-    'common/lib/select2-4.1.0/dist/js/select2.min.js',
+    'common/lib/select2-4.1.0/js/select2.full.min.js',
 ];
 
 for (const bundle of bundles) {
