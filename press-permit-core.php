@@ -10,7 +10,7 @@
  * Text Domain: press-permit-core
  * Domain Path: /languages/
  * Requires at least: 5.5
- * Requires PHP: 7.2.5
+ * Requires PHP: 8.2
  *
  * Copyright (c) 2025 PublishPress
  *
@@ -41,47 +41,14 @@ defined('ABSPATH') || exit;
 
 global $wp_version;
 
-$min_php_version = '7.2.5';
+$min_php_version = '8.2';
 $min_wp_version  = '5.5';
 
-$invalid_php_version = version_compare(phpversion(), $min_php_version, '<');
-$invalid_wp_version = version_compare($wp_version, $min_wp_version, '<');
-
-// If the PHP version is not compatible, terminate the plugin execution and show an admin notice.
-if (is_admin() && $invalid_php_version) {
-    add_action(
-        'admin_notices',
-        function () use ($min_php_version) {
-            if (current_user_can('activate_plugins')) {
-                echo '<div class="notice notice-error"><p>';
-                printf(
-                    'PublishPress Permissions Pro requires PHP version %s or higher.',
-                    esc_html($min_php_version)
-                );
-                echo '</p></div>';
-            }
-        }
-    );
+if (version_compare(PHP_VERSION, $min_php_version, '<')) {
+    return;
 }
 
-// If the WP version is not compatible, terminate the plugin execution and show an admin notice.
-if (is_admin() && $invalid_wp_version) {
-    add_action(
-        'admin_notices',
-        function () use ($min_wp_version) {
-            if (current_user_can('activate_plugins')) {
-                echo '<div class="notice notice-error"><p>';
-                printf(
-                    'PublishPress Permissions Pro requires WordPress version %s or higher.',
-                    esc_html($min_wp_version)
-                );
-                echo '</p></div>';
-            }
-        }
-    );
-}
-
-if ($invalid_php_version || $invalid_wp_version) {
+if (version_compare($wp_version, $min_wp_version, '<')) {
     return;
 }
 
