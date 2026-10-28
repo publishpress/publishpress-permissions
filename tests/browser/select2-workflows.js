@@ -40,6 +40,91 @@ async function waitValue(page, selector, value) {
     await page.waitForFunction(({ selector, value }) => document.querySelector(selector).value === value, { selector, value });
 }
 
+async function matchingSearchStyles(page) {
+    const roles = '.fixture-role-search input.pp-search-input';
+    const users = '.pp-search-box-select2 .select2-selection--multiple';
+    const properties = ['height', 'borderTopWidth', 'borderTopStyle', 'borderTopColor', 'borderRadius', 'backgroundColor', 'color', 'fontFamily', 'fontSize', 'fontWeight', 'lineHeight', 'paddingLeft', 'paddingRight', 'paddingTop', 'paddingBottom', 'boxSizing', 'boxShadow'];
+    const styles = selector => page.locator(selector).evaluate((element, properties) => {
+        const computed = getComputedStyle(element);
+        return Object.fromEntries(properties.map(property => [property, computed[property]]));
+    }, properties);
+    await page.waitForTimeout(250);
+    assert.deepEqual(await styles(users), await styles(roles), 'native and Select2 search controls have matching default styles');
+    await page.locator(roles).focus();
+    await page.waitForTimeout(250); // Let the real focus transition finish before comparing colors/shadows.
+    const focusedRoles = await styles(roles);
+    const userField = page.locator('.pp-search-box-select2 .select2-search__field');
+    await userField.focus();
+    await page.waitForTimeout(250);
+    assert.deepEqual(await styles(users), focusedRoles, 'native and Select2 search controls have matching focus styles');
+    const roleBox = await page.locator(roles).boundingBox();
+    const userBox = await page.locator(users).boundingBox();
+    assert.equal(userBox.width, roleBox.width, 'search controls have equal widths');
+    assert.equal(userBox.x, roleBox.x, 'search controls start at the same x (WP core gives inputs a 1px side margin)');
+    const textBox = await userField.boundingBox();
+    assert.ok(textBox.width <= userBox.width - 64, 'the inline search fits inside the shared icon gutters');
+    assert.ok(Math.abs(textBox.x - userBox.x - 33) <= 1, 'user search text aligns with the native input padding');
+    for (const [icon, box] of [['.fixture-role-search > .dashicons-search', roleBox], ['.pp-search-box-select2 > .dashicons-search', userBox]]) {
+        const bounds = await page.locator(icon).boundingBox();
+        assert.ok(Math.abs(bounds.x - box.x - 12) <= 1, 'search icons share their horizontal inset');
+        assert.ok(Math.abs(bounds.y + bounds.height / 2 - box.y - box.height / 2) <= 1, 'search icons are vertically centered');
+    }
+    const placeholders = await page.locator(roles + ', .pp-search-box-select2 .select2-search__field').evaluateAll(elements => elements.map(element => {
+        const style = getComputedStyle(element, '::placeholder');
+        return { color: style.color, opacity: style.opacity, fontFamily: style.fontFamily, fontSize: style.fontSize };
+    }));
+    assert.deepEqual(placeholders[1], placeholders[0], 'placeholder typography matches');
+    // A textarea placeholder ignores line-height in Chrome, so compare the rendered pixels of the word both placeholders start with.
+    await page.locator('body').click({ position: { x: 1, y: 1 } });
+    await page.waitForTimeout(250);
+    const inkRows = async selector => {
+        const box = await page.locator(selector).boundingBox();
+        const shot = await page.screenshot({ clip: { x: box.x + 36, y: box.y, width: 36, height: box.height } });
+        return page.evaluate(async ({ data, height }) => {
+            const image = new Image();
+            image.src = 'data:image/png;base64,' + data;
+            await image.decode();
+            const canvas = document.createElement('canvas');
+            canvas.width = image.width;
+            canvas.height = image.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, 0, 0);
+            const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            const scale = canvas.height / height;
+            let top = -1;
+            let bottom = -1;
+            for (let y = 0; y < canvas.height; y++) {
+                for (let x = 0; x < canvas.width; x++) {
+                    const i = (y * canvas.width + x) * 4;
+                    if (pixels[i] < 200 && pixels[i + 1] < 200 && pixels[i + 2] < 215) {
+                        if (top < 0) top = y;
+                        bottom = y;
+                    }
+                }
+            }
+            return { top: top / scale, bottom: bottom / scale };
+        }, { data: shot.toString('base64'), height: box.height });
+    };
+    const rolesRows = await inkRows(roles);
+    const usersRows = await inkRows(users);
+    assert.ok(rolesRows.top >= 0 && usersRows.top >= 0, 'placeholder text is rendered in both controls');
+    assert.ok(Math.abs(usersRows.top - rolesRows.top) <= 0.5 && Math.abs(usersRows.bottom - rolesRows.bottom) <= 0.5, `placeholder text sits at the same height (roles ${JSON.stringify(rolesRows)}, users ${JSON.stringify(usersRows)})`);
+    await page.locator(roles).fill('Search');
+    await userField.fill('Search');
+    await page.waitForTimeout(250);
+    const typedRoles = await inkRows(roles);
+    const typedUsers = await inkRows(users);
+    assert.ok(Math.abs(typedUsers.top - typedRoles.top) <= 0.5 && Math.abs(typedUsers.bottom - typedRoles.bottom) <= 0.5, `typed text sits at the same height (roles ${JSON.stringify(typedRoles)}, users ${JSON.stringify(typedUsers)})`);
+    await userField.fill('');
+    await page.locator('body').click({ position: { x: 1, y: 1 } });
+    await page.locator(roles).fill('');
+    await page.locator(roles).fill('Editor');
+    await page.locator('.fixture-role-panel [data-role="members"]').waitFor({ state: 'hidden' });
+    await page.locator('.fixture-role-search .pp-search-clear').click();
+    await page.locator('.fixture-role-panel [data-role="members"]').waitFor({ state: 'visible' });
+    assert.equal(await page.locator(roles).inputValue(), '', 'local filtering and clearing still work');
+}
+
 async function fixture(browser, mode, suffix, width) {
     const rendered = JSON.parse(execFileSync('php', [path.join(__dirname, 'fixtures/select2.php'), mode], { encoding: 'utf8' }));
     if (mode !== 'permissions' && !baseline) {
@@ -72,7 +157,7 @@ async function fixture(browser, mode, suffix, width) {
         }
     });
     await page.goto('https://permissions.test/fixture');
-    await page.addStyleTag({ content: 'body{font-family:Arial,sans-serif;margin:0;padding:20px}form{max-width:900px}.pp-agents-selection{width:100%}.pp-agent-type-content{display:block!important}textarea{min-height:80px}' });
+    await page.addStyleTag({ content: 'body{font-family:Arial,sans-serif;font-size:13px;margin:0;padding:20px}form{max-width:900px}input,select{margin:0 1px}input[type=text]{box-sizing:border-box;min-height:30px;line-height:2;padding:0 8px;font-size:14px}.screen-reader-text{position:absolute!important;clip:rect(1px,1px,1px,1px);width:1px;height:1px;overflow:hidden;white-space:nowrap}.pp-agents-selection{width:100%}.pp-agent-type-content{display:block!important}textarea{min-height:80px}' });
     for (const css of ['common/lib/select2-4.1.0/dist/css/select2.min.css', 'common/css/presspermit.css', 'common/css/item-edit.css', 'common/css/item-edit-tabbed.css']) {
         await page.addStyleTag({ content: asset(css) });
     }
@@ -129,6 +214,7 @@ async function fixture(browser, mode, suffix, width) {
         assert.ok(requests.some(req => req.pp_ajax_item === 'get_agent_exception_ui' && req.agent_ids === '2' && req.item_id === '42' && req.id_sfx === 'read:page:user'));
         assert.equal(await page.locator('#fixture').evaluate(form => new FormData(form).get('pp_exceptions[page][read][user][item][2]')), '2');
     } else if (mode === 'permissions') {
+        if (!baseline) await matchingSearchStyles(page);
         await choose(page, selector, 'new', 'New User');
         await page.locator('.pp-permission-list-item[data-agent-id="2"]').waitFor();
         assert.deepEqual(await fieldValue(page, selector), []);
