@@ -56,6 +56,8 @@
               placeholder: agent_type_lbl,
               dropdownAutoWidth: true,
               dropdownCssClass: 'pp-select2-dropdown',
+              selectionCssClass: 'pp-select2-container',
+              // Preserve styling when another plugin has loaded Select2 4.0 first.
               containerCssClass: 'pp-select2-container',
               width: '325px',
               ajax: {
