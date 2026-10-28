@@ -22,10 +22,10 @@ class TeaserHooksAdmin
 
                 // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
                 if (!wp_style_is('presspermit-select2', 'registered')) {
-                    wp_register_style('presspermit-select2', $urlpath . '/common/libs/select2/select2.min.css', array(), '4.0.13', 'screen');
+                    wp_register_style('presspermit-select2', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/dist/css/select2.min.css', array(), '4.1.0', 'screen');
                 }
                 if (!wp_script_is('presspermit-select2', 'registered')) {
-                    wp_register_script('presspermit-select2', $urlpath . '/common/libs/select2/select2.full.min.js', ['jquery'], '4.0.13-pp.1', false);
+                    wp_register_script('presspermit-select2', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/dist/js/select2.full.min.js', ['jquery'], '4.1.0', false);
                 }
                 wp_enqueue_style('presspermit-select2');
                 wp_enqueue_script('presspermit-select2');

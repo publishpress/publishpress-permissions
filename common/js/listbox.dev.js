@@ -56,7 +56,7 @@
               placeholder: agent_type_lbl,
               dropdownAutoWidth: true,
               dropdownCssClass: 'pp-select2-dropdown',
-              containerCssClass: 'pp-select2-container',
+              selectionCssClass: 'pp-select2-container',
               width: '325px',
               ajax: {
                 url: args2.ajaxurl,

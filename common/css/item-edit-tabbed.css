@@ -487,6 +487,7 @@
   margin: 0;
   width: 100% !important;
   min-width: 250px;
+  min-height: 0;
 }
 .pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field::placeholder {
   color: var(--pp-gray-5);
@@ -497,16 +498,21 @@
   border: none;
   color: white;
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 4px 8px 4px 24px;
   margin: 2px 4px 2px 0;
   font-size: 12px;
 }
 .pp-search-box-select2 .select2-container .select2-selection__choice__remove {
   color: white;
-  margin-right: 6px;
+  background: transparent;
+  border: none;
+  height: 100%;
+  margin: 0;
+  padding: 0 6px;
   font-weight: bold;
 }
 .pp-search-box-select2 .select2-container .select2-selection__choice__remove:hover {
+  background: rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.8);
 }
 /* User Added Notice */
