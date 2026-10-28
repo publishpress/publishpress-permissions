@@ -16,7 +16,7 @@ class LibArray
         foreach ($arr_md as $element) {
             if (is_array($element)) {
                 if ($go_deep)
-                    $arr_flat = array_merge($arr_flat, self::flatten($element));
+                    $arr_flat = array_merge($arr_flat, self::flatten($element, true));
                 else
                     $arr_flat = array_merge($arr_flat, $element);
             } else

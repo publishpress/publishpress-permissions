@@ -510,10 +510,10 @@ class AgentsDynamicUI
 
         // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
         if (!wp_style_is('presspermit-select2-css', 'registered')) {
-            wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/css/select2.min.css", array(), '4.0.13', 'screen');
+            wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . "/common/lib/select2-4.1.0/css/select2.min.css", array(), '4.1.0', 'screen');
         }
         if (!wp_script_is('presspermit-select2-js', 'registered')) {
-            wp_register_script('presspermit-select2-js', PRESSPERMIT_URLPATH . "/common/lib/select2-4.0.13/js/select2.full.min.js", ['jquery'], '4.0.13', true);
+            wp_register_script('presspermit-select2-js', PRESSPERMIT_URLPATH . "/common/lib/select2-4.1.0/js/select2.full.min.js", ['jquery'], '4.1.0', true);
         }
         wp_enqueue_style('presspermit-select2-css');
         wp_enqueue_script('presspermit-select2-js');

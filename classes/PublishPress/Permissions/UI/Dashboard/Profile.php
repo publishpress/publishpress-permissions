@@ -384,6 +384,7 @@ class Profile
 
         $is_main_site = (defined('PRESSPERMIT_LEGACY_MAIN_SITE_CHECK')) ? (1 == get_current_blog_id()) : is_main_site();
 
+        $has_editable_memberships = false;
         foreach ($group_types as $agent_type) {
             if (('pp_group' == $agent_type) && in_array('pp_net_group', $group_types, true) && $is_main_site) {
                 continue;
@@ -428,6 +429,9 @@ class Profile
 
             // avoid incorrect eligible count if orphaned group roles are included in editable_ids
             $editable_ids = array_intersect($editable_ids, $all_ids);
+            if (array_intersect(array_keys($stored_groups), $editable_ids)) {
+                $has_editable_memberships = true;
+            }
 
             if (!$all_groups && !$force_display) {
                 continue;
@@ -474,6 +478,10 @@ class Profile
                 'single_select' => $single_select
             ];
 
+            if (!$hide_checkboxes) {
+                echo '<p class="description">' . esc_html__('Checked groups are current memberships. Check or uncheck a group, then save to update membership. A group link opens its permissions without changing membership.', 'press-permit-core') . '</p>';
+            }
+
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $css_id, $stored_groups, $args);
             
             $note = (defined('BP_VERSION'))
@@ -511,6 +519,8 @@ class Profile
         echo "<input type='hidden' name='pp_editing_user_groups' value='1' />";
 
         wp_nonce_field('pp-user-profile-groups', '_pp_permissions_nonce');
+
+        return $has_editable_memberships;
     }
     
     public static function listAgentExceptions($agent_type, $id, $args = [])

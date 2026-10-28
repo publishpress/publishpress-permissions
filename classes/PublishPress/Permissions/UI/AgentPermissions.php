@@ -85,33 +85,26 @@ class AgentPermissions
             $group_variant = 'pp_group';
         }
 
-        $groups_link = ($wp_http_referer && strpos($wp_http_referer, 'presspermit-groups'))
-            ? add_query_arg('group_variant', $group_variant, $wp_http_referer)
-            : admin_url("admin.php?page=presspermit-groups&group_variant=$group_variant"); ?>
+        ?>
 
         <?php if (PWP::is_GET('updated')) : ?>
             <div id="message" class="updated">
                 <p>
 
                     <?php if (!PWP::empty_REQUEST('pp_roles')) : ?>
-                        <strong><?php esc_html_e('Roles updated.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Roles updated.', 'press-permit-core'); ?>
 
                     <?php elseif (!PWP::empty_REQUEST('pp_exc')) : ?>
-                        <strong><?php esc_html_e('Specific Permissions updated.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Specific Permissions updated.', 'press-permit-core'); ?>
 
                     <?php elseif (!PWP::empty_REQUEST('pp_cloned')) : ?>
-                        <strong><?php esc_html_e('Roles and Permissions copied.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Roles and Permissions copied.', 'press-permit-core'); ?>
 
                     <?php elseif (!PWP::empty_REQUEST('pp_groups')) : ?>
-                        <strong><?php esc_html_e('Group membership updated.', 'press-permit-core') ?>&nbsp;</strong>
+                        <?php esc_html_e('Group membership updated.', 'press-permit-core'); ?>
 
                     <?php else : ?>
-                        <strong><?php esc_html_e('Group updated.', 'press-permit-core') ?>&nbsp;</strong>
-
-                        <?php
-                        if ($wp_http_referer) : ?>
-                            <a href="<?php echo esc_url($groups_link); ?>"><?php esc_html_e('Back to permissions list', 'press-permit-core'); ?></a>
-                        <?php endif; ?>
+                        <?php esc_html_e('Group updated.', 'press-permit-core'); ?>
 
                     <?php endif; ?>
 
@@ -364,35 +357,6 @@ class AgentPermissions
                                     $roles = array_merge($roles, $pp->getRoles($_agent_id, $agent_type, $args));
                                 }
                             }
-
-                            require_once(PRESSPERMIT_CLASSPATH . '/UI/Dashboard/Profile.php');
-                            ?>
-                            <form class="pp-admin pp-user-groups-form" action="<?php echo esc_url($url); ?>" method="post">
-                                <input type="hidden" name="action" value="pp_updategroups" />
-                                <input type="hidden" name="agent_id" value="<?php echo esc_attr($agent_id); ?>" />
-                                <input type="hidden" name="agent_type" value="user" />
-                                <?php if ($wp_http_referer) : ?>
-                                    <input type="hidden" name="wp_http_referer" value="<?php echo esc_url($wp_http_referer); ?>" />
-                                <?php endif; ?>
-                                <?php
-                            Dashboard\Profile::displayUserGroups(
-                                $agent_id,
-                                [
-                                    'initial_hide' => false,
-                                    'selected_only' => false,
-                                    'force_display' => true,
-                                    'hide_checkboxes' => false,
-                                ]
-                            );
-                                submit_button(
-                                    esc_html__('Update Group Membership', 'press-permit-core'),
-                                    'primary pp-primary-button pp-button',
-                                    'submit_groups',
-                                    false
-                                );
-                                ?>
-                            </form>
-                            <?php
 
                             $role_group_caption = sprintf(
                                 esc_html__('Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s', 'press-permit-core'),

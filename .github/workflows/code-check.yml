@@ -26,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php: ['7.2', '8.5']
+        php: ['8.2', '8.3', '8.4', '8.5']
     steps:
       - uses: actions/checkout@v4
       - uses: shivammathur/setup-php@v2
@@ -39,6 +39,49 @@ jobs:
           php tests/unit/welcome-save.php
       - name: Check Read More fallback behavior
         run: php tests/unit/read-more-fallback.php
+      - name: Check permission-scoped Trash counts
+        run: php tests/unit/post-status-counts.php
+      - name: Check minimum-version bootstrap
+        run: |
+          php tests/unit/minimum-version-bootstrap.php
+          php tests/unit/minimum-version-bootstrap.php 5.4
+      - name: Check nested exception post IDs
+        run: php tests/unit/exception-post-ids.php
+
+  select2-tests:
+    name: Select2 modern jQuery compatibility
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+      - name: Install isolated browser test dependencies
+        run: npm install --prefix "$RUNNER_TEMP/select2-tests" --no-save --ignore-scripts jquery@3.7.1 jsdom@26.1.0 playwright@1.61.1 select2-legacy@npm:select2@4.0.13
+      - name: Install Chromium
+        run: node "$RUNNER_TEMP/select2-tests/node_modules/playwright/cli.js" install --with-deps chromium
+      - name: Check all distributed Select2 bundles
+        run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/unit/select2-native.js
+      - name: Check browser interactions and submitted form values
+        run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/browser/select2-workflows.js
+      - name: Check compatibility when another plugin loads Select2 4.0 first
+        run: NODE_PATH="$RUNNER_TEMP/select2-tests/node_modules" node tests/browser/select2-workflows.js --preload-legacy
+
+  unsupported-php-bootstrap:
+    name: Reject unsupported PHP before loading dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+      - name: Check the real entry point on unsupported PHP
+        run: php tests/unit/minimum-version-bootstrap.php
 
   teaser-style-tests:
     name: Teaser style tab regressions
