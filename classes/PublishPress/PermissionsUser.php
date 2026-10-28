@@ -272,7 +272,9 @@ class PermissionsUser extends \WP_User
 
         $return = apply_filters('presspermit_get_exception_items', false, $operation, $mod_type, $post_type, $args);
         if (false !== $return) {
-            return $return;
+            return (isset($args['status']) && true === $args['status'])
+                ? $return
+                : Arr::flatten((array) $return, true);
         }
 
         if (is_array($post_type)) {
@@ -294,7 +296,7 @@ class PermissionsUser extends \WP_User
         if (true === $status) {
             return $exceptions;
         } else {
-            return Arr::flatten(array_intersect_key($exceptions, [$status => true]));
+            return Arr::flatten(array_intersect_key($exceptions, [$status => true]), true);
         }
     }
 
