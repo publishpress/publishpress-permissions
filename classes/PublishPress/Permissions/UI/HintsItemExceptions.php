@@ -19,8 +19,10 @@ class HintsItemExceptions
                 : __('Enabled category or term permissions can also override a post-specific block.', 'press-permit-core'));
         }
 
-        echo '<button type="button" class="button-link" title="' . esc_attr($hint) . '" aria-label="' . esc_attr($hint) . '">';
-        echo '<span class="dashicons dashicons-info-outline" aria-hidden="true"></span></button>';
+        echo '<span data-toggle="tooltip" data-placement="top">';
+        echo '<button type="button" class="button-link" style="color:inherit;" aria-label="' . esc_attr($hint) . '">';
+        echo '<span class="dashicons dashicons-info-outline" style="font-size:18px;width:16px;height:16px;margin-left:5px;" aria-hidden="true"></span></button>';
+        echo '<span class="tooltip-text" aria-hidden="true"><span>' . esc_html($hint) . '</span><i></i></span></span>';
     }
 
     public static function itemHints($for_item_type)
