@@ -1,6 +1,34 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[4.9.2] - 2 Nov, 2026
+
+- Changed: Permission settings now explain more clearly how Enabled and Blocked permissions interact. #2608
+- Changed: Membership checkboxes and inherited permission sources are now described more clearly, helping administrators understand why access is granted. #2610
+- Changed: Blocked-message styling has moved to a dedicated Teaser settings tab for easier configuration. #2617
+- Changed: Post listing options are now located in General settings for easier discovery. #2614
+- Changed: Configuration options for WPML have been repositioned for improved compatibility and organization. #2622
+- Changed: Permission option labels have been shortened to make settings easier to scan. #2607
+- Changed: Permission update notices have been simplified to make feedback clearer. #2606
+- Changed: The Permissions user profile now displays eligible Permission Groups to users who can manage group membership. #2589
+- Changed: The Edit User Permissions screen has been refined to present user details more clearly. #2584
+- Changed: The onboarding experience now uses a shared welcome library for a more consistent introduction to the plugin. #2578
+- Changed: Text contrast and non-color visual cues have been improved to make the interface more accessible. #2587
+- Changed: Keyboard focus indicators and announced status messages have been improved for users relying on assistive technologies. #2586
+- Changed: Form controls now have accessible names to improve screen-reader usability. #2585
+- Changed: Agent selector scripts are now output before footer scripts to improve script-loading compatibility. #2602
+- Changed: The bundled Select2 library has been upgraded to version 4.1.0. #2613
+- Changed: PHP 8.2 is now required, and compatibility tooling has been updated accordingly. #2619
+- Changed: Composer dependencies have been refreshed to incorporate compatible library updates. #2623
+- Fixed: Term permissions are now saved correctly when a taxonomy is registered later during WordPress initialization. #2621
+- Fixed: Teaser content now displays correctly around blocked-message notices, keeping content before and after the restricted section outside the message box. #2618
+- Fixed: Teaser previews no longer display unexpected titles when title filters are applied. #2615
+- Fixed: User permission screens now show only the Permission Groups relevant to the current user. #2583
+- Fixed: Permission counts now include posts in the Trash when calculating totals for permission-scoped post statuses. #2612
+- Fixed: Nested exception IDs are now normalized before checking parent-page permissions, improving the reliability of inherited restrictions. #2611
+- Fixed: Membership update actions are now hidden when there are no membership changes available. #2609
+- Fixed: Users who cannot access the Edit Permissions screen no longer see links to Manage User Permissions. #2591
+
 [4.9.1] - 14 Oct, 2026
 
 - Changed: Permissions settings navigation is now more accessible, improving keyboard navigation and usability. #2494
