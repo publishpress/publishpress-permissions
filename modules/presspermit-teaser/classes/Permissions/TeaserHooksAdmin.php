@@ -155,6 +155,8 @@ class TeaserHooksAdmin
         }
 
         foreach ($results as $result) {
+            // Select2 treats AJAX titles as plain text, so decode stored entities first.
+            $result->post_title = html_entity_decode($result->post_title, ENT_QUOTES | ENT_HTML5, get_bloginfo('charset'));
             $result->preview_url = get_permalink($result->ID);
         }
 
@@ -188,7 +190,8 @@ class TeaserHooksAdmin
 
         wp_send_json([
             'ID' => $post->ID,
-            'post_title' => get_the_title($post),
+            // The preview escapes this plain-text title before rendering it as HTML.
+            'post_title' => html_entity_decode(get_the_title($post), ENT_QUOTES | ENT_HTML5, get_bloginfo('charset')),
             'preview_url' => get_permalink($post),
             'excerpt' => $post->post_excerpt ? wpautop($post->post_excerpt) : '',
             'pre_more' => (false !== $pre_more) ? wpautop($pre_more) : '',
