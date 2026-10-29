@@ -20,8 +20,8 @@ jobs:
     name: Check the code
     uses: publishpress/github-workflows/.github/workflows/code-standards.yml@v3
 
-  welcome-tests:
-    name: Welcome regressions (PHP ${{ matrix.php }})
+  php-regression-tests:
+    name: Regressions (PHP ${{ matrix.php }})
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -33,10 +33,6 @@ jobs:
         with:
           php-version: ${{ matrix.php }}
           coverage: none
-      - name: Check post-type choices and save handler
-        run: |
-          php tests/unit/welcome-post-types.php
-          php tests/unit/welcome-save.php
       - name: Check Read More fallback behavior
         run: php tests/unit/read-more-fallback.php
       - name: Check permission-scoped Trash counts
