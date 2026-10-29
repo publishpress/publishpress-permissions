@@ -11,9 +11,9 @@ class HintsItemExceptions
         $post_operation = in_array($operation, ['read', 'edit', 'delete', 'publish'], true);
 
         if ($post_operation && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY) {
-            $message = __('For this action, Blocked permissions take priority over Enabled permissions. If a block applies through a user, role, or group, adding more Enabled entries does not override it.', 'press-permit-core');
+            $message = __('Blocks access even when Enabled permissions apply through another role or group. Adding more Enabled entries does not override this block.', 'press-permit-core');
         } else {
-            $message = __('A Blocked permission can be overridden by an Enabled permission for the same item. Permissions are combined across a user, their roles, and their groups; adding more Enabled entries does not increase their priority.', 'press-permit-core');
+            $message = __('Blocks access unless an explicit Enabled permission for the same item overrides it. "Default access: Enabled" does not override this block. Adding more Enabled entries does not increase their priority.', 'press-permit-core');
 
             if ($post_operation) {
                 $message .= ' ' . (presspermit()->getOption('post_blockage_priority')

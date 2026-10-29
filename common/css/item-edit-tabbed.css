@@ -496,6 +496,16 @@
   color: var(--pp-gray-5);
   opacity: 1;
 }
+.pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field {
+  padding-top: 4px;
+  padding-top: calc((20px - 1lh) / 2 + 1px);
+  line-height: normal;
+}
+.pp-search-box-select2 .select2-container .select2-search--inline input.select2-search__field {
+  display: block;
+  padding: 0;
+  line-height: 20px;
+}
 .pp-search-box-select2 .select2-container .select2-selection__choice {
   background: var(--pp-primary);
   border: none;
@@ -1564,8 +1574,6 @@
     opacity: 1;
   }
 }
-
-/* Keep blocked dropdowns and their help within the original control width. */
 .pp-select-with-blocked-help {
   display: flex;
   align-items: center;
@@ -1590,11 +1598,47 @@
     width: 100%;
   }
 }
-
 .pp-select-with-blocked-help:has(.pp-select-label) > .pp-blocked-select-help {
   transform: translateY(10px);
 }
 .pp-blocked-select-help > button {
   display: flex;
   align-items: center;
+}
+/* Floating help stays outside the editor's scrollable metabox. */
+.pp-blocked-tooltip-layer[data-toggle="tooltip"] {
+  position: fixed;
+  z-index: 99999999;
+  cursor: auto;
+}
+.pp-blocked-tooltip-layer[data-toggle="tooltip"] .tooltip-text {
+  position: static;
+  display: block;
+  width: 320px;
+  min-width: 0;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  overflow-wrap: break-word;
+  margin: 0;
+  transform: none;
+  transition: none;
+}
+/* Keep the pointer outside the scrolling tooltip text. */
+.pp-blocked-tooltip-layer > i {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.pp-blocked-tooltip-layer[data-side="left"] > i {
+  left: 100%;
+  border-left: 8px solid #000c0c;
+}
+.pp-blocked-tooltip-layer[data-side="right"] > i {
+  right: 100%;
+  border-right: 8px solid #000c0c;
 }

@@ -1899,3 +1899,42 @@
   display: flex;
   align-items: center;
 }
+
+/* Floating help stays outside the editor's scrollable metabox. */
+.pp-blocked-tooltip-layer[data-toggle="tooltip"] {
+  position: fixed;
+  z-index: 99999999;
+  cursor: auto;
+}
+.pp-blocked-tooltip-layer[data-toggle="tooltip"] .tooltip-text {
+  position: static;
+  display: block;
+  width: 320px;
+  min-width: 0;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  overflow-wrap: break-word;
+  margin: 0;
+  transform: none;
+  transition: none;
+}
+
+/* Keep the pointer outside the scrolling tooltip text. */
+.pp-blocked-tooltip-layer > i {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.pp-blocked-tooltip-layer[data-side="left"] > i {
+  left: 100%;
+  border-left: 8px solid #000c0c;
+}
+.pp-blocked-tooltip-layer[data-side="right"] > i {
+  right: 100%;
+  border-right: 8px solid #000c0c;
+}

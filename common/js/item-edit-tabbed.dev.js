@@ -1455,17 +1455,111 @@ jQuery(function ($) {
                     $wrapper = $box.parent();
                 }
                 $help = $('<span>').addClass('pp-blocked-select-help')
-                    .attr({'data-toggle': 'tooltip', 'data-placement': 'left'})
                     .append($('<button>').attr({'type': 'button', 'aria-label': hint})
                         .addClass('button-link').css({'color': 'inherit', 'text-decoration': 'none'})
-                        .append($('<span>').addClass('dashicons dashicons-info-outline').attr('aria-hidden', 'true')))
-                    .append($('<span>').addClass('tooltip-text').attr('aria-hidden', 'true')
-                        .append($('<span>').text(hint)).append($('<i>')));
+                        .append($('<span>').addClass('dashicons dashicons-info-outline').attr('aria-hidden', 'true')));
                 $wrapper.append($help);
             }
             $help.toggle(blocked);
+            if (!blocked && $activeHelp && $activeHelp[0] === $help[0]) {
+                closeHelp();
+            }
         });
     }
+
+    // Render outside the metabox's overflow containers so help never adds scrollbars.
+    var $activeHelp = null;
+    var $tooltip = $('<div>').addClass('pp-blocked-tooltip-layer')
+        .attr({'data-toggle': 'tooltip', 'id': 'pp-blocked-permission-tooltip', 'role': 'tooltip'})
+        .append($('<span>').addClass('tooltip-text'))
+        .append($('<i>').attr('aria-hidden', 'true')).hide().appendTo(document.body);
+    var pinned = false;
+    var closeTimer;
+
+    function closeHelp() {
+        clearTimeout(closeTimer);
+        if ($activeHelp) {
+            $activeHelp.find('button').removeAttr('aria-describedby').attr('aria-expanded', 'false');
+        }
+        $activeHelp = null;
+        pinned = false;
+        $tooltip.hide();
+    }
+
+    function positionHelp() {
+        if (!$activeHelp) {
+            return;
+        }
+        var anchor = $activeHelp[0];
+        var rect = anchor.getBoundingClientRect();
+        var width = document.documentElement.clientWidth;
+        var height = window.innerHeight;
+        if (!anchor.isConnected || !anchor.getClientRects().length || rect.bottom < 0 || rect.top > height) {
+            closeHelp();
+            return;
+        }
+        var tooltipWidth = $tooltip.outerWidth();
+        var tooltipHeight = $tooltip.outerHeight();
+        var left = rect.left - tooltipWidth - 8;
+        var side = 'left';
+        if (left < 12) {
+            left = rect.right + 8;
+            side = 'right';
+        }
+        left = Math.max(12, Math.min(left, width - tooltipWidth - 12));
+        var top = Math.max(12, Math.min(rect.top + rect.height / 2 - tooltipHeight / 2, height - tooltipHeight - 12));
+        $tooltip.attr('data-side', side).css({'left': left, 'top': top});
+        var pointerTop = Math.max(12, Math.min(rect.top + rect.height / 2 - top, tooltipHeight - 12));
+        $tooltip.children('i').css('top', pointerTop).css('left', side === 'left' ? tooltipWidth - 1 : -7);
+    }
+
+    function openHelp($help) {
+        clearTimeout(closeTimer);
+        if (!$activeHelp || $activeHelp[0] !== $help[0]) {
+            closeHelp();
+            $activeHelp = $help;
+        }
+        var $button = $help.find('button');
+        $button.attr({'aria-describedby': 'pp-blocked-permission-tooltip', 'aria-expanded': 'true'});
+        $tooltip.find('.tooltip-text').text($button.attr('aria-label'));
+        $tooltip.show();
+        positionHelp();
+    }
+
+    function scheduleClose() {
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(function () {
+            if (!pinned && (!$activeHelp || !$activeHelp[0].contains(document.activeElement))) {
+                closeHelp();
+            }
+        }, 150);
+    }
+
+    $(document).on('mouseenter focusin', '.pp-blocked-select-help', function () {
+        openHelp($(this));
+    }).on('mouseleave focusout', '.pp-blocked-select-help', scheduleClose);
+    $tooltip.on('mouseenter', function () {
+        clearTimeout(closeTimer);
+    }).on('mouseleave', scheduleClose);
+    $(document).on('click', '.pp-blocked-select-help button', function () {
+        var $help = $(this).closest('.pp-blocked-select-help');
+        if (pinned && $activeHelp && $activeHelp[0] === $help[0]) {
+            closeHelp();
+        } else {
+            openHelp($help);
+            pinned = true;
+        }
+    }).on('mousedown', function (event) {
+        if (!$(event.target).closest('.pp-blocked-select-help, .pp-blocked-tooltip-layer').length) {
+            closeHelp();
+        }
+    }).on('keydown', function (event) {
+        if (event.key === 'Escape' || event.which === 27) {
+            closeHelp();
+        }
+    }).on('click', '.pp-operation-tab, .pp-agent-type-tab', closeHelp);
+    document.addEventListener('scroll', positionHelp, true);
+    $(window).on('resize', positionHelp);
 
     $('.pp-operation-content').each(function () {
         updateBlockedSelectHelp($(this));
