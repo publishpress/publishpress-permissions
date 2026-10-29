@@ -8,21 +8,13 @@ class HintsItemExceptions
 {
     public static function blockedPermissionHint($operation)
     {
-        $post_operation = in_array($operation, ['read', 'edit', 'delete', 'publish'], true);
-
-        if ($post_operation && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY) {
-            $message = __('Blocks access even when Enabled permissions apply through another role or group. Adding more Enabled entries does not override this block.', 'press-permit-core');
-        } else {
-            $message = __('Blocks access unless an explicit Enabled permission for the same item overrides it. "Default access: Enabled" does not override this block. Adding more Enabled entries does not increase their priority.', 'press-permit-core');
-
-            if ($post_operation) {
-                $message .= ' ' . (presspermit()->getOption('post_blockage_priority')
-                    ? __('Post-specific permissions take priority over category or term permissions.', 'press-permit-core')
-                    : __('Enabled category or term permissions can also override a post-specific block.', 'press-permit-core'));
-            }
+        if (in_array($operation, ['read', 'edit', 'delete', 'publish'], true)
+            && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY
+        ) {
+            return __('Blocks access, even if another role or group enables it.', 'press-permit-core');
         }
 
-        return $message;
+        return __('Blocks access unless another permission explicitly enables it.', 'press-permit-core');
     }
 
     public static function permissionPriorityTooltip($placement = 'top')
