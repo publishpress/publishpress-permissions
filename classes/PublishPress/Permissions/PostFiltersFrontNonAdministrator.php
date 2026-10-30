@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class PostFiltersFrontNonAdministrator
 {
     public function __construct() { // Ubermenu: intermittant failure to display top level menu items
@@ -69,7 +71,7 @@ class PostFiltersFrontNonAdministrator
             foreach ($item_types['taxonomy'] as $taxonomy => $item_ids) {
                 $hide_empty = (defined('PP_NAV_MENU_SHOW_EMPTY_TERMS')) ? '0' : '1';
                 
-                $terms = get_terms($taxonomy, "hide_empty=$hide_empty");
+                $terms = get_terms(['taxonomy' => $taxonomy, 'hide_empty' => $hide_empty]);
 
                 $okay_ids = [];
                 foreach($terms as $term) {

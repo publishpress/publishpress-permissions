@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Handlers;
 
+\defined('ABSPATH') || exit;
+
 class Admin
 {
     public static function handleRequest() {

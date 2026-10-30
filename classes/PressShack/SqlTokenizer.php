@@ -2,6 +2,8 @@
 
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 class SqlTokenizer extends SqlTokenizerBase
 {
     public function __construct()

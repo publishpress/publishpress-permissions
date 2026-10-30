@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class UsersListing
 {
     public function __construct() {
@@ -66,7 +68,7 @@ class UsersListing
         }
         ?>
 
-        <label class="screen-reader-text" for="pp-add-group"><?php esc_html_e('Permissions&hellip;', 'press-permit-core') ?></label>
+        <label class="screen-reader-text" for="pp-bulk-group<?php echo esc_attr($sfx); ?>"><?php esc_html_e('Permissions&hellip;', 'press-permit-core') ?></label>
         <select name="pp-bulk-group<?php echo esc_attr($sfx); ?>" id="pp-bulk-group<?php echo esc_attr($sfx); ?>" class="pp-bulk-groups"
                 style="display:inline-block; float:none;" autocomplete="off">
             <option value=''><?php esc_html_e('Permissions&hellip;', 'press-permit-core') ?></option>
@@ -247,7 +249,7 @@ class UsersListing
                                 }
                                 
                                 if (defined('PP_USERS_UI_GROUP_FILTER_LINK') && !empty($_SERVER['REQUEST_URI'])) {
-                                    $url = add_query_arg('pp_group', $_id, esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $url = add_query_arg('pp_group', $_id, esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                                     if ($is_plain_export) {
                                         $content .= esc_html($name);
                                     } else {

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class ItemExceptionsUI
 {
     private $render;
@@ -373,6 +375,7 @@ class ItemExceptionsUI
             $drew_itemroles_marker = true;
         }
 
+        require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
         ?>
         <div class="pp-tabbed-metabox">
             <!-- Left Sidebar with Operation Tabs -->
@@ -473,7 +476,7 @@ class ItemExceptionsUI
                              role="tabpanel"
                              aria-labelledby="<?php echo esc_attr($operation_tab_id); ?>"
                              aria-hidden="<?php echo $first ? 'false' : 'true'; ?>">
-                            <div class="pp-operation-content">
+                            <div class="pp-operation-content" data-blocked-permission-hint="<?php echo esc_attr(\PublishPress\Permissions\UI\HintsItemExceptions::blockedPermissionHint($op)); ?>">
                                 <?php
                                 // Call the new tabbed operation content method, with for_item_type
                                 // corrected per-operation (see note above).

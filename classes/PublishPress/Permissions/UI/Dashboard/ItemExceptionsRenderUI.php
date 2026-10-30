@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class ItemExceptionsRenderUI
 {
     public $opt_labels = [];
@@ -12,9 +14,9 @@ class ItemExceptionsRenderUI
     public function __construct()
     {
         $this->opt_labels = [
-            'default' => esc_html__('(Default access)', 'press-permit-core'),
-            'default_yes' => esc_html__('(Default access: Enabled)', 'press-permit-core'),
-            'default_no' => esc_html__('(Default access: Blocked)', 'press-permit-core'),
+            'default' => esc_html__('(Default)', 'press-permit-core'),
+            'default_yes' => esc_html__('(Default: Enabled)', 'press-permit-core'),
+            'default_no' => esc_html__('(Default: Blocked)', 'press-permit-core'),
             'no_setting' => esc_html__('(No setting)', 'press-permit-core'),
             'enabled' => esc_html__('Enabled', 'press-permit-core'),
             'blocked' => esc_html__('Blocked', 'press-permit-core'),

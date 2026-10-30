@@ -1,4 +1,7 @@
 name: Code checks
+permissions:
+  contents: read
+
 on:
   push:
     branches:
@@ -11,41 +14,48 @@ on:
   workflow_call:
 
   workflow_dispatch:
-    inputs:
-      tmate_enabled:
-        type: boolean
-        description: 'Enable "tmate" for debugging'
-        required: false
-        default: false
+
 jobs:
   check:
     name: Check the code
+    uses: publishpress/github-workflows/.github/workflows/code-standards.yml@v3
+
+  php-regression-tests:
+    name: Regressions (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.2', '8.3', '8.4', '8.5']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - name: Check Read More fallback behavior
+        run: php tests/unit/read-more-fallback.php
+      - name: Check permission-scoped Trash counts
+        run: php tests/unit/post-status-counts.php
+      - name: Check minimum-version bootstrap
+        run: |
+          php tests/unit/minimum-version-bootstrap.php
+          php tests/unit/minimum-version-bootstrap.php 5.4
+      - name: Check nested exception post IDs
+        run: php tests/unit/exception-post-ids.php
+      - name: Check teaser preview title entities
+        run: php tests/unit/teaser-preview-title.php
+      - name: Check before and after teaser content boundaries
+        run: php tests/unit/teaser-content-boundaries.php
+
+  unsupported-php-bootstrap:
+    name: Reject unsupported PHP before loading dependencies
     runs-on: ubuntu-latest
     steps:
-      - name: Setup tmate session for Debugging, if inputs.tmate_enabled is true
-        uses: mxschmitt/action-tmate@v3
-        if: ${{ inputs.tmate_enabled }}
-        timeout-minutes: 10
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
         with:
-          detached: true
-
-      - name: Checkout code
-        uses: actions/checkout@master
-
-      - name: Create .env file
-        run: |
-          cp $GITHUB_WORKSPACE/.env.example $GITHUB_WORKSPACE/.env
-
-      - name: Prepare composer
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer validate
-          $GITHUB_WORKSPACE/dev-workspace/run composer install
-
-      - name: Show version of tools inside the dev-workspace
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer info:versions
-
-      - name: Run Lint check
-        run: |
-          $GITHUB_WORKSPACE/dev-workspace/run composer check:lint
-
+          php-version: '8.1'
+          coverage: none
+      - name: Check the real entry point on unsupported PHP
+        run: php tests/unit/minimum-version-bootstrap.php

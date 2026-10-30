@@ -2,6 +2,8 @@
 
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 class LibArray
 {
     // derived from http://us3.php.net/manual/en/ref.array.php#80631
@@ -14,7 +16,7 @@ class LibArray
         foreach ($arr_md as $element) {
             if (is_array($element)) {
                 if ($go_deep)
-                    $arr_flat = array_merge($arr_flat, self::flatten($element));
+                    $arr_flat = array_merge($arr_flat, self::flatten($element, true));
                 else
                     $arr_flat = array_merge($arr_flat, $element);
             } else

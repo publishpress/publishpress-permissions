@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\DB;
 
+\defined('ABSPATH') || exit;
+
 class DatabaseSetup
 {
     function __construct($last_db_ver = false)

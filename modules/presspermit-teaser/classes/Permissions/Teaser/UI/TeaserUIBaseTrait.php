@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser\UI;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Base trait for Teaser UI functionality
  * Defines capabilities and methods 
@@ -44,11 +46,11 @@ trait TeaserUIBaseTrait {
     protected function getAvailableTeaserTypes() {
         return [
             0 => esc_html__('No Teaser', 'press-permit-core'),
-            1 => esc_html__('No Teaser Text', 'press-permit-core'),
-            'read_more' => esc_html__('Read More Link as Teaser', 'press-permit-core'),
-            'excerpt' => esc_html__('Excerpt as Teaser', 'press-permit-core'),
+            1 => esc_html__('Message with no teaser text', 'press-permit-core'),
+            'read_more' => esc_html__('Message with content before Read More link as teaser text', 'press-permit-core'),
+            'excerpt' => esc_html__('Message with Excerpt as teaser text', 'press-permit-core'),
             'more' => esc_html__('Excerpt or pre-More as Teaser', 'press-permit-core'),
-            'x_chars' => esc_html__('First X Characters as Teaser', 'press-permit-core'),
+            'x_chars' => esc_html__('Message with first X characters of content as teaser text', 'press-permit-core'),
             'redirect' => esc_html__('Redirect to another post', 'press-permit-core'),
         ];
     }

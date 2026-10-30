@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class PermissionsAdmin
 {
     // Regulates the ability to set exceptions for a specific post or term.  Note: exceptions bulk editor (Edit Permissions screen) requires edit_users capability.

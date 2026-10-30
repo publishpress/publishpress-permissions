@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentPermissionsUI
 {
     public static function roleAssignmentScripts()
@@ -65,6 +67,7 @@ class AgentPermissionsUI
         $vars['noItems'] = esc_html__('No items selected!', 'press-permit-core');
         $vars['noParent'] = esc_html__('(no parent)', 'press-permit-core');
         $vars['none'] = esc_html__('(none)', 'press-permit-core');
+        $vars['ajaxError'] = esc_html__('An error occurred. Please reload the page and try again.', 'press-permit-core');
 
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
 
@@ -142,7 +145,13 @@ class AgentPermissionsUI
                 <tr>
                     <th><?php esc_html_e('Post Type', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-operation" style="display:none"><?php esc_html_e('Operation', 'press-permit-core'); ?></th>
-                    <th class="pp-select-x-mod-type" style="display:none"><?php esc_html_e('Adjustment', 'press-permit-core'); ?></th>
+                    <th class="pp-select-x-mod-type" style="display:none">
+                        <?php
+                        esc_html_e('Adjustment', 'press-permit-core');
+                        require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+                        HintsItemExceptions::permissionPriorityTooltip();
+                        ?>
+                    </th>
                     <th class="pp-select-x-via-type" style="display:none"><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-status" style="display:none"><?php esc_html_e('Statuses', 'press-permit-core'); ?></th>
                     <th class="pp-add-exception" style="display:none"></th>
@@ -152,7 +161,7 @@ class AgentPermissionsUI
                 <tr>
                     <td>
 
-                        <select name="pp_select_x_for_type" autocomplete="off">
+                        <select name="pp_select_x_for_type" autocomplete="off" aria-label="<?php esc_attr_e('Post Type', 'press-permit-core'); ?>">
                             <?php
                             $type_objects = apply_filters('presspermit_append_exception_types', $pp->admin()->orderTypes(apply_filters('presspermit_exception_types', $type_objects)));
 
@@ -174,7 +183,7 @@ class AgentPermissionsUI
                     <td class="pp-select-x-operation" style="display:none"></td>
                     <td class="pp-select-x-mod-type" style="display:none"></td>
 
-                    <td class="pp-select-x-via-type" style="display:none"><select name="pp_select_x_via_type" autocomplete="off"></select>
+                    <td class="pp-select-x-via-type" style="display:none"><select name="pp_select_x_via_type" autocomplete="off" aria-label="<?php esc_attr_e('Qualification', 'press-permit-core'); ?>"></select>
 
                         <div class="pp-select-x-assign-for" id="pp_select_x_assign_for" style="display:none">
                             <p class="pp-checkbox">
@@ -258,14 +267,14 @@ class AgentPermissionsUI
             <tbody>
                 <tr>
                     <td>
-                        <select name="pp_select_type" autocomplete="off">
+                        <select name="pp_select_type" autocomplete="off" aria-label="<?php esc_attr_e('Post Type', 'press-permit-core'); ?>">
                             <?php
                             self::drawTypeOptions($type_objects, ['option_na' => true]);
                             do_action('presspermit_role_types_dropdown');
                             ?></select>
                     </td>
 
-                    <td class="pp-select-role" style="display:none"><select name="pp_select_role" autocomplete="off"></select></td>
+                    <td class="pp-select-role" style="display:none"><select name="pp_select_role" autocomplete="off" aria-label="<?php esc_attr_e('Role', 'press-permit-core'); ?>"></select></td>
 
                     <td class="pp-select-cond" id="pp_cond_ui" style="display:none">
                         <p class="pp-checkbox">
@@ -403,7 +412,13 @@ class AgentPermissionsUI
                     <tr>
                         <th><?php esc_html_e('Post Type', 'press-permit-core'); ?></th>
                         <th><?php esc_html_e('Operation', 'press-permit-core'); ?></th>
-                        <th><?php esc_html_e('Adjustment', 'press-permit-core'); ?></th>
+                        <th>
+                            <?php
+                            esc_html_e('Adjustment', 'press-permit-core');
+                            require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+                            HintsItemExceptions::permissionPriorityTooltip();
+                            ?>
+                        </th>
                         <th><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                         <th></th>
                         <th><?php esc_html_e('Status', 'press-permit-core'); ?></th>
@@ -690,7 +705,7 @@ class AgentPermissionsUI
                             echo '<tr>';
                             if (!$read_only) {
                                 echo '<th class="checkbox-column">';
-                                echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type . '_' . $uid) . '" type="checkbox" />';
+                                echo '<input id="cb-select-all-' . esc_attr($source_name . '_' . $object_type . '_' . $uid) . '" type="checkbox" aria-label="' . esc_attr__('Select all', 'press-permit-core') . '" />';
                                 echo '</th>';
                             }
                             echo '<th class="role-column sortable asc">' . esc_html__('Role', 'press-permit-core') . '</th>';
@@ -716,10 +731,10 @@ class AgentPermissionsUI
                                     echo '<td class="checkbox-column">';
                                     $ass_id = $roles[$role_name];
                                     $cb_id = 'pp_edit_role_' . str_replace(',', '_', $ass_id);
-                                    echo '<input id="' . esc_attr($cb_id) . '" type="checkbox" name="pp_edit_role[]" value="' . esc_attr($ass_id) . '">';
+                                    echo '<input id="' . esc_attr($cb_id) . '" type="checkbox" name="pp_edit_role[]" value="' . esc_attr($ass_id) . '" aria-labelledby="' . esc_attr($cb_id . '_title') . '">';
                                     echo '</td>';
                                 }
-                                echo '<td>';
+                                echo $read_only ? '<td>' : '<td id="' . esc_attr($cb_id . '_title') . '">';
                                 $pp_admin->getRoleTitle($role_name, ['include_warnings' => true, 'echo' => true, 'status_suffix' => false]);
                                 echo '</td>';
                                 echo '<td>' . esc_html(self::getRoleStatusLabel($role_name)) . ' </td>';
@@ -735,7 +750,7 @@ class AgentPermissionsUI
                             echo '</tbody>';
                             echo '</table>';
                             echo '<div class="pp-role-bulk-edit" style="margin-top:12px;display:none">';
-                            echo "<select><option value=''>" . esc_html(PWP::__wp('Bulk Actions')) . "</option><option value='remove'>"
+                            echo "<select aria-label='" . esc_attr(PWP::__wp('Select bulk action')) . "'><option value=''>" . esc_html(PWP::__wp('Bulk Actions')) . "</option><option value='remove'>"
                                 . esc_html(PWP::__wp('Delete')) . '</option></select>'; 
                             echo '<input type="submit" name="" class="button submit-edit-item-role" value="' . esc_attr__('Apply', 'press-permit-core') . '" />';
                             echo '<img class="waiting" style="display:none;" src="' . esc_url(admin_url('images/wpspin_light.gif')) . '" alt="" />';
@@ -1025,7 +1040,7 @@ class AgentPermissionsUI
                                 echo '<tr>';
                                 if (!$read_only) {
                                     echo '<th class="checkbox-column">';
-                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '_' . esc_attr($uid) . '" type="checkbox" />';
+                                    echo '<input id="cb-select-all-' . esc_attr($operation) . '_' . esc_attr($for_src) . '_' . esc_attr($via_src) . '_' . esc_attr($via_type) . '_' . esc_attr($uid) . '" type="checkbox" aria-label="' . esc_attr__('Select all', 'press-permit-core') . '" />';
                                     echo '</th>';
                                 }
                                 echo '<th class="icon-column sortable"></th>';
@@ -1040,7 +1055,7 @@ class AgentPermissionsUI
                                 echo esc_html($via_type_obj->labels->name);
                                 echo '</th>';
 
-                                echo '<th class="edit-column" style="text-align:left">' . esc_html__('Group', 'press-permit-core') . '</th>';
+                                echo '<th class="edit-column" style="text-align:left">' . esc_html__('Role or Group', 'press-permit-core') . '</th>';
 
                                 echo '</tr>';
                                 echo '</thead>';
@@ -1224,7 +1239,8 @@ class AgentPermissionsUI
                                                 if ($assign_child_only) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-child"></i>
+                                                    <i class="dashicons dashicons-editor-indent assign-child" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name)); ?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name)); ?>
                                                     </span><i></i></span></span>
@@ -1232,7 +1248,8 @@ class AgentPermissionsUI
                                                 } elseif ($assign_both) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-both"></i>
+                                                    <i class="dashicons dashicons-networking assign-both" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name)); ?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name)); ?>
                                                     </span><i></i></span></span>
@@ -1298,7 +1315,7 @@ class AgentPermissionsUI
 
                                                 echo "<tr class='checkbox-row " . esc_attr($tr_class) . "'>";
                                                 if (!$read_only) {
-                                                echo "<td class='checkbox-column'><input id='" . esc_attr($cb_id) . "' type='checkbox' name='pp_edit_exception[]' value='" . esc_attr($ass_id) . "' class='" . esc_attr($class) . "' autocomplete='off'></td> ";
+                                                echo "<td class='checkbox-column'><input id='" . esc_attr($cb_id) . "' type='checkbox' name='pp_edit_exception[]' value='" . esc_attr($ass_id) . "' class='" . esc_attr($class) . "' autocomplete='off' aria-labelledby='" . esc_attr($cb_id . '_title') . "'></td> ";
                                                 }
                                                 echo "<td class='icon-column' data-sort='" . esc_attr($mod_type) . "'>";
                                                 echo '<span data-toggle="tooltip" data-placement="top">';
@@ -1327,7 +1344,8 @@ class AgentPermissionsUI
                                                 if ($assign_child_only) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-child"></i> 
+                                                    <i class="dashicons dashicons-editor-indent assign-child" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name));?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for sub-%s only.', 'press-permit-core'), esc_html($via_type_obj->labels->name));?>
                                                     </span><i></i></span></span>
@@ -1335,7 +1353,8 @@ class AgentPermissionsUI
                                                 } elseif ($assign_both) {
                                                     ?>
                                                     <span data-toggle="tooltip" data-placement="top">
-                                                    <i class="dashicons dashicons-networking assign-both"></i> 
+                                                    <i class="dashicons dashicons-networking assign-both" aria-hidden="true"></i>
+                                                    <span class="screen-reader-text"><?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name));?></span>
                                                     <span class="tooltip-text"><span>
                                                     <?php printf(esc_html__('Assigned for %s and sub-%s.', 'press-permit-core'), esc_html($via_type_obj->labels->singular_name), esc_html($via_type_obj->labels->name));?>
                                                     </span><i></i></span></span>
@@ -1343,7 +1362,7 @@ class AgentPermissionsUI
                                                 }
                                                 echo '</td>';
 
-                                                echo "<td>";
+                                                echo "<td id='" . esc_attr($cb_id . '_title') . "'>";
 
                                                 $allowed_html = [
                                                     'i' => [],
@@ -1382,7 +1401,7 @@ class AgentPermissionsUI
 
                                 echo '<div class="pp-exception-bulk-edit" style="margin-top:12px;display:none">';
 
-                                echo "<select autocomplete='off'>"
+                                echo "<select autocomplete='off' aria-label='" . esc_attr(PWP::__wp('Select bulk action')) . "'>"
                                     . "<option value='' autocomplete='off'>" . esc_html(PWP::__wp('Bulk Actions')) . "</option>"
                                     . "<option value='remove'>" . esc_html__('Remove', 'press-permit-core') . '</option>';
 
@@ -1510,7 +1529,7 @@ class AgentPermissionsUI
                                     . '" />';
 
                             ?>
-                            <div class="mirror-confirm" style="display:none"></div>
+                            <div class="mirror-confirm" role="status" aria-live="polite" style="display:none"></div>
                         <?php
 
                                 echo '</div>';  // pp-exception-bulk-edit
@@ -1540,6 +1559,11 @@ class AgentPermissionsUI
                             . '<i class="dashicons dashicons-no-alt" style="color:#ef4444;"></i>'
                             . esc_html__('= Blocked', 'press-permit-core')
                             . '</span>';
+                        }
+
+                        if (!empty($have_mod_type['additional']) && !empty($have_mod_type['exclude'])) {
+                            require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
+                            HintsItemExceptions::permissionPriorityTooltip();
                         } 
                         
                         if (!empty($have_mod_type['include'])) {
@@ -1558,13 +1582,13 @@ class AgentPermissionsUI
                                 <?php
                                 if (!empty($any_both)) {
                                     echo '<span class="role_both">'
-                                        . '<i class="dashicons dashicons-networking assign-both"></i>'
+                                        . '<i class="dashicons dashicons-networking assign-both" aria-hidden="true"></i>'
                                         . esc_html(sprintf(__('= %1$s and sub-%1$s', 'press-permit-core'), $_caption))
                                         . '</span>';
                                 }
                                 if (!empty($any_child_only)) {
                                     echo '<span>' 
-                                    . '<i class="dashicons dashicons-networking assign-child"></i>'
+                                    . '<i class="dashicons dashicons-editor-indent assign-child" aria-hidden="true"></i>'
                                     . esc_html(sprintf(__('= sub-%s only', 'press-permit-core'), $_caption)) . '</span>';
                                 }
                                 ?>
@@ -1575,7 +1599,7 @@ class AgentPermissionsUI
                         echo '</div>';  // notes
 
                         if (!empty($via_type_obj->hierarchical) && (!empty($any_child_only) || !empty($any_both)) && !empty($_SERVER['REQUEST_URI'])) {
-                            $show_all_url = add_query_arg('show_propagated', '1', esc_url_raw($_SERVER['REQUEST_URI']));
+                            $show_all_url = add_query_arg('show_propagated', '1', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                             $_caption = $via_type_obj->labels->singular_name;
 
                             if ('term' == $via_src) {
@@ -1593,7 +1617,7 @@ class AgentPermissionsUI
                                         )
                                         . '</div>';
                                 } else {
-                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                                     echo '<div class="notes">'
                                         . sprintf(
                                             ' <a href="%s" class="btn btn-link">%s</a>',
@@ -1616,7 +1640,7 @@ class AgentPermissionsUI
                                         esc_html__('Show All', 'press-permit-core')
                                     );
                                 } else {
-                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $back_to_normal_url = remove_query_arg('show_propagated', esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
                                     echo '<div class="notes">'
                                         . sprintf(
                                             ' <a href="%s" class="btn btn-link">%s</a>',
@@ -1626,7 +1650,7 @@ class AgentPermissionsUI
                                 }
 
                                 if (defined('WP_DEBUG') || defined('PRESSPERMIT_DEBUG')) {
-                                    $fix_child_url = remove_query_arg(['pp_fix_child_exceptions', '_wpnonce'], esc_url_raw($_SERVER['REQUEST_URI']));
+                                    $fix_child_url = remove_query_arg(['pp_fix_child_exceptions', '_wpnonce'], esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])));
 
                                     if (PWP::empty_REQUEST('show_propagated')) {
                                         echo '&nbsp;&nbsp;&bull;';
@@ -1825,11 +1849,11 @@ class AgentPermissionsUI
             private static function selectCloneUI($agent)
             {
                 global $wp_roles;
-                esc_html_e('Copy Roles and Permissions from:', 'press-permit-core');
+                echo '<label for="pp_select_clone_role">' . esc_html__('Copy Roles and Permissions from:', 'press-permit-core') . '</label> ';
 
                 $pp_only = (array) presspermit()->getOption('supplemental_role_defs');
             ?>
-            <select name="pp_select_role" autocomplete="off">
+            <select name="pp_select_role" id="pp_select_clone_role" autocomplete="off">
 
                 <?php
                 foreach ($wp_roles->role_names as $role_name => $role_caption) {

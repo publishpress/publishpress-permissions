@@ -3,6 +3,8 @@ namespace PublishPress\Permissions\Compat;
 
 use PublishPress\PWP;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Theme Compatibility Handler
  * Centralized location for theme-specific compatibility fixes

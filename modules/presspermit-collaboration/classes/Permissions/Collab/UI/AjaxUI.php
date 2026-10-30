@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI;
 
+\defined('ABSPATH') || exit;
+
 class AjaxUI
 {
     public static function fltOperationCaptions($op_captions)

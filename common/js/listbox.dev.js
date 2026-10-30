@@ -56,6 +56,8 @@
               placeholder: agent_type_lbl,
               dropdownAutoWidth: true,
               dropdownCssClass: 'pp-select2-dropdown',
+              selectionCssClass: 'pp-select2-container',
+              // Preserve styling when another plugin has loaded Select2 4.0 first.
               containerCssClass: 'pp-select2-container',
               width: '325px',
               ajax: {
@@ -175,6 +177,16 @@
         }
 
         initializeSelect2(args);
+
+        // Screen reader announcements for agent search status
+        var $searchStatus = $('<span class="screen-reader-text" role="status" aria-live="polite"></span>');
+        $('#' + args.results_id).after($searchStatus);
+
+        var announce_search_status = function (msg) {
+            if (msg) {
+                $searchStatus.text(msg);
+            }
+        }
           
         $('#' + args.search_id).on('keydown', function (e) {
             // this will catch pressing enter and call find function
@@ -203,6 +215,8 @@
             $("#" + args.button_id).closest('div').find('.waiting').show();
             $("#" + args.button_id).prop('disabled', true);
             $("#" + args.search_id).prop('disabled', true);
+
+            announce_search_status(ppListbox.searching);
 
             if (stext == null || stext == 'undefined') stext = '';
 
@@ -246,6 +260,10 @@
 
             if (typeof document.all == 'undefined') // triggers removal of agents who already have a dropdown (but IE chokes on trigger call)
                 $('#' + args.results_id).trigger('jchange');
+
+            var resultCount = $('#' + args.results_id).find('option').length;
+            var resultsMsg = (1 == resultCount) ? ppListbox.oneResultFound : ppListbox.resultsFound;
+            announce_search_status(resultsMsg ? resultsMsg.replace('%d', resultCount) : '');
 
             $("#" + args.button_id).closest('div').find('.waiting').hide();
 

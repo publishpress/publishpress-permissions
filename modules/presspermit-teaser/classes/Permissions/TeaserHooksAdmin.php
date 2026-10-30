@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TeaserHooksAdmin
 {
     function __construct()
@@ -20,10 +22,10 @@ class TeaserHooksAdmin
 
                 // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
                 if (!wp_style_is('presspermit-select2', 'registered')) {
-                    wp_register_style('presspermit-select2', $urlpath . '/common/libs/select2/select2.min.css', array(), '4.0.13', 'screen');
+                    wp_register_style('presspermit-select2', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/css/select2.min.css', array(), '4.1.0', 'screen');
                 }
                 if (!wp_script_is('presspermit-select2', 'registered')) {
-                    wp_register_script('presspermit-select2', $urlpath . '/common/libs/select2/select2.full.min.js', ['jquery'], '4.0.13', false);
+                    wp_register_script('presspermit-select2', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/js/select2.full.min.js', ['jquery'], '4.1.0', false);
                 }
                 wp_enqueue_style('presspermit-select2');
                 wp_enqueue_script('presspermit-select2');
@@ -110,7 +112,7 @@ class TeaserHooksAdmin
 	         wp_send_json( 'Error', 400 );
 	    }
 
-        $search = (isset($_GET['search'])) ? sanitize_text_field($_GET['search']) : '';
+        $search = (isset($_GET['search'])) ? sanitize_text_field(wp_unslash($_GET['search'])) : '';
         $post_type = (isset($_GET['post_type'])) ? sanitize_key($_GET['post_type']) : 'page';
         $search_content = !empty($_GET['search_content']);
         
@@ -153,6 +155,8 @@ class TeaserHooksAdmin
         }
 
         foreach ($results as $result) {
+            // Select2 treats AJAX titles as plain text, so decode stored entities first.
+            $result->post_title = html_entity_decode($result->post_title, ENT_QUOTES | ENT_HTML5, get_bloginfo('charset'));
             $result->preview_url = get_permalink($result->ID);
         }
 
@@ -186,7 +190,8 @@ class TeaserHooksAdmin
 
         wp_send_json([
             'ID' => $post->ID,
-            'post_title' => get_the_title($post),
+            // The preview escapes this plain-text title before rendering it as HTML.
+            'post_title' => html_entity_decode(get_the_title($post), ENT_QUOTES | ENT_HTML5, get_bloginfo('charset')),
             'preview_url' => get_permalink($post),
             'excerpt' => $post->post_excerpt ? wpautop($post->post_excerpt) : '',
             'pre_more' => (false !== $pre_more) ? wpautop($pre_more) : '',
@@ -204,7 +209,7 @@ class TeaserHooksAdmin
 	         wp_send_json( 'Error', 400 );
         }
         
-        $search = (isset($_GET['search'])) ? sanitize_text_field($_GET['search']) : '';
+        $search = (isset($_GET['search'])) ? sanitize_text_field(wp_unslash($_GET['search'])) : '';
 
         $results = get_terms(
             [

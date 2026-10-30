@@ -2,8 +2,40 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class HintsItemExceptions
 {
+    public static function blockedPermissionHint($operation)
+    {
+        if (in_array($operation, ['read', 'edit', 'delete', 'publish'], true)
+            && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY
+        ) {
+            return __('Blocks access, even if another role or group enables it.', 'press-permit-core');
+        }
+
+        return __('Blocks access unless another permission explicitly enables it.', 'press-permit-core');
+    }
+
+    public static function permissionPriorityTooltip($placement = 'top')
+    {
+        $hint = __('Permissions are combined across a user, their roles, and their groups. Adding more Enabled entries does not increase their priority.', 'press-permit-core');
+
+        if (defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY) {
+            $hint .= ' ' . __('On this site, Blocked restrictions take priority over Enabled permissions.', 'press-permit-core');
+        } else {
+            $hint .= ' ' . __('An Enabled permission for an item can override a Blocked permission for that same item.', 'press-permit-core');
+            $hint .= ' ' . (presspermit()->getOption('post_blockage_priority')
+                ? __('Post-specific permissions take priority over category or term permissions.', 'press-permit-core')
+                : __('Enabled category or term permissions can also override a post-specific block.', 'press-permit-core'));
+        }
+
+        echo '<span data-toggle="tooltip" data-placement="' . esc_attr($placement) . '">';
+        echo '<button type="button" class="button-link" style="color:inherit;text-decoration:none;" aria-label="' . esc_attr($hint) . '">';
+        echo '<span class="dashicons dashicons-info-outline" style="font-size:18px;width:16px;height:16px;margin-left:5px;" aria-hidden="true"></span></button>';
+        echo '<span class="tooltip-text" aria-hidden="true"><span>' . esc_html($hint) . '</span><i></i></span></span>';
+    }
+
     public static function itemHints($for_item_type)
     {
         $pp = presspermit();

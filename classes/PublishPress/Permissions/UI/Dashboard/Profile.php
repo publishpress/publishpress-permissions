@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_CLASSPATH . '/UI/AgentPermissionsUI.php');
 require_once(PRESSPERMIT_CLASSPATH . '/DB/PermissionsMeta.php');
 
@@ -15,11 +17,8 @@ class Profile
         ];
 
         $args = array_merge($defaults, $args);
-        $can_edit_permissions = (current_user_can('pp_administer_content') && current_user_can('list_users'))
-            || (
-                current_user_can('pp_manage_permissions')
-                && (is_multisite() || current_user_can('edit_user', $user->ID))
-            );
+        // Match the access check of the user Edit Permissions screen (UI/AgentPermissions.php), so these links never lead to a "not permitted" page.
+        $can_edit_permissions = current_user_can('pp_administer_content') && current_user_can('list_users');
 
         $current_roles_edit_url = $can_edit_permissions
             ? admin_url("admin.php?page=presspermit-edit-permissions&amp;action=edit&amp;agent_id=$user->ID&amp;agent_type=user#pp_current_roles_1")
@@ -297,7 +296,8 @@ class Profile
                 'show_subset_caption' => false,
                 'hide_checkboxes' => $hide_checkboxes,
                 'link_captions' => true,
-                'current_only' => true,
+                // List groups the user is not in yet when the current user can edit membership, so they can be added here.
+                'current_only' => empty($editable_ids),
                 'single_select' => $single_select
             ];
 
@@ -384,6 +384,7 @@ class Profile
 
         $is_main_site = (defined('PRESSPERMIT_LEGACY_MAIN_SITE_CHECK')) ? (1 == get_current_blog_id()) : is_main_site();
 
+        $has_editable_memberships = false;
         foreach ($group_types as $agent_type) {
             if (('pp_group' == $agent_type) && in_array('pp_net_group', $group_types, true) && $is_main_site) {
                 continue;
@@ -428,6 +429,9 @@ class Profile
 
             // avoid incorrect eligible count if orphaned group roles are included in editable_ids
             $editable_ids = array_intersect($editable_ids, $all_ids);
+            if (array_intersect(array_keys($stored_groups), $editable_ids)) {
+                $has_editable_memberships = true;
+            }
 
             if (!$all_groups && !$force_display) {
                 continue;
@@ -474,6 +478,10 @@ class Profile
                 'single_select' => $single_select
             ];
 
+            if (!$hide_checkboxes) {
+                echo '<p class="description">' . esc_html__('Checked groups are current memberships. Check or uncheck a group, then save to update membership. A group link opens its permissions without changing membership.', 'press-permit-core') . '</p>';
+            }
+
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $css_id, $stored_groups, $args);
             
             $note = (defined('BP_VERSION'))
@@ -511,6 +519,8 @@ class Profile
         echo "<input type='hidden' name='pp_editing_user_groups' value='1' />";
 
         wp_nonce_field('pp-user-profile-groups', '_pp_permissions_nonce');
+
+        return $has_editable_memberships;
     }
     
     public static function listAgentExceptions($agent_type, $id, $args = [])

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class RoleDefaults
 {
     public static function getDefaultRolecaps($role, $return_default = true)

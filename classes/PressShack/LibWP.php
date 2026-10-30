@@ -1,6 +1,8 @@
 <?php
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 class LibWP
 {
     /**
@@ -344,7 +346,7 @@ class LibWP
 
     public static function REQUEST_url($var) {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        return (!empty($_REQUEST) && !empty($_REQUEST[$var])) ? sanitize_url(sanitize_text_field($_REQUEST[$var])) : '';
+        return (!empty($_REQUEST) && !empty($_REQUEST[$var])) ? sanitize_url(sanitize_text_field(wp_unslash($_REQUEST[$var]))) : '';
     }
 
     public static function empty_POST($var = false) {
@@ -393,7 +395,7 @@ class LibWP
 
     public static function POST_url($var) {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-        return (!empty($_POST) && !empty($_POST[$var])) ? sanitize_url(sanitize_text_field($_POST[$var])) : '';
+        return (!empty($_POST) && !empty($_POST[$var])) ? sanitize_url(sanitize_text_field(wp_unslash($_POST[$var]))) : '';
     }
 
     public static function empty_GET($var = false) {
@@ -437,12 +439,12 @@ class LibWP
 
     public static function GET_url($var) {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        return (!empty($_GET[$var])) ? sanitize_url(sanitize_text_field($_GET[$var])) : '';
+        return (!empty($_GET[$var])) ? sanitize_url(sanitize_text_field(wp_unslash($_GET[$var]))) : '';
     }
 
     public static function SERVER_url($var) {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-        return (!empty($_SERVER[$var])) ? sanitize_url(sanitize_text_field($_SERVER[$var])) : '';
+        return (!empty($_SERVER[$var])) ? sanitize_url(sanitize_text_field(wp_unslash($_SERVER[$var]))) : '';
     }
 
     public static function isAttachment()
@@ -784,6 +786,7 @@ class LibWP
     }
 
     // Wrapper to prevent poEdit from adding core WordPress strings to the plugin .po
+    // phpcs:ignore PHPCompatibility.FunctionNameRestrictions.ReservedFunctionNames.MethodDoubleUnderscore -- Preserve the legacy method name for backward compatibility.
     public static function __wp($string, $unused = '')
     {
         return __($string);

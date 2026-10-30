@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Compat;
 
+\defined('ABSPATH') || exit;
+
 class BakeryPageBuilder 
 {
     function __construct() {

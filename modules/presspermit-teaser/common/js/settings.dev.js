@@ -331,7 +331,12 @@ jQuery(document).ready(function ($) {
     }
 
     function getTeaserNoticePreviews($container) {
+        var postType = String($container.data('post-type') || '');
+        var $stylePanel = $('.pp-teaser-style-options-container').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        });
         return $container.find('.pp-teaser-notice-preview')
+            .add($stylePanel.find('.pp-teaser-notice-preview'))
             .add(getTeaserSitePreview($container).find('.pp-teaser-notice-preview'));
     }
 
@@ -844,7 +849,7 @@ jQuery(document).ready(function ($) {
     }
 
     function formatPreviewContentFragment(html) {
-        html = String(html || '').trim();
+        html = balancePreviewHtml(html).trim();
 
         if (!html) {
             return '';
@@ -887,6 +892,13 @@ jQuery(document).ready(function ($) {
     }
 
     function getTeaserNoticeStyle($container) {
+        var postType = String($container.data('post-type') || '');
+        var $stylePanel = $('.pp-teaser-style-options-container').filter(function() {
+            return String($(this).data('post-type') || '') === postType;
+        });
+        if ($stylePanel.length) {
+            $container = $stylePanel;
+        }
         var borderPosition = String($container.find('[name*="teaser_notice_border_position"]:checked').val() || 'left');
 
         if (['left', 'right', 'top', 'bottom', 'all'].indexOf(borderPosition) === -1) {
@@ -964,7 +976,7 @@ jQuery(document).ready(function ($) {
             // This message, with the resolved target link when configured, is pre-rendered server-side.
             contentHtml = '<div class="pp-teaser-notice">' + String($sitePreview.data('redirect-message') || messageText || '') + '</div>';
         } else if (teaserType === 'read_more') {
-            contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore') || formatPreviewTextBlock(getSelectedPreviewData($sitePreview, 'excerpt')), messageText);
+            contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore'), messageText);
         } else if (teaserType === 'more') {
             contentHtml = appendPreviewNotice(getSelectedPreviewData($sitePreview, 'preMore'), messageText);
         } else if (teaserType === 'excerpt') {
@@ -1125,11 +1137,14 @@ jQuery(document).ready(function ($) {
         // Hide all containers
         $('.pp-teaser-settings-container').removeClass('active').hide();
         $('.pp-teaser-text-options-container').removeClass('active').hide();
+        $('.pp-teaser-style-options-container').removeClass('active').hide();
         $('.pp-teaser-preview-container').removeClass('active').hide();
 
         // Show selected container with animation
         var $selectedContainer = $('.pp-teaser-settings-container[data-post-type="' + selectedType + '"]');
         $selectedContainer.addClass('active pp-fade-in').show();
+        $('.pp-teaser-style-options-container[data-post-type="' + selectedType + '"]')
+            .addClass('active pp-fade-in').show();
         $('.pp-teaser-text-options-container[data-post-type="' + selectedType + '"]')
             .addClass('active pp-fade-in')
             .show();

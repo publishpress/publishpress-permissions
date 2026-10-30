@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentsAjax
 {
     public function __construct() 
@@ -31,7 +33,7 @@ class AgentsAjax
         $include_ids = [];
         $meta_search = [];
 
-        $search_str = !empty($_GET['pp_agent_search']) ? sanitize_text_field($_GET['pp_agent_search']) : '';
+        $search_str = !empty($_GET['pp_agent_search']) ? sanitize_text_field(wp_unslash($_GET['pp_agent_search'])) : '';
         $orig_search_str = strval($search_str);
         
         $agent_id = PWP::GET_int('pp_agent_id');
@@ -111,10 +113,10 @@ class AgentsAjax
                 $order = 'DESC';
             };
 
-            $um_keys = (!empty($_GET['pp_usermeta_key'])) ? array_map('sanitize_text_field', $_GET['pp_usermeta_key']) : [];
+            $um_keys = (!empty($_GET['pp_usermeta_key'])) ? array_map('sanitize_text_field', wp_unslash($_GET['pp_usermeta_key'])) : [];
             $um_keys = array_map('\PressShack\LibWP::sanitizeEntry', $um_keys);
 
-            $um_vals = (!empty($_GET['pp_usermeta_val'])) ? array_map('sanitize_text_field', $_GET['pp_usermeta_val']) : [];
+            $um_vals = (!empty($_GET['pp_usermeta_val'])) ? array_map('sanitize_text_field', wp_unslash($_GET['pp_usermeta_val'])) : [];
 
             if (defined('PP_USER_LASTNAME_SEARCH') && !defined('PP_USER_SEARCH_FIELD')) {
                 $default_search_field = 'last_name';
@@ -145,7 +147,7 @@ class AgentsAjax
             $um_keys = array_values($um_keys);
             $um_vals = array_values($um_vals);
 
-            $role_filter = !empty($_GET['pp_role_search']) ? sanitize_text_field($_GET['pp_role_search']) : '';
+            $role_filter = !empty($_GET['pp_role_search']) ? sanitize_text_field(wp_unslash($_GET['pp_role_search'])) : '';
 
             // append where clause for meta value criteria
             if (!empty($um_keys)) {

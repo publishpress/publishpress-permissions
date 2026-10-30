@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostSaveHierarchical
 {
     public static function fltPageParent($parent_id, $post_type = '')
@@ -20,7 +22,7 @@ class PostSaveHierarchical
         $selected_parent_id = $parent_id;
 
         // this filter is not intended to regulate attachment parent
-        if (isset($_SERVER['REQUEST_URI']) && strpos(esc_url_raw($_SERVER['REQUEST_URI']), 'async-upload.php') && PWP::is_REQUEST('action', 'upload-attachment')) {
+        if (isset($_SERVER['REQUEST_URI']) && strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), 'async-upload.php') && PWP::is_REQUEST('action', 'upload-attachment')) {
             return $parent_id;
         }
 

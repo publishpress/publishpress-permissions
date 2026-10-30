@@ -2,9 +2,7 @@
 
 namespace PublishPress\Permissions;
 
-if (!defined('ABSPATH')) {
-    exit;
-}
+\defined('ABSPATH') || exit;
 
 /**
  * Conditionally renders shortcode content for the current visitor.

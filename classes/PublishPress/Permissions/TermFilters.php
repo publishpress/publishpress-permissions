@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 /**
  * TermFilters class
  *
@@ -109,7 +111,7 @@ class TermFilters
             if (presspermit()->doing_rest) {
                 $operation = REST::instance()->operation;
 
-            } elseif (!empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw($_SERVER['HTTP_REFERER']), PWP::admin_rel_url('post'))) {
+            } elseif (!empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])), PWP::admin_rel_url('post'))) {
                 $operation = 'edit';
             }
 
@@ -236,7 +238,7 @@ class TermFilters
             
             if ($rest->is_posts_request) {
                 if (empty($args['required_operation']) || ('assign' != $args['required_operation'])) {
-                    if (!empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw($_SERVER['HTTP_REFERER']), PWP::admin_rel_url('post'))) {
+                    if (!empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])), PWP::admin_rel_url('post'))) {
                         $args['required_operation'] = 'edit';
                     } else {
                         $args['required_operation'] = $rest->operation;
@@ -336,7 +338,7 @@ class TermFilters
                 if (defined('REST_REQUEST') && REST_REQUEST && ('assign' == $args['required_operation']) && !isset($args['object_type'])) {
                     // todo: WP Trac ticket for post_id or post_type argument in terms query a better solution
                     if (!empty($_SERVER['HTTP_REFERER'])) {
-                        $referer = esc_url_raw($_SERVER['HTTP_REFERER']);
+                        $referer = esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER']));
 
                         $admin_post_rel_url = preg_quote(
                             PWP::admin_rel_url('post.php'),

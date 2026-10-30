@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class Capabilities
 {
     public $all_type_caps = [];    // $all_type_caps = array of cap names

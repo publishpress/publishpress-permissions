@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Handlers;
 
+\defined('ABSPATH') || exit;
+
 class AgentEdit
 {
     public function __construct() {
@@ -190,7 +192,7 @@ class AgentEdit
 
             // also support bulk-assignment of user roles
             $agent_ids = (('user' == $agent_type) && !$agent_id && !empty($_REQUEST['member_csv']))
-                ? array_map('intval', explode(',', sanitize_text_field($_REQUEST['member_csv'])))
+                ? array_map('intval', explode(',', sanitize_text_field(wp_unslash($_REQUEST['member_csv']))))
                 : [$agent_id];
 
             foreach ($agent_ids as $_agent_id) {
@@ -198,7 +200,7 @@ class AgentEdit
                     // phpcs Note: sanitized per-element below
 
                     // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-                    foreach ($_POST['pp_add_role'] as $add_role) {
+                    foreach (wp_unslash($_POST['pp_add_role']) as $add_role) {
                         $attrib_cond = (!empty($add_role['attrib_cond'])) ? ':' . PWP::sanitizeEntry(sanitize_text_field($add_role['attrib_cond'])) : '';
                         $role = (isset($add_role['role'])) ? PWP::sanitizeEntry(sanitize_text_field($add_role['role'])) : '';
                         $role_type = (isset($add_role['type'])) ? sanitize_key($add_role['type']) : '';
@@ -235,7 +237,7 @@ class AgentEdit
             // phpcs Note: sanitized per-element below
 
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-            foreach ($_POST['pp_add_exception'] as $exc) {  
+            foreach (wp_unslash($_POST['pp_add_exception']) as $exc) {
                 $exc = apply_filters('presspermit_add_exception', $exc);
 
                 if ('(all)' == $exc['for_type']) {
@@ -264,6 +266,12 @@ class AgentEdit
                     $args['via_item_source'] = 'post';
                     $args['via_item_type'] = '';
 
+                } elseif ($via_type && $this->isStoredTaxonomy($via_type)) {
+                    // Taxonomy registered later in the request (after this handler runs), but its terms exist
+                    $args['via_item_source'] = 'term';
+                    $args['via_item_type'] = $via_type;
+                    $args['item_id'] = PWP::termidToTtid($item_id, $via_type);
+
                 } else {
                     $args['via_item_source'] = $via_type;
                     $args['via_item_type'] = '';
@@ -283,7 +291,7 @@ class AgentEdit
 
                 // also support bulk-assignment of user exceptions
                 $agent_ids = (('user' == $agent_type) && !$agent_id && !empty($_REQUEST['member_csv']))
-                    ? array_map('intval', explode(',', sanitize_text_field($_REQUEST['member_csv'])))
+                    ? array_map('intval', explode(',', sanitize_text_field(wp_unslash($_REQUEST['member_csv']))))
                     : [$agent_id];
 
                 foreach ($agent_ids as $_agent_id) {
@@ -298,6 +306,17 @@ class AgentEdit
                 $pp->assignExceptions($agents, $agent_type, $args);
             }
         }
+    }
+
+    // True if term_taxonomy rows exist for a taxonomy that is not registered yet in this request
+    private function isStoredTaxonomy($taxonomy)
+    {
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        return (bool) $wpdb->get_var(
+            $wpdb->prepare("SELECT term_taxonomy_id FROM $wpdb->term_taxonomy WHERE taxonomy = %s LIMIT 1", $taxonomy)
+        );
     }
 
     private function addGroup($agent_type)
@@ -331,12 +350,13 @@ class AgentEdit
         }
 
         if (!$members_only) {
+            // Group readers and name-availability checks expect the legacy slashed storage format.
             if (!empty($_REQUEST['group_name'])) {
-                $group->group_name = sanitize_text_field($_REQUEST['group_name']);
+                $group->group_name = wp_slash(sanitize_text_field(wp_unslash($_REQUEST['group_name'])));
             }
 
             if (isset($_REQUEST['description']) && (!PWP::is_REQUEST('action') || ('pp_updateexceptions' != PWP::REQUEST_key('action')))) {
-                $group->group_description = sanitize_text_field($_REQUEST['description']);
+                $group->group_description = wp_slash(sanitize_text_field(wp_unslash($_REQUEST['description'])));
             }
 
             $errors = new \WP_Error();
@@ -378,7 +398,7 @@ class AgentEdit
                     // handle member changes
                     $current = $pp->groups()->getGroupMembers($group_id, $agent_type, 'id', compact('member_type'));
 
-                    $selected = explode(",", sanitize_text_field($_REQUEST["{$member_type}_csv"]));
+                    $selected = explode(",", sanitize_text_field(wp_unslash($_REQUEST["{$member_type}_csv"])));
 
                     if (('member' != $member_type)
                         || !apply_filters('presspermit_custom_agent_update', false, $agent_type, $group_id, $selected)

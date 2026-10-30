@@ -1,6 +1,8 @@
 <?php
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Inflect class by T. Brian Jones
  * https://gist.github.com/tbrianjones/ba0460cc1d55f357e00b

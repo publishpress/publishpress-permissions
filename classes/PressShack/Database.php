@@ -2,6 +2,8 @@
 
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 class Database
 {
     // deprecated

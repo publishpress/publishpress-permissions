@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class ItemEdit
 {
     // output restriction attributes JS and (if user can administer roles) role assignment js

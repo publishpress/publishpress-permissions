@@ -580,38 +580,61 @@
   display: flex;
   align-items: center;
   margin-bottom: 12px;
-  background: white;
-  border-bottom: 1px solid var(--pp-gray-2);
+  background: transparent;
+  width: 100%;
   max-width: 350px;
 }
 .pp-search-box .dashicons-search {
   position: absolute;
   left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--pp-gray-5);
   font-size: 18px;
   width: 18px;
   height: 18px;
   pointer-events: none;
+  z-index: 10;
 }
-.pp-search-input {
+.pp-search-box input.pp-search-input,
+.pp-search-box-select2 .select2-container .select2-selection--multiple {
+  box-sizing: border-box;
+  display: block;
   flex: 1;
-  padding: 0 16px 0 32px !important;
+  height: 36px;
+  margin: 0;
+  /* WP core forms.css adds margin: 0 1px to inputs, which would offset the text */
+  min-height: 36px;
+  min-width: 0;
+  padding: 6px 32px;
   border: 1px solid var(--pp-gray-3);
   border-radius: 6px;
+  color: var(--pp-gray-8);
+  font-family: inherit;
   font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
   transition: var(--pp-transition);
   background: var(--pp-gray-0);
   width: 100%;
 }
-.pp-search-input:focus {
+.pp-search-box input.pp-search-input:focus,
+.pp-search-box-select2 .select2-container .select2-selection--multiple:focus-within,
+.pp-search-box-select2 .select2-container--focus .select2-selection--multiple {
   outline: none;
   border-color: var(--pp-primary);
   background: white;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
+.pp-search-box input.pp-search-input::placeholder {
+  color: var(--pp-gray-5);
+  opacity: 1;
+}
 .pp-search-clear {
   position: absolute;
-  right: 26px;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
   padding: 4px;
   background: transparent;
   border: none;
@@ -633,71 +656,67 @@
   font-size: 16px;
 }
 /* Search Box with Select2 (Users Tab) */
-.pp-search-box-select2 {
-  position: relative;
-}
-.pp-search-box-select2 .dashicons-search {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--pp-gray-5);
-  font-size: 18px;
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
-  z-index: 10;
-}
-.pp-search-box-select2 .pp-search-input {
-  width: 100%;
-  padding: 0;
-  border: none;
-  background: transparent;
-}
-.pp-search-box-select2 .select2-container .select2-selection--multiple {
-  max-height: 30px;
-  border: 1px solid #8c8f94;
-  padding-left: 32px;
-}
-.pp-search-box-select2 .select2-container .select2-selection--multiple:focus-within {
-  border-color: var(--pp-primary);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  outline: none;
-}
-.pp-search-box-select2 .select2-container.select2-container--focus .select2-selection--multiple {
-  border-color: var(--pp-primary);
-  background: white;
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  outline: none;
-}
 .pp-search-box-select2 .select2-container .select2-selection__rendered {
   padding-left: 0;
+  margin: 0;
 }
 .pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field {
   margin: 0;
   width: 100% !important;
-  min-width: 250px;
+  max-width: 100%;
+  min-width: 0;
+  height: 20px;
+  min-height: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 20px;
+  box-shadow: none;
+}
+/* Select2 4.1 renders this field as a textarea (4.0 as an input). Chrome ignores line-height on a textarea placeholder, so centre the natural line in the 20px row instead. */
+.pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field {
+  padding-top: 4px;
+  padding-top: calc((20px - 1lh) / 2 + 1px);
+  line-height: normal;
 }
 .pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field::placeholder {
   color: var(--pp-gray-5);
   opacity: 1;
+}
+.pp-search-box-select2 .select2-container .select2-search--inline .select2-search__field {
+  padding-top: 4px;
+  padding-top: calc((20px - 1lh) / 2 + 1px);
+  line-height: normal;
+}
+.pp-search-box-select2 .select2-container .select2-search--inline input.select2-search__field {
+  display: block;
+  padding: 0;
+  line-height: 20px;
 }
 .pp-search-box-select2 .select2-container .select2-selection__choice {
   background: var(--pp-primary);
   border: none;
   color: white;
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 4px 8px 4px 24px;
   margin: 2px 4px 2px 0;
   font-size: 12px;
 }
 .pp-search-box-select2 .select2-container .select2-selection__choice__remove {
   color: white;
-  margin-right: 6px;
+  background: transparent;
+  border: none;
+  height: 100%;
+  margin: 0;
+  padding: 0 6px;
   font-weight: bold;
 }
 .pp-search-box-select2 .select2-container .select2-selection__choice__remove:hover {
+  background: rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.8);
 }
 /* User Added Notice */
@@ -1017,7 +1036,7 @@
   box-shadow: 0 6px 20px rgba(249, 115, 22, 0.2), 0 3px 10px rgba(249, 115, 22, 0.12);
 }
 .pp-filter-count {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   padding: 2px;
   background: #e5e7eb;
@@ -1340,8 +1359,8 @@
   filter: brightness(1.05);
 }
 .pp-permission-select select:focus {
-  outline: none;
-  box-shadow: 0 0 0 2px rgba(56, 88, 233, 0.2);
+  outline: 2px solid transparent;
+  box-shadow: 0 0 0 2px #2271b1;
 }
 .pp-permission-select select[disabled] {
   opacity: 0.6;
@@ -1746,6 +1765,74 @@
     opacity: 1;
   }
 }
+.pp-select-with-blocked-help {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 177px;
+  min-width: 0;
+  flex-shrink: 0;
+}
+.pp-select-with-blocked-help > .pp-permission-select {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+}
+.pp-select-with-blocked-help > .pp-permission-select select {
+  min-width: 0;
+}
+.pp-select-with-blocked-help > .pp-blocked-select-help {
+  flex: 0 0 20px;
+}
+@media (max-width: 768px) {
+  .pp-select-with-blocked-help {
+    width: 100%;
+  }
+}
+.pp-select-with-blocked-help:has(.pp-select-label) > .pp-blocked-select-help {
+  transform: translateY(10px);
+}
+.pp-blocked-select-help > button {
+  display: flex;
+  align-items: center;
+}
+/* Floating help stays outside the editor's scrollable metabox. */
+.pp-blocked-tooltip-layer[data-toggle="tooltip"] {
+  position: fixed;
+  z-index: 99999999;
+  cursor: auto;
+}
+.pp-blocked-tooltip-layer[data-toggle="tooltip"] .tooltip-text {
+  position: static;
+  display: block;
+  width: 320px;
+  min-width: 0;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100vh - 24px);
+  overflow: auto;
+  overflow-wrap: break-word;
+  margin: 0;
+  transform: none;
+  transition: none;
+}
+/* Keep the pointer outside the scrolling tooltip text. */
+.pp-blocked-tooltip-layer > i {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.pp-blocked-tooltip-layer[data-side="left"] > i {
+  left: 100%;
+  border-left: 8px solid #000c0c;
+}
+.pp-blocked-tooltip-layer[data-side="right"] > i {
+  right: 100%;
+  border-right: 8px solid #000c0c;
+}
 .block-editor .editor-styles-wrapper {
   overflow-x: visible !important;
 }
@@ -1789,11 +1876,11 @@
   font-weight: bold;
 }
 .pp-exceptions .pp-yes {
-  color: #090;
+  color: #007a00;
   font-weight: normal;
 }
 .pp-exceptions .pp-yes2 {
-  color: #0a0;
+  color: #008000;
   font-weight: bold;
 }
 .pp-no-exceptions {
@@ -1836,7 +1923,7 @@ select.pp-search-role {
 }
 */
 .pp-exc-notes {
-  color: #777;
+  color: #6d6d6d;
 }
 .pp-exc-notes div {
   margin-top: 0.3em;

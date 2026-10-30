@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 add_filter('presspermit_do_inherit_parent_exceptions', [__NAMESPACE__.'\ItemSave', 'fltDefaultDisableParentExceptions'], 5, 3);
 
 class ItemSave
@@ -64,7 +66,7 @@ class ItemSave
             // validate posted exceptions array
 
             // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-            $pe = (array) $_POST['pp_exceptions']; // explicitly validated below
+            $pe = (array) wp_unslash($_POST['pp_exceptions']); // explicitly validated below
 
             if (isset($pe['(all)'])) {
                 $pe[''] = $pe['(all)'];

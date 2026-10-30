@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_CLASSPATH . '/RESTHelper.php');
 
 class REST
@@ -218,7 +220,7 @@ class REST
 
                         if (!empty($params['exclude']) || !empty($params['parent_exclude'])) {
                             // Prevent Gutenberg from triggering needless post_name retrieval (for permalink generation) for each item in Page Parent dropdown
-                            if (!empty($_SERVER) && !empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw($_SERVER['HTTP_REFERER']), admin_url())) {
+                            if (!empty($_SERVER) && !empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])), admin_url())) {
                                 global $wp_post_types;
 
                                 if (!$this->post_type) {
@@ -314,8 +316,7 @@ class REST
 
                         if (!empty($this->params['id'])) {
                             $user_terms = get_terms(
-                                $this->taxonomy, 
-                                ['required_operation' => $required_operation, 'hide_empty' => 0, 'fields' => 'ids']
+                                ['taxonomy' => $this->taxonomy, 'required_operation' => $required_operation, 'hide_empty' => 0, 'fields' => 'ids']
                             );
 
                             if (!in_array((int) $this->params['id'], array_map('intval', (array) $user_terms), true)) {
