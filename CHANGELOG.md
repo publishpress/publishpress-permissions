@@ -1,6 +1,6 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[4.9.2] - 2 Nov, 2026
+[5.0.0] - 2 Nov, 2026
 
 - Changed: Permission settings now explain more clearly how Enabled and Blocked permissions interact. #2608
 - Changed: Membership checkboxes and inherited permission sources are now described more clearly, helping administrators understand why access is granted. #2610
