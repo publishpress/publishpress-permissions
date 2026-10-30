@@ -11,7 +11,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Changed: Permission update notices have been simplified to make feedback clearer. #2606
 - Changed: The Permissions user profile now displays eligible Permission Groups to users who can manage group membership. #2589
 - Changed: The Edit User Permissions screen has been refined to present user details more clearly. #2584
-- Changed: The onboarding experience now uses a shared welcome library for a more consistent introduction to the plugin. #2578
 - Changed: Text contrast and non-color visual cues have been improved to make the interface more accessible. #2587
 - Changed: Keyboard focus indicators and announced status messages have been improved for users relying on assistive technologies. #2586
 - Changed: Form controls now have accessible names to improve screen-reader usability. #2585
