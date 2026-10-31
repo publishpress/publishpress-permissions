@@ -74,11 +74,15 @@ class Groups
 
         // phpcs Note: where clause constructed and sanitized above
 
+        // Optional bounded reads for non-form clients; existing callers retain their full result set.
+        $limit_clause = !empty($args['limit'])
+            ? $wpdb->prepare(' LIMIT %d OFFSET %d', min(1001, max(1, (int) $args['limit'])), max(0, (int) ($args['offset'] ?? 0))) : '';
+
         // Direct query of plugin tables for Permission Group management
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_results(
             "SELECT ID, group_name AS name, group_description, metagroup_type, metagroup_id"
-                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name",  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
             OBJECT_K
         );
 

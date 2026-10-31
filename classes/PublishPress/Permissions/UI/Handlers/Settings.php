@@ -164,12 +164,6 @@ class Settings
             }
         }
 
-        if (!empty($_POST['post_blockage_priority'])) {  // once this is switched on manually, don't ever default-disable it again
-            if (get_option('presspermit_legacy_exception_handling')) {
-                delete_option('presspermit_legacy_exception_handling');
-            }
-        }
-
         // =============== Module Activation ================
         $required_modules = array_fill_keys($pp->getRequiredModules(), true);
 
@@ -210,17 +204,7 @@ class Settings
         $deactivated = array_diff_key($deactivated, $required_modules);
 
         if ($_deactivated !== $deactivated) {
-            foreach (array_diff_key($deactivated, $_deactivated) as $module_name => $module) {
-                do_action($module_name . '_deactivate');
-            }
-
-            foreach (array_diff_key($_deactivated, $deactivated) as $module_name => $module) {
-                if (in_array($module_name, ['presspermit-file-access'])) {
-                    update_option(str_replace('-', '_', $module_name) . '_deactivate', 1);
-                }
-            }
-
-            $pp->updateOption('deactivated_modules', $deactivated);
+            $pp->updateModules($deactivated);
             $tab = (!PWP::empty_POST('pp_tab')) ? "&pp_tab={" . PWP::POST_key('pp_tab') . "}" : '';
             wp_redirect(admin_url("admin.php?page=presspermit-settings$tab&presspermit_submit_redirect=1"));
             exit;

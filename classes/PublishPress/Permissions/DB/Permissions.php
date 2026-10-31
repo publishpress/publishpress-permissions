@@ -6,6 +6,44 @@ namespace PublishPress\Permissions\DB;
 
 class Permissions
 {
+    /** Bounded, unfiltered native post IDs for permission-change preflight. */
+    public static function getPostScope(array $types = [], $parent = null, $include_trash = true, $limit = 1001)
+    {
+        global $wpdb;
+        $sql = "SELECT ID FROM $wpdb->posts WHERE 1=1";
+        $params = [];
+        if ($types) {
+            $sql .= ' AND post_type IN (' . implode(',', array_fill(0, count($types), '%s')) . ')';
+            $params = array_values($types);
+        }
+        if (null !== $parent) {
+            $sql .= ' AND post_parent = %d';
+            $params[] = (int) $parent;
+        }
+        if (!$include_trash) {
+            $sql .= " AND post_status != 'trash'";
+        }
+        $sql .= ' ORDER BY ID LIMIT %d';
+        $params[] = min(1001, max(1, (int) $limit));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Fixed clauses and typed placeholders above.
+        $ids = $wpdb->get_col($wpdb->prepare($sql, $params));
+        return $wpdb->last_error ? new \WP_Error('presspermit_scope_read_failed') : array_map('intval', $ids);
+    }
+    /** Bounded native taxonomy scope, unaffected by list-screen query filters. */
+    public static function getTermScope($taxonomy, $parent = null)
+    {
+        global $wpdb;
+        $sql = "SELECT term_id FROM $wpdb->term_taxonomy WHERE taxonomy = %s";
+        $params = [$taxonomy];
+        if (null !== $parent) {
+            $sql .= ' AND parent = %d';
+            $params[] = (int) $parent;
+        }
+        $sql .= ' ORDER BY term_id LIMIT 1001';
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Fixed clauses and typed placeholders above.
+        $ids = $wpdb->get_col($wpdb->prepare($sql, $params));
+        return $wpdb->last_error ? new \WP_Error('presspermit_scope_read_failed') : array_map('intval', $ids);
+    }
     // Variable to store hidden exceptions
     static $hidden_exceptions;
 
