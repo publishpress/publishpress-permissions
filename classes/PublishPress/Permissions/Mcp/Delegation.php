@@ -18,6 +18,8 @@ class Delegation
         if (!self::local()) {
             return Access::denied();
         }
+        // Authorization needs the current bounded group set, including changes made in this request.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $ids = $wpdb->get_col("SELECT ID FROM $wpdb->pp_groups ORDER BY ID LIMIT 1001");
         return $wpdb->last_error ? Access::unconfirmed() : array_map('intval', $ids);
     }
@@ -113,6 +115,8 @@ class Delegation
     public static function referenced($id)
     {
         global $wpdb;
+        // Check live delegation references before deletion; a cached result could miss a new grant.
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $value = $wpdb->get_var($wpdb->prepare("SELECT i.eitem_id FROM $wpdb->ppc_exception_items i INNER JOIN $wpdb->ppc_exceptions e ON e.exception_id = i.exception_id WHERE e.via_item_source = %s AND i.item_id = %d LIMIT 1", 'pp_group', $id));
         return $wpdb->last_error || $value;
     }

@@ -83,15 +83,16 @@ class Modules
         $candidate = presspermit()->site_options;
         $candidate['presspermit_deactivated_modules'] = $deactivated;
         $filtered = apply_filters('presspermit_options', $candidate);
-        if (!isset($filtered['presspermit_deactivated_modules'])
-            || serialize($filtered['presspermit_deactivated_modules']) !== serialize($deactivated)) {
+        $expected = wp_json_encode($deactivated, JSON_PRESERVE_ZERO_FRACTION);
+        if (false === $expected || !isset($filtered['presspermit_deactivated_modules'])
+            || wp_json_encode($filtered['presspermit_deactivated_modules'], JSON_PRESERVE_ZERO_FRACTION) !== $expected) {
             return Access::denied();
         }
         if (!empty($input['dry_run'])) {
             return ['dry_run' => true, 'changes' => $input['changes'], 'applies_next_request' => true];
         }
         presspermit()->updateModules($deactivated);
-        if (serialize((new Settings())->snapshot('deactivated_modules')['value']) !== serialize($deactivated)) {
+        if (wp_json_encode((new Settings())->snapshot('deactivated_modules')['value'], JSON_PRESERVE_ZERO_FRACTION) !== $expected) {
             return Access::unconfirmed();
         }
         $after = $this->read([]);

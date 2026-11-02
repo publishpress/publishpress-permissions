@@ -187,6 +187,7 @@ try {
     if (defined('PRESSPERMIT_PRO_VERSION') && presspermit()->moduleActive('file-access')) {
         $fixture_file = trailingslashit(wp_upload_dir()['basedir']) . 'mcp-fixture.pdf';
         wp_mkdir_p(dirname($fixture_file));
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Local synthetic fixture in the isolated test uploads directory.
         file_put_contents($fixture_file, '%PDF-1.0 MCP isolated fixture');
         $scan_post = wp_insert_post(['post_type' => 'page', 'post_status' => 'publish', 'post_title' => 'Scan fixture',
             'post_content' => '<a href="' . esc_url(trailingslashit(wp_upload_dir()['baseurl']) . 'mcp-fixture.pdf') . '">Download</a>']);
@@ -230,7 +231,7 @@ try {
         wp_delete_user($sync_user);
     }
     if ($fixture_file && file_exists($fixture_file)) {
-        unlink($fixture_file);
+        wp_delete_file($fixture_file);
     }
     if (isset($usage_role)) {
         remove_role($usage_role);

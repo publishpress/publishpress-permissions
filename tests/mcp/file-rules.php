@@ -22,6 +22,7 @@ if ('setup' === $fixture_case) {
     $fixture_uploads = wp_upload_dir();
     wp_mkdir_p($fixture_uploads['basedir']);
     $fixture_path = trailingslashit($fixture_uploads['basedir']) . 'mcp-protected.pdf';
+    // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Local synthetic fixture in the isolated test uploads directory.
     file_put_contents($fixture_path, '%PDF-1.0 isolated protection fixture');
     $fixture_attachment = wp_insert_attachment(['post_parent' => $fixture_parent, 'post_mime_type' => 'application/pdf', 'post_title' => 'Protected fixture', 'post_status' => 'inherit',
         'guid' => trailingslashit($fixture_uploads['baseurl']) . 'mcp-protected.pdf'], $fixture_path, $fixture_parent);
@@ -65,7 +66,7 @@ try {
     wp_delete_attachment($fixture_attachment, true);
     wp_delete_post($fixture_parent, true);
     if (file_exists($fixture_path)) {
-        unlink($fixture_path);
+        wp_delete_file($fixture_path);
     }
     null === $fixture_record['fixture_original'] ? delete_option('presspermit_attached_files_private') : update_option('presspermit_attached_files_private', $fixture_record['fixture_original']);
     presspermit()->refreshOptions();
