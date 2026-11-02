@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Typed authoring of the native visibility shortcode; saving content uses native post tools. */
 class Visibility

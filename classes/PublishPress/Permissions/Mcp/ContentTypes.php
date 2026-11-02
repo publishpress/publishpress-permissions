@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Native General-tab post-type and taxonomy filtering controls. */
 class ContentTypes

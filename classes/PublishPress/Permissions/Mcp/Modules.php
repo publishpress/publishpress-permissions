@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Module switches preserve native required modules and deferred loading. */
 class Modules

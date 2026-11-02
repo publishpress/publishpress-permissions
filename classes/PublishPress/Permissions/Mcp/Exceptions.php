@@ -3,7 +3,7 @@ namespace PublishPress\Permissions\Mcp;
 
 use PublishPress\Permissions\DB\PermissionsUpdate;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Object-bound native permissions, including inheritance and exact removal scope. */
 class Exceptions

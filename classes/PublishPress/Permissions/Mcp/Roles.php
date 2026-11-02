@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Typed supplemental-role patches through the native assignment lifecycle. */
 class Roles

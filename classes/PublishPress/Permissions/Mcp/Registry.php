@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Private Abilities API registration; Hub supplies transport and action selection. */
 class Registry

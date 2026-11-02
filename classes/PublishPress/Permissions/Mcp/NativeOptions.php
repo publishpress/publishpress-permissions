@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Shared typed patches for native scalar options and per-post-type option maps. */
 abstract class NativeOptions

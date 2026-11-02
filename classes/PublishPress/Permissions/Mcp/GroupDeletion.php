@@ -3,7 +3,7 @@ namespace PublishPress\Permissions\Mcp;
 
 use PublishPress\Permissions\DB\PermissionsUpdate;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Group deletion validates the complete native permission cascade before writing. */
 class GroupDeletion

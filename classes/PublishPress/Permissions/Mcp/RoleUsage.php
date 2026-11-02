@@ -3,7 +3,7 @@ namespace PublishPress\Permissions\Mcp;
 
 use PublishPress\Permissions\DB\PermissionsUpdate;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Native Role Usage controls with full existing-assignment preflight. */
 class RoleUsage

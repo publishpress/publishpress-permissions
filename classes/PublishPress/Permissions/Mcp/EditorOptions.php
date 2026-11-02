@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Native General-tab per-type metabox and Permissions-screen switches. */
 class EditorOptions extends NativeOptions

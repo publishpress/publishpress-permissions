@@ -9,7 +9,7 @@ namespace PublishPress\Permissions\Mcp;
  * @since 1.1.0
  */
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 class Input
 {

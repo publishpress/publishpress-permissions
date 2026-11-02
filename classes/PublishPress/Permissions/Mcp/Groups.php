@@ -3,7 +3,7 @@ namespace PublishPress\Permissions\Mcp;
 
 use PublishPress\Permissions\DB\GroupUpdate;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Native custom groups and explicit membership patches; never exposes WP_User internals. */
 class Groups

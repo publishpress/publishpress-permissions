@@ -1,7 +1,7 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
-defined('ABSPATH') || exit;
+\defined('ABSPATH') || exit;
 
 /** Teaser modes, rich messages, redirects, RSS and notice presentation. */
 class Teaser extends NativeOptions

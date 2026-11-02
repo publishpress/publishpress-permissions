@@ -82,7 +82,7 @@ class Groups
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_results(
             "SELECT ID, group_name AS name, group_description, metagroup_type, metagroup_id"
-                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared -- Filters are sanitized above; LIMIT/OFFSET are prepared as integers above.
             OBJECT_K
         );
 
