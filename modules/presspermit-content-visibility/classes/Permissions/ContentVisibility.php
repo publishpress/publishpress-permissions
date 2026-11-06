@@ -18,8 +18,23 @@ class ContentVisibility
     }
 
     /**
-     * Registers the native shortcode.
+     * Returns the native visibility attribute defaults.
      */
+    public static function getShortcodeDefaults()
+    {
+        return [
+                'logged' => '',
+                'roles' => '',
+                'capabilities' => '',
+                'usernames' => '',
+                'groups' => '',
+                'pp_group' => '',
+                'relation' => 'all',
+                'hide' => '',
+            ];
+    }
+
+    /** Registers the native shortcode. */
     public function registerShortcodes()
     {
         add_shortcode(self::SHORTCODE, [$this, 'renderShortcode']);
@@ -45,16 +60,7 @@ class ContentVisibility
         $this->markResponseAsDynamic();
 
         $atts = shortcode_atts(
-            [
-                'logged' => '',
-                'roles' => '',
-                'capabilities' => '',
-                'usernames' => '',
-                'groups' => '',
-                'pp_group' => '',
-                'relation' => 'all',
-                'hide' => '',
-            ],
+            self::getShortcodeDefaults(),
             (array) $atts,
             self::SHORTCODE
         );
