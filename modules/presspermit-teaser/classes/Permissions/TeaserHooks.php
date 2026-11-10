@@ -164,6 +164,7 @@ class TeaserHooks
         add_action('wp_enqueue_scripts', [$this, 'actEnqueueThemeTeaserPreviewScript']);
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
+        add_action('presspermit_version_updated', [$this, 'migrateGlobalTeaserOptions']);
 
         add_filter('presspermit_custom_sanitize_setting', [$this, 'flt_custom_sanitize_setting'], 10, 4);
 
@@ -846,34 +847,50 @@ class TeaserHooks
             }
         }
 
-        // "Teaser Application", "User Application", "Navigation Menus", "Private Posts",
-        // "Featured Image", and "Comments Area" moved from per-post-type settings to single
-        // global settings on the Options tab (issue #2518). Seed each new global option from
-        // whichever post type was configured first in the old per-type array, so a site's
-        // existing behavior for its primary post type carries over. The old per-type options
-        // are left in the database untouched (unused going forward).
-        if (version_compare($prev_version, '4.9.0', '<')) {
-            $migrated_options = [
-                'tease_direct_access_only' => 'teaser_opt_direct_access_only',
-                'tease_logged_only' => 'teaser_opt_logged_only',
-                'teaser_hide_menu_links_type' => 'teaser_opt_hide_menu_links',
-                'tease_public_posts_only' => 'teaser_opt_public_posts_only',
-                'teaser_hide_thumbnail' => 'teaser_opt_hide_thumbnail',
-                'teaser_disable_comments' => 'teaser_opt_disable_comments',
-            ];
+        $this->migrateGlobalTeaserOptions();
+    }
 
-            foreach ($migrated_options as $old_name => $new_name) {
-                if (false !== get_option("presspermit_$new_name")) {
-                    continue; // already has a value - don't clobber it
-                }
+    /**
+     * "Teaser Application", "User Application", "Navigation Menus", "Private Posts",
+     * "Featured Image", and "Comments Area" moved from per-post-type settings to single
+     * global settings on the Options tab (issue #2518). Seed each new global option from
+     * the old per-type array, so a site's existing behavior carries over. The old per-type
+     * options are left in the database untouched (unused going forward).
+     *
+     * Runs on both Free (presspermit_version_updated) and Pro (presspermit_pro_version_updated)
+     * updates. It is tracked by its own flag instead of a version comparison, so Free sites
+     * that already updated to 4.9.0 / 4.9.1 without the migration still get it once.
+     */
+    public function migrateGlobalTeaserOptions() {
+        if (get_option('presspermit_teaser_global_options_migrated')) {
+            return;
+        }
 
-                $old_value = get_option("presspermit_$old_name");
+        $migrated_options = [
+            'tease_direct_access_only' => 'teaser_opt_direct_access_only',
+            'tease_logged_only' => 'teaser_opt_logged_only',
+            'teaser_hide_menu_links_type' => 'teaser_opt_hide_menu_links',
+            'tease_public_posts_only' => 'teaser_opt_public_posts_only',
+            'teaser_hide_thumbnail' => 'teaser_opt_hide_thumbnail',
+            'teaser_disable_comments' => 'teaser_opt_disable_comments',
+        ];
 
-                if (is_array($old_value) && $old_value) {
-                    update_option("presspermit_$new_name", reset($old_value));
-                }
+        foreach ($migrated_options as $old_name => $new_name) {
+            if (false !== get_option("presspermit_$new_name")) {
+                continue; // already has a value - don't clobber it
+            }
+
+            $old_value = get_option("presspermit_$old_name");
+
+            if (is_array($old_value) && $old_value) {
+                // Prefer a post type that had the setting enabled, so restrictions such as
+                // "Single view only" are not lost when another type is listed first.
+                $enabled_values = array_diff($old_value, ['0', 0, '', false, null]);
+                update_option("presspermit_$new_name", $enabled_values ? reset($enabled_values) : reset($old_value));
             }
         }
+
+        update_option('presspermit_teaser_global_options_migrated', 1);
     }
 
     function actMaybeRedirect()
