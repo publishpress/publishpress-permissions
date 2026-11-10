@@ -238,13 +238,13 @@ class TeaserProgressiveUI {
         
         // Get available teaser types
         $base_captions = [
-            0 => esc_html__('WordPress default. Show "Page not found" screen', 'press-permit-core'),
-            1 => esc_html__("Message with no teaser text", 'press-permit-core'),
-            'read_more' => esc_html__("Message with content before Read More link as teaser text", 'press-permit-core'),
-            'excerpt' => esc_html__("Message with Excerpt as teaser text", 'press-permit-core'),
-            'more' => esc_html__("Legacy: Excerpt or pre-More as teaser text", 'press-permit-core'),
-            'x_chars' => esc_html__("Message with first X characters of content as teaser text", 'press-permit-core'),
-            'redirect' => esc_html__("Redirect to another post", 'press-permit-core')
+            0 => esc_html__('No Teaser', 'press-permit-core'),
+            1 => esc_html__('Message with no teaser content', 'press-permit-core'),
+            'read_more' => esc_html__('Message with teaser content before Read More link', 'press-permit-core'),
+            'excerpt' => esc_html__('Message with Excerpt as teaser content', 'press-permit-core'),
+            'more' => esc_html__('Message with Excerpt or pre-More as teaser content', 'press-permit-core'),
+            'x_chars' => esc_html__('Message with first X characters of post as teaser content', 'press-permit-core'),
+            'redirect' => esc_html__('Redirect to another post', 'press-permit-core'),
         ];
 
         // Retain a saved legacy mode, but offer distinct, predictable choices for new settings.

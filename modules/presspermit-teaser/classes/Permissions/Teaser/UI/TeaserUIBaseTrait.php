@@ -46,11 +46,11 @@ trait TeaserUIBaseTrait {
     protected function getAvailableTeaserTypes() {
         return [
             0 => esc_html__('No Teaser', 'press-permit-core'),
-            1 => esc_html__('Message with no teaser text', 'press-permit-core'),
-            'read_more' => esc_html__('Message with content before Read More link as teaser text', 'press-permit-core'),
-            'excerpt' => esc_html__('Message with Excerpt as teaser text', 'press-permit-core'),
-            'more' => esc_html__('Excerpt or pre-More as Teaser', 'press-permit-core'),
-            'x_chars' => esc_html__('Message with first X characters of content as teaser text', 'press-permit-core'),
+            1 => esc_html__('Message with no teaser content', 'press-permit-core'),
+            'read_more' => esc_html__('Message with teaser content before Read More link', 'press-permit-core'),
+            'excerpt' => esc_html__('Message with Excerpt as teaser content', 'press-permit-core'),
+            'more' => esc_html__('Message with Excerpt or pre-More as teaser content', 'press-permit-core'),
+            'x_chars' => esc_html__('Message with first X characters of post as teaser content', 'press-permit-core'),
             'redirect' => esc_html__('Redirect to another post', 'press-permit-core'),
         ];
     }
