@@ -451,7 +451,7 @@ class Profile
                         } elseif (defined('PP_GROUPS_CAPTION')) {
                             echo esc_html(PP_GROUPS_CAPTION);
                         } else {
-                            esc_html_e('Permission Groups', 'press-permit-core');
+                            esc_html_e('Permission Group Membership', 'press-permit-core');
                         }
                     } else {
                         $group_type_obj = $pp_groups->getGroupTypeObject($agent_type);
@@ -477,10 +477,6 @@ class Profile
                 'link_captions' => true,
                 'single_select' => $single_select
             ];
-
-            if (!$hide_checkboxes) {
-                echo '<p class="description">' . esc_html__('Checked groups are current memberships. Check or uncheck a group, then save to update membership. A group link opens its permissions without changing membership.', 'press-permit-core') . '</p>';
-            }
 
             $pp->admin()->agents()->agentsUI($agent_type, $all_groups, $css_id, $stored_groups, $args);
             
