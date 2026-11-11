@@ -21,6 +21,7 @@ namespace PublishPress\Permissions\Teaser;
 class GlobalOptionsMigration
 {
     const DONE_FLAG = 'presspermit_teaser_global_options_migrated';
+    const ARCHIVE_OPTION = 'presspermit_teaser_prev_type_settings';
 
     /**
      * Old per-type option name => new global option name.
@@ -39,6 +40,9 @@ class GlobalOptionsMigration
 
     public static function maybeRun()
     {
+        // Backfill the archive even if the global options were already migrated.
+        self::archivePreviousSettings();
+
         if (get_option(self::DONE_FLAG)) {
             return;
         }
@@ -48,8 +52,34 @@ class GlobalOptionsMigration
         update_option(self::DONE_FLAG, 1);
     }
 
+    /**
+     * Preserve the complete original arrays, without filtering types or defaults.
+     * add_option() ensures a later invocation cannot overwrite the first snapshot.
+     */
+    public static function archivePreviousSettings()
+    {
+        if (false !== get_option(self::ARCHIVE_OPTION)) {
+            return;
+        }
+
+        $settings = [];
+
+        foreach (self::optionMap() as $old_name => $new_name) {
+            $option_name = "presspermit_$old_name";
+            $old_value = get_option($option_name);
+
+            if (is_array($old_value)) {
+                $settings[$option_name] = $old_value;
+            }
+        }
+
+        add_option(self::ARCHIVE_OPTION, $settings, '', false);
+    }
+
     public static function run()
     {
+        self::archivePreviousSettings();
+
         $teased_types = array_keys(array_filter((array) get_option('presspermit_tease_post_types')));
 
         foreach (self::optionMap() as $old_name => $new_name) {
