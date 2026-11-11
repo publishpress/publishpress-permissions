@@ -8,6 +8,11 @@ class CollabHooks
     function __construct() {
         global $pagenow;
 
+        // Authorization applies to authenticated APIs as well as wp-admin screens.
+        require_once PRESSPERMIT_COLLAB_CLASSPATH . '/RoleAdmin.php';
+        add_filter('presspermit_user_has_group_cap', [Collab\RoleAdmin::class, 'hasGroupCap'], 10, 4);
+        add_filter('presspermit_can_set_exceptions', [Collab\RoleAdmin::class, 'canSetExceptions'], 10, 4);
+
         // Divi Page Builder
         if (PWP::is_REQUEST('action', 'editpost') && !PWP::empty_REQUEST('et_pb_use_builder') && !PWP::empty_REQUEST('auto_draft')) {
             return;

@@ -432,6 +432,33 @@ class Permissions
         return in_array($slug, $this->getAvailableModules());
     }
 
+    /** Rebuild native role registrations after changing Role Usage. */
+    public function updateRoleUsage(array $usage)
+    {
+        $this->updateOption('role_usage', $usage);
+        $this->refreshOptions();
+        do_action('presspermit_registrations');
+        do_action('presspermit_roles_defined');
+        do_action('presspermit_trigger_cache_flush');
+        $this->refreshOptions();
+    }
+
+    /** Persist reviewed module switches using the native lifecycle hooks. */
+    public function updateModules(array $deactivated)
+    {
+        $previous = (array) $this->getOption('deactivated_modules');
+        $deactivated = array_diff_key($deactivated, array_fill_keys($this->getRequiredModules(), true));
+        foreach (array_diff_key($deactivated, $previous) as $module => $value) {
+            do_action($module . '_deactivate');
+        }
+        foreach (array_diff_key($previous, $deactivated) as $module => $value) {
+            if ('presspermit-file-access' === $module) {
+                update_option('presspermit_file_access_deactivate', 1);
+            }
+        }
+        $this->updateOption('deactivated_modules', $deactivated);
+    }
+
     public function getDeactivatedModules()
     {
         $modules = (array) $this->getOption('deactivated_modules');
@@ -821,6 +848,11 @@ class Permissions
 
         $this->site_options["presspermit_$option_basename"] = $option_val;
         update_option("presspermit_$option_basename", $option_val);
+
+        // A manually enabled priority must not be disabled by legacy migration defaults.
+        if ('post_blockage_priority' === $option_basename && !empty($option_val)) {
+            delete_option('presspermit_legacy_exception_handling');
+        }
 
         do_action('presspermit_update_option', $option_basename, $option_val, $args);
     }
