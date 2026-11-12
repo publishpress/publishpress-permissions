@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class PostSave
 {
     public static function actSaveItem($item_source, $post_id, $post)
@@ -27,8 +29,12 @@ class PostSave
         }
 
         if (!in_array($post->post_type, presspermit()->getEnabledPostTypes(), true)) {
-            if (!PWP::empty_REQUEST('pp_enable_post_type')) {
-                $enabled = get_option('presspermit_enabled_post_types');
+            if (!empty($_POST['pp_enable_post_type'])
+                && current_user_can('pp_manage_settings')
+                && isset($_POST['_pp_enable_permissions_nonce']) && is_string($_POST['_pp_enable_permissions_nonce'])
+                && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_pp_enable_permissions_nonce'])), 'pp_enable_post_type-' . $post->post_type)
+            ) {
+                $enabled = (array) get_option('presspermit_enabled_post_types');
                 $enabled[$post->post_type] = '1';
 
                 update_option('presspermit_enabled_post_types', $enabled);

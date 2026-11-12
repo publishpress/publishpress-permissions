@@ -2,6 +2,8 @@
 
 namespace PressShack;
 
+\defined('ABSPATH') || exit;
+
 class Ancestry
 {
     public static function getPostPath($item_id)
@@ -274,7 +276,7 @@ class Ancestry
         if (!$ancestors) {
             $ancestors = [];
 
-            $terms = get_terms($taxonomy, ['pp_no_filter' => true, 'hide_empty' => false]);
+            $terms = get_terms(['taxonomy' => $taxonomy, 'pp_no_filter' => true, 'hide_empty' => false]);
 
             if ($terms) {
                 $parents = [];

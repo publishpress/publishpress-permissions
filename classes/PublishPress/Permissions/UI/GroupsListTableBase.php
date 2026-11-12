@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class GroupsListTableBase extends \WP_List_Table
 {
     public $role_info;

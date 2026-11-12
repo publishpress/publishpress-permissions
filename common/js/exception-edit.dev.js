@@ -900,34 +900,37 @@ jQuery(document).ready(function ($) {
 
         switch (action) {
             case 'remove':
-                presspermitAjaxSubmit('exceptions_remove', presspermitRemoveExceptionsDone, rids);
+                presspermitAjaxSubmit('exceptions_remove', presspermitRemoveExceptionsDone, rids, this);
                 break;
             default:
-                presspermitAjaxSubmit('exceptions_' + action, presspermitEditExceptionsDone, rids);
+                presspermitAjaxSubmit('exceptions_' + action, presspermitEditExceptionsDone, rids, this);
                 break;
         }
 
         return false;
     });
 
-    var presspermitAjaxSubmit = function (op, handler, rids) {
+    var presspermitAjaxSubmit = function (op, handler, rids, context) {
         var data = {
             'pp_ajax_agent_permissions': op,
+            '_pp_exception_nonce': ppRestrict.exceptionNonces[op] || '',
             'agent_type': ppRestrict.agentType,
             'agent_id': ppRestrict.agentID,
             'pp_eitem_ids': rids
         };
         $.ajax({
-            url: ppRestrict.ajaxurl,
+            url: ppRestrict.permissionsAjaxURL,
             data: data,
             dataType: "html",
+            context: context,
             success: handler,
             error: presspermitAjaxSubmitFailure
         });
     }
 
     var presspermitAjaxSubmitFailure = function (data, txtStatus) {
-        return;
+        presspermitCurrentExceptionsAjaxDone();
+        $(this).closest('div.pp-exception-bulk-edit').find('div.mirror-confirm').text(ppRestrict.ajaxError).show();
     }
 
     $(document).on('mouseenter', 'div.pp-current-type-roles label', function () {
@@ -960,3 +963,4 @@ jQuery(document).ready(function ($) {
     }
     // ========== End "Anonymous Warning" scripts ==========
 });
+

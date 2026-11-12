@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\Collab\UI;
 
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabEditing
 {
     function __construct()
@@ -13,13 +15,12 @@ class SettingsTabEditing
         add_filter('presspermit_option_captions', [$this, 'optionCaptions']);
         add_filter('presspermit_option_sections', [$this, 'optionSections'], 15);
 
-        add_action('presspermit_editing_options_ui', [$this, 'optionsUI']);
+        add_action('presspermit_core_options_ui', [$this, 'optionsUI'], 20);
         add_action('presspermit_media_library_options_ui', [$this, 'optionsUIMediaLibrary']);
     }
 
     function optionTabs($tabs)
     {
-        $tabs['editing'] = esc_html__('Editing', 'press-permit-core');
         $tabs['media_library'] = esc_html__('Media Library', 'press-permit-core'); // Add new tab
         return $tabs;
     }
@@ -34,7 +35,7 @@ class SettingsTabEditing
             'media_library'            => esc_html__('Media Library', 'press-permit-core'),
         ];
 
-        $sections['editing'] = (isset($sections['editing'])) ? array_merge($sections['editing'], $new_editing) : $new_editing;
+        $sections['core'] = (isset($sections['core'])) ? array_merge($sections['core'], $new_editing) : $new_editing;
         $sections['media_library'] = (isset($sections['media_library'])) ? array_merge($sections['media_library'], $new_media_library) : $new_media_library;
 
         return $sections;
@@ -57,7 +58,7 @@ class SettingsTabEditing
 
     function optionSections($sections)
     {
-        // Editing tab
+        // General tab
         $new_editing = [
             'content_management'  => ['list_others_uneditable_posts'],
         ];
@@ -70,7 +71,7 @@ class SettingsTabEditing
             'media_library'       => ['admin_others_attached_files', 'admin_others_attached_to_readable', 'admin_others_unattached_files', 'edit_others_attached_files', 'attachment_edit_requires_parent_access', 'own_attachments_always_editable'],
         ];
 
-        $sections['editing'] = (isset($sections['editing'])) ? array_merge($sections['editing'], $new_editing) : $new_editing;
+        $sections['core'] = (isset($sections['core'])) ? array_merge($sections['core'], $new_editing) : $new_editing;
         $sections['media_library'] = (isset($sections['media_library'])) ? array_merge($sections['media_library'], $new_media_library) : $new_media_library;
 
         return $sections;
@@ -81,7 +82,7 @@ class SettingsTabEditing
         $pp = presspermit();
 
         $ui = \PublishPress\Permissions\UI\SettingsAdmin::instance();
-        $tab = 'editing';
+        $tab = 'core';
 
         $section = 'content_management';                        // --- POSTS / PAGES LISTING SECTION ---
         if (!empty($ui->form_options[$tab][$section])) :

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostTermsSaveXmlRpc
 {
     public static function getPostedXmlrpcTerms($taxonomy)

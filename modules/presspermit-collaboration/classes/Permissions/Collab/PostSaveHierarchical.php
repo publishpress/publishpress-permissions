@@ -1,8 +1,42 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostSaveHierarchical
 {
+    public static function canAssociateParent($post_id, $post_type, $parent_id)
+    {
+        $user = presspermit()->getUser();
+        $operation = presspermit()->getOption('page_parent_editable_only') ? 'edit' : 'associate';
+        $additional = array_map('intval', $user->getExceptionPosts($operation, 'additional', $post_type));
+        $included = array_map('intval', $user->getExceptionPosts($operation, 'include', $post_type));
+        $excluded = array_map('intval', $user->getExceptionPosts($operation, 'exclude', $post_type));
+        if ($included && !in_array($parent_id, array_merge($included, $additional), true)) {
+            return false;
+        }
+        if (!$included && in_array($parent_id, array_diff($excluded, $additional), true)) {
+            return false;
+        }
+        if (!$parent_id) {
+            return Collab::userCanAssociateMain($post_type);
+        }
+        $parent = get_post($parent_id);
+        if (!$parent || $parent->post_type !== $post_type || $parent_id === $post_id) {
+            return false;
+        }
+        // Reject descendant parents without depending on the current edit request.
+        $seen = [];
+        while ($parent && $parent->post_parent) {
+            if ((int) $parent->post_parent === $post_id || isset($seen[$parent->ID])) {
+                return false;
+            }
+            $seen[$parent->ID] = true;
+            $parent = get_post($parent->post_parent);
+        }
+        return true;
+    }
+
     public static function fltPageParent($parent_id, $post_type = '')
     {
         if (function_exists('bbp_get_version') && PWP::is_REQUEST('action', ['bbp-new-topic', 'bbp-new-reply'])) {
@@ -20,7 +54,7 @@ class PostSaveHierarchical
         $selected_parent_id = $parent_id;
 
         // this filter is not intended to regulate attachment parent
-        if (isset($_SERVER['REQUEST_URI']) && strpos(esc_url_raw($_SERVER['REQUEST_URI']), 'async-upload.php') && PWP::is_REQUEST('action', 'upload-attachment')) {
+        if (isset($_SERVER['REQUEST_URI']) && strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), 'async-upload.php') && PWP::is_REQUEST('action', 'upload-attachment')) {
             return $parent_id;
         }
 
@@ -302,3 +336,4 @@ class PostSaveHierarchical
         return $status;
     }
 }
+

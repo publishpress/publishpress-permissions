@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_CLASSPATH . '/UI/Dashboard/ItemEdit.php');
 
 class PostEdit
@@ -41,7 +43,7 @@ class PostEdit
 
         if (presspermit()->getOption('use_tabbed_metabox')) {
             if (!wp_style_is('presspermit-select2-css', 'registered')) {
-                wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', array(), '4.0.13', 'screen');
+                wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/css/select2.min.css', array(), '4.1.0', 'screen');
             }
 
             wp_enqueue_style('presspermit-select2-css');
@@ -57,10 +59,10 @@ class PostEdit
         if (presspermit()->getOption('use_tabbed_metabox')) {
             // Always use our own Select2 version with unique handles to avoid conflicts with other plugins (e.g., WooCommerce)
             if (!wp_style_is('presspermit-select2-css', 'registered')) {
-                wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/css/select2.min.css', array(), '4.0.13', 'screen');
+                wp_register_style('presspermit-select2-css', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/css/select2.min.css', array(), '4.1.0', 'screen');
             }
             if (!wp_script_is('presspermit-select2-js', 'registered')) {
-                wp_register_script('presspermit-select2-js', PRESSPERMIT_URLPATH . '/common/lib/select2-4.0.13/js/select2.full.min.js', ['jquery'], '4.0.13', true);
+                wp_register_script('presspermit-select2-js', PRESSPERMIT_URLPATH . '/common/lib/select2-4.1.0/js/select2.full.min.js', ['jquery'], '4.1.0', true);
             }
             wp_enqueue_style('presspermit-select2-css');
             wp_enqueue_script('presspermit-select2-js');
@@ -265,6 +267,10 @@ class PostEdit
 
     public function drawSettingsUI($object, $box)
     {
+        if (!current_user_can('pp_manage_settings')) {
+            return;
+        }
+        wp_nonce_field('pp_enable_post_type-' . $object->post_type, '_pp_enable_permissions_nonce');
         if ($type_obj = get_post_type_object($object->post_type)) :
         ?>
             <label for="pp_enable_post_type"><input type="checkbox" name="pp_enable_post_type"

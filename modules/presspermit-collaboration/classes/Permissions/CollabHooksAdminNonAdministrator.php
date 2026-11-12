@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class CollabHooksAdminNonAdministrator
 {
     function __construct()
@@ -81,7 +83,7 @@ class CollabHooksAdminNonAdministrator
 
             // Force term retrieval for Gutenberg UI construction to be filtered by 'assign' exceptions, not 'read' exceptions
             if ((empty($args['required_operation']) || ($args['required_operation'] == 'read'))) {
-                if (!empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw($_SERVER['HTTP_REFERER']), PWP::admin_rel_url('post'))) {
+                if (!empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])), PWP::admin_rel_url('post'))) {
                     $args['required_operation'] = 'assign';
                 }
             }

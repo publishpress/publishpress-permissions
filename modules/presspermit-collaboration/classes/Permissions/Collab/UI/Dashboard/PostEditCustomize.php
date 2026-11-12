@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class PostEditCustomize
 {
     public static function hide_admin_divs($hide_ids, $object_type)

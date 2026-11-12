@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostEdit
 {
     public static function fltPostStatus($status)

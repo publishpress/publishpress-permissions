@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser;
 
+\defined('ABSPATH') || exit;
+
 class Admin
 {
     function __construct()

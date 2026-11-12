@@ -1,6 +1,8 @@
 <?php
 // =========================== Capabilities API (Legacy Wrappers) ===========================
 
+defined('ABSPATH') || exit;
+
 if (!function_exists('pp_get_user')) {
     function pp_get_user($user_id, $name = '', $args = [])
     {

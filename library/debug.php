@@ -1,5 +1,5 @@
 <?php
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+defined('ABSPATH') || exit;
 
 // phpcs Note: This file is only loaded if WP_DEBUG is enabled
 

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Revisionary;
 
+\defined('ABSPATH') || exit;
+
 class ContentRoles extends \RevisionaryContentRoles
 {
     function filter_object_terms($terms, $taxonomy)

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class XmlRpc
 {
     function __construct() {
@@ -56,15 +58,16 @@ class XmlRpc
             $catids [] = $cat['categoryId'];
         }
 
-        $catids = apply_filters('presspermit_pre_object_terms', $catids, 'category');
-
         do_action('xmlrpc_call', 'mt.setPostCategories');
 
-        if (!get_post($post_ID))
-            return new IXR_Error(404, esc_html__('Invalid post ID.'));
+        if (!$post = get_post($post_ID))
+            return new \IXR_Error(404, esc_html__('Invalid post ID.'));
 
         if (!current_user_can('edit_post', $post_ID))
-            return new IXR_Error(401, esc_html__('Sorry, you cannot edit this post.'));
+            return new \IXR_Error(401, esc_html__('Sorry, you cannot edit this post.'));
+
+        $catids = apply_filters('presspermit_pre_object_terms', $catids, 'category',
+            ['object_id' => $post_ID, 'post_type' => $post->post_type]);
 
         wp_set_post_categories($post_ID, $catids);
 
@@ -86,3 +89,4 @@ class XmlRpc
         }
     }
 }
+

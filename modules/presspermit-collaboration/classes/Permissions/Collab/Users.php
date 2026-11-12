@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class Users
 {
     // optional filter for WP role edit based on user level

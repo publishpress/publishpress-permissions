@@ -2,16 +2,23 @@
 
 namespace PublishPress\Permissions\DB;
 
+\defined('ABSPATH') || exit;
+
 class Cloner
 {
     public static function clonePermissions($agent_type, $agent_id, $source_agent)
     {
         global $wpdb, $current_user;
+        require_once(PRESSPERMIT_CLASSPATH . '/PermissionsAdmin.php');
 
         // Direct query of plugin table. Infrequent plugin settings update operation.
         // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
-        check_admin_referer('pp-update-clone_' . $agent_id, '_pp_nonce_clone');
+        check_admin_referer('pp-update-clone_' . $agent_type . '_' . $agent_id, '_pp_nonce_clone');
+
+        if (!(presspermit()->isUserAdministrator() || current_user_can('pp_clone_permissions'))) {
+            return false;
+        }
 
         if ('pp_group' != $agent_type)
             return false;
@@ -35,10 +42,37 @@ class Cloner
 
         $source_agent_id = $source_agent->ID;
 
+        $admin = presspermit()->admin();
+        if (!$agent || !$admin->bulkRolesEnabled()
+            || !$admin->canEditPermissionAgent($agent_type, $agent_id)
+            || !$admin->canEditPermissionAgent($agent_type, $source_agent_id)
+        ) {
+            return false;
+        }
+
+        // Authorize the entire source before the first write, avoiding partial clones.
+        $source_roles = $wpdb->get_col($wpdb->prepare("SELECT role_name FROM $wpdb->ppc_roles WHERE agent_type = %s AND agent_id = %d", $agent_type, $source_agent_id));
+        foreach ($source_roles as $role_name) {
+            $parts = explode(':', $role_name);
+            if (!\PublishPress\Permissions\PermissionsAdmin::canAssignRole($role_name)) {
+                return false;
+            }
+        }
+
+        $source_items = $wpdb->get_results($wpdb->prepare(
+            "SELECT e.*, i.item_id, i.assign_for FROM $wpdb->ppc_exceptions AS e"
+            . " INNER JOIN $wpdb->ppc_exception_items AS i ON e.exception_id = i.exception_id"
+            . " WHERE e.agent_type = %s AND e.agent_id = %d", $agent_type, $source_agent_id
+        ));
+        foreach ($source_items as $source_item) {
+            if (!$admin->canEditAgentException($agent_type, $agent_id, (array) $source_item)) {
+                return false;
+            }
+        }
+
         // =========== Roles Import =============
         $target_roles = $wpdb->get_col($wpdb->prepare("SELECT role_name FROM $wpdb->ppc_roles WHERE agent_type = %s AND agent_id = %d", $agent_type, $agent_id));
 
-        $source_roles = $wpdb->get_col($wpdb->prepare("SELECT role_name FROM $wpdb->ppc_roles WHERE agent_type = %s AND agent_id = %d", $agent_type, $source_agent_id));
         foreach ($source_roles as $role_name) {
             $wpdb->insert_id = 0;
 
@@ -152,3 +186,4 @@ class Cloner
         return $exception_id;
     }
 }
+

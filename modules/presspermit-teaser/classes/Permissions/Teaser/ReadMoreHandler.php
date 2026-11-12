@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Handles "Read More Link as Teaser" functionality
  * 

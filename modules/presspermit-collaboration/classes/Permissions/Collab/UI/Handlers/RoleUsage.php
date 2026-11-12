@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI\Handlers;
 
+\defined('ABSPATH') || exit;
+
 class RoleUsage
 {
     public static function handleRequest() 

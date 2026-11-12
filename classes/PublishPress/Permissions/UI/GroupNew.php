@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class GroupNew
 {
     public function __construct()
@@ -83,7 +85,7 @@ class GroupNew
             </header>
 
             <form action="" method="post" id="creategroup" name="creategroup" class="pp-admin">
-                <?php wp_nonce_field('pp-update-group_0') ?>
+                <?php wp_nonce_field('pp-update-group_' . $agent_type . '_0') ?>
                 <input name="action" type="hidden" value="creategroup" />
                 <input name="agent_type" type="hidden" value="<?php echo esc_attr($agent_type); ?>" />
                 <?php wp_nonce_field('pp-create-group', '_wpnonce_pp-create-group') ?>

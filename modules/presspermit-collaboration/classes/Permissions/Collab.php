@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class Collab {
     private static $instance = null;
 

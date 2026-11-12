@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class Core {
     function __construct() {
         add_filter('presspermit_options', [$this, 'fltPressPermitOptions'], 15);

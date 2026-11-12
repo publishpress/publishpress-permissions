@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\UI;
 
 use PublishPress\Permissions\Factory;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabModules
 {
     public function __construct()
@@ -123,7 +125,7 @@ class SettingsTabModules
                         }
 
                         if (!empty($all_modules)): ?>
-                            <div class="pp-integrations-container">
+                            <div class="pp-integrations-container" data-pro-feature-label="<?php esc_attr_e('Pro Feature', 'press-permit-core'); ?>">
                                 <div class="pp-integrations-grid">
                                     <?php foreach ($all_modules as $module):
                                         $slug = $module['slug'];
@@ -171,7 +173,7 @@ class SettingsTabModules
                                                 <div class="pp-settings-toggle">
                                                     <?php $id = "module_{$slug}"; ?>
                                                     <label class="pp-toggle-switch" for="<?php echo esc_attr($id); ?>">
-                                                        <input type="checkbox" id="<?php echo esc_attr($id); ?>"
+                                                        <input type="checkbox" id="<?php echo esc_attr($id); ?>" aria-label="<?php echo esc_attr($title); ?>"
                                                             name="<?php echo $is_active ? 'presspermit_active_modules' : 'presspermit_deactivated_modules'; ?>[<?php echo esc_attr($plugin_slug); ?>]"
                                                             value="1" <?php echo $is_active ? 'checked="checked"' : ''; ?> />
                                                         <span class="pp-slider"></span>

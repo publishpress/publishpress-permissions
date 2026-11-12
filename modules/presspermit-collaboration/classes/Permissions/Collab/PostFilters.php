@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PostFilters
 {
     function __construct()

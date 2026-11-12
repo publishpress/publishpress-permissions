@@ -3,6 +3,8 @@ namespace PublishPress\Permissions\Teaser\UI;
 
 use \PublishPress\Permissions\UI\SettingsAdmin as SettingsAdmin;
 
+\defined('ABSPATH') || exit;
+
 require_once(__DIR__ . '/TeaserUIBaseTrait.php');
 
 /**
@@ -301,7 +303,7 @@ class PostsTeaser
                     ?>
                     <tr>
                         <th>
-                            <?php esc_html_e('Display for readable private posts', 'press-permit-core'); ?>
+                            <label for="rss_private_feed_mode"><?php esc_html_e('Display for readable private posts', 'press-permit-core'); ?></label>
                         </th>
                         <td>
                             <select name="rss_private_feed_mode" id="rss_private_feed_mode" autocomplete="off">
@@ -323,7 +325,7 @@ class PostsTeaser
                     ?>
                     <tr>
                         <th>
-                            <?php esc_html_e('Display for readable non-private posts', 'press-permit-core'); ?>
+                            <label for="rss_nonprivate_feed_mode"><?php esc_html_e('Display for readable non-private posts', 'press-permit-core'); ?></label>
                         </th>
                         <td>
                             <select name="rss_nonprivate_feed_mode" id="rss_nonprivate_feed_mode" autocomplete="off">
@@ -444,6 +446,12 @@ class PostsTeaser
                     <li class="nav-tab<?php if ($current_tab === 'ppp-tab-text-options') echo ' nav-tab-active';?>">
                       <a href="#ppp-tab-text-options">
                           <?php esc_html_e('Text Options', 'press-permit-core') ?>
+                      </a>
+                    </li>
+
+                    <li class="nav-tab<?php if ($current_tab === 'ppp-tab-message-style') echo ' nav-tab-active';?>">
+                      <a href="#ppp-tab-message-style">
+                          <?php esc_html_e('Message Style', 'press-permit-core'); ?>
                       </a>
                     </li>
 
@@ -585,6 +593,9 @@ class PostsTeaser
         if (!empty($ui->form_options[$tab][$section])) : ?>
             <section id="ppp-tab-text-options" style="display:<?php if ($current_tab === 'ppp-tab-text-options') echo 'block'; else echo 'none'; ?>;">
                 <?php $progressive_ui->renderTextOptions(); ?>
+            </section>
+            <section id="ppp-tab-message-style" style="display:<?php echo 'ppp-tab-message-style' === $current_tab ? 'block' : 'none'; ?>;">
+                <?php $progressive_ui->renderStyleOptions(); ?>
             </section>
         <?php
         endif;

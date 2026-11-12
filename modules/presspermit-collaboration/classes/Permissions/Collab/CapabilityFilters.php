@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class CapabilityFilters
 {
     function __construct()
@@ -158,7 +160,7 @@ class CapabilityFilters
 
         } else { // post_id is not a revision
             if (('read' == $required_operation) && (
-                (isset($_SERVER['SCRIPT_NAME']) && strpos(sanitize_text_field($_SERVER['SCRIPT_NAME']), 'wp-admin/revision.php')) || (defined('DOING_AJAX') && DOING_AJAX 
+                (isset($_SERVER['SCRIPT_NAME']) && strpos(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])), 'wp-admin/revision.php')) || (defined('DOING_AJAX') && DOING_AJAX
                 && PWP::is_REQUEST('action', 'get-revision-diffs')))
             ) {
                 $return['required_operation'] = 'edit';

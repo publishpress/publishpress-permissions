@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class RESTLegacy
 {
     // Block unpermitted read requests (WP does not trigger a REST capability check for viewing single public posts)

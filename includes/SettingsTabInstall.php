@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\UI;
 
 use PublishPress\Permissions\Factory;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabInstall
 {
     public function __construct()
@@ -230,7 +232,7 @@ class SettingsTabInstall
                         if ($ver_history = (array) json_decode($ver_history)) :
                             $ver_history = array_reverse($ver_history, true);
                         ?>
-                            <div class="agp-vtight"><?php esc_html_e('Installation History', 'press-permit-core'); ?></div>
+                            <div class="agp-vtight"><label for="pp_version_history"><?php esc_html_e('Installation History', 'press-permit-core'); ?></label></div>
                             <?php
                             echo '<textarea id="pp_version_history" name="pp_version_history" rows="5" cols="30" style="width: 250px; height: 85px" readonly="readonly">';
 

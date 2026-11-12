@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class ItemAjax
 {
     public function __construct() {
@@ -27,7 +29,7 @@ class ItemAjax
                     exit;
                 }
 
-                $id_sfx = (!empty($_GET['id_sfx'])) ? sanitize_text_field($_GET['id_sfx']) : '';
+                $id_sfx = (!empty($_GET['id_sfx'])) ? sanitize_text_field(wp_unslash($_GET['id_sfx'])) : '';
 
                 if (!$id_sfx) {
                     exit;
@@ -44,7 +46,7 @@ class ItemAjax
 
                 $via_item_type = PWP::GET_key('via_item_type');
                 
-                $agent_ids = (!empty($_GET['agent_ids'])) ? array_map('intval', explode(',', sanitize_text_field($_GET['agent_ids']))) : [];
+                $agent_ids = (!empty($_GET['agent_ids'])) ? array_map('intval', explode(',', sanitize_text_field(wp_unslash($_GET['agent_ids'])))) : [];
 
                 if (('post' == $via_item_source) && $item_id && !current_user_can('edit_post', $item_id)) {
                     exit;

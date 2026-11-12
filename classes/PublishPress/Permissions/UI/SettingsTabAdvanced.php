@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabAdvanced
 {
     private $enabled;
@@ -501,7 +503,7 @@ class SettingsTabAdvanced
                         ?>
                         <div id="pp_limit_user_edit_by_level_wrap" style="margin-top:20px; <?php echo esc_attr($sub_style); ?>">
                         <?php
-                        esc_html_e('User editing capabilities apply for', 'press-permit-core');
+                        echo "<label for='" . esc_attr($option_name) . "'>" . esc_html__('User editing capabilities apply for', 'press-permit-core') . '</label>';
                         echo "&nbsp;<select name='" . esc_attr($option_name) . "' id='" . esc_attr($option_name) . "' autocomplete='off'>";
 
                         $captions = ['1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
@@ -574,6 +576,8 @@ class SettingsTabAdvanced
                 </td>
             </tr>
         <?php endif; // any options accessable in this section
+
+        do_action('presspermit_advanced_options_after_role_integration_ui');
 
         $section = 'misc'; // --- MISC SECTION ---
         if (!empty($ui->form_options[$tab][$section])) : ?>
@@ -793,7 +797,7 @@ class SettingsTabAdvanced
                         $msg = __("To modify one or more default settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
                         echo esc_html(wp_strip_all_tags($msg));
                         ?>
-                        <textarea rows='10' cols='150' readonly='readonly'>
+                        <textarea rows='10' cols='150' readonly='readonly' aria-label='<?php esc_attr_e('Default settings code', 'press-permit-core'); ?>'>
     // Use this filter if you want to change the default, but still allow manual setting
     add_filter( 'presspermit_default_options', 'my_presspermit_default_options', 99 );
 
@@ -813,7 +817,7 @@ class SettingsTabAdvanced
                         $msg  = __("To force the value of one or more settings network-wide, <strong>copy</strong> the following code into your theme's <strong>functions.php</strong> file (or some other file which is always executed and not auto-updated) and modify as desired:", 'press-permit-core');
                         echo esc_html(wp_strip_all_tags($msg));
                         ?>
-                        <textarea rows='13' cols='150' readonly='readonly'>
+                        <textarea rows='13' cols='150' readonly='readonly' aria-label='<?php esc_attr_e('Forced settings code', 'press-permit-core'); ?>'>
     // Use this filter if you want to force an option, blocking/disregarding manual setting
     add_filter( 'presspermit_options', 'my_presspermit_options', 99 );
 

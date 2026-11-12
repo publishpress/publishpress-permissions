@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TermQuery
 {
     // derived from WP _pad_term_counts(), but includes private posts in counts based on current user's access

@@ -1,5 +1,7 @@
 <?php
 
+defined('ABSPATH') || exit;
+
 function presspermit_delete_option($option_basename, $args = [])
 {
     return presspermit()->deleteOption($option_basename, $args);

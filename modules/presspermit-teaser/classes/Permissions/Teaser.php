@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class Teaser
 {
     private $teased_posts = [];

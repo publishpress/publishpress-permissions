@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Handlers;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_CLASSPATH . '/UI/Groups.php');
 
 class Groups

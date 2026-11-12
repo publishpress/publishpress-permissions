@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/RoleUsageQuery.php');
 
 class RoleUsageListTable extends \WP_List_Table

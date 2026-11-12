@@ -7,7 +7,7 @@
     <arg name="colors"/>
     <arg name="cache"/>
     <ini name="memory_limit" value="256M"/>
-    <arg name="basepath" value="dist/press-permit-core"/>
+    <arg name="basepath" value="."/>
     <arg name="parallel" value="20"/>
     <arg value="ps"/>
 
@@ -23,6 +23,11 @@
     <exclude-pattern>/languages/*</exclude-pattern>
     <exclude-pattern>/node_modules/*</exclude-pattern>
     <exclude-pattern>/dev-workspace/*</exclude-pattern>
+    <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>
+    <exclude-pattern>/cache/*</exclude-pattern>
+    <exclude-pattern>/.cache/*</exclude-pattern>
+    <exclude-pattern>/.phplint.cache/*</exclude-pattern>
+    <exclude-pattern>/lib/vendor/*</exclude-pattern>
 
     <rule ref="WordPressVIPMinimum"/>
     <rule ref="WordPress-VIP-Go"/>

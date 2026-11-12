@@ -4,6 +4,8 @@ namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
 use PublishPress\PWP;
 
+\defined('ABSPATH') || exit;
+
 class PostEdit
 {
     function __construct()
@@ -136,6 +138,10 @@ class PostEdit
             [
                 'omit_admins' => !defined('PP_ADMINS_IN_PERMISSION_GROUPS') || !PP_ADMINS_IN_PERMISSION_GROUPS ? '1': 0, 
                 'metagroups'  => 1,
+                'searching' => esc_html__('Searching…', 'press-permit-core'),
+                'oneResultFound' => esc_html__('1 result found.', 'press-permit-core'),
+                /* translators: %d: number of search results */
+                'resultsFound' => esc_html__('%d results found.', 'press-permit-core'),
                 'placeholder' => [
                     'pp_group'      => esc_html__('Search for a group', 'press-permit-core'),
                     'user'          => esc_html__('Search for a user', 'press-permit-core'),

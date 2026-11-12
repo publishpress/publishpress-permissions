@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class CommentFilters
 {
     public function __construct() {

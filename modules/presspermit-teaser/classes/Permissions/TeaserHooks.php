@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TeaserHooks
 {
     public const DEFAULT_TEASER_TEXT = 'You do not have permission to view this content.';
@@ -163,6 +165,10 @@ class TeaserHooks
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
 
+        // Global Options migration (issue #2635) must also run on Free-only sites.
+        add_action('presspermit_version_updated', [$this, 'migrateGlobalOptions']);
+        add_action('presspermit_pro_version_updated', [$this, 'migrateGlobalOptions']);
+
         add_filter('presspermit_custom_sanitize_setting', [$this, 'flt_custom_sanitize_setting'], 10, 4);
 
         add_filter('elementor/frontend/the_content', [$this, 'fltElementorContent']);
@@ -174,8 +180,8 @@ class TeaserHooks
     private function getThemePreviewState()
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
-        $state = isset($_GET['pp_permissions_teaser_preview']) ? $_GET['pp_permissions_teaser_preview'] : '';
-        $state = sanitize_key(wp_unslash($state));
+        $state = isset($_GET['pp_permissions_teaser_preview']) ? wp_unslash($_GET['pp_permissions_teaser_preview']) : '';
+        $state = sanitize_key($state);
 
         return in_array($state, ['404', 'teaser'], true) ? $state : '';
     }
@@ -226,8 +232,8 @@ class TeaserHooks
     private function getThemeTeaserPreviewPostType()
     {
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
-        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? $_GET['pp_permissions_teaser_post_type'] : '';
-        $post_type = sanitize_key(wp_unslash($post_type));
+        $post_type = isset($_GET['pp_permissions_teaser_post_type']) ? wp_unslash($_GET['pp_permissions_teaser_post_type']) : '';
+        $post_type = sanitize_key($post_type);
 
         if ($post_type && post_type_exists($post_type)) {
             return $post_type;
@@ -253,8 +259,8 @@ class TeaserHooks
     {
         $allowed = ['1', 'read_more', 'excerpt', 'x_chars', 'more', 'redirect'];
         // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized on the next line; read-only preview request.
-        $type = isset($_GET['pp_permissions_teaser_type']) ? $_GET['pp_permissions_teaser_type'] : '1';
-        $type = sanitize_key(wp_unslash($type));
+        $type = isset($_GET['pp_permissions_teaser_type']) ? wp_unslash($_GET['pp_permissions_teaser_type']) : '1';
+        $type = sanitize_key($type);
 
         return in_array($type, $allowed, true) ? $type : '1';
     }
@@ -456,9 +462,6 @@ class TeaserHooks
                 $pre_more_content = \PublishPress\Permissions\Teaser\ReadMoreHandler::extractPreMoreContent($post);
                 $preview_content = (false !== $pre_more_content) ? wpautop($pre_more_content) : '';
 
-                if ('' === $preview_content && 'read_more' === $teaser_type && $post->post_excerpt) {
-                    $preview_content = wpautop($post->post_excerpt);
-                }
             } elseif ('excerpt' === $teaser_type) {
                 if ($post->post_excerpt) {
                     $excerpt_text = $post->post_excerpt;
@@ -847,34 +850,14 @@ class TeaserHooks
             }
         }
 
-        // "Teaser Application", "User Application", "Navigation Menus", "Private Posts",
-        // "Featured Image", and "Comments Area" moved from per-post-type settings to single
-        // global settings on the Options tab (issue #2518). Seed each new global option from
-        // whichever post type was configured first in the old per-type array, so a site's
-        // existing behavior for its primary post type carries over. The old per-type options
-        // are left in the database untouched (unused going forward).
-        if (version_compare($prev_version, '4.9.0', '<')) {
-            $migrated_options = [
-                'tease_direct_access_only' => 'teaser_opt_direct_access_only',
-                'tease_logged_only' => 'teaser_opt_logged_only',
-                'teaser_hide_menu_links_type' => 'teaser_opt_hide_menu_links',
-                'tease_public_posts_only' => 'teaser_opt_public_posts_only',
-                'teaser_hide_thumbnail' => 'teaser_opt_hide_thumbnail',
-                'teaser_disable_comments' => 'teaser_opt_disable_comments',
-            ];
+        // The 4.9.0 migration of per-post-type options to global Options (issue #2518)
+        // now runs from migrateGlobalOptions(), which also fires on Free updates (issue #2635).
+    }
 
-            foreach ($migrated_options as $old_name => $new_name) {
-                if (false !== get_option("presspermit_$new_name")) {
-                    continue; // already has a value - don't clobber it
-                }
-
-                $old_value = get_option("presspermit_$old_name");
-
-                if (is_array($old_value) && $old_value) {
-                    update_option("presspermit_$new_name", reset($old_value));
-                }
-            }
-        }
+    public function migrateGlobalOptions()
+    {
+        require_once(PRESSPERMIT_TEASER_CLASSPATH . '/GlobalOptionsMigration.php');
+        \PublishPress\Permissions\Teaser\GlobalOptionsMigration::maybeRun();
     }
 
     function actMaybeRedirect()

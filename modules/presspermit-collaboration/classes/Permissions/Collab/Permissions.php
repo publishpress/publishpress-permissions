@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class Permissions
 {
     public static function userCanAdminRole($role_name, $object_type, $item_id = 0)

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class Capabilities
 {
     var $all_taxonomy_caps = [];  // $all_taxonomy_caps = array of cap names

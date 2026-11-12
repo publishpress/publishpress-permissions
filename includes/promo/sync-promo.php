@@ -1,3 +1,5 @@
+<?php defined('ABSPATH') || exit;
+?>
 <div class="wrap publishpress-caps-manage pressshack-admin-wrapper pp-conditions pp-permissions-menus-wrapper-promo">
     <header>
         <h1>

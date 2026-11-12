@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 require_once(PRESSPERMIT_CLASSPATH . '/RESTHelper.php');
 
 class REST
@@ -218,7 +220,7 @@ class REST
 
                         if (!empty($params['exclude']) || !empty($params['parent_exclude'])) {
                             // Prevent Gutenberg from triggering needless post_name retrieval (for permalink generation) for each item in Page Parent dropdown
-                            if (!empty($_SERVER) && !empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw($_SERVER['HTTP_REFERER']), admin_url())) {
+                            if (!empty($_SERVER) && !empty($_SERVER['HTTP_REFERER']) && false !== strpos(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])), admin_url())) {
                                 global $wp_post_types;
 
                                 if (!$this->post_type) {
@@ -282,14 +284,15 @@ class REST
                     }
 
                 } elseif ($this->isRestController($handler['callback'][0], $term_endpoints)) { 
-                    if (!empty($this->referer) && strpos($this->referer, 'post-new.php') && !empty($this->endpoint_class) && ('WP_REST_Terms_Controller' == $this->endpoint_class)) {
+                    if ($this->is_view_method && 'assign' === $this->operation) {
                         $this->operation = 'assign';
-                        $this->is_view_method = false;
 
                         $required_operation = 'assign';
                     } else {
                         $required_operation = ('read' == $this->operation) ? 'read' : 'manage';
                     }
+
+                    $this->operation = $required_operation;
                     
                     $this->is_terms_request = true;
 
@@ -300,6 +303,14 @@ class REST
                     }
 
                     if (empty($this->taxonomy)) break;
+
+                    if (!$this->is_view_method && $request->has_param('parent') && presspermit()->moduleActive('collaboration')) {
+                        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/TermParent.php');
+                        $term_id = !empty($args['id']) ? (int) $args['id'] : 0;
+                        if (!Collab\TermParent::canSelect($this->taxonomy, $request->get_param('parent'), $term_id)) {
+                            return Collab\TermParent::denied();
+                        }
+                    }
 
                     if (!presspermit()->isContentAdministrator()) {
                         if (!empty($this->params['post'])) {
@@ -314,8 +325,7 @@ class REST
 
                         if (!empty($this->params['id'])) {
                             $user_terms = get_terms(
-                                $this->taxonomy, 
-                                ['required_operation' => $required_operation, 'hide_empty' => 0, 'fields' => 'ids']
+                                ['taxonomy' => $this->taxonomy, 'required_operation' => $required_operation, 'hide_empty' => 0, 'fields' => 'ids']
                             );
 
                             if (!in_array((int) $this->params['id'], array_map('intval', (array) $user_terms), true)) {
@@ -380,6 +390,9 @@ class REST
 
         $post_id = (int) $request->get_param('post');
 
+        // Use the same exception domain for taxonomy items and collections.
+        $args['required_operation'] = ('edit' === $request->get_param('context')) ? 'manage' : $this->operation;
+
         if ($post_id && !current_user_can('read_post', $post_id)) {
             $args['post'] = 0;
             $args['object_ids'] = [0];
@@ -403,3 +416,4 @@ class REST
         return false;
     }
 }
+

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser;
 
+\defined('ABSPATH') || exit;
+
 class PostFilters
 {
     function __construct()
@@ -29,6 +31,10 @@ class PostFilters
 
     function fltPostsFrontEndResults($results, $_query_obj)
     {
+        $preview_id = (int) apply_filters('presspermit_public_preview_post', 0, $_query_obj);
+        if ($preview_id && count($results) === 1 && (int) reset($results)->ID === $preview_id) {
+            return $results;
+        }
         if ($tease_otypes = $this->fltGetTeaserPostTypes([], '', [])) {
             $teaser_obj = Teaser::initTemplate();
             return $teaser_obj->postsTeaserPrepResults($results, $tease_otypes, ['request' => $_query_obj->request]);
@@ -40,6 +46,9 @@ class PostFilters
     function fltTheContent($content) {
         global $wp_query, $post;
 
+        if ($post && (int) $post->ID === (int) apply_filters('presspermit_public_preview_post', 0, $wp_query)) {
+            return $content;
+        }
         if (!empty($wp_query->request) && !empty($post)) {
             $results = $this->fltPostsFrontEndResults([$post], $wp_query);
 

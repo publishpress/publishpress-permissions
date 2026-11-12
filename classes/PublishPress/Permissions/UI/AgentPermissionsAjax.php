@@ -2,10 +2,13 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentPermissionsAjax
 {
     public function __construct() {
-        check_ajax_referer('pp-ajax');
+        require_once(PRESSPERMIT_CLASSPATH . '/PermissionsAdmin.php');
+        check_ajax_referer('pp-agent-permissions_' . PWP::GET_key('agent_type') . '_' . PWP::GET_int('agent_id'));
 
         $pp = presspermit();
         $pp_admin = $pp->admin();
@@ -24,6 +27,13 @@ class AgentPermissionsAjax
 
         $agent_type = PWP::GET_key('agent_type');
         $agent_id = PWP::GET_int('agent_id');
+
+        if (!$pp_admin->canEditPermissionAgent($agent_type, $agent_id)) {
+            wp_die(-1, '', ['response' => 403]);
+        }
+        if (0 === strpos($action, 'exceptions_')) {
+            check_ajax_referer('pp-agent-exceptions_' . $agent_type . '_' . $agent_id . '_' . $action, '_pp_exception_nonce');
+        }
 
         // safeguard prevents accidental modification of roles for other groups / users
         if ($agent_type && $agent_id) {
@@ -46,7 +56,7 @@ class AgentPermissionsAjax
                     exit;
                 }
 
-                $input_vals = (!empty($_GET['pp_ass_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_ass_ids']))) : [];
+                $input_vals = (!empty($_GET['pp_ass_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_ass_ids'])))) : [];
 
                 if (!$input_vals) {
                     exit;
@@ -105,7 +115,7 @@ class AgentPermissionsAjax
                     exit;
                 }
 
-                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
 
                 if (!$input_vals) {
                     exit;
@@ -166,7 +176,7 @@ class AgentPermissionsAjax
                     exit;
                 }
 
-                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
 
                 if (!$input_vals) {
                     exit;
@@ -244,7 +254,7 @@ class AgentPermissionsAjax
                     $edited_input_ids = [];
                     $all_eitem_ids = [];
 
-                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
                     
                     if (!$input_vals) {
                         exit;
@@ -301,7 +311,7 @@ class AgentPermissionsAjax
                     $edited_input_ids = [];
                     $all_eitem_ids = [];
 
-                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field($_GET['pp_eitem_ids']))) : [];
+                    $input_vals = (!empty($_GET['pp_eitem_ids'])) ? explode('|', PWP::sanitizeCSV(sanitize_text_field(wp_unslash($_GET['pp_eitem_ids'])))) : [];
                     
                     if (!$input_vals) {
                         exit;
@@ -362,39 +372,72 @@ class AgentPermissionsAjax
 
     private function editableAssignmentIDs($ass_ids)
     {
-        if (presspermit()->isUserAdministrator()) {
-            return $ass_ids;
-        }
-
-        $pp_admin = presspermit()->admin();
-
         global $wpdb;
-        $ass_ids_csv = implode("','", array_map('intval', $ass_ids));
-
-        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-        $results = $wpdb->get_results(
-            "SELECT assignment_id, role_name FROM $wpdb->ppc_roles WHERE assignment_id IN ('$ass_ids_csv')"  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-        );
-
-        $remove_ids = [];
-
-        foreach ($results as $row) {
-            if (!$role_attrib = $this->getRoleAttributes($row->role_name)) {
-                continue;
-            }
-
-            if (!$pp_admin->userCanAdminRole($role_attrib->base_role_name, $role_attrib->object_type)) {
-                $remove_ids[] = $row->assignment_id;
+        $ids = array_filter(array_map('absint', $ass_ids));
+        if (!$ids) {
+            return [];
+        }
+        $id_placeholders = implode(',', array_fill(0, count($ids), '%d'));
+        $agent_type = PWP::GET_key('agent_type');
+        $agent_id = PWP::GET_int('agent_id');
+        // Scope stored records before applying their role policy, including for administrators.
+        // Read current assignment policy without caching before authorizing a mutation.
+        $rows = $wpdb->get_results($wpdb->prepare( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQLPlaceholders.ReplacementsWrongNumber -- Read current policy without caching; the merged array supplies one value per generated ID placeholder plus agent type and ID.
+            "SELECT assignment_id, role_name FROM $wpdb->ppc_roles"
+            // Only generated %d placeholders are interpolated; all IDs are prepared below.
+            . " WHERE assignment_id IN ($id_placeholders) AND agent_type = %s AND agent_id = %d", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Generated placeholders only; values are prepared below.
+            array_merge(array_values($ids), [$agent_type, $agent_id])
+        ));
+        $allowed = [];
+        foreach ($rows as $row) {
+            if (\PublishPress\Permissions\PermissionsAdmin::canAssignRole($row->role_name)) {
+                $allowed[] = (int) $row->assignment_id;
             }
         }
-
-        $ass_ids = array_diff($ass_ids, $remove_ids);
-        return $ass_ids;
+        return $allowed;
     }
 
     private function editableEitemIDs($ass_ids)
     {
-        // governed universally by pp_admin->bulkRolesEnabled()
-        return $ass_ids;
+        global $wpdb;
+        $ids = array_filter(array_map('absint', $ass_ids));
+        if (!$ids) {
+            return [];
+        }
+
+        $id_placeholders = implode(',', array_fill(0, count($ids), '%d'));
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        $rows = $wpdb->get_results($wpdb->prepare(
+            "SELECT e.*, i.eitem_id, i.item_id FROM $wpdb->ppc_exception_items AS i"
+            . " INNER JOIN $wpdb->ppc_exceptions AS e ON e.exception_id = i.exception_id"
+            . " WHERE i.eitem_id IN ($id_placeholders)", // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- Generated placeholders only.
+            array_values($ids)
+        ));
+
+        $allowed = [];
+        $admin = presspermit()->admin();
+        $agent_type = PWP::GET_key('agent_type');
+        $agent_id = PWP::GET_int('agent_id');
+        $action = PWP::GET_key('pp_ajax_agent_permissions');
+        foreach ($rows as $row) {
+            if ($row->agent_type !== $agent_type || (int) $row->agent_id !== $agent_id
+                || !$admin->canEditAgentException($agent_type, $agent_id, (array) $row)
+            ) {
+                continue;
+            }
+
+            // Mirroring needs permission for both the source and destination operation.
+            $args = (array) $row;
+            if (0 === strpos($action, 'exceptions_mirror_')) {
+                $args['operation'] = substr($action, strlen('exceptions_mirror_'));
+            } elseif (0 === strpos($action, 'exceptions_convert_')) {
+                $args['mod_type'] = substr($action, strlen('exceptions_convert_'));
+            }
+            if ($admin->canEditAgentException($agent_type, $agent_id, $args)) {
+                $allowed[] = (int) $row->eitem_id;
+            }
+        }
+        return $allowed;
     }
 }
+

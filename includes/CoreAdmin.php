@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class CoreAdmin
 {
     function __construct()
@@ -230,7 +232,7 @@ class CoreAdmin
                         <div class="pp-settings-toggle">
                             <?php $id = "module_pro_{$slug}"; ?>
                             <label class="pp-toggle-switch" for="<?php echo esc_attr($id); ?>">
-                                <input type="checkbox" id="<?php echo esc_attr($id); ?>" disabled
+                                <input type="checkbox" id="<?php echo esc_attr($id); ?>" aria-label="<?php echo esc_attr($title); ?>" disabled
                                     name="presspermit_deactivated_modules[<?php echo esc_attr($plugin_slug); ?>]"
                                     value="1" />
                                 <span class="pp-slider"></span>

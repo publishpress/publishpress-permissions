@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class PostFiltersFront
 {
     var $archives_where = '';
@@ -101,8 +103,8 @@ class PostFiltersFront
             
             if (!empty($any_term_exceptions)) {
                 if (!get_terms(
-                    $archive_taxonomy, 
                     [
+                        'taxonomy' => $archive_taxonomy,
                         'fields' => 'ids', 
                         'required_operation' => 'read', 
                         'hide_empty' => true, 

@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class HintsPro 
 {
     public static function proPromo()

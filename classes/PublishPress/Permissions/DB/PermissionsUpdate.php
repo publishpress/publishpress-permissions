@@ -5,6 +5,8 @@ namespace PublishPress\Permissions\DB;
 // Direct query of plugin tables for admin operations
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 
+\defined('ABSPATH') || exit;
+
 class PermissionsUpdateHelper
 {
     var $insertion_action_enabled = true;

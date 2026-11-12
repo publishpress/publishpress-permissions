@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class Media
 {
     public static function count_attachments_query($query)

@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\Revisions;
 
+\defined('ABSPATH') || exit;
+
 class Admin
 {
     function __construct() {
@@ -35,7 +37,7 @@ class Admin
             if ($user_id != $current_user->ID)
                 return $caps;
 
-            if (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field($_SERVER['SCRIPT_NAME']), 'update.php')) { // Revisionary does not load on update.php
+            if (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])), 'update.php')) { // Revisionary does not load on update.php
                 return $caps;
             }
 

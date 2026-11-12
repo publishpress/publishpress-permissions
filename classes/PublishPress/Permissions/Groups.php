@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class Groups
 {
     private $group_types = [];
@@ -360,6 +362,9 @@ class Groups
 
     public function userCan($cap_name, $group_id, $group_type)
     {
+        if ('pp_net_group' === $group_type && !is_super_admin()) {
+            return false;
+        }
         $has_sitewide = current_user_can($cap_name);
 
         if ($group_id && !$has_sitewide) {

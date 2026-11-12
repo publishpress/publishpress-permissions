@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI\Handlers;
 
+\defined('ABSPATH') || exit;
+
 class Admin
 {
     public static function handleRequest() {
@@ -18,9 +20,18 @@ class Admin
                 add_action(
                     'presspermit_user_init', 
                     function() {
-                    	require_once(PRESSPERMIT_CLASSPATH . '/UI/Handlers/AgentEdit.php');
-                    	new AgentEdit();
-                    	do_action('presspermit_trigger_cache_flush');
+                        static $handling = false;
+                        if ($handling) {
+                            return;
+                        }
+                        $handling = true;
+                        try {
+                            require_once(PRESSPERMIT_CLASSPATH . '/UI/Handlers/AgentEdit.php');
+                            new AgentEdit();
+                            do_action('presspermit_trigger_cache_flush');
+                        } finally {
+                            $handling = false;
+                        }
                     }
                 );
             }

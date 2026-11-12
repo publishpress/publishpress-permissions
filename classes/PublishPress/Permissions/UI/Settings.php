@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class Settings
 {
     public function __construct()
@@ -136,12 +138,12 @@ class Settings
                     if (!empty($ui->tab_badges[$tab])) {
                         $badge = $ui->tab_badges[$tab];
                         $badge_text = isset($badge['text']) ? esc_html($badge['text']) : 'PRO';
-                        $badge_color = isset($badge['color']) ? esc_attr($badge['color']) : '#8B5CF6';
-                        $badge_bg_color = isset($badge['bg_color']) ? esc_attr($badge['bg_color']) : '#8B5CF6';
+                        $badge_color = isset($badge['color']) ? esc_attr($badge['color']) : '#7C3AED';
+                        $badge_bg_color = isset($badge['bg_color']) ? esc_attr($badge['bg_color']) : '#7C3AED';
                         $badge_class = isset($badge['class']) ? esc_attr($badge['class']) : '';
                         
                         $badge_html = sprintf(
-                            '<span class="pp-tab-badge %s" style="background: %s; color: white; font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 10px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">%s</span>',
+                            '<span class="pp-tab-badge %s" style="background: %s; color: white; font-size: 12px; font-weight: 600; padding: 2px 6px; border-radius: 10px; margin-left: 6px; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">%s</span>',
                             $badge_class,
                             $badge_bg_color,
                             $badge_text

@@ -213,7 +213,8 @@
             var $card = $(this).closest('.pp-integration-card');
             $card.find('.pp-upgrade-overlay').css('opacity', '1').delay(3000).animate({opacity: '0'}, 500);
             if (!$card.find('.pp-temp-message').length) {
-                $('<div class="pp-temp-message">Pro Feature</div>').appendTo($card).delay(2000).fadeOut(500, function () {
+                var proFeatureLabel = $card.closest('.pp-integrations-container').data('pro-feature-label') || 'Pro Feature';
+                $('<div class="pp-temp-message" role="status" aria-live="polite"></div>').text(proFeatureLabel).appendTo($card).delay(2000).fadeOut(500, function () {
                     $(this).remove();
                 });
             }

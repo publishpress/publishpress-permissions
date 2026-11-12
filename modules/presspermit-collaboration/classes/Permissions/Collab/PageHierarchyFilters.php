@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class PageHierarchyFilters
 {
     public static function fltDropdownPages($orig_options_html)

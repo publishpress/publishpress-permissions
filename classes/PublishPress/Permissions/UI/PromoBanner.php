@@ -10,6 +10,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class PromoBanner
 {
   /**

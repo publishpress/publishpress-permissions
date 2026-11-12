@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class SettingsTabIntegrations
 {
     public const UPGRADE_PRO_URL = 'https://publishpress.com/links/permissions-integrations/';

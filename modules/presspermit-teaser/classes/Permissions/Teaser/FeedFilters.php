@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Teaser;
 
+\defined('ABSPATH') || exit;
+
 /**
  * FeedFilters PHP class for the WordPress plugin PP Teaser
  *

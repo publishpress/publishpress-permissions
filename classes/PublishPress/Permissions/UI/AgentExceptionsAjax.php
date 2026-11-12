@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\UI;
 
+\defined('ABSPATH') || exit;
+
 class AgentExceptionsAjax
 {
     public function __construct() 
@@ -25,7 +27,7 @@ class AgentExceptionsAjax
         $agent_type = PWP::GET_key('pp_agent_type');
         $agent_id = PWP::GET_int('pp_agent_id');
 
-        $for_type = isset($_GET['pp_for_type']) ? PWP::sanitizeEntry(sanitize_text_field($_GET['pp_for_type'])) : '';
+        $for_type = isset($_GET['pp_for_type']) ? PWP::sanitizeEntry(sanitize_text_field(wp_unslash($_GET['pp_for_type']))) : '';
         $operation = PWP::GET_key('pp_operation');
         $via_type = PWP::GET_key('pp_via_type');
         $mod_type = PWP::GET_key('pp_mod_type');
@@ -161,6 +163,12 @@ class AgentExceptionsAjax
                     'exclude' => esc_html__('Restrict access by blocking specified items unless an "Enabled" exception is also stored.', 'press-permit-core'),      // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                     'include' => esc_html__('Restrict access by limiting role capabilities to apply only for specified items. Users still need capabilities in their main role or extra roles.', 'press-permit-core'),
                 ];
+
+                if (defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY) {
+                    $tooltips['additional'] = esc_html__('Expand access to the specified items, subject to Blocked restrictions on this site.', 'press-permit-core');
+                    // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude -- Permission mode label, not a query argument.
+                    $tooltips['exclude'] = esc_html__('Block the specified items. On this site, Blocked restrictions take priority over Enabled permissions.', 'press-permit-core');
+                }
                 ?>
                 <div>
                 <?php foreach ($modes as $mod_type => $title) :?>

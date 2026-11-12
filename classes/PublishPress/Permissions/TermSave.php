@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TermSave
 {
     // This handler is meant to fire whenever a term is inserted or updated.
@@ -10,8 +12,12 @@ class TermSave
     public static function actSaveItem($term_id, $tt_id, $taxonomy)
     {
         if (!in_array($taxonomy, presspermit()->getEnabledTaxonomies(), true)) {
-            if (!PWP::empty_REQUEST('pp_enable_taxonomy')) {
-                $enabled_taxonomies = get_option('presspermit_enabled_taxonomies');
+            if (!empty($_POST['pp_enable_taxonomy'])
+                && current_user_can('pp_manage_settings')
+                && isset($_POST['_pp_enable_permissions_nonce']) && is_string($_POST['_pp_enable_permissions_nonce'])
+                && wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['_pp_enable_permissions_nonce'])), 'pp_enable_taxonomy-' . $taxonomy)
+            ) {
+                $enabled_taxonomies = (array) get_option('presspermit_enabled_taxonomies');
                 $enabled_taxonomies[$taxonomy] = '1';
                 update_option('presspermit_enabled_taxonomies', $enabled_taxonomies);
             }
@@ -27,10 +33,9 @@ class TermSave
         if (isset($saved_terms[$taxonomy][$tt_id]))
             return;
 
-        $parent_arg = apply_filters('presspermit_add_term_parent_arg', 'parent', $taxonomy);
-
-        // parent settings can affect the auto-assignment of propagating exceptions
-        $set_parent = (is_taxonomy_hierarchical($taxonomy) && !PWP::empty_REQUEST($parent_arg)) ? PWP::REQUEST_int($parent_arg) : 0;
+        // Propagation must follow the persisted parent, including REST JSON saves.
+        $term = get_term($term_id, $taxonomy);
+        $set_parent = (is_taxonomy_hierarchical($taxonomy) && $term && !is_wp_error($term)) ? (int) $term->parent : 0;
 
         if ($set_parent < 0)
             $set_parent = 0;
@@ -74,3 +79,4 @@ class TermSave
         do_action('presspermit_update_item_exceptions', 'term', $tt_id, $args);
     }
 }
+

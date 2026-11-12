@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class AdminFilters
 {
     private $inserting_post = false;
@@ -17,6 +19,7 @@ class AdminFilters
         add_filter('wp_dropdown_pages', [$this, 'fltDropdownPages']);
 
         add_filter('pre_post_parent', [$this, 'fltPageParent'], 50, 1);
+        add_filter('wp_insert_post_data', [$this, 'fltAuthorizeParent'], 50, 4);
         add_filter('pre_post_status', [$this, 'fltPostStatus'], 50, 1);
 
         add_filter('user_has_cap', [$this, 'fltHasEditUserCap'], 99, 3);
@@ -412,8 +415,41 @@ class AdminFilters
 
     function fltLogInsertPost($maybe_empty, $postarr)
     {
-        $this->inserting_post = true;
+        $this->inserting_post = empty($postarr['ID']);
         return $maybe_empty;
+    }
+
+    public function fltAuthorizeParent($data, $postarr, $unsanitized_postarr, $update)
+    {
+        $pp = presspermit();
+        if (!$pp->filteringEnabled() || $pp->isUserUnfiltered()
+            || !in_array($data['post_type'], $pp->getEnabledPostTypes(), true)
+            || !is_post_type_hierarchical($data['post_type']) || 'attachment' === $data['post_type']
+        ) {
+            return $data;
+        }
+
+        // The final insert data supplies identity for XML-RPC, REST and every bulk item.
+        // No request-global insertion flag or client-supplied editor hint can bypass this.
+        $post_id = $update && !empty($postarr['ID']) ? (int) $postarr['ID'] : 0;
+        $parent = (int) $data['post_parent'];
+        $stored = $post_id ? get_post($post_id) : null;
+        // WordPress creates an empty auto-draft before the editor can select a parent.
+        if (!$post_id && !$parent && 'auto-draft' === $data['post_status']) {
+            return $data;
+        }
+        if ($stored && (int) $stored->post_parent === $parent
+            && ('auto-draft' !== $stored->post_status || 'auto-draft' === $data['post_status'])
+        ) {
+            return $data;
+        }
+
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/PostSaveHierarchical.php');
+        if (!PostSaveHierarchical::canAssociateParent($post_id, $data['post_type'], $parent)) {
+            // The WP_Error contains an escaped translated message; wp_die handles the error object.
+            wp_die(new \WP_Error('presspermit_parent_forbidden', esc_html__('You do not have permission to select that Parent', 'press-permit-core'), ['status' => 403]), '', ['response' => 403]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WP_Error message is already escaped.
+        }
+        return $data;
     }
 
     function fltPageParent($parent_id, $args = [])
@@ -422,7 +458,8 @@ class AdminFilters
             || !presspermit()->filteringEnabled() || ('revision' == PWP::findPostType()) || did_action('pp_disable_page_parent_filter') || ($this->inserting_post)
             || (
                 defined('ELEMENTOR_VERSION') && !empty($_REQUEST['actions'])                                     // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended
-                && strpos($_REQUEST['actions'], '"action\":\"save_builder\",\"data\":{\"status\":\"autosave\"')  // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+                // Inspect the slashed payload literally to detect Elementor autosaves; it is not stored or rendered.
+                && strpos($_REQUEST['actions'], '"action\":\"save_builder\",\"data\":{\"status\":\"autosave\"')  // phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash
             )
         ) {
             return $parent_id;
@@ -453,9 +490,9 @@ class AdminFilters
         if (
             !$parent_id && $orig_parent_id
             && (
-                (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field($_SERVER['SCRIPT_NAME']), 'async-upload.php'))
+                (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])), 'async-upload.php'))
                 || ('attachment' == PWP::findPostType())
-                || (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field($_SERVER['SCRIPT_NAME']), 'admin-ajax.php') && PWP::is_REQUEST('action', ['save-attachment', 'save-attachment-compat']))
+                || (isset($_SERVER['SCRIPT_NAME']) && false !== strpos(sanitize_text_field(wp_unslash($_SERVER['SCRIPT_NAME'])), 'admin-ajax.php') && PWP::is_REQUEST('action', ['save-attachment', 'save-attachment-compat']))
             )
         ) {
             if (current_user_can('edit_post', $orig_parent_id)) {
@@ -484,7 +521,7 @@ class AdminFilters
 
     function fltPostStatus($status)
     {
-        if (presspermit()->isUserUnfiltered() || ('auto-draft' == $status) || (!empty($_SERVER['REQUEST_URI']) && strpos(sanitize_text_field($_SERVER['REQUEST_URI']), 'nav-menus.php'))) {
+        if (presspermit()->isUserUnfiltered() || ('auto-draft' == $status) || (!empty($_SERVER['REQUEST_URI']) && strpos(sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'])), 'nav-menus.php'))) {
             return $status;
         }
 
@@ -515,3 +552,4 @@ class AdminFilters
         return Users::editableRoles($roles, $editing_limitation);
     }
 }
+

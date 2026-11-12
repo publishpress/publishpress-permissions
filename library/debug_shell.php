@@ -1,5 +1,5 @@
 <?php // avoid bombing out if the actual debug file is not loaded
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+defined('ABSPATH') || exit;
 
 function presspermit_editing_plugin()
 {

@@ -93,7 +93,6 @@
         margin: 0;
 
         &:hover,
-        &:focus,
         &:active {
           outline: none;
         }
@@ -115,6 +114,13 @@
               -moz-box-shadow: none;
               box-shadow: none;
               color: #222;
+            }
+
+            &:focus {
+              -webkit-box-shadow: 0 0 0 2px #2271b1;
+              -moz-box-shadow: 0 0 0 2px #2271b1;
+              box-shadow: 0 0 0 2px #2271b1;
+              outline: 2px solid transparent;
             }
           }
         }

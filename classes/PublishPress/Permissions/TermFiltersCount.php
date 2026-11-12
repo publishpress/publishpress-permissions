@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 class TermFiltersCount
 {
     private static $instance = null;
@@ -217,7 +219,7 @@ class TermFiltersCount
             ) {
                 if ($hide_empty || !empty($args['actual_args']['hide_empty'])) {
                     // need to tally for all terms in case some were hidden by core function due to lack of public posts
-                    $all_terms = get_terms(reset($taxonomies), ['fields' => 'all', 'pp_no_filter' => true, 'hide_empty' => false]);
+                    $all_terms = get_terms(['taxonomy' => reset($taxonomies), 'fields' => 'all', 'pp_no_filter' => true, 'hide_empty' => false]);
                     TermQuery::tallyTermCounts($all_terms, reset($taxonomies), compact('pad_counts', 'skip_teaser', 'post_type'));
 
                     foreach (array_keys($terms) as $k) {
@@ -242,7 +244,7 @@ class TermFiltersCount
             if ($hierarchical) {
                 foreach ($taxonomies as $taxonomy) {
                     if (empty($all_terms) || (count($taxonomies) > 1)) {
-                        $all_terms = get_terms($taxonomy, ['fields' => 'all', 'pp_no_filter' => true, 'hide_empty' => false]);
+                        $all_terms = get_terms(['taxonomy' => $taxonomy, 'fields' => 'all', 'pp_no_filter' => true, 'hide_empty' => false]);
                     }
 
                     // Remove empty terms, but only if their descendants are all empty too.

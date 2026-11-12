@@ -4,7 +4,7 @@ namespace PublishPress\Permissions\UI\Dashboard;
 
 // menu icons by Jonas Rask: https://www.jonasraskdesign.com/
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+\defined('ABSPATH') || exit;
 
 define('PRESSPERMIT_URLPATH', plugins_url('', PRESSPERMIT_FILE));
 
@@ -115,7 +115,7 @@ class DashboardFilters
         } 
         
         if (('presspermit-settings' == $pp_plugin_page) || (('plugin-install.php' == $pagenow)
-            && isset($_SERVER['HTTP_REFERER']) && strpos(esc_url_raw($_SERVER['HTTP_REFERER']), 'presspermit-settings'))
+            && isset($_SERVER['HTTP_REFERER']) && strpos(esc_url_raw(wp_unslash($_SERVER['HTTP_REFERER'])), 'presspermit-settings'))
         ) {
             wp_enqueue_style('presspermit-settings', PRESSPERMIT_URLPATH . '/common/css/settings.css', [], PRESSPERMIT_VERSION);
         }

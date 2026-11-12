@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions\Compat;
 
+\defined('ABSPATH') || exit;
+
 class EyesOnly
 {
     public function __construct() {

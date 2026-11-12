@@ -2,6 +2,8 @@
 
 namespace PublishPress\Permissions;
 
+\defined('ABSPATH') || exit;
+
 /**
  * Primary query filtering functions for posts / terms listing and access validation
  *
@@ -147,6 +149,9 @@ class PostFilters
 
     private function getTeaserPostTypes($post_types, $args = [])
     {
+        if (!empty($args['query_obj']) && apply_filters('presspermit_public_preview_post', 0, $args['query_obj'])) {
+            return [];
+        }
         if (
         	(is_admin() && (!defined('DOING_AJAX') || ! DOING_AJAX))
         	|| presspermit()->isContentAdministrator() || !empty($args['skip_teaser'])
@@ -160,28 +165,20 @@ class PostFilters
 
     public function fltPostsClauses($clauses, $_wp_query = false, $args = [])
     {
+        if ($preview_id = (int) apply_filters('presspermit_public_preview_post', 0, $_wp_query)) {
+            global $wpdb;
+            // The integration validates the token and main query; constrain its grant to one row.
+            $clauses['where'] .= $wpdb->prepare(" AND {$wpdb->posts}.ID = %d", $preview_id);
+            return $clauses;
+        }
         global $pagenow, $current_user;
 
         if ($this->doing_unfiltered_shortcode) {
 			return $clauses;
 		}
 
-        if (defined('REST_REQUEST')) {
-        	if (class_exists('PublishPress\Permissions\REST') && !empty(\PublishPress\Permissions\REST::instance()->params['getpages_filtering'])) {
-        		$rest_getpages_filtering = true;	
-        	}
-        }
-
-        $rest_attachment_filtering = is_object($_wp_query)
-            && !empty($_wp_query->query_vars['presspermit_rest_attachment_query']);
-
-        // Gallery block in Gutenberg editor: error loading Image Size dropdown options
-        if (defined('REST_REQUEST') && empty($rest_getpages_filtering) && !$rest_attachment_filtering
-        && empty($_POST) && (!isset($_SERVER['REQUEST_METHOD']) || ('GET' == $_SERVER['REQUEST_METHOD']))  // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-        && !PWP::empty_REQUEST('context') && ('edit' == PWP::REQUEST_key('context'))
-        ) {
-            return $clauses;
-        }
+        // REST context controls response fields, not access to the queried objects.
+        // Editor and gallery collections need the same permission clauses as view queries.
 
         $pp = presspermit();
 
@@ -304,7 +301,7 @@ class PostFilters
 
         $args['post_types'] = $post_types;
 
-        if ($rest_attachment_filtering) {
+        if (!empty($rest_attachment_filtering)) {
             $args['required_operation'] = 'read';
             $args['force_types'] = true;
         }
@@ -991,6 +988,10 @@ class PostFilters
     // currently only used to conditionally launch teaser filtering
     public function fltThePosts($results, $query_obj)
     {
+        $preview_id = (int) apply_filters('presspermit_public_preview_post', 0, $query_obj);
+        if ($preview_id && count($results) === 1 && (int) reset($results)->ID === $preview_id) {
+            return $results;
+        }
         if (empty($this->skip_teaser)) {
             // won't do anything unless teaser is enabled for object type(s)
             $results = apply_filters('presspermit_posts_teaser', $results, '', ['request' => $query_obj->request, 'force_teaser' => true]);
@@ -1148,3 +1149,4 @@ class PostFilters
     }
 
 } // end class PostFilters
+

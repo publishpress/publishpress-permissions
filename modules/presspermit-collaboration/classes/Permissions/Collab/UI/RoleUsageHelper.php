@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI;
 
+\defined('ABSPATH') || exit;
+
 class RoleUsageHelper
 {
     public static function getUrlProperties(&$url, &$referer, &$redirect)
@@ -8,7 +10,7 @@ class RoleUsageHelper
         $url = apply_filters('presspermit_role_usage_base_url', 'admin.php');
 
         if (PWP::empty_REQUEST() && !empty($_SERVER['REQUEST_URI'])) {
-            $referer = '<input type="hidden" name="wp_http_referer" value="' . esc_attr(esc_url_raw($_SERVER['REQUEST_URI'])) . '" />';
+            $referer = '<input type="hidden" name="wp_http_referer" value="' . esc_attr(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI']))) . '" />';
             
         } elseif ($wp_http_referer = PWP::REQUEST_url('wp_http_referer')) {
             $redirect = remove_query_arg(['wp_http_referer', 'updated', 'delete_count'], esc_url_raw($wp_http_referer));

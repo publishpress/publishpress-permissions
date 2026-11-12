@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PublishPressStandards.Composer.RequirePluginExtra.MissingFile, PublishPressStandards.Files.RequireGitAttributes.Missing -- Bundled module uses the parent plugin build metadata.
 /**
  * Plugin Name: PressPermit Teaser
  * Plugin URI:  https://publishpress.com/press-permit
@@ -30,7 +30,7 @@ You should have received a copy of the GNU General Public License
 along with this plugin.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-if (!defined('ABSPATH')) exit; // Exit if accessed directly
+defined('ABSPATH') || exit;
 
 if (!defined('PRESSPERMIT_TEASER_FILE')) {
     define('PRESSPERMIT_TEASER_FILE', __FILE__);

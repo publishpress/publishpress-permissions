@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab\UI\Dashboard;
 
+\defined('ABSPATH') || exit;
+
 class BulkEdit
 {
     public static function add_author_pages()
@@ -22,7 +24,13 @@ class BulkEdit
         if (empty($users)) {
             $location = add_query_arg('ppmessage', 2, $location);
 
-        } elseif (post_type_exists($post_type) && current_user_can($type_obj->cap->edit_others_posts) && current_user_can('edit_users')) {
+        } elseif (
+            post_type_exists($post_type)
+            && current_user_can($type_obj->cap->edit_others_posts)
+            && current_user_can($type_obj->cap->create_posts ?? 'edit_posts')
+            && (!presspermit()->getOption('publish_author_pages') || current_user_can($type_obj->cap->publish_posts ?? 'publish_posts'))
+            && current_user_can('edit_users')
+        ) {
             global $wpdb;
 
             $meta_keys = ['_wp_page_template', '_thumbnail_id'];
@@ -81,7 +89,8 @@ class BulkEdit
 
             $post_meta['_pp_auto_inserted'] = "{$pattern_post_id}:{$post_parent}";
 
-            $title_pattern = !empty($_REQUEST['member_page_title']) ? sanitize_text_field($_REQUEST['member_page_title']) : '';
+            // wp_insert_post() expects slashed input and removes one layer when saving the title.
+            $title_pattern = !empty($_REQUEST['member_page_title']) ? wp_slash(sanitize_text_field(wp_unslash($_REQUEST['member_page_title']))) : '';
 
             if (false === strpos($title_pattern, '[username]') && false === strpos($title_pattern, '[userid]')) {
                 $title_pattern .= ' [userid]';
@@ -117,7 +126,11 @@ class BulkEdit
 
                         $post_arr = compact('post_title', 'post_parent', 'post_author', 'post_content', 'post_type', 'post_status');
 
-                        if ($post_id = wp_insert_post($post_arr)) {
+                        if (
+                            current_user_can($type_obj->cap->create_posts ?? 'edit_posts')
+                            && ('publish' !== $post_status || current_user_can($type_obj->cap->publish_posts ?? 'publish_posts'))
+                            && ($post_id = wp_insert_post($post_arr))
+                        ) {
                             foreach ($post_meta as $meta_key => $meta_value) {
                                 update_post_meta($post_id, $meta_key, $meta_value);
                             }

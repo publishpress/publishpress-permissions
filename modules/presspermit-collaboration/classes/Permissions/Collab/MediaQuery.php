@@ -1,6 +1,8 @@
 <?php
 namespace PublishPress\Permissions\Collab;
 
+\defined('ABSPATH') || exit;
+
 class MediaQuery
 {
     public static function appendAttachmentClause($where, $clauses, $args)

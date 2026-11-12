@@ -56,6 +56,8 @@
               placeholder: agent_type_lbl,
               dropdownAutoWidth: true,
               dropdownCssClass: 'pp-select2-dropdown',
+              selectionCssClass: 'pp-select2-container',
+              // Preserve styling when another plugin has loaded Select2 4.0 first.
               containerCssClass: 'pp-select2-container',
               width: '325px',
               ajax: {
@@ -86,6 +88,7 @@
           
                   return {
                     pp_agent_search: params.term || "",
+                    pp_search_page: params.page || 1,
                     pp_role_search: roletext,
                     pp_agent_type: args2.agent_type,
                     pp_agent_id: args2.agent_id,
@@ -115,8 +118,8 @@
                     }
 
                     // Parse the HTML response to extract options
-                    $(data)
-                    .filter("option")
+                    const parsed = new DOMParser().parseFromString(data, 'text/html');
+                    $(parsed.querySelectorAll('option'))
                     .each(function () {
                         const id = $(this).val();
                         // Omit already selected values
@@ -130,6 +133,7 @@
 
                     return {
                         results: options,
+                        pagination: { more: !!parsed.querySelector('.pp-search-page[data-more="1"]') },
                     };
                 },
                 cache: true,
@@ -175,6 +179,16 @@
         }
 
         initializeSelect2(args);
+
+        // Screen reader announcements for agent search status
+        var $searchStatus = $('<span class="screen-reader-text" role="status" aria-live="polite"></span>');
+        $('#' + args.results_id).after($searchStatus);
+
+        var announce_search_status = function (msg) {
+            if (msg) {
+                $searchStatus.text(msg);
+            }
+        }
           
         $('#' + args.search_id).on('keydown', function (e) {
             // this will catch pressing enter and call find function
@@ -203,6 +217,8 @@
             $("#" + args.button_id).closest('div').find('.waiting').show();
             $("#" + args.button_id).prop('disabled', true);
             $("#" + args.search_id).prop('disabled', true);
+
+            announce_search_status(ppListbox.searching);
 
             if (stext == null || stext == 'undefined') stext = '';
 
@@ -241,11 +257,22 @@
         }
 
         var got_ajax_listbox = function (data, txtStatus) {
-            //Set listbox contents to Ajax response
-            $('#' + args.results_id).html(data).show();
+            // Parse inertly and copy only option text/value. Never insert response HTML.
+            var options = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('option');
+            var results = $('#' + args.results_id).empty();
+            options.forEach(function (option) {
+                $(new Option(option.textContent, option.value))
+                    .attr('title', option.getAttribute('title') || '')
+                    .addClass('pp-new-selection').appendTo(results);
+            });
+            results.show();
 
             if (typeof document.all == 'undefined') // triggers removal of agents who already have a dropdown (but IE chokes on trigger call)
                 $('#' + args.results_id).trigger('jchange');
+
+            var resultCount = $('#' + args.results_id).find('option').length;
+            var resultsMsg = (1 == resultCount) ? ppListbox.oneResultFound : ppListbox.resultsFound;
+            announce_search_status(resultsMsg ? resultsMsg.replace('%d', resultCount) : '');
 
             $("#" + args.button_id).closest('div').find('.waiting').hide();
 
@@ -263,3 +290,4 @@
         }
     }
 })(jQuery); 
+

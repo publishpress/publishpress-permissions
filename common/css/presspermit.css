@@ -115,16 +115,16 @@ div.presspermit-groups table.users [data-toggle="tooltip"] .tooltip-text {
   transform: translateY(-50%) rotate(90deg);
 }
 .pp-gray {
-  color: #888;
+  color: #6d6d6d;
 }
 .pp-gray a {
-  color: #888;
+  color: #6d6d6d;
 }
 .pp-gray a:link {
-  color: #888;
+  color: #6d6d6d;
 }
 .pp-gray a:visited {
-  color: #888;
+  color: #6d6d6d;
 }
 .pp-blue {
   color: blue;
@@ -139,16 +139,16 @@ div.presspermit-groups table.users [data-toggle="tooltip"] .tooltip-text {
   color: blue;
 }
 .pp-green {
-  color: #0a0;
+  color: #008000;
 }
 .pp-green a {
-  color: #0a0;
+  color: #008000;
 }
 .pp-green a:link {
-  color: #0a0;
+  color: #008000;
 }
 .pp-green a:visited {
-  color: #0a0;
+  color: #008000;
 }
 .pp-red {
   color: #d00;
@@ -166,7 +166,7 @@ div.presspermit-groups table.users [data-toggle="tooltip"] .tooltip-text {
   background-color: #ededed;
 }
 .pp-subtext {
-  color: #777;
+  color: #6d6d6d;
   font-style: italic;
   margin-top: 3px;
 }
@@ -200,7 +200,7 @@ div.presspermit-groups table.users [data-toggle="tooltip"] .tooltip-text {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   margin-top: 1em;
-  color: #777;
+  color: #6d6d6d;
 }
 .pp-ext-promo div {
   margin-top: 0.3em;
@@ -259,7 +259,7 @@ div.pp-file-access-promo .key-value {
   font-size: 13px;
 }
 .pp-warning {
-  color: #d54e21;
+  color: #be461d;
   font-weight: bold;
 }
 #edittag div.meta-box-sortables {
@@ -328,7 +328,7 @@ p.pp-bulk-user-perm {
   background-color: #eaf7f7;
 }
 .pp-current-roles-note {
-  color: #777;
+  color: #6d6d6d;
   margin-top: 0.4em;
 }
 option.pp-new-selection {
@@ -488,11 +488,11 @@ body.admin_page_presspermit-edit-permissions #toplevel_page_presspermit-groups >
   text-decoration: underline;
 }
 .pressshack-admin-wrapper .activating a:active {
-  color: #00a0d2;
+  color: #00769b;
   text-decoration: underline;
 }
 .pressshack-admin-wrapper .activating a:hover {
-  color: #00a0d2;
+  color: #00769b;
   text-decoration: underline;
 }
 #wpbody-content .pressshack-admin-wrapper > footer > div.pp-rating {
@@ -621,9 +621,6 @@ ul.pp-list_horiz li {
 ul.pp-list_horiz li:hover {
   outline: none;
 }
-ul.pp-list_horiz li:focus {
-  outline: none;
-}
 ul.pp-list_horiz li:active {
   outline: none;
 }
@@ -645,9 +642,10 @@ ul.pp-list_horiz li.agp-agent a:hover {
 }
 ul.pp-list_horiz li.agp-agent a:focus {
   text-decoration: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 0 0 0 2px #2271b1;
+  -moz-box-shadow: 0 0 0 2px #2271b1;
+  box-shadow: 0 0 0 2px #2271b1;
+  outline: 2px solid transparent;
   color: #222;
 }
 ul.pp-list_horiz li.agp-agent a:active {
@@ -716,7 +714,7 @@ div#profile-page.wrap div.pp-group-box h3:first-of-type {
   right: 10px;
   transform: translateY(-50%);
   pointer-events: none;
-  color: #888;
+  color: #6d6d6d;
 }
 .pp-select2-container .select2-search--inline {
   width: auto !important;
@@ -724,6 +722,7 @@ div#profile-page.wrap div.pp-group-box h3:first-of-type {
 }
 .pp-select2-container .select2-search__field {
   min-width: 150px !important;
+  min-height: 0;
 }
 .pp-select2-container .select2-selection__arrow {
   display: none;
