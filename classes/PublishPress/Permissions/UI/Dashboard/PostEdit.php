@@ -267,6 +267,10 @@ class PostEdit
 
     public function drawSettingsUI($object, $box)
     {
+        if (!current_user_can('pp_manage_settings')) {
+            return;
+        }
+        wp_nonce_field('pp_enable_post_type-' . $object->post_type, '_pp_enable_permissions_nonce');
         if ($type_obj = get_post_type_object($object->post_type)) :
         ?>
             <label for="pp_enable_post_type"><input type="checkbox" name="pp_enable_post_type"

@@ -6,23 +6,67 @@ namespace PublishPress\Permissions\UI;
 
 class HintsItemExceptions
 {
-    public static function blockedPermissionHint($operation)
+    public static function blockedPermissionHint($operation, $for_item_type, $via_item_type)
     {
-        $post_operation = in_array($operation, ['read', 'edit', 'delete', 'publish'], true);
+        if (!$for_type = get_post_type_object($for_item_type)) {
+            $for_type = get_taxonomy($for_item_type);
+        }
 
-        if ($post_operation && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY) {
-            $message = __('Blocks access even when Enabled permissions apply through another role or group. Adding more Enabled entries does not override this block.', 'press-permit-core');
-        } else {
-            $message = __('Blocks access unless an explicit Enabled permission for the same item overrides it. "Default access: Enabled" does not override this block. Adding more Enabled entries does not increase their priority.', 'press-permit-core');
+        $for_type_labels = ($for_type && !empty($for_type->labels)) ? $for_type->labels : false;
 
-            if ($post_operation) {
-                $message .= ' ' . (presspermit()->getOption('post_blockage_priority')
-                    ? __('Post-specific permissions take priority over category or term permissions.', 'press-permit-core')
-                    : __('Enabled category or term permissions can also override a post-specific block.', 'press-permit-core'));
+        if (!$via_type = get_post_type_object($via_item_type)) {
+            $via_type = get_taxonomy($via_item_type);
+        }
+
+        $via_type_labels = ($via_type && !empty($via_type->labels)) ? $via_type->labels : false;
+
+        $post_blockage_priority = false;
+        if (($for_type != $via_type) && taxonomy_exists($via_item_type)) {
+            $post_blockage_priority = presspermit()->getOption('post_blockage_priority');
+        }
+
+        if (in_array($operation, ['read', 'edit', 'delete', 'publish'], true)
+            && defined('PP_RESTRICTION_PRIORITY') && PP_RESTRICTION_PRIORITY
+        ) {
+            if ($for_type == $via_type) {
+                return sprintf(
+                    __('Blocks access to this %s.'), 
+                    $for_type_labels ? $for_type_labels->singular_name : __('post', 'press-permit-core')
+                );
+            } else {
+                return sprintf(
+                    __('Blocks access to %s in this %s.'), 
+                    $for_type_labels ? $for_type_labels->name : __('posts', 'press-permit-core'),
+                    $via_type_labels ? $via_type_labels->singular_name : __('term', 'press-permit-core'),
+                );
             }
         }
 
-        return $message;
+        if (($for_type == $via_type) || !$via_type) {
+            return sprintf(
+                __('Blocks access to this %s, unless the user has another role or group that enables it.'), 
+                $for_type_labels ? $for_type_labels->singular_name : __('post', 'press-permit-core')
+            );
+        } else {
+            if ($post_blockage_priority) {
+                return sprintf(
+                    __('Blocks access to %s in this %s, unless an Enabled permission is assigned to one of its other %s.'), 
+                    $for_type_labels ? $for_type_labels->name : __('posts', 'press-permit-core'),
+                    $via_type_labels ? $via_type_labels->singular_name : __('term', 'press-permit-core'),
+                    $via_type_labels ? $via_type_labels->name : __('terms', 'press-permit-core'),
+                );
+            } else {
+                return sprintf(
+                    __('Blocks access to %s in this %s, unless an Enabled permission is assigned to the %s or one of its other %s.'), 
+                    $for_type_labels ? $for_type_labels->name : __('posts', 'press-permit-core'),
+                    $via_type_labels ? $via_type_labels->singular_name : __('term', 'press-permit-core'),
+                    $for_type_labels ? $for_type_labels->singular_name : __('post', 'press-permit-core'),
+                    $via_type_labels ? $via_type_labels->name : __('terms', 'press-permit-core'),
+                );
+            }
+        }
+
+        return __('Blocks access.', 'press-permit-core');
     }
 
     public static function permissionPriorityTooltip($placement = 'top')

@@ -50,8 +50,8 @@ function presspermitSelectAgents(id_sfx, select_into, hierarchical) {
         var selector = '#' + CSS.escape('v2_agent_search_text_' + id_sfx + '::' + select_into);
         if ($(selector).length) {
             $(selector).select2('data').forEach(function (item) {
-                if ($("#" + id_sfx + " option[value='" + item.id + "']").length === 0) {
-                    $("#" + id_sfx).append('<option value="' + item.id + '" title="' + item.text + '" class="pp-new-selection">' + item.text + '</option>');
+                if ($("#" + id_sfx + " option").filter(function () { return this.value === String(item.id); }).length === 0) {
+                    $(new Option(item.text, item.id)).attr('title', item.text).addClass('pp-new-selection').appendTo("#" + id_sfx);
                 }
             });
             if ($("#" + id_sfx).length && $("#" + id_sfx).is(":visible")) {
@@ -59,8 +59,9 @@ function presspermitSelectAgents(id_sfx, select_into, hierarchical) {
             }
         } else {
             $("#agent_results_" + id_sfx + " option:selected").each(function (i) {
-                if ($("#" + id_sfx + " option[value='" + $(this).attr("value") + "']").length == 0) {
-                    $("#" + id_sfx).append('<option value="' + $(this).attr("value") + '" title="' + $(this).html() + '" class="pp-new-selection">' + $(this).html() + '</option>');
+                var value = this.value;
+                if ($("#" + id_sfx + " option").filter(function () { return this.value === value; }).length == 0) {
+                    $(new Option($(this).text(), value)).attr('title', $(this).text()).addClass('pp-new-selection').appendTo("#" + id_sfx);
                     $(this).remove();
                 }
             });

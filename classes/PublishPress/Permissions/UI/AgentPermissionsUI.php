@@ -31,6 +31,7 @@ class AgentPermissionsUI
 
         $vars['agentType'] = $agent_type;
         $vars['agentID'] = $agent_id;
+        $vars['permissionsAjaxURL'] = wp_nonce_url(admin_url(''), 'pp-agent-permissions_' . $agent_type . '_' . $agent_id);
 
         $suffix = defined('SCRIPT_DEBUG') && SCRIPT_DEBUG ? '.dev' : '';
         wp_enqueue_script('presspermit-role-edit', PRESSPERMIT_URLPATH . "/common/js/role-edit{$suffix}.js", ['jquery', 'jquery-form'], PRESSPERMIT_VERSION);
@@ -60,6 +61,17 @@ class AgentPermissionsUI
         }
 
         $vars['agentID'] = PWP::REQUEST_int('agent_id');
+        $vars['permissionsAjaxURL'] = wp_nonce_url(admin_url(''), 'pp-agent-permissions_' . $vars['agentType'] . '_' . $vars['agentID']);
+
+        $vars['exceptionNonces'] = [];
+        $actions = ['remove', 'propagate', 'unpropagate', 'children_only', 'convert_include', 'convert_exclude', 'convert_additional'];
+        foreach (['read', 'edit', 'delete', 'associate', 'assign', 'manage', 'publish', 'copy', 'revise'] as $operation) {
+            $actions[] = 'mirror_' . $operation;
+        }
+        foreach ($actions as $action) {
+            $action = 'exceptions_' . $action;
+            $vars['exceptionNonces'][$action] = wp_create_nonce('pp-agent-exceptions_' . $vars['agentType'] . '_' . $vars['agentID'] . '_' . $action);
+        }
 
         // Simulate Nav Menu setup
         require_once(PRESSPERMIT_CLASSPATH . '/UI/ItemsMetabox.php');
@@ -146,11 +158,11 @@ class AgentPermissionsUI
                     <th><?php esc_html_e('Post Type', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-operation" style="display:none"><?php esc_html_e('Operation', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-mod-type" style="display:none">
-                        <?php
+                        <span class="pp-adjustment-heading"><?php
                         esc_html_e('Adjustment', 'press-permit-core');
                         require_once(PRESSPERMIT_CLASSPATH . '/UI/HintsItemExceptions.php');
                         HintsItemExceptions::permissionPriorityTooltip();
-                        ?>
+                        ?></span>
                     </th>
                     <th class="pp-select-x-via-type" style="display:none"><?php esc_html_e('Qualification', 'press-permit-core'); ?></th>
                     <th class="pp-select-x-status" style="display:none"><?php esc_html_e('Statuses', 'press-permit-core'); ?></th>
@@ -508,10 +520,10 @@ class AgentPermissionsUI
                 ?>
 
             <form id="group-<?php echo esc_attr($perm_type); ?>-selections" action="<?php echo esc_url($url); ?>" method="post" <?php do_action('presspermit_group_edit_form_tag'); ?>>
-                <?php wp_nonce_field("pp-update-{$perm_type}_" . $agent_id, "_pp_nonce_$perm_type");
+                <?php wp_nonce_field("pp-update-{$perm_type}_" . $agent_type . "_" . $agent_id, "_pp_nonce_$perm_type");
 
                     if (in_array($agent_type, ['pp_group', 'pp_net_group'])) {
-                        wp_nonce_field('pp-update-group_' . $agent_id);
+                        wp_nonce_field('pp-update-group_' . $agent_type . '_' . $agent_id);
                     }
                 ?>
                 <?php
@@ -1937,3 +1949,4 @@ class AgentPermissionsUI
                         return $lbl_status;
                     }
                 }
+

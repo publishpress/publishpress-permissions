@@ -25,15 +25,6 @@ class CollabHooksAdmin
         add_filter('presspermit_user_can_admin_role', [$this, 'fltUserCanAdminRole'], 10, 4);
         add_filter('presspermit_admin_groups', [$this, 'fltAdminGroups'], 10, 2);
 
-        if (defined('PRESSPERMIT_ENABLE_PAGE_TEMPLATE_LIMITER') && PRESSPERMIT_ENABLE_PAGE_TEMPLATE_LIMITER && !empty($_SERVER['REQUEST_URI'])) {
-            if (false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), PWP::admin_rel_url('post.php'))
-            || false !== strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), PWP::admin_rel_url('post-new.php'))
-            ) {
-                require_once(PRESSPERMIT_PRO_ABSPATH . '/includes-pro/PageTemplateLimiter.php');
-                new \PublishPress\Permissions\PageTemplateLimiter();
-            }
-        }
-
         add_action('_presspermit_admin_ui', [$this, 'actLoadUIFilters']);  // fires after user load if is_admin(), not XML-RPC, and not Ajax
 
         add_action('add_attachment', [$this, 'actAddMediaApplyDefaultTerm']);

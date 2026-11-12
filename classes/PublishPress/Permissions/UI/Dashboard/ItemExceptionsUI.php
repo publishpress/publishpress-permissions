@@ -476,7 +476,7 @@ class ItemExceptionsUI
                              role="tabpanel"
                              aria-labelledby="<?php echo esc_attr($operation_tab_id); ?>"
                              aria-hidden="<?php echo $first ? 'false' : 'true'; ?>">
-                            <div class="pp-operation-content" data-blocked-permission-hint="<?php echo esc_attr(\PublishPress\Permissions\UI\HintsItemExceptions::blockedPermissionHint($op)); ?>">
+                            <div class="pp-operation-content" data-blocked-permission-hint="<?php echo esc_attr(\PublishPress\Permissions\UI\HintsItemExceptions::blockedPermissionHint($op, $item_for_item_type, $via_item_type)); ?>">
                                 <?php
                                 // Call the new tabbed operation content method, with for_item_type
                                 // corrected per-operation (see note above).

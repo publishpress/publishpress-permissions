@@ -158,7 +158,8 @@ class CollabHooks
         add_filter('pre_post_tax_input', [$this, 'fltTaxInput'], 50, 1);
         add_filter('pre_post_category', [$this, 'fltPrePostTerms'], 50, 1);
         add_filter('presspermit_pre_object_terms', [$this, 'fltPrePostTerms'], 50, 3);
-        add_filter('pre_insert_term', [$this, 'fltPreInsertTerm'], 10, 2);
+        add_filter('pre_insert_term', [$this, 'fltPreInsertTerm'], 10, 3);
+        add_filter('wp_update_term_data', [$this, 'fltUpdateTermParent'], 10, 4);
     }
 
     function init()
@@ -617,7 +618,14 @@ class CollabHooks
         return Collab\PostTermsSave::fltPreObjectTerms($terms, $taxonomy, $args);
     }
 
-    public function fltPreInsertTerm($term, $taxonomy) {
+    public function fltPreInsertTerm($term, $taxonomy, $args = []) {
+        if (is_wp_error($term)) {
+            return $term;
+        }
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/TermParent.php');
+        if (!Collab\TermParent::canSelect($taxonomy, isset($args['parent']) ? $args['parent'] : 0)) {
+            return Collab\TermParent::denied();
+        }
         if ($tx_obj = get_taxonomy($taxonomy)) {
             if (empty($tx_obj->hierarchical) && presspermit()->getOption('create_tag_require_edit_cap') && !presspermit()->isAdministrator()) {
                 if (!current_user_can($tx_obj->cap->edit_terms)) {
@@ -628,6 +636,17 @@ class CollabHooks
         }
 
         return $term;
+    }
+
+    public function fltUpdateTermParent($data, $term_id, $taxonomy, $args)
+    {
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/TermParent.php');
+        if (isset($data['parent']) && !Collab\TermParent::canSelect($taxonomy, $data['parent'], $term_id)) {
+            // This core filter cannot return WP_Error; stop before the SQL update.
+            // The WP_Error contains an escaped translated message; wp_die handles the error object.
+            wp_die(Collab\TermParent::denied(), '', ['response' => 403]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WP_Error message is already escaped.
+        }
+        return $data;
     }
 
     function fltOriginalRestPostTerms($terms, $taxonomy = 'category')
@@ -655,3 +674,4 @@ class CollabHooks
         return $terms;
     }
 }
+

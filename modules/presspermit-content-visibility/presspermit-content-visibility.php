@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PublishPressStandards.Composer.RequirePluginExtra.MissingFile, PublishPressStandards.Files.RequireGitAttributes.Missing -- Bundled module uses the parent plugin build metadata.
 /**
  * Plugin Name: PublishPress Permissions Content Visibility
  * Plugin URI:  https://publishpress.com/permissions/

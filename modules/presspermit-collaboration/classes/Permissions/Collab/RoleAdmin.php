@@ -30,9 +30,10 @@ class RoleAdmin
             if (!in_array($group_type, $editable_group_types, true))
                 return false;
 
-            // temp workaround
-            if ('pp_net_group' == $group_type)
-                $group_type = 'pp_group';
+            // Local delegation cannot authorize a same-number network group.
+            if ('pp_net_group' === $group_type) {
+                return is_super_admin() && $has_cap;
+            }
 
             if (!isset($user->except["manage_{$group_type}"]))
                 $user->retrieveExceptions(['manage'], [$group_type]);

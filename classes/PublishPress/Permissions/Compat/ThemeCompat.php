@@ -59,11 +59,8 @@ class ThemeCompat
     }
 
     /**
-     * Avada: Bypass filtering to prevent WP_Error objects in Fusion Panel
-     * 
-     * When Fusion_Panel->get_archive_options() queries terms/posts during 'wp' action,
-     * permission filtering can return WP_Error objects instead of empty arrays,
-     * causing undefined property errors.
+     * Preserve the caller's authorization when Fusion Panel is loaded.
+     * Theme availability does not authorize a visitor to read restricted content.
      * 
      * @param bool $is_unfiltered Current unfiltered status
      * @param array $args Additional arguments
@@ -71,14 +68,6 @@ class ThemeCompat
      */
     public function fltAvadaUnfiltered($is_unfiltered, $args)
     {
-        // Only bypass on front-end when Fusion Panel is active
-        if ($this->is_avada 
-            && PWP::isFront()
-            && class_exists('Fusion_Panel')
-        ) {
-            return true;
-        }
-        
         return $is_unfiltered;
     }
 
@@ -93,3 +82,4 @@ class ThemeCompat
         return $this->theme_name === $theme_name;
     }
 }
+

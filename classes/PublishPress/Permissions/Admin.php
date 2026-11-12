@@ -89,6 +89,42 @@ class Admin
         return PermissionsAdmin::canSetExceptions($operation, $for_item_type, $args);
     }
 
+    public function canEditPermissionAgent($agent_type, $agent_id)
+    {
+        if ('pp_net_group' === $agent_type && !is_super_admin()) {
+            return false;
+        }
+        $agent_id = (int) $agent_id;
+        if ($agent_id <= 0) {
+            return false;
+        }
+
+        if ('user' === $agent_type) {
+            return get_userdata($agent_id) && current_user_can('edit_user', $agent_id)
+                && (!is_multisite() || is_super_admin() || is_user_member_of_blog($agent_id));
+        }
+
+        $groups = presspermit()->groups();
+        return $groups->groupTypeExists($agent_type) && $groups->getGroup($agent_id, $agent_type)
+            && $groups->userCan('pp_edit_groups', $agent_id, $agent_type);
+    }
+
+    public function canEditAgentException($agent_type, $agent_id, $args)
+    {
+        if (!$this->bulkRolesEnabled() || !$this->canEditPermissionAgent($agent_type, $agent_id)
+            || empty($args['operation']) || !isset($args['for_item_type'])
+            || empty($args['via_item_source']) || empty($args['for_item_source'])
+            || !in_array($args['via_item_source'], ['post', 'term', 'pp_group', 'pp_net_group'], true)
+            || !in_array($args['for_item_source'], ['post', 'term', 'pp_group', 'pp_net_group'], true)
+        ) {
+            return false;
+        }
+
+        require_once(PRESSPERMIT_CLASSPATH . '/PermissionsAdmin.php');
+        return $this->canSetExceptions($args['operation'], $args['for_item_type'], $args)
+            && PermissionsAdmin::canAssignException($args);
+    }
+
     public function getAdministratorRoles()
     {
         // WP roles containing the 'pp_administer_content' cap are always honored regardless of object or term restritions
@@ -282,3 +318,4 @@ class Admin
 <?php
     }
 }
+

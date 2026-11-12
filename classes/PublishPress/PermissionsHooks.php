@@ -12,6 +12,7 @@ class PermissionsHooks
 
     // status
     public $direct_file_access = false;
+    private $initializing_user = false;
     private $filters_loaded = false;
     private $post_filters_loaded = false;
     private $filtering_enabled = true;
@@ -470,6 +471,22 @@ class PermissionsHooks
 
     // Load filters that depend on user capabilities. Executes very late on the 'init' action (priority 70)
     public function actInitUser()
+    {
+        // Capability checks in presspermit_user_init handlers must not restart initialization.
+        if ($this->initializing_user) {
+            return;
+        }
+
+        $this->initializing_user = true;
+        try {
+            $this->initializeUser();
+        } finally {
+            // Allow later initialization after a legitimate user change.
+            $this->initializing_user = false;
+        }
+    }
+
+    private function initializeUser()
     {
         $pp = presspermit();
 

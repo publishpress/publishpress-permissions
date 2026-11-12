@@ -5,6 +5,38 @@ namespace PublishPress\Permissions\Collab;
 
 class PostSaveHierarchical
 {
+    public static function canAssociateParent($post_id, $post_type, $parent_id)
+    {
+        $user = presspermit()->getUser();
+        $operation = presspermit()->getOption('page_parent_editable_only') ? 'edit' : 'associate';
+        $additional = array_map('intval', $user->getExceptionPosts($operation, 'additional', $post_type));
+        $included = array_map('intval', $user->getExceptionPosts($operation, 'include', $post_type));
+        $excluded = array_map('intval', $user->getExceptionPosts($operation, 'exclude', $post_type));
+        if ($included && !in_array($parent_id, array_merge($included, $additional), true)) {
+            return false;
+        }
+        if (!$included && in_array($parent_id, array_diff($excluded, $additional), true)) {
+            return false;
+        }
+        if (!$parent_id) {
+            return Collab::userCanAssociateMain($post_type);
+        }
+        $parent = get_post($parent_id);
+        if (!$parent || $parent->post_type !== $post_type || $parent_id === $post_id) {
+            return false;
+        }
+        // Reject descendant parents without depending on the current edit request.
+        $seen = [];
+        while ($parent && $parent->post_parent) {
+            if ((int) $parent->post_parent === $post_id || isset($seen[$parent->ID])) {
+                return false;
+            }
+            $seen[$parent->ID] = true;
+            $parent = get_post($parent->post_parent);
+        }
+        return true;
+    }
+
     public static function fltPageParent($parent_id, $post_type = '')
     {
         if (function_exists('bbp_get_version') && PWP::is_REQUEST('action', ['bbp-new-topic', 'bbp-new-reply'])) {
@@ -304,3 +336,4 @@ class PostSaveHierarchical
         return $status;
     }
 }
+
