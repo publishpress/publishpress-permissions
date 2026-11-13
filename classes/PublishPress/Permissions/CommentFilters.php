@@ -179,6 +179,12 @@ class CommentFilters
             )
         );
 
+        // A user who can edit the post (for example a revisor working on their own pending revision)
+        // may also see its comments, including editorial comments used in notifications.
+        if (empty($result) && is_user_logged_in() && current_user_can('edit_post', $post_id)) {
+            $result = $post_id;
+        }
+
         return $readable[$post_id] = !empty($result);
     }
 }
