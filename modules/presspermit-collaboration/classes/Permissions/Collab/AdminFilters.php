@@ -19,6 +19,7 @@ class AdminFilters
         add_filter('wp_dropdown_pages', [$this, 'fltDropdownPages']);
 
         add_filter('pre_post_parent', [$this, 'fltPageParent'], 50, 1);
+        add_filter('wp_insert_post_data', [$this, 'fltAuthorizeParent'], 50, 4);
         add_filter('pre_post_status', [$this, 'fltPostStatus'], 50, 1);
 
         add_filter('user_has_cap', [$this, 'fltHasEditUserCap'], 99, 3);
@@ -414,8 +415,41 @@ class AdminFilters
 
     function fltLogInsertPost($maybe_empty, $postarr)
     {
-        $this->inserting_post = true;
+        $this->inserting_post = empty($postarr['ID']);
         return $maybe_empty;
+    }
+
+    public function fltAuthorizeParent($data, $postarr, $unsanitized_postarr, $update)
+    {
+        $pp = presspermit();
+        if (!$pp->filteringEnabled() || $pp->isUserUnfiltered()
+            || !in_array($data['post_type'], $pp->getEnabledPostTypes(), true)
+            || !is_post_type_hierarchical($data['post_type']) || 'attachment' === $data['post_type']
+        ) {
+            return $data;
+        }
+
+        // The final insert data supplies identity for XML-RPC, REST and every bulk item.
+        // No request-global insertion flag or client-supplied editor hint can bypass this.
+        $post_id = $update && !empty($postarr['ID']) ? (int) $postarr['ID'] : 0;
+        $parent = (int) $data['post_parent'];
+        $stored = $post_id ? get_post($post_id) : null;
+        // WordPress creates an empty auto-draft before the editor can select a parent.
+        if (!$post_id && !$parent && 'auto-draft' === $data['post_status']) {
+            return $data;
+        }
+        if ($stored && (int) $stored->post_parent === $parent
+            && ('auto-draft' !== $stored->post_status || 'auto-draft' === $data['post_status'])
+        ) {
+            return $data;
+        }
+
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/PostSaveHierarchical.php');
+        if (!PostSaveHierarchical::canAssociateParent($post_id, $data['post_type'], $parent)) {
+            // The WP_Error contains an escaped translated message; wp_die handles the error object.
+            wp_die(new \WP_Error('presspermit_parent_forbidden', esc_html__('You do not have permission to select that Parent', 'press-permit-core'), ['status' => 403]), '', ['response' => 403]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WP_Error message is already escaped.
+        }
+        return $data;
     }
 
     function fltPageParent($parent_id, $args = [])
@@ -518,3 +552,4 @@ class AdminFilters
         return Users::editableRoles($roles, $editing_limitation);
     }
 }
+

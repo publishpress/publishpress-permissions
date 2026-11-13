@@ -70,7 +70,7 @@ class Permissions
         }
 
         if (!empty($this->sanitizing_post_id)) {
-            $post_id = $this->sanitizing_post_id;
+            return (int) $this->sanitizing_post_id;
         }
 
         return 0;
@@ -219,15 +219,8 @@ class Permissions
             return;
         }
 
-        // Divi Page Builder editor init
-        if (
-            !defined('PRESSPERMIT_DISABLE_DIVI_CLEARANCE') && !PWP::empty_REQUEST('et_fb') && !PWP::empty_REQUEST('et_bfb')
-            && 0 === strpos(esc_url_raw(wp_unslash($_SERVER['REQUEST_URI'])), '/?page_id')
-            && !is_admin() && !defined('DOING_AJAX') && PWP::empty_REQUEST('action')
-            && PWP::empty_REQUEST('post') && PWP::empty_REQUEST('post_id') && PWP::empty_REQUEST('post_ID') && PWP::empty_REQUEST('p')
-        ) {
-            return true;
-        }
+        // Builder query flags are not authorization. Keep permission hooks loaded
+        // for frontend editor requests as well as ordinary frontend requests.
     }
 
     private function load($args = [])
@@ -864,14 +857,8 @@ class Permissions
 
     public function fltPluginCompatUnfilteredContent($unfiltered)
     {
-        // Public Post Preview: Preserve compat by dropping all Permissions filtering, unless integration is enabled through Pro plugin
-        if (
-            !PWP::empty_REQUEST('_ppp') && !is_admin() && PWP::empty_POST() && class_exists('DS_Public_Post_Preview') && !defined('PRESSPERMIT_DISABLE_PPP_PASSTHROUGH')
-            && (!defined('PRESSPERMIT_PRO_VERSION') || !presspermit()->moduleActive('compatibility'))
-        ) {
-            $unfiltered = true;
-        }
-
+        // A preview token cannot grant global access to unrelated content.
+        // Object-scoped preview handling belongs to the preview integration.
         return $unfiltered;
     }
 
@@ -1686,3 +1673,4 @@ class Permissions
         return $integrations;
     }
 }
+

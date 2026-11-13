@@ -30,6 +30,10 @@ class AgentsAjax
         $pp_admin = $pp->admin();
         $pp_groups = $pp->groups();
 
+        if ('user' !== $agent_type && !$pp_groups->groupTypeExists($agent_type)) {
+            wp_die(-1, '', ['response' => 403]);
+        }
+
         $include_ids = [];
         $meta_search = [];
 
@@ -79,13 +83,13 @@ class AgentsAjax
                     }
                 }
             }
-        } elseif ('member' == $topic) {
+        } elseif ('member' == $topic && 'user' === $agent_type && $pp_groups->groupTypeExists($context)) {
             $verified = true;
             $group_type = $pp_groups->groupTypeExists($context) ? $context : 'pp_group';
             if (!$pp_groups->userCan('pp_manage_members', $agent_id, $group_type)) {
                 die(-1);
             }
-        } elseif ('select-author' == $topic) {
+        } elseif ('select-author' == $topic && 'user' === $agent_type && post_type_exists($context)) {
             $verified = true;
 
             $post_type = (post_type_exists($context)) ? $context : 'page';
@@ -96,15 +100,17 @@ class AgentsAjax
             if (!current_user_can($type_obj->cap->edit_others_posts)) {
                 die(-1);
             }
+        } elseif ($agent_type === $topic && 'user' !== $agent_type) {
+            // Profile group selectors are bound to a user the caller may edit.
+            $verified = $agent_id && get_userdata($agent_id) && current_user_can('edit_user', $agent_id)
+                && (!is_multisite() || is_super_admin() || is_user_member_of_blog($agent_id));
+        }
+
+        if (empty($verified)) {
+            wp_die(-1, '', ['response' => 403]);
         }
 
         if ('user' == $agent_type) {
-            if (empty($verified)) {
-                    if (!current_user_can('pp_manage_members')) {
-                    die(-1);
-                }
-            }
-
             if (0 === strpos($orig_search_str, ' ')) {
                 $orderby = 'user_login';
                 $order = 'ASC';
@@ -174,7 +180,9 @@ class AgentsAjax
                 }
             }
 
-            $limit = (defined('PP_USER_SEARCH_LIMIT')) ? abs(intval(constant('PP_USER_SEARCH_LIMIT'))) : 0;
+            $configured_limit = defined('PP_USER_SEARCH_LIMIT') ? absint(PP_USER_SEARCH_LIMIT) : 20;
+            $limit = min(50, max(1, $configured_limit));
+            $page = min(1000, max(1, PWP::GET_int('pp_search_page')));
 
             $args = [
                 'fields' => ['ID', 'user_login', 'display_name'],
@@ -185,6 +193,8 @@ class AgentsAjax
                 'orderby' => $orderby,
                 'order' => $order,
                 'number' => $limit,
+                'offset' => ($page - 1) * $limit,
+                'count_total' => false,
             ];
 
             if ($meta_search) {
@@ -212,6 +222,14 @@ class AgentsAjax
 
 	        $results = $user_search->get_results();
 
+            echo '<span class="pp-search-page" data-more="' . (count($results) === $limit ? '1' : '0') . '"></span>';
+
+            // WP_User_Query's selected-fields mode does not prime metadata.
+            // Prime this bounded page once rather than issuing two queries per row.
+            if ($results) {
+                update_meta_cache('user', array_map('intval', wp_list_pluck($results, 'ID')));
+            }
+
             if ($results) {
                 foreach ($results as $row) {
                     if (!in_array($row->ID, $omit_users)) {
@@ -225,14 +243,14 @@ class AgentsAjax
                         } else {
                             $title = ($row->user_login != $row->display_name) ? $row->display_name : '';
                             $formatted_name = trim($first_name . ' ' . $last_name. ' (' . $row->user_login . ')');
-                            echo "<option value='" . esc_attr($row->ID) . "' class='pp-new-selection title='" . esc_attr($title) . "'>" . esc_html($formatted_name) . "</option>";
+                            echo "<option value='" . esc_attr($row->ID) . "' class='pp-new-selection' title='" . esc_attr($title) . "'>" . esc_html($formatted_name) . "</option>";
                         }
                     }
                 }
             }
         } else {
             // determine all currently stored groups (of any status) for user in question (not necessarily logged user)
-            if (!empty($agent_id)) {
+            if (!empty($agent_id) && $topic === $agent_type) {
                 $omit_groups = $pp_groups->getGroupsForUser($agent_id, $agent_type, ['status' => 'any']);
             } else {
                 $omit_groups = [];
@@ -243,6 +261,9 @@ class AgentsAjax
                 ['search' => $search_str]
             )) {
                 foreach ($groups as $row) {
+                    if ($topic === $agent_type && !$pp_groups->userCan('pp_manage_members', $row->ID, $agent_type)) {
+                        continue;
+                    }
                     if ((empty($row->metagroup_id) || is_null($row->metagroup_id)) && !isset($omit_groups[$row->ID])) {
                         echo "<option value='" . esc_attr($row->ID) . "'>". esc_html($row->name) . "</option>";
                     }
@@ -251,3 +272,4 @@ class AgentsAjax
         }
     }
 }
+

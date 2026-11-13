@@ -18,28 +18,53 @@ class CapabilityFilters
         add_filter('user_has_cap', [$this, 'fltUserHasReviseCap'], 200, 3);
 
         // Permissions compat: Ensure Gutenberg doesn't block Subscribers with revise permissions for specific pages
-        add_action('init', [$this, 'actEnableLimitedRevisors'], 5);
+        add_filter('user_has_cap', [$this, 'fltEnableLimitedRevisors'], 20, 4);
     }
 
-	function actEnableLimitedRevisors($user_id) {
-		global $current_user;
+    /**
+     * Supply Gutenberg's editor clearance only for an authorized revision edit screen.
+     * Do not persist revision-derived capabilities on the user object.
+     */
+    function fltEnableLimitedRevisors($allcaps, $caps, $args, $user)
+    {
+        global $pagenow;
 
-		if (is_admin()) {
-			if ($post_id = rvy_detect_post_id()) {
-				if ('draft-revision' == rvy_in_revision_workflow($post_id)) {
-					if ($post = get_post($post_id)) {
-						if ($current_user->ID == $post->post_author) {
-							if ($type_obj = get_post_type_object($post->post_type)) {
-								$current_user->allcaps[$type_obj->cap->edit_posts] = true;
-							}
+        // Read-only editor routing; authorization is checked against the revision and parent below.
+        if (
+            !is_admin()
+            || 'post.php' !== $pagenow
+            || 'GET' !== strtoupper(sanitize_text_field(wp_unslash($_SERVER['REQUEST_METHOD'] ?? '')))
+            || !isset($_GET['action']) // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only editor routing; capability checks follow.
+            || 'edit' !== sanitize_key(wp_unslash($_GET['action'])) // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only editor routing; capability checks follow.
+            || empty($args[0])
+            || $args[0] !== reset($caps)
+        ) {
+            return $allcaps;
+        }
 
-                            // note: this capability does not affect access to published posts or other users' posts
-							$current_user->allcaps['edit_posts'] = true;
-						}
-					}
-				}
-			}
-		}
+        $revision_id = (int) rvy_detect_post_id();
+        $revision = $revision_id ? get_post($revision_id) : null;
+        if (
+            !$revision
+            || 'draft-revision' !== rvy_in_revision_workflow($revision_id)
+            || (int) $revision->post_author !== (int) $user->ID
+            || !current_user_can('edit_post', $revision_id)
+        ) {
+            return $allcaps;
+        }
+
+        $parent_id = (int) rvy_post_id($revision_id);
+        if (!$parent_id || !current_user_can('read_post', $parent_id)) {
+            return $allcaps;
+        }
+
+        $type_obj = get_post_type_object($revision->post_type);
+        if (!$type_obj || !in_array($args[0], ['edit_posts', $type_obj->cap->edit_posts], true)) {
+            return $allcaps;
+        }
+
+        $allcaps[$args[0]] = true;
+        return $allcaps;
     }
 
     function fltUserHasReviseCap($wp_sitecaps, $orig_reqd_caps, $args) {

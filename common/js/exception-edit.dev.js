@@ -913,12 +913,13 @@ jQuery(document).ready(function ($) {
     var presspermitAjaxSubmit = function (op, handler, rids, context) {
         var data = {
             'pp_ajax_agent_permissions': op,
+            '_pp_exception_nonce': ppRestrict.exceptionNonces[op] || '',
             'agent_type': ppRestrict.agentType,
             'agent_id': ppRestrict.agentID,
             'pp_eitem_ids': rids
         };
         $.ajax({
-            url: ppRestrict.ajaxurl,
+            url: ppRestrict.permissionsAjaxURL,
             data: data,
             dataType: "html",
             context: context,
@@ -962,3 +963,4 @@ jQuery(document).ready(function ($) {
     }
     // ========== End "Anonymous Warning" scripts ==========
 });
+

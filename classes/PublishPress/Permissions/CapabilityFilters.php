@@ -565,7 +565,10 @@ class CapabilityFilters
 
         // generate a string key for this set of required caps, for use below in checking, caching the filtered results
         $cap_arg = ( 'edit_page' == $args[0] ) ? 'edit_post' : sanitize_key($args[0]); // minor perf boost on uploads.php, TODO: move to PPCE
-        $capreqs_key = ($memcache_disabled) ? false : $cap_arg . $pp->flags['cache_key_suffix'] . md5(wp_json_encode($query_args));
+        $effective_user_id = (int) $pp->getUser()->ID;
+        $blog_id = (int) get_current_blog_id();
+        $context_key = $effective_user_id . ':' . $blog_id . ':';
+        $capreqs_key = ($memcache_disabled) ? false : $context_key . $cap_arg . $pp->flags['cache_key_suffix'] . md5(wp_json_encode($query_args));
 
         // Check whether this object id was already tested for the same reqd_caps in a previous execution of this function within the same http request
         if (!isset($this->memcache['tested_ids'][$post_type][$capreqs_key][$post_id]) || !empty($pp->flags['force_memcache_refresh'])) {
@@ -616,7 +619,7 @@ class CapabilityFilters
             // run the query
             $id_csv = implode("', '", array_map('intval', $listed_ids));
             $request .= " AND $wpdb->posts.ID IN ('$id_csv')";
-            $qkey = md5($request);
+            $qkey = md5($effective_user_id . ':' . $blog_id . ':' . $request);
 
             // a different has_cap inquiry may have generated the same query, so check cache before executing the query
             if (isset($this->memcache['okay_ids'][$qkey]) && !$memcache_disabled) {

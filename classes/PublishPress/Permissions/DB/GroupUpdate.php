@@ -39,6 +39,9 @@ class GroupUpdate
         $data['group_id'] = $group_id;
 
         $user_ids = array_map('intval', (array) $user_ids);
+        if (!current_user_can('pp_manage_members') && !presspermit()->isUserAdministrator()) {
+            $user_ids = array_diff($user_ids, [get_current_user_id()]);
+        }
 
         foreach ($user_ids as $user_id) {
             if (!$user_id) {
@@ -154,7 +157,11 @@ class GroupUpdate
 
         $prev = [];
 
-        $user_id_csv = implode("', '", array_map('intval', (array)$user_ids));
+        $user_ids = array_map('intval', (array) $user_ids);
+        if (!current_user_can('pp_manage_members') && !presspermit()->isUserAdministrator()) {
+            $user_ids = array_diff($user_ids, [get_current_user_id()]);
+        }
+        $user_id_csv = implode("', '", $user_ids);
 
         // Direct query of plugin table on plugin admin operation (IN clause sanitized above)
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching

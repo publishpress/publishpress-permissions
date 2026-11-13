@@ -1,4 +1,4 @@
-<?php
+<?php // phpcs:ignore PublishPressStandards.Composer.RequirePluginExtra.MissingFile, PublishPressStandards.Files.RequireGitAttributes.Missing -- Bundled module uses the parent plugin build metadata.
 /**
  * Plugin Name: PressPermit Teaser
  * Plugin URI:  https://publishpress.com/press-permit
