@@ -1273,3 +1273,28 @@ td.pp-select-items #nav-menu-meta div.tabs-panel ul li label {
   .ppTables();
   .ppAlertBoxes();
 }
+
+/* Keep the Adjustment caption and its information button on one line. */
+#pp_add_exception th.pp-select-x-mod-type {
+  white-space: nowrap;
+}
+#pp_add_exception th.pp-select-x-mod-type > [data-toggle="tooltip"] {
+  vertical-align: middle;
+}
+#pp_add_exception th.pp-select-x-mod-type .tooltip-text {
+  white-space: normal;
+}
+
+#pp_add_exception th.pp-select-x-mod-type .pp-adjustment-heading {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+#pp_add_exception th.pp-select-x-mod-type .pp-adjustment-heading > [data-toggle="tooltip"] {
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+#pp_block_all_default {
+  margin-top: 10px;
+}

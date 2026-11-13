@@ -8,6 +8,7 @@ class AgentEdit
 {
     public function __construct() {
         global $current_user;
+        require_once(PRESSPERMIT_CLASSPATH . '/PermissionsAdmin.php');
         
         require_once(PRESSPERMIT_CLASSPATH . '/DB/GroupUpdate.php');
 
@@ -25,9 +26,9 @@ class AgentEdit
         switch ($action) {
             case 'update':
                 $agent_id = PWP::REQUEST_int('agent_id');
-                check_admin_referer('pp-update-group_' . $agent_id);
+                check_admin_referer('pp-update-group_' . $agent_type . '_' . $agent_id);
 
-                if (!$pp->groups()->userCan('pp_edit_groups', $agent_id, $agent_type))
+                if (!$pp->admin()->canEditPermissionAgent($agent_type, $agent_id))
                     wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
 
                 if ($pp->groups()->groupTypeEditable($agent_type)) {
@@ -47,8 +48,12 @@ class AgentEdit
 
             case 'pp_updateclone':
                 $agent_id = PWP::REQUEST_int('agent_id');
-                check_admin_referer('pp-update-clone_' . $agent_id, '_pp_nonce_clone');
+                check_admin_referer('pp-update-clone_' . $agent_type . '_' . $agent_id, '_pp_nonce_clone');
 
+                if (!$pp->admin()->canEditPermissionAgent($agent_type, $agent_id)
+                    || !($pp->isUserAdministrator() || current_user_can('pp_clone_permissions'))) {
+                    wp_die(-1, '', ['response' => 403]);
+                }
                 if ($pp->admin()->bulkRolesEnabled() && PWP::is_REQUEST('pp_select_role')) {
                     $agent_id = PWP::REQUEST_int('agent_id');
                     require_once(PRESSPERMIT_CLASSPATH . '/DB/Cloner.php');
@@ -65,7 +70,7 @@ class AgentEdit
 
             case 'pp_updateroles':
                 $agent_id = PWP::REQUEST_int('agent_id');
-                check_admin_referer('pp-update-roles_' . $agent_id, '_pp_nonce_roles');
+                check_admin_referer('pp-update-roles_' . $agent_type . '_' . $agent_id, '_pp_nonce_roles');
 
                 if ($pp->admin()->bulkRolesEnabled()) {
                     $this->editGroupRoles($agent_id, $agent_type);
@@ -87,7 +92,7 @@ class AgentEdit
 
             case 'pp_updateexceptions':
                 $agent_id = PWP::REQUEST_int('agent_id');
-                check_admin_referer('pp-update-exceptions_' . $agent_id, '_pp_nonce_exceptions');
+                check_admin_referer('pp-update-exceptions_' . $agent_type . '_' . $agent_id, '_pp_nonce_exceptions');
 
                 if ($pp->admin()->bulkRolesEnabled()) {
                     $this->editAgentExceptions($agent_id, $agent_type);
@@ -109,13 +114,13 @@ class AgentEdit
 
             case 'pp_updategroups':
                 $agent_id = PWP::REQUEST_int('agent_id');
-                check_admin_referer('pp-user-profile-groups', '_pp_permissions_nonce');
+                check_admin_referer('pp-user-profile-groups_' . $agent_id, '_pp_permissions_nonce');
 
-                if ('user' != $agent_type || !current_user_can('edit_users')) {
+                require_once(PRESSPERMIT_CLASSPATH . '/UserGroupsUpdate.php');
+                if ('user' != $agent_type || !\PublishPress\Permissions\UserGroupsUpdate::canEditUser($agent_id)) {
                     wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'));
                 }
 
-                require_once(PRESSPERMIT_CLASSPATH . '/UserGroupsUpdate.php');
                 \PublishPress\Permissions\UserGroupsUpdate::addUserGroups($agent_id);
                 \PublishPress\Permissions\UserGroupsUpdate::removeUserGroups($agent_id);
 
@@ -185,7 +190,7 @@ class AgentEdit
         if (!presspermit()->admin()->bulkRolesEnabled())
             return;
 
-        check_admin_referer('pp-update-roles_' . $agent_id, '_pp_nonce_roles');
+        check_admin_referer('pp-update-roles_' . $agent_type . '_' . $agent_id, '_pp_nonce_roles');
 
         if (isset($_POST['pp_add_role'])) {
             // note: group editing capability already verified at this point
@@ -195,6 +200,11 @@ class AgentEdit
                 ? array_map('intval', explode(',', sanitize_text_field(wp_unslash($_REQUEST['member_csv']))))
                 : [$agent_id];
 
+            foreach ($agent_ids as $target_id) {
+                if (!presspermit()->admin()->canEditPermissionAgent($agent_type, $target_id)) {
+                    wp_die(-1, '', ['response' => 403]);
+                }
+            }
             foreach ($agent_ids as $_agent_id) {
                 if ($_agent_id) {
                     // phpcs Note: sanitized per-element below
@@ -206,7 +216,7 @@ class AgentEdit
                         $role_type = (isset($add_role['type'])) ? sanitize_key($add_role['type']) : '';
                         $base_role_name = strtok($role, ':');
 
-                        if (!$role || !$role_type || !$base_role_name || !presspermit()->admin()->userCanAdminRole($base_role_name, $role_type)) {
+                        if (!$role || !$role_type || !$base_role_name || !\PublishPress\Permissions\PermissionsAdmin::canAssignRole("{$role}{$attrib_cond}", $role_type)) {
                             continue;
                         }
 
@@ -222,7 +232,7 @@ class AgentEdit
         if (!presspermit()->admin()->bulkRolesEnabled())
             return;
 
-        check_admin_referer('pp-update-exceptions_' . $agent_id, '_pp_nonce_exceptions');
+        check_admin_referer('pp-update-exceptions_' . $agent_type . '_' . $agent_id, '_pp_nonce_exceptions');
 
         // phpcs:ignore WordPress.Security.NonceVerification.Missing
         if (isset($_POST['pp_add_exception'])) {
@@ -295,7 +305,7 @@ class AgentEdit
                     : [$agent_id];
 
                 foreach ($agent_ids as $_agent_id) {
-                    if ($_agent_id) {
+                    if ($pp->admin()->canEditAgentException($agent_type, $_agent_id, $args)) {
                         foreach (['item' => $for_item, 'children' => $for_children] as $assign_for => $is_assigned) {
                             if ($is_assigned)
                                 $agents[$assign_for][$_agent_id] = true;
@@ -334,7 +344,7 @@ class AgentEdit
     {
         global $wpdb;
 
-        check_admin_referer('pp-update-group_' . $group_id);
+        check_admin_referer('pp-update-group_' . $agent_type . '_' . $group_id);
 
         $pp = presspermit();
 
@@ -420,3 +430,4 @@ class AgentEdit
         return $group_id;
     }
 }
+

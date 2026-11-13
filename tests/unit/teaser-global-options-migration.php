@@ -9,6 +9,13 @@ namespace {
     function get_option($name, $default = false) {
         return array_key_exists($name, $GLOBALS['pp_test_options']) ? $GLOBALS['pp_test_options'][$name] : $default;
     }
+    function add_option($name, $value = '', $deprecated = '', $autoload = null) {
+        if (array_key_exists($name, $GLOBALS['pp_test_options'])) {
+            return false;
+        }
+        $GLOBALS['pp_test_options'][$name] = $value;
+        return true;
+    }
     function update_option($name, $value) { $GLOBALS['pp_test_options'][$name] = $value; return true; }
 
     use PublishPress\Permissions\Teaser\GlobalOptionsMigration as M;
@@ -17,7 +24,7 @@ namespace {
     $check = function ($label, $expected, $actual) use (&$assertions) {
         $assertions++;
         if ((string) $expected !== (string) $actual) {
-            throw new \RuntimeException("$label: expected " . var_export($expected, true) . ', got ' . var_export($actual, true));
+            throw new \RuntimeException("$label: expected " . json_encode($expected) . ', got ' . json_encode($actual));
         }
     };
 
@@ -89,5 +96,41 @@ namespace {
     $check('fallback without teased types', '1', M::pickGlobalValue('teaser_hide_thumbnail', ['post' => 0, 'page' => 1], []));
     $check('default element only', '1', M::pickGlobalValue('teaser_disable_comments', ['' => 1], ['post']));
 
+
+    // Archive all original arrays, including disabled types and default entries.
+    $original = [
+        'presspermit_tease_direct_access_only' => ['' => 0, 'page' => 0, 'post' => 1],
+        'presspermit_tease_logged_only' => ['post' => 'anon'],
+    ];
+    $GLOBALS['pp_test_options'] = $original + [
+        'presspermit_tease_post_types' => ['post' => 1, 'page' => 0],
+        'presspermit_teaser_hide_thumbnail' => '1',
+    ];
+    M::maybeRun();
+    $check('complete archive', true, $original === get_option(M::ARCHIVE_OPTION));
+    update_option('presspermit_tease_direct_access_only', ['post' => 0]);
+    M::maybeRun();
+    M::run();
+    $check('first archive preserved', true, $original === get_option(M::ARCHIVE_OPTION));
+    $check('add_option refuses overwrite', false, add_option(M::ARCHIVE_OPTION, []));
+    $check('archive still preserved', true, $original === get_option(M::ARCHIVE_OPTION));
+
+    // Backfill the archive even when global migration was completed previously.
+    $GLOBALS['pp_test_options'] = $original + [M::DONE_FLAG => 1];
+    M::maybeRun();
+    $check('completed migration archive backfilled', true, $original === get_option(M::ARCHIVE_OPTION));
+
+    // A direct run also archives settings, and an empty first snapshot stays intact.
+    $GLOBALS['pp_test_options'] = $original;
+    M::run();
+    $check('direct run archived', true, $original === get_option(M::ARCHIVE_OPTION));
+    $GLOBALS['pp_test_options'] = [];
+    M::maybeRun();
+    $check('empty archive created', true, [] === get_option(M::ARCHIVE_OPTION));
+    update_option('presspermit_tease_direct_access_only', ['post' => 1]);
+    M::maybeRun();
+    $check('empty first archive preserved', true, [] === get_option(M::ARCHIVE_OPTION));
+
     echo "OK ($assertions assertions)\n";
 }
+

@@ -1,5 +1,41 @@
-The format is based on [Keep a Changelog](http://keepachangelog.com/)
-and this project adheres to [Semantic Versioning](http://semver.org/).
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
+
+[5.0.0] - 11 Nov, 2026
+
+- Changed: Permission settings now explain more clearly how Enabled and Blocked permissions interact. #2608
+- Changed: Membership checkboxes and inherited permission sources are now described more clearly, helping administrators understand why access is granted. #2610
+- Changed: Blocked-message styling has moved to a dedicated Teaser settings tab for easier configuration. #2617
+- Changed: Post listing options are now located in General settings for easier discovery. #2614
+- Changed: Permission option labels have been shortened to make settings easier to scan. #2607
+- Changed: Permission update notices have been simplified to make feedback clearer. #2606
+- Changed: The Permissions user profile now displays eligible Permission Groups to users who can manage group membership. #2589
+- Changed: The Edit User Permissions screen has been refined to present user details more clearly. #2584
+- Changed: Text contrast and non-color visual cues have been improved to make the interface more accessible. #2587
+- Changed: Keyboard focus indicators and announced status messages have been improved for users relying on assistive technologies. #2586
+- Changed: Form controls now have accessible names to improve screen-reader usability. #2585
+- Changed: Agent selector scripts are now output before footer scripts to improve script-loading compatibility. #2602
+- Changed: The bundled Select2 library has been upgraded to version 4.1.0. #2613
+- Changed: PHP 8.2 is now required, and compatibility tooling has been updated accordingly. #2619
+- Changed: Composer dependencies have been refreshed to incorporate compatible library updates. #2623
+- Fixed: Term permissions are now saved correctly when a taxonomy is registered later during WordPress initialization. #2621
+- Fixed: Teaser content now displays correctly around blocked-message notices, keeping content before and after the restricted section outside the message box. #2618
+- Fixed: Teaser previews no longer display unexpected titles when title filters are applied. #261
+- Security : Hardened front-end query filtering against request spoofing with certain uncommon plugin integrations.
+- Security : Hardened cache isolation for front-end listings.
+- Security : Restricted teaser preview output to the requesting user's allowed content.
+- Security : Hardened REST post collection filtering.
+- Security : Enforced term-retention and parent-association restrictions on additional editing interfaces.
+- Security : Separated revision-creation permission from draft post creation.
+- Security : Restricted Permissions filtering activation for post types to authorized users.
+- Security : Restricted Permissions filtering activation for taxonomies to authorized users.
+- Security : Hardened taxonomy parent selection and REST taxonomy management authorization.
+- Security : Limited and paginated user/author search results to prevent excessive resource use.
+- Security : Enforced post-edit authorization before Permissions assignment changes.
+- Security : Restricted Author Pages create/publish to the intended roles.
+- Security : Restricted group membership and permission management to the intended access scope.
+- Security : Restricted teaser management preview and search to authorized content.
+- Security : Fixed a cross-site scripting issue in permission group labels.
+- Security : Fixed stale access-control cache after user or site context changes.
 
 [4.9.1] - 14 Oct, 2026
 

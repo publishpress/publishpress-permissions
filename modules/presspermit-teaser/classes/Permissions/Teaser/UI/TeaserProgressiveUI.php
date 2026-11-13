@@ -238,13 +238,13 @@ class TeaserProgressiveUI {
         
         // Get available teaser types
         $base_captions = [
-            0 => esc_html__('WordPress default. Show "Page not found" screen', 'press-permit-core'),
-            1 => esc_html__("No Teaser Text", 'press-permit-core'),
-            'read_more' => esc_html__("Use content before Read More link as teaser text", 'press-permit-core'),
-            'excerpt' => esc_html__("Use Excerpt as teaser text", 'press-permit-core'),
-            'more' => esc_html__("Legacy: Excerpt or pre-More as teaser text", 'press-permit-core'),
-            'x_chars' => esc_html__("Use first X characters of content as teaser text", 'press-permit-core'),
-            'redirect' => esc_html__("Redirect to another post", 'press-permit-core')
+            0 => esc_html__('No Teaser', 'press-permit-core'),
+            1 => esc_html__('Message with no teaser content', 'press-permit-core'),
+            'read_more' => esc_html__('Message with teaser content before Read More link', 'press-permit-core'),
+            'excerpt' => esc_html__('Message with Excerpt as teaser content', 'press-permit-core'),
+            'more' => esc_html__('Message with Excerpt or pre-More as teaser content', 'press-permit-core'),
+            'x_chars' => esc_html__('Message with first X characters of post as teaser content', 'press-permit-core'),
+            'redirect' => esc_html__('Redirect to another post', 'press-permit-core'),
         ];
 
         // Retain a saved legacy mode, but offer distinct, predictable choices for new settings.
@@ -401,6 +401,7 @@ class TeaserProgressiveUI {
             '404',
             home_url('/')
         );
+        $theme_404_url = add_query_arg('_pp_teaser_nonce', wp_create_nonce('pp_teaser_theme_preview'), $theme_404_url);
         $preview_posts = get_posts([
             'post_type' => $object_type,
             'post_status' => 'publish',
@@ -408,10 +409,17 @@ class TeaserProgressiveUI {
             'orderby' => 'date',
             'order' => 'DESC',
             'no_found_rows' => true,
+            'suppress_filters' => false,
+            'required_operation' => 'read',
+            'skip_teaser' => true,
         ]);
+        $preview_posts = array_filter($preview_posts, static function($post) {
+            return current_user_can('read_post', $post->ID);
+        });
         $selected_preview_post = $preview_posts ? reset($preview_posts) : null;
         $theme_teaser_base_url = $selected_preview_post ? get_permalink($selected_preview_post) : home_url('/');
         $theme_teaser_args = [
+            '_pp_teaser_nonce' => wp_create_nonce('pp_teaser_theme_preview'),
             'pp_permissions_teaser_preview' => 'teaser',
             'pp_permissions_teaser_post_type' => $object_type,
             'pp_permissions_teaser_type' => (is_bool($teaser_setting) || is_numeric($teaser_setting)) ? (string) intval($teaser_setting) : $teaser_setting,
