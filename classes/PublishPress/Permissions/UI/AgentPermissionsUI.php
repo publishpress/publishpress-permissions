@@ -1791,6 +1791,8 @@ class AgentPermissionsUI
                     'suppress_extra_prefix' => true,
                     'ajax_selection' => true,
                     'agent_id' => $group_id,
+                    // AgentsAjax requires the group type as pp_context to authorize a member search.
+                    'context' => $agent_type,
                 ];
 
                 echo '<div>';
