@@ -42,24 +42,46 @@ class CapabilityFilters
             return $allcaps;
         }
 
-        $revision_id = (int) rvy_detect_post_id();
-        $revision = $revision_id ? get_post($revision_id) : null;
-        if (
-            !$revision
-            || 'draft-revision' !== rvy_in_revision_workflow($revision_id)
-            || (int) $revision->post_author !== (int) $user->ID
-            || !current_user_can('edit_post', $revision_id)
-        ) {
+        // Only edit_posts-type checks need clearance, and only when the role lacks them.
+        if (!empty($allcaps[$args[0]])) {
             return $allcaps;
         }
 
-        $parent_id = (int) rvy_post_id($revision_id);
-        if (!$parent_id || !current_user_can('read_post', $parent_id)) {
+        $revision_id = (int) rvy_detect_post_id();
+        $revision = $revision_id ? get_post($revision_id) : null;
+        if (!$revision || (int) $revision->post_author !== (int) $user->ID) {
             return $allcaps;
         }
 
         $type_obj = get_post_type_object($revision->post_type);
         if (!$type_obj || !in_array($args[0], ['edit_posts', $type_obj->cap->edit_posts], true)) {
+            return $allcaps;
+        }
+
+        // The checks below run capability filters themselves. Run them once per request and
+        // revision, and never re-enter: nested checks on every capability made other plugins'
+        // lazy initialization recurse (WPML: "cyclic dependency while provisioning").
+        static $busy = false;
+        static $authorized_cache = [];
+        $cache_key = $user->ID . ':' . $revision_id;
+
+        if (!isset($authorized_cache[$cache_key])) {
+            if ($busy) {
+                return $allcaps;
+            }
+            $busy = true;
+
+            $authorized_cache[$cache_key] = 'draft-revision' === rvy_in_revision_workflow($revision_id)
+                && current_user_can('edit_post', $revision_id)
+                && ($parent_id = (int) rvy_post_id($revision_id))
+                && current_user_can('read_post', $parent_id);
+
+            $busy = false;
+        }
+
+        $authorized = $authorized_cache[$cache_key];
+
+        if (!$authorized) {
             return $allcaps;
         }
 
