@@ -602,31 +602,25 @@ class PostsTeaser
 
 
         $section = 'options';                                // --- OPTIONS SECTION ---
-        if (!empty($ui->form_options[$tab][$section])) : ?>
+        $show_teaser_options = !empty($any_teased_types) && !empty($ui->form_options[$tab][$section]);
+        ?>
             <section id="ppp-tab-options" style="display:<?php if ($current_tab === 'ppp-tab-options') echo 'block'; else echo 'none'; ?>;">
+            <div id="pp-teaser-application-options">
+                <div class="pp-teaser-settings-na" style="<?php echo $show_teaser_options ? 'display:none' : ''; ?>">
+                    <?php esc_html_e('Options will appear here after you enable the Teaser for a post type.', 'press-permit-core'); ?>
+                </div>
 
-            <?php
-            $style = (!empty($any_teased_types)) ? "display:none" : '';
-            ?>
-            <p class="pp-teaser-settings-na" style="<?php echo esc_attr($style);?>">
-            <?php
-            SettingsAdmin::echoStr('teaser_settings_not_applicable');
-            ?>
-            </p>
-
-            <?php
-            $style = (empty($any_teased_types)) ? "display:none" : '';
-            ?>
-
-            <div class="pp-teaser-options" style="<?php echo esc_attr($style);?>">
-            <?php
-            $this->renderTeaserApplicationOptions($ui, $tab, $section);
-            $this->renderRssOptions($ui, $tab, $section);
-            ?>
+                <div class="pp-teaser-options" style="<?php echo $show_teaser_options ? '' : 'display:none'; ?>">
+                <?php
+                if (!empty($ui->form_options[$tab][$section])) {
+                    $this->renderTeaserApplicationOptions($ui, $tab, $section);
+                    $this->renderRssOptions($ui, $tab, $section);
+                }
+                ?>
+                </div>
             </div>
             </section>
         <?php
-        endif; // any options accessable in this section
 
         echo "<input type='hidden' name='all_options' value='" . esc_attr(implode(',', $ui->all_options)) . "' />";
         echo "<input type='hidden' name='all_otype_options' value='" . esc_attr(implode(',', $ui->all_otype_options)) . "' />";
