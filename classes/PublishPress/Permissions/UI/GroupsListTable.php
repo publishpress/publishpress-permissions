@@ -151,6 +151,7 @@ class GroupsListTable extends GroupsListTableBase
 
         if (
             current_user_can('pp_delete_groups')
+            && ('pp_net_group' !== $this->agent_type || is_super_admin())
             && !in_array(PWP::GET_key('group_variant'), ['wp_role', 'login_state'], true) // don't allow deletion of WP roles
         ) {
             $actions['delete'] = esc_html__('Delete', 'press-permit-core');
@@ -249,7 +250,8 @@ class GroupsListTable extends GroupsListTableBase
         // Set up the hover actions for this user
         $actions = [];
 
-        $can_manage_group = $is_administrator || $pp_groups->userCan('pp_edit_groups', $group_id, $this->agent_type);
+        $network_allowed = 'pp_net_group' !== $this->agent_type || is_super_admin();
+        $can_manage_group = $network_allowed && ($is_administrator || $pp_groups->userCan('pp_edit_groups', $group_id, $this->agent_type));
 
         $agent_type_clause = (($this->agent_type) && ('pp_group' != $this->agent_type))
             ? "&amp;agent_type=$this->agent_type"
@@ -263,7 +265,7 @@ class GroupsListTable extends GroupsListTableBase
             $edit_link = '';
         }
 
-        $can_delete_group = $is_administrator || current_user_can('pp_delete_groups', $group_id);
+        $can_delete_group = $network_allowed && ($is_administrator || current_user_can('pp_delete_groups', $group_id));
 
         // allow metagroups for deleted / inactive wp roles to be deleted
         if (
