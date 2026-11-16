@@ -29,6 +29,8 @@ class PermissionsHooks
         }
 
         add_filter('presspermit_options', [$this, 'fltForceAdvancedDefaults']);
+        require_once(PRESSPERMIT_CLASSPATH . '/Compat/PublicPreview.php');
+        add_filter('presspermit_public_preview_post', ['\\PublishPress\\Permissions\\Compat\\PublicPreview', 'postForQuery'], 10, 2);
 
         // REST logging and blockers
         add_filter('rest_pre_dispatch', [$this, 'fltRestPreDispatch'], 10, 3);
