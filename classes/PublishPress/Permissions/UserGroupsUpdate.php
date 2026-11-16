@@ -104,13 +104,16 @@ class UserGroupsUpdate
                 $pp->groups()->getGroupsForUser($user_id, $agent_type, ['cols' => 'id', 'metagroup_type' => ''])
             );
 
-            // Revisions notification groups are metagroups, but their membership is edited here like a custom group
-            $stored_groups = array_merge(
-                $stored_groups,
-                array_keys(
-                    $pp->groups()->getGroupsForUser($user_id, $agent_type, ['cols' => 'id', 'metagroup_type' => 'rvy_notice'])
-                )
-            );
+            // Match DB\Groups::getGroups(): inactive Revisions groups are hidden on the profile.
+            // Preserve their memberships when saving unrelated, visible groups.
+            if (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) {
+                $stored_groups = array_merge(
+                    $stored_groups,
+                    array_keys(
+                        $pp->groups()->getGroupsForUser($user_id, $agent_type, ['cols' => 'id', 'metagroup_type' => 'rvy_notice'])
+                    )
+                );
+            }
 
             if (!current_user_can('pp_manage_members'))
                 $posted_groups = array_intersect($posted_groups, apply_filters('presspermit_admin_groups', []));
