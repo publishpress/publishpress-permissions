@@ -120,8 +120,6 @@ class SettingsTabFileAccess
     {
         $opt = [
             'unattached_files_private' => esc_html__('Make Unattached Files Private', 'press-permit-core'),
-            'small_thumbnails_unfiltered' => esc_html__('Small Thumbnails Unfiltered', 'press-permit-core'),
-            'file_access_apply_redirect' => esc_html__('Compatibility Mode: Apply extra redirect', 'press-permit-core'),
         ];
 
         return array_merge($captions, $opt);
@@ -130,7 +128,7 @@ class SettingsTabFileAccess
     public function optionSections($sections)
     {
         $new = [
-            'file_access' => ['unattached_files_private', 'small_thumbnails_unfiltered', 'file_access_apply_redirect'],
+            'file_access' => ['unattached_files_private'],
         ];
 
         $key = 'file_access';
