@@ -145,14 +145,17 @@ class CommentFilters
     {
         static $readable = [];
 
-        if (isset($readable[$post_id])) {
-            return $readable[$post_id];
+        // Notification processing can switch users or sites within the same request.
+        $cache_key = get_current_blog_id() . ':' . get_current_user_id() . ':' . (int) $post_id;
+
+        if (isset($readable[$cache_key])) {
+            return $readable[$cache_key];
         }
 
         $post_type = get_post_field('post_type', $post_id);
 
         if (!$post_type || !in_array($post_type, presspermit()->getEnabledPostTypes(), true)) {
-            return $readable[$post_id] = true;
+            return $readable[$cache_key] = true;
         }
 
         if (!class_exists('\PublishPress\Permissions\PostFilters')) {
@@ -185,6 +188,6 @@ class CommentFilters
             $result = $post_id;
         }
 
-        return $readable[$post_id] = !empty($result);
+        return $readable[$cache_key] = !empty($result);
     }
 }
