@@ -504,6 +504,9 @@ class CapabilityFilters
         //=== Allow PP modules or other plugins to modify some variables
         //
 
+        // Initialize before integration filters so their operation override survives.
+        $required_operation = $pp_args['required_operation'];
+
         $null_vars = null;
         $post_cap_args = [
             'post_type' => $post_type,
@@ -528,8 +531,6 @@ class CapabilityFilters
         if (!$post_id || !in_array($post_type, $pp->getEnabledPostTypes(), true)) {
             return $wp_sitecaps;
         }
-
-        $required_operation = $pp_args['required_operation'];
 
         // Note: At this point, we have a nonzero post_id...
         do_action('presspermit_has_post_cap_pre', $pp_reqd_caps, 'post', $post_type, $post_id); // cache clearing / refresh forcing can be applied here
