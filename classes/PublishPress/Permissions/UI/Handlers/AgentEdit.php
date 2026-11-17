@@ -290,6 +290,15 @@ class AgentEdit
                     $args['via_item_type'] = $via_type;
                     $args['item_id'] = PWP::termidToTtid($item_id, $via_type);
 
+                } elseif (!defined('PRESSPERMIT_DISABLE_CUSTOM_TAX_WORKAROUND') && (false !== strpos($via_type, 'category')) && !post_type_exists($via_type)) {
+                    // Taxonomy registered later in the request (after this handler runs), but its terms exist
+                    $args['via_item_source'] = 'term';
+                    $args['via_item_type'] = $via_type;
+                    $args['item_id'] = PWP::termidToTtid($item_id, $via_type);
+
+                    if (empty($args['item_id'])) {
+                        $args['item_id'] = $item_id;
+                    }
                 } else {
                     $args['via_item_source'] = $via_type;
                     $args['via_item_type'] = '';
