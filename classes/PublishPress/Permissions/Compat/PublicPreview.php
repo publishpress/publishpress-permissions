@@ -9,7 +9,7 @@ class PublicPreview
     public static function postForQuery($post_id, $query)
     {
         $method = strtoupper($_SERVER['REQUEST_METHOD'] ?? ''); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- Compare the method only.
-        if (is_admin() || !empty($_POST) || !in_array($method, ['GET', 'HEAD'], true)
+        if (is_admin() || !empty($_POST) || !in_array($method, ['GET', 'HEAD'], true)  // phpcs:ignore WordPress.Security.NonceVerification.Missing
             || (defined('REST_REQUEST') && REST_REQUEST)
             || (function_exists('wp_doing_ajax') && wp_doing_ajax())
             || defined('PRESSPERMIT_DISABLE_PPP_PASSTHROUGH')

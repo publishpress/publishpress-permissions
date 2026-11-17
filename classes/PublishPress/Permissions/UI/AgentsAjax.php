@@ -23,7 +23,7 @@ class AgentsAjax
         }
 
         // Item exception topics use "operation:item_type:agent_type", so don't strip colons with sanitize_key().
-        $topic = !empty($_GET['pp_topic']) && is_string($_GET['pp_topic']) ? PWP::sanitizeEntry(wp_unslash($_GET['pp_topic'])) : '';
+        $topic = !empty($_GET['pp_topic']) && is_string($_GET['pp_topic']) ? PWP::sanitizeEntry(wp_unslash($_GET['pp_topic'])) : '';  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 
         if (!$topic) {
             return;
