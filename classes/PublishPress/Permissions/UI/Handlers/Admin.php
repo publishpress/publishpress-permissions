@@ -20,17 +20,21 @@ class Admin
                 add_action(
                     'presspermit_user_init', 
                     function() {
-                        static $handling = false;
-                        if ($handling) {
+                        static $scheduled = false;
+                        if ($scheduled) {
                             return;
                         }
-                        $handling = true;
-                        try {
+                        $scheduled = true;
+                        // Object authorization needs the registered post types and taxonomies.
+                        $handle = static function() {
                             require_once(PRESSPERMIT_CLASSPATH . '/UI/Handlers/AgentEdit.php');
                             new AgentEdit();
                             do_action('presspermit_trigger_cache_flush');
-                        } finally {
-                            $handling = false;
+                        };
+                        if (did_action('wp_loaded')) {
+                            $handle();
+                        } else {
+                            add_action('wp_loaded', $handle, 20);
                         }
                     }
                 );

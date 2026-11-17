@@ -22,7 +22,10 @@ class AgentsAjax
             return;
         }
 
-        if (!$topic = PWP::sanitizeEntry(PWP::GET_key('pp_topic'))) {
+        // Item exception topics use "operation:item_type:agent_type", so don't strip colons with sanitize_key().
+        $topic = !empty($_GET['pp_topic']) && is_string($_GET['pp_topic']) ? PWP::sanitizeEntry(wp_unslash($_GET['pp_topic'])) : '';  // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+
+        if (!$topic) {
             return;
         }
 
@@ -65,7 +68,7 @@ class AgentsAjax
 
                     $operations = apply_filters('presspermit_item_edit_exception_ops', $ops, 'post', $context, $arr_topic[1]);
 
-                    if (!in_array($arr_topic[0], $operations, true)) {
+                    if (empty($operations[$arr_topic[0]])) {
                         die(-1);
                     }
                 } elseif (post_type_exists($arr_topic[1])) {
@@ -83,7 +86,8 @@ class AgentsAjax
                     }
                 }
             }
-        } elseif ('member' == $topic && 'user' === $agent_type && $pp_groups->groupTypeExists($context)) {
+        } elseif ('member' == $topic && 'user' === $agent_type && (!$context || $pp_groups->groupTypeExists($context))) {
+            // The Group Members selector does not pass a context; it defaults to pp_group.
             $verified = true;
             $group_type = $pp_groups->groupTypeExists($context) ? $context : 'pp_group';
             if (!$pp_groups->userCan('pp_manage_members', $agent_id, $group_type)) {

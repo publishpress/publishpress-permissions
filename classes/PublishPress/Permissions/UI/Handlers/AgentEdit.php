@@ -57,13 +57,17 @@ class AgentEdit
                 if ($pp->admin()->bulkRolesEnabled() && PWP::is_REQUEST('pp_select_role')) {
                     $agent_id = PWP::REQUEST_int('agent_id');
                     require_once(PRESSPERMIT_CLASSPATH . '/DB/Cloner.php');
-                    \PublishPress\Permissions\DB\Cloner::clonePermissions(
+                    $retval = \PublishPress\Permissions\DB\Cloner::clonePermissions(
                         'pp_group', 
                         $agent_id, 
                         PWP::REQUEST_key('pp_select_role')
                     );
                     
-                    $redirect = "$url?page=presspermit-edit-permissions&agent_id=$agent_id&agent_type=$agent_type&updated=1&pp_cloned=1";
+                    if (true === $retval) {
+                        $redirect = "$url?page=presspermit-edit-permissions&agent_id=$agent_id&agent_type=$agent_type&updated=1&pp_cloned=1";
+                    } elseif (!is_wp_error($retval)) {
+                        $retval = new \WP_Error('presspermit_clone_denied', __('Permissions were not cloned. You may not assign all of the source permissions.', 'press-permit-core'));
+                    }
                 }
 
                 break;
@@ -73,7 +77,7 @@ class AgentEdit
                 check_admin_referer('pp-update-roles_' . $agent_type . '_' . $agent_id, '_pp_nonce_roles');
 
                 if ($pp->admin()->bulkRolesEnabled()) {
-                    $this->editGroupRoles($agent_id, $agent_type);
+                    $retval = $this->editGroupRoles($agent_id, $agent_type);
                 }
 
                 // cludged update of group members on role selection, due to inability to put them in the same form
@@ -95,7 +99,7 @@ class AgentEdit
                 check_admin_referer('pp-update-exceptions_' . $agent_type . '_' . $agent_id, '_pp_nonce_exceptions');
 
                 if ($pp->admin()->bulkRolesEnabled()) {
-                    $this->editAgentExceptions($agent_id, $agent_type);
+                    $retval = $this->editAgentExceptions($agent_id, $agent_type);
                 }
 
                 // cludged update of group members on role selection, due to inability to put them in the same form
@@ -187,6 +191,7 @@ class AgentEdit
 
     private function editGroupRoles($agent_id, $agent_type)
     {
+        $rejected = false;
         if (!presspermit()->admin()->bulkRolesEnabled())
             return;
 
@@ -217,6 +222,7 @@ class AgentEdit
                         $base_role_name = strtok($role, ':');
 
                         if (!$role || !$role_type || !$base_role_name || !\PublishPress\Permissions\PermissionsAdmin::canAssignRole("{$role}{$attrib_cond}", $role_type)) {
+                            $rejected = true;
                             continue;
                         }
 
@@ -225,10 +231,12 @@ class AgentEdit
                 }
             }
         }
+        return $this->assignmentResult($rejected);
     }
 
     private function editAgentExceptions($agent_id, $agent_type)
     {
+        $rejected = false;
         if (!presspermit()->admin()->bulkRolesEnabled())
             return;
 
@@ -282,6 +290,15 @@ class AgentEdit
                     $args['via_item_type'] = $via_type;
                     $args['item_id'] = PWP::termidToTtid($item_id, $via_type);
 
+                } elseif (!defined('PRESSPERMIT_DISABLE_CUSTOM_TAX_WORKAROUND') && (false !== strpos($via_type, 'category')) && !post_type_exists($via_type)) {
+                    // Taxonomy registered later in the request (after this handler runs), but its terms exist
+                    $args['via_item_source'] = 'term';
+                    $args['via_item_type'] = $via_type;
+                    $args['item_id'] = PWP::termidToTtid($item_id, $via_type);
+
+                    if (empty($args['item_id'])) {
+                        $args['item_id'] = $item_id;
+                    }
                 } else {
                     $args['via_item_source'] = $via_type;
                     $args['via_item_type'] = '';
@@ -310,12 +327,20 @@ class AgentEdit
                             if ($is_assigned)
                                 $agents[$assign_for][$_agent_id] = true;
                         }
+                    } else {
+                        $rejected = true;
                     }
                 }
 
                 $pp->assignExceptions($agents, $agent_type, $args);
             }
         }
+        return $this->assignmentResult($rejected);
+    }
+
+    private function assignmentResult($rejected)
+    {
+        return $rejected ? new \WP_Error('presspermit_assignment_denied', __('Some requested permissions were not saved because they are unavailable or you are not permitted to assign them. Other authorized changes may have been saved.', 'press-permit-core')) : true;
     }
 
     // True if term_taxonomy rows exist for a taxonomy that is not registered yet in this request

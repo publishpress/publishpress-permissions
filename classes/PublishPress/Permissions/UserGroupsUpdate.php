@@ -13,8 +13,11 @@ class UserGroupsUpdate
             && (!is_multisite() || is_super_admin() || is_user_member_of_blog($user_id));
     }
 
-    public static function addUserGroups($user_id)
+    public static function addUserGroups($user_id, $nonce_user_id = null)
     {
+        // The new user form renders its group checkboxes before the user exists, so its nonce is scoped to user ID 0.
+        $nonce_user_id = (null === $nonce_user_id) ? (int) $user_id : (int) $nonce_user_id;
+
         if (!self::canEditUser($user_id)) {
             wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'), '', ['response' => 403]);
         }
@@ -35,7 +38,7 @@ class UserGroupsUpdate
                 continue;
             }
 
-            check_admin_referer('pp-user-profile-groups_' . (int) $user_id, '_pp_permissions_nonce');
+            check_admin_referer('pp-user-profile-groups_' . $nonce_user_id, '_pp_permissions_nonce');
 
             // by retrieving filtered groups here, user will only modify membership for groups they can administer
             $posted_groups = (!empty($_POST[$agent_type])) ? array_map('intval', $_POST[$agent_type]) : [];
@@ -76,8 +79,11 @@ class UserGroupsUpdate
         }
     }
 
-    public static function removeUserGroups($user_id)
+    public static function removeUserGroups($user_id, $nonce_user_id = null)
     {
+        // The new user form renders its group checkboxes before the user exists, so its nonce is scoped to user ID 0.
+        $nonce_user_id = (null === $nonce_user_id) ? (int) $user_id : (int) $nonce_user_id;
+
         if (!self::canEditUser($user_id)) {
             wp_die(esc_html__('You are not permitted to do that.', 'press-permit-core'), '', ['response' => 403]);
         }
@@ -96,13 +102,24 @@ class UserGroupsUpdate
                 continue;
 			}
 
-            check_admin_referer('pp-user-profile-groups_' . (int) $user_id, '_pp_permissions_nonce');
+            check_admin_referer('pp-user-profile-groups_' . $nonce_user_id, '_pp_permissions_nonce');
 
             $posted_groups = (!empty($_POST[$agent_type])) ? array_map('intval', $_POST[$agent_type]) : [];
 
             $stored_groups = array_keys(
                 $pp->groups()->getGroupsForUser($user_id, $agent_type, ['cols' => 'id', 'metagroup_type' => ''])
             );
+
+            // Match DB\Groups::getGroups(): inactive Revisions groups are hidden on the profile.
+            // Preserve their memberships when saving unrelated, visible groups.
+            if (defined('PUBLISHPRESS_REVISIONS_VERSION') || defined('REVISIONARY_VERSION')) {
+                $stored_groups = array_merge(
+                    $stored_groups,
+                    array_keys(
+                        $pp->groups()->getGroupsForUser($user_id, $agent_type, ['cols' => 'id', 'metagroup_type' => 'rvy_notice'])
+                    )
+                );
+            }
 
             if (!current_user_can('pp_manage_members'))
                 $posted_groups = array_intersect($posted_groups, apply_filters('presspermit_admin_groups', []));

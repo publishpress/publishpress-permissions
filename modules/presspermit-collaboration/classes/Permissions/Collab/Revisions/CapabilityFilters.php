@@ -38,33 +38,70 @@ class CapabilityFilters
             || 'edit' !== sanitize_key(wp_unslash($_GET['action'])) // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only editor routing; capability checks follow.
             || empty($args[0])
             || $args[0] !== reset($caps)
+            || !empty($allcaps[$args[0]])
+            || (int) $user->ID !== (int) get_current_user_id()
         ) {
             return $allcaps;
         }
 
+        // Reject unrelated capabilities before resolving posts or checking meta capabilities.
+        // WPML can request these while its services are still being constructed.
+        $editor_cap = 'edit_posts' === $args[0];
+        if (!$editor_cap) {
+            foreach (get_post_types([], 'objects') as $type_obj) {
+                if (!empty($type_obj->cap->edit_posts) && $args[0] === $type_obj->cap->edit_posts) {
+                    $editor_cap = true;
+                    break;
+                }
+            }
+        }
+        if (!$editor_cap) {
+            return $allcaps;
+        }
+
+        static $checking_revision = false;
+        static $revision_access = [];
+        if ($checking_revision) {
+            return $allcaps;
+        }
+
+        $checking_revision = true;
+        try {
         $revision_id = (int) rvy_detect_post_id();
         $revision = $revision_id ? get_post($revision_id) : null;
-        if (
-            !$revision
+            if (!$revision
             || 'draft-revision' !== rvy_in_revision_workflow($revision_id)
             || (int) $revision->post_author !== (int) $user->ID
-            || !current_user_can('edit_post', $revision_id)
         ) {
             return $allcaps;
         }
 
+            $type_obj = get_post_type_object($revision->post_type);
+            if (!$type_obj || !in_array($args[0], ['edit_posts', $type_obj->cap->edit_posts], true)) {
+                return $allcaps;
+            }
+
         $parent_id = (int) rvy_post_id($revision_id);
-        if (!$parent_id || !current_user_can('read_post', $parent_id)) {
+            if (!$parent_id) {
             return $allcaps;
         }
 
-        $type_obj = get_post_type_object($revision->post_type);
-        if (!$type_obj || !in_array($args[0], ['edit_posts', $type_obj->cap->edit_posts], true)) {
+            // Reuse only completed authorization decisions in the same user/site/object context.
+            $cache_key = get_current_blog_id() . ':' . (int) $user->ID . ':' . $revision_id . ':' . $parent_id;
+            if (!array_key_exists($cache_key, $revision_access)) {
+                $revision_access[$cache_key] = current_user_can('edit_post', $revision_id)
+                    && current_user_can('read_post', $parent_id);
+            }
+            if (!$revision_access[$cache_key]) {
             return $allcaps;
         }
 
         $allcaps[$args[0]] = true;
         return $allcaps;
+        } finally {
+            // Early returns and exceptions must not suppress later checks.
+            $checking_revision = false;
+        }
     }
 
     function fltUserHasReviseCap($wp_sitecaps, $orig_reqd_caps, $args) {

@@ -1,6 +1,17 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-[5.0.0] - 11 Nov, 2026
+[5.0.1] - 17 Nov, 2026
+
+- Fixed : "link expired" / 403 when creating users #2669
+- Fixed : User search returns 403 in Group Members and in the post/page Permissions box #2658
+- Fixed : Revisions integration - Remove users from Revisions notification groups when unchecked on the user profile - #2644
+- Fixed : Revisions integration - Fatal error when a limited revisor opens their revision in the editor #2657
+- Fixed : Revisions integration - Editorial comment notifications are blank for non-admin users #2641
+- Fixed : Revisions integration - Keep comments on posts the user can edit when filtering comment results - #2642
+- Changed : Show an introductory message under Teaser > Options tab #2653
+- Changed : Clarify a teaser option caption #2652
+
+[5.0.0] - 12 Nov, 2026
 
 - Changed: Permission settings now explain more clearly how Enabled and Blocked permissions interact. #2608
 - Changed: Membership checkboxes and inherited permission sources are now described more clearly, helping administrators understand why access is granted. #2610
