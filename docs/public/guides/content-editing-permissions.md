@@ -2,6 +2,7 @@
 title: "Editing Permissions for WordPress Content"
 order: 11
 doc_category: presspermit
+section: Edit Permissions
 ---
 
 # Editing Permissions for WordPress Content

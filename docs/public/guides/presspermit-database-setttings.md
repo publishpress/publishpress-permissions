@@ -2,6 +2,7 @@
 title: "PublishPress Permissions Database Tables and Settings"
 order: 46
 doc_category: presspermit
+section: Developer
 ---
 
 # PublishPress Permissions Database Tables and Settings

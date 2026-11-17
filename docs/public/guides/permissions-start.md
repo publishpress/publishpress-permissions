@@ -2,6 +2,7 @@
 title: "Getting Started With PublishPress Permissions"
 order: 30
 doc_category: presspermit
+section: Getting Started
 ---
 
 # Getting Started With PublishPress Permissions

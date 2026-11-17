@@ -2,6 +2,7 @@
 title: "Viewing Permissions for WordPress Category and Tag Archives"
 order: 3
 doc_category: presspermit
+section: View Permissions
 ---
 
 # Viewing Permissions for WordPress Category and Tag Archives

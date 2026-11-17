@@ -2,6 +2,7 @@
 title: "pp_update_group_user"
 order: 40
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_update_group_user

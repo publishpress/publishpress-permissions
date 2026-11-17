@@ -2,6 +2,7 @@
 title: "PublishPress Statuses and PublishPress Permissions (Pro)"
 order: 51
 doc_category: presspermit
+section: Integrations
 ---
 
 # PublishPress Statuses and PublishPress Permissions (Pro)

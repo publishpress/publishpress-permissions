@@ -2,6 +2,7 @@
 title: "bbPress and PublishPress Permissions (Pro)"
 order: 2
 doc_category: presspermit
+section: Integrations
 ---
 
 # bbPress and PublishPress Permissions (Pro)

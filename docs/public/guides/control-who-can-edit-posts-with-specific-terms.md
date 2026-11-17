@@ -2,6 +2,7 @@
 title: "Editing Permissions for Posts With Specific Terms"
 order: 12
 doc_category: presspermit
+section: Edit Permissions
 ---
 
 # Editing Permissions for Posts With Specific Terms

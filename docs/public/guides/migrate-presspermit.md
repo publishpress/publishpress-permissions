@@ -2,6 +2,7 @@
 title: "How to Migrate from PressPermit Core to PublishPress Permissions"
 order: 22
 doc_category: presspermit
+section: Migrate
 ---
 
 # How to Migrate from PressPermit Core to PublishPress Permissions

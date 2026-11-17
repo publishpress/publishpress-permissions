@@ -2,6 +2,7 @@
 title: "Options for Teasers for Restricted Content"
 order: 53
 doc_category: presspermit
+section: Teasers
 ---
 
 # Options for Teasers for Restricted Content

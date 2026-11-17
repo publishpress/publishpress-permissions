@@ -2,6 +2,7 @@
 title: "How to Create Your First Teaser"
 order: 13
 doc_category: presspermit
+section: Teasers
 ---
 
 # How to Create Your First Teaser

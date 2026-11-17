@@ -2,6 +2,7 @@
 title: "Blocked vs Enabled"
 order: 6
 doc_category: presspermit
+section: Getting Started
 ---
 
 # Blocked vs Enabled

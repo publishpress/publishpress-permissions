@@ -2,6 +2,7 @@
 title: "pp_get_groups_for_user"
 order: 37
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_get_groups_for_user

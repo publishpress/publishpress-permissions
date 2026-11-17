@@ -2,6 +2,7 @@
 title: "Control Access to Custom Post Types"
 order: 49
 doc_category: presspermit
+section: Integrations
 ---
 
 # Control Access to Custom Post Types

@@ -2,6 +2,7 @@
 title: "ppc_get_exceptions()"
 order: 44
 doc_category: presspermit
+section: Developer
 ---
 
 # ppc_get_exceptions()

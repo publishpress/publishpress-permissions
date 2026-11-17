@@ -2,6 +2,7 @@
 title: "pp_get_group_members"
 order: 35
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_get_group_members

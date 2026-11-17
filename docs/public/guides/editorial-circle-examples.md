@@ -2,6 +2,7 @@
 title: "Editorial Circle Examples (Pro)"
 order: 14
 doc_category: presspermit
+section: Circles
 ---
 
 # Editorial Circle Examples (Pro)

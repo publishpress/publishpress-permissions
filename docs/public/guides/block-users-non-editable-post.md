@@ -2,6 +2,7 @@
 title: "Prevent Users from Seeing Posts They Can’t Edit"
 order: 5
 doc_category: presspermit
+section: Edit Permissions
 ---
 
 # Prevent Users from Seeing Posts They Can’t Edit

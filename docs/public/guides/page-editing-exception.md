@@ -2,6 +2,7 @@
 title: "Edit Permissions for Pages and Sub-Pages"
 order: 25
 doc_category: presspermit
+section: Edit Permissions
 ---
 
 # Edit Permissions for Pages and Sub-Pages

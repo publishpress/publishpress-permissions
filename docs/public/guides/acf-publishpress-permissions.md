@@ -2,6 +2,7 @@
 title: "Advanced Custom Fields and PublishPress Permissions (Pro)"
 order: 1
 doc_category: presspermit
+section: Integrations
 ---
 
 # Advanced Custom Fields and PublishPress Permissions (Pro)

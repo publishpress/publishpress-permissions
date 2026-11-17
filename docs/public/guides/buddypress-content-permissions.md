@@ -2,6 +2,7 @@
 title: "BuddyPress and PublishPress Permissions (Pro)"
 order: 7
 doc_category: presspermit
+section: Integrations
 ---
 
 # BuddyPress and PublishPress Permissions (Pro)

@@ -2,6 +2,7 @@
 title: "Getting Started with Permission Groups"
 order: 18
 doc_category: presspermit
+section: User Groups and Extra Roles
 ---
 
 # Getting Started with Permission Groups

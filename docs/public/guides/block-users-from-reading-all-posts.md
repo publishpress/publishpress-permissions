@@ -2,6 +2,7 @@
 title: "How to Prevent Users from Viewing All Pages or Posts"
 order: 4
 doc_category: presspermit
+section: View Permissions
 ---
 
 # How to Prevent Users from Viewing All Pages or Posts

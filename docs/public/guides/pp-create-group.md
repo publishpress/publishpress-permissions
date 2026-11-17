@@ -2,6 +2,7 @@
 title: "pp_create_group"
 order: 32
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_create_group

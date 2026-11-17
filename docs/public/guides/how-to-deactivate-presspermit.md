@@ -2,6 +2,7 @@
 title: "How to Deactivate PublishPress Permissions"
 order: 20
 doc_category: presspermit
+section: Troubleshooting Permissions
 ---
 
 # How to Deactivate PublishPress Permissions

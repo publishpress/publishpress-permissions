@@ -2,6 +2,7 @@
 title: "pp_remove_group_user"
 order: 39
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_remove_group_user

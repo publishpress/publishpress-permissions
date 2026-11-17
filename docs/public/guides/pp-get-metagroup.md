@@ -2,6 +2,7 @@
 title: "pp_get_metagroup"
 order: 38
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_get_metagroup
