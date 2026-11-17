@@ -36,6 +36,18 @@ try {
     permissions_mcp_check(false === $ability->get_meta()['show_in_rest'], 'Default REST exposure must be disabled.');
     $settings = permissions_mcp_call('get-settings');
     permissions_mcp_check(!is_wp_error($settings), 'Native settings read failed: ' . (is_wp_error($settings) ? $settings->get_error_message() : ''));
+    foreach ((array) $settings['settings'] as $settingName => $field) {
+        if (!$field['writable']) {
+            continue;
+        }
+        $nativePreview = permissions_mcp_call('update-settings', ['revision' => $settings['revision'],
+            'changes' => (object) [$settingName => $field['value']], 'dry_run' => true]);
+        permissions_mcp_check(!is_wp_error($nativePreview), 'Late native setting rejected: ' . $settingName);
+    }
+    $unknown = permissions_mcp_call('update-settings', ['revision' => $settings['revision'],
+        'changes' => (object) ['strip_private_caption' => false, 'not_a_native_setting' => true]]);
+    permissions_mcp_check(is_wp_error($unknown), 'Unknown mixed settings patch accepted.');
+    permissions_mcp_check($option === get_option('presspermit_strip_private_caption', null), 'Unknown patch changed native storage.');
     $patch = ['revision' => $settings['revision'], 'changes' => (object) ['strip_private_caption' => false], 'dry_run' => true];
     $preview = permissions_mcp_call('update-settings', $patch);
     permissions_mcp_check(!is_wp_error($preview), 'Setting preview failed.');

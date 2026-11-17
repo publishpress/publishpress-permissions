@@ -40,10 +40,17 @@ class Settings
         return apply_filters('presspermit_mcp_setting_definitions', $definitions, $captions);
     }
 
-    public function schema($write)
+    public function schema($write, $registration = false)
     {
         if (!$write) {
             return Input::schema([]);
+        }
+        if ($registration) {
+            // Module defaults may load after registration; update() validates the live definitions.
+            return Input::schema(['changes' => ['type' => 'object', 'minProperties' => 1,
+                'maxProperties' => 50, 'additionalProperties' => ['type' => 'boolean']],
+                'revision' => ['type' => 'string', 'pattern' => '^[a-f0-9]{64}$'],
+                'dry_run' => ['type' => 'boolean']], ['changes', 'revision']);
         }
         $fields = [];
         foreach ($this->definitions() as $name => $definition) {

@@ -123,7 +123,8 @@ class Input
                 return $value;
             }
             $properties = (array) ($schema['properties'] ?? []);
-            if (array_diff(array_keys($value), array_keys($properties))) {
+            $additional = $schema['additionalProperties'] ?? false;
+            if (false === $additional && array_diff(array_keys($value), array_keys($properties))) {
                 return self::error();
             }
             foreach ($schema['required'] ?? [] as $key) {
@@ -132,7 +133,14 @@ class Input
                 }
             }
             foreach ($value as $key => $child) {
-                $value[$key] = self::validate($child, $properties[$key]);
+                $childSchema = $properties[$key] ?? $additional;
+                if (true === $childSchema) {
+                    continue;
+                }
+                if (!is_array($childSchema)) {
+                    return self::error();
+                }
+                $value[$key] = self::validate($child, $childSchema);
                 if (is_wp_error($value[$key])) {
                     return $value[$key];
                 }

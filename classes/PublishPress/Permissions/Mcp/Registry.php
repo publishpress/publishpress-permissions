@@ -29,7 +29,7 @@ class Registry
         foreach (['get-settings' => ['read', false], 'update-settings' => ['update', true]] as $name => $operation) {
             $registry->action($name, __('Permissions settings', 'press-permit-core'),
                 __('Read native setting identifiers, exact JSON types, defaults, stored values and revision before patching. Checkbox inputs must be JSON booleans. Omitted options remain unchanged; unknown fields and locked settings are rejected. dry_run validates without saving.', 'press-permit-core'),
-                $settings->schema($operation[1]), [$settings, $operation[0]], ['pp_manage_settings'], !$operation[1]);
+                $settings->schema($operation[1], true), [$settings, $operation[0]], ['pp_manage_settings'], !$operation[1]);
         }
         $types = new ContentTypes();
         foreach (['get-content-types' => false, 'set-content-types' => true] as $name => $write) {
@@ -63,11 +63,20 @@ class Registry
         foreach (['teaser' => new Teaser(), 'modules' => new Modules()] as $feature => $service) {
             foreach (['get-' . $feature => false, 'update-' . $feature => true] as $name => $write) {
                 $caps = 'teaser' === $feature ? ['pp_manage_teaser', 'pp_manage_settings'] : ['pp_manage_settings', 'pp_manage_permissions', 'pp_manage_teaser', 'pp_manage_members'];
+                $schema = $service->schema($write);
+                if ('teaser' === $feature && $write) {
+                    foreach ($schema['properties']['changes']['properties'] as $fieldName => &$field) {
+                        if (substr($fieldName, -10) === '_post_type') {
+                            unset($field['enum']);
+                        }
+                    }
+                    unset($field);
+                }
                 $registry->action($name, 'teaser' === $feature ? __('Permissions teaser settings', 'press-permit-core') : __('Permissions module activation', 'press-permit-core'),
                     'teaser' === $feature
                         ? __('Read native teaser modes, messages, redirects, RSS and notice styles. Omit post_type for global options; pass a discovered filtered post type for per-type settings. Patch exact native option names with JSON types and revision. Rich text uses native sanitization. Redirect destinations require object permissions. dry_run saves nothing.', 'press-permit-core')
                         : __('Discover installed, required and active native modules. Patch explicit module/enabled rows with a current revision. Required modules cannot be disabled. Native lifecycle hooks run; activation changes load on the next request. Network changes require network administration. dry_run saves nothing.', 'press-permit-core'),
-                    $service->schema($write), [$service, $write ? 'update' : 'read'], $caps, !$write);
+                    $schema, [$service, $write ? 'update' : 'read'], $caps, !$write);
             }
         }
         $deletion = new GroupDeletion();
