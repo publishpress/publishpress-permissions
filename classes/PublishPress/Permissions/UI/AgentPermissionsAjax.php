@@ -239,13 +239,11 @@ class AgentPermissionsAjax
                 // mirror specified existing exception items to specified operation
                 if (0 === strpos($action, 'exceptions_mirror_')) {
                     
-                    $arr = explode('_', $action);
+                    $mirror_op = substr($action, strlen('exceptions_mirror_'));
 
-                    if (count($arr) < 3) {
+                    if ('' === $mirror_op) {
                         break;
                     }
-
-                    $mirror_op = $arr[2];
 
                     if (!$op_obj = $pp_admin->getOperationObject($mirror_op)) {
                         break;
