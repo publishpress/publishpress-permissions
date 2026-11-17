@@ -2,6 +2,7 @@
 title: "Viewing Permissions for WordPress Content"
 order: 55
 doc_category: presspermit
+section: View Permissions
 ---
 
 # Viewing Permissions for WordPress Content

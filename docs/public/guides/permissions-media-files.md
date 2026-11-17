@@ -2,6 +2,7 @@
 title: "Control Permissions for Media Files"
 order: 29
 doc_category: presspermit
+section: Media Library
 ---
 
 # Control Permissions for Media Files

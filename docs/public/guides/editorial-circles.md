@@ -2,6 +2,7 @@
 title: "Getting Started With Editorial Circles (Pro)"
 order: 15
 doc_category: presspermit
+section: Circles
 ---
 
 # Getting Started With Editorial Circles (Pro)

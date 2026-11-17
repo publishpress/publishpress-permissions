@@ -2,6 +2,7 @@
 title: "How to Migrate from Role Scoper to PublishPress Permissions"
 order: 23
 doc_category: presspermit
+section: Migrate
 ---
 
 # How to Migrate from Role Scoper to PublishPress Permissions

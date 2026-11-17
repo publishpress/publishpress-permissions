@@ -2,6 +2,7 @@
 title: "Differences Between Permissions Free and Pro"
 order: 28
 doc_category: presspermit
+section: Getting Started
 ---
 
 # Differences Between Permissions Free and Pro

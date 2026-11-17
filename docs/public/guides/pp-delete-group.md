@@ -2,6 +2,7 @@
 title: "pp_delete_group"
 order: 33
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_delete_group

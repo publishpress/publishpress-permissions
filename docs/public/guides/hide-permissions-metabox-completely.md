@@ -2,6 +2,7 @@
 title: "Hide the PublishPress Permissions Metabox"
 order: 19
 doc_category: presspermit
+section: Troubleshooting Permissions
 ---
 
 # Hide the PublishPress Permissions Metabox

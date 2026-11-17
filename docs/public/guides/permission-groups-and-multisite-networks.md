@@ -2,6 +2,7 @@
 title: "Permission Groups and Multisite Networks (Pro)"
 order: 26
 doc_category: presspermit
+section: Multisite
 ---
 
 # Permission Groups and Multisite Networks (Pro)

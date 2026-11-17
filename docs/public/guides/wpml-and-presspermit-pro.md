@@ -2,6 +2,7 @@
 title: "WPML and PublishPress Permissions (Pro)"
 order: 57
 doc_category: presspermit
+section: Integrations
 ---
 
 # WPML and PublishPress Permissions (Pro)

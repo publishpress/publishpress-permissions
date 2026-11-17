@@ -2,6 +2,7 @@
 title: "Getting Started With Visibility Circles (Pro)"
 order: 10
 doc_category: presspermit
+section: Circles
 ---
 
 # Getting Started With Visibility Circles (Pro)

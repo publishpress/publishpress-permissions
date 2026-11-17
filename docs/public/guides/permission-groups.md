@@ -2,6 +2,7 @@
 title: "Developer Information for Permission Groups"
 order: 27
 doc_category: presspermit
+section: Developer
 ---
 
 # Developer Information for Permission Groups

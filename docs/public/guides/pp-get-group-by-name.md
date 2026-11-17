@@ -2,6 +2,7 @@
 title: "pp_get_group_by_name"
 order: 34
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_get_group_by_name

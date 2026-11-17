@@ -2,6 +2,7 @@
 title: "Getting Started With User Posts (Pro)"
 order: 54
 doc_category: presspermit
+section: User Posts
 ---
 
 # Getting Started With User Posts (Pro)

@@ -2,6 +2,7 @@
 title: "Network-Wide Settings in PublishPress Permissions"
 order: 24
 doc_category: presspermit
+section: Multisite
 ---
 
 # Network-Wide Settings in PublishPress Permissions

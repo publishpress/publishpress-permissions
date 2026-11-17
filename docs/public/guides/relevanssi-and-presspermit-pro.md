@@ -2,6 +2,7 @@
 title: "Relevanssi and PublishPress Permissions (Pro)"
 order: 50
 doc_category: presspermit
+section: Integrations
 ---
 
 # Relevanssi and PublishPress Permissions (Pro)

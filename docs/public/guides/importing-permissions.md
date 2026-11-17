@@ -2,6 +2,7 @@
 title: "Importing to PublishPress Permissions"
 order: 21
 doc_category: presspermit
+section: Migrate
 ---
 
 # Importing to PublishPress Permissions

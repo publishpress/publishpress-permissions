@@ -2,6 +2,7 @@
 title: "PublishPress Permissions and Yoast SEO (Pro)"
 order: 47
 doc_category: presspermit
+section: Integrations
 ---
 
 # PublishPress Permissions and Yoast SEO (Pro)

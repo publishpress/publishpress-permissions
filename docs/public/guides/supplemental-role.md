@@ -2,6 +2,7 @@
 title: "How to Add Extra Roles for Specific Post Types"
 order: 52
 doc_category: presspermit
+section: User Groups and Extra Roles
 ---
 
 # How to Add Extra Roles for Specific Post Types

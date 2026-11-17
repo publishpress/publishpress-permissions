@@ -2,6 +2,7 @@
 title: "Visibility Circle Examples (Pro)"
 order: 56
 doc_category: presspermit
+section: Circles
 ---
 
 # Visibility Circle Examples (Pro)

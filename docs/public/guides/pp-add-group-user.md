@@ -2,6 +2,7 @@
 title: "pp_add_group_user"
 order: 31
 doc_category: presspermit
+section: Developer
 ---
 
 # pp_add_group_user

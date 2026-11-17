@@ -2,6 +2,7 @@
 title: "Capabilities in PublishPress Permissions"
 order: 8
 doc_category: presspermit
+section: Capabilities in Permissions
 ---
 
 # Capabilities in PublishPress Permissions

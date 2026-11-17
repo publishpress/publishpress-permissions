@@ -2,6 +2,7 @@
 title: "Getting Started with Teasers"
 order: 16
 doc_category: presspermit
+section: Teasers
 ---
 
 # Getting Started with Teasers

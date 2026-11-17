@@ -2,6 +2,7 @@
 title: "Viewing Permissions for Posts With Specific Terms"
 order: 9
 doc_category: presspermit
+section: View Permissions
 ---
 
 # Viewing Permissions for Posts With Specific Terms
