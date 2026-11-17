@@ -17,7 +17,8 @@ $src=['post_type'=>'page','post_parent'=>0,'post_status'=>'draft','post_mime_typ
 // wp_insert_post() does not pass comment_count to wp_insert_post_data.
 $data=$src;unset($data['comment_count']);
 $count=0;function check($allowed,$data,$arr=[],$update=false){global $f,$count;$count++;try{$f->fltAuthorizeParent($data,$arr,[],$update);$got=true;}catch(RuntimeException $e){$got=false;}if($got!==$allowed)throw new Exception('Parent case '.$count);}
-check(false,$data);$f->authorizeRevisionCopy(100,$src);check(true,$data);check(false,$data);
+check(false,$data);$bad_src=$src;$bad_src['comment_count']=101;$f->authorizeRevisionCopy(100,$bad_src);check(false,$data);
+$f->authorizeRevisionCopy(100,$src);check(true,$data);check(false,$data);
 $f->authorizeRevisionCopy(100,$src);$changed=$data;$changed['post_parent']=55;check(false,$changed);check(false,$data);
 $copy=false;$f->authorizeRevisionCopy(100,$src);check(false,$data);$copy=true;
 $read=false;$f->authorizeRevisionCopy(100,$src);check(false,$data);$read=true;
@@ -29,3 +30,4 @@ check(true,$data,['ID'=>100],true);
 $ordinary=$data;$ordinary['post_mime_type']='';check(false,$ordinary);
 $f->authorizeRevisionCopy(100,$src);check(false,$ordinary);check(false,$data);
 echo "$count revision ancestry and spoofing checks passed\n";
+
