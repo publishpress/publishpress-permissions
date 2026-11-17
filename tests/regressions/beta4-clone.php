@@ -1,7 +1,7 @@
 <?php
 define('ABSPATH','/');define('PRESSPERMIT_CLASSPATH',dirname(__DIR__, 2).'/classes/PublishPress/Permissions');
 define('OBJECT_K','OBJECT_K');$current_user=(object)['ID'=>7];$deny=($argv[1]??'')==='denied';$redirect='';
-class PWPClone {static function REQUEST_key($k){return $_REQUEST[$k]??'';}static function REQUEST_int($k){return (int)($_REQUEST[$k]??0);}static function is_REQUEST($k){return isset($_REQUEST[$k]);}static function REQUEST_url($k){return '';}}
+class PWPClone {static function REQUEST_key($k){return $_REQUEST[$k]??'';}static function REQUEST_int($k){return (int)($_REQUEST[$k]??0);}static function is_REQUEST($k){return isset($_REQUEST[$k]);}static function REQUEST_url($k){return '';}} // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.MissingUnslash, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- The standalone regression shim exposes synthetic request values to the handler.
 class_alias('PWPClone','PublishPress\\Permissions\\UI\\Handlers\\PWP');
 function apply_filters($h,$v,...$args){return $v;}function check_admin_referer(...$a){}function do_action(...$a){}
 function esc_html__($s,$d){return $s;}function __($s,$d){return $s;}function is_wp_error($v){return $v instanceof WP_Error;}class WP_Error{function __construct(...$a){}}
