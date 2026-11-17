@@ -441,7 +441,9 @@ class AdminFilters
             'source' => (int) $source_id,
             'user' => get_current_user_id(),
             'blog' => get_current_blog_id(),
-            'identity' => array_intersect_key($data, array_flip(['post_type', 'post_parent', 'post_status', 'post_mime_type', 'post_author', 'comment_count'])),
+            // comment_count (the source ID) is verified above. wp_insert_post() never passes it to
+            // wp_insert_post_data, so it can't be part of the identity compared there.
+            'identity' => array_intersect_key($data, array_flip(['post_type', 'post_parent', 'post_status', 'post_mime_type', 'post_author'])),
         ];
     }
 
