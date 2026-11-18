@@ -26,6 +26,26 @@ class SettingsTabAdvanced
         add_action('presspermit_advanced_options_ui', [$this, 'optionsUI']);
     }
 
+    /** Native values for the Advanced tab's non-checkbox controls. */
+    public static function optionChoices($name)
+    {
+        if ('lock_top_pages' === $name) {
+            return [
+                'no_parent_filter' => '(' . esc_html__('no Page Parent filter', 'press-permit-core') . ')',
+                'author' => esc_html__('Page Authors, Editors and Administrators', 'press-permit-core'),
+                '' => esc_html__('Page Editors and Administrators', 'press-permit-core'),
+                '1' => esc_html__('Administrators', 'press-permit-core'),
+            ];
+        }
+        if ('limit_user_edit_by_level' === $name) {
+            return [
+                '1' => esc_html__('equal or lower role levels', 'press-permit-core'),
+                'lower_levels' => esc_html__('lower role levels', 'press-permit-core'),
+            ];
+        }
+        return [];
+    }
+
     public function optionTabs($tabs)
     {
         $tabs['advanced'] = esc_html__('Advanced', 'press-permit-core');
@@ -321,7 +341,7 @@ class SettingsTabAdvanced
                         echo esc_html($ui->option_captions['lock_top_pages']);
                         echo '</div>';
 
-                        $captions = ['no_parent_filter' => '(' . esc_html__('no Page Parent filter', 'press-permit-core') . ')', 'author' => esc_html__('Page Authors, Editors and Administrators', 'press-permit-core'), '' => esc_html__('Page Editors and Administrators', 'press-permit-core'), '1' => esc_html__('Administrators', 'press-permit-core')];
+                        $captions = self::optionChoices($id);
 
                         foreach ($captions as $key => $value) {
                             $key = strval($key);
@@ -509,7 +529,7 @@ class SettingsTabAdvanced
                         echo "<label for='" . esc_attr($option_name) . "'>" . esc_html__('User editing capabilities apply for', 'press-permit-core') . '</label>';
                         echo "&nbsp;<select name='" . esc_attr($option_name) . "' id='" . esc_attr($option_name) . "' autocomplete='off'>";
 
-                        $captions = ['1' => esc_html__("equal or lower role levels", 'press-permit-core'), 'lower_levels' => esc_html__("lower role levels", 'press-permit-core')];
+                        $captions = self::optionChoices($option_name);
                         foreach ($captions as $key => $value) {
                             ?>
                             <option value="<?php echo esc_attr($key); ?>" <?php selected($option_val, $key); ?>><?php echo esc_html($value); ?></option>

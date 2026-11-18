@@ -49,60 +49,14 @@ class GroupDeletion
         if (!is_array($rows) || count($rows) > 1000) {
             return Input::error();
         }
-        $scopes = [];
         foreach ($rows as $row) {
-            $object_id = (int) $row->item_id;
-            if (!in_array($row->via_item_source, ['post', 'term', 'pp_group'], true) || !$object_id) {
-                return Access::denied();
+            $active = PermissionsUpdate::exceptionItemExists($row);
+            if (null === $active) {
+                return Access::unconfirmed();
             }
-            if ('term' === $row->via_item_source) {
-                $term = get_term_by('term_taxonomy_id', $object_id, $row->via_item_type);
-                if (!$term) {
-                    return Access::denied();
-                }
-                $object_id = (int) $term->term_id;
-            }
-            $scope = ['agent_type' => 'pp_group', 'agent_id' => $id, 'source' => $row->via_item_source,
-                'object_id' => $object_id, 'operation' => $row->operation, 'status' => $row->for_item_status,
-                'target_source' => $row->for_item_source, 'post_type' => 'post' === $row->for_item_source ? $row->for_item_type : ''];
-            if ('term' === $row->via_item_source) {
-                $scope['taxonomy'] = $row->via_item_type;
-            }
-            if ('include' === $row->mod_type && 'post' === $row->for_item_source) {
-                $affected = Access::postIds([$row->for_item_type]);
-                if (count($affected) > 1000) {
-                    return Input::error();
-                }
-                foreach ($affected as $post) {
-                    if (!current_user_can('read_post', $post) || !current_user_can('edit_post', $post)) {
-                        return Access::denied();
-                    }
-                }
-            }
-            if ('include' === $row->mod_type && 'term' === $row->for_item_source) {
-                $affected = Access::termIds($row->for_item_type);
-                if (count($affected) > 1000) {
-                    return Input::error();
-                }
-                foreach ($affected as $term) {
-                    if (!current_user_can('edit_term', $term)) {
-                        return Access::denied();
-                    }
-                }
-            }
-            if ('include' === $row->mod_type && 'pp_group' === $row->for_item_source) {
-                $checked = Delegation::authorizeChange(['object_id' => $object_id, 'assign_for' => 'item', 'mod_type' => 'include', 'enabled' => false]);
-                if (is_wp_error($checked)) {
-                    return $checked;
-                }
-            }
-            $key = wp_json_encode($scope);
-            if (!isset($scopes[$key])) {
-                $state = (new Exceptions())->read($scope);
-                if (is_wp_error($state)) {
-                    return $state;
-                }
-                $scopes[$key] = $state['revision'];
+            if ($active) {
+                return new \WP_Error('presspermit_mcp_group_has_permissions',
+                    __('Remove active permission assignments before deleting this group.', 'press-permit-core'));
             }
         }
         $extra = apply_filters('presspermit_mcp_group_deletion_scope', [], $id);
@@ -111,7 +65,7 @@ class GroupDeletion
         }
         return ['id' => $id, 'name' => $group['name'], 'member_count' => count($group['members']),
             'permission_count' => count($rows), 'role_count' => count(presspermit()->getRoles($id, 'pp_group')),
-            'revision' => Access::revision([$group, $rows, $scopes, $extra])];
+            'revision' => Access::revision([$group, $rows, $extra])];
     }
 
     public function delete($input)
@@ -131,7 +85,16 @@ class GroupDeletion
         if (!empty($input['dry_run'])) {
             return ['dry_run' => true] + $before;
         }
-        presspermit()->groups()->deleteGroup($input['id'], 'pp_group');
+        $rows = PermissionsUpdate::getAgentRemovalItems($input['id'], 'pp_group');
+        if (!is_array($rows) || count($rows) > 1000 || count($rows) !== $before['permission_count']) {
+            return Access::unconfirmed();
+        }
+        if (!PermissionsUpdate::cleanupGroupExceptionOrphans($input['id'], $rows)) {
+            return Access::unconfirmed();
+        }
+        if (!presspermit()->groups()->deleteGroup($input['id'], 'pp_group', true)) {
+            return Access::unconfirmed();
+        }
         do_action('presspermit_trigger_cache_flush');
         $groups = presspermit()->groups()->getGroups('pp_group', ['ids' => [$input['id']]]);
         if ($groups || PermissionsUpdate::getAgentRemovalItems($input['id'], 'pp_group')

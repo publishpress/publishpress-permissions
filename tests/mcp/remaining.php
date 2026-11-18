@@ -107,23 +107,28 @@ try {
     $extra_group = $created['id'];
     $scope = ['agent_type' => 'pp_group', 'agent_id' => $extra_group, 'source' => 'post', 'object_id' => $post_id, 'operation' => 'read'];
     $rules = $check_result(permissions_mcp_call('get-permissions', $scope), 'Deletion permission scope');
-    $check_result(permissions_mcp_call('set-permission', $scope + ['revision' => $rules['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true]), 'Deletion permission fixture');
-    $deletion = $check_result(permissions_mcp_call('get-group-deletion', ['id' => $extra_group]), 'Deletion preflight');
-    permissions_mcp_check(1 === $deletion['permission_count'], 'Deletion preflight missed a native permission.');
+    $saved_rule = $check_result(permissions_mcp_call('set-permission', $scope + [
+        'revision' => $rules['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true,
+    ]), 'Deletion permission fixture');
+    $blocked = permissions_mcp_call('get-group-deletion', ['id' => $extra_group]);
+    permissions_mcp_check(is_wp_error($blocked) && 'presspermit_mcp_group_has_permissions' === $blocked->get_error_code(),
+        'A live permission item did not block group deletion.');
+    permissions_mcp_check(is_wp_error(permissions_mcp_call('delete-group', ['id' => $extra_group, 'revision' => $rules['revision']])),
+        'Deletion accepted a live permission item.');
+
+    // Simulate an interrupted item cleanup, then run the same deletion preflight.
+    $missing_post = wp_insert_post(['post_title' => 'MCP orphan fixture', 'post_status' => 'draft']);
+    permissions_mcp_check($missing_post > 0 && wp_delete_post($missing_post, true), 'Could not prepare a missing post reference.');
+    global $wpdb;
+    // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Deliberately create an orphan in the isolated fixture.
+    $wpdb->update($wpdb->ppc_exception_items, ['item_id' => $missing_post], ['eitem_id' => $saved_rule['rules'][0]['id']]);
+    $deletion = $check_result(permissions_mcp_call('get-group-deletion', ['id' => $extra_group]), 'Orphan-only deletion preflight');
+    permissions_mcp_check(1 === $deletion['permission_count'], 'Deletion preflight missed an orphaned permission item.');
     $delete = ['id' => $extra_group, 'revision' => $deletion['revision'], 'dry_run' => true];
-    $check_result(permissions_mcp_call('delete-group', $delete), 'Deletion preview');
+    $check_result(permissions_mcp_call('delete-group', $delete), 'Orphan-only deletion preview');
     permissions_mcp_check(!is_wp_error(permissions_mcp_call('get-group', ['id' => $extra_group])), 'Preview deleted the group.');
-    $deny_delete_object = static function ($caps, $cap, $actor, $args) use ($post_id) {
-        return 'edit_post' === $cap && (int) ($args[0] ?? 0) === (int) $post_id ? ['do_not_allow'] : $caps;
-    };
-    add_filter('map_meta_cap', $deny_delete_object, PHP_INT_MAX, 4);
-    try {
-        permissions_mcp_check(is_wp_error(permissions_mcp_call('delete-group', $delete)), 'Group deletion bypassed a denied cascade object.');
-    } finally {
-        remove_filter('map_meta_cap', $deny_delete_object, PHP_INT_MAX);
-    }
     $delete['dry_run'] = false;
-    $deleted = $check_result(permissions_mcp_call('delete-group', $delete), 'Group deletion');
+    $deleted = $check_result(permissions_mcp_call('delete-group', $delete), 'Orphan-only group deletion');
     permissions_mcp_check($deleted['deleted'] && is_wp_error(permissions_mcp_call('get-group', ['id' => $extra_group])), 'Native group deletion failed.');
     $extra_group = 0;
     if (defined('PRESSPERMIT_PRO_VERSION') && presspermit()->moduleActive('sync')) {

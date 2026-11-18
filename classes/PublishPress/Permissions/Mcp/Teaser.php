@@ -84,7 +84,8 @@ class Teaser extends NativeOptions
         }
         if ($scope) {
             $type = get_post_type_object($scope);
-            if (!$type || !in_array($scope, presspermit()->getEnabledPostTypes(), true)
+            if (!$type || isset(\PublishPress\Permissions\Teaser::noTeaseTypes()[$scope])
+                || !in_array($scope, presspermit()->getEnabledPostTypes(), true)
                 || !current_user_can($type->cap->edit_others_posts) || !current_user_can($type->cap->read_private_posts)) {
                 return Access::denied();
             }
@@ -151,11 +152,12 @@ class Teaser extends NativeOptions
             if (!array_intersect($redirect_fields, array_keys($changes))) {
                 continue;
             }
-            if ('(select)' === $values[$name]) {
+            if ('(select)' === $values[$name] || (array_key_exists($name . '_page', $changes) && $values[$name . '_page'])
+                || (array_key_exists($name . '_post_type', $changes) && $values[$name . '_page'])) {
                 $id = $values[$name . '_page'];
                 $post = get_post($id);
                 $type = get_post_type_object($values[$name . '_post_type']);
-                if (!$post || !$type || !$type->public || 'attachment' === $type->name || $post->post_type !== $type->name
+                if (!$id || !$post || 'publish' !== $post->post_status || !$type || !$type->public || 'attachment' === $type->name || $post->post_type !== $type->name
                     || !current_user_can('read_post', $id) || !current_user_can('edit_post', $id)) {
                     return Access::denied();
                 }

@@ -1,6 +1,9 @@
 <?php
 namespace PublishPress\Permissions\Mcp;
 
+use PublishPress\Permissions\RoleAdmin;
+use PublishPress\Permissions\UI\AgentRolesAjax;
+
 \defined('ABSPATH') || exit;
 
 /** Typed supplemental-role patches through the native assignment lifecycle. */
@@ -104,6 +107,22 @@ class Roles
             if (!in_array($parts[2], $types, true) || !Access::roleAllowed($row['role'])
                 || !$pp->admin()->userCanAdminRole($parts[0], $parts[2])) {
                 return Access::denied();
+            }
+            require_once PRESSPERMIT_CLASSPATH . '/RoleAdmin.php';
+            require_once PRESSPERMIT_CLASSPATH . '/UI/AgentRolesAjax.php';
+            $scoped_role = implode(':', array_slice($parts, 0, 3));
+            $native_roles = RoleAdmin::getTypeRoles($parts[1], $parts[2]);
+            if (!isset($native_roles[$scoped_role])) {
+                return Input::error();
+            }
+            if ('post' === $parts[1] && 'attachment' !== $parts[2]) {
+                $caps = $pp->getRoleCaps($scoped_role);
+                $statuses = AgentRolesAjax::statusChoices($parts[2], $caps, $scoped_role);
+                if (!isset($statuses[$parts[4] ?? ''])) {
+                    return Input::error();
+                }
+            } elseif (isset($parts[4])) {
+                return Input::error();
             }
             if ('post' === $parts[1]) {
                 $type = get_post_type_object($parts[2]);
@@ -211,7 +230,8 @@ class Roles
         if (!function_exists('get_editable_roles')) {
             require_once ABSPATH . 'wp-admin/includes/user.php';
         }
-        if (!isset(get_editable_roles()[$name])) {
+        require_once PRESSPERMIT_CLASSPATH . '/RoleAdmin.php';
+        if (!isset(get_editable_roles()[$name]) || !isset(RoleAdmin::getTypeRoles('post', '-1')[$name])) {
             return Access::denied();
         }
         if ('pp_group' === $subject['agent_type']) {

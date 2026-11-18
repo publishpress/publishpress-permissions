@@ -76,13 +76,7 @@ class Settings
         $ui->display_hints = presspermit()->getOption('display_hints');
         $is_force_display_hints = presspermit()->getOption('force_display_hints') ? 'force-display-hints' : '';
 
-        if ($_hidden = apply_filters('presspermit_hide_options', [])) {
-            $hidden = [];
-            foreach (array_keys($_hidden) as $option_name) {
-                if (!is_array($_hidden[$option_name]) && strlen($option_name) > 3)
-                    $hidden[] = substr($option_name, 3);
-            }
-
+        if ($hidden = SettingsAdmin::hiddenOptions()) {
             foreach (array_keys($ui->form_options) as $tab) {
                 foreach (array_keys($ui->form_options[$tab]) as $section)
                     $ui->form_options[$tab][$section] = array_diff($ui->form_options[$tab][$section], $hidden);

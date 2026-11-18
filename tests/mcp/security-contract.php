@@ -23,8 +23,29 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
         $capture('advanced_options');
         presspermit()->updateOption('advanced_options', '1');
         $discovery = $ok(permissions_mcp_call('get-settings'), 'Full native settings discovery');
+        $hide = static function ($options) {
+            $options['pp_display_hints'] = true;
+            return $options;
+        };
+        add_filter('presspermit_hide_options', $hide);
+        try {
+            $hidden = $ok(permissions_mcp_call('get-settings'), 'Hidden setting discovery');
+            permissions_mcp_check(!isset($hidden['settings']->display_hints), 'Native hidden option was advertised.');
+            permissions_mcp_check(is_wp_error(permissions_mcp_call('update-settings', [
+                'revision' => $hidden['revision'], 'changes' => ['display_hints' => false],
+            ])), 'Native hidden option was writable.');
+        } finally {
+            remove_filter('presspermit_hide_options', $hide);
+        }
+        if (isset($discovery['settings']->lock_top_pages) && $discovery['settings']->lock_top_pages['writable']) {
+            $capture('lock_top_pages');
+            $radio = $ok(permissions_mcp_call('update-settings', [
+                'revision' => $discovery['revision'], 'changes' => ['lock_top_pages' => 'author'],
+            ]), 'Native settings radio save');
+            permissions_mcp_check('author' === $radio['settings']->lock_top_pages['value'], 'Native radio value failed to round-trip.');
+        }
         foreach ((array) $discovery['settings'] as $name => $field) {
-            if (!$field['writable'] || $name === 'advanced_options') {
+            if (!$field['writable'] || 'boolean' !== $field['schema']['type'] || $name === 'advanced_options') {
                 continue;
             }
             $capture($name);
@@ -164,7 +185,7 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
             $terms[] = (int) $term['term_id'];
         }
         $scope = ['agent_type' => 'pp_group', 'agent_id' => $group_id, 'source' => 'term', 'object_id' => $terms[0],
-            'taxonomy' => 'mcp_security_tax', 'target_source' => 'term', 'operation' => 'assign'];
+            'taxonomy' => 'mcp_security_tax', 'target_source' => 'term', 'operation' => 'manage'];
         $state = $ok(permissions_mcp_call('get-permissions', $scope), 'Native term permission discovery');
         $deny = static function ($caps, $cap, $user_id, $args) use ($terms) {
             if ($cap === 'edit_term' && (int) ($args[0] ?? 0) === $terms[1]) {
@@ -181,6 +202,17 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
         }
         $state = $ok(permissions_mcp_call('get-permissions', $scope), 'Fresh term permission state');
         $term_patch = $scope + ['revision' => $state['revision'], 'mod_type' => 'include', 'assign_for' => 'item', 'enabled' => true];
+        $hidden_mode = static function ($modes) {
+            unset($modes['include']);
+            return $modes;
+        };
+        add_filter('presspermit_exception_modes', $hidden_mode);
+        try {
+            permissions_mcp_check(is_wp_error(permissions_mcp_call('set-permission', $term_patch)),
+                'A permission mode removed from the native selector was saved.');
+        } finally {
+            remove_filter('presspermit_exception_modes', $hidden_mode);
+        }
         $saved_term = $ok(permissions_mcp_call('set-permission', $term_patch), 'Native term inclusion save');
         permissions_mcp_check(count($saved_term['rules']) === 1, 'Native term inclusion did not round-trip.');
         permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permissions', array_replace($scope, ['object_id' => (string) $terms[0]]))), 'Numeric-string term ID accepted.');

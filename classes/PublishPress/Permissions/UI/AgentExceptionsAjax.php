@@ -6,6 +6,132 @@ namespace PublishPress\Permissions\UI;
 
 class AgentExceptionsAjax
 {
+    public static function operationChoices($for_source_name, $for_type, $agent_type, $agent_id)
+    {
+        $pp = presspermit();
+        $ops = (('post' == $for_source_name) && ('attachment' != $for_type)) ? ['read' => esc_html__('View', 'press-permit-core')] : [];
+        $ops = apply_filters('presspermit_exception_operations', $ops, $for_source_name, $for_type);
+
+        if ('pp_group' == $agent_type) {
+            $group = $pp->groups()->getGroup($agent_id);
+            if (!empty($group->metagroup_id) && in_array($group->metagroup_id, ['wp_anon', 'wp_all'], true) && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')) {
+                $ops = \PressShack\LibArray::subset($ops, ['read']);
+            }
+        }
+        return $ops;
+    }
+
+    public static function modeChoices($for_source_name, $for_type, $operation, $agent_type, $agent_id)
+    {
+        $pp = presspermit();
+        $modes = [];
+        if ($agent_id && ('pp_group' == $agent_type)) {
+            $group = $pp->groups()->getGroup($agent_id);
+            $is_wp_role = ($group && 'wp_role' === $group->metagroup_type);
+        } else
+            $is_wp_role = false;
+
+        if ((!$is_wp_role
+                || !in_array($group->metagroup_id, ['wp_anon', 'wp_all'])
+                || ($pp->moduleActive('file-access') && 'attachment' == $for_type)
+                || defined('PP_ALL_ANON_FULL_EXCEPTIONS'))
+            && !defined('PP_NO_ADDITIONAL_ACCESS')
+        ) {
+            $modes['additional'] = esc_html__('Enable', 'press-permit-core');
+        }
+
+        if (('user' == $agent_type) || $is_wp_role || ('assign' == $operation) || !defined('PP_NO_GROUP_RESTRICTIONS')) {
+            // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
+            $modes['exclude'] = esc_html__('Block', 'press-permit-core');
+        }
+
+        $modes['include'] = esc_html__('Limit to', 'press-permit-core');
+
+        $modes = apply_filters('presspermit_exception_modes', $modes, $for_source_name, $for_type, $operation);
+        return $modes;
+    }
+
+    public static function qualificationChoices($for_source_name, $for_type, $operation, $mod_type)
+    {
+        $pp = presspermit();
+        $types = [];
+
+        if ('post' == $for_source_name) {
+            if ('associate' != $operation) {
+                if ('assign' != $operation) {  // 'assign' op only pertains to terms
+                    if ($type_obj = get_post_type_object($for_type)) {
+                        $types = ['' => esc_html__('Selected:', 'press-permit-core')];
+                    }
+                }
+
+                $type_arg = ($for_type) ? ['object_type' => $for_type] : [];
+                $taxonomies = $pp->getEnabledTaxonomies($type_arg, 'object');
+
+                if ($taxonomies) {
+                    $tax_types = [];
+                    foreach ($taxonomies as $_taxonomy => $tx) {
+                        if ('nav_menu' == $_taxonomy) {
+                            if (in_array(get_locale(), ['en_EN', 'en_US'])) {
+                                $tx->labels->name = __('Nav Menus (Legacy)', 'press-permit-core');
+                            } else {
+                                $tx->labels->name .= ' (' . __('Legacy', 'press-permit-core') . ')';
+                            }
+                        }
+
+                        $tax_types[$_taxonomy] = sprintf(esc_html__('%s:', 'press-permit-core'), $tx->labels->name);
+                    }
+
+                    uasort($tax_types, 'strnatcasecmp');  // sort by values without resetting keys
+
+                    $types = array_merge($types, $tax_types);
+                }
+            } else {
+                // 'associate' exceptions regulate parent assignment. This does not pertain to taxonomies, but may apply to other post types as specified by the filter.
+                $aff_types = (array)apply_filters('presspermit_parent_types', [$for_type], $for_type);
+
+                foreach ($aff_types as $_type) {
+                    if ($type_obj = get_post_type_object($_type)) {
+                        $types[$_type] =  sprintf(esc_html__('%s:', 'press-permit-core'), $type_obj->labels->name);
+                    }
+                }
+            }
+        } elseif (in_array($for_source_name, ['pp_group', 'pp_net_group'], true)) {
+            if ($group_type_obj = $pp->groups()->getGroupTypeObject($for_source_name)) {
+                $types[$for_source_name] = sprintf(esc_html__('%s:', 'press-permit-core'), $group_type_obj->labels->name);
+            }
+        }
+
+        $types = apply_filters('presspermit_exception_via_types', $types, $for_source_name, $for_type, $operation, $mod_type);
+        return $types;
+    }
+
+    public static function childScope($type, $for_type, $operation, $mod_type)
+    {
+        $context = compact('operation', 'mod_type');
+        $shown = !empty($type->hierarchical)
+            && apply_filters('presspermit_do_assign_for_children_ui', true, $for_type, $context);
+        return [
+            'shown' => $shown,
+            'checked' => $shown && apply_filters('presspermit_assign_for_children_checked', false, $for_type, $context),
+            'locked' => $shown && apply_filters('presspermit_assign_for_children_locked', false, $for_type, $context),
+        ];
+    }
+
+    public static function statusChoices($source, $type, $via_source, $operation, $mode)
+    {
+        if ('post' !== $source || 'additional' !== $mode) {
+            return [];
+        }
+        $choices = [];
+        if ('term' === $via_source && 'forum' !== $type) {
+            $choices['post_status:private'] = sprintf(
+                __('%s Visibility', 'press-permit-core'),
+                get_post_status_object('private')->label
+            );
+        }
+        return apply_filters('presspermit_exception_status_choices', $choices, $type, $via_source, $operation);
+    }
+
     public function __construct() 
     {
         check_ajax_referer('pp-ajax');
@@ -67,15 +193,8 @@ class AgentExceptionsAjax
                     exit;
                 }
 
-                $ops = (('post' == $for_source_name) && ('attachment' != $for_type)) ? ['read' => esc_html__('View', 'press-permit-core')] : [];
-                $ops = apply_filters('presspermit_exception_operations', $ops, $for_source_name, $for_type);
+                $ops = self::operationChoices($for_source_name, $for_type, $agent_type, $agent_id);
 
-                if ('pp_group' == $agent_type) {
-                    $group = $pp->groups()->getGroup($agent_id);
-                    if (in_array($group->metagroup_id, ['wp_anon', 'wp_all']) && !defined('PP_ALL_ANON_FULL_EXCEPTIONS')) {
-                        $ops = \PressShack\LibArray::subset($ops, ['read']);
-                    }
-                }
                 $for_type = !empty($for_type) ? $for_type : 'all';
 
                 if ($type_obj = get_post_type_object($for_type)) {
@@ -134,29 +253,7 @@ class AgentExceptionsAjax
                     exit;
                 }
 
-                if ($agent_id && ('pp_group' == $agent_type)) {
-                    $group = $pp->groups()->getGroup($agent_id);
-                    $is_wp_role = ('wp_role' == $group->metagroup_type);
-                } else
-                    $is_wp_role = false;
-
-                if ((!$is_wp_role
-                        || !in_array($group->metagroup_id, ['wp_anon', 'wp_all'])
-                        || ($pp->moduleActive('file-access') && 'attachment' == $for_type)
-                        || defined('PP_ALL_ANON_FULL_EXCEPTIONS'))
-                    && !defined('PP_NO_ADDITIONAL_ACCESS')
-                ) {
-                    $modes['additional'] = esc_html__('Enable', 'press-permit-core');
-                }
-
-                if (('user' == $agent_type) || $is_wp_role || ('assign' == $operation) || !defined('PP_NO_GROUP_RESTRICTIONS')) {
-                    // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
-                    $modes['exclude'] = esc_html__('Block', 'press-permit-core');
-                }
-
-                $modes['include'] = esc_html__('Limit to', 'press-permit-core');
-
-                $modes = apply_filters('presspermit_exception_modes', $modes, $for_source_name, $for_type, $operation);
+                $modes = self::modeChoices($for_source_name, $for_type, $operation, $agent_type, $agent_id);
 
                 $tooltips = [
                     'additional' => esc_html__('Expand access to allow specified items regardless of role capabilities or restrictions.', 'press-permit-core'),
@@ -206,54 +303,7 @@ class AgentExceptionsAjax
                     exit;
                 }
 
-                $types = [];
-
-                if ('post' == $for_source_name) {
-                    if ('associate' != $operation) {
-                        if ('assign' != $operation) {  // 'assign' op only pertains to terms
-                            if ($type_obj = get_post_type_object($for_type)) {
-                                $types = ['' => esc_html__('Selected:', 'press-permit-core')];
-                            }
-                        }
-
-                        $type_arg = ($for_type) ? ['object_type' => $for_type] : [];
-                        $taxonomies = $pp->getEnabledTaxonomies($type_arg, 'object');
-
-                        if ($taxonomies) {
-                            $tax_types = [];
-                            foreach ($taxonomies as $_taxonomy => $tx) {
-                                if ('nav_menu' == $_taxonomy) {
-                                    if (in_array(get_locale(), ['en_EN', 'en_US'])) {
-                                        $tx->labels->name = __('Nav Menus (Legacy)', 'press-permit-core');
-                                    } else {
-                                        $tx->labels->name .= ' (' . __('Legacy', 'press-permit-core') . ')';
-                                    }
-                                }
-
-                                $tax_types[$_taxonomy] = sprintf(esc_html__('%s:', 'press-permit-core'), $tx->labels->name);
-                            }
-
-                            uasort($tax_types, 'strnatcasecmp');  // sort by values without resetting keys
-
-                            $types = array_merge($types, $tax_types);
-                        }
-                    } else {
-                        // 'associate' exceptions regulate parent assignment. This does not pertain to taxonomies, but may apply to other post types as specified by the filter.
-                        $aff_types = (array)apply_filters('presspermit_parent_types', [$for_type], $for_type);
-
-                        foreach ($aff_types as $_type) {
-                            if ($type_obj = get_post_type_object($_type)) {
-                                $types[$_type] =  sprintf(esc_html__('%s:', 'press-permit-core'), $type_obj->labels->name);
-                            }
-                        }
-                    }
-                } elseif (in_array($for_source_name, ['pp_group', 'pp_net_group'], true)) {
-                    if ($group_type_obj = $pp->groups()->getGroupTypeObject($for_source_name)) {
-                        $types[$for_source_name] = sprintf(esc_html__('%s:', 'press-permit-core'), $group_type_obj->labels->name);
-                    }
-                }
-
-                $types = apply_filters('presspermit_exception_via_types', $types, $for_source_name, $for_type, $operation, $mod_type);
+                $types = self::qualificationChoices($for_source_name, $for_type, $operation, $mod_type);
 
                 foreach ($types as $val => $title) {
                     $class = ($for_type == $val) ? 'pp-post-object' : '';
@@ -279,19 +329,14 @@ class AgentExceptionsAjax
                         . '<label id="pp_x_item_assign_label" for="pp_select_x_item_assign"> '
                         . sprintf(esc_html__('Selected %s:', 'press-permit-core'), esc_html($type_obj->labels->name)) . '</label></div>';
 
-                    if (
-                        $type_obj && $type_obj->hierarchical
-                        && apply_filters('presspermit_do_assign_for_children_ui', true, $for_type, compact('operation', 'mod_type'))
-                    ) {
+                    $child_scope = self::childScope($type_obj, $for_type, $operation, $mod_type);
+                    if ($child_scope['shown']) {
                         if (!$caption = apply_filters('presspermit_assign_for_children_caption', '', $for_type)) {
                             $caption = sprintf(esc_html__('Sub-%s:', 'press-permit-core'), $type_obj->labels->name);
                         }
 
-                        $checked = (apply_filters('presspermit_assign_for_children_checked', false, $for_type, compact('operation', 'mod_type')))
-                            ? ' checked ' : '';
-
-                        $disabled = (apply_filters('presspermit_assign_for_children_locked', false, $for_type, compact('operation', 'mod_type')))
-                            ? ' disabled ' : '';
+                        $checked = $child_scope['checked'] ? ' checked ' : '';
+                        $disabled = $child_scope['locked'] ? ' disabled ' : '';
 
                         echo '<div class="pp-checkbox">'
                             . '<input type="checkbox" id="pp_select_x_child_assign" name="pp_select_x_for_children" value="1"'
@@ -320,19 +365,15 @@ class AgentExceptionsAjax
                     . '<label for="pp_select_x_cond_post_status_">' . esc_html__('All Statuses', 'press-permit-core') . '</label>'
                     . '</p>';
 
-                if (('post' != $for_source_name) || ($mod_type != 'additional')) {
-                    break;
+                foreach (self::statusChoices($for_source_name, $for_type, $via_source_name, $operation, $mod_type) as $status => $label) {
+                    echo '<p class="pp-checkbox pp_select_private_status">'
+                        . '<input type="checkbox" id="' . esc_attr('pp_select_x_cond_' . str_replace(':', '_', $status))
+                        . '" name="pp_select_x_cond[]" value="' . esc_attr($status) . '" />'
+                        . '<label for="' . esc_attr('pp_select_x_cond_' . str_replace(':', '_', $status))
+                        . '"> ' . esc_html($label) . '</label></p>';
                 }
-
-                if ('term' == $via_source_name) {
-                    if ('forum' != $for_type) {
-                        $pvt_obj = get_post_status_object('private');
-
-                        echo '<p class="pp-checkbox pp_select_private_status">'
-                            . '<input type="checkbox" id="pp_select_x_cond_post_status_private" name="pp_select_x_cond[]" value="post_status:private" />'
-                            . '<label for="pp_select_x_cond_post_status_private"> ' . sprintf(esc_html__('%s Visibility', 'press-permit-core'), esc_html($pvt_obj->label)) . '</label>'
-                            . '</p>';
-                    }
+                if ('post' !== $for_source_name || 'additional' !== $mod_type) {
+                    break;
                 }
 
                 $type_obj = get_post_type_object($for_type);

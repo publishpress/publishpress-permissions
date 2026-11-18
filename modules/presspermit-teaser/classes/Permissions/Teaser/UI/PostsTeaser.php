@@ -486,13 +486,7 @@ class PostsTeaser
 
             $ui->display_hints = presspermit()->getOption('display_hints');
 
-            if ($_hidden = apply_filters('presspermit_hide_options', [])) {
-                $hidden = [];
-                foreach (array_keys($_hidden) as $option_name) {
-                    if (!is_array($_hidden[$option_name]) && strlen($option_name) > 3)
-                        $hidden[] = substr($option_name, 3);
-                }
-
+            if ($hidden = SettingsAdmin::hiddenOptions()) {
                 foreach (array_keys($ui->form_options) as $tab_key) {
                     foreach (array_keys($ui->form_options[$tab_key]) as $section)
                         $ui->form_options[$tab_key][$section] = array_diff($ui->form_options[$tab_key][$section], $hidden);

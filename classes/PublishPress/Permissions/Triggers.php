@@ -55,7 +55,7 @@ class Triggers
             add_action('delete_user', [$this, 'actDeleteUsers']);
         }
 
-        add_action('presspermit_deleted_group', [$this, 'actDeletedGroup'], 10, 2);
+        add_action('presspermit_deleted_group', [$this, 'actDeletedGroup'], 10, 3);
 
         add_filter('editable_roles', [$this, 'fltHideRoles']);
 
@@ -223,9 +223,9 @@ class Triggers
         }
     }
 
-    public function actDeletedGroup($group_id, $agent_type)
+    public function actDeletedGroup($group_id, $agent_type, $permissions_already_cleaned = false)
     {
-        if ('pp_group' == $agent_type) {
+        if ('pp_group' == $agent_type && !$permissions_already_cleaned) {
             ppc_delete_agent_permissions($group_id, $agent_type);
         }
     }

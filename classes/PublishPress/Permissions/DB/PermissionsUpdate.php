@@ -32,12 +32,13 @@ class PermissionsUpdate
     public static function getAgentRemovalItems($agent_id, $agent_type)
     {
         global $wpdb;
-        return $wpdb->get_results($wpdb->prepare(
+        $rows = $wpdb->get_results($wpdb->prepare(
             "SELECT e.*, i.* FROM $wpdb->ppc_exceptions AS e"
             . " INNER JOIN $wpdb->ppc_exception_items AS i ON i.exception_id = e.exception_id"
             . " WHERE e.agent_id = %d AND e.agent_type = %s ORDER BY i.eitem_id LIMIT 1001",
             $agent_id, $agent_type
         ));
+        return $wpdb->last_error ? null : $rows;
     }
     // additional arguments recognized by insertRoleAssignments():
     // is_auto_insertion = false  (if true, skips logging the item as having a manually modified role assignment)
@@ -897,6 +898,79 @@ class PermissionsUpdate
         }
 
         return $updated_items;
+    }
+
+    /** Check stored references without post status, registration or capability filters. */
+    public static function exceptionItemExists($row)
+    {
+        global $wpdb;
+        $id = (int) $row->item_id;
+        if (!$id) {
+            return null;
+        }
+
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        switch ($row->via_item_source) {
+            case 'post':
+                $object = $wpdb->get_var($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE ID = %d", $id));
+                break;
+            case 'term':
+                $object = $wpdb->get_var($wpdb->prepare(
+                    "SELECT t.term_id FROM $wpdb->term_taxonomy AS tt INNER JOIN $wpdb->terms AS t ON t.term_id = tt.term_id"
+                    . " WHERE tt.term_taxonomy_id = %d",
+                    $id
+                ));
+                break;
+            default:
+                // Group references and extension-defined sources remain blockers.
+                return true;
+        }
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+
+        return $wpdb->last_error ? null : (null !== $object);
+    }
+
+    /** Remove confirmed orphan rows without deleting a parent that still has linked items. */
+    public static function cleanupGroupExceptionOrphans($group_id, $rows)
+    {
+        global $wpdb;
+        $group_id = (int) $group_id;
+        $ids = array_map('intval', array_column($rows, 'eitem_id'));
+
+        // Each delete checks the relationship and object existence again at the point of the write.
+        // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        if ($ids) {
+            $id_list = implode(',', $ids);
+            $removed = $wpdb->query($wpdb->prepare(
+                "DELETE i FROM $wpdb->ppc_exception_items AS i"
+                . " INNER JOIN $wpdb->ppc_exceptions AS e ON e.exception_id = i.exception_id"
+                . " LEFT JOIN $wpdb->posts AS p ON e.via_item_source = 'post' AND p.ID = i.item_id"
+                . " LEFT JOIN $wpdb->term_taxonomy AS tt ON e.via_item_source = 'term' AND tt.term_taxonomy_id = i.item_id"
+                . " LEFT JOIN $wpdb->terms AS t ON t.term_id = tt.term_id"
+                . " WHERE e.agent_type = 'pp_group' AND e.agent_id = %d AND i.eitem_id IN ($id_list)" // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+                . " AND i.item_id > 0 AND ((e.via_item_source = 'post' AND p.ID IS NULL)"
+                . " OR (e.via_item_source = 'term' AND t.term_id IS NULL))",
+                $group_id
+            ));
+            if (false === $removed || $removed !== count($ids)) {
+                return false;
+            }
+        }
+        $removed = $wpdb->query($wpdb->prepare(
+            "DELETE e FROM $wpdb->ppc_exceptions AS e"
+            . " LEFT JOIN $wpdb->ppc_exception_items AS i ON i.exception_id = e.exception_id"
+            . " WHERE e.agent_type = 'pp_group' AND e.agent_id = %d AND i.eitem_id IS NULL",
+            $group_id
+        ));
+        if (false === $removed) {
+            return false;
+        }
+        $remaining = $wpdb->get_var($wpdb->prepare(
+            "SELECT exception_id FROM $wpdb->ppc_exceptions WHERE agent_type = 'pp_group' AND agent_id = %d LIMIT 1",
+            $group_id
+        ));
+        // phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+        return !$wpdb->last_error && null === $remaining;
     }
 
     /** Read the exact native removal scope so non-form clients can authorize every affected item. */

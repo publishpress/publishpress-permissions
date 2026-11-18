@@ -220,7 +220,7 @@ class GroupUpdate
         return (int)$wpdb->insert_id;
     }
 
-    public static function deleteGroup($group_id, $agent_type = 'pp_group')
+    public static function deleteGroup($group_id, $agent_type = 'pp_group', $permissions_already_cleaned = false)
     {
         global $wpdb;
 
@@ -242,7 +242,7 @@ class GroupUpdate
 
         $wpdb->delete($members_table, compact('group_id'));
 
-        do_action('presspermit_deleted_group', $group_id, $agent_type);
+        do_action('presspermit_deleted_group', $group_id, $agent_type, $permissions_already_cleaned);
 
         return true;
     }

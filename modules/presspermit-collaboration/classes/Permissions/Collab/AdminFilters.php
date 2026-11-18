@@ -28,20 +28,13 @@ class AdminFilters
 
         add_filter('presspermit_append_attachment_clause', [$this, 'fltAppendAttachmentClause'], 10, 3);
 
-        add_filter('presspermit_operation_captions', [$this, 'fltOperationCaptions']);
 
         // called by permissions-ui
-        add_filter('presspermit_exception_types', [$this, 'fltExceptionTypes']);
-        add_filter('presspermit_append_exception_types', [$this, 'fltAppendExceptionTypes']);
         add_action('presspermit_role_types_dropdown', [$this, 'actDropdownTaxonomyTypes']);
 
         // called by ajax-exceptions-ui
-        add_filter('presspermit_exception_operations', [$this, 'fltExceptionOperations'], 2, 3);
-        add_filter('presspermit_exception_via_types', [$this, 'fltExceptionViaTypes'], 10, 5);
         add_action('presspermit_exceptions_status_ui', [$this, 'actExceptionsStatusUi'], 4, 2);
 
-        add_filter('presspermit_ajax_role_ui_vars', [$this, 'actAjaxRoleVars'], 10, 2);
-        add_filter('presspermit_get_type_roles', [$this, 'fltGetTypeRoles'], 10, 3);
         add_filter('presspermit_role_title', [$this, 'fltGetRoleTitle'], 10, 2);
 
         // called by agent-edit-handler
@@ -150,7 +143,7 @@ class AdminFilters
         return $exception;
     }
 
-    function fltExceptionTypes($types)
+    public static function fltExceptionTypes($types)
     {
         if (isset($types['attachment']))
             $types['attachment'] = get_post_type_object('attachment');
@@ -158,7 +151,7 @@ class AdminFilters
         return $types;
     }
 
-    function fltAppendExceptionTypes($types)
+    public static function fltAppendExceptionTypes($types)
     {
         // Add Term option first (before Permission Group)
         $types['_term_'] = (object)[
@@ -190,19 +183,19 @@ class AdminFilters
         }
     }
 
-    function fltOperationCaptions($op_captions)
+    public static function fltOperationCaptions($op_captions)
     {
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/AjaxUI.php');
         return UI\AjaxUI::fltOperationCaptions($op_captions);
     }
 
-    function fltExceptionOperations($ops, $for_source_name, $for_item_type)
+    public static function fltExceptionOperations($ops, $for_source_name, $for_item_type)
     {
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/AjaxUI.php');
         return UI\AjaxUI::fltExceptionOperations($ops, $for_source_name, $for_item_type);
     }
 
-    function fltExceptionViaTypes($types, $for_source_name, $for_type, $operation, $mod_type)
+    public static function fltExceptionViaTypes($types, $for_source_name, $for_type, $operation, $mod_type)
     {
         require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/UI/AjaxUI.php');
         return UI\AjaxUI::fltExceptionViaTypes($types, $for_source_name, $for_type, $operation, $mod_type);
@@ -238,7 +231,7 @@ class AdminFilters
         return $role_title;
     }
 
-    function actAjaxRoleVars($force, $args)
+    public static function actAjaxRoleVars($force, $args)
     {
         if (0 === strpos($args['for_item_type'], '_term_')) {
             $force = (array)$force;
@@ -249,7 +242,7 @@ class AdminFilters
         return $force;
     }
 
-    function fltGetTypeRoles($type_roles, $for_item_source, $for_item_type)
+    public static function fltGetTypeRoles($type_roles, $for_item_source, $for_item_type)
     {
         if ('term' == $for_item_source) {
             $pp = presspermit();

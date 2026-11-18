@@ -38,7 +38,7 @@ class RoleUsage
                     'usage' => (string) (\PublishPress\Permissions\Collab\UI\RoleUsageQuery::get_role_usage($role) ?: '0')];
             }
         }
-        return ['roles' => $rows, 'writable' => (bool) presspermit()->getOption('advanced_options'), 'revision' => Access::revision([$rows, (new Settings())->snapshot('role_usage'), wp_roles()->roles])];
+        return ['roles' => $rows, 'writable' => !Settings::hidden('role_usage') && (bool) presspermit()->getOption('advanced_options'), 'revision' => Access::revision([$rows, (new Settings())->snapshot('role_usage'), wp_roles()->roles])];
     }
 
     public function update($input)
