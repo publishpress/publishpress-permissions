@@ -131,7 +131,7 @@ class Exceptions
             'status' => $row->for_item_status];
     }
 
-    private function tree($input, $args)
+    private function tree($input, $args, $authorize_descendants = false)
     {
         if ('pp_group' === $input['source']) {
             $group = Delegation::target($input['object_id']);
@@ -156,9 +156,19 @@ class Exceptions
             if (count($visited) > 1000) {
                 return new \WP_Error('presspermit_mcp_scope_limit', __('Use native administration for permission scopes exceeding 1,000 objects.', 'press-permit-core'));
             }
-            $object = $this->objectAccess($input['source'], $id, $input['taxonomy'] ?? '');
-            if (is_wp_error($object)) {
-                return $object;
+            if ($id === (int) $input['object_id'] || $authorize_descendants) {
+                $object = $this->objectAccess($input['source'], $id, $input['taxonomy'] ?? '');
+                if (is_wp_error($object)) {
+                    return $object;
+                }
+            } else {
+                // Read only identifiers and hierarchy metadata for unrelated descendants; their content and permissions are not exposed.
+                $object = 'post' === $input['source']
+                    ? get_post($id)
+                    : get_term($id, $input['taxonomy'] ?? '');
+                if (!$object || is_wp_error($object)) {
+                    return Access::denied();
+                }
             }
             if ('post' === $input['source']) {
                 $snapshot[$id] = [$object->post_parent, $object->post_type, $object->post_status, $object->post_modified_gmt];
@@ -229,6 +239,12 @@ class Exceptions
         $args = $this->context($scope);
         if (is_wp_error($args)) {
             return $args;
+        }
+        if (in_array($input['assign_for'], ['children', 'both'], true)) {
+            $affected = $this->tree($scope, $args, true);
+            if (is_wp_error($affected)) {
+                return $affected;
+            }
         }
         if (('additional' === $input['mod_type'] && defined('PP_NO_ADDITIONAL_ACCESS'))
             || ('exclude' === $input['mod_type'] && 'pp_group' === $input['agent_type'] && defined('PP_NO_GROUP_RESTRICTIONS'))) {

@@ -130,20 +130,27 @@ class Teaser extends NativeOptions
     protected function checkPatch($scope, $values, $changes)
     {
         if (!$scope) {
-            $taxonomy = $values['teaser_hide_links_taxonomy'];
-            $id = $values['teaser_hide_links_term'];
-            if ($taxonomy) {
-                $tx = get_taxonomy($taxonomy);
-                if (!$tx || !current_user_can($tx->cap->manage_terms)
-                    || ($id && (!get_term($id, $taxonomy) || is_wp_error(get_term($id, $taxonomy)) || !current_user_can('edit_term', $id)))) {
-                    return Access::denied();
+            // Object-level checks apply when the referenced taxonomy settings are part of this patch.
+            if (array_intersect(['teaser_hide_links_taxonomy', 'teaser_hide_links_term'], array_keys($changes))) {
+                $taxonomy = $values['teaser_hide_links_taxonomy'];
+                $id = $values['teaser_hide_links_term'];
+                if ($taxonomy) {
+                    $tx = get_taxonomy($taxonomy);
+                    if (!$tx || !current_user_can($tx->cap->manage_terms)
+                        || ($id && (!get_term($id, $taxonomy) || is_wp_error(get_term($id, $taxonomy)) || !current_user_can('edit_term', $id)))) {
+                        return Access::denied();
+                    }
+                } elseif ($id) {
+                    return Input::error();
                 }
-            } elseif ($id) {
-                return Input::error();
             }
             return true;
         }
         foreach (['teaser_redirect', 'teaser_redirect_anon'] as $name) {
+            $redirect_fields = [$name, $name . '_page', $name . '_post_type', $name . '_url'];
+            if (!array_intersect($redirect_fields, array_keys($changes))) {
+                continue;
+            }
             if ('(select)' === $values[$name]) {
                 $id = $values[$name . '_page'];
                 $post = get_post($id);
