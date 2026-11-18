@@ -82,7 +82,7 @@ class Registry
         $deletion = new GroupDeletion();
         foreach (['get-group-deletion' => false, 'delete-group' => true] as $name => $write) {
             $registry->action($name, __('Delete a custom permission group', 'press-permit-core'),
-                __('Read get-group-deletion for the full native deletion scope and revision. Only custom groups can be deleted. Clear all active permission items first. Missing post and term references can be cleaned up during deletion. dry_run previews without deleting. Unknown or oversized permission scopes require native administration.', 'press-permit-core'),
+                __('Read get-group-deletion for the full native deletion scope and revision. Only custom groups can be deleted. Authorized group deletion removes supplemental roles, exceptions and their items. Existing permission objects are checked before the cascade. dry_run previews without deleting. Unknown or oversized permission scopes require native administration.', 'press-permit-core'),
                 $deletion->schema($write), [$deletion, $write ? 'delete' : 'read'], ['pp_delete_groups', 'pp_edit_groups', 'pp_manage_members', 'pp_manage_permissions', 'list_users'], !$write);
         }
         $usage = new RoleUsage();

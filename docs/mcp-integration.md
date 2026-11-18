@@ -110,4 +110,4 @@ Read `completed` and `confirmed_items` after a batch. On a native failure, `fail
 
 The shared `tests/mcp/extended-features.php` fixture verifies these actions with both editions, including native role storage, agent-namespace preservation, primary-role preservation, delegation references, stale/denied/malformed batches and a forced second-item write failure.
 
-Group deletion requires clearing every active permission item first. Items referencing permanently deleted posts or terms can be cleaned up during group deletion. Existing posts and terms continue to block deletion regardless of status, visibility or whether the caller can edit them.
+Authorized group deletion cascades to its supplemental roles, exception definitions and exception items. Standalone exception-definition cleanup preserves definitions with linked active items and can remove confirmed orphaned post and term references.

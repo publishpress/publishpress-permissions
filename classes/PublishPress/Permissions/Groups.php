@@ -244,10 +244,10 @@ class Groups
      * @param array group_id
      * @param array agent_type (pp_group, bp_group, etc.)
      */
-    public function deleteGroup($group_id, $agent_type, $permissions_already_cleaned = false)
+    public function deleteGroup($group_id, $agent_type)
     {
         require_once(PRESSPERMIT_CLASSPATH . '/DB/GroupUpdate.php');
-        return DB\GroupUpdate::deleteGroup($group_id, $agent_type, $permissions_already_cleaned);
+        return DB\GroupUpdate::deleteGroup($group_id, $agent_type);
     }
 
     /**
