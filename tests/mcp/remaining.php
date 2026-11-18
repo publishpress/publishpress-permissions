@@ -108,6 +108,13 @@ try {
     $scope = ['agent_type' => 'pp_group', 'agent_id' => $extra_group, 'source' => 'post', 'object_id' => $post_id, 'operation' => 'read'];
     $rules = $check_result(permissions_mcp_call('get-permissions', $scope), 'Deletion permission scope');
     $check_result(permissions_mcp_call('set-permission', $scope + ['revision' => $rules['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true]), 'Deletion permission fixture');
+    $permission_db = \PublishPress\Permissions\DB\PermissionsUpdate::class;
+    $live = $permission_db::getAgentRemovalItems($extra_group, 'pp_group')[0];
+    permissions_mcp_check(0 === $permission_db::deleteUnusedExceptionsById([$live->exception_id]),
+        'Standalone cleanup deleted an exception with a live item.');
+    permissions_mcp_check(true === $permission_db::agentHasExceptionDefinitions($extra_group, 'pp_group'),
+        'Standalone cleanup removed the live exception definition.');
+
     $deletion = $check_result(permissions_mcp_call('get-group-deletion', ['id' => $extra_group]), 'Deletion preflight');
     permissions_mcp_check(1 === $deletion['permission_count'], 'Deletion preflight missed a native permission.');
     $delete = ['id' => $extra_group, 'revision' => $deletion['revision'], 'dry_run' => true];

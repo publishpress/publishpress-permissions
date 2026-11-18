@@ -80,13 +80,13 @@ abstract class NativeOptions
         return is_wp_error(Input::validate($value, $schema)) ? Input::error() : $value;
     }
 
-    protected function writable($name, $native, $scope = null)
+    protected function writable($name, $native, $scope = null, $candidate = null)
     {
         $pp = presspermit();
-        if (isset($pp->default_advanced_options[$name]) && !$pp->getOption('advanced_options')) {
+        if (Settings::hidden($name) || (isset($pp->default_advanced_options[$name]) && !$pp->getOption('advanced_options'))) {
             return false;
         }
-        $candidate = $pp->site_options;
+        $candidate = $candidate ?? $pp->site_options;
         $candidate['presspermit_' . $name] = $native;
         $filtered = apply_filters('presspermit_options', $candidate);
         if (!array_key_exists('presspermit_' . $name, $filtered)) {
@@ -163,7 +163,7 @@ abstract class NativeOptions
             return $stale;
         }
         $definitions = $this->definitions($scope);
-        $native = $values = [];
+        $native = $values = $scopes = [];
         foreach ((array) $before['settings'] as $name => $row) {
             $values[$name] = $row['value'];
         }
@@ -189,6 +189,16 @@ abstract class NativeOptions
                 return new \WP_Error('presspermit_mcp_configuration_locked', __('This native setting is controlled by configuration:', 'press-permit-core') . ' ' . $name);
             }
             $native[$option] = $sanitized;
+            $scopes[$option] = '' !== $scope && empty($definitions[$name]['scalar']) ? $scope : null;
+        }
+        $candidate = presspermit()->site_options;
+        foreach ($native as $name => $value) {
+            $candidate['presspermit_' . $name] = $value;
+        }
+        foreach ($native as $name => $value) {
+            if (!$this->writable($name, $value, $scopes[$name], $candidate)) {
+                return Access::denied();
+            }
         }
         $checked = $this->checkPatch($scope, $values, $input['changes']);
         if (is_wp_error($checked)) {

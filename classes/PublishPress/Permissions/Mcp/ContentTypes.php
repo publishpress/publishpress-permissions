@@ -57,7 +57,7 @@ class ContentTypes
         $rows = [];
         foreach ($choices['types'] as $name => $object) {
             $enabled = !empty($effective[$name]);
-            $locked = !empty($choices['locked_types'][$name]) || isset($choices['hidden_types'][$name]);
+            $locked = Settings::hidden($option) || !empty($choices['locked_types'][$name]) || isset($choices['hidden_types'][$name]);
             $probe = $values;
             $probe[$name] = $enabled ? '0' : '1';
             $forced = $this->effective($option, $probe);

@@ -30,7 +30,7 @@ Read the corresponding action before choosing identifiers or values. Updates req
 
 Patches preserve omitted fields, unrelated options and other objects. Unknown fields, invalid choices, malformed JSON types and duplicate patch targets are rejected before writes. Temporarily unregistered filtering entries remain intact. Native configuration filters, Advanced locks, active modules and network ownership remain authoritative.
 
-Checkbox inputs are JSON booleans, never strings such as `"false"`. Native settings store checkbox values as `"1"` and either `"0"` or an empty string, according to the native control. Discovery returns exact input schemas and stored values. IDs and lengths use JSON integers; role lists use JSON arrays of strings.
+Checkbox inputs are JSON booleans, never strings such as `"false"`. Native settings store checkbox values as `"1"` and either `"0"` or an empty string, according to the native control. Discovery returns exact input schemas, stored values and the selectable strings for radio and select controls. Options hidden by the native settings filter are unavailable to MCP. IDs and lengths use JSON integers; role lists use JSON arrays of strings.
 
 ## Groups, roles and permissions
 
@@ -109,3 +109,5 @@ Use `get-permissions` and `set-permission` with `source: "pp_group"`, `target_so
 Read `completed` and `confirmed_items` after a batch. On a native failure, `failed_index` identifies the zero-based unconfirmed item, and `results` contains confirmed preceding outcomes. Later items are not attempted. Read every affected scope before retrying; native persistence is not transactional.
 
 The shared `tests/mcp/extended-features.php` fixture verifies these actions with both editions, including native role storage, agent-namespace preservation, primary-role preservation, delegation references, stale/denied/malformed batches and a forced second-item write failure.
+
+Authorized group deletion cascades to its supplemental roles, exception definitions and exception items. Standalone exception-definition cleanup preserves definitions with linked active items and can remove confirmed orphaned post and term references.

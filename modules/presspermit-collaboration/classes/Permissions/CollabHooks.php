@@ -13,6 +13,15 @@ class CollabHooks
         add_filter('presspermit_user_has_group_cap', [Collab\RoleAdmin::class, 'hasGroupCap'], 10, 4);
         add_filter('presspermit_can_set_exceptions', [Collab\RoleAdmin::class, 'canSetExceptions'], 10, 4);
 
+        require_once PRESSPERMIT_COLLAB_CLASSPATH . '/AdminFilters.php';
+        add_filter('presspermit_operation_captions', [Collab\AdminFilters::class, 'fltOperationCaptions']);
+        add_filter('presspermit_exception_types', [Collab\AdminFilters::class, 'fltExceptionTypes']);
+        add_filter('presspermit_append_exception_types', [Collab\AdminFilters::class, 'fltAppendExceptionTypes']);
+        add_filter('presspermit_exception_operations', [Collab\AdminFilters::class, 'fltExceptionOperations'], 2, 3);
+        add_filter('presspermit_exception_via_types', [Collab\AdminFilters::class, 'fltExceptionViaTypes'], 10, 5);
+        add_filter('presspermit_ajax_role_ui_vars', [Collab\AdminFilters::class, 'actAjaxRoleVars'], 10, 2);
+        add_filter('presspermit_get_type_roles', [Collab\AdminFilters::class, 'fltGetTypeRoles'], 10, 3);
+
         // Divi Page Builder
         if (PWP::is_REQUEST('action', 'editpost') && !PWP::empty_REQUEST('et_pb_use_builder') && !PWP::empty_REQUEST('auto_draft')) {
             return;

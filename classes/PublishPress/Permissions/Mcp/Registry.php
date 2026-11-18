@@ -28,7 +28,7 @@ class Registry
             Input::schema([]), [$registry, 'features'], ['pp_manage_settings'], true);
         foreach (['get-settings' => ['read', false], 'update-settings' => ['update', true]] as $name => $operation) {
             $registry->action($name, __('Permissions settings', 'press-permit-core'),
-                __('Read native setting identifiers, exact JSON types, defaults, stored values and revision before patching. Checkbox inputs must be JSON booleans. Omitted options remain unchanged; unknown fields and locked settings are rejected. dry_run validates without saving.', 'press-permit-core'),
+                __('Read native setting identifiers, exact JSON types, defaults, stored values and revision before patching. Checkbox inputs must be JSON booleans. Select and radio inputs use the discovered native strings. Omitted options remain unchanged; unknown fields and locked settings are rejected. dry_run validates without saving.', 'press-permit-core'),
                 $settings->schema($operation[1], true), [$settings, $operation[0]], ['pp_manage_settings'], !$operation[1]);
         }
         $types = new ContentTypes();
@@ -82,7 +82,7 @@ class Registry
         $deletion = new GroupDeletion();
         foreach (['get-group-deletion' => false, 'delete-group' => true] as $name => $write) {
             $registry->action($name, __('Delete a custom permission group', 'press-permit-core'),
-                __('Read get-group-deletion for the full native deletion scope and revision. Only custom groups can be deleted. All members, roles, rules and inherited permission targets are checked before cleanup. dry_run previews without deleting. Unknown or oversized permission scopes require native administration.', 'press-permit-core'),
+                __('Read get-group-deletion for the full native deletion scope and revision. Only custom groups can be deleted. Authorized group deletion removes supplemental roles, exceptions and their items. Existing permission objects are checked before the cascade. dry_run previews without deleting. Unknown or oversized permission scopes require native administration.', 'press-permit-core'),
                 $deletion->schema($write), [$deletion, $write ? 'delete' : 'read'], ['pp_delete_groups', 'pp_edit_groups', 'pp_manage_members', 'pp_manage_permissions', 'list_users'], !$write);
         }
         $usage = new RoleUsage();

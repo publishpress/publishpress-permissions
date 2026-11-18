@@ -6,6 +6,31 @@ namespace PublishPress\Permissions\UI;
 
 class AgentRolesAjax
 {
+    public static function showsStandardStatus($type_caps, $role_name)
+    {
+        if (!empty($type_caps['edit_posts']) || false === strpos($role_name, ':')) {
+            return true;
+        }
+        $base = explode(':', $role_name)[0];
+        return !$type_caps && in_array($base, ['contributor', 'author', 'editor', 'revisor'], true);
+    }
+
+    public static function showsPrivateStatus($type_caps, $role_name)
+    {
+        return (isset($type_caps['read']) || isset($type_caps[PRESSPERMIT_READ_PUBLIC_CAP]))
+            && (empty($type_caps['edit_posts']) || false === strpos($role_name, ':'));
+    }
+
+    public static function statusChoices($type, $type_caps, $role_name)
+    {
+        $choices = self::showsStandardStatus($type_caps, $role_name)
+            ? ['' => __('Standard Statuses', 'press-permit-core')] : [];
+        if (self::showsPrivateStatus($type_caps, $role_name)) {
+            $choices['private'] = __('Status: Private', 'press-permit-core');
+        }
+        return apply_filters('presspermit_role_status_choices', $choices, $type, $type_caps, $role_name);
+    }
+
     public function __construct()
     {
         check_ajax_referer('pp-ajax');
@@ -85,31 +110,14 @@ class AgentRolesAjax
 
                     $direct_assignment = (false === strpos($role_name, ':'));
 
-                    if (!empty($type_caps['edit_posts']) || $direct_assignment) {
-                        $do_standard_statuses_ui = true;
-                    } else {
-                        if (empty($type_caps)) {
-                            $arr_role_name = explode(':', $role_name);
-                            if (in_array($arr_role_name[0], ['contributor', 'author', 'editor', 'revisor'], true)) {
-                                $do_standard_statuses_ui = true;
-                            }
-                        }
-                    }
-
-                    if (!empty($do_standard_statuses_ui)) {
-                        echo '<p class="pp-checkbox">'
-                        . '<input type="checkbox" id="pp_select_cond_" name="pp_select_cond[]" value=""' . esc_attr($checked) . ' /> '
-                        . '<label id="lbl_pp_select_cond_" for="pp_select_cond_">' . esc_html__('Standard Statuses', 'press-permit-core') . '</label>'
-                        . '</p>';
-                    }
-
-                    // edit_private, delete_private caps are normally cast from pattern role
-                    if ((isset($type_caps['read']) || isset($type_caps[PRESSPERMIT_READ_PUBLIC_CAP])) && (empty($type_caps['edit_posts']) || $direct_assignment)) {
-                        $pvt_obj = get_post_status_object('private');
-
-                        echo '<p class="pp-checkbox pp_select_private_status">'
-                            . '<input type="checkbox" id="pp_select_cond_post_status_private" name="pp_select_cond[]" value="post_status:private" />'
-                            . '<label for="pp_select_cond_post_status_private"> ' . sprintf(esc_html__('%s Visibility', 'press-permit-core'), esc_html($pvt_obj->label)) . '</label>'
+                    foreach (self::statusChoices($for_item_type, $type_caps, $role_name) as $status => $label) {
+                        $value = $status ? 'post_status:' . $status : '';
+                        $id = 'pp_select_cond_' . str_replace(':', '_', $value);
+                        $class = 'private' === $status ? ' pp_select_private_status' : '';
+                        echo '<p class="pp-checkbox' . esc_attr($class) . '">'
+                            . '<input type="checkbox" id="' . esc_attr($id) . '" name="pp_select_cond[]" value="'
+                            . esc_attr($value) . '"' . esc_attr($status ? '' : $checked) . ' /> '
+                            . '<label id="' . esc_attr('lbl_' . $id) . '" for="' . esc_attr($id) . '"> ' . esc_html($label) . '</label>'
                             . '</p>';
                     }
 

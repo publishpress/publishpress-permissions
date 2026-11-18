@@ -51,6 +51,13 @@ class GroupDeletion
         }
         $scopes = [];
         foreach ($rows as $row) {
+            $active = PermissionsUpdate::exceptionItemExists($row);
+            if (null === $active) {
+                return Access::unconfirmed();
+            }
+            if (!$active) {
+                continue;
+            }
             $object_id = (int) $row->item_id;
             if (!in_array($row->via_item_source, ['post', 'term', 'pp_group'], true) || !$object_id) {
                 return Access::denied();
@@ -131,10 +138,12 @@ class GroupDeletion
         if (!empty($input['dry_run'])) {
             return ['dry_run' => true] + $before;
         }
-        presspermit()->groups()->deleteGroup($input['id'], 'pp_group');
+        if (!presspermit()->groups()->deleteGroup($input['id'], 'pp_group')) {
+            return Access::unconfirmed();
+        }
         do_action('presspermit_trigger_cache_flush');
         $groups = presspermit()->groups()->getGroups('pp_group', ['ids' => [$input['id']]]);
-        if ($groups || PermissionsUpdate::getAgentRemovalItems($input['id'], 'pp_group')
+        if ($groups || false !== PermissionsUpdate::agentHasExceptionDefinitions($input['id'], 'pp_group')
             || presspermit()->getRoles($input['id'], 'pp_group')
             || presspermit()->groups()->getGroupMembers($input['id'], 'pp_group', 'count', ['status' => 'any'])) {
             return Access::unconfirmed();

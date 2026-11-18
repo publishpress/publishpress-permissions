@@ -401,6 +401,22 @@ class SettingsAdmin
         return $return;
     }
 
+    public static function hiddenOptions()
+    {
+        $hidden = [];
+        foreach ((array) apply_filters('presspermit_hide_options', []) as $key => $value) {
+            if (is_array($value) || !is_string($key)) {
+                continue;
+            }
+            if (0 === strpos($key, 'presspermit_')) {
+                $hidden[] = substr($key, strlen('presspermit_'));
+            } elseif (0 === strpos($key, 'pp_')) {
+                $hidden[] = substr($key, 3);
+            }
+        }
+        return $hidden;
+    }
+
     private function hideNetworkOption($option_name)
     {
                                                                         // Precautionary exception: don't change storage location for license key

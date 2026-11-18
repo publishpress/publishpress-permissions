@@ -2,6 +2,7 @@
 namespace PublishPress\Permissions\Mcp;
 
 use PublishPress\Permissions\DB\PermissionsUpdate;
+use PublishPress\Permissions\UI\AgentExceptionsAjax;
 
 \defined('ABSPATH') || exit;
 
@@ -79,7 +80,7 @@ class Exceptions
             $id = $object->ID;
         } else {
             $target = 'term' === $target_source ? $taxonomy : ($input['post_type'] ?? '');
-            if (!$taxonomy || ('post' === $target_source && (!$target || !in_array($target, get_taxonomy($taxonomy)->object_type, true)))) {
+            if (!in_array($target_source, ['post', 'term'], true) || !$taxonomy || ('post' === $target_source && (!$target || !in_array($target, get_taxonomy($taxonomy)->object_type, true)))) {
                 return Input::error();
             }
             $id = (int) $object->term_taxonomy_id;
@@ -221,6 +222,55 @@ class Exceptions
         return is_wp_error($tree) ? $tree : array_keys($tree);
     }
 
+    private function validateChoice($input, $args)
+    {
+        require_once PRESSPERMIT_CLASSPATH . '/UI/AgentExceptionsAjax.php';
+        $pp = presspermit();
+        $source = 'term' === $args['for_item_source'] ? '_term_' : $args['for_item_source'];
+        $type = '_term_' === $source ? '_term_' : $args['for_item_type'];
+        $operation = $args['operation'];
+        $mode = $input['mod_type'];
+        $group = 'pp_group' === $input['agent_type'] ? $pp->groups()->getGroup($input['agent_id']) : null;
+        $metagroup = $group->metagroup_id ?? '';
+
+        $types = apply_filters('presspermit_append_exception_types',
+            $pp->admin()->orderTypes(apply_filters('presspermit_exception_types', $pp->getEnabledPostTypes([], 'object'))));
+        if (!isset($types[$type])
+            || ('attachment' === $type && 'wp_anon' === $metagroup)
+            || ('_term_' === $type && in_array($metagroup, ['wp_anon', 'wp_all'], true))
+            || !isset(AgentExceptionsAjax::operationChoices($source, $type, $input['agent_type'], $input['agent_id'])[$operation])
+            || !isset(AgentExceptionsAjax::modeChoices($source, $type, $operation, $input['agent_type'], $input['agent_id'])[$mode])) {
+            return Input::error();
+        }
+
+        $via_type = 'post' === $input['source'] ? $args['for_item_type'] : ($input['taxonomy'] ?? 'pp_group');
+        if ('term' === $input['source'] && 'post' === $args['for_item_source']
+            && !in_array($via_type, $pp->getEnabledTaxonomies(['object_type' => $args['for_item_type']]), true)) {
+            return Input::error();
+        }
+        $choices = AgentExceptionsAjax::qualificationChoices($source, $type, $operation, $mode);
+        $qualification = 'post' === $input['source'] && 'associate' !== $operation ? '' : $via_type;
+        $constant = strtoupper($via_type);
+        if (!isset($choices[$qualification]) || defined("PP_{$constant}_NO_EXCEPTIONS")
+            || defined("PP_NO{$constant}_EXCEPTIONS") || defined("PP_NO_{$constant}_EXCEPTIONS")) {
+            return Input::error();
+        }
+
+        $via_object = $pp->getTypeObject($input['source'], $via_type);
+        $children = in_array($input['assign_for'], ['children', 'both'], true);
+        $scope = AgentExceptionsAjax::childScope($via_object, $type, $operation, $mode);
+        if (($children && !$scope['shown']) || ($scope['locked'] && $children !== $scope['checked'])) {
+            return Input::error();
+        }
+
+        if ($args['for_item_status'] && !isset(AgentExceptionsAjax::statusChoices(
+            $source, $type, $input['source'], $operation, $mode
+        )[$args['for_item_status']])) {
+            return Input::error();
+        }
+        return true;
+    }
+
     public function update($input)
     {
         $input = Input::validate($input, $this->schema(true));
@@ -240,15 +290,17 @@ class Exceptions
         if (is_wp_error($args)) {
             return $args;
         }
+        if ($input['enabled']) {
+            $choice = $this->validateChoice($input, $args);
+            if (is_wp_error($choice)) {
+                return $choice;
+            }
+        }
         if (in_array($input['assign_for'], ['children', 'both'], true)) {
             $affected = $this->tree($scope, $args, true);
             if (is_wp_error($affected)) {
                 return $affected;
             }
-        }
-        if (('additional' === $input['mod_type'] && defined('PP_NO_ADDITIONAL_ACCESS'))
-            || ('exclude' === $input['mod_type'] && 'pp_group' === $input['agent_type'] && defined('PP_NO_GROUP_RESTRICTIONS'))) {
-            return new \WP_Error('presspermit_mcp_configuration_locked', __('This permission mode is disabled by native configuration.', 'press-permit-core'));
         }
         if ('include' === $input['mod_type'] && 'post' === $args['for_item_source']) {
             $all = Access::postIds([$args['for_item_type']]);
@@ -263,7 +315,7 @@ class Exceptions
         }
         if ('include' === $input['mod_type'] && 'term' === $args['for_item_source']) {
             $all = Access::termIds($args['for_item_type']);
-            if (count($all) > 1000) {
+            if (is_wp_error($all) || count($all) > 1000) {
                 return Input::error();
             }
             foreach ($all as $id) {
@@ -289,10 +341,20 @@ class Exceptions
         }
         require_once PRESSPERMIT_CLASSPATH . '/DB/PermissionsUpdate.php';
         if (!$input['enabled'] && $ids) {
-            foreach (PermissionsUpdate::getExceptionRemovalItems($ids) as $row) {
+            $removing = PermissionsUpdate::getExceptionRemovalItems($ids);
+            if (!is_array($removing)) {
+                return Access::unconfirmed();
+            }
+            foreach ($removing as $row) {
+                $active = PermissionsUpdate::exceptionItemExists($row);
+                if (null === $active) {
+                    return Access::unconfirmed();
+                }
+                if (!$active) {
+                    continue;
+                }
                 $object_id = (int) $row->item_id;
                 if ('term' === $row->via_item_source) {
-                    global $wpdb;
                     $term = get_term_by('term_taxonomy_id', $object_id, $row->via_item_type);
                     if (!$term) {
                         return Access::denied();
