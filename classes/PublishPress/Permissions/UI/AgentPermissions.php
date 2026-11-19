@@ -165,7 +165,7 @@ class AgentPermissions
             <div id="pp_cred_wrap">
                 <form id="agent-profile" class="pp-admin <?php echo esc_attr($agent_type) . '-profile'; ?>"
                     action="<?php echo esc_url($url); ?>" method="post" <?php do_action('presspermit_group_edit_form_tag'); ?>>
-                    <?php wp_nonce_field('pp-update-group_' . $agent_id) ?>
+                    <?php wp_nonce_field('pp-update-group_' . $agent_type . '_' . $agent_id) ?>
 
                     <input type="hidden" name="agent_type" value="<?php echo esc_attr($agent_type); ?>" />
 

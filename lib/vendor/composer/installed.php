@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => '__root__',
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
-        'reference' => '100379f02a9ca5f64587e24f98f17b8447dba04c',
+        'pretty_version' => '1.0.0+no-version-set',
+        'version' => '1.0.0.0',
+        'reference' => NULL,
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '100379f02a9ca5f64587e24f98f17b8447dba04c',
+            'pretty_version' => '1.0.0+no-version-set',
+            'version' => '1.0.0.0',
+            'reference' => NULL,
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -43,15 +43,6 @@
             'reference' => '773a2510aa39a7f0ad5d5dfc78878abb939f5704',
             'type' => 'library',
             'install_path' => __DIR__ . '/../publishpress/psr-container',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
-        'publishpress/publishpress-welcome' => array(
-            'pretty_version' => 'dev-codex/welcome-feedback',
-            'version' => 'dev-codex/welcome-feedback',
-            'reference' => 'e0898f44a4d40a343459fb77ebc83727014e6b69',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../publishpress/publishpress-welcome',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

@@ -538,6 +538,10 @@ class TermEdit
 
     public function drawSettingsUI($term, $box)
     {
+        if (!current_user_can('pp_manage_settings')) {
+            return;
+        }
+        wp_nonce_field('pp_enable_taxonomy-' . $term->taxonomy, '_pp_enable_permissions_nonce');
         if ($tx = get_taxonomy($term->taxonomy)) :
             ?>
             <label for="pp_enable_taxonomy_cb"><input type="checkbox" name="pp_enable_taxonomy" id="pp_enable_taxonomy_cb"/>

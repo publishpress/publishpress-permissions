@@ -6,6 +6,103 @@ namespace PublishPress\Permissions;
 
 class PermissionsAdmin
 {
+    public static function canAdminAgent($type, $id)
+    {
+        return presspermit()->admin()->canEditPermissionAgent($type, $id);
+    }
+
+    public static function canAssignRole($role, $type = '')
+    {
+        $parts = explode(':', $role);
+        $source = $parts[1] ?? 'post';
+        $object_type = $parts[2] ?? $type;
+        if (!in_array($source, ['post', 'term'], true)) {
+            return false;
+        }
+        require_once(PRESSPERMIT_CLASSPATH . '/RoleAdmin.php');
+        $base_role = implode(':', array_slice($parts, 0, min(3, count($parts))));
+        $allowed = RoleAdmin::getTypeRoles($source, $object_type ?: '-1');
+        if (!isset($allowed[$base_role])) {
+            return false;
+        }
+        if (count($parts) > 3 && (count($parts) !== 5 || 'post_status' !== $parts[3]
+            || !get_post_status_object($parts[4]))) {
+            return false;
+        }
+        if (false === strpos($role, ':') && !current_user_can('promote_users')) {
+            return false;
+        }
+        if (!self::userCanAdminRole($parts[0], $object_type ?: '-1')) {
+            return false;
+        }
+        // Check the actual typecast capabilities, including direct site-role caps.
+        $caps = array_filter(presspermit()->getRoleCaps($role));
+        foreach (array_keys($caps) as $cap) {
+            if (!current_user_can($cap)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static function canAssignException($args)
+    {
+        $args = (array) $args;
+        $operation = $args['operation'] ?? '';
+        $source = $args['via_item_source'] ?? '';
+        $for_source = $args['for_item_source'] ?? '';
+        $type = $args['for_item_type'] ?? '';
+        $item = (int) ($args['item_id'] ?? 0);
+        if (!in_array($source, ['post', 'term', 'pp_group', 'pp_net_group'], true)
+            || !in_array($for_source, ['post', 'term', 'pp_group', 'pp_net_group'], true)
+            || !in_array($args['mod_type'] ?? '', ['include', 'exclude', 'additional'], true)
+            || !presspermit()->admin()->getOperationObject($operation, $type)
+            || !presspermit()->admin()->canSetExceptions($operation, $type, $args)
+        ) {
+            return false;
+        }
+        if ($type && !(('post' === $for_source && post_type_exists($type))
+            || ('term' === $for_source && taxonomy_exists($type))
+            || (in_array($for_source, ['pp_group', 'pp_net_group'], true) && $type === $for_source))) {
+            return false;
+        }
+        if (!empty($args['assign_for']) && !in_array($args['assign_for'], ['item', 'children'], true)) {
+            return false;
+        }
+        $status = $args['for_item_status'] ?? '';
+        if ($status) {
+            foreach (explode(',', $status) as $condition) {
+                if (0 !== strpos($condition, 'post_status:') || !get_post_status_object(substr($condition, 12))) {
+                    return false;
+                }
+            }
+        }
+        if (in_array($source, ['pp_group', 'pp_net_group'], true)) {
+            if ($for_source !== $source || $type !== $source) {
+                return false;
+            }
+            return $item && self::canAdminAgent($source, $item);
+        }
+        if ('post' === $source) {
+            if ($item) {
+                $post = get_post($item);
+                return $post && (!$type || 'post' !== $for_source || $post->post_type === $type)
+                    && current_user_can('edit_post', $item);
+            }
+            return presspermit()->isUserAdministrator();
+        }
+        $taxonomy = $args['via_item_type'] ?? '';
+        if (!taxonomy_exists($taxonomy)) {
+            return false;
+        }
+        if (!$item) {
+            return presspermit()->isUserAdministrator();
+        }
+        $term = get_term_by('term_taxonomy_id', $item, $taxonomy);
+        return $term && !is_wp_error($term) && current_user_can('edit_term', $term->term_id);
+    }
+
+
     // Regulates the ability to set exceptions for a specific post or term.  Note: exceptions bulk editor (Edit Permissions screen) requires edit_users capability.
     // * PP options determine whether non-Admins are checked for pp_set_*_exceptions cap or simply blocked
     // * pp_set_*_exceptions cap must be present in user's WP role.  It is *not* granted through Pattern Role assignment.

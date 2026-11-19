@@ -203,20 +203,8 @@ class PageFilters
             return $results;
         }
 
-        // $args can be whatever, only use the args defined in defaults to compute the key
-        $key = md5(wp_json_encode(compact(array_keys($defaults))));
-        $last_changed = wp_cache_get_last_changed('posts');
-
-        $cache_key = "pp_get_pages:$key:$last_changed";
-        $cache = wp_cache_get($cache_key, 'posts');
-        if (false !== $cache) {
-            // Convert to WP_Post instances
-            $pages = array_map('get_post', $cache);
-
-            // ========= PressPermit filter
-            $pages = apply_filters('presspermit_get_pages', $pages, $r);
-            return $pages;
-        }
+        // Permission-filtered IDs depend on live user, group, role and exception
+        // state. Recompute this list on every call; core's raw post cache remains usable.
 
         $inclusions = '';
         if (!empty($include)) {
@@ -625,13 +613,6 @@ class PageFilters
         //
         // ===================================== End PressPermit Modification ====================================
 
-        $page_structure = [];
-        foreach ($pages as $page) {
-            $page_structure[] = $page->ID;
-        }
-
-        wp_cache_set($cache_key, $page_structure, 'posts');
-
         // Convert to WP_Post instances
         $pages = array_map('get_post', $pages);
 
@@ -645,3 +626,4 @@ class PageFilters
         return DB\Permissions::getExceptionsClause($operation, $post_type, $args);
     }
 }
+

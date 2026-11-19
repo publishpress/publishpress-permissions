@@ -45,6 +45,8 @@ jobs:
         run: php tests/unit/exception-post-ids.php
       - name: Check before and after teaser content boundaries
         run: php tests/unit/teaser-content-boundaries.php
+      - name: Check Teaser global options migration
+        run: php tests/unit/teaser-global-options-migration.php
 
   unsupported-php-bootstrap:
     name: Reject unsupported PHP before loading dependencies

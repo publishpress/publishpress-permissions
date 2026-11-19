@@ -461,6 +461,7 @@ jQuery(document).ready(function ($) {
         var postType = String($sitePreview.data('post-type') || 'post');
 
         return url + separator + $.param({
+            _pp_teaser_nonce: presspermitTeaser.previewNonce,
             pp_permissions_teaser_preview: 'teaser',
             pp_permissions_teaser_post_type: postType,
             pp_permissions_teaser_type: teaserType

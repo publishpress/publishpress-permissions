@@ -88,6 +88,7 @@
           
                   return {
                     pp_agent_search: params.term || "",
+                    pp_search_page: params.page || 1,
                     pp_role_search: roletext,
                     pp_agent_type: args2.agent_type,
                     pp_agent_id: args2.agent_id,
@@ -117,8 +118,8 @@
                     }
 
                     // Parse the HTML response to extract options
-                    $(data)
-                    .filter("option")
+                    const parsed = new DOMParser().parseFromString(data, 'text/html');
+                    $(parsed.querySelectorAll('option'))
                     .each(function () {
                         const id = $(this).val();
                         // Omit already selected values
@@ -132,6 +133,7 @@
 
                     return {
                         results: options,
+                        pagination: { more: !!parsed.querySelector('.pp-search-page[data-more="1"]') },
                     };
                 },
                 cache: true,
@@ -255,8 +257,15 @@
         }
 
         var got_ajax_listbox = function (data, txtStatus) {
-            //Set listbox contents to Ajax response
-            $('#' + args.results_id).html(data).show();
+            // Parse inertly and copy only option text/value. Never insert response HTML.
+            var options = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('option');
+            var results = $('#' + args.results_id).empty();
+            options.forEach(function (option) {
+                $(new Option(option.textContent, option.value))
+                    .attr('title', option.getAttribute('title') || '')
+                    .addClass('pp-new-selection').appendTo(results);
+            });
+            results.show();
 
             if (typeof document.all == 'undefined') // triggers removal of agents who already have a dropdown (but IE chokes on trigger call)
                 $('#' + args.results_id).trigger('jchange');
@@ -281,3 +290,4 @@
         }
     }
 })(jQuery); 
+

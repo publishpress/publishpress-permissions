@@ -7,6 +7,7 @@ namespace PublishPress\Permissions\Collab;
 class AdminFilters
 {
     private $inserting_post = false;
+    private $revision_copy = null;
 
     // Backend filtering which is generally enabled for all requests 
     //
@@ -19,6 +20,8 @@ class AdminFilters
         add_filter('wp_dropdown_pages', [$this, 'fltDropdownPages']);
 
         add_filter('pre_post_parent', [$this, 'fltPageParent'], 50, 1);
+        add_filter('wp_insert_post_data', [$this, 'fltAuthorizeParent'], 50, 4);
+        add_action('revisionary_pre_insert_revision', [$this, 'authorizeRevisionCopy'], 10, 2);
         add_filter('pre_post_status', [$this, 'fltPostStatus'], 50, 1);
 
         add_filter('user_has_cap', [$this, 'fltHasEditUserCap'], 99, 3);
@@ -414,8 +417,83 @@ class AdminFilters
 
     function fltLogInsertPost($maybe_empty, $postarr)
     {
-        $this->inserting_post = true;
+        $this->inserting_post = empty($postarr['ID']);
         return $maybe_empty;
+    }
+
+    public function authorizeRevisionCopy($source_id, $data)
+    {
+        $this->revision_copy = null;
+        $source = get_post($source_id);
+        if (!get_current_user_id() || !$source || !is_array($data)
+            || !in_array($data['post_mime_type'] ?? '', ['draft-revision', 'pending-revision', 'future-revision'], true)
+            || $source->post_type !== ($data['post_type'] ?? '')
+            || (int) $source->post_parent !== (int) ($data['post_parent'] ?? 0)
+            || (int) $source_id !== (int) ($data['comment_count'] ?? 0)
+            || (int) ($data['post_author'] ?? 0) !== get_current_user_id()
+            || !current_user_can('copy_post', $source_id)
+            || !(function_exists('rvy_can_read_post') ? rvy_can_read_post($source_id) : current_user_can('read_post', $source_id))
+        ) {
+            return;
+        }
+        // Only a trusted Revisions creation hook can establish this single-insert context.
+        $this->revision_copy = [
+            'source' => (int) $source_id,
+            'user' => get_current_user_id(),
+            'blog' => get_current_blog_id(),
+            'identity' => array_intersect_key($data, array_flip(['post_type', 'post_parent', 'post_status', 'post_mime_type', 'post_author'])),  // comment_count (the source ID) is verified above. wp_insert_post() never passes it to wp_insert_post_data, so it can't be part of the identity compared there.
+        ];
+    }
+
+    public function fltAuthorizeParent($data, $postarr, $unsanitized_postarr, $update)
+    {
+        $copy = $this->revision_copy;
+        $this->revision_copy = null;
+        $pp = presspermit();
+        if (!$pp->filteringEnabled() || $pp->isUserUnfiltered()
+            || !in_array($data['post_type'], $pp->getEnabledPostTypes(), true)
+            || !is_post_type_hierarchical($data['post_type']) || 'attachment' === $data['post_type']
+        ) {
+            return $data;
+        }
+
+        // The final insert data supplies identity for XML-RPC, REST and every bulk item.
+        // No request-global insertion flag or client-supplied editor hint can bypass this.
+        $post_id = $update && !empty($postarr['ID']) ? (int) $postarr['ID'] : 0;
+        $parent = (int) $data['post_parent'];
+        $stored = $post_id ? get_post($post_id) : null;
+        if (!$update && $copy && $copy['user'] === get_current_user_id() && $copy['blog'] === get_current_blog_id()) {
+            $identity_matches = true;
+            foreach ($copy['identity'] as $key => $value) {
+                if (!isset($data[$key]) || (string) $data[$key] !== (string) $value) {
+                    $identity_matches = false;
+                    break;
+                }
+            }
+            $source = get_post($copy['source']);
+            if ($identity_matches && $source && $source->post_type === $data['post_type']
+                && (int) $source->post_parent === $parent
+                && current_user_can('copy_post', $copy['source'])
+                && (function_exists('rvy_can_read_post') ? rvy_can_read_post($copy['source']) : current_user_can('read_post', $copy['source']))) {
+                return $data;
+            }
+        }
+        // WordPress creates an empty auto-draft before the editor can select a parent.
+        if (!$post_id && !$parent && 'auto-draft' === $data['post_status']) {
+            return $data;
+        }
+        if ($stored && (int) $stored->post_parent === $parent
+            && ('auto-draft' !== $stored->post_status || 'auto-draft' === $data['post_status'])
+        ) {
+            return $data;
+        }
+
+        require_once(PRESSPERMIT_COLLAB_CLASSPATH . '/PostSaveHierarchical.php');
+        if (!PostSaveHierarchical::canAssociateParent($post_id, $data['post_type'], $parent)) {
+            // The WP_Error contains an escaped translated message; wp_die handles the error object.
+            wp_die(new \WP_Error('presspermit_parent_forbidden', esc_html__('You do not have permission to select that Parent', 'press-permit-core'), ['status' => 403]), '', ['response' => 403]); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WP_Error message is already escaped.
+        }
+        return $data;
     }
 
     function fltPageParent($parent_id, $args = [])
@@ -518,3 +596,4 @@ class AdminFilters
         return Users::editableRoles($roles, $editing_limitation);
     }
 }
+

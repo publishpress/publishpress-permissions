@@ -47,6 +47,7 @@ class TeaserHooksAdmin
                     [
                         'url' => admin_url( 'admin-ajax.php' ),
                         'nonce' => wp_create_nonce( 'pp_search_content' ),
+                        'previewNonce' => wp_create_nonce('pp_teaser_theme_preview'),
                         'strings' => [
                             'select_a_page' => __( 'Select a page', 'press-permit-core' ),
                             'select_preview_content' => __( 'Search preview content', 'press-permit-core' ),
@@ -122,40 +123,32 @@ class TeaserHooksAdmin
             $post_type = 'page';
         }
 
-        global $wpdb;
-
-        // phpcs Note: Direct query of posts table on admin query
-
-        if ($search_content) {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-            $results = $wpdb->get_results(
-                $wpdb->prepare(
-                    'SELECT ID, post_title FROM ' . $wpdb->prefix . 'posts
-                    WHERE post_type = %s AND post_status = "publish"
-                    AND (post_title LIKE %s OR post_content LIKE %s)
-                    ORDER BY post_date DESC LIMIT 10',
-                    $post_type,
-                    '%' . $wpdb->esc_like($search) . '%',
-                    '%' . $wpdb->esc_like($search) . '%'
-                )
-            );
-        } else {
-            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-            $results = $wpdb->get_results(
-                $wpdb->prepare(
-                    'SELECT ID, post_title FROM ' . $wpdb->prefix . 'posts
-                    WHERE post_type = %s AND post_status = "publish"
-                    AND post_title LIKE %s
-                    ORDER BY post_title LIMIT 10',
-
-                    $post_type,
-                    '%' . $wpdb->esc_like($search) . '%'
-                )
-            );
+        // Apply permission clauses before ordering and LIMIT, including body searches.
+        $query_args = [
+            'post_type' => $post_type,
+            'post_status' => 'publish',
+            'posts_per_page' => 10,
+            's' => $search,
+            'orderby' => $search_content ? 'date' : 'title',
+            'order' => $search_content ? 'DESC' : 'ASC',
+            'suppress_filters' => false,
+            'required_operation' => 'read',
+            'skip_teaser' => true,
+            'no_found_rows' => true,
+        ];
+        if (!$search_content) {
+            $query_args['search_columns'] = ['post_title'];
         }
-
-        foreach ($results as $result) {
-            $result->preview_url = get_permalink($result->ID);
+        $query = new \WP_Query($query_args);
+        $results = [];
+        foreach ($query->posts as $result) {
+            if (current_user_can('read_post', $result->ID)) {
+                $results[] = (object) [
+                    'ID' => $result->ID,
+                    'post_title' => $result->post_title,
+                    'preview_url' => get_permalink($result->ID),
+                ];
+            }
         }
 
         wp_send_json( $results );
@@ -175,7 +168,10 @@ class TeaserHooksAdmin
         $post_type = isset($_GET['post_type']) ? sanitize_key($_GET['post_type']) : 'post';
         $post = $post_id ? get_post($post_id) : null;
 
-        if (!$post || 'publish' !== $post->post_status || $post->post_type !== $post_type) {
+        $public_post_types = get_post_types(['public' => true], 'names');
+        if (!$post || 'publish' !== $post->post_status || $post->post_type !== $post_type
+            || !in_array($post_type, $public_post_types, true) || !current_user_can('read_post', $post_id)
+        ) {
             wp_send_json('Error', 404);
         }
 
@@ -208,15 +204,20 @@ class TeaserHooksAdmin
         
         $search = (isset($_GET['search'])) ? sanitize_text_field(wp_unslash($_GET['search'])) : '';
 
+        $page = isset($_GET['page']) ? min(1000, max(1, absint($_GET['page']))) : 1;
+
         $results = get_terms(
             [
                 'name__like' => $search,
                 'taxonomy' => (!empty($_GET['taxonomy'])) ? sanitize_key($_GET['taxonomy']) : 'category',
                 'hide_empty' => false,
-                'orderby' => 'name'
+                'orderby' => 'name',
+                'number' => 20,
+                'offset' => ($page - 1) * 20,
             ]
         );
 
         wp_send_json( $results );
 	}
 }
+

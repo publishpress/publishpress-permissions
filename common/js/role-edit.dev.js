@@ -357,7 +357,7 @@ jQuery(document).ready(function ($) {
             'pp_ass_ids': ass_ids
         };
         $.ajax({
-            url: ppCred.ajaxurl,
+            url: ppCred.permissionsAjaxURL,
             data: data,
             dataType: "html",
             success: handler,

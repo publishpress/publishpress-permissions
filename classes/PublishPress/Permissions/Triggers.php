@@ -174,7 +174,14 @@ class Triggers
 
     public function actSetNewUserGroups($user_id)
     {
-        $this->doGroupUpdate($user_id);
+        // Only the admin new user form posts group selections. Other registrations
+        // (front-end sign-up, WP-CLI, checkout plugins) have nothing to apply.
+        if (PWP::empty_POST('pp_editing_user_groups')) {
+            return;
+        }
+
+        // Group checkboxes on the new user form carry a nonce scoped to user ID 0.
+        $this->doGroupUpdate($user_id, 0);
     }
 
     public function actUpdateUserGroups($user_id)
@@ -186,11 +193,11 @@ class Triggers
         $this->doGroupUpdate($user_id);
     }
 
-    private function doGroupUpdate($user_id)
+    private function doGroupUpdate($user_id, $nonce_user_id = null)
     {
         require_once(PRESSPERMIT_CLASSPATH . '/UserGroupsUpdate.php');
-        UserGroupsUpdate::addUserGroups($user_id);
-        UserGroupsUpdate::removeUserGroups($user_id);
+        UserGroupsUpdate::addUserGroups($user_id, $nonce_user_id);
+        UserGroupsUpdate::removeUserGroups($user_id, $nonce_user_id);
     }
 
     public function actDeleteUsers($user_ids, $blog_id_arg = 0)

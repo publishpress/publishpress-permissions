@@ -351,7 +351,7 @@ class Profile
 
         ob_start();
         echo "<input type='hidden' name='pp_editing_user_groups' value='1' />";
-        wp_nonce_field('pp-user-profile-groups', '_pp_permissions_nonce');
+        wp_nonce_field('pp-user-profile-groups_' . (int) $user_id, '_pp_permissions_nonce');
 
         return ['rows' => $rows, 'fields' => ob_get_clean()];
     }
@@ -451,7 +451,7 @@ class Profile
                         } elseif (defined('PP_GROUPS_CAPTION')) {
                             echo esc_html(PP_GROUPS_CAPTION);
                         } else {
-                            esc_html_e('Permission Groups', 'press-permit-core');
+                            esc_html_e('Permission Group Membership', 'press-permit-core');
                         }
                     } else {
                         $group_type_obj = $pp_groups->getGroupTypeObject($agent_type);
@@ -518,7 +518,7 @@ class Profile
 
         echo "<input type='hidden' name='pp_editing_user_groups' value='1' />";
 
-        wp_nonce_field('pp-user-profile-groups', '_pp_permissions_nonce');
+        wp_nonce_field('pp-user-profile-groups_' . (int) $user_id, '_pp_permissions_nonce');
 
         return $has_editable_memberships;
     }
@@ -885,3 +885,4 @@ class Profile
         );
     }
 }
+

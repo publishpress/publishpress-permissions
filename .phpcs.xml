@@ -24,18 +24,15 @@
     <exclude-pattern>/node_modules/*</exclude-pattern>
     <exclude-pattern>/dev-workspace/*</exclude-pattern>
     <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>
+    <exclude-pattern>/cache/*</exclude-pattern>
+    <exclude-pattern>/.cache/*</exclude-pattern>
+    <exclude-pattern>/.phplint.cache/*</exclude-pattern>
+    <exclude-pattern>/lib/vendor/*</exclude-pattern>
 
     <rule ref="WordPressVIPMinimum"/>
     <rule ref="WordPress-VIP-Go"/>
     <rule ref="VariableAnalysis"/>
     <rule ref="PublishPressStandards"/>
-    <!-- Bundled modules share the parent plugin's Composer and export metadata. -->
-    <rule ref="PublishPressStandards.Composer.RequirePluginExtra">
-        <exclude-pattern>/modules/*</exclude-pattern>
-    </rule>
-    <rule ref="PublishPressStandards.Files.RequireGitAttributes">
-        <exclude-pattern>/modules/*</exclude-pattern>
-    </rule>
     <exclude-pattern>/\.web/</exclude-pattern>
     <exclude-pattern>/\.ddev/</exclude-pattern>
 </ruleset>

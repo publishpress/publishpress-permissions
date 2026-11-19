@@ -45,7 +45,11 @@ class Users
         $post_types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
         unset($post_types['attachment']);
         foreach ($post_types as $post_type => $type_obj) {
-            if (!current_user_can($type_obj->cap->edit_others_posts)) {
+            if (
+                !current_user_can($type_obj->cap->edit_others_posts)
+                || !current_user_can($type_obj->cap->create_posts ?? 'edit_posts')
+                || (presspermit()->getOption('publish_author_pages') && !current_user_can($type_obj->cap->publish_posts ?? 'publish_posts'))
+            ) {
                 unset($post_types[$post_type]);
             }
         }

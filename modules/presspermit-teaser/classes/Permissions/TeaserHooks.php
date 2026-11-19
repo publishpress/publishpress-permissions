@@ -165,6 +165,10 @@ class TeaserHooks
 
         add_action('presspermit_pro_version_updated', [$this, 'pluginUpdated']);
 
+        // Global Options migration (issue #2635) must also run on Free-only sites.
+        add_action('presspermit_version_updated', [$this, 'migrateGlobalOptions']);
+        add_action('presspermit_pro_version_updated', [$this, 'migrateGlobalOptions']);
+
         add_filter('presspermit_custom_sanitize_setting', [$this, 'flt_custom_sanitize_setting'], 10, 4);
 
         add_filter('elementor/frontend/the_content', [$this, 'fltElementorContent']);
@@ -846,34 +850,14 @@ class TeaserHooks
             }
         }
 
-        // "Teaser Application", "User Application", "Navigation Menus", "Private Posts",
-        // "Featured Image", and "Comments Area" moved from per-post-type settings to single
-        // global settings on the Options tab (issue #2518). Seed each new global option from
-        // whichever post type was configured first in the old per-type array, so a site's
-        // existing behavior for its primary post type carries over. The old per-type options
-        // are left in the database untouched (unused going forward).
-        if (version_compare($prev_version, '4.9.0', '<')) {
-            $migrated_options = [
-                'tease_direct_access_only' => 'teaser_opt_direct_access_only',
-                'tease_logged_only' => 'teaser_opt_logged_only',
-                'teaser_hide_menu_links_type' => 'teaser_opt_hide_menu_links',
-                'tease_public_posts_only' => 'teaser_opt_public_posts_only',
-                'teaser_hide_thumbnail' => 'teaser_opt_hide_thumbnail',
-                'teaser_disable_comments' => 'teaser_opt_disable_comments',
-            ];
+        // The 4.9.0 migration of per-post-type options to global Options (issue #2518)
+        // now runs from migrateGlobalOptions(), which also fires on Free updates (issue #2635).
+    }
 
-            foreach ($migrated_options as $old_name => $new_name) {
-                if (false !== get_option("presspermit_$new_name")) {
-                    continue; // already has a value - don't clobber it
-                }
-
-                $old_value = get_option("presspermit_$old_name");
-
-                if (is_array($old_value) && $old_value) {
-                    update_option("presspermit_$new_name", reset($old_value));
-                }
-            }
-        }
+    public function migrateGlobalOptions()
+    {
+        require_once(PRESSPERMIT_TEASER_CLASSPATH . '/GlobalOptionsMigration.php');
+        \PublishPress\Permissions\Teaser\GlobalOptionsMigration::maybeRun();
     }
 
     function actMaybeRedirect()
