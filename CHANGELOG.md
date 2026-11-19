@@ -1,5 +1,9 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[5.0.2] - 19 Nov, 2026
+
+- Added: MCP actions for permission groups, memberships, supplemental roles, group delegation, permission matrices and validated batches, post and term permissions, teaser configuration, module activation, Role Usage and content visibility authoring.
+
 [5.0.1] - 17 Nov, 2026
 
 - Fixed : "link expired" / 403 when creating users #2669
@@ -47,10 +51,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Security : Restricted teaser management preview and search to authorized content.
 - Security : Fixed a cross-site scripting issue in permission group labels.
 - Security : Fixed stale access-control cache after user or site context changes.
-
-[Unreleased]
-
-- Added: MCP actions for permission groups, memberships, supplemental roles, group delegation, permission matrices and validated batches, post and term permissions, teaser configuration, module activation, Role Usage and content visibility authoring.
 
 [4.9.1] - 14 Oct, 2026
 
