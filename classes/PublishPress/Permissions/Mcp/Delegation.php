@@ -99,7 +99,7 @@ class Delegation
                 $scope['post_type'] = $row->for_item_type;
             }
             $service = new Exceptions();
-            $state = $service->read($scope);
+            $state = $service->readExact($scope);
             if (is_wp_error($state)) {
                 return $state;
             }

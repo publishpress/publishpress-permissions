@@ -106,7 +106,7 @@ try {
     $created = $check_result(permissions_mcp_call('create-group', ['name' => 'Delete fixture ' . wp_generate_uuid4()]), 'Deletion group creation');
     $extra_group = $created['id'];
     $scope = ['agent_type' => 'pp_group', 'agent_id' => $extra_group, 'source' => 'post', 'object_id' => $post_id, 'operation' => 'read'];
-    $rules = $check_result(permissions_mcp_call('get-permissions', $scope), 'Deletion permission scope');
+    $rules = $check_result(permissions_mcp_call('get-permission-scope', $scope), 'Deletion permission scope');
     $check_result(permissions_mcp_call('set-permission', $scope + ['revision' => $rules['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true]), 'Deletion permission fixture');
     $permission_db = \PublishPress\Permissions\DB\PermissionsUpdate::class;
     $live = $permission_db::getAgentRemovalItems($extra_group, 'pp_group')[0];

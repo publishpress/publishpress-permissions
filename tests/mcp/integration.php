@@ -118,12 +118,12 @@ try {
         remove_filter('map_meta_cap', $deny_post, PHP_INT_MAX);
     }
     $scope = ['agent_type' => 'user', 'agent_id' => $user_id, 'source' => 'post', 'object_id' => $post_id, 'operation' => 'read'];
-    $permission = permissions_mcp_call('get-permissions', $scope);
+    $permission = permissions_mcp_call('get-permission-scope', $scope);
     permissions_mcp_check(!is_wp_error($permission), 'Native permission scope could not be read.');
     $set = $scope + ['revision' => $permission['revision'], 'mod_type' => 'additional', 'assign_for' => 'item', 'enabled' => true, 'dry_run' => true];
     $preview_permission = permissions_mcp_call('set-permission', $set);
     permissions_mcp_check(!is_wp_error($preview_permission), 'Native permission preview failed.');
-    permissions_mcp_check($permission['revision'] === permissions_mcp_call('get-permissions', $scope)['revision'], 'Permission preview mutated storage.');
+    permissions_mcp_check($permission['revision'] === permissions_mcp_call('get-permission-scope', $scope)['revision'], 'Permission preview mutated storage.');
     $set['dry_run'] = false;
     $permission_saved = permissions_mcp_call('set-permission', $set);
     permissions_mcp_check(!is_wp_error($permission_saved), 'Native permission save failed.');

@@ -106,10 +106,10 @@ function permissions_mcp_extended_features($subject_id)
         }
         presspermit()->updateOption('display_group_exceptions', '1');
         $delegation_scope = $subject + ['source' => 'pp_group', 'target_source' => 'pp_group', 'object_id' => $group_id, 'operation' => 'manage'];
-        $state = $ok(permissions_mcp_call('get-permissions', $delegation_scope), 'Delegation discovery');
+        $state = $ok(permissions_mcp_call('get-permission-scope', $delegation_scope), 'Delegation discovery');
         $delegation = $delegation_scope + ['revision' => $state['revision'], 'mod_type' => 'additional', 'assign_for' => 'item', 'enabled' => true];
         presspermit()->updateOption('display_group_exceptions', '');
-        permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permissions', $delegation_scope)), 'Disabled group-delegation setting was bypassed.');
+        permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permission-scope', $delegation_scope)), 'Disabled group-delegation setting was bypassed.');
 
         presspermit()->updateOption('display_group_exceptions', '1');
         $deny_management = static function ($caps) { $caps['pp_manage_members'] = false; return $caps; };
@@ -122,11 +122,11 @@ function permissions_mcp_extended_features($subject_id)
         $protected = wp_insert_post(['post_type' => 'page', 'post_status' => 'private', 'post_title' => 'Delegation protected scope']);
         $posts[] = $protected;
         $protected_scope = ['agent_type' => 'pp_group', 'agent_id' => $group_id, 'source' => 'post', 'object_id' => $protected, 'operation' => 'read'];
-        $protected_state = permissions_mcp_call('get-permissions', $protected_scope);
+        $protected_state = permissions_mcp_call('get-permission-scope', $protected_scope);
         $protected_saved = $ok(permissions_mcp_call('set-permission', $protected_scope + ['revision' => $protected_state['revision'], 'mod_type' => 'additional', 'assign_for' => 'item', 'enabled' => true]), 'Protected group grant setup');
         permissions_mcp_check(is_wp_error(permissions_mcp_call('set-permission', $delegation + ['dry_run' => true])), 'Changed target-group grants accepted an old delegation revision.');
         $protected_delegation = $delegation;
-        $protected_delegation['revision'] = permissions_mcp_call('get-permissions', $delegation_scope)['revision'];
+        $protected_delegation['revision'] = permissions_mcp_call('get-permission-scope', $delegation_scope)['revision'];
         $deny_protected = static function ($caps, $cap, $user, $args) use ($protected) {
             return $cap === 'edit_post' && (int) ($args[0] ?? 0) === (int) $protected ? ['do_not_allow'] : $caps;
         };
@@ -153,15 +153,20 @@ function permissions_mcp_extended_features($subject_id)
             $batch_posts[] = $id;
             $scopes[] = $subject + ['source' => 'post', 'object_id' => $id, 'operation' => 'read'];
         }
-        $matrix = $ok(permissions_mcp_call('get-permission-matrix', ['items' => $scopes]), 'Permission matrix');
+        $matrix_scopes = array_map(static function ($scope) {
+            unset($scope['agent_id']);
+            return $scope;
+        }, $scopes);
+        $matrix = $ok(permissions_mcp_call('get-permission-matrix', ['items' => $matrix_scopes]), 'Permission matrix');
         $items = [];
-        foreach ($matrix['items'] as $row) {
-            $items[] = $row['scope'] + ['revision' => $row['state']['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true];
+        foreach ($scopes as $scope) {
+            $state = $ok(permissions_mcp_call('get-permission-scope', $scope), 'Exact permission scope');
+            $items[] = $scope + ['revision' => $state['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true];
         }
         $bad = $items;
         $bad[1]['object_id'] = PHP_INT_MAX;
         permissions_mcp_check(is_wp_error(permissions_mcp_call('bulk-set-permissions', ['items' => $bad])), 'Invalid second item allowed a batch.');
-        permissions_mcp_check($matrix === permissions_mcp_call('get-permission-matrix', ['items' => $scopes]), 'Invalid batch partially saved.');
+        permissions_mcp_check($matrix === permissions_mcp_call('get-permission-matrix', ['items' => $matrix_scopes]), 'Invalid batch partially saved.');
         $deny_object = static function ($caps, $cap, $user, $args) use ($batch_posts) {
             return $cap === 'edit_post' && (int) ($args[0] ?? 0) === (int) $batch_posts[1] ? ['do_not_allow'] : $caps;
         };
@@ -173,11 +178,11 @@ function permissions_mcp_extended_features($subject_id)
         } finally {
             remove_filter('map_meta_cap', $deny_object, PHP_INT_MAX);
         }
-        permissions_mcp_check($matrix === permissions_mcp_call('get-permission-matrix', ['items' => $scopes]), 'Denied batch partially saved.');
+        permissions_mcp_check($matrix === permissions_mcp_call('get-permission-matrix', ['items' => $matrix_scopes]), 'Denied batch partially saved.');
         $duplicate = [$items[0], $items[0]];
         permissions_mcp_check(is_wp_error(permissions_mcp_call('bulk-set-permissions', ['items' => $duplicate])), 'Overlapping batch targets were accepted.');
         $ok(permissions_mcp_call('bulk-set-permissions', ['items' => $items, 'dry_run' => true]), 'Bulk preview');
-        permissions_mcp_check($matrix === permissions_mcp_call('get-permission-matrix', ['items' => $scopes]), 'Bulk preview saved data.');
+        permissions_mcp_check($matrix === permissions_mcp_call('get-permission-matrix', ['items' => $matrix_scopes]), 'Bulk preview saved data.');
         $bulk = $ok(permissions_mcp_call('bulk-set-permissions', ['items' => $items]), 'Native permission batch');
         permissions_mcp_check($bulk['completed'] && $bulk['confirmed_items'] === 2, 'Authorized batch failed.');
         permissions_mcp_check(is_wp_error(permissions_mcp_call('bulk-set-permissions', ['items' => $items])), 'Stale batch was accepted.');
@@ -186,9 +191,9 @@ function permissions_mcp_extended_features($subject_id)
             $items[$index]['enabled'] = false;
         }
         $ok(permissions_mcp_call('bulk-set-permissions', ['items' => $items]), 'Bulk permission removal');
-        $matrix = permissions_mcp_call('get-permission-matrix', ['items' => $scopes]);
-        foreach ($matrix['items'] as $index => $row) {
-            $items[$index]['revision'] = $row['state']['revision'];
+        foreach ($scopes as $index => $scope) {
+            $state = $ok(permissions_mcp_call('get-permission-scope', $scope), 'Exact permission scope after removal');
+            $items[$index]['revision'] = $state['revision'];
             $items[$index]['enabled'] = true;
         }
         $inserts = 0;

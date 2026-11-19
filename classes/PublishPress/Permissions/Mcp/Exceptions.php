@@ -9,7 +9,7 @@ use PublishPress\Permissions\UI\AgentExceptionsAjax;
 /** Object-bound native permissions, including inheritance and exact removal scope. */
 class Exceptions
 {
-    public function schema($write)
+    public function schema($write, $exact = false)
     {
         $fields = ['agent_type' => ['type' => 'string', 'enum' => ['user', 'pp_group']], 'agent_id' => ['type' => 'integer', 'minimum' => 1],
             'source' => ['type' => 'string', 'enum' => ['post', 'term', 'pp_group']], 'object_id' => ['type' => 'integer', 'minimum' => 1],
@@ -17,7 +17,10 @@ class Exceptions
             'operation' => ['type' => 'string', 'enum' => ['read', 'edit', 'publish', 'associate', 'assign', 'manage', 'copy', 'revise']],
             'target_source' => ['type' => 'string', 'enum' => ['post', 'term', 'pp_group']],
             'status' => ['type' => 'string', 'maxLength' => 100]];
-        $required = ['agent_type', 'agent_id', 'source', 'object_id', 'operation'];
+        $required = ['agent_type', 'source', 'operation'];
+        if ($write || $exact) {
+            $required = array_merge($required, ['agent_id', 'object_id']);
+        }
         if ($write) {
             $fields['mod_type'] = ['type' => 'string', 'enum' => ['additional', 'include', 'exclude']];
             $fields['assign_for'] = ['type' => 'string', 'enum' => ['item', 'children', 'both']];
@@ -125,9 +128,10 @@ class Exceptions
         return $rows;
     }
 
-    private function project($row)
+    private function project($row, $object_id)
     {
-        return ['id' => (int) $row->eitem_id, 'mod_type' => $row->mod_type,
+        return ['id' => (int) $row->eitem_id, 'agent_type' => $row->agent_type, 'agent_id' => (int) $row->agent_id,
+            'object_id' => $object_id, 'mod_type' => $row->mod_type,
             'assign_for' => $row->assign_for ?: 'both', 'inherited_from' => (int) $row->inherited_from,
             'status' => $row->for_item_status];
     }
@@ -195,6 +199,118 @@ class Exceptions
         if (is_wp_error($input)) {
             return $input;
         }
+        $has_agent = isset($input['agent_id']);
+        $has_object = isset($input['object_id']);
+        if ($has_agent === $has_object || (!$has_object && !isset($input['post_type']) && !isset($input['taxonomy']))) {
+            return Input::error();
+        }
+
+        $pp = presspermit();
+        $source = $input['source'];
+        $target = $input['target_source'] ?? ('pp_group' === $source ? 'pp_group' : 'post');
+        $post_type = $input['post_type'] ?? '';
+        $taxonomy = $input['taxonomy'] ?? '';
+        if (!in_array($input['operation'], $pp->getOperations(), true) && 'pp_group' !== $source) {
+            return Input::error();
+        }
+        if (($post_type && !in_array($post_type, $pp->getEnabledPostTypes(), true))
+            || ($taxonomy && !taxonomy_exists($taxonomy))
+            || ('post' === $source && ('post' !== $target || $taxonomy))
+            || ('term' === $source && !in_array($target, ['post', 'term'], true))
+            || ('pp_group' === $source && ('pp_group' !== $target || 'manage' !== $input['operation'] || $post_type || $taxonomy))) {
+            return Input::error();
+        }
+
+        $item_id = false;
+        if ($has_agent) {
+            $access = Access::subject($input['agent_id'], $input['agent_type']);
+            if (is_wp_error($access)) {
+                return $access;
+            }
+        } else {
+            if ('term' === $source && !$taxonomy) {
+                $term = get_term($input['object_id']);
+                if (!$term || is_wp_error($term)) {
+                    return Access::denied();
+                }
+                $taxonomy = $term->taxonomy;
+            }
+            $object = $this->objectAccess($source, $input['object_id'], $taxonomy);
+            if (is_wp_error($object)) {
+                return $object;
+            }
+            if ('post' === $source && $post_type && $post_type !== $object->post_type) {
+                return Input::error();
+            }
+            $item_id = 'term' === $source ? (int) $object->term_taxonomy_id : $input['object_id'];
+        }
+
+        global $wpdb;
+        $query = [
+            'agent_type' => $input['agent_type'], 'agent_id' => $input['agent_id'] ?? 0,
+            'operations' => [$input['operation']], 'for_item_source' => $target, 'via_item_source' => $source,
+            'item_id' => $item_id, 'for_item_status' => $input['status'] ?? '', 'assign_for' => '',
+            'post_types' => $post_type ? [$post_type] : true,
+            'taxonomies' => $taxonomy ? [$taxonomy] : true,
+            'return_raw_results' => true,
+        ];
+        if (!$has_agent) {
+            $query['ug_clause'] = $wpdb->prepare(' AND e.agent_type = %s', $input['agent_type']);
+        }
+        $rows = $pp->getExceptions($query);
+        if ($wpdb->last_error || !is_array($rows) || count($rows) > 1000) {
+            return Access::unconfirmed();
+        }
+
+        $rules = $objects = [];
+        foreach ($rows as $row) {
+            if ($row->operation !== $input['operation'] || ($taxonomy && $row->via_item_type !== $taxonomy)) {
+                continue;
+            }
+            $scope = $input;
+            $scope['agent_id'] = (int) $row->agent_id;
+            $scope['object_id'] = (int) $row->item_id;
+            if ('term' === $source) {
+                $term = get_term_by('term_taxonomy_id', $row->item_id);
+                if (!$term || $term->taxonomy !== $row->via_item_type) {
+                    continue;
+                }
+                $scope['object_id'] = (int) $term->term_id;
+                $scope['taxonomy'] = $term->taxonomy;
+            }
+            if ('post' === $target) {
+                unset($scope['post_type']);
+                $types = $post_type ? [$post_type] : [$row->for_item_type];
+                if ('' === $types[0] && 'term' === $source) {
+                    $tx = get_taxonomy($term->taxonomy);
+                    $types = $tx ? array_intersect($tx->object_type, $pp->getEnabledPostTypes()) : [];
+                }
+            } else {
+                $types = [''];
+            }
+            if (!$types) {
+                continue;
+            }
+            foreach ($types as $type) {
+                if ($type) {
+                    $scope['post_type'] = $type;
+                }
+                if (is_wp_error($this->context($scope))) {
+                    continue 2;
+                }
+            }
+            $rules[] = $this->project($row, $scope['object_id']);
+            $objects[$scope['object_id']] = true;
+        }
+        return ['rules' => $rules, 'affected_objects' => count($objects), 'revision' => Access::revision([$input, $rules])];
+    }
+
+    public function readExact($input)
+    {
+        $input = Input::validate($input, $this->schema(false, true));
+        if (is_wp_error($input)) {
+            return $input;
+        }
         $args = $this->context($input);
         if (is_wp_error($args)) {
             return $args;
@@ -207,7 +323,9 @@ class Exceptions
         if (is_wp_error($tree)) {
             return $tree;
         }
-        return ['rules' => array_map([$this, 'project'], array_values($rows)), 'affected_objects' => count($tree),
+        return ['rules' => array_map(function ($row) use ($input) {
+            return $this->project($row, $input['object_id']);
+        }, array_values($rows)), 'affected_objects' => count($tree),
             'revision' => Access::revision([$args, $rows, $tree])];
     }
 
@@ -278,7 +396,7 @@ class Exceptions
             return $input;
         }
         $scope = array_intersect_key($input, $this->schema(false)['properties']);
-        $before = $this->read($scope);
+        $before = $this->readExact($scope);
         if (is_wp_error($before)) {
             return $before;
         }
@@ -379,7 +497,7 @@ class Exceptions
             PermissionsUpdate::removeExceptionItemsById($ids);
         }
         do_action('presspermit_trigger_cache_flush');
-        $after = $this->read($scope);
+        $after = $this->readExact($scope);
         if (is_wp_error($after)) {
             return Access::unconfirmed();
         }
