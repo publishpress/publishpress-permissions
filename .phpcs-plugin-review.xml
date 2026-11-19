@@ -10,16 +10,24 @@
     <arg name="basepath" value="."/>
     <arg name="parallel" value="20"/>
     <arg value="ps"/>
-    <exclude-pattern>*/node_modules/*</exclude-pattern>
-    <exclude-pattern>*/tests/*</exclude-pattern>
-    <exclude-pattern>*/vendor/*</exclude-pattern>
 
     <!-- Mirror scan paths from .phpcs.xml -->
-    <file>admin/</file>
-    <file>includes/</file>
-    <file>models/</file>
-    <file>public/</file>
-    <file>readme.txt</file>
+    <file>.</file>
+    <exclude-pattern>*/\.github/*</exclude-pattern>
+    <exclude-pattern>/\.vscode/*</exclude-pattern>
+    <exclude-pattern>/\.idea/*</exclude-pattern>
+    <exclude-pattern>/tests/*</exclude-pattern>
+    <exclude-pattern>/.wordpress-org/*</exclude-pattern>
+    <exclude-pattern>/bin/*</exclude-pattern>
+    <exclude-pattern>/vendor/*</exclude-pattern>
+    <exclude-pattern>/dist/*</exclude-pattern>
+    <exclude-pattern>/languages/*</exclude-pattern>
+    <exclude-pattern>/node_modules/*</exclude-pattern>
+    <exclude-pattern>/dev-workspace-cache/*</exclude-pattern>
+    <exclude-pattern>/cache/*</exclude-pattern>
+    <exclude-pattern>/.cache/*</exclude-pattern>
+    <exclude-pattern>/.phplint.cache/*</exclude-pattern>
+    <exclude-pattern>/lib/vendor/*</exclude-pattern>
 
     <rule ref="vendor/publishpress/publishpress-phpcs-standards/standards/plugin-check-rulesets/plugin-review.xml"/>
 </ruleset>
