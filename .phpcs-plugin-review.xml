@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="PublishPressPluginReview"
+         xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+    <description>WordPress.org plugin review standards (Plugin Check)</description>
+
+    <arg name="extensions" value="php"/>
+    <arg name="colors"/>
+    <arg name="cache"/>
+    <ini name="memory_limit" value="256M"/>
+    <arg name="basepath" value="."/>
+    <arg name="parallel" value="20"/>
+    <arg value="ps"/>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+
+    <!-- Mirror scan paths from .phpcs.xml -->
+    <file>admin/</file>
+    <file>includes/</file>
+    <file>models/</file>
+    <file>public/</file>
+    <file>readme.txt</file>
+
+    <rule ref="vendor/publishpress/publishpress-phpcs-standards/standards/plugin-check-rulesets/plugin-review.xml"/>
+</ruleset>
