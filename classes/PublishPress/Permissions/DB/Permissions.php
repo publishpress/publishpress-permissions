@@ -17,8 +17,12 @@ class Permissions
             $params = array_values($types);
         }
         if (null !== $parent) {
-            $sql .= ' AND post_parent = %d';
-            $params[] = (int) $parent;
+            $parents = array_map('intval', (array) $parent);
+            if (!$parents) {
+                return [];
+            }
+            $sql .= ' AND post_parent IN (' . implode(',', array_fill(0, count($parents), '%d')) . ')';
+            $params = array_merge($params, $parents);
         }
         if (!$include_trash) {
             $sql .= " AND post_status != 'trash'";
@@ -36,8 +40,12 @@ class Permissions
         $sql = "SELECT term_id FROM $wpdb->term_taxonomy WHERE taxonomy = %s";
         $params = [$taxonomy];
         if (null !== $parent) {
-            $sql .= ' AND parent = %d';
-            $params[] = (int) $parent;
+            $parents = array_map('intval', (array) $parent);
+            if (!$parents) {
+                return [];
+            }
+            $sql .= ' AND parent IN (' . implode(',', array_fill(0, count($parents), '%d')) . ')';
+            $params = array_merge($params, $parents);
         }
         $sql .= ' ORDER BY term_id LIMIT 1001';
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.NotPrepared -- Fixed clauses and typed placeholders above.

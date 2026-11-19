@@ -47,6 +47,7 @@ class Delegation
         if (is_wp_error($ids) || count($ids) > 1000) {
             return is_wp_error($ids) ? $ids : Input::error();
         }
+        $checked_types = [];
         foreach ($ids as $id) {
             $target = self::target($id, false);
             if (is_wp_error($target)) {
@@ -54,7 +55,7 @@ class Delegation
             }
             // Delegating management must not provide a route to privileged group roles.
             if (!(($input['enabled'] && 'exclude' === $input['mod_type']) || (!$input['enabled'] && 'additional' === $input['mod_type']))) {
-                $checked = self::grantScope($id);
+                $checked = self::grantScope($id, $checked_types);
                 if (is_wp_error($checked)) {
                     return $checked;
                 }
@@ -69,13 +70,15 @@ class Delegation
     }
 
     /** Authorize the existing content access that a new group manager could redistribute. */
-    private static function grantScope($id)
+    private static function grantScope($id, array &$checked_types)
     {
         require_once PRESSPERMIT_CLASSPATH . '/DB/PermissionsUpdate.php';
         $rows = \PublishPress\Permissions\DB\PermissionsUpdate::getAgentRemovalItems($id, 'pp_group');
         if (!is_array($rows) || count($rows) > 1000) {
             return Access::unconfirmed();
         }
+        $service = new Exceptions();
+        $checked_rules = [];
         foreach ($rows as $row) {
             // Transitive delegation graphs require native administration.
             if (!in_array($row->via_item_source, ['post', 'term'], true)) {
@@ -98,16 +101,16 @@ class Delegation
             if ('post' === $row->for_item_source) {
                 $scope['post_type'] = $row->for_item_type;
             }
-            $service = new Exceptions();
-            $state = $service->read($scope);
-            if (is_wp_error($state)) {
-                return $state;
+            $assign_for = $row->assign_for ?: 'both';
+            $key = wp_json_encode([$scope, $row->mod_type, $assign_for]);
+            if (isset($checked_rules[$key])) {
+                continue;
             }
-            $check = $service->update($scope + ['revision' => $state['revision'], 'mod_type' => $row->mod_type,
-                'assign_for' => $row->assign_for ?: 'both', 'enabled' => true, 'dry_run' => true]);
+            $check = $service->previewStoredRule($scope, $row->mod_type, $assign_for, $checked_types);
             if (is_wp_error($check)) {
                 return $check;
             }
+            $checked_rules[$key] = true;
         }
         return true;
     }

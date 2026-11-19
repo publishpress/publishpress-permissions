@@ -148,43 +148,52 @@ class Exceptions
         $pending = [$input['object_id']];
         $visited = $snapshot = [];
         while ($pending) {
-            $id = (int) array_shift($pending);
-            if (isset($visited[$id])) {
-                continue;
-            }
-            $visited[$id] = true;
-            if (count($visited) > 1000) {
-                return new \WP_Error('presspermit_mcp_scope_limit', __('Use native administration for permission scopes exceeding 1,000 objects.', 'press-permit-core'));
-            }
-            if ($id === (int) $input['object_id'] || $authorize_descendants) {
-                $object = $this->objectAccess($input['source'], $id, $input['taxonomy'] ?? '');
-                if (is_wp_error($object)) {
-                    return $object;
+            $parents = [];
+            foreach ($pending as $id) {
+                if (isset($visited[$id])) {
+                    continue;
                 }
-            } else {
-                // Read only identifiers and hierarchy metadata for unrelated descendants; their content and permissions are not exposed.
-                $object = 'post' === $input['source']
-                    ? get_post($id)
-                    : get_term($id, $input['taxonomy'] ?? '');
-                if (!$object || is_wp_error($object)) {
-                    return Access::denied();
+                $visited[$id] = true;
+                if (count($visited) > 1000) {
+                    return new \WP_Error('presspermit_mcp_scope_limit', __('Use native administration for permission scopes exceeding 1,000 objects.', 'press-permit-core'));
                 }
-            }
-            if ('post' === $input['source']) {
-                $snapshot[$id] = [$object->post_parent, $object->post_type, $object->post_status, $object->post_modified_gmt];
-                $children = Access::postIds([], $id);
-            } else {
-                $snapshot[$id] = [$object->parent, $object->taxonomy, $object->term_taxonomy_id];
-                $children = Access::termIds($input['taxonomy'], $id);
-                if (is_wp_error($children)) {
-                    return $children;
+                if ($id === (int) $input['object_id'] || $authorize_descendants) {
+                    $object = $this->objectAccess($input['source'], $id, $input['taxonomy'] ?? '');
+                    if (is_wp_error($object)) {
+                        return $object;
+                    }
+                } else {
+                    // Read only identifiers and hierarchy metadata for unrelated descendants; their content and permissions are not exposed.
+                    $object = 'post' === $input['source']
+                        ? get_post($id)
+                        : get_term($id, $input['taxonomy'] ?? '');
+                    if (!$object || is_wp_error($object)) {
+                        return Access::denied();
+                    }
                 }
+                if ('post' === $input['source']) {
+                    $snapshot[$id] = [$object->post_parent, $object->post_type, $object->post_status, $object->post_modified_gmt];
+                } else {
+                    $snapshot[$id] = [$object->parent, $object->taxonomy, $object->term_taxonomy_id];
+                }
+                $parents[] = $id;
             }
-            $pending = array_merge($pending, $children);
+            if (!$parents) {
+                break;
+            }
+            $pending = 'post' === $input['source']
+                ? Access::postIds([], $parents)
+                : Access::termIds($input['taxonomy'], $parents);
             if (count($pending) + count($visited) > 1001) {
                 return new \WP_Error('presspermit_mcp_scope_limit', __('The affected permission tree is too large.', 'press-permit-core'));
             }
+            if ($pending && 'post' === $input['source'] && function_exists('_prime_post_caches')) {
+                _prime_post_caches($pending, false, false);
+            } elseif ($pending && 'term' === $input['source'] && function_exists('_prime_term_caches')) {
+                _prime_term_caches($pending, false);
+            }
         }
+        ksort($snapshot, SORT_NUMERIC);
         return $snapshot;
     }
 
@@ -223,7 +232,28 @@ class Exceptions
 
     public function update($input)
     {
-        $input = Input::validate($input, $this->schema(true));
+        $checked_types = [];
+        return $this->prepareUpdate($input, $checked_types);
+    }
+
+    /** Check a stored rule without requiring a separate revision read. */
+    public function previewStoredRule(array $scope, $mod_type, $assign_for, array &$checked_types)
+    {
+        return $this->prepareUpdate($scope + [
+            'mod_type' => $mod_type,
+            'assign_for' => $assign_for,
+            'enabled' => true,
+            'dry_run' => true,
+        ], $checked_types, true);
+    }
+
+    private function prepareUpdate($input, array &$checked_types, $stored_rule = false)
+    {
+        $schema = $this->schema(true);
+        if ($stored_rule) {
+            $schema['required'] = array_values(array_diff($schema['required'], ['revision']));
+        }
+        $input = Input::validate($input, $schema);
         if (is_wp_error($input)) {
             return $input;
         }
@@ -232,9 +262,11 @@ class Exceptions
         if (is_wp_error($before)) {
             return $before;
         }
-        $stale = Access::stale($input['revision'], $before['revision']);
-        if (is_wp_error($stale)) {
-            return $stale;
+        if (!$stored_rule) {
+            $stale = Access::stale($input['revision'], $before['revision']);
+            if (is_wp_error($stale)) {
+                return $stale;
+            }
         }
         $args = $this->context($scope);
         if (is_wp_error($args)) {
@@ -250,7 +282,8 @@ class Exceptions
             || ('exclude' === $input['mod_type'] && 'pp_group' === $input['agent_type'] && defined('PP_NO_GROUP_RESTRICTIONS'))) {
             return new \WP_Error('presspermit_mcp_configuration_locked', __('This permission mode is disabled by native configuration.', 'press-permit-core'));
         }
-        if ('include' === $input['mod_type'] && 'post' === $args['for_item_source']) {
+        if ('include' === $input['mod_type'] && 'post' === $args['for_item_source']
+            && empty($checked_types['post'][$args['for_item_type']])) {
             $all = Access::postIds([$args['for_item_type']]);
             if (count($all) > 1000) {
                 return Input::error();
@@ -260,8 +293,10 @@ class Exceptions
                     return Access::denied();
                 }
             }
+            $checked_types['post'][$args['for_item_type']] = true;
         }
-        if ('include' === $input['mod_type'] && 'term' === $args['for_item_source']) {
+        if ('include' === $input['mod_type'] && 'term' === $args['for_item_source']
+            && empty($checked_types['term'][$args['for_item_type']])) {
             $all = Access::termIds($args['for_item_type']);
             if (count($all) > 1000) {
                 return Input::error();
@@ -271,6 +306,7 @@ class Exceptions
                     return Access::denied();
                 }
             }
+            $checked_types['term'][$args['for_item_type']] = true;
         }
         if ('pp_group' === $input['source']) {
             $delegation = Delegation::authorizeChange($input);

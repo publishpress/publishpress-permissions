@@ -50,6 +50,9 @@ class GroupDeletion
             return Input::error();
         }
         $scopes = [];
+        $checked_types = [];
+        $checked_group_scope = false;
+        $exceptions = new Exceptions();
         foreach ($rows as $row) {
             $object_id = (int) $row->item_id;
             if (!in_array($row->via_item_source, ['post', 'term', 'pp_group'], true) || !$object_id) {
@@ -68,7 +71,8 @@ class GroupDeletion
             if ('term' === $row->via_item_source) {
                 $scope['taxonomy'] = $row->via_item_type;
             }
-            if ('include' === $row->mod_type && 'post' === $row->for_item_source) {
+            if ('include' === $row->mod_type && 'post' === $row->for_item_source
+                && empty($checked_types['post'][$row->for_item_type])) {
                 $affected = Access::postIds([$row->for_item_type]);
                 if (count($affected) > 1000) {
                     return Input::error();
@@ -78,8 +82,10 @@ class GroupDeletion
                         return Access::denied();
                     }
                 }
+                $checked_types['post'][$row->for_item_type] = true;
             }
-            if ('include' === $row->mod_type && 'term' === $row->for_item_source) {
+            if ('include' === $row->mod_type && 'term' === $row->for_item_source
+                && empty($checked_types['term'][$row->for_item_type])) {
                 $affected = Access::termIds($row->for_item_type);
                 if (count($affected) > 1000) {
                     return Input::error();
@@ -89,16 +95,18 @@ class GroupDeletion
                         return Access::denied();
                     }
                 }
+                $checked_types['term'][$row->for_item_type] = true;
             }
-            if ('include' === $row->mod_type && 'pp_group' === $row->for_item_source) {
+            if ('include' === $row->mod_type && 'pp_group' === $row->for_item_source && !$checked_group_scope) {
                 $checked = Delegation::authorizeChange(['object_id' => $object_id, 'assign_for' => 'item', 'mod_type' => 'include', 'enabled' => false]);
                 if (is_wp_error($checked)) {
                     return $checked;
                 }
+                $checked_group_scope = true;
             }
             $key = wp_json_encode($scope);
             if (!isset($scopes[$key])) {
-                $state = (new Exceptions())->read($scope);
+                $state = $exceptions->read($scope);
                 if (is_wp_error($state)) {
                     return $state;
                 }
