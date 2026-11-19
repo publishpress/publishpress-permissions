@@ -105,7 +105,7 @@ class GroupDeletion
             }
             $key = wp_json_encode($scope);
             if (!isset($scopes[$key])) {
-                $state = (new Exceptions())->read($scope);
+                $state = (new Exceptions())->readExact($scope);
                 if (is_wp_error($state)) {
                     return $state;
                 }

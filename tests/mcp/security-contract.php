@@ -125,7 +125,7 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
         $actor->add_cap('pp_set_edit_permissions');
         try {
             $publish_scope = ['agent_type' => 'pp_group', 'agent_id' => $group_id, 'source' => 'post', 'object_id' => $post_id, 'operation' => 'publish'];
-            $publish_state = $ok(permissions_mcp_call('get-permissions', $publish_scope), 'Native Publish permission discovery');
+            $publish_state = $ok(permissions_mcp_call('get-permission-scope', $publish_scope), 'Native Publish permission discovery');
             $patch = $publish_scope + ['revision' => $publish_state['revision'], 'mod_type' => 'exclude', 'assign_for' => 'item', 'enabled' => true];
             $ok(permissions_mcp_call('set-permission', $patch + ['dry_run' => true]), 'Publish permission preview');
             $published = $ok(permissions_mcp_call('set-permission', $patch), 'Publish permission save');
@@ -133,7 +133,7 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
             $deny_publish = static function ($caps) { $caps['pp_set_edit_permissions'] = false; return $caps; };
             add_filter('user_has_cap', $deny_publish, PHP_INT_MAX);
             try {
-                permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permissions', $publish_scope)), 'Denied administrator editing-permissions capability was bypassed.');
+                permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permission-scope', $publish_scope)), 'Denied administrator editing-permissions capability was bypassed.');
             } finally {
                 remove_filter('user_has_cap', $deny_publish, PHP_INT_MAX);
             }
@@ -186,7 +186,7 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
         }
         $scope = ['agent_type' => 'pp_group', 'agent_id' => $group_id, 'source' => 'term', 'object_id' => $terms[0],
             'taxonomy' => 'mcp_security_tax', 'target_source' => 'term', 'operation' => 'manage'];
-        $state = $ok(permissions_mcp_call('get-permissions', $scope), 'Native term permission discovery');
+        $state = $ok(permissions_mcp_call('get-permission-scope', $scope), 'Native term permission discovery');
         $deny = static function ($caps, $cap, $user_id, $args) use ($terms) {
             if ($cap === 'edit_term' && (int) ($args[0] ?? 0) === $terms[1]) {
                 return ['do_not_allow'];
@@ -200,7 +200,7 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
         } finally {
             remove_filter('map_meta_cap', $deny, PHP_INT_MAX);
         }
-        $state = $ok(permissions_mcp_call('get-permissions', $scope), 'Fresh term permission state');
+        $state = $ok(permissions_mcp_call('get-permission-scope', $scope), 'Fresh term permission state');
         $term_patch = $scope + ['revision' => $state['revision'], 'mod_type' => 'include', 'assign_for' => 'item', 'enabled' => true];
         $hidden_mode = static function ($modes) {
             unset($modes['include']);
@@ -215,7 +215,7 @@ function permissions_mcp_security_contract($group_id, $subject_id, $post_id)
         }
         $saved_term = $ok(permissions_mcp_call('set-permission', $term_patch), 'Native term inclusion save');
         permissions_mcp_check(count($saved_term['rules']) === 1, 'Native term inclusion did not round-trip.');
-        permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permissions', array_replace($scope, ['object_id' => (string) $terms[0]]))), 'Numeric-string term ID accepted.');
+        permissions_mcp_check(is_wp_error(permissions_mcp_call('get-permission-scope', array_replace($scope, ['object_id' => (string) $terms[0]]))), 'Numeric-string term ID accepted.');
         add_filter('map_meta_cap', $deny, PHP_INT_MAX, 4);
         try {
             permissions_mcp_check(is_wp_error(permissions_mcp_call('get-group-deletion', ['id' => $group_id])), 'Group deletion ignored an inverse term permission scope.');

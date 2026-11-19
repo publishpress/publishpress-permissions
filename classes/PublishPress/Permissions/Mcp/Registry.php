@@ -55,11 +55,14 @@ class Registry
                 $roles->schema($write), [$roles, $write ? 'update' : 'read'], ['pp_manage_permissions'], !$write);
         }
         $exceptions = new Exceptions();
-        foreach (['get-permissions' => false, 'set-permission' => true] as $name => $write) {
+        foreach (['get-permission-scope' => false, 'set-permission' => true] as $name => $write) {
             $registry->action($name, __('Permissions for posts and terms', 'press-permit-core'),
                 __('Read an agent/object/operation scope and its revision before adding or removing a native permission. source=pp_group with operation=manage and assign_for=item manages native custom-group delegation when Collaboration and Display group permissions are enabled. Group management, membership and deletion capabilities are required, and incoming delegation references must be removed before target-group deletion. source=term uses WordPress term IDs and a taxonomy; post_type selects the affected post type for category-based rules. mod_type is additional, include or exclude; assign_for is item, children or both. Native operation, object and descendant permissions apply. Omitted rules are preserved. Inherited rules must be changed at their origin. dry_run writes nothing. Large scopes use native administration.', 'press-permit-core'),
-                $exceptions->schema($write), [$exceptions, $write ? 'update' : 'read'], ['pp_manage_permissions'], !$write);
+                $exceptions->schema($write, true), [$exceptions, $write ? 'update' : 'readExact'], ['pp_manage_permissions'], !$write);
         }
+        $registry->action('get-permissions', __('Query native permission rules', 'press-permit-core'),
+            __('Supply exactly one of agent_id or object_id. Without object_id, supply post_type or taxonomy. An empty type matches all eligible types. Use get-permission-scope for a revision token for writes.', 'press-permit-core'),
+            $exceptions->schema(false), [$exceptions, 'read'], ['pp_manage_permissions'], true);
         foreach (['teaser' => new Teaser(), 'modules' => new Modules()] as $feature => $service) {
             foreach (['get-' . $feature => false, 'update-' . $feature => true] as $name => $write) {
                 $caps = 'teaser' === $feature ? ['pp_manage_teaser', 'pp_manage_settings'] : ['pp_manage_settings', 'pp_manage_permissions', 'pp_manage_teaser', 'pp_manage_members'];
@@ -109,9 +112,11 @@ class Registry
                 __('Supply up to 25 explicit items, each with its own current revision. Every item is validated and authorized before writes; malformed, denied, stale or overlapping permission scopes reject the whole preview. dry_run writes nothing. Native execution is not transactional: inspect completed, confirmed_items and failed_index and re-read all scopes after a partial failure.', 'press-permit-core'),
                 $bulk->schema($role_batch), [$bulk, $role_batch ? 'roles' : 'permissions'], ['pp_manage_permissions'], false, false);
         }
-        $registry->action('get-permission-matrix', __('Read explicit permission scopes', 'press-permit-core'),
-            __('Read up to 25 explicit authorized post, term or custom-group delegation scopes with their native rules and individual revisions. This does not enumerate private objects or grant access. Results are bounded to 1,000 rules; use the normal single-scope getters or smaller batches for larger inventories.', 'press-permit-core'),
-            $bulk->schema(false, true), [$bulk, 'matrix'], ['pp_manage_permissions'], true);
+        foreach (['get-permission-matrix', 'get-permissions-matrix'] as $matrix_action) {
+            $registry->action($matrix_action, __('Read explicit permission scopes', 'press-permit-core'),
+                __('Read up to 25 authorized scopes using the get-permissions input rules. Each scope must supply agent_id or object_id. Results are bounded to 1,000 rules.', 'press-permit-core'),
+                $bulk->schema(false, true), [$bulk, 'matrix'], ['pp_manage_permissions'], true);
+        }
         do_action('presspermit_mcp_register_actions', $registry);
     }
 
@@ -169,7 +174,7 @@ class Registry
                 'group-deletion' => ['reads' => ['get-group-deletion'], 'writes' => ['delete-group']],
                 'editor-options' => ['reads' => ['get-editor-options'], 'writes' => ['update-editor-options']],
                 'filtering' => ['reads' => ['get-content-types'], 'writes' => ['set-content-types'], 'capabilities' => ['pp_manage_settings']],
-                'content-permissions' => ['reads' => ['get-permissions', 'get-permission-matrix'], 'writes' => ['set-permission', 'bulk-set-permissions'], 'capabilities' => ['pp_manage_permissions']],
+                'content-permissions' => ['reads' => ['get-permissions', 'get-permissions-matrix', 'get-permission-scope'], 'writes' => ['set-permission', 'bulk-set-permissions'], 'capabilities' => ['pp_manage_permissions']],
                 'group-delegation' => ['reads' => ['get-permissions'], 'writes' => ['set-permission', 'bulk-set-permissions'], 'active' => $pp->moduleActive('collaboration') && (bool) $pp->getOption('display_group_exceptions')],
                 'supplemental-roles' => ['reads' => ['get-extra-roles'], 'writes' => ['update-extra-roles', 'bulk-update-extra-roles'], 'capabilities' => ['pp_manage_permissions']],
             ])];
