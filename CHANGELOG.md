@@ -48,6 +48,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - Security : Fixed a cross-site scripting issue in permission group labels.
 - Security : Fixed stale access-control cache after user or site context changes.
 
+[Unreleased]
+
+- Added: MCP actions for permission groups, memberships, supplemental roles, group delegation, permission matrices and validated batches, post and term permissions, teaser configuration, module activation, Role Usage and content visibility authoring.
+
 [4.9.1] - 14 Oct, 2026
 
 - Changed: Permissions settings navigation is now more accessible, improving keyboard navigation and usability. #2494

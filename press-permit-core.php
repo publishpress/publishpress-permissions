@@ -223,6 +223,8 @@ if ((!defined('PRESSPERMIT_FILE') && !$pro_active) || $presspermit_loaded_by_pro
         require_once(__DIR__ . '/classes/PublishPress/Permissions.php');
 
         presspermit();
+
+        require_once PRESSPERMIT_CLASSPATH . '/Mcp/bootstrap.php';
     }
 
     function presspermit_load_textdomain()

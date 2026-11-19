@@ -19,6 +19,26 @@ class PermissionsUpdateHelper
 
 class PermissionsUpdate
 {
+    /** Bounded native assignments affected by a Role Usage definition. */
+    public static function getUsageAssignments($role)
+    {
+        global $wpdb;
+        return $wpdb->get_results($wpdb->prepare(
+            "SELECT * FROM $wpdb->ppc_roles WHERE role_name = %s OR role_name LIKE %s ORDER BY assignment_id LIMIT 1001",
+            $role, $wpdb->esc_like($role . ':') . '%'
+        ));
+    }
+    /** Inspect every stored rule, including disabled types, before deleting an agent. */
+    public static function getAgentRemovalItems($agent_id, $agent_type)
+    {
+        global $wpdb;
+        return $wpdb->get_results($wpdb->prepare(
+            "SELECT e.*, i.* FROM $wpdb->ppc_exceptions AS e"
+            . " INNER JOIN $wpdb->ppc_exception_items AS i ON i.exception_id = e.exception_id"
+            . " WHERE e.agent_id = %d AND e.agent_type = %s ORDER BY i.eitem_id LIMIT 1001",
+            $agent_id, $agent_type
+        ));
+    }
     // additional arguments recognized by insertRoleAssignments():
     // is_auto_insertion = false  (if true, skips logging the item as having a manually modified role assignment)
     public static function assignRoles($assignments, $agent_type = 'pp_group', $args = [])
@@ -83,9 +103,10 @@ class PermissionsUpdate
             }
             
             if ($ass_ids = $wpdb->get_col($wpdb->prepare(
-                "SELECT assignment_id FROM $wpdb->ppc_roles WHERE role_name = %s AND agent_id = %d",
+                "SELECT assignment_id FROM $wpdb->ppc_roles WHERE role_name = %s AND agent_id = %d AND agent_type = %s",
                 $role_name,
-                $agent_id
+                $agent_id,
+                $agent_type
             ))) {
                 PermissionsUpdate::removeRolesById($ass_ids);
             }
@@ -878,6 +899,23 @@ class PermissionsUpdate
         return $updated_items;
     }
 
+    /** Read the exact native removal scope so non-form clients can authorize every affected item. */
+    public static function getExceptionRemovalItems($eitem_ids)
+    {
+        if (!$eitem_ids) {
+            return [];
+        }
+        global $wpdb;
+        $eitem_id_csv = implode("', '", array_map('intval', (array) $eitem_ids));
+        return $wpdb->get_results(
+            "SELECT e.agent_type, e.agent_id, e.for_item_source, e.for_item_type, e.for_item_status, e.operation,"
+            . " e.mod_type, e.via_item_source, e.via_item_type, i.eitem_id, i.exception_id, i.item_id"
+            . " FROM $wpdb->ppc_exception_items AS i"
+            . " INNER JOIN $wpdb->ppc_exceptions AS e ON e.exception_id = i.exception_id"
+            . " WHERE i.eitem_id IN ('$eitem_id_csv') OR (i.inherited_from IN ('$eitem_id_csv') AND i.inherited_from != '0')"  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+        );  // deleted entries will be returned
+    }
+
     public static function removeExceptionItemsById($eitem_ids)
     {
         $eitem_ids = (array)$eitem_ids;
@@ -890,13 +928,7 @@ class PermissionsUpdate
         // Propagated roles will be deleted only if the original progenetor goes away.  Removal of a "link" in the parent/child propagation chain has no effect.
         $eitem_id_csv = implode("', '", array_map('intval', $eitem_ids));
 
-        $exc_items = $wpdb->get_results(
-            "SELECT e.agent_type, e.agent_id, e.for_item_source, e.for_item_type, e.for_item_status, e.operation,"
-            . " e.mod_type, e.via_item_source, e.via_item_type, i.eitem_id, i.exception_id, i.item_id"
-            . " FROM $wpdb->ppc_exception_items AS i"
-            . " INNER JOIN $wpdb->ppc_exceptions AS e ON e.exception_id = i.exception_id"
-            . " WHERE i.eitem_id IN ('$eitem_id_csv') OR (i.inherited_from IN ('$eitem_id_csv') AND i.inherited_from != '0')"  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-        );  // deleted entries will be returned
+        $exc_items = self::getExceptionRemovalItems($eitem_ids);
 
         $eitem_ids = [];
         foreach ($exc_items as $row) {

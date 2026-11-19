@@ -9,10 +9,13 @@ class SettingsTabAdvanced
     private $enabled;
     private $advanced_option_captions = [];
 
-    public function __construct()
+    public function __construct($register_hooks = true)
     {
         // if disabled, will show only available option will be "enable"
         $this->enabled = presspermit()->getOption('advanced_options');
+        if (!$register_hooks) {
+            return;
+        }
 
         add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 95);
         add_filter('presspermit_section_captions', [$this, 'sectionCaptions']);

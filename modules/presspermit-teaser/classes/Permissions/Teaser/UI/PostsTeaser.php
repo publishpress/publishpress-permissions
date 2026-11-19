@@ -18,7 +18,10 @@ class PostsTeaser
 
 	var $blockEditorActive = true;
 
-    function __construct() {
+    function __construct($register_hooks = true) {
+        if (!$register_hooks) {
+            return;
+        }
         add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 7);
         add_filter('presspermit_section_captions', [$this, 'sectionCaptions']);
         add_filter('presspermit_option_captions', [$this, 'optionCaptions']);
