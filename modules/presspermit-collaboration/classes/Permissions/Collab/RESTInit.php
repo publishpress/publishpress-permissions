@@ -88,9 +88,21 @@ class RESTInit
                 $request
             );
             
+            $required_operation = (presspermit()->getOption('page_parent_editable_only')) ? 'edit' : 'associate';
+            $include_ids = presspermit()->getUser()->getExceptionPosts($required_operation, 'include', $args['post_type']);
+            $universal_include = $include_ids && (in_array(0, (array) $include_ids, true) || in_array('0', (array) $include_ids, true));
+
             if ($is_administrator = presspermit()->isContentAdministrator()) {
                 $pages = get_pages(
                     ['post_type' => $args['post_type'], 
+                    'no_pp_filter' => 1,
+                    'post_status' => $post_statuses,
+                    ]
+                );
+            } elseif ($universal_include) {
+                $pages = get_pages(
+                    ['post_type' => $args['post_type'],
+                    'exclude' => (!empty($params['exclude'])) ? $params['exclude'] : [],    // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                     'no_pp_filter' => 1,
                     'post_status' => $post_statuses,
                     ]
@@ -103,7 +115,7 @@ class RESTInit
                     ['post_type' => $args['post_type'], 
                     'exclude' => (!empty($params['exclude'])) ? $params['exclude'] : [],    // phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_exclude
                     'parent_exclude' => (!empty($params['parent_exclude'])) ? $params['parent_exclude'] : [],
-                    'required_operation' => (presspermit()->getOption('page_parent_editable_only')) ? 'edit' : 'associate',
+                    'required_operation' => $required_operation,
                     'suppress_filters' => 0,
                     'name' => 'parent_id',
                     'post_status' => $post_statuses,
@@ -114,6 +126,10 @@ class RESTInit
             $include_page_ids = [];
             foreach($pages as $page) {
             	$include_page_ids []= $page->ID;
+            }
+
+            if (isset($params['search']) && ('/' === $params['search'])) {
+                unset($args['s']);
             }
 
             // always include existing page parent value as a dropdown option
