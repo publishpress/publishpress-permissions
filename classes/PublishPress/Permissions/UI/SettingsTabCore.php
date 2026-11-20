@@ -6,8 +6,11 @@ namespace PublishPress\Permissions\UI;
 
 class SettingsTabCore
 {
-    public function __construct()
+    public function __construct($register_hooks = true)
     {
+        if (!$register_hooks) {
+            return;
+        }
         add_filter('presspermit_option_tabs', [$this, 'optionTabs'], 2);
         add_filter('presspermit_section_captions', [$this, 'sectionCaptions']);
         add_filter('presspermit_option_captions', [$this, 'optionCaptions']);
@@ -78,58 +81,18 @@ class SettingsTabCore
                 <th scope="row"><?php echo esc_html($ui->section_captions[$tab][$section]); ?></th>
                 <td>
                     <?php
+                    $option_name = ('term' == $scope) ? 'enabled_taxonomies' : 'enabled_post_types';
                     if ('term' == $scope) {
-                        $option_name = 'enabled_taxonomies';
                         esc_html_e('Modify permissions for these Taxonomies:', 'press-permit-core');
                         echo '<br />';
-
-                        $_args = (defined('PRESSPERMIT_FILTER_PRIVATE_TAXONOMIES')) ? [] : ['public' => true];
-                        $types = get_taxonomies($_args, 'object');
-
-                        if (taxonomy_exists('nav_menu')) {
-                            $types['nav_menu'] = get_taxonomy('nav_menu');
-                        }
-
-                        if ($omit_types = $pp->getUnfilteredTaxonomies()) // avoid confusion with PublishPress administrative taxonomy
-                        {
-                            if (!defined('PRESSPERMIT_FILTER_PRIVATE_TAXONOMIES')) {
-                                $types = array_diff_key($types, array_fill_keys((array)$omit_types, true));
-                            }
-                        }
-
-                        $hidden_types = apply_filters('presspermit_hidden_taxonomies', array_fill_keys(['nav_menu', 'post_status_core_wp_pp', 'pseudo_status_pp', 'post_visibility_pp'], true));
-
-                        // Legacy Nav Menu filtering is currently locked on by a filter in the Editing Permissions module, so reflect that in option storage
-                        $locked_types = apply_filters('presspermit_locked_taxonomies', defined('PRESSPERMIT_COLLAB_VERSION') ? ['nav_menu' => true] : []);
-
-                        if (defined('PRESSPERMIT_FILTER_PRIVATE_TAXONOMIES')) {
-                            $hidden_types = [];
-                        } else {
-                            $types = $pp->admin()->orderTypes($types);
-                        }
                     } else {
-                        $option_name = 'enabled_post_types';
                         esc_html_e('Modify permissions for these Post Types:', 'press-permit-core');
                         $this->generateTooltip(esc_html__('This causes unique capabilities to be required for editing each post type. ', 'press-permit-core'), '', 'top', true, ['class' => 'click', 'html' => '<a href="https://publishpress.com/knowledge-base/type-specific-capabilities/" class="btn btn-link" target="_blank" rel="noopener noreferrer">Find out more.</a>']);
-                        $types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
-                        // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-                        $supported_private_types = apply_filters('presspermit_supported_private_types', []);    // ['series_grouping']);
-
-                        $types = array_merge($types, array_fill_keys($supported_private_types, true));
-
-                        // todo: review wp_block permissions filtering
-                        $omit_types = apply_filters('presspermit_unfiltered_post_types', ['wp_block']);
-
-                        if ($omit_types) {
-                            $types = array_diff_key($types, array_fill_keys((array)$omit_types, true));
-                        }
-
-                        $hidden_types = apply_filters('presspermit_hidden_post_types', []);
-
-                        $locked_types = apply_filters('presspermit_locked_post_types', ['nav_menu' => 'nav_menu']);
-
-                        $types = $pp->admin()->orderTypes($types);
                     }
+                    $choices = $this->getFilteringChoices($scope);
+                    $types = $choices['types'];
+                    $hidden_types = $choices['hidden_types'];
+                    $locked_types = $choices['locked_types'];
 
                     $ui->all_otype_options[] = $option_name;
 
@@ -345,4 +308,58 @@ class SettingsTabCore
         </span>
         <?php
     }
+    /** Native General-tab choices and configuration locks, without rendering the form. */
+    public function getFilteringChoices($scope)
+    {
+        $pp = presspermit();
+        if ('term' == $scope) {
+
+            $_args = (defined('PRESSPERMIT_FILTER_PRIVATE_TAXONOMIES')) ? [] : ['public' => true];
+            $types = get_taxonomies($_args, 'object');
+
+            if (taxonomy_exists('nav_menu')) {
+                $types['nav_menu'] = get_taxonomy('nav_menu');
+            }
+
+            if ($omit_types = $pp->getUnfilteredTaxonomies()) // avoid confusion with PublishPress administrative taxonomy
+            {
+                if (!defined('PRESSPERMIT_FILTER_PRIVATE_TAXONOMIES')) {
+                    $types = array_diff_key($types, array_fill_keys((array)$omit_types, true));
+                }
+            }
+
+            $hidden_types = apply_filters('presspermit_hidden_taxonomies', array_fill_keys(['nav_menu', 'post_status_core_wp_pp', 'pseudo_status_pp', 'post_visibility_pp'], true));
+
+            // Legacy Nav Menu filtering is currently locked on by a filter in the Editing Permissions module, so reflect that in option storage
+            $locked_types = apply_filters('presspermit_locked_taxonomies', defined('PRESSPERMIT_COLLAB_VERSION') ? ['nav_menu' => true] : []);
+
+            if (defined('PRESSPERMIT_FILTER_PRIVATE_TAXONOMIES')) {
+                $hidden_types = [];
+            } else {
+                $types = $pp->admin()->orderTypes($types);
+            }
+        } else {
+            $types = get_post_types(['public' => true, 'show_ui' => true], 'object', 'or');
+            // phpcs:ignore Squiz.PHP.CommentedOutCode.Found
+            $supported_private_types = apply_filters('presspermit_supported_private_types', []);    // ['series_grouping']);
+
+            $types = array_merge($types, array_fill_keys($supported_private_types, true));
+
+            // todo: review wp_block permissions filtering
+            $omit_types = apply_filters('presspermit_unfiltered_post_types', ['wp_block']);
+
+            if ($omit_types) {
+                $types = array_diff_key($types, array_fill_keys((array)$omit_types, true));
+            }
+
+            $hidden_types = apply_filters('presspermit_hidden_post_types', []);
+
+            $locked_types = apply_filters('presspermit_locked_post_types', ['nav_menu' => 'nav_menu']);
+
+            $types = $pp->admin()->orderTypes($types);
+        }
+
+        return compact('types', 'hidden_types', 'locked_types');
+    }
+
 }

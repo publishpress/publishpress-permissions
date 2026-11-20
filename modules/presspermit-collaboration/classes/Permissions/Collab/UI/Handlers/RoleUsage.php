@@ -37,14 +37,7 @@ class RoleUsage
 
                 $role_usage[$role_name] = PWP::POST_key('pp_role_usage');
 
-                $pp->updateOption('role_usage', $role_usage);
-
-                $pp->refreshOptions();
-                do_action('presspermit_registrations');
-                do_action('presspermit_roles_defined');
-                do_action('presspermit_trigger_cache_flush');
-
-                $pp->refreshOptions();
+                $pp->updateRoleUsage($role_usage);
 
                 break;
         } // end switch
