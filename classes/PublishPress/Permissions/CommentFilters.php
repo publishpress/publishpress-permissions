@@ -29,6 +29,20 @@ class CommentFilters
         if (did_action('comment_post'))  // don't filter comment retrieval for email notification
             return $clauses;
 
+        // Core queries a post's Notes through post__in and checks each note before returning it.
+        // The public comment clauses can otherwise exclude an editable unpublished post.
+        if (defined('REST_REQUEST') && REST_REQUEST && $qry_obj
+            && 'note' === ($qry_obj->query_vars['type'] ?? '')
+        ) {
+            $post_ids = (array) ($qry_obj->query_vars['post__in'] ?? []);
+            if (1 === count($post_ids)) {
+                $note_post_id = (int) reset($post_ids);
+                if ($note_post_id > 0 && current_user_can('edit_post', $note_post_id)) {
+                    return $clauses;
+                }
+            }
+        }
+
         if (is_admin() && defined('PP_NO_COMMENT_FILTERING')) {
             global $current_user;
 
