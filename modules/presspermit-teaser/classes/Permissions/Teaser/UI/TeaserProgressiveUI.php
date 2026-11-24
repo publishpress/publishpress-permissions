@@ -173,7 +173,7 @@ class TeaserProgressiveUI {
                             <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
                             <strong><?php esc_html_e('Site Preview', 'press-permit-core'); ?></strong>
                         </div>
-                    <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
+                        <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
                     </div>
                 </div>
             </div>
