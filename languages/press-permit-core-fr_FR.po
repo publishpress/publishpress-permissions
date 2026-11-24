@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-15T21:35:02+00:00\n"
-"PO-Revision-Date: 2026-11-19 18:00+0000\n"
+"POT-Creation-Date: 2026-11-19T17:52:53+00:00\n"
+"PO-Revision-Date: 2026-11-24 22:12+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: fr_FR\n"
@@ -1158,60 +1158,60 @@ msgstr ""
 "Utilisation en développement uniquement (sur l’interface publique, ne "
 "remplacez pas la clause `post_status = `publish`` par un équivalent filtré)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:456
+#: classes/PublishPress/Permissions/DB/Groups.php:460
 #: classes/PublishPress/Permissions/PluginUpdated.php:342
 msgid "Logged In"
 msgstr "Connecté"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/PluginUpdated.php:335
 msgid "Not Logged In"
 msgstr "Déconnecté"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:460
+#: classes/PublishPress/Permissions/DB/Groups.php:464
 #: classes/PublishPress/Permissions/PluginUpdated.php:349
 msgid "Everyone"
 msgstr "Tout le monde"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 msgid "Change Request Notifications"
 msgstr "Notifications de demande de modification"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 #: classes/PublishPress/Permissions/PluginUpdated.php:356
 msgid "Submitted Revision Editors"
 msgstr "Éditeurs/éditrices de révisions envoyées"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 msgid "Scheduled Change Notifications"
 msgstr "Notifications de modification planifiées"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 #: classes/PublishPress/Permissions/PluginUpdated.php:362
 msgid "Scheduled Revision Monitors"
 msgstr "Moniteurs de révision planifiée"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:496
+#: classes/PublishPress/Permissions/DB/Groups.php:500
 msgid "Authenticated site users, except for Administrators"
 msgstr ""
 "Utilisateurs/utilisatrices authentifiés du site, à l’exception des "
 "administrateurs/administratrices"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:498
+#: classes/PublishPress/Permissions/DB/Groups.php:502
 #: classes/PublishPress/Permissions/PluginUpdated.php:336
 msgid "Anonymous users (not logged in)"
 msgstr "Utilisateurs/utilisatrices anonymes (déconnectés)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:500
+#: classes/PublishPress/Permissions/DB/Groups.php:504
 #: classes/PublishPress/Permissions/PluginUpdated.php:350
 msgid "All users (including anonymous)"
 msgstr "Tous les utilisateurs/utilisatrices (y compris les anonymes)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:505
+#: classes/PublishPress/Permissions/DB/Groups.php:509
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "Tous les utilisateurs/utilisatrices ayant le rôle WordPress de %s"
@@ -1288,25 +1288,28 @@ msgid "Groups"
 msgstr "Groupes"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:39
+#, fuzzy
 msgid "You cannot perform this Permissions operation."
-msgstr "Vous ne pouvez pas effectuer cette opération de Permissions."
+msgstr "Vous pouvez maintenant définir les droits individuels pour"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:49
 msgid "Permissions changed. Read the current values before saving."
-msgstr "Permissions modifiées. Lisez les valeurs actuelles avant de sauvegarder."
+msgstr ""
+"Les autorisations ont été modifiées. Lisez les valeurs actuelles avant "
+"d’enregistrer."
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:120
 msgid ""
 "The native operation could not be confirmed. Read the current state before "
 "retrying."
 msgstr ""
-"L'opération native n'a pas pu être confirmée. Lisez l'état actuel avant de "
+"L’opération native n’a pas pu être confirmée. Lisez l’état actuel avant de "
 "réessayer."
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:88
 msgid "Use separate requests for overlapping permission scopes."
 msgstr ""
-"Utilisez des demandes séparées pour des portées de permission qui se "
+"Utilisez des requêtes distinctes pour les périmètres d’autorisation qui se "
 "chevauchent."
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:106
@@ -1314,8 +1317,8 @@ msgid ""
 "Some native writes may have completed. Read every affected scope before "
 "retrying."
 msgstr ""
-"Certaines écritures natives peuvent avoir été complétées. Lisez chaque "
-"portée affectée avant de réessayer."
+"Certaines écritures natives ont peut-être abouti. Lisez tous les périmètres "
+"concernés avant de réessayer."
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:93
 msgid "The native control is locked."
@@ -1326,26 +1329,29 @@ msgid "This filtering choice is controlled by native configuration."
 msgstr "Ce choix de filtrage est contrôlé par la configuration native."
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:13
+#, fuzzy
 msgid "Enable Permissions metabox"
-msgstr "Activer la metabox des Permissions"
+msgstr "Activer sur l’écran des droits"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:15
+#, fuzzy
 msgid "Include in Permissions screens"
-msgstr "Inclure dans les écrans de Permissions"
+msgstr "Activer sur l’écran des droits"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:158
 msgid "Use native administration for permission scopes exceeding 1,000 objects."
 msgstr ""
-"Utilisez l'administration native pour les portées de permission dépassant 1 "
-"000 objets."
+"Utilisez l’administration native pour les périmètres d’autorisation "
+"dépassant 1 000 objets."
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:188
 msgid "The affected permission tree is too large."
-msgstr "L'arbre de permission affecté est trop grand."
+msgstr "L’arborescence des autorisations concernées est trop volumineuse."
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:283
+#, fuzzy
 msgid "This permission mode is disabled by native configuration."
-msgstr "Ce mode de permission est désactivé par la configuration native."
+msgstr "Ce droit est redondant en raison d’une limitation correspondante."
 
 #: classes/PublishPress/Permissions/Mcp/GroupDeletion.php:38
 msgid "Remove incoming group delegation rules before deleting this group."
@@ -1355,29 +1361,35 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:91
 msgid "Use native administration for groups with more than 1,000 members."
-msgstr "Utilisez l'administration native pour les groupes de plus de 1 000 membres."
+msgstr ""
+"Utilisez l’administration native pour les groupes comptant plus de 1 000 "
+"membres."
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:169
 msgid "Use network administration for network-wide group membership changes."
 msgstr ""
-"Utilisez l'administration réseau pour les modifications d'adhésion de "
-"groupe à l'échelle du réseau."
+"Utilisez l’administration du réseau pour modifier l’appartenance aux "
+"groupes à l’échelle du réseau."
 
 #: classes/PublishPress/Permissions/Mcp/Input.php:212
 msgid "Invalid input. Use the types and choices returned by discovery."
-msgstr "Entrée invalide. Utilisez les types et choix renvoyés par la découverte."
+msgstr ""
+"Entrée non valide. Utilisez les types et les choix renvoyés par la "
+"découverte."
 
 #: classes/PublishPress/Permissions/Mcp/NativeOptions.php:189
 msgid "This native setting is controlled by configuration:"
-msgstr "Ce paramètre natif est contrôlé par la configuration :"
+msgstr "Ce réglage natif est contrôlé par la configuration :"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:13
+#, fuzzy
 msgid "PublishPress plugin actions."
-msgstr "Actions du plugin PublishPress."
+msgstr "Gérer les réglages de l’extension PublishPress Permissions."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:26
+#, fuzzy
 msgid "Discover Permissions features"
-msgstr "Découvrir les fonctionnalités des Permissions"
+msgstr "Résumé des autorisations utilisateur"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:27
 msgid ""
@@ -1385,14 +1397,15 @@ msgid ""
 "requirements. Discovery does not grant access. Credentials and "
 "administrator-level grants are not exposed."
 msgstr ""
-"Lisez les modules natifs actifs, les opérations prises en charge et les "
-"exigences en matière de permission. La découverte n'accorde pas d'accès. "
+"Consultez les modules natifs actifs, les opérations prises en charge et les "
+"exigences en matière d’autorisations. La découverte n’accorde aucun accès. "
 "Les identifiants et les autorisations de niveau administrateur ne sont pas "
 "exposés."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:30
+#, fuzzy
 msgid "Permissions settings"
-msgstr "Paramètres des Permissions"
+msgstr "Réglages des permissions"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:31
 msgid ""
@@ -1401,15 +1414,16 @@ msgid ""
 "Omitted options remain unchanged; unknown fields and locked settings are "
 "rejected. dry_run validates without saving."
 msgstr ""
-"Lisez les identifiants de paramètres natifs, les types JSON exacts, les "
-"valeurs par défaut, les valeurs stockées et la révision avant de patcher. "
-"Les entrées de case à cocher doivent être des booléens JSON. Les options "
-"omises restent inchangées ; les champs inconnus et les paramètres "
-"verrouillés sont rejetés. dry_run valide sans sauvegarder."
+"Consultez les identifiants des réglages natifs, les types JSON exacts, les "
+"valeurs par défaut, les valeurs enregistrées et la révision avant "
+"d’appliquer un patch. Les cases à cocher doivent être représentées par des "
+"booléens JSON. Les options omises restent inchangées ; les champs inconnus "
+"et les réglages verrouillés sont rejetés. dry_run valide sans enregistrer."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:36
+#, fuzzy
 msgid "Permissions post types and taxonomies"
-msgstr "Types de post et taxonomies de Permissions"
+msgstr "Modifiez les droits pour ces taxonomies :"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:37
 msgid ""
@@ -1418,15 +1432,17 @@ msgid ""
 "booleans. Omitted and temporarily unregistered types remain unchanged. "
 "Locked controls cannot be changed. dry_run saves nothing."
 msgstr ""
-"Lisez les choix de filtrage et de verrouillage de l'onglet Général natif. "
-"Patch des lignes explicites {name, enabled} avec la révision actuelle. Les "
-"valeurs de case à cocher doivent être des booléens JSON. Les types omis et "
-"temporairement non enregistrés restent inchangés. Les contrôles verrouillés "
-"ne peuvent pas être modifiés. dry_run ne sauvegarde rien."
+"Consultez les choix de filtrage et les verrouillages natifs de l’onglet "
+"Général. Appliquez un patch aux lignes {name, enabled} explicitement "
+"indiquées en fournissant la révision actuelle. Les valeurs des cases à "
+"cocher doivent être des booléens JSON. Les types omis et temporairement non "
+"enregistrés restent inchangés. Les contrôles verrouillés ne peuvent pas "
+"être modifiés. dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:48
+#, fuzzy
 msgid "Permissions groups and members"
-msgstr "Groupes et membres de Permissions"
+msgstr "Appartenance au groupe de permissions"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:49
 msgid ""
@@ -1437,18 +1453,19 @@ msgid ""
 "every affected user. Built-in role/metagroups cannot be renamed or joined. "
 "dry_run saves nothing."
 msgstr ""
-"Gérez les groupes de permission personnalisés natifs. Les listes sont "
-"paginées ; les lectures excluent les mots de passe de compte et les "
-"adresses e-mail. Lisez get-group avant les mises à jour et fournissez sa "
-"révision. Les actions d'adhésion ajoutent ou suppriment explicitement les "
-"user_ids, préservent les autres membres et les horaires existants, et "
-"nécessitent edit_user pour chaque utilisateur affecté. Les "
-"rôles/métagroupes intégrés ne peuvent pas être renommés ou rejoints. "
-"dry_run ne sauvegarde rien."
+"Gérez les groupes d’autorisations personnalisés natifs. Les listes sont "
+"paginées ; les lectures excluent les mots de passe et les adresses e-mail "
+"des comptes. Consultez get-group avant toute mise à jour et indiquez sa "
+"révision. Les actions sur l’appartenance ajoutent ou retirent explicitement "
+"des user_ids, préservent les autres membres et les planifications "
+"existantes, et nécessitent edit_user pour chaque utilisateur concerné. Les "
+"rôles intégrés et les métagroupes ne peuvent être ni renommés ni rejoints. "
+"dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:53
+#, fuzzy
 msgid "Permissions supplemental roles"
-msgstr "Rôles supplémentaires de Permissions"
+msgstr "Documentation sur les droits"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:54
 msgid ""
@@ -1462,16 +1479,23 @@ msgid ""
 "object-type permissions apply. Administrator-level capabilities are "
 "rejected even for administrator sessions. dry_run saves nothing."
 msgstr ""
-"Lisez les rôles supplémentaires pour un utilisateur, un groupe personnalisé "
-"ou un rôle de métagroupe WordPress. Les changements sont des patchs "
-"explicites {role, enabled} avec une révision actuelle ; d'autres rôles "
-"restent inchangés. Les rôles de niveau administrateur ne peuvent pas être "
-"activés. Les affectations existantes doivent être supprimées avant de "
-"changer l'interprétation d'un rôle assigné. dry_run ne sauvegarde rien."
+"Consultez les rôles supplémentaires d’un utilisateur, d’un groupe "
+"personnalisé ou d’un métagroupe de rôle WordPress. Les modifications sont "
+"des patches {role, enabled} explicites avec une révision actuelle ; les "
+"autres rôles restent inchangés. Les autorisations directes utilisent un nom "
+"direct_roles natif découvert, nécessitent promote_users et rejettent les "
+"capacités de niveau administrateur ; les autres autorisations utilisent un "
+"rôle de modèle découvert au format base:post:post_type ou "
+"base:term:taxonomy ; les périmètres d’état utilisent le format "
+"base:post:post_type:post_status:status avec un état actif natif. Les "
+"autorisations natives de type d’objet s’appliquent. Les capacités de niveau "
+"administrateur sont rejetées, même pour les sessions administrateur. "
+"dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:59
+#, fuzzy
 msgid "Permissions for posts and terms"
-msgstr "Permissions pour les posts et les termes"
+msgstr "Assigner pour les sous-termes sélectionnés seulement"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:60
 msgid ""
@@ -1488,28 +1512,31 @@ msgid ""
 "must be changed at their origin. dry_run writes nothing. Large scopes use "
 "native administration."
 msgstr ""
-"Lisez une portée agent/objet/opération et sa révision avant d'ajouter ou de "
-"supprimer une permission native. source=pp_group avec opération=manage et "
-"assign_for=item gère la délégation de groupe personnalisée native lorsque "
-"les permissions de groupe Collaboration et Affichage sont activées. La "
-"gestion de groupe, les capacités d'adhésion et de suppression sont "
-"requises, et les références de délégation entrantes doivent être supprimées "
-"avant la suppression du groupe cible. source=term utilise les identifiants "
-"de terme WordPress et une taxonomy ; post_type sélectionne le type de post "
-"affecté pour les règles basées sur les catégories. mod_type est "
-"supplémentaire, inclure ou exclure ; assign_for est item, children ou les "
-"deux. Les permissions d'opération, d'objet et de descendant natives "
-"s'appliquent. Les règles omises sont préservées. Les règles héritées "
-"doivent être changées à leur origine. dry_run n'écrit rien. Les grandes "
-"portées utilisent l'administration native."
+"Consultez un périmètre agent/objet/opération et sa révision avant d’ajouter "
+"ou de retirer une autorisation native. source=pp_group avec "
+"operation=manage et assign_for=item gère la délégation des groupes "
+"personnalisés natifs lorsque Collaboration et Display group permissions "
+"sont activés. Les capacités de gestion des groupes, de l’appartenance et de "
+"la suppression sont nécessaires ; les références de délégation entrantes "
+"doivent être supprimées avant la suppression du groupe cible. source=term "
+"utilise les ID de termes WordPress et une taxonomy ; post_type sélectionne "
+"le post type concerné par les règles basées sur les catégories. mod_type "
+"peut être additional, include ou exclude ; assign_for peut être item, "
+"children ou both. Les autorisations natives relatives aux opérations, aux "
+"objets et aux descendants s’appliquent. Les règles omises sont conservées. "
+"Les règles héritées doivent être modifiées à leur origine. dry_run "
+"n’effectue aucune écriture. Les grands périmètres doivent être gérés dans "
+"l’administration native."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions teaser settings"
-msgstr "Paramètres de teaser des Permissions"
+msgstr "Réglages des permissions"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions module activation"
-msgstr "Activation du module Permissions"
+msgstr "Documentation sur les droits"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:77
 msgid ""
@@ -1519,12 +1546,13 @@ msgid ""
 "revision. Rich text uses native sanitization. Redirect destinations require "
 "object permissions. dry_run saves nothing."
 msgstr ""
-"Lisez les modes de teaser natifs, les messages, les redirections, les "
-"styles RSS et d'avis. Omettez post_type pour les options globales ; passez "
-"un type de post filtré découvert pour les paramètres par type. Patch des "
-"noms d'options natifs exacts avec des types JSON et une révision. Le texte "
-"enrichi utilise la désinfection native. Les destinations de redirection "
-"nécessitent des permissions d'objet. dry_run ne sauvegarde rien."
+"Consultez les modes natifs d’aperçu, les messages, les redirections, le "
+"flux RSS et les styles d’avis. Omettez post_type pour les options globales "
+"; indiquez un post type filtré découvert pour les réglages propres à un "
+"type. Appliquez un patch aux noms d’options natifs exacts en indiquant les "
+"types JSON et la révision. Le texte enrichi est soumis à la sanitisation "
+"native. Les destinations de redirection nécessitent des autorisations sur "
+"les objets. dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:78
 msgid ""
@@ -1534,16 +1562,17 @@ msgid ""
 "request. Network changes require network administration. dry_run saves "
 "nothing."
 msgstr ""
-"Découvrez les modules natifs installés, requis et actifs. Patch des lignes "
-"explicites module/enabled avec une révision actuelle. Les modules requis ne "
-"peuvent pas être désactivés. Les hooks de cycle de vie natifs s'exécutent ; "
-"les changements d'activation se chargent à la prochaine demande. Les "
-"changements réseau nécessitent l'administration réseau. dry_run ne "
-"sauvegarde rien."
+"Découvrez les modules natifs installés, requis et actifs. Appliquez un "
+"patch aux lignes module/enabled explicitement indiquées avec une révision "
+"actuelle. Les modules requis ne peuvent pas être désactivés. Les hooks "
+"natifs du cycle de vie sont exécutés ; les changements d’activation sont "
+"chargés à la requête suivante. Les changements à l’échelle du réseau "
+"nécessitent l’administration du réseau. dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:84
+#, fuzzy
 msgid "Delete a custom permission group"
-msgstr "Supprimer un groupe de permission personnalisé"
+msgstr "Supprimer les groupes de droits."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:85
 msgid ""
@@ -1553,16 +1582,17 @@ msgid ""
 "deleting. Unknown or oversized permission scopes require native "
 "administration."
 msgstr ""
-"Lisez get-group-deletion pour la portée et la révision complètes de "
-"suppression native. Seuls les groupes personnalisés peuvent être supprimés. "
-"Tous les membres, rôles, règles et cibles de permission héritées sont "
-"vérifiés avant le nettoyage. dry_run prévisualise sans supprimer. Les "
-"portées de permission inconnues ou surdimensionnées nécessitent une "
-"administration native."
+"Consultez get-group-deletion pour connaître l’intégralité du périmètre de "
+"suppression natif et sa révision. Seuls les groupes personnalisés peuvent "
+"être supprimés. Tous les membres, rôles, règles et cibles d’autorisations "
+"héritées sont vérifiés avant le nettoyage. dry_run affiche un aperçu sans "
+"supprimer. Les périmètres d’autorisation inconnus ou trop volumineux "
+"nécessitent l’administration native."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:90
+#, fuzzy
 msgid "Permissions Role Usage"
-msgstr "Utilisation des Rôles de Permissions"
+msgstr "Utilisation du rôle de permission"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:91
 msgid ""
@@ -1572,16 +1602,17 @@ msgid ""
 "assignments must be removed before changing an assigned role "
 "interpretation. dry_run saves nothing."
 msgstr ""
-"Lisez les choix d'utilisation des Rôles natifs : 0 (aucune affectation "
-"supplémentaire), motif ou direct. Patch des rôles découverts avec une "
-"révision actuelle ; les rôles omis restent inchangés. Les rôles de niveau "
-"administrateur ne peuvent pas être activés. Les affectations existantes "
-"doivent être supprimées avant de changer l'interprétation d'un rôle "
-"assigné. dry_run ne sauvegarde rien."
+"Consultez les choix natifs de Role Usage : 0 (aucune attribution "
+"supplémentaire), pattern ou direct. Appliquez un patch aux rôles découverts "
+"avec une révision actuelle ; les rôles omis restent inchangés. Les rôles de "
+"niveau administrateur ne peuvent pas être activés. Les attributions "
+"existantes doivent être supprimées avant de modifier l’interprétation d’un "
+"rôle attribué. dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:96
+#, fuzzy
 msgid "Permissions content visibility shortcode"
-msgstr "Shortcode de visibilité du contenu des Permissions"
+msgstr "Écran des droits désactivé"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:97
 msgid ""
@@ -1591,17 +1622,19 @@ msgid ""
 "saves a post. Use native content-editing tools with object permissions to "
 "place its result. Nested visibility shortcodes require native editing."
 msgstr ""
-"Découvrez ou construisez le shortcode natif pp_restrict avec des conditions "
-"de type connecté/déconnecté, rôle, capacité, nom d'utilisateur et groupe. "
-"relation est all ou any ; hide est un booléen JSON. Le constructeur "
-"désinfecte le HTML et ne sauvegarde jamais un post. Utilisez des outils "
-"d'édition de contenu natifs avec des permissions d'objet pour placer son "
-"résultat. Les shortcodes de visibilité imbriqués nécessitent une édition "
-"native."
+"Découvrez ou créez le shortcode natif pp_restrict avec des conditions "
+"typées pour les utilisateurs connectés/non connectés, les rôles, les "
+"capacités, les noms d’utilisateur et les groupes. relation peut être all ou "
+"any ; hide doit être un booléen JSON. Le générateur assainit le HTML et "
+"n’enregistre jamais de post. Utilisez des outils natifs de modification de "
+"contenu avec les autorisations sur les objets nécessaires pour insérer le "
+"résultat. Les shortcodes de visibilité imbriqués nécessitent une "
+"modification native."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:102
+#, fuzzy
 msgid "Permissions editor and screen controls"
-msgstr "Éditeur de permissions et contrôles d'écran"
+msgstr "Écran des droits activé"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:103
 msgid ""
@@ -1612,17 +1645,18 @@ msgid ""
 "settings and post-type capabilities. Omitted controls stay unchanged; "
 "dry_run saves nothing."
 msgstr ""
-"Lire la metabox de permissions par type de publication et les commutateurs "
-"d'écran de permissions, y compris leurs noms d'option natifs exacts et les "
-"valeurs enregistrées. Seule la chaîne native 0 les désactive ; les valeurs "
-"absentes et héritées sont activées par défaut. Les écritures nécessitent "
-"des booléens JSON, la révision actuelle, les paramètres natifs et les "
-"capacités de type de publication. Les contrôles omis restent inchangés ; "
-"dry_run ne sauvegarde rien."
+"Consultez les commutateurs natifs Permissions de la boîte méta propre à "
+"chaque post type et de l’écran Permissions, y compris leurs noms d’options "
+"natifs exacts et leurs valeurs enregistrées. Seule la chaîne native 0 les "
+"désactive ; les valeurs absentes et héritées sont activées par défaut. Les "
+"écritures nécessitent des booléens JSON, la révision actuelle, les réglages "
+"natifs et les capacités relatives au post type. Les contrôles omis restent "
+"inchangés ; dry_run n’enregistre rien."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:108
+#, fuzzy
 msgid "Permissions validated batch"
-msgstr "Batch de permissions validées"
+msgstr "Permisions des droits"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:109
 msgid ""
@@ -1633,16 +1667,18 @@ msgid ""
 "confirmed_items and failed_index and re-read all scopes after a partial "
 "failure."
 msgstr ""
-"Fournir jusqu'à 25 éléments explicites, chacun avec sa propre révision "
-"actuelle. Chaque élément est validé et autorisé avant les écritures ; des "
-"portées de permission malformées, refusées, périmées ou qui se chevauchent "
-"rejettent l'ensemble de l'aperçu. dry_run n'écrit rien. L'exécution native "
-"n'est pas transactionnelle : inspectez les éléments complétés, confirmés et "
-"l'index échoué et relisez toutes les portées après un échec partiel."
+"Indiquez jusqu’à 25 éléments explicites, chacun avec sa propre révision "
+"actuelle. Chaque élément est validé et autorisé avant toute écriture ; les "
+"périmètres d’autorisation mal formés, refusés, obsolètes ou qui se "
+"chevauchent entraînent le rejet de l’ensemble de l’aperçu. dry_run "
+"n’effectue aucune écriture. L’exécution native n’est pas transactionnelle : "
+"vérifiez completed, confirmed_items et failed_index, puis relisez tous les "
+"périmètres après un échec partiel."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:112
+#, fuzzy
 msgid "Read explicit permission scopes"
-msgstr "Lire les portées de permission explicites"
+msgstr "Rôles et droits copiés."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:113
 msgid ""
@@ -1652,18 +1688,16 @@ msgid ""
 "rules; use the normal single-scope getters or smaller batches for larger "
 "inventories."
 msgstr ""
-"Lire jusqu'à 25 portées de délégation autorisées explicites pour les "
-"publications, les termes ou les groupes personnalisés avec leurs règles "
-"natives et révisions individuelles. Cela ne répertorie pas les objets "
-"privés ni ne donne d'accès. Les résultats sont limités à 1 000 règles ; "
-"utilisez les getters de portée simple normaux ou des lots plus petits pour "
-"des inventaires plus importants."
+"Consultez jusqu’à 25 périmètres explicites et autorisés de délégation de "
+"post, de terme ou de groupe personnalisé, avec leurs règles natives et "
+"leurs révisions respectives. Cette opération n’énumère pas les objets "
+"privés et n’accorde aucun accès. Les résultats sont limités à 1 000 règles "
+"; utilisez les accesseurs habituels pour un périmètre unique ou des lots "
+"plus petits pour les inventaires plus volumineux."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:59
 msgid "Enable native Advanced Settings before changing Role Usage."
-msgstr ""
-"Activez les paramètres avancés natifs avant de changer l'utilisation des "
-"rôles."
+msgstr "Activez les Advanced Settings natifs avant de modifier Role Usage."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:75
 msgid "The native role capabilities cannot be granted by this session."
@@ -1676,31 +1710,31 @@ msgid ""
 "Remove existing supplemental assignments before changing this role "
 "interpretation."
 msgstr ""
-"Supprimez les affectations supplémentaires existantes avant de changer "
-"cette interprétation de rôle."
+"Supprimez les attributions supplémentaires existantes avant de modifier "
+"l’interprétation de ce rôle."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:98
 msgid "Native configuration controls Role Usage."
-msgstr "La configuration native contrôle l'utilisation des rôles."
+msgstr "La configuration native contrôle Role Usage."
 
 #: classes/PublishPress/Permissions/Mcp/Settings.php:146
 msgid "This setting is controlled by native configuration."
-msgstr "Ce paramètre est contrôlé par la configuration native."
+msgstr "Ce réglage est contrôlé par la configuration native."
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:18
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:331
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:337
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Teaser Type"
 msgstr "Type de présentation"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:19
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
 msgid "Number of characters to show"
 msgstr "Nombre de caractères à afficher"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:20
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Maximum excerpt characters"
 msgstr "Caractères maximum de l'extrait"
 
@@ -1710,11 +1744,11 @@ msgstr "Message de contenu restreint"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:22
 msgid "Restricted link taxonomy"
-msgstr "Taxonomie de lien restreint"
+msgstr "Taxonomy du lien restreint"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:23
 msgid "Restricted link term"
-msgstr "Terme de lien restreint"
+msgstr "Terme du lien restreint"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:198
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:261
@@ -2269,8 +2303,8 @@ msgstr "n/d"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:397
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:425
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:218
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:288
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:294
 msgid "Post Type"
 msgstr "Type de publication"
 
@@ -2343,7 +2377,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:289
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:398
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1141
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:89
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 msgid "Role"
@@ -2459,8 +2493,8 @@ msgstr "Sélectionner tout"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1537
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:649
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:663
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:885
 msgid "Apply"
 msgstr "Appliquer"
 
@@ -2986,13 +3020,13 @@ msgid "This item"
 msgstr "Cet élément"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:226
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #, php-format
 msgid "%1$s permission for %2$s"
 msgstr "%1$s autorisation pour %2$s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:58
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:116
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:44
 msgid "Roles"
@@ -3007,15 +3041,15 @@ msgid "Agent"
 msgstr "Agent"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:200
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1178
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1245
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1196
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1263
 #, php-format
 msgid "This %s"
 msgstr "Cet %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:205
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1177
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1246
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1264
 #, php-format
 msgid "Sub-%s"
 msgstr "Sous-%s"
@@ -3124,114 +3158,122 @@ msgstr ""
 msgid "Control who can submit a revision of all post types in this %s."
 msgstr "Contrôler qui peut envoyer tous les types de publication dans ce %s."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 msgid "Roles & Groups"
 msgstr "Rôles et groupes"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles and groups..."
 msgstr "Rechercher rôles et groupes…"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles..."
 msgstr "Rechercher des rôles…"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Agent types"
 msgstr "Types d'agent"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
 #: classes/PublishPress/Permissions/UI/Groups.php:237
 msgid "Users"
 msgstr "Comptes"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:612
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:614
 #, php-format
 msgid "Search %s"
 msgstr "Rechercher %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
 msgid "Clear search"
 msgstr "Effacer la recherche"
 
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:624
+msgid "Add a permission group"
+msgstr "Ajouter un groupe d’autorisations"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:625
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:694
+msgid "Search for a group to add"
+msgstr "Rechercher un groupe à ajouter"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:709
 msgid "Sort by:"
 msgstr "Trier par :"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:627
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:696
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:641
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:711
 msgid "Name (A-Z)"
 msgstr "Nom (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:697
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
 msgid "Name (Z-A)"
 msgstr "Nom (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:629
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Most Users"
 msgstr "Plus de comptes"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:630
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
 msgid "Fewest Users"
 msgstr "Moins de comptes"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:857
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:654
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:875
 msgid "Select All"
 msgstr "Tout sélectionner"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:860
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:861
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:658
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:878
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:879
 msgid "Bulk Actions"
 msgstr "Actions groupées"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:862
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:659
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:880
 msgid "Set to Enabled"
 msgstr "Définir sur « Activé »"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:646
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:863
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:660
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:881
 msgid "Set to Blocked"
 msgstr "Définir sur « Bloqué »"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:647
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:864
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:661
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:882
 msgid "Set to Default"
 msgstr "Définir sur « Par défaut »"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:652
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:870
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:666
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:888
 msgid "selected"
 msgstr "sélectionnées"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:676
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:691
 msgid "Search and add users"
 msgstr "Rechercher et ajouter des utilisateurs"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:685
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:700
 msgid "Search and add users..."
 msgstr "Rechercher et ajouter des utilisateurs/utilisatrices…"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:798
 msgid "No role exceptions set"
 msgstr "Aucune exception de rôle n’a été définie"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:849
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
 msgid "No specific user permissions. Use the search box to add users."
 msgstr ""
 "Aucun droit spécifique d’utilisateur/utilisatrice. Utiliser la boîte de "
 "recherche pour ajouter des utilisateurs/utilisatrices."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:865
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:883
 msgid "Remove Selected"
 msgstr "Retirer les sélectionnées"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:91
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
 #: classes/PublishPress/Permissions/UI/Groups.php:266
@@ -3239,32 +3281,33 @@ msgstr "Retirer les sélectionnées"
 msgid "Login State"
 msgstr "État de connexion"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:90
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Group"
 msgstr "Groupe"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1249
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1267
 msgid "Sub-Sections"
 msgstr "Sous-sections"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1248
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
 msgid "This Section"
 msgstr "Cette section"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1224
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1288
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1242
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1310
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:92
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
 msgid "Remove custom permissions for user"
 msgstr "Retirer les droits personnalisés pour le compte"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1299
 #, php-format
 msgid "%s permission"
 msgstr "%s autorisation"
@@ -3672,8 +3715,8 @@ msgstr "Nom"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:105
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:176
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724, fuzzy
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:673
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:726, fuzzy
 msgid "Description"
 msgstr "Description"
 
@@ -4975,7 +5018,7 @@ msgstr "Assigner les droits de publication séparément des droits de modificati
 msgid "Limit user editing capabilities by role level"
 msgstr "Limiter les capacités d'édition des utilisateurs par niveau de rôle"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:232
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:234
 msgid ""
 "note: Plugin settings and configuration data will be deleted, but only "
 "after the last copy of Permissions / Permissions Pro is deleted."
@@ -4984,35 +5027,35 @@ msgstr ""
 "supprimés, mais uniquement après la suppression de la dernière copie de "
 "Permissions/Permissions Pro."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:280
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
 msgid "The following would revert to default settings:"
 msgstr "Les réglages suivants seront rétablis aux valeurs par défaut :"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:284
 msgid "The following would change from defaults to previously stored settings:"
 msgstr ""
 "Les réglages suivants passeront des valeurs par défaut aux réglages "
 "précédemment enregistrés :"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "no Page Parent filter"
 msgstr "acun filtre de page parent"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Authors, Editors and Administrators"
 msgstr ""
 "Auteurs/autrices, editeurs/éditrices et administrateurs/administratrices de "
 "pages"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Editors and Administrators"
 msgstr "Éditeurs/éditrices et administrateurs/administratrices de pages"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Administrators"
 msgstr "Administrateurs/administratrices"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:352
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:354
 msgid ""
 "When saving a post, if the default term is not selectable, substitute first "
 "available."
@@ -5020,13 +5063,13 @@ msgstr ""
 "Lors de l’enregistrement d’une publication, si le terme par défaut n’est "
 "pas sélectionnable, il est remplacé par le premier terme disponible."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:353
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:355
 msgid "Some term-limited editing configurations require this."
 msgstr ""
 "Pour certaines configurations de modification de termes limités c’est "
 "obligatoire."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:360
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:362
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with a WordPress role editor like "
@@ -5037,7 +5080,7 @@ msgstr ""
 "`edit_tags`. Vous pouvez gérer ça avec un éditeur de rôles WordPress comme "
 "PublishPress Capabilities."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:366
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with Capabilities > Capabilities "
@@ -5048,7 +5091,7 @@ msgstr ""
 "`edit_tags`. Tu peux gérer ça pour chaque rôle dans « Permissions > "
 "Permissions > Taxonomies »."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:369
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:371
 msgid ""
 "Display all permission operations in a single metabox with tabs (modern "
 "UI). When disabled, each operation has a separate metabox (legacy UI)."
@@ -5057,44 +5100,44 @@ msgstr ""
 "des onglets (IU moderne). Lorsque cette option est désactivée, chaque "
 "opération dispose d’une boîte méta distincte (IU classique)."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:412
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:414
 #, php-format
 msgid "%sPosts / Pages Listing:%s %s"
 msgstr "%sListe des publications/pages : %s %s"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:509
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:511
 msgid "User editing capabilities apply for"
 msgstr "Les permissions de modification de l’utilisateur/utilisatrices’appliquent à"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "equal or lower role levels"
 msgstr "niveaux de rôle égaux ou inférieurs"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "lower role levels"
 msgstr "niveaux de rôle inférieurs"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:565
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:567
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr ""
 "Pour contrôler la manière dont les rôles supplémentaires sont appliqués, "
 "consulter %1$sUtilisation des rôles%2$s."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:669
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
 msgid "Defined Constant"
 msgstr "Constante définie"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:670
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:723
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:672
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:725
 msgid "Setting"
 msgstr "Réglage"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:722
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
 msgid "Available Constant"
 msgstr "Constante disponible"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:800
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:802
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -5107,11 +5150,11 @@ msgstr ""
 "toujours exécuté et non mis à jour automatiquement) et modifiez-le comme "
 "vous le souhaitez :"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:803
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:805
 msgid "Default settings code"
 msgstr "Code des paramètres par défaut"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:820
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:822
 msgid ""
 "To force the value of one or more settings network-wide, "
 "<strong>copy</strong> the following code into your theme's "
@@ -5124,11 +5167,11 @@ msgstr ""
 "toujours exécuté et non mis à jour automatiquement) et modifiez-le comme "
 "vous le souhaitez :"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:823
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:825
 msgid "Forced settings code"
 msgstr "Code des paramètres forcés"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:854
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:856
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -5136,7 +5179,7 @@ msgstr ""
 "Tous les réglages de ce formulaire (y compris ceux des onglets non "
 "affichés) seront réinitialisés à par défaut. Confirmez-vous ?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:857
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:859
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:97
 msgid "Revert to Defaults"
 msgstr "Rétablir les valeurs par défaut"
@@ -6707,7 +6750,7 @@ msgid "Hide for Custom Visibility"
 msgstr "Masquer pour la visibilité personnalisée"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:225
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:510
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:516
 msgid "Featured Image"
 msgstr "Image mise en avant"
 
@@ -6807,59 +6850,64 @@ msgstr ""
 "Choisir le type de publication pour lequel vous souhaitez configurer les "
 "réglages de la présentation."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:211
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
+msgid "Site Preview"
+msgstr "Aperçu du site"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:217
 #, php-format
 msgid "Text Options for %s"
 msgstr "Options de Texte pour %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
 msgid "No Teaser"
 msgstr "Aucune présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
 msgid "Message with no teaser content"
 msgstr "Message sans contenu d'accroche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
 msgid "Message with post content above Read More link as teaser"
 msgstr ""
 "Message avec le contenu du post au-dessus du lien Lire la suite en tant que "
 "teaser"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
 msgid "Message with Excerpt as teaser content"
 msgstr "Message avec extrait comme contenu d'accroche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:251
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Message with Excerpt or pre-More as teaser content"
 msgstr "Message avec extrait ou avant le Plus comme contenu d'accroche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:53
 msgid "Message with first X characters of post as teaser content"
 msgstr ""
 "Message avec les X premiers caractères de la publication comme contenu "
 "d'accroche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:54
 msgid "Redirect to another post"
 msgstr "Rediriger vers une autre publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "No teaser will be applied"
 msgstr "Aucune présentation ne sera appliquée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:264
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:270
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Ne pas afficher le texte du teaser avant le message de l'utilisateur bloqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:265
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
 msgid ""
 "Show content before the Read More marker. If there is no marker or no "
 "content before it, show only the blocked-user message."
@@ -6868,65 +6916,65 @@ msgstr ""
 "marqueur ou pas de contenu avant, afficher uniquement le message de "
 "l'utilisateur bloqué."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:266
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:272
 msgid "Use the post excerpt as teaser content"
 msgstr "Utiliser l’extrait de publication comme texte de présentation"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:267
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 msgid "Use excerpt or content before More tag"
 msgstr "Utiliser l’extrait ou le contenu avant la balise « Plus »"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:274
 msgid "Show the first X characters of the post content"
 msgstr "Afficher les X premiers caractères du contenu de la publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:275
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Rediriger les utilisateurs/utilisatrices vers une autre page lorsqu’ils "
 "tentent d’accéder à un contenu restreint"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:281
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:287
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "Réglages de la présentation pour %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "Show only the first"
 msgstr "Afficher uniquement le premier"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Chars"
 msgstr "Caractères"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:347
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "characters"
 msgstr "caractères"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357, fuzzy
 msgid "Max"
 msgstr "Max"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "characters (leave empty for full excerpt)"
 msgstr "caractères (laisser vide pour le extrait complet)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:423
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Les visiteurs sans accès sont redirigés vers : %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:321
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Un exemple de %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:445
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6934,60 +6982,56 @@ msgstr ""
 "Ceci est un exemple du contenu complet. L'aperçu montre ce qu'un visiteur "
 "sans permission verra à la place."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
 msgid "This is a short excerpt from the restricted content."
 msgstr "Ceci est un court extrait du contenu restreint."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:462
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
 msgid "Teaser Preview"
 msgstr "Aperçu de l'accroche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
-msgid "Site Preview"
-msgstr "Aperçu du site"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:471
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:472
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:478
 msgid "Preview content"
 msgstr "Aperçu du contenu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Preview device"
 msgstr "Aperçu du dispositif"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:493
 msgid "Desktop"
 msgstr "Bureau"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:496, fuzzy
 msgid "Mobile"
 msgstr "Mobile"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Open full preview in a new tab"
 msgstr "Ouvrir l'aperçu complet dans un nouvel onglet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:503
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Open full preview"
 msgstr "Ouvrir l'aperçu complet"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:517
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Loading the preview from your active theme…"
 msgstr "Chargement de l'aperçu depuis votre thème actif…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:525
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:531
 msgid "Teaser preview from the active theme"
 msgstr "Aperçu teaser du thème actif"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:535
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:541
 msgid "The theme preview could not be displayed in this frame."
 msgstr "L'aperçu du thème n'a pas pu être affiché dans ce cadre."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:542
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid "Visitor redirected"
 msgstr "Visiteur redirigé"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:543
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:549
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
@@ -6995,11 +7039,11 @@ msgstr ""
 "Le contenu restreint n'est pas affiché. Le visiteur est envoyé à la "
 "destination configurée."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:575
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:581
 msgid "Message for Blocked Users"
 msgstr "Message pour les utilisateurs/utilisatrices bloqués"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:576
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
 msgid ""
 "This message is shown to users who are blocked from viewing the full "
 "content. It is shared across all teaser types."
@@ -7007,23 +7051,23 @@ msgstr ""
 "Ce message est affiché aux utilisateurs qui sont bloqués pour voir le "
 "contenu complet. Il est partagé entre tous les types d'aperçus."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:56
 msgid "This field is required."
 msgstr "Ce champ est obligatoire."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:605
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr ""
 "Inserer un formulaire de connexion en utilisant le code court "
 "%s[login_form]%s."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:628
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:634
 msgid "Text Configuration"
 msgstr "Configuration du texte"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:629
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
@@ -7031,84 +7075,84 @@ msgstr ""
 "En plus du Teaser et du Message pour les utilisateurs bloqués, vous pouvez "
 "afficher du texte supplémentaire autour de votre contenu."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:651
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
 msgid "post title"
 msgstr "titre de la publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:658
 msgid "post content"
 msgstr "contenu de la publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:665
 #, php-format
 msgid "Before %s"
 msgstr "Avant %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 #, php-format
 msgid "After %s"
 msgstr "Après %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:744
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:750
 msgid "Redirect Settings"
 msgstr "Réglages de redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755, fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:761, fuzzy
 msgid "Redirection"
 msgstr "Redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:762
 msgid "Target Post Type"
 msgstr "Type de publication cible"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Select Post"
 msgstr "Sélectionner publication"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Custom URL"
 msgstr "URL Personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:797
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:803
 msgid "Not Logged In:"
 msgstr "Déconnecté :"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:811
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
 msgid "No redirect"
 msgstr "Aucune redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:911
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:812
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "Redirect to WordPress login"
 msgstr "Rediriger vers la connexion de WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:912
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to a custom post"
 msgstr "Rediriger vers une publication personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:913
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom URL"
 msgstr "Rediriger vers une URL personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:829
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:940
 msgid "Redirect post type"
 msgstr "Type de publication de redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:954
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:855
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect page"
 msgstr "Page de redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:968
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "This is a custom login page"
 msgstr "Ceci est une page de connexion personnalisée"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -7116,75 +7160,74 @@ msgstr ""
 "Une fois connecté, l’utilisateur sera redirigé vers la publication qu’il "
 "était en train de consulter."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:866
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:977
 msgid "Redirect URL"
 msgstr "URL de redirection"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:902
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
 msgid "Logged in Users:"
 msgstr "Utilisateurs/utilisatrices connectés :"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1024
 msgid "Blocked User Message Style"
 msgstr "Style du Message Utilisateur Bloqué"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1019
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr ""
 "Personnaliser l’apparence du message de la presentation affiché aux "
 "utilisateurs/utilisatrices bloqués."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1034
 msgid "Background Color"
 msgstr "Couleur de Fond"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Text Color"
 msgstr "Couleur du Texte"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1051
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid "Border Color"
 msgstr "Couleur de la Bordure"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1063
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
 msgid "Border Position"
 msgstr "Position de la Bordure"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
 msgid "Left"
 msgstr "À gauche"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1068
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1075
 msgid "Right"
 msgstr "À droite"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1069
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1076
 msgid "Top"
 msgstr "En haut"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1077
 msgid "Bottom"
 msgstr "En bas"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1071
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1078
 msgid "All Sides"
 msgstr "Tous les côtés"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid "Border Width (px)"
 msgstr "Largeur de la bordure (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1104
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1111
 msgid "Border Radius (px)"
 msgstr "Rayon de la bordure (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1117
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1124
 msgid "Font Size (px)"
 msgstr "Taille de la police (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1137
 msgid "Padding (px)"
 msgstr "Marge intérieure (px)"
 

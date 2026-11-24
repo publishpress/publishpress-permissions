@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-17T17:56:17+00:00\n"
-"PO-Revision-Date: 2026-11-19 18:04+0000\n"
+"POT-Creation-Date: 2026-11-19T17:52:53+00:00\n"
+"PO-Revision-Date: 2026-11-24 22:14+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: ko_KR\n"
@@ -970,59 +970,59 @@ msgid ""
 "'publish'' clause with filtered equivalent)"
 msgstr "개발 용도 전용 (프론트 엔드에서, 'post_status = 'publish'' 절을 필터링된 동등한 것으로 교체하지 마십시오)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:456
+#: classes/PublishPress/Permissions/DB/Groups.php:460
 #: classes/PublishPress/Permissions/PluginUpdated.php:342
 msgid "Logged In"
 msgstr "로그인됨"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/PluginUpdated.php:335
 msgid "Not Logged In"
 msgstr "로그인되지 않음"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:460
+#: classes/PublishPress/Permissions/DB/Groups.php:464
 #: classes/PublishPress/Permissions/PluginUpdated.php:349
 msgid "Everyone"
 msgstr "모두"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 msgid "Change Request Notifications"
 msgstr "변경 요청 알림"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 #: classes/PublishPress/Permissions/PluginUpdated.php:356
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "제출된 수정본"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 msgid "Scheduled Change Notifications"
 msgstr "예정된 변경 알림"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 #: classes/PublishPress/Permissions/PluginUpdated.php:362
 msgid "Scheduled Revision Monitors"
 msgstr "예정된 수정 모니터"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:496
+#: classes/PublishPress/Permissions/DB/Groups.php:500
 msgid "Authenticated site users, except for Administrators"
 msgstr "관리자를 제외한 인증된 사이트 사용자"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:498
+#: classes/PublishPress/Permissions/DB/Groups.php:502
 #: classes/PublishPress/Permissions/PluginUpdated.php:336
 msgid "Anonymous users (not logged in)"
 msgstr "익명 사용자 (로그인하지 않음)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:500
+#: classes/PublishPress/Permissions/DB/Groups.php:504
 #: classes/PublishPress/Permissions/PluginUpdated.php:350
 msgid "All users (including anonymous)"
 msgstr "모든 사용자 (익명 사용자 포함)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:505
+#: classes/PublishPress/Permissions/DB/Groups.php:509
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "워드프레스 역할이 %s인 모든 사용자"
@@ -1091,84 +1091,90 @@ msgid "Groups"
 msgstr "그룹"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:39
+#, fuzzy
 msgid "You cannot perform this Permissions operation."
-msgstr "이 권한 작업을 수행할 수 없습니다."
+msgstr "이제 다음에 대한 개별 권한을 설정할 수 있습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:49
 msgid "Permissions changed. Read the current values before saving."
-msgstr "권한이 변경되었습니다. 저장하기 전에 현재 값을 읽으십시오."
+msgstr "권한이 변경되었습니다. 저장하기 전에 현재 값을 읽으세요."
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:120
 msgid ""
 "The native operation could not be confirmed. Read the current state before "
 "retrying."
-msgstr "네이티브 작업을 확인할 수 없습니다. 재시도하기 전에 현재 상태를 읽으십시오."
+msgstr "네이티브 작업을 확인할 수 없습니다. 다시 시도하기 전에 현재 상태를 읽으세요."
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:88
 msgid "Use separate requests for overlapping permission scopes."
-msgstr "겹치는 권한 범위에 대해 별도의 요청을 사용하십시오."
+msgstr "범위가 겹치는 권한은 별도의 요청을 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:106
 msgid ""
 "Some native writes may have completed. Read every affected scope before "
 "retrying."
-msgstr "일부 네이티브 기록이 완료되었을 수 있습니다. 재시도하기 전에 영향을 받는 모든 범위를 읽으십시오."
+msgstr "일부 네이티브 쓰기 작업이 완료되었을 수 있습니다. 다시 시도하기 전에 영향을 받는 모든 범위를 읽으세요."
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:93
 msgid "The native control is locked."
-msgstr "네이티브 제어가 잠겨 있습니다."
+msgstr "네이티브 컨트롤이 잠겨 있습니다."
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:108
 msgid "This filtering choice is controlled by native configuration."
-msgstr "이 필터링 선택은 네이티브 구성에 의해 제어됩니다."
+msgstr "이 필터링 선택 사항은 네이티브 구성으로 제어됩니다."
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:13
+#, fuzzy
 msgid "Enable Permissions metabox"
-msgstr "권한 메타박스 활성화"
+msgstr "권한 화면에서 활성화"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:15
+#, fuzzy
 msgid "Include in Permissions screens"
-msgstr "권한 화면에 포함"
+msgstr "권한 화면에서 활성화"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:158
 msgid "Use native administration for permission scopes exceeding 1,000 objects."
-msgstr "1,000개 이상의 객체에 대한 권한 범위는 네이티브 관리를 사용하십시오."
+msgstr "객체가 1,000개를 초과하는 권한 범위는 네이티브 관리를 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:188
 msgid "The affected permission tree is too large."
 msgstr "영향을 받는 권한 트리가 너무 큽니다."
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:283
+#, fuzzy
 msgid "This permission mode is disabled by native configuration."
-msgstr "이 권한 모드는 네이티브 구성에 의해 비활성화되었습니다."
+msgstr "이 권한은 해당 제한으로 인해 중복됩니다."
 
 #: classes/PublishPress/Permissions/Mcp/GroupDeletion.php:38
 msgid "Remove incoming group delegation rules before deleting this group."
-msgstr "이 그룹을 삭제하기 전에 들어오는 그룹 위임 규칙을 제거하십시오."
+msgstr "이 그룹을 삭제하기 전에 들어오는 그룹 위임 규칙을 제거하세요."
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:91
 msgid "Use native administration for groups with more than 1,000 members."
-msgstr "1,000명 이상의 구성원이 있는 그룹에 대해서는 네이티브 관리를 사용하십시오."
+msgstr "구성원이 1,000명을 초과하는 그룹은 네이티브 관리를 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:169
 msgid "Use network administration for network-wide group membership changes."
-msgstr "네트워크 전체의 그룹 구성원 변경을 위해 네트워크 관리를 사용하십시오."
+msgstr "네트워크 전체의 그룹 구성원 변경에는 네트워크 관리를 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/Input.php:212
 msgid "Invalid input. Use the types and choices returned by discovery."
-msgstr "잘못된 입력입니다. 탐색에 의해 반환된 유형 및 선택을 사용하십시오."
+msgstr "잘못된 입력입니다. 검색 결과로 반환된 유형과 선택 항목을 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/NativeOptions.php:189
 msgid "This native setting is controlled by configuration:"
-msgstr "이 네이티브 설정은 구성에 의해 제어됩니다:"
+msgstr "이 네이티브 설정은 다음 구성으로 제어됩니다:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:13
+#, fuzzy
 msgid "PublishPress plugin actions."
-msgstr "PublishPress 플러그인 작업."
+msgstr "PublishPress Permissions 플러그인 설정을 관리합니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:26
+#, fuzzy
 msgid "Discover Permissions features"
-msgstr "권한 기능 발견"
+msgstr "사용자 권한 요약"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:27
 msgid ""
@@ -1176,10 +1182,11 @@ msgid ""
 "requirements. Discovery does not grant access. Credentials and "
 "administrator-level grants are not exposed."
 msgstr ""
-"활성 네이티브 모듈, 지원되는 작업 및 권한 요구 사항을 읽으십시오. 탐색은 액세스를 부여하지 않습니다. 자격 증명 및 관리자 수준의 "
-"권한은 노출되지 않습니다."
+"활성 네이티브 모듈, 지원되는 작업 및 권한 요구 사항을 읽습니다. 검색은 액세스 권한을 부여하지 않습니다. 자격 증명과 관리자 수준 "
+"권한 부여 정보는 노출되지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:30
+#, fuzzy
 msgid "Permissions settings"
 msgstr "권한 설정"
 
@@ -1190,13 +1197,14 @@ msgid ""
 "Omitted options remain unchanged; unknown fields and locked settings are "
 "rejected. dry_run validates without saving."
 msgstr ""
-"패치하기 전에 네이티브 설정 식별자, 정확한 JSON 유형, 기본값, 저장된 값 및 개정을 읽으십시오. 체크박스 입력은 JSON "
+"패치하기 전에 네이티브 설정 식별자, 정확한 JSON 유형, 기본값, 저장된 값 및 리비전을 읽습니다. 체크박스 입력은 JSON "
 "불리언이어야 합니다. 생략된 옵션은 변경되지 않으며, 알 수 없는 필드와 잠긴 설정은 거부됩니다. dry_run은 저장하지 않고 "
 "유효성을 검사합니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:36
+#, fuzzy
 msgid "Permissions post types and taxonomies"
-msgstr "권한 게시물 유형 및 분류"
+msgstr "다음 분류에 대한 권한 수정:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:37
 msgid ""
@@ -1205,13 +1213,14 @@ msgid ""
 "booleans. Omitted and temporarily unregistered types remain unchanged. "
 "Locked controls cannot be changed. dry_run saves nothing."
 msgstr ""
-"네이티브 일반 탭 필터링 선택 및 잠금을 읽으십시오. 현재 개정으로 {name, enabled} 행을 패치하십시오. 체크박스 값은 "
-"JSON 불리언이어야 합니다. 생략된 유형과 임시 등록 해제된 유형은 변경되지 않습니다. 잠긴 제어는 변경할 수 없습니다. "
-"dry_run은 아무것도 저장하지 않습니다."
+"네이티브 일반 탭의 필터링 선택 항목과 잠금 상태를 읽습니다. 현재 리비전과 함께 명시적인 {name, enabled} 행을 "
+"패치합니다. 체크박스 값은 JSON 불리언이어야 합니다. 생략되었거나 일시적으로 등록되지 않은 유형은 변경되지 않습니다. 잠긴 컨트롤은 "
+"변경할 수 없습니다. dry_run은 아무것도 저장하지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:48
+#, fuzzy
 msgid "Permissions groups and members"
-msgstr "권한 그룹 및 구성원"
+msgstr "권한 그룹 구성원"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:49
 msgid ""
@@ -1222,14 +1231,15 @@ msgid ""
 "every affected user. Built-in role/metagroups cannot be renamed or joined. "
 "dry_run saves nothing."
 msgstr ""
-"네이티브 사용자 지정 권한 그룹을 관리하십시오. 목록은 페이지 매김되어 있으며, 읽기에는 계정 비밀번호 및 이메일 주소가 포함되지 "
-"않습니다. 업데이트 전에 get-group을 읽고 그 개정을 제공하십시오. 구성원 작업은 사용자 ID를 명시적으로 추가하거나 제거하며, "
-"다른 구성원과 기존 일정을 보존하고 영향을 받는 모든 사용자에 대해 edit_user를 요구합니다. 내장 역할/메타 그룹은 이름을 "
-"변경하거나 조인할 수 없습니다. dry_run은 아무것도 저장하지 않습니다."
+"네이티브 사용자 지정 권한 그룹을 관리합니다. 목록은 페이지로 나뉘며, 읽기 결과에서 계정 비밀번호와 이메일 주소는 제외됩니다. "
+"업데이트 전에 get-group을 읽고 해당 리비전을 제공합니다. 구성원 작업은 user_ids를 명시적으로 추가하거나 제거하고, 다른 "
+"구성원과 기존 일정을 유지하며, 영향을 받는 각 사용자에 대해 edit_user 권한이 필요합니다. 기본 제공 역할/metagroup은 "
+"이름을 변경하거나 가입할 수 없습니다. dry_run은 아무것도 저장하지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:53
+#, fuzzy
 msgid "Permissions supplemental roles"
-msgstr "권한 보조 역할"
+msgstr "권한 문서"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:54
 msgid ""
@@ -1243,16 +1253,17 @@ msgid ""
 "object-type permissions apply. Administrator-level capabilities are "
 "rejected even for administrator sessions. dry_run saves nothing."
 msgstr ""
-"사용자, 사용자 지정 그룹 또는 WordPress 역할 메타 그룹의 보조 역할을 읽으십시오. 변경 사항은 현재 개정으로 명시적인 "
-"{role, enabled} 패치입니다; 다른 역할은 변경되지 않습니다. 직접 부여는 발견된 네이티브 direct_roles 이름을 "
-"사용하며, promote_users를 요구하고 관리자 수준의 기능을 거부합니다; 다른 부여는 base:post:post_type 또는 "
-"base:term:taxonomy 형식의 발견된 패턴 역할을 사용합니다; 상태 범위는 "
-"base:post:post_type:post_status:status와 함께 네이티브 활성 상태를 사용합니다. 네이티브 객체 유형 "
-"권한이 적용됩니다. 관리자 수준의 기능은 관리자 세션에서도 거부됩니다. dry_run은 아무것도 저장하지 않습니다."
+"사용자, 사용자 지정 그룹 또는 WordPress 역할 metagroup의 보조 역할을 읽습니다. 변경 사항은 현재 리비전을 사용하는 "
+"명시적인 {role, enabled} 패치이며, 다른 역할은 변경되지 않습니다. 직접 권한 부여에는 검색된 네이티브 "
+"direct_roles 이름을 사용하고 promote_users 권한이 필요하며, 관리자 수준 기능은 거부됩니다. 그 외 권한 부여에는 "
+"base:post:post_type 또는 base:term:taxonomy 형식의 검색된 패턴 역할을 사용합니다. 상태 범위에는 "
+"네이티브 활성 상태를 사용하는 base:post:post_type:post_status:status를 사용합니다. 네이티브 객체 유형 "
+"권한이 적용됩니다. 관리자 세션에서도 관리자 수준 기능은 거부됩니다. dry_run은 아무것도 저장하지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:59
+#, fuzzy
 msgid "Permissions for posts and terms"
-msgstr "게시물 및 용어에 대한 권한"
+msgstr "선택된 항목 및 하위 조건에 할당"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:60
 msgid ""
@@ -1269,21 +1280,24 @@ msgid ""
 "must be changed at their origin. dry_run writes nothing. Large scopes use "
 "native administration."
 msgstr ""
-"네이티브 권한을 추가하거나 제거하기 전에 에이전트/객체/작업 범위와 그 개정을 읽으십시오. source=pp_group과 "
-"operation=manage 및 assign_for=item은 Collaboration 및 Display 그룹 권한이 활성화된 경우 "
-"네이티브 사용자 지정 그룹 위임을 관리합니다. 그룹 관리, 구성원 및 삭제 기능이 필요하며, 대상 그룹 삭제 전에 들어오는 위임 참조를 "
-"제거해야 합니다. source=term은 WordPress 용어 ID와 분류를 사용하며; post_type은 카테고리 기반 규칙에 대해 "
-"영향을 받는 게시물 유형을 선택합니다. mod_type은 추가적인, 포함 또는 제외이며; assign_for는 item, "
-"children 또는 둘 다입니다. 네이티브 작업, 객체 및 자손 권한이 적용됩니다. 생략된 규칙은 보존됩니다. 상속된 규칙은 원점에서 "
-"변경해야 합니다. dry_run은 아무것도 기록하지 않습니다. 큰 범위는 네이티브 관리를 사용합니다."
+"네이티브 권한을 추가하거나 제거하기 전에 에이전트/객체/작업 범위와 해당 리비전을 읽습니다. Collaboration 및 Display "
+"group permissions가 활성화된 경우 source=pp_group, operation=manage, "
+"assign_for=item을 사용하여 네이티브 사용자 지정 그룹 위임을 관리합니다. 그룹 관리, 구성원 관리 및 삭제 권한이 "
+"필요하며, 대상 그룹을 삭제하기 전에 들어오는 위임 참조를 제거해야 합니다. source=term은 WordPress term ID와 "
+"taxonomy를 사용합니다. post_type은 카테고리 기반 규칙에서 영향을 받는 post type을 선택합니다. mod_type은 "
+"additional, include 또는 exclude이고, assign_for는 item, children 또는 both입니다. "
+"네이티브 작업, 객체 및 하위 항목 권한이 적용됩니다. 생략된 규칙은 유지됩니다. 상속된 규칙은 그 출처에서 변경해야 합니다. "
+"dry_run은 아무것도 쓰지 않습니다. 범위가 큰 경우 네이티브 관리를 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions teaser settings"
-msgstr "권한 티저 설정"
+msgstr "권한 설정"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions module activation"
-msgstr "권한 모듈 활성화"
+msgstr "권한 문서"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:77
 msgid ""
@@ -1293,9 +1307,9 @@ msgid ""
 "revision. Rich text uses native sanitization. Redirect destinations require "
 "object permissions. dry_run saves nothing."
 msgstr ""
-"네이티브 티저 모드, 메시지, 리디렉션, RSS 및 공지 스타일을 읽으십시오. 전역 옵션에 대해 post_type을 생략하십시오; "
-"유형별 설정에 대해 발견된 필터링된 게시물 유형을 전달하십시오. 정확한 네이티브 옵션 이름을 JSON 유형 및 개정으로 패치하십시오. "
-"리치 텍스트는 네이티브 위생 처리를 사용합니다. 리디렉션 목적지는 객체 권한이 필요합니다. dry_run은 아무것도 저장하지 않습니다."
+"네이티브 티저 모드, 메시지, 리디렉션, RSS 및 알림 스타일을 읽습니다. 전역 옵션에는 post_type을 생략하고, 유형별 "
+"설정에는 검색된 필터링된 post type을 전달합니다. 정확한 네이티브 옵션 이름, JSON 유형 및 리비전을 사용해 패치합니다. "
+"서식 있는 텍스트에는 네이티브 정제가 적용됩니다. 리디렉션 대상에는 객체 권한이 필요합니다. dry_run은 아무것도 저장하지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:78
 msgid ""
@@ -1305,13 +1319,14 @@ msgid ""
 "request. Network changes require network administration. dry_run saves "
 "nothing."
 msgstr ""
-"설치된, 필수 및 활성 네이티브 모듈을 발견하십시오. 현재 개정으로 명시적인 모듈/활성화 행을 패치하십시오. 필수 모듈은 비활성화할 수 "
-"없습니다. 네이티브 라이프사이클 후크가 실행됩니다; 활성화 변경 사항은 다음 요청에서 로드됩니다. 네트워크 변경은 네트워크 관리를 "
-"요구합니다. dry_run은 아무것도 저장하지 않습니다."
+"설치된 네이티브 모듈, 필수 모듈 및 활성 네이티브 모듈을 검색합니다. 현재 리비전과 함께 명시적인 module/enabled 행을 "
+"패치합니다. 필수 모듈은 비활성화할 수 없습니다. 네이티브 수명 주기 훅이 실행되며, 활성화 변경 사항은 다음 요청에서 로드됩니다. "
+"네트워크 변경에는 네트워크 관리가 필요합니다. dry_run은 아무것도 저장하지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:84
+#, fuzzy
 msgid "Delete a custom permission group"
-msgstr "사용자 지정 권한 그룹 삭제"
+msgstr "권한 그룹을 삭제합니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:85
 msgid ""
@@ -1321,11 +1336,12 @@ msgid ""
 "deleting. Unknown or oversized permission scopes require native "
 "administration."
 msgstr ""
-"전체 네이티브 삭제 범위 및 개정을 위해 get-group-deletion을 읽으십시오. 사용자 지정 그룹만 삭제할 수 있습니다. 모든 "
-"구성원, 역할, 규칙 및 상속된 권한 대상을 정리하기 전에 확인합니다. dry_run은 삭제하지 않고 미리보기합니다. 알 수 없거나 "
-"과도한 권한 범위는 네이티브 관리가 필요합니다."
+"전체 네이티브 삭제 범위와 리비전을 확인하려면 get-group-deletion을 읽습니다. 사용자 지정 그룹만 삭제할 수 있습니다. "
+"정리 전에 모든 구성원, 역할, 규칙 및 상속된 권한 대상을 확인합니다. dry_run은 삭제하지 않고 미리 보기를 제공합니다. 알 수 "
+"없거나 지나치게 큰 권한 범위는 네이티브 관리가 필요합니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:90
+#, fuzzy
 msgid "Permissions Role Usage"
 msgstr "권한 역할 사용"
 
@@ -1337,13 +1353,14 @@ msgid ""
 "assignments must be removed before changing an assigned role "
 "interpretation. dry_run saves nothing."
 msgstr ""
-"네이티브 역할 사용 선택을 읽으십시오: 0 (보조 할당 없음), 패턴 또는 직접. 현재 개정으로 발견된 역할을 패치하십시오; 생략된 "
-"역할은 변경되지 않습니다. 관리자 수준의 역할은 활성화할 수 없습니다. 기존 할당은 할당된 역할 해석을 변경하기 전에 제거해야 합니다. "
-"dry_run은 아무것도 저장하지 않습니다."
+"네이티브 역할 사용 선택 항목인 0(보조 할당 없음), pattern 또는 direct를 읽습니다. 현재 리비전을 사용해 검색된 역할을 "
+"패치합니다. 생략된 역할은 변경되지 않습니다. 관리자 수준 역할은 활성화할 수 없습니다. 할당된 역할의 해석을 변경하기 전에 기존 "
+"할당을 제거해야 합니다. dry_run은 아무것도 저장하지 않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:96
+#, fuzzy
 msgid "Permissions content visibility shortcode"
-msgstr "권한 콘텐츠 가시성 shortcode"
+msgstr "권한 화면 사용 불가"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:97
 msgid ""
@@ -1353,14 +1370,15 @@ msgid ""
 "saves a post. Use native content-editing tools with object permissions to "
 "place its result. Nested visibility shortcodes require native editing."
 msgstr ""
-"타입화된 로그인/로그아웃, 역할, 능력, 사용자 이름 및 그룹 조건으로 네이티브 pp_restrict shortcode를 발견하거나 "
-"빌드하십시오. relation은 all 또는 any이며; hide는 JSON 불리언입니다. 빌더는 HTML을 위생 처리하고 게시물을 "
-"저장하지 않습니다. 객체 권한으로 네이티브 콘텐츠 편집 도구를 사용하여 결과를 배치하십시오. 중첩된 가시성 shortcode는 네이티브 "
-"편집이 필요합니다."
+"유형이 지정된 로그인/로그아웃, 역할, 기능, 사용자 이름 및 그룹 조건으로 네이티브 pp_restrict shortcode를 "
+"검색하거나 구성합니다. relation은 all 또는 any이고, hide는 JSON 불리언입니다. 구성 도구는 HTML을 정제하며 "
+"게시물을 저장하지 않습니다. 결과를 배치하려면 객체 권한이 있는 네이티브 콘텐츠 편집 도구를 사용하세요. 중첩된 표시 "
+"shortcode는 네이티브 편집이 필요합니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:102
+#, fuzzy
 msgid "Permissions editor and screen controls"
-msgstr "권한 편집기 및 화면 제어"
+msgstr "권한 화면 사용 가능"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:103
 msgid ""
@@ -1371,13 +1389,15 @@ msgid ""
 "settings and post-type capabilities. Omitted controls stay unchanged; "
 "dry_run saves nothing."
 msgstr ""
-"각각의 정확한 네이티브 옵션 이름과 저장된 값을 포함하여 네이티브 포스트 타입 권한 메타박스와 권한 화면 스위치를 읽습니다. 네이티브 "
-"문자열 0만이 이를 비활성화합니다; 존재하지 않거나 레거시 값은 기본적으로 활성화됩니다. 쓰기 작업은 JSON 부울, 현재 수정 사항, "
-"네이티브 설정 및 포스트 타입 기능을 필요로 합니다. 생략된 제어는 변경되지 않습니다; dry_run은 아무것도 저장하지 않습니다."
+"네이티브 글 유형별 Permissions 메타박스 및 Permissions 화면 스위치와 정확한 네이티브 옵션 이름 및 저장된 값을 "
+"읽습니다. 네이티브 문자열 0만 비활성화하며, 값이 없거나 레거시 값인 경우 기본적으로 활성화됩니다. 쓰기에는 JSON 불리언, 현재 "
+"리비전, 네이티브 설정 및 post type 권한이 필요합니다. 생략된 컨트롤은 변경되지 않습니다. dry_run은 아무것도 저장하지 "
+"않습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:108
+#, fuzzy
 msgid "Permissions validated batch"
-msgstr "검증된 권한 배치"
+msgstr "권한 기능"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:109
 msgid ""
@@ -1388,13 +1408,15 @@ msgid ""
 "confirmed_items and failed_index and re-read all scopes after a partial "
 "failure."
 msgstr ""
-"각각의 현재 수정 사항을 가진 최대 25개의 명시적 항목을 제공합니다. 모든 항목은 쓰기 전에 검증되고 승인됩니다; 잘못된 형식, "
-"거부된, 오래된 또는 겹치는 권한 범위는 전체 미리 보기를 거부합니다. dry_run은 아무것도 쓰지 않습니다. 네이티브 실행은 "
-"트랜잭셔널하지 않습니다: 완료된, 확인된 항목 및 실패한 인덱스를 검사하고 부분 실패 후 모든 범위를 다시 읽으십시오."
+"각 항목의 현재 리비전과 함께 최대 25개의 명시적 항목을 제공합니다. 쓰기 전에 각 항목의 유효성을 검사하고 권한을 확인합니다. "
+"형식이 잘못되었거나, 거부되었거나, 오래되었거나, 권한 범위가 겹치는 항목이 있으면 전체 미리 보기가 거부됩니다. dry_run은 "
+"아무것도 쓰지 않습니다. 네이티브 실행은 트랜잭션이 아닙니다. 부분 실패 후 completed, confirmed_items 및 "
+"failed_index를 확인하고 모든 범위를 다시 읽으세요."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:112
+#, fuzzy
 msgid "Read explicit permission scopes"
-msgstr "명시적 권한 범위 읽기"
+msgstr "역할 및 권한이 복사되었습니다."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:113
 msgid ""
@@ -1404,46 +1426,46 @@ msgid ""
 "rules; use the normal single-scope getters or smaller batches for larger "
 "inventories."
 msgstr ""
-"그들의 네이티브 규칙과 개별 수정 사항을 가진 최대 25개의 명시적으로 승인된 포스트, 용어 또는 사용자 정의 그룹 위임 범위를 "
-"읽습니다. 이는 개인 객체를 나열하거나 접근을 부여하지 않습니다. 결과는 1,000 규칙으로 제한됩니다; 더 큰 인벤토리를 위해 일반 "
-"단일 범위 getter 또는 더 작은 배치를 사용하십시오."
+"네이티브 규칙 및 개별 리비전과 함께, 권한이 확인된 명시적 게시물, term 또는 사용자 지정 그룹 위임 범위를 최대 25개까지 "
+"읽습니다. 이 작업은 비공개 객체를 열거하거나 액세스 권한을 부여하지 않습니다. 결과는 규칙 1,000개로 제한됩니다. 더 큰 목록에는 "
+"단일 범위용 일반 getter 또는 더 작은 배치를 사용하세요."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:59
 msgid "Enable native Advanced Settings before changing Role Usage."
-msgstr "역할 사용을 변경하기 전에 네이티브 고급 설정을 활성화하십시오."
+msgstr "Role Usage를 변경하기 전에 네이티브 고급 설정을 활성화하세요."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:75
 msgid "The native role capabilities cannot be granted by this session."
-msgstr "네이티브 역할 기능은 이 세션에서 부여될 수 없습니다."
+msgstr "이 세션에서는 네이티브 역할 기능을 부여할 수 없습니다."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:89
 msgid ""
 "Remove existing supplemental assignments before changing this role "
 "interpretation."
-msgstr "이 역할 해석을 변경하기 전에 기존의 추가 할당을 제거하십시오."
+msgstr "이 역할 해석을 변경하기 전에 기존 보조 할당을 제거하세요."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:98
 msgid "Native configuration controls Role Usage."
-msgstr "네이티브 구성은 역할 사용을 제어합니다."
+msgstr "네이티브 구성이 Role Usage를 제어합니다."
 
 #: classes/PublishPress/Permissions/Mcp/Settings.php:146
 msgid "This setting is controlled by native configuration."
-msgstr "이 설정은 네이티브 구성에 의해 제어됩니다."
+msgstr "이 설정은 네이티브 구성으로 제어됩니다."
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:18
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:331
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:337
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Teaser Type"
 msgstr "티저 유형"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:19
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
 msgid "Number of characters to show"
 msgstr "표시할 문자 수"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:20
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Maximum excerpt characters"
 msgstr "최대 발췌 문자 수"
 
@@ -1453,11 +1475,11 @@ msgstr "제한된 콘텐츠 메시지"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:22
 msgid "Restricted link taxonomy"
-msgstr "제한된 링크 분류"
+msgstr "제한된 링크 taxonomy"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:23
 msgid "Restricted link term"
-msgstr "제한된 링크 용어"
+msgstr "제한된 링크 term"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:198
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:261
@@ -1972,8 +1994,8 @@ msgstr "해당 없음"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:397
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:425
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:218
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:288
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:294
 msgid "Post Type"
 msgstr "게시물 유형"
 
@@ -2040,7 +2062,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:289
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:398
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1141
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:89
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 msgid "Role"
@@ -2152,8 +2174,8 @@ msgstr "모두 선택"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1537
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:649
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:663
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:885
 msgid "Apply"
 msgstr "적용"
 
@@ -2665,13 +2687,13 @@ msgid "This item"
 msgstr "이 항목"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:226
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #, php-format
 msgid "%1$s permission for %2$s"
 msgstr "%1$s의 %2$s 권한"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:58
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:116
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:44
 msgid "Roles"
@@ -2686,15 +2708,15 @@ msgid "Agent"
 msgstr "대리인"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:200
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1178
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1245
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1196
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1263
 #, php-format
 msgid "This %s"
 msgstr "이 %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:205
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1177
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1246
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1264
 #, php-format
 msgid "Sub-%s"
 msgstr "하위-%s"
@@ -2801,112 +2823,120 @@ msgstr "이 %s에서 모든 게시물 유형의 수정을 생성할 수 있는 �
 msgid "Control who can submit a revision of all post types in this %s."
 msgstr "이 %s에서 모든 게시물 유형의 수정을 제출할 수 있는 사람을 제어하세요."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 msgid "Roles & Groups"
 msgstr "역할 및 그룹"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles and groups..."
 msgstr "역할 및 그룹 검색..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles..."
 msgstr "역할 검색..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Agent types"
 msgstr "대리인 유형"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
 #: classes/PublishPress/Permissions/UI/Groups.php:237
 msgid "Users"
 msgstr "사용자"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:612
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:614
 #, php-format
 msgid "Search %s"
 msgstr "%s 검색"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
 msgid "Clear search"
 msgstr "검색 지우기"
 
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:624
+msgid "Add a permission group"
+msgstr "권한 그룹 추가"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:625
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:694
+msgid "Search for a group to add"
+msgstr "추가할 그룹 검색"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:709
 msgid "Sort by:"
 msgstr "정렬 기준:"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:627
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:696
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:641
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:711
 msgid "Name (A-Z)"
 msgstr "이름 (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:697
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
 msgid "Name (Z-A)"
 msgstr "이름 (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:629
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Most Users"
 msgstr "사용자 수가 가장 많은"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:630
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
 msgid "Fewest Users"
 msgstr "사용자 수가 가장 적은"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:857
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:654
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:875
 msgid "Select All"
 msgstr "모두 선택"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:860
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:861
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:658
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:878
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:879
 msgid "Bulk Actions"
 msgstr "일괄 작업"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:862
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:659
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:880
 msgid "Set to Enabled"
 msgstr "사용으로 설정"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:646
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:863
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:660
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:881
 msgid "Set to Blocked"
 msgstr "차단됨으로 설정"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:647
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:864
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:661
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:882
 msgid "Set to Default"
 msgstr "기본값으로 설정"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:652
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:870
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:666
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:888
 msgid "selected"
 msgstr "선택됨"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:676
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:691
 msgid "Search and add users"
 msgstr "사용자 검색 및 추가"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:685
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:700
 msgid "Search and add users..."
 msgstr "사용자 검색 및 추가..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:798
 msgid "No role exceptions set"
 msgstr "설정된 역할 예외 없음"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:849
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
 msgid "No specific user permissions. Use the search box to add users."
 msgstr "특정 사용자 권한 없음. 검색 상자를 사용하여 사용자를 추가하세요."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:865
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:883
 msgid "Remove Selected"
 msgstr "선택된 항목 제거"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:91
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
 #: classes/PublishPress/Permissions/UI/Groups.php:266
@@ -2914,32 +2944,33 @@ msgstr "선택된 항목 제거"
 msgid "Login State"
 msgstr "로그인 상태"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:90
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Group"
 msgstr "그룹"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1249
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1267
 msgid "Sub-Sections"
 msgstr "하위 섹션"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1248
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
 msgid "This Section"
 msgstr "이 섹션"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1224
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1288
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1242
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1310
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:92
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
 msgid "Remove custom permissions for user"
 msgstr "사용자에 대한 사용자 지정 권한 제거"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1299
 #, php-format
 msgid "%s permission"
 msgstr "%s 권한"
@@ -3320,8 +3351,8 @@ msgstr "이름"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:105
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:176
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:673
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:726
 msgid "Description"
 msgstr "설명"
 
@@ -3461,9 +3492,7 @@ msgid ""
 "Some requested permissions were not saved because they are unavailable or "
 "you are not permitted to assign them. Other authorized changes may have "
 "been saved."
-msgstr ""
-"요청된 일부 권한이 사용할 수 없거나 할당할 수 있는 권한이 없으므로 저장되지 않았습니다. 다른 승인된 변경 사항은 저장되었을 수 "
-"있습니다."
+msgstr "요청된 권한 중 일부는 사용할 수 없거나 할당 권한이 없어 저장되지 않았습니다. 권한이 허용된 다른 변경 사항은 저장되었을 수 있습니다."
 
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:403
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:410
@@ -4412,7 +4441,7 @@ msgstr "편집 권한과 별도로 게시 권한 할당"
 msgid "Limit user editing capabilities by role level"
 msgstr "역할 수준에 따라 사용자 편집 기능 제한"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:232
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:234
 msgid ""
 "note: Plugin settings and configuration data will be deleted, but only "
 "after the last copy of Permissions / Permissions Pro is deleted."
@@ -4420,41 +4449,41 @@ msgstr ""
 "참고: 플러그인 설정 및 구성 데이터는 삭제되지만, Permissions / Permissions Pro의 마지막 복사본이 삭제된 "
 "후에만 삭제됩니다."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:280
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
 msgid "The following would revert to default settings:"
 msgstr "다음은 기본 설정으로 되돌아갑니다:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:284
 msgid "The following would change from defaults to previously stored settings:"
 msgstr "다음은 기본값에서 이전에 저장된 설정으로 변경됩니다:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "no Page Parent filter"
 msgstr "페이지 부모 필터 없음"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Authors, Editors and Administrators"
 msgstr "페이지 작성자, 편집자 및 관리자"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Editors and Administrators"
 msgstr "페이지 편집자 및 관리자"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Administrators"
 msgstr "관리자"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:352
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:354
 msgid ""
 "When saving a post, if the default term is not selectable, substitute first "
 "available."
 msgstr "게시물을 저장할 때 기본 용어가 선택할 수 없는 경우, 첫 번째 사용 가능한 것으로 대체합니다."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:353
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:355
 msgid "Some term-limited editing configurations require this."
 msgstr "일부 제한된 편집 구성은 이를 요구합니다."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:360
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:362
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with a WordPress role editor like "
@@ -4463,7 +4492,7 @@ msgstr ""
 "활성화된 경우, 사용자는 edit_tags 권한이 없으면 게시물에 대한 새 태그를 생성할 수 없습니다. PublishPress "
 "Capabilities와 같은 WordPress 역할 편집기로 이를 관리할 수 있습니다."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:366
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with Capabilities > Capabilities "
@@ -4472,7 +4501,7 @@ msgstr ""
 "활성화된 경우, 사용자는 edit_tags 권한이 없으면 게시물에 대한 새 태그를 생성할 수 없습니다. 모든 역할에 대해 "
 "Capabilities > Capabilities > Taxonomies에서 이를 관리할 수 있습니다."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:369
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:371
 msgid ""
 "Display all permission operations in a single metabox with tabs (modern "
 "UI). When disabled, each operation has a separate metabox (legacy UI)."
@@ -4480,42 +4509,42 @@ msgstr ""
 "탭이 있는 단일 메타박스에 모든 권한 작업을 표시합니다 (현대 UI). 비활성화된 경우, 각 작업은 별도의 메타박스를 갖습니다 (구식 "
 "UI)."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:412
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:414
 #, php-format
 msgid "%sPosts / Pages Listing:%s %s"
 msgstr "%s게시물 / 페이지 목록:%s %s"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:509
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:511
 msgid "User editing capabilities apply for"
 msgstr "사용자 편집 권한은 다음에 적용됩니다"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "equal or lower role levels"
 msgstr "동일하거나 낮은 역할 수준"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "lower role levels"
 msgstr "낮은 역할 수준"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:565
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:567
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "추가 역할의 적용 방식을 제어하려면 %1$s역할 사용%2$s를 참조하십시오."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:669
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
 msgid "Defined Constant"
 msgstr "정의된 상수"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:670
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:723
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:672
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:725
 msgid "Setting"
 msgstr "설정"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:722
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
 msgid "Available Constant"
 msgstr "사용 가능한 상수"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:800
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:802
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4526,11 +4555,11 @@ msgstr ""
 "<strong>functions.php</strong> 파일(또는 항상 실행되고 자동 업데이트되지 않는 다른 파일)에 복사하고 원하는 "
 "대로 수정하십시오:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:803
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:805
 msgid "Default settings code"
 msgstr "기본 설정 코드"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:820
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:822
 msgid ""
 "To force the value of one or more settings network-wide, "
 "<strong>copy</strong> the following code into your theme's "
@@ -4541,17 +4570,17 @@ msgstr ""
 "<strong>functions.php</strong> 파일(또는 항상 실행되고 자동 업데이트되지 않는 다른 파일)에 복사하고 원하는 "
 "대로 수정하십시오:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:823
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:825
 msgid "Forced settings code"
 msgstr "강제 설정 코드"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:854
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:856
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
 msgstr "이 양식의 모든 설정(표시되지 않은 탭의 설정 포함)은 기본값으로 초기화됩니다. 확실합니까?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:857
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:859
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:97
 msgid "Revert to Defaults"
 msgstr "기본값으로 되돌리기"
@@ -5999,7 +6028,7 @@ msgid "Hide for Custom Visibility"
 msgstr "사용자 정의 가시성에 대해 숨기기"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:225
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:510
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:516
 msgid "Featured Image"
 msgstr "대표 이미지"
 
@@ -6080,7 +6109,7 @@ msgstr "메시지 스타일"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:613
 msgid "Options will appear here after you enable the Teaser for a post type."
-msgstr "포스트 타입에 대한 티저를 활성화한 후 이곳에 옵션이 표시됩니다."
+msgstr "글 유형에 Teaser를 활성화하면 여기에 옵션이 표시됩니다."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:58
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:81
@@ -6091,362 +6120,362 @@ msgstr "구성할 포스트 유형 선택"
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "티저 설정을 구성할 포스트 유형을 선택하세요."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:211
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
+msgid "Site Preview"
+msgstr "사이트 미리보기"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:217
 #, php-format
 msgid "Text Options for %s"
 msgstr "%s에 대한 텍스트 옵션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
 msgid "No Teaser"
 msgstr "티저 없음"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
 msgid "Message with no teaser content"
 msgstr "미리보기 내용이 없는 메시지"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
 #, fuzzy
 msgid "Message with post content above Read More link as teaser"
 msgstr "더 보기 링크 이전에 미리보기 내용이 있는 메시지"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
 msgid "Message with Excerpt as teaser content"
 msgstr "미리보기 내용으로 발췌가 포함된 메시지"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:251
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Message with Excerpt or pre-More as teaser content"
 msgstr "미리보기 내용으로 발췌 또는 더 보기 전에 내용이 포함된 메시지"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:53
 msgid "Message with first X characters of post as teaser content"
 msgstr "미리보기 내용으로 게시물의 처음 X자"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:54
 msgid "Redirect to another post"
 msgstr "다른 게시물로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "No teaser will be applied"
 msgstr "테이저가 적용되지 않습니다"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:264
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:270
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "차단된 사용자 메시지 이전에 미리보기 텍스트를 표시하지 않음"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:265
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
 msgid ""
 "Show content before the Read More marker. If there is no marker or no "
 "content before it, show only the blocked-user message."
 msgstr "읽어보기 마커 이전의 콘텐츠를 표시합니다. 마커가 없거나 그 이전에 콘텐츠가 없으면 차단된 사용자 메시지만 표시합니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:266
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:272
 msgid "Use the post excerpt as teaser content"
 msgstr "게시물 요약을 테이저 콘텐츠로 사용"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:267
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 msgid "Use excerpt or content before More tag"
 msgstr "더 보기 태그 이전의 요약 또는 콘텐츠 사용"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:274
 msgid "Show the first X characters of the post content"
 msgstr "게시물 콘텐츠의 첫 번째 X자를 표시합니다"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:275
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr "사용자가 제한된 콘텐츠에 접근하려고 할 때 다른 페이지로 리디렉션합니다"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:281
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:287
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "%s에 대한 테이저 설정"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "Show only the first"
 msgstr "첫 번째 것만 표시"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Chars"
 msgstr "자"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:347
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "characters"
 msgstr "문자"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "Max"
 msgstr "최대"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "characters (leave empty for full excerpt)"
 msgstr "문자 (전체 요약을 원하면 비워두세요)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:423
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "접근할 수 없는 방문자는 다음으로 리디렉션됩니다: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:321
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "샘플 %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:445
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
 msgstr "이것은 전체 콘텐츠의 예입니다. 미리보기는 권한이 없는 방문자가 대신 볼 내용을 보여줍니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
 msgid "This is a short excerpt from the restricted content."
 msgstr "이것은 제한된 콘텐츠에서의 짧은 발췌입니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:462
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
 msgid "Teaser Preview"
 msgstr "티저 미리보기"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
-msgid "Site Preview"
-msgstr "사이트 미리보기"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:471
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:472
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:478
 msgid "Preview content"
 msgstr "미리보기 콘텐츠"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Preview device"
 msgstr "미리보기 장치"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:493
 msgid "Desktop"
 msgstr "데스크톱"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:496
 msgid "Mobile"
 msgstr "모바일"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Open full preview in a new tab"
 msgstr "새 탭에서 전체 미리보기 열기"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:503
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Open full preview"
 msgstr "전체 미리보기 열기"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:517
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Loading the preview from your active theme…"
 msgstr "활성 테마에서 미리보기를 로딩 중입니다…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:525
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:531
 msgid "Teaser preview from the active theme"
 msgstr "활성 테마의 티저 미리보기"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:535
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:541
 msgid "The theme preview could not be displayed in this frame."
 msgstr "테마 미리보기를 이 프레임에서 표시할 수 없습니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:542
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid "Visitor redirected"
 msgstr "방문자가 리디렉션되었습니다"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:543
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:549
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "제한된 콘텐츠는 표시되지 않습니다. 방문자는 구성된 대상으로 전송됩니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:575
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:581
 msgid "Message for Blocked Users"
 msgstr "차단된 사용자에 대한 메시지"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:576
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
 msgid ""
 "This message is shown to users who are blocked from viewing the full "
 "content. It is shared across all teaser types."
 msgstr "이 메시지는 전체 내용을 볼 수 없는 사용자에게 표시됩니다. 모든 미리보기 유형에 걸쳐 공유됩니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:56
 msgid "This field is required."
 msgstr "이 필드는 필수입니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:605
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "%s[login_form]%s 단축코드를 사용하여 로그인 양식을 삽입합니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:628
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:634
 msgid "Text Configuration"
 msgstr "텍스트 구성"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:629
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
 msgstr "차단된 사용자에 대한 티저 및 메시지 외에도 콘텐츠 주위에 추가 텍스트를 표시할 수 있습니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:651
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
 msgid "post title"
 msgstr "게시물 제목"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:658
 msgid "post content"
 msgstr "게시물 내용"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:665
 #, php-format
 msgid "Before %s"
 msgstr "%s 이전"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 #, php-format
 msgid "After %s"
 msgstr "%s 이후"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:744
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:750
 msgid "Redirect Settings"
 msgstr "리디렉션 설정"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:761
 msgid "Redirection"
 msgstr "리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:762
 msgid "Target Post Type"
 msgstr "대상 게시물 유형"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Select Post"
 msgstr "게시물 선택"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Custom URL"
 msgstr "사용자 정의 URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:797
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:803
 msgid "Not Logged In:"
 msgstr "로그인하지 않음:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:811
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
 msgid "No redirect"
 msgstr "리디렉션 없음"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:911
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:812
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "Redirect to WordPress login"
 msgstr "WordPress 로그인으로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:912
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to a custom post"
 msgstr "맞춤 게시물로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:913
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom URL"
 msgstr "사용자 정의 URL로 리디렉션"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:829
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:940
 msgid "Redirect post type"
 msgstr "리디렉션 게시물 유형"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:954
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:855
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect page"
 msgstr "리디렉션 페이지"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:968
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "This is a custom login page"
 msgstr "사용자 정의 로그인 페이지입니다"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
 msgstr "사용자가 로그인하면 그들이 보고 있던 원래 게시물로 다시 리디렉션됩니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:866
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:977
 msgid "Redirect URL"
 msgstr "리디렉션 URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:902
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
 msgid "Logged in Users:"
 msgstr "로그인한 사용자:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1024
 msgid "Blocked User Message Style"
 msgstr "차단된 사용자 메시지 스타일"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1019
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "차단된 사용자에게 표시되는 티저 메시지의 모양을 사용자 정의합니다."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1034
 msgid "Background Color"
 msgstr "배경 색상"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Text Color"
 msgstr "텍스트 색상"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1051
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid "Border Color"
 msgstr "테두리 색상"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1063
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
 msgid "Border Position"
 msgstr "테두리 위치"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
 msgid "Left"
 msgstr "왼쪽"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1068
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1075
 msgid "Right"
 msgstr "오른쪽"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1069
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1076
 msgid "Top"
 msgstr "상단"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1077
 msgid "Bottom"
 msgstr "하단"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1071
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1078
 msgid "All Sides"
 msgstr "모든 면"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid "Border Width (px)"
 msgstr "테두리 너비 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1104
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1111
 msgid "Border Radius (px)"
 msgstr "테두리 반경 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1117
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1124
 msgid "Font Size (px)"
 msgstr "글꼴 크기 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1137
 msgid "Padding (px)"
 msgstr "패딩 (px)"
 

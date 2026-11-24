@@ -4,43 +4,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PublishPress Permissions Free 4.8.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/project\n"
-"POT-Creation-Date: 2026-11-17T17:56:17+00:00\n"
-"PO-Revision-Date: 2026-11-19 18:03+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: press-permit-core\n"
+"POT-Creation-Date: 2026-11-19T17:52:53+00:00\n"
+"PO-Revision-Date: 2026-11-24 22:13+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: press-permit-core\n"
+"Language: ja\n"
 
-#. Plugin Name of the plugin
 #: press-permit-core.php:7, fuzzy
+#. Plugin Name of the plugin
 msgid "PublishPress Permissions Free"
 msgstr "PublishPress Permissions Free"
 
-#. Plugin URI of the plugin
 #: press-permit-core.php:9
+#. Plugin URI of the plugin
 msgid "https://publishpress.com/presspermit"
 msgstr "https://publishpress.com/presspermit"
 
-#. Description of the plugin
 #: press-permit-core.php:11
+#. Description of the plugin
 msgid ""
 "PublishPress Permissions allows you to enable or deny access to posts, "
 "pages, categories, tags and more."
 msgstr "PublishPress Permissionsは、投稿、ページ、カテゴリー、タグなどへのアクセスを有効または拒否することを可能にします。"
 
-#. Author of the plugin
-#: press-permit-core.php:15 classes/PublishPress/Permissions/Admin.php:313
+#: press-permit-core.php:15
+#: classes/PublishPress/Permissions/Admin.php:313
 #: classes/PublishPress/Permissions/Mcp/Registry.php:12
 #: classes/PublishPress/Permissions/UI/HintsPro.php:74
+#. Author of the plugin
 msgid "PublishPress"
 msgstr "PublishPress"
 
-#. Author URI of the plugin
 #: press-permit-core.php:17
+#. Author URI of the plugin
 msgid "https://publishpress.com/"
 msgstr "https://publishpress.com/"
 
@@ -257,8 +258,7 @@ msgid "SearchWP"
 msgstr "SearchWP"
 
 #: classes/PublishPress/Permissions.php:1450
-msgid ""
-"Compatibility with SearchWP term filtering for advanced search capabilities."
+msgid "Compatibility with SearchWP term filtering for advanced search capabilities."
 msgstr "高度な検索機能のための SearchWP 用語フィルタリングとの互換性。"
 
 #: classes/PublishPress/Permissions.php:1454
@@ -279,8 +279,7 @@ msgid "WooCommerce"
 msgstr "WooCommerce"
 
 #: classes/PublishPress/Permissions.php:1465
-msgid ""
-"Apply permission controls to WooCommerce products and product categories."
+msgid "Apply permission controls to WooCommerce products and product categories."
 msgstr "WooCommerce 製品および製品カテゴリに権限コントロールを適用します。"
 
 #: classes/PublishPress/Permissions.php:1469
@@ -320,8 +319,7 @@ msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #: classes/PublishPress/Permissions.php:1494
-msgid ""
-"Exclude restricted posts from XML sitemaps to maintain proper SEO indexing."
+msgid "Exclude restricted posts from XML sitemaps to maintain proper SEO indexing."
 msgstr "適切なSEOインデックスを維持するために、XMLサイトマップから制限された投稿を除外します。"
 
 #: classes/PublishPress/Permissions.php:1498
@@ -380,7 +378,8 @@ msgstr "互換性パック"
 msgid "Content Visibility"
 msgstr "コンテンツの可視性"
 
-#: classes/PublishPress/Permissions/Admin.php:227 includes/CoreAdmin.php:69
+#: classes/PublishPress/Permissions/Admin.php:227
+#: includes/CoreAdmin.php:69
 #: includes/CoreAdmin.php:70
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:39
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:97
@@ -414,8 +413,7 @@ msgid ""
 msgstr "可視性サークルと編集サークルは、他のグループメンバーによって作成されていないコンテンツへのアクセスをブロックします。"
 
 #: classes/PublishPress/Permissions/Admin.php:235
-msgid ""
-"Post-specific and category-specific permissions for creation and editing."
+msgid "Post-specific and category-specific permissions for creation and editing."
 msgstr "作成および編集のためのポスト特有およびカテゴリ特有の権限。"
 
 #: classes/PublishPress/Permissions/Admin.php:236
@@ -426,10 +424,11 @@ msgstr "ACF、bbPress、BuddyPress、Relevanssi、WPMLなどのプラグイン�
 
 #: classes/PublishPress/Permissions/Admin.php:237
 msgid ""
-"Use [pp_restrict] to show or hide sections of content based on login status,"
-" roles, capabilities, users, or Permission Groups."
+"Use [pp_restrict] to show or hide sections of content based on login "
+"status, roles, capabilities, users, or Permission Groups."
 msgstr ""
-"[pp_restrict]を使用して、ログインステータス、役割、権限、ユーザー、またはパーミッショングループに基づいてコンテンツのセクションを表示または非表示にします。"
+"[pp_restrict]"
+"を使用して、ログインステータス、役割、権限、ユーザー、またはパーミッショングループに基づいてコンテンツのセクションを表示または非表示にします。"
 
 #: classes/PublishPress/Permissions/Admin.php:238
 msgid ""
@@ -451,8 +450,8 @@ msgstr "権限グループのメンバーシップを遅延または期限切れ
 
 #: classes/PublishPress/Permissions/Admin.php:241
 msgid ""
-"Auto-create a page for each user of specified roles. Compatible with several"
-" Team / Staff plugins."
+"Auto-create a page for each user of specified roles. Compatible with "
+"several Team / Staff plugins."
 msgstr "指定された役割の各ユーザー用にページを自動作成します。複数のチーム/スタッフプラグインと互換性があります。"
 
 #: classes/PublishPress/Permissions/Admin.php:245
@@ -461,7 +460,8 @@ msgid ""
 "authored by other group members. Any WP Role, BuddyPress Group or custom "
 "Group can be marked as a Circle for specified post types."
 msgstr ""
-"可視性サークルと編集サークルは、他のグループメンバーによって作成されていないコンテンツへのアクセスをブロックします。任意のWPロール、BuddyPressグループ、またはカスタムグループを特定の投稿タイプのサークルとしてマークできます。"
+"可視性サークルと編集サークルは、他のグループメンバーによって作成されていないコンテンツへのアクセスをブロックします。任意のWPロール、BuddyPres"
+"sグループ、またはカスタムグループを特定の投稿タイプのサークルとしてマークできます。"
 
 #: classes/PublishPress/Permissions/Admin.php:246
 msgid ""
@@ -469,8 +469,8 @@ msgid ""
 "parent selection. In combination with other modules, supports workflow "
 "statuses, PublishPress and PublishPress Revisions."
 msgstr ""
-"編集、用語の割り当て、ページ親の選択のためのコンテンツ固有の権限をサポートします。他のモジュールと組み合わせることで、ワークフローステータス、PublishPressおよびPublishPress"
-" Revisionsをサポートします。"
+"編集、用語の割り当て、ページ親の選択のためのコンテンツ固有の権限をサポートします。他のモジュールと組み合わせることで、ワークフローステータス、Publi"
+"shPressおよびPublishPress Revisionsをサポートします。"
 
 #: classes/PublishPress/Permissions/Admin.php:247
 msgid ""
@@ -480,15 +480,19 @@ msgid ""
 "provides network-wide Permission Groups."
 msgstr ""
 "ACF、bbPress、Relevanssi、CMS Tree Page "
-"View、カスタム投稿タイプUI、Subscribe2、WPML、その他のさまざまなプラグインとの互換性または統合を追加します。任意のBuddyPressグループを権限グループとして構成します。マルチサイト用に、ネットワーク全体の権限グループを提供します。"
+"View、カスタム投稿タイプUI、Subscribe2"
+"、WPML、その他のさまざまなプラグインとの互換性または統合を追加します。任意のBuddyPressグループを権限グループとして構成します。マルチサイト"
+"用に、ネットワーク全体の権限グループを提供します。"
 
 #: classes/PublishPress/Permissions/Admin.php:248
 msgid ""
-"The [pp_restrict] shortcode conditionally displays sections of post content."
-" Rules can require login status, roles, capabilities, usernames, or "
+"The [pp_restrict] shortcode conditionally displays sections of post "
+"content. Rules can require login status, roles, capabilities, usernames, or "
 "Permission Group membership."
 msgstr ""
-"[pp_restrict]ショートコードは、投稿コンテンツのセクションを条件付きで表示します。ルールには、ログインステータス、役割、権限、ユーザー名、またはパーミッショングループのメンバーシップが必要です。"
+"[pp_restrict]"
+"ショートコードは、投稿コンテンツのセクションを条件付きで表示します。ルールには、ログインステータス、役割、権限、ユーザー名、またはパーミッショングループ"
+"のメンバーシップが必要です。"
 
 #: classes/PublishPress/Permissions/Admin.php:249
 msgid ""
@@ -496,15 +500,17 @@ msgid ""
 "Can be enabled for any post type. Custom filters are provided but no "
 "programming is required for basic usage."
 msgstr ""
-"サイトのフロントエンドで、読めないコンテンツをプレースホルダーテキストに置き換えます。任意の投稿タイプで有効にできます。カスタムフィルターが提供されますが、基本的な使用にはプログラミングは不要です。"
+"サイトのフロントエンドで、読めないコンテンツをプレースホルダーテキストに置き換えます。任意の投稿タイプで有効にできます。カスタムフィルターが提供されます"
+"が、基本的な使用にはプログラミングは不要です。"
 
 #: classes/PublishPress/Permissions/Admin.php:250
 msgid ""
-"Filters direct file access, based on user's access to post(s) which the file"
-" is attached to. No additional configuration required. Creates/modifies "
+"Filters direct file access, based on user's access to post(s) which the "
+"file is attached to. No additional configuration required. Creates/modifies "
 ".htaccess file in uploads folder (and in main folder for multisite)."
 msgstr ""
-"ファイルが添付されている投稿へのユーザーのアクセスに基づいて、直接ファイルアクセスをフィルタリングします。追加の設定は不要です。アップロードフォルダ内（およびマルチサイトの場合はメインフォルダ内）に.htaccessファイルを作成/変更します。"
+"ファイルが添付されている投稿へのユーザーのアクセスに基づいて、直接ファイルアクセスをフィルタリングします。追加の設定は不要です。アップロードフォルダ内（"
+"およびマルチサイトの場合はメインフォルダ内）に.htaccessファイルを作成/変更します。"
 
 #: classes/PublishPress/Permissions/Admin.php:251
 msgid ""
@@ -512,7 +518,8 @@ msgid ""
 "scheduled for expiration). Simple date picker UI alongside group membership "
 "selection."
 msgstr ""
-"権限グループのメンバーシップを日付で制限できるようにします（遅延および/または期限切れにスケジュール）。グループメンバーシップの選択に加えて、シンプルな日付ピッカーUI。"
+"権限グループのメンバーシップを日付で制限できるようにします（遅延および/"
+"または期限切れにスケジュール）。グループメンバーシップの選択に加えて、シンプルな日付ピッカーUI。"
 
 #: classes/PublishPress/Permissions/Admin.php:252
 msgid ""
@@ -562,8 +569,8 @@ msgstr "特定の権限：制限（'ブロック'）は追加（'有効'）よ�
 
 #: classes/PublishPress/Permissions/Constants.php:24
 msgid ""
-"Specific Permissions: no restrictions ('Blocked') can be applied to custom-"
-"defined groups"
+"Specific Permissions: no restrictions ('Blocked') can be applied to "
+"custom-defined groups"
 msgstr "特定の権限：カスタム定義グループに適用される制限（'ブロック済み'）はありません"
 
 #: classes/PublishPress/Permissions/Constants.php:25
@@ -591,17 +598,17 @@ msgstr "添付ファイルにカスタム編集権限を持つユーザーは、
 #: classes/PublishPress/Permissions/Constants.php:29
 msgid ""
 "Disable front end filtering if logged user is a content administrator "
-"(normally filter to force inclusion of readable private posts in get_pages()"
-" listing, post counts, etc."
+"(normally filter to force inclusion of readable private posts in "
+"get_pages() listing, post counts, etc."
 msgstr ""
-"ログインユーザーがコンテンツ管理者の場合、フロントエンドフィルタリングを無効にします（通常は、get_pages()のリスト、投稿数などに読み取り可能なプライベート投稿を強制的に含めるためにフィルタリングします）"
+"ログインユーザーがコンテンツ管理者の場合、フロントエンドフィルタリングを無効にします（通常は、get_pages()"
+"のリスト、投稿数などに読み取り可能なプライベート投稿を強制的に含めるためにフィルタリングします）"
 
 #: classes/PublishPress/Permissions/Constants.php:30
 msgid ""
 "Disable front end filtering for all users (subject to limitation by "
 "PP_UNFILTERED_FRONT_TYPES)"
-msgstr ""
-"すべてのユーザーに対してフロントエンドフィルタリングを無効にします（PP_UNFILTERED_FRONT_TYPESによる制限が適用されます）"
+msgstr "すべてのユーザーに対してフロントエンドフィルタリングを無効にします（PP_UNFILTERED_FRONT_TYPESによる制限が適用されます）"
 
 #: classes/PublishPress/Permissions/Constants.php:31
 msgid ""
@@ -673,8 +680,8 @@ msgstr "ティーザーの互換性のために、redirect_toの代わりに使�
 
 #: classes/PublishPress/Permissions/Constants.php:56
 msgid ""
-"For Teaser compatibility, specify an additional redirect argument other than"
-" redirect_to"
+"For Teaser compatibility, specify an additional redirect argument other "
+"than redirect_to"
 msgstr "ティーザーの互換性のために、redirect_to以外の追加のリダイレクト引数を指定します"
 
 #: classes/PublishPress/Permissions/Constants.php:57
@@ -692,15 +699,14 @@ msgid ""
 "Don't include readable private pages in the Pages widget or other "
 "wp_list_pages() / get_pages() results    "
 msgstr ""
-"Pagesウィジェットや他のwp_list_pages() / get_pages()の結果に読み取り可能なプライベートページを含めないでください"
-"    "
+"Pagesウィジェットや他のwp_list_pages() / get_pages()の結果に読み取り可能なプライベートページを含めないでください   "
+" "
 
 #: classes/PublishPress/Permissions/Constants.php:67
 msgid ""
 "If some pages have been suppressed from get_pages() results, change child "
 "pages' corresponding post_parent values to a visible ancestor"
-msgstr ""
-"get_pages()の結果からいくつかのページが抑制されている場合、子ページの対応するpost_parent値を表示可能な祖先に変更してください"
+msgstr "get_pages()の結果からいくつかのページが抑制されている場合、子ページの対応するpost_parent値を表示可能な祖先に変更してください"
 
 #: classes/PublishPress/Permissions/Constants.php:68
 msgid ""
@@ -713,7 +719,8 @@ msgid ""
 "For performance, change the get_pages() database query to return only a "
 "subset of fields, excluding post_content"
 msgstr ""
-"パフォーマンスのために、get_pages()のデータベースクエリを変更して、post_contentを除外したフィールドのサブセットのみを返すようにします"
+"パフォーマンスのために、get_pages()のデータベースクエリを変更して、post_"
+"contentを除外したフィールドのサブセットのみを返すようにします"
 
 #: classes/PublishPress/Permissions/Constants.php:76
 msgid ""
@@ -764,8 +771,7 @@ msgid "Attached Files Private setting available"
 msgstr "添付ファイルのプライベート設定が利用可能"
 
 #: classes/PublishPress/Permissions/Constants.php:109
-msgid ""
-"Comma-separated list of mime types to exclude from File Access filtering"
+msgid "Comma-separated list of mime types to exclude from File Access filtering"
 msgstr "ファイルアクセスフィルタリングから除外するmimeタイプのカンマ区切りリスト"
 
 #: classes/PublishPress/Permissions/Constants.php:110
@@ -775,8 +781,7 @@ msgid ""
 msgstr "ファイルアクセスフィルタリングに含める MIME タイプのカンマ区切りリスト（他をバイパス）"
 
 #: classes/PublishPress/Permissions/Constants.php:111
-msgid ""
-"When file access is blocked, do not set the WP_Query 404 / 403 property"
+msgid "When file access is blocked, do not set the WP_Query 404 / 403 property"
 msgstr "ファイルアクセスがブロックされているとき、WP_Queryの404 / 403プロパティを設定しない"
 
 #: classes/PublishPress/Permissions/Constants.php:112
@@ -825,8 +830,7 @@ msgid ""
 msgstr "単一のデータベースクエリに挿入できる特定の権限の最大数（デフォルト 1000）"
 
 #: classes/PublishPress/Permissions/Constants.php:133
-msgid ""
-"Don't tweak the admin menu indexes to position Permissions menu under Users"
+msgid "Don't tweak the admin menu indexes to position Permissions menu under Users"
 msgstr "権限メニューをユーザーの下に配置するために管理メニューのインデックスを調整しない"
 
 #: classes/PublishPress/Permissions/Constants.php:134
@@ -862,14 +866,13 @@ msgid ""
 msgstr "一度に表示する非階層的な投稿/用語の最大数（ページごと）"
 
 #: classes/PublishPress/Permissions/Constants.php:146
-msgid ""
-"Max number of hierarchical posts / terms to display at one time (per page)"
+msgid "Max number of hierarchical posts / terms to display at one time (per page)"
 msgstr "1度に表示する階層的な投稿/タームの最大数（ページごと）"
 
 #: classes/PublishPress/Permissions/Constants.php:147
 msgid ""
-"Disable auto-determination of how many levels of page tree to make visble by"
-" default. Instead, use specified value."
+"Disable auto-determination of how many levels of page tree to make visble "
+"by default. Instead, use specified value."
 msgstr "デフォルトで表示するページツリーのレベル数を自動的に決定しないようにします。代わりに、指定された値を使用します。"
 
 #: classes/PublishPress/Permissions/Constants.php:148
@@ -879,13 +882,11 @@ msgid ""
 msgstr "表示されるページ/用語の目標数、表示可能なレベルの数を自動的に決定するために使用されます"
 
 #: classes/PublishPress/Permissions/Constants.php:149
-msgid ""
-"Make search function on the post selection metabox look at post content"
+msgid "Make search function on the post selection metabox look at post content"
 msgstr "投稿選択メタボックスの検索機能を投稿内容に対して行う"
 
 #: classes/PublishPress/Permissions/Constants.php:150
-msgid ""
-"Make search function on the post selection metabox look at post excerpt"
+msgid "Make search function on the post selection metabox look at post excerpt"
 msgstr "投稿選択メタボックスの検索機能を投稿抜粋に対して行う"
 
 #: classes/PublishPress/Permissions/Constants.php:156
@@ -940,34 +941,30 @@ msgstr "添付メディアにはコメントがないため、それに対する
 msgid ""
 "Reduce overhead of pages query (in get_pages() and wp-admin) by defaulting "
 "fields to a set list that does not include post_content "
-msgstr ""
-"デフォルトで、post_content を含まない設定リストにフィールドをデフォルト化することにより、ページクエリのオーバーヘッドを削減します "
+msgstr "デフォルトで、post_content を含まない設定リストにフィールドをデフォルト化することにより、ページクエリのオーバーヘッドを削減します "
 
 #: classes/PublishPress/Permissions/Constants.php:179
 msgid ""
 "Reduce overhead of wp-admin posts query by defaulting fields to a set list "
 "that does not include post_content "
-msgstr ""
-"wp-adminの投稿クエリのオーバーヘッドを、post_contentを含まないセットリストにフィールドをデフォルト設定することで削減します。"
+msgstr "wp-adminの投稿クエリのオーバーヘッドを、post_contentを含まないセットリストにフィールドをデフォルト設定することで削減します。"
 
 #: classes/PublishPress/Permissions/Constants.php:180
 msgid ""
 "Reduce overhead of wp-admin Media query by defaulting fields to a set list "
 "that does not include post_content "
-msgstr ""
-"wp-adminのメディアクエリのオーバーヘッドを、post_contentを含まないセットリストにフィールドをデフォルト設定することで削減します。"
+msgstr "wp-adminのメディアクエリのオーバーヘッドを、post_contentを含まないセットリストにフィールドをデフォルト設定することで削減します。"
 
 #: classes/PublishPress/Permissions/Constants.php:181
 msgid ""
 "Reduce overhead of wp-admin query for specified custom post type by "
 "defaulting fields to a set list that does not include post_content "
 msgstr ""
-"指定されたカスタム投稿タイプのwp-"
-"adminクエリのオーバーヘッドを、post_contentを含まないセットリストにフィールドをデフォルト設定することで削減します。"
+"指定されたカスタム投稿タイプのwp-adminクエリのオーバーヘッドを、post_"
+"contentを含まないセットリストにフィールドをデフォルト設定することで削減します。"
 
 #: classes/PublishPress/Permissions/Constants.php:187
-msgid ""
-"Work around database setup warnings (at plugin activation) on some servers"
+msgid "Work around database setup warnings (at plugin activation) on some servers"
 msgstr "一部のサーバーでのデータベース設定警告（プラグインの有効化時）を回避します。"
 
 #: classes/PublishPress/Permissions/Constants.php:215
@@ -978,63 +975,63 @@ msgstr "開発用のみ（匿名ユーザーによるフィルタリングされ
 
 #: classes/PublishPress/Permissions/Constants.php:216
 msgid ""
-"Development use only (on front end, do not replace 'post_status = 'publish''"
-" clause with filtered equivalent)"
+"Development use only (on front end, do not replace 'post_status = "
+"'publish'' clause with filtered equivalent)"
 msgstr "開発用のみ（フロントエンドでは、'post_status = 'publish''句をフィルタリングされた等価物に置き換えません）"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:456
+#: classes/PublishPress/Permissions/DB/Groups.php:460
 #: classes/PublishPress/Permissions/PluginUpdated.php:342
 msgid "Logged In"
 msgstr "ログイン済み"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/PluginUpdated.php:335
 msgid "Not Logged In"
 msgstr "ログインしていない"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:460
+#: classes/PublishPress/Permissions/DB/Groups.php:464
 #: classes/PublishPress/Permissions/PluginUpdated.php:349
 msgid "Everyone"
 msgstr "全員"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 msgid "Change Request Notifications"
 msgstr "変更リクエスト通知"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 #: classes/PublishPress/Permissions/PluginUpdated.php:356
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "提出されたリビジョン"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 msgid "Scheduled Change Notifications"
 msgstr "スケジュールされた変更通知"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 #: classes/PublishPress/Permissions/PluginUpdated.php:362
 msgid "Scheduled Revision Monitors"
 msgstr "スケジュールされた修正モニター"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:496
+#: classes/PublishPress/Permissions/DB/Groups.php:500
 msgid "Authenticated site users, except for Administrators"
 msgstr "管理者を除く認証済みサイトユーザー"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:498
+#: classes/PublishPress/Permissions/DB/Groups.php:502
 #: classes/PublishPress/Permissions/PluginUpdated.php:336
 msgid "Anonymous users (not logged in)"
 msgstr "匿名ユーザー（ログインしていない）"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:500
+#: classes/PublishPress/Permissions/DB/Groups.php:504
 #: classes/PublishPress/Permissions/PluginUpdated.php:350
 msgid "All users (including anonymous)"
 msgstr "すべてのユーザー（匿名を含む）"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:505
+#: classes/PublishPress/Permissions/DB/Groups.php:509
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "WordPressの役割が%sであるすべてのユーザー"
@@ -1065,8 +1062,7 @@ msgstr "%1$sは%2$sをバージョン%3$s以上にアップグレードするま
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:114
 #, php-format
-msgid ""
-"%1$s won&#39;t work until you upgrade WordPress to version %2$s or later."
+msgid "%1$s won&#39;t work until you upgrade WordPress to version %2$s or later."
 msgstr "%1$sはWordPressをバージョン%2$s以上にアップグレードするまで機能しません。"
 
 #: classes/PublishPress/Permissions/ErrorNotice.php:124
@@ -1104,12 +1100,13 @@ msgid "Groups"
 msgstr "グループ"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:39
+#, fuzzy
 msgid "You cannot perform this Permissions operation."
-msgstr "このPermissions操作を実行することはできません。"
+msgstr "個別の権限を設定できるようになりました"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:49
 msgid "Permissions changed. Read the current values before saving."
-msgstr "Permissionsが変更されました。保存する前に現在の値を読み取ってください。"
+msgstr "権限が変更されました。保存する前に現在の値を読み取ってください。"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:120
 msgid ""
@@ -1119,13 +1116,13 @@ msgstr "ネイティブ操作を確認できませんでした。再試行する
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:88
 msgid "Use separate requests for overlapping permission scopes."
-msgstr "重複する権限スコープには別々のリクエストを使用してください。"
+msgstr "重複する権限スコープには、別々のリクエストを使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:106
 msgid ""
 "Some native writes may have completed. Read every affected scope before "
 "retrying."
-msgstr "いくつかのネイティブ書き込みが完了している可能性があります。再試行する前に影響を受けたすべてのスコープを読み取ってください。"
+msgstr "一部のネイティブ書き込みが完了している可能性があります。再試行する前に、影響を受けるすべてのスコープを読み取ってください。"
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:93
 msgid "The native control is locked."
@@ -1133,56 +1130,60 @@ msgstr "ネイティブコントロールはロックされています。"
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:108
 msgid "This filtering choice is controlled by native configuration."
-msgstr "このフィルタリング選択はネイティブ設定によって制御されています。"
+msgstr "このフィルタリングの選択肢は、ネイティブ設定によって制御されています。"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:13
+#, fuzzy
 msgid "Enable Permissions metabox"
-msgstr "Permissionsメタボックスを有効にする"
+msgstr "権限画面で有効にする"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:15
+#, fuzzy
 msgid "Include in Permissions screens"
-msgstr "Permissions画面に含める"
+msgstr "権限画面で有効にする"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:158
-msgid ""
-"Use native administration for permission scopes exceeding 1,000 objects."
-msgstr "1,000オブジェクトを超える権限スコープにはネイティブ管理を使用してください。"
+msgid "Use native administration for permission scopes exceeding 1,000 objects."
+msgstr "1,000件を超えるオブジェクトを含む権限スコープには、ネイティブ管理を使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:188
 msgid "The affected permission tree is too large."
-msgstr "影響を受けた権限ツリーが大きすぎます。"
+msgstr "影響を受ける権限ツリーが大きすぎます。"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:283
+#, fuzzy
 msgid "This permission mode is disabled by native configuration."
-msgstr "この権限モードはネイティブ設定によって無効になっています。"
+msgstr "この権限は、対応する制限があるため冗長です。"
 
 #: classes/PublishPress/Permissions/Mcp/GroupDeletion.php:38
 msgid "Remove incoming group delegation rules before deleting this group."
-msgstr "このグループを削除する前に、受信したグループ委任ルールを削除してください。"
+msgstr "このグループを削除する前に、グループに対する受信委任ルールを削除してください。"
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:91
 msgid "Use native administration for groups with more than 1,000 members."
-msgstr "1,000人以上のメンバーを持つグループにはネイティブ管理を使用してください。"
+msgstr "メンバーが1,000人を超えるグループには、ネイティブ管理を使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:169
 msgid "Use network administration for network-wide group membership changes."
-msgstr "ネットワーク全体のグループメンバーシップの変更にはネットワーク管理を使用してください。"
+msgstr "ネットワーク全体のグループメンバーシップを変更するには、ネットワーク管理を使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/Input.php:212
 msgid "Invalid input. Use the types and choices returned by discovery."
-msgstr "無効な入力です。ディスカバリーによって返されたタイプと選択肢を使用してください。"
+msgstr "入力が無効です。検出によって返されたタイプと選択肢を使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/NativeOptions.php:189
 msgid "This native setting is controlled by configuration:"
-msgstr "このネイティブ設定は設定によって制御されています："
+msgstr "このネイティブ設定は、次の設定によって制御されています："
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:13
+#, fuzzy
 msgid "PublishPress plugin actions."
-msgstr "PublishPressプラグインアクション。"
+msgstr "PublishPress Permissions プラグイン設定を管理する。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:26
+#, fuzzy
 msgid "Discover Permissions features"
-msgstr "Permissions機能をディスカバリーする"
+msgstr "ユーザー権限の概要"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:27
 msgid ""
@@ -1190,24 +1191,29 @@ msgid ""
 "requirements. Discovery does not grant access. Credentials and "
 "administrator-level grants are not exposed."
 msgstr ""
-"アクティブなネイティブモジュール、サポートされている操作、および権限要件を読み取ります。ディスカバリーはアクセスを付与しません。資格情報と管理者レベルの権限は公開されません。"
+"有効なネイティブモジュール、サポートされている操作、必要な権限を読み取ります。検出によってアクセス権が付与されることはありません。認証情報と管理者レベル"
+"の権限付与は公開されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:30
+#, fuzzy
 msgid "Permissions settings"
-msgstr "Permissions設定"
+msgstr "権限設定"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:31
 msgid ""
 "Read native setting identifiers, exact JSON types, defaults, stored values "
-"and revision before patching. Checkbox inputs must be JSON booleans. Omitted"
-" options remain unchanged; unknown fields and locked settings are rejected. "
-"dry_run validates without saving."
+"and revision before patching. Checkbox inputs must be JSON booleans. "
+"Omitted options remain unchanged; unknown fields and locked settings are "
+"rejected. dry_run validates without saving."
 msgstr ""
-"パッチを適用する前に、ネイティブ設定識別子、正確なJSONタイプ、デフォルト、格納された値、およびリビジョンを読み取ります。チェックボックス入力はJSONブーリアンである必要があります。省略されたオプションは変更されず、未知のフィールドやロックされた設定は拒否されます。dry_runは保存せずに検証します。"
+"パッチを適用する前に、ネイティブ設定の識別子、正確なJSON型、デフォルト値、保存値、リビジョンを読み取ってください。チェックボックスの入力値はJSON"
+"のブール値である必要があります。省略されたオプションは変更されません。不明なフィールドとロックされた設定は拒否されます。dry_"
+"runは保存せずに検証します。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:36
+#, fuzzy
 msgid "Permissions post types and taxonomies"
-msgstr "Permissions投稿タイプとタクソノミー"
+msgstr "これらの分類法の権限を変更:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:37
 msgid ""
@@ -1216,12 +1222,15 @@ msgid ""
 "booleans. Omitted and temporarily unregistered types remain unchanged. "
 "Locked controls cannot be changed. dry_run saves nothing."
 msgstr ""
-"ネイティブの一般タブフィルタリング選択肢とロックを読み取ります。現在のリビジョンで明示的な{name, "
-"enabled}行をパッチ適用します。チェックボックス値はJSONブーリアンである必要があります。省略されたおよび一時的に登録解除されたタイプは変更されません。ロックされたコントロールは変更できません。dry_runは何も保存しません。"
+"ネイティブの「一般」タブにあるフィルタリングの選択肢とロック状態を読み取ります。現在のリビジョンを指定して、明示的な{name, "
+"enabled}"
+"行にパッチを適用してください。チェックボックスの値はJSONのブール値である必要があります。省略されたタイプと一時的に登録解除されているタイプは変更され"
+"ません。ロックされたコントロールは変更できません。dry_runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:48
+#, fuzzy
 msgid "Permissions groups and members"
-msgstr "Permissionsグループとメンバー"
+msgstr "権限グループのメンバーシップ"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:49
 msgid ""
@@ -1232,31 +1241,42 @@ msgid ""
 "every affected user. Built-in role/metagroups cannot be renamed or joined. "
 "dry_run saves nothing."
 msgstr ""
-"ネイティブカスタム権限グループを管理します。リストはページネートされており、読み取りにはアカウントのパスワードやメールアドレスは含まれません。更新の前にget-"
-"groupを読み取り、そのリビジョンを提供する必要があります。メンバーシップアクションは明示的にuser_idsを追加または削除し、他のメンバーと既存のスケジュールを保持し、影響を受けるすべてのユーザーに対してedit_userを要求します。組み込みの役割/メタグループは名前を変更したり参加したりできません。dry_runは何も保存しません。"
+"ネイティブのカスタム権限グループを管理します。リストはページ分割されます。読み取り結果にはアカウントのパスワードとメールアドレスは含まれません。更新前に"
+"get-groupを読み取り、そのリビジョンを指定してください。メンバーシップ操作ではuser_"
+"idsを明示的に追加または削除し、他のメンバーと既存のスケジュールを維持します。また、影響を受けるすべてのユーザーにedit_"
+"userが必要です。組み込みのロール／メタグループは名前を変更したり、参加したりできません。dry_runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:53
+#, fuzzy
 msgid "Permissions supplemental roles"
-msgstr "Permissions補助役割"
+msgstr "権限ドキュメント"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:54
 msgid ""
 "Read supplemental roles for a user, custom group or WordPress role "
 "metagroup. Changes are explicit {role, enabled} patches with a current "
 "revision; other roles remain unchanged. Direct grants use a discovered "
-"native direct_roles name, require promote_users and reject administrator-"
-"level capabilities; other grants use a discovered pattern role in "
-"base:post:post_type or base:term:taxonomy format; status scopes use "
+"native direct_roles name, require promote_users and reject "
+"administrator-level capabilities; other grants use a discovered pattern "
+"role in base:post:post_type or base:term:taxonomy format; status scopes use "
 "base:post:post_type:post_status:status with a native active status. Native "
-"object-type permissions apply. Administrator-level capabilities are rejected"
-" even for administrator sessions. dry_run saves nothing."
+"object-type permissions apply. Administrator-level capabilities are "
+"rejected even for administrator sessions. dry_run saves nothing."
 msgstr ""
-"ユーザー、カスタムグループ、またはWordPress役割メタグループの補助役割を読み取ります。変更は明示的な{role, "
-"enabled}パッチで現在のリビジョンを持ち、他の役割は変更されません。直接の付与は発見されたネイティブのdirect_roles名を使用し、promote_usersを必要とし、管理者レベルの機能を拒否します。他の付与はbase:post:post_typeまたはbase:term:taxonomy形式の発見されたパターン役割を使用します。ステータススコープはbase:post:post_type:post_status:statusを使用し、ネイティブのアクティブステータスを持ちます。ネイティブオブジェクトタイプの権限が適用されます。管理者レベルの機能は、管理者セッションでも拒否されます。dry_runは何も保存しません。"
+"ユーザー、カスタムグループ、またはWordPressロールのメタグループに割り当てられた補足ロールを読み取ります。変更は、現在のリビジョンを指定した明示"
+"的な{role, "
+"enabled}パッチで行います。他のロールは変更されません。直接の権限付与では、検出されたネイティブのdirect_"
+"roles名を使用し、promote_"
+"usersが必要です。また、管理者レベルの権限は拒否されます。それ以外の権限付与では、base:post:post_"
+"typeまたはbase:term:taxonomy形式の、検出されたパターンロールを使用します。ステータススコープでは、ネイティブで有効なステータスを使"
+"ってbase:post:post_type:post_"
+"status:statusを使用します。ネイティブのオブジェクトタイプ権限が適用されます。管理者セッションであっても、管理者レベルの権限は拒否されます。"
+"dry_runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:59
+#, fuzzy
 msgid "Permissions for posts and terms"
-msgstr "投稿と用語のPermissions"
+msgstr "選択されたおよびサブ用語に割り当て"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:60
 msgid ""
@@ -1265,32 +1285,47 @@ msgid ""
 "assign_for=item manages native custom-group delegation when Collaboration "
 "and Display group permissions are enabled. Group management, membership and "
 "deletion capabilities are required, and incoming delegation references must "
-"be removed before target-group deletion. source=term uses WordPress term IDs"
-" and a taxonomy; post_type selects the affected post type for category-based"
-" rules. mod_type is additional, include or exclude; assign_for is item, "
-"children or both. Native operation, object and descendant permissions apply."
-" Omitted rules are preserved. Inherited rules must be changed at their "
-"origin. dry_run writes nothing. Large scopes use native administration."
+"be removed before target-group deletion. source=term uses WordPress term "
+"IDs and a taxonomy; post_type selects the affected post type for "
+"category-based rules. mod_type is additional, include or exclude; "
+"assign_for is item, children or both. Native operation, object and "
+"descendant permissions apply. Omitted rules are preserved. Inherited rules "
+"must be changed at their origin. dry_run writes nothing. Large scopes use "
+"native administration."
 msgstr ""
-"ネイティブ権限を追加または削除する前に、エージェント/オブジェクト/操作スコープとそのリビジョンを読み取ります。source=pp_groupでoperation=manageとassign_for=itemは、コラボレーションおよび表示グループ権限が有効なときにネイティブカスタムグループ委任を管理します。グループ管理、メンバーシップ、および削除機能が必要であり、ターゲットグループの削除前に受信した委任参照を削除する必要があります。source=termはWordPress用語IDとタクソノミーを使用し、post_typeはカテゴリーに基づくルールのために影響を受ける投稿タイプを選択します。mod_typeは追加のもので、includeまたはexcludeです。assign_forはitem、children、またはbothです。ネイティブ操作、オブジェクト、および子孫の権限が適用されます。省略されたルールは保持されます。継承されたルールはその起源で変更する必要があります。dry_runは何も書き込みません。大きなスコープにはネイティブ管理を使用します。"
+"ネイティブ権限を追加または削除する前に、エージェント／オブジェクト／操作のスコープとそのリビジョンを読み取ってください。CollaborationとDi"
+"splay group "
+"permissionsが有効な場合、source=pp_groupかつoperation=manage、assign_"
+"for=itemの設定で、ネイティブのカスタムグループ委任を管理します。グループの管理、メンバーシップ、削除に関する権限が必要です。また、対象グループを"
+"削除する前に、受信する委任参照を削除する必要があります。source=termではWordPressのterm "
+"IDとtaxonomyを使用します。post_typeでは、カテゴリーベースのルールで影響を受けるpost "
+"typeを指定します。mod_typeはadditional、include、excludeのいずれかです。assign_"
+"forはitem、children、bothのいずれかです。ネイティブの操作、オブジェクト、子孫に対する権限が適用されます。省略されたルールは維持されま"
+"す。継承されたルールは、そのルールの発生元で変更する必要があります。dry_"
+"runでは書き込みは行われません。スコープが大きい場合はネイティブ管理を使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions teaser settings"
-msgstr "Permissionsティーザー設定"
+msgstr "権限設定"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions module activation"
-msgstr "Permissionsモジュールのアクティベーション"
+msgstr "権限ドキュメント"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:77
 msgid ""
 "Read native teaser modes, messages, redirects, RSS and notice styles. Omit "
-"post_type for global options; pass a discovered filtered post type for per-"
-"type settings. Patch exact native option names with JSON types and revision."
-" Rich text uses native sanitization. Redirect destinations require object "
-"permissions. dry_run saves nothing."
+"post_type for global options; pass a discovered filtered post type for "
+"per-type settings. Patch exact native option names with JSON types and "
+"revision. Rich text uses native sanitization. Redirect destinations require "
+"object permissions. dry_run saves nothing."
 msgstr ""
-"ネイティブティーザーモード、メッセージ、リダイレクト、RSS、通知スタイルを読み取ります。グローバルオプションにはpost_typeを省略してください。タイプ別設定には発見されたフィルタリングされた投稿タイプを渡してください。正確なネイティブオプション名をJSONタイプとリビジョンでパッチします。リッチテキストはネイティブサニタイズを使用します。リダイレクト先にはオブジェクト権限が必要です。dry_runは何も保存しません。"
+"ネイティブのティーザーモード、メッセージ、リダイレクト、RSS、通知スタイルを読み取ります。グローバルオプションではpost_"
+"typeを省略します。タイプ別の設定では、検出されたフィルター済みpost "
+"typeを指定します。正確なネイティブオプション名、JSON型、リビジョンを指定してパッチを適用してください。リッチテキストにはネイティブのサニタイズが"
+"適用されます。リダイレクト先にはオブジェクト権限が必要です。dry_runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:78
 msgid ""
@@ -1300,11 +1335,14 @@ msgid ""
 "request. Network changes require network administration. dry_run saves "
 "nothing."
 msgstr ""
-"インストールされた、必要な、アクティブなネイティブモジュールをディスカバリーします。現在のリビジョンで明示的なモジュール/有効行をパッチします。必要なモジュールは無効にできません。ネイティブライフサイクルフックが実行され、アクティベーションの変更は次のリクエストで読み込まれます。ネットワークの変更にはネットワーク管理が必要です。dry_runは何も保存しません。"
+"インストール済み、必須、有効なネイティブモジュールを検出します。現在のリビジョンを指定して、モジュールと有効状態の明示的な行にパッチを適用してください。"
+"必須モジュールは無効にできません。ネイティブのライフサイクルフックが実行されます。有効化の変更は次のリクエストで反映されます。ネットワークの変更にはネッ"
+"トワーク管理が必要です。dry_runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:84
+#, fuzzy
 msgid "Delete a custom permission group"
-msgstr "カスタム権限グループを削除する"
+msgstr "権限グループを削除する。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:85
 msgid ""
@@ -1314,58 +1352,70 @@ msgid ""
 "deleting. Unknown or oversized permission scopes require native "
 "administration."
 msgstr ""
-"完全なネイティブ削除スコープとリビジョンのためにget-group-"
-"deletionを読み取ります。削除できるのはカスタムグループのみです。すべてのメンバー、役割、ルール、および継承された権限ターゲットがクリーンアップの前にチェックされます。dry_runは削除なしでプレビューします。未知または過大な権限スコープはネイティブ管理を必要とします。"
+"ネイティブの完全な削除スコープとリビジョンを確認するには、get-group-"
+"deletionを読み取ってください。カスタムグループのみ削除できます。クリーンアップの前に、すべてのメンバー、ロール、ルール、継承された権限の対象が確"
+"認されます。dry_runでは削除せずにプレビューします。不明な権限スコープや大きすぎる権限スコープには、ネイティブ管理が必要です。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:90
+#, fuzzy
 msgid "Permissions Role Usage"
-msgstr "Permissions役割の使用"
+msgstr "権限ロールの使用状況"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:91
 msgid ""
 "Read native Role Usage choices: 0 (no supplemental assignment), pattern, or "
-"direct. Patch discovered roles with a current revision; omitted roles remain"
-" unchanged. Administrator-level roles cannot be enabled. Existing "
-"assignments must be removed before changing an assigned role interpretation."
-" dry_run saves nothing."
+"direct. Patch discovered roles with a current revision; omitted roles "
+"remain unchanged. Administrator-level roles cannot be enabled. Existing "
+"assignments must be removed before changing an assigned role "
+"interpretation. dry_run saves nothing."
 msgstr ""
-"ネイティブ役割使用の選択肢を読み取ります：0（補助割り当てなし）、パターン、または直接。現在のリビジョンで発見された役割をパッチします。省略された役割は変更されません。管理者レベルの役割は有効にできません。既存の割り当ては、割り当てられた役割の解釈を変更する前に削除する必要があります。dry_runは何も保存しません。"
+"ネイティブの「Role "
+"Usage」の選択肢を読み取ります。選択肢は0"
+"（補足割り当てなし）、pattern、directです。現在のリビジョンを指定して検出済みのロールにパッチを適用してください。省略されたロールは変更され"
+"ません。管理者レベルのロールは有効にできません。割り当て済みのロールの解釈を変更する前に、既存の割り当てを削除する必要があります。dry_"
+"runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:96
+#, fuzzy
 msgid "Permissions content visibility shortcode"
-msgstr "Permissionsコンテンツの可視性ショートコード"
+msgstr "権限画面が無効"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:97
 msgid ""
-"Discover or build the native pp_restrict shortcode with typed logged-in/out,"
-" role, capability, username and group conditions. relation is all or any; "
-"hide is a JSON boolean. The builder sanitizes HTML and never saves a post. "
-"Use native content-editing tools with object permissions to place its "
-"result. Nested visibility shortcodes require native editing."
+"Discover or build the native pp_restrict shortcode with typed "
+"logged-in/out, role, capability, username and group conditions. relation is "
+"all or any; hide is a JSON boolean. The builder sanitizes HTML and never "
+"saves a post. Use native content-editing tools with object permissions to "
+"place its result. Nested visibility shortcodes require native editing."
 msgstr ""
-"ログイン/ログアウト、役割、能力、ユーザー名、グループの条件に基づいてネイティブpp_restrictショートコードをディスカバリーまたは構築します。relationはallまたはanyで、hideはJSONブーリアンです。ビルダーはHTMLをサニタイズし、投稿を保存することはありません。オブジェクト権限を持つネイティブコンテンツ編集ツールを使用してその結果を配置します。ネストされた可視性ショートコードにはネイティブ編集が必要です。"
+"型指定されたログイン／ログアウト、ロール、権限、ユーザー名、グループの条件を使用して、ネイティブのpp_restrict "
+"shortcodeを検出または構築します。relationはallまたはanyです。hideはJSONのブール値です。ビルダーはHTMLをサニタイズし、"
+"投稿を保存しません。生成された結果を配置するには、オブジェクト権限を持つネイティブのコンテンツ編集ツールを使用してください。ネストされた表示用short"
+"codeにはネイティブ編集が必要です。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:102
+#, fuzzy
 msgid "Permissions editor and screen controls"
-msgstr "権限エディタと画面コントロール"
+msgstr "権限画面が有効"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:103
 msgid ""
 "Read native per-post-type Permissions metabox and Permissions-screen "
 "switches, including their exact native option names and stored values. Only "
-"the native string 0 disables them; absent and legacy values default enabled."
-" Writes require JSON booleans, the current revision, native settings and "
-"post-type capabilities. Omitted controls stay unchanged; dry_run saves "
-"nothing."
+"the native string 0 disables them; absent and legacy values default "
+"enabled. Writes require JSON booleans, the current revision, native "
+"settings and post-type capabilities. Omitted controls stay unchanged; "
+"dry_run saves nothing."
 msgstr ""
-"ネイティブの投稿タイプごとの権限メタボックスと権限画面スイッチを読み込み、正確なネイティブオプション名と保存された値を含みます。ネイティブ文字列0のみが無効にします;"
-" "
-"不在およびレガシー値はデフォルトで有効です。書き込みにはJSONブール値、現在のリビジョン、ネイティブ設定、および投稿タイプの機能が必要です。省略されたコントロールは変更されません;"
-" dry_runは何も保存しません。"
+"ネイティブの投稿タイプごとの「Permissions」メタボックスと「Permissions」画面のスイッチを、正確なネイティブオプション名と保存値を含"
+"めて読み取ります。これらを無効にするのは、ネイティブ文字列の0"
+"のみです。値がない場合やレガシー値の場合は、デフォルトで有効になります。書き込みにはJSONのブール値、現在のリビジョン、ネイティブ設定、post "
+"typeの権限が必要です。省略されたコントロールは変更されません。dry_runでは保存されません。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:108
+#, fuzzy
 msgid "Permissions validated batch"
-msgstr "権限が検証されたバッチ"
+msgstr "権限機能"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:109
 msgid ""
@@ -1376,13 +1426,16 @@ msgid ""
 "confirmed_items and failed_index and re-read all scopes after a partial "
 "failure."
 msgstr ""
-"最大25の明示的アイテムを提供し、それぞれに独自の現在のリビジョンがあります。すべてのアイテムは書き込み前に検証および承認されます; "
-"形式が不正、拒否された、古くなった、または重複する権限スコープは全体のプレビューを拒否します。dry_runは何も書き込みません。ネイティブ実行はトランザクションではありません:"
-" 完了したconfirmed_itemsおよびfailed_indexを確認し、部分的な失敗後にすべてのスコープを再読み込みしてください。"
+"それぞれに独自の現在のリビジョンを持つ明示的な項目を最大25"
+"件指定してください。書き込みの前に、すべての項目が検証され、認可されます。不正な項目、拒否された項目、古い項目、重複する権限スコープがあると、プレビュー"
+"全体が拒否されます。dry_"
+"runでは書き込みは行われません。ネイティブの実行はトランザクションではありません。一部失敗した場合は、completed、confirmed_"
+"items、failed_indexを確認し、すべてのスコープを再読み取りしてください。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:112
+#, fuzzy
 msgid "Read explicit permission scopes"
-msgstr "明示的権限スコープを読み込む"
+msgstr "役割と権限がコピーされました。"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:113
 msgid ""
@@ -1392,26 +1445,27 @@ msgid ""
 "rules; use the normal single-scope getters or smaller batches for larger "
 "inventories."
 msgstr ""
-"最大25の明示的に承認された投稿、用語、またはカスタムグループの委任スコープをそのネイティブルールおよび個々のリビジョンで読み込みます。これによりプライベートオブジェクトは列挙されず、アクセスも許可されません。結果は1,000ルールに制限されています;"
-" より大きな在庫には通常の単一スコープゲッターまたは小さなバッチを使用してください。"
+"ネイティブのルールと個別のリビジョンを含む、認可済みの明示的な投稿、term、カスタムグループ委任スコープを最大25"
+"件読み取ります。非公開オブジェクトを列挙したり、アクセス権を付与したりすることはありません。結果は1,000"
+"件のルールに制限されます。これを超える項目を取得するには、通常の単一スコープ用getterか、より小さいバッチを使用してください。"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:59
 msgid "Enable native Advanced Settings before changing Role Usage."
-msgstr "ロール使用を変更する前にネイティブの高度な設定を有効にしてください。"
+msgstr "Role Usageを変更する前に、ネイティブの「Advanced Settings」を有効にしてください。"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:75
 msgid "The native role capabilities cannot be granted by this session."
-msgstr "ネイティブロール機能はこのセッションによって付与されることはできません。"
+msgstr "このセッションでは、ネイティブのロール権限を付与できません。"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:89
 msgid ""
 "Remove existing supplemental assignments before changing this role "
 "interpretation."
-msgstr "このロール解釈を変更する前に既存の補足割り当てを削除してください。"
+msgstr "このロールの解釈を変更する前に、既存の補足割り当てを削除してください。"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:98
 msgid "Native configuration controls Role Usage."
-msgstr "ネイティブ設定がロール使用を制御します。"
+msgstr "Role Usageはネイティブ設定によって制御されています。"
 
 #: classes/PublishPress/Permissions/Mcp/Settings.php:146
 msgid "This setting is controlled by native configuration."
@@ -1419,24 +1473,24 @@ msgstr "この設定はネイティブ設定によって制御されています
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:18
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:331
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:337
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Teaser Type"
 msgstr "ティーザータイプ"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:19
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
 msgid "Number of characters to show"
 msgstr "表示する文字数"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:20
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Maximum excerpt characters"
 msgstr "最大抜粋文字数"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:21
 msgid "Restricted content message"
-msgstr "制限付きコンテンツメッセージ"
+msgstr "制限付きコンテンツのメッセージ"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:22
 msgid "Restricted link taxonomy"
@@ -1444,7 +1498,7 @@ msgstr "制限付きリンクのtaxonomy"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:23
 msgid "Restricted link term"
-msgstr "制限付きリンクの用語"
+msgstr "制限付きリンクのterm"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:198
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:261
@@ -1470,8 +1524,7 @@ msgstr "%1$s&nbsp;%2$s%3$s"
 msgid ""
 "Your license key has expired. For updates to PublishPress Permissions Pro "
 "and priority support, %splease renew%s."
-msgstr ""
-"あなたのライセンスキーは期限切れです。PublishPress Permissions Proの更新と優先サポートのために、%s更新%sしてください。"
+msgstr "あなたのライセンスキーは期限切れです。PublishPress Permissions Proの更新と優先サポートのために、%s更新%sしてください。"
 
 #: classes/PublishPress/Permissions/PluginUpdated.php:326
 #, fuzzy, php-format
@@ -1616,10 +1669,12 @@ msgstr "指定されたアイテムをブロックします。このサイトで
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:189
 msgid ""
-"Using group membership to block access is not recommended. Consider reducing"
-" the user's role capabilities and using group membership to add access."
+"Using group membership to block access is not recommended. Consider "
+"reducing the user's role capabilities and using group membership to add "
+"access."
 msgstr ""
-"アクセスをブロックするためにグループメンバーシップを使用することは推奨されません。ユーザーの役割能力を減らし、アクセスを追加するためにグループメンバーシップを使用することを検討してください。"
+"アクセスをブロックするためにグループメンバーシップを使用することは推奨されません。ユーザーの役割能力を減らし、アクセスを追加するためにグループメンバーシ"
+"ップを使用することを検討してください。"
 
 #: classes/PublishPress/Permissions/UI/AgentExceptionsAjax.php:215
 msgid "Selected:"
@@ -1796,8 +1851,7 @@ msgstr "追加の役割 %1$s（主な役割または %2$sgroup membership%3$s）
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:386
 #, php-format
-msgid ""
-"Specific Permissions %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
+msgid "Specific Permissions %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
 msgstr "特定の権限 %1$s（主な役割または %2$sgroup membership%3$s）%4$s"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:399
@@ -1832,8 +1886,7 @@ msgid "No statuses selected!"
 msgstr "選択されたステータスはありません！"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:21
-msgid ""
-"Review the selection below, and then click <strong>Save Roles</strong>."
+msgid "Review the selection below, and then click <strong>Save Roles</strong>."
 msgstr "以下の選択を確認し、<strong>役割を保存</strong>をクリックしてください。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:22
@@ -1958,8 +2011,8 @@ msgstr "該当なし"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:397
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:425
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:218
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:288
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:294
 msgid "Post Type"
 msgstr "投稿タイプ"
 
@@ -1998,7 +2051,8 @@ msgid ""
 "deactivated. Consider setting a private Visibility on Edit Post screen "
 "instead."
 msgstr ""
-"警告：これらの権限によって隠されたコンテンツは、PPが無効化されると表示されます。代わりに投稿編集画面でプライベート可視性を設定することを検討してください。"
+"警告：これらの権限によって隠されたコンテンツは、PPが無効化されると表示されます。代わりに投稿編集画面でプライベート可視性を設定することを検討してくださ"
+"い。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:239
 msgid ""
@@ -2008,23 +2062,22 @@ msgstr "編集のためのページ特有の権限を割り当てるには、編
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:251
 msgid ""
-"To assign forum-specific Permissions for bbPress, activate the Compatibility"
-" Pack feature."
+"To assign forum-specific Permissions for bbPress, activate the "
+"Compatibility Pack feature."
 msgstr "bbPressのフォーラム特有の権限を割り当てるには、互換性パック機能を有効にします。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:254
 #, php-format
 msgid ""
-"To assign forum-specific Permissions for bbPress, %1$supgrade to Permissions"
-" Pro%2$s and enable the Compatibility Pack feature."
-msgstr ""
-"bbPressのフォーラム特有の権限を割り当てるには、%1$sPermissions Proにアップグレード%2$sし、互換性パック機能を有効にします。"
+"To assign forum-specific Permissions for bbPress, %1$supgrade to "
+"Permissions Pro%2$s and enable the Compatibility Pack feature."
+msgstr "bbPressのフォーラム特有の権限を割り当てるには、%1$sPermissions Proにアップグレード%2$sし、互換性パック機能を有効にします。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:274
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:289
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:398
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1141
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:89
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 msgid "Role"
@@ -2047,8 +2100,7 @@ msgid "Add Role"
 msgstr "役割を追加"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:316
-msgid ""
-"To assign roles for bbPress forums, activate the Compatibility Pack feature."
+msgid "To assign roles for bbPress forums, activate the Compatibility Pack feature."
 msgstr "bbPressフォーラムの役割を割り当てるには、互換性パック機能を有効にしてください。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:319
@@ -2056,8 +2108,7 @@ msgstr "bbPressフォーラムの役割を割り当てるには、互換性パ�
 msgid ""
 "To assign roles for bbPress forums, %1$supgrade to Permissions Pro%2$s and "
 "enable the Compatibility Pack feature."
-msgstr ""
-"bbPressフォーラムの役割を割り当てるには、%1$sPermissions Proにアップグレード%2$sし、互換性パック機能を有効にします。"
+msgstr "bbPressフォーラムの役割を割り当てるには、%1$sPermissions Proにアップグレード%2$sし、互換性パック機能を有効にします。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:330
 msgid ""
@@ -2136,8 +2187,8 @@ msgstr "すべて選択"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1537
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:649
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:663
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:885
 msgid "Apply"
 msgstr "適用"
 
@@ -2213,8 +2264,8 @@ msgstr "%1$sの%2$sへのアクセスは、別の権限によって有効にさ�
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1187
 #, php-format
 msgid ""
-"Any role-based %1$s access for %2$s is LIMITED. It applies only within %3$s,"
-" along with other specified %4$s."
+"Any role-based %1$s access for %2$s is LIMITED. It applies only within "
+"%3$s, along with other specified %4$s."
 msgstr "%2$sへの役割ベースの%1$sアクセスは制限されています。これは%3$s内でのみ適用され、他の指定された%4$sとともに適用されます。"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1197
@@ -2262,7 +2313,7 @@ msgstr "%sを編集"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1422
 #, php-format
 msgid "Assign for selected and sub-%s"
-msgstr "選択した項目とそのサブ%sに割り当て"
+msgstr "選択した項目およびサブ-%sに割り当て"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1426
 #, php-format
@@ -2354,8 +2405,9 @@ msgstr "自動割り当てされた Sub-%s 権限を非表示にする"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1672
 msgid ""
-"Other plugins (or deactivation of PublishPress Permissions) can prevent sub-"
-"page permissions from being properly applied when a new sub-page is created."
+"Other plugins (or deactivation of PublishPress Permissions) can prevent "
+"sub-page permissions from being properly applied when a new sub-page is "
+"created."
 msgstr ""
 "他のプラグイン（またはPublishPress "
 "Permissionsの無効化）が新しいサブページが作成されるときに、サブページの権限が正しく適用されるのを妨げる可能性があります。"
@@ -2536,10 +2588,10 @@ msgstr "検索中…"
 msgid "1 result found."
 msgstr "1件の結果が見つかりました。"
 
-#. translators: %d: number of search results
 #: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:541
 #: classes/PublishPress/Permissions/UI/AgentsDynamicUI.php:599
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/PostEdit.php:144
+#. translators: %d: number of search results
 #, php-format
 msgid "%d results found."
 msgstr "%d件の結果が見つかりました。"
@@ -2646,13 +2698,13 @@ msgid "This item"
 msgstr "このアイテム"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:226
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #, php-format
 msgid "%1$s permission for %2$s"
 msgstr "%1$s の %2$s の権限"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:58
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:116
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:44
 msgid "Roles"
@@ -2667,15 +2719,15 @@ msgid "Agent"
 msgstr "エージェント"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:200
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1178
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1245
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1196
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1263
 #, php-format
 msgid "This %s"
 msgstr "この %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:205
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1177
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1246
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1264
 #, php-format
 msgid "Sub-%s"
 msgstr "サブ-%s"
@@ -2782,112 +2834,120 @@ msgstr "この%s内のすべての投稿タイプのリビジョンを作成で�
 msgid "Control who can submit a revision of all post types in this %s."
 msgstr "この%s内のすべての投稿タイプのリビジョンを提出できるユーザーを制御します。"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 msgid "Roles & Groups"
 msgstr "役割とグループ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles and groups..."
 msgstr "役割とグループを検索..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles..."
 msgstr "役割を検索..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Agent types"
 msgstr "エージェントタイプ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
 #: classes/PublishPress/Permissions/UI/Groups.php:237
 msgid "Users"
 msgstr "ユーザー"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:612
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:614
 #, php-format
 msgid "Search %s"
 msgstr "%s を検索"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
 msgid "Clear search"
 msgstr "検索をクリア"
 
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:624
+msgid "Add a permission group"
+msgstr "権限グループを追加"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:625
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:694
+msgid "Search for a group to add"
+msgstr "追加するグループを検索"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:709
 msgid "Sort by:"
 msgstr "並び替え:"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:627
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:696
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:641
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:711
 msgid "Name (A-Z)"
 msgstr "名前 (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:697
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
 msgid "Name (Z-A)"
 msgstr "名前 (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:629
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Most Users"
 msgstr "最も多くのユーザー"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:630
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
 msgid "Fewest Users"
 msgstr "最も少ないユーザー"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:857
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:654
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:875
 msgid "Select All"
 msgstr "すべて選択"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:860
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:861
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:658
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:878
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:879
 msgid "Bulk Actions"
 msgstr "一括操作"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:862
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:659
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:880
 msgid "Set to Enabled"
 msgstr "有効に設定"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:646
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:863
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:660
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:881
 msgid "Set to Blocked"
 msgstr "ブロックに設定"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:647
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:864
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:661
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:882
 msgid "Set to Default"
 msgstr "デフォルトに設定"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:652
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:870
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:666
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:888
 msgid "selected"
 msgstr "選択されました"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:676
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:691
 msgid "Search and add users"
 msgstr "ユーザーを検索して追加"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:685
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:700
 msgid "Search and add users..."
 msgstr "ユーザーを検索して追加..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:798
 msgid "No role exceptions set"
 msgstr "ロールの例外は設定されていません"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:849
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
 msgid "No specific user permissions. Use the search box to add users."
 msgstr "特定のユーザー権限はありません。検索ボックスを使用してユーザーを追加してください。"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:865
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:883
 msgid "Remove Selected"
 msgstr "選択したものを削除"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:91
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
 #: classes/PublishPress/Permissions/UI/Groups.php:266
@@ -2895,32 +2955,33 @@ msgstr "選択したものを削除"
 msgid "Login State"
 msgstr "ログイン状態"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:90
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Group"
 msgstr "グループ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1249
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1267
 msgid "Sub-Sections"
 msgstr "サブセクション"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1248
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
 msgid "This Section"
 msgstr "このセクション"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1224
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1288
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1242
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1310
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:92
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
 msgid "Remove custom permissions for user"
 msgstr "ユーザーのカスタム権限を削除"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1299
 #, php-format
 msgid "%s permission"
 msgstr "%s の権限"
@@ -3071,8 +3132,8 @@ msgstr "ユーザー権限の概要"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:115
 msgid ""
-"Review direct assignments and permissions inherited from this user's role or"
-" groups."
+"Review direct assignments and permissions inherited from this user's role "
+"or groups."
 msgstr "このユーザーの役割またはグループから継承された直接の割り当てと権限を確認してください。"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:121
@@ -3120,7 +3181,8 @@ msgid ""
 "to update membership. A group link opens its permissions without changing "
 "membership."
 msgstr ""
-"チェックされたグループは現在のメンバーシップです。グループをチェックまたはチェック解除し、その後保存してメンバーシップを更新します。グループリンクを開くと、メンバーシップを変更することなく権限が表示されます。"
+"チェックされたグループは現在のメンバーシップです。グループをチェックまたはチェック解除し、その後保存してメンバーシップを更新します。グループリンクを開く"
+"と、メンバーシップを変更することなく権限が表示されます。"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:563
 #: classes/PublishPress/Permissions/UI/Dashboard/Profile.php:730
@@ -3171,8 +3233,8 @@ msgstr "権限：%1$s %2$s内"
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:367
 #, php-format
 msgid ""
-"Displayed permissions are those assigned for the \"%1$s\" type. You can also"
-" %2$sdefine universal %3$s permissions which apply to all related post "
+"Displayed permissions are those assigned for the \"%1$s\" type. You can "
+"also %2$sdefine universal %3$s permissions which apply to all related post "
 "types%4$s."
 msgstr ""
 "表示されている権限は「%1$s」タイプに割り当てられたものです。あなたはまた、%2$sすべての関連投稿タイプに適用されるユニバーサル %3$s "
@@ -3263,8 +3325,7 @@ msgid "Click to show only users who have extra roles"
 msgstr "追加の役割を持つユーザーのみを表示するにはクリックしてください"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:124
-msgid ""
-"Click to show only users who have Specific Permissions assigned directly"
+msgid "Click to show only users who have Specific Permissions assigned directly"
 msgstr "特定の権限が直接割り当てられたユーザーのみを表示するにはクリックしてください"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:264
@@ -3301,8 +3362,8 @@ msgstr "名前"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:105
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:176
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:673
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:726
 msgid "Description"
 msgstr "説明"
 
@@ -3438,10 +3499,9 @@ msgstr "権限が変換されました。新しく保存された権限を表示
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:343
 msgid ""
 "Some requested permissions were not saved because they are unavailable or "
-"you are not permitted to assign them. Other authorized changes may have been"
-" saved."
-msgstr ""
-"要求された権限の一部は利用できないため、または割り当てることが許可されていないため、保存されませんでした。他の承認された変更は保存されている可能性があります。"
+"you are not permitted to assign them. Other authorized changes may have "
+"been saved."
+msgstr "利用できない、または割り当てる権限がないため、一部の要求された権限は保存されませんでした。他の認可された変更は保存された可能性があります。"
 
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:403
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:410
@@ -3494,19 +3554,17 @@ msgid ""
 msgstr "権限はユーザー、そのロール、およびグループにわたって組み合わされます。より多くのEnabledエントリを追加しても、優先度は上がりません。"
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:77
-msgid ""
-"On this site, Blocked restrictions take priority over Enabled permissions."
+msgid "On this site, Blocked restrictions take priority over Enabled permissions."
 msgstr "このサイトでは、Blocked制限がEnabled権限よりも優先されます。"
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:79
 msgid ""
-"An Enabled permission for an item can override a Blocked permission for that"
-" same item."
+"An Enabled permission for an item can override a Blocked permission for "
+"that same item."
 msgstr "アイテムのEnabled権限は、同じアイテムのBlocked権限を上書きできます。"
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:81
-msgid ""
-"Post-specific permissions take priority over category or term permissions."
+msgid "Post-specific permissions take priority over category or term permissions."
 msgstr "投稿特有の権限は、カテゴリまたはターム権限よりも優先されます。"
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:82
@@ -3531,8 +3589,7 @@ msgstr ""
 "にアップグレード%2$sし、ファイルアクセス機能を有効にしてください。"
 
 #: classes/PublishPress/Permissions/UI/HintsItemExceptions.php:113
-msgid ""
-"To customize editing permissions, enable the Editing Permissions feature."
+msgid "To customize editing permissions, enable the Editing Permissions feature."
 msgstr "編集権限をカスタマイズするには、編集権限機能を有効にしてください。"
 
 #: classes/PublishPress/Permissions/UI/HintsMedia.php:14
@@ -3560,8 +3617,7 @@ msgstr "カスタマイズ"
 
 #: classes/PublishPress/Permissions/UI/HintsPostEdit.php:19
 #, php-format
-msgid ""
-"To customize publication workflow, %1$sinstall PublishPress Statuses%2$s."
+msgid "To customize publication workflow, %1$sinstall PublishPress Statuses%2$s."
 msgstr "公開ワークフローをカスタマイズするには、%1$sPublishPress Statusesをインストール%2$sしてください。"
 
 #: classes/PublishPress/Permissions/UI/HintsPro.php:14
@@ -3630,9 +3686,12 @@ msgstr "ヘルプが必要な場合や新しい機能リクエストがある場
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:179
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:219
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:241
-#: includes/CoreAdmin.php:130 includes/CoreAdmin.php:131
-#: includes/CoreAdmin.php:259 includes/promo/posts-teaser-promo.php:24
-#: includes/promo/statuses-promo.php:25 includes/promo/sync-promo.php:24
+#: includes/CoreAdmin.php:130
+#: includes/CoreAdmin.php:131
+#: includes/CoreAdmin.php:259
+#: includes/promo/posts-teaser-promo.php:24
+#: includes/promo/statuses-promo.php:25
+#: includes/promo/sync-promo.php:24
 #: includes/promo/visibility-statuses-promo.php:25
 msgid "Upgrade to Pro"
 msgstr "Proにアップグレード"
@@ -3719,8 +3778,7 @@ msgstr "ユーザーがカテゴリー内の投稿を読むことをブロック
 msgid ""
 "Remove unreadable Menu Items. If menu rendering problems occur with a third "
 "party plugin, disable this setting."
-msgstr ""
-"読み取れないメニュー項目を削除します。サードパーティプラグインでメニューのレンダリングに問題が発生した場合は、この設定を無効にしてください。"
+msgstr "読み取れないメニュー項目を削除します。サードパーティプラグインでメニューのレンダリングに問題が発生した場合は、この設定を無効にしてください。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:86
 msgid ""
@@ -3745,8 +3803,7 @@ msgid "Disable Permissions filtering for users who are not logged in."
 msgstr "ログインしていないユーザーのための権限フィルタリングを無効にします。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:100
-msgid ""
-"Legacy compatibility: front end term filters are not applied on some sites."
+msgid "Legacy compatibility: front end term filters are not applied on some sites."
 msgstr "レガシー互換性: 一部のサイトではフロントエンドタームフィルタが適用されません。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:103
@@ -3774,10 +3831,11 @@ msgstr "欠落または非アクティブなモジュールで利用可能な機
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:115
 msgid ""
 "Extra Roles cause \"_posts\" capabilities in the Pattern Role (Author, "
-"Editor, etc.) to be assigned for the selected post type. Enable this setting"
-" to also include all other capabilities in the Pattern Role."
+"Editor, etc.) to be assigned for the selected post type. Enable this "
+"setting to also include all other capabilities in the Pattern Role."
 msgstr ""
-"追加の役割により、選択した投稿タイプに対してパターン役割（著者、編集者など）の「_posts」権限が割り当てられます。この設定を有効にすると、パターン役割のすべての他の権限も含まれます。"
+"追加の役割により、選択した投稿タイプに対してパターン役割（著者、編集者など）の「_"
+"posts」権限が割り当てられます。この設定を有効にすると、パターン役割のすべての他の権限も含まれます。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:118
 msgid ""
@@ -3814,8 +3872,7 @@ msgstr "この設定にかかわらず、pp_set_edit_permissions機能も必要�
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:134
 #, php-format
-msgid ""
-"Settings related to content editing permissions, provided by the %s module."
+msgid "Settings related to content editing permissions, provided by the %s module."
 msgstr "%s モジュールによって提供されるコンテンツ編集権限に関連する設定。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:137
@@ -3823,7 +3880,8 @@ msgid ""
 "If this setting is disabled, you can enable a role by giving it "
 "capabilities: list_others_posts, list_others_published_pages, etc."
 msgstr ""
-"この設定が無効の場合、権限を与えることによって役割を有効にできます：list_others_posts、list_others_published_pagesなど。"
+"この設定が無効の場合、権限を与えることによって役割を有効にできます：list_others_posts、list_others_published_"
+"pagesなど。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:140
 msgid ""
@@ -3833,8 +3891,8 @@ msgstr "権限フィルタリングが有効なすべての関連タクソノミ
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:143
 msgid ""
-"Allows creation of a new post (of any type) for each selected user, using an"
-" existing post as the pattern."
+"Allows creation of a new post (of any type) for each selected user, using "
+"an existing post as the pattern."
 msgstr "選択した各ユーザーのために、既存の投稿をパターンとして使用して新しい投稿（任意のタイプ）を作成できます。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:146
@@ -3847,9 +3905,9 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:149
 msgid ""
-"This feature has been moved to PublishPress Capabilities > Editor Features >"
-" Element IDs. Please use the Capabilities plugin for better organization and"
-" enhanced functionality."
+"This feature has been moved to PublishPress Capabilities > Editor Features "
+"> Element IDs. Please use the Capabilities plugin for better organization "
+"and enhanced functionality."
 msgstr ""
 "この機能はPublishPress Capabilities > Editor Features > Element "
 "IDsに移動しました。より良い整理と機能の向上のために、Capabilitiesプラグインを使用してください。"
@@ -3860,8 +3918,9 @@ msgid ""
 "PP_MEDIA_LIB_UNFILTERED (defined in wp-config.php or some other file you "
 "maintain). Media Library access will not be altered by Permissions."
 msgstr ""
-"以下の設定は現在、定数 PP_MEDIA_LIB_UNFILTERED（wp-"
-"config.phpまたは管理している他のファイルに定義されています）によって上書きされています。メディアライブラリへのアクセスは権限によって変更されません。"
+"以下の設定は現在、定数 "
+"PP_MEDIA_LIB_UNFILTERED（wp-config."
+"phpまたは管理している他のファイルに定義されています）によって上書きされています。メディアライブラリへのアクセスは権限によって変更されません。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:155
 msgid ""
@@ -3883,10 +3942,11 @@ msgstr "ユーザーが編集を許可されている投稿に添付されてい
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:164
 msgid ""
-"Show users all the files in the Media Library. Unchecking this box will hide"
-" media files that are uploaded by other users."
+"Show users all the files in the Media Library. Unchecking this box will "
+"hide media files that are uploaded by other users."
 msgstr ""
-"ユーザーにメディアライブラリ内のすべてのファイルを表示します。このボックスのチェックを外すと、他のユーザーがアップロードしたメディアファイルが非表示になります。"
+"ユーザーにメディアライブラリ内のすべてのファイルを表示します。このボックスのチェックを外すと、他のユーザーがアップロードしたメディアファイルが非表示にな"
+"ります。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:167
 msgid ""
@@ -3920,8 +3980,8 @@ msgstr "ユーザー編集権限を持つ非管理者が、より高いレベル
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:183
 msgid ""
-"Circle members will be blocked from accessing Revisions authored by non-"
-"members."
+"Circle members will be blocked from accessing Revisions authored by "
+"non-members."
 msgstr "サークルメンバーは、非メンバーが著したリビジョンにアクセスできなくなります。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:195
@@ -3938,10 +3998,12 @@ msgstr "権限設定 'ページはトップレベルから設定または削除�
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:202
 msgid ""
-"If user cannot generally save pages to top level but a page they are editing"
-" is already there, allow it to stay at top level even if not yet published "
+"If user cannot generally save pages to top level but a page they are "
+"editing is already there, allow it to stay at top level even if not yet "
+"published "
 msgstr ""
-"ユーザーが一般にページをトップレベルに保存できない場合でも、編集しているページがすでにそこにある場合は、公開されていなくてもトップレベルに留まることを許可します。"
+"ユーザーが一般にページをトップレベルに保存できない場合でも、編集しているページがすでにそこにある場合は、公開されていなくてもトップレベルに留まることを許"
+"可します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:205
 msgid ""
@@ -3951,14 +4013,14 @@ msgstr "サークルメンバーシップは、ページの関連付け（親ペ
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:209
 msgid ""
-"Determines the default value of Permissions > Settings > Editing > Auto-"
-"assign default term"
+"Determines the default value of Permissions > Settings > Editing > "
+"Auto-assign default term"
 msgstr "権限 > 設定 > 編集 > 自動割り当てデフォルト項目のデフォルト値を決定します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:212
 msgid ""
-"Always auto-assign a category if none are selected and user lacks permission"
-" for default category"
+"Always auto-assign a category if none are selected and user lacks "
+"permission for default category"
 msgstr "選択されていない場合は常にカテゴリーを自動割り当てし、ユーザーがデフォルトカテゴリーの権限を持たない場合は自動割り当てしません。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:215
@@ -3971,8 +4033,8 @@ msgstr "選択されていない場合は、常にこの分類の用語を自動
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:221
 msgid ""
-"Determines the default setting of Permissions > Settings > Editing > Auto-"
-"assign default terms"
+"Determines the default setting of Permissions > Settings > Editing > "
+"Auto-assign default terms"
 msgstr "権限 > 設定 > 編集 > 自動割り当てデフォルト項目のデフォルト設定を決定します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:224
@@ -4002,15 +4064,14 @@ msgid ""
 msgstr "自動割り当て用語設定が有効な場合は、ユーザーに用語割り当ての制限がなくても適用します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:239
-msgid ""
-"Don't define an 'Approved' status, even if Status Control feature is active"
+msgid "Don't define an 'Approved' status, even if Status Control feature is active"
 msgstr "ステータスコントロール機能がアクティブであっても、'承認済み'ステータスを定義しないでください。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:244
 msgid ""
-"If user has Nav Menu management capabilities but can't 'edit_theme_options',"
-" strip link out of wp-admin Appearance Menu instead of linking it to nav-"
-"menus"
+"If user has Nav Menu management capabilities but can't "
+"'edit_theme_options', strip link out of wp-admin Appearance Menu instead of "
+"linking it to nav-menus"
 msgstr ""
 "ユーザーがナビメニュー管理権限を持っているが、'edit_theme_options'を編集できない場合、ナビメニューにリンクするのではなく、wp-"
 "admin 外観メニューからリンクを削除します。"
@@ -4031,8 +4092,8 @@ msgstr "非管理者が新しいナビメニュー項目をトップレベルに
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:253
 msgid ""
-"For non-Administrators, new Nav Menu items default to being a child of first"
-" editable item "
+"For non-Administrators, new Nav Menu items default to being a child of "
+"first editable item "
 msgstr "非管理者の場合、新しいナビメニュー項目は最初の編集可能項目の子としてデフォルトになります。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:256
@@ -4046,17 +4107,18 @@ msgstr ""
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:259
 msgid ""
-"Eliminate extra filtering queries on Nav Menu update, even for non-"
-"Administrators"
+"Eliminate extra filtering queries on Nav Menu update, even for "
+"non-Administrators"
 msgstr "非管理者に対しても、ナビメニュー更新時の追加フィルタリングクエリを排除します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:264
 msgid ""
-"Don't allow non-Administrators to see others' unattached uploads, regardless"
-" of Permissions settings.  Their own unattached uploads are still accessible"
-" unless option 'own_attachments_always_editable' is set false"
+"Don't allow non-Administrators to see others' unattached uploads, "
+"regardless of Permissions settings.  Their own unattached uploads are still "
+"accessible unless option 'own_attachments_always_editable' is set false"
 msgstr ""
-"非管理者が他のユーザーの未添付のアップロードを、権限設定に関係なく見ることを許可しない。自身の未添付のアップロードは、オプション「own_attachments_always_editable」がfalseに設定されていない限り、引き続きアクセス可能です。"
+"非管理者が他のユーザーの未添付のアップロードを、権限設定に関係なく見ることを許可しない。自身の未添付のアップロードは、オプション「own_"
+"attachments_always_editable」がfalseに設定されていない限り、引き続きアクセス可能です。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:269
 msgid "Limited User Editors can assign their own role"
@@ -4084,8 +4146,8 @@ msgstr "PublishPress Permissionsは、閲覧または編集アクセスを制限
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:284
 msgid ""
-"Manage other user's Permissions. Also grants capabilities for all post types"
-" and statuses."
+"Manage other user's Permissions. Also grants capabilities for all post "
+"types and statuses."
 msgstr "他のユーザーの権限を管理します。また、すべての投稿タイプとステータスに対する能力も付与します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:285
@@ -4139,8 +4201,7 @@ msgid "Set \"Set as Parent\" Permissions for specific Categories or Terms."
 msgstr "特定のカテゴリまたは用語に対して「親として設定」権限を設定します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:304
-msgid ""
-"Edit own file uploads, even if they become attached to an uneditable post."
+msgid "Edit own file uploads, even if they become attached to an uneditable post."
 msgstr "自分のファイルアップロードを編集できます。たとえそれが編集できない投稿に添付されても。"
 
 #: classes/PublishPress/Permissions/UI/SettingsAdmin.php:305
@@ -4364,8 +4425,7 @@ msgid "Detect Dynamically Mapped WP Roles"
 msgstr "動的にマッピングされたWPロールを検出する"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:121
-msgid ""
-"Non-Administrators can set Reading Permissions for their editable posts"
+msgid "Non-Administrators can set Reading Permissions for their editable posts"
 msgstr "非管理者は自分の編集可能な投稿の閲覧権限を設定できる"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:122
@@ -4377,8 +4437,7 @@ msgid "Display all available constant definitions"
 msgstr "利用可能な定数定義をすべて表示"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:124
-msgid ""
-"Non-Administrators can set Editing Permissions for their editable posts"
+msgid "Non-Administrators can set Editing Permissions for their editable posts"
 msgstr "非管理者は自分の編集可能な投稿の編集権限を設定できる"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:125
@@ -4389,49 +4448,47 @@ msgstr "編集権限とは別に公開権限を割り当てる"
 msgid "Limit user editing capabilities by role level"
 msgstr "役割レベルによるユーザー編集機能の制限"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:232
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:234
 msgid ""
-"note: Plugin settings and configuration data will be deleted, but only after"
-" the last copy of Permissions / Permissions Pro is deleted."
-msgstr ""
-"注: プラグインの設定と構成データは削除されますが、Permissions / Permissions Proの最終コピーが削除された後のみです。"
+"note: Plugin settings and configuration data will be deleted, but only "
+"after the last copy of Permissions / Permissions Pro is deleted."
+msgstr "注: プラグインの設定と構成データは削除されますが、Permissions / Permissions Proの最終コピーが削除された後のみです。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:280
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
 msgid "The following would revert to default settings:"
 msgstr "以下はデフォルト設定に戻ります:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
-msgid ""
-"The following would change from defaults to previously stored settings:"
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:284
+msgid "The following would change from defaults to previously stored settings:"
 msgstr "以下はデフォルトから以前に保存された設定に変更されます:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "no Page Parent filter"
 msgstr "ページ親フィルターなし"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Authors, Editors and Administrators"
 msgstr "ページの著者、編集者および管理者"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Editors and Administrators"
 msgstr "ページの編集者および管理者"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Administrators"
 msgstr "管理者"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:352
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:354
 msgid ""
 "When saving a post, if the default term is not selectable, substitute first "
 "available."
 msgstr "投稿を保存する際、デフォルトの用語が選択できない場合は、最初に利用可能なものに置き換えます。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:353
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:355
 msgid "Some term-limited editing configurations require this."
 msgstr "いくつかの用語制限付き編集設定では、これが必要です。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:360
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:362
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with a WordPress role editor like "
@@ -4440,90 +4497,92 @@ msgstr ""
 "有効にすると、ユーザーはedit_tags能力を持っていない限り、投稿の新しいタグを作成できません。これをPublishPress "
 "CapabilitiesのようなWordPressのロールエディタで管理できます。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:366
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
-"edit_tags capability. You can manage this with Capabilities > Capabilities >"
-" Taxonomies for any role."
+"edit_tags capability. You can manage this with Capabilities > Capabilities "
+"> Taxonomies for any role."
 msgstr ""
 "有効にすると、ユーザーはedit_tags能力を持っていない限り、投稿の新しいタグを作成できません。これをCapabilities > "
 "Capabilities > Taxonomiesで任意のロールについて管理できます。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:369
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:371
 msgid ""
-"Display all permission operations in a single metabox with tabs (modern UI)."
-" When disabled, each operation has a separate metabox (legacy UI)."
-msgstr ""
-"すべての権限操作をタブ付きの単一メタボックスに表示します（モダンUI）。無効にすると、各操作は別々のメタボックスになります（レガシーUI）。"
+"Display all permission operations in a single metabox with tabs (modern "
+"UI). When disabled, each operation has a separate metabox (legacy UI)."
+msgstr "すべての権限操作をタブ付きの単一メタボックスに表示します（モダンUI）。無効にすると、各操作は別々のメタボックスになります（レガシーUI）。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:412
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:414
 #, php-format
 msgid "%sPosts / Pages Listing:%s %s"
 msgstr "%s投稿 / ページの一覧:%s %s"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:509
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:511
 msgid "User editing capabilities apply for"
 msgstr "ユーザーの編集権限は次に適用されます"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "equal or lower role levels"
 msgstr "同等またはそれ以下のロールレベル"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "lower role levels"
 msgstr "それ以下のロールレベル"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:565
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:567
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "エクストラロールの適用方法を制御するには、%1$sロールの使用%2$sを参照してください。"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:669
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
 msgid "Defined Constant"
 msgstr "定義された定数"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:670
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:723
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:672
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:725
 msgid "Setting"
 msgstr "設定"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:722
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
 msgid "Available Constant"
 msgstr "利用可能な定数"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:800
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:802
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
-"the following code into your theme's <strong>functions.php</strong> file (or"
-" some other file which is always executed and not auto-updated) and modify "
-"as desired:"
+"the following code into your theme's <strong>functions.php</strong> file "
+"(or some other file which is always executed and not auto-updated) and "
+"modify as desired:"
 msgstr ""
-"ネットワーク全体の1つまたは複数のデフォルト設定を変更するには、<strong>次のコードを</strong>テーマの<strong>functions.php</strong>ファイル（または常に実行され、自動更新されない他のファイル）にコピーし、希望通りに修正します:"
+"ネットワーク全体の1つまたは複数のデフォルト設定を変更するには、<strong>次のコードを</"
+"strong>テーマの<strong>functions.php</"
+"strong>ファイル（または常に実行され、自動更新されない他のファイル）にコピーし、希望通りに修正します:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:803
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:805
 msgid "Default settings code"
 msgstr "デフォルト設定コード"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:820
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:822
 msgid ""
 "To force the value of one or more settings network-wide, "
 "<strong>copy</strong> the following code into your theme's "
 "<strong>functions.php</strong> file (or some other file which is always "
 "executed and not auto-updated) and modify as desired:"
 msgstr ""
-"ネットワーク全体の1つまたは複数の設定の値を強制するには、<strong>次のコードを</strong>テーマの<strong>functions.php</strong>ファイル（または常に実行され、自動更新されない他のファイル）にコピーし、希望通りに修正します:"
+"ネットワーク全体の1つまたは複数の設定の値を強制するには、<strong>次のコードを</strong>テーマの<strong>functions."
+"php</strong>ファイル（または常に実行され、自動更新されない他のファイル）にコピーし、希望通りに修正します:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:823
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:825
 msgid "Forced settings code"
 msgstr "強制設定コード"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:854
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:856
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
 msgstr "このフォーム内のすべての設定（表示されていないタブのものを含む）はデフォルトにリセットされます。よろしいですか？"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:857
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:859
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:97
 msgid "Revert to Defaults"
 msgstr "デフォルトに戻す"
@@ -4559,8 +4618,7 @@ msgid "Modify permissions for these Post Types:"
 msgstr "これらの投稿タイプの権限を変更:"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:90
-msgid ""
-"This causes unique capabilities to be required for editing each post type. "
+msgid "This causes unique capabilities to be required for editing each post type. "
 msgstr "これにより、各投稿タイプを編集するために独自の権限が必要になります。"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:138
@@ -4593,7 +4651,8 @@ msgid ""
 "are accessed via WordPress. To restrict viewing of files when they are "
 "visited directly via the URL, use the \"File Access\" feature."
 msgstr ""
-"この機能により、WordPress経由でアクセスした場合にメディアライブラリのファイルへのアクセスを制限できます。URL経由で直接訪問されたときにファイルの表示を制限するには、「ファイルアクセス」機能を使用します。"
+"この機能により、WordPress経由でアクセスした場合にメディアライブラリのファイルへのアクセスを制限できます。URL経由で直接訪問されたときにファイ"
+"ルの表示を制限するには、「ファイルアクセス」機能を使用します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabCore.php:219
 #, php-format
@@ -4829,8 +4888,8 @@ msgstr "メンバーシップ通知"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:174
 msgid ""
-"Limit access based on post authorship and group membership for more granular"
-" permissions control."
+"Limit access based on post authorship and group membership for more "
+"granular permissions control."
 msgstr "投稿の著者およびグループメンバーシップに基づいてアクセスを制限し、より詳細な権限管理を行います。"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:179
@@ -4850,8 +4909,7 @@ msgid "Upgrade to Pro to limit access based on post author relationships"
 msgstr "投稿の著者関係に基づいてアクセスを制限するにはProにアップグレードしてください"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:210
-msgid ""
-"Create time-limited permission group memberships with automatic expiration."
+msgid "Create time-limited permission group memberships with automatic expiration."
 msgstr "自動的に期限切れになる期間限定の権限グループメンバーシップを作成します。"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:215
@@ -4876,8 +4934,8 @@ msgstr "メンバーシップ機能を強化する準備はできていますか
 
 #: classes/PublishPress/Permissions/UI/SettingsTabMembership.php:245
 msgid ""
-"Upgrade to Pro and get advanced membership management with circles, time-"
-"limited memberships, and more."
+"Upgrade to Pro and get advanced membership management with circles, "
+"time-limited memberships, and more."
 msgstr "Proにアップグレードし、サークル、期間限定メンバーシップなど、進んだメンバーシップ管理を手に入れましょう。"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabModules.php:23
@@ -4885,7 +4943,8 @@ msgid "Features"
 msgstr "機能"
 
 #: classes/PublishPress/Permissions/UI/SettingsTabModules.php:42
-#: includes/SettingsTabInstall.php:46 includes/SettingsTabInstall.php:47
+#: includes/SettingsTabInstall.php:46
+#: includes/SettingsTabInstall.php:47
 msgid "settings"
 msgstr "設定"
 
@@ -4983,8 +5042,8 @@ msgstr "ユーザーのために投稿を自動生成する準備はできてい
 
 #: classes/PublishPress/Permissions/UI/SettingsTabUserPosts.php:236
 msgid ""
-"Upgrade to Pro and get advanced user post generation with all these features"
-" and more."
+"Upgrade to Pro and get advanced user post generation with all these "
+"features and more."
 msgstr "Proにアップグレードし、これらの機能を含む進んだユーザー投稿生成を手に入れましょう。"
 
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:40
@@ -5157,7 +5216,8 @@ msgstr ""
 msgid "Post Statuses for Editorial Workflow"
 msgstr "編集ワークフローのための投稿ステータス"
 
-#: includes/promo/statuses-promo.php:17 includes/promo/statuses-promo.php:18
+#: includes/promo/statuses-promo.php:17
+#: includes/promo/statuses-promo.php:18
 msgid "Post Statuses preview"
 msgstr "投稿のステータスプレビュー"
 
@@ -5165,10 +5225,10 @@ msgstr "投稿のステータスプレビュー"
 msgid ""
 "Control access to custom post statuses. This workflow feature is available "
 "in PublishPress Permissions Pro."
-msgstr ""
-"カスタム投稿ステータスへのアクセスを制御します。このワークフロー機能はPublishPress Permissions Proで利用可能です。"
+msgstr "カスタム投稿ステータスへのアクセスを制御します。このワークフロー機能はPublishPress Permissions Proで利用可能です。"
 
-#: includes/promo/sync-promo.php:16 includes/promo/sync-promo.php:17
+#: includes/promo/sync-promo.php:16
+#: includes/promo/sync-promo.php:17
 msgid "User Posts preview"
 msgstr "ユーザーの投稿プレビュー"
 
@@ -5191,8 +5251,7 @@ msgstr "投稿の可視性ステータスプレビュー"
 msgid ""
 "Control access to post visibility statuses. This workflow feature is "
 "available in PublishPress Permissions Pro."
-msgstr ""
-"投稿の可視性ステータスへのアクセスを制御します。このワークフロー機能はPublishPress Permissions Proで利用可能です。"
+msgstr "投稿の可視性ステータスへのアクセスを制御します。このワークフロー機能はPublishPress Permissions Proで利用可能です。"
 
 #: includes/SettingsTabInstall.php:26
 msgid "License"
@@ -5225,24 +5284,23 @@ msgstr ""
 
 #: includes/SettingsTabInstall.php:145
 msgid ""
-"Permissions Pro was previously active. You are now running the free version,"
-" with fewer features."
+"Permissions Pro was previously active. You are now running the free "
+"version, with fewer features."
 msgstr "Permissions Proは以前にアクティブでした。現在は機能が少ない無料バージョンを実行しています。"
 
 #: includes/SettingsTabInstall.php:150
 #, php-format
 msgid ""
 "A presspermit.com key appears to be active. <a href=\"%s\" "
-"target=\"_blank\">Contact us</a> for assistance in migrating your account to"
-" publishpress.com."
+"target=\"_blank\">Contact us</a> for assistance in migrating your account "
+"to publishpress.com."
 msgstr ""
 "presspermit.comキーがアクティブであるようです。<a href=\"%s\" "
 "target=\"_blank\">お問い合わせ</a>いただければ、アカウントをpublishpress.comに移行するための支援を行います。"
 
 #: includes/SettingsTabInstall.php:162
 #, php-format
-msgid ""
-"Original presspermit.com support key hash: <strong>%s</strong> (expires %s)"
+msgid "Original presspermit.com support key hash: <strong>%s</strong> (expires %s)"
 msgstr "元の presspermit.com サポートキーのハッシュ: <strong>%s</strong> (有効期限 %s)"
 
 #: includes/SettingsTabInstall.php:164
@@ -5250,7 +5308,8 @@ msgstr "元の presspermit.com サポートキーのハッシュ: <strong>%s</st
 msgid "Original presspermit.com support key hash: <strong>%s</strong>"
 msgstr "元の presspermit.com サポートキーのハッシュ: <strong>%s</strong>"
 
-#: includes/SettingsTabInstall.php:209 includes/SettingsTabInstall.php:219
+#: includes/SettingsTabInstall.php:209
+#: includes/SettingsTabInstall.php:219
 #, php-format
 msgid "PublishPress Permissions Version: %1$s %2$s"
 msgstr "PublishPress Permissions バージョン： %1$s %2$s"
@@ -5551,17 +5610,18 @@ msgstr "役割の使用が編集されました。"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:73
 msgid ""
-"These optional settings customize how PublishPress Permissions applies extra"
-" roles. Your existing WP Role Definitions can be applied in two different "
-"ways:"
+"These optional settings customize how PublishPress Permissions applies "
+"extra roles. Your existing WP Role Definitions can be applied in two "
+"different ways:"
 msgstr ""
 "これらのオプション設定は、PublishPress "
 "Permissionsが追加の役割を適用する方法をカスタマイズします。既存のWPロール定義は、2つの異なる方法で適用できます："
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:76
 msgid ""
-"Pattern Roles convert 'post' capabilities to the corresponding type-specific"
-" capability.  In a normal WP installation, this is the easiest solution."
+"Pattern Roles convert 'post' capabilities to the corresponding "
+"type-specific capability.  In a normal WP installation, this is the easiest "
+"solution."
 msgstr "パターンロールは、'post'の能力を対応するタイプ特有の能力に変換します。通常のWPインストールでは、これが最も簡単な解決策です。"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:80
@@ -5650,14 +5710,17 @@ msgid ""
 "'Author' pattern role for Pages, edit_posts and edit_published_posts become "
 "edit_pages and edit_published_pages."
 msgstr ""
-"WPロールにおける'posts'の能力は、その機能を補足的な割り当てのためのパターンロールとして決定します。ページに対して'Author'パターンロールを割り当てると、edit_postsとedit_published_postsがedit_pagesとedit_published_pagesになります。"
+"WPロールにおける'posts'の能力は、その機能を補足的な割り当てのためのパターンロールとして決定します。ページに対して'Author'"
+"パターンロールを割り当てると、edit_postsとedit_published_postsがedit_pagesとedit_published_"
+"pagesになります。"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:42
 msgid ""
 "Role capabilities defined for other post types (i.e. 'edit_others_pages', "
 "'edit_things') are ignored unless Role Usage is set to Direct Assignment."
 msgstr ""
-"他の投稿タイプに定義されたロール能力（例：'edit_others_pages'、'edit_things'）は、ロール使用が直接割り当てに設定されていない限り無視されます。"
+"他の投稿タイプに定義されたロール能力（例：'edit_others_pages'、'edit_things'"
+"）は、ロール使用が直接割り当てに設定されていない限り無視されます。"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageHelper.php:45
 msgid ""
@@ -5665,7 +5728,9 @@ msgid ""
 "available as a pattern role with default WP capabilities (but can be "
 "disabled here)."
 msgstr ""
-"デフォルトのロールの1つがWPデータベースから削除されると、それはデフォルトのWP機能を持つパターンロールとして利用可能なままとなります（ただし、ここで無効にすることができます）。"
+"デフォルトのロールの1"
+"つがWPデータベースから削除されると、それはデフォルトのWP機能を持つパターンロールとして利用可能なままとなります（ただし、ここで無効にすることができま"
+"す）。"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsageListTable.php:57
 msgid "No matching roles were found."
@@ -5750,7 +5815,8 @@ msgid ""
 "The following settings apply to users who are able to access the Media "
 "Library. Normally this requires the upload_files or edit_files capability."
 msgstr ""
-"以下の設定は、メディアライブラリにアクセスできるユーザーに適用されます。通常、これはupload_filesまたはedit_files機能を必要とします。"
+"以下の設定は、メディアライブラリにアクセスできるユーザーに適用されます。通常、これはupload_filesまたはedit_"
+"files機能を必要とします。"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/SettingsTabEditing.php:203
 msgid "Edit Files"
@@ -5777,8 +5843,7 @@ msgstr "レビジョン担当者"
 msgid "Revisor"
 msgstr "レビジョン担当者"
 
-#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:41,
-#: fuzzy
+#: modules/presspermit-content-visibility/classes/Permissions/ContentVisibilityAdmin.php:41, fuzzy
 msgid "Shortcodes"
 msgstr "Shortcodes"
 
@@ -5967,7 +6032,7 @@ msgid "Hide for Custom Visibility"
 msgstr "カスタムの可視性のために非表示"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:225
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:510
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:516
 msgid "Featured Image"
 msgstr "フィーチャー画像"
 
@@ -5999,8 +6064,7 @@ msgstr "抜粋のみ"
 msgid "Title Only"
 msgstr "タイトルのみ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:288,
-#: fuzzy
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:288, fuzzy
 msgid "RSS"
 msgstr "RSS"
 
@@ -6049,7 +6113,7 @@ msgstr "メッセージスタイル"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:613
 msgid "Options will appear here after you enable the Teaser for a post type."
-msgstr "投稿タイプのティーザーを有効にすると、オプションがここに表示されます。"
+msgstr "投稿タイプのティーザーを有効にすると、ここにオプションが表示されます。"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:58
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:81
@@ -6060,365 +6124,364 @@ msgstr "設定する投稿タイプを選択"
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "ティーザー設定を構成したい投稿タイプを選択してください。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:211
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
+msgid "Site Preview"
+msgstr "サイト プレビュー"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:217
 #, php-format
 msgid "Text Options for %s"
 msgstr "%s のテキストオプション"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
 msgid "No Teaser"
 msgstr "ティーザーなし"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
 msgid "Message with no teaser content"
 msgstr "ティーザーコンテンツがないメッセージ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
 #, fuzzy
 msgid "Message with post content above Read More link as teaser"
 msgstr "「続きを読む」リンクの前にティーザーコンテンツがあるメッセージ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
 msgid "Message with Excerpt as teaser content"
 msgstr "ティーザーコンテンツとしての抜粋があるメッセージ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:251
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Message with Excerpt or pre-More as teaser content"
 msgstr "ティーザーコンテンツとしての抜粋または「もっと前」のメッセージ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:53
 msgid "Message with first X characters of post as teaser content"
 msgstr "ティーザーコンテンツとしての投稿の最初のX文字のメッセージ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:54
 msgid "Redirect to another post"
 msgstr "他の投稿にリダイレクト"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "No teaser will be applied"
 msgstr "ティーザーは適用されません"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:264
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:270
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "ブロックされたユーザーのメッセージの前にテザーテキストを表示しない"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:265
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
 msgid ""
 "Show content before the Read More marker. If there is no marker or no "
 "content before it, show only the blocked-user message."
 msgstr ""
-"「続きを読む」マーカーの前のコンテンツを表示します。マーカーがない場合、またはその前にコンテンツがない場合は、ブロックされたユーザーのメッセージのみを表示します。"
+"「続きを読む」マーカーの前のコンテンツを表示します。マーカーがない場合、またはその前にコンテンツがない場合は、ブロックされたユーザーのメッセージのみを表"
+"示します。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:266
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:272
 msgid "Use the post excerpt as teaser content"
 msgstr "投稿の抜粋をティーザーコンテンツとして使用"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:267
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 msgid "Use excerpt or content before More tag"
 msgstr "「もっと見る」タグの前に抜粋またはコンテンツを使用"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:274
 msgid "Show the first X characters of the post content"
 msgstr "投稿コンテンツの最初のX文字を表示"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
-msgid ""
-"Redirect users to another page when they try to access restricted content"
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:275
+msgid "Redirect users to another page when they try to access restricted content"
 msgstr "制限されたコンテンツにアクセスしようとしたときに、ユーザーを別のページにリダイレクト"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:281
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:287
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "%sのティーザー設定"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "Show only the first"
 msgstr "最初のものだけを表示"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Chars"
 msgstr "文字"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:347
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "characters"
 msgstr "文字"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "Max"
 msgstr "最大"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "characters (leave empty for full excerpt)"
 msgstr "文字（完全な抜粋のために空白のままにします）"
 
-#. translators: %s is a link to the URL visitors without access are redirected
-#. to.
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:423
+#. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "アクセスできない訪問者は次のURLにリダイレクトされます: %s"
 
-#. translators: %s is the singular post type label, such as Post or Page.
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:321
+#. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "サンプル %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:445
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
 msgstr "これは全コンテンツの例です。プレビューは、権限のない訪問者が見るものを表示します。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
 msgid "This is a short excerpt from the restricted content."
 msgstr "これは制限されたコンテンツからの短い抜粋です。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:462
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
 msgid "Teaser Preview"
 msgstr "ティーザー プレビュー"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
-msgid "Site Preview"
-msgstr "サイト プレビュー"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:471
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:472
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:478
 msgid "Preview content"
 msgstr "コンテンツのプレビュー"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Preview device"
 msgstr "プレビューデバイス"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:493
 msgid "Desktop"
 msgstr "デスクトップ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:496
 msgid "Mobile"
 msgstr "モバイル"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Open full preview in a new tab"
 msgstr "新しいタブでフルプレビューを開く"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:503
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Open full preview"
 msgstr "フルプレビューを開く"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:517
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Loading the preview from your active theme…"
 msgstr "アクティブテーマからプレビューを読み込んでいます…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:525
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:531
 msgid "Teaser preview from the active theme"
 msgstr "アクティブテーマからのティーザープレビュー"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:535
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:541
 msgid "The theme preview could not be displayed in this frame."
 msgstr "テーマプレビューはこのフレームに表示できませんでした。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:542
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid "Visitor redirected"
 msgstr "訪問者がリダイレクトされました"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:543
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:549
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "制限されたコンテンツは表示されません。訪問者は設定された宛先に送信されます。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:575
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:581
 msgid "Message for Blocked Users"
 msgstr "ブロックされたユーザーへのメッセージ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:576
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
 msgid ""
 "This message is shown to users who are blocked from viewing the full "
 "content. It is shared across all teaser types."
 msgstr "このメッセージは、全コンテンツの表示をブロックされたユーザーに表示されます。これはすべてのティーザータイプで共有されます。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:56
 msgid "This field is required."
 msgstr "このフィールドは必須です。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:605
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "%s[login_form]%s ショートコードを使用してログインフォームを挿入します。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:628
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:634
 msgid "Text Configuration"
 msgstr "テキスト設定"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:629
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
 msgstr "ブロックされたユーザーのためのティーザーとメッセージに加えて、コンテンツの周りに追加のテキストを表示できます。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:651
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
 msgid "post title"
 msgstr "投稿タイトル"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:658
 msgid "post content"
 msgstr "投稿内容"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:665
 #, php-format
 msgid "Before %s"
 msgstr "%s の前"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 #, php-format
 msgid "After %s"
 msgstr "%s の後"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:744
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:750
 msgid "Redirect Settings"
 msgstr "リダイレクト設定"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:761
 msgid "Redirection"
 msgstr "リダイレクション"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:762
 msgid "Target Post Type"
 msgstr "ターゲット投稿タイプ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Select Post"
 msgstr "投稿を選択"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Custom URL"
 msgstr "カスタムURL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:797
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:803
 msgid "Not Logged In:"
 msgstr "未ログイン:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:811
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
 msgid "No redirect"
 msgstr "リダイレクトなし"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:911
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:812
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "Redirect to WordPress login"
 msgstr "WordPressログインにリダイレクト"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:912
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to a custom post"
 msgstr "カスタム投稿にリダイレクト"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:913
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom URL"
 msgstr "カスタムURLにリダイレクト"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:829
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:940
 msgid "Redirect post type"
 msgstr "リダイレクト投稿タイプ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:954
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:855
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect page"
 msgstr "リダイレクトページ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:968
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "This is a custom login page"
 msgstr "これはカスタムログインページです"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
 msgstr "ユーザーがログインすると、彼らが見ていた元の投稿にリダイレクトされます。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:866
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:977
 msgid "Redirect URL"
 msgstr "リダイレクトURL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:902
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
 msgid "Logged in Users:"
 msgstr "ログイン中のユーザー："
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1024
 msgid "Blocked User Message Style"
 msgstr "ブロックされたユーザーメッセージスタイル"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1019
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "ブロックされたユーザーに表示されるティーザーメッセージの外観をカスタマイズします。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1034
 msgid "Background Color"
 msgstr "背景色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Text Color"
 msgstr "テキストの色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1051
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid "Border Color"
 msgstr "ボーダーの色"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1063
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
 msgid "Border Position"
 msgstr "ボーダーの位置"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
 msgid "Left"
 msgstr "左"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1068
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1075
 msgid "Right"
 msgstr "右"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1069
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1076
 msgid "Top"
 msgstr "上"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1077
 msgid "Bottom"
 msgstr "下部"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1071
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1078
 msgid "All Sides"
 msgstr "全方向"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid "Border Width (px)"
 msgstr "ボーダーの幅 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1104
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1111
 msgid "Border Radius (px)"
 msgstr "ボーダーの半径 (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1117
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1124
 msgid "Font Size (px)"
 msgstr "フォントサイズ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1137
 msgid "Padding (px)"
 msgstr "パディング (px)"
 

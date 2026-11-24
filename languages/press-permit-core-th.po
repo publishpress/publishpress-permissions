@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-17T17:56:17+00:00\n"
-"PO-Revision-Date: 2026-11-19 18:08+0000\n"
+"POT-Creation-Date: 2026-11-19T17:52:53+00:00\n"
+"PO-Revision-Date: 2026-11-24 22:15+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: th\n"
@@ -1070,59 +1070,59 @@ msgstr ""
 "ใช้สำหรับการพัฒนาเท่านั้น (ที่ด้านหน้า ไม่เปลี่ยนเงื่อนไข 'post_status = "
 "'publish'' ด้วยตัวกรองที่เทียบเท่า)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:456
+#: classes/PublishPress/Permissions/DB/Groups.php:460
 #: classes/PublishPress/Permissions/PluginUpdated.php:342
 msgid "Logged In"
 msgstr "เข้าสู่ระบบแล้ว"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/PluginUpdated.php:335
 msgid "Not Logged In"
 msgstr "ไม่ได้เข้าสู่ระบบ"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:460
+#: classes/PublishPress/Permissions/DB/Groups.php:464
 #: classes/PublishPress/Permissions/PluginUpdated.php:349
 msgid "Everyone"
 msgstr "ทุกคน"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 msgid "Change Request Notifications"
 msgstr "การแจ้งเตือนการเปลี่ยนแปลงคำขอ"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 #: classes/PublishPress/Permissions/PluginUpdated.php:356
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "การแก้ไขที่ส่งแล้ว"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 msgid "Scheduled Change Notifications"
 msgstr "การแจ้งเตือนการเปลี่ยนแปลงที่กำหนดเวลา"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 #: classes/PublishPress/Permissions/PluginUpdated.php:362
 msgid "Scheduled Revision Monitors"
 msgstr "การตรวจสอบการแก้ไขที่กำหนดเวลา"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:496
+#: classes/PublishPress/Permissions/DB/Groups.php:500
 msgid "Authenticated site users, except for Administrators"
 msgstr "ผู้ใช้เว็บไซต์ที่ผ่านการตรวจสอบแล้ว ยกเว้นผู้ดูแลระบบ"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:498
+#: classes/PublishPress/Permissions/DB/Groups.php:502
 #: classes/PublishPress/Permissions/PluginUpdated.php:336
 msgid "Anonymous users (not logged in)"
 msgstr "ผู้ใช้ที่ไม่ระบุชื่อ (ไม่ได้เข้าสู่ระบบ)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:500
+#: classes/PublishPress/Permissions/DB/Groups.php:504
 #: classes/PublishPress/Permissions/PluginUpdated.php:350
 msgid "All users (including anonymous)"
 msgstr "ผู้ใช้ทุกคน (รวมถึงผู้ใช้ที่ไม่ระบุชื่อ)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:505
+#: classes/PublishPress/Permissions/DB/Groups.php:509
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "ผู้ใช้ทุกคนที่มีบทบาท WordPress ของ %s"
@@ -1195,88 +1195,92 @@ msgid "Groups"
 msgstr "กลุ่ม"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:39
+#, fuzzy
 msgid "You cannot perform this Permissions operation."
-msgstr "คุณไม่สามารถดำเนินการ Permissions นี้ได้."
+msgstr "คุณสามารถตั้งค่าสิทธิ์เฉพาะสำหรับ"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:49
 msgid "Permissions changed. Read the current values before saving."
-msgstr "Permissions ได้ถูกเปลี่ยนแปลงแล้ว อ่านค่าปัจจุบันก่อนที่จะบันทึก."
+msgstr "สิทธิ์มีการเปลี่ยนแปลง โปรดอ่านค่าปัจจุบันก่อนบันทึก"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:120
 msgid ""
 "The native operation could not be confirmed. Read the current state before "
 "retrying."
-msgstr ""
-"การดำเนินการแบบเนทีฟไม่สามารถยืนยันได้ "
-"อ่านสถานะปัจจุบันก่อนที่จะลองอีกครั้ง."
+msgstr "ไม่สามารถยืนยันการดำเนินการเนทีฟได้ โปรดอ่านสถานะปัจจุบันก่อนลองอีกครั้ง"
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:88
 msgid "Use separate requests for overlapping permission scopes."
-msgstr "ใช้คำขอแยกต่างหากสำหรับขอบเขตการอนุญาตที่ซ้อนทับกัน."
+msgstr "ใช้คำขอแยกกันสำหรับขอบเขตสิทธิ์ที่ทับซ้อนกัน"
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:106
 msgid ""
 "Some native writes may have completed. Read every affected scope before "
 "retrying."
 msgstr ""
-"การเขียนแบบเนทีฟบางรายการอาจเสร็จสิ้นแล้ว "
-"อ่านทุกขอบเขตที่ได้รับผลกระทบก่อนที่จะลองอีกครั้ง."
+"การเขียนข้อมูลเนทีฟบางส่วนอาจเสร็จสมบูรณ์แล้ว "
+"โปรดอ่านทุกขอบเขตที่ได้รับผลกระทบก่อนลองอีกครั้ง"
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:93
 msgid "The native control is locked."
-msgstr "การควบคุมแบบเนทีฟถูกล็อก."
+msgstr "ตัวควบคุมเนทีฟถูกล็อก"
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:108
 msgid "This filtering choice is controlled by native configuration."
-msgstr "ตัวเลือกการกรองนี้ถูกควบคุมโดยการตั้งค่าแบบเนทีฟ."
+msgstr "ตัวเลือกการกรองนี้ควบคุมโดยการกำหนดค่าเนทีฟ"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:13
+#, fuzzy
 msgid "Enable Permissions metabox"
-msgstr "เปิดใช้งาน Permissions metabox"
+msgstr "เปิดใช้งานในหน้าจอสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:15
+#, fuzzy
 msgid "Include in Permissions screens"
-msgstr "รวมอยู่ในหน้าจอ Permissions"
+msgstr "เปิดใช้งานในหน้าจอสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:158
 msgid "Use native administration for permission scopes exceeding 1,000 objects."
-msgstr "ใช้การบริหารจัดการแบบเนทีฟสำหรับขอบเขตการอนุญาตที่เกิน 1,000 วัตถุ."
+msgstr "ใช้การดูแลระบบเนทีฟสำหรับขอบเขตสิทธิ์ที่มีออบเจ็กต์เกิน 1,000 รายการ"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:188
 msgid "The affected permission tree is too large."
-msgstr "ต้นไม้การอนุญาตที่ได้รับผลกระทบใหญ่เกินไป."
+msgstr "แผนผังสิทธิ์ที่ได้รับผลกระทบมีขนาดใหญ่เกินไป"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:283
+#, fuzzy
 msgid "This permission mode is disabled by native configuration."
-msgstr "โหมดการอนุญาตนี้ถูกปิดใช้งานโดยการตั้งค่าแบบเนทีฟ."
+msgstr "อนุญาตนี้ซ้ำซ้อนเนื่องจากมีข้อจำกัดที่สอดคล้องกัน"
 
 #: classes/PublishPress/Permissions/Mcp/GroupDeletion.php:38
 msgid "Remove incoming group delegation rules before deleting this group."
-msgstr "ลบกฎการมอบหมายกลุ่มที่เข้ามาก่อนที่จะลบกลุ่มนี้."
+msgstr "นำกฎการมอบสิทธิ์กลุ่มขาเข้าทั้งหมดออกก่อนลบกลุ่มนี้"
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:91
 msgid "Use native administration for groups with more than 1,000 members."
-msgstr "ใช้การบริหารจัดการแบบเนทีฟสำหรับกลุ่มที่มีสมาชิกมากกว่า 1,000 คน."
+msgstr "ใช้การดูแลระบบเนทีฟสำหรับกลุ่มที่มีสมาชิกมากกว่า 1,000 คน"
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:169
 msgid "Use network administration for network-wide group membership changes."
-msgstr "ใช้การบริหารจัดการเครือข่ายสำหรับการเปลี่ยนแปลงสมาชิกกลุ่มในเครือข่าย."
+msgstr "ใช้การดูแลระบบเครือข่ายสำหรับการเปลี่ยนแปลงสมาชิกกลุ่มทั่วทั้งเครือข่าย"
 
 #: classes/PublishPress/Permissions/Mcp/Input.php:212
 msgid "Invalid input. Use the types and choices returned by discovery."
-msgstr "ข้อมูลนำเข้าผิดพลาด ใช้ประเภทและตัวเลือกที่ส่งคืนโดยการค้นหา."
+msgstr "ข้อมูลที่ป้อนไม่ถูกต้อง ใช้ประเภทและตัวเลือกที่ได้จากการค้นพบ"
 
 #: classes/PublishPress/Permissions/Mcp/NativeOptions.php:189
 msgid "This native setting is controlled by configuration:"
-msgstr "การตั้งค่าแบบเนทีฟนี้ถูกควบคุมโดยการตั้งค่า:"
+msgstr "การตั้งค่าเนทีฟนี้ควบคุมโดยการกำหนดค่า:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:13
+#, fuzzy
 msgid "PublishPress plugin actions."
-msgstr "การกระทำของปลั๊กอิน PublishPress."
+msgstr "จัดการการตั้งค่าปลั๊กอิน PublishPress Permissions"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:26
+#, fuzzy
 msgid "Discover Permissions features"
-msgstr "ค้นพบฟีเจอร์ Permissions"
+msgstr "สรุปสิทธิ์ของผู้ใช้"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:27
 msgid ""
@@ -1284,13 +1288,14 @@ msgid ""
 "requirements. Discovery does not grant access. Credentials and "
 "administrator-level grants are not exposed."
 msgstr ""
-"อ่านโมดูลแบบเนทีฟที่ใช้งานอยู่ การดำเนินการที่สนับสนุน และข้อกำหนดการอนุญาต "
-"การค้นหาไม่ได้มอบสิทธิ์เข้าถึง "
-"ข้อมูลประจำตัวและการอนุญาตระดับผู้ดูแลระบบจะไม่ถูกเปิดเผย."
+"อ่านโมดูลเนทีฟที่ใช้งานอยู่ การดำเนินการที่รองรับ และข้อกำหนดด้านสิทธิ์ "
+"การค้นพบไม่ได้ให้สิทธิ์เข้าถึง "
+"และจะไม่มีการเปิดเผยข้อมูลรับรองหรือการให้สิทธิ์ระดับผู้ดูแลระบบ"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:30
+#, fuzzy
 msgid "Permissions settings"
-msgstr "การตั้งค่า Permissions"
+msgstr "การตั้งค่าสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:31
 msgid ""
@@ -1299,15 +1304,16 @@ msgid ""
 "Omitted options remain unchanged; unknown fields and locked settings are "
 "rejected. dry_run validates without saving."
 msgstr ""
-"อ่านตัวระบุการตั้งค่าแบบเนทีฟ ประเภท JSON ที่แน่นอน ค่าเริ่มต้น ค่าเก็บถาวร "
-"และการปรับปรุงก่อนที่จะทำการติดตั้ง แสดงช่องทำเครื่องหมายต้องเป็น JSON "
-"booleans ตัวเลือกที่ถูกละเว้นยังคงไม่เปลี่ยนแปลง "
-"ฟิลด์ที่ไม่รู้จักและการตั้งค่าที่ถูกล็อกจะถูกปฏิเสธ dry_run "
-"จะตรวจสอบโดยไม่บันทึก."
+"อ่านตัวระบุการตั้งค่าเนทีฟ ประเภท JSON ที่ตรงตามจริง ค่าเริ่มต้น "
+"ค่าที่จัดเก็บ และ revision ก่อนทำการแพตช์ ช่องทำเครื่องหมายต้องใช้ค่าบูลีน "
+"JSON ตัวเลือกที่ไม่ระบุจะคงเดิม "
+"ระบบจะปฏิเสธฟิลด์ที่ไม่รู้จักและการตั้งค่าที่ล็อกไว้ dry_run "
+"จะตรวจสอบความถูกต้องโดยไม่บันทึก"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:36
+#, fuzzy
 msgid "Permissions post types and taxonomies"
-msgstr "ประเภทโพสต์และ taxonomies ของ Permissions"
+msgstr "แก้ไขสิทธิ์สำหรับประเภทภาษีเหล่านี้:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:37
 msgid ""
@@ -1316,14 +1322,16 @@ msgid ""
 "booleans. Omitted and temporarily unregistered types remain unchanged. "
 "Locked controls cannot be changed. dry_run saves nothing."
 msgstr ""
-"อ่านตัวเลือกการกรองแท็บทั่วไปแบบเนทีฟและล็อก ปรับปรุงแถว {name, enabled} "
-"ที่ชัดเจนด้วยการปรับปรุงปัจจุบัน ค่าในช่องทำเครื่องหมายต้องเป็น JSON "
-"booleans ประเภทที่ถูกละเว้นและลงทะเบียนชั่วคราวยังคงไม่เปลี่ยนแปลง "
-"การควบคุมที่ถูกล็อกไม่สามารถเปลี่ยนแปลงได้ dry_run จะไม่บันทึกอะไร."
+"อ่านตัวเลือกและรายการล็อกการกรองในแท็บ General ของเนทีฟ แพตช์แถว {name, "
+"enabled} ที่ระบุไว้อย่างชัดเจนพร้อม revision ปัจจุบัน "
+"ค่าช่องทำเครื่องหมายต้องเป็นบูลีน JSON "
+"ประเภทที่ไม่ระบุและประเภทที่ยังไม่ได้ลงทะเบียนชั่วคราวจะคงเดิม "
+"ไม่สามารถเปลี่ยนตัวควบคุมที่ล็อกไว้ได้ dry_run จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:48
+#, fuzzy
 msgid "Permissions groups and members"
-msgstr "กลุ่มและสมาชิกของ Permissions"
+msgstr "กลุ่มสิทธิ์การเข้าถึง"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:49
 msgid ""
@@ -1334,17 +1342,18 @@ msgid ""
 "every affected user. Built-in role/metagroups cannot be renamed or joined. "
 "dry_run saves nothing."
 msgstr ""
-"จัดการกลุ่มการอนุญาตแบบกำหนดเองของแบบเนทีฟ รายการจะถูกแบ่งหน้า "
-"การอ่านจะไม่รวมรหัสผ่านบัญชีและที่อยู่อีเมล อ่าน get-group "
-"ก่อนการปรับปรุงและจัดเตรียมการปรับปรุงของมัน "
-"การกระทำการเป็นสมาชิกจะเพิ่มหรือลบ user_ids อย่างชัดเจน รักษาสมาชิกอื่น ๆ "
-"และตารางที่มีอยู่ และต้องการ edit_user สำหรับผู้ใช้ที่ได้รับผลกระทบทุกคน "
-"บทบาท/กลุ่มเมตาที่ติดตั้งไม่สามารถเปลี่ยนชื่อหรือลงทะเบียนได้ dry_run "
-"จะไม่บันทึกอะไร."
+"จัดการกลุ่มสิทธิ์แบบกำหนดเองของเนทีฟ รายการจะแบ่งหน้า "
+"การอ่านจะไม่รวมรหัสผ่านและที่อยู่อีเมลของบัญชี อ่าน get-group "
+"ก่อนอัปเดตและระบุ revision ของกลุ่มนั้น การดำเนินการกับสมาชิกจะเพิ่มหรือนำ "
+"user_ids ออกอย่างชัดเจน โดยคงสมาชิกคนอื่นและกำหนดการที่มีอยู่ไว้ และต้องมี "
+"edit_user สำหรับผู้ใช้ที่ได้รับผลกระทบทุกคน "
+"ไม่สามารถเปลี่ยนชื่อหรือเข้าร่วมบทบาท/กลุ่มเมตาที่มาพร้อมระบบได้ dry_run "
+"จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:53
+#, fuzzy
 msgid "Permissions supplemental roles"
-msgstr "บทบาทเสริมของ Permissions"
+msgstr "เอกสารสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:54
 msgid ""
@@ -1358,15 +1367,22 @@ msgid ""
 "object-type permissions apply. Administrator-level capabilities are "
 "rejected even for administrator sessions. dry_run saves nothing."
 msgstr ""
-"อ่านบทบาทเสริมสำหรับผู้ใช้ กลุ่มกำหนดเอง หรือกลุ่มบทบาท WordPress "
-"การเปลี่ยนแปลงเป็นแถว {role, enabled} ที่ชัดเจนด้วยการปรับปรุงปัจจุบัน "
-"บทบาทอื่น ๆ ยังคงไม่เปลี่ยนแปลง บทบาทระดับผู้ดูแลระบบไม่สามารถเปิดใช้งานได้ "
-"การมอบหมายที่มีอยู่ต้องถูกลบออกก่อนที่จะเปลี่ยนการตีความบทบาทที่มอบหมาย "
-"dry_run จะไม่บันทึกอะไร."
+"อ่านบทบาทเสริมสำหรับผู้ใช้ กลุ่มแบบกำหนดเอง หรือกลุ่มเมตาของบทบาท WordPress "
+"การเปลี่ยนแปลงต้องระบุแพตช์ {role, enabled} อย่างชัดเจนพร้อม revision "
+"ปัจจุบัน บทบาทอื่นจะคงเดิม การให้สิทธิ์โดยตรงใช้ชื่อ direct_roles "
+"ของเนทีฟที่ค้นพบ ต้องมี promote_users "
+"และระบบจะปฏิเสธความสามารถระดับผู้ดูแลระบบ "
+"การให้สิทธิ์ประเภทอื่นใช้บทบาทรูปแบบที่ค้นพบในรูปแบบ base:post:post_type "
+"หรือ base:term:taxonomy ส่วนขอบเขตสถานะใช้ "
+"base:post:post_type:post_status:status พร้อมสถานะที่ใช้งานอยู่ของเนทีฟ "
+"โดยมีผลตามสิทธิ์ของประเภทออบเจ็กต์เนทีฟ "
+"ระบบจะปฏิเสธความสามารถระดับผู้ดูแลระบบ แม้ในเซสชันผู้ดูแลระบบ dry_run "
+"จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:59
+#, fuzzy
 msgid "Permissions for posts and terms"
-msgstr "Permissions สำหรับโพสต์และคำศัพท์"
+msgstr "มอบหมายสำหรับที่เลือกและเงื่อนไขย่อย"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:60
 msgid ""
@@ -1383,26 +1399,28 @@ msgid ""
 "must be changed at their origin. dry_run writes nothing. Large scopes use "
 "native administration."
 msgstr ""
-"อ่านขอบเขตของตัวแทน/วัตถุ/"
-"การดำเนินการและการปรับปรุงของมันก่อนที่จะเพิ่มหรือลบการอนุญาตแบบเนทีฟ "
-"source=pp_group พร้อม operation=manage และ assign_for=item "
-"จัดการการมอบหมายกลุ่มแบบกำหนดเองเมื่อการอนุญาตกลุ่มการทำงานร่วมกันและการแสดง"
-"ผลถูกเปิดใช้งาน ความสามารถในการจัดการกลุ่ม สมาชิก และการลบเป็นสิ่งที่จำเป็น "
-"และการอ้างอิงการมอบหมายที่เข้ามาต้องถูกลบออกก่อนการลบกลุ่มเป้าหมาย "
-"source=term ใช้รหัส ID ของคำใน WordPress และ taxonomy; post_type "
-"เลือกประเภทโพสต์ที่ได้รับผลกระทบสำหรับกฎตามประเภทหมวดหมู่ mod_type "
-"เป็นเพิ่มเติม รวมหรือยกเว้น; assign_for คือ item, children หรือทั้งสองอย่าง "
-"การดำเนินการแบบเนทีฟ วัตถุและการอนุญาตที่สืบทอดใช้ได้ "
-"กฎที่ถูกละเว้นจะถูกเก็บรักษาไว้ กฎที่สืบทอดต้องถูกเปลี่ยนแปลงที่ต้นทาง "
-"dry_run จะไม่เขียนอะไร ขอบเขตขนาดใหญ่ใช้การบริหารจัดการแบบเนทีฟ."
+"อ่านขอบเขต agent/object/operation และ revision "
+"ก่อนเพิ่มหรือนำสิทธิ์เนทีฟออก source=pp_group ที่มี operation=manage และ "
+"assign_for=item จะจัดการการมอบสิทธิ์ให้กลุ่มแบบกำหนดเองของเนทีฟ "
+"เมื่อเปิดใช้ Collaboration และ Display group permissions "
+"ต้องมีความสามารถในการจัดการกลุ่ม การจัดการสมาชิก และการลบ "
+"อีกทั้งต้องนำการอ้างอิงการมอบสิทธิ์ขาเข้าออกก่อนลบกลุ่มเป้าหมาย source=term "
+"ใช้ ID ของ term ใน WordPress และ taxonomy; post_type ใช้เลือก post type "
+"ที่ได้รับผลกระทบสำหรับกฎตามหมวดหมู่ mod_type คือ additional, include หรือ "
+"exclude; assign_for คือ item, children หรือ both "
+"โดยมีผลตามสิทธิ์การดำเนินการ ออบเจ็กต์ และรายการสืบทอดของเนทีฟ "
+"กฎที่ไม่ระบุจะคงเดิม ต้องเปลี่ยนกฎที่สืบทอดมาจากต้นทาง dry_run "
+"จะไม่เขียนข้อมูล ขอบเขตขนาดใหญ่ให้ใช้การดูแลระบบเนทีฟ"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions teaser settings"
-msgstr "การตั้งค่า teaser ของ Permissions"
+msgstr "การตั้งค่าสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions module activation"
-msgstr "การเปิดใช้งานโมดูล Permissions"
+msgstr "เอกสารสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:77
 msgid ""
@@ -1412,12 +1430,12 @@ msgid ""
 "revision. Rich text uses native sanitization. Redirect destinations require "
 "object permissions. dry_run saves nothing."
 msgstr ""
-"อ่านโหมด teaser แบบเนทีฟ ข้อความ การเปลี่ยนเส้นทาง RSS "
-"และรูปแบบการแจ้งเตือน ละเว้น post_type สำหรับตัวเลือกทั่วโลก; "
-"ส่งประเภทโพสต์ที่กรองออกที่ค้นพบสำหรับการตั้งค่าต่อประเภท "
-"ปรับปรุงชื่อทางเลือกแบบเนทีฟที่แน่นอนด้วยประเภท JSON และการปรับปรุง Rich "
-"text ใช้การทำความสะอาดแบบเนทีฟ "
-"จุดหมายการเปลี่ยนเส้นทางต้องการการอนุญาตของวัตถุ dry_run จะไม่บันทึกอะไร."
+"อ่านโหมด teaser ข้อความ การเปลี่ยนเส้นทาง RSS และรูปแบบประกาศของเนทีฟ "
+"ไม่ต้องระบุ post_type สำหรับตัวเลือกส่วนกลาง "
+"หากต้องการการตั้งค่าแยกตามประเภท ให้ส่ง post type "
+"ที่ผ่านการกรองและค้นพบแล้ว แพตช์ชื่อตัวเลือกเนทีฟที่ตรงตามจริงพร้อมประเภท "
+"JSON และ revision ข้อความที่จัดรูปแบบจะผ่านการทำความสะอาดตามระบบเนทีฟ "
+"ปลายทางการเปลี่ยนเส้นทางต้องมีสิทธิ์ของออบเจ็กต์ dry_run จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:78
 msgid ""
@@ -1427,16 +1445,16 @@ msgid ""
 "request. Network changes require network administration. dry_run saves "
 "nothing."
 msgstr ""
-"ค้นพบโมดูลแบบเนทีฟที่ติดตั้ง จำเป็นต้องใช้ และใช้งานอยู่ "
-"ปรับปรุงแถวโมดูล/เปิดใช้งานที่ชัดเจนด้วยการปรับปรุงปัจจุบัน "
-"โมดูลที่จำเป็นไม่สามารถถูกปิดใช้งานได้ ฮุกวงจรชีวิตแบบเนทีฟทำงานอยู่; "
-"การเปลี่ยนแปลงการเปิดใช้งานจะโหลดในคำขอถัดไป "
-"การเปลี่ยนแปลงเครือข่ายต้องการการบริหารจัดการเครือข่าย dry_run "
-"จะไม่บันทึกอะไร."
+"ค้นหาโมดูลเนทีฟที่ติดตั้ง จำเป็นต้องใช้ และกำลังใช้งาน แพตช์แถว "
+"module/enabled ที่ระบุไว้อย่างชัดเจนพร้อม revision ปัจจุบัน "
+"ไม่สามารถปิดใช้โมดูลที่จำเป็นได้ ระบบจะเรียกใช้ lifecycle hooks ของเนทีฟ "
+"การเปลี่ยนแปลงการเปิดใช้งานจะมีผลในคำขอถัดไป "
+"การเปลี่ยนแปลงเครือข่ายต้องใช้การดูแลระบบเครือข่าย dry_run จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:84
+#, fuzzy
 msgid "Delete a custom permission group"
-msgstr "ลบกลุ่มการอนุญาตแบบกำหนดเอง"
+msgstr "ลบกลุ่มสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:85
 msgid ""
@@ -1446,16 +1464,16 @@ msgid ""
 "deleting. Unknown or oversized permission scopes require native "
 "administration."
 msgstr ""
-"อ่าน get-group-deletion "
-"สำหรับขอบเขตการลบแบบเนทีฟทั้งหมดและการปรับปรุงเท่านั้น "
-"กลุ่มแบบกำหนดเองเท่านั้นที่สามารถถูกลบได้ สมาชิกทั้งหมด บทบาท กฎ "
-"และเป้าหมายการอนุญาตที่สืบทอดจะถูกตรวจสอบก่อนการทำความสะอาด dry_run "
-"แสดงตัวอย่างโดยไม่ลบ "
-"ขอบเขตการอนุญาตที่ไม่รู้จักหรือใหญ่เกินไปต้องการการบริหารจัดการแบบเนทีฟ."
+"อ่าน get-group-deletion เพื่อดูขอบเขตการลบเนทีฟทั้งหมดและ revision "
+"ลบได้เฉพาะกลุ่มแบบกำหนดเองเท่านั้น ระบบจะตรวจสอบสมาชิก บทบาท กฎ "
+"และเป้าหมายสิทธิ์ที่สืบทอดมาทั้งหมดก่อนล้างข้อมูล dry_run "
+"จะแสดงตัวอย่างโดยไม่ลบ "
+"ขอบเขตสิทธิ์ที่ไม่รู้จักหรือมีขนาดใหญ่เกินไปต้องใช้การดูแลระบบเนทีฟ"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:90
+#, fuzzy
 msgid "Permissions Role Usage"
-msgstr "การใช้งานบทบาท Permissions"
+msgstr "การใช้งานสิทธิ์ตามบทบาท"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:91
 msgid ""
@@ -1465,16 +1483,16 @@ msgid ""
 "assignments must be removed before changing an assigned role "
 "interpretation. dry_run saves nothing."
 msgstr ""
-"อ่านตัวเลือกการใช้งานบทบาทแบบเนทีฟ: 0 (ไม่มีการมอบหมายเสริม), pattern, หรือ "
-"direct ปรับปรุงบทบาทที่ค้นพบด้วยการปรับปรุงปัจจุบัน "
-"บทบาทที่ถูกละเว้นยังคงไม่เปลี่ยนแปลง "
-"บทบาทระดับผู้ดูแลระบบไม่สามารถเปิดใช้งานได้ "
-"การมอบหมายที่มีอยู่ต้องถูกลบออกก่อนที่จะเปลี่ยนการตีความบทบาทที่มอบหมาย "
-"dry_run จะไม่บันทึกอะไร."
+"อ่านตัวเลือก Role Usage ของเนทีฟ: 0 (ไม่มีการกำหนดบทบาทเสริม), pattern หรือ "
+"direct แพตช์บทบาทที่ค้นพบพร้อม revision ปัจจุบัน บทบาทที่ไม่ระบุจะคงเดิม "
+"ไม่สามารถเปิดใช้บทบาทระดับผู้ดูแลระบบได้ "
+"ต้องนำการกำหนดบทบาทที่มีอยู่ออกก่อนเปลี่ยนการตีความบทบาทที่ถูกกำหนดแล้ว "
+"dry_run จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:96
+#, fuzzy
 msgid "Permissions content visibility shortcode"
-msgstr "shortcode การมองเห็นเนื้อหา Permissions"
+msgstr "ปิดใช้งานหน้าจอสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:97
 msgid ""
@@ -1484,16 +1502,17 @@ msgid ""
 "saves a post. Use native content-editing tools with object permissions to "
 "place its result. Nested visibility shortcodes require native editing."
 msgstr ""
-"ค้นพบหรือสร้าง shortcode แบบเนทีฟ pp_restrict "
-"ด้วยเงื่อนไขที่ระบุการเข้าสู่ระบบ/ออกจากระบบ บทบาท ความสามารถ ชื่อผู้ใช้ "
-"และกลุ่ม ความสัมพันธ์คือ all หรือ any; hide เป็น JSON boolean "
-"ตัวสร้างจะทำความสะอาด HTML และไม่เคยบันทึกโพสต์ "
-"ใช้เครื่องมือแก้ไขเนื้อหาแบบเนทีฟพร้อมการอนุญาตของวัตถุเพื่อวางผลลัพธ์ของมัน"
-" shortcodes การมองเห็นที่ซ้อนกันต้องการการแก้ไขแบบเนทีฟ."
+"ค้นหาหรือสร้าง shortcode pp_restrict ของเนทีฟ "
+"พร้อมเงื่อนไขที่มีประเภทชัดเจนสำหรับผู้ใช้ที่เข้าสู่ระบบ/ออกจากระบบ บทบาท "
+"ความสามารถ ชื่อผู้ใช้ และกลุ่ม relation คือ all หรือ any; hide เป็นบูลีน "
+"JSON ตัวสร้างจะทำความสะอาด HTML และไม่บันทึกโพสต์ "
+"ใช้เครื่องมือแก้ไขเนื้อหาเนทีฟที่มีสิทธิ์ของออบเจ็กต์เพื่อวางผลลัพธ์ "
+"shortcode สำหรับการแสดงผลซ้อนกันต้องแก้ไขด้วยเครื่องมือเนทีฟ"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:102
+#, fuzzy
 msgid "Permissions editor and screen controls"
-msgstr "ตัวแก้ไขสิทธิ์และการควบคุมหน้าจอ"
+msgstr "เปิดใช้งานหน้าจอสิทธิ์"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:103
 msgid ""
@@ -1504,16 +1523,18 @@ msgid ""
 "settings and post-type capabilities. Omitted controls stay unchanged; "
 "dry_run saves nothing."
 msgstr ""
-"อ่านเมตะบ็อกสิทธิ์ตามประเภทโพสต์แบบดั้งเดิมและสวิตช์หน้าจอสิทธิ์ "
-"รวมถึงชื่อทางเลือกแบบดั้งเดิมและค่าที่จัดเก็บไว้เท่านั้น สตริงแบบดั้งเดิม 0 "
-"เท่านั้นที่ปิดใช้งาน; ค่าที่ขาดหายไปและค่าเก่าจะเปิดใช้งานตามค่าเริ่มต้น "
-"การเขียนต้องการบูลีน JSON, รุ่นปัจจุบัน, "
-"การตั้งค่าแบบดั้งเดิมและความสามารถของประเภทโพสต์ "
-"การควบคุมที่ถูกละเว้นจะไม่เปลี่ยนแปลง; dry_run ไม่บันทึกอะไร"
+"อ่านเมตาบ็อกซ์ Permissions สำหรับ post type แต่ละประเภทของเนทีฟ "
+"และสวิตช์ในหน้าจอ Permissions "
+"รวมถึงชื่อตัวเลือกเนทีฟและค่าที่จัดเก็บอย่างตรงตามจริง มีเพียงสตริงเนทีฟ 0 "
+"เท่านั้นที่ปิดใช้งาน ค่าที่ไม่มีและค่าเดิมจะมีค่าเริ่มต้นเป็นเปิดใช้งาน "
+"การเขียนข้อมูลต้องใช้บูลีน JSON, revision ปัจจุบัน, การตั้งค่าเนทีฟ "
+"และความสามารถของ post type ตัวควบคุมที่ไม่ระบุจะคงเดิม dry_run "
+"จะไม่บันทึกอะไร"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:108
+#, fuzzy
 msgid "Permissions validated batch"
-msgstr "การตรวจสอบสิทธิ์ที่ได้รับการตรวจสอบแล้ว"
+msgstr "ความสามารถในการอนุญาต"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:109
 msgid ""
@@ -1524,18 +1545,18 @@ msgid ""
 "confirmed_items and failed_index and re-read all scopes after a partial "
 "failure."
 msgstr ""
-"จัดเตรียมรายการที่ชัดเจนได้สูงสุด 25 รายการ "
-"โดยแต่ละรายการมีรุ่นปัจจุบันของตนเอง "
-"ทุกรายการจะต้องได้รับการตรวจสอบและอนุญาตก่อนการเขียน; "
-"ขอบเขตสิทธิ์ที่ผิดรูปแบบ, ถูกปฏิเสธ, เก่า "
-"หรือทับซ้อนจะปฏิเสธการแสดงผลทั้งหมด dry_run ไม่เขียนอะไร "
-"การดำเนินการแบบดั้งเดิมไม่ใช่แบบธุรกรรม: ตรวจสอบรายการที่เสร็จสมบูรณ์, "
-"confirmed_items และ failed_index "
-"และอ่านขอบเขตทั้งหมดอีกครั้งหลังจากการล้มเหลวบางส่วน"
+"ระบุรายการอย่างชัดเจนได้สูงสุด 25 รายการ โดยแต่ละรายการต้องมี revision "
+"ปัจจุบันของตนเอง "
+"ระบบจะตรวจสอบความถูกต้องและสิทธิ์ของทุกรายการก่อนเขียนข้อมูล "
+"หากมีขอบเขตสิทธิ์ที่รูปแบบไม่ถูกต้อง ไม่ได้รับอนุญาต ล้าสมัย หรือทับซ้อนกัน "
+"ระบบจะปฏิเสธการแสดงตัวอย่างทั้งหมด dry_run จะไม่เขียนข้อมูล "
+"การดำเนินการเนทีฟไม่ใช่ธุรกรรม: ตรวจสอบ completed, confirmed_items และ "
+"failed_index แล้วอ่านขอบเขตทั้งหมดอีกครั้งหลังเกิดความล้มเหลวบางส่วน"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:112
+#, fuzzy
 msgid "Read explicit permission scopes"
-msgstr "อ่านขอบเขตสิทธิ์ที่ชัดเจน"
+msgstr "บทบาทและสิทธิ์ถูกคัดลอก."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:113
 msgid ""
@@ -1545,61 +1566,63 @@ msgid ""
 "rules; use the normal single-scope getters or smaller batches for larger "
 "inventories."
 msgstr ""
-"อ่านขอบเขตการมอบอำนาจที่ชัดเจนได้สูงสุด 25 ขอบเขตของโพสต์, หมายศัพท์ "
-"หรือกลุ่มแบบกำหนดเองที่ได้รับอนุญาตพร้อมกฎแบบดั้งเดิมและรุ่นแต่ละรายการ "
-"สิ่งนี้ไม่ได้นับวัตถุส่วนตัวหรือตั้งค่าการเข้าถึง ผลลัพธ์ถูกจำกัดไว้ที่ "
-"1,000 กฎ; ใช้ตัวดึงขอบเขตเดี่ยวปกติหรือชุดเล็กสำหรับสินค้าคงคลังที่ใหญ่กว่า"
+"อ่านขอบเขตการมอบสิทธิ์ post, term "
+"หรือกลุ่มแบบกำหนดเองที่ได้รับอนุญาตอย่างชัดเจนได้สูงสุด 25 ขอบเขต "
+"พร้อมกฎเนทีฟและ revision แยกกัน "
+"การดำเนินการนี้จะไม่แจกแจงออบเจ็กต์ส่วนตัวหรือให้สิทธิ์เข้าถึง "
+"ผลลัพธ์จำกัดที่ 1,000 กฎ หากต้องการดูรายการที่มากกว่านี้ "
+"ให้ใช้ตัวอ่านสำหรับขอบเขตเดียวตามปกติหรือแบ่งเป็นชุดย่อย"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:59
 msgid "Enable native Advanced Settings before changing Role Usage."
-msgstr "เปิดใช้งานการตั้งค่าขั้นสูงแบบดั้งเดิมก่อนที่จะเปลี่ยนการใช้งานบทบาท"
+msgstr "เปิดใช้ Advanced Settings ของเนทีฟก่อนเปลี่ยน Role Usage"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:75
 msgid "The native role capabilities cannot be granted by this session."
-msgstr "ความสามารถบทบาทแบบดั้งเดิมไม่สามารถมอบให้โดยเซสชันนี้"
+msgstr "เซสชันนี้ไม่สามารถให้สิทธิ์ความสามารถของบทบาทเนทีฟได้"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:89
 msgid ""
 "Remove existing supplemental assignments before changing this role "
 "interpretation."
-msgstr "ลบการมอบหมายเสริมที่มีอยู่ก่อนที่จะเปลี่ยนการตีความบทบาทนี้"
+msgstr "นำการกำหนดบทบาทเสริมที่มีอยู่ออกก่อนเปลี่ยนการตีความบทบาทนี้"
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:98
 msgid "Native configuration controls Role Usage."
-msgstr "การควบคุมการกำหนดค่าแบบดั้งเดิมควบคุมการใช้งานบทบาท"
+msgstr "การกำหนดค่าเนทีฟควบคุม Role Usage"
 
 #: classes/PublishPress/Permissions/Mcp/Settings.php:146
 msgid "This setting is controlled by native configuration."
-msgstr "การตั้งค่านี้ถูกควบคุมโดยการกำหนดค่าแบบดั้งเดิม"
+msgstr "การตั้งค่านี้ควบคุมโดยการกำหนดค่าเนทีฟ"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:18
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:331
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:337
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Teaser Type"
 msgstr "ประเภททีเซอร์"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:19
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
 msgid "Number of characters to show"
 msgstr "จำนวนตัวอักษรที่จะแสดง"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:20
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Maximum excerpt characters"
 msgstr "จำนวนตัวอักษรบทคัดย่อสูงสุด"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:21
 msgid "Restricted content message"
-msgstr "ข้อความเนื้อหาที่จำกัด"
+msgstr "ข้อความเนื้อหาที่ถูกจำกัด"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:22
 msgid "Restricted link taxonomy"
-msgstr "ลิงก์ประเภทภาษีที่จำกัด"
+msgstr "taxonomy ของลิงก์ที่ถูกจำกัด"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:23
 msgid "Restricted link term"
-msgstr "ลิงก์คำศัพท์ที่จำกัด"
+msgstr "term ของลิงก์ที่ถูกจำกัด"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:198
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:261
@@ -1961,12 +1984,12 @@ msgstr "อัปเดตสิทธิ์"
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:362
 #, php-format
 msgid "Extra Roles %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
-msgstr "บทบาทเพิ่มเติม %1$s(จากบทบาทหลักหรือ %2$สมาชิกกลุ่ม%3$s)%4$s"
+msgstr "บทบาทเพิ่มเติม %1$s(จากบทบาทหลักหรือ %2$sการเป็นสมาชิกกลุ่ม%3$s)%4$s"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:386
 #, php-format
 msgid "Specific Permissions %1$s(from primary role or %2$sgroup membership%3$s)%4$s"
-msgstr "สิทธิการเข้าถึงเฉพาะ %1$s(จากบทบาทหลักหรือ %2$สมาชิกกลุ่ม%3$s)%4$s"
+msgstr "สิทธิ์เฉพาะ %1$s(จากบทบาทหลักหรือ %2$sการเป็นสมาชิกกลุ่ม%3$s)%4$s"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissions.php:399
 msgid "View currently stored user permissions:"
@@ -2125,8 +2148,8 @@ msgstr "ไม่มี"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:397
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:425
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:218
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:288
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:294
 msgid "Post Type"
 msgstr "ประเภทโพสต์"
 
@@ -2197,7 +2220,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:289
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:398
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1141
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:89
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 msgid "Role"
@@ -2311,8 +2334,8 @@ msgstr "เลือกทั้งหมด"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1537
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:649
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:663
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:885
 msgid "Apply"
 msgstr "นำไปใช้"
 
@@ -2826,13 +2849,13 @@ msgid "This item"
 msgstr "รายการนี้"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:226
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #, php-format
 msgid "%1$s permission for %2$s"
 msgstr "%1$s สิทธิ์สำหรับ %2$s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:58
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:116
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:44
 msgid "Roles"
@@ -2847,15 +2870,15 @@ msgid "Agent"
 msgstr "ตัวแทน"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:200
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1178
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1245
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1196
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1263
 #, php-format
 msgid "This %s"
 msgstr "นี้ %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:205
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1177
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1246
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1264
 #, php-format
 msgid "Sub-%s"
 msgstr "ย่อย-%s"
@@ -2962,112 +2985,120 @@ msgstr "ควบคุมว่าใครสามารถสร้างก
 msgid "Control who can submit a revision of all post types in this %s."
 msgstr "ควบคุมว่าใครสามารถส่งการแก้ไขของประเภทโพสต์ทั้งหมดใน %s นี้ได้"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 msgid "Roles & Groups"
 msgstr "บทบาท & กลุ่ม"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles and groups..."
 msgstr "ค้นหาบทบาทและกลุ่ม..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles..."
 msgstr "ค้นหาบทบาท..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Agent types"
 msgstr "ประเภทของตัวแทน"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
 #: classes/PublishPress/Permissions/UI/Groups.php:237
 msgid "Users"
 msgstr "ผู้ใช้"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:612
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:614
 #, php-format
 msgid "Search %s"
 msgstr "ค้นหา %s"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
 msgid "Clear search"
 msgstr "ล้างการค้นหา"
 
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:624
+msgid "Add a permission group"
+msgstr "เพิ่มกลุ่มสิทธิ์"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:625
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:694
+msgid "Search for a group to add"
+msgstr "ค้นหากลุ่มที่จะเพิ่ม"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:709
 msgid "Sort by:"
 msgstr "เรียงตาม:"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:627
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:696
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:641
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:711
 msgid "Name (A-Z)"
 msgstr "ชื่อ (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:697
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
 msgid "Name (Z-A)"
 msgstr "ชื่อ (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:629
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Most Users"
 msgstr "ผู้ใช้มากที่สุด"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:630
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
 msgid "Fewest Users"
 msgstr "ผู้ใช้น้อยที่สุด"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:857
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:654
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:875
 msgid "Select All"
 msgstr "เลือกทั้งหมด"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:860
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:861
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:658
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:878
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:879
 msgid "Bulk Actions"
 msgstr "การดำเนินการแบบกลุ่ม"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:862
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:659
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:880
 msgid "Set to Enabled"
 msgstr "ตั้งค่าเป็นเปิดใช้งาน"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:646
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:863
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:660
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:881
 msgid "Set to Blocked"
 msgstr "ตั้งค่าเป็นถูกบล็อก"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:647
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:864
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:661
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:882
 msgid "Set to Default"
 msgstr "ตั้งค่าเป็นค่าเริ่มต้น"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:652
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:870
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:666
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:888
 msgid "selected"
 msgstr "เลือกแล้ว"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:676
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:691
 msgid "Search and add users"
 msgstr "ค้นหาและเพิ่มผู้ใช้"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:685
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:700
 msgid "Search and add users..."
 msgstr "ค้นหาและเพิ่มผู้ใช้..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:798
 msgid "No role exceptions set"
 msgstr "ไม่มีข้อยกเว้นบทบาทที่ตั้งไว้"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:849
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
 msgid "No specific user permissions. Use the search box to add users."
 msgstr "ไม่มีสิทธิ์ผู้ใช้เฉพาะ ใช้กล่องค้นหาเพื่อเพิ่มผู้ใช้."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:865
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:883
 msgid "Remove Selected"
 msgstr "ลบที่เลือก"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:91
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
 #: classes/PublishPress/Permissions/UI/Groups.php:266
@@ -3075,32 +3106,33 @@ msgstr "ลบที่เลือก"
 msgid "Login State"
 msgstr "สถานะการเข้าสู่ระบบ"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:90
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Group"
 msgstr "กลุ่ม"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1249
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1267
 msgid "Sub-Sections"
 msgstr "หมวดย่อย"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1248
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
 msgid "This Section"
 msgstr "ส่วนนี้"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1224
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1288
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1242
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1310
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:92
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
 msgid "Remove custom permissions for user"
 msgstr "ลบสิทธิ์ที่กำหนดเองสำหรับผู้ใช้"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1299
 #, php-format
 msgid "%s permission"
 msgstr "%s สิทธิ์"
@@ -3487,8 +3519,8 @@ msgstr "ชื่อ"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:105
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:176
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:673
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:726
 msgid "Description"
 msgstr "คำอธิบาย"
 
@@ -3630,8 +3662,9 @@ msgid ""
 "you are not permitted to assign them. Other authorized changes may have "
 "been saved."
 msgstr ""
-"สิทธิ์บางอย่างที่ร้องขอไม่ถูกบันทึกเพราะไม่มีให้ใช้งานหรือคุณไม่ได้รับอนุญาต"
-"ให้มอบหมายพวกเขา การเปลี่ยนแปลงที่ได้รับอนุญาตอื่น ๆ อาจได้รับการบันทึกแล้ว"
+"ไม่ได้บันทึกสิทธิ์บางรายการที่ร้องขอ "
+"เนื่องจากไม่มีให้ใช้งานหรือคุณไม่ได้รับอนุญาตให้กำหนดสิทธิ์เหล่านั้น "
+"การเปลี่ยนแปลงอื่นที่ได้รับอนุญาตอาจได้รับการบันทึกแล้ว"
 
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:403
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:410
@@ -4678,7 +4711,7 @@ msgstr "กำหนดสิทธิในการเผยแพร่แย
 msgid "Limit user editing capabilities by role level"
 msgstr "จำกัดความสามารถในการแก้ไขผู้ใช้ตามระดับบทบาท"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:232
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:234
 msgid ""
 "note: Plugin settings and configuration data will be deleted, but only "
 "after the last copy of Permissions / Permissions Pro is deleted."
@@ -4686,31 +4719,31 @@ msgstr ""
 "หมายเหตุ: การตั้งค่าและข้อมูลการกำหนดค่าของปลั๊กอินจะถูกลบ "
 "แต่จะลบเฉพาะหลังจากสำเนาสุดท้ายของ Permissions / Permissions Pro ถูกลบ"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:280
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
 msgid "The following would revert to default settings:"
 msgstr "ต่อไปนี้จะกลับไปที่การตั้งค่าเริ่มต้น:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:284
 msgid "The following would change from defaults to previously stored settings:"
 msgstr "ต่อไปนี้จะเปลี่ยนจากค่าเริ่มต้นเป็นการตั้งค่าที่บันทึกไว้ก่อนหน้านี้:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "no Page Parent filter"
 msgstr "ไม่มีการกรองหน้าหลัก"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Authors, Editors and Administrators"
 msgstr "ผู้เขียน, บรรณาธิการ และผู้ดูแลหน้า"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Editors and Administrators"
 msgstr "บรรณาธิการหน้า และผู้ดูแล"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Administrators"
 msgstr "ผู้ดูแล"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:352
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:354
 msgid ""
 "When saving a post, if the default term is not selectable, substitute first "
 "available."
@@ -4718,11 +4751,11 @@ msgstr ""
 "เมื่อบันทึกโพสต์ หากเงื่อนไขเริ่มต้นไม่สามารถเลือกได้ "
 "ให้แทนที่ด้วยเงื่อนไขแรกที่มี"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:353
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:355
 msgid "Some term-limited editing configurations require this."
 msgstr "การตั้งค่าการแก้ไขที่มีข้อจำกัดบางอย่างต้องการสิ่งนี้"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:360
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:362
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with a WordPress role editor like "
@@ -4733,7 +4766,7 @@ msgstr ""
 "คุณสามารถจัดการสิ่งนี้ได้ด้วยตัวแก้ไขบทบาทของ WordPress เช่น PublishPress "
 "Capabilities"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:366
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with Capabilities > Capabilities "
@@ -4743,7 +4776,7 @@ msgstr ""
 "เว้นแต่พวกเขาจะมีความสามารถในการแก้ไขแท็ก คุณสามารถจัดการสิ่งนี้ได้ด้วย "
 "Capabilities > Capabilities > Taxonomies สำหรับบทบาทใด ๆ"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:369
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:371
 msgid ""
 "Display all permission operations in a single metabox with tabs (modern "
 "UI). When disabled, each operation has a separate metabox (legacy UI)."
@@ -4751,42 +4784,42 @@ msgstr ""
 "แสดงการดำเนินการสิทธิ์ทั้งหมดในกล่องเมตาเดียวพร้อมแท็บ (UI สมัยใหม่) "
 "เมื่อปิดการใช้งาน แต่ละการดำเนินการจะมีกล่องเมตาแยกต่างหาก (UI เก่า)"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:412
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:414
 #, php-format
 msgid "%sPosts / Pages Listing:%s %s"
 msgstr "%sโพสต์ / รายการหน้า:%s %s"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:509
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:511
 msgid "User editing capabilities apply for"
 msgstr "ความสามารถในการแก้ไขของผู้ใช้ใช้สำหรับ"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "equal or lower role levels"
 msgstr "ระดับบทบาทที่เท่ากันหรือต่ำกว่า"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "lower role levels"
 msgstr "ระดับบทบาทที่ต่ำกว่า"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:565
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:567
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr "ในการควบคุมวิธีการที่บทบาทพิเศษถูกนำไปใช้ ดูที่ %1$sการใช้งานบทบาท%2$s"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:669
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
 msgid "Defined Constant"
 msgstr "ค่าคงที่ที่กำหนด"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:670
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:723
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:672
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:725
 msgid "Setting"
 msgstr "การตั้งค่า"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:722
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
 msgid "Available Constant"
 msgstr "ค่าคงที่ที่มีอยู่"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:800
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:802
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4798,11 +4831,11 @@ msgstr ""
 "<strong>functions.php</strong> ของธีมของคุณ "
 "(หรือไฟล์อื่นใดที่ทำงานอยู่เสมอและไม่อัปเดตโดยอัตโนมัติ) และแก้ไขตามต้องการ:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:803
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:805
 msgid "Default settings code"
 msgstr "รหัสการตั้งค่าเริ่มต้น"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:820
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:822
 msgid ""
 "To force the value of one or more settings network-wide, "
 "<strong>copy</strong> the following code into your theme's "
@@ -4814,11 +4847,11 @@ msgstr ""
 "<strong>functions.php</strong> ของธีมของคุณ "
 "(หรือไฟล์อื่นใดที่ทำงานอยู่เสมอและไม่อัปเดตโดยอัตโนมัติ) และแก้ไขตามต้องการ:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:823
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:825
 msgid "Forced settings code"
 msgstr "รหัสการตั้งค่าที่บังคับ"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:854
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:856
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4826,7 +4859,7 @@ msgstr ""
 "การตั้งค่าทั้งหมดในแบบฟอร์มนี้ (รวมถึงที่อยู่ในแท็บที่ไม่แสดง) "
 "จะถูกรีเซ็ตเป็นค่าเริ่มต้น คุณแน่ใจหรือไม่?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:857
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:859
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:97
 msgid "Revert to Defaults"
 msgstr "คืนค่าเป็นค่าเริ่มต้น"
@@ -6316,7 +6349,7 @@ msgid "Hide for Custom Visibility"
 msgstr "ซ่อนสำหรับการมองเห็นแบบกำหนดเอง"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:225
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:510
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:516
 msgid "Featured Image"
 msgstr "ภาพที่โดดเด่น"
 
@@ -6399,7 +6432,7 @@ msgstr "รูปแบบข้อความ"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:613
 msgid "Options will appear here after you enable the Teaser for a post type."
-msgstr "ตัวเลือกจะปรากฏที่นี่หลังจากที่คุณเปิดใช้งาน Teaser สำหรับประเภทโพสต์"
+msgstr "ตัวเลือกจะแสดงที่นี่หลังจากที่คุณเปิดใช้ Teaser สำหรับ post type แล้ว"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:58
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:81
@@ -6410,56 +6443,61 @@ msgstr "เลือกประเภทโพสต์เพื่อตั้
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "เลือกประเภทโพสต์ที่คุณต้องการตั้งค่าการแสดงตัวอย่างสำหรับ。"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:211
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
+msgid "Site Preview"
+msgstr "ตัวอย่างไซต์"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:217
 #, php-format
 msgid "Text Options for %s"
 msgstr "ตัวเลือกข้อความสำหรับ %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
 msgid "No Teaser"
 msgstr "ไม่มีทีเซอร์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
 msgid "Message with no teaser content"
 msgstr "ข้อความที่ไม่มีเนื้อหาตัวอย่าง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
 #, fuzzy
 msgid "Message with post content above Read More link as teaser"
 msgstr "ข้อความที่มีเนื้อหาตัวอย่างก่อนลิงก์อ่านเพิ่มเติม"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
 msgid "Message with Excerpt as teaser content"
 msgstr "ข้อความที่มีเนื้อหาเป็นตอนย่อ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:251
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Message with Excerpt or pre-More as teaser content"
 msgstr "ข้อความที่มีเนื้อหาเป็นตอนย่อหรือตอนก่อนเพิ่มเติม"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:53
 msgid "Message with first X characters of post as teaser content"
 msgstr "ข้อความที่มีตัวอักษร X ตัวแรกของโพสต์เป็นเนื้อหาตัวอย่าง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:54
 msgid "Redirect to another post"
 msgstr "เปลี่ยนเส้นทางไปยังโพสต์อื่น"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "No teaser will be applied"
 msgstr "ไม่มีทีเซอร์จะถูกนำไปใช้"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:264
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:270
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "ไม่แสดงข้อความทีเซอร์ก่อนข้อความผู้ใช้ที่ถูกบล็อก"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:265
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
 msgid ""
 "Show content before the Read More marker. If there is no marker or no "
 "content before it, show only the blocked-user message."
@@ -6468,63 +6506,63 @@ msgstr ""
 "หากไม่มีเครื่องหมายหรือไม่มีเนื้อหาก่อนเครื่องหมาย "
 "แสดงเพียงข้อความที่ถูกบล็อกผู้ใช้."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:266
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:272
 msgid "Use the post excerpt as teaser content"
 msgstr "ใช้ข้อความย่อของโพสต์เป็นเนื้อหาทีเซอร์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:267
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 msgid "Use excerpt or content before More tag"
 msgstr "ใช้ข้อความย่อหรือเนื้อหาก่อนแท็กเพิ่มเติม"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:274
 msgid "Show the first X characters of the post content"
 msgstr "แสดงตัวอักษร X ตัวแรกของเนื้อหาโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:275
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr "เปลี่ยนเส้นทางผู้ใช้ไปยังหน้าอื่นเมื่อพวกเขาพยายามเข้าถึงเนื้อหาที่ถูกจำกัด"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:281
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:287
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "การตั้งค่าทีเซอร์สำหรับ %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "Show only the first"
 msgstr "แสดงแค่ตัวแรก"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Chars"
 msgstr "ตัวอักษร"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:347
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "characters"
 msgstr "ตัวอักษร"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "Max"
 msgstr "สูงสุด"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "characters (leave empty for full excerpt)"
 msgstr "ตัวอักษร (เว้นว่างไว้สำหรับข้อความย่อทั้งหมด)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:423
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "ผู้เยี่ยมชมที่ไม่มีสิทธิ์เข้าถึงจะถูกเปลี่ยนเส้นทางไปที่: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:321
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "ตัวอย่าง %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:445
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6532,70 +6570,66 @@ msgstr ""
 "นี่คือตัวอย่างของเนื้อหาทั้งหมด "
 "ตัวอย่างแสดงสิ่งที่ผู้เข้าชมที่ไม่มีสิทธิ์จะเห็นแทน"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
 msgid "This is a short excerpt from the restricted content."
 msgstr "นี่คือส่วนย่อสั้น ๆ จากเนื้อหาที่ถูกจำกัด"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:462
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
 msgid "Teaser Preview"
 msgstr "ตัวอย่างทีเซอร์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
-msgid "Site Preview"
-msgstr "ตัวอย่างไซต์"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:471
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:472
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:478
 msgid "Preview content"
 msgstr "ดูตัวอย่างเนื้อหา"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Preview device"
 msgstr "อุปกรณ์ตัวอย่าง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:493
 msgid "Desktop"
 msgstr "เดสก์ท็อป"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:496
 msgid "Mobile"
 msgstr "มือถือ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Open full preview in a new tab"
 msgstr "เปิดตัวอย่างเต็มในแท็บใหม่"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:503
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Open full preview"
 msgstr "เปิดตัวอย่างเต็ม"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:517
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Loading the preview from your active theme…"
 msgstr "กำลังโหลดตัวอย่างจากธีมที่ใช้งานอยู่…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:525
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:531
 msgid "Teaser preview from the active theme"
 msgstr "ตัวอย่างทีเซอร์จากธีมที่ใช้งานอยู่"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:535
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:541
 msgid "The theme preview could not be displayed in this frame."
 msgstr "ไม่สามารถแสดงตัวอย่างธีมในกรอบนี้ได้"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:542
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid "Visitor redirected"
 msgstr "ผู้เข้าชมถูกเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:543
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:549
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "เนื้อหาที่ถูกจำกัดจะไม่แสดง ผู้เข้าชมจะถูกส่งไปยังปลายทางที่กำหนดไว้"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:575
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:581
 msgid "Message for Blocked Users"
 msgstr "ข้อความสำหรับผู้ใช้ที่ถูกบล็อก"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:576
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
 msgid ""
 "This message is shown to users who are blocked from viewing the full "
 "content. It is shared across all teaser types."
@@ -6603,21 +6637,21 @@ msgstr ""
 "ข้อความนี้จะแสดงให้ผู้ใช้ที่ถูกบล็อกจากการดูเนื้อหาทั้งหมดเห็น "
 "มันจะแชร์ข้ามประเภททีเซอร์ทั้งหมด."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:56
 msgid "This field is required."
 msgstr "ฟิลด์นี้จำเป็น."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:605
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "แทรกแบบฟอร์มเข้าสู่ระบบโดยใช้ %s[login_form]%s ช็อตโค้ด."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:628
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:634
 msgid "Text Configuration"
 msgstr "การกำหนดค่าข้อความ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:629
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
@@ -6625,84 +6659,84 @@ msgstr ""
 "นอกจาก Teaser และข้อความสำหรับผู้ใช้ที่ถูกบล็อกแล้ว "
 "คุณยังสามารถแสดงข้อความเพิ่มเติมรอบๆ เนื้อหาของคุณได้."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:651
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
 msgid "post title"
 msgstr "ชื่อโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:658
 msgid "post content"
 msgstr "เนื้อหาโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:665
 #, php-format
 msgid "Before %s"
 msgstr "ก่อน %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 #, php-format
 msgid "After %s"
 msgstr "หลัง %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:744
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:750
 msgid "Redirect Settings"
 msgstr "การตั้งค่าเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:761
 msgid "Redirection"
 msgstr "การเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:762
 msgid "Target Post Type"
 msgstr "ประเภทโพสต์เป้าหมาย"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Select Post"
 msgstr "เลือกโพสต์"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Custom URL"
 msgstr "URL ที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:797
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:803
 msgid "Not Logged In:"
 msgstr "ยังไม่ได้เข้าสู่ระบบ:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:811
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
 msgid "No redirect"
 msgstr "ไม่มีการเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:911
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:812
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "Redirect to WordPress login"
 msgstr "เปลี่ยนเส้นทางไปยังการเข้าสู่ระบบของ WordPress"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:912
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to a custom post"
 msgstr "เปลี่ยนเส้นทางไปยังโพสต์ที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:913
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom URL"
 msgstr "เปลี่ยนเส้นทางไปยัง URL ที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:829
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:940
 msgid "Redirect post type"
 msgstr "ประเภทโพสต์เปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:954
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:855
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect page"
 msgstr "หน้าเปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:968
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "This is a custom login page"
 msgstr "นี่คือหน้าล็อกอินที่กำหนดเอง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6710,73 +6744,72 @@ msgstr ""
 "หลังจากผู้ใช้ลงชื่อเข้าใช้ "
 "พวกเขาจะถูกเปลี่ยนเส้นทางกลับไปยังโพสต์ต้นฉบับที่พวกเขากำลังดู."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:866
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:977
 msgid "Redirect URL"
 msgstr "URL เปลี่ยนเส้นทาง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:902
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
 msgid "Logged in Users:"
 msgstr "ผู้ใช้ที่ล็อกอิน:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1024
 msgid "Blocked User Message Style"
 msgstr "รูปแบบข้อความผู้ใช้ที่ถูกบล็อก"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1019
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr "ปรับแต่งลักษณะของข้อความตัวอย่างที่แสดงให้กับผู้ใช้ที่ถูกบล็อก."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1034
 msgid "Background Color"
 msgstr "สีพื้นหลัง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Text Color"
 msgstr "สีข้อความ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1051
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid "Border Color"
 msgstr "สีขอบ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1063
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
 msgid "Border Position"
 msgstr "ตำแหน่งขอบ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
 msgid "Left"
 msgstr "ซ้าย"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1068
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1075
 msgid "Right"
 msgstr "ขวา"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1069
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1076
 msgid "Top"
 msgstr "ด้านบน"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1077
 msgid "Bottom"
 msgstr "ด้านล่าง"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1071
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1078
 msgid "All Sides"
 msgstr "ทุกด้าน"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid "Border Width (px)"
 msgstr "ความกว้างของขอบ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1104
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1111
 msgid "Border Radius (px)"
 msgstr "ความโค้งมุมของขอบ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1117
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1124
 msgid "Font Size (px)"
 msgstr "ขนาดฟอนต์ (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1137
 msgid "Padding (px)"
 msgstr "ระยะห่างภายใน (px)"
 
