@@ -163,16 +163,18 @@ class SettingsTabAdvanced
     {
         $new = [
             'enable' => ['advanced_options', 'delete_settings_on_uninstall'],
+            'post_editor' => ['lock_top_pages', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap'],
+            'front_end' => ['media_search_results', 'regulate_category_archive_page', 'term_counts_unfiltered'],
         ];
 
 
         // Advanced tab (populated here because they do not apply if Editing Permissions module is disabled)
         if ($this->enabled) {
             $additional = [
-                'post_editor'         => ['lock_top_pages', 'page_parent_order', 'page_parent_editable_only', 'auto_assign_available_term', 'create_tag_require_edit_cap', 'use_tabbed_metabox'],
+                'post_editor'         => ['page_parent_order', 'use_tabbed_metabox'],
                 'permissions'         => ['post_blockage_priority', 'suppress_administrator_metagroups', 'publish_exceptions', 'non_admins_set_read_exceptions', 'non_admins_set_edit_exceptions'],
                 'user_management'     => ['new_user_groups_ui', 'display_user_profile_groups', 'display_user_profile_roles', 'display_group_exceptions', 'users_bulk_groups', 'add_author_pages', 'publish_author_pages', 'limit_user_edit_enabled', 'limit_user_edit_by_level', 'user_permissions'],
-                'front_end'           => ['media_search_results', 'anonymous_unfiltered', 'regulate_category_archive_page', 'limit_front_end_term_filtering', 'term_counts_unfiltered', 'strip_private_caption', 'force_nav_menu_filter'],
+                'front_end'           => ['anonymous_unfiltered', 'limit_front_end_term_filtering', 'strip_private_caption', 'force_nav_menu_filter'],
                 'role_integration'    => ['pattern_roles_include_generic_rolecaps', 'dynamic_wp_roles'],
                 'nav_menu_management' => ['admin_nav_menu_partial_editing', 'admin_nav_menu_lock_custom'],
                 'misc'                => ['force_taxonomy_cols', 'users_bulk_groups', 'user_search_by_role', 'display_hints', 'display_extension_hints'],
