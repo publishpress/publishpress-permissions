@@ -140,6 +140,8 @@ class REST
 				}
 			}
 
+            $uses_request_post_id = $this->usesRequestPostId($method, $args, $handlers);
+
 			foreach ( $handlers as $handler ) {
                 if (!is_array($handler['callback']) || !isset($handler['callback'][0])) {
                     continue;
@@ -210,8 +212,10 @@ class REST
                         $this->params['post_type'] = $this->post_type;
                     }
                 
-                    if ( ! $this->post_id = (!empty($args['id'])) ? $args['id'] : 0 ) {
-                        $this->post_id = (!empty($this->params['id'])) ? $this->params['id'] : 0;
+                    if ($uses_request_post_id) {
+                        $this->post_id = (int) ($request->get_param('id') ?? $args['id']);
+                    } else {
+                        $this->post_id = !empty($args['id']) ? $args['id'] : (!empty($this->params['id']) ? $this->params['id'] : 0);
                     }
 
                     // workaround for superfluous post retrieval by Gutenberg on Parent Page query
@@ -399,6 +403,38 @@ class REST
         }
 
         return $args;
+    }
+
+    private function usesRequestPostId($method, $args, $handlers)
+    {
+        if (!in_array($method, ['GET', 'HEAD'], true) || !isset($args['id'])) {
+            return false;
+        }
+
+        $dispatch_method = $method;
+        if ('HEAD' === $method && !array_filter($handlers, static function ($handler) {
+            return !empty($handler['methods']['HEAD']);
+        })) {
+            $dispatch_method = 'GET';
+        }
+
+        foreach ($handlers as $handler) {
+            if (empty($handler['methods'][$dispatch_method])) {
+                continue;
+            }
+
+            $callback = $handler['callback'] ?? null;
+            if (!is_array($callback) || 'get_item' !== ($callback[1] ?? null)
+                || !(($callback[0] ?? null) instanceof \WP_REST_Posts_Controller)
+            ) {
+                return false;
+            }
+
+            $get_item = new \ReflectionMethod($callback[0], 'get_item');
+            return \WP_REST_Posts_Controller::class === $get_item->getDeclaringClass()->getName();
+        }
+
+        return false;
     }
 
     private function isRestController($controller, $allowed_classes)

@@ -3,6 +3,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 [5.0.2] - 19 Nov, 2026
 
 - Added: MCP actions for permission groups, memberships, supplemental roles, group delegation, permission matrices and validated batches, post and term permissions, teaser configuration, module activation, Role Usage and content visibility authoring.
+- Fixed : Security - Incorrect REST authorization allowed bypass of plugin-defined viewing restrictions. Private / unpublished posts were not affected.
 
 [5.0.1] - 17 Nov, 2026
 

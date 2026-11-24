@@ -39,6 +39,8 @@ class CapabilityFilters
         // This filter will not mess with any caps which are not part of a PP role assignment or exception.
         add_filter('user_has_cap', [$this, 'fltUserHasCap'], 99, 3); // apply PP filter last
 
+        add_filter('rest_request_after_callbacks', [$this, 'fltConfirmRestReadable'], 10, 3);
+
         if (defined('PP_DISABLE_CAP_CACHE')) {
             add_action('presspermit_has_post_cap_pre', [$this, 'disableCapCache'], 10, 4);
         }
