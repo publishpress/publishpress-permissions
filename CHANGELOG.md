@@ -1,5 +1,17 @@
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+[5.0.3] - 24 Nov, 2026
+
+- Fixed : Block editor Parent dropdown is empty for non-administrators (REST parent query returns no pages) #2693
+- Fixed : Block Notes hidden from the post's own author while the post is unpublished #2690
+- Fixed : Post editor Permissions metabox renders one select per group and breaks saving on sites with many groups #2696
+- Changed : Teaser Settings - Improve formatting of Blocked User Message Style controls #2651
+- Changed : Teaser Settings - Frame message preview in a "Live Site Preview" frame to clarify context #2650
+- Changed : Tidy up spacing on the "Add Extra Roles" tab #2125
+- Changed : Improve visibility of most significant Advanced settings #2700
+- Security : "Everyone" and "Logged In" Permission restrictions were not applied for new users improperly synchronized with Permissions role membership table.
+- Security : Titles, file names and URLs of files attached to unreadable posts could be discovered. Pro plugin's File Access protection still worked.
+
 [5.0.2] - 19 Nov, 2026
 
 - Added: MCP actions for permission groups, memberships, supplemental roles, group delegation, permission matrices and validated batches, post and term permissions, teaser configuration, module activation, Role Usage and content visibility authoring.
