@@ -55,6 +55,34 @@ class AgentsAjax
 
         $context = PWP::GET_key('pp_context');
         
+        if ('pp_group' === $agent_type && PWP::GET_int('pp_exception_post')) {
+            $post = get_post(PWP::GET_int('pp_exception_post'));
+            $operation = PWP::GET_key('pp_operation');
+            if (!$post || !current_user_can('edit_post', $post->ID)
+                || !$pp_admin->canSetExceptions($operation, $post->post_type, [
+                    'item_id' => $post->ID,
+                    'via_item_type' => $post->post_type,
+                ])
+            ) {
+                wp_die(-1, '', ['response' => 403]);
+            }
+
+            $limit = 20;
+            $page = min(1000, max(1, PWP::GET_int('pp_search_page')));
+            $groups = $pp_groups->getGroups('pp_group', [
+                'search' => $search_str,
+                'skip_meta_types' => 'wp_role',
+                'limit' => $limit + 1,
+                'offset' => ($page - 1) * $limit,
+            ]);
+
+            echo '<span class="pp-search-page" data-more="' . (count($groups) > $limit ? '1' : '0') . '"></span>';
+            foreach (array_slice($groups, 0, $limit) as $group) {
+                echo '<option value="' . esc_attr($group->ID) . '">' . esc_html($group->name) . '</option>';
+            }
+            return;
+        }
+
         if (strpos($topic, ',')) {
             $arr_topic = explode(',', $topic);
             if (isset($arr_topic[1])) {

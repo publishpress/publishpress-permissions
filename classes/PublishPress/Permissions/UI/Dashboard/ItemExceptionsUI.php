@@ -564,7 +564,9 @@ class ItemExceptionsUI
         }
 
         // Check if custom groups exist to determine tab label
-        $has_custom_groups = !empty($this->data->agent_info['pp_group']);
+        $group_picker_post_id = (int) ($args['group_picker_post_id'] ?? 0);
+        $sparse_groups = (bool) $group_picker_post_id;
+        $has_custom_groups = $sparse_groups || !empty($this->data->agent_info['pp_group']);
         $roles_groups_label = $has_custom_groups ? __('Roles & Groups', 'press-permit-core') : __('Roles', 'press-permit-core');
         $search_placeholder = $has_custom_groups ? __('Search roles and groups...', 'press-permit-core') : __('Search roles...', 'press-permit-core');
         $roles_groups_id = "pp-roles-groups-{$op}-{$for_item_type}";
@@ -616,6 +618,18 @@ class ItemExceptionsUI
                     <span class="dashicons dashicons-no-alt" aria-hidden="true"></span>
                 </button>
             </div>
+            <?php if ($sparse_groups) : ?>
+                <div class="pp-search-box pp-search-box-select2">
+                    <select class="pp-user-search-select2"
+                            aria-label="<?php esc_attr_e('Add a permission group', 'press-permit-core'); ?>"
+                            data-placeholder="<?php esc_attr_e('Search for a group to add', 'press-permit-core'); ?>"
+                            data-op="<?php echo esc_attr($op); ?>"
+                            data-for-item-type="<?php echo esc_attr($for_item_type); ?>"
+                            data-agent-type="pp_group"
+                            data-exception-post="<?php echo esc_attr($group_picker_post_id); ?>">
+                    </select>
+                </div>
+            <?php endif; ?>
             <!-- Filter Pills and Sort Controls (combined row) -->
             <div class="pp-permission-filters" data-filter-target="pp-roles-groups-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>">
                 <div class="pp-filter-pills-container">
@@ -657,7 +671,8 @@ class ItemExceptionsUI
                         <!-- WordPress Roles Card -->
                         <?php $this->renderRolesCard($op, $for_item_type, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $metagroup_exclude, $is_auth_metagroup, $item_id); ?>
                         <!-- Custom Groups Card -->
-                        <?php $this->renderGroupsCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin); ?>
+                        <?php $this->renderGroupsCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin, $sparse_groups); ?>
+                        <?php if ($sparse_groups) { $this->renderUserItemTemplate($op, $for_item_type, $hierarchical, $type_obj, true); } ?>
                     </div>
                 </div>
 
@@ -789,7 +804,7 @@ class ItemExceptionsUI
     /**
      * Render Custom Groups card
      */
-    private function renderGroupsCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin)
+    private function renderGroupsCard($op, $for_item_type, $via_item_type, $args, $current_exceptions, $reqd_caps, $hierarchical, $type_obj, $item_id, $pp_admin, $sparse_groups)
     {
         $pp = presspermit();
         
@@ -800,12 +815,15 @@ class ItemExceptionsUI
         // Get member counts for all groups
         $member_counts = [];
         foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
+            if ($sparse_groups && !isset($current_exceptions[$op]['pp_group'][$agent_id])) {
+                continue;
+            }
             $member_counts[$agent_id] = $pp->groups()->getGroupMembers($agent_id, 'pp_group', 'count');
         }
 
         // Populate all groups
         foreach ($this->data->agent_info['pp_group'] as $agent_id => $group) {
-            if (!isset($current_exceptions[$op]['pp_group'][$agent_id])) {
+            if (!$sparse_groups && !isset($current_exceptions[$op]['pp_group'][$agent_id])) {
                 $current_exceptions[$op]['pp_group'][$agent_id] = [];
             }
         }
@@ -1235,7 +1253,7 @@ class ItemExceptionsUI
      * Always rendered regardless of whether the list has items, so JS can
      * always clone a structurally correct item without duplicating PHP logic.
      */
-    private function renderUserItemTemplate($op, $for_item_type, $hierarchical, $type_obj)
+    private function renderUserItemTemplate($op, $for_item_type, $hierarchical, $type_obj, $group = false)
     {
         $mode_label_item = '';
         $mode_label_children = '';
@@ -1251,12 +1269,15 @@ class ItemExceptionsUI
         }
         ?>
         <div class="pp-item-template" aria-hidden="true" style="display:none"
-             data-agent-type="user" data-agent-id="" data-user-count="0" data-item-name="">
+             data-agent-type="<?php echo $group ? 'pp_group' : 'user'; ?>" data-agent-id="" data-user-count="0" data-item-name="">
             <div class="item-checkbox">
-                <input type="checkbox" class="pp-item-checkbox" id="pp-item-template-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" disabled />
+                <input type="checkbox" class="pp-item-checkbox" id="pp-item-template-<?php echo $group ? 'group-' : 'user-'; ?><?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" disabled />
             </div>
             <div class="item-name">
-                <label for="pp-item-template-<?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" title=""></label>
+                <?php if ($group) : ?>
+                    <span class="pp-type-badge pp-type-group"><?php esc_html_e('Group', 'press-permit-core'); ?></span>
+                <?php endif; ?>
+                <label for="pp-item-template-<?php echo $group ? 'group-' : 'user-'; ?><?php echo esc_attr($op); ?>-<?php echo esc_attr($for_item_type); ?>" title=""></label>
             </div>
             <div class="pp-permission-control">
                 <div class="pp-permission-select pp-item-select">
@@ -1272,7 +1293,7 @@ class ItemExceptionsUI
                         <?php endforeach; ?>
                     </select>
                 </div>
-                <?php if ($hierarchical) : ?>
+                <?php if ($hierarchical && (!$group || !apply_filters('presspermit_assign_for_children_locked', false, $for_item_type, ['operation' => $op]))) : ?>
                 <div class="pp-permission-select pp-children-select">
                     <label class="pp-select-label"><?php echo esc_html($mode_label_children); ?></label>
                     <select name="" class="pp-def" aria-label="<?php echo esc_attr(sprintf(__('%s permission', 'press-permit-core'), $mode_label_children)); ?>" autocomplete="off" disabled>
@@ -1285,9 +1306,11 @@ class ItemExceptionsUI
                     </select>
                 </div>
                 <?php endif; ?>
+                <?php if (!$group) : ?>
                 <button type="button" class="pp-delete-item" title="<?php esc_attr_e('Remove custom permissions for user', 'press-permit-core'); ?>">
                     <span class="dashicons dashicons-trash"></span>
                 </button>
+                <?php endif; ?>
             </div>
         </div>
         <?php

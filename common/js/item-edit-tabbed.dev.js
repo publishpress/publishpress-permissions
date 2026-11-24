@@ -632,6 +632,7 @@
             var op = $select.data('op');
             var forItemType = $select.data('for-item-type');
             var agentType = $select.data('agent-type');
+            var groupPicker = agentType === 'pp_group';
             var ajaxUrl = typeof PPAgentSelect !== 'undefined' ? PPAgentSelect.ajaxurl : (typeof ajaxurl !== 'undefined' ? ajaxurl : '');
 
             if (!ajaxUrl) {
@@ -657,6 +658,8 @@
                             pp_agent_type: agentType,
                             pp_topic: op + ':' + forItemType + ':' + agentType,
                             pp_operation: op,
+                            pp_exception_post: $select.data('exception-post') || 0,
+                            pp_search_page: params.page || 1,
                             pp_omit_admins: typeof ppListbox !== 'undefined' ? ppListbox.omit_admins : '0',
                             pp_metagroups: '0'
                         };
@@ -667,6 +670,7 @@
 
                         // Get currently configured users
                         $select.closest('.pp-agent-type-content').find('.pp-permission-list-item').each(function() {
+                            if ($(this).data('agent-type') !== agentType) { return; }
                             var userId = $(this).data('agent-id');
                             if (userId) {
                                 currentValues.push(userId.toString());
@@ -684,7 +688,7 @@
                             }
                         });
 
-                        return { results: options };
+                        return { results: options, pagination: { more: groupPicker && $(data).filter('.pp-search-page').attr('data-more') === '1' } };
                     },
                     cache: true
                 }
@@ -724,9 +728,9 @@
     function addUserToList(userId, userName, op, forItemType, agentType, $select) {
         var $agentContent = $select.closest('.pp-agent-type-content');
         var $list = $agentContent.find('.pp-permission-list');
-        var itemIdAttr = agentType + '-' + userId;
-        var defaultValue = '2'; // Enable by default
-        var cssClass = 'pp-yes2'; // CSS class for enabled state
+        var itemIdAttr = agentType + '-' + userId + '-' + op + '-' + forItemType;
+        var defaultValue = agentType === 'pp_group' ? '' : '2'; // Enable by default
+        var cssClass = agentType === 'pp_group' ? 'pp-def' : 'pp-yes2'; // CSS class for enabled state
 
         // Check if this user already exists in the list (possibly marked as removed)
         var $existingItem = $list.find('.pp-permission-list-item[data-agent-type="' + agentType + '"][data-agent-id="' + userId + '"]');
@@ -785,7 +789,7 @@
 
         // Update item select: assign name, enable, and set to default enabled value
         var $itemSelectEl = $newItem.find('.pp-item-select select');
-        var selectNameItem = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][item][' + userId + ']';
+        var selectNameItem = 'pp_exceptions[' + (forItemType || '(all)') + '][' + op + '][' + agentType + '][item][' + userId + ']';
         $itemSelectEl
             .attr('name', selectNameItem)
             .prop('disabled', false)
@@ -796,7 +800,7 @@
         // Update children select: assign name, enable, reset to no-setting
         var $childrenSelectEl = $newItem.find('.pp-children-select select');
         if ($childrenSelectEl.length) {
-            var selectNameChildren = 'pp_exceptions[' + forItemType + '][' + op + '][' + agentType + '][children][' + userId + ']';
+            var selectNameChildren = 'pp_exceptions[' + (forItemType || '(all)') + '][' + op + '][' + agentType + '][children][' + userId + ']';
             $childrenSelectEl
                 .attr('name', selectNameChildren)
                 .prop('disabled', false)
