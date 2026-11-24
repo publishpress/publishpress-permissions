@@ -67,24 +67,24 @@ class CapabilityFilters
 
         $checking_revision = true;
         try {
-        $revision_id = (int) rvy_detect_post_id();
-        $revision = $revision_id ? get_post($revision_id) : null;
+            $revision_id = (int) rvy_detect_post_id();
+            $revision = $revision_id ? get_post($revision_id) : null;
             if (!$revision
-            || 'draft-revision' !== rvy_in_revision_workflow($revision_id)
-            || (int) $revision->post_author !== (int) $user->ID
-        ) {
-            return $allcaps;
-        }
+                || 'draft-revision' !== rvy_in_revision_workflow($revision_id)
+                || (int) $revision->post_author !== (int) $user->ID
+            ) {
+                return $allcaps;
+            }
 
             $type_obj = get_post_type_object($revision->post_type);
             if (!$type_obj || !in_array($args[0], ['edit_posts', $type_obj->cap->edit_posts], true)) {
                 return $allcaps;
             }
 
-        $parent_id = (int) rvy_post_id($revision_id);
+            $parent_id = (int) rvy_post_id($revision_id);
             if (!$parent_id) {
-            return $allcaps;
-        }
+                return $allcaps;
+            }
 
             // Reuse only completed authorization decisions in the same user/site/object context.
             $cache_key = get_current_blog_id() . ':' . (int) $user->ID . ':' . $revision_id . ':' . $parent_id;
@@ -93,11 +93,11 @@ class CapabilityFilters
                     && current_user_can('read_post', $parent_id);
             }
             if (!$revision_access[$cache_key]) {
-            return $allcaps;
-        }
+                return $allcaps;
+            }
 
-        $allcaps[$args[0]] = true;
-        return $allcaps;
+            $allcaps[$args[0]] = true;
+            return $allcaps;
         } finally {
             // Early returns and exceptions must not suppress later checks.
             $checking_revision = false;
