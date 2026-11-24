@@ -177,6 +177,18 @@ class PostFilters
 			return $clauses;
 		}
 
+        if (defined('REST_REQUEST') && REST_REQUEST && $_wp_query instanceof \WP_Query
+            && is_array($parent_ids = $_wp_query->get('presspermit_parent_picker_ids'))) {
+            global $wpdb;
+
+            $parent_ids = array_filter(array_map('absint', $parent_ids));
+            $clauses['where'] .= $parent_ids
+                ? " AND {$wpdb->posts}.ID IN (" . implode(',', $parent_ids) . ")"
+                : ' AND 1=0';
+
+            return $clauses;
+        }
+
         // REST context controls response fields, not access to the queried objects.
         // Editor and gallery collections need the same permission clauses as view queries.
 
