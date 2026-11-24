@@ -168,7 +168,13 @@ class TeaserProgressiveUI {
                 <?php $this->renderPostTypeSelector('pp_style_options_current_post_type_' . $object_type); ?>
                 <div class="pp-teaser-notice-style-settings">
                     <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
+                    <div class="pp-teaser-preview-frame">
+                        <div class="pp-teaser-preview-browser-bar">
+                            <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+                            <strong><?php esc_html_e('Site Preview', 'press-permit-core'); ?></strong>
+                        </div>
                     <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
+                    </div>
                 </div>
             </div>
             <?php
