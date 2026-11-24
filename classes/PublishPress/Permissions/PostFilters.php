@@ -165,13 +165,13 @@ class PostFilters
 
     public function fltPostsClauses($clauses, $_wp_query = false, $args = [])
     {
+        global $pagenow, $current_user, $wpdb;
+
         if ($preview_id = (int) apply_filters('presspermit_public_preview_post', 0, $_wp_query)) {
-            global $wpdb;
             // The integration validates the token and main query; constrain its grant to one row.
             $clauses['where'] .= $wpdb->prepare(" AND {$wpdb->posts}.ID = %d", $preview_id);
             return $clauses;
         }
-        global $pagenow, $current_user;
 
         if ($this->doing_unfiltered_shortcode) {
 			return $clauses;
@@ -179,7 +179,6 @@ class PostFilters
 
         if (defined('REST_REQUEST') && REST_REQUEST && $_wp_query instanceof \WP_Query
             && is_array($parent_ids = $_wp_query->get('presspermit_parent_picker_ids'))) {
-            global $wpdb;
 
             $parent_ids = array_filter(array_map('absint', $parent_ids));
             $clauses['where'] .= $parent_ids
