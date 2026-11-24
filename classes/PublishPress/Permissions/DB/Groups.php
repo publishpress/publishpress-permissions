@@ -22,6 +22,7 @@ class Groups
             'agent_type' => 'pp_group',
             'ids' => [],
             'include_metagroups' => true,
+            'meta_type' => '',
             'skip_meta_types' => [],
             'or_meta_types' => '',
             'or_meta_types_except' => [],
@@ -36,7 +37,9 @@ class Groups
 
         $where = '';
 
-        if (!$include_metagroups) {
+        if ($meta_type !== '') {
+            $where = $wpdb->prepare(' AND metagroup_type = %s', $meta_type);
+        } elseif (!$include_metagroups) {
             $where = " AND metagroup_type = ''";
         } elseif ($skip_meta_types) {
             $metatype_csv = implode("','", array_map('\PressShack\LibWP::sanitizeEntry', (array)$skip_meta_types));
@@ -62,7 +65,7 @@ class Groups
         if ($search) {
             $searches = [];
             foreach (['group_name', 'group_description'] as $col) {
-                $searches[] = $col . $wpdb->prepare(" LIKE %s", "%$search%");
+                $searches[] = $col . $wpdb->prepare(" LIKE %s", "%" . $wpdb->esc_like($search) . "%");
             }
 
             $where .= 'AND ( ' . implode(' OR ', $searches) . ' )';
@@ -82,7 +85,7 @@ class Groups
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_results(
             "SELECT ID, group_name AS name, group_description, metagroup_type, metagroup_id"
-                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared -- Filters are sanitized above; LIMIT/OFFSET are prepared as integers above.
+                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name, ID" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared -- Filters are sanitized above; LIMIT/OFFSET are prepared as integers above.
             OBJECT_K
         );
 
