@@ -9,8 +9,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-17T17:56:17+00:00\n"
-"PO-Revision-Date: 2026-11-19 18:08+0000\n"
+"POT-Creation-Date: 2026-11-19T17:52:53+00:00\n"
+"PO-Revision-Date: 2026-11-24 22:16+0000\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: press-permit-core\n"
 "Language: tr_TR\n"
@@ -1106,59 +1106,59 @@ msgstr ""
 "Sadece geliştirme kullanımı (ön uçta, 'post_status = 'publish'' ifadesini "
 "filtrelenmiş eşdeğeri ile değiştirmeyin)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:456
+#: classes/PublishPress/Permissions/DB/Groups.php:460
 #: classes/PublishPress/Permissions/PluginUpdated.php:342
 msgid "Logged In"
 msgstr "Giriş Yapıldı"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:458
+#: classes/PublishPress/Permissions/DB/Groups.php:462
 #: classes/PublishPress/Permissions/PluginUpdated.php:335
 msgid "Not Logged In"
 msgstr "Giriş Yapılmadı"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:460
+#: classes/PublishPress/Permissions/DB/Groups.php:464
 #: classes/PublishPress/Permissions/PluginUpdated.php:349
 msgid "Everyone"
 msgstr "Herkes"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 msgid "Change Request Notifications"
 msgstr "Değişiklik Talebi Bildirimleri"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:464
-#: classes/PublishPress/Permissions/DB/Groups.php:479
+#: classes/PublishPress/Permissions/DB/Groups.php:468
+#: classes/PublishPress/Permissions/DB/Groups.php:483
 #: classes/PublishPress/Permissions/PluginUpdated.php:356
 #, fuzzy
 msgid "Submitted Revision Editors"
 msgstr "Gönderilen Revizyon"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 msgid "Scheduled Change Notifications"
 msgstr "Planlanan Değişiklik Bildirimleri"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:468
-#: classes/PublishPress/Permissions/DB/Groups.php:483
+#: classes/PublishPress/Permissions/DB/Groups.php:472
+#: classes/PublishPress/Permissions/DB/Groups.php:487
 #: classes/PublishPress/Permissions/PluginUpdated.php:362
 msgid "Scheduled Revision Monitors"
 msgstr "Planlanan Revizyon İzleyicileri"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:496
+#: classes/PublishPress/Permissions/DB/Groups.php:500
 msgid "Authenticated site users, except for Administrators"
 msgstr "Yönetici hariç, kimlik doğrulanmış site kullanıcıları"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:498
+#: classes/PublishPress/Permissions/DB/Groups.php:502
 #: classes/PublishPress/Permissions/PluginUpdated.php:336
 msgid "Anonymous users (not logged in)"
 msgstr "Anonim kullanıcılar (giriş yapmamış)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:500
+#: classes/PublishPress/Permissions/DB/Groups.php:504
 #: classes/PublishPress/Permissions/PluginUpdated.php:350
 msgid "All users (including anonymous)"
 msgstr "Tüm kullanıcılar (anonim olanlar dahil)"
 
-#: classes/PublishPress/Permissions/DB/Groups.php:505
+#: classes/PublishPress/Permissions/DB/Groups.php:509
 #, php-format
 msgid "All users with the WordPress role of %s"
 msgstr "WordPress rolüne sahip tüm kullanıcılar %s"
@@ -1231,8 +1231,9 @@ msgid "Groups"
 msgstr "Gruplar"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:39
+#, fuzzy
 msgid "You cannot perform this Permissions operation."
-msgstr "Bu İzin işlemini gerçekleştiremiyorsunuz."
+msgstr "Artık için bireysel izinler ayarlayabilirsiniz"
 
 #: classes/PublishPress/Permissions/Mcp/Access.php:49
 msgid "Permissions changed. Read the current values before saving."
@@ -1242,75 +1243,82 @@ msgstr "İzinler değiştirildi. Kaydetmeden önce mevcut değerleri okuyun."
 msgid ""
 "The native operation could not be confirmed. Read the current state before "
 "retrying."
-msgstr "Yerel işlem onaylanamadı. Yeniden denemeden önce mevcut durumu okuyun."
+msgstr ""
+"Yerel işlemin tamamlandığı doğrulanamadı. Yeniden denemeden önce mevcut "
+"durumu okuyun."
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:88
 msgid "Use separate requests for overlapping permission scopes."
-msgstr "Çakışan izin kapsamları için ayrı talepler kullanın."
+msgstr "Çakışan izin kapsamları için ayrı istekler kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/Bulk.php:106
 msgid ""
 "Some native writes may have completed. Read every affected scope before "
 "retrying."
 msgstr ""
-"Bazı yerel yazmalar tamamlanmış olabilir. Yeniden denemeden önce etkilenen "
-"her kapsamı okuyun."
+"Bazı yerel yazma işlemleri tamamlanmış olabilir. Yeniden denemeden önce "
+"etkilenen tüm kapsamları okuyun."
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:93
 msgid "The native control is locked."
-msgstr "Yerel kontrol kilitli."
+msgstr "Yerel denetim kilitli."
 
 #: classes/PublishPress/Permissions/Mcp/ContentTypes.php:108
 msgid "This filtering choice is controlled by native configuration."
-msgstr "Bu filtreleme seçeneği yerel yapılandırma tarafından kontrol ediliyor."
+msgstr "Bu filtreleme seçimi yerel yapılandırma tarafından denetlenir."
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:13
+#, fuzzy
 msgid "Enable Permissions metabox"
-msgstr "İzinler metabox'ını etkinleştir"
+msgstr "İzinler ekranında etkinleştir"
 
 #: classes/PublishPress/Permissions/Mcp/EditorOptions.php:15
+#, fuzzy
 msgid "Include in Permissions screens"
-msgstr "İzinler ekranlarına dahil et"
+msgstr "İzinler ekranında etkinleştir"
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:158
 msgid "Use native administration for permission scopes exceeding 1,000 objects."
-msgstr "1.000 nesneden fazla izin kapsamları için yerel yönetimi kullanın."
+msgstr "1.000 nesneyi aşan izin kapsamları için yerel yönetimi kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:188
 msgid "The affected permission tree is too large."
 msgstr "Etkilenen izin ağacı çok büyük."
 
 #: classes/PublishPress/Permissions/Mcp/Exceptions.php:283
+#, fuzzy
 msgid "This permission mode is disabled by native configuration."
-msgstr "Bu izin modu yerel yapılandırma tarafından devre dışı bırakıldı."
+msgstr "Bu İzin, karşılık gelen bir Kısıtlama nedeniyle gereksizdir."
 
 #: classes/PublishPress/Permissions/Mcp/GroupDeletion.php:38
 msgid "Remove incoming group delegation rules before deleting this group."
-msgstr "Bu grubu silmeden önce gelen grup delege kurallarını kaldırın."
+msgstr "Bu grubu silmeden önce gelen grup yetkilendirme kurallarını kaldırın."
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:91
 msgid "Use native administration for groups with more than 1,000 members."
-msgstr "1.000'den fazla üyesi olan gruplar için yerel yönetimi kullanın."
+msgstr "1.000’den fazla üyesi olan gruplar için yerel yönetimi kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/Groups.php:169
 msgid "Use network administration for network-wide group membership changes."
-msgstr "Ağ genelinde grup üyeliği değişiklikleri için ağ yönetimini kullanın."
+msgstr "Ağ genelindeki grup üyeliği değişiklikleri için ağ yönetimini kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/Input.php:212
 msgid "Invalid input. Use the types and choices returned by discovery."
-msgstr "Geçersiz giriş. Keşif tarafından döndürülen türleri ve seçimleri kullanın."
+msgstr "Geçersiz giriş. Keşif işleminin döndürdüğü türleri ve seçenekleri kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/NativeOptions.php:189
 msgid "This native setting is controlled by configuration:"
-msgstr "Bu yerel ayar yapılandırma tarafından kontrol ediliyor:"
+msgstr "Bu yerel ayar yapılandırma tarafından denetlenir:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:13
+#, fuzzy
 msgid "PublishPress plugin actions."
-msgstr "PublishPress eklenti eylemleri."
+msgstr "PublishPress Permissions eklentisi ayarlarını yönetin."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:26
+#, fuzzy
 msgid "Discover Permissions features"
-msgstr "İzinler özelliklerini keşfet"
+msgstr "Kullanıcı İzinleri Özeti"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:27
 msgid ""
@@ -1318,13 +1326,14 @@ msgid ""
 "requirements. Discovery does not grant access. Credentials and "
 "administrator-level grants are not exposed."
 msgstr ""
-"Aktif yerel modülleri, desteklenen işlemleri ve izin gereksinimlerini "
-"okuyun. Keşif erişim sağlamaz. Kimlik bilgileri ve yönetici düzeyinde "
-"izinler açığa çıkarılmaz."
+"Etkin yerel modülleri, desteklenen işlemleri ve izin gereksinimlerini "
+"okuyun. Keşif erişim izni vermez. Kimlik bilgileri ve yönetici düzeyindeki "
+"izinler gösterilmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:30
+#, fuzzy
 msgid "Permissions settings"
-msgstr "İzin ayarları"
+msgstr "İzin Ayarları"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:31
 msgid ""
@@ -1333,15 +1342,16 @@ msgid ""
 "Omitted options remain unchanged; unknown fields and locked settings are "
 "rejected. dry_run validates without saving."
 msgstr ""
-"Yerel ayar tanımlayıcılarını, kesin JSON türlerini, varsayılanları, "
-"saklanan değerleri ve yamanmadan önceki revizyonu okuyun. Onay kutusu "
-"girdileri JSON boolean olmalıdır. Atlanan seçenekler değişmeden kalır; "
-"bilinmeyen alanlar ve kilitli ayarlar reddedilir. dry_run kaydetmeden "
-"doğrular."
+"Yama uygulamadan önce yerel ayar tanımlayıcılarını, kesin JSON türlerini, "
+"varsayılanları, kayıtlı değerleri ve revizyonu okuyun. Onay kutusu "
+"girişleri JSON boolean değerleri olmalıdır. Atlanan seçenekler değişmeden "
+"kalır; bilinmeyen alanlar ve kilitli ayarlar reddedilir. dry_run "
+"kaydetmeden doğrulama yapar."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:36
+#, fuzzy
 msgid "Permissions post types and taxonomies"
-msgstr "İzinler gönderi türleri ve taksonomileri"
+msgstr "Bu Taksonomiler için izinleri değiştir:"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:37
 msgid ""
@@ -1350,15 +1360,16 @@ msgid ""
 "booleans. Omitted and temporarily unregistered types remain unchanged. "
 "Locked controls cannot be changed. dry_run saves nothing."
 msgstr ""
-"Yerel Genel sekmesi filtreleme seçimlerini ve kilitleri okuyun. Mevcut "
-"revizyonla açık {name, enabled} satırlarını yamalayın. Onay kutusu "
-"değerleri JSON boolean olmalıdır. Atlanan ve geçici olarak kaydedilmeyen "
-"türler değişmeden kalır. Kilitli kontroller değiştirilemez. dry_run hiçbir "
-"şey kaydetmez."
+"Genel sekmesindeki yerel filtreleme seçeneklerini ve kilitleri okuyun. "
+"Geçerli revizyonla açık {name, enabled} satırlarına yama uygulayın. Onay "
+"kutusu değerleri JSON boolean değerleri olmalıdır. Atlanan ve geçici olarak "
+"kaydı kaldırılmış türler değişmeden kalır. Kilitli denetimler "
+"değiştirilemez. dry_run hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:48
+#, fuzzy
 msgid "Permissions groups and members"
-msgstr "İzinler grupları ve üyeleri"
+msgstr "İzin Grubu Üyeliği"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:49
 msgid ""
@@ -1369,16 +1380,18 @@ msgid ""
 "every affected user. Built-in role/metagroups cannot be renamed or joined. "
 "dry_run saves nothing."
 msgstr ""
-"Yerel özel izin gruplarını yönetin. Listeler sayfalandırılır; okumalar "
-"hesap şifrelerini ve e-posta adreslerini hariç tutar. Güncellemelerden önce "
-"get-group'u okuyun ve revizyonunu sağlayın. Üyelik eylemleri açıkça "
-"user_ids ekler veya çıkarır, diğer üyeleri ve mevcut takvimleri korur ve "
-"her etkilenen kullanıcı için edit_user gerektirir. Yerleşik rol/metagruplar "
-"yeniden adlandırılamaz veya katılamaz. dry_run hiçbir şey kaydetmez."
+"Yerel özel izin gruplarını yönetin. Listeler sayfalandırılır; okuma "
+"işlemleri hesap parolalarını ve e-posta adreslerini içermez. Güncellemeden "
+"önce get-group sonucunu okuyun ve revizyonunu sağlayın. Üyelik işlemleri "
+"user_ids değerlerini açıkça ekler veya kaldırır, diğer üyeleri ve mevcut "
+"zamanlamaları korur ve etkilenen her kullanıcı için edit_user gerektirir. "
+"Yerleşik roller/metagrup’lar yeniden adlandırılamaz veya bunlara katılım "
+"sağlanamaz. dry_run hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:53
+#, fuzzy
 msgid "Permissions supplemental roles"
-msgstr "İzinler tamamlayıcı rolleri"
+msgstr "İzinler Belgeleri"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:54
 msgid ""
@@ -1392,15 +1405,21 @@ msgid ""
 "object-type permissions apply. Administrator-level capabilities are "
 "rejected even for administrator sessions. dry_run saves nothing."
 msgstr ""
-"Bir kullanıcı, özel grup veya WordPress rol metagrupları için tamamlayıcı "
-"rolleri okuyun. Değişiklikler açık {role, enabled} yamaları ile mevcut bir "
-"revizyondur; diğer roller değişmeden kalır. Yönetici düzeyi rolleri "
-"etkinleştirilemez. Mevcut atamalar, atanan bir rol yorumunu değiştirmeden "
-"önce kaldırılmalıdır. dry_run hiçbir şey kaydetmez."
+"Bir kullanıcı, özel grup veya WordPress rol metagrubu için ek rolleri "
+"okuyun. Değişiklikler, geçerli revizyonla yapılan açık {role, enabled} "
+"yamalarıdır; diğer roller değişmeden kalır. Doğrudan izinler, keşfedilmiş "
+"yerel direct_roles adını kullanır, promote_users gerektirir ve yönetici "
+"düzeyindeki yetenekleri reddeder. Diğer izinler, base:post:post_type veya "
+"base:term:taxonomy biçiminde keşfedilmiş bir pattern rolü kullanır; durum "
+"kapsamları, yerel etkin bir durumla birlikte "
+"base:post:post_type:post_status:status biçimini kullanır. Yerel nesne türü "
+"izinleri geçerlidir. Yönetici oturumlarında bile yönetici düzeyindeki "
+"yetenekler reddedilir. dry_run hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:59
+#, fuzzy
 msgid "Permissions for posts and terms"
-msgstr "Gönderiler ve terimler için izinler"
+msgstr "Seçilen ve alt-terimler için Ata"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:60
 msgid ""
@@ -1417,26 +1436,28 @@ msgid ""
 "must be changed at their origin. dry_run writes nothing. Large scopes use "
 "native administration."
 msgstr ""
-"Bir ajan/nesne/işlem kapsamını ve onu eklemeden veya kaldırmadan önceki "
-"revizyonunu okuyun. source=pp_group ve operation=manage ile "
-"assign_for=item, İşbirliği ve Görüntüleme grup izinleri "
-"etkinleştirildiğinde yerel özel grup delege işlemlerini yönetir. Grup "
-"yönetimi, üyelik ve silme yetenekleri gereklidir ve hedef grup silinmeden "
-"önce gelen delege referansları kaldırılmalıdır. source=term, WordPress "
-"terim kimliklerini ve bir taksonomiyi kullanır; post_type, kategori tabanlı "
-"kurallar için etkilenen gönderi türünü seçer. mod_type ek, dahil et veya "
-"hariçtir; assign_for, item, children veya her ikisidir. Yerel işlem, nesne "
-"ve alt nesne izinleri uygulanır. Atlanan kurallar korunur. Miras alınan "
-"kurallar, kökenlerinde değiştirilmelidir. dry_run hiçbir şey yazmaz. Büyük "
-"kapsamlar yerel yönetimi kullanır."
+"Yerel bir izin eklemeden veya kaldırmadan önce bir aracı/nesne/işlem "
+"kapsamını ve revizyonunu okuyun. source=pp_group ve operation=manage ile "
+"assign_for=item, Collaboration ve Display group permissions etkin olduğunda "
+"yerel özel grup yetkilendirmesini yönetir. Grup yönetimi, üyelik ve silme "
+"yetenekleri gereklidir; hedef grup silinmeden önce gelen yetkilendirme "
+"başvuruları kaldırılmalıdır. source=term, WordPress term kimliklerini ve "
+"bir taxonomy kullanır; post_type ise kategori tabanlı kurallar için "
+"etkilenen post type değerini seçer. mod_type additional, include veya "
+"exclude; assign_for ise item, children veya both değeridir. Yerel işlem, "
+"nesne ve alt öğe izinleri geçerlidir. Atlanan kurallar korunur. Devralınan "
+"kurallar kaynaklarında değiştirilmelidir. dry_run hiçbir şey yazmaz. Büyük "
+"kapsamlar için yerel yönetimi kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions teaser settings"
-msgstr "İzinler teaser ayarları"
+msgstr "İzin Ayarları"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:75
+#, fuzzy
 msgid "Permissions module activation"
-msgstr "İzinler modül aktivasyonu"
+msgstr "İzinler Belgeleri"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:77
 msgid ""
@@ -1446,12 +1467,12 @@ msgid ""
 "revision. Rich text uses native sanitization. Redirect destinations require "
 "object permissions. dry_run saves nothing."
 msgstr ""
-"Yerel teaser modlarını, mesajlarını, yönlendirmelerini, RSS ve bildirim "
-"stillerini okuyun. Küresel seçenekler için post_type'u hariç tutun; tür "
-"bazında ayarlar için keşfedilen filtrelenmiş bir gönderi türü geçirin. "
-"Kesin yerel seçenek adlarını JSON türleri ve revizyon ile yamalayın. Zengin "
-"metin yerel sanitizasyon kullanır. Yönlendirme varış noktaları nesne "
-"izinlerini gerektirir. dry_run hiçbir şey kaydetmez."
+"Yerel teaser modlarını, iletileri, yönlendirmeleri, RSS'yi ve bildirim "
+"stillerini okuyun. Genel seçenekler için post_type değerini atlayın; türe "
+"özel ayarlar için keşfedilmiş bir filtrelenmiş post type değeri sağlayın. "
+"Kesin yerel seçenek adlarına, JSON türlerine ve revizyona yama uygulayın. "
+"Zengin metin, yerel temizleme işleminden geçirilir. Yönlendirme hedefleri "
+"nesne izinleri gerektirir. dry_run hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:78
 msgid ""
@@ -1461,15 +1482,16 @@ msgid ""
 "request. Network changes require network administration. dry_run saves "
 "nothing."
 msgstr ""
-"Yüklenmiş, gerekli ve aktif yerel modülleri keşfedin. Açık modül/enable "
-"satırlarını mevcut bir revizyonla yamalayın. Gerekli modüller devre dışı "
-"bırakılamaz. Yerel yaşam döngüsü kancaları çalışır; aktivasyon "
+"Yüklenmiş, gerekli ve etkin yerel modülleri keşfedin. Geçerli revizyonla "
+"açık module/enabled satırlarına yama uygulayın. Gerekli modüller devre dışı "
+"bırakılamaz. Yerel yaşam döngüsü kancaları çalıştırılır; etkinleştirme "
 "değişiklikleri bir sonraki istekte yüklenir. Ağ değişiklikleri ağ yönetimi "
-"gerektirir. dry_run hiçbir şey kaydetmez."
+"gerektirir. dry_run hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:84
+#, fuzzy
 msgid "Delete a custom permission group"
-msgstr "Özel bir izin grubunu sil"
+msgstr "İzin Gruplarını silin."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:85
 msgid ""
@@ -1479,15 +1501,16 @@ msgid ""
 "deleting. Unknown or oversized permission scopes require native "
 "administration."
 msgstr ""
-"Tam yerel silme kapsamı ve revizyon için get-group-deletion'ı okuyun. "
-"Sadece özel gruplar silinebilir. Temizlemeden önce tüm üyeler, roller, "
-"kurallar ve miras alınan izin hedefleri kontrol edilir. dry_run silme "
-"olmadan önizleme yapar. Bilinmeyen veya aşırı boyutlu izin kapsamları yerel "
-"yönetim gerektirir."
+"Yerel silme işleminin kapsamını ve revizyonunu tam olarak görmek için "
+"get-group-deletion sonucunu okuyun. Yalnızca özel gruplar silinebilir. "
+"Temizleme öncesinde tüm üyeler, roller, kurallar ve devralınan izin "
+"hedefleri denetlenir. dry_run silmeden önizleme yapar. Bilinmeyen veya "
+"aşırı büyük izin kapsamları için yerel yönetim gerekir."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:90
+#, fuzzy
 msgid "Permissions Role Usage"
-msgstr "İzinler Rol Kullanımı"
+msgstr "İzinlerin Rol Kullanımı"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:91
 msgid ""
@@ -1497,13 +1520,16 @@ msgid ""
 "assignments must be removed before changing an assigned role "
 "interpretation. dry_run saves nothing."
 msgstr ""
-"Yerel Rol Kullanımı seçimlerini okuyun: 0 (hiçbir tamamlayıcı atama yok), "
-"desen veya doğrudan. Keşfedilen rolleri mevcut bir revizyonla yamalayın; "
-"atlanan roller değişmeden kalır. Yönetici düzeyi roller etkinleştirilemez."
+"Yerel Role Usage seçeneklerini okuyun: 0 (ek atama yok), pattern veya "
+"direct. Keşfedilmiş rollere geçerli revizyonla yama uygulayın; atlanan "
+"roller değişmeden kalır. Yönetici düzeyindeki roller etkinleştirilemez. "
+"Atanmış bir rolün yorumunu değiştirmeden önce mevcut atamalar "
+"kaldırılmalıdır. dry_run hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:96
+#, fuzzy
 msgid "Permissions content visibility shortcode"
-msgstr "İzinler içerik görünürlüğü shortcode'u"
+msgstr "İzinler ekranı devre dışı"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:97
 msgid ""
@@ -1513,16 +1539,17 @@ msgid ""
 "saves a post. Use native content-editing tools with object permissions to "
 "place its result. Nested visibility shortcodes require native editing."
 msgstr ""
-"Yerel pp_restrict shortcode'unu, türlü oturum açmış/çıkmış, rol, "
-"yeterlilik, kullanıcı adı ve grup koşulları ile keşfedin veya oluşturun. "
-"relation tüm veya herhangi biridir; hide bir JSON booleandır. Oluşturucu "
-"HTML'yi temizler ve asla bir gönderi kaydetmez. Sonuç koymak için nesne "
-"izinleri ile yerel içerik düzenleme araçlarını kullanın. İç içe görünürlük "
-"shortcode'ları yerel düzenleme gerektirir."
+"Türlendirilmiş oturum açmış/oturumu kapatmış kullanıcı, rol, yetenek, "
+"kullanıcı adı ve grup koşullarıyla yerel pp_restrict shortcode değerini "
+"keşfedin veya oluşturun. relation all veya any; hide ise JSON boolean "
+"değeridir. Oluşturucu HTML'yi temizler ve hiçbir yazıyı kaydetmez. Sonucu "
+"yerleştirmek için nesne izinlerine sahip yerel içerik düzenleme araçlarını "
+"kullanın. İç içe görünürlük shortcode değerleri yerel düzenleme gerektirir."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:102
+#, fuzzy
 msgid "Permissions editor and screen controls"
-msgstr "İzinler düzenleyici ve ekran kontrolü"
+msgstr "İzinler ekranı etkin"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:103
 msgid ""
@@ -1533,17 +1560,18 @@ msgid ""
 "settings and post-type capabilities. Omitted controls stay unchanged; "
 "dry_run saves nothing."
 msgstr ""
-"Yerel her bir post type için İzinler metabox'ını ve İzinler ekranı "
-"anahtarlarını, bunların tam yerel seçenek adları ve saklanan değerleri ile "
-"birlikte okuyun. Sadece yerel string 0 bunları devre dışı bırakır; mevcut "
-"olmayan ve eski değerler varsayılan olarak etkinleştirilmiştir. Yazma "
-"işlemleri JSON boolean'ları, mevcut revizyon, yerel ayarlar ve post type "
-"yeteneklerini gerektirir. Atlanan kontroller değişmeden kalır; dry_run "
-"hiçbir şey kaydetmez."
+"Kesin yerel seçenek adları ve kayıtlı değerleri de dahil olmak üzere yerel "
+"post type başına Permissions meta kutusunu ve Permissions ekranı "
+"anahtarlarını okuyun. Bunları yalnızca yerel \"0\" dizesi devre dışı "
+"bırakır; eksik ve eski değerler varsayılan olarak etkin kabul edilir. Yazma "
+"işlemleri JSON boolean değerleri, geçerli revizyon, yerel ayarlar ve post "
+"type yetenekleri gerektirir. Atlanan denetimler değişmeden kalır; dry_run "
+"hiçbir şeyi kaydetmez."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:108
+#, fuzzy
 msgid "Permissions validated batch"
-msgstr "İzinler doğrulanmış toplu"
+msgstr "İzin Yetenekleri"
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:109
 msgid ""
@@ -1554,16 +1582,17 @@ msgid ""
 "confirmed_items and failed_index and re-read all scopes after a partial "
 "failure."
 msgstr ""
-"Her biri kendi mevcut revizyonu ile birlikte 25'e kadar açık öğe sağlayın. "
-"Her öğe yazılmadan önce doğrulanır ve yetkilendirilir; biçim bozuk, "
-"reddedilmiş, eski veya örtüşen izin alanları tüm önizlemeyi reddeder. "
-"dry_run hiçbir şey yazmaz. Yerel yürütme işlemli değildir: tamamlanmış, "
-"onaylı öğeleri ve başarısız dizini inceleyin ve kısmi bir hata sonrası tüm "
-"alanları yeniden okuyun."
+"Her biri kendi geçerli revizyonuna sahip en fazla 25 açık öğe sağlayın. "
+"Yazma işlemlerinden önce her öğe doğrulanır ve yetkilendirilir; hatalı, "
+"reddedilmiş, güncelliğini yitirmiş veya çakışan izin kapsamları önizlemenin "
+"tamamını reddeder. dry_run hiçbir şey yazmaz. Yerel yürütme işlemi işlemsel "
+"değildir: completed, confirmed_items ve failed_index değerlerini inceleyin; "
+"kısmi bir hatanın ardından tüm kapsamları yeniden okuyun."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:112
+#, fuzzy
 msgid "Read explicit permission scopes"
-msgstr "Açık izin alanlarını okuyun"
+msgstr "Roller ve İzinler kopyalandı."
 
 #: classes/PublishPress/Permissions/Mcp/Registry.php:113
 msgid ""
@@ -1573,62 +1602,64 @@ msgid ""
 "rules; use the normal single-scope getters or smaller batches for larger "
 "inventories."
 msgstr ""
-"Yerel kuralları ve bireysel revizyonları ile birlikte, 25'e kadar açık "
-"yetkilendirilmiş post, terim veya özel grup delege alanlarını okuyun. Bu, "
-"özel nesneleri sıralamaz veya erişim vermez. Sonuçlar 1,000 kural ile "
-"sınırlıdır; daha büyük envanterler için normal tek alan alıcılarını veya "
-"daha küçük partileri kullanın."
+"Yerel kuralları ve her birinin revizyonlarıyla birlikte, yetkilendirilmiş "
+"en fazla 25 açık yazı, terim veya özel grup yetkilendirme kapsamını okuyun. "
+"Bu işlem özel nesneleri listelemez veya erişim izni vermez. Sonuçlar 1.000 "
+"kuralla sınırlıdır; daha büyük envanterler için normal tek kapsamlı "
+"alıcıları veya daha küçük grupları kullanın."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:59
 msgid "Enable native Advanced Settings before changing Role Usage."
-msgstr "Rol Kullanımını değiştirmeden önce yerel Gelişmiş Ayarları etkinleştirin."
+msgstr ""
+"Role Usage değerini değiştirmeden önce yerel Advanced Settings ayarını "
+"etkinleştirin."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:75
 msgid "The native role capabilities cannot be granted by this session."
-msgstr "Yerel rol yetenekleri bu oturum tarafından verilemez."
+msgstr "Bu oturumla yerel rol yetenekleri verilemez."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:89
 msgid ""
 "Remove existing supplemental assignments before changing this role "
 "interpretation."
-msgstr "Bu rol yorumunu değiştirmeden önce mevcut ek atamaları kaldırın."
+msgstr "Bu rolün yorumunu değiştirmeden önce mevcut ek atamaları kaldırın."
 
 #: classes/PublishPress/Permissions/Mcp/RoleUsage.php:98
 msgid "Native configuration controls Role Usage."
-msgstr "Yerel yapılandırma Rol Kullanımını kontrol eder."
+msgstr "Role Usage, yerel yapılandırma tarafından denetlenir."
 
 #: classes/PublishPress/Permissions/Mcp/Settings.php:146
 msgid "This setting is controlled by native configuration."
-msgstr "Bu ayar yerel yapılandırma tarafından kontrol edilir."
+msgstr "Bu ayar yerel yapılandırma tarafından denetlenir."
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:18
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:46
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:331
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:334
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:337
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:340
 msgid "Teaser Type"
 msgstr "Tanıtım Türü"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:19
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
 msgid "Number of characters to show"
 msgstr "Gösterilecek karakter sayısı"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:20
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Maximum excerpt characters"
 msgstr "Maksimum özet karakterleri"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:21
 msgid "Restricted content message"
-msgstr "Kısıtlı içerik mesajı"
+msgstr "Kısıtlanmış içerik iletisi"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:22
 msgid "Restricted link taxonomy"
-msgstr "Kısıtlı bağlantı taxonomy"
+msgstr "Kısıtlanmış bağlantı taxonomy"
 
 #: classes/PublishPress/Permissions/Mcp/Teaser.php:23
 msgid "Restricted link term"
-msgstr "Kısıtlı bağlantı terimi"
+msgstr "Kısıtlanmış bağlantı terimi"
 
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:198
 #: classes/PublishPress/Permissions/PermissionsAdmin.php:261
@@ -2165,8 +2196,8 @@ msgstr "geçerli değil"
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:282
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:397
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:425
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:218
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:288
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:224
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:294
 msgid "Post Type"
 msgstr "Gönderi Türü"
 
@@ -2238,7 +2269,7 @@ msgstr ""
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:289
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:398
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:723
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1123
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1141
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:89
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:52
 msgid "Role"
@@ -2354,8 +2385,8 @@ msgstr "Tümünü seç"
 
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:767
 #: classes/PublishPress/Permissions/UI/AgentPermissionsUI.php:1537
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:649
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:663
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:885
 msgid "Apply"
 msgstr "Uygula"
 
@@ -2875,13 +2906,13 @@ msgid "This item"
 msgstr "Bu madde"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsRenderUI.php:226
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1190
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1208
 #, php-format
 msgid "%1$s permission for %2$s"
 msgstr "%1$s izni için %2$s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:58
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 #: classes/PublishPress/Permissions/UI/Dashboard/UsersListing.php:116
 #: classes/PublishPress/Permissions/UI/UsersListTable.php:44
 msgid "Roles"
@@ -2896,15 +2927,15 @@ msgid "Agent"
 msgstr "Temsilci"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:200
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1178
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1245
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1196
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1263
 #, php-format
 msgid "This %s"
 msgstr "Bu %s"
 
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:205
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1177
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1246
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1195
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1264
 #, php-format
 msgid "Sub-%s"
 msgstr "Alt-%s"
@@ -3015,114 +3046,122 @@ msgstr ""
 "Bu %s içindeki tüm gönderi türlerinin bir revizyonunu kimin "
 "gönderebileceğini kontrol et."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:568
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:570
 msgid "Roles & Groups"
 msgstr "Roller & Gruplar"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles and groups..."
 msgstr "Roller ve grupları ara..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:569
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:571
 msgid "Search roles..."
 msgstr "Rolleri ara..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:580
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:582
 msgid "Agent types"
 msgstr "Temsilci türleri"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:599
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:601
 #: classes/PublishPress/Permissions/UI/Groups.php:237
 msgid "Users"
 msgstr "Kullanıcılar"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:612
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:614
 #, php-format
 msgid "Search %s"
 msgstr "%s ara"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:615
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:617
 msgid "Clear search"
 msgstr "Aramayı temizle"
 
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:624
+msgid "Add a permission group"
+msgstr "İzin grubu ekle"
+
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:625
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:694
+msgid "Search for a group to add"
+msgstr "Eklemek için bir grup arayın"
+
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:639
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:709
 msgid "Sort by:"
 msgstr "Sırala:"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:627
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:696
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:641
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:711
 msgid "Name (A-Z)"
 msgstr "İsim (A-Z)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:628
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:697
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:642
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:712
 msgid "Name (Z-A)"
 msgstr "İsim (Z-A)"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:629
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
 msgid "Most Users"
 msgstr "En Fazla Kullanıcı"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:630
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
 msgid "Fewest Users"
 msgstr "En Az Kullanıcı"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:640
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:857
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:654
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:875
 msgid "Select All"
 msgstr "Tümünü Seç"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:643
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:644
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:860
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:861
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:657
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:658
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:878
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:879
 msgid "Bulk Actions"
 msgstr "Toplu İşlemler"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:645
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:862
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:659
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:880
 msgid "Set to Enabled"
 msgstr "Etkin olarak ayarla"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:646
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:863
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:660
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:881
 msgid "Set to Blocked"
 msgstr "Engellendi olarak ayarla"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:647
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:864
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:661
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:882
 msgid "Set to Default"
 msgstr "Varsayılan olarak ayarla"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:652
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:870
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:666
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:888
 msgid "selected"
 msgstr "seçildi"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:676
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:691
 msgid "Search and add users"
 msgstr "Kullanıcıları ara ve ekle"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:685
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:700
 msgid "Search and add users..."
 msgstr "Kullanıcıları ara ve ekle..."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:783
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:798
 msgid "No role exceptions set"
 msgstr "Rol istisnası yok"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:849
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:867
 msgid "No specific user permissions. Use the search box to add users."
 msgstr ""
 "Belirli kullanıcı izinleri yok. Kullanıcı eklemek için arama kutusunu "
 "kullanın."
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:865
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:883
 msgid "Remove Selected"
 msgstr "Seçilenleri Kaldır"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1120
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1138
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:91
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:54
 #: classes/PublishPress/Permissions/UI/Groups.php:266
@@ -3130,32 +3169,33 @@ msgstr "Seçilenleri Kaldır"
 msgid "Login State"
 msgstr "Giriş Durumu"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1127
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1145
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:90
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:53
 msgid "Group"
 msgstr "Grup"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1249
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1267
 msgid "Sub-Sections"
 msgstr "Alt Bölümler"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1181
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1248
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1199
 #: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
 msgid "This Section"
 msgstr "Bu Bölüm"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1224
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1288
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1242
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1310
 #: classes/PublishPress/Permissions/UI/Dashboard/PostEdit.php:92
 #: classes/PublishPress/Permissions/UI/Dashboard/TermEdit.php:55
 msgid "Remove custom permissions for user"
 msgstr "Kullanıcı için özel izinleri kaldır"
 
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1266
-#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1278
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1287
+#: classes/PublishPress/Permissions/UI/Dashboard/ItemExceptionsUI.php:1299
 #, php-format
 msgid "%s permission"
 msgstr "%s izni"
@@ -3547,8 +3587,8 @@ msgstr "İsim"
 
 #: classes/PublishPress/Permissions/UI/GroupNew.php:105
 #: classes/PublishPress/Permissions/UI/GroupsListTable.php:176
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:673
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:726
 msgid "Description"
 msgstr "Açıklama"
 
@@ -3694,9 +3734,9 @@ msgid ""
 "you are not permitted to assign them. Other authorized changes may have "
 "been saved."
 msgstr ""
-"Bazı talep edilen izinler, mevcut olmadıkları veya atanmalarına izin "
-"verilmediği için kaydedilmedi. Diğer yetkilendirilmiş değişiklikler "
-"kaydedilmiş olabilir."
+"İstenen izinlerden bazıları kullanılamadığı veya bunları atama izniniz "
+"olmadığı için kaydedilmedi. İzin verilen diğer değişiklikler kaydedilmiş "
+"olabilir."
 
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:403
 #: classes/PublishPress/Permissions/UI/Handlers/AgentEdit.php:410
@@ -4773,7 +4813,7 @@ msgstr "Yayın İzinlerini Düzenleme İzinlerinden ayrı atayın"
 msgid "Limit user editing capabilities by role level"
 msgstr "Kullanıcı düzenleme yeteneklerini rol düzeyine göre sınırlayın"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:232
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:234
 msgid ""
 "note: Plugin settings and configuration data will be deleted, but only "
 "after the last copy of Permissions / Permissions Pro is deleted."
@@ -4781,31 +4821,31 @@ msgstr ""
 "not: Eklenti ayarları ve yapılandırma verileri silinecek, ancak yalnızca "
 "Permissions / Permissions Pro'nun son kopyası silindikten sonra."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:280
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
 msgid "The following would revert to default settings:"
 msgstr "Aşağıdakiler varsayılan ayarlara dönecektir:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:282
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:284
 msgid "The following would change from defaults to previously stored settings:"
 msgstr "Aşağıdakiler varsayılanlardan daha önce kaydedilen ayarlara değişecektir:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "no Page Parent filter"
 msgstr "sayfa üstü filtresi yok"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Authors, Editors and Administrators"
 msgstr "Sayfa Yazarları, Editörler ve Yöneticiler"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Page Editors and Administrators"
 msgstr "Sayfa Editörleri ve Yöneticiler"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:324
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:326
 msgid "Administrators"
 msgstr "Yöneticiler"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:352
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:354
 msgid ""
 "When saving a post, if the default term is not selectable, substitute first "
 "available."
@@ -4813,11 +4853,11 @@ msgstr ""
 "Bir gönderiyi kaydederken, varsayılan terim seçilemiyorsa, ilk mevcut "
 "olanla değiştirin."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:353
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:355
 msgid "Some term-limited editing configurations require this."
 msgstr "Bazı terim sınırlı düzenleme yapılandırmaları bunu gerektirir."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:360
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:362
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with a WordPress role editor like "
@@ -4827,7 +4867,7 @@ msgstr ""
 "gönderi için yeni etiketler oluşturamazlar. Bunu PublishPress Yetenekleri "
 "gibi bir WordPress rol editörü ile yönetebilirsiniz."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:364
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:366
 msgid ""
 "If enabled, users cannot create new tags for a post unless they have the "
 "edit_tags capability. You can manage this with Capabilities > Capabilities "
@@ -4837,7 +4877,7 @@ msgstr ""
 "gönderi için yeni etiketler oluşturamazlar. Bunu Yetenekler > Yetenekler > "
 "Taksonomiler ile herhangi bir rol için yönetebilirsiniz."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:369
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:371
 msgid ""
 "Display all permission operations in a single metabox with tabs (modern "
 "UI). When disabled, each operation has a separate metabox (legacy UI)."
@@ -4846,44 +4886,44 @@ msgstr ""
 "UI). Devre dışı bırakıldığında, her işlem ayrı bir metaboxa sahiptir (eski "
 "UI)."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:412
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:414
 #, php-format
 msgid "%sPosts / Pages Listing:%s %s"
 msgstr "%sGönderiler / Sayfalar Listesi:%s %s"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:509
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:511
 msgid "User editing capabilities apply for"
 msgstr "Kullanıcı düzenleme yetkileri şunlar için geçerlidir"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "equal or lower role levels"
 msgstr "eşit veya daha düşük rol seviyeleri"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:512
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:514
 msgid "lower role levels"
 msgstr "daha düşük rol seviyeleri"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:565
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:567
 #, php-format
 msgid "To control how Extra Roles are applied, see %1$sRole Usage%2$s."
 msgstr ""
 "Ekstra Rollerin nasıl uygulandığını kontrol etmek için %1$sRol "
 "Kullanımı%2$s bakın."
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:669
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:671
 msgid "Defined Constant"
 msgstr "Tanımlı Süreklilik"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:670
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:723
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:672
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:725
 msgid "Setting"
 msgstr "Ayar"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:722
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:724
 msgid "Available Constant"
 msgstr "Mevcut Süreklilik"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:800
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:802
 msgid ""
 "To modify one or more default settings network-wide, <strong>copy</strong> "
 "the following code into your theme's <strong>functions.php</strong> file "
@@ -4895,11 +4935,11 @@ msgstr ""
 "(veya her zaman çalıştırılan ve otomatik olarak güncellenmeyen başka bir "
 "dosyaya) kopyalayın ve istediğiniz gibi değiştirin:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:803
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:805
 msgid "Default settings code"
 msgstr "Varsayılan ayarlar kodu"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:820
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:822
 msgid ""
 "To force the value of one or more settings network-wide, "
 "<strong>copy</strong> the following code into your theme's "
@@ -4911,11 +4951,11 @@ msgstr ""
 "zaman çalıştırılan ve otomatik olarak güncellenmeyen başka bir dosyaya) "
 "kopyalayın ve istediğiniz gibi değiştirin:"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:823
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:825
 msgid "Forced settings code"
 msgstr "Zorunlu ayarlar kodu"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:854
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:856
 msgid ""
 "All settings in this form (including those on undisplayed tabs) will be "
 "reset to DEFAULTS.  Are you sure?"
@@ -4923,7 +4963,7 @@ msgstr ""
 "Bu formdaki tüm ayarlar (gösterilmeyen sekmelerdeki olanlar dahil) DEFAULTS "
 "olarak sıfırlanacaktır. Emin misiniz?"
 
-#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:857
+#: classes/PublishPress/Permissions/UI/SettingsTabAdvanced.php:859
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/RoleUsage.php:97
 msgid "Revert to Defaults"
 msgstr "Varsayılanlara Geri Dön"
@@ -5973,7 +6013,7 @@ msgstr "Başlık:"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:114
 msgid "supported tags are [username] and [userid]"
-msgstr "desteklenen etiketler [kullanıcıadı] ve [kullanıcıid]’dir"
+msgstr "desteklenen etiketler [username] ve [userid]’dir"
 
 #: modules/presspermit-collaboration/classes/Permissions/Collab/UI/Dashboard/Users.php:116
 msgid "Add Pages"
@@ -6438,7 +6478,7 @@ msgid "Hide for Custom Visibility"
 msgstr "Özel Görünürlük için Gizle"
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/PostsTeaser.php:225
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:510
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:516
 msgid "Featured Image"
 msgstr "Öne Çıkan Görsel"
 
@@ -6523,7 +6563,7 @@ msgstr "Mesaj Stili"
 msgid "Options will appear here after you enable the Teaser for a post type."
 msgstr ""
 "Bir post type için Teaser'ı etkinleştirdikten sonra seçenekler burada "
-"görünecektir."
+"görünür."
 
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:58
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:81
@@ -6534,56 +6574,61 @@ msgstr "Yapılandırmak için Gönderi Türü Seçin"
 msgid "Choose which post type you want to configure teaser settings for."
 msgstr "Önizleme ayarlarını yapılandırmak istediğiniz gönderi türünü seçin."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:211
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:174
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:474
+msgid "Site Preview"
+msgstr "Site Önizlemesi"
+
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:217
 #, php-format
 msgid "Text Options for %s"
 msgstr "%s için Metin Seçenekleri"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:241
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:48
 msgid "No Teaser"
 msgstr "Teaser Yok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:242
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:248
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:49
 msgid "Message with no teaser content"
 msgstr "Önizleme içeriği olmayan mesaj"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:243
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:249
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:50
 #, fuzzy
 msgid "Message with post content above Read More link as teaser"
 msgstr "Daha Fazla Oku bağlantısından önceki önizleme içeriği ile mesaj"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:244
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:250
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:51
 msgid "Message with Excerpt as teaser content"
 msgstr "Önizleme içeriği olarak Alıntı ile mesaj"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:245
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:251
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:52
 msgid "Message with Excerpt or pre-More as teaser content"
 msgstr "Önizleme içeriği olarak Alıntı veya Daha Fazla'dan önceki içerikle mesaj"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:246
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:252
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:53
 msgid "Message with first X characters of post as teaser content"
 msgstr "Önizleme içeriği olarak gönderinin ilk X karakteri ile mesaj"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:247
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:253
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserUIBaseTrait.php:54
 msgid "Redirect to another post"
 msgstr "Başka bir gönderiye yönlendir"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:263
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
 msgid "No teaser will be applied"
 msgstr "Hiçbir teaser uygulanmayacak"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:264
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:270
 msgid "Do not show teaser text before the blocked-user message"
 msgstr "Engellenmiş kullanıcı mesajından önce önizleme metnini gösterme"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:265
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:271
 msgid ""
 "Show content before the Read More marker. If there is no marker or no "
 "content before it, show only the blocked-user message."
@@ -6591,65 +6636,65 @@ msgstr ""
 "Okumaya Devam Et işaretinden önceki içeriği gösterin. Eğer işaret yoksa "
 "veya önünde içerik yoksa, yalnızca engellenen kullanıcı mesajını gösterin."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:266
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:272
 msgid "Use the post excerpt as teaser content"
 msgstr "Gönderi alıntısını teaser içeriği olarak kullan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:267
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:273
 msgid "Use excerpt or content before More tag"
 msgstr "Daha Fazla etiketi öncesindeki alıntıyı veya içeriği kullan"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:268
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:274
 msgid "Show the first X characters of the post content"
 msgstr "Gönderi içeriğinin ilk X karakterini göster"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:269
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:275
 msgid "Redirect users to another page when they try to access restricted content"
 msgstr ""
 "Kullanıcıların kısıtlı içeriğe erişmeye çalıştıklarında başka bir sayfaya "
 "yönlendirin"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:281
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:287
 #, php-format
 msgid "Teaser Settings for %s"
 msgstr "%s için Teaser Ayarları"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:345
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
 msgid "Show only the first"
 msgstr "Sadece ilkini göster"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:346
 #: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:352
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:358
 msgid "Chars"
 msgstr "Karakter"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:347
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
 msgid "characters"
 msgstr "karakter"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:351
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:357
 msgid "Max"
 msgstr "Maks"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:353
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:359
 msgid "characters (leave empty for full excerpt)"
 msgstr "karakter (tam alıntı için boş bırakın)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:394
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:400
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:423
 #. translators: %s is a link to the URL visitors without access are redirected to.
 #, php-format
 msgid "Visitors without access are redirected to: %s"
 msgstr "Erişimi olmayan ziyaretçiler şuraya yönlendirilir: %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:436
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:442
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooks.php:321
 #. translators: %s is the singular post type label, such as Post or Page.
 #, php-format
 msgid "A Sample %s"
 msgstr "Bir Örnek %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:439
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:445
 msgid ""
 "This is an example of the full content. The preview shows what a visitor "
 "without permission will see instead."
@@ -6657,70 +6702,66 @@ msgstr ""
 "Bu, tam içeriğin bir örneğidir. Önizleme, izni olmayan bir ziyaretçinin "
 "göreceği şeyi gösterir."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:443
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:449
 msgid "This is a short excerpt from the restricted content."
 msgstr "Bu, kısıtlı içerikten kısa bir alıntıdır."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:462
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
 msgid "Teaser Preview"
 msgstr "Tanıtım Önizlemesi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:468
-msgid "Site Preview"
-msgstr "Site Önizlemesi"
-
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:471
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:472
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:477
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:478
 msgid "Preview content"
 msgstr "İçeriği önizle"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:486
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:492
 msgid "Preview device"
 msgstr "Önizleme cihazı"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:487
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:493
 msgid "Desktop"
 msgstr "Masaüstü"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:490
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:496
 msgid "Mobile"
 msgstr "Mobil"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:499
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:505
 msgid "Open full preview in a new tab"
 msgstr "Tam önizlemeyi yeni bir sekmede aç"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:503
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:509
 msgid "Open full preview"
 msgstr "Tam önizlemeyi aç"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:517
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:523
 msgid "Loading the preview from your active theme…"
 msgstr "Aktif temanızdan önizleme yükleniyor…"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:525
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:531
 msgid "Teaser preview from the active theme"
 msgstr "Aktif temadan tanıtım önizlemesi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:535
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:541
 msgid "The theme preview could not be displayed in this frame."
 msgstr "Tema önizlemesi bu çerçevede gösterilemedi."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:542
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:548
 msgid "Visitor redirected"
 msgstr "Ziyaretçi yönlendirildi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:543
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:549
 msgid ""
 "The restricted content is not shown. The visitor is sent to the configured "
 "destination."
 msgstr "Kısıtlı içerik gösterilmez. Ziyaretçi yapılandırılmış hedefe yönlendirilir."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:575
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:581
 msgid "Message for Blocked Users"
 msgstr "Engellenen Kullanıcılar için Mesaj"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:576
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
 msgid ""
 "This message is shown to users who are blocked from viewing the full "
 "content. It is shared across all teaser types."
@@ -6728,21 +6769,21 @@ msgstr ""
 "Bu mesaj, tam içeriği görüntüleme yetkisi olmayan kullanıcılara gösterilir. "
 "Tüm teaser türlerinde paylaşılır."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:582
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:588
 #: modules/presspermit-teaser/classes/Permissions/TeaserHooksAdmin.php:56
 msgid "This field is required."
 msgstr "Bu alan gereklidir."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:605
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:611
 #, php-format
 msgid "Insert a login form by using %s[login_form]%s shortcode."
 msgstr "%s[login_form]%s kısa kodunu kullanarak bir giriş formu ekleyin."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:628
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:634
 msgid "Text Configuration"
 msgstr "Metin Yapılandırması"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:629
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:635
 msgid ""
 "In addition to the Teaser and the Message for Blocked Users, you can show "
 "extra text around your content."
@@ -6750,84 +6791,84 @@ msgstr ""
 "Engellenen Kullanıcılar için Teaser ve Mesajın yanı sıra, içeriğinizin "
 "etrafında ekstra metin gösterebilirsiniz."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:651
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:657
 msgid "post title"
 msgstr "gönderi başlığı"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:652
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:658
 msgid "post content"
 msgstr "gönderi içeriği"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:659
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:665
 #, php-format
 msgid "Before %s"
 msgstr "Önce %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:660
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:666
 #, php-format
 msgid "After %s"
 msgstr "Sonra %s"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:744
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:750
 msgid "Redirect Settings"
 msgstr "Yeniden Yönlendirme Ayarları"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:755
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:761
 msgid "Redirection"
 msgstr "Yeniden Yönlendirme"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:756
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:762
 msgid "Target Post Type"
 msgstr "Hedef Gönderi Türü"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Select Post"
 msgstr "Gönderi Seç"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:757
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:763
 msgid "Custom URL"
 msgstr "Özel URL"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:797
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:803
 msgid "Not Logged In:"
 msgstr "Giriş Yapmamış:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:805
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:910
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:811
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:916
 msgid "No redirect"
 msgstr "Yeniden yönlendirme yok"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:806
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:911
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:812
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:917
 msgid "Redirect to WordPress login"
 msgstr "WordPress girişine yönlendir"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:807
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:912
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:813
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:918
 msgid "Redirect to a custom post"
 msgstr "Özel bir gönderiye yönlendir"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:808
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:913
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:814
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:919
 msgid "Redirect to a custom URL"
 msgstr "Özel bir URL'ye yönlendir"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:829
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:934
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:835
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:940
 msgid "Redirect post type"
 msgstr "Yönlendirme post tipi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:849
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:954
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:855
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:960
 msgid "Redirect page"
 msgstr "Yönlendirme sayfası"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:968
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:974
 msgid "This is a custom login page"
 msgstr "Bu özel bir giriş sayfasıdır"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:863
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:869
 msgid ""
 "After the user logs in, they will be redirected back to the original post "
 "they were viewing."
@@ -6835,75 +6876,74 @@ msgstr ""
 "Kullanıcı giriş yaptıktan sonra, görüntüledikleri orijinal gönderiye geri "
 "yönlendirilecektir."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:866
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:971
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:872
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:977
 msgid "Redirect URL"
 msgstr "Yönlendirme URL'si"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:902
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:908
 msgid "Logged in Users:"
 msgstr "Giriş Yapmış Kullanıcılar:"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1018
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1024
 msgid "Blocked User Message Style"
 msgstr "Engellenen Kullanıcı Mesajı Stili"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1019
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1025
 msgid "Customize the appearance of teaser message displayed to blocked users."
 msgstr ""
 "Engellenen kullanıcılara gösterilen teaser mesajının görünümünü "
 "özelleştirin."
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1027
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1034
 msgid "Background Color"
 msgstr "Arka Plan Rengi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1039
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1046
 msgid "Text Color"
 msgstr "Yazı Rengi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1051
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1058
 msgid "Border Color"
 msgstr "Sınır Rengi"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1063
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
 msgid "Border Position"
 msgstr "Sınır Pozisyonu"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1067
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1074
 msgid "Left"
 msgstr "Sol"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1068
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1075
 msgid "Right"
 msgstr "Sağ"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1069
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1076
 msgid "Top"
 msgstr "Üst"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1070
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1077
 msgid "Bottom"
 msgstr "Alt"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1071
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1078
 msgid "All Sides"
 msgstr "Tüm Kenarlar"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1091
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1098
 msgid "Border Width (px)"
 msgstr "Sınır Genişliği (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1104
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1111
 msgid "Border Radius (px)"
 msgstr "Sınır Yarıçapı (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1117
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1124
 msgid "Font Size (px)"
 msgstr "Yazı Boyutu (px)"
 
-#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1130
+#: modules/presspermit-teaser/classes/Permissions/Teaser/UI/TeaserProgressiveUI.php:1137
 msgid "Padding (px)"
 msgstr "Dolgular (px)"
 

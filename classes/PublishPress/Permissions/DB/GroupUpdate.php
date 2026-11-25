@@ -30,7 +30,7 @@ class GroupUpdate
 
         $wpdb->members_table = apply_filters('presspermit_use_group_members_table', $wpdb->pp_group_members, $agent_type);
 
-        if (!presspermit()->groups()->getGroup($group_id, $agent_type)) {
+        if (!$group = presspermit()->groups()->getGroup($group_id, $agent_type)) {
             return;
         }
 
@@ -40,7 +40,17 @@ class GroupUpdate
 
         $user_ids = array_map('intval', (array) $user_ids);
         if (!current_user_can('pp_manage_members') && !presspermit()->isUserAdministrator()) {
-            $user_ids = array_diff($user_ids, [get_current_user_id()]);
+            $current_user = wp_get_current_user();
+            // Synchronization can only restore a role WordPress already grants.
+            $sync_current_role = true === ($args['sync_wp_role'] ?? false)
+                && 'pp_group' === $agent_type && 'member' === $member_type
+                && 'wp_role' === $group->metagroup_type
+                && !in_array($group->metagroup_id, ['wp_anon', 'wp_all', 'wp_auth'], true)
+                && in_array($group->metagroup_id, $current_user->roles, true);
+
+            if (!$sync_current_role) {
+                $user_ids = array_diff($user_ids, [$current_user->ID]);
+            }
         }
 
         foreach ($user_ids as $user_id) {

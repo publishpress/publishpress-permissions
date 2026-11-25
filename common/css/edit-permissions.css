@@ -329,6 +329,10 @@ body.permissions_page_presspermit-edit-permissions span.select2 {
     width: 550px;
   }
 }
+#pp_add_role:has(td.pp-select-cond:is([style*="display:none"], [style*="display: none"])) {
+  width: auto;
+  max-width: 100%;
+}
 #pp_add_role .pp-checkbox {
   margin: 3px 0;
 }

@@ -168,7 +168,13 @@ class TeaserProgressiveUI {
                 <?php $this->renderPostTypeSelector('pp_style_options_current_post_type_' . $object_type); ?>
                 <div class="pp-teaser-notice-style-settings">
                     <?php $this->renderTeaserNoticeStyleSettings($object_type); ?>
-                    <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
+                    <div class="pp-teaser-preview-frame">
+                        <div class="pp-teaser-preview-browser-bar">
+                            <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+                            <strong><?php esc_html_e('Site Preview', 'press-permit-core'); ?></strong>
+                        </div>
+                        <div class="pp-teaser-notice-preview"><?php echo wp_kses_post($this->getBlockedMessage($object_type)); ?></div>
+                    </div>
                 </div>
             </div>
             <?php
@@ -1022,121 +1028,123 @@ class TeaserProgressiveUI {
                 </thead>
             </table>
             <div class="pp-teaser-notice-style-fields">
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_bg_color_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Background Color', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="text"
-                                               name="teaser_notice_bg_color[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_bg_color_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($bg_color); ?>"
-                                               class="pp-color-picker"
-                                               data-default-color="#f0f6fc">
-                                    </div>
+                <div class="pp-teaser-notice-colors">
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_bg_color_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Background Color', 'press-permit-core'); ?>
+                        </label>
+                        <input type="text"
+                               name="teaser_notice_bg_color[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_bg_color_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($bg_color); ?>"
+                               class="pp-color-picker"
+                               data-default-color="#f0f6fc">
+                    </div>
 
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_text_color_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Text Color', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="text"
-                                               name="teaser_notice_text_color[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_text_color_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($text_color); ?>"
-                                               class="pp-color-picker"
-                                               data-default-color="#1d2327">
-                                    </div>
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_text_color_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Text Color', 'press-permit-core'); ?>
+                        </label>
+                        <input type="text"
+                               name="teaser_notice_text_color[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_text_color_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($text_color); ?>"
+                               class="pp-color-picker"
+                               data-default-color="#1d2327">
+                    </div>
 
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_border_color_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Border Color', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="text"
-                                               name="teaser_notice_border_color[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_border_color_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($border_color); ?>"
-                                               class="pp-color-picker"
-                                               data-default-color="#0073aa">
-                                    </div>
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_border_color_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Border Color', 'press-permit-core'); ?>
+                        </label>
+                        <input type="text"
+                               name="teaser_notice_border_color[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_border_color_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($border_color); ?>"
+                               class="pp-color-picker"
+                               data-default-color="#0073aa">
+                    </div>
+                </div>
+                <fieldset class="pp-teaser-notice-border">
+                    <legend>
+                        <?php esc_html_e('Border Position', 'press-permit-core'); ?>
+                    </legend>
+                    <?php
+                    $border_position_options = [
+                        'left' => esc_html__('Left', 'press-permit-core'),
+                        'right' => esc_html__('Right', 'press-permit-core'),
+                        'top' => esc_html__('Top', 'press-permit-core'),
+                        'bottom' => esc_html__('Bottom', 'press-permit-core'),
+                        'all' => esc_html__('All Sides', 'press-permit-core'),
+                    ];
+                    ?>
+                    <div class="pp-border-position-group">
+                        <?php foreach ($border_position_options as $position_value => $position_label) : ?>
+                            <label class="pp-border-position-option" title="<?php echo esc_attr($position_label); ?>">
+                                <input type="radio"
+                                       name="teaser_notice_border_position[<?php echo esc_attr($object_type); ?>]"
+                                       value="<?php echo esc_attr($position_value); ?>"
+                                       class="pp-style-input"
+                                    <?php checked($border_position, $position_value); ?>>
+                                <span class="pp-border-position-icon pp-border-position-icon--<?php echo esc_attr($position_value); ?>" aria-hidden="true"></span>
+                                <span class="screen-reader-text"><?php echo esc_html($position_label); ?></span>
+                            </label>
+                        <?php endforeach; ?>
+                    </div>
+                </fieldset>
+                <div class="pp-teaser-notice-dimensions">
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_border_width_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Border Width (px)', 'press-permit-core'); ?>
+                        </label>
+                        <input type="number"
+                               name="teaser_notice_border_width[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_border_width_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($border_width); ?>"
+                               min="0"
+                               max="20"
+                               class="small-text pp-style-input">
+                    </div>
 
-                                    <div class="pp-field-row">
-                                        <label>
-                                            <?php esc_html_e('Border Position', 'press-permit-core'); ?>
-                                        </label>
-                                        <?php
-                                        $border_position_options = [
-                                            'left' => esc_html__('Left', 'press-permit-core'),
-                                            'right' => esc_html__('Right', 'press-permit-core'),
-                                            'top' => esc_html__('Top', 'press-permit-core'),
-                                            'bottom' => esc_html__('Bottom', 'press-permit-core'),
-                                            'all' => esc_html__('All Sides', 'press-permit-core'),
-                                        ];
-                                        ?>
-                                        <div class="pp-border-position-group" role="radiogroup" aria-label="<?php esc_attr_e('Border Position', 'press-permit-core'); ?>">
-                                            <?php foreach ($border_position_options as $position_value => $position_label) : ?>
-                                                <label class="pp-border-position-option" title="<?php echo esc_attr($position_label); ?>">
-                                                    <input type="radio"
-                                                           name="teaser_notice_border_position[<?php echo esc_attr($object_type); ?>]"
-                                                           value="<?php echo esc_attr($position_value); ?>"
-                                                           class="pp-style-input"
-                                                        <?php checked($border_position, $position_value); ?>>
-                                                    <span class="pp-border-position-icon pp-border-position-icon--<?php echo esc_attr($position_value); ?>" aria-hidden="true"></span>
-                                                    <span class="screen-reader-text"><?php echo esc_html($position_label); ?></span>
-                                                </label>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    </div>
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_border_radius_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Border Radius (px)', 'press-permit-core'); ?>
+                        </label>
+                        <input type="number"
+                               name="teaser_notice_border_radius[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_border_radius_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($border_radius); ?>"
+                               min="0"
+                               max="50"
+                               class="small-text pp-style-input">
+                    </div>
 
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_border_width_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Border Width (px)', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="number"
-                                               name="teaser_notice_border_width[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_border_width_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($border_width); ?>"
-                                               min="0"
-                                               max="20"
-                                               class="small-text pp-style-input">
-                                    </div>
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_font_size_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Font Size (px)', 'press-permit-core'); ?>
+                        </label>
+                        <input type="number"
+                               name="teaser_notice_font_size[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_font_size_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($font_size); ?>"
+                               min="10"
+                               max="30"
+                               class="small-text pp-style-input">
+                    </div>
 
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_border_radius_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Border Radius (px)', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="number"
-                                               name="teaser_notice_border_radius[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_border_radius_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($border_radius); ?>"
-                                               min="0"
-                                               max="50"
-                                               class="small-text pp-style-input">
-                                    </div>
-
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_font_size_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Font Size (px)', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="number"
-                                               name="teaser_notice_font_size[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_font_size_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($font_size); ?>"
-                                               min="10"
-                                               max="30"
-                                               class="small-text pp-style-input">
-                                    </div>
-
-                                    <div class="pp-field-row">
-                                        <label for="teaser_notice_padding_<?php echo esc_attr($object_type); ?>">
-                                            <?php esc_html_e('Padding (px)', 'press-permit-core'); ?>
-                                        </label>
-                                        <input type="number"
-                                               name="teaser_notice_padding[<?php echo esc_attr($object_type); ?>]"
-                                               id="teaser_notice_padding_<?php echo esc_attr($object_type); ?>"
-                                               value="<?php echo esc_attr($padding); ?>"
-                                               min="0"
-                                               max="50"
-                                               class="small-text pp-style-input">
-                                    </div>
+                    <div class="pp-field-row">
+                        <label for="teaser_notice_padding_<?php echo esc_attr($object_type); ?>">
+                            <?php esc_html_e('Padding (px)', 'press-permit-core'); ?>
+                        </label>
+                        <input type="number"
+                               name="teaser_notice_padding[<?php echo esc_attr($object_type); ?>]"
+                               id="teaser_notice_padding_<?php echo esc_attr($object_type); ?>"
+                               value="<?php echo esc_attr($padding); ?>"
+                               min="0"
+                               max="50"
+                               class="small-text pp-style-input">
+                    </div>
+                </div>
             </div>
         </div>
         <?php

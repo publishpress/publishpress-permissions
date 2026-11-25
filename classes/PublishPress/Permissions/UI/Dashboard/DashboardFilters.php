@@ -106,11 +106,11 @@ class DashboardFilters
         }
 
         if (in_array($pagenow, ['user-edit.php', 'user-new.php', 'profile.php'])) {
-            wp_enqueue_style('presspermit-edit-permissions', PRESSPERMIT_URLPATH . '/common/css/edit-permissions.css', [], PRESSPERMIT_VERSION);
+            wp_enqueue_style('presspermit-edit-permissions', PRESSPERMIT_URLPATH . '/common/css/edit-permissions.css', [], defined('PRESSPERMIT_PRO_VERSION') ? PRESSPERMIT_PRO_VERSION : PRESSPERMIT_VERSION);
             wp_enqueue_style('presspermit-groups-checklist', PRESSPERMIT_URLPATH . '/common/css/groups-checklist.css', [], PRESSPERMIT_VERSION);
        
         } elseif (in_array($pp_plugin_page, ['presspermit-edit-permissions', 'presspermit-group-new'], true)) {
-            wp_enqueue_style('presspermit-edit-permissions', PRESSPERMIT_URLPATH . '/common/css/edit-permissions.css', [], PRESSPERMIT_VERSION);
+            wp_enqueue_style('presspermit-edit-permissions', PRESSPERMIT_URLPATH . '/common/css/edit-permissions.css', [], defined('PRESSPERMIT_PRO_VERSION') ? PRESSPERMIT_PRO_VERSION : PRESSPERMIT_VERSION);
             wp_enqueue_style('presspermit-groups-checklist', PRESSPERMIT_URLPATH . '/common/css/groups-checklist.css', [], PRESSPERMIT_VERSION);
         } 
         

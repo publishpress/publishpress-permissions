@@ -22,6 +22,7 @@ class Groups
             'agent_type' => 'pp_group',
             'ids' => [],
             'include_metagroups' => true,
+            'meta_type' => '',
             'skip_meta_types' => [],
             'or_meta_types' => '',
             'or_meta_types_except' => [],
@@ -36,7 +37,9 @@ class Groups
 
         $where = '';
 
-        if (!$include_metagroups) {
+        if ($meta_type !== '') {
+            $where = $wpdb->prepare(' AND metagroup_type = %s', $meta_type);
+        } elseif (!$include_metagroups) {
             $where = " AND metagroup_type = ''";
         } elseif ($skip_meta_types) {
             $metatype_csv = implode("','", array_map('\PressShack\LibWP::sanitizeEntry', (array)$skip_meta_types));
@@ -62,7 +65,7 @@ class Groups
         if ($search) {
             $searches = [];
             foreach (['group_name', 'group_description'] as $col) {
-                $searches[] = $col . $wpdb->prepare(" LIKE %s", "%$search%");
+                $searches[] = $col . $wpdb->prepare(" LIKE %s", "%" . $wpdb->esc_like($search) . "%");
             }
 
             $where .= 'AND ( ' . implode(' OR ', $searches) . ' )';
@@ -82,7 +85,7 @@ class Groups
         // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
         $results = $wpdb->get_results(
             "SELECT ID, group_name AS name, group_description, metagroup_type, metagroup_id"
-                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared -- Filters are sanitized above; LIMIT/OFFSET are prepared as integers above.
+                . " FROM $wpdb->groups_table WHERE 1=1 $where ORDER BY group_name, ID" . $limit_clause,  // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQL.NotPrepared -- Filters are sanitized above; LIMIT/OFFSET are prepared as integers above.
             OBJECT_K
         );
 
@@ -261,7 +264,7 @@ class Groups
         foreach (array_keys($add_role_groups) as $role_name) {
             if ($role_group = $pp_groups->getMetagroup('wp_role', $role_name)) {
                 $user_groups[$role_group->ID] = $role_group;
-                $pp_groups->addGroupUser($role_group->ID, $user->ID);
+                $pp_groups->addGroupUser($role_group->ID, $user->ID, ['sync_wp_role' => true]);
             }
         }
 
@@ -363,14 +366,15 @@ class Groups
             $new_items = [];
             $ckey_user = [];
 
+            foreach ((array) $query_user_ids as $queried_user_id) {
+                $queried_user_id = (int) $queried_user_id;
+                $ckey = $queried_user_id . $args_key;
+                $new_items[$ckey] = [];
+                $ckey_user[$ckey] = $queried_user_id;
+            }
+
             foreach ($results as $row) {
                 $ckey = $row->user_id . $args_key;
-                $ckey_user[$ckey] = $user_id;
-
-                if (!isset($new_items[$ckey])) {
-                    $new_items[$ckey] = [];
-                }
-
                 $new_items[$ckey][$row->group_id] = $row;
             }
 
@@ -378,7 +382,7 @@ class Groups
                 $pp = presspermit();
                 $pp_groups = $pp->groups();
 
-                // Add wp_all, wp_anon metagroups to the user's groups implicitly
+                // Add wp_all, wp_auth metagroups to the user's groups implicitly
                 static $all_group;
                 static $auth_group;
 
@@ -404,7 +408,7 @@ class Groups
                         $new_items[$ckey][$all_group->ID] = $all_group;
                     }
 
-                    if ($auth_group && apply_filters('presspermit_is_authenticated_user', true, $ckey_user[$ckey])) {
+                    if ($auth_group && $ckey_user[$ckey] > 0 && apply_filters('presspermit_is_authenticated_user', true, $ckey_user[$ckey])) {
                         $new_items[$ckey][$auth_group->ID] = $auth_group;
                     }
                 }

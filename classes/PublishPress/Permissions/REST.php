@@ -34,6 +34,7 @@ class REST
     {
         add_filter('presspermit_rest_post_cap_requirement', [$this, 'fltRestPostCapRequirement'], 10, 2);
         add_filter('rest_attachment_query', [$this, 'fltRestAttachmentQuery'], 10, 2);
+        add_filter('posts_where', [$this, 'fltRestAttachmentParentWhere'], 10, 2);
 
         foreach (get_taxonomies(['show_in_rest' => true], 'names') as $taxonomy) {
             add_filter("rest_{$taxonomy}_query", [$this, 'fltRestTermQuery'], 10, 2);
@@ -368,7 +369,7 @@ class REST
 
     public function fltRestAttachmentQuery($args, $request)
     {
-        if (!in_array($request->get_method(), [\WP_REST_Server::READABLE, 'GET'], true) || presspermit()->isContentAdministrator()) {
+        if (!in_array($request->get_method(), ['GET', 'HEAD'], true) || presspermit()->isContentAdministrator()) {
             return $args;
         }
 
@@ -383,7 +384,48 @@ class REST
         $args['required_operation'] = 'read';
         $args['presspermit_rest_attachment_query'] = true;
 
+        global $wpdb;
+
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Check each distinct parent only once before paginating attachments.
+        $parent_ids = $wpdb->get_col("SELECT DISTINCT post_parent FROM {$wpdb->posts} WHERE post_type = 'attachment' AND post_parent > 0");
+        if ($wpdb->last_error) {
+            $args['presspermit_rest_attachment_denied_parents'] = false;
+            return $args;
+        }
+
+        $parent_ids = array_map('intval', $parent_ids);
+        if ($parent_ids) {
+            _prime_post_caches($parent_ids, false, false);
+        }
+
+        $denied_parents = [];
+        foreach ($parent_ids as $parent_id) {
+            if (!current_user_can('read_post', $parent_id)) {
+                $denied_parents[] = $parent_id;
+            }
+        }
+        $args['presspermit_rest_attachment_denied_parents'] = $denied_parents;
+
         return $args;
+    }
+
+    public function fltRestAttachmentParentWhere($where, $query)
+    {
+        if (!$query->get('presspermit_rest_attachment_query')) {
+            return $where;
+        }
+
+        global $wpdb;
+        $denied_parents = $query->get('presspermit_rest_attachment_denied_parents');
+        if (false === $denied_parents) {
+            return $where . " AND {$wpdb->posts}.post_parent = 0";
+        }
+
+        if (is_array($denied_parents) && $denied_parents) {
+            $where .= " AND {$wpdb->posts}.post_parent NOT IN (" . implode(',', array_map('intval', $denied_parents)) . ")";
+        }
+
+        return $where;
     }
 
     public function fltRestTermQuery($args, $request)

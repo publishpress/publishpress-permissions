@@ -129,27 +129,17 @@ class ItemExceptionsData
             }
         }
 
-        $_args = [];
-
-        if (!empty($agent_id)) {  // ajax usage
-            $_args['ids'] = (array)$agent_id;
+        if (!empty($agent_id)) {
+            $groups = $pp->groups()->getGroups('pp_group', ['ids' => (array) $agent_id]);
+        } elseif (!empty($args['sparse_groups'])) {
+            $groups = $pp->groups()->getGroups('pp_group', ['meta_type' => 'wp_role']);
+            if (!empty($agents_by_type['pp_group'])) {
+                $groups += $pp->groups()->getGroups('pp_group', ['ids' => $agents_by_type['pp_group']]);
+            }
         } else {
-            if (isset($agents_by_type['pp_group'])) {
-                $args['ids'] = $agents_by_type['pp_group'];
-            } else {
-                // Include all groups except wp_role metagroups. Those will be included by OR clause, possibly excluding some groups.
-                $args['skip_meta_types'] = 'wp_role';
-            }
-
-            // retrieve info for all WP roles regardless of exception storage
-            $args['or_meta_types'] = 'wp_role';
-
-            if ($pp_only_roles = $pp->getOption('supplemental_role_defs')) {
-                $args['or_meta_types_except'] = $pp_only_roles;
-            }
+            $groups = $pp->groups()->getGroups('pp_group');
         }
-
-        $this->agent_info['pp_group'] = $pp->groups()->getGroups('pp_group', $_args);
+        $this->agent_info['pp_group'] = $groups;
 
         $this->agent_info['wp_role'] = [];
 

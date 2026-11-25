@@ -126,13 +126,27 @@ class RESTInit
                 }
             }
 
-            if ($post_id) {
-                if ($current_parent = get_post_field('post_parent', $post_id)) {
+            if ($post_id && current_user_can('edit_post', $post_id)) {
+                if (($current_parent = get_post_field('post_parent', $post_id))
+                    && current_user_can('read_post', $current_parent)) {
                     $include_page_ids []= $current_parent;
                 }
             }
 
-            $args['post__in'] = $include_page_ids;
+            $args['post__in'] = $include_page_ids ?: [0];
+
+            // The picker needs only page labels and hierarchy. Full REST responses
+            // continue through the normal collection permission checks.
+            $fields = wp_parse_list($request->get_param('_fields') ?? '');
+            if (!$is_administrator && 'GET' === $request->get_method()
+                && $fields && !array_diff($fields, ['id', 'title', 'title.rendered', 'parent'])
+                && !presspermit()->getOption('page_parent_editable_only')) {
+                $readable_ids = array_filter($include_page_ids, static function ($id) {
+                    return current_user_can('read_post', $id);
+                });
+                $args['post__in'] = array_values($readable_ids) ?: [0];
+                $args['presspermit_parent_picker_ids'] = $args['post__in'];
+            }
             $args['post_status'] = $post_statuses;
 
             if (defined('PP_PAGE_PARENT_NOPAGING')) {

@@ -260,7 +260,7 @@ class PostEdit
         if (presspermit()->admin()->canSetAnyPostPermissions($typenow)) {
             $this->initItemExceptionsUI();
 
-            $args = ['post_types' => (array)$typenow, 'hierarchical' => is_post_type_hierarchical($typenow)];  // via_src, for_src, via_type, item_id, args
+            $args = ['sparse_groups' => presspermit()->getOption('use_tabbed_metabox'), 'post_types' => (array)$typenow, 'hierarchical' => is_post_type_hierarchical($typenow)];  // via_src, for_src, via_type, item_id, args
             $this->item_exceptions_ui->data->loadExceptions('post', 'post', $typenow, PWP::getPostID(), $args);
         }
     }
@@ -350,7 +350,8 @@ class PostEdit
             'for_item_source' => 'post',
             'for_item_type' => $post_type,
             'via_item_type' => $post_type,
-            'item_id' => $item_id
+            'item_id' => $item_id,
+            'group_picker_post_id' => $object->ID
         ];
 
         $this->item_exceptions_ui->drawTabbedExceptionsUI($operations_data, $args);
