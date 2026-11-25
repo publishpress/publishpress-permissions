@@ -133,16 +133,13 @@ class RESTInit
                 }
             }
 
-            $args['post__in'] = $include_page_ids;
+            $args['post__in'] = $include_page_ids ?: [0];
 
             // The picker needs only page labels and hierarchy. Full REST responses
             // continue through the normal collection permission checks.
             $fields = wp_parse_list($request->get_param('_fields') ?? '');
             if (!$is_administrator && 'GET' === $request->get_method()
                 && $fields && !array_diff($fields, ['id', 'title', 'title.rendered', 'parent'])
-                && in_array('id', $fields, true)
-                && (in_array('title', $fields, true) || in_array('title.rendered', $fields, true))
-                && in_array('parent', $fields, true)
                 && !presspermit()->getOption('page_parent_editable_only')) {
                 $readable_ids = array_filter($include_page_ids, static function ($id) {
                     return current_user_can('read_post', $id);
