@@ -565,7 +565,8 @@ class ItemExceptionsUI
 
         // Check if custom groups exist to determine tab label
         $group_picker_post_id = (int) ($args['group_picker_post_id'] ?? 0);
-        $sparse_groups = (bool) $group_picker_post_id;
+        $group_picker_term_id = (int) ($args['group_picker_term_id'] ?? 0);
+        $sparse_groups = $group_picker_post_id || $group_picker_term_id;
         $has_custom_groups = $sparse_groups || !empty($this->data->agent_info['pp_group']);
         $roles_groups_label = $has_custom_groups ? __('Roles & Groups', 'press-permit-core') : __('Roles', 'press-permit-core');
         $search_placeholder = $has_custom_groups ? __('Search roles and groups...', 'press-permit-core') : __('Search roles...', 'press-permit-core');
@@ -626,7 +627,8 @@ class ItemExceptionsUI
                             data-op="<?php echo esc_attr($op); ?>"
                             data-for-item-type="<?php echo esc_attr($for_item_type); ?>"
                             data-agent-type="pp_group"
-                            data-exception-post="<?php echo esc_attr($group_picker_post_id); ?>">
+                            data-exception-post="<?php echo esc_attr($group_picker_post_id); ?>"
+                            data-exception-term="<?php echo esc_attr($group_picker_term_id); ?>">
                     </select>
                 </div>
             <?php endif; ?>

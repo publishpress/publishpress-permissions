@@ -24,7 +24,7 @@ class TermEdit
             global $typenow;
 
             if (!$typenow) {
-                $args = ['for_item_type' => $via_item_type];  // via_item_source, for_item_source, via_item_type, item_id
+                $args = ['sparse_groups' => presspermit()->getOption('use_tabbed_metabox'), 'for_item_type' => $via_item_type];  // via_item_source, for_item_source, via_item_type, item_id
                 do_action('presspermit_load_item_exceptions', 'term', 'term', $via_item_type, $tt_id, $args);
             }
         }

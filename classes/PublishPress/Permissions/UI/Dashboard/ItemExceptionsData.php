@@ -136,6 +136,13 @@ class ItemExceptionsData
             if (!empty($agents_by_type['pp_group'])) {
                 $groups += $pp->groups()->getGroups('pp_group', ['ids' => $agents_by_type['pp_group']]);
             }
+
+            // The term edit screen loads exceptions twice (post operations, then term management
+            // operations). Keep groups loaded by the earlier call so their stored exceptions
+            // are not dropped as orphans below.
+            if (!empty($this->agent_info['pp_group'])) {
+                $groups += $this->agent_info['pp_group'];
+            }
         } else {
             $groups = $pp->groups()->getGroups('pp_group');
         }

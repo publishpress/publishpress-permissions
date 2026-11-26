@@ -55,15 +55,37 @@ class AgentsAjax
 
         $context = PWP::GET_key('pp_context');
         
-        if ('pp_group' === $agent_type && PWP::GET_int('pp_exception_post')) {
-            $post = get_post(PWP::GET_int('pp_exception_post'));
+        if ('pp_group' === $agent_type && (PWP::GET_int('pp_exception_post') || PWP::GET_int('pp_exception_term'))) {
             $operation = PWP::GET_key('pp_operation');
-            if (!$post || !current_user_can('edit_post', $post->ID)
-                || !$pp_admin->canSetExceptions($operation, $post->post_type, [
-                    'item_id' => $post->ID,
-                    'via_item_type' => $post->post_type,
-                ])
-            ) {
+
+            if ($post_id = PWP::GET_int('pp_exception_post')) {
+                $post = get_post($post_id);
+                $can_set = $post && current_user_can('edit_post', $post->ID)
+                    && $pp_admin->canSetExceptions($operation, $post->post_type, [
+                        'item_id' => $post->ID,
+                        'via_item_type' => $post->post_type,
+                    ]);
+            } else {
+                // Term edit screen: same check ItemSave applies when the exceptions are saved.
+                // 'manage' and 'associate' are stored for the taxonomy, other operations for
+                // the post type in the topic ('' for universal permissions).
+                $tt_id = PWP::GET_int('pp_exception_term');
+                $term = get_term_by('term_taxonomy_id', $tt_id);
+                $arr_topic = explode(',', $topic);
+                $term_op = in_array($operation, ['manage', 'associate'], true);
+                $for_item_type = $term_op ? ($term ? $term->taxonomy : '') : (isset($arr_topic[1]) ? $arr_topic[1] : '');
+
+                $can_set = $term && !is_wp_error($term) && current_user_can('edit_term', $term->term_id)
+                    && ($for_item_type === '' || ($term_op ? taxonomy_exists($for_item_type) : post_type_exists($for_item_type)))
+                    && $pp_admin->canSetExceptions($operation, $for_item_type, [
+                        'item_id' => $tt_id,
+                        'via_item_source' => 'term',
+                        'via_item_type' => $term->taxonomy,
+                        'for_item_source' => $term_op ? 'term' : 'post',
+                    ]);
+            }
+
+            if (empty($can_set)) {
                 wp_die(-1, '', ['response' => 403]);
             }
 
