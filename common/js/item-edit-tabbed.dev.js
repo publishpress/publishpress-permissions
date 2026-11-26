@@ -659,6 +659,7 @@
                             pp_topic: op + ':' + forItemType + ':' + agentType,
                             pp_operation: op,
                             pp_exception_post: $select.data('exception-post') || 0,
+                            pp_exception_term: $select.data('exception-term') || 0,
                             pp_search_page: params.page || 1,
                             pp_omit_admins: typeof ppListbox !== 'undefined' ? ppListbox.omit_admins : '0',
                             pp_metagroups: '0'

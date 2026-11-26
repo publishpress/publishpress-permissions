@@ -195,7 +195,8 @@ class TermEdit
             'for_item_source' => 'post',
             'for_item_type' => $post_type,
             'via_item_type' => $taxonomy,
-            'item_id' => $term->term_taxonomy_id
+            'item_id' => $term->term_taxonomy_id,
+            'group_picker_term_id' => $term->term_taxonomy_id
         ];
 
         $this->item_exceptions_ui->drawTabbedExceptionsUI($operations_data, $args);
@@ -421,7 +422,7 @@ class TermEdit
 
             $tt_id = PWP::termidToTtid($tag_ID, $taxonomy);
 
-            $args = ['for_item_type' => $post_type, 'hierarchical' => is_taxonomy_hierarchical($post_type)];  // via_src, for_src, via_type, item_id, args
+            $args = ['sparse_groups' => presspermit()->getOption('use_tabbed_metabox'), 'for_item_type' => $post_type, 'hierarchical' => is_taxonomy_hierarchical($post_type)];  // via_src, for_src, via_type, item_id, args
             $this->item_exceptions_ui->data->loadExceptions('term', 'post', $taxonomy, $tt_id, $args);
 
             do_action('presspermit_prep_metaboxes', 'term', $taxonomy, $tt_id);
