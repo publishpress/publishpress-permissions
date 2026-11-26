@@ -462,7 +462,15 @@ class PermissionsHooks
         }
 
         // Capabilities() instantiation forces type-specific cap names for enabled post types and taxonomies
+        $early_cap_defs = isset($pp->cap_defs);
         $pp->capDefs();
+
+        // If the capabilities were already defined early (init priority 5, see loadFilters()), post types
+        // registered since then at the default init priority are not in all_type_caps yet. Without them,
+        // type capability checks such as edit_others_{type} are not credited for Specific Permissions.
+        if ($early_cap_defs) {
+            $pp->capDefs()->refresh();
+        }
 
         do_action('presspermit_pre_init');
 

@@ -369,7 +369,7 @@ class CapabilityFilters
                                             }
                                         }
 
-                                        if (!$item_id || !empty($post_ttids)) {
+                                        if (!$item_id || !empty($post_tt_ids)) {
                                             // Pass the capability check if it's for a post that has categories / terms which the user has a corresponding Specific Permission assigned for,
                                             // OR if the capability check is not for an individual post, and the user has a coresponding Specific Permissions assigned for any term related to this post type
 
@@ -389,7 +389,7 @@ class CapabilityFilters
                                                 }
 
                                                 if ($additional_tt_ids) {
-                                                    if (!$item_id || array_intersect($additional_tt_ids, $post_ttids)) {
+                                                    if (!$item_id || array_intersect($additional_tt_ids, (array) $post_tt_ids)) {
                                                         $pass = true;
                                                         break;
                                                     }
